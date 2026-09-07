@@ -1,0 +1,762 @@
+Classfile YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar!/com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin.class
+  Last modified Aug 21, 2025; size 7479 bytes
+  SHA-256 checksum ee5164f872450193d3adc8aad85ec7c1fee683414903a9a6f35bc0ba066ba8e2
+  Compiled from "AbstractArrowMixin.java"
+public abstract class com.yungnickyoung.minecraft.yungscavebiomes.mixin.frosted_caves.AbstractArrowMixin extends net.minecraft.world.entity.Entity
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin
+  super_class: #2                         // net/minecraft/world/entity/Entity
+  interfaces: 0, fields: 0, methods: 6, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #2 = Class              #4            // net/minecraft/world/entity/Entity
+    #3 = NameAndType        #5:#6         // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #4 = Utf8               net/minecraft/world/entity/Entity
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #7 = Methodref          #8.#9         // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin.level:()Lnet/minecraft/world/level/Level;
+    #8 = Class              #10           // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin
+    #9 = NameAndType        #11:#12       // level:()Lnet/minecraft/world/level/Level;
+   #10 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin
+   #11 = Utf8               level
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Fieldref           #14.#15       // net/minecraft/world/level/Level.isClientSide:Z
+   #14 = Class              #16           // net/minecraft/world/level/Level
+   #15 = NameAndType        #17:#18       // isClientSide:Z
+   #16 = Utf8               net/minecraft/world/level/Level
+   #17 = Utf8               isClientSide
+   #18 = Utf8               Z
+   #19 = Methodref          #8.#20        // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin.isArrow:(Ljava/lang/Object;)Z
+   #20 = NameAndType        #21:#22       // isArrow:(Ljava/lang/Object;)Z
+   #21 = Utf8               isArrow
+   #22 = Utf8               (Ljava/lang/Object;)Z
+   #23 = Methodref          #8.#24        // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin.asArrow:(Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+   #24 = NameAndType        #25:#26       // asArrow:(Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+   #25 = Utf8               asArrow
+   #26 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+   #27 = Class              #28           // com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor
+   #28 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor
+   #29 = InterfaceMethodref #27.#30       // com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor.callGetPotionContents:()Lnet/minecraft/world/item/alchemy/PotionContents;
+   #30 = NameAndType        #31:#32       // callGetPotionContents:()Lnet/minecraft/world/item/alchemy/PotionContents;
+   #31 = Utf8               callGetPotionContents
+   #32 = Utf8               ()Lnet/minecraft/world/item/alchemy/PotionContents;
+   #33 = Methodref          #34.#35       // net/minecraft/world/item/alchemy/PotionContents.getAllEffects:()Ljava/lang/Iterable;
+   #34 = Class              #36           // net/minecraft/world/item/alchemy/PotionContents
+   #35 = NameAndType        #37:#38       // getAllEffects:()Ljava/lang/Iterable;
+   #36 = Utf8               net/minecraft/world/item/alchemy/PotionContents
+   #37 = Utf8               getAllEffects
+   #38 = Utf8               ()Ljava/lang/Iterable;
+   #39 = InterfaceMethodref #40.#41       // java/lang/Iterable.iterator:()Ljava/util/Iterator;
+   #40 = Class              #42           // java/lang/Iterable
+   #41 = NameAndType        #43:#44       // iterator:()Ljava/util/Iterator;
+   #42 = Utf8               java/lang/Iterable
+   #43 = Utf8               iterator
+   #44 = Utf8               ()Ljava/util/Iterator;
+   #45 = InterfaceMethodref #46.#47       // java/util/Iterator.hasNext:()Z
+   #46 = Class              #48           // java/util/Iterator
+   #47 = NameAndType        #49:#50       // hasNext:()Z
+   #48 = Utf8               java/util/Iterator
+   #49 = Utf8               hasNext
+   #50 = Utf8               ()Z
+   #51 = InterfaceMethodref #46.#52       // java/util/Iterator.next:()Ljava/lang/Object;
+   #52 = NameAndType        #53:#54       // next:()Ljava/lang/Object;
+   #53 = Utf8               next
+   #54 = Utf8               ()Ljava/lang/Object;
+   #55 = Class              #56           // net/minecraft/world/effect/MobEffectInstance
+   #56 = Utf8               net/minecraft/world/effect/MobEffectInstance
+   #57 = Methodref          #55.#58       // net/minecraft/world/effect/MobEffectInstance.getEffect:()Lnet/minecraft/core/Holder;
+   #58 = NameAndType        #59:#60       // getEffect:()Lnet/minecraft/core/Holder;
+   #59 = Utf8               getEffect
+   #60 = Utf8               ()Lnet/minecraft/core/Holder;
+   #61 = Fieldref           #62.#63       // com/yungnickyoung/minecraft/yungscavebiomes/module/MobEffectModule.FROZEN_EFFECT:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect;
+   #62 = Class              #64           // com/yungnickyoung/minecraft/yungscavebiomes/module/MobEffectModule
+   #63 = NameAndType        #65:#66       // FROZEN_EFFECT:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect;
+   #64 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/module/MobEffectModule
+   #65 = Utf8               FROZEN_EFFECT
+   #66 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect;
+   #67 = Methodref          #68.#69       // com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect.getHolder:()Lnet/minecraft/core/Holder;
+   #68 = Class              #70           // com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect
+   #69 = NameAndType        #71:#60       // getHolder:()Lnet/minecraft/core/Holder;
+   #70 = Utf8               com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect
+   #71 = Utf8               getHolder
+   #72 = InterfaceMethodref #73.#74       // net/minecraft/core/Holder.is:(Lnet/minecraft/core/Holder;)Z
+   #73 = Class              #75           // net/minecraft/core/Holder
+   #74 = NameAndType        #76:#77       // is:(Lnet/minecraft/core/Holder;)Z
+   #75 = Utf8               net/minecraft/core/Holder
+   #76 = Utf8               is
+   #77 = Utf8               (Lnet/minecraft/core/Holder;)Z
+   #78 = Methodref          #79.#80       // net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #79 = Class              #81           // net/minecraft/world/phys/BlockHitResult
+   #80 = NameAndType        #82:#83       // getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #81 = Utf8               net/minecraft/world/phys/BlockHitResult
+   #82 = Utf8               getBlockPos
+   #83 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #84 = Methodref          #55.#85       // net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+   #85 = NameAndType        #86:#87       // getAmplifier:()I
+   #86 = Utf8               getAmplifier
+   #87 = Utf8               ()I
+   #88 = Methodref          #8.#89        // com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin.placeIceSheets:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+   #89 = NameAndType        #90:#91       // placeIceSheets:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+   #90 = Utf8               placeIceSheets
+   #91 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+   #92 = Methodref          #93.#94       // net/minecraft/world/phys/EntityHitResult.getEntity:()Lnet/minecraft/world/entity/Entity;
+   #93 = Class              #95           // net/minecraft/world/phys/EntityHitResult
+   #94 = NameAndType        #96:#97       // getEntity:()Lnet/minecraft/world/entity/Entity;
+   #95 = Utf8               net/minecraft/world/phys/EntityHitResult
+   #96 = Utf8               getEntity
+   #97 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #98 = Methodref          #2.#99        // net/minecraft/world/entity/Entity.getOnPos:()Lnet/minecraft/core/BlockPos;
+   #99 = NameAndType        #100:#83      // getOnPos:()Lnet/minecraft/core/BlockPos;
+  #100 = Utf8               getOnPos
+  #101 = Methodref          #102.#103     // net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #102 = Class              #104          // net/minecraft/core/BlockPos
+  #103 = NameAndType        #105:#106     // mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #104 = Utf8               net/minecraft/core/BlockPos
+  #105 = Utf8               mutable
+  #106 = Utf8               ()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #107 = Methodref          #108.#103     // net/minecraft/core/BlockPos$MutableBlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #108 = Class              #109          // net/minecraft/core/BlockPos$MutableBlockPos
+  #109 = Utf8               net/minecraft/core/BlockPos$MutableBlockPos
+  #110 = Methodref          #108.#111     // net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #111 = NameAndType        #112:#113     // setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #112 = Utf8               setWithOffset
+  #113 = Utf8               (Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #114 = Methodref          #14.#115      // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #115 = NameAndType        #116:#117     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #116 = Utf8               getBlockState
+  #117 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #118 = Methodref          #119.#120     // net/minecraft/world/level/block/state/BlockState.isAir:()Z
+  #119 = Class              #121          // net/minecraft/world/level/block/state/BlockState
+  #120 = NameAndType        #122:#50      // isAir:()Z
+  #121 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #122 = Utf8               isAir
+  #123 = Fieldref           #124.#125     // net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+  #124 = Class              #126          // net/minecraft/world/level/block/Blocks
+  #125 = NameAndType        #127:#128     // WATER:Lnet/minecraft/world/level/block/Block;
+  #126 = Utf8               net/minecraft/world/level/block/Blocks
+  #127 = Utf8               WATER
+  #128 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #129 = Methodref          #119.#130     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+  #130 = NameAndType        #76:#131      // is:(Lnet/minecraft/world/level/block/Block;)Z
+  #131 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+  #132 = Fieldref           #133.#134     // net/minecraft/tags/BlockTags.REPLACEABLE:Lnet/minecraft/tags/TagKey;
+  #133 = Class              #135          // net/minecraft/tags/BlockTags
+  #134 = NameAndType        #136:#137     // REPLACEABLE:Lnet/minecraft/tags/TagKey;
+  #135 = Utf8               net/minecraft/tags/BlockTags
+  #136 = Utf8               REPLACEABLE
+  #137 = Utf8               Lnet/minecraft/tags/TagKey;
+  #138 = Methodref          #119.#139     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+  #139 = NameAndType        #76:#140      // is:(Lnet/minecraft/tags/TagKey;)Z
+  #140 = Utf8               (Lnet/minecraft/tags/TagKey;)Z
+  #141 = Methodref          #142.#143     // net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+  #142 = Class              #144          // net/minecraft/core/Direction
+  #143 = NameAndType        #145:#146     // values:()[Lnet/minecraft/core/Direction;
+  #144 = Utf8               net/minecraft/core/Direction
+  #145 = Utf8               values
+  #146 = Utf8               ()[Lnet/minecraft/core/Direction;
+  #147 = Methodref          #108.#148     // net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #148 = NameAndType        #112:#149     // setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #149 = Utf8               (Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #150 = Fieldref           #151.#152     // com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ICE_SHEET:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+  #151 = Class              #153          // com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule
+  #152 = NameAndType        #154:#155     // ICE_SHEET:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+  #153 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule
+  #154 = Utf8               ICE_SHEET
+  #155 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+  #156 = Methodref          #157.#158     // com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+  #157 = Class              #159          // com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock
+  #158 = NameAndType        #160:#54      // get:()Ljava/lang/Object;
+  #159 = Utf8               com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock
+  #160 = Utf8               get
+  #161 = Class              #162          // com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock
+  #162 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock
+  #163 = Methodref          #161.#164     // com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.getStateForPlacement:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #164 = NameAndType        #165:#166     // getStateForPlacement:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #165 = Utf8               getStateForPlacement
+  #166 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #167 = Fieldref           #161.#168     // com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.GROWTH_DISTANCE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+  #168 = NameAndType        #169:#170     // GROWTH_DISTANCE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+  #169 = Utf8               GROWTH_DISTANCE
+  #170 = Utf8               Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+  #171 = Methodref          #172.#173     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #172 = Class              #174          // java/lang/Integer
+  #173 = NameAndType        #175:#176     // valueOf:(I)Ljava/lang/Integer;
+  #174 = Utf8               java/lang/Integer
+  #175 = Utf8               valueOf
+  #176 = Utf8               (I)Ljava/lang/Integer;
+  #177 = Methodref          #119.#178     // net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #178 = NameAndType        #179:#180     // setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #179 = Utf8               setValue
+  #180 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #181 = Methodref          #14.#182      // net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #182 = NameAndType        #183:#184     // setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #183 = Utf8               setBlock
+  #184 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #185 = Class              #186          // net/minecraft/world/entity/projectile/Arrow
+  #186 = Utf8               net/minecraft/world/entity/projectile/Arrow
+  #187 = Utf8               Code
+  #188 = Utf8               LineNumberTable
+  #189 = Utf8               LocalVariableTable
+  #190 = Utf8               this
+  #191 = Utf8               Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin;
+  #192 = Utf8               entityType
+  #193 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #194 = Utf8               Lnet/minecraft/world/level/Level;
+  #195 = Utf8               LocalVariableTypeTable
+  #196 = Utf8               Lnet/minecraft/world/entity/EntityType<*>;
+  #197 = Utf8               Signature
+  #198 = Utf8               (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+  #199 = Utf8               yungscavebiomes_tippedArrowOnHitBlockSpawnIceSheets
+  #200 = Utf8               (Lnet/minecraft/world/phys/BlockHitResult;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #201 = Utf8               originPos
+  #202 = Utf8               Lnet/minecraft/core/BlockPos;
+  #203 = Utf8               amplified
+  #204 = Utf8               mobEffectInstance
+  #205 = Utf8               Lnet/minecraft/world/effect/MobEffectInstance;
+  #206 = Utf8               arrow
+  #207 = Utf8               Lnet/minecraft/world/entity/projectile/Arrow;
+  #208 = Utf8               potionContents
+  #209 = Utf8               Lnet/minecraft/world/item/alchemy/PotionContents;
+  #210 = Utf8               blockHitResult
+  #211 = Utf8               Lnet/minecraft/world/phys/BlockHitResult;
+  #212 = Utf8               ci
+  #213 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #214 = Utf8               StackMapTable
+  #215 = Class              #216          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #216 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #217 = Utf8               RuntimeVisibleAnnotations
+  #218 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #219 = Utf8               method
+  #220 = Utf8               onHitBlock
+  #221 = Utf8               at
+  #222 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #223 = Utf8               value
+  #224 = Utf8               RETURN
+  #225 = Utf8               yungscavebiomes_tippedArrowOnHitEntitySpawnIceSheets
+  #226 = Utf8               (Lnet/minecraft/world/phys/EntityHitResult;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #227 = Utf8               entityHitResult
+  #228 = Utf8               Lnet/minecraft/world/phys/EntityHitResult;
+  #229 = Utf8               onHitEntity
+  #230 = Utf8               iceSheetBlock
+  #231 = Utf8               Lcom/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock;
+  #232 = Utf8               updatedBlockState
+  #233 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #234 = Utf8               direction
+  #235 = Utf8               Lnet/minecraft/core/Direction;
+  #236 = Utf8               currState
+  #237 = Utf8               z
+  #238 = Utf8               I
+  #239 = Utf8               y
+  #240 = Utf8               x
+  #241 = Utf8               currPos
+  #242 = Utf8               Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #243 = Utf8               attemptDistance
+  #244 = Utf8               maxDist
+  #245 = Class              #246          // "[Lnet/minecraft/core/Direction;"
+  #246 = Utf8               [Lnet/minecraft/core/Direction;
+  #247 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #248 = Utf8               object
+  #249 = Utf8               Ljava/lang/Object;
+  #250 = Utf8               SourceFile
+  #251 = Utf8               AbstractArrowMixin.java
+  #252 = Utf8               RuntimeInvisibleAnnotations
+  #253 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #254 = Utf8               Lnet/minecraft/world/entity/projectile/AbstractArrow;
+  #255 = Utf8               InnerClasses
+  #256 = Utf8               MutableBlockPos
+{
+  private com.yungnickyoung.minecraft.yungscavebiomes.mixin.frosted_caves.AbstractArrowMixin(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #1                  // Method net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: return
+      LineNumberTable:
+        line 30: 0
+        line 31: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin;
+            0       7     1 entityType   Lnet/minecraft/world/entity/EntityType;
+            0       7     2 level   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       7     1 entityType   Lnet/minecraft/world/entity/EntityType<*>;
+    Signature: #198                         // (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+
+  public void yungscavebiomes_tippedArrowOnHitBlockSpawnIceSheets(net.minecraft.world.phys.BlockHitResult, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/phys/BlockHitResult;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=9, args_size=3
+         0: aload_0
+         1: invokevirtual #7                  // Method level:()Lnet/minecraft/world/level/Level;
+         4: getfield      #13                 // Field net/minecraft/world/level/Level.isClientSide:Z
+         7: ifne          124
+        10: aload_0
+        11: invokestatic  #19                 // Method isArrow:(Ljava/lang/Object;)Z
+        14: ifeq          124
+        17: aload_0
+        18: invokestatic  #23                 // Method asArrow:(Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+        21: astore_3
+        22: aload_3
+        23: checkcast     #27                 // class com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor
+        26: invokeinterface #29,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor.callGetPotionContents:()Lnet/minecraft/world/item/alchemy/PotionContents;
+        31: astore        4
+        33: aload         4
+        35: invokevirtual #33                 // Method net/minecraft/world/item/alchemy/PotionContents.getAllEffects:()Ljava/lang/Iterable;
+        38: invokeinterface #39,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        43: astore        5
+        45: aload         5
+        47: invokeinterface #45,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        52: ifeq          124
+        55: aload         5
+        57: invokeinterface #51,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        62: checkcast     #55                 // class net/minecraft/world/effect/MobEffectInstance
+        65: astore        6
+        67: aload         6
+        69: invokevirtual #57                 // Method net/minecraft/world/effect/MobEffectInstance.getEffect:()Lnet/minecraft/core/Holder;
+        72: getstatic     #61                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/MobEffectModule.FROZEN_EFFECT:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect;
+        75: invokevirtual #67                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect.getHolder:()Lnet/minecraft/core/Holder;
+        78: invokeinterface #72,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/core/Holder;)Z
+        83: ifne          89
+        86: goto          45
+        89: aload_1
+        90: invokevirtual #78                 // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        93: astore        7
+        95: aload         6
+        97: invokevirtual #84                 // Method net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+       100: ifle          107
+       103: iconst_1
+       104: goto          108
+       107: iconst_0
+       108: istore        8
+       110: aload_0
+       111: invokevirtual #7                  // Method level:()Lnet/minecraft/world/level/Level;
+       114: aload         7
+       116: iload         8
+       118: invokestatic  #88                 // Method placeIceSheets:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+       121: goto          45
+       124: return
+      LineNumberTable:
+        line 38: 0
+        line 39: 17
+        line 40: 22
+        line 41: 33
+        line 42: 67
+        line 43: 86
+        line 46: 89
+        line 47: 95
+        line 49: 110
+        line 50: 121
+        line 52: 124
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           95      26     7 originPos   Lnet/minecraft/core/BlockPos;
+          110      11     8 amplified   Z
+           67      54     6 mobEffectInstance   Lnet/minecraft/world/effect/MobEffectInstance;
+           22     102     3 arrow   Lnet/minecraft/world/entity/projectile/Arrow;
+           33      91     4 potionContents   Lnet/minecraft/world/item/alchemy/PotionContents;
+            0     125     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin;
+            0     125     1 blockHitResult   Lnet/minecraft/world/phys/BlockHitResult;
+            0     125     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 5
+        frame_type = 254 /* append */
+          offset_delta = 45
+          locals = [ class net/minecraft/world/entity/projectile/Arrow, class net/minecraft/world/item/alchemy/PotionContents, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 43
+          locals = [ class net/minecraft/world/effect/MobEffectInstance ]
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 15
+          locals = [ class com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin, class net/minecraft/world/phys/BlockHitResult, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo ]
+          stack = []
+    RuntimeVisibleAnnotations:
+      0: #218(#219=[s#220],#221=[@#222(#223=s#224)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["onHitBlock"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  public void yungscavebiomes_tippedArrowOnHitEntitySpawnIceSheets(net.minecraft.world.phys.EntityHitResult, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/phys/EntityHitResult;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=9, args_size=3
+         0: aload_0
+         1: invokevirtual #7                  // Method level:()Lnet/minecraft/world/level/Level;
+         4: getfield      #13                 // Field net/minecraft/world/level/Level.isClientSide:Z
+         7: ifne          127
+        10: aload_0
+        11: invokestatic  #19                 // Method isArrow:(Ljava/lang/Object;)Z
+        14: ifeq          127
+        17: aload_0
+        18: invokestatic  #23                 // Method asArrow:(Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+        21: astore_3
+        22: aload_3
+        23: checkcast     #27                 // class com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor
+        26: invokeinterface #29,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/mixin/accessor/ArrowAccessor.callGetPotionContents:()Lnet/minecraft/world/item/alchemy/PotionContents;
+        31: astore        4
+        33: aload         4
+        35: invokevirtual #33                 // Method net/minecraft/world/item/alchemy/PotionContents.getAllEffects:()Ljava/lang/Iterable;
+        38: invokeinterface #39,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        43: astore        5
+        45: aload         5
+        47: invokeinterface #45,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        52: ifeq          127
+        55: aload         5
+        57: invokeinterface #51,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        62: checkcast     #55                 // class net/minecraft/world/effect/MobEffectInstance
+        65: astore        6
+        67: aload         6
+        69: invokevirtual #57                 // Method net/minecraft/world/effect/MobEffectInstance.getEffect:()Lnet/minecraft/core/Holder;
+        72: getstatic     #61                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/MobEffectModule.FROZEN_EFFECT:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect;
+        75: invokevirtual #67                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterMobEffect.getHolder:()Lnet/minecraft/core/Holder;
+        78: invokeinterface #72,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/core/Holder;)Z
+        83: ifne          89
+        86: goto          45
+        89: aload_1
+        90: invokevirtual #92                 // Method net/minecraft/world/phys/EntityHitResult.getEntity:()Lnet/minecraft/world/entity/Entity;
+        93: invokevirtual #98                 // Method net/minecraft/world/entity/Entity.getOnPos:()Lnet/minecraft/core/BlockPos;
+        96: astore        7
+        98: aload         6
+       100: invokevirtual #84                 // Method net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+       103: ifle          110
+       106: iconst_1
+       107: goto          111
+       110: iconst_0
+       111: istore        8
+       113: aload_0
+       114: invokevirtual #7                  // Method level:()Lnet/minecraft/world/level/Level;
+       117: aload         7
+       119: iload         8
+       121: invokestatic  #88                 // Method placeIceSheets:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+       124: goto          45
+       127: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 17
+        line 61: 22
+        line 62: 33
+        line 63: 67
+        line 64: 86
+        line 67: 89
+        line 68: 98
+        line 70: 113
+        line 71: 124
+        line 73: 127
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           98      26     7 originPos   Lnet/minecraft/core/BlockPos;
+          113      11     8 amplified   Z
+           67      57     6 mobEffectInstance   Lnet/minecraft/world/effect/MobEffectInstance;
+           22     105     3 arrow   Lnet/minecraft/world/entity/projectile/Arrow;
+           33      94     4 potionContents   Lnet/minecraft/world/item/alchemy/PotionContents;
+            0     128     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin;
+            0     128     1 entityHitResult   Lnet/minecraft/world/phys/EntityHitResult;
+            0     128     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 5
+        frame_type = 254 /* append */
+          offset_delta = 45
+          locals = [ class net/minecraft/world/entity/projectile/Arrow, class net/minecraft/world/item/alchemy/PotionContents, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 43
+          locals = [ class net/minecraft/world/effect/MobEffectInstance ]
+        frame_type = 252 /* append */
+          offset_delta = 20
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 15
+          locals = [ class com/yungnickyoung/minecraft/yungscavebiomes/mixin/frosted_caves/AbstractArrowMixin, class net/minecraft/world/phys/EntityHitResult, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo ]
+          stack = []
+    RuntimeVisibleAnnotations:
+      0: #218(#219=[s#229],#221=[@#222(#223=s#224)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["onHitEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  private static void placeIceSheets(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, boolean);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=17, args_size=3
+         0: aload_1
+         1: invokevirtual #101                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+         4: astore_3
+         5: aload_3
+         6: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+         9: astore        4
+        11: iload_2
+        12: ifeq          19
+        15: iconst_4
+        16: goto          20
+        19: iconst_3
+        20: istore        5
+        22: iload_2
+        23: ifeq          31
+        26: bipush        14
+        28: goto          33
+        31: bipush        8
+        33: istore        6
+        35: iload         5
+        37: ineg
+        38: istore        7
+        40: iload         7
+        42: iload         5
+        44: if_icmpgt     270
+        47: iload         5
+        49: ineg
+        50: istore        8
+        52: iload         8
+        54: iload         5
+        56: if_icmpgt     264
+        59: iload         5
+        61: ineg
+        62: istore        9
+        64: iload         9
+        66: iload         5
+        68: if_icmpgt     258
+        71: iload         7
+        73: iload         7
+        75: imul
+        76: iload         8
+        78: iload         8
+        80: imul
+        81: iadd
+        82: iload         9
+        84: iload         9
+        86: imul
+        87: iadd
+        88: iload         6
+        90: if_icmple     96
+        93: goto          252
+        96: aload_3
+        97: aload_1
+        98: iload         7
+       100: iload         8
+       102: iload         9
+       104: invokevirtual #110                // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       107: pop
+       108: aload_0
+       109: aload_3
+       110: invokevirtual #114                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       113: astore        10
+       115: aload         10
+       117: invokevirtual #118                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       120: ifne          148
+       123: aload         10
+       125: getstatic     #123                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+       128: invokevirtual #129                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       131: ifne          148
+       134: aload         10
+       136: getstatic     #132                // Field net/minecraft/tags/BlockTags.REPLACEABLE:Lnet/minecraft/tags/TagKey;
+       139: invokevirtual #138                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       142: ifne          148
+       145: goto          252
+       148: invokestatic  #141                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+       151: astore        11
+       153: aload         11
+       155: arraylength
+       156: istore        12
+       158: iconst_0
+       159: istore        13
+       161: iload         13
+       163: iload         12
+       165: if_icmpge     252
+       168: aload         11
+       170: iload         13
+       172: aaload
+       173: astore        14
+       175: aload         4
+       177: aload_3
+       178: aload         14
+       180: invokevirtual #147                // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       183: pop
+       184: getstatic     #150                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ICE_SHEET:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+       187: invokevirtual #156                // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+       190: checkcast     #161                // class com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock
+       193: astore        15
+       195: aload         15
+       197: aload         10
+       199: aload_0
+       200: aload_3
+       201: aload         14
+       203: invokevirtual #163                // Method com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.getStateForPlacement:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+       206: astore        16
+       208: aload         16
+       210: ifnonnull     216
+       213: goto          246
+       216: aload         16
+       218: getstatic     #167                // Field com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.GROWTH_DISTANCE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+       221: iconst_0
+       222: invokestatic  #171                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       225: invokevirtual #177                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+       228: checkcast     #119                // class net/minecraft/world/level/block/state/BlockState
+       231: astore        16
+       233: aload         16
+       235: astore        10
+       237: aload_0
+       238: aload_3
+       239: aload         16
+       241: iconst_3
+       242: invokevirtual #181                // Method net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       245: pop
+       246: iinc          13, 1
+       249: goto          161
+       252: iinc          9, 1
+       255: goto          64
+       258: iinc          8, 1
+       261: goto          52
+       264: iinc          7, 1
+       267: goto          40
+       270: return
+      LineNumberTable:
+        line 81: 0
+        line 82: 5
+        line 84: 11
+        line 85: 22
+        line 88: 35
+        line 89: 47
+        line 90: 59
+        line 91: 71
+        line 92: 93
+        line 95: 96
+        line 96: 108
+        line 98: 115
+        line 99: 145
+        line 102: 148
+        line 103: 175
+        line 105: 184
+        line 106: 195
+        line 107: 208
+        line 108: 213
+        line 110: 216
+        line 112: 233
+        line 113: 237
+        line 102: 246
+        line 90: 252
+        line 89: 258
+        line 88: 264
+        line 118: 270
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          195      51    15 iceSheetBlock   Lcom/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock;
+          208      38    16 updatedBlockState   Lnet/minecraft/world/level/block/state/BlockState;
+          175      71    14 direction   Lnet/minecraft/core/Direction;
+          115     137    10 currState   Lnet/minecraft/world/level/block/state/BlockState;
+           64     194     9     z   I
+           52     212     8     y   I
+           40     230     7     x   I
+            0     271     0 level   Lnet/minecraft/world/level/Level;
+            0     271     1 originPos   Lnet/minecraft/core/BlockPos;
+            0     271     2 amplified   Z
+            5     266     3 currPos   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+           11     260     4 mutable   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+           22     249     5 attemptDistance   I
+           35     236     6 maxDist   I
+      StackMapTable: number_of_entries = 16
+        frame_type = 253 /* append */
+          offset_delta = 19
+          locals = [ class net/minecraft/core/BlockPos$MutableBlockPos, class net/minecraft/core/BlockPos$MutableBlockPos ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 10
+          locals = [ int ]
+        frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 6
+          locals = [ int, int ]
+        frame_type = 252 /* append */
+          offset_delta = 11
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 11
+          locals = [ int ]
+        frame_type = 31 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 51
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 254 /* append */
+          offset_delta = 12
+          locals = [ class "[Lnet/minecraft/core/Direction;", int, int ]
+        frame_type = 254 /* append */
+          offset_delta = 54
+          locals = [ class net/minecraft/core/Direction, class com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock, class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 248 /* chop */
+          offset_delta = 29
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class net/minecraft/world/level/Level, class net/minecraft/core/BlockPos, int, class net/minecraft/core/BlockPos$MutableBlockPos, class net/minecraft/core/BlockPos$MutableBlockPos, int, int, int, int, int ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+    RuntimeVisibleAnnotations:
+      0: #247()
+        org.spongepowered.asm.mixin.Unique
+
+  private static boolean isArrow(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #185                // class net/minecraft/world/entity/projectile/Arrow
+         4: ireturn
+      LineNumberTable:
+        line 122: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 object   Ljava/lang/Object;
+    RuntimeVisibleAnnotations:
+      0: #247()
+        org.spongepowered.asm.mixin.Unique
+
+  private static net.minecraft.world.entity.projectile.Arrow asArrow(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Lnet/minecraft/world/entity/projectile/Arrow;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #185                // class net/minecraft/world/entity/projectile/Arrow
+         4: areturn
+      LineNumberTable:
+        line 127: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 object   Ljava/lang/Object;
+    RuntimeVisibleAnnotations:
+      0: #247()
+        org.spongepowered.asm.mixin.Unique
+}
+SourceFile: "AbstractArrowMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #253(#223=[c#254])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/projectile/AbstractArrow;]
+    )
+InnerClasses:
+  public static #256= #108 of #102;       // MutableBlockPos=class net/minecraft/core/BlockPos$MutableBlockPos of class net/minecraft/core/BlockPos

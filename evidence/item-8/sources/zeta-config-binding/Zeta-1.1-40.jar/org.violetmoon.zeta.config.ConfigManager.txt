@@ -1,0 +1,1684 @@
+Classfile Zeta-1.1-40.jar!/org/violetmoon/zeta/config/ConfigManager.class
+  Last modified Apr 24, 2026; size 15461 bytes
+  SHA-256 checksum c2295c7a4db1e21bdde888b666c05840ff445bbc9ca93aa028b16b27d8b168f4
+  Compiled from "ConfigManager.java"
+public class org.violetmoon.zeta.config.ConfigManager
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #11                         // org/violetmoon/zeta/config/ConfigManager
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 12, methods: 28, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/util/ArrayList
+    #8 = Utf8               java/util/ArrayList
+    #9 = Methodref          #7.#3         // java/util/ArrayList."<init>":()V
+   #10 = Fieldref           #11.#12       // org/violetmoon/zeta/config/ConfigManager.databindings:Ljava/util/List;
+   #11 = Class              #13           // org/violetmoon/zeta/config/ConfigManager
+   #12 = NameAndType        #14:#15       // databindings:Ljava/util/List;
+   #13 = Utf8               org/violetmoon/zeta/config/ConfigManager
+   #14 = Utf8               databindings
+   #15 = Utf8               Ljava/util/List;
+   #16 = Class              #17           // java/util/HashMap
+   #17 = Utf8               java/util/HashMap
+   #18 = Methodref          #16.#3        // java/util/HashMap."<init>":()V
+   #19 = Fieldref           #11.#20       // org/violetmoon/zeta/config/ConfigManager.onReloadListeners:Ljava/util/Map;
+   #20 = NameAndType        #21:#22       // onReloadListeners:Ljava/util/Map;
+   #21 = Utf8               onReloadListeners
+   #22 = Utf8               Ljava/util/Map;
+   #23 = Fieldref           #11.#24       // org/violetmoon/zeta/config/ConfigManager.categoriesToSections:Ljava/util/Map;
+   #24 = NameAndType        #25:#22       // categoriesToSections:Ljava/util/Map;
+   #25 = Utf8               categoriesToSections
+   #26 = Fieldref           #11.#27       // org/violetmoon/zeta/config/ConfigManager.categoryEnabledOptions:Ljava/util/Map;
+   #27 = NameAndType        #28:#22       // categoryEnabledOptions:Ljava/util/Map;
+   #28 = Utf8               categoryEnabledOptions
+   #29 = Fieldref           #11.#30       // org/violetmoon/zeta/config/ConfigManager.ignoreAntiOverlapOptions:Ljava/util/Map;
+   #30 = NameAndType        #31:#22       // ignoreAntiOverlapOptions:Ljava/util/Map;
+   #31 = Utf8               ignoreAntiOverlapOptions
+   #32 = Fieldref           #11.#33       // org/violetmoon/zeta/config/ConfigManager.moduleEnabledOptions:Ljava/util/Map;
+   #33 = NameAndType        #34:#22       // moduleEnabledOptions:Ljava/util/Map;
+   #34 = Utf8               moduleEnabledOptions
+   #35 = Class              #36           // java/util/HashSet
+   #36 = Utf8               java/util/HashSet
+   #37 = Methodref          #35.#3        // java/util/HashSet."<init>":()V
+   #38 = Fieldref           #11.#39       // org/violetmoon/zeta/config/ConfigManager.enabledCategories:Ljava/util/Set;
+   #39 = NameAndType        #40:#41       // enabledCategories:Ljava/util/Set;
+   #40 = Utf8               enabledCategories
+   #41 = Utf8               Ljava/util/Set;
+   #42 = Fieldref           #11.#43       // org/violetmoon/zeta/config/ConfigManager.z:Lorg/violetmoon/zeta/Zeta;
+   #43 = NameAndType        #44:#45       // z:Lorg/violetmoon/zeta/Zeta;
+   #44 = Utf8               z
+   #45 = Utf8               Lorg/violetmoon/zeta/Zeta;
+   #46 = Class              #47           // org/violetmoon/zeta/config/ConfigFlagManager
+   #47 = Utf8               org/violetmoon/zeta/config/ConfigFlagManager
+   #48 = Methodref          #46.#49       // org/violetmoon/zeta/config/ConfigFlagManager."<init>":(Lorg/violetmoon/zeta/Zeta;)V
+   #49 = NameAndType        #5:#50        // "<init>":(Lorg/violetmoon/zeta/Zeta;)V
+   #50 = Utf8               (Lorg/violetmoon/zeta/Zeta;)V
+   #51 = Fieldref           #11.#52       // org/violetmoon/zeta/config/ConfigManager.cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+   #52 = NameAndType        #53:#54       // cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+   #53 = Utf8               cfm
+   #54 = Utf8               Lorg/violetmoon/zeta/config/ConfigFlagManager;
+   #55 = Fieldref           #56.#57       // org/violetmoon/zeta/Zeta.modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+   #56 = Class              #58           // org/violetmoon/zeta/Zeta
+   #57 = NameAndType        #59:#60       // modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+   #58 = Utf8               org/violetmoon/zeta/Zeta
+   #59 = Utf8               modules
+   #60 = Utf8               Lorg/violetmoon/zeta/module/ZetaModuleManager;
+   #61 = Methodref          #62.#63       // org/violetmoon/zeta/module/ZetaModuleManager.getCategories:()Ljava/util/Collection;
+   #62 = Class              #64           // org/violetmoon/zeta/module/ZetaModuleManager
+   #63 = NameAndType        #65:#66       // getCategories:()Ljava/util/Collection;
+   #64 = Utf8               org/violetmoon/zeta/module/ZetaModuleManager
+   #65 = Utf8               getCategories
+   #66 = Utf8               ()Ljava/util/Collection;
+   #67 = InterfaceMethodref #68.#69       // java/util/Set.addAll:(Ljava/util/Collection;)Z
+   #68 = Class              #70           // java/util/Set
+   #69 = NameAndType        #71:#72       // addAll:(Ljava/util/Collection;)Z
+   #70 = Utf8               java/util/Set
+   #71 = Utf8               addAll
+   #72 = Utf8               (Ljava/util/Collection;)Z
+   #73 = Class              #74           // org/violetmoon/zeta/config/SectionDefinition$Builder
+   #74 = Utf8               org/violetmoon/zeta/config/SectionDefinition$Builder
+   #75 = Methodref          #73.#3        // org/violetmoon/zeta/config/SectionDefinition$Builder."<init>":()V
+   #76 = String             #77           //
+   #77 = Utf8
+   #78 = Methodref          #73.#79       // org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+   #79 = NameAndType        #80:#81       // name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+   #80 = Utf8               name
+   #81 = Utf8               (Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+   #82 = Fieldref           #11.#83       // org/violetmoon/zeta/config/ConfigManager.generalSection:Lorg/violetmoon/zeta/config/SectionDefinition;
+   #83 = NameAndType        #84:#85       // generalSection:Lorg/violetmoon/zeta/config/SectionDefinition;
+   #84 = Utf8               generalSection
+   #85 = Utf8               Lorg/violetmoon/zeta/config/SectionDefinition;
+   #86 = Fieldref           #56.#87       // org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #87 = NameAndType        #88:#89       // loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #88 = Utf8               loadBus
+   #89 = Utf8               Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #90 = Methodref          #91.#92       // org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #91 = Class              #93           // org/violetmoon/zeta/event/bus/ZetaEventBus
+   #92 = NameAndType        #94:#95       // subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #93 = Utf8               org/violetmoon/zeta/event/bus/ZetaEventBus
+   #94 = Utf8               subscribe
+   #95 = Utf8               (Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+   #96 = Methodref          #2.#97        // java/lang/Object.getClass:()Ljava/lang/Class;
+   #97 = NameAndType        #98:#99       // getClass:()Ljava/lang/Class;
+   #98 = Utf8               getClass
+   #99 = Utf8               ()Ljava/lang/Class;
+  #100 = Fieldref           #56.#101      // org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+  #101 = NameAndType        #102:#89      // playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+  #102 = Utf8               playBus
+  #103 = InvokeDynamic      #0:#104       // #0:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Ljava/lang/Object;)Ljava/util/function/Consumer;
+  #104 = NameAndType        #105:#106     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Ljava/lang/Object;)Ljava/util/function/Consumer;
+  #105 = Utf8               accept
+  #106 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Ljava/lang/Object;)Ljava/util/function/Consumer;
+  #107 = Methodref          #73.#108      // org/violetmoon/zeta/config/SectionDefinition$Builder.addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+  #108 = NameAndType        #109:#110     // addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+  #109 = Utf8               addSubsection
+  #110 = Utf8               (Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+  #111 = InvokeDynamic      #1:#112       // #1:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #112 = NameAndType        #105:#113     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #113 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #114 = Methodref          #62.#115      // org/violetmoon/zeta/module/ZetaModuleManager.getInhabitedCategories:()Ljava/util/List;
+  #115 = NameAndType        #116:#117     // getInhabitedCategories:()Ljava/util/List;
+  #116 = Utf8               getInhabitedCategories
+  #117 = Utf8               ()Ljava/util/List;
+  #118 = InterfaceMethodref #119.#120     // java/util/List.iterator:()Ljava/util/Iterator;
+  #119 = Class              #121          // java/util/List
+  #120 = NameAndType        #122:#123     // iterator:()Ljava/util/Iterator;
+  #121 = Utf8               java/util/List
+  #122 = Utf8               iterator
+  #123 = Utf8               ()Ljava/util/Iterator;
+  #124 = InterfaceMethodref #125.#126     // java/util/Iterator.hasNext:()Z
+  #125 = Class              #127          // java/util/Iterator
+  #126 = NameAndType        #128:#129     // hasNext:()Z
+  #127 = Utf8               java/util/Iterator
+  #128 = Utf8               hasNext
+  #129 = Utf8               ()Z
+  #130 = InterfaceMethodref #125.#131     // java/util/Iterator.next:()Ljava/lang/Object;
+  #131 = NameAndType        #132:#133     // next:()Ljava/lang/Object;
+  #132 = Utf8               next
+  #133 = Utf8               ()Ljava/lang/Object;
+  #134 = Class              #135          // org/violetmoon/zeta/module/ZetaCategory
+  #135 = Utf8               org/violetmoon/zeta/module/ZetaCategory
+  #136 = InvokeDynamic      #2:#137       // #2:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #137 = NameAndType        #105:#138     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #138 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+  #139 = InterfaceMethodref #140.#141     // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #140 = Class              #142          // java/util/Map
+  #141 = NameAndType        #143:#144     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #142 = Utf8               java/util/Map
+  #143 = Utf8               put
+  #144 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #145 = InvokeDynamic      #3:#146       // #3:flagManager:(Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+  #146 = NameAndType        #147:#148     // flagManager:(Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+  #147 = Utf8               flagManager
+  #148 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+  #149 = Class              #150          // org/violetmoon/zeta/event/load/ZGatherAdditionalFlags
+  #150 = Utf8               org/violetmoon/zeta/event/load/ZGatherAdditionalFlags
+  #151 = Methodref          #91.#152      // org/violetmoon/zeta/event/bus/ZetaEventBus.fire:(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;
+  #152 = NameAndType        #153:#154     // fire:(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;
+  #153 = Utf8               fire
+  #154 = Utf8               (Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;
+  #155 = InvokeDynamic      #4:#156       // #4:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/Zeta;)Ljava/util/function/Consumer;
+  #156 = NameAndType        #105:#157     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/Zeta;)Ljava/util/function/Consumer;
+  #157 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/Zeta;)Ljava/util/function/Consumer;
+  #158 = InterfaceMethodref #119.#159     // java/util/List.add:(ILjava/lang/Object;)V
+  #159 = NameAndType        #160:#161     // add:(ILjava/lang/Object;)V
+  #160 = Utf8               add
+  #161 = Utf8               (ILjava/lang/Object;)V
+  #162 = Methodref          #73.#163      // org/violetmoon/zeta/config/SectionDefinition$Builder.build:()Lorg/violetmoon/zeta/config/SectionDefinition;
+  #163 = NameAndType        #164:#165     // build:()Lorg/violetmoon/zeta/config/SectionDefinition;
+  #164 = Utf8               build
+  #165 = Utf8               ()Lorg/violetmoon/zeta/config/SectionDefinition;
+  #166 = Fieldref           #11.#167      // org/violetmoon/zeta/config/ConfigManager.rootConfig:Lorg/violetmoon/zeta/config/SectionDefinition;
+  #167 = NameAndType        #168:#85      // rootConfig:Lorg/violetmoon/zeta/config/SectionDefinition;
+  #168 = Utf8               rootConfig
+  #169 = Methodref          #170.#171     // org/violetmoon/zeta/config/SectionDefinition.finish:()V
+  #170 = Class              #172          // org/violetmoon/zeta/config/SectionDefinition
+  #171 = NameAndType        #173:#6       // finish:()V
+  #172 = Utf8               org/violetmoon/zeta/config/SectionDefinition
+  #173 = Utf8               finish
+  #174 = Fieldref           #11.#175      // org/violetmoon/zeta/config/ConfigManager.EVIL_CONFIG_STORAGE_THAT_I_NEED:Ljava/util/Set;
+  #175 = NameAndType        #176:#41      // EVIL_CONFIG_STORAGE_THAT_I_NEED:Ljava/util/Set;
+  #176 = Utf8               EVIL_CONFIG_STORAGE_THAT_I_NEED
+  #177 = InterfaceMethodref #68.#178      // java/util/Set.add:(Ljava/lang/Object;)Z
+  #178 = NameAndType        #160:#179     // add:(Ljava/lang/Object;)Z
+  #179 = Utf8               (Ljava/lang/Object;)Z
+  #180 = InterfaceMethodref #140.#181     // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #181 = NameAndType        #182:#183     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #182 = Utf8               get
+  #183 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #184 = Class              #185          // org/violetmoon/zeta/config/ValueDefinition
+  #185 = Utf8               org/violetmoon/zeta/config/ValueDefinition
+  #186 = InterfaceMethodref #68.#187      // java/util/Set.remove:(Ljava/lang/Object;)Z
+  #187 = NameAndType        #188:#179     // remove:(Ljava/lang/Object;)Z
+  #188 = Utf8               remove
+  #189 = Methodref          #62.#190      // org/violetmoon/zeta/module/ZetaModuleManager.modulesInCategory:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/List;
+  #190 = NameAndType        #191:#192     // modulesInCategory:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/List;
+  #191 = Utf8               modulesInCategory
+  #192 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/List;
+  #193 = Class              #194          // org/violetmoon/zeta/module/ZetaModule
+  #194 = Utf8               org/violetmoon/zeta/module/ZetaModule
+  #195 = Methodref          #193.#196     // org/violetmoon/zeta/module/ZetaModule.isEnabled:()Z
+  #196 = NameAndType        #197:#129     // isEnabled:()Z
+  #197 = Utf8               isEnabled
+  #198 = Methodref          #193.#199     // org/violetmoon/zeta/module/ZetaModule.setEnabled:(Lorg/violetmoon/zeta/Zeta;Z)V
+  #199 = NameAndType        #200:#201     // setEnabled:(Lorg/violetmoon/zeta/Zeta;Z)V
+  #200 = Utf8               setEnabled
+  #201 = Utf8               (Lorg/violetmoon/zeta/Zeta;Z)V
+  #202 = InterfaceMethodref #68.#203      // java/util/Set.contains:(Ljava/lang/Object;)Z
+  #203 = NameAndType        #204:#179     // contains:(Ljava/lang/Object;)Z
+  #204 = Utf8               contains
+  #205 = Fieldref           #56.#206      // org/violetmoon/zeta/Zeta.configInternals:Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+  #206 = NameAndType        #207:#208     // configInternals:Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+  #207 = Utf8               configInternals
+  #208 = Utf8               Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+  #209 = InvokeDynamic      #5:#210       // #5:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+  #210 = NameAndType        #105:#211     // accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+  #211 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+  #212 = InterfaceMethodref #119.#213     // java/util/List.forEach:(Ljava/util/function/Consumer;)V
+  #213 = NameAndType        #214:#215     // forEach:(Ljava/util/function/Consumer;)V
+  #214 = Utf8               forEach
+  #215 = Utf8               (Ljava/util/function/Consumer;)V
+  #216 = InterfaceMethodref #140.#217     // java/util/Map.values:()Ljava/util/Collection;
+  #217 = NameAndType        #218:#66      // values:()Ljava/util/Collection;
+  #218 = Utf8               values
+  #219 = InvokeDynamic      #6:#210       // #6:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+  #220 = InterfaceMethodref #221.#213     // java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+  #221 = Class              #222          // java/util/Collection
+  #222 = Utf8               java/util/Collection
+  #223 = InterfaceMethodref #224.#225     // java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+  #224 = Class              #226          // java/util/function/Consumer
+  #225 = NameAndType        #105:#227     // accept:(Ljava/lang/Object;)V
+  #226 = Utf8               java/util/function/Consumer
+  #227 = Utf8               (Ljava/lang/Object;)V
+  #228 = InvokeDynamic      #7:#229       // #7:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #229 = NameAndType        #105:#230     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #230 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #231 = InterfaceMethodref #140.#232     // java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+  #232 = NameAndType        #214:#233     // forEach:(Ljava/util/function/BiConsumer;)V
+  #233 = Utf8               (Ljava/util/function/BiConsumer;)V
+  #234 = InvokeDynamic      #8:#235       // #8:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #235 = NameAndType        #105:#236     // accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #236 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #237 = InvokeDynamic      #9:#229       // #9:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+  #238 = InvokeDynamic      #10:#146      // #10:flagManager:(Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+  #239 = InterfaceMethodref #240.#241     // org/violetmoon/zeta/config/IZetaConfigInternals.get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+  #240 = Class              #242          // org/violetmoon/zeta/config/IZetaConfigInternals
+  #241 = NameAndType        #182:#243     // get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+  #242 = Utf8               org/violetmoon/zeta/config/IZetaConfigInternals
+  #243 = Utf8               (Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+  #244 = Class              #245          // java/lang/Boolean
+  #245 = Utf8               java/lang/Boolean
+  #246 = Methodref          #244.#247     // java/lang/Boolean.booleanValue:()Z
+  #247 = NameAndType        #248:#129     // booleanValue:()Z
+  #248 = Utf8               booleanValue
+  #249 = Methodref          #11.#250      // org/violetmoon/zeta/config/ConfigManager.setModuleEnabled:(Lorg/violetmoon/zeta/module/ZetaModule;Z)V
+  #250 = NameAndType        #251:#252     // setModuleEnabled:(Lorg/violetmoon/zeta/module/ZetaModule;Z)V
+  #251 = Utf8               setModuleEnabled
+  #252 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;Z)V
+  #253 = Methodref          #46.#254      // org/violetmoon/zeta/config/ConfigFlagManager.putModuleFlag:(Lorg/violetmoon/zeta/module/ZetaModule;)V
+  #254 = NameAndType        #255:#256     // putModuleFlag:(Lorg/violetmoon/zeta/module/ZetaModule;)V
+  #255 = Utf8               putModuleFlag
+  #256 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;)V
+  #257 = Fieldref           #258.#259     // org/violetmoon/zeta/config/ZetaGeneralConfig.useAntiOverlap:Z
+  #258 = Class              #260          // org/violetmoon/zeta/config/ZetaGeneralConfig
+  #259 = NameAndType        #261:#262     // useAntiOverlap:Z
+  #260 = Utf8               org/violetmoon/zeta/config/ZetaGeneralConfig
+  #261 = Utf8               useAntiOverlap
+  #262 = Utf8               Z
+  #263 = Methodref          #193.#264     // org/violetmoon/zeta/module/ZetaModule.setIgnoreAntiOverlap:(Z)V
+  #264 = NameAndType        #265:#266     // setIgnoreAntiOverlap:(Z)V
+  #265 = Utf8               setIgnoreAntiOverlap
+  #266 = Utf8               (Z)V
+  #267 = Methodref          #11.#268      // org/violetmoon/zeta/config/ConfigManager.setCategoryEnabled:(Lorg/violetmoon/zeta/module/ZetaCategory;Z)V
+  #268 = NameAndType        #269:#270     // setCategoryEnabled:(Lorg/violetmoon/zeta/module/ZetaCategory;Z)V
+  #269 = Utf8               setCategoryEnabled
+  #270 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;Z)V
+  #271 = Fieldref           #134.#272     // org/violetmoon/zeta/module/ZetaCategory.name:Ljava/lang/String;
+  #272 = NameAndType        #80:#273      // name:Ljava/lang/String;
+  #273 = Utf8               Ljava/lang/String;
+  #274 = InvokeDynamic      #11:#275      // #11:accept:(Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #275 = NameAndType        #105:#276     // accept:(Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #276 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #277 = Methodref          #73.#278      // org/violetmoon/zeta/config/SectionDefinition$Builder.addValue:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+  #278 = NameAndType        #279:#280     // addValue:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+  #279 = Utf8               addValue
+  #280 = Utf8               (Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+  #281 = InvokeDynamic      #12:#282      // #12:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #282 = NameAndType        #105:#283     // accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #283 = Utf8               (Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+  #284 = Methodref          #193.#285     // org/violetmoon/zeta/module/ZetaModule.lowerCaseName:()Ljava/lang/String;
+  #285 = NameAndType        #286:#287     // lowerCaseName:()Ljava/lang/String;
+  #286 = Utf8               lowerCaseName
+  #287 = Utf8               ()Ljava/lang/String;
+  #288 = Methodref          #193.#289     // org/violetmoon/zeta/module/ZetaModule.displayName:()Ljava/lang/String;
+  #289 = NameAndType        #290:#287     // displayName:()Ljava/lang/String;
+  #290 = Utf8               displayName
+  #291 = Methodref          #73.#292      // org/violetmoon/zeta/config/SectionDefinition$Builder.englishDisplayName:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #292 = NameAndType        #293:#81      // englishDisplayName:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #293 = Utf8               englishDisplayName
+  #294 = Methodref          #193.#295     // org/violetmoon/zeta/module/ZetaModule.description:()Ljava/lang/String;
+  #295 = NameAndType        #296:#287     // description:()Ljava/lang/String;
+  #296 = Utf8               description
+  #297 = Methodref          #73.#298      // org/violetmoon/zeta/config/SectionDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #298 = NameAndType        #299:#81      // comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #299 = Utf8               comment
+  #300 = Methodref          #301.#302     // org/violetmoon/zeta/config/ConfigObjectMapper.readInto:(Lorg/violetmoon/zeta/config/SectionDefinition$Builder;Ljava/lang/Object;Ljava/util/List;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+  #301 = Class              #303          // org/violetmoon/zeta/config/ConfigObjectMapper
+  #302 = NameAndType        #304:#305     // readInto:(Lorg/violetmoon/zeta/config/SectionDefinition$Builder;Ljava/lang/Object;Ljava/util/List;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+  #303 = Utf8               org/violetmoon/zeta/config/ConfigObjectMapper
+  #304 = Utf8               readInto
+  #305 = Utf8               (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;Ljava/lang/Object;Ljava/util/List;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+  #306 = Methodref          #193.#307     // org/violetmoon/zeta/module/ZetaModule.antiOverlap:()Ljava/util/List;
+  #307 = NameAndType        #308:#117     // antiOverlap:()Ljava/util/List;
+  #308 = Utf8               antiOverlap
+  #309 = InterfaceMethodref #119.#310     // java/util/List.isEmpty:()Z
+  #310 = NameAndType        #311:#129     // isEmpty:()Z
+  #311 = Utf8               isEmpty
+  #312 = InvokeDynamic      #13:#313      // #13:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+  #313 = NameAndType        #105:#314     // accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+  #314 = Utf8               (Ljava/util/List;)Ljava/util/function/Consumer;
+  #315 = String             #316          // Ignore Anti Overlap
+  #316 = Utf8               Ignore Anti Overlap
+  #317 = Methodref          #318.#79      // org/violetmoon/zeta/config/ValueDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #318 = Class              #319          // org/violetmoon/zeta/config/ValueDefinition$Builder
+  #319 = Utf8               org/violetmoon/zeta/config/ValueDefinition$Builder
+  #320 = String             #321          // This feature disables itself if any of the following mods are loaded:
+  #321 = Utf8               This feature disables itself if any of the following mods are loaded:
+  #322 = Methodref          #318.#298     // org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #323 = Methodref          #244.#324     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #324 = NameAndType        #325:#326     // valueOf:(Z)Ljava/lang/Boolean;
+  #325 = Utf8               valueOf
+  #326 = Utf8               (Z)Ljava/lang/Boolean;
+  #327 = Methodref          #318.#328     // org/violetmoon/zeta/config/ValueDefinition$Builder.defaultValue:(Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+  #328 = NameAndType        #329:#330     // defaultValue:(Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+  #329 = Utf8               defaultValue
+  #330 = Utf8               (Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+  #331 = Class              #332          // java/lang/String
+  #332 = Utf8               java/lang/String
+  #333 = InvokeDynamic      #14:#334      // #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #334 = NameAndType        #335:#336     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #335 = Utf8               makeConcatWithConstants
+  #336 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #337 = String             #338          // This is done to prevent content overlap.
+  #338 = Utf8               This is done to prevent content overlap.
+  #339 = String             #340          // You can turn this on to force the feature to be loaded even if the above mods are also loaded.
+  #340 = Utf8               You can turn this on to force the feature to be loaded even if the above mods are also loaded.
+  #341 = Methodref          #318.#292     // org/violetmoon/zeta/config/ValueDefinition$Builder.englishDisplayName:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+  #342 = Methodref          #193.#343     // org/violetmoon/zeta/module/ZetaModule.enabledByDefault:()Z
+  #343 = NameAndType        #344:#129     // enabledByDefault:()Z
+  #344 = Utf8               enabledByDefault
+  #345 = String             #346          // categories
+  #346 = Utf8               categories
+  #347 = InvokeDynamic      #15:#348      // #15:accept:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/function/Consumer;
+  #348 = NameAndType        #105:#349     // accept:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/function/Consumer;
+  #349 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/function/Consumer;
+  #350 = String             #351          // general
+  #351 = Utf8               general
+  #352 = Utf8               Signature
+  #353 = Utf8               Ljava/util/Set<Lorg/violetmoon/zeta/config/ConfigManager;>;
+  #354 = Utf8               Ljava/util/List<Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;>;
+  #355 = Utf8               Ljava/util/Map<Ljava/lang/String;Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;>;
+  #356 = Utf8               RuntimeInvisibleAnnotations
+  #357 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #358 = Utf8               RuntimeInvisibleTypeAnnotations
+  #359 = Utf8               Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/SectionDefinition;>;
+  #360 = Utf8               Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;>;
+  #361 = Utf8               Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;>;
+  #362 = Utf8               Ljava/util/Set<Lorg/violetmoon/zeta/module/ZetaCategory;>;
+  #363 = Utf8               (Lorg/violetmoon/zeta/Zeta;Ljava/lang/Object;)V
+  #364 = Utf8               Code
+  #365 = Utf8               LineNumberTable
+  #366 = Utf8               LocalVariableTable
+  #367 = Utf8               category
+  #368 = Utf8               Lorg/violetmoon/zeta/module/ZetaCategory;
+  #369 = Utf8               this
+  #370 = Utf8               Lorg/violetmoon/zeta/config/ConfigManager;
+  #371 = Utf8               rootPojo
+  #372 = Utf8               Ljava/lang/Object;
+  #373 = Utf8               rootConfigBuilder
+  #374 = Utf8               Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+  #375 = Utf8               StackMapTable
+  #376 = Utf8               getRootConfig
+  #377 = Utf8               getGeneralSection
+  #378 = Utf8               getCategorySection
+  #379 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/SectionDefinition;
+  #380 = Utf8               cat
+  #381 = Utf8               getCategoryEnabledOption
+  #382 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/ValueDefinition;
+  #383 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;
+  #384 = Utf8               getModuleEnabledOption
+  #385 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;)Lorg/violetmoon/zeta/config/ValueDefinition;
+  #386 = Utf8               module
+  #387 = Utf8               Lorg/violetmoon/zeta/module/ZetaModule;
+  #388 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;)Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;
+  #389 = Utf8               mod
+  #390 = Utf8               enabled
+  #391 = Utf8               isCategoryEnabled
+  #392 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;)Z
+  #393 = Utf8               getConfigFlagManager
+  #394 = Utf8               ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #395 = Utf8               onReload
+  #396 = Utf8               internals
+  #397 = Utf8               addOnReloadListener
+  #398 = Utf8               (Ljava/lang/String;Ljava/util/function/Consumer;)V
+  #399 = Utf8               id
+  #400 = Utf8               consumer
+  #401 = Utf8               Ljava/util/function/Consumer;
+  #402 = Utf8               LocalVariableTypeTable
+  #403 = Utf8               Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;
+  #404 = Utf8               (Ljava/lang/String;Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;)V
+  #405 = Utf8               lambda$onReload$14
+  #406 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #407 = Utf8               r
+  #408 = Utf8               lambda$onReload$13
+  #409 = Utf8               c
+  #410 = Utf8               lambda$new$12
+  #411 = Utf8               (Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #412 = Utf8               i
+  #413 = Utf8               lambda$new$11
+  #414 = Utf8               lambda$new$10
+  #415 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #416 = Utf8               option
+  #417 = Utf8               Lorg/violetmoon/zeta/config/ValueDefinition;
+  #418 = Utf8               lambda$new$9
+  #419 = Utf8               lambda$new$8
+  #420 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #421 = Utf8               lambda$new$7
+  #422 = Utf8               lambda$new$6
+  #423 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #424 = Utf8               categorySectionBuilder
+  #425 = Utf8               lambda$new$5
+  #426 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #427 = Utf8               moduleSectionBuilder
+  #428 = Utf8               Ljava/util/List<Ljava/lang/String;>;
+  #429 = Utf8               lambda$new$4
+  #430 = Utf8               (Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #431 = Utf8               modid
+  #432 = Utf8               antiOverlapOptionBuilder
+  #433 = Utf8               Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+  #434 = Utf8               lambda$new$3
+  #435 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #436 = Utf8               moduleEnabledOptionBuilder
+  #437 = Utf8               lambda$new$2
+  #438 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #439 = Utf8               lambda$new$1
+  #440 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #441 = Utf8               b
+  #442 = Utf8               lambda$new$0
+  #443 = Utf8               (Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #444 = Utf8               <clinit>
+  #445 = Utf8               SourceFile
+  #446 = Utf8               ConfigManager.java
+  #447 = Utf8               BootstrapMethods
+  #448 = MethodType         #227          //  (Ljava/lang/Object;)V
+  #449 = MethodHandle       5:#450        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$0:(Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #450 = Methodref          #11.#451      // org/violetmoon/zeta/config/ConfigManager.lambda$new$0:(Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #451 = NameAndType        #442:#443     // lambda$new$0:(Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #452 = MethodType         #453          //  (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #453 = Utf8               (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #454 = MethodHandle       5:#455        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$2:(Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #455 = Methodref          #11.#456      // org/violetmoon/zeta/config/ConfigManager.lambda$new$2:(Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #456 = NameAndType        #437:#438     // lambda$new$2:(Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #457 = MethodHandle       5:#458        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$6:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #458 = Methodref          #11.#459      // org/violetmoon/zeta/config/ConfigManager.lambda$new$6:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #459 = NameAndType        #422:#423     // lambda$new$6:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #460 = MethodType         #394          //  ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #461 = MethodHandle       5:#462        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$7:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #462 = Methodref          #11.#463      // org/violetmoon/zeta/config/ConfigManager.lambda$new$7:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #463 = NameAndType        #421:#394     // lambda$new$7:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #464 = MethodHandle       5:#465        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$12:(Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #465 = Methodref          #11.#466      // org/violetmoon/zeta/config/ConfigManager.lambda$new$12:(Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #466 = NameAndType        #410:#411     // lambda$new$12:(Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #467 = MethodType         #468          //  (Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #468 = Utf8               (Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  #469 = MethodHandle       6:#470        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$onReload$13:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #470 = Methodref          #11.#471      // org/violetmoon/zeta/config/ConfigManager.lambda$onReload$13:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #471 = NameAndType        #408:#406     // lambda$onReload$13:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #472 = MethodType         #215          //  (Ljava/util/function/Consumer;)V
+  #473 = MethodHandle       6:#474        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$onReload$14:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #474 = Methodref          #11.#475      // org/violetmoon/zeta/config/ConfigManager.lambda$onReload$14:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #475 = NameAndType        #405:#406     // lambda$onReload$14:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+  #476 = MethodType         #477          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #477 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #478 = MethodHandle       5:#479        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$8:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #479 = Methodref          #11.#480      // org/violetmoon/zeta/config/ConfigManager.lambda$new$8:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #480 = NameAndType        #419:#420     // lambda$new$8:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #481 = MethodType         #482          //  (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #482 = Utf8               (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #483 = MethodHandle       6:#484        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$9:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #484 = Methodref          #11.#485      // org/violetmoon/zeta/config/ConfigManager.lambda$new$9:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #485 = NameAndType        #418:#415     // lambda$new$9:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #486 = MethodType         #487          //  (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #487 = Utf8               (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #488 = MethodHandle       5:#489        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$10:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #489 = Methodref          #11.#490      // org/violetmoon/zeta/config/ConfigManager.lambda$new$10:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #490 = NameAndType        #414:#415     // lambda$new$10:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  #491 = MethodHandle       5:#492        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$11:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #492 = Methodref          #11.#493      // org/violetmoon/zeta/config/ConfigManager.lambda$new$11:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #493 = NameAndType        #413:#394     // lambda$new$11:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  #494 = MethodHandle       6:#495        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$3:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #495 = Methodref          #11.#496      // org/violetmoon/zeta/config/ConfigManager.lambda$new$3:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #496 = NameAndType        #434:#435     // lambda$new$3:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #497 = MethodType         #498          //  (Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #498 = Utf8               (Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #499 = MethodHandle       5:#500        // REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$5:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #500 = Methodref          #11.#501      // org/violetmoon/zeta/config/ConfigManager.lambda$new$5:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #501 = NameAndType        #425:#426     // lambda$new$5:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  #502 = MethodHandle       6:#503        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$4:(Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #503 = Methodref          #11.#504      // org/violetmoon/zeta/config/ConfigManager.lambda$new$4:(Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #504 = NameAndType        #429:#430     // lambda$new$4:(Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #505 = String             #506          //  - \u0001
+  #506 = Utf8                - \u0001
+  #507 = MethodHandle       6:#508        // REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$1:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #508 = Methodref          #11.#509      // org/violetmoon/zeta/config/ConfigManager.lambda$new$1:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #509 = NameAndType        #439:#440     // lambda$new$1:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  #510 = MethodHandle       6:#511        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #511 = Methodref          #512.#513     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #512 = Class              #514          // java/lang/invoke/LambdaMetafactory
+  #513 = NameAndType        #515:#516     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #514 = Utf8               java/lang/invoke/LambdaMetafactory
+  #515 = Utf8               metafactory
+  #516 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #517 = MethodHandle       6:#518        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #518 = Methodref          #519.#520     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #519 = Class              #521          // java/lang/invoke/StringConcatFactory
+  #520 = NameAndType        #335:#522     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #521 = Utf8               java/lang/invoke/StringConcatFactory
+  #522 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #523 = Utf8               InnerClasses
+  #524 = Utf8               Builder
+  #525 = Class              #526          // org/violetmoon/zeta/config/Definition$Builder
+  #526 = Utf8               org/violetmoon/zeta/config/Definition$Builder
+  #527 = Class              #528          // org/violetmoon/zeta/config/Definition
+  #528 = Utf8               org/violetmoon/zeta/config/Definition
+  #529 = Class              #530          // java/lang/invoke/MethodHandles$Lookup
+  #530 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #531 = Class              #532          // java/lang/invoke/MethodHandles
+  #532 = Utf8               java/lang/invoke/MethodHandles
+  #533 = Utf8               Lookup
+{
+  public static java.util.Set<org.violetmoon.zeta.config.ConfigManager> EVIL_CONFIG_STORAGE_THAT_I_NEED;
+    descriptor: Ljava/util/Set;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Signature: #353                         // Ljava/util/Set<Lorg/violetmoon/zeta/config/ConfigManager;>;
+
+  private final org.violetmoon.zeta.Zeta z;
+    descriptor: Lorg/violetmoon/zeta/Zeta;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final org.violetmoon.zeta.config.ConfigFlagManager cfm;
+    descriptor: Lorg/violetmoon/zeta/config/ConfigFlagManager;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final org.violetmoon.zeta.config.SectionDefinition rootConfig;
+    descriptor: Lorg/violetmoon/zeta/config/SectionDefinition;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.List<java.util.function.Consumer<org.violetmoon.zeta.config.IZetaConfigInternals>> databindings;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #354                         // Ljava/util/List<Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;>;
+
+  private final java.util.Map<java.lang.String, java.util.function.Consumer<org.violetmoon.zeta.config.IZetaConfigInternals>> onReloadListeners;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #355                         // Ljava/util/Map<Ljava/lang/String;Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;>;
+
+  private final org.violetmoon.zeta.config.SectionDefinition generalSection;
+    descriptor: Lorg/violetmoon/zeta/config/SectionDefinition;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    RuntimeInvisibleAnnotations:
+      0: #357()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #357(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  private final java.util.Map<org.violetmoon.zeta.module.ZetaCategory, org.violetmoon.zeta.config.SectionDefinition> categoriesToSections;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #359                         // Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/SectionDefinition;>;
+
+  private final java.util.Map<org.violetmoon.zeta.module.ZetaCategory, org.violetmoon.zeta.config.ValueDefinition<java.lang.Boolean>> categoryEnabledOptions;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #360                         // Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;>;
+
+  private final java.util.Map<org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.ValueDefinition<java.lang.Boolean>> ignoreAntiOverlapOptions;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #361                         // Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;>;
+
+  private final java.util.Map<org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.ValueDefinition<java.lang.Boolean>> moduleEnabledOptions;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #361                         // Ljava/util/Map<Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;>;
+
+  private final java.util.Set<org.violetmoon.zeta.module.ZetaCategory> enabledCategories;
+    descriptor: Ljava/util/Set;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #362                         // Ljava/util/Set<Lorg/violetmoon/zeta/module/ZetaCategory;>;
+
+  public org.violetmoon.zeta.config.ConfigManager(org.violetmoon.zeta.Zeta, java.lang.Object);
+    descriptor: (Lorg/violetmoon/zeta/Zeta;Ljava/lang/Object;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=7, args_size=3
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/ArrayList
+         8: dup
+         9: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+        12: putfield      #10                 // Field databindings:Ljava/util/List;
+        15: aload_0
+        16: new           #16                 // class java/util/HashMap
+        19: dup
+        20: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+        23: putfield      #19                 // Field onReloadListeners:Ljava/util/Map;
+        26: aload_0
+        27: new           #16                 // class java/util/HashMap
+        30: dup
+        31: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+        34: putfield      #23                 // Field categoriesToSections:Ljava/util/Map;
+        37: aload_0
+        38: new           #16                 // class java/util/HashMap
+        41: dup
+        42: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+        45: putfield      #26                 // Field categoryEnabledOptions:Ljava/util/Map;
+        48: aload_0
+        49: new           #16                 // class java/util/HashMap
+        52: dup
+        53: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+        56: putfield      #29                 // Field ignoreAntiOverlapOptions:Ljava/util/Map;
+        59: aload_0
+        60: new           #16                 // class java/util/HashMap
+        63: dup
+        64: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+        67: putfield      #32                 // Field moduleEnabledOptions:Ljava/util/Map;
+        70: aload_0
+        71: new           #35                 // class java/util/HashSet
+        74: dup
+        75: invokespecial #37                 // Method java/util/HashSet."<init>":()V
+        78: putfield      #38                 // Field enabledCategories:Ljava/util/Set;
+        81: aload_0
+        82: aload_1
+        83: putfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+        86: aload_0
+        87: new           #46                 // class org/violetmoon/zeta/config/ConfigFlagManager
+        90: dup
+        91: aload_1
+        92: invokespecial #48                 // Method org/violetmoon/zeta/config/ConfigFlagManager."<init>":(Lorg/violetmoon/zeta/Zeta;)V
+        95: putfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+        98: aload_1
+        99: getfield      #55                 // Field org/violetmoon/zeta/Zeta.modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+       102: astore_3
+       103: aload_0
+       104: getfield      #38                 // Field enabledCategories:Ljava/util/Set;
+       107: aload_3
+       108: invokevirtual #61                 // Method org/violetmoon/zeta/module/ZetaModuleManager.getCategories:()Ljava/util/Collection;
+       111: invokeinterface #67,  2           // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+       116: pop
+       117: new           #73                 // class org/violetmoon/zeta/config/SectionDefinition$Builder
+       120: dup
+       121: invokespecial #75                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder."<init>":()V
+       124: ldc           #76                 // String
+       126: invokevirtual #78                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+       129: checkcast     #73                 // class org/violetmoon/zeta/config/SectionDefinition$Builder
+       132: astore        4
+       134: aload_2
+       135: ifnonnull     146
+       138: aload_0
+       139: aconst_null
+       140: putfield      #82                 // Field generalSection:Lorg/violetmoon/zeta/config/SectionDefinition;
+       143: goto          194
+       146: aload_1
+       147: getfield      #86                 // Field org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       150: aload_2
+       151: invokevirtual #90                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       154: aload_2
+       155: invokevirtual #96                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       158: invokevirtual #90                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       161: pop
+       162: aload_1
+       163: getfield      #100                // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       166: aload_2
+       167: invokevirtual #90                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       170: aload_2
+       171: invokevirtual #96                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       174: invokevirtual #90                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       177: pop
+       178: aload_0
+       179: aload         4
+       181: aload_0
+       182: aload_2
+       183: invokedynamic #103,  0            // InvokeDynamic #0:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Ljava/lang/Object;)Ljava/util/function/Consumer;
+       188: invokevirtual #107                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+       191: putfield      #82                 // Field generalSection:Lorg/violetmoon/zeta/config/SectionDefinition;
+       194: aload         4
+       196: aload_0
+       197: aload_3
+       198: invokedynamic #111,  0            // InvokeDynamic #1:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+       203: invokevirtual #107                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+       206: pop
+       207: aload_3
+       208: invokevirtual #114                // Method org/violetmoon/zeta/module/ZetaModuleManager.getInhabitedCategories:()Ljava/util/List;
+       211: invokeinterface #118,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       216: astore        5
+       218: aload         5
+       220: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       225: ifeq          269
+       228: aload         5
+       230: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       235: checkcast     #134                // class org/violetmoon/zeta/module/ZetaCategory
+       238: astore        6
+       240: aload_0
+       241: getfield      #23                 // Field categoriesToSections:Ljava/util/Map;
+       244: aload         6
+       246: aload         4
+       248: aload_0
+       249: aload         6
+       251: aload_3
+       252: invokedynamic #136,  0            // InvokeDynamic #2:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;)Ljava/util/function/Consumer;
+       257: invokevirtual #107                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+       260: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       265: pop
+       266: goto          218
+       269: aload_1
+       270: getfield      #86                 // Field org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+       273: aload_0
+       274: invokedynamic #145,  0            // InvokeDynamic #3:flagManager:(Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+       279: ldc           #149                // class org/violetmoon/zeta/event/load/ZGatherAdditionalFlags
+       281: invokevirtual #151                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.fire:(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;
+       284: pop
+       285: aload_0
+       286: getfield      #10                 // Field databindings:Ljava/util/List;
+       289: iconst_0
+       290: aload_0
+       291: aload_1
+       292: invokedynamic #155,  0            // InvokeDynamic #4:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/Zeta;)Ljava/util/function/Consumer;
+       297: invokeinterface #158,  3          // InterfaceMethod java/util/List.add:(ILjava/lang/Object;)V
+       302: aload_0
+       303: aload         4
+       305: invokevirtual #162                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.build:()Lorg/violetmoon/zeta/config/SectionDefinition;
+       308: putfield      #166                // Field rootConfig:Lorg/violetmoon/zeta/config/SectionDefinition;
+       311: aload_0
+       312: getfield      #166                // Field rootConfig:Lorg/violetmoon/zeta/config/SectionDefinition;
+       315: invokevirtual #169                // Method org/violetmoon/zeta/config/SectionDefinition.finish:()V
+       318: getstatic     #174                // Field EVIL_CONFIG_STORAGE_THAT_I_NEED:Ljava/util/Set;
+       321: aload_0
+       322: invokeinterface #177,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       327: pop
+       328: return
+      LineNumberTable:
+        line 37: 0
+        line 22: 4
+        line 24: 15
+        line 28: 26
+        line 30: 37
+        line 31: 48
+        line 32: 59
+        line 35: 70
+        line 38: 81
+        line 39: 86
+        line 40: 98
+        line 43: 103
+        line 45: 117
+        line 48: 134
+        line 49: 138
+        line 52: 146
+        line 53: 162
+        line 55: 178
+        line 59: 194
+        line 66: 207
+        line 67: 240
+        line 108: 266
+        line 111: 269
+        line 116: 285
+        line 128: 302
+        line 129: 311
+        line 130: 318
+        line 131: 328
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          240      26     6 category   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0     329     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0     329     1     z   Lorg/violetmoon/zeta/Zeta;
+            0     329     2 rootPojo   Ljava/lang/Object;
+          103     226     3 modules   Lorg/violetmoon/zeta/module/ZetaModuleManager;
+          134     195     4 rootConfigBuilder   Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 146
+          locals = [ class org/violetmoon/zeta/config/ConfigManager, class org/violetmoon/zeta/Zeta, class java/lang/Object, class org/violetmoon/zeta/module/ZetaModuleManager, class org/violetmoon/zeta/config/SectionDefinition$Builder ]
+          stack = []
+        frame_type = 47 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 23
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 50
+
+  public org.violetmoon.zeta.config.SectionDefinition getRootConfig();
+    descriptor: ()Lorg/violetmoon/zeta/config/SectionDefinition;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #166                // Field rootConfig:Lorg/violetmoon/zeta/config/SectionDefinition;
+         4: areturn
+      LineNumberTable:
+        line 134: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+
+  public org.violetmoon.zeta.config.SectionDefinition getGeneralSection();
+    descriptor: ()Lorg/violetmoon/zeta/config/SectionDefinition;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #82                 // Field generalSection:Lorg/violetmoon/zeta/config/SectionDefinition;
+         4: areturn
+      LineNumberTable:
+        line 140: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+    RuntimeInvisibleAnnotations:
+      0: #357()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #357(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  public org.violetmoon.zeta.config.SectionDefinition getCategorySection(org.violetmoon.zeta.module.ZetaCategory);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/SectionDefinition;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #23                 // Field categoriesToSections:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #180,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #170                // class org/violetmoon/zeta/config/SectionDefinition
+        13: areturn
+      LineNumberTable:
+        line 144: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      14     1   cat   Lorg/violetmoon/zeta/module/ZetaCategory;
+
+  public org.violetmoon.zeta.config.ValueDefinition<java.lang.Boolean> getCategoryEnabledOption(org.violetmoon.zeta.module.ZetaCategory);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/ValueDefinition;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #26                 // Field categoryEnabledOptions:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #180,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #184                // class org/violetmoon/zeta/config/ValueDefinition
+        13: areturn
+      LineNumberTable:
+        line 148: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      14     1   cat   Lorg/violetmoon/zeta/module/ZetaCategory;
+    Signature: #383                         // (Lorg/violetmoon/zeta/module/ZetaCategory;)Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;
+
+  public org.violetmoon.zeta.config.ValueDefinition<java.lang.Boolean> getModuleEnabledOption(org.violetmoon.zeta.module.ZetaModule);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaModule;)Lorg/violetmoon/zeta/config/ValueDefinition;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #32                 // Field moduleEnabledOptions:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #180,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #184                // class org/violetmoon/zeta/config/ValueDefinition
+        13: areturn
+      LineNumberTable:
+        line 152: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      14     1 module   Lorg/violetmoon/zeta/module/ZetaModule;
+    Signature: #388                         // (Lorg/violetmoon/zeta/module/ZetaModule;)Lorg/violetmoon/zeta/config/ValueDefinition<Ljava/lang/Boolean;>;
+
+  private void setCategoryEnabled(org.violetmoon.zeta.module.ZetaCategory, boolean);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=5, args_size=3
+         0: iload_2
+         1: ifeq          18
+         4: aload_0
+         5: getfield      #38                 // Field enabledCategories:Ljava/util/Set;
+         8: aload_1
+         9: invokeinterface #177,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        14: pop
+        15: goto          29
+        18: aload_0
+        19: getfield      #38                 // Field enabledCategories:Ljava/util/Set;
+        22: aload_1
+        23: invokeinterface #186,  2          // InterfaceMethod java/util/Set.remove:(Ljava/lang/Object;)Z
+        28: pop
+        29: aload_0
+        30: getfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+        33: getfield      #55                 // Field org/violetmoon/zeta/Zeta.modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+        36: aload_1
+        37: invokevirtual #189                // Method org/violetmoon/zeta/module/ZetaModuleManager.modulesInCategory:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/List;
+        40: invokeinterface #118,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        45: astore_3
+        46: aload_3
+        47: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        52: ifeq          83
+        55: aload_3
+        56: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        61: checkcast     #193                // class org/violetmoon/zeta/module/ZetaModule
+        64: astore        4
+        66: aload         4
+        68: aload_0
+        69: getfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+        72: aload         4
+        74: invokevirtual #195                // Method org/violetmoon/zeta/module/ZetaModule.isEnabled:()Z
+        77: invokevirtual #198                // Method org/violetmoon/zeta/module/ZetaModule.setEnabled:(Lorg/violetmoon/zeta/Zeta;Z)V
+        80: goto          46
+        83: return
+      LineNumberTable:
+        line 158: 0
+        line 159: 4
+        line 161: 18
+        line 164: 29
+        line 165: 66
+        line 166: 80
+        line 167: 83
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           66      14     4   mod   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      84     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      84     1   cat   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0      84     2 enabled   Z
+      StackMapTable: number_of_entries = 4
+        frame_type = 18 /* same */
+        frame_type = 10 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 36
+
+  private void setModuleEnabled(org.violetmoon.zeta.module.ZetaModule, boolean);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaModule;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_1
+         1: aload_0
+         2: getfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+         5: iload_2
+         6: invokevirtual #198                // Method org/violetmoon/zeta/module/ZetaModule.setEnabled:(Lorg/violetmoon/zeta/Zeta;Z)V
+         9: return
+      LineNumberTable:
+        line 170: 0
+        line 171: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      10     1 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      10     2 enabled   Z
+
+  public boolean isCategoryEnabled(org.violetmoon.zeta.module.ZetaCategory);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #38                 // Field enabledCategories:Ljava/util/Set;
+         4: aload_1
+         5: invokeinterface #202,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+        10: ireturn
+      LineNumberTable:
+        line 174: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      11     1   cat   Lorg/violetmoon/zeta/module/ZetaCategory;
+
+  public org.violetmoon.zeta.config.ConfigFlagManager getConfigFlagManager();
+    descriptor: ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+         4: areturn
+      LineNumberTable:
+        line 180: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+
+  public void onReload();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+         4: getfield      #205                // Field org/violetmoon/zeta/Zeta.configInternals:Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+         7: astore_1
+         8: aload_0
+         9: getfield      #10                 // Field databindings:Ljava/util/List;
+        12: aload_1
+        13: invokedynamic #209,  0            // InvokeDynamic #5:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+        18: invokeinterface #212,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        23: aload_0
+        24: getfield      #19                 // Field onReloadListeners:Ljava/util/Map;
+        27: invokeinterface #216,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+        32: aload_1
+        33: invokedynamic #219,  0            // InvokeDynamic #6:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/Consumer;
+        38: invokeinterface #220,  2          // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+        43: return
+      LineNumberTable:
+        line 184: 0
+        line 185: 8
+        line 187: 23
+        line 188: 43
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      44     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            8      36     1 internals   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+
+  public void addOnReloadListener(java.lang.String, java.util.function.Consumer<org.violetmoon.zeta.config.IZetaConfigInternals>);
+    descriptor: (Ljava/lang/String;Ljava/util/function/Consumer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #19                 // Field onReloadListeners:Ljava/util/Map;
+         4: aload_1
+         5: aload_2
+         6: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        11: pop
+        12: aload_2
+        13: aload_0
+        14: getfield      #42                 // Field z:Lorg/violetmoon/zeta/Zeta;
+        17: getfield      #205                // Field org/violetmoon/zeta/Zeta.configInternals:Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+        20: invokeinterface #223,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+        25: return
+      LineNumberTable:
+        line 191: 0
+        line 192: 12
+        line 193: 25
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      26     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      26     1    id   Ljava/lang/String;
+            0      26     2 consumer   Ljava/util/function/Consumer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      26     2 consumer   Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;
+    Signature: #404                         // (Ljava/lang/String;Ljava/util/function/Consumer<Lorg/violetmoon/zeta/config/IZetaConfigInternals;>;)V
+
+  private static void lambda$onReload$14(org.violetmoon.zeta.config.IZetaConfigInternals, java.util.function.Consumer);
+    descriptor: (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokeinterface #223,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+         7: return
+      LineNumberTable:
+        line 187: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 internals   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+            0       8     1     r   Ljava/util/function/Consumer;
+
+  private static void lambda$onReload$13(org.violetmoon.zeta.config.IZetaConfigInternals, java.util.function.Consumer);
+    descriptor: (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokeinterface #223,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+         7: return
+      LineNumberTable:
+        line 185: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 internals   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+            0       8     1     c   Ljava/util/function/Consumer;
+
+  private void lambda$new$12(org.violetmoon.zeta.Zeta, org.violetmoon.zeta.config.IZetaConfigInternals);
+    descriptor: (Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #26                 // Field categoryEnabledOptions:Ljava/util/Map;
+         4: aload_0
+         5: aload_2
+         6: invokedynamic #228,  0            // InvokeDynamic #7:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+        11: invokeinterface #231,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        16: aload_0
+        17: getfield      #29                 // Field ignoreAntiOverlapOptions:Ljava/util/Map;
+        20: aload_2
+        21: invokedynamic #234,  0            // InvokeDynamic #8:accept:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+        26: invokeinterface #231,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        31: aload_0
+        32: getfield      #32                 // Field moduleEnabledOptions:Ljava/util/Map;
+        35: aload_0
+        36: aload_2
+        37: invokedynamic #237,  0            // InvokeDynamic #9:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)Ljava/util/function/BiConsumer;
+        42: invokeinterface #231,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        47: aload_1
+        48: getfield      #86                 // Field org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+        51: aload_0
+        52: invokedynamic #238,  0            // InvokeDynamic #10:flagManager:(Lorg/violetmoon/zeta/config/ConfigManager;)Lorg/violetmoon/zeta/event/load/ZGatherAdditionalFlags;
+        57: ldc           #149                // class org/violetmoon/zeta/event/load/ZGatherAdditionalFlags
+        59: invokevirtual #151                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.fire:(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;
+        62: pop
+        63: return
+      LineNumberTable:
+        line 117: 0
+        line 118: 16
+        line 119: 31
+        line 125: 47
+        line 126: 63
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      64     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      64     1     z   Lorg/violetmoon/zeta/Zeta;
+            0      64     2     i   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+
+  private org.violetmoon.zeta.config.ConfigFlagManager lambda$new$11();
+    descriptor: ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+         4: areturn
+      LineNumberTable:
+        line 125: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+
+  private void lambda$new$10(org.violetmoon.zeta.config.IZetaConfigInternals, org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.ValueDefinition);
+    descriptor: (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_2
+         2: aload_1
+         3: aload_3
+         4: invokeinterface #239,  2          // InterfaceMethod org/violetmoon/zeta/config/IZetaConfigInternals.get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+         9: checkcast     #244                // class java/lang/Boolean
+        12: invokevirtual #246                // Method java/lang/Boolean.booleanValue:()Z
+        15: invokevirtual #249                // Method setModuleEnabled:(Lorg/violetmoon/zeta/module/ZetaModule;Z)V
+        18: aload_0
+        19: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+        22: aload_2
+        23: invokevirtual #253                // Method org/violetmoon/zeta/config/ConfigFlagManager.putModuleFlag:(Lorg/violetmoon/zeta/module/ZetaModule;)V
+        26: return
+      LineNumberTable:
+        line 120: 0
+        line 121: 18
+        line 122: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      27     1     i   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+            0      27     2 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      27     3 option   Lorg/violetmoon/zeta/config/ValueDefinition;
+
+  private static void lambda$new$9(org.violetmoon.zeta.config.IZetaConfigInternals, org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.ValueDefinition);
+    descriptor: (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_1
+         1: getstatic     #257                // Field org/violetmoon/zeta/config/ZetaGeneralConfig.useAntiOverlap:Z
+         4: ifeq          23
+         7: aload_0
+         8: aload_2
+         9: invokeinterface #239,  2          // InterfaceMethod org/violetmoon/zeta/config/IZetaConfigInternals.get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+        14: checkcast     #244                // class java/lang/Boolean
+        17: invokevirtual #246                // Method java/lang/Boolean.booleanValue:()Z
+        20: ifeq          27
+        23: iconst_1
+        24: goto          28
+        27: iconst_0
+        28: invokevirtual #263                // Method org/violetmoon/zeta/module/ZetaModule.setIgnoreAntiOverlap:(Z)V
+        31: return
+      LineNumberTable:
+        line 118: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      32     0     i   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+            0      32     1 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      32     2 option   Lorg/violetmoon/zeta/config/ValueDefinition;
+      StackMapTable: number_of_entries = 3
+        frame_type = 87 /* same_locals_1_stack_item */
+          stack = [ class org/violetmoon/zeta/module/ZetaModule ]
+        frame_type = 67 /* same_locals_1_stack_item */
+          stack = [ class org/violetmoon/zeta/module/ZetaModule ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class org/violetmoon/zeta/config/IZetaConfigInternals, class org/violetmoon/zeta/module/ZetaModule, class org/violetmoon/zeta/config/ValueDefinition ]
+          stack = [ class org/violetmoon/zeta/module/ZetaModule, int ]
+
+  private void lambda$new$8(org.violetmoon.zeta.config.IZetaConfigInternals, org.violetmoon.zeta.module.ZetaCategory, org.violetmoon.zeta.config.ValueDefinition);
+    descriptor: (Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_2
+         2: aload_1
+         3: aload_3
+         4: invokeinterface #239,  2          // InterfaceMethod org/violetmoon/zeta/config/IZetaConfigInternals.get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/lang/Object;
+         9: checkcast     #244                // class java/lang/Boolean
+        12: invokevirtual #246                // Method java/lang/Boolean.booleanValue:()Z
+        15: invokevirtual #267                // Method setCategoryEnabled:(Lorg/violetmoon/zeta/module/ZetaCategory;Z)V
+        18: return
+      LineNumberTable:
+        line 117: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      19     1     i   Lorg/violetmoon/zeta/config/IZetaConfigInternals;
+            0      19     2 category   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0      19     3 option   Lorg/violetmoon/zeta/config/ValueDefinition;
+
+  private org.violetmoon.zeta.config.ConfigFlagManager lambda$new$7();
+    descriptor: ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+         4: areturn
+      LineNumberTable:
+        line 111: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+
+  private void lambda$new$6(org.violetmoon.zeta.module.ZetaCategory, org.violetmoon.zeta.module.ZetaModuleManager, org.violetmoon.zeta.config.SectionDefinition$Builder);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=6, args_size=4
+         0: aload_3
+         1: aload_1
+         2: getfield      #271                // Field org/violetmoon/zeta/module/ZetaCategory.name:Ljava/lang/String;
+         5: invokevirtual #78                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         8: pop
+         9: aload_2
+        10: aload_1
+        11: invokevirtual #189                // Method org/violetmoon/zeta/module/ZetaModuleManager.modulesInCategory:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/List;
+        14: invokeinterface #118,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        19: astore        4
+        21: aload         4
+        23: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        28: ifeq          91
+        31: aload         4
+        33: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        38: checkcast     #193                // class org/violetmoon/zeta/module/ZetaModule
+        41: astore        5
+        43: aload_0
+        44: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+        47: aload         5
+        49: invokevirtual #253                // Method org/violetmoon/zeta/config/ConfigFlagManager.putModuleFlag:(Lorg/violetmoon/zeta/module/ZetaModule;)V
+        52: aload_0
+        53: getfield      #32                 // Field moduleEnabledOptions:Ljava/util/Map;
+        56: aload         5
+        58: aload_3
+        59: aload         5
+        61: invokedynamic #274,  0            // InvokeDynamic #11:accept:(Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+        66: invokevirtual #277                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addValue:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+        69: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        74: pop
+        75: aload_3
+        76: aload_0
+        77: aload         5
+        79: invokedynamic #281,  0            // InvokeDynamic #12:accept:(Lorg/violetmoon/zeta/config/ConfigManager;Lorg/violetmoon/zeta/module/ZetaModule;)Ljava/util/function/Consumer;
+        84: invokevirtual #107                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addSubsection:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/SectionDefinition;
+        87: pop
+        88: goto          21
+        91: return
+      LineNumberTable:
+        line 68: 0
+        line 69: 9
+        line 71: 43
+        line 74: 52
+        line 81: 75
+        line 106: 88
+        line 107: 91
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           43      45     5 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      92     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      92     1 category   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0      92     2 modules   Lorg/violetmoon/zeta/module/ZetaModuleManager;
+            0      92     3 categorySectionBuilder   Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 69
+
+  private void lambda$new$5(org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.SectionDefinition$Builder);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: aload_1
+         2: invokevirtual #284                // Method org/violetmoon/zeta/module/ZetaModule.lowerCaseName:()Ljava/lang/String;
+         5: invokevirtual #78                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         8: checkcast     #73                 // class org/violetmoon/zeta/config/SectionDefinition$Builder
+        11: aload_1
+        12: invokevirtual #288                // Method org/violetmoon/zeta/module/ZetaModule.displayName:()Ljava/lang/String;
+        15: invokevirtual #291                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.englishDisplayName:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        18: checkcast     #73                 // class org/violetmoon/zeta/config/SectionDefinition$Builder
+        21: aload_1
+        22: invokevirtual #294                // Method org/violetmoon/zeta/module/ZetaModule.description:()Ljava/lang/String;
+        25: invokevirtual #297                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        28: pop
+        29: aload_2
+        30: aload_1
+        31: aload_0
+        32: getfield      #10                 // Field databindings:Ljava/util/List;
+        35: aload_0
+        36: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+        39: invokestatic  #300                // Method org/violetmoon/zeta/config/ConfigObjectMapper.readInto:(Lorg/violetmoon/zeta/config/SectionDefinition$Builder;Ljava/lang/Object;Ljava/util/List;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+        42: aload_1
+        43: invokevirtual #306                // Method org/violetmoon/zeta/module/ZetaModule.antiOverlap:()Ljava/util/List;
+        46: astore_3
+        47: aload_3
+        48: invokeinterface #309,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+        53: ifne          77
+        56: aload_0
+        57: getfield      #29                 // Field ignoreAntiOverlapOptions:Ljava/util/Map;
+        60: aload_1
+        61: aload_2
+        62: aload_3
+        63: invokedynamic #312,  0            // InvokeDynamic #13:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+        68: invokevirtual #277                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addValue:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+        71: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        76: pop
+        77: return
+      LineNumberTable:
+        line 82: 0
+        line 83: 2
+        line 84: 12
+        line 85: 22
+        line 88: 29
+        line 91: 42
+        line 92: 47
+        line 93: 56
+        line 105: 77
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      78     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      78     1 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      78     2 moduleSectionBuilder   Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+           47      31     3 antiOverlap   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           47      31     3 antiOverlap   Ljava/util/List<Ljava/lang/String;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 77
+          locals = [ class java/util/List ]
+
+  private static void lambda$new$4(java.util.List, org.violetmoon.zeta.config.ValueDefinition$Builder);
+    descriptor: (Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_1
+         1: ldc_w         #315                // String Ignore Anti Overlap
+         4: invokevirtual #317                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         7: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        10: ldc_w         #320                // String This feature disables itself if any of the following mods are loaded:
+        13: invokevirtual #322                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        16: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        19: iconst_0
+        20: invokestatic  #323                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        23: invokevirtual #327                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.defaultValue:(Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+        26: pop
+        27: aload_0
+        28: invokeinterface #118,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        33: astore_2
+        34: aload_2
+        35: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        40: ifeq          67
+        43: aload_2
+        44: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        49: checkcast     #331                // class java/lang/String
+        52: astore_3
+        53: aload_1
+        54: aload_3
+        55: invokedynamic #333,  0            // InvokeDynamic #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        60: invokevirtual #322                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        63: pop
+        64: goto          34
+        67: aload_1
+        68: ldc_w         #337                // String This is done to prevent content overlap.
+        71: invokevirtual #322                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        74: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        77: ldc_w         #339                // String You can turn this on to force the feature to be loaded even if the above mods are also loaded.
+        80: invokevirtual #322                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        83: pop
+        84: return
+      LineNumberTable:
+        line 94: 0
+        line 95: 13
+        line 96: 20
+        line 98: 27
+        line 99: 53
+        line 101: 67
+        line 102: 80
+        line 103: 84
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           53      11     3 modid   Ljava/lang/String;
+            0      85     0 antiOverlap   Ljava/util/List;
+            0      85     1 antiOverlapOptionBuilder   Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 34
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 32
+
+  private static void lambda$new$3(org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.config.ValueDefinition$Builder);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokevirtual #288                // Method org/violetmoon/zeta/module/ZetaModule.displayName:()Ljava/lang/String;
+         5: invokevirtual #317                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         8: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        11: aload_0
+        12: invokevirtual #288                // Method org/violetmoon/zeta/module/ZetaModule.displayName:()Ljava/lang/String;
+        15: invokevirtual #341                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.englishDisplayName:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        18: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        21: aload_0
+        22: invokevirtual #294                // Method org/violetmoon/zeta/module/ZetaModule.description:()Ljava/lang/String;
+        25: invokevirtual #322                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.comment:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+        28: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        31: aload_0
+        32: invokevirtual #342                // Method org/violetmoon/zeta/module/ZetaModule.enabledByDefault:()Z
+        35: invokestatic  #323                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        38: invokevirtual #327                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.defaultValue:(Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+        41: pop
+        42: return
+      LineNumberTable:
+        line 77: 0
+        line 75: 2
+        line 76: 12
+        line 77: 22
+        line 78: 32
+        line 77: 42
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0 module   Lorg/violetmoon/zeta/module/ZetaModule;
+            0      43     1 moduleEnabledOptionBuilder   Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+
+  private void lambda$new$2(org.violetmoon.zeta.module.ZetaModuleManager, org.violetmoon.zeta.config.SectionDefinition$Builder);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=5, args_size=3
+         0: aload_2
+         1: ldc_w         #345                // String categories
+         4: invokevirtual #78                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         7: pop
+         8: aload_1
+         9: invokevirtual #114                // Method org/violetmoon/zeta/module/ZetaModuleManager.getInhabitedCategories:()Ljava/util/List;
+        12: invokeinterface #118,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        17: astore_3
+        18: aload_3
+        19: invokeinterface #124,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        24: ifeq          64
+        27: aload_3
+        28: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        33: checkcast     #134                // class org/violetmoon/zeta/module/ZetaCategory
+        36: astore        4
+        38: aload_0
+        39: getfield      #26                 // Field categoryEnabledOptions:Ljava/util/Map;
+        42: aload         4
+        44: aload_2
+        45: aload         4
+        47: invokedynamic #347,  0            // InvokeDynamic #15:accept:(Lorg/violetmoon/zeta/module/ZetaCategory;)Ljava/util/function/Consumer;
+        52: invokevirtual #277                // Method org/violetmoon/zeta/config/SectionDefinition$Builder.addValue:(Ljava/util/function/Consumer;)Lorg/violetmoon/zeta/config/ValueDefinition;
+        55: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        60: pop
+        61: goto          18
+        64: return
+      LineNumberTable:
+        line 60: 0
+        line 61: 8
+        line 62: 38
+        line 63: 64
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           38      23     4 category   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0      65     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      65     1 modules   Lorg/violetmoon/zeta/module/ZetaModuleManager;
+            0      65     2 categories   Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 45
+
+  private static void lambda$new$1(org.violetmoon.zeta.module.ZetaCategory, org.violetmoon.zeta.config.ValueDefinition$Builder);
+    descriptor: (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: getfield      #271                // Field org/violetmoon/zeta/module/ZetaCategory.name:Ljava/lang/String;
+         5: invokevirtual #317                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         8: checkcast     #318                // class org/violetmoon/zeta/config/ValueDefinition$Builder
+        11: iconst_1
+        12: invokestatic  #323                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        15: invokevirtual #327                // Method org/violetmoon/zeta/config/ValueDefinition$Builder.defaultValue:(Ljava/lang/Object;)Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+        18: pop
+        19: return
+      LineNumberTable:
+        line 62: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0 category   Lorg/violetmoon/zeta/module/ZetaCategory;
+            0      20     1     b   Lorg/violetmoon/zeta/config/ValueDefinition$Builder;
+
+  private void lambda$new$0(java.lang.Object, org.violetmoon.zeta.config.SectionDefinition$Builder);
+    descriptor: (Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_2
+         1: ldc_w         #350                // String general
+         4: invokevirtual #78                 // Method org/violetmoon/zeta/config/SectionDefinition$Builder.name:(Ljava/lang/String;)Lorg/violetmoon/zeta/config/Definition$Builder;
+         7: checkcast     #73                 // class org/violetmoon/zeta/config/SectionDefinition$Builder
+        10: aload_1
+        11: aload_0
+        12: getfield      #10                 // Field databindings:Ljava/util/List;
+        15: aload_0
+        16: getfield      #51                 // Field cfm:Lorg/violetmoon/zeta/config/ConfigFlagManager;
+        19: invokestatic  #300                // Method org/violetmoon/zeta/config/ConfigObjectMapper.readInto:(Lorg/violetmoon/zeta/config/SectionDefinition$Builder;Ljava/lang/Object;Ljava/util/List;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+        22: return
+      LineNumberTable:
+        line 55: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  this   Lorg/violetmoon/zeta/config/ConfigManager;
+            0      23     1 rootPojo   Ljava/lang/Object;
+            0      23     2 general   Lorg/violetmoon/zeta/config/SectionDefinition$Builder;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #35                 // class java/util/HashSet
+         3: dup
+         4: invokespecial #37                 // Method java/util/HashSet."<init>":()V
+         7: putstatic     #174                // Field EVIL_CONFIG_STORAGE_THAT_I_NEED:Ljava/util/Set;
+        10: return
+      LineNumberTable:
+        line 14: 0
+}
+SourceFile: "ConfigManager.java"
+BootstrapMethods:
+  0: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #449 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$0:(Ljava/lang/Object;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+      #452 (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  1: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #454 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$2:(Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+      #452 (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  2: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #457 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$6:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/module/ZetaModuleManager;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+      #452 (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  3: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #460 ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+      #461 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$7:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+      #460 ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  4: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #464 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$12:(Lorg/violetmoon/zeta/Zeta;Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+      #467 (Lorg/violetmoon/zeta/config/IZetaConfigInternals;)V
+  5: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #469 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$onReload$13:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+      #472 (Ljava/util/function/Consumer;)V
+  6: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #473 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$onReload$14:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Ljava/util/function/Consumer;)V
+      #472 (Ljava/util/function/Consumer;)V
+  7: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #476 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #478 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$8:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+      #481 (Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  8: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #476 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #483 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$9:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+      #486 (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  9: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #476 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #488 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$10:(Lorg/violetmoon/zeta/config/IZetaConfigInternals;Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+      #486 (Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition;)V
+  10: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #460 ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+      #491 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$11:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+      #460 ()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+  11: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #494 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$3:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+      #497 (Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  12: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #499 REF_invokeVirtual org/violetmoon/zeta/config/ConfigManager.lambda$new$5:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+      #452 (Lorg/violetmoon/zeta/config/SectionDefinition$Builder;)V
+  13: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #502 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$4:(Ljava/util/List;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+      #497 (Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+  14: #517 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #505  - \u0001
+  15: #510 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #448 (Ljava/lang/Object;)V
+      #507 REF_invokeStatic org/violetmoon/zeta/config/ConfigManager.lambda$new$1:(Lorg/violetmoon/zeta/module/ZetaCategory;Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+      #497 (Lorg/violetmoon/zeta/config/ValueDefinition$Builder;)V
+InnerClasses:
+  public static #524= #73 of #170;        // Builder=class org/violetmoon/zeta/config/SectionDefinition$Builder of class org/violetmoon/zeta/config/SectionDefinition
+  public static abstract #524= #525 of #527; // Builder=class org/violetmoon/zeta/config/Definition$Builder of class org/violetmoon/zeta/config/Definition
+  public static #524= #318 of #184;       // Builder=class org/violetmoon/zeta/config/ValueDefinition$Builder of class org/violetmoon/zeta/config/ValueDefinition
+  public static final #533= #529 of #531; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

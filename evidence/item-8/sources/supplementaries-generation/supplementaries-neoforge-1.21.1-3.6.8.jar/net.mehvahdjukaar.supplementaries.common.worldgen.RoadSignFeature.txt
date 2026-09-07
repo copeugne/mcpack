@@ -1,0 +1,1129 @@
+Compiled from "RoadSignFeature.java"
+public class net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config> {
+  private static final net.minecraft.world.level.block.state.BlockState AIR;
+
+  private static final net.minecraft.world.level.block.state.BlockState PATH;
+
+  private static final net.minecraft.world.level.block.state.BlockState SANDSTONE_PATH;
+
+  public net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public static boolean isNotSolid(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_1
+       4: invokedynamic #13,  0             // InvokeDynamic #0:test:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Predicate;
+       9: invokeinterface #17,  3           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      14: ifne          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public static void applyPostProcess(net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, java.util.List<net.mehvahdjukaar.supplementaries.common.worldgen.LocatedStructure>);
+    Code:
+       0: aload_0
+       1: getfield      #23                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.randomState:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState;
+       4: astore        4
+       6: aload_0
+       7: getfield      #27                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.trapdoor:Lnet/minecraft/world/level/block/state/BlockState;
+      10: astore        5
+      12: aload_2
+      13: iconst_2
+      14: invokevirtual #31                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      17: astore        6
+      19: new           #37                 // class java/util/ArrayList
+      22: dup
+      23: invokespecial #39                 // Method java/util/ArrayList."<init>":()V
+      26: astore        7
+      28: aload_3
+      29: invokeinterface #42,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      34: astore        8
+      36: aload         8
+      38: invokeinterface #48,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      43: ifeq          89
+      46: aload         8
+      48: invokeinterface #54,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      53: checkcast     #58                 // class net/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure
+      56: astore        9
+      58: aload         7
+      60: aload         9
+      62: invokevirtual #60                 // Method net/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure.distSqrt:()D
+      65: invokestatic  #64                 // Method java/lang/Math.sqrt:(D)D
+      68: d2i
+      69: invokestatic  #70                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      72: aload         9
+      74: invokevirtual #76                 // Method net/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure.position:()Lnet/minecraft/core/BlockPos;
+      77: invokestatic  #80                 // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      80: invokeinterface #86,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      85: pop
+      86: goto          36
+      89: iconst_0
+      90: istore        8
+      92: iload         8
+      94: ifeq          138
+      97: aload_1
+      98: aload         6
+     100: invokevirtual #90                 // Method net/minecraft/server/level/ServerLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+     103: astore        9
+     105: aload         9
+     107: getstatic     #96                 // Field net/minecraft/tags/BiomeTags.HAS_VILLAGE_DESERT:Lnet/minecraft/tags/TagKey;
+     110: invokeinterface #102,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     115: ifeq          124
+     118: getstatic     #108                // Field SANDSTONE_PATH:Lnet/minecraft/world/level/block/state/BlockState;
+     121: goto          127
+     124: getstatic     #113                // Field PATH:Lnet/minecraft/world/level/block/state/BlockState;
+     127: astore        10
+     129: aload_0
+     130: aload_1
+     131: aload         6
+     133: aload         10
+     135: invokestatic  #116                // Method replaceCobbleWithPath:(Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     138: aload         7
+     140: invokeinterface #120,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     145: ifne          1455
+     148: aload_1
+     149: getfield      #123                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+     152: astore        9
+     154: iconst_1
+     155: istore        10
+     157: aload         7
+     159: invokeinterface #127,  1          // InterfaceMethod java/util/List.size:()I
+     164: iconst_1
+     165: if_icmpeq     209
+     168: aload         4
+     170: getfield      #131                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.doubleSignChance:F
+     173: aload         9
+     175: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     180: fcmpl
+     181: ifle          262
+     184: aload         7
+     186: invokeinterface #143,  1          // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+     191: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     194: invokevirtual #146                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+     197: checkcast     #71                 // class java/lang/Integer
+     200: invokevirtual #147                // Method java/lang/Integer.intValue:()I
+     203: sipush        192
+     206: if_icmple     262
+     209: aload         7
+     211: invokeinterface #143,  1          // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+     216: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     219: invokevirtual #146                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+     222: checkcast     #71                 // class java/lang/Integer
+     225: invokevirtual #147                // Method java/lang/Integer.intValue:()I
+     228: istore        13
+     230: aload         7
+     232: invokeinterface #143,  1          // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+     237: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     240: invokevirtual #150                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+     243: checkcast     #32                 // class net/minecraft/core/BlockPos
+     246: astore        11
+     248: iload         13
+     250: istore        14
+     252: aload         11
+     254: astore        12
+     256: iconst_0
+     257: istore        10
+     259: goto          389
+     262: aload         9
+     264: invokeinterface #153,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     269: istore        15
+     271: aload         7
+     273: iload         15
+     275: ifeq          282
+     278: iconst_0
+     279: goto          283
+     282: iconst_1
+     283: invokeinterface #156,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     288: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     291: invokevirtual #146                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+     294: checkcast     #71                 // class java/lang/Integer
+     297: invokevirtual #147                // Method java/lang/Integer.intValue:()I
+     300: istore        13
+     302: aload         7
+     304: iload         15
+     306: ifeq          313
+     309: iconst_0
+     310: goto          314
+     313: iconst_1
+     314: invokeinterface #156,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     319: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     322: invokevirtual #150                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+     325: checkcast     #32                 // class net/minecraft/core/BlockPos
+     328: astore        11
+     330: aload         7
+     332: iload         15
+     334: ifeq          341
+     337: iconst_1
+     338: goto          342
+     341: iconst_0
+     342: invokeinterface #156,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     347: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     350: invokevirtual #146                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+     353: checkcast     #71                 // class java/lang/Integer
+     356: invokevirtual #147                // Method java/lang/Integer.intValue:()I
+     359: istore        14
+     361: aload         7
+     363: iload         15
+     365: ifeq          372
+     368: iconst_1
+     369: goto          373
+     372: iconst_0
+     373: invokeinterface #156,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     378: checkcast     #81                 // class com/mojang/datafixers/util/Pair
+     381: invokevirtual #150                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+     384: checkcast     #32                 // class net/minecraft/core/BlockPos
+     387: astore        12
+     389: aload_1
+     390: aload         6
+     392: getstatic     #160                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.WAY_SIGN:Ljava/util/function/Supplier;
+     395: invokeinterface #166,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     400: checkcast     #170                // class net/minecraft/world/level/block/Block
+     403: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     406: invokevirtual #176                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+     409: pop
+     410: aload_1
+     411: aload         6
+     413: invokevirtual #180                // Method net/minecraft/server/level/ServerLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+     416: astore        16
+     418: aload         16
+     420: instanceof    #184                // class net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile
+     423: ifeq          1452
+     426: aload         16
+     428: checkcast     #184                // class net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile
+     431: astore        15
+     433: aload         15
+     435: aload_0
+     436: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+     439: invokevirtual #189                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.setHeldBlock:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     442: pop
+     443: aload         9
+     445: invokeinterface #153,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     450: istore        16
+     452: aload         15
+     454: invokevirtual #193                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getSignUp:()Lnet/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign;
+     457: astore        17
+     459: aload         15
+     461: invokevirtual #197                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getSignDown:()Lnet/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign;
+     464: astore        18
+     466: aload         17
+     468: iconst_1
+     469: invokevirtual #200                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setActive:(Z)V
+     472: aload         17
+     474: iload         16
+     476: invokevirtual #206                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setLeft:(Z)V
+     479: aload         17
+     481: aload_0
+     482: getfield      #209                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.signWood:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+     485: invokevirtual #213                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setWoodType:(Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;)V
+     488: aload         17
+     490: aload         15
+     492: invokevirtual #217                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     495: aload         11
+     497: invokevirtual #220                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.pointToward:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)V
+     500: aload         18
+     502: iload         10
+     504: invokevirtual #200                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setActive:(Z)V
+     507: aload         18
+     509: iload         16
+     511: invokevirtual #206                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setLeft:(Z)V
+     514: aload         18
+     516: aload_0
+     517: getfield      #209                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.signWood:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+     520: invokevirtual #213                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.setWoodType:(Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;)V
+     523: aload         18
+     525: aload         15
+     527: invokevirtual #217                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     530: aload         12
+     532: invokevirtual #220                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.pointToward:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)V
+     535: aload         17
+     537: invokevirtual #224                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.yaw:()F
+     540: aload         18
+     542: invokevirtual #224                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.yaw:()F
+     545: fsub
+     546: invokestatic  #227                // Method java/lang/Math.abs:(F)F
+     549: ldc           #231                // float 90.0f
+     551: fcmpl
+     552: ifle          572
+     555: aload         18
+     557: invokevirtual #232                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.toggleDirection:()V
+     560: aload         18
+     562: aload         15
+     564: invokevirtual #217                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     567: aload         12
+     569: invokevirtual #220                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.pointToward:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)V
+     572: getstatic     #235                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.ROAD_SIGN_DISTANCE_TEXT:Ljava/util/function/Supplier;
+     575: invokeinterface #166,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     580: checkcast     #240                // class java/lang/Boolean
+     583: invokevirtual #242                // Method java/lang/Boolean.booleanValue:()Z
+     586: ifeq          624
+     589: aload         15
+     591: iconst_0
+     592: invokevirtual #245                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getTextHolder:(I)Lnet/mehvahdjukaar/supplementaries/common/block/TextHolder;
+     595: iconst_0
+     596: iload         13
+     598: invokestatic  #249                // Method getSignText:(I)Lnet/minecraft/network/chat/Component;
+     601: invokevirtual #253                // Method net/mehvahdjukaar/supplementaries/common/block/TextHolder.setMessage:(ILnet/minecraft/network/chat/Component;)V
+     604: iload         10
+     606: ifeq          624
+     609: aload         15
+     611: iconst_1
+     612: invokevirtual #245                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getTextHolder:(I)Lnet/mehvahdjukaar/supplementaries/common/block/TextHolder;
+     615: iconst_0
+     616: iload         14
+     618: invokestatic  #249                // Method getSignText:(I)Lnet/minecraft/network/chat/Component;
+     621: invokevirtual #253                // Method net/mehvahdjukaar/supplementaries/common/block/TextHolder.setMessage:(ILnet/minecraft/network/chat/Component;)V
+     624: ldc           #231                // float 90.0f
+     626: ldc_w         #259                // float 360.0f
+     629: iconst_2
+     630: anewarray     #260                // class java/lang/Float
+     633: dup
+     634: iconst_0
+     635: ldc_w         #262                // float 180.0f
+     638: aload         17
+     640: invokevirtual #224                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.yaw:()F
+     643: fsub
+     644: ldc_w         #259                // float 360.0f
+     647: fdiv
+     648: invokestatic  #263                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     651: aastore
+     652: dup
+     653: iconst_1
+     654: ldc_w         #262                // float 180.0f
+     657: aload         18
+     659: invokevirtual #224                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile$Sign.yaw:()F
+     662: fsub
+     663: ldc_w         #259                // float 360.0f
+     666: fdiv
+     667: invokestatic  #263                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     670: aastore
+     671: invokestatic  #266                // Method net/mehvahdjukaar/moonlight/api/util/math/MthUtils.averageAngles:([Ljava/lang/Float;)F
+     674: fmul
+     675: fadd
+     676: invokestatic  #272                // Method net/minecraft/util/Mth.wrapDegrees:(F)F
+     679: fstore        19
+     681: fload         19
+     683: f2d
+     684: invokestatic  #277                // Method net/minecraft/core/Direction.fromYRot:(D)Lnet/minecraft/core/Direction;
+     687: astore        20
+     689: fload         19
+     691: aload         20
+     693: invokevirtual #283                // Method net/minecraft/core/Direction.toYRot:()F
+     696: invokestatic  #286                // Method net/minecraft/util/Mth.degreesDifference:(FF)F
+     699: fstore        21
+     701: fload         21
+     703: fconst_0
+     704: fcmpg
+     705: ifge          716
+     708: aload         20
+     710: invokevirtual #290                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+     713: goto          721
+     716: aload         20
+     718: invokevirtual #294                // Method net/minecraft/core/Direction.getCounterClockWise:()Lnet/minecraft/core/Direction;
+     721: astore        22
+     723: new           #37                 // class java/util/ArrayList
+     726: dup
+     727: invokespecial #39                 // Method java/util/ArrayList."<init>":()V
+     730: astore        23
+     732: aload         23
+     734: aload         20
+     736: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     739: invokevirtual #300                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     742: pop
+     743: aload         23
+     745: aload         20
+     747: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     750: invokevirtual #300                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     753: pop
+     754: aload         23
+     756: aload         20
+     758: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     761: invokevirtual #300                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     764: pop
+     765: fload         21
+     767: invokestatic  #227                // Method java/lang/Math.abs:(F)F
+     770: ldc_w         #301                // float 30.0f
+     773: fcmpl
+     774: ifle          788
+     777: aload         23
+     779: aload         22
+     781: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     784: invokevirtual #300                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     787: pop
+     788: iconst_0
+     789: istore        24
+     791: iconst_0
+     792: istore        25
+     794: aload         9
+     796: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     801: aload         4
+     803: getfield      #302                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.stoneChance:F
+     806: fcmpg
+     807: ifge          1040
+     810: aload         15
+     812: iconst_1
+     813: invokevirtual #305                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/SignPostBlockTile.getPointingYaw:(Z)F
+     816: ldc_w         #262                // float 180.0f
+     819: fadd
+     820: fload         19
+     822: invokestatic  #309                // Method net/minecraft/util/Mth.degreesDifferenceAbs:(FF)F
+     825: ldc_w         #312                // float 70.0f
+     828: fcmpl
+     829: ifle          1040
+     832: aload         6
+     834: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     837: aload         20
+     839: invokevirtual #315                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+     842: invokevirtual #319                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     845: astore        26
+     847: aload         9
+     849: invokeinterface #153,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     854: ifeq          872
+     857: aload_1
+     858: aload         26
+     860: aload_0
+     861: getfield      #323                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.stoneSlab:Lnet/minecraft/world/level/block/state/BlockState;
+     864: iconst_2
+     865: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     868: pop
+     869: goto          895
+     872: aload_1
+     873: aload         26
+     875: aload_0
+     876: getfield      #330                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.stoneStairs:Lnet/minecraft/world/level/block/state/BlockState;
+     879: getstatic     #333                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     882: aload         22
+     884: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     887: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+     890: iconst_2
+     891: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     894: pop
+     895: aload         26
+     897: aload         22
+     899: invokevirtual #315                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+     902: invokevirtual #319                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     905: astore        26
+     907: aload_1
+     908: aload         26
+     910: aload_0
+     911: getfield      #345                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.stone:Lnet/minecraft/world/level/block/state/BlockState;
+     914: iconst_2
+     915: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     918: pop
+     919: aload         9
+     921: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     926: aload         4
+     928: getfield      #348                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.stoneLanternChance:F
+     931: fcmpg
+     932: ifge          965
+     935: aload_1
+     936: aload         26
+     938: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     941: iload         25
+     943: ifeq          953
+     946: aload_0
+     947: getfield      #354                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternDown:Lnet/minecraft/world/level/block/state/BlockState;
+     950: goto          957
+     953: aload_0
+     954: getfield      #354                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternDown:Lnet/minecraft/world/level/block/state/BlockState;
+     957: iconst_3
+     958: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     961: pop
+     962: iconst_1
+     963: istore        24
+     965: aload         26
+     967: aload         22
+     969: invokevirtual #315                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+     972: invokevirtual #319                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     975: astore        26
+     977: aload_1
+     978: aload         26
+     980: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     983: invokestatic  #357                // Method isNotSolid:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+     986: ifne          1040
+     989: aload         9
+     991: invokeinterface #153,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     996: ifeq          1014
+     999: aload_1
+    1000: aload         26
+    1002: aload_0
+    1003: getfield      #323                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.stoneSlab:Lnet/minecraft/world/level/block/state/BlockState;
+    1006: iconst_2
+    1007: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1010: pop
+    1011: goto          1040
+    1014: aload_1
+    1015: aload         26
+    1017: aload_0
+    1018: getfield      #330                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.stoneStairs:Lnet/minecraft/world/level/block/state/BlockState;
+    1021: getstatic     #333                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    1024: aload         22
+    1026: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+    1029: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1032: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+    1035: iconst_2
+    1036: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1039: pop
+    1040: iload         24
+    1042: ifne          1452
+    1045: aload         6
+    1047: iconst_2
+    1048: invokevirtual #361                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+    1051: astore        6
+    1053: iload         25
+    1055: ifeq          1065
+    1058: aload_0
+    1059: getfield      #363                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternUp:Lnet/minecraft/world/level/block/state/BlockState;
+    1062: goto          1069
+    1065: aload_0
+    1066: getfield      #363                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternUp:Lnet/minecraft/world/level/block/state/BlockState;
+    1069: astore        26
+    1071: aload         9
+    1073: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1078: aload         4
+    1080: getfield      #366                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.candleHolderChance:F
+    1083: fcmpg
+    1084: ifge          1118
+    1087: aload_0
+    1088: getfield      #369                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.candleHolder:Lnet/minecraft/world/level/block/state/BlockState;
+    1091: getstatic     #372                // Field net/mehvahdjukaar/supplementaries/common/block/blocks/CandleHolderBlock.LIT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1094: iconst_1
+    1095: invokestatic  #378                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1098: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1101: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+    1104: getstatic     #381                // Field net/mehvahdjukaar/supplementaries/common/block/blocks/CandleHolderBlock.FACE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1107: getstatic     #385                // Field net/minecraft/world/level/block/state/properties/AttachFace.CEILING:Lnet/minecraft/world/level/block/state/properties/AttachFace;
+    1110: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1113: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+    1116: astore        26
+    1118: aload         23
+    1120: aload         9
+    1122: aload         23
+    1124: invokevirtual #391                // Method java/util/ArrayList.size:()I
+    1127: invokeinterface #392,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+    1132: invokevirtual #396                // Method java/util/ArrayList.get:(I)Ljava/lang/Object;
+    1135: checkcast     #278                // class net/minecraft/core/Direction
+    1138: astore        27
+    1140: aload         4
+    1142: getfield      #397                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.doubleLanternChance:F
+    1145: aload         9
+    1147: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1152: fcmpl
+    1153: ifle          1160
+    1156: iconst_1
+    1157: goto          1161
+    1160: iconst_0
+    1161: istore        28
+    1163: iload         28
+    1165: ifeq          1175
+    1168: aload         27
+    1170: invokevirtual #290                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+    1173: astore        27
+    1175: getstatic     #400                // Field net/mehvahdjukaar/supplementaries/integration/CompatObjects.WALL_LANTERN:Lnet/mehvahdjukaar/moonlight/api/misc/OptRegSupplier;
+    1178: invokevirtual #406                // Method net/mehvahdjukaar/moonlight/api/misc/OptRegSupplier.get:()Ljava/lang/Object;
+    1181: checkcast     #170                // class net/minecraft/world/level/block/Block
+    1184: astore        29
+    1186: aload         29
+    1188: ifnull        1280
+    1191: aload         9
+    1193: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1198: aload         4
+    1200: getfield      #409                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.wallLanternChance:F
+    1203: fcmpg
+    1204: ifge          1280
+    1207: aload         9
+    1209: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1214: aload         4
+    1216: getfield      #412                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.trapdoorChance:F
+    1219: fcmpg
+    1220: ifge          1230
+    1223: aload_0
+    1224: getfield      #27                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.trapdoor:Lnet/minecraft/world/level/block/state/BlockState;
+    1227: goto          1233
+    1230: getstatic     #415                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+    1233: astore        5
+    1235: aload_0
+    1236: getfield      #354                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternDown:Lnet/minecraft/world/level/block/state/BlockState;
+    1239: aload_1
+    1240: aload         27
+    1242: aload         29
+    1244: aload         6
+    1246: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1249: invokestatic  #418                // Method placeWallLantern:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+    1252: iload         28
+    1254: ifeq          1452
+    1257: aload_0
+    1258: getfield      #354                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.lanternDown:Lnet/minecraft/world/level/block/state/BlockState;
+    1261: aload_1
+    1262: aload         27
+    1264: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+    1267: aload         29
+    1269: aload         6
+    1271: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1274: invokestatic  #418                // Method placeWallLantern:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+    1277: goto          1452
+    1280: aload         4
+    1282: getfield      #412                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.trapdoorChance:F
+    1285: aload         9
+    1287: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1292: fcmpl
+    1293: ifle          1300
+    1296: iconst_1
+    1297: goto          1301
+    1300: iconst_0
+    1301: istore        30
+    1303: iload         30
+    1305: ifne          1314
+    1308: aload_0
+    1309: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+    1312: astore        5
+    1314: iload         28
+    1316: ifeq          1402
+    1319: aload         6
+    1321: aload         27
+    1323: invokevirtual #297                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+    1326: invokevirtual #422                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+    1329: astore        31
+    1331: aload_1
+    1332: aload         31
+    1334: iload         30
+    1336: ifeq          1346
+    1339: aload_0
+    1340: getfield      #27                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.trapdoor:Lnet/minecraft/world/level/block/state/BlockState;
+    1343: goto          1350
+    1346: aload_0
+    1347: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+    1350: iconst_2
+    1351: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1354: pop
+    1355: aload         4
+    1357: getfield      #426                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$RandomState.logChance:F
+    1360: aload         9
+    1362: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+    1367: fcmpl
+    1368: ifle          1389
+    1371: iload         30
+    1373: ifeq          1383
+    1376: aload_0
+    1377: getfield      #429                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.slab:Lnet/minecraft/world/level/block/state/BlockState;
+    1380: goto          1387
+    1383: aload_0
+    1384: getfield      #432                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.log:Lnet/minecraft/world/level/block/state/BlockState;
+    1387: astore        5
+    1389: aload_1
+    1390: aload         31
+    1392: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1395: aload         26
+    1397: iconst_3
+    1398: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1401: pop
+    1402: aload         6
+    1404: aload         27
+    1406: invokevirtual #422                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+    1409: astore        6
+    1411: iload         30
+    1413: ifeq          1423
+    1416: aload_0
+    1417: getfield      #27                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.trapdoor:Lnet/minecraft/world/level/block/state/BlockState;
+    1420: goto          1427
+    1423: aload_0
+    1424: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+    1427: astore        31
+    1429: aload_1
+    1430: aload         6
+    1432: aload         31
+    1434: iconst_2
+    1435: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1438: pop
+    1439: aload_1
+    1440: aload         6
+    1442: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1445: aload         26
+    1447: iconst_3
+    1448: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1451: pop
+    1452: goto          1593
+    1455: new           #435                // class net/minecraft/world/item/ItemStack
+    1458: dup
+    1459: getstatic     #437                // Field net/minecraft/world/item/Items.WRITABLE_BOOK:Lnet/minecraft/world/item/Item;
+    1462: invokespecial #443                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+    1465: astore        9
+    1467: new           #446                // class net/minecraft/world/item/component/WritableBookContent
+    1470: dup
+    1471: new           #448                // class net/minecraft/server/network/Filterable
+    1474: dup
+    1475: ldc_w         #450                // String nothing here but monsters\n\n\n
+    1478: invokestatic  #452                // Method java/util/Optional.empty:()Ljava/util/Optional;
+    1481: invokespecial #458                // Method net/minecraft/server/network/Filterable."<init>":(Ljava/lang/Object;Ljava/util/Optional;)V
+    1484: invokestatic  #461                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+    1487: invokespecial #464                // Method net/minecraft/world/item/component/WritableBookContent."<init>":(Ljava/util/List;)V
+    1490: astore        10
+    1492: aload         9
+    1494: getstatic     #467                // Field net/minecraft/core/component/DataComponents.WRITABLE_BOOK_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+    1497: aload         10
+    1499: invokevirtual #473                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+    1502: pop
+    1503: aload_2
+    1504: iconst_2
+    1505: invokevirtual #31                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+    1508: astore        11
+    1510: aload_1
+    1511: aload         11
+    1513: getstatic     #477                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.NOTICE_BOARD:Ljava/util/function/Supplier;
+    1516: invokeinterface #166,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+    1521: checkcast     #170                // class net/minecraft/world/level/block/Block
+    1524: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1527: getstatic     #480                // Field net/mehvahdjukaar/supplementaries/common/block/blocks/NoticeBoardBlock.HAS_BOOK:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1530: iconst_1
+    1531: invokestatic  #378                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1534: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1537: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+    1540: getstatic     #485                // Field net/mehvahdjukaar/supplementaries/common/block/blocks/NoticeBoardBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    1543: getstatic     #486                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+    1546: aload_1
+    1547: getfield      #123                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+    1550: invokevirtual #492                // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+    1553: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1556: checkcast     #340                // class net/minecraft/world/level/block/state/BlockState
+    1559: invokevirtual #176                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+    1562: pop
+    1563: aload_1
+    1564: aload         11
+    1566: invokevirtual #180                // Method net/minecraft/server/level/ServerLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+    1569: astore        13
+    1571: aload         13
+    1573: instanceof    #496                // class net/mehvahdjukaar/supplementaries/common/block/tiles/NoticeBoardBlockTile
+    1576: ifeq          1593
+    1579: aload         13
+    1581: checkcast     #496                // class net/mehvahdjukaar/supplementaries/common/block/tiles/NoticeBoardBlockTile
+    1584: astore        12
+    1586: aload         12
+    1588: aload         9
+    1590: invokevirtual #498                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/NoticeBoardBlockTile.setDisplayedItem:(Lnet/minecraft/world/item/ItemStack;)V
+    1593: aload_1
+    1594: aload_2
+    1595: aload         5
+    1597: iconst_3
+    1598: invokevirtual #326                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1601: pop
+    1602: return
+
+  private static net.minecraft.network.chat.Component getSignText(int);
+    Code:
+       0: iload_0
+       1: bipush        100
+       3: if_icmpge     12
+       6: bipush        10
+       8: istore_1
+       9: goto          29
+      12: iload_0
+      13: sipush        2000
+      16: if_icmpge     25
+      19: bipush        100
+      21: istore_1
+      22: goto          29
+      25: sipush        1000
+      28: istore_1
+      29: ldc_w         #502                // String message.supplementaries.road_sign
+      32: iconst_1
+      33: anewarray     #504                // class java/lang/Object
+      36: dup
+      37: iconst_0
+      38: iload_0
+      39: iload_1
+      40: iconst_2
+      41: idiv
+      42: iadd
+      43: iload_1
+      44: idiv
+      45: iload_1
+      46: imul
+      47: invokestatic  #70                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      50: aastore
+      51: invokestatic  #506                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      54: areturn
+
+  private static void replaceCobbleWithPath(net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: bipush        -2
+       2: istore        4
+       4: iload         4
+       6: iconst_2
+       7: if_icmpgt     125
+      10: bipush        -2
+      12: istore        5
+      14: iload         5
+      16: iconst_2
+      17: if_icmpgt     119
+      20: iload         4
+      22: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      25: iconst_2
+      26: if_icmpne     41
+      29: iload         5
+      31: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      34: iconst_2
+      35: if_icmpne     41
+      38: goto          113
+      41: iload         4
+      43: ifne          54
+      46: iload         5
+      48: ifne          54
+      51: goto          113
+      54: aload_2
+      55: iload         4
+      57: bipush        -2
+      59: iload         5
+      61: invokevirtual #514                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      64: astore        6
+      66: aload_1
+      67: aload         6
+      69: invokevirtual #517                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      72: astore        7
+      74: aload         7
+      76: aload_0
+      77: getfield      #523                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.cobble:Lnet/minecraft/world/level/block/state/BlockState;
+      80: invokevirtual #526                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      83: invokevirtual #530                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      86: ifne          104
+      89: aload         7
+      91: aload_0
+      92: getfield      #533                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.mossyCobble:Lnet/minecraft/world/level/block/state/BlockState;
+      95: invokevirtual #526                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      98: invokevirtual #530                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     101: ifeq          113
+     104: aload_1
+     105: aload         6
+     107: aload_3
+     108: iconst_2
+     109: invokevirtual #536                // Method net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     112: pop
+     113: iinc          5, 1
+     116: goto          14
+     119: iinc          4, 1
+     122: goto          4
+     125: return
+
+  private static void placeWallLantern(net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.Direction, net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         4
+       2: aload_2
+       3: invokevirtual #422                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+       6: astore        4
+       8: aload_3
+       9: new           #537                // class net/minecraft/world/item/context/BlockPlaceContext
+      12: dup
+      13: aload_1
+      14: aconst_null
+      15: getstatic     #539                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      18: aload_3
+      19: invokevirtual #545                // Method net/minecraft/world/level/block/Block.asItem:()Lnet/minecraft/world/item/Item;
+      22: invokevirtual #549                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+      25: new           #555                // class net/minecraft/world/phys/BlockHitResult
+      28: dup
+      29: aload         4
+      31: invokevirtual #557                // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+      34: aload_2
+      35: aload         4
+      37: iconst_0
+      38: invokespecial #561                // Method net/minecraft/world/phys/BlockHitResult."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Z)V
+      41: invokespecial #564                // Method net/minecraft/world/item/context/BlockPlaceContext."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/phys/BlockHitResult;)V
+      44: invokevirtual #567                // Method net/minecraft/world/level/block/Block.getStateForPlacement:(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;
+      47: astore        5
+      49: aload         5
+      51: ifnull        63
+      54: aload_1
+      55: aload         4
+      57: aload         5
+      59: invokevirtual #176                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      62: pop
+      63: aload_1
+      64: aload         4
+      66: invokevirtual #180                // Method net/minecraft/server/level/ServerLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      69: astore        7
+      71: aload         7
+      73: instanceof    #571                // class net/mehvahdjukaar/moonlight/api/block/IBlockHolder
+      76: ifeq          95
+      79: aload         7
+      81: checkcast     #571                // class net/mehvahdjukaar/moonlight/api/block/IBlockHolder
+      84: astore        6
+      86: aload         6
+      88: aload_0
+      89: invokeinterface #573,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/api/block/IBlockHolder.setHeldBlock:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      94: pop
+      95: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config>);
+    Code:
+       0: aload_1
+       1: invokevirtual #574                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #580                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #583                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #586                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config
+      23: astore        5
+      25: aload         4
+      27: invokevirtual #313                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      30: astore        4
+      32: bipush        -2
+      34: istore        6
+      36: iload         6
+      38: iconst_2
+      39: if_icmpgt     160
+      42: bipush        -2
+      44: istore        7
+      46: iload         7
+      48: iconst_2
+      49: if_icmpgt     154
+      52: iload         6
+      54: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      57: iconst_2
+      58: if_icmpne     73
+      61: iload         7
+      63: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      66: iconst_2
+      67: if_icmpne     73
+      70: goto          148
+      73: iconst_1
+      74: istore        8
+      76: iload         8
+      78: iconst_4
+      79: if_icmpgt     148
+      82: iload         6
+      84: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      87: iconst_2
+      88: if_icmpeq     100
+      91: iload         7
+      93: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+      96: iconst_2
+      97: if_icmpne     109
+     100: iload         8
+     102: iconst_1
+     103: if_icmpne     109
+     106: goto          142
+     109: aload_2
+     110: aload         4
+     112: iload         6
+     114: iload         8
+     116: iload         7
+     118: invokevirtual #514                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     121: getstatic     #590                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.STRUCTURE_TEMP:Ljava/util/function/Supplier;
+     124: invokeinterface #166,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     129: checkcast     #170                // class net/minecraft/world/level/block/Block
+     132: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     135: iconst_2
+     136: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     141: pop
+     142: iinc          8, 1
+     145: goto          76
+     148: iinc          7, 1
+     151: goto          46
+     154: iinc          6, 1
+     157: goto          36
+     160: aload_2
+     161: aload         4
+     163: invokeinterface #596,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+     168: invokeinterface #597,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     173: checkcast     #600                // class net/minecraft/world/level/biome/Biome
+     176: invokestatic  #602                // Method net/mehvahdjukaar/supplementaries/SuppPlatformStuff.getDownfall:(Lnet/minecraft/world/level/biome/Biome;)F
+     179: fstore        6
+     181: bipush        -2
+     183: istore        7
+     185: iload         7
+     187: iconst_2
+     188: if_icmpgt     371
+     191: bipush        -2
+     193: istore        8
+     195: iload         8
+     197: iconst_2
+     198: if_icmpgt     365
+     201: iload         7
+     203: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+     206: iconst_2
+     207: if_icmpne     222
+     210: iload         8
+     212: invokestatic  #512                // Method java/lang/Math.abs:(I)I
+     215: iconst_2
+     216: if_icmpne     222
+     219: goto          359
+     222: aload_2
+     223: aload         4
+     225: iload         7
+     227: iconst_m1
+     228: iload         8
+     230: invokevirtual #514                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     233: aload         5
+     235: getfield      #523                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.cobble:Lnet/minecraft/world/level/block/state/BlockState;
+     238: iconst_2
+     239: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     244: pop
+     245: aload         4
+     247: iload         7
+     249: iconst_0
+     250: iload         8
+     252: invokevirtual #514                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     255: astore        9
+     257: aload         4
+     259: aload         9
+     261: invokevirtual #608                // Method net/minecraft/core/BlockPos.getX:()I
+     264: i2d
+     265: aload         9
+     267: invokevirtual #611                // Method net/minecraft/core/BlockPos.getY:()I
+     270: i2d
+     271: aload         9
+     273: invokevirtual #614                // Method net/minecraft/core/BlockPos.getZ:()I
+     276: i2d
+     277: invokevirtual #617                // Method net/minecraft/core/BlockPos.distToCenterSqr:(DDD)D
+     280: ldc2_w        #621                // double 5.199999809265137d
+     283: ddiv
+     284: dstore        10
+     286: aload_3
+     287: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     292: f2d
+     293: dload         10
+     295: ldc2_w        #623                // double 0.15d
+     298: dsub
+     299: dcmpg
+     300: ifge          306
+     303: goto          359
+     306: fload         6
+     308: f2d
+     309: ldc2_w        #625                // double 0.75d
+     312: dmul
+     313: aload_3
+     314: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     319: f2d
+     320: dcmpl
+     321: ifle          328
+     324: iconst_1
+     325: goto          329
+     328: iconst_0
+     329: istore        12
+     331: aload_2
+     332: aload         9
+     334: iload         12
+     336: ifeq          347
+     339: aload         5
+     341: getfield      #533                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.mossyCobble:Lnet/minecraft/world/level/block/state/BlockState;
+     344: goto          352
+     347: aload         5
+     349: getfield      #523                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.cobble:Lnet/minecraft/world/level/block/state/BlockState;
+     352: iconst_2
+     353: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     358: pop
+     359: iinc          8, 1
+     362: goto          195
+     365: iinc          7, 1
+     368: goto          185
+     371: fload         6
+     373: f2d
+     374: ldc2_w        #625                // double 0.75d
+     377: dmul
+     378: aload_3
+     379: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     384: f2d
+     385: dcmpl
+     386: ifle          393
+     389: iconst_1
+     390: goto          394
+     393: iconst_0
+     394: istore        7
+     396: aload         4
+     398: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     401: astore        4
+     403: aload_2
+     404: aload         4
+     406: iload         7
+     408: ifeq          419
+     411: aload         5
+     413: getfield      #627                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.mossyWall:Lnet/minecraft/world/level/block/state/BlockState;
+     416: goto          424
+     419: aload         5
+     421: getfield      #630                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.wall:Lnet/minecraft/world/level/block/state/BlockState;
+     424: iconst_2
+     425: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     430: pop
+     431: aload         4
+     433: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     436: astore        4
+     438: aload_2
+     439: aload         4
+     441: aload         5
+     443: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+     446: iconst_2
+     447: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     452: pop
+     453: aload         4
+     455: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     458: astore        4
+     460: aload_2
+     461: aload         4
+     463: aload         5
+     465: getfield      #186                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.fence:Lnet/minecraft/world/level/block/state/BlockState;
+     468: iconst_2
+     469: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     474: pop
+     475: aload_2
+     476: aload         4
+     478: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     481: getstatic     #633                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.BLOCK_GENERATOR:Ljava/util/function/Supplier;
+     484: invokeinterface #166,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     489: checkcast     #170                // class net/minecraft/world/level/block/Block
+     492: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     495: iconst_2
+     496: invokeinterface #593,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     501: pop
+     502: aload_2
+     503: aload         4
+     505: invokevirtual #351                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     508: invokeinterface #636,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+     513: astore        9
+     515: aload         9
+     517: instanceof    #637                // class net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile
+     520: ifeq          540
+     523: aload         9
+     525: checkcast     #637                // class net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile
+     528: astore        8
+     530: aload         8
+     532: aload         5
+     534: invokevirtual #639                // Method net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile.setConfig:(Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;)V
+     537: goto          551
+     540: getstatic     #643                // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+     543: ldc_w         #649                // String Failed to get Road Sign Block Entity during generation. How did this happen?
+     546: invokeinterface #651,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     551: iconst_1
+     552: ireturn
+
+  private static boolean lambda$isNotSolid$0(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #657                // Method net/minecraft/world/level/block/state/BlockState.isRedstoneConductor:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+       6: ireturn
+
+  static {};
+    Code:
+       0: getstatic     #661                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       3: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       6: putstatic     #415                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+       9: getstatic     #666                // Field net/minecraft/world/level/block/Blocks.DIRT_PATH:Lnet/minecraft/world/level/block/Block;
+      12: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      15: putstatic     #113                // Field PATH:Lnet/minecraft/world/level/block/state/BlockState;
+      18: getstatic     #669                // Field net/minecraft/world/level/block/Blocks.SMOOTH_SANDSTONE:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: putstatic     #108                // Field SANDSTONE_PATH:Lnet/minecraft/world/level/block/state/BlockState;
+      27: return
+}

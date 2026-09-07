@@ -1,0 +1,268 @@
+Classfile YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar!/com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin.class
+  Last modified Jun 1, 2025; size 4153 bytes
+  SHA-256 checksum 8749ce381e6a5945dcd1bcfcee14a54ac84d7682f9f6d603d5567e1d1a248da3
+  Compiled from "FixMobSpawningMixin.java"
+public class com.yungnickyoung.minecraft.betterfortresses.mixin.FixMobSpawningMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #54                         // com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 2
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // net/minecraft/world/entity/MobCategory.MONSTER:Lnet/minecraft/world/entity/MobCategory;
+    #8 = Class              #10           // net/minecraft/world/entity/MobCategory
+    #9 = NameAndType        #11:#12       // MONSTER:Lnet/minecraft/world/entity/MobCategory;
+   #10 = Utf8               net/minecraft/world/entity/MobCategory
+   #11 = Utf8               MONSTER
+   #12 = Utf8               Lnet/minecraft/world/entity/MobCategory;
+   #13 = Methodref          #14.#15       // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+   #14 = Class              #16           // net/minecraft/core/BlockPos
+   #15 = NameAndType        #17:#18       // below:()Lnet/minecraft/core/BlockPos;
+   #16 = Utf8               net/minecraft/core/BlockPos
+   #17 = Utf8               below
+   #18 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #19 = Methodref          #20.#21       // net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #20 = Class              #22           // net/minecraft/server/level/ServerLevel
+   #21 = NameAndType        #23:#24       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #22 = Utf8               net/minecraft/server/level/ServerLevel
+   #23 = Utf8               getBlockState
+   #24 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #25 = Fieldref           #26.#27       // net/minecraft/world/level/block/Blocks.NETHER_BRICKS:Lnet/minecraft/world/level/block/Block;
+   #26 = Class              #28           // net/minecraft/world/level/block/Blocks
+   #27 = NameAndType        #29:#30       // NETHER_BRICKS:Lnet/minecraft/world/level/block/Block;
+   #28 = Utf8               net/minecraft/world/level/block/Blocks
+   #29 = Utf8               NETHER_BRICKS
+   #30 = Utf8               Lnet/minecraft/world/level/block/Block;
+   #31 = Methodref          #32.#33       // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+   #32 = Class              #34           // net/minecraft/world/level/block/state/BlockState
+   #33 = NameAndType        #35:#36       // is:(Lnet/minecraft/world/level/block/Block;)Z
+   #34 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #35 = Utf8               is
+   #36 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #37 = Methodref          #20.#38       // net/minecraft/server/level/ServerLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+   #38 = NameAndType        #39:#40       // registryAccess:()Lnet/minecraft/core/RegistryAccess;
+   #39 = Utf8               registryAccess
+   #40 = Utf8               ()Lnet/minecraft/core/RegistryAccess;
+   #41 = Fieldref           #42.#43       // net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #42 = Class              #44           // net/minecraft/core/registries/Registries
+   #43 = NameAndType        #45:#46       // STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #44 = Utf8               net/minecraft/core/registries/Registries
+   #45 = Utf8               STRUCTURE
+   #46 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #47 = InterfaceMethodref #48.#49       // net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #48 = Class              #50           // net/minecraft/core/RegistryAccess
+   #49 = NameAndType        #51:#52       // registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #50 = Utf8               net/minecraft/core/RegistryAccess
+   #51 = Utf8               registryOrThrow
+   #52 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #53 = Fieldref           #54.#55       // com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin.BETTER_FORTRESS:Lnet/minecraft/resources/ResourceKey;
+   #54 = Class              #56           // com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin
+   #55 = NameAndType        #57:#46       // BETTER_FORTRESS:Lnet/minecraft/resources/ResourceKey;
+   #56 = Utf8               com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin
+   #57 = Utf8               BETTER_FORTRESS
+   #58 = InterfaceMethodref #59.#60       // net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+   #59 = Class              #61           // net/minecraft/core/Registry
+   #60 = NameAndType        #62:#63       // get:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+   #61 = Utf8               net/minecraft/core/Registry
+   #62 = Utf8               get
+   #63 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+   #64 = Class              #65           // net/minecraft/world/level/levelgen/structure/Structure
+   #65 = Utf8               net/minecraft/world/level/levelgen/structure/Structure
+   #66 = Methodref          #67.#68       // net/minecraft/world/level/StructureManager.getStructureAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #67 = Class              #69           // net/minecraft/world/level/StructureManager
+   #68 = NameAndType        #70:#71       // getStructureAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #69 = Utf8               net/minecraft/world/level/StructureManager
+   #70 = Utf8               getStructureAt
+   #71 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #72 = Methodref          #73.#74       // net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+   #73 = Class              #75           // net/minecraft/world/level/levelgen/structure/StructureStart
+   #74 = NameAndType        #76:#77       // isValid:()Z
+   #75 = Utf8               net/minecraft/world/level/levelgen/structure/StructureStart
+   #76 = Utf8               isValid
+   #77 = Utf8               ()Z
+   #78 = Methodref          #79.#80       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #79 = Class              #81           // java/lang/Boolean
+   #80 = NameAndType        #82:#83       // valueOf:(Z)Ljava/lang/Boolean;
+   #81 = Utf8               java/lang/Boolean
+   #82 = Utf8               valueOf
+   #83 = Utf8               (Z)Ljava/lang/Boolean;
+   #84 = Methodref          #85.#86       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #85 = Class              #87           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #86 = NameAndType        #88:#89       // setReturnValue:(Ljava/lang/Object;)V
+   #87 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #88 = Utf8               setReturnValue
+   #89 = Utf8               (Ljava/lang/Object;)V
+   #90 = String             #91           // fortress
+   #91 = Utf8               fortress
+   #92 = Methodref          #93.#94       // com/yungnickyoung/minecraft/betterfortresses/BetterFortressesCommon.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #93 = Class              #95           // com/yungnickyoung/minecraft/betterfortresses/BetterFortressesCommon
+   #94 = NameAndType        #96:#97       // id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #95 = Utf8               com/yungnickyoung/minecraft/betterfortresses/BetterFortressesCommon
+   #96 = Utf8               id
+   #97 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #98 = Methodref          #99.#100      // net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+   #99 = Class              #101          // net/minecraft/resources/ResourceKey
+  #100 = NameAndType        #102:#103     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #101 = Utf8               net/minecraft/resources/ResourceKey
+  #102 = Utf8               create
+  #103 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #104 = Utf8               Signature
+  #105 = Utf8               Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+  #106 = Utf8               RuntimeVisibleAnnotations
+  #107 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #108 = Utf8               Code
+  #109 = Utf8               LineNumberTable
+  #110 = Utf8               LocalVariableTable
+  #111 = Utf8               this
+  #112 = Utf8               Lcom/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin;
+  #113 = Utf8               betterfortresses_fixMobSpawning
+  #114 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #115 = Utf8               betterFortress
+  #116 = Utf8               Lnet/minecraft/world/level/levelgen/structure/Structure;
+  #117 = Utf8               pos
+  #118 = Utf8               Lnet/minecraft/core/BlockPos;
+  #119 = Utf8               level
+  #120 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #121 = Utf8               category
+  #122 = Utf8               structureManager
+  #123 = Utf8               Lnet/minecraft/world/level/StructureManager;
+  #124 = Utf8               cir
+  #125 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #126 = Utf8               LocalVariableTypeTable
+  #127 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #128 = Utf8               StackMapTable
+  #129 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #130 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #131 = Utf8               method
+  #132 = Utf8               isInNetherFortressBounds
+  #133 = Utf8               at
+  #134 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #135 = Utf8               value
+  #136 = Utf8               HEAD
+  #137 = Utf8               cancellable
+  #138 = Integer            1
+  #139 = Utf8               <clinit>
+  #140 = Utf8               SourceFile
+  #141 = Utf8               FixMobSpawningMixin.java
+  #142 = Utf8               RuntimeInvisibleAnnotations
+  #143 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #144 = Utf8               Lnet/minecraft/world/level/NaturalSpawner;
+{
+  private static final net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.Structure> BETTER_FORTRESS;
+    descriptor: Lnet/minecraft/resources/ResourceKey;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #105                         // Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+    RuntimeVisibleAnnotations:
+      0: #107()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.yungnickyoung.minecraft.betterfortresses.mixin.FixMobSpawningMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin;
+
+  private static void betterfortresses_fixMobSpawning(net.minecraft.core.BlockPos, net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.MobCategory, net.minecraft.world.level.StructureManager, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=3, locals=6, args_size=5
+         0: aload_2
+         1: getstatic     #7                  // Field net/minecraft/world/entity/MobCategory.MONSTER:Lnet/minecraft/world/entity/MobCategory;
+         4: if_acmpne     76
+         7: aload_1
+         8: aload_0
+         9: invokevirtual #13                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        12: invokevirtual #19                 // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        15: getstatic     #25                 // Field net/minecraft/world/level/block/Blocks.NETHER_BRICKS:Lnet/minecraft/world/level/block/Block;
+        18: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        21: ifeq          76
+        24: aload_1
+        25: invokevirtual #37                 // Method net/minecraft/server/level/ServerLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        28: getstatic     #41                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+        31: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+        36: getstatic     #53                 // Field BETTER_FORTRESS:Lnet/minecraft/resources/ResourceKey;
+        39: invokeinterface #58,  2           // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+        44: checkcast     #64                 // class net/minecraft/world/level/levelgen/structure/Structure
+        47: astore        5
+        49: aload         5
+        51: ifnull        76
+        54: aload_3
+        55: aload_0
+        56: aload         5
+        58: invokevirtual #66                 // Method net/minecraft/world/level/StructureManager.getStructureAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+        61: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+        64: ifeq          76
+        67: aload         4
+        69: iconst_1
+        70: invokestatic  #78                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        73: invokevirtual #84                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        76: return
+      LineNumberTable:
+        line 33: 0
+        line 34: 24
+        line 35: 49
+        line 36: 67
+        line 39: 76
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           49      27     5 betterFortress   Lnet/minecraft/world/level/levelgen/structure/Structure;
+            0      77     0   pos   Lnet/minecraft/core/BlockPos;
+            0      77     1 level   Lnet/minecraft/server/level/ServerLevel;
+            0      77     2 category   Lnet/minecraft/world/entity/MobCategory;
+            0      77     3 structureManager   Lnet/minecraft/world/level/StructureManager;
+            0      77     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      77     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 76
+    Signature: #129                         // (Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #130(#131=[s#132],#133=[@#134(#135=s#136)],#137=Z#138)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["isInNetherFortressBounds"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #41                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+         3: ldc           #90                 // String fortress
+         5: invokestatic  #92                 // Method com/yungnickyoung/minecraft/betterfortresses/BetterFortressesCommon.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+         8: invokestatic  #98                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        11: putstatic     #53                 // Field BETTER_FORTRESS:Lnet/minecraft/resources/ResourceKey;
+        14: return
+      LineNumberTable:
+        line 22: 0
+        line 24: 5
+        line 22: 8
+}
+SourceFile: "FixMobSpawningMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #143(#135=[c#144])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/NaturalSpawner;]
+    )

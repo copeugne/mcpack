@@ -1,0 +1,1305 @@
+Classfile creatingspace-1.21.1-1.7.18.jar!/com/rae/creatingspace/content/planets/worldgen/CraterCarver.class
+  Last modified May 2, 2026; size 12189 bytes
+  SHA-256 checksum ec68242929e0a379e2fceffd07d87f1b3b8c5e0988bee0f4c342d4b32c6d486e
+  Compiled from "CraterCarver.java"
+public class com.rae.creatingspace.content.planets.worldgen.CraterCarver extends net.minecraft.world.level.levelgen.carver.WorldCarver<com.rae.creatingspace.content.planets.worldgen.CraterCarverConfig>
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #13                         // com/rae/creatingspace/content/planets/worldgen/CraterCarver
+  super_class: #2                         // net/minecraft/world/level/levelgen/carver/WorldCarver
+  interfaces: 0, fields: 1, methods: 7, attributes: 5
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/level/levelgen/carver/WorldCarver."<init>":(Lcom/mojang/serialization/Codec;)V
+    #2 = Class              #4            // net/minecraft/world/level/levelgen/carver/WorldCarver
+    #3 = NameAndType        #5:#6         // "<init>":(Lcom/mojang/serialization/Codec;)V
+    #4 = Utf8               net/minecraft/world/level/levelgen/carver/WorldCarver
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lcom/mojang/serialization/Codec;)V
+    #7 = Class              #8            // java/util/HashMap
+    #8 = Utf8               java/util/HashMap
+    #9 = Methodref          #7.#10        // java/util/HashMap."<init>":()V
+   #10 = NameAndType        #5:#11        // "<init>":()V
+   #11 = Utf8               ()V
+   #12 = Fieldref           #13.#14       // com/rae/creatingspace/content/planets/worldgen/CraterCarver.heightMap:Ljava/util/HashMap;
+   #13 = Class              #15           // com/rae/creatingspace/content/planets/worldgen/CraterCarver
+   #14 = NameAndType        #16:#17       // heightMap:Ljava/util/HashMap;
+   #15 = Utf8               com/rae/creatingspace/content/planets/worldgen/CraterCarver
+   #16 = Utf8               heightMap
+   #17 = Utf8               Ljava/util/HashMap;
+   #18 = InterfaceMethodref #19.#20       // net/minecraft/util/RandomSource.nextInt:(I)I
+   #19 = Class              #21           // net/minecraft/util/RandomSource
+   #20 = NameAndType        #22:#23       // nextInt:(I)I
+   #21 = Utf8               net/minecraft/util/RandomSource
+   #22 = Utf8               nextInt
+   #23 = Utf8               (I)I
+   #24 = Methodref          #13.#25       // com/rae/creatingspace/content/planets/worldgen/CraterCarver.getHeightInInitialChunkIfClose:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;II)I
+   #25 = NameAndType        #26:#27       // getHeightInInitialChunkIfClose:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;II)I
+   #26 = Utf8               getHeightInInitialChunkIfClose
+   #27 = Utf8               (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;II)I
+   #28 = Methodref          #29.#30       // net/minecraft/world/level/ChunkPos.getBlockAt:(III)Lnet/minecraft/core/BlockPos;
+   #29 = Class              #31           // net/minecraft/world/level/ChunkPos
+   #30 = NameAndType        #32:#33       // getBlockAt:(III)Lnet/minecraft/core/BlockPos;
+   #31 = Utf8               net/minecraft/world/level/ChunkPos
+   #32 = Utf8               getBlockAt
+   #33 = Utf8               (III)Lnet/minecraft/core/BlockPos;
+   #34 = Methodref          #35.#36       // net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #35 = Class              #37           // net/minecraft/core/BlockPos
+   #36 = NameAndType        #38:#39       // mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #37 = Utf8               net/minecraft/core/BlockPos
+   #38 = Utf8               mutable
+   #39 = Utf8               ()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #40 = Double             8.0d
+   #42 = InterfaceMethodref #19.#43       // net/minecraft/util/RandomSource.nextDouble:()D
+   #43 = NameAndType        #44:#45       // nextDouble:()D
+   #44 = Utf8               nextDouble
+   #45 = Utf8               ()D
+   #46 = Fieldref           #47.#48       // com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.maxRadius:I
+   #47 = Class              #49           // com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig
+   #48 = NameAndType        #50:#51       // maxRadius:I
+   #49 = Utf8               com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig
+   #50 = Utf8               maxRadius
+   #51 = Utf8               I
+   #52 = Fieldref           #47.#53       // com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.minRadius:I
+   #53 = NameAndType        #54:#51       // minRadius:I
+   #54 = Utf8               minRadius
+   #55 = InterfaceMethodref #19.#56       // net/minecraft/util/RandomSource.nextBoolean:()Z
+   #56 = NameAndType        #57:#58       // nextBoolean:()Z
+   #57 = Utf8               nextBoolean
+   #58 = Utf8               ()Z
+   #59 = Fieldref           #47.#60       // com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.idealRangeOffset:I
+   #60 = NameAndType        #61:#51       // idealRangeOffset:I
+   #61 = Utf8               idealRangeOffset
+   #62 = Double             0.5d
+   #64 = Double             0.3d
+   #66 = Methodref          #67.#68       // net/minecraft/world/level/chunk/ChunkAccess.hasAnyStructureReferences:()Z
+   #67 = Class              #69           // net/minecraft/world/level/chunk/ChunkAccess
+   #68 = NameAndType        #70:#58       // hasAnyStructureReferences:()Z
+   #69 = Utf8               net/minecraft/world/level/chunk/ChunkAccess
+   #70 = Utf8               hasAnyStructureReferences
+   #71 = Methodref          #67.#72       // net/minecraft/world/level/chunk/ChunkAccess.getAllStarts:()Ljava/util/Map;
+   #72 = NameAndType        #73:#74       // getAllStarts:()Ljava/util/Map;
+   #73 = Utf8               getAllStarts
+   #74 = Utf8               ()Ljava/util/Map;
+   #75 = InterfaceMethodref #76.#77       // java/util/Map.entrySet:()Ljava/util/Set;
+   #76 = Class              #78           // java/util/Map
+   #77 = NameAndType        #79:#80       // entrySet:()Ljava/util/Set;
+   #78 = Utf8               java/util/Map
+   #79 = Utf8               entrySet
+   #80 = Utf8               ()Ljava/util/Set;
+   #81 = InterfaceMethodref #82.#83       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #82 = Class              #84           // java/util/Set
+   #83 = NameAndType        #85:#86       // iterator:()Ljava/util/Iterator;
+   #84 = Utf8               java/util/Set
+   #85 = Utf8               iterator
+   #86 = Utf8               ()Ljava/util/Iterator;
+   #87 = InterfaceMethodref #88.#89       // java/util/Iterator.hasNext:()Z
+   #88 = Class              #90           // java/util/Iterator
+   #89 = NameAndType        #91:#58       // hasNext:()Z
+   #90 = Utf8               java/util/Iterator
+   #91 = Utf8               hasNext
+   #92 = InterfaceMethodref #88.#93       // java/util/Iterator.next:()Ljava/lang/Object;
+   #93 = NameAndType        #94:#95       // next:()Ljava/lang/Object;
+   #94 = Utf8               next
+   #95 = Utf8               ()Ljava/lang/Object;
+   #96 = Class              #97           // java/util/Map$Entry
+   #97 = Utf8               java/util/Map$Entry
+   #98 = InterfaceMethodref #96.#99       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #99 = NameAndType        #100:#95      // getKey:()Ljava/lang/Object;
+  #100 = Utf8               getKey
+  #101 = Class              #102          // net/minecraft/world/level/levelgen/structure/Structure
+  #102 = Utf8               net/minecraft/world/level/levelgen/structure/Structure
+  #103 = Methodref          #101.#104     // net/minecraft/world/level/levelgen/structure/Structure.step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #104 = NameAndType        #105:#106     // step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #105 = Utf8               step
+  #106 = Utf8               ()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #107 = Fieldref           #108.#109     // net/minecraft/world/level/levelgen/GenerationStep$Decoration.SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #108 = Class              #110          // net/minecraft/world/level/levelgen/GenerationStep$Decoration
+  #109 = NameAndType        #111:#112     // SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #110 = Utf8               net/minecraft/world/level/levelgen/GenerationStep$Decoration
+  #111 = Utf8               SURFACE_STRUCTURES
+  #112 = Utf8               Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #113 = Methodref          #108.#114     // net/minecraft/world/level/levelgen/GenerationStep$Decoration.equals:(Ljava/lang/Object;)Z
+  #114 = NameAndType        #115:#116     // equals:(Ljava/lang/Object;)Z
+  #115 = Utf8               equals
+  #116 = Utf8               (Ljava/lang/Object;)Z
+  #117 = Methodref          #67.#118      // net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #118 = NameAndType        #119:#120     // getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #119 = Utf8               getPos
+  #120 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #121 = InterfaceMethodref #96.#122      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #122 = NameAndType        #123:#95      // getValue:()Ljava/lang/Object;
+  #123 = Utf8               getValue
+  #124 = Class              #125          // net/minecraft/world/level/levelgen/structure/StructureStart
+  #125 = Utf8               net/minecraft/world/level/levelgen/structure/StructureStart
+  #126 = Methodref          #124.#127     // net/minecraft/world/level/levelgen/structure/StructureStart.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #127 = NameAndType        #128:#129     // getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #128 = Utf8               getBoundingBox
+  #129 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #130 = Methodref          #131.#132     // net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+  #131 = Class              #133          // net/minecraft/world/level/levelgen/structure/BoundingBox
+  #132 = NameAndType        #134:#135     // getCenter:()Lnet/minecraft/core/BlockPos;
+  #133 = Utf8               net/minecraft/world/level/levelgen/structure/BoundingBox
+  #134 = Utf8               getCenter
+  #135 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #136 = Methodref          #35.#137      // net/minecraft/core/BlockPos.getX:()I
+  #137 = NameAndType        #138:#139     // getX:()I
+  #138 = Utf8               getX
+  #139 = Utf8               ()I
+  #140 = Methodref          #29.#141      // net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+  #141 = NameAndType        #142:#23      // getBlockX:(I)I
+  #142 = Utf8               getBlockX
+  #143 = Methodref          #144.#145     // java/lang/Math.abs:(I)I
+  #144 = Class              #146          // java/lang/Math
+  #145 = NameAndType        #147:#23      // abs:(I)I
+  #146 = Utf8               java/lang/Math
+  #147 = Utf8               abs
+  #148 = Methodref          #35.#149      // net/minecraft/core/BlockPos.getZ:()I
+  #149 = NameAndType        #150:#139     // getZ:()I
+  #150 = Utf8               getZ
+  #151 = Methodref          #29.#152      // net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+  #152 = NameAndType        #153:#23      // getBlockZ:(I)I
+  #153 = Utf8               getBlockZ
+  #154 = Double             32.0d
+  #156 = Double             6.0d
+  #158 = Double             5.0d
+  #160 = Methodref          #131.#161     // net/minecraft/world/level/levelgen/structure/BoundingBox.moved:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #161 = NameAndType        #162:#163     // moved:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #162 = Utf8               moved
+  #163 = Utf8               (III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #164 = Methodref          #101.#165     // net/minecraft/world/level/levelgen/structure/Structure.adjustBoundingBox:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #165 = NameAndType        #166:#167     // adjustBoundingBox:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #166 = Utf8               adjustBoundingBox
+  #167 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #168 = Class              #169          // net/minecraft/core/BlockPos$MutableBlockPos
+  #169 = Utf8               net/minecraft/core/BlockPos$MutableBlockPos
+  #170 = Methodref          #168.#10      // net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+  #171 = Methodref          #168.#172     // net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #172 = NameAndType        #173:#174     // set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #173 = Utf8               set
+  #174 = Utf8               (III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #175 = Methodref          #67.#176      // net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #176 = NameAndType        #177:#178     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #177 = Utf8               getBlockState
+  #178 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #179 = Methodref          #180.#181     // net/minecraft/world/level/block/state/BlockState.isAir:()Z
+  #180 = Class              #182          // net/minecraft/world/level/block/state/BlockState
+  #181 = NameAndType        #183:#58      // isAir:()Z
+  #182 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #183 = Utf8               isAir
+  #184 = Fieldref           #185.#186     // net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+  #185 = Class              #187          // net/minecraft/core/Direction
+  #186 = NameAndType        #188:#189     // UP:Lnet/minecraft/core/Direction;
+  #187 = Utf8               net/minecraft/core/Direction
+  #188 = Utf8               UP
+  #189 = Utf8               Lnet/minecraft/core/Direction;
+  #190 = Methodref          #168.#191     // net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #191 = NameAndType        #192:#193     // move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #192 = Utf8               move
+  #193 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #194 = Fieldref           #185.#195     // net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+  #195 = NameAndType        #196:#189     // DOWN:Lnet/minecraft/core/Direction;
+  #196 = Utf8               DOWN
+  #197 = Methodref          #168.#198     // net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+  #198 = NameAndType        #199:#139     // getY:()I
+  #199 = Utf8               getY
+  #200 = Methodref          #201.#202     // net/minecraft/world/level/chunk/CarvingMask.get:(III)Z
+  #201 = Class              #203          // net/minecraft/world/level/chunk/CarvingMask
+  #202 = NameAndType        #204:#205     // get:(III)Z
+  #203 = Utf8               net/minecraft/world/level/chunk/CarvingMask
+  #204 = Utf8               get
+  #205 = Utf8               (III)Z
+  #206 = Fieldref           #13.#207      // com/rae/creatingspace/content/planets/worldgen/CraterCarver.AIR:Lnet/minecraft/world/level/block/state/BlockState;
+  #207 = NameAndType        #208:#209     // AIR:Lnet/minecraft/world/level/block/state/BlockState;
+  #208 = Utf8               AIR
+  #209 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #210 = Methodref          #67.#211      // net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #211 = NameAndType        #212:#213     // setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #212 = Utf8               setBlockState
+  #213 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #214 = Methodref          #201.#215     // net/minecraft/world/level/chunk/CarvingMask.set:(III)V
+  #215 = NameAndType        #173:#216     // set:(III)V
+  #216 = Utf8               (III)V
+  #217 = Methodref          #168.#218     // net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #218 = NameAndType        #173:#219     // set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #219 = Utf8               (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #220 = Methodref          #168.#221     // net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #221 = NameAndType        #192:#222     // move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #222 = Utf8               (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #223 = Methodref          #224.#225     // net/minecraft/world/level/levelgen/carver/CarvingContext.topMaterial:(Ljava/util/function/Function;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Z)Ljava/util/Optional;
+  #224 = Class              #226          // net/minecraft/world/level/levelgen/carver/CarvingContext
+  #225 = NameAndType        #227:#228     // topMaterial:(Ljava/util/function/Function;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Z)Ljava/util/Optional;
+  #226 = Utf8               net/minecraft/world/level/levelgen/carver/CarvingContext
+  #227 = Utf8               topMaterial
+  #228 = Utf8               (Ljava/util/function/Function;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Z)Ljava/util/Optional;
+  #229 = InvokeDynamic      #0:#230       // #0:accept:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Ljava/util/function/Consumer;
+  #230 = NameAndType        #231:#232     // accept:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Ljava/util/function/Consumer;
+  #231 = Utf8               accept
+  #232 = Utf8               (Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Ljava/util/function/Consumer;
+  #233 = Methodref          #234.#235     // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #234 = Class              #236          // java/util/Optional
+  #235 = NameAndType        #237:#238     // ifPresent:(Ljava/util/function/Consumer;)V
+  #236 = Utf8               java/util/Optional
+  #237 = Utf8               ifPresent
+  #238 = Utf8               (Ljava/util/function/Consumer;)V
+  #239 = Double             -1.0d
+  #241 = Methodref          #67.#242      // net/minecraft/world/level/chunk/ChunkAccess.getMaxBuildHeight:()I
+  #242 = NameAndType        #243:#139     // getMaxBuildHeight:()I
+  #243 = Utf8               getMaxBuildHeight
+  #244 = Methodref          #245.#246     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #245 = Class              #247          // java/lang/Integer
+  #246 = NameAndType        #248:#249     // valueOf:(I)Ljava/lang/Integer;
+  #247 = Utf8               java/lang/Integer
+  #248 = Utf8               valueOf
+  #249 = Utf8               (I)Ljava/lang/Integer;
+  #250 = Methodref          #251.#252     // net/createmod/catnip/data/Couple.create:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Couple;
+  #251 = Class              #253          // net/createmod/catnip/data/Couple
+  #252 = NameAndType        #254:#255     // create:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Couple;
+  #253 = Utf8               net/createmod/catnip/data/Couple
+  #254 = Utf8               create
+  #255 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Couple;
+  #256 = Methodref          #29.#257      // net/minecraft/world/level/ChunkPos.getChessboardDistance:(Lnet/minecraft/world/level/ChunkPos;)I
+  #257 = NameAndType        #258:#259     // getChessboardDistance:(Lnet/minecraft/world/level/ChunkPos;)I
+  #258 = Utf8               getChessboardDistance
+  #259 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)I
+  #260 = Methodref          #7.#261       // java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+  #261 = NameAndType        #262:#116     // containsKey:(Ljava/lang/Object;)Z
+  #262 = Utf8               containsKey
+  #263 = Methodref          #7.#264       // java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #264 = NameAndType        #204:#265     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #265 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #266 = Methodref          #245.#267     // java/lang/Integer.intValue:()I
+  #267 = NameAndType        #268:#139     // intValue:()I
+  #268 = Utf8               intValue
+  #269 = Methodref          #67.#270      // net/minecraft/world/level/chunk/ChunkAccess.getMinBuildHeight:()I
+  #270 = NameAndType        #271:#139     // getMinBuildHeight:()I
+  #271 = Utf8               getMinBuildHeight
+  #272 = Class              #273          // com/rae/creatingspace/content/planets/worldgen/CraterCarver$1
+  #273 = Utf8               com/rae/creatingspace/content/planets/worldgen/CraterCarver$1
+  #274 = Methodref          #272.#275     // com/rae/creatingspace/content/planets/worldgen/CraterCarver$1."<init>":(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;Lnet/minecraft/world/level/ChunkPos;III)V
+  #275 = NameAndType        #5:#276       // "<init>":(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;Lnet/minecraft/world/level/ChunkPos;III)V
+  #276 = Utf8               (Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;Lnet/minecraft/world/level/ChunkPos;III)V
+  #277 = Methodref          #224.#278     // net/minecraft/world/level/levelgen/carver/CarvingContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+  #278 = NameAndType        #279:#280     // randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+  #279 = Utf8               randomState
+  #280 = Utf8               ()Lnet/minecraft/world/level/levelgen/RandomState;
+  #281 = Methodref          #282.#283     // net/minecraft/world/level/levelgen/RandomState.router:()Lnet/minecraft/world/level/levelgen/NoiseRouter;
+  #282 = Class              #284          // net/minecraft/world/level/levelgen/RandomState
+  #283 = NameAndType        #285:#286     // router:()Lnet/minecraft/world/level/levelgen/NoiseRouter;
+  #284 = Utf8               net/minecraft/world/level/levelgen/RandomState
+  #285 = Utf8               router
+  #286 = Utf8               ()Lnet/minecraft/world/level/levelgen/NoiseRouter;
+  #287 = Methodref          #288.#289     // net/minecraft/world/level/levelgen/NoiseRouter.finalDensity:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+  #288 = Class              #290          // net/minecraft/world/level/levelgen/NoiseRouter
+  #289 = NameAndType        #291:#292     // finalDensity:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+  #290 = Utf8               net/minecraft/world/level/levelgen/NoiseRouter
+  #291 = Utf8               finalDensity
+  #292 = Utf8               ()Lnet/minecraft/world/level/levelgen/DensityFunction;
+  #293 = InterfaceMethodref #294.#295     // net/minecraft/world/level/levelgen/DensityFunction.compute:(Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;)D
+  #294 = Class              #296          // net/minecraft/world/level/levelgen/DensityFunction
+  #295 = NameAndType        #297:#298     // compute:(Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;)D
+  #296 = Utf8               net/minecraft/world/level/levelgen/DensityFunction
+  #297 = Utf8               compute
+  #298 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;)D
+  #299 = Methodref          #7.#300       // java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #300 = NameAndType        #301:#302     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #301 = Utf8               put
+  #302 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #303 = InterfaceMethodref #19.#304      // net/minecraft/util/RandomSource.nextFloat:()F
+  #304 = NameAndType        #305:#306     // nextFloat:()F
+  #305 = Utf8               nextFloat
+  #306 = Utf8               ()F
+  #307 = Fieldref           #47.#308      // com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.probability:F
+  #308 = NameAndType        #309:#310     // probability:F
+  #309 = Utf8               probability
+  #310 = Utf8               F
+  #311 = Methodref          #13.#312      // com/rae/creatingspace/content/planets/worldgen/CraterCarver.isStartChunk:(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/util/RandomSource;)Z
+  #312 = NameAndType        #313:#314     // isStartChunk:(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/util/RandomSource;)Z
+  #313 = Utf8               isStartChunk
+  #314 = Utf8               (Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/util/RandomSource;)Z
+  #315 = Methodref          #13.#316      // com/rae/creatingspace/content/planets/worldgen/CraterCarver.carve:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+  #316 = NameAndType        #317:#318     // carve:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+  #317 = Utf8               carve
+  #318 = Utf8               (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+  #319 = Utf8               Signature
+  #320 = Utf8               Ljava/util/HashMap<Lnet/createmod/catnip/data/Couple<Ljava/lang/Integer;>;Ljava/lang/Integer;>;
+  #321 = Utf8               Code
+  #322 = Utf8               LineNumberTable
+  #323 = Utf8               LocalVariableTable
+  #324 = Utf8               this
+  #325 = Utf8               Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+  #326 = Utf8               codec
+  #327 = Utf8               Lcom/mojang/serialization/Codec;
+  #328 = Utf8               sqrtY
+  #329 = Utf8               D
+  #330 = Utf8               yDev
+  #331 = Utf8               craterDepth
+  #332 = Utf8               boundingBox
+  #333 = Utf8               Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #334 = Utf8               xDev
+  #335 = Utf8               zDev
+  #336 = Utf8               entry
+  #337 = Utf8               Ljava/util/Map$Entry;
+  #338 = Utf8               dug
+  #339 = Utf8               copy
+  #340 = Utf8               Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #341 = Utf8               toDig
+  #342 = Utf8               innerChunkZ
+  #343 = Utf8               innerChunkX
+  #344 = Utf8               context
+  #345 = Utf8               Lnet/minecraft/world/level/levelgen/carver/CarvingContext;
+  #346 = Utf8               config
+  #347 = Utf8               Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;
+  #348 = Utf8               chunk
+  #349 = Utf8               Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #350 = Utf8               posToBiome
+  #351 = Utf8               Ljava/util/function/Function;
+  #352 = Utf8               random
+  #353 = Utf8               Lnet/minecraft/util/RandomSource;
+  #354 = Utf8               aquiferSampler
+  #355 = Utf8               Lnet/minecraft/world/level/levelgen/Aquifer;
+  #356 = Utf8               pos
+  #357 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #358 = Utf8               carvingMask
+  #359 = Utf8               Lnet/minecraft/world/level/chunk/CarvingMask;
+  #360 = Utf8               x
+  #361 = Utf8               z
+  #362 = Utf8               y
+  #363 = Utf8               craterCenter
+  #364 = Utf8               Lnet/minecraft/core/BlockPos;
+  #365 = Utf8               radius
+  #366 = Utf8               depthMultiplier
+  #367 = Utf8               fresh
+  #368 = Utf8               Z
+  #369 = Utf8               LocalVariableTypeTable
+  #370 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;
+  #371 = Utf8               Ljava/util/function/Function<Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+  #372 = Utf8               StackMapTable
+  #373 = Class              #374          // java/util/function/Function
+  #374 = Utf8               java/util/function/Function
+  #375 = Class              #376          // net/minecraft/world/level/levelgen/Aquifer
+  #376 = Utf8               net/minecraft/world/level/levelgen/Aquifer
+  #377 = Utf8               (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function<Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+  #378 = Utf8               finalY
+  #379 = Utf8               functionContext
+  #380 = Utf8               Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;
+  #381 = Utf8               density
+  #382 = Utf8               coor
+  #383 = Utf8               Lnet/createmod/catnip/data/Couple;
+  #384 = Utf8               Lnet/createmod/catnip/data/Couple<Ljava/lang/Integer;>;
+  #385 = Utf8               (Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;Lnet/minecraft/util/RandomSource;)Z
+  #386 = Utf8               MethodParameters
+  #387 = Utf8               (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+  #388 = Utf8               lambda$carve$0
+  #389 = Utf8               (Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #390 = Utf8               blockStates
+  #391 = Utf8               Lnet/minecraft/world/level/levelgen/carver/WorldCarver<Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;>;
+  #392 = Utf8               SourceFile
+  #393 = Utf8               CraterCarver.java
+  #394 = Utf8               NestMembers
+  #395 = Utf8               BootstrapMethods
+  #396 = MethodType         #397          //  (Ljava/lang/Object;)V
+  #397 = Utf8               (Ljava/lang/Object;)V
+  #398 = MethodHandle       6:#399        // REF_invokeStatic com/rae/creatingspace/content/planets/worldgen/CraterCarver.lambda$carve$0:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #399 = Methodref          #13.#400      // com/rae/creatingspace/content/planets/worldgen/CraterCarver.lambda$carve$0:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #400 = NameAndType        #388:#389     // lambda$carve$0:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #401 = MethodType         #402          //  (Lnet/minecraft/world/level/block/state/BlockState;)V
+  #402 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)V
+  #403 = MethodHandle       6:#404        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #404 = Methodref          #405.#406     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #405 = Class              #407          // java/lang/invoke/LambdaMetafactory
+  #406 = NameAndType        #408:#409     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #407 = Utf8               java/lang/invoke/LambdaMetafactory
+  #408 = Utf8               metafactory
+  #409 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #410 = Utf8               InnerClasses
+  #411 = Utf8               MutableBlockPos
+  #412 = Utf8               Entry
+  #413 = Class              #414          // net/minecraft/world/level/levelgen/GenerationStep
+  #414 = Utf8               net/minecraft/world/level/levelgen/GenerationStep
+  #415 = Utf8               Decoration
+  #416 = Class              #417          // net/minecraft/world/level/levelgen/DensityFunction$FunctionContext
+  #417 = Utf8               net/minecraft/world/level/levelgen/DensityFunction$FunctionContext
+  #418 = Utf8               FunctionContext
+  #419 = Class              #420          // java/lang/invoke/MethodHandles$Lookup
+  #420 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #421 = Class              #422          // java/lang/invoke/MethodHandles
+  #422 = Utf8               java/lang/invoke/MethodHandles
+  #423 = Utf8               Lookup
+{
+  public java.util.HashMap<net.createmod.catnip.data.Couple<java.lang.Integer>, java.lang.Integer> heightMap;
+    descriptor: Ljava/util/HashMap;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #320                         // Ljava/util/HashMap<Lnet/createmod/catnip/data/Couple<Ljava/lang/Integer;>;Ljava/lang/Integer;>;
+
+  public com.rae.creatingspace.content.planets.worldgen.CraterCarver(com.mojang.serialization.Codec);
+    descriptor: (Lcom/mojang/serialization/Codec;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/carver/WorldCarver."<init>":(Lcom/mojang/serialization/Codec;)V
+         5: aload_0
+         6: new           #7                  // class java/util/HashMap
+         9: dup
+        10: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+        13: putfield      #12                 // Field heightMap:Ljava/util/HashMap;
+        16: return
+      LineNumberTable:
+        line 30: 0
+        line 28: 5
+        line 31: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+            0      17     1 codec   Lcom/mojang/serialization/Codec;
+
+  public boolean carve(net.minecraft.world.level.levelgen.carver.CarvingContext, com.rae.creatingspace.content.planets.worldgen.CraterCarverConfig, net.minecraft.world.level.chunk.ChunkAccess, java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.Aquifer, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.chunk.CarvingMask);
+    descriptor: (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=7, locals=33, args_size=9
+         0: aload         5
+         2: bipush        16
+         4: invokeinterface #18,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+         9: istore        9
+        11: aload         5
+        13: bipush        16
+        15: invokeinterface #18,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        20: istore        10
+        22: aload_0
+        23: aload_1
+        24: aload_2
+        25: aload_3
+        26: aload         7
+        28: iload         9
+        30: iload         10
+        32: invokevirtual #24                 // Method getHeightInInitialChunkIfClose:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;II)I
+        35: istore        11
+        37: aload         7
+        39: iload         9
+        41: iload         11
+        43: iload         10
+        45: invokevirtual #28                 // Method net/minecraft/world/level/ChunkPos.getBlockAt:(III)Lnet/minecraft/core/BlockPos;
+        48: astore        12
+        50: aload         12
+        52: invokevirtual #34                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+        55: astore        13
+        57: ldc2_w        #40                 // double 8.0d
+        60: aload         5
+        62: invokeinterface #42,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+        67: aload_2
+        68: getfield      #46                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.maxRadius:I
+        71: aload_2
+        72: getfield      #52                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.minRadius:I
+        75: isub
+        76: i2d
+        77: dmul
+        78: dadd
+        79: dstore        14
+        81: aload         5
+        83: invokeinterface #55,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+        88: ifeq          107
+        91: dload         14
+        93: aload_2
+        94: getfield      #52                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.minRadius:I
+        97: aload_2
+        98: getfield      #59                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.idealRangeOffset:I
+       101: iadd
+       102: i2d
+       103: dcmpg
+       104: iflt          123
+       107: dload         14
+       109: aload_2
+       110: getfield      #46                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.maxRadius:I
+       113: aload_2
+       114: getfield      #59                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.idealRangeOffset:I
+       117: isub
+       118: i2d
+       119: dcmpl
+       120: ifle          147
+       123: ldc2_w        #40                 // double 8.0d
+       126: aload         5
+       128: invokeinterface #42,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+       133: aload_2
+       134: getfield      #46                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.maxRadius:I
+       137: aload_2
+       138: getfield      #52                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.minRadius:I
+       141: isub
+       142: i2d
+       143: dmul
+       144: dadd
+       145: dstore        14
+       147: dconst_1
+       148: aload         5
+       150: invokeinterface #42,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+       155: ldc2_w        #62                 // double 0.5d
+       158: dsub
+       159: ldc2_w        #64                 // double 0.3d
+       162: dmul
+       163: dsub
+       164: dstore        16
+       166: aload         5
+       168: bipush        16
+       170: invokeinterface #18,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       175: iconst_1
+       176: if_icmpne     183
+       179: iconst_1
+       180: goto          184
+       183: iconst_0
+       184: istore        18
+       186: aload_3
+       187: invokevirtual #66                 // Method net/minecraft/world/level/chunk/ChunkAccess.hasAnyStructureReferences:()Z
+       190: ifeq          477
+       193: aload_3
+       194: invokevirtual #71                 // Method net/minecraft/world/level/chunk/ChunkAccess.getAllStarts:()Ljava/util/Map;
+       197: invokeinterface #75,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       202: invokeinterface #81,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       207: astore        19
+       209: aload         19
+       211: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       216: ifeq          477
+       219: aload         19
+       221: invokeinterface #92,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       226: checkcast     #96                 // class java/util/Map$Entry
+       229: astore        20
+       231: aload         20
+       233: invokeinterface #98,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       238: checkcast     #101                // class net/minecraft/world/level/levelgen/structure/Structure
+       241: invokevirtual #103                // Method net/minecraft/world/level/levelgen/structure/Structure.step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       244: getstatic     #107                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       247: invokevirtual #113                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.equals:(Ljava/lang/Object;)Z
+       250: ifeq          474
+       253: aload_3
+       254: invokevirtual #117                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+       257: aload         20
+       259: invokeinterface #121,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       264: checkcast     #124                // class net/minecraft/world/level/levelgen/structure/StructureStart
+       267: invokevirtual #126                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       270: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+       273: invokevirtual #136                // Method net/minecraft/core/BlockPos.getX:()I
+       276: invokevirtual #140                // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+       279: aload         12
+       281: invokevirtual #136                // Method net/minecraft/core/BlockPos.getX:()I
+       284: isub
+       285: invokestatic  #143                // Method java/lang/Math.abs:(I)I
+       288: i2d
+       289: dstore        21
+       291: aload_3
+       292: invokevirtual #117                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+       295: aload         20
+       297: invokeinterface #121,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       302: checkcast     #124                // class net/minecraft/world/level/levelgen/structure/StructureStart
+       305: invokevirtual #126                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       308: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+       311: invokevirtual #148                // Method net/minecraft/core/BlockPos.getZ:()I
+       314: invokevirtual #151                // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+       317: aload         12
+       319: invokevirtual #148                // Method net/minecraft/core/BlockPos.getZ:()I
+       322: isub
+       323: invokestatic  #143                // Method java/lang/Math.abs:(I)I
+       326: i2d
+       327: dstore        23
+       329: dload         21
+       331: dconst_0
+       332: dcmpl
+       333: iflt          474
+       336: dload         21
+       338: ldc2_w        #154                // double 32.0d
+       341: dcmpg
+       342: ifge          474
+       345: dload         23
+       347: dconst_0
+       348: dcmpl
+       349: iflt          474
+       352: dload         23
+       354: ldc2_w        #154                // double 32.0d
+       357: dcmpg
+       358: ifge          474
+       361: dload         21
+       363: dload         21
+       365: dmul
+       366: dload         23
+       368: dload         23
+       370: dmul
+       371: dadd
+       372: dload         14
+       374: dload         14
+       376: dmul
+       377: dcmpg
+       378: ifge          474
+       381: dload         21
+       383: dload         14
+       385: ddiv
+       386: dstore        21
+       388: dload         23
+       390: dload         14
+       392: ddiv
+       393: dstore        23
+       395: dload         21
+       397: dload         21
+       399: dmul
+       400: dload         23
+       402: dload         23
+       404: dmul
+       405: dadd
+       406: dstore        25
+       408: dload         25
+       410: dload         25
+       412: dmul
+       413: ldc2_w        #156                // double 6.0d
+       416: dmul
+       417: dstore        27
+       419: ldc2_w        #158                // double 5.0d
+       422: dload         27
+       424: dsub
+       425: dstore        29
+       427: dload         29
+       429: dload         16
+       431: dmul
+       432: dstore        29
+       434: aload         20
+       436: invokeinterface #121,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       441: checkcast     #124                // class net/minecraft/world/level/levelgen/structure/StructureStart
+       444: invokevirtual #126                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       447: iconst_0
+       448: dload         29
+       450: dneg
+       451: d2i
+       452: iconst_0
+       453: invokevirtual #160                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.moved:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       456: astore        31
+       458: aload         20
+       460: invokeinterface #98,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       465: checkcast     #101                // class net/minecraft/world/level/levelgen/structure/Structure
+       468: aload         31
+       470: invokevirtual #164                // Method net/minecraft/world/level/levelgen/structure/Structure.adjustBoundingBox:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       473: pop
+       474: goto          209
+       477: iconst_0
+       478: istore        19
+       480: iload         19
+       482: bipush        16
+       484: if_icmpge     928
+       487: iconst_0
+       488: istore        20
+       490: iload         20
+       492: bipush        16
+       494: if_icmpge     922
+       497: dconst_0
+       498: dstore        21
+       500: aload_3
+       501: invokevirtual #117                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+       504: iload         19
+       506: invokevirtual #140                // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+       509: aload         12
+       511: invokevirtual #136                // Method net/minecraft/core/BlockPos.getX:()I
+       514: isub
+       515: invokestatic  #143                // Method java/lang/Math.abs:(I)I
+       518: i2d
+       519: dstore        23
+       521: aload_3
+       522: invokevirtual #117                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+       525: iload         20
+       527: invokevirtual #151                // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+       530: aload         12
+       532: invokevirtual #148                // Method net/minecraft/core/BlockPos.getZ:()I
+       535: isub
+       536: invokestatic  #143                // Method java/lang/Math.abs:(I)I
+       539: i2d
+       540: dstore        25
+       542: dload         23
+       544: dconst_0
+       545: dcmpl
+       546: iflt          916
+       549: dload         23
+       551: ldc2_w        #154                // double 32.0d
+       554: dcmpg
+       555: ifge          916
+       558: dload         25
+       560: dconst_0
+       561: dcmpl
+       562: iflt          916
+       565: dload         25
+       567: ldc2_w        #154                // double 32.0d
+       570: dcmpg
+       571: ifge          916
+       574: dload         23
+       576: dload         23
+       578: dmul
+       579: dload         25
+       581: dload         25
+       583: dmul
+       584: dadd
+       585: dload         14
+       587: dload         14
+       589: dmul
+       590: dcmpg
+       591: ifge          658
+       594: dload         23
+       596: dload         14
+       598: ddiv
+       599: dstore        23
+       601: dload         25
+       603: dload         14
+       605: ddiv
+       606: dstore        25
+       608: dload         23
+       610: dload         23
+       612: dmul
+       613: dload         25
+       615: dload         25
+       617: dmul
+       618: dadd
+       619: dstore        27
+       621: dload         27
+       623: dload         27
+       625: dmul
+       626: ldc2_w        #156                // double 6.0d
+       629: dmul
+       630: dstore        29
+       632: ldc2_w        #158                // double 5.0d
+       635: dload         29
+       637: dsub
+       638: dstore        31
+       640: dload         31
+       642: dload         16
+       644: dmul
+       645: dstore        31
+       647: dload         31
+       649: dconst_0
+       650: dcmpl
+       651: ifle          658
+       654: dload         31
+       656: dstore        21
+       658: dload         21
+       660: dconst_1
+       661: dcmpl
+       662: iflt          682
+       665: dload         21
+       667: dconst_1
+       668: dadd
+       669: dstore        21
+       671: iload         18
+       673: ifeq          682
+       676: dload         21
+       678: dconst_1
+       679: dadd
+       680: dstore        21
+       682: new           #168                // class net/minecraft/core/BlockPos$MutableBlockPos
+       685: dup
+       686: invokespecial #170                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       689: astore        27
+       691: aload         13
+       693: iload         19
+       695: iload         11
+       697: iload         20
+       699: invokevirtual #171                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       702: pop
+       703: dload         21
+       705: dconst_0
+       706: dcmpl
+       707: ifle          740
+       710: aload_3
+       711: aload         13
+       713: invokevirtual #175                // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       716: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       719: ifne          740
+       722: aload         13
+       724: getstatic     #184                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+       727: invokevirtual #190                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       730: pop
+       731: dload         21
+       733: dconst_1
+       734: dadd
+       735: dstore        21
+       737: goto          710
+       740: iconst_0
+       741: istore        28
+       743: iload         28
+       745: i2d
+       746: dload         21
+       748: dcmpg
+       749: ifge          916
+       752: aload         13
+       754: getstatic     #194                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+       757: invokevirtual #190                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       760: pop
+       761: aload_3
+       762: aload         13
+       764: invokevirtual #175                // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       767: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       770: ifeq          795
+       773: aload         8
+       775: iload         19
+       777: aload         13
+       779: invokevirtual #197                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       782: iload         20
+       784: invokevirtual #200                // Method net/minecraft/world/level/chunk/CarvingMask.get:(III)Z
+       787: ifne          795
+       790: iload         28
+       792: ifle          901
+       795: aload         8
+       797: iload         19
+       799: aload         13
+       801: invokevirtual #197                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       804: iload         20
+       806: invokevirtual #200                // Method net/minecraft/world/level/chunk/CarvingMask.get:(III)Z
+       809: ifne          910
+       812: aload_3
+       813: aload         13
+       815: getstatic     #206                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+       818: iconst_1
+       819: invokevirtual #210                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+       822: pop
+       823: aload         8
+       825: iload         19
+       827: aload         13
+       829: invokevirtual #197                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       832: iload         20
+       834: invokevirtual #214                // Method net/minecraft/world/level/chunk/CarvingMask.set:(III)V
+       837: iload         18
+       839: ifne          910
+       842: iload         28
+       844: iconst_1
+       845: iadd
+       846: i2d
+       847: dload         21
+       849: dcmpl
+       850: iflt          910
+       853: aload_3
+       854: aload         27
+       856: aload         13
+       858: invokevirtual #217                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       861: getstatic     #194                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+       864: iconst_2
+       865: invokevirtual #220                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       868: invokevirtual #175                // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       871: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       874: ifne          910
+       877: aload_1
+       878: aload         4
+       880: aload_3
+       881: aload         13
+       883: iconst_1
+       884: invokevirtual #223                // Method net/minecraft/world/level/levelgen/carver/CarvingContext.topMaterial:(Ljava/util/function/Function;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Z)Ljava/util/Optional;
+       887: aload_3
+       888: aload         13
+       890: invokedynamic #229,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Ljava/util/function/Consumer;
+       895: invokevirtual #233                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+       898: goto          910
+       901: iinc          28, -1
+       904: dload         21
+       906: dconst_1
+       907: dsub
+       908: dstore        21
+       910: iinc          28, 1
+       913: goto          743
+       916: iinc          20, 1
+       919: goto          490
+       922: iinc          19, 1
+       925: goto          480
+       928: iconst_1
+       929: ireturn
+      LineNumberTable:
+        line 35: 0
+        line 36: 11
+        line 37: 22
+        line 39: 37
+        line 40: 50
+        line 42: 57
+        line 43: 81
+        line 45: 123
+        line 46: 147
+        line 47: 166
+        line 50: 186
+        line 51: 193
+        line 52: 231
+        line 53: 253
+        line 54: 291
+        line 55: 329
+        line 56: 361
+        line 57: 381
+        line 58: 388
+        line 59: 395
+        line 60: 408
+        line 61: 419
+        line 62: 427
+        line 63: 434
+        line 64: 458
+        line 68: 474
+        line 72: 477
+        line 73: 487
+        line 74: 497
+        line 76: 500
+        line 77: 521
+        line 78: 542
+        line 79: 574
+        line 80: 594
+        line 81: 601
+        line 82: 608
+        line 83: 621
+        line 84: 632
+        line 85: 640
+        line 86: 647
+        line 87: 654
+        line 91: 658
+        line 92: 665
+        line 93: 671
+        line 95: 682
+        line 96: 691
+        line 97: 703
+        line 98: 710
+        line 99: 722
+        line 100: 731
+        line 103: 740
+        line 104: 752
+        line 105: 761
+        line 106: 795
+        line 107: 812
+        line 108: 823
+        line 109: 837
+        line 110: 877
+        line 114: 901
+        line 116: 904
+        line 103: 910
+        line 73: 916
+        line 72: 922
+        line 123: 928
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          408      66    25 sqrtY   D
+          419      55    27  yDev   D
+          427      47    29 craterDepth   D
+          458      16    31 boundingBox   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+          291     183    21  xDev   D
+          329     145    23  zDev   D
+          231     243    20 entry   Ljava/util/Map$Entry;
+          621      37    27 sqrtY   D
+          632      26    29  yDev   D
+          640      18    31 craterDepth   D
+          743     173    28   dug   I
+          691     225    27  copy   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+          500     416    21 toDig   D
+          521     395    23  xDev   D
+          542     374    25  zDev   D
+          490     432    20 innerChunkZ   I
+          480     448    19 innerChunkX   I
+            0     930     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+            0     930     1 context   Lnet/minecraft/world/level/levelgen/carver/CarvingContext;
+            0     930     2 config   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;
+            0     930     3 chunk   Lnet/minecraft/world/level/chunk/ChunkAccess;
+            0     930     4 posToBiome   Ljava/util/function/Function;
+            0     930     5 random   Lnet/minecraft/util/RandomSource;
+            0     930     6 aquiferSampler   Lnet/minecraft/world/level/levelgen/Aquifer;
+            0     930     7   pos   Lnet/minecraft/world/level/ChunkPos;
+            0     930     8 carvingMask   Lnet/minecraft/world/level/chunk/CarvingMask;
+           11     919     9     x   I
+           22     908    10     z   I
+           37     893    11     y   I
+           50     880    12 craterCenter   Lnet/minecraft/core/BlockPos;
+           57     873    13 mutable   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+           81     849    14 radius   D
+          166     764    16 depthMultiplier   D
+          186     744    18 fresh   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          231     243    20 entry   Ljava/util/Map$Entry<Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;
+            0     930     4 posToBiome   Ljava/util/function/Function<Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+      StackMapTable: number_of_entries = 21
+        frame_type = 255 /* full_frame */
+          offset_delta = 107
+          locals = [ class com/rae/creatingspace/content/planets/worldgen/CraterCarver, class net/minecraft/world/level/levelgen/carver/CarvingContext, class com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig, class net/minecraft/world/level/chunk/ChunkAccess, class java/util/function/Function, class net/minecraft/util/RandomSource, class net/minecraft/world/level/levelgen/Aquifer, class net/minecraft/world/level/ChunkPos, class net/minecraft/world/level/chunk/CarvingMask, int, int, int, class net/minecraft/core/BlockPos, class net/minecraft/core/BlockPos$MutableBlockPos, double ]
+          stack = []
+        frame_type = 15 /* same */
+        frame_type = 23 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 35
+          locals = [ double ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 24
+          locals = [ int, class java/util/Iterator ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 264
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ int ]
+        frame_type = 254 /* append */
+          offset_delta = 167
+          locals = [ double, double, double ]
+        frame_type = 23 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 27
+          locals = [ class net/minecraft/core/BlockPos$MutableBlockPos ]
+        frame_type = 29 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 51 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 105
+        frame_type = 8 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class com/rae/creatingspace/content/planets/worldgen/CraterCarver, class net/minecraft/world/level/levelgen/carver/CarvingContext, class com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig, class net/minecraft/world/level/chunk/ChunkAccess, class java/util/function/Function, class net/minecraft/util/RandomSource, class net/minecraft/world/level/levelgen/Aquifer, class net/minecraft/world/level/ChunkPos, class net/minecraft/world/level/chunk/CarvingMask, int, int, int, class net/minecraft/core/BlockPos, class net/minecraft/core/BlockPos$MutableBlockPos, double, double, int, int, int ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+    Signature: #377                         // (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function<Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+
+  private int getHeightInInitialChunkIfClose(net.minecraft.world.level.levelgen.carver.CarvingContext, com.rae.creatingspace.content.planets.worldgen.CraterCarverConfig, net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.world.level.ChunkPos, int, int);
+    descriptor: (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;II)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=7, locals=13, args_size=7
+         0: ldc2_w        #239                // double -1.0d
+         3: dstore        7
+         5: aload_3
+         6: invokevirtual #241                // Method net/minecraft/world/level/chunk/ChunkAccess.getMaxBuildHeight:()I
+         9: istore        9
+        11: aload         4
+        13: iload         5
+        15: invokevirtual #140                // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+        18: invokestatic  #244                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        21: aload         4
+        23: iload         6
+        25: invokevirtual #151                // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+        28: invokestatic  #244                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        31: invokestatic  #250                // Method net/createmod/catnip/data/Couple.create:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Couple;
+        34: astore        10
+        36: aload_3
+        37: invokevirtual #117                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        40: aload         4
+        42: invokevirtual #256                // Method net/minecraft/world/level/ChunkPos.getChessboardDistance:(Lnet/minecraft/world/level/ChunkPos;)I
+        45: aload_2
+        46: getfield      #46                 // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.maxRadius:I
+        49: bipush        16
+        51: idiv
+        52: iconst_1
+        53: iadd
+        54: if_icmpgt     170
+        57: aload_0
+        58: getfield      #12                 // Field heightMap:Ljava/util/HashMap;
+        61: aload         10
+        63: invokevirtual #260                // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        66: ifeq          85
+        69: aload_0
+        70: getfield      #12                 // Field heightMap:Ljava/util/HashMap;
+        73: aload         10
+        75: invokevirtual #263                // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        78: checkcast     #245                // class java/lang/Integer
+        81: invokevirtual #266                // Method java/lang/Integer.intValue:()I
+        84: ireturn
+        85: dload         7
+        87: dconst_0
+        88: dcmpg
+        89: ifge          155
+        92: iload         9
+        94: aload_3
+        95: invokevirtual #269                // Method net/minecraft/world/level/chunk/ChunkAccess.getMinBuildHeight:()I
+        98: if_icmple     155
+       101: iload         9
+       103: istore        11
+       105: new           #272                // class com/rae/creatingspace/content/planets/worldgen/CraterCarver$1
+       108: dup
+       109: aload_0
+       110: aload         4
+       112: iload         5
+       114: iload         11
+       116: iload         6
+       118: invokespecial #274                // Method com/rae/creatingspace/content/planets/worldgen/CraterCarver$1."<init>":(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;Lnet/minecraft/world/level/ChunkPos;III)V
+       121: astore        12
+       123: aload_1
+       124: invokevirtual #277                // Method net/minecraft/world/level/levelgen/carver/CarvingContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+       127: invokevirtual #281                // Method net/minecraft/world/level/levelgen/RandomState.router:()Lnet/minecraft/world/level/levelgen/NoiseRouter;
+       130: invokevirtual #287                // Method net/minecraft/world/level/levelgen/NoiseRouter.finalDensity:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+       133: aload         12
+       135: invokeinterface #293,  2          // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.compute:(Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;)D
+       140: dstore        7
+       142: dload         7
+       144: dconst_0
+       145: dcmpg
+       146: ifge          152
+       149: iinc          9, -1
+       152: goto          85
+       155: aload_0
+       156: getfield      #12                 // Field heightMap:Ljava/util/HashMap;
+       159: aload         10
+       161: iload         9
+       163: invokestatic  #244                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       166: invokevirtual #299                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       169: pop
+       170: iload         9
+       172: ireturn
+      LineNumberTable:
+        line 127: 0
+        line 128: 5
+        line 129: 11
+        line 130: 36
+        line 133: 57
+        line 134: 69
+        line 136: 85
+        line 137: 101
+        line 138: 105
+        line 155: 123
+        line 156: 142
+        line 157: 149
+        line 159: 152
+        line 160: 155
+        line 162: 170
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          105      47    11 finalY   I
+          123      29    12 functionContext   Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;
+            0     173     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+            0     173     1 context   Lnet/minecraft/world/level/levelgen/carver/CarvingContext;
+            0     173     2 config   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;
+            0     173     3 chunk   Lnet/minecraft/world/level/chunk/ChunkAccess;
+            0     173     4   pos   Lnet/minecraft/world/level/ChunkPos;
+            0     173     5     x   I
+            0     173     6     z   I
+            5     168     7 density   D
+           11     162     9     y   I
+           36     137    10  coor   Lnet/createmod/catnip/data/Couple;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           36     137    10  coor   Lnet/createmod/catnip/data/Couple<Ljava/lang/Integer;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 254 /* append */
+          offset_delta = 85
+          locals = [ double, int, class net/createmod/catnip/data/Couple ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 66
+        frame_type = 2 /* same */
+        frame_type = 14 /* same */
+
+  public boolean isStartChunk(com.rae.creatingspace.content.planets.worldgen.CraterCarverConfig, net.minecraft.util.RandomSource);
+    descriptor: (Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/util/RandomSource;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_2
+         1: invokeinterface #303,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+         6: aload_1
+         7: getfield      #307                // Field com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig.probability:F
+        10: fcmpg
+        11: ifgt          18
+        14: iconst_1
+        15: goto          19
+        18: iconst_0
+        19: ireturn
+      LineNumberTable:
+        line 168: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+            0      20     1 config   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;
+            0      20     2 random   Lnet/minecraft/util/RandomSource;
+      StackMapTable: number_of_entries = 2
+        frame_type = 18 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public boolean isStartChunk(net.minecraft.world.level.levelgen.carver.CarverConfiguration, net.minecraft.util.RandomSource);
+    descriptor: (Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;Lnet/minecraft/util/RandomSource;)Z
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: checkcast     #47                 // class com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig
+         5: aload_2
+         6: invokevirtual #311                // Method isStartChunk:(Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/util/RandomSource;)Z
+         9: ireturn
+      LineNumberTable:
+        line 26: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+
+  public boolean carve(net.minecraft.world.level.levelgen.carver.CarvingContext, net.minecraft.world.level.levelgen.carver.CarverConfiguration, net.minecraft.world.level.chunk.ChunkAccess, java.util.function.Function, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.Aquifer, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.chunk.CarvingMask);
+    descriptor: (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=9, locals=9, args_size=9
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: checkcast     #47                 // class com/rae/creatingspace/content/planets/worldgen/CraterCarverConfig
+         6: aload_3
+         7: aload         4
+         9: aload         5
+        11: aload         6
+        13: aload         7
+        15: aload         8
+        17: invokevirtual #315                // Method carve:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+        20: ireturn
+      LineNumberTable:
+        line 26: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lcom/rae/creatingspace/content/planets/worldgen/CraterCarver;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+
+  private static void lambda$carve$0(net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.core.BlockPos$MutableBlockPos, net.minecraft.world.level.block.state.BlockState);
+    descriptor: (Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: getstatic     #194                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+         5: invokevirtual #190                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+         8: aload_2
+         9: iconst_1
+        10: invokevirtual #210                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+        13: pop
+        14: return
+      LineNumberTable:
+        line 110: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0 chunk   Lnet/minecraft/world/level/chunk/ChunkAccess;
+            0      15     1 mutable   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+            0      15     2 blockStates   Lnet/minecraft/world/level/block/state/BlockState;
+}
+Signature: #391                         // Lnet/minecraft/world/level/levelgen/carver/WorldCarver<Lcom/rae/creatingspace/content/planets/worldgen/CraterCarverConfig;>;
+SourceFile: "CraterCarver.java"
+NestMembers:
+  com/rae/creatingspace/content/planets/worldgen/CraterCarver$1
+BootstrapMethods:
+  0: #403 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)V
+      #398 REF_invokeStatic com/rae/creatingspace/content/planets/worldgen/CraterCarver.lambda$carve$0:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      #401 (Lnet/minecraft/world/level/block/state/BlockState;)V
+InnerClasses:
+  public static #411= #168 of #35;        // MutableBlockPos=class net/minecraft/core/BlockPos$MutableBlockPos of class net/minecraft/core/BlockPos
+  public static #412= #96 of #76;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #415= #108 of #413; // Decoration=class net/minecraft/world/level/levelgen/GenerationStep$Decoration of class net/minecraft/world/level/levelgen/GenerationStep
+  #272;                                   // class com/rae/creatingspace/content/planets/worldgen/CraterCarver$1
+  public static #418= #416 of #294;       // FunctionContext=class net/minecraft/world/level/levelgen/DensityFunction$FunctionContext of class net/minecraft/world/level/levelgen/DensityFunction
+  public static final #423= #419 of #421; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

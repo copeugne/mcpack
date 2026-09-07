@@ -1,0 +1,571 @@
+Compiled from "IllagerInvasion.java"
+public class fuzs.illagerinvasion.IllagerInvasion implements fuzs.puzzleslib.api.core.v1.ModConstructor {
+  public static final java.lang.String MOD_ID = "illagerinvasion";
+
+  public static final java.lang.String MOD_NAME = "Illager Invasion";
+
+  public static final org.slf4j.Logger LOGGER;
+
+  public static final fuzs.puzzleslib.api.config.v3.ConfigHolder CONFIG;
+
+  public fuzs.illagerinvasion.IllagerInvasion();
+    Code:
+       0: aload_0
+       1: invokespecial #98                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void onConstructMod();
+    Code:
+       0: invokestatic  #106                // Method fuzs/illagerinvasion/init/ModRegistry.touch:()V
+       3: invokestatic  #109                // Method registerEventHandlers:()V
+       6: return
+
+  private static void registerEventHandlers();
+    Code:
+       0: getstatic     #115                // Field fuzs/puzzleslib/api/event/v1/entity/player/BreakSpeedCallback.EVENT:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+       3: invokedynamic #133,  0            // InvokeDynamic #0:onBreakSpeed:()Lfuzs/puzzleslib/api/event/v1/entity/player/BreakSpeedCallback;
+       8: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      13: getstatic     #142                // Field fuzs/puzzleslib/api/event/v1/entity/living/LivingExperienceDropCallback.EVENT:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+      16: invokedynamic #151,  0            // InvokeDynamic #1:onLivingExperienceDrop:()Lfuzs/puzzleslib/api/event/v1/entity/living/LivingExperienceDropCallback;
+      21: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      26: getstatic     #154                // Field fuzs/puzzleslib/api/event/v1/level/BlockEvents.FARMLAND_TRAMPLE:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+      29: invokedynamic #163,  0            // InvokeDynamic #2:onFarmlandTrample:()Lfuzs/puzzleslib/api/event/v1/level/BlockEvents$FarmlandTrample;
+      34: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      39: getstatic     #166                // Field fuzs/puzzleslib/api/event/v1/entity/ServerEntityLevelEvents.LOAD:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+      42: invokedynamic #177,  0            // InvokeDynamic #3:onEntityLoad:()Lfuzs/puzzleslib/api/event/v1/entity/ServerEntityLevelEvents$Load;
+      47: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      52: getstatic     #180                // Field fuzs/puzzleslib/api/event/v1/server/LootTableLoadEvents.MODIFY:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+      55: invokedynamic #190,  0            // InvokeDynamic #4:onModifyLootTable:()Lfuzs/puzzleslib/api/event/v1/server/LootTableLoadEvents$Modify;
+      60: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      65: getstatic     #191                // Field fuzs/puzzleslib/api/event/v1/server/RegisterPotionBrewingMixesCallback.EVENT:Lfuzs/puzzleslib/api/event/v1/core/EventInvoker;
+      68: invokedynamic #201,  0            // InvokeDynamic #5:onRegisterPotionBrewingMixes:()Lfuzs/puzzleslib/api/event/v1/server/RegisterPotionBrewingMixesCallback;
+      73: invokeinterface #139,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/core/EventInvoker.register:(Ljava/lang/Object;)V
+      78: return
+
+  private static void injectLootPool(net.minecraft.resources.ResourceLocation, java.util.function.Consumer<net.minecraft.world.level.storage.loot.LootPool>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #214                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       5: invokevirtual #220                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+       8: ifeq          37
+      11: aload_1
+      12: invokestatic  #224                // Method net/minecraft/world/level/storage/loot/LootPool.lootPool:()Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+      15: fconst_1
+      16: invokestatic  #230                // Method net/minecraft/world/level/storage/loot/providers/number/ConstantValue.exactly:(F)Lnet/minecraft/world/level/storage/loot/providers/number/ConstantValue;
+      19: invokevirtual #234                // Method net/minecraft/world/level/storage/loot/LootPool$Builder.setRolls:(Lnet/minecraft/world/level/storage/loot/providers/number/NumberProvider;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+      22: aload_3
+      23: invokestatic  #240                // Method net/minecraft/world/level/storage/loot/entries/NestedLootTable.lootTableReference:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder;
+      26: invokevirtual #244                // Method net/minecraft/world/level/storage/loot/LootPool$Builder.add:(Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer$Builder;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+      29: invokevirtual #248                // Method net/minecraft/world/level/storage/loot/LootPool$Builder.build:()Lnet/minecraft/world/level/storage/loot/LootPool;
+      32: invokeinterface #253,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      37: return
+
+  public void onCommonSetup();
+    Code:
+       0: invokestatic  #262                // Method registerRaiderTypes:()V
+       3: invokestatic  #265                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler.init:()V
+       6: return
+
+  private static void registerRaiderTypes();
+    Code:
+       0: getstatic     #271                // Field fuzs/illagerinvasion/init/ModEntityTypes.BASHER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+       3: getstatic     #277                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.BASHER_RAID_WAVES:[I
+       6: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+       9: getstatic     #284                // Field fuzs/illagerinvasion/init/ModEntityTypes.PROVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      12: getstatic     #287                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.PROVOKER_RAID_WAVES:[I
+      15: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      18: getstatic     #290                // Field fuzs/illagerinvasion/init/ModEntityTypes.NECROMANCER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      21: getstatic     #293                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.NECROMANCER_RAID_WAVES:[I
+      24: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      27: getstatic     #296                // Field fuzs/illagerinvasion/init/ModEntityTypes.SORCERER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      30: getstatic     #299                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.SORCERER_RAID_WAVES:[I
+      33: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      36: getstatic     #305                // Field fuzs/extensibleenums/api/v2/BuiltInEnumFactories.INSTANCE:Lfuzs/extensibleenums/api/v2/BuiltInEnumFactories;
+      39: ldc_w         #307                // String illusioner
+      42: invokestatic  #311                // Method id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      45: getstatic     #317                // Field net/minecraft/world/entity/EntityType.ILLUSIONER:Lnet/minecraft/world/entity/EntityType;
+      48: getstatic     #320                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.ILLUSIONER_RAID_WAVES:[I
+      51: invokeinterface #324,  4          // InterfaceMethod fuzs/extensibleenums/api/v2/BuiltInEnumFactories.createRaiderType:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/entity/EntityType;[I)Lnet/minecraft/world/entity/raid/Raid$RaiderType;
+      56: pop
+      57: getstatic     #327                // Field fuzs/illagerinvasion/init/ModEntityTypes.ARCHIVIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      60: getstatic     #330                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.ARCHIVIST_RAID_WAVES:[I
+      63: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      66: getstatic     #333                // Field fuzs/illagerinvasion/init/ModEntityTypes.MARAUDER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      69: getstatic     #336                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.MARAUDER_RAID_WAVES:[I
+      72: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      75: getstatic     #339                // Field fuzs/illagerinvasion/init/ModEntityTypes.INQUISITOR_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      78: getstatic     #342                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.INQUISITOR_RAID_WAVES:[I
+      81: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      84: getstatic     #345                // Field fuzs/illagerinvasion/init/ModEntityTypes.ALCHEMIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      87: getstatic     #348                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.ALCHEMIST_RAID_WAVES:[I
+      90: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+      93: getstatic     #351                // Field fuzs/illagerinvasion/init/ModEntityTypes.INVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      96: getstatic     #354                // Field fuzs/illagerinvasion/config/RaidWavesConfigHelper.INVOKER_RAID_WAVES:[I
+      99: invokestatic  #281                // Method registerRaiderType:(Lnet/minecraft/core/Holder$Reference;[I)V
+     102: return
+
+  private static void registerRaiderType(net.minecraft.core.Holder$Reference<? extends net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.raid.Raider>>, int[]);
+    Code:
+       0: getstatic     #305                // Field fuzs/extensibleenums/api/v2/BuiltInEnumFactories.INSTANCE:Lfuzs/extensibleenums/api/v2/BuiltInEnumFactories;
+       3: aload_0
+       4: invokevirtual #361                // Method net/minecraft/core/Holder$Reference.key:()Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #214                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      10: aload_0
+      11: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      14: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      17: aload_1
+      18: invokeinterface #324,  4          // InterfaceMethod fuzs/extensibleenums/api/v2/BuiltInEnumFactories.createRaiderType:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/entity/EntityType;[I)Lnet/minecraft/world/entity/raid/Raid$RaiderType;
+      23: pop
+      24: return
+
+  private static void registerPotionRecipes(fuzs.puzzleslib.api.event.v1.server.RegisterPotionBrewingMixesCallback$Builder);
+    Code:
+       0: aload_0
+       1: getstatic     #373                // Field net/minecraft/world/item/alchemy/Potions.AWKWARD:Lnet/minecraft/core/Holder;
+       4: getstatic     #379                // Field net/minecraft/world/item/Items.GOAT_HORN:Lnet/minecraft/world/item/Item;
+       7: getstatic     #382                // Field fuzs/illagerinvasion/init/ModRegistry.BERSERKING_POTION:Lnet/minecraft/core/Holder$Reference;
+      10: invokeinterface #386,  4          // InterfaceMethod fuzs/puzzleslib/api/event/v1/server/RegisterPotionBrewingMixesCallback$Builder.registerPotionRecipe:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/Item;Lnet/minecraft/core/Holder;)V
+      15: aload_0
+      16: getstatic     #382                // Field fuzs/illagerinvasion/init/ModRegistry.BERSERKING_POTION:Lnet/minecraft/core/Holder$Reference;
+      19: getstatic     #389                // Field net/minecraft/world/item/Items.REDSTONE:Lnet/minecraft/world/item/Item;
+      22: getstatic     #392                // Field fuzs/illagerinvasion/init/ModRegistry.LONG_BERSERKING_POTION:Lnet/minecraft/core/Holder$Reference;
+      25: invokeinterface #386,  4          // InterfaceMethod fuzs/puzzleslib/api/event/v1/server/RegisterPotionBrewingMixesCallback$Builder.registerPotionRecipe:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/Item;Lnet/minecraft/core/Holder;)V
+      30: aload_0
+      31: getstatic     #382                // Field fuzs/illagerinvasion/init/ModRegistry.BERSERKING_POTION:Lnet/minecraft/core/Holder$Reference;
+      34: getstatic     #395                // Field net/minecraft/world/item/Items.GLOWSTONE_DUST:Lnet/minecraft/world/item/Item;
+      37: getstatic     #398                // Field fuzs/illagerinvasion/init/ModRegistry.STRONG_BERSERKING_POTION:Lnet/minecraft/core/Holder$Reference;
+      40: invokeinterface #386,  4          // InterfaceMethod fuzs/puzzleslib/api/event/v1/server/RegisterPotionBrewingMixesCallback$Builder.registerPotionRecipe:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/Item;Lnet/minecraft/core/Holder;)V
+      45: return
+
+  public void onEntityAttributeCreation(fuzs.puzzleslib.api.core.v1.context.EntityAttributesCreateContext);
+    Code:
+       0: aload_1
+       1: getstatic     #345                // Field fuzs/illagerinvasion/init/ModEntityTypes.ALCHEMIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+       4: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       7: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      10: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      13: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+      16: ldc2_w        #414                // double 24.0d
+      19: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      22: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+      25: ldc2_w        #422                // double 0.38d
+      28: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      31: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+      36: aload_1
+      37: getstatic     #327                // Field fuzs/illagerinvasion/init/ModEntityTypes.ARCHIVIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      40: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      43: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      46: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      49: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+      52: ldc2_w        #414                // double 24.0d
+      55: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      58: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+      61: ldc2_w        #430                // double 0.36d
+      64: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      67: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+      72: aload_1
+      73: getstatic     #271                // Field fuzs/illagerinvasion/init/ModEntityTypes.BASHER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      76: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      79: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      82: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      85: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+      88: ldc2_w        #432                // double 32.0d
+      91: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      94: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+      97: ldc2_w        #434                // double 0.31d
+     100: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     103: getstatic     #438                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE:Lnet/minecraft/core/Holder;
+     106: ldc2_w        #439                // double 3.0d
+     109: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     112: getstatic     #443                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_KNOCKBACK:Lnet/minecraft/core/Holder;
+     115: ldc2_w        #444                // double 0.2d
+     118: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     121: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     126: aload_1
+     127: getstatic     #448                // Field fuzs/illagerinvasion/init/ModEntityTypes.FIRECALLER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     130: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     133: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     136: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     139: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     142: ldc2_w        #432                // double 32.0d
+     145: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     148: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     151: ldc2_w        #422                // double 0.38d
+     154: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     157: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     162: aload_1
+     163: getstatic     #339                // Field fuzs/illagerinvasion/init/ModEntityTypes.INQUISITOR_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     166: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     169: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     172: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     175: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     178: ldc2_w        #449                // double 80.0d
+     181: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     184: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     187: ldc2_w        #451                // double 0.33d
+     190: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     193: getstatic     #438                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE:Lnet/minecraft/core/Holder;
+     196: ldc2_w        #453                // double 10.0d
+     199: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     202: getstatic     #443                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_KNOCKBACK:Lnet/minecraft/core/Holder;
+     205: ldc2_w        #455                // double 1.6d
+     208: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     211: getstatic     #459                // Field net/minecraft/world/entity/ai/attributes/Attributes.KNOCKBACK_RESISTANCE:Lnet/minecraft/core/Holder;
+     214: ldc2_w        #460                // double 0.8d
+     217: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     220: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     225: aload_1
+     226: getstatic     #351                // Field fuzs/illagerinvasion/init/ModEntityTypes.INVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     229: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     232: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     235: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     238: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     241: ldc2_w        #462                // double 250.0d
+     244: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     247: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     250: ldc2_w        #430                // double 0.36d
+     253: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     256: getstatic     #459                // Field net/minecraft/world/entity/ai/attributes/Attributes.KNOCKBACK_RESISTANCE:Lnet/minecraft/core/Holder;
+     259: ldc2_w        #464                // double 0.3d
+     262: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     265: getstatic     #438                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE:Lnet/minecraft/core/Holder;
+     268: ldc2_w        #466                // double 8.0d
+     271: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     274: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     279: aload_1
+     280: getstatic     #333                // Field fuzs/illagerinvasion/init/ModEntityTypes.MARAUDER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     283: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     286: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     289: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     292: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     295: ldc2_w        #414                // double 24.0d
+     298: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     301: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     304: ldc2_w        #464                // double 0.3d
+     307: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     310: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     315: aload_1
+     316: getstatic     #284                // Field fuzs/illagerinvasion/init/ModEntityTypes.PROVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     319: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     322: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     325: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     328: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     331: ldc2_w        #414                // double 24.0d
+     334: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     337: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     340: ldc2_w        #422                // double 0.38d
+     343: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     346: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     351: aload_1
+     352: getstatic     #296                // Field fuzs/illagerinvasion/init/ModEntityTypes.SORCERER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     355: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     358: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     361: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     364: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     367: ldc2_w        #432                // double 32.0d
+     370: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     373: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     376: ldc2_w        #422                // double 0.38d
+     379: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     382: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     387: aload_1
+     388: getstatic     #470                // Field fuzs/illagerinvasion/init/ModEntityTypes.SURRENDERED_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     391: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     394: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     397: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     400: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     403: ldc2_w        #471                // double 14.0d
+     406: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     409: getstatic     #438                // Field net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE:Lnet/minecraft/core/Holder;
+     412: ldc2_w        #473                // double 5.0d
+     415: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     418: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     423: aload_1
+     424: getstatic     #290                // Field fuzs/illagerinvasion/init/ModEntityTypes.NECROMANCER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     427: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     430: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     433: invokestatic  #408                // Method net/minecraft/world/entity/monster/Monster.createMonsterAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     436: getstatic     #413                // Field net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH:Lnet/minecraft/core/Holder;
+     439: ldc2_w        #432                // double 32.0d
+     442: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     445: getstatic     #421                // Field net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED:Lnet/minecraft/core/Holder;
+     448: ldc2_w        #422                // double 0.38d
+     451: invokevirtual #418                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+     454: invokeinterface #429,  3          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/EntityAttributesCreateContext.registerEntityAttributes:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+     459: return
+
+  public void onRegisterSpawnPlacements(fuzs.puzzleslib.api.core.v1.context.SpawnPlacementsContext);
+    Code:
+       0: aload_1
+       1: getstatic     #345                // Field fuzs/illagerinvasion/init/ModEntityTypes.ALCHEMIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+       4: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       7: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      10: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+      13: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      16: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      21: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+      26: aload_1
+      27: getstatic     #327                // Field fuzs/illagerinvasion/init/ModEntityTypes.ARCHIVIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      30: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      33: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      36: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+      39: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      42: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      47: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+      52: aload_1
+      53: getstatic     #271                // Field fuzs/illagerinvasion/init/ModEntityTypes.BASHER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      56: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      59: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      62: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+      65: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      68: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      73: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+      78: aload_1
+      79: getstatic     #448                // Field fuzs/illagerinvasion/init/ModEntityTypes.FIRECALLER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      82: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      85: checkcast     #313                // class net/minecraft/world/entity/EntityType
+      88: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+      91: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      94: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      99: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     104: aload_1
+     105: getstatic     #339                // Field fuzs/illagerinvasion/init/ModEntityTypes.INQUISITOR_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     108: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     111: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     114: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     117: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     120: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     125: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     130: aload_1
+     131: getstatic     #351                // Field fuzs/illagerinvasion/init/ModEntityTypes.INVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     134: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     137: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     140: getstatic     #509                // Field net/minecraft/world/entity/SpawnPlacementTypes.NO_RESTRICTIONS:Lnet/minecraft/world/entity/SpawnPlacementType;
+     143: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     146: invokedynamic #514,  0            // InvokeDynamic #7:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     151: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     156: aload_1
+     157: getstatic     #333                // Field fuzs/illagerinvasion/init/ModEntityTypes.MARAUDER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     160: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     163: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     166: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     169: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     172: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     177: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     182: aload_1
+     183: getstatic     #284                // Field fuzs/illagerinvasion/init/ModEntityTypes.PROVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     186: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     189: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     192: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     195: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     198: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     203: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     208: aload_1
+     209: getstatic     #296                // Field fuzs/illagerinvasion/init/ModEntityTypes.SORCERER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     212: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     215: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     218: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     221: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     224: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     229: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     234: aload_1
+     235: getstatic     #470                // Field fuzs/illagerinvasion/init/ModEntityTypes.SURRENDERED_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     238: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     241: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     244: getstatic     #509                // Field net/minecraft/world/entity/SpawnPlacementTypes.NO_RESTRICTIONS:Lnet/minecraft/world/entity/SpawnPlacementType;
+     247: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     250: invokedynamic #514,  0            // InvokeDynamic #7:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     255: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     260: aload_1
+     261: getstatic     #290                // Field fuzs/illagerinvasion/init/ModEntityTypes.NECROMANCER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     264: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     267: checkcast     #313                // class net/minecraft/world/entity/EntityType
+     270: getstatic     #483                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     273: getstatic     #487                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     276: invokedynamic #500,  0            // InvokeDynamic #6:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     281: invokeinterface #506,  5          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/SpawnPlacementsContext.registerSpawnPlacement:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+     286: return
+
+  public void onRegisterCreativeModeTabs(fuzs.puzzleslib.api.core.v1.context.CreativeModeTabContext);
+    Code:
+       0: aload_1
+       1: ldc           #87                 // String illagerinvasion
+       3: invokestatic  #523                // InterfaceMethod fuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator.from:(Ljava/lang/String;)Lfuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator;
+       6: invokedynamic #534,  0            // InvokeDynamic #8:get:()Ljava/util/function/Supplier;
+      11: invokeinterface #538,  2          // InterfaceMethod fuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator.icon:(Ljava/util/function/Supplier;)Lfuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator;
+      16: invokedynamic #547,  0            // InvokeDynamic #9:accept:()Lnet/minecraft/world/item/CreativeModeTab$DisplayItemsGenerator;
+      21: invokeinterface #551,  2          // InterfaceMethod fuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator.displayItems:(Lnet/minecraft/world/item/CreativeModeTab$DisplayItemsGenerator;)Lfuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator;
+      26: invokeinterface #557,  2          // InterfaceMethod fuzs/puzzleslib/api/core/v1/context/CreativeModeTabContext.registerCreativeModeTab:(Lfuzs/puzzleslib/api/item/v2/CreativeModeTabConfigurator;)V
+      31: return
+
+  public static net.minecraft.resources.ResourceLocation id(java.lang.String);
+    Code:
+       0: ldc           #87                 // String illagerinvasion
+       2: aload_0
+       3: invokestatic  #565                // Method fuzs/puzzleslib/api/core/v1/utility/ResourceLocationHelper.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  private static void lambda$onRegisterCreativeModeTabs$2(net.minecraft.world.item.CreativeModeTab$ItemDisplayParameters, net.minecraft.world.item.CreativeModeTab$Output);
+    Code:
+       0: aload_1
+       1: getstatic     #572                // Field fuzs/illagerinvasion/init/ModItems.IMBUING_TABLE_ITEM:Lnet/minecraft/core/Holder$Reference;
+       4: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       7: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      10: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      15: aload_1
+      16: getstatic     #580                // Field fuzs/illagerinvasion/init/ModItems.UNUSUAL_DUST_ITEM:Lnet/minecraft/core/Holder$Reference;
+      19: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      22: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      25: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      30: aload_1
+      31: getstatic     #583                // Field fuzs/illagerinvasion/init/ModItems.ILLUSIONARY_DUST_ITEM:Lnet/minecraft/core/Holder$Reference;
+      34: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      37: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      40: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      45: aload_1
+      46: getstatic     #586                // Field fuzs/illagerinvasion/init/ModItems.HALLOWED_GEM_ITEM:Lnet/minecraft/core/Holder$Reference;
+      49: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      52: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      55: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      60: aload_1
+      61: getstatic     #589                // Field fuzs/illagerinvasion/init/ModItems.PRIMAL_ESSENCE_ITEM:Lnet/minecraft/core/Holder$Reference;
+      64: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      67: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      70: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      75: aload_1
+      76: getstatic     #592                // Field fuzs/illagerinvasion/init/ModItems.PLATINUM_CHUNK_ITEM:Lnet/minecraft/core/Holder$Reference;
+      79: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      82: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      85: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+      90: aload_1
+      91: getstatic     #595                // Field fuzs/illagerinvasion/init/ModItems.PLATINUM_SHEET_ITEM:Lnet/minecraft/core/Holder$Reference;
+      94: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      97: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     100: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     105: aload_1
+     106: getstatic     #598                // Field fuzs/illagerinvasion/init/ModItems.PLATINUM_INFUSED_HATCHET_ITEM:Lnet/minecraft/core/Holder$Reference;
+     109: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     112: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     115: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     120: aload_1
+     121: getstatic     #601                // Field fuzs/illagerinvasion/init/ModItems.HORN_OF_SIGHT_ITEM:Lnet/minecraft/core/Holder$Reference;
+     124: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     127: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     130: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     135: aload_1
+     136: getstatic     #604                // Field fuzs/illagerinvasion/init/ModItems.LOST_CANDLE_ITEM:Lnet/minecraft/core/Holder$Reference;
+     139: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     142: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     145: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     150: aload_1
+     151: getstatic     #607                // Field fuzs/illagerinvasion/init/ModItems.MAGICAL_FIRE_CHARGE_ITEM:Lnet/minecraft/core/Holder$Reference;
+     154: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     157: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     160: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     165: aload_1
+     166: getstatic     #610                // Field fuzs/illagerinvasion/init/ModItems.PROVOKER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     169: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     172: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     175: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     180: aload_1
+     181: getstatic     #613                // Field fuzs/illagerinvasion/init/ModItems.BASHER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     184: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     187: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     190: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     195: aload_1
+     196: getstatic     #616                // Field fuzs/illagerinvasion/init/ModItems.SORCERER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     199: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     202: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     205: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     210: aload_1
+     211: getstatic     #619                // Field fuzs/illagerinvasion/init/ModItems.ARCHIVIST_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     214: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     217: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     220: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     225: aload_1
+     226: getstatic     #622                // Field fuzs/illagerinvasion/init/ModItems.INQUISITOR_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     229: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     232: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     235: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     240: aload_1
+     241: getstatic     #625                // Field fuzs/illagerinvasion/init/ModItems.MARAUDER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     244: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     247: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     250: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     255: aload_1
+     256: getstatic     #628                // Field fuzs/illagerinvasion/init/ModItems.INVOKER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     259: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     262: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     265: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     270: aload_1
+     271: getstatic     #631                // Field fuzs/illagerinvasion/init/ModItems.ALCHEMIST_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     274: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     277: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     280: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     285: aload_1
+     286: getstatic     #634                // Field fuzs/illagerinvasion/init/ModItems.FIRECALLER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     289: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     292: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     295: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     300: aload_1
+     301: getstatic     #637                // Field fuzs/illagerinvasion/init/ModItems.NECROMANCER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     304: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     307: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     310: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     315: aload_1
+     316: getstatic     #640                // Field fuzs/illagerinvasion/init/ModItems.SURRENDERED_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     319: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     322: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     325: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     330: aload_1
+     331: getstatic     #643                // Field fuzs/illagerinvasion/init/ModItems.ILLUSIONER_SPAWN_EGG_ITEM:Lnet/minecraft/core/Holder$Reference;
+     334: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     337: checkcast     #574                // class net/minecraft/world/level/ItemLike
+     340: invokeinterface #577,  2          // InterfaceMethod net/minecraft/world/item/CreativeModeTab$Output.accept:(Lnet/minecraft/world/level/ItemLike;)V
+     345: return
+
+  private static net.minecraft.world.item.ItemStack lambda$onRegisterCreativeModeTabs$1();
+    Code:
+       0: new           #647                // class net/minecraft/world/item/ItemStack
+       3: dup
+       4: getstatic     #601                // Field fuzs/illagerinvasion/init/ModItems.HORN_OF_SIGHT_ITEM:Lnet/minecraft/core/Holder$Reference;
+       7: invokevirtual #365                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      10: checkcast     #574                // class net/minecraft/world/level/ItemLike
+      13: invokespecial #649                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      16: areturn
+
+  private static void lambda$registerEventHandlers$0(net.minecraft.resources.ResourceLocation, java.util.function.Consumer, java.util.function.IntPredicate);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #317                // Field net/minecraft/world/entity/EntityType.ILLUSIONER:Lnet/minecraft/world/entity/EntityType;
+       5: invokevirtual #654                // Method net/minecraft/world/entity/EntityType.getDefaultLootTable:()Lnet/minecraft/resources/ResourceKey;
+       8: getstatic     #657                // Field fuzs/illagerinvasion/init/ModRegistry.ILLUSIONER_INJECT_LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+      11: invokestatic  #659                // Method injectLootPool:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Consumer;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)V
+      14: aload_0
+      15: aload_1
+      16: getstatic     #662                // Field net/minecraft/world/entity/EntityType.PILLAGER:Lnet/minecraft/world/entity/EntityType;
+      19: invokevirtual #654                // Method net/minecraft/world/entity/EntityType.getDefaultLootTable:()Lnet/minecraft/resources/ResourceKey;
+      22: getstatic     #665                // Field fuzs/illagerinvasion/init/ModRegistry.PILLAGER_INJECT_LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+      25: invokestatic  #659                // Method injectLootPool:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Consumer;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)V
+      28: aload_0
+      29: aload_1
+      30: getstatic     #668                // Field net/minecraft/world/entity/EntityType.RAVAGER:Lnet/minecraft/world/entity/EntityType;
+      33: invokevirtual #654                // Method net/minecraft/world/entity/EntityType.getDefaultLootTable:()Lnet/minecraft/resources/ResourceKey;
+      36: getstatic     #671                // Field fuzs/illagerinvasion/init/ModRegistry.RAVAGER_INJECT_LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+      39: invokestatic  #659                // Method injectLootPool:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Consumer;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)V
+      42: return
+
+  static {};
+    Code:
+       0: ldc           #90                 // String Illager Invasion
+       2: invokestatic  #679                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+       5: putstatic     #681                // Field LOGGER:Lorg/slf4j/Logger;
+       8: ldc           #87                 // String illagerinvasion
+      10: invokestatic  #684                // InterfaceMethod fuzs/puzzleslib/api/config/v3/ConfigHolder.builder:(Ljava/lang/String;)Lfuzs/puzzleslib/api/config/v3/ConfigHolder$Builder;
+      13: ldc_w         #686                // class fuzs/illagerinvasion/config/ServerConfig
+      16: invokeinterface #690,  2          // InterfaceMethod fuzs/puzzleslib/api/config/v3/ConfigHolder$Builder.server:(Ljava/lang/Class;)Lfuzs/puzzleslib/api/config/v3/ConfigHolder$Builder;
+      21: putstatic     #692                // Field CONFIG:Lfuzs/puzzleslib/api/config/v3/ConfigHolder;
+      24: return
+}

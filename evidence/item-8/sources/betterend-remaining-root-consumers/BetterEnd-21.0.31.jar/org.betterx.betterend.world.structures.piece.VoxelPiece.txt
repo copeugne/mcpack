@@ -1,0 +1,85 @@
+Compiled from "VoxelPiece.java"
+public class org.betterx.betterend.world.structures.piece.VoxelPiece extends org.betterx.betterend.world.structures.piece.BasePiece {
+  private org.betterx.bclib.api.v2.levelgen.structures.StructureWorld world;
+
+  public org.betterx.betterend.world.structures.piece.VoxelPiece(java.util.function.Consumer<org.betterx.bclib.api.v2.levelgen.structures.StructureWorld>, int);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/registry/EndStructures.VOXEL_PIECE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_2
+       5: aconst_null
+       6: invokespecial #7                  // Method org/betterx/betterend/world/structures/piece/BasePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+       9: aload_0
+      10: new           #13                 // class org/betterx/bclib/api/v2/levelgen/structures/StructureWorld
+      13: dup
+      14: invokespecial #15                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld."<init>":()V
+      17: putfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+      20: aload_1
+      21: aload_0
+      22: getfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+      25: invokeinterface #24,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      30: aload_0
+      31: aload_0
+      32: getfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+      35: invokevirtual #30                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld.getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      38: putfield      #34                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      41: return
+
+  public org.betterx.betterend.world.structures.piece.VoxelPiece(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/registry/EndStructures.VOXEL_PIECE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_2
+       5: invokespecial #38                 // Method org/betterx/betterend/world/structures/piece/BasePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: aload_0
+      10: getfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+      13: invokevirtual #30                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld.getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      16: putfield      #34                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      19: return
+
+  protected void addAdditionalSaveData(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_1
+       1: ldc           #41                 // String world
+       3: aload_0
+       4: getfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+       7: invokevirtual #42                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld.toBNT:()Lnet/minecraft/nbt/CompoundTag;
+      10: invokevirtual #46                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      13: pop
+      14: return
+
+  protected void fromNbt(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: new           #13                 // class org/betterx/bclib/api/v2/levelgen/structures/StructureWorld
+       4: dup
+       5: aload_1
+       6: ldc           #41                 // String world
+       8: invokevirtual #52                 // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+      11: invokespecial #56                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld."<init>":(Lnet/minecraft/nbt/CompoundTag;)V
+      14: putfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+      17: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field world:Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;
+       4: aload_1
+       5: aload         6
+       7: invokevirtual #59                 // Method org/betterx/bclib/api/v2/levelgen/structures/StructureWorld.placeChunk:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/ChunkPos;)Z
+      10: ifeq          45
+      13: aload_1
+      14: aload         6
+      16: getfield      #63                 // Field net/minecraft/world/level/ChunkPos.x:I
+      19: aload         6
+      21: getfield      #69                 // Field net/minecraft/world/level/ChunkPos.z:I
+      24: invokeinterface #72,  3           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunk:(II)Lnet/minecraft/world/level/chunk/ChunkAccess;
+      29: astore        8
+      31: aload         8
+      33: getstatic     #78                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      36: getstatic     #84                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      39: invokestatic  #87                 // Method java/util/EnumSet.of:(Ljava/lang/Enum;Ljava/lang/Enum;)Ljava/util/EnumSet;
+      42: invokestatic  #93                 // Method net/minecraft/world/level/levelgen/Heightmap.primeHeightmaps:(Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/Set;)V
+      45: return
+}

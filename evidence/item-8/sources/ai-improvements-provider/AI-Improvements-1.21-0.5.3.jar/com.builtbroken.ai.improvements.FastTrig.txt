@@ -1,0 +1,353 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/FastTrig.class
+  Last modified Jun 14, 2024; size 1422 bytes
+  SHA-256 checksum 3ec3ae8703281a010230f79e47237095a7866b941e8300fa295958c01cc7d7c6
+  Compiled from "FastTrig.java"
+public class com.builtbroken.ai.improvements.FastTrig
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #1                          // com/builtbroken/ai/improvements/FastTrig
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 7, methods: 4, attributes: 1
+Constant pool:
+   #1 = Class              #2             // com/builtbroken/ai/improvements/FastTrig
+   #2 = Utf8               com/builtbroken/ai/improvements/FastTrig
+   #3 = Methodref          #4.#5          // java/lang/Object."<init>":()V
+   #4 = Class              #6             // java/lang/Object
+   #5 = NameAndType        #7:#8          // "<init>":()V
+   #6 = Utf8               java/lang/Object
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Fieldref           #1.#10         // com/builtbroken/ai/improvements/FastTrig.ATAN2_DIM:I
+  #10 = NameAndType        #11:#12        // ATAN2_DIM:I
+  #11 = Utf8               ATAN2_DIM
+  #12 = Utf8               I
+  #13 = Fieldref           #1.#14         // com/builtbroken/ai/improvements/FastTrig.atan2:[F
+  #14 = NameAndType        #15:#16        // atan2:[F
+  #15 = Utf8               atan2
+  #16 = Utf8               [F
+  #17 = Methodref          #18.#19        // java/lang/Math.atan2:(DD)D
+  #18 = Class              #20            // java/lang/Math
+  #19 = NameAndType        #15:#21        // atan2:(DD)D
+  #20 = Utf8               java/lang/Math
+  #21 = Utf8               (DD)D
+  #22 = Float              -1.0f
+  #23 = Float              -3.1415927f
+  #24 = Fieldref           #1.#25         // com/builtbroken/ai/improvements/FastTrig.INV_ATAN2_DIM_MINUS_1:F
+  #25 = NameAndType        #26:#27        // INV_ATAN2_DIM_MINUS_1:F
+  #26 = Utf8               INV_ATAN2_DIM_MINUS_1
+  #27 = Utf8               F
+  #28 = Double             65536.0d
+  #30 = Methodref          #18.#31        // java/lang/Math.sqrt:(D)D
+  #31 = NameAndType        #32:#33        // sqrt:(D)D
+  #32 = Utf8               sqrt
+  #33 = Utf8               (D)D
+  #34 = Integer            65536
+  #35 = Utf8               ATAN2_BITS
+  #36 = Utf8               ConstantValue
+  #37 = Integer            8
+  #38 = Utf8               ATAN2_BITS2
+  #39 = Integer            16
+  #40 = Utf8               ATAN2_MASK
+  #41 = Integer            65535
+  #42 = Utf8               ATAN2_COUNT
+  #43 = Utf8               Code
+  #44 = Utf8               LineNumberTable
+  #45 = Utf8               LocalVariableTable
+  #46 = Utf8               this
+  #47 = Utf8               Lcom/builtbroken/ai/improvements/FastTrig;
+  #48 = Utf8               init
+  #49 = Utf8               x0
+  #50 = Utf8               y0
+  #51 = Utf8               j
+  #52 = Utf8               i
+  #53 = Utf8               StackMapTable
+  #54 = Utf8               (DD)F
+  #55 = Utf8               mul
+  #56 = Utf8               add
+  #57 = Utf8               y
+  #58 = Utf8               D
+  #59 = Utf8               x
+  #60 = Utf8               invDiv
+  #61 = Utf8               xi
+  #62 = Utf8               yi
+  #63 = Utf8               <clinit>
+  #64 = Utf8               SourceFile
+  #65 = Utf8               FastTrig.java
+{
+  private static final int ATAN2_BITS = 8;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 8
+
+  private static final int ATAN2_BITS2 = 16;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 16
+
+  private static final int ATAN2_MASK = 65535;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 65535
+
+  private static final int ATAN2_COUNT = 65536;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 65536
+
+  private static final int ATAN2_DIM;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private static final float INV_ATAN2_DIM_MINUS_1;
+    descriptor: F
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private static final float[] atan2;
+    descriptor: [F
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  public com.builtbroken.ai.improvements.FastTrig();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 4: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/builtbroken/ai/improvements/FastTrig;
+
+  public static void init();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=6, locals=4, args_size=0
+         0: iconst_0
+         1: istore_0
+         2: iload_0
+         3: getstatic     #9                  // Field ATAN2_DIM:I
+         6: if_icmpge     65
+         9: iconst_0
+        10: istore_1
+        11: iload_1
+        12: getstatic     #9                  // Field ATAN2_DIM:I
+        15: if_icmpge     59
+        18: iload_0
+        19: i2f
+        20: getstatic     #9                  // Field ATAN2_DIM:I
+        23: i2f
+        24: fdiv
+        25: fstore_2
+        26: iload_1
+        27: i2f
+        28: getstatic     #9                  // Field ATAN2_DIM:I
+        31: i2f
+        32: fdiv
+        33: fstore_3
+        34: getstatic     #13                 // Field atan2:[F
+        37: iload_1
+        38: getstatic     #9                  // Field ATAN2_DIM:I
+        41: imul
+        42: iload_0
+        43: iadd
+        44: fload_3
+        45: f2d
+        46: fload_2
+        47: f2d
+        48: invokestatic  #17                 // Method java/lang/Math.atan2:(DD)D
+        51: d2f
+        52: fastore
+        53: iinc          1, 1
+        56: goto          11
+        59: iinc          0, 1
+        62: goto          2
+        65: return
+      LineNumberTable:
+        line 22: 0
+        line 24: 9
+        line 26: 18
+        line 27: 26
+        line 29: 34
+        line 24: 53
+        line 22: 59
+        line 32: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           26      27     2    x0   F
+           34      19     3    y0   F
+           11      48     1     j   I
+            2      63     0     i   I
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 47
+        frame_type = 250 /* chop */
+          offset_delta = 5
+
+  public static final float atan2(double, double);
+    descriptor: (DD)F
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=6, locals=10, args_size=2
+         0: dload_2
+         1: dconst_0
+         2: dcmpg
+         3: ifge          38
+         6: dload_0
+         7: dconst_0
+         8: dcmpg
+         9: ifge          24
+        12: dload_2
+        13: dneg
+        14: dstore_2
+        15: dload_0
+        16: dneg
+        17: dstore_0
+        18: fconst_1
+        19: fstore        5
+        21: goto          31
+        24: dload_2
+        25: dneg
+        26: dstore_2
+        27: ldc           #22                 // float -1.0f
+        29: fstore        5
+        31: ldc           #23                 // float -3.1415927f
+        33: fstore        4
+        35: goto          60
+        38: dload_0
+        39: dconst_0
+        40: dcmpg
+        41: ifge          54
+        44: dload_0
+        45: dneg
+        46: dstore_0
+        47: ldc           #22                 // float -1.0f
+        49: fstore        5
+        51: goto          57
+        54: fconst_1
+        55: fstore        5
+        57: fconst_0
+        58: fstore        4
+        60: dconst_1
+        61: dload_2
+        62: dload_0
+        63: dcmpg
+        64: ifge          71
+        67: dload_0
+        68: goto          72
+        71: dload_2
+        72: getstatic     #24                 // Field INV_ATAN2_DIM_MINUS_1:F
+        75: f2d
+        76: dmul
+        77: ddiv
+        78: dstore        6
+        80: dload_2
+        81: dload         6
+        83: dmul
+        84: d2i
+        85: istore        8
+        87: dload_0
+        88: dload         6
+        90: dmul
+        91: d2i
+        92: istore        9
+        94: getstatic     #13                 // Field atan2:[F
+        97: iload         9
+        99: getstatic     #9                  // Field ATAN2_DIM:I
+       102: imul
+       103: iload         8
+       105: iadd
+       106: faload
+       107: fload         4
+       109: fadd
+       110: fload         5
+       112: fmul
+       113: freturn
+      LineNumberTable:
+        line 39: 0
+        line 41: 6
+        line 43: 12
+        line 44: 15
+        line 46: 18
+        line 50: 24
+        line 51: 27
+        line 54: 31
+        line 58: 38
+        line 60: 44
+        line 61: 47
+        line 65: 54
+        line 68: 57
+        line 71: 60
+        line 73: 80
+        line 74: 87
+        line 76: 94
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21       3     5   mul   F
+           35       3     4   add   F
+           31       7     5   mul   F
+           51       3     5   mul   F
+            0     114     0     y   D
+            0     114     2     x   D
+           60      54     4   add   F
+           57      57     5   mul   F
+           80      34     6 invDiv   D
+           87      27     8    xi   I
+           94      20     9    yi   I
+      StackMapTable: number_of_entries = 8
+        frame_type = 24 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 6
+          locals = [ top, float ]
+        frame_type = 249 /* chop */
+          offset_delta = 6
+        frame_type = 15 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 2
+          locals = [ top, float ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ double, double, float, float ]
+          stack = []
+        frame_type = 74 /* same_locals_1_stack_item */
+          stack = [ double ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ double, double, float, float ]
+          stack = [ double, double ]
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=3, locals=0, args_size=0
+         0: ldc2_w        #28                 // double 65536.0d
+         3: invokestatic  #30                 // Method java/lang/Math.sqrt:(D)D
+         6: d2i
+         7: putstatic     #9                  // Field ATAN2_DIM:I
+        10: fconst_1
+        11: getstatic     #9                  // Field ATAN2_DIM:I
+        14: iconst_1
+        15: isub
+        16: i2f
+        17: fdiv
+        18: putstatic     #24                 // Field INV_ATAN2_DIM_MINUS_1:F
+        21: ldc           #34                 // int 65536
+        23: newarray       float
+        25: putstatic     #13                 // Field atan2:[F
+        28: return
+      LineNumberTable:
+        line 14: 0
+        line 16: 10
+        line 18: 21
+}
+SourceFile: "FastTrig.java"

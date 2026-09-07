@@ -1,0 +1,71 @@
+Compiled from "MoogsStructuresCommon.java"
+public class com.finndog.moogs_structures.MoogsStructuresCommon {
+  public static final java.lang.String MODID = "moogs_structures";
+
+  public static final org.apache.logging.log4j.Logger LOGGER;
+
+  public com.finndog.moogs_structures.MoogsStructuresCommon();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: invokestatic  #7                  // Method com/finndog/moogs_structures/modinit/MoogsStructuresTags.initTags:()V
+       3: getstatic     #12                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresStructures.STRUCTURE_TYPE:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+       6: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      11: getstatic     #23                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresPlacements.PLACEMENT_MODIFIER:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+      14: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      19: getstatic     #28                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.STRUCTURE_PROCESSOR:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+      22: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      27: getstatic     #33                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresStructurePieces.STRUCTURE_PIECE:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+      30: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      35: getstatic     #38                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresStructurePieces.STRUCTURE_POOL_ELEMENT:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+      38: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      43: getstatic     #41                 // Field com/finndog/moogs_structures/modinit/MoogsStructuresStructurePlacementType.STRUCTURE_PLACEMENT_TYPE:Lcom/finndog/moogs_structures/modinit/registry/ResourcefulRegistry;
+      46: invokeinterface #18,  1           // InterfaceMethod com/finndog/moogs_structures/modinit/registry/ResourcefulRegistry.init:()V
+      51: getstatic     #46                 // Field com/finndog/moogs_structures/events/lifecycle/SetupEvent.EVENT:Lcom/finndog/moogs_structures/events/base/EventHandler;
+      54: invokedynamic #52,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      59: invokevirtual #56                 // Method com/finndog/moogs_structures/events/base/EventHandler.addListener:(Ljava/util/function/Consumer;)V
+      62: getstatic     #62                 // Field com/finndog/moogs_structures/events/lifecycle/RegisterReloadListenerEvent.EVENT:Lcom/finndog/moogs_structures/events/base/EventHandler;
+      65: invokedynamic #65,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      70: invokevirtual #56                 // Method com/finndog/moogs_structures/events/base/EventHandler.addListener:(Ljava/util/function/Consumer;)V
+      73: getstatic     #66                 // Field com/finndog/moogs_structures/events/lifecycle/ServerGoingToStartEvent.EVENT:Lcom/finndog/moogs_structures/events/base/EventHandler;
+      76: invokedynamic #69,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      81: invokevirtual #56                 // Method com/finndog/moogs_structures/events/base/EventHandler.addListener:(Ljava/util/function/Consumer;)V
+      84: getstatic     #70                 // Field com/finndog/moogs_structures/events/lifecycle/ServerGoingToStopEvent.EVENT:Lcom/finndog/moogs_structures/events/base/EventHandler;
+      87: invokedynamic #73,  0             // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      92: invokevirtual #56                 // Method com/finndog/moogs_structures/events/base/EventHandler.addListener:(Ljava/util/function/Consumer;)V
+      95: return
+
+  private static void setup(com.finndog.moogs_structures.events.lifecycle.SetupEvent);
+    Code:
+       0: return
+
+  private static void serverAboutToStart(com.finndog.moogs_structures.events.lifecycle.ServerGoingToStartEvent);
+    Code:
+       0: invokestatic  #74                 // Method com/finndog/moogs_structures/utils/AsyncLocator.handleServerAboutToStartEvent:()V
+       3: return
+
+  private static void onServerStopping(com.finndog.moogs_structures.events.lifecycle.ServerGoingToStopEvent);
+    Code:
+       0: invokestatic  #79                 // Method com/finndog/moogs_structures/utils/AsyncLocator.handleServerStoppingEvent:()V
+       3: return
+
+  public static void registerDatapackListener(com.finndog.moogs_structures.events.lifecycle.RegisterReloadListenerEvent);
+    Code:
+       0: aload_0
+       1: ldc           #84                 // String moogs_structures
+       3: ldc           #86                 // String trial_spawner_config_manager
+       5: invokestatic  #88                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: getstatic     #94                 // Field com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.INSTANCE:Lcom/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager;
+      11: invokevirtual #100                // Method com/finndog/moogs_structures/events/lifecycle/RegisterReloadListenerEvent.register:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+      14: return
+
+  static {};
+    Code:
+       0: invokestatic  #104                // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+       3: putstatic     #110                // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       6: return
+}

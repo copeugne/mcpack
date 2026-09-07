@@ -1,0 +1,523 @@
+Compiled from "CommonConfigs.java"
+public class net.mehvahdjukaar.supplementaries.configs.CommonConfigs {
+  public static final net.mehvahdjukaar.moonlight.api.platform.configs.ModConfigHolder CONFIG_HOLDER;
+
+  private static final java.util.Map<java.lang.String, java.util.function.Supplier<java.lang.Boolean>> FEATURE_TOGGLES;
+
+  private static final java.lang.ref.WeakReference<net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder> builderReference;
+
+  private static final java.util.function.Supplier<java.lang.Boolean> TRUE;
+
+  private static final java.util.function.Supplier<java.lang.Boolean> FALSE;
+
+  private static final java.util.function.Supplier<java.lang.Double> ZERO;
+
+  public static java.util.function.Predicate<net.minecraft.world.level.block.Block> xpBottlingOverride;
+
+  private static java.util.function.Supplier<net.minecraft.core.Holder$Reference<net.minecraft.world.level.block.Block>> ropeOverride;
+
+  private static boolean stasisEnabled;
+
+  public net.mehvahdjukaar.supplementaries.configs.CommonConfigs();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static void onRefresh();
+    Code:
+       0: invokedynamic #7,  0              // InvokeDynamic #0:get:()Lcom/google/common/base/Supplier;
+       5: invokestatic  #11                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+       8: putstatic     #17                 // Field ropeOverride:Ljava/util/function/Supplier;
+      11: getstatic     #23                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.BOTTLING_TARGET:Ljava/util/function/Supplier;
+      14: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      19: checkcast     #33                 // class java/lang/String
+      22: astore_0
+      23: aload_0
+      24: invokevirtual #35                 // Method java/lang/String.isEmpty:()Z
+      27: ifeq          48
+      30: ldc           #39                 // class net/minecraft/world/level/block/EnchantingTableBlock
+      32: dup
+      33: invokestatic  #41                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      36: pop
+      37: invokedynamic #47,  0             // InvokeDynamic #1:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+      42: putstatic     #51                 // Field xpBottlingOverride:Ljava/util/function/Predicate;
+      45: goto          57
+      48: aload_0
+      49: invokedynamic #55,  0             // InvokeDynamic #2:test:(Ljava/lang/String;)Ljava/util/function/Predicate;
+      54: putstatic     #51                 // Field xpBottlingOverride:Ljava/util/function/Predicate;
+      57: getstatic     #58                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.STASIS_ENABLED:Ljava/util/function/Supplier;
+      60: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      65: checkcast     #63                 // class java/lang/Boolean
+      68: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      71: ifeq          112
+      74: getstatic     #68                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.SLINGSHOT_ENABLED:Ljava/util/function/Supplier;
+      77: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      82: checkcast     #63                 // class java/lang/Boolean
+      85: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      88: ifne          108
+      91: getstatic     #71                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.BUBBLE_BLOWER_ENABLED:Ljava/util/function/Supplier;
+      94: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      99: checkcast     #63                 // class java/lang/Boolean
+     102: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     105: ifeq          112
+     108: iconst_1
+     109: goto          113
+     112: iconst_0
+     113: putstatic     #74                 // Field stasisEnabled:Z
+     116: return
+
+  public static net.minecraft.world.level.block.Block getSelectedRope();
+    Code:
+       0: invokestatic  #78                 // Method getRopeOverride:()Lnet/minecraft/core/Holder$Reference;
+       3: astore_0
+       4: aload_0
+       5: ifnull        16
+       8: aload_0
+       9: invokevirtual #82                 // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      12: checkcast     #87                 // class net/minecraft/world/level/block/Block
+      15: areturn
+      16: getstatic     #89                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_ENABLED:Ljava/util/function/Supplier;
+      19: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      24: checkcast     #63                 // class java/lang/Boolean
+      27: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      30: ifeq          45
+      33: getstatic     #94                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.ROPE:Ljava/util/function/Supplier;
+      36: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      41: checkcast     #87                 // class net/minecraft/world/level/block/Block
+      44: areturn
+      45: aconst_null
+      46: areturn
+
+  public static net.minecraft.core.Holder$Reference<net.minecraft.world.level.block.Block> getRopeOverride();
+    Code:
+       0: getstatic     #17                 // Field ropeOverride:Ljava/util/function/Supplier;
+       3: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #83                 // class net/minecraft/core/Holder$Reference
+      11: areturn
+
+  public static boolean stasisEnabled();
+    Code:
+       0: getstatic     #74                 // Field stasisEnabled:Z
+       3: ireturn
+
+  public static double getRedMerchantSpawnMultiplier();
+    Code:
+       0: getstatic     #99                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.BOMB_ENABLED:Ljava/util/function/Supplier;
+       3: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #63                 // class java/lang/Boolean
+      11: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      14: ifeq          34
+      17: getstatic     #102                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$General.RED_MERCHANT_SPAWN_MULTIPLIER:Ljava/util/function/Supplier;
+      20: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      25: checkcast     #107                // class java/lang/Double
+      28: invokevirtual #109                // Method java/lang/Double.doubleValue:()D
+      31: goto          35
+      34: dconst_0
+      35: dreturn
+
+  private static java.util.function.Supplier<java.lang.Boolean> feature(net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder);
+    Code:
+       0: aload_0
+       1: ldc           #113                // String enabled
+       3: aload_0
+       4: invokevirtual #115                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.currentCategory:()Ljava/lang/String;
+       7: iconst_1
+       8: invokestatic  #121                // Method feature:(Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder;Ljava/lang/String;Ljava/lang/String;Z)Ljava/util/function/Supplier;
+      11: areturn
+
+  private static java.util.function.Supplier<java.lang.Boolean> feature(net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_1
+       3: iconst_1
+       4: invokestatic  #121                // Method feature:(Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder;Ljava/lang/String;Ljava/lang/String;Z)Ljava/util/function/Supplier;
+       7: areturn
+
+  private static java.util.function.Supplier<java.lang.Boolean> feature(net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder, java.lang.String, java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_3
+       3: invokevirtual #125                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.define:(Ljava/lang/String;Z)Ljava/util/function/Supplier;
+       6: astore        4
+       8: aload_1
+       9: aload_2
+      10: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      13: ifeq          23
+      16: aload_0
+      17: invokevirtual #133                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.parentCategory:()Ljava/lang/String;
+      20: goto          27
+      23: aload_0
+      24: invokevirtual #115                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.currentCategory:()Ljava/lang/String;
+      27: astore        5
+      29: getstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+      32: aload         5
+      34: invokeinterface #140,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      39: checkcast     #29                 // class java/util/function/Supplier
+      42: astore        6
+      44: aload         6
+      46: ifnull        64
+      49: aload         4
+      51: astore        7
+      53: aload         6
+      55: aload         7
+      57: invokedynamic #144,  0            // InvokeDynamic #3:get:(Ljava/util/function/Supplier;Ljava/util/function/Supplier;)Ljava/util/function/Supplier;
+      62: astore        4
+      64: getstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+      67: aload_2
+      68: aload         4
+      70: invokeinterface #147,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      75: pop
+      76: aload         4
+      78: areturn
+
+  public static boolean isEnabled(java.lang.String);
+    Code:
+       0: getstatic     #151                // Field CONFIG_HOLDER:Lnet/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder;
+       3: invokevirtual #155                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder.isLoaded:()Z
+       6: ifne          19
+       9: new           #160                // class java/lang/AssertionError
+      12: dup
+      13: ldc           #162                // String Config isn\'t loaded. How?
+      15: invokespecial #164                // Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+      18: athrow
+      19: aload_0
+      20: astore_1
+      21: iconst_m1
+      22: istore_2
+      23: aload_1
+      24: invokevirtual #167                // Method java/lang/String.hashCode:()I
+      27: lookupswitch  { // 5
+           -1940594396: 76
+           -1435142521: 90
+                106079: 132
+             190995068: 118
+             235805673: 104
+               default: 143
+          }
+      76: aload_1
+      77: ldc           #171                // String globe_sepia
+      79: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      82: ifeq          143
+      85: iconst_0
+      86: istore_2
+      87: goto          143
+      90: aload_1
+      91: ldc           #173                // String pulley_block
+      93: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      96: ifeq          143
+      99: iconst_1
+     100: istore_2
+     101: goto          143
+     104: aload_1
+     105: ldc           #175                // String bunting
+     107: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     110: ifeq          143
+     113: iconst_2
+     114: istore_2
+     115: goto          143
+     118: aload_1
+     119: ldc           #177                // String rope_arrow
+     121: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     124: ifeq          143
+     127: iconst_3
+     128: istore_2
+     129: goto          143
+     132: aload_1
+     133: ldc           #179                // String key
+     135: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     138: ifeq          143
+     141: iconst_4
+     142: istore_2
+     143: iload_2
+     144: tableswitch   { // 0 to 4
+                     0: 180
+                     1: 222
+                     2: 264
+                     3: 306
+                     4: 348
+               default: 407
+          }
+     180: getstatic     #181                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.GLOBE_SEPIA:Ljava/util/function/Supplier;
+     183: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     188: checkcast     #63                 // class java/lang/Boolean
+     191: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     194: ifeq          218
+     197: getstatic     #186                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.ANTIQUE_INK_ENABLED:Ljava/util/function/Supplier;
+     200: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     205: checkcast     #63                 // class java/lang/Boolean
+     208: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     211: ifeq          218
+     214: iconst_1
+     215: goto          435
+     218: iconst_0
+     219: goto          435
+     222: getstatic     #189                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Redstone.PULLEY_ENABLED:Ljava/util/function/Supplier;
+     225: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     230: checkcast     #63                 // class java/lang/Boolean
+     233: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     236: ifeq          260
+     239: getstatic     #89                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_ENABLED:Ljava/util/function/Supplier;
+     242: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     247: checkcast     #63                 // class java/lang/Boolean
+     250: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     253: ifeq          260
+     256: iconst_1
+     257: goto          435
+     260: iconst_0
+     261: goto          435
+     264: getstatic     #194                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.BUNTINGS_ENABLED:Ljava/util/function/Supplier;
+     267: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     272: checkcast     #63                 // class java/lang/Boolean
+     275: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     278: ifeq          302
+     281: getstatic     #89                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_ENABLED:Ljava/util/function/Supplier;
+     284: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     289: checkcast     #63                 // class java/lang/Boolean
+     292: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     295: ifeq          302
+     298: iconst_1
+     299: goto          435
+     302: iconst_0
+     303: goto          435
+     306: getstatic     #197                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.ROPE_ARROW_ENABLED:Ljava/util/function/Supplier;
+     309: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     314: checkcast     #63                 // class java/lang/Boolean
+     317: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     320: ifeq          344
+     323: getstatic     #89                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_ENABLED:Ljava/util/function/Supplier;
+     326: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     331: checkcast     #63                 // class java/lang/Boolean
+     334: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     337: ifeq          344
+     340: iconst_1
+     341: goto          435
+     344: iconst_0
+     345: goto          435
+     348: getstatic     #200                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.NETHERITE_DOOR_ENABLED:Ljava/util/function/Supplier;
+     351: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     356: checkcast     #63                 // class java/lang/Boolean
+     359: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     362: ifne          399
+     365: getstatic     #203                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.NETHERITE_TRAPDOOR_ENABLED:Ljava/util/function/Supplier;
+     368: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     373: checkcast     #63                 // class java/lang/Boolean
+     376: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     379: ifne          399
+     382: getstatic     #206                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.SAFE_ENABLED:Ljava/util/function/Supplier;
+     385: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     390: checkcast     #63                 // class java/lang/Boolean
+     393: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     396: ifeq          403
+     399: iconst_1
+     400: goto          435
+     403: iconst_0
+     404: goto          435
+     407: getstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+     410: aload_0
+     411: invokedynamic #209,  0            // InvokeDynamic #4:get:()Ljava/util/function/Supplier;
+     416: invokeinterface #212,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     421: checkcast     #29                 // class java/util/function/Supplier
+     424: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     429: checkcast     #63                 // class java/lang/Boolean
+     432: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+     435: ireturn
+
+  public static void init();
+    Code:
+       0: iconst_0
+       1: istore_0
+       2: getstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+       5: invokeinterface #215,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      10: invokeinterface #219,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      15: astore_1
+      16: aload_1
+      17: invokeinterface #225,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      22: ifeq          56
+      25: aload_1
+      26: invokeinterface #230,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      31: checkcast     #29                 // class java/util/function/Supplier
+      34: astore_2
+      35: aload_2
+      36: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      41: checkcast     #63                 // class java/lang/Boolean
+      44: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      47: ifne          53
+      50: iinc          0, 1
+      53: goto          16
+      56: iload_0
+      57: i2f
+      58: getstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+      61: invokeinterface #233,  1          // InterfaceMethod java/util/Map.size:()I
+      66: i2f
+      67: fdiv
+      68: fstore_1
+      69: fload_1
+      70: ldc           #236                // float 0.66f
+      72: fcmpl
+      73: ifle          105
+      76: getstatic     #237                // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      79: ldc           #243                // String You have disabled more than {}% of Supplementaries content. Consider uninstalling the mod
+      81: ldc           #245                // String %.0f
+      83: iconst_1
+      84: anewarray     #2                  // class java/lang/Object
+      87: dup
+      88: iconst_0
+      89: fload_1
+      90: ldc           #247                // float 100.0f
+      92: fmul
+      93: invokestatic  #248                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      96: aastore
+      97: invokestatic  #254                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     100: invokeinterface #258,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     105: return
+
+  private static java.lang.Boolean lambda$isEnabled$8();
+    Code:
+       0: iconst_1
+       1: invokestatic  #264                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  private static java.lang.Boolean lambda$feature$7(java.util.function.Supplier, java.util.function.Supplier);
+    Code:
+       0: aload_0
+       1: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       6: checkcast     #63                 // class java/lang/Boolean
+       9: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      12: ifeq          34
+      15: aload_1
+      16: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      21: checkcast     #63                 // class java/lang/Boolean
+      24: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      27: ifeq          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: invokestatic  #264                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      38: areturn
+
+  private static boolean lambda$onRefresh$6(java.lang.String, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokedynamic #267,  0            // InvokeDynamic #5:get:(Ljava/lang/String;)Lcom/google/common/base/Supplier;
+       7: invokestatic  #11                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+      10: if_acmpne     17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: ireturn
+
+  private static net.minecraft.world.level.block.Block lambda$onRefresh$5(java.lang.String);
+    Code:
+       0: getstatic     #270                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_0
+       4: invokestatic  #276                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: invokeinterface #282,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      12: checkcast     #87                 // class net/minecraft/world/level/block/Block
+      15: areturn
+
+  private static net.minecraft.core.Holder$Reference lambda$onRefresh$4();
+    Code:
+       0: getstatic     #287                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_OVERRIDE:Ljava/util/function/Supplier;
+       3: ifnonnull     8
+       6: aconst_null
+       7: areturn
+       8: getstatic     #270                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      11: getstatic     #290                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+      14: getstatic     #287                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.ROPE_OVERRIDE:Ljava/util/function/Supplier;
+      17: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      22: checkcast     #277                // class net/minecraft/resources/ResourceLocation
+      25: invokestatic  #295                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      28: invokeinterface #301,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getHolder:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      33: astore_0
+      34: aload_0
+      35: invokevirtual #305                // Method java/util/Optional.isPresent:()Z
+      38: ifeq          70
+      41: aload_0
+      42: invokevirtual #310                // Method java/util/Optional.get:()Ljava/lang/Object;
+      45: checkcast     #83                 // class net/minecraft/core/Holder$Reference
+      48: invokevirtual #82                 // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      51: getstatic     #94                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.ROPE:Ljava/util/function/Supplier;
+      54: invokeinterface #28,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      59: if_acmpeq     70
+      62: aload_0
+      63: invokevirtual #310                // Method java/util/Optional.get:()Ljava/lang/Object;
+      66: checkcast     #83                 // class net/minecraft/core/Holder$Reference
+      69: areturn
+      70: aconst_null
+      71: areturn
+
+  private static net.minecraft.core.Holder$Reference lambda$static$3();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  private static java.lang.Double lambda$static$2();
+    Code:
+       0: dconst_0
+       1: invokestatic  #311                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$1();
+    Code:
+       0: iconst_0
+       1: invokestatic  #264                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$0();
+    Code:
+       0: iconst_1
+       1: invokestatic  #264                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  static {};
+    Code:
+       0: new           #314                // class java/util/HashMap
+       3: dup
+       4: invokespecial #316                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #136                // Field FEATURE_TOGGLES:Ljava/util/Map;
+      10: invokedynamic #317,  0            // InvokeDynamic #6:get:()Ljava/util/function/Supplier;
+      15: putstatic     #318                // Field TRUE:Ljava/util/function/Supplier;
+      18: invokedynamic #321,  0            // InvokeDynamic #7:get:()Ljava/util/function/Supplier;
+      23: putstatic     #322                // Field FALSE:Ljava/util/function/Supplier;
+      26: invokedynamic #325,  0            // InvokeDynamic #8:get:()Ljava/util/function/Supplier;
+      31: putstatic     #326                // Field ZERO:Ljava/util/function/Supplier;
+      34: ldc           #39                 // class net/minecraft/world/level/block/EnchantingTableBlock
+      36: dup
+      37: invokestatic  #41                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      40: pop
+      41: invokedynamic #47,  0             // InvokeDynamic #1:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+      46: putstatic     #51                 // Field xpBottlingOverride:Ljava/util/function/Predicate;
+      49: invokedynamic #329,  0            // InvokeDynamic #9:get:()Ljava/util/function/Supplier;
+      54: putstatic     #17                 // Field ropeOverride:Ljava/util/function/Supplier;
+      57: iconst_1
+      58: putstatic     #74                 // Field stasisEnabled:Z
+      61: ldc_w         #330                // String supplementaries
+      64: getstatic     #332                // Field net/mehvahdjukaar/moonlight/api/platform/configs/ConfigType.COMMON_SYNCED:Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigType;
+      67: invokestatic  #338                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.create:(Ljava/lang/String;Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigType;)Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder;
+      70: astore_0
+      71: new           #341                // class java/lang/ref/WeakReference
+      74: dup
+      75: aload_0
+      76: invokespecial #343                // Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
+      79: putstatic     #344                // Field builderReference:Ljava/lang/ref/WeakReference;
+      82: invokestatic  #348                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Redstone.init:()V
+      85: invokestatic  #351                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.init:()V
+      88: invokestatic  #352                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.init:()V
+      91: invokestatic  #353                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tools.init:()V
+      94: invokestatic  #354                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$General.init:()V
+      97: invokestatic  #355                // Method net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.init:()V
+     100: aload_0
+     101: invokedynamic #356,  0            // InvokeDynamic #10:run:()Ljava/lang/Runnable;
+     106: invokevirtual #360                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.onChange:(Ljava/lang/Runnable;)Lnet/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder;
+     109: pop
+     110: aload_0
+     111: invokevirtual #364                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ConfigBuilder.build:()Lnet/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder;
+     114: putstatic     #151                // Field CONFIG_HOLDER:Lnet/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder;
+     117: getstatic     #151                // Field CONFIG_HOLDER:Lnet/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder;
+     120: invokevirtual #368                // Method net/mehvahdjukaar/moonlight/api/platform/configs/ModConfigHolder.forceLoad:()V
+     123: return
+}

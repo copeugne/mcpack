@@ -1,0 +1,1539 @@
+Compiled from "Command.java"
+public class com.structureessentials.command.Command {
+  public static java.util.Map<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, java.util.List<it.unimi.dsi.fastutil.objects.Object2DoubleMap$Entry<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>>> biomeScoreCache;
+
+  public com.structureessentials.command.Command();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public com.mojang.brigadier.builder.LiteralArgumentBuilder<net.minecraft.commands.CommandSourceStack> build(net.minecraft.commands.CommandBuildContext);
+    Code:
+       0: ldc           #9                  // String structureessentials
+       2: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       5: ldc           #17                 // String getBiomeTags
+       7: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      10: ldc           #19                 // String biome
+      12: aload_1
+      13: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      16: invokestatic  #27                 // Method net/minecraft/commands/arguments/ResourceOrTagArgument.resourceOrTag:(Lnet/minecraft/commands/CommandBuildContext;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument;
+      19: invokestatic  #33                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      22: invokedynamic #37,  0             // InvokeDynamic #0:run:()Lcom/mojang/brigadier/Command;
+      27: invokevirtual #41                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      30: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      33: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      36: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      39: ldc           #53                 // String showGenerationTimes
+      41: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      44: invokedynamic #55,  0             // InvokeDynamic #1:run:()Lcom/mojang/brigadier/Command;
+      49: invokevirtual #56                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      52: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      55: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      58: ldc           #57                 // String getBiomesForTag
+      60: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      63: ldc           #19                 // String biome
+      65: aload_1
+      66: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      69: invokestatic  #27                 // Method net/minecraft/commands/arguments/ResourceOrTagArgument.resourceOrTag:(Lnet/minecraft/commands/CommandBuildContext;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument;
+      72: invokestatic  #33                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      75: invokedynamic #59,  0             // InvokeDynamic #2:run:()Lcom/mojang/brigadier/Command;
+      80: invokevirtual #41                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      83: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      86: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      89: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      92: ldc           #60                 // String getStructuresNearby
+      94: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      97: invokedynamic #62,  0             // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+     102: invokevirtual #66                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     105: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+     108: invokedynamic #70,  0             // InvokeDynamic #4:run:()Lcom/mojang/brigadier/Command;
+     113: invokevirtual #56                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     116: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     119: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+     122: ldc           #71                 // String getSimilarForBiome
+     124: invokestatic  #11                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+     127: ldc           #19                 // String biome
+     129: aload_1
+     130: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     133: invokestatic  #27                 // Method net/minecraft/commands/arguments/ResourceOrTagArgument.resourceOrTag:(Lnet/minecraft/commands/CommandBuildContext;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument;
+     136: invokestatic  #33                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+     139: invokedynamic #73,  0             // InvokeDynamic #5:run:()Lcom/mojang/brigadier/Command;
+     144: invokevirtual #41                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     147: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     150: invokevirtual #47                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     153: checkcast     #48                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+     156: areturn
+
+  public static java.util.List<it.unimi.dsi.fastutil.objects.Object2DoubleMap$Entry<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>> getSimilarBiomesFor(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.minecraft.core.RegistryAccess);
+    Code:
+       0: getstatic     #74                 // Field biomeScoreCache:Ljava/util/Map;
+       3: aload_0
+       4: invokeinterface #80,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #86                 // class java/util/List
+      12: astore_2
+      13: aload_2
+      14: ifnull        19
+      17: aload_2
+      18: areturn
+      19: new           #88                 // class java/util/HashSet
+      22: dup
+      23: invokespecial #90                 // Method java/util/HashSet."<init>":()V
+      26: astore_3
+      27: aload_0
+      28: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.tags:()Ljava/util/stream/Stream;
+      33: invokestatic  #97                 // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+      36: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      41: checkcast     #109                // class java/util/Set
+      44: astore        4
+      46: aload_1
+      47: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      50: invokeinterface #111,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      55: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      58: checkcast     #122                // class net/minecraft/core/Registry
+      61: invokeinterface #124,  1          // InterfaceMethod net/minecraft/core/Registry.asHolderIdMap:()Lnet/minecraft/core/IdMap;
+      66: invokeinterface #128,  1          // InterfaceMethod net/minecraft/core/IdMap.iterator:()Ljava/util/Iterator;
+      71: astore        5
+      73: aload         5
+      75: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      80: ifeq          153
+      83: aload         5
+      85: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      90: checkcast     #92                 // class net/minecraft/core/Holder
+      93: astore        6
+      95: aload         4
+      97: invokeinterface #143,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     102: astore        7
+     104: aload         7
+     106: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     111: ifeq          150
+     114: aload         7
+     116: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     121: checkcast     #144                // class net/minecraft/tags/TagKey
+     124: astore        8
+     126: aload         6
+     128: aload         8
+     130: invokeinterface #146,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     135: ifeq          147
+     138: aload_3
+     139: aload         6
+     141: invokeinterface #150,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     146: pop
+     147: goto          104
+     150: goto          73
+     153: new           #154                // class it/unimi/dsi/fastutil/objects/Object2DoubleOpenHashMap
+     156: dup
+     157: invokespecial #156                // Method it/unimi/dsi/fastutil/objects/Object2DoubleOpenHashMap."<init>":()V
+     160: astore        5
+     162: aload_3
+     163: invokeinterface #143,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     168: astore        6
+     170: aload         6
+     172: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     177: ifeq          307
+     180: aload         6
+     182: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     187: checkcast     #92                 // class net/minecraft/core/Holder
+     190: astore        7
+     192: aload         7
+     194: aload_0
+     195: invokeinterface #157,  2          // InterfaceMethod net/minecraft/core/Holder.equals:(Ljava/lang/Object;)Z
+     200: ifeq          206
+     203: goto          170
+     206: iconst_0
+     207: istore        8
+     209: aload         7
+     211: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.tags:()Ljava/util/stream/Stream;
+     216: invokeinterface #160,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     221: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     226: astore        9
+     228: aload         9
+     230: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     235: ifeq          268
+     238: aload         9
+     240: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     245: checkcast     #144                // class net/minecraft/tags/TagKey
+     248: astore        10
+     250: aload         4
+     252: aload         10
+     254: invokeinterface #165,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     259: ifeq          265
+     262: iinc          8, 1
+     265: goto          228
+     268: iload         8
+     270: i2d
+     271: aload         4
+     273: invokeinterface #168,  1          // InterfaceMethod java/util/Set.size:()I
+     278: i2d
+     279: ddiv
+     280: dstore        9
+     282: ldc2_w        #172                // double 0.7d
+     285: ldc2_w        #174                // double 0.3d
+     288: dload         9
+     290: dmul
+     291: dadd
+     292: dstore        9
+     294: aload         5
+     296: aload         7
+     298: dload         9
+     300: invokevirtual #176                // Method it/unimi/dsi/fastutil/objects/Object2DoubleOpenHashMap.put:(Ljava/lang/Object;D)D
+     303: pop2
+     304: goto          170
+     307: aload_0
+     308: invokestatic  #180                // Method getAdjustedTemp:(Lnet/minecraft/core/Holder;)F
+     311: fstore        6
+     313: aload_0
+     314: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     319: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     322: invokevirtual #189                // Method net/minecraft/world/level/biome/Biome.hasPrecipitation:()Z
+     325: ifeq          346
+     328: aload_0
+     329: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     334: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     337: invokevirtual #192                // Method net/minecraft/world/level/biome/Biome.getModifiedClimateSettings:()Lnet/minecraft/world/level/biome/Biome$ClimateSettings;
+     340: invokevirtual #196                // Method net/minecraft/world/level/biome/Biome$ClimateSettings.downfall:()F
+     343: goto          347
+     346: fconst_0
+     347: fstore        7
+     349: aload_0
+     350: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     355: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     358: invokevirtual #189                // Method net/minecraft/world/level/biome/Biome.hasPrecipitation:()Z
+     361: ifne          370
+     364: getstatic     #202                // Field net/minecraft/world/level/biome/Biome$Precipitation.NONE:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     367: goto          387
+     370: fload         6
+     372: ldc           #208                // float 0.15f
+     374: fcmpl
+     375: iflt          384
+     378: getstatic     #209                // Field net/minecraft/world/level/biome/Biome$Precipitation.RAIN:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     381: goto          387
+     384: getstatic     #212                // Field net/minecraft/world/level/biome/Biome$Precipitation.SNOW:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     387: astore        8
+     389: aload_0
+     390: invokeinterface #215,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     395: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     398: checkcast     #219                // class net/minecraft/resources/ResourceKey
+     401: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     404: invokevirtual #225                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     407: invokevirtual #231                // Method java/lang/String.toString:()Ljava/lang/String;
+     410: astore        9
+     412: aload_0
+     413: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     418: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     421: invokevirtual #236                // Method net/minecraft/world/level/biome/Biome.getModifiedSpecialEffects:()Lnet/minecraft/world/level/biome/BiomeSpecialEffects;
+     424: invokevirtual #240                // Method net/minecraft/world/level/biome/BiomeSpecialEffects.getBackgroundMusic:()Ljava/util/Optional;
+     427: astore        10
+     429: aload_0
+     430: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     435: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     438: invokevirtual #236                // Method net/minecraft/world/level/biome/Biome.getModifiedSpecialEffects:()Lnet/minecraft/world/level/biome/BiomeSpecialEffects;
+     441: invokevirtual #245                // Method net/minecraft/world/level/biome/BiomeSpecialEffects.getSkyColor:()I
+     444: istore        11
+     446: new           #88                 // class java/util/HashSet
+     449: dup
+     450: invokespecial #90                 // Method java/util/HashSet."<init>":()V
+     453: astore        12
+     455: aload_0
+     456: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     461: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     464: invokevirtual #248                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+     467: invokevirtual #252                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.features:()Ljava/util/List;
+     470: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     475: astore        13
+     477: aload         13
+     479: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     484: ifeq          546
+     487: aload         13
+     489: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     494: checkcast     #257                // class net/minecraft/core/HolderSet
+     497: astore        14
+     499: aload         14
+     501: invokeinterface #259,  1          // InterfaceMethod net/minecraft/core/HolderSet.iterator:()Ljava/util/Iterator;
+     506: astore        15
+     508: aload         15
+     510: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     515: ifeq          543
+     518: aload         15
+     520: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     525: checkcast     #92                 // class net/minecraft/core/Holder
+     528: astore        16
+     530: aload         12
+     532: aload         16
+     534: invokeinterface #150,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     539: pop
+     540: goto          508
+     543: goto          477
+     546: aload_0
+     547: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     552: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     555: invokevirtual #248                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+     558: invokevirtual #260                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.getFlowerFeatures:()Ljava/util/List;
+     561: astore        13
+     563: aload_0
+     564: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     569: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     572: invokevirtual #263                // Method net/minecraft/world/level/biome/Biome.getMobSettings:()Lnet/minecraft/world/level/biome/MobSpawnSettings;
+     575: astore        14
+     577: aload         5
+     579: invokevirtual #267                // Method it/unimi/dsi/fastutil/objects/Object2DoubleOpenHashMap.object2DoubleEntrySet:()Lit/unimi/dsi/fastutil/objects/Object2DoubleMap$FastEntrySet;
+     582: invokeinterface #271,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$FastEntrySet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+     587: astore        15
+     589: aload         15
+     591: invokeinterface #276,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectIterator.hasNext:()Z
+     596: ifeq          1452
+     599: aload         15
+     601: invokeinterface #279,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectIterator.next:()Ljava/lang/Object;
+     606: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+     609: astore        16
+     611: aload         16
+     613: invokeinterface #282,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getKey:()Ljava/lang/Object;
+     618: checkcast     #92                 // class net/minecraft/core/Holder
+     621: aload_0
+     622: invokeinterface #285,  2          // InterfaceMethod net/minecraft/core/Holder.equals:(Ljava/lang/Object;)Z
+     627: ifeq          633
+     630: goto          589
+     633: aload         16
+     635: invokeinterface #282,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getKey:()Ljava/lang/Object;
+     640: checkcast     #92                 // class net/minecraft/core/Holder
+     643: astore        17
+     645: dconst_1
+     646: dstore        18
+     648: aload         17
+     650: invokestatic  #180                // Method getAdjustedTemp:(Lnet/minecraft/core/Holder;)F
+     653: fstore        20
+     655: aload         17
+     657: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     662: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     665: invokevirtual #189                // Method net/minecraft/world/level/biome/Biome.hasPrecipitation:()Z
+     668: ifne          677
+     671: getstatic     #202                // Field net/minecraft/world/level/biome/Biome$Precipitation.NONE:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     674: goto          694
+     677: fload         20
+     679: ldc           #208                // float 0.15f
+     681: fcmpl
+     682: iflt          691
+     685: getstatic     #209                // Field net/minecraft/world/level/biome/Biome$Precipitation.RAIN:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     688: goto          694
+     691: getstatic     #212                // Field net/minecraft/world/level/biome/Biome$Precipitation.SNOW:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+     694: astore        21
+     696: aload         8
+     698: aload         21
+     700: if_acmpeq     714
+     703: dload         18
+     705: ldc2_w        #172                // double 0.7d
+     708: dmul
+     709: dstore        18
+     711: goto          804
+     714: fload         7
+     716: aload         17
+     718: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     723: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     726: invokevirtual #189                // Method net/minecraft/world/level/biome/Biome.hasPrecipitation:()Z
+     729: ifeq          750
+     732: aload_0
+     733: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     738: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     741: invokevirtual #192                // Method net/minecraft/world/level/biome/Biome.getModifiedClimateSettings:()Lnet/minecraft/world/level/biome/Biome$ClimateSettings;
+     744: invokevirtual #196                // Method net/minecraft/world/level/biome/Biome$ClimateSettings.downfall:()F
+     747: goto          751
+     750: fconst_0
+     751: fsub
+     752: invokestatic  #286                // Method java/lang/Math.abs:(F)F
+     755: fstore        22
+     757: dload         18
+     759: dconst_1
+     760: ldc2_w        #292                // double 0.1d
+     763: fload         22
+     765: f2d
+     766: dmul
+     767: dsub
+     768: dmul
+     769: dstore        18
+     771: fload         6
+     773: aload         17
+     775: invokestatic  #180                // Method getAdjustedTemp:(Lnet/minecraft/core/Holder;)F
+     778: fsub
+     779: invokestatic  #286                // Method java/lang/Math.abs:(F)F
+     782: fstore        23
+     784: dload         18
+     786: dconst_1
+     787: ldc2_w        #292                // double 0.1d
+     790: fload         23
+     792: f2d
+     793: ldc2_w        #292                // double 0.1d
+     796: dmul
+     797: invokestatic  #294                // Method java/lang/Math.min:(DD)D
+     800: dsub
+     801: dmul
+     802: dstore        18
+     804: aload         17
+     806: invokeinterface #298,  1          // InterfaceMethod net/minecraft/core/Holder.toString:()Ljava/lang/String;
+     811: aload         9
+     813: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     816: ifeq          827
+     819: dload         18
+     821: ldc2_w        #302                // double 1.2d
+     824: dmul
+     825: dstore        18
+     827: aload         10
+     829: invokevirtual #304                // Method java/util/Optional.isPresent:()Z
+     832: ifeq          920
+     835: aload         17
+     837: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     842: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     845: invokevirtual #236                // Method net/minecraft/world/level/biome/Biome.getModifiedSpecialEffects:()Lnet/minecraft/world/level/biome/BiomeSpecialEffects;
+     848: invokevirtual #240                // Method net/minecraft/world/level/biome/BiomeSpecialEffects.getBackgroundMusic:()Ljava/util/Optional;
+     851: invokevirtual #304                // Method java/util/Optional.isPresent:()Z
+     854: ifeq          912
+     857: aload         17
+     859: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     864: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     867: invokevirtual #236                // Method net/minecraft/world/level/biome/Biome.getModifiedSpecialEffects:()Lnet/minecraft/world/level/biome/BiomeSpecialEffects;
+     870: invokevirtual #240                // Method net/minecraft/world/level/biome/BiomeSpecialEffects.getBackgroundMusic:()Ljava/util/Optional;
+     873: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     876: checkcast     #307                // class net/minecraft/sounds/Music
+     879: invokevirtual #309                // Method net/minecraft/sounds/Music.getEvent:()Lnet/minecraft/core/Holder;
+     882: aload         10
+     884: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     887: checkcast     #307                // class net/minecraft/sounds/Music
+     890: invokevirtual #309                // Method net/minecraft/sounds/Music.getEvent:()Lnet/minecraft/core/Holder;
+     893: invokeinterface #313,  2          // InterfaceMethod net/minecraft/core/Holder.equals:(Ljava/lang/Object;)Z
+     898: ifeq          912
+     901: dload         18
+     903: ldc2_w        #302                // double 1.2d
+     906: dmul
+     907: dstore        18
+     909: goto          920
+     912: dload         18
+     914: ldc2_w        #314                // double 0.9d
+     917: dmul
+     918: dstore        18
+     920: aload         17
+     922: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     927: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     930: invokevirtual #236                // Method net/minecraft/world/level/biome/Biome.getModifiedSpecialEffects:()Lnet/minecraft/world/level/biome/BiomeSpecialEffects;
+     933: invokevirtual #245                // Method net/minecraft/world/level/biome/BiomeSpecialEffects.getSkyColor:()I
+     936: iload         11
+     938: if_icmpeq     949
+     941: dload         18
+     943: ldc2_w        #314                // double 0.9d
+     946: dmul
+     947: dstore        18
+     949: iconst_0
+     950: istore        22
+     952: iconst_0
+     953: istore        23
+     955: aload         17
+     957: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     962: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+     965: invokevirtual #248                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+     968: invokevirtual #252                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.features:()Ljava/util/List;
+     971: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     976: astore        24
+     978: aload         24
+     980: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     985: ifeq          1055
+     988: aload         24
+     990: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     995: checkcast     #257                // class net/minecraft/core/HolderSet
+     998: astore        25
+    1000: aload         25
+    1002: invokeinterface #259,  1          // InterfaceMethod net/minecraft/core/HolderSet.iterator:()Ljava/util/Iterator;
+    1007: astore        26
+    1009: aload         26
+    1011: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+    1016: ifeq          1052
+    1019: aload         26
+    1021: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+    1026: checkcast     #92                 // class net/minecraft/core/Holder
+    1029: astore        27
+    1031: iinc          23, 1
+    1034: aload         12
+    1036: aload         27
+    1038: invokeinterface #165,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+    1043: ifeq          1049
+    1046: iinc          22, 1
+    1049: goto          1009
+    1052: goto          978
+    1055: aload         12
+    1057: invokeinterface #168,  1          // InterfaceMethod java/util/Set.size:()I
+    1062: iload         22
+    1064: isub
+    1065: istore        24
+    1067: iload         23
+    1069: iload         24
+    1071: isub
+    1072: istore        25
+    1074: dload         18
+    1076: dconst_1
+    1077: ldc2_w        #292                // double 0.1d
+    1080: ldc2_w        #292                // double 0.1d
+    1083: iload         24
+    1085: iconst_3
+    1086: imul
+    1087: i2d
+    1088: iconst_1
+    1089: aload         12
+    1091: invokeinterface #168,  1          // InterfaceMethod java/util/Set.size:()I
+    1096: invokestatic  #316                // Method java/lang/Math.max:(II)I
+    1099: i2d
+    1100: ddiv
+    1101: dmul
+    1102: invokestatic  #294                // Method java/lang/Math.min:(DD)D
+    1105: dsub
+    1106: dmul
+    1107: dstore        18
+    1109: dload         18
+    1111: dconst_1
+    1112: ldc2_w        #320                // double 0.05d
+    1115: iload         25
+    1117: i2d
+    1118: bipush        10
+    1120: aload         12
+    1122: invokeinterface #168,  1          // InterfaceMethod java/util/Set.size:()I
+    1127: invokestatic  #316                // Method java/lang/Math.max:(II)I
+    1130: i2d
+    1131: ddiv
+    1132: dmul
+    1133: dsub
+    1134: dmul
+    1135: dstore        18
+    1137: aload         13
+    1139: invokeinterface #322,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+    1144: ifne          1282
+    1147: iconst_0
+    1148: istore        26
+    1150: aload         13
+    1152: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+    1157: astore        27
+    1159: aload         27
+    1161: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+    1166: ifeq          1259
+    1169: aload         27
+    1171: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+    1176: checkcast     #325                // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+    1179: astore        28
+    1181: iconst_0
+    1182: istore        29
+    1184: aload         17
+    1186: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+    1191: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+    1194: invokevirtual #248                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+    1197: invokevirtual #260                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.getFlowerFeatures:()Ljava/util/List;
+    1200: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+    1205: astore        30
+    1207: aload         30
+    1209: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+    1214: ifeq          1248
+    1217: aload         30
+    1219: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+    1224: checkcast     #325                // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+    1227: astore        31
+    1229: aload         31
+    1231: aload         28
+    1233: invokevirtual #327                // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.equals:(Ljava/lang/Object;)Z
+    1236: ifeq          1245
+    1239: iconst_1
+    1240: istore        29
+    1242: goto          1248
+    1245: goto          1207
+    1248: iload         29
+    1250: ifne          1256
+    1253: iinc          26, 1
+    1256: goto          1159
+    1259: dload         18
+    1261: dconst_1
+    1262: ldc2_w        #292                // double 0.1d
+    1265: iload         26
+    1267: i2d
+    1268: aload         13
+    1270: invokeinterface #328,  1          // InterfaceMethod java/util/List.size:()I
+    1275: i2d
+    1276: ddiv
+    1277: dmul
+    1278: dsub
+    1279: dmul
+    1280: dstore        18
+    1282: aload         14
+    1284: invokevirtual #329                // Method net/minecraft/world/level/biome/MobSpawnSettings.getEntityTypes:()Ljava/util/Set;
+    1287: invokeinterface #335,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+    1292: ifne          1390
+    1295: iconst_0
+    1296: istore        26
+    1298: aload         14
+    1300: invokevirtual #329                // Method net/minecraft/world/level/biome/MobSpawnSettings.getEntityTypes:()Ljava/util/Set;
+    1303: invokeinterface #143,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+    1308: astore        27
+    1310: aload         27
+    1312: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+    1317: ifeq          1364
+    1320: aload         27
+    1322: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+    1327: checkcast     #336                // class net/minecraft/world/entity/EntityType
+    1330: astore        28
+    1332: aload         17
+    1334: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+    1339: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+    1342: invokevirtual #263                // Method net/minecraft/world/level/biome/Biome.getMobSettings:()Lnet/minecraft/world/level/biome/MobSpawnSettings;
+    1345: invokevirtual #329                // Method net/minecraft/world/level/biome/MobSpawnSettings.getEntityTypes:()Ljava/util/Set;
+    1348: aload         28
+    1350: invokeinterface #165,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+    1355: ifne          1361
+    1358: iinc          26, 1
+    1361: goto          1310
+    1364: dload         18
+    1366: dconst_1
+    1367: ldc2_w        #338                // double 0.2d
+    1370: iload         26
+    1372: i2d
+    1373: aload         14
+    1375: invokevirtual #329                // Method net/minecraft/world/level/biome/MobSpawnSettings.getEntityTypes:()Ljava/util/Set;
+    1378: invokeinterface #168,  1          // InterfaceMethod java/util/Set.size:()I
+    1383: i2d
+    1384: ddiv
+    1385: dmul
+    1386: dsub
+    1387: dmul
+    1388: dstore        18
+    1390: aload         14
+    1392: invokevirtual #340                // Method net/minecraft/world/level/biome/MobSpawnSettings.getCreatureProbability:()F
+    1395: aload         17
+    1397: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+    1402: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+    1405: invokevirtual #263                // Method net/minecraft/world/level/biome/Biome.getMobSettings:()Lnet/minecraft/world/level/biome/MobSpawnSettings;
+    1408: invokevirtual #340                // Method net/minecraft/world/level/biome/MobSpawnSettings.getCreatureProbability:()F
+    1411: fsub
+    1412: invokestatic  #286                // Method java/lang/Math.abs:(F)F
+    1415: f2d
+    1416: ldc2_w        #292                // double 0.1d
+    1419: dcmpl
+    1420: ifle          1431
+    1423: dload         18
+    1425: ldc2_w        #314                // double 0.9d
+    1428: dmul
+    1429: dstore        18
+    1431: aload         16
+    1433: aload         16
+    1435: invokeinterface #343,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getDoubleValue:()D
+    1440: dload         18
+    1442: dmul
+    1443: invokeinterface #347,  3          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.setValue:(D)D
+    1448: pop2
+    1449: goto          589
+    1452: new           #351                // class java/util/ArrayList
+    1455: dup
+    1456: aload         5
+    1458: invokevirtual #267                // Method it/unimi/dsi/fastutil/objects/Object2DoubleOpenHashMap.object2DoubleEntrySet:()Lit/unimi/dsi/fastutil/objects/Object2DoubleMap$FastEntrySet;
+    1461: invokespecial #353                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+    1464: astore        15
+    1466: aload         15
+    1468: invokedynamic #356,  0            // InvokeDynamic #6:applyAsDouble:()Ljava/util/function/ToDoubleFunction;
+    1473: invokestatic  #360                // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+    1476: invokeinterface #366,  1          // InterfaceMethod java/util/Comparator.reversed:()Ljava/util/Comparator;
+    1481: invokeinterface #370,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+    1486: getstatic     #74                 // Field biomeScoreCache:Ljava/util/Map;
+    1489: aload_0
+    1490: aload         15
+    1492: invokeinterface #374,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    1497: pop
+    1498: aload         15
+    1500: areturn
+
+  public static java.util.List<java.util.Map$Entry<net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>, java.lang.Double>> getSimilarTagsFor(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.minecraft.core.RegistryAccess);
+    Code:
+       0: aload_0
+       1: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.tags:()Ljava/util/stream/Stream;
+       6: invokestatic  #377                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+       9: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      14: checkcast     #86                 // class java/util/List
+      17: astore_2
+      18: aload_0
+      19: aload_1
+      20: invokestatic  #379                // Method getSimilarBiomesFor:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/RegistryAccess;)Ljava/util/List;
+      23: astore_3
+      24: new           #383                // class java/util/HashMap
+      27: dup
+      28: invokespecial #385                // Method java/util/HashMap."<init>":()V
+      31: astore        4
+      33: aload_3
+      34: invokeinterface #328,  1          // InterfaceMethod java/util/List.size:()I
+      39: istore        5
+      41: iconst_0
+      42: istore        6
+      44: iload         6
+      46: aload_3
+      47: invokeinterface #328,  1          // InterfaceMethod java/util/List.size:()I
+      52: if_icmpge     231
+      55: iload         5
+      57: i2d
+      58: ldc2_w        #386                // double 6.0d
+      61: ddiv
+      62: iload         6
+      64: i2d
+      65: dsub
+      66: iload         5
+      68: i2d
+      69: ldc2_w        #386                // double 6.0d
+      72: ddiv
+      73: ddiv
+      74: dstore        7
+      76: iload         6
+      78: i2d
+      79: iload         5
+      81: i2d
+      82: ldc2_w        #386                // double 6.0d
+      85: ddiv
+      86: dcmpl
+      87: ifle          112
+      90: iload         6
+      92: i2d
+      93: iload         5
+      95: i2d
+      96: ldc2_w        #388                // double 0.16666666666666666d
+      99: dmul
+     100: dsub
+     101: dneg
+     102: iload         5
+     104: i2d
+     105: ldc2_w        #390                // double 0.8333333333333334d
+     108: dmul
+     109: ddiv
+     110: dstore        7
+     112: aload_3
+     113: iload         6
+     115: invokeinterface #392,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     120: checkcast     #395                // class java/util/Map$Entry
+     123: astore        9
+     125: aload         9
+     127: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     132: checkcast     #92                 // class net/minecraft/core/Holder
+     135: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.tags:()Ljava/util/stream/Stream;
+     140: invokeinterface #160,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     145: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     150: astore        10
+     152: aload         10
+     154: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     159: ifeq          225
+     162: aload         10
+     164: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     169: checkcast     #144                // class net/minecraft/tags/TagKey
+     172: astore        11
+     174: aload_2
+     175: aload         11
+     177: invokeinterface #398,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     182: ifeq          222
+     185: aload         4
+     187: aload         11
+     189: aload         4
+     191: aload         11
+     193: dconst_0
+     194: invokestatic  #399                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     197: invokeinterface #405,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     202: checkcast     #400                // class java/lang/Double
+     205: invokevirtual #408                // Method java/lang/Double.doubleValue:()D
+     208: dconst_1
+     209: dload         7
+     211: dmul
+     212: dadd
+     213: invokestatic  #399                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     216: invokeinterface #374,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     221: pop
+     222: goto          152
+     225: iinc          6, 1
+     228: goto          44
+     231: new           #351                // class java/util/ArrayList
+     234: dup
+     235: aload         4
+     237: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     242: invokespecial #353                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     245: astore        6
+     247: aload         6
+     249: invokedynamic #414,  0            // InvokeDynamic #7:applyAsDouble:()Ljava/util/function/ToDoubleFunction;
+     254: invokestatic  #360                // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+     257: invokeinterface #366,  1          // InterfaceMethod java/util/Comparator.reversed:()Ljava/util/Comparator;
+     262: invokeinterface #370,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+     267: aload         6
+     269: areturn
+
+  public static float getAdjustedTemp(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: invokeinterface #184,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+       6: checkcast     #187                // class net/minecraft/world/level/biome/Biome
+       9: astore_1
+      10: aload_1
+      11: invokevirtual #415                // Method net/minecraft/world/level/biome/Biome.getBaseTemperature:()F
+      14: fstore_2
+      15: fload_2
+      16: ldc_w         #418                // float 0.5f
+      19: fcmpl
+      20: ifeq          31
+      23: fload_2
+      24: ldc_w         #419                // float 0.8f
+      27: fcmpl
+      28: ifne          128
+      31: aload_0
+      32: invokeinterface #215,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      37: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      40: checkcast     #219                // class net/minecraft/resources/ResourceKey
+      43: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      46: invokevirtual #420                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      49: astore_3
+      50: aload_3
+      51: ldc_w         #421                // String hot
+      54: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      57: ifne          80
+      60: aload_3
+      61: ldc_w         #423                // String warm
+      64: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      67: ifne          80
+      70: aload_3
+      71: ldc_w         #425                // String desert
+      74: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      77: ifeq          84
+      80: ldc_w         #427                // float 0.95f
+      83: freturn
+      84: aload_3
+      85: ldc_w         #428                // String snowy
+      88: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      91: ifne          124
+      94: aload_3
+      95: ldc_w         #430                // String cold
+      98: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     101: ifne          124
+     104: aload_3
+     105: ldc_w         #432                // String frozen
+     108: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     111: ifne          124
+     114: aload_3
+     115: ldc_w         #434                // String ice
+     118: invokevirtual #299                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     121: ifeq          126
+     124: fconst_0
+     125: freturn
+     126: fload_2
+     127: freturn
+     128: fload_2
+     129: freturn
+
+  private static double lambda$getSimilarTagsFor$13(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #395                // class java/util/Map$Entry
+       4: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       9: checkcast     #400                // class java/lang/Double
+      12: invokevirtual #408                // Method java/lang/Double.doubleValue:()D
+      15: dreturn
+
+  private static double lambda$getSimilarBiomesFor$12(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+       4: invokeinterface #343,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getDoubleValue:()D
+       9: dreturn
+
+  private static int lambda$build$11(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: getstatic     #74                 // Field biomeScoreCache:Ljava/util/Map;
+       3: invokeinterface #439,  1          // InterfaceMethod java/util/Map.clear:()V
+       8: aload_0
+       9: ldc           #19                 // String biome
+      11: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      14: invokestatic  #442                // Method net/minecraft/commands/arguments/ResourceOrTagArgument.getResourceOrTag:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument$Result;
+      17: invokeinterface #446,  1          // InterfaceMethod net/minecraft/commands/arguments/ResourceOrTagArgument$Result.unwrap:()Lcom/mojang/datafixers/util/Either;
+      22: invokevirtual #452                // Method com/mojang/datafixers/util/Either.left:()Ljava/util/Optional;
+      25: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      28: checkcast     #457                // class net/minecraft/core/Holder$Reference
+      31: invokevirtual #459                // Method net/minecraft/core/Holder$Reference.key:()Lnet/minecraft/resources/ResourceKey;
+      34: astore_1
+      35: aload_0
+      36: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      39: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      42: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      45: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      48: invokeinterface #111,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      53: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      56: checkcast     #122                // class net/minecraft/core/Registry
+      59: aload_1
+      60: invokeinterface #474,  2          // InterfaceMethod net/minecraft/core/Registry.getHolder:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      65: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      68: checkcast     #92                 // class net/minecraft/core/Holder
+      71: astore_2
+      72: aload_2
+      73: aload_0
+      74: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      77: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      80: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      83: invokestatic  #379                // Method getSimilarBiomesFor:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/RegistryAccess;)Ljava/util/List;
+      86: astore_3
+      87: aload_2
+      88: aload_0
+      89: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      92: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      95: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      98: invokestatic  #477                // Method getSimilarTagsFor:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/RegistryAccess;)Ljava/util/List;
+     101: astore        4
+     103: aload_0
+     104: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     107: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     110: aload_1
+     111: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     114: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     117: invokedynamic #483,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     122: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     125: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     128: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     131: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     134: iconst_0
+     135: istore        5
+     137: iload         5
+     139: aload_3
+     140: invokeinterface #328,  1          // InterfaceMethod java/util/List.size:()I
+     145: if_icmpge     234
+     148: iload         5
+     150: bipush        7
+     152: if_icmpge     234
+     155: aload_0
+     156: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     159: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     162: aload_3
+     163: iload         5
+     165: invokeinterface #392,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     170: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+     173: invokeinterface #508,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getValue:()Ljava/lang/Double;
+     178: aload_3
+     179: iload         5
+     181: invokeinterface #392,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     186: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+     189: invokeinterface #282,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getKey:()Ljava/lang/Object;
+     194: checkcast     #92                 // class net/minecraft/core/Holder
+     197: invokeinterface #511,  1          // InterfaceMethod net/minecraft/core/Holder.unwrap:()Lcom/mojang/datafixers/util/Either;
+     202: invokevirtual #452                // Method com/mojang/datafixers/util/Either.left:()Ljava/util/Optional;
+     205: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     208: checkcast     #219                // class net/minecraft/resources/ResourceKey
+     211: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     214: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     217: invokedynamic #512,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/Double;Ljava/lang/String;)Ljava/lang/String;
+     222: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     225: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     228: iinc          5, 1
+     231: goto          137
+     234: iconst_0
+     235: istore        5
+     237: aload         4
+     239: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     244: astore        6
+     246: aload         6
+     248: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     253: ifeq          334
+     256: aload         6
+     258: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     263: checkcast     #395                // class java/util/Map$Entry
+     266: astore        7
+     268: iinc          5, 1
+     271: aload_0
+     272: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     275: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     278: aload         7
+     280: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     285: checkcast     #400                // class java/lang/Double
+     288: invokevirtual #408                // Method java/lang/Double.doubleValue:()D
+     291: invokestatic  #515                // Method java/lang/Math.round:(D)J
+     294: aload         7
+     296: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     301: checkcast     #144                // class net/minecraft/tags/TagKey
+     304: invokevirtual #519                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     307: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     310: invokedynamic #520,  0            // InvokeDynamic #10:makeConcatWithConstants:(JLjava/lang/String;)Ljava/lang/String;
+     315: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     318: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     321: iload         5
+     323: bipush        7
+     325: if_icmplt     331
+     328: goto          334
+     331: goto          246
+     334: iconst_0
+     335: istore        6
+     337: iload         6
+     339: aload_3
+     340: invokeinterface #328,  1          // InterfaceMethod java/util/List.size:()I
+     345: if_icmpge     422
+     348: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+     351: aload_3
+     352: iload         6
+     354: invokeinterface #392,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     359: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+     362: invokeinterface #508,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getValue:()Ljava/lang/Double;
+     367: aload_3
+     368: iload         6
+     370: invokeinterface #392,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     375: checkcast     #280                // class it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry
+     378: invokeinterface #282,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2DoubleMap$Entry.getKey:()Ljava/lang/Object;
+     383: checkcast     #92                 // class net/minecraft/core/Holder
+     386: invokeinterface #511,  1          // InterfaceMethod net/minecraft/core/Holder.unwrap:()Lcom/mojang/datafixers/util/Either;
+     391: invokevirtual #452                // Method com/mojang/datafixers/util/Either.left:()Ljava/util/Optional;
+     394: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     397: checkcast     #219                // class net/minecraft/resources/ResourceKey
+     400: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     403: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     406: invokedynamic #512,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/Double;Ljava/lang/String;)Ljava/lang/String;
+     411: invokeinterface #527,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+     416: iinc          6, 1
+     419: goto          337
+     422: aload         4
+     424: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     429: astore        6
+     431: aload         6
+     433: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     438: ifeq          501
+     441: aload         6
+     443: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     448: checkcast     #395                // class java/util/Map$Entry
+     451: astore        7
+     453: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+     456: aload         7
+     458: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     463: checkcast     #400                // class java/lang/Double
+     466: invokevirtual #408                // Method java/lang/Double.doubleValue:()D
+     469: invokestatic  #515                // Method java/lang/Math.round:(D)J
+     472: aload         7
+     474: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     479: checkcast     #144                // class net/minecraft/tags/TagKey
+     482: invokevirtual #519                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     485: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     488: invokedynamic #520,  0            // InvokeDynamic #10:makeConcatWithConstants:(JLjava/lang/String;)Ljava/lang/String;
+     493: invokeinterface #527,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+     498: goto          431
+     501: iconst_1
+     502: ireturn
+
+  private static int lambda$build$10(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+       7: invokevirtual #533                // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      10: astore_1
+      11: new           #383                // class java/util/HashMap
+      14: dup
+      15: invokespecial #385                // Method java/util/HashMap."<init>":()V
+      18: astore_2
+      19: new           #537                // class net/minecraft/world/level/ChunkPos
+      22: dup
+      23: aload_0
+      24: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      27: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      30: invokevirtual #539                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      33: invokestatic  #543                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+      36: invokespecial #549                // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+      39: astore_3
+      40: bipush        -5
+      42: istore        4
+      44: iload         4
+      46: iconst_5
+      47: if_icmpge     184
+      50: bipush        -5
+      52: istore        5
+      54: iload         5
+      56: iconst_5
+      57: if_icmpge     178
+      60: aload_1
+      61: invokevirtual #552                // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+      64: new           #544                // class net/minecraft/core/BlockPos
+      67: dup
+      68: aload_3
+      69: getfield      #558                // Field net/minecraft/world/level/ChunkPos.x:I
+      72: iload         4
+      74: iadd
+      75: iconst_4
+      76: ishl
+      77: iconst_0
+      78: aload_3
+      79: getfield      #562                // Field net/minecraft/world/level/ChunkPos.z:I
+      82: iload         5
+      84: iadd
+      85: iconst_4
+      86: ishl
+      87: invokespecial #565                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      90: invokevirtual #568                // Method net/minecraft/world/level/StructureManager.getAllStructuresAt:(Lnet/minecraft/core/BlockPos;)Ljava/util/Map;
+      93: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      98: invokeinterface #143,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     103: astore        6
+     105: aload         6
+     107: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     112: ifeq          172
+     115: aload         6
+     117: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     122: checkcast     #395                // class java/util/Map$Entry
+     125: astore        7
+     127: aload_2
+     128: aload         7
+     130: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     135: checkcast     #574                // class net/minecraft/world/level/levelgen/structure/Structure
+     138: aload         7
+     140: invokedynamic #576,  0            // InvokeDynamic #11:apply:(Ljava/util/Map$Entry;)Ljava/util/function/Function;
+     145: invokeinterface #580,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+     150: checkcast     #584                // class it/unimi/dsi/fastutil/longs/LongSet
+     153: aload         7
+     155: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     160: checkcast     #586                // class it/unimi/dsi/fastutil/longs/LongCollection
+     163: invokeinterface #588,  2          // InterfaceMethod it/unimi/dsi/fastutil/longs/LongSet.addAll:(Lit/unimi/dsi/fastutil/longs/LongCollection;)Z
+     168: pop
+     169: goto          105
+     172: iinc          5, 1
+     175: goto          54
+     178: iinc          4, 1
+     181: goto          44
+     184: aload_0
+     185: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     188: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     191: ldc_w         #592                // String Structures nearby:
+     194: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     197: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     200: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     203: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     206: new           #383                // class java/util/HashMap
+     209: dup
+     210: invokespecial #385                // Method java/util/HashMap."<init>":()V
+     213: astore        4
+     215: aload_2
+     216: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     221: invokeinterface #143,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     226: astore        5
+     228: aload         5
+     230: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     235: ifeq          290
+     238: aload         5
+     240: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     245: checkcast     #395                // class java/util/Map$Entry
+     248: astore        6
+     250: aload_1
+     251: invokevirtual #552                // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+     254: aload         6
+     256: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     261: checkcast     #574                // class net/minecraft/world/level/levelgen/structure/Structure
+     264: aload         6
+     266: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     271: checkcast     #584                // class it/unimi/dsi/fastutil/longs/LongSet
+     274: aload         4
+     276: aload_0
+     277: aload         6
+     279: invokedynamic #594,  0            // InvokeDynamic #12:accept:(Ljava/util/Map;Lcom/mojang/brigadier/context/CommandContext;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+     284: invokevirtual #598                // Method net/minecraft/world/level/StructureManager.fillStartsForStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure;Lit/unimi/dsi/fastutil/longs/LongSet;Ljava/util/function/Consumer;)V
+     287: goto          228
+     290: new           #351                // class java/util/ArrayList
+     293: dup
+     294: aload         4
+     296: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     301: invokespecial #353                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     304: astore        5
+     306: aload         5
+     308: aload_0
+     309: invokedynamic #602,  0            // InvokeDynamic #13:applyAsDouble:(Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/function/ToDoubleFunction;
+     314: invokestatic  #360                // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+     317: invokeinterface #370,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+     322: aload         5
+     324: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     329: astore        6
+     331: aload         6
+     333: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     338: ifeq          416
+     341: aload         6
+     343: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     348: checkcast     #395                // class java/util/Map$Entry
+     351: astore        7
+     353: aload_0
+     354: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     357: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     360: aload         7
+     362: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     367: checkcast     #232                // class java/lang/String
+     370: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     373: aload         7
+     375: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     380: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     383: invokedynamic #605,  0            // InvokeDynamic #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     388: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     391: getstatic     #606                // Field net/minecraft/ChatFormatting.YELLOW:Lnet/minecraft/ChatFormatting;
+     394: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     397: aload         7
+     399: invokedynamic #609,  0            // InvokeDynamic #15:apply:(Ljava/util/Map$Entry;)Ljava/util/function/UnaryOperator;
+     404: invokevirtual #612                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Ljava/util/function/UnaryOperator;)Lnet/minecraft/network/chat/MutableComponent;
+     407: invokevirtual #615                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     410: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     413: goto          331
+     416: iconst_1
+     417: ireturn
+
+  private static net.minecraft.network.chat.Style lambda$build$9(java.util.Map$Entry, net.minecraft.network.chat.Style);
+    Code:
+       0: aload_1
+       1: new           #619                // class net/minecraft/network/chat/ClickEvent
+       4: dup
+       5: getstatic     #621                // Field net/minecraft/network/chat/ClickEvent$Action.RUN_COMMAND:Lnet/minecraft/network/chat/ClickEvent$Action;
+       8: aload_0
+       9: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      14: checkcast     #544                // class net/minecraft/core/BlockPos
+      17: invokevirtual #627                // Method net/minecraft/core/BlockPos.getX:()I
+      20: aload_0
+      21: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      26: checkcast     #544                // class net/minecraft/core/BlockPos
+      29: invokevirtual #630                // Method net/minecraft/core/BlockPos.getY:()I
+      32: aload_0
+      33: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      38: checkcast     #544                // class net/minecraft/core/BlockPos
+      41: invokevirtual #633                // Method net/minecraft/core/BlockPos.getZ:()I
+      44: invokedynamic #636,  0            // InvokeDynamic #16:makeConcatWithConstants:(III)Ljava/lang/String;
+      49: invokespecial #639                // Method net/minecraft/network/chat/ClickEvent."<init>":(Lnet/minecraft/network/chat/ClickEvent$Action;Ljava/lang/String;)V
+      52: invokevirtual #642                // Method net/minecraft/network/chat/Style.withClickEvent:(Lnet/minecraft/network/chat/ClickEvent;)Lnet/minecraft/network/chat/Style;
+      55: areturn
+
+  private static double lambda$build$8(com.mojang.brigadier.context.CommandContext, java.util.Map$Entry);
+    Code:
+       0: aload_1
+       1: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       6: checkcast     #544                // class net/minecraft/core/BlockPos
+       9: aload_0
+      10: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      13: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      16: invokevirtual #539                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      19: invokestatic  #543                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #648                // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+      25: dreturn
+
+  private static void lambda$build$7(java.util.Map, com.mojang.brigadier.context.CommandContext, java.util.Map$Entry, net.minecraft.world.level.levelgen.structure.StructureStart);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #652                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       5: invokevirtual #658                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+       8: aload_1
+       9: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      12: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      15: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      18: getstatic     #664                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+      21: invokeinterface #111,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      26: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      29: checkcast     #122                // class net/minecraft/core/Registry
+      32: aload_2
+      33: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      38: checkcast     #574                // class net/minecraft/world/level/levelgen/structure/Structure
+      41: invokeinterface #667,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      46: invokevirtual #420                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      49: invokeinterface #374,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      54: pop
+      55: return
+
+  private static it.unimi.dsi.fastutil.longs.LongSet lambda$build$6(java.util.Map$Entry, net.minecraft.world.level.levelgen.structure.Structure);
+    Code:
+       0: new           #670                // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+       3: dup
+       4: aload_0
+       5: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      10: checkcast     #586                // class it/unimi/dsi/fastutil/longs/LongCollection
+      13: invokespecial #672                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+      16: areturn
+
+  private static boolean lambda$build$5(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokevirtual #675                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static int lambda$build$4(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: ldc           #19                 // String biome
+       3: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       6: invokestatic  #442                // Method net/minecraft/commands/arguments/ResourceOrTagArgument.getResourceOrTag:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument$Result;
+       9: invokeinterface #446,  1          // InterfaceMethod net/minecraft/commands/arguments/ResourceOrTagArgument$Result.unwrap:()Lcom/mojang/datafixers/util/Either;
+      14: invokevirtual #679                // Method com/mojang/datafixers/util/Either.right:()Ljava/util/Optional;
+      17: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      20: checkcast     #682                // class net/minecraft/core/HolderSet$Named
+      23: invokevirtual #684                // Method net/minecraft/core/HolderSet$Named.key:()Lnet/minecraft/tags/TagKey;
+      26: astore_1
+      27: aload_0
+      28: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      31: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      34: aload_1
+      35: invokevirtual #519                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      38: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      41: invokedynamic #687,  0            // InvokeDynamic #17:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      46: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      49: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+      52: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      55: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+      58: aload_0
+      59: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      62: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      65: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      68: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      71: invokeinterface #111,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      76: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      79: checkcast     #122                // class net/minecraft/core/Registry
+      82: invokeinterface #124,  1          // InterfaceMethod net/minecraft/core/Registry.asHolderIdMap:()Lnet/minecraft/core/IdMap;
+      87: invokeinterface #128,  1          // InterfaceMethod net/minecraft/core/IdMap.iterator:()Ljava/util/Iterator;
+      92: astore_2
+      93: aload_2
+      94: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      99: ifeq          161
+     102: aload_2
+     103: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     108: checkcast     #92                 // class net/minecraft/core/Holder
+     111: astore_3
+     112: aload_3
+     113: aload_1
+     114: invokeinterface #146,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     119: ifeq          158
+     122: aload_0
+     123: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     126: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     129: aload_3
+     130: invokeinterface #215,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     135: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+     138: checkcast     #219                // class net/minecraft/resources/ResourceKey
+     141: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     144: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     147: invokedynamic #688,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     152: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     155: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     158: goto          93
+     161: iconst_1
+     162: ireturn
+
+  private static int lambda$build$3(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: new           #351                // class java/util/ArrayList
+       5: dup
+       6: getstatic     #689                // Field com/structureessentials/Timings.featureTimings:Ljava/util/Map;
+       9: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      14: invokespecial #353                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      17: astore_2
+      18: aload_2
+      19: invokedynamic #694,  0            // InvokeDynamic #19:applyAsLong:()Ljava/util/function/ToLongFunction;
+      24: invokestatic  #698                // InterfaceMethod java/util/Comparator.comparingLong:(Ljava/util/function/ToLongFunction;)Ljava/util/Comparator;
+      27: invokeinterface #366,  1          // InterfaceMethod java/util/Comparator.reversed:()Ljava/util/Comparator;
+      32: invokeinterface #370,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+      37: aload_0
+      38: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      41: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      44: ldc_w         #702                // String Features timings:
+      47: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      50: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+      53: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      56: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+      59: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+      62: ldc_w         #704                // String Placed Feature timings in ms:
+      65: invokeinterface #706,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+      70: aload_2
+      71: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      76: astore_3
+      77: aload_3
+      78: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      83: ifeq          201
+      86: aload_3
+      87: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      92: checkcast     #395                // class java/util/Map$Entry
+      95: astore        4
+      97: iinc          1, 1
+     100: iload_1
+     101: iconst_5
+     102: if_icmpge     157
+     105: aload_0
+     106: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     109: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     112: iload_1
+     113: aload         4
+     115: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     120: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     123: aload         4
+     125: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     130: checkcast     #709                // class java/lang/Long
+     133: invokevirtual #711                // Method java/lang/Long.longValue:()J
+     136: ldc2_w        #715                // long 1000000l
+     139: ldiv
+     140: invokedynamic #717,  0            // InvokeDynamic #20:makeConcatWithConstants:(ILjava/lang/String;J)Ljava/lang/String;
+     145: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     148: getstatic     #720                // Field net/minecraft/ChatFormatting.WHITE:Lnet/minecraft/ChatFormatting;
+     151: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     154: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     157: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+     160: iload_1
+     161: aload         4
+     163: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     168: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     171: aload         4
+     173: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     178: checkcast     #709                // class java/lang/Long
+     181: invokevirtual #711                // Method java/lang/Long.longValue:()J
+     184: ldc2_w        #723                // long 100000l
+     187: ldiv
+     188: invokedynamic #717,  0            // InvokeDynamic #20:makeConcatWithConstants:(ILjava/lang/String;J)Ljava/lang/String;
+     193: invokeinterface #706,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+     198: goto          77
+     201: iconst_0
+     202: istore_1
+     203: new           #351                // class java/util/ArrayList
+     206: dup
+     207: getstatic     #725                // Field com/structureessentials/Timings.structureTimings:Ljava/util/Map;
+     210: invokeinterface #411,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     215: invokespecial #353                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     218: astore_3
+     219: aload_3
+     220: invokedynamic #728,  0            // InvokeDynamic #21:applyAsLong:()Ljava/util/function/ToLongFunction;
+     225: invokestatic  #698                // InterfaceMethod java/util/Comparator.comparingLong:(Ljava/util/function/ToLongFunction;)Ljava/util/Comparator;
+     228: invokeinterface #366,  1          // InterfaceMethod java/util/Comparator.reversed:()Ljava/util/Comparator;
+     233: invokeinterface #370,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+     238: aload_0
+     239: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     242: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     245: ldc_w         #729                // String Structure timings:
+     248: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     251: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     254: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     257: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     260: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+     263: ldc_w         #731                // String Structure timings in ms:
+     266: invokeinterface #706,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+     271: aload_3
+     272: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     277: astore        4
+     279: aload         4
+     281: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     286: ifeq          405
+     289: aload         4
+     291: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     296: checkcast     #395                // class java/util/Map$Entry
+     299: astore        5
+     301: iinc          1, 1
+     304: iload_1
+     305: iconst_5
+     306: if_icmpge     361
+     309: aload_0
+     310: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     313: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     316: iload_1
+     317: aload         5
+     319: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     324: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     327: aload         5
+     329: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     334: checkcast     #709                // class java/lang/Long
+     337: invokevirtual #711                // Method java/lang/Long.longValue:()J
+     340: ldc2_w        #715                // long 1000000l
+     343: ldiv
+     344: invokedynamic #717,  0            // InvokeDynamic #20:makeConcatWithConstants:(ILjava/lang/String;J)Ljava/lang/String;
+     349: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     352: getstatic     #720                // Field net/minecraft/ChatFormatting.WHITE:Lnet/minecraft/ChatFormatting;
+     355: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     358: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     361: getstatic     #523                // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+     364: iload_1
+     365: aload         5
+     367: invokeinterface #397,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     372: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     375: aload         5
+     377: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     382: checkcast     #709                // class java/lang/Long
+     385: invokevirtual #711                // Method java/lang/Long.longValue:()J
+     388: ldc2_w        #723                // long 100000l
+     391: ldiv
+     392: invokedynamic #717,  0            // InvokeDynamic #20:makeConcatWithConstants:(ILjava/lang/String;J)Ljava/lang/String;
+     397: invokeinterface #706,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+     402: goto          279
+     405: iconst_1
+     406: ireturn
+
+  private static long lambda$build$2(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #395                // class java/util/Map$Entry
+       4: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       9: checkcast     #709                // class java/lang/Long
+      12: invokevirtual #711                // Method java/lang/Long.longValue:()J
+      15: lreturn
+
+  private static long lambda$build$1(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #395                // class java/util/Map$Entry
+       4: invokeinterface #436,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       9: checkcast     #709                // class java/lang/Long
+      12: invokevirtual #711                // Method java/lang/Long.longValue:()J
+      15: lreturn
+
+  private static int lambda$build$0(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: ldc           #19                 // String biome
+       3: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       6: invokestatic  #442                // Method net/minecraft/commands/arguments/ResourceOrTagArgument.getResourceOrTag:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceOrTagArgument$Result;
+       9: invokeinterface #446,  1          // InterfaceMethod net/minecraft/commands/arguments/ResourceOrTagArgument$Result.unwrap:()Lcom/mojang/datafixers/util/Either;
+      14: invokevirtual #452                // Method com/mojang/datafixers/util/Either.left:()Ljava/util/Optional;
+      17: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      20: checkcast     #457                // class net/minecraft/core/Holder$Reference
+      23: invokevirtual #459                // Method net/minecraft/core/Holder$Reference.key:()Lnet/minecraft/resources/ResourceKey;
+      26: astore_1
+      27: aload_0
+      28: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      31: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      34: invokevirtual #470                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      37: getstatic     #21                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      40: invokeinterface #111,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      45: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      48: checkcast     #122                // class net/minecraft/core/Registry
+      51: aload_1
+      52: invokeinterface #474,  2          // InterfaceMethod net/minecraft/core/Registry.getHolder:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      57: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      60: checkcast     #457                // class net/minecraft/core/Holder$Reference
+      63: invokevirtual #733                // Method net/minecraft/core/Holder$Reference.tags:()Ljava/util/stream/Stream;
+      66: invokestatic  #377                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+      69: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      74: checkcast     #86                 // class java/util/List
+      77: astore_2
+      78: aload_0
+      79: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      82: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+      85: aload_1
+      86: invokevirtual #221                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      89: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      92: invokedynamic #734,  0            // InvokeDynamic #22:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      97: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     100: getstatic     #492                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     103: invokevirtual #498                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     106: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     109: aload_2
+     110: invokeinterface #164,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     115: astore_3
+     116: aload_3
+     117: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     122: ifeq          165
+     125: aload_3
+     126: invokeinterface #140,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     131: checkcast     #144                // class net/minecraft/tags/TagKey
+     134: astore        4
+     136: aload_0
+     137: invokevirtual #463                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     140: checkcast     #468                // class net/minecraft/commands/CommandSourceStack
+     143: aload         4
+     145: invokevirtual #519                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     148: invokestatic  #480                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     151: invokedynamic #735,  0            // InvokeDynamic #23:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     156: invokestatic  #487                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     159: invokevirtual #504                // Method net/minecraft/commands/CommandSourceStack.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+     162: goto          116
+     165: iconst_1
+     166: ireturn
+
+  static {};
+    Code:
+       0: new           #383                // class java/util/HashMap
+       3: dup
+       4: invokespecial #385                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #74                 // Field biomeScoreCache:Ljava/util/Map;
+      10: return
+}

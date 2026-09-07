@@ -1,0 +1,219 @@
+Compiled from "SurfaceGenerationLoader.java"
+public class com.terraformersmc.biolith.impl.data.SurfaceGenerationLoader extends net.minecraft.server.packs.resources.SimplePreparableReloadListener<java.util.List<com.terraformersmc.biolith.impl.data.SurfaceGenerationMarshaller>> {
+  public static final java.lang.String RESOURCE_PATH = "biolith/surface_generation.json";
+
+  public com.terraformersmc.biolith.impl.data.SurfaceGenerationLoader();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method net/minecraft/server/packs/resources/SimplePreparableReloadListener."<init>":()V
+       4: return
+
+  protected java.util.List<com.terraformersmc.biolith.impl.data.SurfaceGenerationMarshaller> prepare(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    Code:
+       0: aload_2
+       1: invokeinterface #32,  1           // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.startTick:()V
+       6: new           #34                 // class java/util/ArrayList
+       9: dup
+      10: invokespecial #35                 // Method java/util/ArrayList."<init>":()V
+      13: astore_3
+      14: aload_1
+      15: invokeinterface #41,  1           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.getNamespaces:()Ljava/util/Set;
+      20: invokeinterface #47,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      25: astore        4
+      27: aload         4
+      29: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      34: ifeq          318
+      37: aload         4
+      39: invokeinterface #57,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      44: checkcast     #59                 // class java/lang/String
+      47: astore        5
+      49: aload_2
+      50: aload         5
+      52: invokeinterface #63,  2           // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+      57: aload_1
+      58: aload         5
+      60: ldc           #10                 // String biolith/surface_generation.json
+      62: invokestatic  #69                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      65: invokeinterface #73,  2           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.getResourceStack:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+      70: invokeinterface #76,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      75: astore        6
+      77: aload         6
+      79: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      84: ifeq          304
+      87: aload         6
+      89: invokeinterface #57,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      94: checkcast     #78                 // class net/minecraft/server/packs/resources/Resource
+      97: astore        7
+      99: aload_2
+     100: aload         7
+     102: invokevirtual #82                 // Method net/minecraft/server/packs/resources/Resource.sourcePackId:()Ljava/lang/String;
+     105: invokeinterface #63,  2           // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+     110: aload         7
+     112: invokevirtual #86                 // Method net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+     115: astore        8
+     117: new           #88                 // class java/io/InputStreamReader
+     120: dup
+     121: aload         8
+     123: getstatic     #94                 // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+     126: invokespecial #97                 // Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
+     129: astore        9
+     131: aload_2
+     132: ldc           #99                 // String parse
+     134: invokeinterface #63,  2           // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+     139: aload         9
+     141: invokestatic  #105                // Method com/google/gson/JsonParser.parseReader:(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+     144: invokevirtual #111                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     147: astore        10
+     149: getstatic     #117                // Field com/terraformersmc/biolith/impl/data/SurfaceGenerationMarshaller.CODEC:Lcom/mojang/serialization/Codec;
+     152: aload         10
+     154: invokestatic  #121                // Method get:(Lcom/mojang/serialization/Decoder;Lcom/google/gson/JsonElement;)Ljava/lang/Object;
+     157: checkcast     #113                // class com/terraformersmc/biolith/impl/data/SurfaceGenerationMarshaller
+     160: astore        11
+     162: aload         11
+     164: ifnull        179
+     167: aload_3
+     168: aload         11
+     170: invokeinterface #125,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     175: pop
+     176: goto          187
+     179: new           #25                 // class java/lang/RuntimeException
+     182: dup
+     183: invokespecial #130                // Method java/lang/RuntimeException."<init>":()V
+     186: athrow
+     187: aload_2
+     188: invokeinterface #133,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.pop:()V
+     193: goto          218
+     196: astore        10
+     198: aload         9
+     200: invokevirtual #136                // Method java/io/InputStreamReader.close:()V
+     203: goto          215
+     206: astore        11
+     208: aload         10
+     210: aload         11
+     212: invokevirtual #140                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     215: aload         10
+     217: athrow
+     218: aload         9
+     220: invokevirtual #136                // Method java/io/InputStreamReader.close:()V
+     223: goto          253
+     226: astore        9
+     228: aload         8
+     230: ifnull        250
+     233: aload         8
+     235: invokevirtual #141                // Method java/io/InputStream.close:()V
+     238: goto          250
+     241: astore        10
+     243: aload         9
+     245: aload         10
+     247: invokevirtual #140                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     250: aload         9
+     252: athrow
+     253: aload         8
+     255: invokevirtual #141                // Method java/io/InputStream.close:()V
+     258: goto          295
+     261: astore        8
+     263: getstatic     #147                // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+     266: ldc           #149                // String Invalid {} in resourcepack: \'{}\'
+     268: iconst_3
+     269: anewarray     #151                // class java/lang/Object
+     272: dup
+     273: iconst_0
+     274: ldc           #10                 // String biolith/surface_generation.json
+     276: aastore
+     277: dup
+     278: iconst_1
+     279: aload         7
+     281: invokevirtual #82                 // Method net/minecraft/server/packs/resources/Resource.sourcePackId:()Ljava/lang/String;
+     284: aastore
+     285: dup
+     286: iconst_2
+     287: aload         8
+     289: aastore
+     290: invokeinterface #157,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+     295: aload_2
+     296: invokeinterface #133,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.pop:()V
+     301: goto          77
+     304: goto          309
+     307: astore        6
+     309: aload_2
+     310: invokeinterface #133,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.pop:()V
+     315: goto          27
+     318: aload_2
+     319: invokeinterface #160,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.endTick:()V
+     324: aload_3
+     325: areturn
+    Exception table:
+       from    to  target type
+         131   193   196   Class java/lang/Throwable
+         198   203   206   Class java/lang/Throwable
+         117   223   226   Class java/lang/Throwable
+         233   238   241   Class java/lang/Throwable
+         110   258   261   Class java/lang/RuntimeException
+          57   304   307   Class java/io/IOException
+
+  protected void apply(java.util.List<com.terraformersmc.biolith.impl.data.SurfaceGenerationMarshaller>, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    Code:
+       0: invokestatic  #189                // Method com/terraformersmc/biolith/impl/biome/BiomeCoordinator.isServerStarted:()Z
+       3: ifeq          17
+       6: getstatic     #147                // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+       9: ldc           #191                // String Ignoring request to reload surface generation data while server is running.
+      11: invokeinterface #193,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      16: return
+      17: aload_1
+      18: invokeinterface #197,  1          // InterfaceMethod java/util/List.size:()I
+      23: ifle          45
+      26: getstatic     #147                // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+      29: ldc           #199                // String Applying surface generation data from {} source(s).
+      31: aload_1
+      32: invokeinterface #197,  1          // InterfaceMethod java/util/List.size:()I
+      37: invokestatic  #205                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      40: invokeinterface #209,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      45: getstatic     #215                // Field com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.OVERWORLD:Lcom/terraformersmc/biolith/impl/surface/SurfaceRuleCollector;
+      48: invokevirtual #218                // Method com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.clearFromData:()V
+      51: getstatic     #221                // Field com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.NETHER:Lcom/terraformersmc/biolith/impl/surface/SurfaceRuleCollector;
+      54: invokevirtual #218                // Method com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.clearFromData:()V
+      57: getstatic     #224                // Field com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.END:Lcom/terraformersmc/biolith/impl/surface/SurfaceRuleCollector;
+      60: invokevirtual #218                // Method com/terraformersmc/biolith/impl/surface/SurfaceRuleCollector.clearFromData:()V
+      63: aload_1
+      64: invokeinterface #76,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      69: astore        4
+      71: aload         4
+      73: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      78: ifeq          101
+      81: aload         4
+      83: invokeinterface #57,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      88: checkcast     #113                // class com/terraformersmc/biolith/impl/data/SurfaceGenerationMarshaller
+      91: astore        5
+      93: aload         5
+      95: invokevirtual #227                // Method com/terraformersmc/biolith/impl/data/SurfaceGenerationMarshaller.unmarshall:()V
+      98: goto          71
+     101: return
+
+  public static <R> R get(com.mojang.serialization.Decoder<R>, com.google.gson.JsonElement) throws java.lang.NullPointerException;
+    Code:
+       0: aload_0
+       1: getstatic     #238                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+       4: aload_1
+       5: invokeinterface #243,  3          // InterfaceMethod com/mojang/serialization/Decoder.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      10: invokeinterface #249,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      15: invokevirtual #254                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      18: areturn
+
+  protected void apply(java.lang.Object, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #75                 // class java/util/List
+       5: aload_2
+       6: aload_3
+       7: invokevirtual #260                // Method apply:(Ljava/util/List;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+      10: return
+
+  protected java.lang.Object prepare(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #263                // Method prepare:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/List;
+       6: areturn
+}

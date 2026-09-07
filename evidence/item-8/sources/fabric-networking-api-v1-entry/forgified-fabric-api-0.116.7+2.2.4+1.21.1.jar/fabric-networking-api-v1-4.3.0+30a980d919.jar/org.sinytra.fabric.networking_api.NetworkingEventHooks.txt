@@ -1,0 +1,56 @@
+Compiled from "NetworkingEventHooks.java"
+public class org.sinytra.fabric.networking_api.NetworkingEventHooks {
+  public org.sinytra.fabric.networking_api.NetworkingEventHooks(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_1
+       5: invokedynamic #7,  0              // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      10: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      15: getstatic     #17                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      18: invokedynamic #23,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      23: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      28: getstatic     #17                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      31: invokedynamic #24,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      36: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      41: return
+
+  private static void registerCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: getstatic     #25                 // Field net/minecraft/SharedConstants.IS_RUNNING_IN_IDE:Z
+       3: ifeq          7
+       6: return
+       7: invokestatic  #31                 // InterfaceMethod net/fabricmc/loader/api/FabricLoader.getInstance:()Lnet/fabricmc/loader/api/FabricLoader;
+      10: invokeinterface #37,  1           // InterfaceMethod net/fabricmc/loader/api/FabricLoader.isDevelopmentEnvironment:()Z
+      15: ifne          19
+      18: return
+      19: aload_0
+      20: invokevirtual #41                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+      23: invokestatic  #47                 // Method net/minecraft/server/commands/DebugConfigCommand.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+      26: return
+
+  private static void onPlayerReady(net.neoforged.neoforge.event.OnDatapackSyncEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #53                 // Method net/neoforged/neoforge/event/OnDatapackSyncEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+       4: ifnull        14
+       7: aload_0
+       8: invokevirtual #53                 // Method net/neoforged/neoforge/event/OnDatapackSyncEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+      11: invokestatic  #59                 // Method org/sinytra/fabric/networking_api/server/NeoServerPlayNetworking.onClientReady:(Lnet/minecraft/server/level/ServerPlayer;)V
+      14: return
+
+  private static void onConfiguration(net.neoforged.neoforge.network.event.RegisterConfigurationTasksEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #65                 // Method net/neoforged/neoforge/network/event/RegisterConfigurationTasksEvent.getListener:()Lnet/minecraft/network/protocol/configuration/ServerConfigurationPacketListener;
+       4: checkcast     #71                 // class net/minecraft/server/network/ServerConfigurationPacketListenerImpl
+       7: astore_1
+       8: getstatic     #73                 // Field net/fabricmc/fabric/api/networking/v1/ServerConfigurationConnectionEvents.CONFIGURE:Lnet/fabricmc/fabric/api/event/Event;
+      11: invokevirtual #79                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      14: checkcast     #85                 // class net/fabricmc/fabric/api/networking/v1/ServerConfigurationConnectionEvents$Configure
+      17: aload_1
+      18: aload_1
+      19: getfield      #87                 // Field net/minecraft/server/network/ServerConfigurationPacketListenerImpl.server:Lnet/minecraft/server/MinecraftServer;
+      22: invokeinterface #91,  3           // InterfaceMethod net/fabricmc/fabric/api/networking/v1/ServerConfigurationConnectionEvents$Configure.onSendConfiguration:(Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;Lnet/minecraft/server/MinecraftServer;)V
+      27: return
+}

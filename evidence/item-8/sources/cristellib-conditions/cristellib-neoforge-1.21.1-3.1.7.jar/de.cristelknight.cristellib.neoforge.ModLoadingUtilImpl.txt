@@ -1,0 +1,157 @@
+Compiled from "ModLoadingUtilImpl.java"
+public class de.cristelknight.cristellib.neoforge.ModLoadingUtilImpl {
+  public de.cristelknight.cristellib.neoforge.ModLoadingUtilImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static java.util.List<java.lang.String> getModIds();
+    Code:
+       0: invokestatic  #25                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: astore_0
+       4: new           #27                 // class java/util/ArrayList
+       7: dup
+       8: invokespecial #28                 // Method java/util/ArrayList."<init>":()V
+      11: astore_1
+      12: aload_0
+      13: ifnull        64
+      16: aload_0
+      17: invokevirtual #31                 // Method net/neoforged/fml/ModList.getMods:()Ljava/util/List;
+      20: invokeinterface #37,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      25: astore_2
+      26: aload_2
+      27: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      32: ifeq          61
+      35: aload_2
+      36: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      41: checkcast     #49                 // class net/neoforged/neoforgespi/language/IModInfo
+      44: astore_3
+      45: aload_1
+      46: aload_3
+      47: invokeinterface #53,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+      52: invokeinterface #57,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      57: pop
+      58: goto          26
+      61: goto          111
+      64: invokestatic  #63                 // Method net/neoforged/fml/loading/FMLLoader.getLoadingModList:()Lnet/neoforged/fml/loading/LoadingModList;
+      67: invokevirtual #66                 // Method net/neoforged/fml/loading/LoadingModList.getMods:()Ljava/util/List;
+      70: invokeinterface #37,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      75: astore_2
+      76: aload_2
+      77: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      82: ifeq          111
+      85: aload_2
+      86: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      91: checkcast     #49                 // class net/neoforged/neoforgespi/language/IModInfo
+      94: astore_3
+      95: aload_1
+      96: aload_3
+      97: invokeinterface #53,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+     102: invokeinterface #57,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     107: pop
+     108: goto          76
+     111: aload_1
+     112: areturn
+
+  public static boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #25                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: astore_1
+       4: aload_1
+       5: ifnull        14
+       8: aload_1
+       9: aload_0
+      10: invokevirtual #79                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      13: ireturn
+      14: aload_0
+      15: invokestatic  #82                 // Method isModPreLoaded:(Ljava/lang/String;)Z
+      18: ireturn
+
+  public static java.util.Optional<java.lang.Integer> compare(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #89                 // Method isModLoaded:(Ljava/lang/String;)Z
+       4: ifeq          68
+       7: invokestatic  #25                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      10: astore_2
+      11: aload_2
+      12: ifnull        38
+      15: aload_2
+      16: aload_0
+      17: invokevirtual #93                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+      20: invokevirtual #97                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      23: checkcast     #99                 // class net/neoforged/fml/ModContainer
+      26: invokevirtual #103                // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+      29: invokeinterface #107,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getVersion:()Lorg/apache/maven/artifact/versioning/ArtifactVersion;
+      34: astore_3
+      35: goto          43
+      38: aload_0
+      39: invokestatic  #111                // Method getPreLoadedModVersion:(Ljava/lang/String;)Lorg/apache/maven/artifact/versioning/ArtifactVersion;
+      42: astore_3
+      43: new           #115                // class org/apache/maven/artifact/versioning/DefaultArtifactVersion
+      46: dup
+      47: aload_1
+      48: invokespecial #118                // Method org/apache/maven/artifact/versioning/DefaultArtifactVersion."<init>":(Ljava/lang/String;)V
+      51: astore        4
+      53: aload_3
+      54: aload         4
+      56: invokeinterface #122,  2          // InterfaceMethod org/apache/maven/artifact/versioning/ArtifactVersion.compareTo:(Ljava/lang/Object;)I
+      61: invokestatic  #128                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      64: invokestatic  #132                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      67: areturn
+      68: invokestatic  #136                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      71: areturn
+
+  private static boolean isModPreLoaded(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #143                // Method getPreLoadedModInfo:(Ljava/lang/String;)Lnet/neoforged/fml/loading/moddiscovery/ModInfo;
+       4: ifnull        11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public static net.neoforged.fml.loading.moddiscovery.ModInfo getPreLoadedModInfo(java.lang.String);
+    Code:
+       0: invokestatic  #63                 // Method net/neoforged/fml/loading/FMLLoader.getLoadingModList:()Lnet/neoforged/fml/loading/LoadingModList;
+       3: invokevirtual #66                 // Method net/neoforged/fml/loading/LoadingModList.getMods:()Ljava/util/List;
+       6: invokeinterface #37,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      11: astore_1
+      12: aload_1
+      13: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      18: ifeq          47
+      21: aload_1
+      22: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      27: checkcast     #146                // class net/neoforged/fml/loading/moddiscovery/ModInfo
+      30: astore_2
+      31: aload_2
+      32: invokevirtual #147                // Method net/neoforged/fml/loading/moddiscovery/ModInfo.getModId:()Ljava/lang/String;
+      35: aload_0
+      36: invokevirtual #152                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      39: ifeq          44
+      42: aload_2
+      43: areturn
+      44: goto          12
+      47: aconst_null
+      48: areturn
+
+  private static org.apache.maven.artifact.versioning.ArtifactVersion getPreLoadedModVersion(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #143                // Method getPreLoadedModInfo:(Ljava/lang/String;)Lnet/neoforged/fml/loading/moddiscovery/ModInfo;
+       4: astore_1
+       5: aload_1
+       6: ifnonnull     26
+       9: new           #156                // class java/lang/RuntimeException
+      12: dup
+      13: aload_0
+      14: invokedynamic #168,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      19: invokestatic  #173                // Method de/cristelknight/cristellib/Constants.getWithPrefix:(Ljava/lang/String;)Ljava/lang/String;
+      22: invokespecial #174                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_1
+      27: invokevirtual #175                // Method net/neoforged/fml/loading/moddiscovery/ModInfo.getVersion:()Lorg/apache/maven/artifact/versioning/ArtifactVersion;
+      30: areturn
+}

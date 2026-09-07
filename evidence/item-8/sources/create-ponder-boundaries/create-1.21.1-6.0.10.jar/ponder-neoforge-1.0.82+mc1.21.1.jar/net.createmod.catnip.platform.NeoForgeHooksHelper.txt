@@ -1,0 +1,59 @@
+Compiled from "NeoForgeHooksHelper.java"
+public class net.createmod.catnip.platform.NeoForgeHooksHelper implements net.createmod.catnip.platform.services.ModHooksHelper {
+  public net.createmod.catnip.platform.NeoForgeHooksHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public boolean playerPlaceSingleBlock(net.minecraft.world.entity.player.Player, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_2
+       1: invokevirtual #26                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+       4: aload_2
+       5: aload_3
+       6: invokestatic  #32                 // Method net/neoforged/neoforge/common/util/BlockSnapshot.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Lnet/neoforged/neoforge/common/util/BlockSnapshot;
+       9: astore        5
+      11: aload_2
+      12: aload_3
+      13: aload         4
+      15: invokevirtual #36                 // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      18: pop
+      19: new           #9                  // class net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent
+      22: dup
+      23: aload         5
+      25: getstatic     #42                 // Field net/createmod/catnip/placement/IPlacementHelper.ID:Lnet/minecraft/world/level/block/state/BlockState;
+      28: aload_1
+      29: invokespecial #45                 // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent."<init>":(Lnet/neoforged/neoforge/common/util/BlockSnapshot;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/Entity;)V
+      32: astore        6
+      34: getstatic     #51                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      37: aload         6
+      39: invokeinterface #57,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.post:(Lnet/neoforged/bus/api/Event;)Lnet/neoforged/bus/api/Event;
+      44: checkcast     #9                  // class net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent
+      47: invokevirtual #61                 // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.isCanceled:()Z
+      50: ifeq          62
+      53: aload         5
+      55: iconst_2
+      56: invokevirtual #65                 // Method net/neoforged/neoforge/common/util/BlockSnapshot.restore:(I)Z
+      59: pop
+      60: iconst_1
+      61: ireturn
+      62: iconst_0
+      63: ireturn
+
+  public net.minecraft.world.item.ItemStack getCloneItemFromBlockstate(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.phys.HitResult, net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: invokevirtual #84                 // Method net/minecraft/world/level/block/state/BlockState.getCloneItemStack:(Lnet/minecraft/world/phys/HitResult;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/item/ItemStack;
+      10: areturn
+
+  public boolean isPlayerFake(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_1
+       1: instanceof    #92                 // class net/neoforged/neoforge/common/util/FakePlayer
+       4: ireturn
+}

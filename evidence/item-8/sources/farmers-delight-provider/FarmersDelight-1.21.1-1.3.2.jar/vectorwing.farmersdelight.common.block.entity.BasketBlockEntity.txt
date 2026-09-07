@@ -1,0 +1,992 @@
+Classfile FarmersDelight-1.21.1-1.3.2.jar!/vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.class
+  Last modified May 5, 2026; size 9804 bytes
+  SHA-256 checksum dc49912770928de40782b9fff5ddb8eeb8a046631895402b886e81b1ef43fbd1
+  Compiled from "BasketBlockEntity.java"
+public class vectorwing.farmersdelight.common.block.entity.BasketBlockEntity extends net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity implements vectorwing.farmersdelight.common.block.entity.Basket
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #34                         // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity
+  super_class: #16                        // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+  interfaces: 1, fields: 2, methods: 22, attributes: 4
+Constant pool:
+    #1 = Fieldref           #2.#3         // vectorwing/farmersdelight/common/registry/ModBlockEntityTypes.BASKET:Lnet/neoforged/neoforge/registries/DeferredHolder;
+    #2 = Class              #4            // vectorwing/farmersdelight/common/registry/ModBlockEntityTypes
+    #3 = NameAndType        #5:#6         // BASKET:Lnet/neoforged/neoforge/registries/DeferredHolder;
+    #4 = Utf8               vectorwing/farmersdelight/common/registry/ModBlockEntityTypes
+    #5 = Utf8               BASKET
+    #6 = Utf8               Lnet/neoforged/neoforge/registries/DeferredHolder;
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+    #8 = Class              #10           // net/neoforged/neoforge/registries/DeferredHolder
+    #9 = NameAndType        #11:#12       // get:()Ljava/lang/Object;
+   #10 = Utf8               net/neoforged/neoforge/registries/DeferredHolder
+   #11 = Utf8               get
+   #12 = Utf8               ()Ljava/lang/Object;
+   #13 = Class              #14           // net/minecraft/world/level/block/entity/BlockEntityType
+   #14 = Utf8               net/minecraft/world/level/block/entity/BlockEntityType
+   #15 = Methodref          #16.#17       // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+   #16 = Class              #18           // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+   #17 = NameAndType        #19:#20       // "<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+   #18 = Utf8               net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+   #19 = Utf8               <init>
+   #20 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+   #21 = Fieldref           #22.#23       // net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+   #22 = Class              #24           // net/minecraft/world/item/ItemStack
+   #23 = NameAndType        #25:#26       // EMPTY:Lnet/minecraft/world/item/ItemStack;
+   #24 = Utf8               net/minecraft/world/item/ItemStack
+   #25 = Utf8               EMPTY
+   #26 = Utf8               Lnet/minecraft/world/item/ItemStack;
+   #27 = Methodref          #28.#29       // net/minecraft/core/NonNullList.withSize:(ILjava/lang/Object;)Lnet/minecraft/core/NonNullList;
+   #28 = Class              #30           // net/minecraft/core/NonNullList
+   #29 = NameAndType        #31:#32       // withSize:(ILjava/lang/Object;)Lnet/minecraft/core/NonNullList;
+   #30 = Utf8               net/minecraft/core/NonNullList
+   #31 = Utf8               withSize
+   #32 = Utf8               (ILjava/lang/Object;)Lnet/minecraft/core/NonNullList;
+   #33 = Fieldref           #34.#35       // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.items:Lnet/minecraft/core/NonNullList;
+   #34 = Class              #36           // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity
+   #35 = NameAndType        #37:#38       // items:Lnet/minecraft/core/NonNullList;
+   #36 = Utf8               vectorwing/farmersdelight/common/block/entity/BasketBlockEntity
+   #37 = Utf8               items
+   #38 = Utf8               Lnet/minecraft/core/NonNullList;
+   #39 = Fieldref           #34.#40       // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.transferCooldown:I
+   #40 = NameAndType        #41:#42       // transferCooldown:I
+   #41 = Utf8               transferCooldown
+   #42 = Utf8               I
+   #43 = Fieldref           #44.#45       // net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+   #44 = Class              #46           // net/neoforged/neoforge/capabilities/Capabilities$ItemHandler
+   #45 = NameAndType        #47:#48       // BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+   #46 = Utf8               net/neoforged/neoforge/capabilities/Capabilities$ItemHandler
+   #47 = Utf8               BLOCK
+   #48 = Utf8               Lnet/neoforged/neoforge/capabilities/BlockCapability;
+   #49 = InvokeDynamic      #0:#50        // #0:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+   #50 = NameAndType        #51:#52       // getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+   #51 = Utf8               getCapability
+   #52 = Utf8               ()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+   #53 = Methodref          #54.#55       // net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlockEntity:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+   #54 = Class              #56           // net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent
+   #55 = NameAndType        #57:#58       // registerBlockEntity:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+   #56 = Utf8               net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent
+   #57 = Utf8               registerBlockEntity
+   #58 = Utf8               (Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+   #59 = Methodref          #16.#60       // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.loadAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #60 = NameAndType        #61:#62       // loadAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #61 = Utf8               loadAdditional
+   #62 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #63 = Methodref          #34.#64       // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.getContainerSize:()I
+   #64 = NameAndType        #65:#66       // getContainerSize:()I
+   #65 = Utf8               getContainerSize
+   #66 = Utf8               ()I
+   #67 = Methodref          #34.#68       // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.tryLoadLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+   #68 = NameAndType        #69:#70       // tryLoadLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+   #69 = Utf8               tryLoadLootTable
+   #70 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)Z
+   #71 = Methodref          #72.#73       // net/minecraft/world/ContainerHelper.loadAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #72 = Class              #74           // net/minecraft/world/ContainerHelper
+   #73 = NameAndType        #75:#76       // loadAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #74 = Utf8               net/minecraft/world/ContainerHelper
+   #75 = Utf8               loadAllItems
+   #76 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #77 = String             #78           // TransferCooldown
+   #78 = Utf8               TransferCooldown
+   #79 = Methodref          #80.#81       // net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+   #80 = Class              #82           // net/minecraft/nbt/CompoundTag
+   #81 = NameAndType        #83:#84       // getInt:(Ljava/lang/String;)I
+   #82 = Utf8               net/minecraft/nbt/CompoundTag
+   #83 = Utf8               getInt
+   #84 = Utf8               (Ljava/lang/String;)I
+   #85 = Methodref          #16.#86       // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.saveAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #86 = NameAndType        #87:#62       // saveAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+   #87 = Utf8               saveAdditional
+   #88 = Methodref          #34.#89       // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.trySaveLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+   #89 = NameAndType        #90:#70       // trySaveLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+   #90 = Utf8               trySaveLootTable
+   #91 = Methodref          #72.#92       // net/minecraft/world/ContainerHelper.saveAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #92 = NameAndType        #93:#94       // saveAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #93 = Utf8               saveAllItems
+   #94 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #95 = Methodref          #80.#96       // net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+   #96 = NameAndType        #97:#98       // putInt:(Ljava/lang/String;I)V
+   #97 = Utf8               putInt
+   #98 = Utf8               (Ljava/lang/String;I)V
+   #99 = Methodref          #28.#100      // net/minecraft/core/NonNullList.size:()I
+  #100 = NameAndType        #101:#66      // size:()I
+  #101 = Utf8               size
+  #102 = Methodref          #34.#103      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.unpackLootTable:(Lnet/minecraft/world/entity/player/Player;)V
+  #103 = NameAndType        #104:#105     // unpackLootTable:(Lnet/minecraft/world/entity/player/Player;)V
+  #104 = Utf8               unpackLootTable
+  #105 = Utf8               (Lnet/minecraft/world/entity/player/Player;)V
+  #106 = Methodref          #34.#107      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.getItems:()Lnet/minecraft/core/NonNullList;
+  #107 = NameAndType        #108:#109     // getItems:()Lnet/minecraft/core/NonNullList;
+  #108 = Utf8               getItems
+  #109 = Utf8               ()Lnet/minecraft/core/NonNullList;
+  #110 = Methodref          #72.#111      // net/minecraft/world/ContainerHelper.removeItem:(Ljava/util/List;II)Lnet/minecraft/world/item/ItemStack;
+  #111 = NameAndType        #112:#113     // removeItem:(Ljava/util/List;II)Lnet/minecraft/world/item/ItemStack;
+  #112 = Utf8               removeItem
+  #113 = Utf8               (Ljava/util/List;II)Lnet/minecraft/world/item/ItemStack;
+  #114 = Methodref          #28.#115      // net/minecraft/core/NonNullList.set:(ILjava/lang/Object;)Ljava/lang/Object;
+  #115 = NameAndType        #116:#117     // set:(ILjava/lang/Object;)Ljava/lang/Object;
+  #116 = Utf8               set
+  #117 = Utf8               (ILjava/lang/Object;)Ljava/lang/Object;
+  #118 = Methodref          #22.#119      // net/minecraft/world/item/ItemStack.getCount:()I
+  #119 = NameAndType        #120:#66      // getCount:()I
+  #120 = Utf8               getCount
+  #121 = Methodref          #34.#122      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.getMaxStackSize:()I
+  #122 = NameAndType        #123:#66      // getMaxStackSize:()I
+  #123 = Utf8               getMaxStackSize
+  #124 = Methodref          #22.#125      // net/minecraft/world/item/ItemStack.setCount:(I)V
+  #125 = NameAndType        #126:#127     // setCount:(I)V
+  #126 = Utf8               setCount
+  #127 = Utf8               (I)V
+  #128 = String             #129          // basket
+  #129 = Utf8               basket
+  #130 = Class              #131          // java/lang/Object
+  #131 = Utf8               java/lang/Object
+  #132 = Methodref          #133.#134     // vectorwing/farmersdelight/common/utility/TextUtils.container:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #133 = Class              #135          // vectorwing/farmersdelight/common/utility/TextUtils
+  #134 = NameAndType        #136:#137     // container:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #135 = Utf8               vectorwing/farmersdelight/common/utility/TextUtils
+  #136 = Utf8               container
+  #137 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #138 = Methodref          #139.#140     // net/minecraft/world/inventory/ChestMenu.threeRows:(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;)Lnet/minecraft/world/inventory/ChestMenu;
+  #139 = Class              #141          // net/minecraft/world/inventory/ChestMenu
+  #140 = NameAndType        #142:#143     // threeRows:(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;)Lnet/minecraft/world/inventory/ChestMenu;
+  #141 = Utf8               net/minecraft/world/inventory/ChestMenu
+  #142 = Utf8               threeRows
+  #143 = Utf8               (ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;)Lnet/minecraft/world/inventory/ChestMenu;
+  #144 = Fieldref           #34.#145      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.level:Lnet/minecraft/world/level/Level;
+  #145 = NameAndType        #146:#147     // level:Lnet/minecraft/world/level/Level;
+  #146 = Utf8               level
+  #147 = Utf8               Lnet/minecraft/world/level/Level;
+  #148 = Fieldref           #149.#150     // net/minecraft/world/level/Level.isClientSide:Z
+  #149 = Class              #151          // net/minecraft/world/level/Level
+  #150 = NameAndType        #152:#153     // isClientSide:Z
+  #151 = Utf8               net/minecraft/world/level/Level
+  #152 = Utf8               isClientSide
+  #153 = Utf8               Z
+  #154 = Methodref          #34.#155      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.isOnCooldown:()Z
+  #155 = NameAndType        #156:#157     // isOnCooldown:()Z
+  #156 = Utf8               isOnCooldown
+  #157 = Utf8               ()Z
+  #158 = Methodref          #34.#159      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #159 = NameAndType        #160:#161     // getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #160 = Utf8               getBlockState
+  #161 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #162 = Fieldref           #163.#164     // net/minecraft/world/level/block/state/properties/BlockStateProperties.ENABLED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #163 = Class              #165          // net/minecraft/world/level/block/state/properties/BlockStateProperties
+  #164 = NameAndType        #166:#167     // ENABLED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #165 = Utf8               net/minecraft/world/level/block/state/properties/BlockStateProperties
+  #166 = Utf8               ENABLED
+  #167 = Utf8               Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #168 = Methodref          #169.#170     // net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #169 = Class              #171          // net/minecraft/world/level/block/state/BlockState
+  #170 = NameAndType        #172:#173     // getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #171 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #172 = Utf8               getValue
+  #173 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #174 = Class              #175          // java/lang/Boolean
+  #175 = Utf8               java/lang/Boolean
+  #176 = Methodref          #174.#177     // java/lang/Boolean.booleanValue:()Z
+  #177 = NameAndType        #178:#157     // booleanValue:()Z
+  #178 = Utf8               booleanValue
+  #179 = Methodref          #34.#180      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.isFull:()Z
+  #180 = NameAndType        #181:#157     // isFull:()Z
+  #181 = Utf8               isFull
+  #182 = InterfaceMethodref #183.#184     // java/util/function/BooleanSupplier.getAsBoolean:()Z
+  #183 = Class              #185          // java/util/function/BooleanSupplier
+  #184 = NameAndType        #186:#157     // getAsBoolean:()Z
+  #185 = Utf8               java/util/function/BooleanSupplier
+  #186 = Utf8               getAsBoolean
+  #187 = Methodref          #34.#188      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.setCooldown:(I)V
+  #188 = NameAndType        #189:#127     // setCooldown:(I)V
+  #189 = Utf8               setCooldown
+  #190 = Methodref          #34.#191      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.setChanged:()V
+  #191 = NameAndType        #192:#193     // setChanged:()V
+  #192 = Utf8               setChanged
+  #193 = Utf8               ()V
+  #194 = Methodref          #28.#195      // net/minecraft/core/NonNullList.iterator:()Ljava/util/Iterator;
+  #195 = NameAndType        #196:#197     // iterator:()Ljava/util/Iterator;
+  #196 = Utf8               iterator
+  #197 = Utf8               ()Ljava/util/Iterator;
+  #198 = InterfaceMethodref #199.#200     // java/util/Iterator.hasNext:()Z
+  #199 = Class              #201          // java/util/Iterator
+  #200 = NameAndType        #202:#157     // hasNext:()Z
+  #201 = Utf8               java/util/Iterator
+  #202 = Utf8               hasNext
+  #203 = InterfaceMethodref #199.#204     // java/util/Iterator.next:()Ljava/lang/Object;
+  #204 = NameAndType        #205:#12      // next:()Ljava/lang/Object;
+  #205 = Utf8               next
+  #206 = Methodref          #22.#207      // net/minecraft/world/item/ItemStack.isEmpty:()Z
+  #207 = NameAndType        #208:#157     // isEmpty:()Z
+  #208 = Utf8               isEmpty
+  #209 = Methodref          #22.#122      // net/minecraft/world/item/ItemStack.getMaxStackSize:()I
+  #210 = Fieldref           #34.#211      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.worldPosition:Lnet/minecraft/core/BlockPos;
+  #211 = NameAndType        #212:#213     // worldPosition:Lnet/minecraft/core/BlockPos;
+  #212 = Utf8               worldPosition
+  #213 = Utf8               Lnet/minecraft/core/BlockPos;
+  #214 = Methodref          #215.#216     // net/minecraft/core/BlockPos.getX:()I
+  #215 = Class              #217          // net/minecraft/core/BlockPos
+  #216 = NameAndType        #218:#66      // getX:()I
+  #217 = Utf8               net/minecraft/core/BlockPos
+  #218 = Utf8               getX
+  #219 = Double             0.5d
+  #221 = Methodref          #215.#222     // net/minecraft/core/BlockPos.getY:()I
+  #222 = NameAndType        #223:#66      // getY:()I
+  #223 = Utf8               getY
+  #224 = Methodref          #215.#225     // net/minecraft/core/BlockPos.getZ:()I
+  #225 = NameAndType        #226:#66      // getZ:()I
+  #226 = Utf8               getZ
+  #227 = Fieldref           #228.#229     // vectorwing/farmersdelight/common/block/BasketBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #228 = Class              #230          // vectorwing/farmersdelight/common/block/BasketBlock
+  #229 = NameAndType        #231:#232     // FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #230 = Utf8               vectorwing/farmersdelight/common/block/BasketBlock
+  #231 = Utf8               FACING
+  #232 = Utf8               Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #233 = Class              #234          // net/minecraft/core/Direction
+  #234 = Utf8               net/minecraft/core/Direction
+  #235 = Methodref          #233.#236     // net/minecraft/core/Direction.get3DDataValue:()I
+  #236 = NameAndType        #237:#66      // get3DDataValue:()I
+  #237 = Utf8               get3DDataValue
+  #238 = InvokeDynamic      #1:#239       // #1:getAsBoolean:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Ljava/util/function/BooleanSupplier;
+  #239 = NameAndType        #186:#240     // getAsBoolean:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Ljava/util/function/BooleanSupplier;
+  #240 = Utf8               (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Ljava/util/function/BooleanSupplier;
+  #241 = Methodref          #34.#242      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.tryTransfer:(Ljava/util/function/BooleanSupplier;)V
+  #242 = NameAndType        #243:#244     // tryTransfer:(Ljava/util/function/BooleanSupplier;)V
+  #243 = Utf8               tryTransfer
+  #244 = Utf8               (Ljava/util/function/BooleanSupplier;)V
+  #245 = Methodref          #34.#246      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.collectItems:(Lnet/minecraft/world/level/Level;I)Z
+  #246 = NameAndType        #247:#248     // collectItems:(Lnet/minecraft/world/level/Level;I)Z
+  #247 = Utf8               collectItems
+  #248 = Utf8               (Lnet/minecraft/world/level/Level;I)Z
+  #249 = Class              #250          // vectorwing/farmersdelight/common/block/entity/inventory/BasketInvWrapper
+  #250 = Utf8               vectorwing/farmersdelight/common/block/entity/inventory/BasketInvWrapper
+  #251 = Methodref          #249.#252     // vectorwing/farmersdelight/common/block/entity/inventory/BasketInvWrapper."<init>":(Lvectorwing/farmersdelight/common/block/entity/Basket;)V
+  #252 = NameAndType        #19:#253      // "<init>":(Lvectorwing/farmersdelight/common/block/entity/Basket;)V
+  #253 = Utf8               (Lvectorwing/farmersdelight/common/block/entity/Basket;)V
+  #254 = Class              #255          // vectorwing/farmersdelight/common/block/entity/Basket
+  #255 = Utf8               vectorwing/farmersdelight/common/block/entity/Basket
+  #256 = Utf8               Signature
+  #257 = Utf8               Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;
+  #258 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #259 = Utf8               Code
+  #260 = Utf8               LineNumberTable
+  #261 = Utf8               LocalVariableTable
+  #262 = Utf8               this
+  #263 = Utf8               Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+  #264 = Utf8               pos
+  #265 = Utf8               state
+  #266 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #267 = Utf8               registerCapabilities
+  #268 = Utf8               (Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+  #269 = Utf8               event
+  #270 = Utf8               Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;
+  #271 = Utf8               RuntimeVisibleAnnotations
+  #272 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #273 = Utf8               compound
+  #274 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #275 = Utf8               registries
+  #276 = Utf8               Lnet/minecraft/core/HolderLookup$Provider;
+  #277 = Utf8               StackMapTable
+  #278 = Utf8               (II)Lnet/minecraft/world/item/ItemStack;
+  #279 = Utf8               index
+  #280 = Utf8               count
+  #281 = Utf8               setItem
+  #282 = Utf8               (ILnet/minecraft/world/item/ItemStack;)V
+  #283 = Utf8               stack
+  #284 = Utf8               getDefaultName
+  #285 = Utf8               ()Lnet/minecraft/network/chat/Component;
+  #286 = Utf8               ()Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;
+  #287 = Utf8               setItems
+  #288 = Utf8               (Lnet/minecraft/core/NonNullList;)V
+  #289 = Utf8               itemsIn
+  #290 = Utf8               LocalVariableTypeTable
+  #291 = Utf8               (Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;)V
+  #292 = Utf8               createMenu
+  #293 = Utf8               (ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu;
+  #294 = Utf8               id
+  #295 = Utf8               player
+  #296 = Utf8               Lnet/minecraft/world/entity/player/Inventory;
+  #297 = Utf8               ticks
+  #298 = Utf8               isOnCustomCooldown
+  #299 = Utf8               flag
+  #300 = Utf8               transfer
+  #301 = Utf8               Ljava/util/function/BooleanSupplier;
+  #302 = Utf8               itemstack
+  #303 = Utf8               getLevelX
+  #304 = Utf8               ()D
+  #305 = Utf8               getLevelY
+  #306 = Utf8               getLevelZ
+  #307 = Utf8               pushItemsTick
+  #308 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;)V
+  #309 = Utf8               facing
+  #310 = Utf8               blockEntity
+  #311 = Utf8               lambda$pushItemsTick$1
+  #312 = Utf8               (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+  #313 = Utf8               lambda$registerCapabilities$0
+  #314 = Utf8               (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  #315 = Utf8               be
+  #316 = Utf8               context
+  #317 = Utf8               Lnet/minecraft/core/Direction;
+  #318 = Utf8               SourceFile
+  #319 = Utf8               BasketBlockEntity.java
+  #320 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #321 = Utf8               modid
+  #322 = Utf8               farmersdelight
+  #323 = Utf8               BootstrapMethods
+  #324 = MethodType         #325          //  (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #325 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #326 = MethodHandle       6:#327        // REF_invokeStatic vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$registerCapabilities$0:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  #327 = Methodref          #34.#328      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$registerCapabilities$0:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  #328 = NameAndType        #313:#314     // lambda$registerCapabilities$0:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  #329 = MethodType         #314          //  (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  #330 = MethodType         #157          //  ()Z
+  #331 = MethodHandle       6:#332        // REF_invokeStatic vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$pushItemsTick$1:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+  #332 = Methodref          #34.#333      // vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$pushItemsTick$1:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+  #333 = NameAndType        #311:#312     // lambda$pushItemsTick$1:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+  #334 = MethodHandle       6:#335        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #335 = Methodref          #336.#337     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #336 = Class              #338          // java/lang/invoke/LambdaMetafactory
+  #337 = NameAndType        #339:#340     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #338 = Utf8               java/lang/invoke/LambdaMetafactory
+  #339 = Utf8               metafactory
+  #340 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #341 = Utf8               InnerClasses
+  #342 = Class              #343          // net/neoforged/neoforge/capabilities/Capabilities
+  #343 = Utf8               net/neoforged/neoforge/capabilities/Capabilities
+  #344 = Utf8               ItemHandler
+  #345 = Class              #346          // net/minecraft/core/HolderLookup$Provider
+  #346 = Utf8               net/minecraft/core/HolderLookup$Provider
+  #347 = Class              #348          // net/minecraft/core/HolderLookup
+  #348 = Utf8               net/minecraft/core/HolderLookup
+  #349 = Utf8               Provider
+  #350 = Class              #351          // java/lang/invoke/MethodHandles$Lookup
+  #351 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #352 = Class              #353          // java/lang/invoke/MethodHandles
+  #353 = Utf8               java/lang/invoke/MethodHandles
+  #354 = Utf8               Lookup
+{
+  private net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> items;
+    descriptor: Lnet/minecraft/core/NonNullList;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #257                         // Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;
+
+  private int transferCooldown;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  public vectorwing.farmersdelight.common.block.entity.BasketBlockEntity(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0
+         1: getstatic     #1                  // Field vectorwing/farmersdelight/common/registry/ModBlockEntityTypes.BASKET:Lnet/neoforged/neoforge/registries/DeferredHolder;
+         4: invokevirtual #7                  // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+         7: checkcast     #13                 // class net/minecraft/world/level/block/entity/BlockEntityType
+        10: aload_1
+        11: aload_2
+        12: invokespecial #15                 // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+        15: aload_0
+        16: bipush        27
+        18: getstatic     #21                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+        21: invokestatic  #27                 // Method net/minecraft/core/NonNullList.withSize:(ILjava/lang/Object;)Lnet/minecraft/core/NonNullList;
+        24: putfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+        27: aload_0
+        28: iconst_m1
+        29: putfield      #39                 // Field transferCooldown:I
+        32: return
+      LineNumberTable:
+        line 36: 0
+        line 32: 15
+        line 33: 27
+        line 37: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      33     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      33     1   pos   Lnet/minecraft/core/BlockPos;
+            0      33     2 state   Lnet/minecraft/world/level/block/state/BlockState;
+
+  public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+    descriptor: (Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #43                 // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+         4: getstatic     #1                  // Field vectorwing/farmersdelight/common/registry/ModBlockEntityTypes.BASKET:Lnet/neoforged/neoforge/registries/DeferredHolder;
+         7: invokevirtual #7                  // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+        10: checkcast     #13                 // class net/minecraft/world/level/block/entity/BlockEntityType
+        13: invokedynamic #49,  0             // InvokeDynamic #0:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+        18: invokevirtual #53                 // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlockEntity:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+        21: return
+      LineNumberTable:
+        line 41: 0
+        line 43: 7
+        line 41: 18
+        line 46: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0 event   Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;
+    RuntimeVisibleAnnotations:
+      0: #272()
+        net.neoforged.bus.api.SubscribeEvent
+
+  protected void loadAdditional(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    descriptor: (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #59                 // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.loadAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+         6: aload_0
+         7: aload_0
+         8: invokevirtual #63                 // Method getContainerSize:()I
+        11: getstatic     #21                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+        14: invokestatic  #27                 // Method net/minecraft/core/NonNullList.withSize:(ILjava/lang/Object;)Lnet/minecraft/core/NonNullList;
+        17: putfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+        20: aload_0
+        21: aload_1
+        22: invokevirtual #67                 // Method tryLoadLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+        25: ifne          37
+        28: aload_1
+        29: aload_0
+        30: getfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+        33: aload_2
+        34: invokestatic  #71                 // Method net/minecraft/world/ContainerHelper.loadAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)V
+        37: aload_0
+        38: aload_1
+        39: ldc           #77                 // String TransferCooldown
+        41: invokevirtual #79                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+        44: putfield      #39                 // Field transferCooldown:I
+        47: return
+      LineNumberTable:
+        line 50: 0
+        line 51: 6
+        line 52: 20
+        line 53: 28
+        line 55: 37
+        line 56: 47
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      48     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      48     1 compound   Lnet/minecraft/nbt/CompoundTag;
+            0      48     2 registries   Lnet/minecraft/core/HolderLookup$Provider;
+      StackMapTable: number_of_entries = 1
+        frame_type = 37 /* same */
+
+  public void saveAdditional(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    descriptor: (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #85                 // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.saveAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+         6: aload_0
+         7: aload_1
+         8: invokevirtual #88                 // Method trySaveLootTable:(Lnet/minecraft/nbt/CompoundTag;)Z
+        11: ifne          24
+        14: aload_1
+        15: aload_0
+        16: getfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+        19: aload_2
+        20: invokestatic  #91                 // Method net/minecraft/world/ContainerHelper.saveAllItems:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+        23: pop
+        24: aload_1
+        25: ldc           #77                 // String TransferCooldown
+        27: aload_0
+        28: getfield      #39                 // Field transferCooldown:I
+        31: invokevirtual #95                 // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+        34: return
+      LineNumberTable:
+        line 60: 0
+        line 61: 6
+        line 62: 14
+        line 65: 24
+        line 66: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      35     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      35     1 compound   Lnet/minecraft/nbt/CompoundTag;
+            0      35     2 registries   Lnet/minecraft/core/HolderLookup$Provider;
+      StackMapTable: number_of_entries = 1
+        frame_type = 24 /* same */
+
+  public int getContainerSize();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+         4: invokevirtual #99                 // Method net/minecraft/core/NonNullList.size:()I
+         7: ireturn
+      LineNumberTable:
+        line 70: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+
+  public net.minecraft.world.item.ItemStack removeItem(int, int);
+    descriptor: (II)Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aconst_null
+         2: invokevirtual #102                // Method unpackLootTable:(Lnet/minecraft/world/entity/player/Player;)V
+         5: aload_0
+         6: invokevirtual #106                // Method getItems:()Lnet/minecraft/core/NonNullList;
+         9: iload_1
+        10: iload_2
+        11: invokestatic  #110                // Method net/minecraft/world/ContainerHelper.removeItem:(Ljava/util/List;II)Lnet/minecraft/world/item/ItemStack;
+        14: areturn
+      LineNumberTable:
+        line 75: 0
+        line 76: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      15     1 index   I
+            0      15     2 count   I
+
+  public void setItem(int, net.minecraft.world.item.ItemStack);
+    descriptor: (ILnet/minecraft/world/item/ItemStack;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aconst_null
+         2: invokevirtual #102                // Method unpackLootTable:(Lnet/minecraft/world/entity/player/Player;)V
+         5: aload_0
+         6: invokevirtual #106                // Method getItems:()Lnet/minecraft/core/NonNullList;
+         9: iload_1
+        10: aload_2
+        11: invokevirtual #114                // Method net/minecraft/core/NonNullList.set:(ILjava/lang/Object;)Ljava/lang/Object;
+        14: pop
+        15: aload_2
+        16: invokevirtual #118                // Method net/minecraft/world/item/ItemStack.getCount:()I
+        19: aload_0
+        20: invokevirtual #121                // Method getMaxStackSize:()I
+        23: if_icmple     34
+        26: aload_2
+        27: aload_0
+        28: invokevirtual #121                // Method getMaxStackSize:()I
+        31: invokevirtual #124                // Method net/minecraft/world/item/ItemStack.setCount:(I)V
+        34: return
+      LineNumberTable:
+        line 81: 0
+        line 82: 5
+        line 83: 15
+        line 84: 26
+        line 86: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      35     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      35     1 index   I
+            0      35     2 stack   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 1
+        frame_type = 34 /* same */
+
+  protected net.minecraft.network.chat.Component getDefaultName();
+    descriptor: ()Lnet/minecraft/network/chat/Component;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=1, args_size=1
+         0: ldc           #128                // String basket
+         2: iconst_0
+         3: anewarray     #130                // class java/lang/Object
+         6: invokestatic  #132                // Method vectorwing/farmersdelight/common/utility/TextUtils.container:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+         9: areturn
+      LineNumberTable:
+        line 90: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+
+  protected net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getItems();
+    descriptor: ()Lnet/minecraft/core/NonNullList;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+         4: areturn
+      LineNumberTable:
+        line 96: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+    Signature: #286                         // ()Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;
+
+  protected void setItems(net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack>);
+    descriptor: (Lnet/minecraft/core/NonNullList;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+         5: return
+      LineNumberTable:
+        line 101: 0
+        line 102: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0       6     1 itemsIn   Lnet/minecraft/core/NonNullList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 itemsIn   Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;
+    Signature: #291                         // (Lnet/minecraft/core/NonNullList<Lnet/minecraft/world/item/ItemStack;>;)V
+
+  protected net.minecraft.world.inventory.AbstractContainerMenu createMenu(int, net.minecraft.world.entity.player.Inventory);
+    descriptor: (ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=3, locals=3, args_size=3
+         0: iload_1
+         1: aload_2
+         2: aload_0
+         3: invokestatic  #138                // Method net/minecraft/world/inventory/ChestMenu.threeRows:(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;)Lnet/minecraft/world/inventory/ChestMenu;
+         6: areturn
+      LineNumberTable:
+        line 106: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0       7     1    id   I
+            0       7     2 player   Lnet/minecraft/world/entity/player/Inventory;
+
+  public void setCooldown(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #39                 // Field transferCooldown:I
+         5: return
+      LineNumberTable:
+        line 111: 0
+        line 112: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0       6     1 ticks   I
+
+  public boolean isOnCooldown();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #39                 // Field transferCooldown:I
+         4: ifle          11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 115: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public boolean isOnCustomCooldown();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #39                 // Field transferCooldown:I
+         4: bipush        8
+         6: if_icmple     13
+         9: iconst_1
+        10: goto          14
+        13: iconst_0
+        14: ireturn
+      LineNumberTable:
+        line 120: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+      StackMapTable: number_of_entries = 2
+        frame_type = 13 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public void tryTransfer(java.util.function.BooleanSupplier);
+    descriptor: (Ljava/util/function/BooleanSupplier;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #144                // Field level:Lnet/minecraft/world/level/Level;
+         4: ifnull        73
+         7: aload_0
+         8: getfield      #144                // Field level:Lnet/minecraft/world/level/Level;
+        11: getfield      #148                // Field net/minecraft/world/level/Level.isClientSide:Z
+        14: ifne          73
+        17: aload_0
+        18: invokevirtual #154                // Method isOnCooldown:()Z
+        21: ifne          73
+        24: aload_0
+        25: invokevirtual #158                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        28: getstatic     #162                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.ENABLED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+        31: invokevirtual #168                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        34: checkcast     #174                // class java/lang/Boolean
+        37: invokevirtual #176                // Method java/lang/Boolean.booleanValue:()Z
+        40: ifeq          73
+        43: iconst_0
+        44: istore_2
+        45: aload_0
+        46: invokevirtual #179                // Method isFull:()Z
+        49: ifne          59
+        52: aload_1
+        53: invokeinterface #182,  1          // InterfaceMethod java/util/function/BooleanSupplier.getAsBoolean:()Z
+        58: istore_2
+        59: iload_2
+        60: ifeq          73
+        63: aload_0
+        64: bipush        8
+        66: invokevirtual #187                // Method setCooldown:(I)V
+        69: aload_0
+        70: invokevirtual #190                // Method setChanged:()V
+        73: return
+      LineNumberTable:
+        line 125: 0
+        line 126: 17
+        line 127: 43
+        line 128: 45
+        line 129: 52
+        line 132: 59
+        line 133: 63
+        line 134: 69
+        line 138: 73
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           45      28     2  flag   Z
+            0      74     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0      74     1 transfer   Ljava/util/function/BooleanSupplier;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 59
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 13
+
+  protected boolean isFull();
+    descriptor: ()Z
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #33                 // Field items:Lnet/minecraft/core/NonNullList;
+         4: invokevirtual #194                // Method net/minecraft/core/NonNullList.iterator:()Ljava/util/Iterator;
+         7: astore_1
+         8: aload_1
+         9: invokeinterface #198,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        14: ifeq          50
+        17: aload_1
+        18: invokeinterface #203,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        23: checkcast     #22                 // class net/minecraft/world/item/ItemStack
+        26: astore_2
+        27: aload_2
+        28: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+        31: ifne          45
+        34: aload_2
+        35: invokevirtual #118                // Method net/minecraft/world/item/ItemStack.getCount:()I
+        38: aload_2
+        39: invokevirtual #209                // Method net/minecraft/world/item/ItemStack.getMaxStackSize:()I
+        42: if_icmpeq     47
+        45: iconst_0
+        46: ireturn
+        47: goto          8
+        50: iconst_1
+        51: ireturn
+      LineNumberTable:
+        line 141: 0
+        line 142: 27
+        line 143: 45
+        line 145: 47
+        line 146: 50
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           27      20     2 itemstack   Lnet/minecraft/world/item/ItemStack;
+            0      52     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 250 /* chop */
+          offset_delta = 1
+        frame_type = 250 /* chop */
+          offset_delta = 2
+
+  public double getLevelX();
+    descriptor: ()D
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #210                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+         4: invokevirtual #214                // Method net/minecraft/core/BlockPos.getX:()I
+         7: i2d
+         8: ldc2_w        #219                // double 0.5d
+        11: dadd
+        12: dreturn
+      LineNumberTable:
+        line 151: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+
+  public double getLevelY();
+    descriptor: ()D
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #210                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+         4: invokevirtual #221                // Method net/minecraft/core/BlockPos.getY:()I
+         7: i2d
+         8: ldc2_w        #219                // double 0.5d
+        11: dadd
+        12: dreturn
+      LineNumberTable:
+        line 156: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+
+  public double getLevelZ();
+    descriptor: ()D
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #210                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+         4: invokevirtual #224                // Method net/minecraft/core/BlockPos.getZ:()I
+         7: i2d
+         8: ldc2_w        #219                // double 0.5d
+        11: dadd
+        12: dreturn
+      LineNumberTable:
+        line 161: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+
+  public static void pushItemsTick(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, vectorwing.farmersdelight.common.block.entity.BasketBlockEntity);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=5, args_size=4
+         0: aload_3
+         1: dup
+         2: getfield      #39                 // Field transferCooldown:I
+         5: iconst_1
+         6: isub
+         7: putfield      #39                 // Field transferCooldown:I
+        10: aload_3
+        11: invokevirtual #154                // Method isOnCooldown:()Z
+        14: ifne          50
+        17: aload_3
+        18: iconst_0
+        19: invokevirtual #187                // Method setCooldown:(I)V
+        22: aload_2
+        23: getstatic     #227                // Field vectorwing/farmersdelight/common/block/BasketBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+        26: invokevirtual #168                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        29: checkcast     #233                // class net/minecraft/core/Direction
+        32: invokevirtual #235                // Method net/minecraft/core/Direction.get3DDataValue:()I
+        35: istore        4
+        37: aload_3
+        38: aload_3
+        39: aload_0
+        40: iload         4
+        42: invokedynamic #238,  0            // InvokeDynamic #1:getAsBoolean:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Ljava/util/function/BooleanSupplier;
+        47: invokevirtual #241                // Method tryTransfer:(Ljava/util/function/BooleanSupplier;)V
+        50: return
+      LineNumberTable:
+        line 165: 0
+        line 166: 10
+        line 167: 17
+        line 168: 22
+        line 169: 37
+        line 171: 50
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           37      13     4 facing   I
+            0      51     0 level   Lnet/minecraft/world/level/Level;
+            0      51     1   pos   Lnet/minecraft/core/BlockPos;
+            0      51     2 state   Lnet/minecraft/world/level/block/state/BlockState;
+            0      51     3 blockEntity   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+      StackMapTable: number_of_entries = 1
+        frame_type = 50 /* same */
+
+  private static boolean lambda$pushItemsTick$1(vectorwing.farmersdelight.common.block.entity.BasketBlockEntity, net.minecraft.world.level.Level, int);
+    descriptor: (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: iload_2
+         3: invokevirtual #245                // Method collectItems:(Lnet/minecraft/world/level/Level;I)Z
+         6: ireturn
+      LineNumberTable:
+        line 169: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0 blockEntity   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0       7     1 level   Lnet/minecraft/world/level/Level;
+            0       7     2 facing   I
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$0(vectorwing.farmersdelight.common.block.entity.BasketBlockEntity, net.minecraft.core.Direction);
+    descriptor: (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #249                // class vectorwing/farmersdelight/common/block/entity/inventory/BasketInvWrapper
+         3: dup
+         4: aload_0
+         5: invokespecial #251                // Method vectorwing/farmersdelight/common/block/entity/inventory/BasketInvWrapper."<init>":(Lvectorwing/farmersdelight/common/block/entity/Basket;)V
+         8: areturn
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0    be   Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;
+            0       9     1 context   Lnet/minecraft/core/Direction;
+}
+SourceFile: "BasketBlockEntity.java"
+RuntimeVisibleAnnotations:
+  0: #320(#321=s#322)
+    net.neoforged.fml.common.EventBusSubscriber(
+      modid="farmersdelight"
+    )
+BootstrapMethods:
+  0: #334 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #326 REF_invokeStatic vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$registerCapabilities$0:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+      #329 (Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/core/Direction;)Lnet/neoforged/neoforge/items/IItemHandler;
+  1: #334 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #330 ()Z
+      #331 REF_invokeStatic vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.lambda$pushItemsTick$1:(Lvectorwing/farmersdelight/common/block/entity/BasketBlockEntity;Lnet/minecraft/world/level/Level;I)Z
+      #330 ()Z
+InnerClasses:
+  public static final #344= #44 of #342;  // ItemHandler=class net/neoforged/neoforge/capabilities/Capabilities$ItemHandler of class net/neoforged/neoforge/capabilities/Capabilities
+  public static #349= #345 of #347;       // Provider=class net/minecraft/core/HolderLookup$Provider of class net/minecraft/core/HolderLookup
+  public static final #354= #350 of #352; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

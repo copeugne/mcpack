@@ -459,6 +459,19 @@ On failure, automatically preserve where available:
 
 Produce a concise failure summary pointing to raw evidence. Do not retry indefinitely or erase the failed instance before evidence collection.
 
+#### Item 7 Operational Regressions to Prevent
+
+The following requirements come from failures observed while completing Item 7:
+
+- Do not run server instances concurrently when they share configured ports. Either allocate and verify distinct ports for every instance or run the instances sequentially.
+- Correlate `save-all flush` with unique before and after console markers. Require exact marker matches and exactly one ordered `Saving the game` then `Saved the game` sequence between those markers. Reject missing, mismatched, reordered, or duplicate complete sequences.
+- Launch every server in a dedicated process group. On timeout, interruption, or post-launch I/O failure, terminate and reap the complete process group so child Java processes cannot survive the harness.
+- Make the post-`stop` clean-exit timeout explicit and configurable. Do not assume that 30 seconds is sufficient; the Item 7 retained-stack recovery required a 120-second allowance to avoid killing an otherwise valid shutdown.
+- Before reopening or copying a preserved source world, verify its complete preboot file inventory byte-for-byte against the recorded world identity. Bind the recovery result to that source identity and the exact runtime artifact identity.
+- Distinguish a raw-evidence custody tag from the final repository completion boundary. A verifier-only correction that does not change raw bytes, archive production, manifests, restores, or publication must not trigger another archive revision. The final merged commit must contain the corrected verifier and reproduce the accepted result.
+- Before creating an evidence archive, verify that the existing staging path includes every required evidence directory. Fail if required evidence is omitted or if an unexplained path would be admitted.
+- Define complete validation result contracts explicitly. Do not derive the required output set from a partial internal list when separately generated unresolved or method-limited results also belong to the accepted contract.
+
 ### 18. Clean-Room Reproducibility Test
 
 After the primary environment works, prove reproducibility in a fresh directory and, where available, a clean container or separate clean Linux environment:

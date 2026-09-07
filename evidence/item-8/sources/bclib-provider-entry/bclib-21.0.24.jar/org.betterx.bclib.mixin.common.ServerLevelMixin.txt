@@ -1,0 +1,223 @@
+Classfile bclib-21.0.24.jar!/org/betterx/bclib/mixin/common/ServerLevelMixin.class
+  Last modified Jul 27, 2026; size 4105 bytes
+  SHA-256 checksum 62e7002ac753a3fc1e7b6c090d448a07762eed4967ca6541f49271ea9bb77989
+  Compiled from "ServerLevelMixin.java"
+public abstract class org.betterx.bclib.mixin.common.ServerLevelMixin extends net.minecraft.world.level.Level
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // org/betterx/bclib/mixin/common/ServerLevelMixin
+  super_class: #2                         // net/minecraft/world/level/Level
+  interfaces: 0, fields: 1, methods: 3, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // net/minecraft/world/level/Level."<init>":(Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Ljava/util/function/Supplier;ZZJI)V
+   #2 = Class              #4             // net/minecraft/world/level/Level
+   #3 = NameAndType        #5:#6          // "<init>":(Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Ljava/util/function/Supplier;ZZJI)V
+   #4 = Utf8               net/minecraft/world/level/Level
+   #5 = Utf8               <init>
+   #6 = Utf8               (Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Ljava/util/function/Supplier;ZZJI)V
+   #7 = Fieldref           #8.#9          // org/betterx/bclib/mixin/common/ServerLevelMixin.bclib_lastWorld:Ljava/lang/String;
+   #8 = Class              #10            // org/betterx/bclib/mixin/common/ServerLevelMixin
+   #9 = NameAndType        #11:#12        // bclib_lastWorld:Ljava/lang/String;
+  #10 = Utf8               org/betterx/bclib/mixin/common/ServerLevelMixin
+  #11 = Utf8               bclib_lastWorld
+  #12 = Utf8               Ljava/lang/String;
+  #13 = Methodref          #14.#15        // net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess.getLevelId:()Ljava/lang/String;
+  #14 = Class              #16            // net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess
+  #15 = NameAndType        #17:#18        // getLevelId:()Ljava/lang/String;
+  #16 = Utf8               net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess
+  #17 = Utf8               getLevelId
+  #18 = Utf8               ()Ljava/lang/String;
+  #19 = Methodref          #20.#21        // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #20 = Class              #22            // java/lang/String
+  #21 = NameAndType        #23:#24        // equals:(Ljava/lang/Object;)Z
+  #22 = Utf8               java/lang/String
+  #23 = Utf8               equals
+  #24 = Utf8               (Ljava/lang/Object;)Z
+  #25 = Utf8               RuntimeVisibleAnnotations
+  #26 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #27 = Utf8               Code
+  #28 = Utf8               LineNumberTable
+  #29 = Utf8               LocalVariableTable
+  #30 = Utf8               this
+  #31 = Utf8               Lorg/betterx/bclib/mixin/common/ServerLevelMixin;
+  #32 = Utf8               writableLevelData
+  #33 = Utf8               Lnet/minecraft/world/level/storage/WritableLevelData;
+  #34 = Utf8               resourceKey
+  #35 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #36 = Utf8               registryAccess
+  #37 = Utf8               Lnet/minecraft/core/RegistryAccess;
+  #38 = Utf8               holder
+  #39 = Utf8               Lnet/minecraft/core/Holder;
+  #40 = Utf8               supplier
+  #41 = Utf8               Ljava/util/function/Supplier;
+  #42 = Utf8               bl
+  #43 = Utf8               Z
+  #44 = Utf8               bl2
+  #45 = Utf8               l
+  #46 = Utf8               J
+  #47 = Utf8               i
+  #48 = Utf8               I
+  #49 = Utf8               LocalVariableTypeTable
+  #50 = Utf8               Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+  #51 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/dimension/DimensionType;>;
+  #52 = Utf8               Ljava/util/function/Supplier<Lnet/minecraft/util/profiling/ProfilerFiller;>;
+  #53 = Utf8               Signature
+  #54 = Utf8               (Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/dimension/DimensionType;>;Ljava/util/function/Supplier<Lnet/minecraft/util/profiling/ProfilerFiller;>;ZZJI)V
+  #55 = Utf8               bclib_onServerWorldInit
+  #56 = Utf8               (Lnet/minecraft/server/MinecraftServer;Ljava/util/concurrent/Executor;Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;Lnet/minecraft/world/level/storage/ServerLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/dimension/LevelStem;Lnet/minecraft/server/level/progress/ChunkProgressListener;ZJLjava/util/List;ZLnet/minecraft/world/RandomSequences;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #57 = Utf8               minecraftServer
+  #58 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #59 = Utf8               executor
+  #60 = Utf8               Ljava/util/concurrent/Executor;
+  #61 = Utf8               levelStorageAccess
+  #62 = Utf8               Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;
+  #63 = Utf8               serverLevelData
+  #64 = Utf8               Lnet/minecraft/world/level/storage/ServerLevelData;
+  #65 = Utf8               levelStem
+  #66 = Utf8               Lnet/minecraft/world/level/dimension/LevelStem;
+  #67 = Utf8               chunkProgressListener
+  #68 = Utf8               Lnet/minecraft/server/level/progress/ChunkProgressListener;
+  #69 = Utf8               list
+  #70 = Utf8               Ljava/util/List;
+  #71 = Utf8               randomSequences
+  #72 = Utf8               Lnet/minecraft/world/RandomSequences;
+  #73 = Utf8               ci
+  #74 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #75 = Utf8               StackMapTable
+  #76 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #77 = Utf8               method
+  #78 = Utf8               <init>(Lnet/minecraft/server/MinecraftServer;Ljava/util/concurrent/Executor;Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;Lnet/minecraft/world/level/storage/ServerLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/dimension/LevelStem;Lnet/minecraft/server/level/progress/ChunkProgressListener;ZJLjava/util/List;ZLnet/minecraft/world/RandomSequences;)V
+  #79 = Utf8               at
+  #80 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #81 = Utf8               value
+  #82 = Utf8               TAIL
+  #83 = Utf8               require
+  #84 = Integer            0
+  #85 = Utf8               <clinit>
+  #86 = Utf8               ()V
+  #87 = Utf8               SourceFile
+  #88 = Utf8               ServerLevelMixin.java
+  #89 = Utf8               RuntimeInvisibleAnnotations
+  #90 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #91 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #92 = Utf8               InnerClasses
+  #93 = Class              #94            // net/minecraft/world/level/storage/LevelStorageSource
+  #94 = Utf8               net/minecraft/world/level/storage/LevelStorageSource
+  #95 = Utf8               LevelStorageAccess
+{
+  private static java.lang.String bclib_lastWorld;
+    descriptor: Ljava/lang/String;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    RuntimeVisibleAnnotations:
+      0: #26()
+        org.spongepowered.asm.mixin.Unique
+
+  protected org.betterx.bclib.mixin.common.ServerLevelMixin(net.minecraft.world.level.storage.WritableLevelData, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>, net.minecraft.core.RegistryAccess, net.minecraft.core.Holder<net.minecraft.world.level.dimension.DimensionType>, java.util.function.Supplier<net.minecraft.util.profiling.ProfilerFiller>, boolean, boolean, long, int);
+    descriptor: (Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Ljava/util/function/Supplier;ZZJI)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=11, locals=11, args_size=10
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: aload_3
+         4: aload         4
+         6: aload         5
+         8: iload         6
+        10: iload         7
+        12: lload         8
+        14: iload         10
+        16: invokespecial #1                  // Method net/minecraft/world/level/Level."<init>":(Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Ljava/util/function/Supplier;ZZJI)V
+        19: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0  this   Lorg/betterx/bclib/mixin/common/ServerLevelMixin;
+            0      20     1 writableLevelData   Lnet/minecraft/world/level/storage/WritableLevelData;
+            0      20     2 resourceKey   Lnet/minecraft/resources/ResourceKey;
+            0      20     3 registryAccess   Lnet/minecraft/core/RegistryAccess;
+            0      20     4 holder   Lnet/minecraft/core/Holder;
+            0      20     5 supplier   Ljava/util/function/Supplier;
+            0      20     6    bl   Z
+            0      20     7   bl2   Z
+            0      20     8     l   J
+            0      20    10     i   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      20     2 resourceKey   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+            0      20     4 holder   Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/dimension/DimensionType;>;
+            0      20     5 supplier   Ljava/util/function/Supplier<Lnet/minecraft/util/profiling/ProfilerFiller;>;
+    Signature: #54                          // (Lnet/minecraft/world/level/storage/WritableLevelData;Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/dimension/DimensionType;>;Ljava/util/function/Supplier<Lnet/minecraft/util/profiling/ProfilerFiller;>;ZZJI)V
+
+  private void bclib_onServerWorldInit(net.minecraft.server.MinecraftServer, java.util.concurrent.Executor, net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.world.level.storage.ServerLevelData, net.minecraft.resources.ResourceKey, net.minecraft.world.level.dimension.LevelStem, net.minecraft.server.level.progress.ChunkProgressListener, boolean, long, java.util.List, boolean, net.minecraft.world.RandomSequences, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/server/MinecraftServer;Ljava/util/concurrent/Executor;Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;Lnet/minecraft/world/level/storage/ServerLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/dimension/LevelStem;Lnet/minecraft/server/level/progress/ChunkProgressListener;ZJLjava/util/List;ZLnet/minecraft/world/RandomSequences;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=15, args_size=14
+         0: getstatic     #7                  // Field bclib_lastWorld:Ljava/lang/String;
+         3: ifnull        20
+         6: getstatic     #7                  // Field bclib_lastWorld:Ljava/lang/String;
+         9: aload_3
+        10: invokevirtual #13                 // Method net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess.getLevelId:()Ljava/lang/String;
+        13: invokevirtual #19                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        16: ifeq          20
+        19: return
+        20: aload_3
+        21: invokevirtual #13                 // Method net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess.getLevelId:()Ljava/lang/String;
+        24: putstatic     #7                  // Field bclib_lastWorld:Ljava/lang/String;
+        27: return
+      LineNumberTable:
+        line 68: 0
+        line 69: 19
+        line 72: 20
+        line 73: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      28     0  this   Lorg/betterx/bclib/mixin/common/ServerLevelMixin;
+            0      28     1 minecraftServer   Lnet/minecraft/server/MinecraftServer;
+            0      28     2 executor   Ljava/util/concurrent/Executor;
+            0      28     3 levelStorageAccess   Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;
+            0      28     4 serverLevelData   Lnet/minecraft/world/level/storage/ServerLevelData;
+            0      28     5 resourceKey   Lnet/minecraft/resources/ResourceKey;
+            0      28     6 levelStem   Lnet/minecraft/world/level/dimension/LevelStem;
+            0      28     7 chunkProgressListener   Lnet/minecraft/server/level/progress/ChunkProgressListener;
+            0      28     8    bl   Z
+            0      28     9     l   J
+            0      28    11  list   Ljava/util/List;
+            0      28    12   bl2   Z
+            0      28    13 randomSequences   Lnet/minecraft/world/RandomSequences;
+            0      28    14    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 20 /* same */
+    RuntimeVisibleAnnotations:
+      0: #76(#77=[s#78],#79=[@#80(#81=s#82)],#83=I#84)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/server/MinecraftServer;Ljava/util/concurrent/Executor;Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;Lnet/minecraft/world/level/storage/ServerLevelData;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/dimension/LevelStem;Lnet/minecraft/server/level/progress/ChunkProgressListener;ZJLjava/util/List;ZLnet/minecraft/world/RandomSequences;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          require=0
+        )
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: aconst_null
+         1: putstatic     #7                  // Field bclib_lastWorld:Ljava/lang/String;
+         4: return
+      LineNumberTable:
+        line 31: 0
+}
+SourceFile: "ServerLevelMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #90(#81=[c#91])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerLevel;]
+    )
+InnerClasses:
+  public #95= #14 of #93;                 // LevelStorageAccess=class net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess of class net/minecraft/world/level/storage/LevelStorageSource

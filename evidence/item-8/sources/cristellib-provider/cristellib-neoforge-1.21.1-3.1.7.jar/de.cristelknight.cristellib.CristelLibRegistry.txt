@@ -1,0 +1,134 @@
+Compiled from "CristelLibRegistry.java"
+public class de.cristelknight.cristellib.CristelLibRegistry {
+  protected static com.google.common.collect.ImmutableMap<java.lang.String, java.util.Set<de.cristelknight.cristellib.StructureConfig>> configs;
+
+  protected de.cristelknight.cristellib.CristelLibRegistry();
+    Code:
+       0: aload_0
+       1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.google.common.collect.ImmutableMap<java.lang.String, java.util.Set<de.cristelknight.cristellib.StructureConfig>> getConfigMap();
+    Code:
+       0: getstatic     #24                 // Field configs:Lcom/google/common/collect/ImmutableMap;
+       3: invokevirtual #30                 // Method com/google/common/collect/ImmutableMap.isEmpty:()Z
+       6: ifne          13
+       9: getstatic     #24                 // Field configs:Lcom/google/common/collect/ImmutableMap;
+      12: areturn
+      13: new           #32                 // class java/lang/RuntimeException
+      16: dup
+      17: ldc           #34                 // String Tried to access Registry before initialized.
+      19: invokestatic  #40                 // Method de/cristelknight/cristellib/Constants.getWithPrefix:(Ljava/lang/String;)Ljava/lang/String;
+      22: invokespecial #43                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      25: athrow
+
+  public static java.util.Set<de.cristelknight.cristellib.StructureConfig> getConfigs();
+    Code:
+       0: invokestatic  #48                 // Method getConfigMap:()Lcom/google/common/collect/ImmutableMap;
+       3: invokevirtual #52                 // Method com/google/common/collect/ImmutableMap.values:()Lcom/google/common/collect/ImmutableCollection;
+       6: invokevirtual #58                 // Method com/google/common/collect/ImmutableCollection.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #77,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      14: invokeinterface #83,  2           // InterfaceMethod java/util/stream/Stream.flatMap:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: invokestatic  #89                 // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+      22: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      27: checkcast     #95                 // class java/util/Set
+      30: areturn
+
+  public void registerSetToConfig(java.lang.String, java.lang.String, java.util.List<java.lang.String>, de.cristelknight.cristellib.StructureConfig...);
+    Code:
+       0: aload_2
+       1: ifnull        13
+       4: aload_2
+       5: ldc           #103                // String minecraft
+       7: invokevirtual #109                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      10: ifeq          17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: istore        5
+      20: aload_0
+      21: aload_1
+      22: aload_3
+      23: invokeinterface #112,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      28: iload         5
+      30: aload_2
+      31: invokedynamic #122,  0            // InvokeDynamic #1:apply:(ZLjava/lang/String;)Ljava/util/function/Function;
+      36: invokeinterface #125,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      41: invokeinterface #129,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      46: aload         4
+      48: invokevirtual #132                // Method registerSetToConfig:(Ljava/lang/String;Ljava/util/List;[Lde/cristelknight/cristellib/StructureConfig;)V
+      51: return
+
+  public void registerSetToConfig(java.lang.String, java.util.List<net.minecraft.resources.ResourceLocation>, de.cristelknight.cristellib.StructureConfig...);
+    Code:
+       0: aload_3
+       1: astore        4
+       3: aload         4
+       5: arraylength
+       6: istore        5
+       8: iconst_0
+       9: istore        6
+      11: iload         6
+      13: iload         5
+      15: if_icmpge     45
+      18: aload         4
+      20: iload         6
+      22: aaload
+      23: astore        7
+      25: aload         7
+      27: new           #142                // class de/cristelknight/cristellib/data/codec/StructureSetData
+      30: dup
+      31: aload_1
+      32: aload_2
+      33: invokespecial #145                // Method de/cristelknight/cristellib/data/codec/StructureSetData."<init>":(Ljava/lang/String;Ljava/util/List;)V
+      36: invokevirtual #151                // Method de/cristelknight/cristellib/StructureConfig.addSet:(Lde/cristelknight/cristellib/data/codec/StructureSetData;)V
+      39: iinc          6, 1
+      42: goto          11
+      45: return
+
+  public void registerSetToConfig(java.lang.String, net.minecraft.resources.ResourceLocation, de.cristelknight.cristellib.StructureConfig...);
+    Code:
+       0: aload_3
+       1: astore        4
+       3: aload         4
+       5: arraylength
+       6: istore        5
+       8: iconst_0
+       9: istore        6
+      11: iload         6
+      13: iload         5
+      15: if_icmpge     48
+      18: aload         4
+      20: iload         6
+      22: aaload
+      23: astore        7
+      25: aload         7
+      27: new           #142                // class de/cristelknight/cristellib/data/codec/StructureSetData
+      30: dup
+      31: aload_1
+      32: aload_2
+      33: invokestatic  #160                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      36: invokespecial #145                // Method de/cristelknight/cristellib/data/codec/StructureSetData."<init>":(Ljava/lang/String;Ljava/util/List;)V
+      39: invokevirtual #151                // Method de/cristelknight/cristellib/StructureConfig.addSet:(Lde/cristelknight/cristellib/data/codec/StructureSetData;)V
+      42: iinc          6, 1
+      45: goto          11
+      48: return
+
+  private static net.minecraft.resources.ResourceLocation lambda$registerSetToConfig$0(boolean, java.lang.String, java.lang.String);
+    Code:
+       0: iload_0
+       1: ifeq          11
+       4: aload_2
+       5: invokestatic  #167                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: goto          16
+      11: aload_1
+      12: aload_2
+      13: invokestatic  #171                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      16: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #174                // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+       3: putstatic     #24                 // Field configs:Lcom/google/common/collect/ImmutableMap;
+       6: return
+}

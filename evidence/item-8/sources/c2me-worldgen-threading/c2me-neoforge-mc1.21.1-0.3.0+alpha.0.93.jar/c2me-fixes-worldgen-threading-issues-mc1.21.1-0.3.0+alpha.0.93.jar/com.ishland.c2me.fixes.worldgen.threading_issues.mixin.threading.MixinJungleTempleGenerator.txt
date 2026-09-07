@@ -1,0 +1,425 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator.class
+  Last modified Jan 1, 1980; size 3077 bytes
+  SHA-256 checksum 215060b624b17009453ef972525cfd4ff448ca32ea8c4f013d56c1a51cad6ed1
+  Compiled from "MixinJungleTempleGenerator.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinJungleTempleGenerator
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 4, methods: 9, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator
+   #2 = Class              #1             // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinJungleTempleGenerator.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+   #9 = Utf8               placedMainChestAtomic
+  #10 = Utf8               Ljava/util/concurrent/atomic/AtomicBoolean;
+  #11 = Utf8               placedHiddenChestAtomic
+  #12 = Utf8               placedTrap1Atomic
+  #13 = Utf8               placedTrap2Atomic
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = NameAndType        #14:#15        // "<init>":()V
+  #17 = Methodref          #4.#16         // java/lang/Object."<init>":()V
+  #18 = Utf8               java/util/concurrent/atomic/AtomicBoolean
+  #19 = Class              #18            // java/util/concurrent/atomic/AtomicBoolean
+  #20 = Methodref          #19.#16        // java/util/concurrent/atomic/AtomicBoolean."<init>":()V
+  #21 = NameAndType        #9:#10         // placedMainChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #22 = Fieldref           #2.#21         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator.placedMainChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #23 = NameAndType        #11:#10        // placedHiddenChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #24 = Fieldref           #2.#23         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator.placedHiddenChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #25 = NameAndType        #12:#10        // placedTrap1Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #26 = Fieldref           #2.#25         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator.placedTrap1Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #27 = NameAndType        #13:#10        // placedTrap2Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #28 = Fieldref           #2.#27         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator.placedTrap2Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+  #29 = Utf8               this
+  #30 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+  #31 = Utf8               redirectSetPlacedMainChest
+  #32 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;Z)V
+  #33 = Utf8               jungleTempleGenerator
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #35 = Utf8               method
+  #36 = Utf8               *
+  #37 = Utf8               at
+  #38 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #39 = Utf8               FIELD
+  #40 = Utf8               target
+  #41 = Utf8               Lnet/minecraft/structure/JungleTempleGenerator;placedMainChest:Z
+  #42 = Utf8               opcode
+  #43 = Integer            181
+  #44 = Utf8               Lorg/spongepowered/asm/mixin/Dynamic;
+  #45 = Utf8               compareAndSet
+  #46 = Utf8               (ZZ)Z
+  #47 = NameAndType        #45:#46        // compareAndSet:(ZZ)Z
+  #48 = Methodref          #19.#47        // java/util/concurrent/atomic/AtomicBoolean.compareAndSet:(ZZ)Z
+  #49 = Utf8               Z
+  #50 = Utf8               redirectGetPlacedMainChest
+  #51 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;)Z
+  #52 = Integer            180
+  #53 = Utf8               get
+  #54 = Utf8               ()Z
+  #55 = NameAndType        #53:#54        // get:()Z
+  #56 = Methodref          #19.#55        // java/util/concurrent/atomic/AtomicBoolean.get:()Z
+  #57 = Utf8               redirectSetHiddenChest
+  #58 = Utf8               Lnet/minecraft/structure/JungleTempleGenerator;placedHiddenChest:Z
+  #59 = Utf8               redirectGetHiddenChest
+  #60 = Utf8               redirectSetPlacedTrap1
+  #61 = Utf8               Lnet/minecraft/structure/JungleTempleGenerator;placedTrap1:Z
+  #62 = Utf8               redirectGetPlacedTrap1
+  #63 = Utf8               redirectSetPlacedTrap2
+  #64 = Utf8               Lnet/minecraft/structure/JungleTempleGenerator;placedTrap2:Z
+  #65 = Utf8               redirectGetPlacedTrap2
+  #66 = Utf8               Code
+  #67 = Utf8               LineNumberTable
+  #68 = Utf8               LocalVariableTable
+  #69 = Utf8               RuntimeVisibleAnnotations
+  #70 = Utf8               RuntimeInvisibleAnnotations
+  #71 = Utf8               MethodParameters
+  #72 = Utf8               SourceFile
+{
+  private final java.util.concurrent.atomic.AtomicBoolean placedMainChestAtomic;
+    descriptor: Ljava/util/concurrent/atomic/AtomicBoolean;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.concurrent.atomic.AtomicBoolean placedHiddenChestAtomic;
+    descriptor: Ljava/util/concurrent/atomic/AtomicBoolean;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.concurrent.atomic.AtomicBoolean placedTrap1Atomic;
+    descriptor: Ljava/util/concurrent/atomic/AtomicBoolean;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.concurrent.atomic.AtomicBoolean placedTrap2Atomic;
+    descriptor: Ljava/util/concurrent/atomic/AtomicBoolean;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinJungleTempleGenerator();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #19                 // class java/util/concurrent/atomic/AtomicBoolean
+         8: dup
+         9: invokespecial #20                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":()V
+        12: putfield      #22                 // Field placedMainChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+        15: aload_0
+        16: new           #19                 // class java/util/concurrent/atomic/AtomicBoolean
+        19: dup
+        20: invokespecial #20                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":()V
+        23: putfield      #24                 // Field placedHiddenChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+        26: aload_0
+        27: new           #19                 // class java/util/concurrent/atomic/AtomicBoolean
+        30: dup
+        31: invokespecial #20                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":()V
+        34: putfield      #26                 // Field placedTrap1Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+        37: aload_0
+        38: new           #19                 // class java/util/concurrent/atomic/AtomicBoolean
+        41: dup
+        42: invokespecial #20                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":()V
+        45: putfield      #28                 // Field placedTrap2Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+        48: return
+      LineNumberTable:
+        line 13: 0
+        line 15: 4
+        line 16: 15
+        line 17: 26
+        line 18: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      49     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+
+  private void redirectSetPlacedMainChest(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece, boolean);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #22                 // Field placedMainChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: iconst_0
+         5: iload_2
+         6: invokevirtual #48                 // Method java/util/concurrent/atomic/AtomicBoolean.compareAndSet:(ZZ)Z
+         9: pop
+        10: return
+      LineNumberTable:
+        line 23: 0
+        line 24: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0      11     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+            0      11     2 value   Z
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#41,#42=I#43))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedMainChest:Z"
+            opcode=181
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+      value
+
+  private boolean redirectGetPlacedMainChest(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #22                 // Field placedMainChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: invokevirtual #56                 // Method java/util/concurrent/atomic/AtomicBoolean.get:()Z
+         7: ireturn
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0       8     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#41,#42=I#52))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedMainChest:Z"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+
+  private void redirectSetHiddenChest(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece, boolean);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #24                 // Field placedHiddenChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: iconst_0
+         5: iload_2
+         6: invokevirtual #48                 // Method java/util/concurrent/atomic/AtomicBoolean.compareAndSet:(ZZ)Z
+         9: pop
+        10: return
+      LineNumberTable:
+        line 35: 0
+        line 36: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0      11     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+            0      11     2 value   Z
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#58,#42=I#43))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedHiddenChest:Z"
+            opcode=181
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+      value
+
+  private boolean redirectGetHiddenChest(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #24                 // Field placedHiddenChestAtomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: invokevirtual #56                 // Method java/util/concurrent/atomic/AtomicBoolean.get:()Z
+         7: ireturn
+      LineNumberTable:
+        line 41: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0       8     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#58,#42=I#52))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedHiddenChest:Z"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+
+  private void redirectSetPlacedTrap1(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece, boolean);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #26                 // Field placedTrap1Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: iconst_0
+         5: iload_2
+         6: invokevirtual #48                 // Method java/util/concurrent/atomic/AtomicBoolean.compareAndSet:(ZZ)Z
+         9: pop
+        10: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0      11     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+            0      11     2 value   Z
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#61,#42=I#43))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedTrap1:Z"
+            opcode=181
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+      value
+
+  private boolean redirectGetPlacedTrap1(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #26                 // Field placedTrap1Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: invokevirtual #56                 // Method java/util/concurrent/atomic/AtomicBoolean.get:()Z
+         7: ireturn
+      LineNumberTable:
+        line 53: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0       8     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#61,#42=I#52))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedTrap1:Z"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+
+  private void redirectSetPlacedTrap2(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece, boolean);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #28                 // Field placedTrap2Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: iconst_0
+         5: iload_2
+         6: invokevirtual #48                 // Method java/util/concurrent/atomic/AtomicBoolean.compareAndSet:(ZZ)Z
+         9: pop
+        10: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0      11     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+            0      11     2 value   Z
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#64,#42=I#43))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedTrap2:Z"
+            opcode=181
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+      value
+
+  private boolean redirectGetPlacedTrap2(net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #28                 // Field placedTrap2Atomic:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: invokevirtual #56                 // Method java/util/concurrent/atomic/AtomicBoolean.get:()Z
+         7: ireturn
+      LineNumberTable:
+        line 65: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinJungleTempleGenerator;
+            0       8     1 jungleTempleGenerator   Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[s#36],#37=@#38(#7=s#39,#40=s#64,#42=I#52))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/JungleTempleGenerator;placedTrap2:Z"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      jungleTempleGenerator
+}
+SourceFile: "MixinJungleTempleGenerator.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece;]
+    )

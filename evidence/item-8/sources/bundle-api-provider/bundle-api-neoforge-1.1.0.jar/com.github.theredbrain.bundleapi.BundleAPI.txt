@@ -1,0 +1,61 @@
+Compiled from "BundleAPI.java"
+public class com.github.theredbrain.bundleapi.BundleAPI {
+  public static final java.lang.String MOD_ID = "bundleapi";
+
+  public static final org.slf4j.Logger LOGGER;
+
+  public static net.minecraft.core.component.DataComponentType<com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent> CUSTOM_BUNDLE_CONTENTS_COMPONENT;
+
+  public static net.minecraft.advancements.critereon.ItemSubPredicate$Type<com.github.theredbrain.bundleapi.predicate.item.CustomBundleContentsPredicate> CUSTOM_BUNDLE_CONTENTS_ITEM_SUB_PREDICATE;
+
+  public static net.minecraft.world.level.storage.loot.ContainerComponentManipulator<com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent> CUSTOM_BUNDLE_CONTENTS_CONTAINER_COMPONENT_MODIFIER;
+
+  public com.github.theredbrain.bundleapi.BundleAPI();
+    Code:
+       0: aload_0
+       1: invokespecial #36                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #41                 // Field LOGGER:Lorg/slf4j/Logger;
+       3: ldc           #43                 // String Customized Bundles!
+       5: invokeinterface #49,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      10: return
+
+  public static net.minecraft.resources.ResourceLocation identifier(java.lang.String);
+    Code:
+       0: ldc           #21                 // String bundleapi
+       2: aload_0
+       3: invokestatic  #58                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  static {};
+    Code:
+       0: ldc           #21                 // String bundleapi
+       2: invokestatic  #65                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+       5: putstatic     #41                 // Field LOGGER:Lorg/slf4j/Logger;
+       8: invokestatic  #69                 // InterfaceMethod net/minecraft/core/component/DataComponentType.builder:()Lnet/minecraft/core/component/DataComponentType$Builder;
+      11: getstatic     #75                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent.CODEC:Lcom/mojang/serialization/Codec;
+      14: invokevirtual #79                 // Method net/minecraft/core/component/DataComponentType$Builder.persistent:(Lcom/mojang/serialization/Codec;)Lnet/minecraft/core/component/DataComponentType$Builder;
+      17: getstatic     #83                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent.PACKET_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      20: invokevirtual #87                 // Method net/minecraft/core/component/DataComponentType$Builder.networkSynchronized:(Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/core/component/DataComponentType$Builder;
+      23: invokevirtual #90                 // Method net/minecraft/core/component/DataComponentType$Builder.cacheEncoding:()Lnet/minecraft/core/component/DataComponentType$Builder;
+      26: invokevirtual #94                 // Method net/minecraft/core/component/DataComponentType$Builder.build:()Lnet/minecraft/core/component/DataComponentType;
+      29: putstatic     #96                 // Field CUSTOM_BUNDLE_CONTENTS_COMPONENT:Lnet/minecraft/core/component/DataComponentType;
+      32: new           #14                 // class net/minecraft/advancements/critereon/ItemSubPredicate$Type
+      35: dup
+      36: getstatic     #99                 // Field com/github/theredbrain/bundleapi/predicate/item/CustomBundleContentsPredicate.CODEC:Lcom/mojang/serialization/Codec;
+      39: invokespecial #102                // Method net/minecraft/advancements/critereon/ItemSubPredicate$Type."<init>":(Lcom/mojang/serialization/Codec;)V
+      42: putstatic     #104                // Field CUSTOM_BUNDLE_CONTENTS_ITEM_SUB_PREDICATE:Lnet/minecraft/advancements/critereon/ItemSubPredicate$Type;
+      45: new           #7                  // class com/github/theredbrain/bundleapi/BundleAPI$1
+      48: dup
+      49: invokespecial #105                // Method com/github/theredbrain/bundleapi/BundleAPI$1."<init>":()V
+      52: putstatic     #107                // Field CUSTOM_BUNDLE_CONTENTS_CONTAINER_COMPONENT_MODIFIER:Lnet/minecraft/world/level/storage/loot/ContainerComponentManipulator;
+      55: getstatic     #113                // Field net/minecraft/world/level/storage/loot/ContainerComponentManipulators.ALL_MANIPULATORS:Ljava/util/Map;
+      58: getstatic     #96                 // Field CUSTOM_BUNDLE_CONTENTS_COMPONENT:Lnet/minecraft/core/component/DataComponentType;
+      61: getstatic     #107                // Field CUSTOM_BUNDLE_CONTENTS_CONTAINER_COMPONENT_MODIFIER:Lnet/minecraft/world/level/storage/loot/ContainerComponentManipulator;
+      64: invokeinterface #119,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      69: pop
+      70: return
+}

@@ -1,0 +1,142 @@
+Compiled from "AspenTrunkPlacer.java"
+public class net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer extends net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer {
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer> TYPE;
+
+  protected final float bendChance;
+
+  public net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer(net.minecraft.util.valueproviders.IntProvider, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #52                 // Method net/regions_unexplored/worldgen/trunkplacer/RUTrunkPlacer."<init>":(Lnet/minecraft/util/valueproviders/IntProvider;)V
+       5: aload_0
+       6: fload_2
+       7: putfield      #54                 // Field bendChance:F
+      10: return
+
+  protected net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<?> type();
+    Code:
+       0: getstatic     #62                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+       3: areturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment> placeTrunk(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, int, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: new           #73                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #76                 // Method java/util/ArrayList."<init>":()V
+       7: astore        7
+       9: aload         5
+      11: invokevirtual #80                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      14: astore        8
+      16: iconst_0
+      17: istore        9
+      19: iload         9
+      21: iload         4
+      23: if_icmpge     154
+      26: iload         9
+      28: iload         4
+      30: iconst_2
+      31: isub
+      32: if_icmpne     124
+      35: aload_3
+      36: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      41: aload_0
+      42: getfield      #54                 // Field bendChance:F
+      45: fcmpg
+      46: ifge          124
+      49: getstatic     #92                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      52: aload_3
+      53: invokevirtual #96                 // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      56: astore        10
+      58: aload         8
+      60: aload         10
+      62: invokevirtual #100                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      65: pop
+      66: aload_3
+      67: invokeinterface #104,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+      72: ifeq          124
+      75: aload         8
+      77: invokevirtual #108                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      80: aload         10
+      82: invokevirtual #112                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+      85: iconst_2
+      86: invokevirtual #116                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      89: astore        11
+      91: aload_0
+      92: aload_1
+      93: aload_2
+      94: aload_3
+      95: aload         11
+      97: invokevirtual #119                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     100: aload         6
+     102: aload         10
+     104: invokestatic  #123                // Method setAxis:(Lnet/minecraft/core/Direction;)Ljava/util/function/Function;
+     107: invokevirtual #127                // Method placeLog:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Ljava/util/function/Function;)Z
+     110: pop
+     111: aload         7
+     113: aload         11
+     115: invokestatic  #131                // Method attachment:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment;
+     118: invokeinterface #135,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     123: pop
+     124: aload_0
+     125: aload_1
+     126: aload_2
+     127: aload_3
+     128: aload         8
+     130: invokevirtual #108                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     133: aload         6
+     135: invokevirtual #138                // Method placeLog:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)Z
+     138: pop
+     139: aload         8
+     141: getstatic     #142                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     144: invokevirtual #100                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     147: pop
+     148: iinc          9, 1
+     151: goto          19
+     154: aload         7
+     156: aload         8
+     158: invokevirtual #108                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     161: invokestatic  #131                // Method attachment:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment;
+     164: invokeinterface #135,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     169: pop
+     170: aload         7
+     172: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: invokestatic  #164                // Method heightField:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+       4: fconst_0
+       5: fconst_1
+       6: invokestatic  #170                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+       9: ldc           #172                // String bend_chance
+      11: invokeinterface #176,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #195,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      21: invokevirtual #201                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: invokevirtual #205                // Method com/mojang/datafixers/Products$P1.and:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      27: aload_0
+      28: invokedynamic #215,  0            // InvokeDynamic #1:apply:()Ljava/util/function/BiFunction;
+      33: invokevirtual #218                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      36: areturn
+
+  private static java.lang.Float lambda$static$1(net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field bendChance:F
+       4: invokestatic  #226                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #232,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       5: invokestatic  #236                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #238                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #240                // class net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType
+      14: dup
+      15: getstatic     #238                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      18: invokespecial #243                // Method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      21: putstatic     #62                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+      24: return
+}

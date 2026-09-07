@@ -12,7 +12,7 @@ import threading
 import time
 from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
-from pydantic import BaseModel, ConfigDict, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from mcpack_evidence.item7_console import (
     FlushCorrelation,
@@ -38,7 +38,7 @@ GapError = Item7RuntimeError
 
 class GapTarget(BaseModel):
     model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid")
-    structure: str
+    structure: str = Field(pattern=r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 
 
 GAP_TARGETS: Final = (
@@ -59,11 +59,15 @@ class LocatedTarget(BaseModel):
 class GapRequest(BaseModel):
     model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid")
     runtime: WorldgenRequest
+    dimension: Literal["minecraft:overworld", "minecraft:the_end"] = "minecraft:overworld"
+    targets: tuple[GapTarget, ...] = Field(default=GAP_TARGETS, min_length=1)
 
     @model_validator(mode="after")
     def require_ordinary_pilot(self) -> GapRequest:
         if self.runtime.role != "ordinary" or self.runtime.mode != "pilot":
             raise GapError("preflight", "gap targets support the ordinary seed only in pilot mode")
+        if len({target.structure for target in self.targets}) != len(self.targets):
+            raise GapError("preflight", "gap targets must be unique")
         return self
 
 
@@ -105,8 +109,10 @@ def parse_locate_line(line: str, target: GapTarget) -> LocatedTarget:
     return LocatedTarget(structure=structure, x=int(match.group("x")), z=int(match.group("z")))
 
 
-def parse_completion_marker(line: str, target: GapTarget) -> str:
-    return parse_completion(line, target.structure)
+def parse_completion_marker(
+    line: str, target: GapTarget, dimension: str = "minecraft:overworld"
+) -> str:
+    return parse_completion(line, target.structure, dimension)
 
 
 def run_gap_lifecycle(request: GapRequest, java_executable: Path) -> GapLifecycleReceipt:
@@ -184,42 +190,46 @@ def _drive(
             return
         _ = log.write(output)
         log.flush()
-        _observe(stdin, output, state)
+        _observe(stdin, output, state, request.targets, request.dimension)
 
 
-def _observe(stdin: IO[str], line: str, state: _State) -> None:
+def _observe(
+    stdin: IO[str], line: str, state: _State, targets: tuple[GapTarget, ...], dimension: str
+) -> None:
     if not state.ready and "Done (" in line and _READY in line:
         state.ready = True
-        state.rejection = send_command(stdin, state.commands, _locate_command(GAP_TARGETS[0]))
+        state.rejection = send_command(
+            stdin, state.commands, _locate_command(targets[0], dimension)
+        )
         return
-    if state.ready and len(state.located) < len(GAP_TARGETS) and "The nearest " in line:
-        target = GAP_TARGETS[len(state.located)]
+    if state.ready and len(state.located) < len(targets) and "The nearest " in line:
+        target = targets[len(state.located)]
         try:
             state.located.append(parse_locate_line(line, target))
         except GapError as error:
             state.rejection = error.detail
             return
-        if len(state.located) < len(GAP_TARGETS):
+        if len(state.located) < len(targets):
             state.rejection = send_command(
-                stdin, state.commands, _locate_command(GAP_TARGETS[len(state.located)])
+                stdin, state.commands, _locate_command(targets[len(state.located)], dimension)
             )
         else:
-            state.rejection = _send_chunky(stdin, state.commands, state.located[0])
+            state.rejection = _send_chunky(stdin, state.commands, state.located[0], dimension)
         return
     if (
-        len(state.located) == len(GAP_TARGETS)
-        and len(state.completed) < len(GAP_TARGETS)
+        len(state.located) == len(targets)
+        and len(state.completed) < len(targets)
         and "Task finished" in line
     ):
-        target = GAP_TARGETS[len(state.completed)]
+        target = targets[len(state.completed)]
         try:
-            state.completed.append(parse_completion_marker(line, target))
+            state.completed.append(parse_completion_marker(line, target, dimension))
         except GapError as error:
             state.rejection = error.detail
             return
-        if len(state.completed) < len(GAP_TARGETS):
+        if len(state.completed) < len(targets):
             state.rejection = _send_chunky(
-                stdin, state.commands, state.located[len(state.completed)]
+                stdin, state.commands, state.located[len(state.completed)], dimension
             )
         else:
             state.flush_correlation = begin_correlated_flush(stdin, state.commands)
@@ -233,13 +243,18 @@ def _observe(stdin: IO[str], line: str, state: _State) -> None:
         state.flushed = state.flushed or flushed
 
 
-def _locate_command(target: GapTarget) -> str:
-    return f"locate structure {target.structure}"
+def _locate_command(target: GapTarget, dimension: str) -> str:
+    command = f"locate structure {target.structure}"
+    return (
+        command if dimension == "minecraft:overworld" else f"execute in {dimension} run {command}"
+    )
 
 
-def _send_chunky(stdin: IO[str], commands: list[str], target: LocatedTarget) -> str | None:
+def _send_chunky(
+    stdin: IO[str], commands: list[str], target: LocatedTarget, dimension: str
+) -> str | None:
     for command in (
-        "chunky world minecraft:overworld",
+        f"chunky world {dimension}",
         f"chunky center {target.x} {target.z}",
         "chunky radius 4c",
         "chunky start",

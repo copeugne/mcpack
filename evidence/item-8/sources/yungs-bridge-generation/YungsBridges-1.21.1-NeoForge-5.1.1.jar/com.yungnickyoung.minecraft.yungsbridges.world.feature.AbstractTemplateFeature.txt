@@ -1,0 +1,104 @@
+Compiled from "AbstractTemplateFeature.java"
+public abstract class com.yungnickyoung.minecraft.yungsbridges.world.feature.AbstractTemplateFeature<C extends net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration> extends net.minecraft.world.level.levelgen.feature.Feature<C> {
+  protected java.util.List<com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor> processors;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.feature.AbstractTemplateFeature(com.mojang.serialization.Codec<C>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: aload_0
+       6: aload_0
+       7: invokevirtual #7                  // Method useProcessors:()Ljava/util/List;
+      10: putfield      #13                 // Field processors:Ljava/util/List;
+      13: return
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate createTemplate(net.minecraft.resources.ResourceLocation, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: new           #17                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+       9: dup
+      10: invokespecial #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+      13: invokevirtual #22                 // Method createTemplateWithPlacement:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      16: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate createTemplateWithPlacement(net.minecraft.resources.ResourceLocation, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_2
+       1: invokeinterface #26,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+       6: invokevirtual #32                 // Method net/minecraft/server/level/ServerLevel.getStructureManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+       9: aload_1
+      10: invokevirtual #38                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      13: astore        6
+      15: aload         6
+      17: invokevirtual #44                 // Method java/util/Optional.isEmpty:()Z
+      20: ifeq          36
+      23: getstatic     #50                 // Field com/yungnickyoung/minecraft/yungsbridges/YungsBridgesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      26: ldc           #56                 // String Failed to create invalid feature {}
+      28: aload_1
+      29: invokeinterface #58,  3           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      34: aconst_null
+      35: areturn
+      36: aload         6
+      38: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      41: checkcast     #67                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+      44: astore        7
+      46: aload         4
+      48: aload         7
+      50: invokevirtual #69                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+      53: invokevirtual #73                 // Method net/minecraft/core/Vec3i.getX:()I
+      56: iconst_2
+      57: idiv
+      58: iconst_0
+      59: aload         7
+      61: invokevirtual #69                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+      64: invokevirtual #79                 // Method net/minecraft/core/Vec3i.getZ:()I
+      67: iconst_2
+      68: idiv
+      69: invokevirtual #82                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      72: astore        8
+      74: aload         7
+      76: aload_2
+      77: aload         4
+      79: aload         8
+      81: aload         5
+      83: aload_3
+      84: iconst_2
+      85: invokevirtual #88                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.placeInWorld:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/util/RandomSource;I)Z
+      88: pop
+      89: aload_0
+      90: getfield      #13                 // Field processors:Ljava/util/List;
+      93: aload         7
+      95: aload_2
+      96: aload_3
+      97: aload         4
+      99: aload         8
+     101: aload         5
+     103: invokedynamic #92,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Ljava/util/function/Consumer;
+     108: invokeinterface #96,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     113: aload         7
+     115: areturn
+
+  protected java.util.List<com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor> useProcessors();
+    Code:
+       0: new           #102                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #104                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  private static void lambda$createTemplateWithPlacement$0(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor);
+    Code:
+       0: aload         6
+       2: aload_0
+       3: aload_1
+       4: aload_2
+       5: aload_3
+       6: aload         4
+       8: aload         5
+      10: invokeinterface #105,  7          // InterfaceMethod com/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor.processTemplate:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)V
+      15: return
+}

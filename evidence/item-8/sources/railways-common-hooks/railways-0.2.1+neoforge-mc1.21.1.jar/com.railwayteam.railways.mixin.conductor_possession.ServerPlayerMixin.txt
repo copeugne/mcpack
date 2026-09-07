@@ -1,0 +1,332 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin.class
+  Last modified Jun 1, 2026; size 3236 bytes
+  SHA-256 checksum 7341ad5962a9346b05d542ad7596256f869c8afcb0aea66ff1cbf78b7b160041
+  Compiled from "ServerPlayerMixin.java"
+public abstract class com.railwayteam.railways.mixin.conductor_possession.ServerPlayerMixin implements com.railwayteam.railways.content.conductor.ServerPlayerPossessionAccess
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 7, attributes: 2
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin.railways$possessedConductor:Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+    #8 = Class              #10           // com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin
+    #9 = NameAndType        #11:#12       // railways$possessedConductor:Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #10 = Utf8               com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin
+   #11 = Utf8               railways$possessedConductor
+   #12 = Utf8               Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #13 = Methodref          #14.#15       // net/minecraft/world/entity/Entity.isAlive:()Z
+   #14 = Class              #16           // net/minecraft/world/entity/Entity
+   #15 = NameAndType        #17:#18       // isAlive:()Z
+   #16 = Utf8               net/minecraft/world/entity/Entity
+   #17 = Utf8               isAlive
+   #18 = Utf8               ()Z
+   #19 = Methodref          #20.#21       // com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+   #20 = Class              #22           // com/railwayteam/railways/content/conductor/ConductorPossessionController
+   #21 = NameAndType        #23:#24       // isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+   #22 = Utf8               com/railwayteam/railways/content/conductor/ConductorPossessionController
+   #23 = Utf8               isPossessingConductor
+   #24 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+   #25 = Class              #26           // net/minecraft/server/level/ServerPlayer
+   #26 = Utf8               net/minecraft/server/level/ServerPlayer
+   #27 = Methodref          #8.#28        // com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin.getCamera:()Lnet/minecraft/world/entity/Entity;
+   #28 = NameAndType        #29:#30       // getCamera:()Lnet/minecraft/world/entity/Entity;
+   #29 = Utf8               getCamera
+   #30 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #31 = Class              #32           // com/railwayteam/railways/content/conductor/ConductorEntity
+   #32 = Utf8               com/railwayteam/railways/content/conductor/ConductorEntity
+   #33 = Methodref          #34.#35       // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+   #34 = Class              #36           // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+   #35 = NameAndType        #37:#6        // cancel:()V
+   #36 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+   #37 = Utf8               cancel
+   #38 = Methodref          #31.#39       // com/railwayteam/railways/content/conductor/ConductorEntity.stopViewing:(Lnet/minecraft/server/level/ServerPlayer;)V
+   #39 = NameAndType        #40:#41       // stopViewing:(Lnet/minecraft/server/level/ServerPlayer;)V
+   #40 = Utf8               stopViewing
+   #41 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;)V
+   #42 = Class              #43           // com/railwayteam/railways/content/conductor/ServerPlayerPossessionAccess
+   #43 = Utf8               com/railwayteam/railways/content/conductor/ServerPlayerPossessionAccess
+   #44 = Utf8               RuntimeVisibleAnnotations
+   #45 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #46 = Utf8               Code
+   #47 = Utf8               LineNumberTable
+   #48 = Utf8               LocalVariableTable
+   #49 = Utf8               this
+   #50 = Utf8               Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+   #51 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #52 = Utf8               railways$getPossessedConductor
+   #53 = Utf8               ()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #54 = Utf8               railways$setPossessedConductor
+   #55 = Utf8               (Lcom/railwayteam/railways/content/conductor/ConductorEntity;)V
+   #56 = Utf8               conductor
+   #57 = Utf8               railways$nullGuardIsAlive
+   #58 = Utf8               entity
+   #59 = Utf8               Lnet/minecraft/world/entity/Entity;
+   #60 = Utf8               StackMapTable
+   #61 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #62 = Utf8               method
+   #63 = Utf8               tick
+   #64 = Utf8               at
+   #65 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #66 = Utf8               value
+   #67 = Utf8               INVOKE
+   #68 = Utf8               target
+   #69 = Utf8               Lnet/minecraft/world/entity/Entity;isAlive()Z
+   #70 = Utf8               require
+   #71 = Integer            0
+   #72 = Utf8               railways$shouldAbsMoveTo
+   #73 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;DDDFF)Z
+   #74 = Utf8               player
+   #75 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+   #76 = Utf8               x
+   #77 = Utf8               D
+   #78 = Utf8               y
+   #79 = Utf8               z
+   #80 = Utf8               yaw
+   #81 = Utf8               F
+   #82 = Utf8               pitch
+   #83 = Utf8               Lcom/llamalad7/mixinextras/injector/v2/WrapWithCondition;
+   #84 = Utf8               Lnet/minecraft/server/level/ServerPlayer;absMoveTo(DDDFF)V
+   #85 = Utf8               railways$railways$setCamera
+   #86 = Utf8               (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #87 = Utf8               entityToSpectate
+   #88 = Utf8               ci
+   #89 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #90 = Utf8               self
+   #91 = Utf8               currentCamera
+   #92 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #93 = Utf8               setCamera
+   #94 = Utf8               HEAD
+   #95 = Utf8               cancellable
+   #96 = Integer            1
+   #97 = Utf8               SourceFile
+   #98 = Utf8               ServerPlayerMixin.java
+   #99 = Utf8               RuntimeInvisibleAnnotations
+  #100 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #101 = Utf8               priority
+  #102 = Integer            1200
+{
+  private com.railwayteam.railways.content.conductor.ConductorEntity railways$possessedConductor;
+    descriptor: Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #45()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.railwayteam.railways.mixin.conductor_possession.ServerPlayerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #7                  // Field railways$possessedConductor:Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+         9: return
+      LineNumberTable:
+        line 41: 0
+        line 45: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+
+  public abstract net.minecraft.world.entity.Entity getCamera();
+    descriptor: ()Lnet/minecraft/world/entity/Entity;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #51()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.railwayteam.railways.content.conductor.ConductorEntity railways$getPossessedConductor();
+    descriptor: ()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field railways$possessedConductor:Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+         4: areturn
+      LineNumberTable:
+        line 50: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+    RuntimeVisibleAnnotations:
+      0: #45()
+        org.spongepowered.asm.mixin.Unique
+
+  public void railways$setPossessedConductor(com.railwayteam.railways.content.conductor.ConductorEntity);
+    descriptor: (Lcom/railwayteam/railways/content/conductor/ConductorEntity;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #7                  // Field railways$possessedConductor:Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+         5: return
+      LineNumberTable:
+        line 55: 0
+        line 56: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+            0       6     1 conductor   Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+    RuntimeVisibleAnnotations:
+      0: #45()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean railways$nullGuardIsAlive(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_1
+         1: ifnonnull     6
+         4: iconst_0
+         5: ireturn
+         6: aload_1
+         7: invokevirtual #13                 // Method net/minecraft/world/entity/Entity.isAlive:()Z
+        10: ireturn
+      LineNumberTable:
+        line 60: 0
+        line 61: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+            0      11     1 entity   Lnet/minecraft/world/entity/Entity;
+      StackMapTable: number_of_entries = 1
+        frame_type = 6 /* same */
+    RuntimeVisibleAnnotations:
+      0: #61(#62=[s#63],#64=@#65(#66=s#67,#68=s#69),#70=I#71)
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tick"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/Entity;isAlive()Z"
+          )
+          require=0
+        )
+
+  private boolean railways$shouldAbsMoveTo(net.minecraft.server.level.ServerPlayer, double, double, double, float, float);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;DDDFF)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=10, args_size=7
+         0: aload_1
+         1: invokestatic  #19                 // Method com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+         4: ifne          11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 66: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+            0      13     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      13     2     x   D
+            0      13     4     y   D
+            0      13     6     z   D
+            0      13     8   yaw   F
+            0      13     9 pitch   F
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+    RuntimeVisibleAnnotations:
+      0: #83(#62=[s#63],#64=[@#65(#66=s#67,#68=s#84)],#70=I#71)
+        com.llamalad7.mixinextras.injector.v2.WrapWithCondition(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ServerPlayer;absMoveTo(DDDFF)V"
+          )]
+          require=0
+        )
+
+  private void railways$railways$setCamera(net.minecraft.world.entity.Entity, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=3
+         0: aload_0
+         1: checkcast     #25                 // class net/minecraft/server/level/ServerPlayer
+         4: astore_3
+         5: aload_0
+         6: invokevirtual #27                 // Method getCamera:()Lnet/minecraft/world/entity/Entity;
+         9: astore        4
+        11: aload_1
+        12: instanceof    #31                 // class com/railwayteam/railways/content/conductor/ConductorEntity
+        15: ifeq          23
+        18: aload_2
+        19: invokevirtual #33                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        22: return
+        23: aload         4
+        25: instanceof    #31                 // class com/railwayteam/railways/content/conductor/ConductorEntity
+        28: ifeq          56
+        31: aload         4
+        33: checkcast     #31                 // class com/railwayteam/railways/content/conductor/ConductorEntity
+        36: astore        5
+        38: aload_1
+        39: aload_3
+        40: if_acmpne     50
+        43: aload_2
+        44: invokevirtual #33                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        47: goto          56
+        50: aload         5
+        52: aload_3
+        53: invokevirtual #38                 // Method com/railwayteam/railways/content/conductor/ConductorEntity.stopViewing:(Lnet/minecraft/server/level/ServerPlayer;)V
+        56: return
+      LineNumberTable:
+        line 71: 0
+        line 72: 5
+        line 74: 11
+        line 75: 18
+        line 76: 22
+        line 79: 23
+        line 80: 38
+        line 81: 43
+        line 83: 50
+        line 86: 56
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           38      18     5 conductor   Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+            0      57     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin;
+            0      57     1 entityToSpectate   Lnet/minecraft/world/entity/Entity;
+            0      57     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5      52     3  self   Lnet/minecraft/server/level/ServerPlayer;
+           11      46     4 currentCamera   Lnet/minecraft/world/entity/Entity;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 23
+          locals = [ class net/minecraft/server/level/ServerPlayer, class net/minecraft/world/entity/Entity ]
+        frame_type = 252 /* append */
+          offset_delta = 26
+          locals = [ class com/railwayteam/railways/content/conductor/ConductorEntity ]
+        frame_type = 250 /* chop */
+          offset_delta = 5
+    RuntimeVisibleAnnotations:
+      0: #92(#62=[s#93],#64=[@#65(#66=s#94)],#95=Z#96)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["setCamera"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "ServerPlayerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #100(#66=[c#75],#101=I#102)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerPlayer;]
+      priority=1200
+    )

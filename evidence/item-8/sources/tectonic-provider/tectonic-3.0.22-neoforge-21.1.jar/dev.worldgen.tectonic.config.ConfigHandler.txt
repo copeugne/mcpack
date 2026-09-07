@@ -1,0 +1,179 @@
+Compiled from "ConfigHandler.java"
+public class dev.worldgen.tectonic.config.ConfigHandler {
+  private static dev.worldgen.tectonic.config.state.ConfigState LOADED_STATE;
+
+  private static java.nio.file.Path PATH;
+
+  public dev.worldgen.tectonic.config.ConfigHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #39                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static dev.worldgen.tectonic.config.state.ConfigState getState();
+    Code:
+       0: getstatic     #45                 // Field LOADED_STATE:Ldev/worldgen/tectonic/config/state/ConfigState;
+       3: areturn
+
+  public static void setState(dev.worldgen.tectonic.config.state.ConfigState);
+    Code:
+       0: aload_0
+       1: putstatic     #45                 // Field LOADED_STATE:Ldev/worldgen/tectonic/config/state/ConfigState;
+       4: return
+
+  public static void load(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: putstatic     #59                 // Field PATH:Ljava/nio/file/Path;
+       4: aload_0
+       5: iconst_0
+       6: anewarray     #61                 // class java/nio/file/LinkOption
+       9: invokestatic  #67                 // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      12: ifne          18
+      15: invokestatic  #70                 // Method save:()V
+      18: aload_0
+      19: invokestatic  #74                 // Method java/nio/file/Files.newBufferedReader:(Ljava/nio/file/Path;)Ljava/io/BufferedReader;
+      22: astore_1
+      23: aload_1
+      24: invokestatic  #80                 // Method com/google/gson/JsonParser.parseReader:(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+      27: astore_2
+      28: getstatic     #84                 // Field dev/worldgen/tectonic/config/state/ConfigState.CODEC:Lcom/mojang/serialization/Codec;
+      31: getstatic     #90                 // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+      34: aload_2
+      35: invokeinterface #96,  3           // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      40: invokeinterface #102,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      45: astore_3
+      46: aload_3
+      47: invokevirtual #108                // Method java/util/Optional.isPresent:()Z
+      50: ifeq          66
+      53: aload_3
+      54: invokevirtual #112                // Method java/util/Optional.get:()Ljava/lang/Object;
+      57: checkcast     #9                  // class dev/worldgen/tectonic/config/state/ConfigState
+      60: putstatic     #45                 // Field LOADED_STATE:Ldev/worldgen/tectonic/config/state/ConfigState;
+      63: goto          76
+      66: new           #55                 // class com/google/gson/JsonParseException
+      69: dup
+      70: ldc           #118                // String Invalid codec
+      72: invokespecial #121                // Method com/google/gson/JsonParseException."<init>":(Ljava/lang/String;)V
+      75: athrow
+      76: aload_1
+      77: ifnull        107
+      80: aload_1
+      81: invokevirtual #124                // Method java/io/BufferedReader.close:()V
+      84: goto          107
+      87: astore_2
+      88: aload_1
+      89: ifnull        105
+      92: aload_1
+      93: invokevirtual #124                // Method java/io/BufferedReader.close:()V
+      96: goto          105
+      99: astore_3
+     100: aload_2
+     101: aload_3
+     102: invokevirtual #130                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     105: aload_2
+     106: athrow
+     107: goto          134
+     110: astore_1
+     111: getstatic     #136                // Field dev/worldgen/tectonic/Tectonic.LOGGER:Lorg/slf4j/Logger;
+     114: ldc           #138                // String Couldn\'t parse config file, resetting to default config
+     116: invokeinterface #143,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     121: goto          134
+     124: astore_1
+     125: new           #145                // class java/lang/RuntimeException
+     128: dup
+     129: aload_1
+     130: invokespecial #147                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     133: athrow
+     134: invokestatic  #70                 // Method save:()V
+     137: return
+    Exception table:
+       from    to  target type
+          23    76    87   Class java/lang/Throwable
+          92    96    99   Class java/lang/Throwable
+          18   107   110   Class com/google/gson/JsonParseException
+          18   107   124   Class java/lang/Exception
+
+  public static void save();
+    Code:
+       0: getstatic     #59                 // Field PATH:Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #158                // class java/nio/file/OpenOption
+       7: invokestatic  #162                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      10: astore_0
+      11: getstatic     #84                 // Field dev/worldgen/tectonic/config/state/ConfigState.CODEC:Lcom/mojang/serialization/Codec;
+      14: getstatic     #90                 // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+      17: getstatic     #45                 // Field LOADED_STATE:Ldev/worldgen/tectonic/config/state/ConfigState;
+      20: invokeinterface #165,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      25: invokeinterface #102,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      30: invokevirtual #112                // Method java/util/Optional.get:()Ljava/lang/Object;
+      33: checkcast     #116                // class com/google/gson/JsonElement
+      36: astore_1
+      37: new           #167                // class java/io/StringWriter
+      40: dup
+      41: invokespecial #168                // Method java/io/StringWriter."<init>":()V
+      44: astore_2
+      45: new           #170                // class com/google/gson/stream/JsonWriter
+      48: dup
+      49: aload_2
+      50: invokespecial #173                // Method com/google/gson/stream/JsonWriter."<init>":(Ljava/io/Writer;)V
+      53: astore_3
+      54: aload_3
+      55: ldc           #175                // String
+      57: invokevirtual #178                // Method com/google/gson/stream/JsonWriter.setIndent:(Ljava/lang/String;)V
+      60: aload_3
+      61: aload_1
+      62: invokestatic  #184                // InterfaceMethod java/util/Comparator.naturalOrder:()Ljava/util/Comparator;
+      65: invokestatic  #190                // Method net/minecraft/util/GsonHelper.writeValue:(Lcom/google/gson/stream/JsonWriter;Lcom/google/gson/JsonElement;Ljava/util/Comparator;)V
+      68: aload_0
+      69: aload_2
+      70: invokevirtual #194                // Method java/io/StringWriter.toString:()Ljava/lang/String;
+      73: invokevirtual #199                // Method java/io/BufferedWriter.write:(Ljava/lang/String;)V
+      76: aload_0
+      77: ifnull        107
+      80: aload_0
+      81: invokevirtual #200                // Method java/io/BufferedWriter.close:()V
+      84: goto          107
+      87: astore_1
+      88: aload_0
+      89: ifnull        105
+      92: aload_0
+      93: invokevirtual #200                // Method java/io/BufferedWriter.close:()V
+      96: goto          105
+      99: astore_2
+     100: aload_1
+     101: aload_2
+     102: invokevirtual #130                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     105: aload_1
+     106: athrow
+     107: goto          120
+     110: astore_0
+     111: new           #145                // class java/lang/RuntimeException
+     114: dup
+     115: aload_0
+     116: invokespecial #147                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     119: athrow
+     120: return
+    Exception table:
+       from    to  target type
+          11    76    87   Class java/lang/Throwable
+          92    96    99   Class java/lang/Throwable
+           0   107   110   Class java/lang/Exception
+
+  static {};
+    Code:
+       0: new           #9                  // class dev/worldgen/tectonic/config/state/ConfigState
+       3: dup
+       4: iconst_1
+       5: getstatic     #212                // Field dev/worldgen/tectonic/config/state/ConfigState$General.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$General;
+       8: getstatic     #215                // Field dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+      11: getstatic     #218                // Field dev/worldgen/tectonic/config/state/ConfigState$Continents.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Continents;
+      14: getstatic     #221                // Field dev/worldgen/tectonic/config/state/ConfigState$Islands.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Islands;
+      17: getstatic     #224                // Field dev/worldgen/tectonic/config/state/ConfigState$Oceans.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Oceans;
+      20: getstatic     #227                // Field dev/worldgen/tectonic/config/state/ConfigState$Biomes.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Biomes;
+      23: getstatic     #230                // Field dev/worldgen/tectonic/config/state/ConfigState$Caves.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Caves;
+      26: getstatic     #233                // Field dev/worldgen/tectonic/config/state/ConfigState$Experimental.DEFAULT:Ldev/worldgen/tectonic/config/state/ConfigState$Experimental;
+      29: invokespecial #236                // Method dev/worldgen/tectonic/config/state/ConfigState."<init>":(ILdev/worldgen/tectonic/config/state/ConfigState$General;Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;Ldev/worldgen/tectonic/config/state/ConfigState$Continents;Ldev/worldgen/tectonic/config/state/ConfigState$Islands;Ldev/worldgen/tectonic/config/state/ConfigState$Oceans;Ldev/worldgen/tectonic/config/state/ConfigState$Biomes;Ldev/worldgen/tectonic/config/state/ConfigState$Caves;Ldev/worldgen/tectonic/config/state/ConfigState$Experimental;)V
+      32: putstatic     #45                 // Field LOADED_STATE:Ldev/worldgen/tectonic/config/state/ConfigState;
+      35: return
+}

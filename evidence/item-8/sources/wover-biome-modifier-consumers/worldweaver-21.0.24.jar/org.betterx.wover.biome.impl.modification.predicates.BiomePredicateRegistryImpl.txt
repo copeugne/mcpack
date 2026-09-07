@@ -1,0 +1,153 @@
+Compiled from "BiomePredicateRegistryImpl.java"
+public class org.betterx.wover.biome.impl.modification.predicates.BiomePredicateRegistryImpl {
+  public static final net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate>> BIOME_PREDICATES;
+
+  public org.betterx.wover.biome.impl.modification.predicates.BiomePredicateRegistryImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.mojang.serialization.MapCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate> register(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate>>, net.minecraft.resources.ResourceLocation, net.minecraft.util.KeyDispatchDataCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #7                  // Method net/minecraft/util/KeyDispatchDataCodec.codec:()Lcom/mojang/serialization/MapCodec;
+       6: invokestatic  #13                 // InterfaceMethod net/minecraft/core/Registry.register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #19                 // class com/mojang/serialization/MapCodec
+      12: areturn
+
+  public static void initialize();
+    Code:
+       0: getstatic     #21                 // Field BIOME_PREDICATES:Lnet/minecraft/core/Registry;
+       3: invokestatic  #27                 // Method onBootstrap:(Lnet/minecraft/core/Registry;)Lcom/mojang/serialization/MapCodec;
+       6: pop
+       7: return
+
+  private static com.mojang.serialization.MapCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate> onBootstrap(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends org.betterx.wover.biome.api.modification.predicates.BiomePredicate>>);
+    Code:
+       0: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+       3: ldc           #37                 // String all
+       5: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: astore_1
+       9: aload_0
+      10: aload_1
+      11: invokeinterface #45,  2           // InterfaceMethod net/minecraft/core/Registry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+      16: ifeq          30
+      19: aload_0
+      20: aload_1
+      21: invokeinterface #49,  2           // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      26: checkcast     #19                 // class com/mojang/serialization/MapCodec
+      29: areturn
+      30: aload_0
+      31: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      34: ldc           #53                 // String not
+      36: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      39: getstatic     #55                 // Field org/betterx/wover/biome/impl/modification/predicates/Not.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+      42: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+      45: pop
+      46: aload_0
+      47: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      50: ldc           #64                 // String and
+      52: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      55: getstatic     #66                 // Field org/betterx/wover/biome/impl/modification/predicates/And.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+      58: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+      61: pop
+      62: aload_0
+      63: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      66: ldc           #69                 // String or
+      68: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      71: getstatic     #71                 // Field org/betterx/wover/biome/impl/modification/predicates/Or.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+      74: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+      77: pop
+      78: aload_0
+      79: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      82: ldc           #74                 // String is_biome
+      84: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      87: getstatic     #76                 // Field org/betterx/wover/biome/impl/modification/predicates/IsBiome.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+      90: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+      93: pop
+      94: aload_0
+      95: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      98: ldc           #79                 // String has_tag
+     100: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     103: getstatic     #81                 // Field org/betterx/wover/biome/impl/modification/predicates/HasTag.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     106: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     109: pop
+     110: aload_0
+     111: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     114: ldc           #84                 // String in_dimension
+     116: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     119: getstatic     #86                 // Field org/betterx/wover/biome/impl/modification/predicates/InDimension.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     122: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     125: pop
+     126: aload_0
+     127: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     130: ldc           #89                 // String is_namespace
+     132: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     135: getstatic     #91                 // Field org/betterx/wover/biome/impl/modification/predicates/IsNamespace.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     138: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     141: pop
+     142: aload_0
+     143: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     146: ldc           #94                 // String location_path_contains
+     148: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     151: getstatic     #96                 // Field org/betterx/wover/biome/impl/modification/predicates/LocationPathContains.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     154: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     157: pop
+     158: aload_0
+     159: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     162: ldc           #99                 // String spawns
+     164: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     167: getstatic     #101                // Field org/betterx/wover/biome/impl/modification/predicates/Spawns.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     170: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     173: pop
+     174: aload_0
+     175: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     178: ldc           #104                // String has_structure
+     180: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     183: getstatic     #106                // Field org/betterx/wover/biome/impl/modification/predicates/HasStructure.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     186: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     189: pop
+     190: aload_0
+     191: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     194: ldc           #109                // String has_placed_feature
+     196: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     199: getstatic     #111                // Field org/betterx/wover/biome/impl/modification/predicates/HasPlacedFeature.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     202: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     205: pop
+     206: aload_0
+     207: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     210: ldc           #114                // String has_configured_feature
+     212: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     215: getstatic     #116                // Field org/betterx/wover/biome/impl/modification/predicates/HasConfiguredFeature.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     218: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     221: pop
+     222: aload_0
+     223: getstatic     #31                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     226: ldc           #119                // String config_is
+     228: invokevirtual #39                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     231: getstatic     #121                // Field org/betterx/wover/biome/impl/modification/predicates/ConfigIs.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     234: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     237: pop
+     238: aload_0
+     239: aload_1
+     240: getstatic     #124                // Field org/betterx/wover/biome/impl/modification/predicates/Always.CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+     243: invokestatic  #61                 // Method register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/util/KeyDispatchDataCodec;)Lcom/mojang/serialization/MapCodec;
+     246: areturn
+
+  static {};
+    Code:
+       0: new           #127                // class net/minecraft/core/MappedRegistry
+       3: dup
+       4: getstatic     #129                // Field org/betterx/wover/biome/api/modification/predicates/BiomePredicateRegistry.BIOME_PREDICATE_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+       7: invokestatic  #135                // Method com/mojang/serialization/Lifecycle.stable:()Lcom/mojang/serialization/Lifecycle;
+      10: iconst_0
+      11: invokespecial #141                // Method net/minecraft/core/MappedRegistry."<init>":(Lnet/minecraft/resources/ResourceKey;Lcom/mojang/serialization/Lifecycle;Z)V
+      14: putstatic     #21                 // Field BIOME_PREDICATES:Lnet/minecraft/core/Registry;
+      17: getstatic     #21                 // Field BIOME_PREDICATES:Lnet/minecraft/core/Registry;
+      20: invokestatic  #27                 // Method onBootstrap:(Lnet/minecraft/core/Registry;)Lcom/mojang/serialization/MapCodec;
+      23: pop
+      24: return
+}

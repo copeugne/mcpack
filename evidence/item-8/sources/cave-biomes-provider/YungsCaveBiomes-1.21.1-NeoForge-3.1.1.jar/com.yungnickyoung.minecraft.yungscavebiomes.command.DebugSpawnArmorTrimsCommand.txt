@@ -1,0 +1,753 @@
+Compiled from "DebugSpawnArmorTrimsCommand.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.command.DebugSpawnArmorTrimsCommand {
+  private static final java.util.Map<com.mojang.datafixers.util.Pair<net.minecraft.core.Holder<net.minecraft.world.item.ArmorMaterial>, net.minecraft.world.entity.EquipmentSlot>, net.minecraft.world.item.Item> MATERIAL_AND_SLOT_TO_ITEM;
+
+  private static final java.util.Map<net.minecraft.world.item.ArmorMaterial, java.util.Map<net.minecraft.world.entity.EquipmentSlot, net.minecraft.world.item.Item>> MAP;
+
+  private static final java.util.List<net.minecraft.resources.ResourceKey<net.minecraft.world.item.armortrim.TrimPattern>> TRIM_PATTERNS;
+
+  private static final java.util.List<net.minecraft.resources.ResourceKey<net.minecraft.world.item.armortrim.TrimMaterial>> TRIM_MATERIALS;
+
+  private static final java.util.function.ToIntFunction<net.minecraft.resources.ResourceKey<net.minecraft.world.item.armortrim.TrimPattern>> TRIM_PATTERN_ORDER;
+
+  private static final java.util.function.ToIntFunction<net.minecraft.resources.ResourceKey<net.minecraft.world.item.armortrim.TrimMaterial>> TRIM_MATERIAL_ORDER;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.command.DebugSpawnArmorTrimsCommand();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static net.minecraft.world.item.Item getArmorItem(net.minecraft.world.item.ArmorMaterial, net.minecraft.world.entity.EquipmentSlot);
+    Code:
+       0: getstatic     #7                  // Field MAP:Ljava/util/Map;
+       3: aload_0
+       4: invokeinterface #13,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #14                 // class java/util/Map
+      12: astore_2
+      13: aload_2
+      14: ifnull        28
+      17: aload_2
+      18: aload_1
+      19: invokeinterface #13,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      24: checkcast     #19                 // class net/minecraft/world/item/Item
+      27: areturn
+      28: aconst_null
+      29: areturn
+
+  public static void register(com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection);
+    Code:
+       0: aload_0
+       1: ldc           #21                 // String ycb_armor_trims
+       3: invokestatic  #23                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       6: invokedynamic #29,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      11: invokevirtual #33                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      14: checkcast     #34                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      17: invokedynamic #39,  0             // InvokeDynamic #1:run:()Lcom/mojang/brigadier/Command;
+      22: invokevirtual #43                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      25: checkcast     #34                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      28: invokevirtual #47                 // Method com/mojang/brigadier/CommandDispatcher.register:(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;
+      31: pop
+      32: return
+
+  private static int spawnArmorTrims(net.minecraft.commands.CommandSourceStack, net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: invokevirtual #53                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       4: astore_2
+       5: invokestatic  #59                 // Method net/minecraft/core/NonNullList.create:()Lnet/minecraft/core/NonNullList;
+       8: astore_3
+       9: aload_2
+      10: invokevirtual #65                 // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      13: getstatic     #71                 // Field net/minecraft/core/registries/Registries.TRIM_PATTERN:Lnet/minecraft/resources/ResourceKey;
+      16: invokeinterface #77,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      21: astore        4
+      23: aload_2
+      24: invokevirtual #65                 // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      27: getstatic     #83                 // Field net/minecraft/core/registries/Registries.TRIM_MATERIAL:Lnet/minecraft/resources/ResourceKey;
+      30: invokeinterface #77,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      35: astore        5
+      37: aload         4
+      39: invokeinterface #86,  1           // InterfaceMethod net/minecraft/core/Registry.stream:()Ljava/util/stream/Stream;
+      44: invokedynamic #92,  0             // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      49: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      54: aload         4
+      56: invokedynamic #99,  0             // InvokeDynamic #3:apply:(Lnet/minecraft/core/Registry;)Ljava/util/function/Function;
+      61: invokestatic  #103                // InterfaceMethod java/util/Comparator.comparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+      64: invokeinterface #109,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+      69: aload         5
+      71: aload_3
+      72: aload         4
+      74: invokedynamic #113,  0            // InvokeDynamic #4:accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/Registry;)Ljava/util/function/Consumer;
+      79: invokeinterface #117,  2          // InterfaceMethod java/util/stream/Stream.forEachOrdered:(Ljava/util/function/Consumer;)V
+      84: aload_1
+      85: invokevirtual #121                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+      88: aload_1
+      89: invokevirtual #125                // Method net/minecraft/world/entity/player/Player.getDirection:()Lnet/minecraft/core/Direction;
+      92: iconst_5
+      93: invokevirtual #129                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      96: astore        6
+      98: aload_0
+      99: invokevirtual #135                // Method net/minecraft/commands/CommandSourceStack.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     102: getstatic     #138                // Field net/minecraft/core/registries/Registries.ARMOR_MATERIAL:Lnet/minecraft/resources/ResourceKey;
+     105: invokeinterface #77,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     110: astore        7
+     112: aload         7
+     114: invokeinterface #141,  1          // InterfaceMethod net/minecraft/core/Registry.size:()I
+     119: iconst_1
+     120: isub
+     121: istore        8
+     123: ldc2_w        #145                // double 3.0d
+     126: dstore        9
+     128: iconst_0
+     129: istore        11
+     131: iconst_0
+     132: istore        12
+     134: aload_3
+     135: invokevirtual #147                // Method net/minecraft/core/NonNullList.iterator:()Ljava/util/Iterator;
+     138: astore        13
+     140: aload         13
+     142: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     147: ifeq          507
+     150: aload         13
+     152: invokeinterface #157,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     157: checkcast     #161                // class net/minecraft/world/item/armortrim/ArmorTrim
+     160: astore        14
+     162: aload         7
+     164: invokeinterface #163,  1          // InterfaceMethod net/minecraft/core/Registry.iterator:()Ljava/util/Iterator;
+     169: astore        15
+     171: aload         15
+     173: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     178: ifeq          501
+     181: aload         15
+     183: invokeinterface #157,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     188: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+     191: astore        16
+     193: aload         16
+     195: getstatic     #166                // Field net/minecraft/world/item/ArmorMaterials.LEATHER:Lnet/minecraft/core/Holder;
+     198: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     203: if_acmpeq     498
+     206: aload         6
+     208: invokevirtual #177                // Method net/minecraft/core/BlockPos.getX:()I
+     211: i2d
+     212: ldc2_w        #180                // double 0.5d
+     215: dadd
+     216: iload         11
+     218: aload         5
+     220: invokeinterface #141,  1          // InterfaceMethod net/minecraft/core/Registry.size:()I
+     225: irem
+     226: i2d
+     227: ldc2_w        #145                // double 3.0d
+     230: dmul
+     231: dsub
+     232: dstore        17
+     234: aload         6
+     236: invokevirtual #182                // Method net/minecraft/core/BlockPos.getY:()I
+     239: i2d
+     240: ldc2_w        #180                // double 0.5d
+     243: dadd
+     244: iload         12
+     246: iload         8
+     248: irem
+     249: i2d
+     250: ldc2_w        #145                // double 3.0d
+     253: dmul
+     254: dadd
+     255: dstore        19
+     257: aload         6
+     259: invokevirtual #185                // Method net/minecraft/core/BlockPos.getZ:()I
+     262: i2d
+     263: ldc2_w        #180                // double 0.5d
+     266: dadd
+     267: iload         11
+     269: aload         5
+     271: invokeinterface #141,  1          // InterfaceMethod net/minecraft/core/Registry.size:()I
+     276: idiv
+     277: bipush        10
+     279: imul
+     280: i2d
+     281: dadd
+     282: dstore        21
+     284: new           #188                // class net/minecraft/world/entity/decoration/ArmorStand
+     287: dup
+     288: aload_2
+     289: dload         17
+     291: dload         19
+     293: dload         21
+     295: invokespecial #190                // Method net/minecraft/world/entity/decoration/ArmorStand."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+     298: astore        23
+     300: aload         23
+     302: ldc           #193                // float 180.0f
+     304: invokevirtual #194                // Method net/minecraft/world/entity/decoration/ArmorStand.setYRot:(F)V
+     307: aload         23
+     309: iconst_1
+     310: invokevirtual #198                // Method net/minecraft/world/entity/decoration/ArmorStand.setNoGravity:(Z)V
+     313: invokestatic  #202                // Method net/minecraft/world/entity/EquipmentSlot.values:()[Lnet/minecraft/world/entity/EquipmentSlot;
+     316: astore        24
+     318: aload         24
+     320: arraylength
+     321: istore        25
+     323: iconst_0
+     324: istore        26
+     326: iload         26
+     328: iload         25
+     330: if_icmpge     488
+     333: aload         24
+     335: iload         26
+     337: aaload
+     338: astore        27
+     340: aload         16
+     342: aload         27
+     344: invokestatic  #208                // Method getArmorItem:(Lnet/minecraft/world/item/ArmorMaterial;Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/Item;
+     347: astore        28
+     349: aload         28
+     351: ifnull        482
+     354: new           #212                // class net/minecraft/world/item/ItemStack
+     357: dup
+     358: aload         28
+     360: invokespecial #214                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+     363: astore        29
+     365: aload         29
+     367: getstatic     #217                // Field net/minecraft/core/component/DataComponents.TRIM:Lnet/minecraft/core/component/DataComponentType;
+     370: aload         14
+     372: invokevirtual #223                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     375: pop
+     376: aload         23
+     378: aload         27
+     380: aload         29
+     382: invokevirtual #227                // Method net/minecraft/world/entity/decoration/ArmorStand.setItemSlot:(Lnet/minecraft/world/entity/EquipmentSlot;Lnet/minecraft/world/item/ItemStack;)V
+     385: aload         28
+     387: instanceof    #231                // class net/minecraft/world/item/ArmorItem
+     390: ifeq          476
+     393: aload         28
+     395: checkcast     #231                // class net/minecraft/world/item/ArmorItem
+     398: astore        30
+     400: aload         30
+     402: invokevirtual #233                // Method net/minecraft/world/item/ArmorItem.getMaterial:()Lnet/minecraft/core/Holder;
+     405: getstatic     #237                // Field net/minecraft/world/item/ArmorMaterials.TURTLE:Lnet/minecraft/core/Holder;
+     408: if_acmpne     476
+     411: aload         23
+     413: aload         14
+     415: invokevirtual #240                // Method net/minecraft/world/item/armortrim/ArmorTrim.pattern:()Lnet/minecraft/core/Holder;
+     418: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     423: checkcast     #243                // class net/minecraft/world/item/armortrim/TrimPattern
+     426: aload         14
+     428: invokevirtual #245                // Method net/minecraft/world/item/armortrim/ArmorTrim.material:()Lnet/minecraft/core/Holder;
+     431: invokevirtual #248                // Method net/minecraft/world/item/armortrim/TrimPattern.copyWithStyle:(Lnet/minecraft/core/Holder;)Lnet/minecraft/network/chat/Component;
+     434: invokeinterface #252,  1          // InterfaceMethod net/minecraft/network/chat/Component.copy:()Lnet/minecraft/network/chat/MutableComponent;
+     439: ldc_w         #258                // String
+     442: invokevirtual #260                // Method net/minecraft/network/chat/MutableComponent.append:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     445: aload         14
+     447: invokevirtual #245                // Method net/minecraft/world/item/armortrim/ArmorTrim.material:()Lnet/minecraft/core/Holder;
+     450: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     455: checkcast     #266                // class net/minecraft/world/item/armortrim/TrimMaterial
+     458: invokevirtual #268                // Method net/minecraft/world/item/armortrim/TrimMaterial.description:()Lnet/minecraft/network/chat/Component;
+     461: invokevirtual #272                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     464: invokevirtual #275                // Method net/minecraft/world/entity/decoration/ArmorStand.setCustomName:(Lnet/minecraft/network/chat/Component;)V
+     467: aload         23
+     469: iconst_1
+     470: invokevirtual #279                // Method net/minecraft/world/entity/decoration/ArmorStand.setCustomNameVisible:(Z)V
+     473: goto          482
+     476: aload         23
+     478: iconst_1
+     479: invokevirtual #282                // Method net/minecraft/world/entity/decoration/ArmorStand.setInvisible:(Z)V
+     482: iinc          26, 1
+     485: goto          326
+     488: aload_2
+     489: aload         23
+     491: invokevirtual #285                // Method net/minecraft/world/level/Level.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+     494: pop
+     495: iinc          12, 1
+     498: goto          171
+     501: iinc          11, 1
+     504: goto          140
+     507: aload_0
+     508: invokedynamic #289,  0            // InvokeDynamic #5:get:()Ljava/util/function/Supplier;
+     513: iconst_1
+     514: invokevirtual #292                // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+     517: iconst_1
+     518: ireturn
+
+  private static net.minecraft.network.chat.Component lambda$spawnArmorTrims$15();
+    Code:
+       0: ldc_w         #296                // String Armorstands with trimmed armor spawned around you
+       3: invokestatic  #298                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       6: areturn
+
+  private static void lambda$spawnArmorTrims$14(net.minecraft.core.Registry, net.minecraft.core.NonNullList, net.minecraft.core.Registry, net.minecraft.world.item.armortrim.TrimPattern);
+    Code:
+       0: aload_0
+       1: invokeinterface #86,  1           // InterfaceMethod net/minecraft/core/Registry.stream:()Ljava/util/stream/Stream;
+       6: aload_0
+       7: invokedynamic #300,  0            // InvokeDynamic #6:apply:(Lnet/minecraft/core/Registry;)Ljava/util/function/Function;
+      12: invokestatic  #103                // InterfaceMethod java/util/Comparator.comparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+      15: invokeinterface #109,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+      20: aload_1
+      21: aload_0
+      22: aload_2
+      23: aload_3
+      24: invokedynamic #301,  0            // InvokeDynamic #7:accept:(Lnet/minecraft/core/NonNullList;Lnet/minecraft/core/Registry;Lnet/minecraft/core/Registry;Lnet/minecraft/world/item/armortrim/TrimPattern;)Ljava/util/function/Consumer;
+      29: invokeinterface #117,  2          // InterfaceMethod java/util/stream/Stream.forEachOrdered:(Ljava/util/function/Consumer;)V
+      34: return
+
+  private static void lambda$spawnArmorTrims$13(net.minecraft.core.NonNullList, net.minecraft.core.Registry, net.minecraft.core.Registry, net.minecraft.world.item.armortrim.TrimPattern, net.minecraft.world.item.armortrim.TrimMaterial);
+    Code:
+       0: aload_0
+       1: new           #161                // class net/minecraft/world/item/armortrim/ArmorTrim
+       4: dup
+       5: aload_1
+       6: aload         4
+       8: invokeinterface #304,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+      13: aload_2
+      14: aload_3
+      15: invokeinterface #304,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+      20: invokespecial #308                // Method net/minecraft/world/item/armortrim/ArmorTrim."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)V
+      23: invokevirtual #311                // Method net/minecraft/core/NonNullList.add:(Ljava/lang/Object;)Z
+      26: pop
+      27: return
+
+  private static java.lang.Integer lambda$spawnArmorTrims$12(net.minecraft.core.Registry, net.minecraft.world.item.armortrim.TrimMaterial);
+    Code:
+       0: getstatic     #315                // Field TRIM_MATERIAL_ORDER:Ljava/util/function/ToIntFunction;
+       3: aload_0
+       4: aload_1
+       5: invokeinterface #319,  2          // InterfaceMethod net/minecraft/core/Registry.getResourceKey:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: aconst_null
+      11: invokevirtual #323                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: checkcast     #328                // class net/minecraft/resources/ResourceKey
+      17: invokeinterface #330,  2          // InterfaceMethod java/util/function/ToIntFunction.applyAsInt:(Ljava/lang/Object;)I
+      22: invokestatic  #336                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: areturn
+
+  private static java.lang.Integer lambda$spawnArmorTrims$11(net.minecraft.core.Registry, net.minecraft.world.item.armortrim.TrimPattern);
+    Code:
+       0: getstatic     #342                // Field TRIM_PATTERN_ORDER:Ljava/util/function/ToIntFunction;
+       3: aload_0
+       4: aload_1
+       5: invokeinterface #319,  2          // InterfaceMethod net/minecraft/core/Registry.getResourceKey:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: aconst_null
+      11: invokevirtual #323                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: checkcast     #328                // class net/minecraft/resources/ResourceKey
+      17: invokeinterface #330,  2          // InterfaceMethod java/util/function/ToIntFunction.applyAsInt:(Ljava/lang/Object;)I
+      22: invokestatic  #336                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: areturn
+
+  private static boolean lambda$spawnArmorTrims$10(net.minecraft.world.item.armortrim.TrimPattern);
+    Code:
+       0: aload_0
+       1: invokevirtual #345                // Method net/minecraft/world/item/armortrim/TrimPattern.assetId:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokevirtual #349                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       7: ldc_w         #357                // String yungscavebiomes
+      10: invokevirtual #359                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      13: ireturn
+
+  private static int lambda$register$9(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #364                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #136                // class net/minecraft/commands/CommandSourceStack
+       7: aload_0
+       8: invokevirtual #364                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      11: checkcast     #136                // class net/minecraft/commands/CommandSourceStack
+      14: invokevirtual #369                // Method net/minecraft/commands/CommandSourceStack.getPlayerOrException:()Lnet/minecraft/server/level/ServerPlayer;
+      17: invokestatic  #373                // Method spawnArmorTrims:(Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/world/entity/player/Player;)I
+      20: ireturn
+
+  private static boolean lambda$register$8(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokevirtual #377                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static void lambda$static$7(java.util.HashMap);
+    Code:
+       0: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       3: invokedynamic #387,  0            // InvokeDynamic #8:accept:()Ljava/util/function/Consumer;
+       8: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      11: checkcast     #14                 // class java/util/Map
+      14: astore_1
+      15: aload_0
+      16: getstatic     #396                // Field net/minecraft/world/item/ArmorMaterials.CHAIN:Lnet/minecraft/core/Holder;
+      19: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      24: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+      27: aload_1
+      28: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      31: pop
+      32: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+      35: invokedynamic #405,  0            // InvokeDynamic #9:accept:()Ljava/util/function/Consumer;
+      40: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      43: checkcast     #14                 // class java/util/Map
+      46: astore_2
+      47: aload_0
+      48: getstatic     #406                // Field net/minecraft/world/item/ArmorMaterials.IRON:Lnet/minecraft/core/Holder;
+      51: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      56: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+      59: aload_2
+      60: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      63: pop
+      64: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+      67: invokedynamic #409,  0            // InvokeDynamic #10:accept:()Ljava/util/function/Consumer;
+      72: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      75: checkcast     #14                 // class java/util/Map
+      78: astore_3
+      79: aload_0
+      80: getstatic     #410                // Field net/minecraft/world/item/ArmorMaterials.GOLD:Lnet/minecraft/core/Holder;
+      83: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      88: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+      91: aload_3
+      92: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      95: pop
+      96: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+      99: invokedynamic #413,  0            // InvokeDynamic #11:accept:()Ljava/util/function/Consumer;
+     104: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+     107: checkcast     #14                 // class java/util/Map
+     110: astore        4
+     112: aload_0
+     113: getstatic     #414                // Field net/minecraft/world/item/ArmorMaterials.NETHERITE:Lnet/minecraft/core/Holder;
+     116: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     121: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+     124: aload         4
+     126: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     129: pop
+     130: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+     133: invokedynamic #417,  0            // InvokeDynamic #12:accept:()Ljava/util/function/Consumer;
+     138: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+     141: checkcast     #14                 // class java/util/Map
+     144: astore        5
+     146: aload_0
+     147: getstatic     #418                // Field net/minecraft/world/item/ArmorMaterials.DIAMOND:Lnet/minecraft/core/Holder;
+     150: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     155: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+     158: aload         5
+     160: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     163: pop
+     164: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+     167: invokedynamic #421,  0            // InvokeDynamic #13:accept:()Ljava/util/function/Consumer;
+     172: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+     175: checkcast     #14                 // class java/util/Map
+     178: astore        6
+     180: aload_0
+     181: getstatic     #237                // Field net/minecraft/world/item/ArmorMaterials.TURTLE:Lnet/minecraft/core/Holder;
+     184: invokeinterface #172,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     189: checkcast     #164                // class net/minecraft/world/item/ArmorMaterial
+     192: aload         6
+     194: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     197: pop
+     198: return
+
+  private static void lambda$static$6(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #426                // Field net/minecraft/world/item/Items.TURTLE_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: return
+
+  private static void lambda$static$5(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #432                // Field net/minecraft/world/item/Items.DIAMOND_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      15: getstatic     #438                // Field net/minecraft/world/item/Items.DIAMOND_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      18: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      26: getstatic     #444                // Field net/minecraft/world/item/Items.DIAMOND_LEGGINGS:Lnet/minecraft/world/item/Item;
+      29: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: aload_0
+      34: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      37: getstatic     #450                // Field net/minecraft/world/item/Items.DIAMOND_BOOTS:Lnet/minecraft/world/item/Item;
+      40: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$static$4(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #453                // Field net/minecraft/world/item/Items.NETHERITE_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      15: getstatic     #456                // Field net/minecraft/world/item/Items.NETHERITE_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      18: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      26: getstatic     #459                // Field net/minecraft/world/item/Items.NETHERITE_LEGGINGS:Lnet/minecraft/world/item/Item;
+      29: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: aload_0
+      34: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      37: getstatic     #462                // Field net/minecraft/world/item/Items.NETHERITE_BOOTS:Lnet/minecraft/world/item/Item;
+      40: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$static$3(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #465                // Field net/minecraft/world/item/Items.GOLDEN_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      15: getstatic     #468                // Field net/minecraft/world/item/Items.GOLDEN_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      18: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      26: getstatic     #471                // Field net/minecraft/world/item/Items.GOLDEN_LEGGINGS:Lnet/minecraft/world/item/Item;
+      29: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: aload_0
+      34: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      37: getstatic     #474                // Field net/minecraft/world/item/Items.GOLDEN_BOOTS:Lnet/minecraft/world/item/Item;
+      40: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$static$2(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #477                // Field net/minecraft/world/item/Items.IRON_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      15: getstatic     #480                // Field net/minecraft/world/item/Items.IRON_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      18: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      26: getstatic     #483                // Field net/minecraft/world/item/Items.IRON_LEGGINGS:Lnet/minecraft/world/item/Item;
+      29: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: aload_0
+      34: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      37: getstatic     #486                // Field net/minecraft/world/item/Items.IRON_BOOTS:Lnet/minecraft/world/item/Item;
+      40: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$static$1(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       4: getstatic     #489                // Field net/minecraft/world/item/Items.CHAINMAIL_HELMET:Lnet/minecraft/world/item/Item;
+       7: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      15: getstatic     #492                // Field net/minecraft/world/item/Items.CHAINMAIL_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      18: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: aload_0
+      23: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      26: getstatic     #495                // Field net/minecraft/world/item/Items.CHAINMAIL_LEGGINGS:Lnet/minecraft/world/item/Item;
+      29: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      32: pop
+      33: aload_0
+      34: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      37: getstatic     #498                // Field net/minecraft/world/item/Items.CHAINMAIL_BOOTS:Lnet/minecraft/world/item/Item;
+      40: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$static$0(java.util.HashMap);
+    Code:
+       0: aload_0
+       1: getstatic     #396                // Field net/minecraft/world/item/ArmorMaterials.CHAIN:Lnet/minecraft/core/Holder;
+       4: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       7: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      10: getstatic     #489                // Field net/minecraft/world/item/Items.CHAINMAIL_HELMET:Lnet/minecraft/world/item/Item;
+      13: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      16: pop
+      17: aload_0
+      18: getstatic     #396                // Field net/minecraft/world/item/ArmorMaterials.CHAIN:Lnet/minecraft/core/Holder;
+      21: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      24: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      27: getstatic     #492                // Field net/minecraft/world/item/Items.CHAINMAIL_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      30: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      33: pop
+      34: aload_0
+      35: getstatic     #396                // Field net/minecraft/world/item/ArmorMaterials.CHAIN:Lnet/minecraft/core/Holder;
+      38: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      41: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      44: getstatic     #495                // Field net/minecraft/world/item/Items.CHAINMAIL_LEGGINGS:Lnet/minecraft/world/item/Item;
+      47: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      50: pop
+      51: aload_0
+      52: getstatic     #396                // Field net/minecraft/world/item/ArmorMaterials.CHAIN:Lnet/minecraft/core/Holder;
+      55: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      58: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      61: getstatic     #498                // Field net/minecraft/world/item/Items.CHAINMAIL_BOOTS:Lnet/minecraft/world/item/Item;
+      64: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      67: pop
+      68: aload_0
+      69: getstatic     #406                // Field net/minecraft/world/item/ArmorMaterials.IRON:Lnet/minecraft/core/Holder;
+      72: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+      75: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      78: getstatic     #477                // Field net/minecraft/world/item/Items.IRON_HELMET:Lnet/minecraft/world/item/Item;
+      81: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      84: pop
+      85: aload_0
+      86: getstatic     #406                // Field net/minecraft/world/item/ArmorMaterials.IRON:Lnet/minecraft/core/Holder;
+      89: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      92: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      95: getstatic     #480                // Field net/minecraft/world/item/Items.IRON_CHESTPLATE:Lnet/minecraft/world/item/Item;
+      98: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     101: pop
+     102: aload_0
+     103: getstatic     #406                // Field net/minecraft/world/item/ArmorMaterials.IRON:Lnet/minecraft/core/Holder;
+     106: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+     109: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     112: getstatic     #483                // Field net/minecraft/world/item/Items.IRON_LEGGINGS:Lnet/minecraft/world/item/Item;
+     115: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     118: pop
+     119: aload_0
+     120: getstatic     #406                // Field net/minecraft/world/item/ArmorMaterials.IRON:Lnet/minecraft/core/Holder;
+     123: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+     126: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     129: getstatic     #486                // Field net/minecraft/world/item/Items.IRON_BOOTS:Lnet/minecraft/world/item/Item;
+     132: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     135: pop
+     136: aload_0
+     137: getstatic     #410                // Field net/minecraft/world/item/ArmorMaterials.GOLD:Lnet/minecraft/core/Holder;
+     140: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+     143: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     146: getstatic     #465                // Field net/minecraft/world/item/Items.GOLDEN_HELMET:Lnet/minecraft/world/item/Item;
+     149: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     152: pop
+     153: aload_0
+     154: getstatic     #410                // Field net/minecraft/world/item/ArmorMaterials.GOLD:Lnet/minecraft/core/Holder;
+     157: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+     160: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     163: getstatic     #468                // Field net/minecraft/world/item/Items.GOLDEN_CHESTPLATE:Lnet/minecraft/world/item/Item;
+     166: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     169: pop
+     170: aload_0
+     171: getstatic     #410                // Field net/minecraft/world/item/ArmorMaterials.GOLD:Lnet/minecraft/core/Holder;
+     174: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+     177: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     180: getstatic     #471                // Field net/minecraft/world/item/Items.GOLDEN_LEGGINGS:Lnet/minecraft/world/item/Item;
+     183: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     186: pop
+     187: aload_0
+     188: getstatic     #410                // Field net/minecraft/world/item/ArmorMaterials.GOLD:Lnet/minecraft/core/Holder;
+     191: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+     194: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     197: getstatic     #474                // Field net/minecraft/world/item/Items.GOLDEN_BOOTS:Lnet/minecraft/world/item/Item;
+     200: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     203: pop
+     204: aload_0
+     205: getstatic     #414                // Field net/minecraft/world/item/ArmorMaterials.NETHERITE:Lnet/minecraft/core/Holder;
+     208: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+     211: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     214: getstatic     #453                // Field net/minecraft/world/item/Items.NETHERITE_HELMET:Lnet/minecraft/world/item/Item;
+     217: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     220: pop
+     221: aload_0
+     222: getstatic     #414                // Field net/minecraft/world/item/ArmorMaterials.NETHERITE:Lnet/minecraft/core/Holder;
+     225: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+     228: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     231: getstatic     #456                // Field net/minecraft/world/item/Items.NETHERITE_CHESTPLATE:Lnet/minecraft/world/item/Item;
+     234: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     237: pop
+     238: aload_0
+     239: getstatic     #414                // Field net/minecraft/world/item/ArmorMaterials.NETHERITE:Lnet/minecraft/core/Holder;
+     242: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+     245: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     248: getstatic     #459                // Field net/minecraft/world/item/Items.NETHERITE_LEGGINGS:Lnet/minecraft/world/item/Item;
+     251: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     254: pop
+     255: aload_0
+     256: getstatic     #414                // Field net/minecraft/world/item/ArmorMaterials.NETHERITE:Lnet/minecraft/core/Holder;
+     259: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+     262: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     265: getstatic     #462                // Field net/minecraft/world/item/Items.NETHERITE_BOOTS:Lnet/minecraft/world/item/Item;
+     268: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     271: pop
+     272: aload_0
+     273: getstatic     #418                // Field net/minecraft/world/item/ArmorMaterials.DIAMOND:Lnet/minecraft/core/Holder;
+     276: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+     279: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     282: getstatic     #432                // Field net/minecraft/world/item/Items.DIAMOND_HELMET:Lnet/minecraft/world/item/Item;
+     285: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     288: pop
+     289: aload_0
+     290: getstatic     #418                // Field net/minecraft/world/item/ArmorMaterials.DIAMOND:Lnet/minecraft/core/Holder;
+     293: getstatic     #435                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+     296: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     299: getstatic     #438                // Field net/minecraft/world/item/Items.DIAMOND_CHESTPLATE:Lnet/minecraft/world/item/Item;
+     302: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     305: pop
+     306: aload_0
+     307: getstatic     #418                // Field net/minecraft/world/item/ArmorMaterials.DIAMOND:Lnet/minecraft/core/Holder;
+     310: getstatic     #441                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+     313: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     316: getstatic     #444                // Field net/minecraft/world/item/Items.DIAMOND_LEGGINGS:Lnet/minecraft/world/item/Item;
+     319: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     322: pop
+     323: aload_0
+     324: getstatic     #418                // Field net/minecraft/world/item/ArmorMaterials.DIAMOND:Lnet/minecraft/core/Holder;
+     327: getstatic     #447                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+     330: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     333: getstatic     #450                // Field net/minecraft/world/item/Items.DIAMOND_BOOTS:Lnet/minecraft/world/item/Item;
+     336: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     339: pop
+     340: aload_0
+     341: getstatic     #237                // Field net/minecraft/world/item/ArmorMaterials.TURTLE:Lnet/minecraft/core/Holder;
+     344: getstatic     #422                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+     347: invokestatic  #501                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+     350: getstatic     #426                // Field net/minecraft/world/item/Items.TURTLE_HELMET:Lnet/minecraft/world/item/Item;
+     353: invokevirtual #399                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     356: pop
+     357: return
+
+  static {};
+    Code:
+       0: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       3: invokedynamic #507,  0            // InvokeDynamic #14:accept:()Ljava/util/function/Consumer;
+       8: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      11: checkcast     #14                 // class java/util/Map
+      14: putstatic     #508                // Field MATERIAL_AND_SLOT_TO_ITEM:Ljava/util/Map;
+      17: invokestatic  #381                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+      20: invokedynamic #511,  0            // InvokeDynamic #15:accept:()Ljava/util/function/Consumer;
+      25: invokestatic  #390                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      28: checkcast     #14                 // class java/util/Map
+      31: putstatic     #7                  // Field MAP:Ljava/util/Map;
+      34: getstatic     #512                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/TrimPatternsModule.ANCIENT:Lnet/minecraft/resources/ResourceKey;
+      37: invokestatic  #517                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      40: putstatic     #522                // Field TRIM_PATTERNS:Ljava/util/List;
+      43: getstatic     #526                // Field net/minecraft/world/item/armortrim/TrimMaterials.QUARTZ:Lnet/minecraft/resources/ResourceKey;
+      46: getstatic     #531                // Field net/minecraft/world/item/armortrim/TrimMaterials.IRON:Lnet/minecraft/resources/ResourceKey;
+      49: getstatic     #533                // Field net/minecraft/world/item/armortrim/TrimMaterials.NETHERITE:Lnet/minecraft/resources/ResourceKey;
+      52: getstatic     #535                // Field net/minecraft/world/item/armortrim/TrimMaterials.REDSTONE:Lnet/minecraft/resources/ResourceKey;
+      55: getstatic     #538                // Field net/minecraft/world/item/armortrim/TrimMaterials.COPPER:Lnet/minecraft/resources/ResourceKey;
+      58: getstatic     #541                // Field net/minecraft/world/item/armortrim/TrimMaterials.GOLD:Lnet/minecraft/resources/ResourceKey;
+      61: getstatic     #543                // Field net/minecraft/world/item/armortrim/TrimMaterials.EMERALD:Lnet/minecraft/resources/ResourceKey;
+      64: getstatic     #546                // Field net/minecraft/world/item/armortrim/TrimMaterials.DIAMOND:Lnet/minecraft/resources/ResourceKey;
+      67: getstatic     #548                // Field net/minecraft/world/item/armortrim/TrimMaterials.LAPIS:Lnet/minecraft/resources/ResourceKey;
+      70: getstatic     #551                // Field net/minecraft/world/item/armortrim/TrimMaterials.AMETHYST:Lnet/minecraft/resources/ResourceKey;
+      73: invokestatic  #554                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      76: putstatic     #557                // Field TRIM_MATERIALS:Ljava/util/List;
+      79: getstatic     #522                // Field TRIM_PATTERNS:Ljava/util/List;
+      82: invokestatic  #560                // Method net/minecraft/Util.createIndexLookup:(Ljava/util/List;)Ljava/util/function/ToIntFunction;
+      85: putstatic     #342                // Field TRIM_PATTERN_ORDER:Ljava/util/function/ToIntFunction;
+      88: getstatic     #557                // Field TRIM_MATERIALS:Ljava/util/List;
+      91: invokestatic  #560                // Method net/minecraft/Util.createIndexLookup:(Ljava/util/List;)Ljava/util/function/ToIntFunction;
+      94: putstatic     #315                // Field TRIM_MATERIAL_ORDER:Ljava/util/function/ToIntFunction;
+      97: return
+}

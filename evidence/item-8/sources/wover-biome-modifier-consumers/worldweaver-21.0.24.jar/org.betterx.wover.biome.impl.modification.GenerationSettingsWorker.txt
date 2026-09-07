@@ -1,0 +1,264 @@
+Compiled from "GenerationSettingsWorker.java"
+public class org.betterx.wover.biome.impl.modification.GenerationSettingsWorker {
+  private final net.minecraft.core.Registry<net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver<?>> carvers;
+
+  private final net.minecraft.core.Registry<net.minecraft.world.level.levelgen.placement.PlacedFeature> features;
+
+  private final net.minecraft.world.level.biome.BiomeGenerationSettings generationSettings;
+
+  private final net.minecraft.world.level.biome.Biome biome;
+
+  java.util.Map<net.minecraft.world.level.levelgen.GenerationStep$Carving, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver<?>>> customizedCarvers;
+
+  java.util.List<net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature>> customizedFeatures;
+
+  public org.betterx.wover.biome.impl.modification.GenerationSettingsWorker(net.minecraft.core.RegistryAccess, net.minecraft.world.level.biome.Biome);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_2
+       6: putfield      #7                  // Field biome:Lnet/minecraft/world/level/biome/Biome;
+       9: aload_0
+      10: aload_2
+      11: invokevirtual #13                 // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      14: putfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      17: aload_0
+      18: aload_1
+      19: getstatic     #23                 // Field net/minecraft/core/registries/Registries.CONFIGURED_CARVER:Lnet/minecraft/resources/ResourceKey;
+      22: invokeinterface #29,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      27: putfield      #35                 // Field carvers:Lnet/minecraft/core/Registry;
+      30: aload_0
+      31: aload_1
+      32: getstatic     #39                 // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+      35: invokeinterface #29,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      40: putfield      #42                 // Field features:Lnet/minecraft/core/Registry;
+      43: return
+
+  private void unfreezeCarvers();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+       4: ifnonnull     31
+       7: aload_0
+       8: new           #49                 // class java/util/EnumMap
+      11: dup
+      12: ldc           #51                 // class net/minecraft/world/level/levelgen/GenerationStep$Carving
+      14: invokespecial #53                 // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+      17: putfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+      20: aload_0
+      21: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      24: aload_0
+      25: getfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+      28: putfield      #56                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.carvers:Ljava/util/Map;
+      31: return
+
+  private void freezeCarvers();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+       4: ifnull        26
+       7: aload_0
+       8: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      11: aload_0
+      12: getfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+      15: invokestatic  #60                 // Method com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+      18: putfield      #56                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.carvers:Ljava/util/Map;
+      21: aload_0
+      22: aconst_null
+      23: putfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+      26: return
+
+  private void unfreezeFeatures();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+       4: ifnonnull     36
+       7: aload_0
+       8: new           #70                 // class java/util/LinkedList
+      11: dup
+      12: aload_0
+      13: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      16: getfield      #72                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.features:Ljava/util/List;
+      19: invokespecial #74                 // Method java/util/LinkedList."<init>":(Ljava/util/Collection;)V
+      22: putfield      #66                 // Field customizedFeatures:Ljava/util/List;
+      25: aload_0
+      26: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      29: aload_0
+      30: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+      33: putfield      #72                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.features:Ljava/util/List;
+      36: return
+
+  private void freezeFeatures();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+       4: ifnull        58
+       7: aload_0
+       8: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      11: aload_0
+      12: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+      15: invokestatic  #77                 // Method com/google/common/collect/ImmutableList.copyOf:(Ljava/util/Collection;)Lcom/google/common/collect/ImmutableList;
+      18: putfield      #72                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.features:Ljava/util/List;
+      21: aload_0
+      22: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      25: aload_0
+      26: invokedynamic #82,  0             // InvokeDynamic #0:get:(Lorg/betterx/wover/biome/impl/modification/GenerationSettingsWorker;)Lcom/google/common/base/Supplier;
+      31: invokestatic  #86                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+      34: putfield      #92                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.featureSet:Ljava/util/function/Supplier;
+      37: aload_0
+      38: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      41: aload_0
+      42: invokedynamic #96,  0             // InvokeDynamic #1:get:(Lorg/betterx/wover/biome/impl/modification/GenerationSettingsWorker;)Lcom/google/common/base/Supplier;
+      47: invokestatic  #86                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+      50: putfield      #97                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.flowerFeatures:Ljava/util/function/Supplier;
+      53: aload_0
+      54: aconst_null
+      55: putfield      #66                 // Field customizedFeatures:Ljava/util/List;
+      58: return
+
+  public boolean finished();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field customizedCarvers:Ljava/util/Map;
+       4: ifnonnull     14
+       7: aload_0
+       8: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+      11: ifnull        18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: istore_1
+      20: aload_0
+      21: invokevirtual #100                // Method freezeCarvers:()V
+      24: aload_0
+      25: invokevirtual #103                // Method freezeFeatures:()V
+      28: iload_1
+      29: ireturn
+
+  private java.util.Set<net.minecraft.world.level.levelgen.placement.PlacedFeature> createPlacedFeatrueSet();
+    Code:
+       0: aload_0
+       1: invokevirtual #106                // Method getFlatFeatureStream:()Ljava/util/stream/Stream;
+       4: invokestatic  #110                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+       7: invokeinterface #116,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      12: checkcast     #122                // class java/util/Set
+      15: areturn
+
+  private java.util.List<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> createFlowerFeatures();
+    Code:
+       0: aload_0
+       1: invokevirtual #106                // Method getFlatFeatureStream:()Ljava/util/stream/Stream;
+       4: invokedynamic #124,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       9: invokeinterface #128,  2          // InterfaceMethod java/util/stream/Stream.flatMap:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      14: invokedynamic #132,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+      19: invokeinterface #136,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      24: invokestatic  #140                // Method com/google/common/collect/ImmutableList.toImmutableList:()Ljava/util/stream/Collector;
+      27: invokeinterface #116,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      32: checkcast     #143                // class java/util/List
+      35: areturn
+
+  private java.util.stream.Stream<net.minecraft.world.level.levelgen.placement.PlacedFeature> getFlatFeatureStream();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field generationSettings:Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+       4: getfield      #72                 // Field net/minecraft/world/level/biome/BiomeGenerationSettings.features:Ljava/util/List;
+       7: invokeinterface #145,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      12: invokedynamic #148,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      17: invokeinterface #128,  2          // InterfaceMethod java/util/stream/Stream.flatMap:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      22: invokedynamic #149,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      27: invokeinterface #150,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      32: areturn
+
+  public void addFeatures(org.betterx.wover.biome.impl.modification.FeatureMap);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #42                 // Field features:Lnet/minecraft/core/Registry;
+       5: invokevirtual #153                // Method org/betterx/wover/biome/impl/modification/FeatureMap.resolve:(Lnet/minecraft/core/Registry;)V
+       8: iconst_0
+       9: istore_2
+      10: iconst_0
+      11: istore_3
+      12: iload_3
+      13: aload_1
+      14: invokevirtual #159                // Method org/betterx/wover/biome/impl/modification/FeatureMap.size:()I
+      17: if_icmpge     53
+      20: iload_3
+      21: invokestatic  #163                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.values:()[Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      24: arraylength
+      25: if_icmpge     47
+      28: aload_1
+      29: iload_3
+      30: invokevirtual #169                // Method org/betterx/wover/biome/impl/modification/FeatureMap.get:(I)Ljava/lang/Object;
+      33: checkcast     #70                 // class java/util/LinkedList
+      36: invokevirtual #172                // Method java/util/LinkedList.isEmpty:()Z
+      39: ifne          47
+      42: iconst_1
+      43: istore_2
+      44: goto          53
+      47: iinc          3, 1
+      50: goto          12
+      53: iload_2
+      54: ifne          58
+      57: return
+      58: aload_0
+      59: invokevirtual #176                // Method unfreezeFeatures:()V
+      62: iconst_0
+      63: istore_3
+      64: iload_3
+      65: aload_1
+      66: invokevirtual #159                // Method org/betterx/wover/biome/impl/modification/FeatureMap.size:()I
+      69: if_icmpge     165
+      72: iload_3
+      73: invokestatic  #163                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.values:()[Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      76: arraylength
+      77: if_icmpge     159
+      80: aload_1
+      81: iload_3
+      82: invokevirtual #169                // Method org/betterx/wover/biome/impl/modification/FeatureMap.get:(I)Ljava/lang/Object;
+      85: checkcast     #70                 // class java/util/LinkedList
+      88: astore        4
+      90: aload         4
+      92: invokevirtual #172                // Method java/util/LinkedList.isEmpty:()Z
+      95: ifne          159
+      98: invokestatic  #163                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.values:()[Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     101: iload_3
+     102: aaload
+     103: astore        5
+     105: new           #179                // class java/util/ArrayList
+     108: dup
+     109: aload_0
+     110: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+     113: aload         5
+     115: invokestatic  #181                // Method org/betterx/wover/biome/impl/modification/FeatureMap.getFeatures:(Ljava/util/List;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)Lnet/minecraft/core/HolderSet;
+     118: invokeinterface #185,  1          // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+     123: invokeinterface #188,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     128: invokespecial #192                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     131: astore        6
+     133: aload         6
+     135: aload         4
+     137: invokeinterface #193,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+     142: pop
+     143: aload_0
+     144: getfield      #66                 // Field customizedFeatures:Ljava/util/List;
+     147: iload_3
+     148: aload         6
+     150: invokestatic  #197                // InterfaceMethod net/minecraft/core/HolderSet.direct:(Ljava/util/List;)Lnet/minecraft/core/HolderSet$Direct;
+     153: invokeinterface #201,  3          // InterfaceMethod java/util/List.set:(ILjava/lang/Object;)Ljava/lang/Object;
+     158: pop
+     159: iinc          3, 1
+     162: goto          64
+     165: return
+
+  private static boolean lambda$createFlowerFeatures$0(net.minecraft.world.level.levelgen.feature.ConfiguredFeature);
+    Code:
+       0: aload_0
+       1: invokevirtual #205                // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.feature:()Lnet/minecraft/world/level/levelgen/feature/Feature;
+       4: getstatic     #211                // Field net/minecraft/world/level/levelgen/feature/Feature.FLOWER:Lnet/minecraft/world/level/levelgen/feature/Feature;
+       7: if_acmpne     14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: ireturn
+}

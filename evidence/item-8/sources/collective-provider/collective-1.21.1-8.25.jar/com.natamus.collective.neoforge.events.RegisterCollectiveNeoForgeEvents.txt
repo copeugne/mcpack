@@ -1,0 +1,93 @@
+Compiled from "RegisterCollectiveNeoForgeEvents.java"
+public class com.natamus.collective.neoforge.events.RegisterCollectiveNeoForgeEvents {
+  public com.natamus.collective.neoforge.events.RegisterCollectiveNeoForgeEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onServerStarted(net.neoforged.neoforge.event.server.ServerAboutToStartEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/event/server/ServerAboutToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokestatic  #13                 // Method com/natamus/collective_common_neoforge/config/GenerateJSONFiles.initGeneration:(Lnet/minecraft/server/MinecraftServer;)V
+       7: return
+
+  public static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: aload_0
+       1: invokevirtual #19                 // Method net/neoforged/neoforge/event/level/LevelEvent$Load.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: invokestatic  #25                 // Method com/natamus/collective_common_neoforge/functions/WorldFunctions.getWorldIfInstanceOfAndNotRemote:(Lnet/minecraft/world/level/LevelAccessor;)Lnet/minecraft/world/level/Level;
+       7: astore_1
+       8: aload_1
+       9: ifnonnull     13
+      12: return
+      13: aload_1
+      14: invokestatic  #31                 // Method com/natamus/collective_common_neoforge/events/CollectiveEvents.onWorldLoad:(Lnet/minecraft/world/level/Level;)V
+      17: return
+
+  public static void onWorldTick(net.neoforged.neoforge.event.tick.LevelTickEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #37                 // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Post.getLevel:()Lnet/minecraft/world/level/Level;
+       4: astore_1
+       5: aload_1
+       6: getfield      #42                 // Field net/minecraft/world/level/Level.isClientSide:Z
+       9: ifeq          13
+      12: return
+      13: aload_1
+      14: checkcast     #48                 // class net/minecraft/server/level/ServerLevel
+      17: invokestatic  #50                 // Method com/natamus/collective_common_neoforge/events/CollectiveEvents.onWorldTick:(Lnet/minecraft/server/level/ServerLevel;)V
+      20: return
+
+  public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #54                 // Method net/neoforged/neoforge/event/tick/ServerTickEvent$Post.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokestatic  #57                 // Method com/natamus/collective_common_neoforge/events/CollectiveEvents.onServerTick:(Lnet/minecraft/server/MinecraftServer;)V
+       7: return
+
+  public static void onEntityJoinLevel(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #60                 // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getLevel:()Lnet/minecraft/world/level/Level;
+       4: aload_0
+       5: invokevirtual #63                 // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+       8: invokestatic  #67                 // Method com/natamus/collective_common_neoforge/events/CollectiveEvents.onEntityJoinLevel:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;)Z
+      11: ifne          19
+      14: aload_0
+      15: iconst_1
+      16: invokevirtual #71                 // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.setCanceled:(Z)V
+      19: return
+
+  public static void onBlockBreak(net.neoforged.neoforge.event.level.BlockEvent$BreakEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #75                 // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: invokestatic  #25                 // Method com/natamus/collective_common_neoforge/functions/WorldFunctions.getWorldIfInstanceOfAndNotRemote:(Lnet/minecraft/world/level/LevelAccessor;)Lnet/minecraft/world/level/Level;
+       7: astore_1
+       8: aload_1
+       9: ifnonnull     13
+      12: return
+      13: aload_1
+      14: aload_0
+      15: invokevirtual #78                 // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      18: aload_0
+      19: invokevirtual #82                 // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      22: aload_0
+      23: invokevirtual #86                 // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      26: aconst_null
+      27: invokestatic  #90                 // Method com/natamus/collective_common_neoforge/events/CollectiveEvents.onBlockBreak:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)Z
+      30: ifne          38
+      33: aload_0
+      34: iconst_1
+      35: invokevirtual #94                 // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.setCanceled:(Z)V
+      38: return
+
+  public static void registerCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #95                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       4: invokestatic  #101                // Method com/natamus/collective_common_neoforge/cmds/CommandCollective.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+       7: return
+}

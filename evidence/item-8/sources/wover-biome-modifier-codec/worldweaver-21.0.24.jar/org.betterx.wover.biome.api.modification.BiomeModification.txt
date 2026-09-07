@@ -1,0 +1,181 @@
+Compiled from "BiomeModification.java"
+public interface org.betterx.wover.biome.api.modification.BiomeModification {
+  public static final com.mojang.serialization.Codec<org.betterx.wover.biome.api.modification.BiomeModification> CODEC;
+
+  public static final com.mojang.serialization.Codec<org.betterx.wover.biome.api.modification.BiomeModification> NETWORK_CODEC;
+
+  public abstract org.betterx.wover.biome.api.modification.predicates.BiomePredicate predicate();
+
+  public abstract java.util.List<java.util.List<net.minecraft.core.Holder<net.minecraft.world.level.levelgen.placement.PlacedFeature>>> features();
+
+  public default java.util.List<java.util.List<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature>>> featureKeys();
+    Code:
+       0: new           #1                  // class java/util/ArrayList
+       3: dup
+       4: aload_0
+       5: invokeinterface #3,  1            // InterfaceMethod features:()Ljava/util/List;
+      10: invokeinterface #9,  1            // InterfaceMethod java/util/List.size:()I
+      15: invokespecial #15                 // Method java/util/ArrayList."<init>":(I)V
+      18: astore_1
+      19: aload_0
+      20: invokeinterface #3,  1            // InterfaceMethod features:()Ljava/util/List;
+      25: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      30: astore_2
+      31: aload_2
+      32: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      37: ifeq          132
+      40: aload_2
+      41: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #10                 // class java/util/List
+      49: astore_3
+      50: new           #1                  // class java/util/ArrayList
+      53: dup
+      54: aload_3
+      55: invokeinterface #9,  1            // InterfaceMethod java/util/List.size:()I
+      60: invokespecial #15                 // Method java/util/ArrayList."<init>":(I)V
+      63: astore        4
+      65: aload_3
+      66: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      71: astore        5
+      73: aload         5
+      75: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      80: ifeq          120
+      83: aload         5
+      85: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      90: checkcast     #33                 // class net/minecraft/core/Holder
+      93: astore        6
+      95: aload         6
+      97: invokeinterface #35,  1           // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     102: aload         4
+     104: dup
+     105: invokestatic  #39                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     108: pop
+     109: invokedynamic #45,  0             // InvokeDynamic #0:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+     114: invokevirtual #49                 // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     117: goto          73
+     120: aload_1
+     121: aload         4
+     123: invokeinterface #55,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     128: pop
+     129: goto          31
+     132: aload_1
+     133: areturn
+
+  public abstract java.util.List<net.minecraft.world.level.biome.MobSpawnSettings$SpawnerData> spawns();
+
+  public abstract java.util.List<net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>> biomeTags();
+
+  public abstract void apply(org.betterx.wover.biome.impl.modification.GenerationSettingsWorker, org.betterx.wover.biome.impl.modification.MobSettingsWorker);
+
+  public static org.betterx.wover.biome.api.modification.BiomeModification$Builder build(net.minecraft.data.worldgen.BootstrapContext<org.betterx.wover.biome.api.modification.BiomeModification>, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #59                 // class org/betterx/wover/biome/api/modification/BiomeModification$Builder
+       3: dup
+       4: aload_0
+       5: getstatic     #61                 // Field org/betterx/wover/biome/api/modification/BiomeModificationRegistry.BIOME_MODIFICATION_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+       8: aload_1
+       9: invokestatic  #67                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      12: invokespecial #73                 // Method org/betterx/wover/biome/api/modification/BiomeModification$Builder."<init>":(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;)V
+      15: areturn
+
+  public static org.betterx.wover.biome.api.modification.BiomeModification$Builder build(net.minecraft.data.worldgen.BootstrapContext<org.betterx.wover.biome.api.modification.BiomeModification>, net.minecraft.resources.ResourceKey<org.betterx.wover.biome.api.modification.BiomeModification>);
+    Code:
+       0: new           #59                 // class org/betterx/wover/biome/api/modification/BiomeModification$Builder
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokespecial #73                 // Method org/betterx/wover/biome/api/modification/BiomeModification$Builder."<init>":(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;)V
+       9: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #76                 // Field org/betterx/wover/biome/api/modification/predicates/BiomePredicate.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #82                 // String predicate
+       6: invokeinterface #84,  2           // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #90,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #100                // Field org/betterx/wover/biome/impl/modification/FeatureMap.NETWORK_CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #105                // String features
+      24: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      27: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      32: invokedynamic #113,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      37: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      40: getstatic     #114                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      43: invokestatic  #119                // Method net/minecraft/tags/TagKey.codec:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+      46: invokeinterface #125,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      51: ldc           #129                // String biome_tags
+      53: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      56: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      61: invokedynamic #131,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      66: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      69: getstatic     #132                // Field net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData.CODEC:Lcom/mojang/serialization/Codec;
+      72: invokestatic  #135                // InterfaceMethod com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      75: ldc           #139                // String spawns
+      77: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      80: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      85: invokedynamic #141,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      90: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      93: invokevirtual #142                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      96: aload_0
+      97: invokedynamic #148,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function4;
+     102: invokevirtual #151                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+     105: areturn
+
+  private static org.betterx.wover.biome.api.modification.BiomeModification lambda$static$1(org.betterx.wover.biome.api.modification.predicates.BiomePredicate, java.util.List, java.util.List, java.util.List);
+    Code:
+       0: new           #156                // class org/betterx/wover/biome/impl/modification/BiomeModificationImpl
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #158                // Method org/betterx/wover/biome/impl/modification/FeatureMap.ofKeys:(Ljava/util/List;)Lorg/betterx/wover/biome/impl/modification/FeatureMap;
+       9: aload_2
+      10: aload_3
+      11: invokespecial #162                // Method org/betterx/wover/biome/impl/modification/BiomeModificationImpl."<init>":(Lorg/betterx/wover/biome/api/modification/predicates/BiomePredicate;Lorg/betterx/wover/biome/impl/modification/FeatureMap;Ljava/util/List;Ljava/util/List;)V
+      14: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #76                 // Field org/betterx/wover/biome/api/modification/predicates/BiomePredicate.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #82                 // String predicate
+       6: invokeinterface #84,  2           // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #90,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #165                // Field org/betterx/wover/biome/impl/modification/FeatureMap.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #105                // String features
+      24: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      27: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      32: invokedynamic #166,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      37: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      40: getstatic     #114                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      43: invokestatic  #119                // Method net/minecraft/tags/TagKey.codec:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+      46: invokeinterface #125,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      51: ldc           #129                // String biome_tags
+      53: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      56: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      61: invokedynamic #131,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      66: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      69: getstatic     #132                // Field net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData.CODEC:Lcom/mojang/serialization/Codec;
+      72: invokestatic  #135                // InterfaceMethod com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      75: ldc           #139                // String spawns
+      77: invokestatic  #106                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      80: invokeinterface #109,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      85: invokedynamic #141,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      90: invokevirtual #94                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      93: invokevirtual #142                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      96: aload_0
+      97: invokedynamic #167,  0            // InvokeDynamic #7:apply:()Lcom/mojang/datafixers/util/Function4;
+     102: invokevirtual #151                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+     105: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #168,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       5: invokestatic  #169                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+       8: putstatic     #174                // Field CODEC:Lcom/mojang/serialization/Codec;
+      11: invokedynamic #175,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+      16: invokestatic  #169                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+      19: putstatic     #176                // Field NETWORK_CODEC:Lcom/mojang/serialization/Codec;
+      22: return
+}

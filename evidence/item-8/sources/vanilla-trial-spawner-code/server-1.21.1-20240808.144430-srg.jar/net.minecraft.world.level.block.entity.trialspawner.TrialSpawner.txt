@@ -1,0 +1,1148 @@
+Compiled from "TrialSpawner.java"
+public final class net.minecraft.world.level.block.entity.trialspawner.TrialSpawner {
+  public static final java.lang.String NORMAL_CONFIG_TAG_NAME = "normal_config";
+
+  public static final java.lang.String OMINOUS_CONFIG_TAG_NAME = "ominous_config";
+
+  public static final int DETECT_PLAYER_SPAWN_BUFFER = 40;
+
+  private static final int DEFAULT_TARGET_COOLDOWN_LENGTH = 36000;
+
+  private static final int DEFAULT_PLAYER_SCAN_RANGE = 14;
+
+  private static final int MAX_MOB_TRACKING_DISTANCE = 47;
+
+  private static final int MAX_MOB_TRACKING_DISTANCE_SQR;
+
+  private static final float SPAWNING_AMBIENT_SOUND_CHANCE = 0.02f;
+
+  private final net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig normalConfig;
+
+  private final net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig ominousConfig;
+
+  private final net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerData data;
+
+  private final int requiredPlayerRange;
+
+  private final int targetCooldownLength;
+
+  private final net.minecraft.world.level.block.entity.trialspawner.TrialSpawner$StateAccessor stateAccessor;
+
+  private net.minecraft.world.level.block.entity.trialspawner.PlayerDetector playerDetector;
+
+  private final net.minecraft.world.level.block.entity.trialspawner.PlayerDetector$EntitySelector entitySelector;
+
+  private boolean overridePeacefulAndMobSpawnRule;
+
+  private boolean isOminous;
+
+  public com.mojang.serialization.Codec<net.minecraft.world.level.block.entity.trialspawner.TrialSpawner> codec();
+    Code:
+       0: aload_0
+       1: invokedynamic #127,  0            // InvokeDynamic #0:apply:(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner;)Ljava/util/function/Function;
+       6: invokestatic  #131                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+       9: areturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawner(net.minecraft.world.level.block.entity.trialspawner.TrialSpawner$StateAccessor, net.minecraft.world.level.block.entity.trialspawner.PlayerDetector, net.minecraft.world.level.block.entity.trialspawner.PlayerDetector$EntitySelector);
+    Code:
+       0: aload_0
+       1: getstatic     #140                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.DEFAULT:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       4: getstatic     #140                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.DEFAULT:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       7: new           #142                // class net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData
+      10: dup
+      11: invokespecial #145                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData."<init>":()V
+      14: ldc           #81                 // int 36000
+      16: bipush        14
+      18: aload_1
+      19: aload_2
+      20: aload_3
+      21: invokespecial #148                // Method "<init>":(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;IILnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector$EntitySelector;)V
+      24: return
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawner(net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig, net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig, net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerData, int, int, net.minecraft.world.level.block.entity.trialspawner.TrialSpawner$StateAccessor, net.minecraft.world.level.block.entity.trialspawner.PlayerDetector, net.minecraft.world.level.block.entity.trialspawner.PlayerDetector$EntitySelector);
+    Code:
+       0: aload_0
+       1: invokespecial #152                // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #154                // Field normalConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       9: aload_0
+      10: aload_2
+      11: putfield      #156                // Field ominousConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      14: aload_0
+      15: aload_3
+      16: putfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      19: aload_0
+      20: iload         4
+      22: putfield      #160                // Field targetCooldownLength:I
+      25: aload_0
+      26: iload         5
+      28: putfield      #162                // Field requiredPlayerRange:I
+      31: aload_0
+      32: aload         6
+      34: putfield      #164                // Field stateAccessor:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;
+      37: aload_0
+      38: aload         7
+      40: putfield      #166                // Field playerDetector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;
+      43: aload_0
+      44: aload         8
+      46: putfield      #168                // Field entitySelector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector$EntitySelector;
+      49: return
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig getConfig();
+    Code:
+       0: aload_0
+       1: getfield      #180                // Field isOminous:Z
+       4: ifeq          14
+       7: aload_0
+       8: getfield      #156                // Field ominousConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      11: goto          18
+      14: aload_0
+      15: getfield      #154                // Field normalConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      18: areturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig getNormalConfig();
+    Code:
+       0: aload_0
+       1: getfield      #154                // Field normalConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       4: areturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig getOminousConfig();
+    Code:
+       0: aload_0
+       1: getfield      #156                // Field ominousConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       4: areturn
+
+  private net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig getOminousConfigForSerialization();
+    Code:
+       0: aload_0
+       1: getfield      #156                // Field ominousConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       4: aload_0
+       5: getfield      #154                // Field normalConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       8: invokevirtual #188                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.equals:(Ljava/lang/Object;)Z
+      11: ifne          21
+      14: aload_0
+      15: getfield      #156                // Field ominousConfig:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      18: goto          24
+      21: getstatic     #140                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.DEFAULT:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      24: areturn
+
+  public void applyOminous(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_1
+       3: aload_2
+       4: invokevirtual #196                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: getstatic     #202                // Field net/minecraft/world/level/block/TrialSpawnerBlock.OMINOUS:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      10: iconst_1
+      11: invokestatic  #208                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      14: invokevirtual #214                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      17: checkcast     #210                // class net/minecraft/world/level/block/state/BlockState
+      20: iconst_3
+      21: invokevirtual #218                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      24: pop
+      25: aload_1
+      26: sipush        3020
+      29: aload_2
+      30: iconst_1
+      31: invokevirtual #222                // Method net/minecraft/server/level/ServerLevel.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+      34: aload_0
+      35: iconst_1
+      36: putfield      #180                // Field isOminous:Z
+      39: aload_0
+      40: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      43: aload_0
+      44: aload_1
+      45: invokevirtual #226                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.resetAfterBecomingOminous:(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner;Lnet/minecraft/server/level/ServerLevel;)V
+      48: return
+
+  public void removeOminous(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_1
+       3: aload_2
+       4: invokevirtual #196                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: getstatic     #202                // Field net/minecraft/world/level/block/TrialSpawnerBlock.OMINOUS:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      10: iconst_0
+      11: invokestatic  #208                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      14: invokevirtual #214                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      17: checkcast     #210                // class net/minecraft/world/level/block/state/BlockState
+      20: iconst_3
+      21: invokevirtual #218                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      24: pop
+      25: aload_0
+      26: iconst_0
+      27: putfield      #180                // Field isOminous:Z
+      30: return
+
+  public boolean isOminous();
+    Code:
+       0: aload_0
+       1: getfield      #180                // Field isOminous:Z
+       4: ireturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerData getData();
+    Code:
+       0: aload_0
+       1: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+       4: areturn
+
+  public int getTargetCooldownLength();
+    Code:
+       0: aload_0
+       1: getfield      #160                // Field targetCooldownLength:I
+       4: ireturn
+
+  public int getRequiredPlayerRange();
+    Code:
+       0: aload_0
+       1: getfield      #162                // Field requiredPlayerRange:I
+       4: ireturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState getState();
+    Code:
+       0: aload_0
+       1: getfield      #164                // Field stateAccessor:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;
+       4: invokeinterface #243,  1          // InterfaceMethod net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor.getState:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;
+       9: areturn
+
+  public void setState(net.minecraft.world.level.Level, net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState);
+    Code:
+       0: aload_0
+       1: getfield      #164                // Field stateAccessor:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;
+       4: aload_1
+       5: aload_2
+       6: invokeinterface #247,  3          // InterfaceMethod net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor.setState:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;)V
+      11: return
+
+  public void markUpdated();
+    Code:
+       0: aload_0
+       1: getfield      #164                // Field stateAccessor:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;
+       4: invokeinterface #254,  1          // InterfaceMethod net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor.markUpdated:()V
+       9: return
+
+  public net.minecraft.world.level.block.entity.trialspawner.PlayerDetector getPlayerDetector();
+    Code:
+       0: aload_0
+       1: getfield      #166                // Field playerDetector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;
+       4: areturn
+
+  public net.minecraft.world.level.block.entity.trialspawner.PlayerDetector$EntitySelector getEntitySelector();
+    Code:
+       0: aload_0
+       1: getfield      #168                // Field entitySelector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector$EntitySelector;
+       4: areturn
+
+  public boolean canSpawnInLevel(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: getfield      #262                // Field overridePeacefulAndMobSpawnRule:Z
+       4: ifeq          9
+       7: iconst_1
+       8: ireturn
+       9: aload_1
+      10: invokevirtual #268                // Method net/minecraft/world/level/Level.getDifficulty:()Lnet/minecraft/world/Difficulty;
+      13: getstatic     #274                // Field net/minecraft/world/Difficulty.PEACEFUL:Lnet/minecraft/world/Difficulty;
+      16: if_acmpne     21
+      19: iconst_0
+      20: ireturn
+      21: aload_1
+      22: invokevirtual #278                // Method net/minecraft/world/level/Level.getGameRules:()Lnet/minecraft/world/level/GameRules;
+      25: getstatic     #282                // Field net/minecraft/world/level/GameRules.RULE_DOMOBSPAWNING:Lnet/minecraft/world/level/GameRules$Key;
+      28: invokevirtual #286                // Method net/minecraft/world/level/GameRules.getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+      31: ireturn
+
+  public java.util.Optional<java.util.UUID> spawnMob(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #294                // Method net/minecraft/server/level/ServerLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+       4: astore_3
+       5: aload_0
+       6: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+       9: aload_0
+      10: aload_1
+      11: invokevirtual #294                // Method net/minecraft/server/level/ServerLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+      14: invokevirtual #298                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.getOrCreateNextSpawnData:(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/SpawnData;
+      17: astore        4
+      19: aload         4
+      21: invokevirtual #302                // Method net/minecraft/world/level/SpawnData.entityToSpawn:()Lnet/minecraft/nbt/CompoundTag;
+      24: astore        5
+      26: aload         5
+      28: ldc_w         #304                // String Pos
+      31: bipush        6
+      33: invokevirtual #310                // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+      36: astore        6
+      38: aload         5
+      40: invokestatic  #316                // Method net/minecraft/world/entity/EntityType.by:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/Optional;
+      43: astore        7
+      45: aload         7
+      47: invokevirtual #321                // Method java/util/Optional.isEmpty:()Z
+      50: ifeq          57
+      53: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      56: areturn
+      57: aload         6
+      59: invokevirtual #334                // Method net/minecraft/nbt/ListTag.size:()I
+      62: istore        8
+      64: iload         8
+      66: iconst_1
+      67: if_icmplt     79
+      70: aload         6
+      72: iconst_0
+      73: invokevirtual #338                // Method net/minecraft/nbt/ListTag.getDouble:(I)D
+      76: goto          111
+      79: aload_2
+      80: invokevirtual #341                // Method net/minecraft/core/BlockPos.getX:()I
+      83: i2d
+      84: aload_3
+      85: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      90: aload_3
+      91: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      96: dsub
+      97: aload_0
+      98: invokevirtual #347                // Method getConfig:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+     101: invokevirtual #350                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.spawnRange:()I
+     104: i2d
+     105: dmul
+     106: dadd
+     107: ldc2_w        #351                // double 0.5d
+     110: dadd
+     111: dstore        9
+     113: iload         8
+     115: iconst_2
+     116: if_icmplt     128
+     119: aload         6
+     121: iconst_1
+     122: invokevirtual #338                // Method net/minecraft/nbt/ListTag.getDouble:(I)D
+     125: goto          143
+     128: aload_2
+     129: invokevirtual #355                // Method net/minecraft/core/BlockPos.getY:()I
+     132: aload_3
+     133: iconst_3
+     134: invokeinterface #359,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     139: iadd
+     140: iconst_1
+     141: isub
+     142: i2d
+     143: dstore        11
+     145: iload         8
+     147: iconst_3
+     148: if_icmplt     160
+     151: aload         6
+     153: iconst_2
+     154: invokevirtual #338                // Method net/minecraft/nbt/ListTag.getDouble:(I)D
+     157: goto          192
+     160: aload_2
+     161: invokevirtual #362                // Method net/minecraft/core/BlockPos.getZ:()I
+     164: i2d
+     165: aload_3
+     166: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     171: aload_3
+     172: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     177: dsub
+     178: aload_0
+     179: invokevirtual #347                // Method getConfig:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+     182: invokevirtual #350                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.spawnRange:()I
+     185: i2d
+     186: dmul
+     187: dadd
+     188: ldc2_w        #351                // double 0.5d
+     191: dadd
+     192: dstore        13
+     194: aload_1
+     195: aload         7
+     197: invokevirtual #366                // Method java/util/Optional.get:()Ljava/lang/Object;
+     200: checkcast     #312                // class net/minecraft/world/entity/EntityType
+     203: dload         9
+     205: dload         11
+     207: dload         13
+     209: invokevirtual #370                // Method net/minecraft/world/entity/EntityType.getSpawnAABB:(DDD)Lnet/minecraft/world/phys/AABB;
+     212: invokevirtual #374                // Method net/minecraft/server/level/ServerLevel.noCollision:(Lnet/minecraft/world/phys/AABB;)Z
+     215: ifne          222
+     218: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     221: areturn
+     222: new           #376                // class net/minecraft/world/phys/Vec3
+     225: dup
+     226: dload         9
+     228: dload         11
+     230: dload         13
+     232: invokespecial #379                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     235: astore        15
+     237: aload_1
+     238: aload_2
+     239: invokevirtual #383                // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+     242: aload         15
+     244: invokestatic  #387                // Method inLineOfSight:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)Z
+     247: ifne          254
+     250: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     253: areturn
+     254: aload         15
+     256: invokestatic  #391                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+     259: astore        16
+     261: aload         7
+     263: invokevirtual #366                // Method java/util/Optional.get:()Ljava/lang/Object;
+     266: checkcast     #312                // class net/minecraft/world/entity/EntityType
+     269: aload_1
+     270: getstatic     #397                // Field net/minecraft/world/entity/MobSpawnType.TRIAL_SPAWNER:Lnet/minecraft/world/entity/MobSpawnType;
+     273: aload         16
+     275: aload_1
+     276: invokevirtual #294                // Method net/minecraft/server/level/ServerLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     279: invokestatic  #403                // Method net/minecraft/world/entity/SpawnPlacements.checkSpawnRules:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z
+     282: ifne          289
+     285: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     288: areturn
+     289: aload         4
+     291: invokevirtual #406                // Method net/minecraft/world/level/SpawnData.getCustomSpawnRules:()Ljava/util/Optional;
+     294: invokevirtual #409                // Method java/util/Optional.isPresent:()Z
+     297: ifeq          328
+     300: aload         4
+     302: invokevirtual #406                // Method net/minecraft/world/level/SpawnData.getCustomSpawnRules:()Ljava/util/Optional;
+     305: invokevirtual #366                // Method java/util/Optional.get:()Ljava/lang/Object;
+     308: checkcast     #22                 // class net/minecraft/world/level/SpawnData$CustomSpawnRules
+     311: astore        17
+     313: aload         17
+     315: aload         16
+     317: aload_1
+     318: invokevirtual #413                // Method net/minecraft/world/level/SpawnData$CustomSpawnRules.isValidPosition:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Z
+     321: ifne          328
+     324: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     327: areturn
+     328: aload         5
+     330: aload_1
+     331: dload         9
+     333: dload         11
+     335: dload         13
+     337: aload_3
+     338: invokedynamic #423,  0            // InvokeDynamic #1:apply:(DDDLnet/minecraft/util/RandomSource;)Ljava/util/function/Function;
+     343: invokestatic  #427                // Method net/minecraft/world/entity/EntityType.loadEntityRecursive:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/Level;Ljava/util/function/Function;)Lnet/minecraft/world/entity/Entity;
+     346: astore        17
+     348: aload         17
+     350: ifnonnull     357
+     353: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     356: areturn
+     357: aload         17
+     359: instanceof    #431                // class net/minecraft/world/entity/Mob
+     362: ifeq          470
+     365: aload         17
+     367: checkcast     #431                // class net/minecraft/world/entity/Mob
+     370: astore        18
+     372: aload         18
+     374: aload_1
+     375: invokevirtual #435                // Method net/minecraft/world/entity/Mob.checkSpawnObstruction:(Lnet/minecraft/world/level/LevelReader;)Z
+     378: ifne          385
+     381: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     384: areturn
+     385: aload         4
+     387: invokevirtual #438                // Method net/minecraft/world/level/SpawnData.getEntityToSpawn:()Lnet/minecraft/nbt/CompoundTag;
+     390: invokevirtual #439                // Method net/minecraft/nbt/CompoundTag.size:()I
+     393: iconst_1
+     394: if_icmpne     417
+     397: aload         4
+     399: invokevirtual #438                // Method net/minecraft/world/level/SpawnData.getEntityToSpawn:()Lnet/minecraft/nbt/CompoundTag;
+     402: ldc_w         #441                // String id
+     405: bipush        8
+     407: invokevirtual #445                // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;I)Z
+     410: ifeq          417
+     413: iconst_1
+     414: goto          418
+     417: iconst_0
+     418: istore        19
+     420: iload         19
+     422: ifeq          445
+     425: aload         18
+     427: aload_1
+     428: aload_1
+     429: aload         18
+     431: invokevirtual #449                // Method net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+     434: invokevirtual #453                // Method net/minecraft/server/level/ServerLevel.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+     437: getstatic     #397                // Field net/minecraft/world/entity/MobSpawnType.TRIAL_SPAWNER:Lnet/minecraft/world/entity/MobSpawnType;
+     440: aconst_null
+     441: invokevirtual #457                // Method net/minecraft/world/entity/Mob.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     444: pop
+     445: aload         18
+     447: invokevirtual #460                // Method net/minecraft/world/entity/Mob.setPersistenceRequired:()V
+     450: aload         4
+     452: invokevirtual #463                // Method net/minecraft/world/level/SpawnData.getEquipment:()Ljava/util/Optional;
+     455: aload         18
+     457: dup
+     458: invokestatic  #468                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     461: pop
+     462: invokedynamic #480,  0            // InvokeDynamic #2:accept:(Lnet/minecraft/world/entity/Mob;)Ljava/util/function/Consumer;
+     467: invokevirtual #484                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     470: aload_1
+     471: aload         17
+     473: invokevirtual #488                // Method net/minecraft/server/level/ServerLevel.tryAddFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)Z
+     476: ifne          483
+     479: invokestatic  #325                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     482: areturn
+     483: aload_0
+     484: getfield      #180                // Field isOminous:Z
+     487: ifeq          496
+     490: getstatic     #491                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle.OMINOUS:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle;
+     493: goto          499
+     496: getstatic     #494                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle.NORMAL:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle;
+     499: astore        18
+     501: aload_1
+     502: sipush        3011
+     505: aload_2
+     506: aload         18
+     508: invokevirtual #497                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle.encode:()I
+     511: invokevirtual #222                // Method net/minecraft/server/level/ServerLevel.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+     514: aload_1
+     515: sipush        3012
+     518: aload         16
+     520: aload         18
+     522: invokevirtual #497                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawner$FlameParticle.encode:()I
+     525: invokevirtual #222                // Method net/minecraft/server/level/ServerLevel.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+     528: aload_1
+     529: aload         17
+     531: getstatic     #503                // Field net/minecraft/world/level/gameevent/GameEvent.ENTITY_PLACE:Lnet/minecraft/core/Holder$Reference;
+     534: aload         16
+     536: invokevirtual #507                // Method net/minecraft/server/level/ServerLevel.gameEvent:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;)V
+     539: aload         17
+     541: invokevirtual #511                // Method net/minecraft/world/entity/Entity.getUUID:()Ljava/util/UUID;
+     544: invokestatic  #515                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     547: areturn
+
+  public void ejectReward(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>);
+    Code:
+       0: aload_1
+       1: invokevirtual #551                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokevirtual #557                // Method net/minecraft/server/MinecraftServer.reloadableRegistries:()Lnet/minecraft/server/ReloadableServerRegistries$Holder;
+       7: aload_3
+       8: invokevirtual #561                // Method net/minecraft/server/ReloadableServerRegistries$Holder.getLootTable:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootTable;
+      11: astore        4
+      13: new           #38                 // class net/minecraft/world/level/storage/loot/LootParams$Builder
+      16: dup
+      17: aload_1
+      18: invokespecial #564                // Method net/minecraft/world/level/storage/loot/LootParams$Builder."<init>":(Lnet/minecraft/server/level/ServerLevel;)V
+      21: getstatic     #570                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParamSets.EMPTY:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;
+      24: invokevirtual #573                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.create:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;)Lnet/minecraft/world/level/storage/loot/LootParams;
+      27: astore        5
+      29: aload         4
+      31: aload         5
+      33: invokevirtual #579                // Method net/minecraft/world/level/storage/loot/LootTable.getRandomItems:(Lnet/minecraft/world/level/storage/loot/LootParams;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+      36: astore        6
+      38: aload         6
+      40: invokevirtual #582                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.isEmpty:()Z
+      43: ifne          110
+      46: aload         6
+      48: invokevirtual #586                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+      51: astore        7
+      53: aload         7
+      55: invokeinterface #593,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      60: ifeq          101
+      63: aload         7
+      65: invokeinterface #596,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      70: checkcast     #598                // class net/minecraft/world/item/ItemStack
+      73: astore        8
+      75: aload_1
+      76: aload         8
+      78: iconst_2
+      79: getstatic     #604                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      82: aload_2
+      83: invokestatic  #608                // Method net/minecraft/world/phys/Vec3.atBottomCenterOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+      86: getstatic     #604                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      89: ldc2_w        #609                // double 1.2d
+      92: invokevirtual #614                // Method net/minecraft/world/phys/Vec3.relative:(Lnet/minecraft/core/Direction;D)Lnet/minecraft/world/phys/Vec3;
+      95: invokestatic  #620                // Method net/minecraft/core/dispenser/DefaultDispenseItemBehavior.spawnItem:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;ILnet/minecraft/core/Direction;Lnet/minecraft/core/Position;)V
+      98: goto          53
+     101: aload_1
+     102: sipush        3014
+     105: aload_2
+     106: iconst_0
+     107: invokevirtual #222                // Method net/minecraft/server/level/ServerLevel.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+     110: return
+
+  public void tickClient(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_0
+       1: invokevirtual #633                // Method getState:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;
+       4: astore        4
+       6: aload         4
+       8: aload_1
+       9: aload_2
+      10: iload_3
+      11: invokevirtual #638                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.emitParticles:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)V
+      14: aload         4
+      16: invokevirtual #641                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.hasSpinningMob:()Z
+      19: ifeq          86
+      22: lconst_0
+      23: aload_0
+      24: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      27: getfield      #645                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.nextMobSpawnsAt:J
+      30: aload_1
+      31: invokevirtual #649                // Method net/minecraft/world/level/Level.getGameTime:()J
+      34: lsub
+      35: invokestatic  #655                // Method java/lang/Math.max:(JJ)J
+      38: l2d
+      39: dstore        5
+      41: aload_0
+      42: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      45: aload_0
+      46: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      49: getfield      #658                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.spin:D
+      52: putfield      #661                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.oSpin:D
+      55: aload_0
+      56: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      59: aload_0
+      60: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      63: getfield      #658                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.spin:D
+      66: aload         4
+      68: invokevirtual #664                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.spinningMobSpeed:()D
+      71: dload         5
+      73: ldc2_w        #665                // double 200.0d
+      76: dadd
+      77: ddiv
+      78: dadd
+      79: ldc2_w        #667                // double 360.0d
+      82: drem
+      83: putfield      #658                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.spin:D
+      86: aload         4
+      88: invokevirtual #671                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.isCapableOfSpawning:()Z
+      91: ifeq          165
+      94: aload_1
+      95: invokevirtual #672                // Method net/minecraft/world/level/Level.getRandom:()Lnet/minecraft/util/RandomSource;
+      98: astore        5
+     100: aload         5
+     102: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     107: ldc           #89                 // float 0.02f
+     109: fcmpg
+     110: ifgt          165
+     113: iload_3
+     114: ifeq          123
+     117: getstatic     #682                // Field net/minecraft/sounds/SoundEvents.TRIAL_SPAWNER_AMBIENT_OMINOUS:Lnet/minecraft/sounds/SoundEvent;
+     120: goto          126
+     123: getstatic     #685                // Field net/minecraft/sounds/SoundEvents.TRIAL_SPAWNER_AMBIENT:Lnet/minecraft/sounds/SoundEvent;
+     126: astore        6
+     128: aload_1
+     129: aload_2
+     130: aload         6
+     132: getstatic     #693                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     135: aload         5
+     137: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     142: ldc_w         #694                // float 0.25f
+     145: fmul
+     146: ldc_w         #695                // float 0.75f
+     149: fadd
+     150: aload         5
+     152: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     157: ldc_w         #696                // float 0.5f
+     160: fadd
+     161: iconst_0
+     162: invokevirtual #700                // Method net/minecraft/world/level/Level.playLocalSound:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+     165: return
+
+  public void tickServer(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_0
+       1: iload_3
+       2: putfield      #180                // Field isOminous:Z
+       5: aload_0
+       6: invokevirtual #633                // Method getState:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;
+       9: astore        4
+      11: aload_0
+      12: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      15: getfield      #709                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.currentMobs:Ljava/util/Set;
+      18: aload_1
+      19: aload_2
+      20: invokedynamic #721,  0            // InvokeDynamic #3:test:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Predicate;
+      25: invokeinterface #727,  2          // InterfaceMethod java/util/Set.removeIf:(Ljava/util/function/Predicate;)Z
+      30: ifeq          53
+      33: aload_0
+      34: getfield      #158                // Field data:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;
+      37: aload_1
+      38: invokevirtual #728                // Method net/minecraft/server/level/ServerLevel.getGameTime:()J
+      41: aload_0
+      42: invokevirtual #347                // Method getConfig:()Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      45: invokevirtual #731                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.ticksBetweenSpawn:()I
+      48: i2l
+      49: ladd
+      50: putfield      #645                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.nextMobSpawnsAt:J
+      53: aload         4
+      55: aload_2
+      56: aload_0
+      57: aload_1
+      58: invokevirtual #735                // Method net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.tickAndGetNext:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;
+      61: astore        5
+      63: aload         5
+      65: aload         4
+      67: if_acmpeq     77
+      70: aload_0
+      71: aload_1
+      72: aload         5
+      74: invokevirtual #736                // Method setState:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState;)V
+      77: return
+
+  private static boolean shouldMobBeUntracked(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, java.util.UUID);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #744                // Method net/minecraft/server/level/ServerLevel.getEntity:(Ljava/util/UUID;)Lnet/minecraft/world/entity/Entity;
+       5: astore_3
+       6: aload_3
+       7: ifnull        50
+      10: aload_3
+      11: invokevirtual #747                // Method net/minecraft/world/entity/Entity.isAlive:()Z
+      14: ifeq          50
+      17: aload_3
+      18: invokevirtual #751                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+      21: invokevirtual #755                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      24: aload_0
+      25: invokevirtual #756                // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+      28: invokevirtual #757                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      31: ifeq          50
+      34: aload_3
+      35: invokevirtual #758                // Method net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+      38: aload_1
+      39: invokevirtual #762                // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+      42: getstatic     #764                // Field MAX_MOB_TRACKING_DISTANCE_SQR:I
+      45: i2d
+      46: dcmpl
+      47: ifle          54
+      50: iconst_1
+      51: goto          55
+      54: iconst_0
+      55: ireturn
+
+  private static boolean inLineOfSight(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3);
+    Code:
+       0: aload_0
+       1: new           #45                 // class net/minecraft/world/level/ClipContext
+       4: dup
+       5: aload_2
+       6: aload_1
+       7: getstatic     #772                // Field net/minecraft/world/level/ClipContext$Block.VISUAL:Lnet/minecraft/world/level/ClipContext$Block;
+      10: getstatic     #776                // Field net/minecraft/world/level/ClipContext$Fluid.NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+      13: invokestatic  #781                // InterfaceMethod net/minecraft/world/phys/shapes/CollisionContext.empty:()Lnet/minecraft/world/phys/shapes/CollisionContext;
+      16: invokespecial #784                // Method net/minecraft/world/level/ClipContext."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/phys/shapes/CollisionContext;)V
+      19: invokevirtual #788                // Method net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+      22: astore_3
+      23: aload_3
+      24: invokevirtual #793                // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+      27: aload_1
+      28: invokestatic  #391                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+      31: invokevirtual #794                // Method net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+      34: ifne          47
+      37: aload_3
+      38: invokevirtual #798                // Method net/minecraft/world/phys/BlockHitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+      41: getstatic     #802                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+      44: if_acmpne     51
+      47: iconst_1
+      48: goto          52
+      51: iconst_0
+      52: ireturn
+
+  public static void addSpawnParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.minecraft.core.particles.SimpleParticleType);
+    Code:
+       0: iconst_0
+       1: istore        4
+       3: iload         4
+       5: bipush        20
+       7: if_icmpge     124
+      10: aload_1
+      11: invokevirtual #341                // Method net/minecraft/core/BlockPos.getX:()I
+      14: i2d
+      15: ldc2_w        #351                // double 0.5d
+      18: dadd
+      19: aload_2
+      20: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      25: ldc2_w        #351                // double 0.5d
+      28: dsub
+      29: ldc2_w        #809                // double 2.0d
+      32: dmul
+      33: dadd
+      34: dstore        5
+      36: aload_1
+      37: invokevirtual #355                // Method net/minecraft/core/BlockPos.getY:()I
+      40: i2d
+      41: ldc2_w        #351                // double 0.5d
+      44: dadd
+      45: aload_2
+      46: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      51: ldc2_w        #351                // double 0.5d
+      54: dsub
+      55: ldc2_w        #809                // double 2.0d
+      58: dmul
+      59: dadd
+      60: dstore        7
+      62: aload_1
+      63: invokevirtual #362                // Method net/minecraft/core/BlockPos.getZ:()I
+      66: i2d
+      67: ldc2_w        #351                // double 0.5d
+      70: dadd
+      71: aload_2
+      72: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      77: ldc2_w        #351                // double 0.5d
+      80: dsub
+      81: ldc2_w        #809                // double 2.0d
+      84: dmul
+      85: dadd
+      86: dstore        9
+      88: aload_0
+      89: getstatic     #816                // Field net/minecraft/core/particles/ParticleTypes.SMOKE:Lnet/minecraft/core/particles/SimpleParticleType;
+      92: dload         5
+      94: dload         7
+      96: dload         9
+      98: dconst_0
+      99: dconst_0
+     100: dconst_0
+     101: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     104: aload_0
+     105: aload_3
+     106: dload         5
+     108: dload         7
+     110: dload         9
+     112: dconst_0
+     113: dconst_0
+     114: dconst_0
+     115: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     118: iinc          4, 1
+     121: goto          3
+     124: return
+
+  public static void addBecomeOminousParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_3
+       3: bipush        20
+       5: if_icmpge     166
+       8: aload_1
+       9: invokevirtual #341                // Method net/minecraft/core/BlockPos.getX:()I
+      12: i2d
+      13: ldc2_w        #351                // double 0.5d
+      16: dadd
+      17: aload_2
+      18: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      23: ldc2_w        #351                // double 0.5d
+      26: dsub
+      27: ldc2_w        #809                // double 2.0d
+      30: dmul
+      31: dadd
+      32: dstore        4
+      34: aload_1
+      35: invokevirtual #355                // Method net/minecraft/core/BlockPos.getY:()I
+      38: i2d
+      39: ldc2_w        #351                // double 0.5d
+      42: dadd
+      43: aload_2
+      44: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      49: ldc2_w        #351                // double 0.5d
+      52: dsub
+      53: ldc2_w        #809                // double 2.0d
+      56: dmul
+      57: dadd
+      58: dstore        6
+      60: aload_1
+      61: invokevirtual #362                // Method net/minecraft/core/BlockPos.getZ:()I
+      64: i2d
+      65: ldc2_w        #351                // double 0.5d
+      68: dadd
+      69: aload_2
+      70: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      75: ldc2_w        #351                // double 0.5d
+      78: dsub
+      79: ldc2_w        #809                // double 2.0d
+      82: dmul
+      83: dadd
+      84: dstore        8
+      86: aload_2
+      87: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+      92: ldc2_w        #830                // double 0.02d
+      95: dmul
+      96: dstore        10
+      98: aload_2
+      99: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+     104: ldc2_w        #830                // double 0.02d
+     107: dmul
+     108: dstore        12
+     110: aload_2
+     111: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+     116: ldc2_w        #830                // double 0.02d
+     119: dmul
+     120: dstore        14
+     122: aload_0
+     123: getstatic     #834                // Field net/minecraft/core/particles/ParticleTypes.TRIAL_OMEN:Lnet/minecraft/core/particles/SimpleParticleType;
+     126: dload         4
+     128: dload         6
+     130: dload         8
+     132: dload         10
+     134: dload         12
+     136: dload         14
+     138: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     141: aload_0
+     142: getstatic     #837                // Field net/minecraft/core/particles/ParticleTypes.SOUL_FIRE_FLAME:Lnet/minecraft/core/particles/SimpleParticleType;
+     145: dload         4
+     147: dload         6
+     149: dload         8
+     151: dload         10
+     153: dload         12
+     155: dload         14
+     157: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     160: iinc          3, 1
+     163: goto          2
+     166: return
+
+  public static void addDetectPlayerParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, int, net.minecraft.core.particles.ParticleOptions);
+    Code:
+       0: iconst_0
+       1: istore        5
+       3: iload         5
+       5: bipush        30
+       7: iload_3
+       8: bipush        10
+      10: invokestatic  #846                // Method java/lang/Math.min:(II)I
+      13: iconst_5
+      14: imul
+      15: iadd
+      16: if_icmpge     125
+      19: fconst_2
+      20: aload_2
+      21: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      26: fmul
+      27: fconst_1
+      28: fsub
+      29: f2d
+      30: ldc2_w        #847                // double 0.65d
+      33: dmul
+      34: dstore        6
+      36: fconst_2
+      37: aload_2
+      38: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      43: fmul
+      44: fconst_1
+      45: fsub
+      46: f2d
+      47: ldc2_w        #847                // double 0.65d
+      50: dmul
+      51: dstore        8
+      53: aload_1
+      54: invokevirtual #341                // Method net/minecraft/core/BlockPos.getX:()I
+      57: i2d
+      58: ldc2_w        #351                // double 0.5d
+      61: dadd
+      62: dload         6
+      64: dadd
+      65: dstore        10
+      67: aload_1
+      68: invokevirtual #355                // Method net/minecraft/core/BlockPos.getY:()I
+      71: i2d
+      72: ldc2_w        #849                // double 0.1d
+      75: dadd
+      76: aload_2
+      77: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      82: f2d
+      83: ldc2_w        #851                // double 0.8d
+      86: dmul
+      87: dadd
+      88: dstore        12
+      90: aload_1
+      91: invokevirtual #362                // Method net/minecraft/core/BlockPos.getZ:()I
+      94: i2d
+      95: ldc2_w        #351                // double 0.5d
+      98: dadd
+      99: dload         8
+     101: dadd
+     102: dstore        14
+     104: aload_0
+     105: aload         4
+     107: dload         10
+     109: dload         12
+     111: dload         14
+     113: dconst_0
+     114: dconst_0
+     115: dconst_0
+     116: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     119: iinc          5, 1
+     122: goto          3
+     125: return
+
+  public static void addEjectItemParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_3
+       3: bipush        20
+       5: if_icmpge     158
+       8: aload_1
+       9: invokevirtual #341                // Method net/minecraft/core/BlockPos.getX:()I
+      12: i2d
+      13: ldc2_w        #860                // double 0.4d
+      16: dadd
+      17: aload_2
+      18: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      23: ldc2_w        #862                // double 0.2d
+      26: dmul
+      27: dadd
+      28: dstore        4
+      30: aload_1
+      31: invokevirtual #355                // Method net/minecraft/core/BlockPos.getY:()I
+      34: i2d
+      35: ldc2_w        #860                // double 0.4d
+      38: dadd
+      39: aload_2
+      40: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      45: ldc2_w        #862                // double 0.2d
+      48: dmul
+      49: dadd
+      50: dstore        6
+      52: aload_1
+      53: invokevirtual #362                // Method net/minecraft/core/BlockPos.getZ:()I
+      56: i2d
+      57: ldc2_w        #860                // double 0.4d
+      60: dadd
+      61: aload_2
+      62: invokeinterface #345,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      67: ldc2_w        #862                // double 0.2d
+      70: dmul
+      71: dadd
+      72: dstore        8
+      74: aload_2
+      75: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+      80: ldc2_w        #830                // double 0.02d
+      83: dmul
+      84: dstore        10
+      86: aload_2
+      87: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+      92: ldc2_w        #830                // double 0.02d
+      95: dmul
+      96: dstore        12
+      98: aload_2
+      99: invokeinterface #829,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+     104: ldc2_w        #830                // double 0.02d
+     107: dmul
+     108: dstore        14
+     110: aload_0
+     111: getstatic     #866                // Field net/minecraft/core/particles/ParticleTypes.SMALL_FLAME:Lnet/minecraft/core/particles/SimpleParticleType;
+     114: dload         4
+     116: dload         6
+     118: dload         8
+     120: dload         10
+     122: dload         12
+     124: dload         14
+     126: ldc2_w        #867                // double 0.25d
+     129: dmul
+     130: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     133: aload_0
+     134: getstatic     #816                // Field net/minecraft/core/particles/ParticleTypes.SMOKE:Lnet/minecraft/core/particles/SimpleParticleType;
+     137: dload         4
+     139: dload         6
+     141: dload         8
+     143: dload         10
+     145: dload         12
+     147: dload         14
+     149: invokevirtual #820                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+     152: iinc          3, 1
+     155: goto          2
+     158: return
+
+  public void setPlayerDetector(net.minecraft.world.level.block.entity.trialspawner.PlayerDetector);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #166                // Field playerDetector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;
+       5: return
+
+  public void overridePeacefulAndMobSpawnRule();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #262                // Field overridePeacefulAndMobSpawnRule:Z
+       5: return
+
+  private static boolean lambda$tickServer$3(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, java.util.UUID);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #879                // Method shouldMobBeUntracked:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Ljava/util/UUID;)Z
+       6: ireturn
+
+  private static net.minecraft.world.entity.Entity lambda$spawnMob$2(double, double, double, net.minecraft.util.RandomSource, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload         7
+       2: dload_0
+       3: dload_2
+       4: dload         4
+       6: aload         6
+       8: invokeinterface #676,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      13: ldc_w         #883                // float 360.0f
+      16: fmul
+      17: fconst_0
+      18: invokevirtual #887                // Method net/minecraft/world/entity/Entity.moveTo:(DDDFF)V
+      21: aload         7
+      23: areturn
+
+  private com.mojang.datafixers.kinds.App lambda$codec$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_1
+       1: getstatic     #896                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #73                 // String normal_config
+       6: getstatic     #140                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.DEFAULT:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+       9: invokeinterface #902,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      14: invokedynamic #910,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      19: invokevirtual #916                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      22: getstatic     #896                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.CODEC:Lcom/mojang/serialization/Codec;
+      25: ldc           #76                 // String ominous_config
+      27: getstatic     #140                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.DEFAULT:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;
+      30: invokeinterface #902,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      35: invokedynamic #920,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      40: invokevirtual #916                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      43: getstatic     #924                // Field net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.MAP_CODEC:Lcom/mojang/serialization/MapCodec;
+      46: invokedynamic #930,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      51: invokevirtual #916                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      54: iconst_0
+      55: ldc_w         #931                // int 2147483647
+      58: invokestatic  #935                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      61: ldc_w         #937                // String target_cooldown_length
+      64: ldc           #81                 // int 36000
+      66: invokestatic  #942                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      69: invokeinterface #902,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      74: invokedynamic #948,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      79: invokevirtual #916                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      82: iconst_1
+      83: sipush        128
+      86: invokestatic  #935                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      89: ldc_w         #950                // String required_player_range
+      92: bipush        14
+      94: invokestatic  #942                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      97: invokeinterface #902,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     102: invokedynamic #954,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     107: invokevirtual #916                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     110: invokevirtual #958                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+     113: aload_1
+     114: aload_0
+     115: invokedynamic #969,  0            // InvokeDynamic #9:apply:(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner;)Lcom/mojang/datafixers/util/Function5;
+     120: invokevirtual #972                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function5;)Lcom/mojang/datafixers/kinds/App;
+     123: areturn
+
+  private net.minecraft.world.level.block.entity.trialspawner.TrialSpawner lambda$codec$0(net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig, net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfig, net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerData, java.lang.Integer, java.lang.Integer);
+    Code:
+       0: new           #2                  // class net/minecraft/world/level/block/entity/trialspawner/TrialSpawner
+       3: dup
+       4: aload_1
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: invokevirtual #977                // Method java/lang/Integer.intValue:()I
+      12: aload         5
+      14: invokevirtual #977                // Method java/lang/Integer.intValue:()I
+      17: aload_0
+      18: getfield      #164                // Field stateAccessor:Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;
+      21: aload_0
+      22: getfield      #166                // Field playerDetector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;
+      25: aload_0
+      26: getfield      #168                // Field entitySelector:Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector$EntitySelector;
+      29: invokespecial #148                // Method "<init>":(Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig;Lnet/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData;IILnet/minecraft/world/level/block/entity/trialspawner/TrialSpawner$StateAccessor;Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector;Lnet/minecraft/world/level/block/entity/trialspawner/PlayerDetector$EntitySelector;)V
+      32: areturn
+
+  static {};
+    Code:
+       0: bipush        47
+       2: invokestatic  #989                // Method net/minecraft/util/Mth.square:(I)I
+       5: putstatic     #764                // Field MAX_MOB_TRACKING_DISTANCE_SQR:I
+       8: return
+}

@@ -1,0 +1,161 @@
+Classfile prickle-neoforge-1.21.1-21.1.11.jar!/net/darkhax/pricklemc/common/impl/PrickleMod.class
+  Last modified Sep 4, 2025; size 1130 bytes
+  SHA-256 checksum c1f22222b946fff36bd2f8249a9787eca7bc14e67161834c3866bbfaf3215852
+  Compiled from "PrickleMod.java"
+public class net.darkhax.pricklemc.common.impl.PrickleMod
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // net/darkhax/pricklemc/common/impl/PrickleMod
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 4, attributes: 1
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // net/darkhax/pricklemc/common/impl/PrickleMod.hasInitialized:Z
+   #8 = Class              #10            // net/darkhax/pricklemc/common/impl/PrickleMod
+   #9 = NameAndType        #11:#12        // hasInitialized:Z
+  #10 = Utf8               net/darkhax/pricklemc/common/impl/PrickleMod
+  #11 = Utf8               hasInitialized
+  #12 = Utf8               Z
+  #13 = Class              #14            // java/lang/IllegalStateException
+  #14 = Utf8               java/lang/IllegalStateException
+  #15 = Class              #16            // net/darkhax/pricklemc/common/impl/Constants
+  #16 = Utf8               net/darkhax/pricklemc/common/impl/Constants
+  #17 = String             #18            // The Prickle has already been initialized.
+  #18 = Utf8               The Prickle has already been initialized.
+  #19 = Methodref          #13.#20        // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+  #20 = NameAndType        #5:#21         // "<init>":(Ljava/lang/String;)V
+  #21 = Utf8               (Ljava/lang/String;)V
+  #22 = Methodref          #8.#23         // net/darkhax/pricklemc/common/impl/PrickleMod.runStartupChecks:()V
+  #23 = NameAndType        #24:#6         // runStartupChecks:()V
+  #24 = Utf8               runStartupChecks
+  #25 = Fieldref           #26.#27        // net/darkhax/pricklemc/common/api/services/Services.PLATFORM:Lnet/darkhax/pricklemc/common/api/util/IPlatformHelper;
+  #26 = Class              #28            // net/darkhax/pricklemc/common/api/services/Services
+  #27 = NameAndType        #29:#30        // PLATFORM:Lnet/darkhax/pricklemc/common/api/util/IPlatformHelper;
+  #28 = Utf8               net/darkhax/pricklemc/common/api/services/Services
+  #29 = Utf8               PLATFORM
+  #30 = Utf8               Lnet/darkhax/pricklemc/common/api/util/IPlatformHelper;
+  #31 = String             #32            // Services are not available.
+  #32 = Utf8               Services are not available.
+  #33 = Fieldref           #8.#34         // net/darkhax/pricklemc/common/impl/PrickleMod.instance:Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+  #34 = NameAndType        #35:#36        // instance:Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+  #35 = Utf8               instance
+  #36 = Utf8               Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+  #37 = Methodref          #8.#3          // net/darkhax/pricklemc/common/impl/PrickleMod."<init>":()V
+  #38 = Utf8               Code
+  #39 = Utf8               LineNumberTable
+  #40 = Utf8               LocalVariableTable
+  #41 = Utf8               this
+  #42 = Utf8               init
+  #43 = Utf8               StackMapTable
+  #44 = Utf8               getInstance
+  #45 = Utf8               ()Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+  #46 = Utf8               SourceFile
+  #47 = Utf8               PrickleMod.java
+{
+  private static net.darkhax.pricklemc.common.impl.PrickleMod instance;
+    descriptor: Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private boolean hasInitialized;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  public net.darkhax.pricklemc.common.impl.PrickleMod();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #7                  // Field hasInitialized:Z
+         9: return
+      LineNumberTable:
+        line 5: 0
+        line 8: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+
+  public void init();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field hasInitialized:Z
+         4: ifeq          17
+         7: new           #13                 // class java/lang/IllegalStateException
+        10: dup
+        11: ldc           #17                 // String The Prickle has already been initialized.
+        13: invokespecial #19                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        16: athrow
+        17: aload_0
+        18: invokevirtual #22                 // Method runStartupChecks:()V
+        21: aload_0
+        22: iconst_1
+        23: putfield      #7                  // Field hasInitialized:Z
+        26: return
+      LineNumberTable:
+        line 11: 0
+        line 12: 7
+        line 14: 17
+        line 15: 21
+        line 16: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+      StackMapTable: number_of_entries = 1
+        frame_type = 17 /* same */
+
+  private void runStartupChecks();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #25                 // Field net/darkhax/pricklemc/common/api/services/Services.PLATFORM:Lnet/darkhax/pricklemc/common/api/util/IPlatformHelper;
+         3: ifnonnull     16
+         6: new           #13                 // class java/lang/IllegalStateException
+         9: dup
+        10: ldc           #31                 // String Services are not available.
+        12: invokespecial #19                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        15: athrow
+        16: return
+      LineNumberTable:
+        line 19: 0
+        line 20: 6
+        line 22: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+      StackMapTable: number_of_entries = 1
+        frame_type = 16 /* same */
+
+  public static net.darkhax.pricklemc.common.impl.PrickleMod getInstance();
+    descriptor: ()Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #33                 // Field instance:Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+         3: ifnonnull     16
+         6: new           #8                  // class net/darkhax/pricklemc/common/impl/PrickleMod
+         9: dup
+        10: invokespecial #37                 // Method "<init>":()V
+        13: putstatic     #33                 // Field instance:Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+        16: getstatic     #33                 // Field instance:Lnet/darkhax/pricklemc/common/impl/PrickleMod;
+        19: areturn
+      LineNumberTable:
+        line 30: 0
+        line 31: 6
+        line 33: 16
+      StackMapTable: number_of_entries = 1
+        frame_type = 16 /* same */
+}
+SourceFile: "PrickleMod.java"

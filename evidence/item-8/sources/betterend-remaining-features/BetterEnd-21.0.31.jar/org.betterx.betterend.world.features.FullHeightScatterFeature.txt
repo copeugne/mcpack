@@ -1,0 +1,184 @@
+Compiled from "FullHeightScatterFeature.java"
+public abstract class org.betterx.betterend.world.features.FullHeightScatterFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  private final int radius;
+
+  public org.betterx.betterend.world.features.FullHeightScatterFeature(int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #7                  // Field radius:I
+       9: return
+
+  public abstract boolean canGenerate(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+
+  public abstract void generate(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: invokestatic  #13                 // Method org/betterx/betterend/util/GlobalState.stateForThread:()Lorg/betterx/betterend/util/GlobalState;
+       3: getfield      #19                 // Field org/betterx/betterend/util/GlobalState.POS:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       6: astore_2
+       7: aload_1
+       8: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      11: astore_3
+      12: aload_1
+      13: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      16: astore        4
+      18: aload_1
+      19: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      22: astore        5
+      24: aload         5
+      26: getstatic     #37                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      29: aload         4
+      31: invokevirtual #43                 // Method net/minecraft/core/BlockPos.getX:()I
+      34: aload         4
+      36: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getZ:()I
+      39: invokeinterface #52,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+      44: istore        6
+      46: aload         5
+      48: new           #44                 // class net/minecraft/core/BlockPos
+      51: dup
+      52: aload         4
+      54: invokevirtual #43                 // Method net/minecraft/core/BlockPos.getX:()I
+      57: iconst_0
+      58: aload         4
+      60: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getZ:()I
+      63: invokespecial #58                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      66: iload         6
+      68: invokestatic  #61                 // Method org/betterx/bclib/util/BlocksHelper.upRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+      71: istore        7
+      73: iload         6
+      75: istore        8
+      77: iload         8
+      79: iload         7
+      81: if_icmple     329
+      84: aload_2
+      85: aload         4
+      87: invokevirtual #43                 // Method net/minecraft/core/BlockPos.getX:()I
+      90: iload         8
+      92: aload         4
+      94: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getZ:()I
+      97: invokevirtual #67                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     100: pop
+     101: aload         5
+     103: aload_2
+     104: invokeinterface #73,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     109: invokevirtual #77                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     112: ifeq          323
+     115: aload         5
+     117: aload_2
+     118: invokevirtual #83                 // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+     121: invokeinterface #73,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     126: invokevirtual #77                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     129: ifne          323
+     132: aload_0
+     133: getfield      #7                  // Field radius:I
+     136: i2f
+     137: ldc           #86                 // float 0.5f
+     139: fmul
+     140: aload_0
+     141: getfield      #7                  // Field radius:I
+     144: i2f
+     145: aload_3
+     146: invokestatic  #87                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+     149: fstore        9
+     151: fload         9
+     153: fload         9
+     155: fmul
+     156: ldc           #93                 // float 1.5f
+     158: ldc           #94                 // float 3.0f
+     160: aload_3
+     161: invokestatic  #87                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+     164: fmul
+     165: f2d
+     166: invokestatic  #95                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     169: istore        10
+     171: iconst_0
+     172: istore        11
+     174: iload         11
+     176: iload         10
+     178: if_icmpge     323
+     181: fload         9
+     183: aload_3
+     184: invokeinterface #99,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     189: f2d
+     190: invokestatic  #105                // Method java/lang/Math.sqrt:(D)D
+     193: d2f
+     194: fmul
+     195: fstore        12
+     197: aload_3
+     198: invokeinterface #99,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     203: ldc           #111                // float 6.2831855f
+     205: fmul
+     206: fstore        13
+     208: fload         12
+     210: fload         13
+     212: f2d
+     213: invokestatic  #112                // Method java/lang/Math.cos:(D)D
+     216: d2f
+     217: fmul
+     218: fstore        14
+     220: fload         12
+     222: fload         13
+     224: f2d
+     225: invokestatic  #115                // Method java/lang/Math.sin:(D)D
+     228: d2f
+     229: fmul
+     230: fstore        15
+     232: aload_2
+     233: aload         4
+     235: invokevirtual #43                 // Method net/minecraft/core/BlockPos.getX:()I
+     238: i2f
+     239: fload         14
+     241: fadd
+     242: f2d
+     243: iload         8
+     245: iconst_5
+     246: iadd
+     247: i2d
+     248: aload         4
+     250: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getZ:()I
+     253: i2f
+     254: fload         15
+     256: fadd
+     257: f2d
+     258: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(DDD)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     261: pop
+     262: aload         5
+     264: aload_2
+     265: bipush        16
+     267: invokestatic  #121                // Method org/betterx/bclib/util/BlocksHelper.downRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+     270: istore        16
+     272: iload         16
+     274: bipush        10
+     276: if_icmple     282
+     279: goto          317
+     282: aload_2
+     283: aload_2
+     284: invokevirtual #124                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     287: iload         16
+     289: isub
+     290: invokevirtual #127                // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     293: pop
+     294: aload_0
+     295: aload         5
+     297: aload_3
+     298: aload         4
+     300: aload_2
+     301: fload         9
+     303: invokevirtual #131                // Method canGenerate:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;F)Z
+     306: ifeq          317
+     309: aload_0
+     310: aload         5
+     312: aload_3
+     313: aload_2
+     314: invokevirtual #135                // Method generate:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+     317: iinc          11, 1
+     320: goto          174
+     323: iinc          8, -1
+     326: goto          77
+     329: iconst_1
+     330: ireturn
+}

@@ -1,0 +1,161 @@
+Classfile forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar!/net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin.class
+  Last modified Feb 21, 2026; size 1595 bytes
+  SHA-256 checksum a9ef793d243e25d81cb5da00d69ca1812257f3f11a0a06a6b559fdf3448e3b2a
+  Compiled from "SimpleInventoryMixin.java"
+public class net.fabricmc.fabric.mixin.transfer.SimpleInventoryMixin implements net.fabricmc.fabric.impl.transfer.item.SpecialLogicInventory
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 4, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin.fabric_suppressSpecialLogic:Z
+   #8 = Class              #10            // net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin
+   #9 = NameAndType        #11:#12        // fabric_suppressSpecialLogic:Z
+  #10 = Utf8               net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin
+  #11 = Utf8               fabric_suppressSpecialLogic
+  #12 = Utf8               Z
+  #13 = Methodref          #14.#15        // net/minecraft/world/SimpleContainer.setChanged:()V
+  #14 = Class              #16            // net/minecraft/world/SimpleContainer
+  #15 = NameAndType        #17:#6         // setChanged:()V
+  #16 = Utf8               net/minecraft/world/SimpleContainer
+  #17 = Utf8               setChanged
+  #18 = Class              #19            // net/fabricmc/fabric/impl/transfer/item/SpecialLogicInventory
+  #19 = Utf8               net/fabricmc/fabric/impl/transfer/item/SpecialLogicInventory
+  #20 = Utf8               RuntimeVisibleAnnotations
+  #21 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #22 = Utf8               Code
+  #23 = Utf8               LineNumberTable
+  #24 = Utf8               LocalVariableTable
+  #25 = Utf8               this
+  #26 = Utf8               Lnet/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin;
+  #27 = Utf8               fabric_redirectMarkDirty
+  #28 = Utf8               (Lnet/minecraft/world/SimpleContainer;)V
+  #29 = Utf8               self
+  #30 = Utf8               Lnet/minecraft/world/SimpleContainer;
+  #31 = Utf8               StackMapTable
+  #32 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #33 = Utf8               at
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #35 = Utf8               value
+  #36 = Utf8               INVOKE
+  #37 = Utf8               target
+  #38 = Utf8               Lnet/minecraft/world/SimpleContainer;setChanged()V
+  #39 = Utf8               method
+  #40 = Utf8               setItem(ILnet/minecraft/world/item/ItemStack;)V
+  #41 = Utf8               fabric_setSuppress
+  #42 = Utf8               (Z)V
+  #43 = Utf8               suppress
+  #44 = Utf8               fabric_onFinalCommit
+  #45 = Utf8               (ILnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V
+  #46 = Utf8               slot
+  #47 = Utf8               I
+  #48 = Utf8               oldStack
+  #49 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #50 = Utf8               newStack
+  #51 = Utf8               SourceFile
+  #52 = Utf8               SimpleInventoryMixin.java
+  #53 = Utf8               RuntimeInvisibleAnnotations
+  #54 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+{
+  private boolean fabric_suppressSpecialLogic;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #21()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.fabricmc.fabric.mixin.transfer.SimpleInventoryMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #7                  // Field fabric_suppressSpecialLogic:Z
+         9: return
+      LineNumberTable:
+        line 31: 0
+        line 32: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lnet/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin;
+
+  public void fabric_redirectMarkDirty(net.minecraft.world.SimpleContainer);
+    descriptor: (Lnet/minecraft/world/SimpleContainer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #7                  // Field fabric_suppressSpecialLogic:Z
+         4: ifne          11
+         7: aload_1
+         8: invokevirtual #13                 // Method net/minecraft/world/SimpleContainer.setChanged:()V
+        11: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 7
+        line 43: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lnet/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin;
+            0      12     1  self   Lnet/minecraft/world/SimpleContainer;
+      StackMapTable: number_of_entries = 1
+        frame_type = 11 /* same */
+    RuntimeVisibleAnnotations:
+      0: #32(#33=@#34(#35=s#36,#37=s#38),#39=[s#40])
+        org.spongepowered.asm.mixin.injection.Redirect(
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/SimpleContainer;setChanged()V"
+          )
+          method=["setItem(ILnet/minecraft/world/item/ItemStack;)V"]
+        )
+
+  public void fabric_setSuppress(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #7                  // Field fabric_suppressSpecialLogic:Z
+         5: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin;
+            0       6     1 suppress   Z
+
+  public void fabric_onFinalCommit(int, net.minecraft.world.item.ItemStack, net.minecraft.world.item.ItemStack);
+    descriptor: (ILnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=4, args_size=4
+         0: return
+      LineNumberTable:
+        line 52: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lnet/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin;
+            0       1     1  slot   I
+            0       1     2 oldStack   Lnet/minecraft/world/item/ItemStack;
+            0       1     3 newStack   Lnet/minecraft/world/item/ItemStack;
+}
+SourceFile: "SimpleInventoryMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #54(#35=[c#30])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/SimpleContainer;]
+    )

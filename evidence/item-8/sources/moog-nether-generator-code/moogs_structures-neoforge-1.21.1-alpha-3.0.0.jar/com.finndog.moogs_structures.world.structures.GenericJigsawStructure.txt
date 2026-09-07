@@ -1,0 +1,1434 @@
+Compiled from "GenericJigsawStructure.java"
+public class com.finndog.moogs_structures.world.structures.GenericJigsawStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<com.finndog.moogs_structures.world.structures.GenericJigsawStructure> CODEC;
+
+  public final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> startPool;
+
+  public final int size;
+
+  public final java.util.Optional<com.finndog.moogs_structures.world.structures.codecs.YRangeAllowance> yAllowance;
+
+  public final net.minecraft.world.level.levelgen.heightproviders.HeightProvider startHeight;
+
+  public final java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types> projectStartToHeightmap;
+
+  public final boolean cannotSpawnInLiquid;
+
+  public final java.util.Optional<java.lang.Integer> terrainHeightCheckRadius;
+
+  public final java.util.Optional<java.lang.Integer> allowedTerrainHeightRange;
+
+  public final java.util.Optional<java.lang.Integer> biomeRadius;
+
+  public final java.util.HashSet<net.minecraft.resources.ResourceLocation> poolsThatIgnoreBoundaries;
+
+  public final java.util.Optional<java.lang.Integer> maxDistanceFromCenter;
+
+  public final java.util.Optional<com.finndog.moogs_structures.world.structures.GenericJigsawStructure$BURYING_TYPE> buryingType;
+
+  public final boolean useBoundingBoxHack;
+
+  public final net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings liquidSettings;
+
+  public com.finndog.moogs_structures.world.structures.GenericJigsawStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, int, java.util.Optional<com.finndog.moogs_structures.world.structures.codecs.YRangeAllowance>, net.minecraft.world.level.levelgen.heightproviders.HeightProvider, java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types>, boolean, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>, java.util.HashSet<net.minecraft.resources.ResourceLocation>, java.util.Optional<java.lang.Integer>, java.util.Optional<com.finndog.moogs_structures.world.structures.GenericJigsawStructure$BURYING_TYPE>, boolean, net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+      10: aload_0
+      11: iload_3
+      12: putfield      #13                 // Field size:I
+      15: aload_0
+      16: aload         4
+      18: putfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      21: aload_0
+      22: aload         5
+      24: putfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+      27: aload_0
+      28: aload         6
+      30: putfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+      33: aload_0
+      34: iload         7
+      36: putfield      #28                 // Field cannotSpawnInLiquid:Z
+      39: aload_0
+      40: aload         8
+      42: putfield      #32                 // Field terrainHeightCheckRadius:Ljava/util/Optional;
+      45: aload_0
+      46: aload         9
+      48: putfield      #35                 // Field allowedTerrainHeightRange:Ljava/util/Optional;
+      51: aload_0
+      52: aload         10
+      54: putfield      #38                 // Field biomeRadius:Ljava/util/Optional;
+      57: aload_0
+      58: aload         11
+      60: putfield      #41                 // Field poolsThatIgnoreBoundaries:Ljava/util/HashSet;
+      63: aload_0
+      64: aload         12
+      66: putfield      #45                 // Field maxDistanceFromCenter:Ljava/util/Optional;
+      69: aload_0
+      70: aload         13
+      72: putfield      #48                 // Field buryingType:Ljava/util/Optional;
+      75: aload_0
+      76: iload         14
+      78: putfield      #51                 // Field useBoundingBoxHack:Z
+      81: aload_0
+      82: aload         15
+      84: putfield      #54                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      87: aload         4
+      89: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      92: ifeq          198
+      95: aload         4
+      97: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     100: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     103: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     106: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     109: ifeq          198
+     112: aload         4
+     114: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     117: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     120: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     123: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     126: ifeq          198
+     129: aload         4
+     131: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     134: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     137: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     140: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     143: checkcast     #76                 // class java/lang/Integer
+     146: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     149: aload         4
+     151: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     154: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     157: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     160: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     163: checkcast     #76                 // class java/lang/Integer
+     166: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     169: if_icmpge     198
+     172: new           #82                 // class java/lang/RuntimeException
+     175: dup
+     176: ldc           #84                 // String     Moog\'s Structure Lib: maxYAllowed cannot be less than minYAllowed.\n    Please correct this error as there\'s no way to spawn this structure properly\n        Structure pool of problematic structure: %s\n
+     178: iconst_1
+     179: anewarray     #86                 // class java/lang/Object
+     182: dup
+     183: iconst_0
+     184: aload_2
+     185: invokeinterface #88,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     190: aastore
+     191: invokevirtual #93                 // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+     194: invokespecial #99                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     197: athrow
+     198: return
+
+  protected boolean extraSpawningChecks(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore_3
+       5: aload_0
+       6: getfield      #38                 // Field biomeRadius:Ljava/util/Optional;
+       9: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      12: ifeq          207
+      15: aload_1
+      16: invokevirtual #108                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.biomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+      19: instanceof    #112                // class net/minecraft/world/level/biome/CheckerboardColumnBiomeSource
+      22: ifne          207
+      25: aload_0
+      26: getfield      #38                 // Field biomeRadius:Ljava/util/Optional;
+      29: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      32: checkcast     #76                 // class java/lang/Integer
+      35: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+      38: istore        4
+      40: aload_2
+      41: invokevirtual #114                // Method net/minecraft/core/BlockPos.getY:()I
+      44: istore        5
+      46: aload_0
+      47: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+      50: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      53: ifeq          102
+      56: iload         5
+      58: aload_1
+      59: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      62: aload_2
+      63: invokevirtual #123                // Method net/minecraft/core/BlockPos.getX:()I
+      66: bipush        7
+      68: iadd
+      69: aload_2
+      70: invokevirtual #126                // Method net/minecraft/core/BlockPos.getZ:()I
+      73: bipush        7
+      75: iadd
+      76: aload_0
+      77: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+      80: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      83: checkcast     #129                // class net/minecraft/world/level/levelgen/Heightmap$Types
+      86: aload_1
+      87: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      90: aload_1
+      91: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      94: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      97: iconst_1
+      98: isub
+      99: iadd
+     100: istore        5
+     102: iload         5
+     104: invokestatic  #145                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+     107: istore        5
+     109: aload_3
+     110: getfield      #151                // Field net/minecraft/world/level/ChunkPos.x:I
+     113: iload         4
+     115: isub
+     116: istore        6
+     118: iload         6
+     120: aload_3
+     121: getfield      #151                // Field net/minecraft/world/level/ChunkPos.x:I
+     124: iload         4
+     126: iadd
+     127: if_icmpgt     207
+     130: aload_3
+     131: getfield      #156                // Field net/minecraft/world/level/ChunkPos.z:I
+     134: iload         4
+     136: isub
+     137: istore        7
+     139: iload         7
+     141: aload_3
+     142: getfield      #156                // Field net/minecraft/world/level/ChunkPos.z:I
+     145: iload         4
+     147: iadd
+     148: if_icmpgt     201
+     151: aload_1
+     152: invokevirtual #108                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.biomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+     155: iload         6
+     157: invokestatic  #159                // Method net/minecraft/core/QuartPos.fromSection:(I)I
+     160: iload         5
+     162: iload         7
+     164: invokestatic  #159                // Method net/minecraft/core/QuartPos.fromSection:(I)I
+     167: aload_1
+     168: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     171: invokevirtual #162                // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+     174: invokevirtual #168                // Method net/minecraft/world/level/biome/BiomeSource.getNoiseBiome:(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;
+     177: astore        8
+     179: aload_1
+     180: invokevirtual #174                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.validBiome:()Ljava/util/function/Predicate;
+     183: aload         8
+     185: invokeinterface #178,  2          // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+     190: ifne          195
+     193: iconst_0
+     194: ireturn
+     195: iinc          7, 1
+     198: goto          139
+     201: iinc          6, 1
+     204: goto          118
+     207: aload_0
+     208: getfield      #28                 // Field cannotSpawnInLiquid:Z
+     211: ifeq          326
+     214: aload_3
+     215: iconst_0
+     216: invokevirtual #184                // Method net/minecraft/world/level/ChunkPos.getMiddleBlockPosition:(I)Lnet/minecraft/core/BlockPos;
+     219: astore        4
+     221: aload_1
+     222: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     225: astore        5
+     227: aload         5
+     229: aload         4
+     231: invokevirtual #123                // Method net/minecraft/core/BlockPos.getX:()I
+     234: aload         4
+     236: invokevirtual #126                // Method net/minecraft/core/BlockPos.getZ:()I
+     239: aload_1
+     240: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     243: aload_1
+     244: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     247: invokevirtual #188                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+     250: astore        6
+     252: getstatic     #194                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     255: invokevirtual #200                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     258: astore        7
+     260: aload         5
+     262: invokevirtual #206                // Method net/minecraft/world/level/chunk/ChunkGenerator.getMinY:()I
+     265: aload         5
+     267: invokevirtual #209                // Method net/minecraft/world/level/chunk/ChunkGenerator.getGenDepth:()I
+     270: iadd
+     271: istore        8
+     273: iload         8
+     275: aload         5
+     277: invokevirtual #206                // Method net/minecraft/world/level/chunk/ChunkGenerator.getMinY:()I
+     280: if_icmple     313
+     283: aload         6
+     285: iload         8
+     287: invokevirtual #212                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+     290: astore        9
+     292: aload         9
+     294: invokevirtual #218                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     297: ifne          307
+     300: aload         9
+     302: astore        7
+     304: goto          313
+     307: iinc          8, -1
+     310: goto          273
+     313: aload         7
+     315: invokevirtual #223                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+     318: invokevirtual #227                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+     321: ifne          326
+     324: iconst_0
+     325: ireturn
+     326: aload_0
+     327: getfield      #32                 // Field terrainHeightCheckRadius:Ljava/util/Optional;
+     330: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     333: ifeq          663
+     336: aload_0
+     337: getfield      #35                 // Field allowedTerrainHeightRange:Ljava/util/Optional;
+     340: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     343: ifne          375
+     346: aload_0
+     347: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     350: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     353: ifeq          663
+     356: aload_0
+     357: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     360: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     363: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     366: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     369: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     372: ifeq          663
+     375: ldc           #232                // int -2147483648
+     377: istore        4
+     379: ldc           #233                // int 2147483647
+     381: istore        5
+     383: aload_0
+     384: getfield      #32                 // Field terrainHeightCheckRadius:Ljava/util/Optional;
+     387: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     390: checkcast     #76                 // class java/lang/Integer
+     393: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     396: istore        6
+     398: aload_3
+     399: getfield      #151                // Field net/minecraft/world/level/ChunkPos.x:I
+     402: iload         6
+     404: isub
+     405: istore        7
+     407: iload         7
+     409: aload_3
+     410: getfield      #151                // Field net/minecraft/world/level/ChunkPos.x:I
+     413: iload         6
+     415: iadd
+     416: if_icmpgt     630
+     419: aload_3
+     420: getfield      #156                // Field net/minecraft/world/level/ChunkPos.z:I
+     423: iload         6
+     425: isub
+     426: istore        8
+     428: iload         8
+     430: aload_3
+     431: getfield      #156                // Field net/minecraft/world/level/ChunkPos.z:I
+     434: iload         6
+     436: iadd
+     437: if_icmpgt     624
+     440: aload_1
+     441: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     444: iload         7
+     446: iconst_4
+     447: ishl
+     448: bipush        7
+     450: iadd
+     451: iload         8
+     453: iconst_4
+     454: ishl
+     455: bipush        7
+     457: iadd
+     458: aload_0
+     459: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+     462: getstatic     #234                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     465: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     468: checkcast     #129                // class net/minecraft/world/level/levelgen/Heightmap$Types
+     471: aload_1
+     472: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     475: aload_1
+     476: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     479: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     482: istore        9
+     484: iload         4
+     486: iload         9
+     488: invokestatic  #242                // Method java/lang/Math.max:(II)I
+     491: istore        4
+     493: iload         5
+     495: iload         9
+     497: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     500: istore        5
+     502: aload_0
+     503: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     506: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     509: ifeq          560
+     512: aload_0
+     513: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     516: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     519: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     522: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     525: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     528: ifeq          560
+     531: iload         5
+     533: aload_0
+     534: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     537: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     540: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     543: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     546: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     549: checkcast     #76                 // class java/lang/Integer
+     552: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     555: if_icmpge     560
+     558: iconst_0
+     559: ireturn
+     560: aload_0
+     561: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     564: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     567: ifeq          618
+     570: aload_0
+     571: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     574: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     577: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     580: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     583: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     586: ifeq          618
+     589: iload         5
+     591: aload_0
+     592: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     595: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     598: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     601: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     604: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     607: checkcast     #76                 // class java/lang/Integer
+     610: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     613: if_icmple     618
+     616: iconst_0
+     617: ireturn
+     618: iinc          8, 1
+     621: goto          428
+     624: iinc          7, 1
+     627: goto          407
+     630: aload_0
+     631: getfield      #35                 // Field allowedTerrainHeightRange:Ljava/util/Optional;
+     634: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     637: ifeq          663
+     640: iload         4
+     642: iload         5
+     644: isub
+     645: aload_0
+     646: getfield      #35                 // Field allowedTerrainHeightRange:Ljava/util/Optional;
+     649: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     652: checkcast     #76                 // class java/lang/Integer
+     655: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     658: if_icmple     663
+     661: iconst_0
+     662: ireturn
+     663: iconst_1
+     664: ireturn
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: aload_1
+       5: invokevirtual #251                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       8: new           #255                // class net/minecraft/world/level/levelgen/WorldGenerationContext
+      11: dup
+      12: aload_1
+      13: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      16: aload_1
+      17: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      20: invokespecial #257                // Method net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+      23: invokevirtual #260                // Method net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+      26: istore_2
+      27: new           #115                // class net/minecraft/core/BlockPos
+      30: dup
+      31: aload_1
+      32: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      35: invokevirtual #266                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      38: iload_2
+      39: aload_1
+      40: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      43: invokevirtual #269                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      46: invokespecial #272                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      49: astore_3
+      50: aload_0
+      51: aload_1
+      52: aload_3
+      53: invokevirtual #275                // Method extraSpawningChecks:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)Z
+      56: ifne          63
+      59: invokestatic  #279                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      62: areturn
+      63: ldc           #233                // int 2147483647
+      65: istore        4
+      67: ldc           #232                // int -2147483648
+      69: istore        5
+      71: aload_0
+      72: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      75: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      78: ifeq          177
+      81: aload_0
+      82: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      85: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      88: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+      91: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+      94: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      97: ifeq          129
+     100: iload         4
+     102: aload_0
+     103: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     106: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     109: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     112: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     115: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     118: checkcast     #76                 // class java/lang/Integer
+     121: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     124: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     127: istore        4
+     129: aload_0
+     130: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     133: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     136: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     139: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     142: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     145: ifeq          177
+     148: iload         5
+     150: aload_0
+     151: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     154: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     157: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     160: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     163: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     166: checkcast     #76                 // class java/lang/Integer
+     169: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     172: invokestatic  #242                // Method java/lang/Math.max:(II)I
+     175: istore        5
+     177: iload         4
+     179: istore        6
+     181: iload         5
+     183: istore        7
+     185: aload_1
+     186: aload_0
+     187: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+     190: aload_0
+     191: getfield      #13                 // Field size:I
+     194: aload_1
+     195: invokevirtual #283                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     198: getstatic     #287                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+     201: invokeinterface #293,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     206: aload_0
+     207: invokeinterface #299,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+     212: aload_3
+     213: aload_0
+     214: getfield      #51                 // Field useBoundingBoxHack:Z
+     217: aload_0
+     218: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+     221: iload         4
+     223: iload         5
+     225: aload_0
+     226: getfield      #41                 // Field poolsThatIgnoreBoundaries:Ljava/util/HashSet;
+     229: aload_0
+     230: getfield      #45                 // Field maxDistanceFromCenter:Ljava/util/Optional;
+     233: aload_0
+     234: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+     237: aload_0
+     238: getfield      #54                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     241: aload_0
+     242: aload_1
+     243: iload_2
+     244: aload_3
+     245: iload         6
+     247: iload         7
+     249: invokedynamic #305,  0            // InvokeDynamic #0:accept:(Lcom/finndog/moogs_structures/world/structures/GenericJigsawStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILnet/minecraft/core/BlockPos;II)Ljava/util/function/BiConsumer;
+     254: invokestatic  #309                // Method com/finndog/moogs_structures/world/structures/pieces/PieceLimitedJigsawManager.assembleJigsawStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;ILnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;ZLjava/util/Optional;IILjava/util/Set;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;Ljava/util/function/BiConsumer;)Ljava/util/Optional;
+     257: areturn
+
+  protected void postLayoutAdjustments(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, int, net.minecraft.core.BlockPos, int, int, java.util.List<net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece>);
+    Code:
+       0: aload         4
+       2: aload         7
+       4: invokestatic  #315                // Method com/finndog/moogs_structures/utils/GeneralUtils.centerAllPieces:(Lnet/minecraft/core/BlockPos;Ljava/util/List;)V
+       7: aload_0
+       8: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+      11: invokevirtual #319                // Method java/util/Optional.isEmpty:()Z
+      14: ifeq          18
+      17: return
+      18: aload_0
+      19: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+      22: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      25: getstatic     #320                // Field com/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE.LOWEST_CORNER:Lcom/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE;
+      28: if_acmpne     280
+      31: aload_0
+      32: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+      35: getstatic     #234                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      38: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      41: checkcast     #129                // class net/minecraft/world/level/levelgen/Heightmap$Types
+      44: astore        8
+      46: aload         7
+      48: iconst_0
+      49: invokeinterface #326,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      54: checkcast     #331                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+      57: invokevirtual #333                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      60: astore        9
+      62: aload_2
+      63: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      66: aload         9
+      68: invokevirtual #337                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+      71: aload         9
+      73: invokevirtual #342                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+      76: aload         8
+      78: aload_2
+      79: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      82: aload_2
+      83: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      86: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      89: iconst_1
+      90: isub
+      91: istore        10
+      93: iload         10
+      95: aload_2
+      96: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      99: aload         9
+     101: invokevirtual #337                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     104: aload         9
+     106: invokevirtual #345                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     109: aload         8
+     111: aload_2
+     112: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     115: aload_2
+     116: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     119: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     122: iconst_1
+     123: isub
+     124: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     127: istore        10
+     129: iload         10
+     131: aload_2
+     132: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     135: aload         9
+     137: invokevirtual #348                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     140: aload         9
+     142: invokevirtual #342                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     145: aload         8
+     147: aload_2
+     148: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     151: aload_2
+     152: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     155: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     158: iconst_1
+     159: isub
+     160: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     163: istore        10
+     165: iload         10
+     167: aload_2
+     168: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     171: aload         9
+     173: invokevirtual #348                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     176: aload         9
+     178: invokevirtual #345                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     181: aload         8
+     183: aload_2
+     184: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     187: aload_2
+     188: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     191: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     194: iconst_1
+     195: isub
+     196: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     199: istore        10
+     201: aload_0
+     202: getfield      #28                 // Field cannotSpawnInLiquid:Z
+     205: ifne          251
+     208: aload         8
+     210: getstatic     #351                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     213: if_acmpeq     224
+     216: aload         8
+     218: getstatic     #354                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     221: if_acmpne     251
+     224: aload_2
+     225: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     228: invokevirtual #357                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+     231: aload         9
+     233: invokevirtual #360                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+     236: isub
+     237: istore        11
+     239: iload         10
+     241: iload         11
+     243: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     246: istore        10
+     248: goto          265
+     251: iload         10
+     253: aload_2
+     254: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     257: invokevirtual #357                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+     260: invokestatic  #242                // Method java/lang/Math.max:(II)I
+     263: istore        10
+     265: aload_0
+     266: aload_2
+     267: iload_3
+     268: aload         7
+     270: aload         9
+     272: iload         10
+     274: invokevirtual #363                // Method offsetToNewHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;I)V
+     277: goto          1175
+     280: aload_0
+     281: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+     284: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     287: getstatic     #367                // Field com/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE.AVERAGE_LAND:Lcom/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE;
+     290: if_acmpne     894
+     293: aload         7
+     295: iconst_0
+     296: invokeinterface #326,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     301: checkcast     #331                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     304: invokevirtual #333                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     307: astore        8
+     309: new           #115                // class net/minecraft/core/BlockPos
+     312: dup
+     313: aload         8
+     315: invokevirtual #370                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+     318: invokespecial #374                // Method net/minecraft/core/BlockPos."<init>":(Lnet/minecraft/core/Vec3i;)V
+     321: astore        9
+     323: aload         8
+     325: invokevirtual #377                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getLength:()Lnet/minecraft/core/Vec3i;
+     328: invokevirtual #381                // Method net/minecraft/core/Vec3i.getX:()I
+     331: aload         8
+     333: invokevirtual #377                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getLength:()Lnet/minecraft/core/Vec3i;
+     336: invokevirtual #381                // Method net/minecraft/core/Vec3i.getX:()I
+     339: imul
+     340: aload         8
+     342: invokevirtual #377                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getLength:()Lnet/minecraft/core/Vec3i;
+     345: invokevirtual #384                // Method net/minecraft/core/Vec3i.getZ:()I
+     348: aload         8
+     350: invokevirtual #377                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getLength:()Lnet/minecraft/core/Vec3i;
+     353: invokevirtual #384                // Method net/minecraft/core/Vec3i.getZ:()I
+     356: imul
+     357: iadd
+     358: i2d
+     359: invokestatic  #385                // Method java/lang/Math.sqrt:(D)D
+     362: d2i
+     363: iconst_2
+     364: idiv
+     365: istore        10
+     367: aload_0
+     368: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+     371: getstatic     #234                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     374: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     377: checkcast     #129                // class net/minecraft/world/level/levelgen/Heightmap$Types
+     380: astore        11
+     382: new           #389                // class java/util/ArrayList
+     385: dup
+     386: invokespecial #391                // Method java/util/ArrayList."<init>":()V
+     389: astore        12
+     391: iload         10
+     393: ineg
+     394: istore        13
+     396: iload         13
+     398: iload         10
+     400: if_icmpgt     489
+     403: iload         10
+     405: ineg
+     406: istore        14
+     408: iload         14
+     410: iload         10
+     412: if_icmpgt     477
+     415: aload_2
+     416: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     419: aload         9
+     421: invokevirtual #123                // Method net/minecraft/core/BlockPos.getX:()I
+     424: iload         13
+     426: iadd
+     427: aload         9
+     429: invokevirtual #126                // Method net/minecraft/core/BlockPos.getZ:()I
+     432: iload         14
+     434: iadd
+     435: aload         11
+     437: aload_2
+     438: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     441: aload_2
+     442: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     445: invokestatic  #139                // Method com/finndog/moogs_structures/utils/GeneralUtils.getCachedFreeHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     448: iconst_1
+     449: isub
+     450: istore        15
+     452: aload         12
+     454: iload         15
+     456: invokestatic  #394                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     459: invokeinterface #398,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     464: pop
+     465: iload         14
+     467: iload         10
+     469: iconst_2
+     470: idiv
+     471: iadd
+     472: istore        14
+     474: goto          408
+     477: iload         13
+     479: iload         10
+     481: iconst_2
+     482: idiv
+     483: iadd
+     484: istore        13
+     486: goto          396
+     489: aload_0
+     490: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     493: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     496: ifeq          560
+     499: aload_0
+     500: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     503: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     506: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     509: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     512: ldc           #232                // int -2147483648
+     514: invokestatic  #394                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     517: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     520: checkcast     #76                 // class java/lang/Integer
+     523: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     526: istore        13
+     528: aload_0
+     529: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     532: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     535: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     538: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     541: ldc           #233                // int 2147483647
+     543: invokestatic  #394                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     546: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     549: checkcast     #76                 // class java/lang/Integer
+     552: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     555: istore        14
+     557: goto          568
+     560: ldc           #233                // int 2147483647
+     562: istore        14
+     564: ldc           #232                // int -2147483648
+     566: istore        13
+     568: aload         12
+     570: invokeinterface #401,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     575: iload         13
+     577: iload         14
+     579: invokedynamic #405,  0            // InvokeDynamic #1:test:(II)Ljava/util/function/Predicate;
+     584: invokeinterface #408,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     589: invokedynamic #414,  0            // InvokeDynamic #2:applyAsInt:()Ljava/util/function/ToIntFunction;
+     594: invokeinterface #418,  2          // InterfaceMethod java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+     599: invokeinterface #422,  1          // InterfaceMethod java/util/stream/IntStream.average:()Ljava/util/OptionalDouble;
+     604: astore        15
+     606: aload_0
+     607: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     610: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     613: ifeq          726
+     616: aload_0
+     617: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     620: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     623: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     626: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     629: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     632: ifeq          671
+     635: aload         15
+     637: invokevirtual #428                // Method java/util/OptionalDouble.isEmpty:()Z
+     640: ifeq          671
+     643: aload_0
+     644: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     647: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     650: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     653: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     656: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     659: checkcast     #76                 // class java/lang/Integer
+     662: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     665: i2d
+     666: invokestatic  #431                // Method java/util/OptionalDouble.of:(D)Ljava/util/OptionalDouble;
+     669: astore        15
+     671: aload_0
+     672: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     675: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     678: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     681: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     684: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     687: ifeq          726
+     690: aload         15
+     692: invokevirtual #428                // Method java/util/OptionalDouble.isEmpty:()Z
+     695: ifeq          726
+     698: aload_0
+     699: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     702: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     705: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     708: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     711: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     714: checkcast     #76                 // class java/lang/Integer
+     717: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     720: i2d
+     721: invokestatic  #431                // Method java/util/OptionalDouble.of:(D)Ljava/util/OptionalDouble;
+     724: astore        15
+     726: aload         15
+     728: invokevirtual #435                // Method java/util/OptionalDouble.isPresent:()Z
+     731: ifeq          884
+     734: aload         15
+     736: invokevirtual #436                // Method java/util/OptionalDouble.getAsDouble:()D
+     739: dstore        16
+     741: aload_0
+     742: getfield      #28                 // Field cannotSpawnInLiquid:Z
+     745: ifeq          838
+     748: aload         11
+     750: getstatic     #351                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     753: if_acmpeq     838
+     756: aload         11
+     758: getstatic     #354                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     761: if_acmpeq     838
+     764: dload         16
+     766: aload_2
+     767: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     770: invokevirtual #357                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+     773: i2d
+     774: invokestatic  #440                // Method java/lang/Math.max:(DD)D
+     777: dstore        16
+     779: aload_0
+     780: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     783: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     786: ifeq          838
+     789: aload_0
+     790: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     793: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     796: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     799: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     802: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     805: ifeq          838
+     808: dload         16
+     810: aload_0
+     811: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     814: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     817: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     820: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     823: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     826: checkcast     #76                 // class java/lang/Integer
+     829: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     832: i2d
+     833: invokestatic  #440                // Method java/lang/Math.max:(DD)D
+     836: dstore        16
+     838: aload         7
+     840: iconst_0
+     841: invokeinterface #326,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     846: checkcast     #331                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     849: invokevirtual #333                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     852: invokevirtual #443                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     855: istore        18
+     857: dload         16
+     859: d2i
+     860: iload         18
+     862: isub
+     863: iload_3
+     864: iadd
+     865: istore        19
+     867: aload         7
+     869: iload         19
+     871: invokedynamic #446,  0            // InvokeDynamic #3:accept:(I)Ljava/util/function/Consumer;
+     876: invokeinterface #449,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     881: goto          891
+     884: aload         7
+     886: invokeinterface #453,  1          // InterfaceMethod java/util/List.clear:()V
+     891: goto          1175
+     894: aload_0
+     895: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+     898: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     901: getstatic     #456                // Field com/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE.LOWEST_SIDE:Lcom/finndog/moogs_structures/world/structures/GenericJigsawStructure$BURYING_TYPE;
+     904: if_acmpne     1175
+     907: aload_0
+     908: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+     911: getstatic     #234                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     914: invokevirtual #238                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     917: checkcast     #129                // class net/minecraft/world/level/levelgen/Heightmap$Types
+     920: astore        8
+     922: aload         7
+     924: iconst_0
+     925: invokeinterface #326,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     930: checkcast     #331                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     933: invokevirtual #333                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     936: astore        9
+     938: aload         9
+     940: invokevirtual #370                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+     943: astore        10
+     945: ldc           #233                // int 2147483647
+     947: istore        11
+     949: invokestatic  #279                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     952: astore        12
+     954: aload_0
+     955: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     958: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     961: ifeq          979
+     964: aload_0
+     965: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     968: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     971: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     974: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     977: astore        12
+     979: aload_0
+     980: aload_2
+     981: aload         8
+     983: aload         9
+     985: invokevirtual #337                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     988: aload         10
+     990: invokevirtual #126                // Method net/minecraft/core/BlockPos.getZ:()I
+     993: aload         12
+     995: iload         11
+     997: invokevirtual #459                // Method terrainHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;IILjava/util/Optional;I)I
+    1000: istore        11
+    1002: aload_0
+    1003: aload_2
+    1004: aload         8
+    1006: aload         10
+    1008: invokevirtual #123                // Method net/minecraft/core/BlockPos.getX:()I
+    1011: aload         9
+    1013: invokevirtual #345                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+    1016: aload         12
+    1018: iload         11
+    1020: invokevirtual #459                // Method terrainHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;IILjava/util/Optional;I)I
+    1023: istore        11
+    1025: aload_0
+    1026: aload_2
+    1027: aload         8
+    1029: aload         10
+    1031: invokevirtual #123                // Method net/minecraft/core/BlockPos.getX:()I
+    1034: aload         9
+    1036: invokevirtual #342                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+    1039: aload         12
+    1041: iload         11
+    1043: invokevirtual #459                // Method terrainHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;IILjava/util/Optional;I)I
+    1046: istore        11
+    1048: aload_0
+    1049: aload_2
+    1050: aload         8
+    1052: aload         9
+    1054: invokevirtual #348                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+    1057: aload         10
+    1059: invokevirtual #126                // Method net/minecraft/core/BlockPos.getZ:()I
+    1062: aload         12
+    1064: iload         11
+    1066: invokevirtual #459                // Method terrainHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;IILjava/util/Optional;I)I
+    1069: istore        11
+    1071: aload         12
+    1073: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+    1076: ifeq          1099
+    1079: iload         11
+    1081: ldc           #233                // int 2147483647
+    1083: if_icmpne     1099
+    1086: aload         12
+    1088: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+    1091: checkcast     #76                 // class java/lang/Integer
+    1094: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+    1097: istore        11
+    1099: aload_0
+    1100: getfield      #28                 // Field cannotSpawnInLiquid:Z
+    1103: ifne          1149
+    1106: aload         8
+    1108: getstatic     #351                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+    1111: if_acmpeq     1122
+    1114: aload         8
+    1116: getstatic     #354                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+    1119: if_acmpne     1149
+    1122: aload_2
+    1123: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+    1126: invokevirtual #357                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+    1129: aload         9
+    1131: invokevirtual #360                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+    1134: isub
+    1135: istore        13
+    1137: iload         11
+    1139: iload         13
+    1141: invokestatic  #248                // Method java/lang/Math.min:(II)I
+    1144: istore        11
+    1146: goto          1163
+    1149: iload         11
+    1151: aload_2
+    1152: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+    1155: invokevirtual #357                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+    1158: invokestatic  #242                // Method java/lang/Math.max:(II)I
+    1161: istore        11
+    1163: aload_0
+    1164: aload_2
+    1165: iload_3
+    1166: aload         7
+    1168: aload         9
+    1170: iload         11
+    1172: invokevirtual #363                // Method offsetToNewHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;I)V
+    1175: return
+
+  private int terrainHeight(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.Heightmap$Types, int, int, java.util.Optional<java.lang.Integer>, int);
+    Code:
+       0: aload_1
+       1: invokevirtual #119                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       4: iload_3
+       5: iload         4
+       7: aload_2
+       8: aload_1
+       9: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      12: aload_1
+      13: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      16: invokevirtual #463                // Method net/minecraft/world/level/chunk/ChunkGenerator.getFirstOccupiedHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      19: istore        7
+      21: aload         5
+      23: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      26: ifeq          52
+      29: iload         7
+      31: aload         5
+      33: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      36: checkcast     #76                 // class java/lang/Integer
+      39: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+      42: if_icmplt     61
+      45: iload         7
+      47: istore        6
+      49: goto          61
+      52: iload         6
+      54: iload         7
+      56: invokestatic  #248                // Method java/lang/Math.min:(II)I
+      59: istore        6
+      61: iload         6
+      63: ireturn
+
+  private void offsetToNewHeight(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, int, java.util.List<net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece>, net.minecraft.world.level.levelgen.structure.BoundingBox, int);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+       4: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+       7: ifeq          170
+      10: aload_0
+      11: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      14: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      17: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+      20: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+      23: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+      26: ifeq          90
+      29: aload         4
+      31: invokevirtual #467                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+      34: iload_2
+      35: iadd
+      36: aload_0
+      37: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      40: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      43: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+      46: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+      49: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      52: checkcast     #76                 // class java/lang/Integer
+      55: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+      58: if_icmpge     90
+      61: iload         5
+      63: aload_0
+      64: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      67: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      70: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+      73: getfield      #70                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+      76: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      79: checkcast     #76                 // class java/lang/Integer
+      82: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+      85: invokestatic  #242                // Method java/lang/Math.max:(II)I
+      88: istore        5
+      90: aload_0
+      91: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+      94: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      97: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     100: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     103: invokevirtual #58                 // Method java/util/Optional.isPresent:()Z
+     106: ifeq          170
+     109: aload         4
+     111: invokevirtual #443                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     114: iload_2
+     115: iadd
+     116: aload_0
+     117: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     120: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     123: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     126: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     129: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     132: checkcast     #76                 // class java/lang/Integer
+     135: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     138: if_icmpge     170
+     141: iload         5
+     143: aload_0
+     144: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+     147: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     150: checkcast     #68                 // class com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance
+     153: getfield      #73                 // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     156: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     159: checkcast     #76                 // class java/lang/Integer
+     162: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+     165: invokestatic  #248                // Method java/lang/Math.min:(II)I
+     168: istore        5
+     170: new           #470                // class net/minecraft/world/level/levelgen/WorldgenRandom
+     173: dup
+     174: new           #472                // class net/minecraft/world/level/levelgen/LegacyRandomSource
+     177: dup
+     178: lconst_0
+     179: invokespecial #474                // Method net/minecraft/world/level/levelgen/LegacyRandomSource."<init>":(J)V
+     182: invokespecial #477                // Method net/minecraft/world/level/levelgen/WorldgenRandom."<init>":(Lnet/minecraft/util/RandomSource;)V
+     185: astore        6
+     187: aload         6
+     189: aload_1
+     190: invokevirtual #480                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.seed:()J
+     193: aload_1
+     194: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+     197: getfield      #151                // Field net/minecraft/world/level/ChunkPos.x:I
+     200: aload_1
+     201: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+     204: getfield      #156                // Field net/minecraft/world/level/ChunkPos.z:I
+     207: invokevirtual #484                // Method net/minecraft/world/level/levelgen/WorldgenRandom.setLargeFeatureSeed:(JII)V
+     210: iload         5
+     212: aload         4
+     214: invokevirtual #443                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     217: isub
+     218: istore        7
+     220: aload_3
+     221: invokeinterface #488,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     226: astore        8
+     228: aload         8
+     230: invokeinterface #492,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     235: ifeq          264
+     238: aload         8
+     240: invokeinterface #497,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     245: checkcast     #500                // class net/minecraft/world/level/levelgen/structure/StructurePiece
+     248: astore        9
+     250: aload         9
+     252: iconst_0
+     253: iload         7
+     255: iload_2
+     256: iadd
+     257: iconst_0
+     258: invokevirtual #502                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.move:(III)V
+     261: goto          228
+     264: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #505                // Field com/finndog/moogs_structures/modinit/MoogsStructuresStructures.GENERIC_JIGSAW_STRUCTURE:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+       3: invokeinterface #511,  1          // InterfaceMethod com/finndog/moogs_structures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #514                // class net/minecraft/world/level/levelgen/structure/StructureType
+      11: areturn
+
+  private static void lambda$postLayoutAdjustments$17(int, net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: iload_0
+       3: iconst_0
+       4: invokevirtual #516                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.move:(III)V
+       7: return
+
+  private static boolean lambda$postLayoutAdjustments$16(int, int, java.lang.Integer);
+    Code:
+       0: aload_2
+       1: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+       4: iload_0
+       5: if_icmple     20
+       8: aload_2
+       9: invokevirtual #78                 // Method java/lang/Integer.intValue:()I
+      12: iload_1
+      13: if_icmpge     20
+      16: iconst_1
+      17: goto          21
+      20: iconst_0
+      21: ireturn
+
+  private void lambda$findGenerationPoint$15(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, int, net.minecraft.core.BlockPos, int, int, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, java.util.List);
+    Code:
+       0: aload_0
+       1: aload         6
+       3: aload_1
+       4: iload_2
+       5: aload_3
+       6: iload         4
+       8: iload         5
+      10: aload         7
+      12: invokevirtual #517                // Method postLayoutAdjustments:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILnet/minecraft/core/BlockPos;IILjava/util/List;)V
+      15: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$14(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #521                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #525                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc_w         #531                // String start_pool
+      11: invokeinterface #533,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #539,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      21: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: iconst_0
+      25: sipush        128
+      28: invokestatic  #549                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      31: ldc_w         #553                // String size
+      34: invokeinterface #533,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      39: invokedynamic #554,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      44: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      47: getstatic     #555                // Field com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance.CODEC:Lcom/mojang/serialization/Codec;
+      50: ldc_w         #556                // String y_allowance
+      53: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      58: invokedynamic #561,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      63: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      66: getstatic     #562                // Field net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+      69: ldc_w         #563                // String start_height
+      72: invokeinterface #533,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      77: invokedynamic #565,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      82: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      85: getstatic     #566                // Field net/minecraft/world/level/levelgen/Heightmap$Types.CODEC:Lcom/mojang/serialization/Codec;
+      88: ldc_w         #567                // String project_start_to_heightmap
+      91: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      96: invokedynamic #569,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     101: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     104: getstatic     #570                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     107: ldc_w         #574                // String cannot_spawn_in_liquid
+     110: invokeinterface #576,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     115: iconst_0
+     116: invokestatic  #579                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     119: invokevirtual #584                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     122: invokedynamic #587,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+     127: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     130: iconst_1
+     131: bipush        100
+     133: invokestatic  #549                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     136: ldc_w         #588                // String terrain_height_radius_check
+     139: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     144: invokedynamic #590,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+     149: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     152: iconst_1
+     153: sipush        1000
+     156: invokestatic  #549                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     159: ldc_w         #591                // String allowed_terrain_height_range
+     162: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     167: invokedynamic #593,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+     172: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     175: iconst_1
+     176: bipush        100
+     178: invokestatic  #549                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     181: ldc_w         #594                // String valid_biome_radius_check
+     184: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     189: invokedynamic #596,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+     194: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     197: getstatic     #597                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+     200: invokeinterface #600,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+     205: ldc_w         #604                // String pools_that_ignore_boundaries
+     208: invokeinterface #533,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     213: new           #389                // class java/util/ArrayList
+     216: dup
+     217: invokespecial #391                // Method java/util/ArrayList."<init>":()V
+     220: invokevirtual #584                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     223: invokedynamic #606,  0            // InvokeDynamic #13:apply:()Ljava/util/function/Function;
+     228: invokedynamic #607,  0            // InvokeDynamic #14:apply:()Ljava/util/function/Function;
+     233: invokevirtual #608                // Method com/mojang/serialization/MapCodec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+     236: invokedynamic #612,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+     241: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     244: iconst_1
+     245: sipush        128
+     248: invokestatic  #549                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     251: ldc_w         #613                // String max_distance_from_center
+     254: invokeinterface #558,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     259: invokedynamic #615,  0            // InvokeDynamic #16:apply:()Ljava/util/function/Function;
+     264: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     267: invokedynamic #616,  0            // InvokeDynamic #17:get:()Ljava/util/function/Supplier;
+     272: invokestatic  #619                // InterfaceMethod net/minecraft/util/StringRepresentable.fromEnum:(Ljava/util/function/Supplier;)Lnet/minecraft/util/StringRepresentable$EnumCodec;
+     275: ldc_w         #625                // String burying_type
+     278: invokevirtual #627                // Method net/minecraft/util/StringRepresentable$EnumCodec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     281: invokedynamic #630,  0            // InvokeDynamic #18:apply:()Ljava/util/function/Function;
+     286: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     289: getstatic     #570                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     292: ldc_w         #631                // String use_bounding_box_hack
+     295: invokeinterface #576,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     300: iconst_0
+     301: invokestatic  #579                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     304: invokevirtual #584                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     307: invokedynamic #633,  0            // InvokeDynamic #19:apply:()Ljava/util/function/Function;
+     312: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     315: getstatic     #634                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+     318: ldc_w         #637                // String liquid_settings
+     321: getstatic     #639                // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     324: invokeinterface #644,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     329: invokedynamic #647,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+     334: invokevirtual #543                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     337: invokevirtual #648                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P15;
+     340: aload_0
+     341: invokedynamic #654,  0            // InvokeDynamic #21:apply:()Lcom/mojang/datafixers/util/Function15;
+     346: invokevirtual #657                // Method com/mojang/datafixers/Products$P15.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function15;)Lcom/mojang/datafixers/kinds/App;
+     349: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings lambda$static$13(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$12(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #51                 // Field useBoundingBoxHack:Z
+       4: invokestatic  #579                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.util.Optional lambda$static$11(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field buryingType:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$10(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field maxDistanceFromCenter:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.HashSet lambda$static$9(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field poolsThatIgnoreBoundaries:Ljava/util/HashSet;
+       4: areturn
+
+  private static java.util.Optional lambda$static$8(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field biomeRadius:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$7(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field allowedTerrainHeightRange:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$6(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field terrainHeightCheckRadius:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$5(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field cannotSpawnInLiquid:Z
+       4: invokestatic  #579                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.util.Optional lambda$static$4(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.heightproviders.HeightProvider lambda$static$3(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: areturn
+
+  private static java.util.Optional lambda$static$2(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field yAllowance:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$1(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field size:I
+       4: invokestatic  #394                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static net.minecraft.core.Holder lambda$static$0(com.finndog.moogs_structures.world.structures.GenericJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #662,  0            // InvokeDynamic #22:apply:()Ljava/util/function/Function;
+       5: invokestatic  #663                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #669                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

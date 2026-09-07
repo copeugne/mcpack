@@ -1,0 +1,709 @@
+Compiled from "SilverDungeonBuilder.java"
+public class com.aetherteam.aether.world.structurepiece.silverdungeon.SilverDungeonBuilder {
+  private static final int CHEST_ROOM = 1;
+
+  private static final int STAIRS = 2;
+
+  private static final int FINAL_STAIRS = 4;
+
+  private static final int STAIRS_MIDDLE = 8;
+
+  private static final int STAIRS_TOP = 16;
+
+  private static final int NORTH_DOOR = 32;
+
+  private static final int WEST_DOOR = 64;
+
+  private static final int VISITED = 128;
+
+  private final net.minecraft.util.RandomSource random;
+
+  private final com.aetherteam.aether.world.structurepiece.silverdungeon.SilverProcessorSettings processors;
+
+  private final int[][][] grid;
+
+  private final int width;
+
+  private final int height;
+
+  private final int length;
+
+  public com.aetherteam.aether.world.structurepiece.silverdungeon.SilverDungeonBuilder(net.minecraft.util.RandomSource, int, int, int, com.aetherteam.aether.world.structurepiece.silverdungeon.SilverProcessorSettings);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+       9: aload_0
+      10: aload         5
+      12: putfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+      15: aload_0
+      16: iload_2
+      17: iload_3
+      18: iload         4
+      20: multianewarray #17,  3            // class "[[[I"
+      24: putfield      #19                 // Field grid:[[[I
+      27: aload_0
+      28: iload_2
+      29: putfield      #22                 // Field width:I
+      32: aload_0
+      33: iload_3
+      34: putfield      #26                 // Field height:I
+      37: aload_0
+      38: iload         4
+      40: putfield      #29                 // Field length:I
+      43: aload_0
+      44: invokevirtual #32                 // Method populateGrid:()V
+      47: return
+
+  private void populateGrid();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+       4: aload_0
+       5: getfield      #22                 // Field width:I
+       8: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      13: istore_1
+      14: aload_0
+      15: getfield      #19                 // Field grid:[[[I
+      18: iload_1
+      19: aaload
+      20: iconst_0
+      21: aaload
+      22: iconst_0
+      23: iconst_4
+      24: iastore
+      25: aload_0
+      26: getfield      #19                 // Field grid:[[[I
+      29: iload_1
+      30: aaload
+      31: iconst_1
+      32: aaload
+      33: iconst_0
+      34: bipush        8
+      36: iastore
+      37: aload_0
+      38: getfield      #19                 // Field grid:[[[I
+      41: iload_1
+      42: aaload
+      43: iconst_2
+      44: aaload
+      45: iconst_0
+      46: bipush        16
+      48: iastore
+      49: aload_0
+      50: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+      53: aload_0
+      54: getfield      #22                 // Field width:I
+      57: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      62: istore_2
+      63: aload_0
+      64: getfield      #19                 // Field grid:[[[I
+      67: iload_2
+      68: aaload
+      69: iconst_0
+      70: aaload
+      71: iconst_1
+      72: iconst_2
+      73: iastore
+      74: aload_0
+      75: getfield      #19                 // Field grid:[[[I
+      78: iload_2
+      79: aaload
+      80: iconst_1
+      81: aaload
+      82: iconst_1
+      83: bipush        16
+      85: iastore
+      86: aload_0
+      87: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+      90: aload_0
+      91: getfield      #22                 // Field width:I
+      94: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      99: istore_3
+     100: aload_0
+     101: getfield      #19                 // Field grid:[[[I
+     104: iload_3
+     105: aaload
+     106: iconst_1
+     107: aaload
+     108: iconst_2
+     109: iconst_2
+     110: iastore
+     111: aload_0
+     112: getfield      #19                 // Field grid:[[[I
+     115: iload_3
+     116: aaload
+     117: iconst_2
+     118: aaload
+     119: iconst_2
+     120: bipush        16
+     122: iastore
+     123: iconst_0
+     124: istore        4
+     126: iload         4
+     128: aload_0
+     129: getfield      #26                 // Field height:I
+     132: if_icmpge     236
+     135: aload_0
+     136: iconst_1
+     137: iload         4
+     139: iconst_1
+     140: iconst_0
+     141: invokevirtual #41                 // Method traverseRooms:(IIII)Z
+     144: pop
+     145: iconst_0
+     146: istore        5
+     148: iload         5
+     150: aload_0
+     151: getfield      #29                 // Field length:I
+     154: if_icmpge     230
+     157: iconst_0
+     158: istore        6
+     160: iload         6
+     162: aload_0
+     163: getfield      #22                 // Field width:I
+     166: if_icmpge     224
+     169: aload_0
+     170: getfield      #19                 // Field grid:[[[I
+     173: iload         6
+     175: aaload
+     176: iload         4
+     178: aaload
+     179: iload         5
+     181: iaload
+     182: bipush        31
+     184: iand
+     185: ifne          218
+     188: aload_0
+     189: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+     192: iconst_3
+     193: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     198: ifeq          218
+     201: aload_0
+     202: getfield      #19                 // Field grid:[[[I
+     205: iload         6
+     207: aaload
+     208: iload         4
+     210: aaload
+     211: iload         5
+     213: dup2
+     214: iaload
+     215: iconst_1
+     216: ior
+     217: iastore
+     218: iinc          6, 1
+     221: goto          160
+     224: iinc          5, 1
+     227: goto          148
+     230: iinc          4, 1
+     233: goto          126
+     236: return
+
+  private boolean traverseRooms(int, int, int, int);
+    Code:
+       0: iload_1
+       1: iflt          24
+       4: iload_1
+       5: aload_0
+       6: getfield      #22                 // Field width:I
+       9: if_icmpge     24
+      12: iload_3
+      13: iflt          24
+      16: iload_3
+      17: aload_0
+      18: getfield      #29                 // Field length:I
+      21: if_icmplt     26
+      24: iconst_0
+      25: ireturn
+      26: aload_0
+      27: getfield      #19                 // Field grid:[[[I
+      30: iload_1
+      31: aaload
+      32: iload_2
+      33: aaload
+      34: iload_3
+      35: iaload
+      36: istore        5
+      38: iload         5
+      40: iload         4
+      42: iand
+      43: ifle          48
+      46: iconst_0
+      47: ireturn
+      48: iload         5
+      50: sipush        128
+      53: iand
+      54: sipush        128
+      57: if_icmpne     79
+      60: aload_0
+      61: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+      64: iconst_3
+      65: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      70: ifne          77
+      73: iconst_1
+      74: goto          78
+      77: iconst_0
+      78: ireturn
+      79: aload_0
+      80: getfield      #19                 // Field grid:[[[I
+      83: iload_1
+      84: aaload
+      85: iload_2
+      86: aaload
+      87: iload_3
+      88: dup2
+      89: iaload
+      90: sipush        128
+      93: ior
+      94: iastore
+      95: aload_0
+      96: iload         5
+      98: invokevirtual #45                 // Method setNeighborBlacklist:(I)I
+     101: istore        6
+     103: new           #48                 // class java/util/ArrayList
+     106: dup
+     107: iconst_4
+     108: invokespecial #50                 // Method java/util/ArrayList."<init>":(I)V
+     111: astore        7
+     113: aload         7
+     115: iconst_4
+     116: anewarray     #53                 // class net/minecraft/core/Direction
+     119: dup
+     120: iconst_0
+     121: getstatic     #55                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+     124: aastore
+     125: dup
+     126: iconst_1
+     127: getstatic     #59                 // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     130: aastore
+     131: dup
+     132: iconst_2
+     133: getstatic     #62                 // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     136: aastore
+     137: dup
+     138: iconst_3
+     139: getstatic     #65                 // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     142: aastore
+     143: invokestatic  #68                 // Method java/util/Collections.addAll:(Ljava/util/Collection;[Ljava/lang/Object;)Z
+     146: pop
+     147: aload         7
+     149: invokeinterface #74,  1           // InterfaceMethod java/util/List.size:()I
+     154: istore        8
+     156: iload         8
+     158: ifle          359
+     161: aload_0
+     162: getfield      #7                  // Field random:Lnet/minecraft/util/RandomSource;
+     165: iload         8
+     167: invokeinterface #35,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     172: istore        9
+     174: getstatic     #80                 // Field com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonBuilder$1.$SwitchMap$net$minecraft$core$Direction:[I
+     177: aload         7
+     179: iload         9
+     181: invokeinterface #86,  2           // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+     186: checkcast     #53                 // class net/minecraft/core/Direction
+     189: invokevirtual #90                 // Method net/minecraft/core/Direction.ordinal:()I
+     192: iaload
+     193: tableswitch   { // 1 to 4
+                     1: 224
+                     2: 256
+                     3: 290
+                     4: 322
+               default: 353
+          }
+     224: aload_0
+     225: iload_1
+     226: iload_2
+     227: iload_3
+     228: iconst_1
+     229: isub
+     230: iload         6
+     232: invokevirtual #41                 // Method traverseRooms:(IIII)Z
+     235: ifeq          353
+     238: aload_0
+     239: getfield      #19                 // Field grid:[[[I
+     242: iload_1
+     243: aaload
+     244: iload_2
+     245: aaload
+     246: iload_3
+     247: dup2
+     248: iaload
+     249: bipush        32
+     251: ior
+     252: iastore
+     253: goto          353
+     256: aload_0
+     257: iload_1
+     258: iload_2
+     259: iload_3
+     260: iconst_1
+     261: iadd
+     262: iload         6
+     264: invokevirtual #41                 // Method traverseRooms:(IIII)Z
+     267: ifeq          353
+     270: aload_0
+     271: getfield      #19                 // Field grid:[[[I
+     274: iload_1
+     275: aaload
+     276: iload_2
+     277: aaload
+     278: iload_3
+     279: iconst_1
+     280: iadd
+     281: dup2
+     282: iaload
+     283: bipush        32
+     285: ior
+     286: iastore
+     287: goto          353
+     290: aload_0
+     291: iload_1
+     292: iconst_1
+     293: isub
+     294: iload_2
+     295: iload_3
+     296: iload         6
+     298: invokevirtual #41                 // Method traverseRooms:(IIII)Z
+     301: ifeq          353
+     304: aload_0
+     305: getfield      #19                 // Field grid:[[[I
+     308: iload_1
+     309: aaload
+     310: iload_2
+     311: aaload
+     312: iload_3
+     313: dup2
+     314: iaload
+     315: bipush        64
+     317: ior
+     318: iastore
+     319: goto          353
+     322: aload_0
+     323: iload_1
+     324: iconst_1
+     325: iadd
+     326: iload_2
+     327: iload_3
+     328: iload         6
+     330: invokevirtual #41                 // Method traverseRooms:(IIII)Z
+     333: ifeq          353
+     336: aload_0
+     337: getfield      #19                 // Field grid:[[[I
+     340: iload_1
+     341: iconst_1
+     342: iadd
+     343: aaload
+     344: iload_2
+     345: aaload
+     346: iload_3
+     347: dup2
+     348: iaload
+     349: bipush        64
+     351: ior
+     352: iastore
+     353: iinc          8, -1
+     356: goto          156
+     359: iconst_1
+     360: ireturn
+
+  private int setNeighborBlacklist(int);
+    Code:
+       0: bipush        12
+       2: istore_2
+       3: iload_1
+       4: bipush        16
+       6: iand
+       7: bipush        16
+       9: if_icmpne     16
+      12: iload_2
+      13: iconst_2
+      14: ior
+      15: istore_2
+      16: iload_1
+      17: iconst_2
+      18: iand
+      19: iconst_2
+      20: if_icmpne     28
+      23: iload_2
+      24: bipush        16
+      26: ior
+      27: istore_2
+      28: iload_2
+      29: ireturn
+
+  public void assembleDungeon(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation, net.minecraft.core.Direction);
+    Code:
+       0: aload_3
+       1: aload         5
+       3: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+       6: iconst_5
+       7: imul
+       8: aload         5
+      10: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+      13: isub
+      14: iconst_5
+      15: aload         5
+      17: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+      20: ineg
+      21: iconst_5
+      22: imul
+      23: aload         5
+      25: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+      28: isub
+      29: invokevirtual #99                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      32: astore_3
+      33: new           #105                // class net/minecraft/core/BlockPos$MutableBlockPos
+      36: dup
+      37: invokespecial #107                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      40: astore        6
+      42: aload         4
+      44: getstatic     #108                // Field net/minecraft/world/level/block/Rotation.CLOCKWISE_90:Lnet/minecraft/world/level/block/Rotation;
+      47: invokevirtual #114                // Method net/minecraft/world/level/block/Rotation.getRotated:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/Rotation;
+      50: astore        7
+      52: aload_0
+      53: getfield      #26                 // Field height:I
+      56: iconst_1
+      57: isub
+      58: istore        8
+      60: iload         8
+      62: iflt          530
+      65: aload         6
+      67: aload_3
+      68: invokevirtual #118                // Method net/minecraft/core/BlockPos.getY:()I
+      71: iload         8
+      73: iconst_5
+      74: imul
+      75: iadd
+      76: invokevirtual #121                // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      79: pop
+      80: iconst_0
+      81: istore        9
+      83: iload         9
+      85: aload_0
+      86: getfield      #29                 // Field length:I
+      89: if_icmpge     524
+      92: iconst_0
+      93: istore        10
+      95: iload         10
+      97: aload_0
+      98: getfield      #22                 // Field width:I
+     101: if_icmpge     518
+     104: aload_3
+     105: invokevirtual #125                // Method net/minecraft/core/BlockPos.getX:()I
+     108: aload         5
+     110: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     113: iload         10
+     115: imul
+     116: bipush        7
+     118: imul
+     119: iadd
+     120: aload         5
+     122: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     125: iload         9
+     127: imul
+     128: bipush        7
+     130: imul
+     131: iadd
+     132: istore        11
+     134: aload_3
+     135: invokevirtual #128                // Method net/minecraft/core/BlockPos.getZ:()I
+     138: aload         5
+     140: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     143: iload         9
+     145: imul
+     146: bipush        7
+     148: imul
+     149: iadd
+     150: aload         5
+     152: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     155: iload         10
+     157: imul
+     158: bipush        7
+     160: imul
+     161: isub
+     162: istore        12
+     164: aload         6
+     166: iload         11
+     168: aload         6
+     170: invokevirtual #131                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     173: iload         12
+     175: invokevirtual #132                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     178: pop
+     179: aload_0
+     180: getfield      #19                 // Field grid:[[[I
+     183: iload         10
+     185: aaload
+     186: iload         8
+     188: aaload
+     189: iload         9
+     191: iaload
+     192: istore        13
+     194: aload_1
+     195: new           #136                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverFloorPiece
+     198: dup
+     199: aload_2
+     200: ldc           #138                // String floor
+     202: aload         6
+     204: aload         5
+     206: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     209: aload         5
+     211: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     214: iadd
+     215: iconst_m1
+     216: aload         5
+     218: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     221: aload         5
+     223: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     226: isub
+     227: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     230: aload         4
+     232: aload_0
+     233: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     236: invokevirtual #141                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.floorSettings:()Lnet/minecraft/core/Holder;
+     239: invokespecial #147                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverFloorPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     242: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     245: aload_1
+     246: new           #156                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece
+     249: dup
+     250: aload_2
+     251: iload         13
+     253: bipush        32
+     255: iand
+     256: bipush        32
+     258: if_icmpne     266
+     261: ldc           #158                // String door
+     263: goto          268
+     266: ldc           #160                // String wall
+     268: aload         6
+     270: aload         5
+     272: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     275: iconst_0
+     276: aload         5
+     278: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     281: ineg
+     282: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     285: aload         4
+     287: aload_0
+     288: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     291: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     294: invokespecial #165                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     297: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     300: aload_1
+     301: new           #156                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece
+     304: dup
+     305: aload_2
+     306: iload         13
+     308: bipush        64
+     310: iand
+     311: bipush        64
+     313: if_icmpne     321
+     316: ldc           #158                // String door
+     318: goto          323
+     321: ldc           #160                // String wall
+     323: aload         6
+     325: aload         5
+     327: invokevirtual #166                // Method net/minecraft/core/BlockPos$MutableBlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     330: aload         7
+     332: aload_0
+     333: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     336: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     339: invokespecial #165                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     342: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     345: iload         13
+     347: iconst_4
+     348: iand
+     349: iconst_4
+     350: if_icmpne     431
+     353: aload_1
+     354: new           #170                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom
+     357: dup
+     358: aload_2
+     359: ldc           #172                // String tall_staircase
+     361: aload         6
+     363: iconst_2
+     364: iconst_0
+     365: iconst_2
+     366: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     369: aload         4
+     371: aload_0
+     372: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     375: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     378: invokespecial #174                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     381: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     384: aload_1
+     385: new           #156                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece
+     388: dup
+     389: aload_2
+     390: ldc           #175                // String boss_door
+     392: aload         6
+     394: aload         5
+     396: invokevirtual #93                 // Method net/minecraft/core/Direction.getStepZ:()I
+     399: iconst_3
+     400: imul
+     401: iconst_0
+     402: aload         5
+     404: invokevirtual #96                 // Method net/minecraft/core/Direction.getStepX:()I
+     407: ineg
+     408: iconst_3
+     409: imul
+     410: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     413: aload         4
+     415: aload_0
+     416: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     419: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     422: invokespecial #165                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     425: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     428: goto          512
+     431: iload         13
+     433: iconst_2
+     434: iand
+     435: iconst_2
+     436: if_icmpne     473
+     439: aload_1
+     440: new           #170                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom
+     443: dup
+     444: aload_2
+     445: ldc           #177                // String staircase
+     447: aload         6
+     449: iconst_2
+     450: iconst_0
+     451: iconst_2
+     452: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     455: aload         4
+     457: aload_0
+     458: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     461: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     464: invokespecial #174                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     467: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     470: goto          512
+     473: iload         13
+     475: iconst_1
+     476: iand
+     477: iconst_1
+     478: if_icmpne     512
+     481: aload_1
+     482: new           #170                // class com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom
+     485: dup
+     486: aload_2
+     487: ldc           #179                // String chest_room
+     489: aload         6
+     491: iconst_3
+     492: iconst_0
+     493: iconst_3
+     494: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     497: aload         4
+     499: aload_0
+     500: getfield      #13                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings;
+     503: invokevirtual #162                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.roomSettings:()Lnet/minecraft/core/Holder;
+     506: invokespecial #174                // Method com/aetherteam/aether/world/structurepiece/silverdungeon/SilverDungeonRoom."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/Holder;)V
+     509: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     512: iinc          10, 1
+     515: goto          95
+     518: iinc          9, 1
+     521: goto          83
+     524: iinc          8, -1
+     527: goto          60
+     530: return
+}

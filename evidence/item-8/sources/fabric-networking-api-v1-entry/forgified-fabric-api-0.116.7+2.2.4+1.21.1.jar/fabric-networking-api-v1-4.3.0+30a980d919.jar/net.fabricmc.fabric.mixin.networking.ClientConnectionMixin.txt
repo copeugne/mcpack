@@ -1,0 +1,328 @@
+Classfile forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-networking-api-v1-4.3.0+30a980d919.jar!/net/fabricmc/fabric/mixin/networking/ClientConnectionMixin.class
+  Last modified Feb 21, 2026; size 3726 bytes
+  SHA-256 checksum 11f607842740d56bbf7d40337c5773410a595dffa93781bf4d365d500d370271
+  Compiled from "ClientConnectionMixin.java"
+abstract class net.fabricmc.fabric.mixin.networking.ClientConnectionMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0420) ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // net/fabricmc/fabric/mixin/networking/ClientConnectionMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 5, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // net/fabricmc/fabric/mixin/networking/ClientConnectionMixin.packetListener:Lnet/minecraft/network/PacketListener;
+   #8 = Class              #10            // net/fabricmc/fabric/mixin/networking/ClientConnectionMixin
+   #9 = NameAndType        #11:#12        // packetListener:Lnet/minecraft/network/PacketListener;
+  #10 = Utf8               net/fabricmc/fabric/mixin/networking/ClientConnectionMixin
+  #11 = Utf8               packetListener
+  #12 = Utf8               Lnet/minecraft/network/PacketListener;
+  #13 = Class              #14            // net/fabricmc/fabric/impl/networking/PacketCallbackListener
+  #14 = Utf8               net/fabricmc/fabric/impl/networking/PacketCallbackListener
+  #15 = InterfaceMethodref #13.#16        // net/fabricmc/fabric/impl/networking/PacketCallbackListener.sent:(Lnet/minecraft/network/protocol/Packet;)V
+  #16 = NameAndType        #17:#18        // sent:(Lnet/minecraft/network/protocol/Packet;)V
+  #17 = Utf8               sent
+  #18 = Utf8               (Lnet/minecraft/network/protocol/Packet;)V
+  #19 = Class              #20            // net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+  #20 = Utf8               net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+  #21 = InterfaceMethodref #19.#22        // net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions.getAddon:()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+  #22 = NameAndType        #23:#24        // getAddon:()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+  #23 = Utf8               getAddon
+  #24 = Utf8               ()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+  #25 = Methodref          #26.#27        // net/fabricmc/fabric/impl/networking/AbstractNetworkAddon.endSession:()V
+  #26 = Class              #28            // net/fabricmc/fabric/impl/networking/AbstractNetworkAddon
+  #27 = NameAndType        #29:#6         // endSession:()V
+  #28 = Utf8               net/fabricmc/fabric/impl/networking/AbstractNetworkAddon
+  #29 = Utf8               endSession
+  #30 = Methodref          #26.#31        // net/fabricmc/fabric/impl/networking/AbstractNetworkAddon.handleDisconnect:()V
+  #31 = NameAndType        #32:#6         // handleDisconnect:()V
+  #32 = Utf8               handleDisconnect
+  #33 = Class              #34            // org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+  #34 = Utf8               org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+  #35 = InterfaceMethodref #33.#31        // org/sinytra/fabric/networking_api/NeoListenableNetworkHandler.handleDisconnect:()V
+  #36 = Utf8               RuntimeVisibleAnnotations
+  #37 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #38 = Utf8               Code
+  #39 = Utf8               LineNumberTable
+  #40 = Utf8               LocalVariableTable
+  #41 = Utf8               this
+  #42 = Utf8               Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+  #43 = Utf8               checkPacket
+  #44 = Utf8               (Lnet/minecraft/network/protocol/Packet;Lnet/minecraft/network/PacketSendListener;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #45 = Utf8               packet
+  #46 = Utf8               Lnet/minecraft/network/protocol/Packet;
+  #47 = Utf8               callback
+  #48 = Utf8               Lnet/minecraft/network/PacketSendListener;
+  #49 = Utf8               flush
+  #50 = Utf8               Z
+  #51 = Utf8               ci
+  #52 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #53 = Utf8               LocalVariableTypeTable
+  #54 = Utf8               Lnet/minecraft/network/protocol/Packet<*>;
+  #55 = Utf8               StackMapTable
+  #56 = Utf8               Signature
+  #57 = Utf8               (Lnet/minecraft/network/protocol/Packet<*>;Lnet/minecraft/network/PacketSendListener;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #58 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #59 = Utf8               method
+  #60 = Utf8               sendPacket
+  #61 = Utf8               at
+  #62 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #63 = Utf8               value
+  #64 = Utf8               FIELD
+  #65 = Utf8               target
+  #66 = Utf8               Lnet/minecraft/network/Connection;sentPackets:I
+  #67 = Utf8               unwatchAddon
+  #68 = Utf8               (Lnet/minecraft/network/ProtocolInfo;Lnet/minecraft/network/PacketListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #69 = Utf8               oldListener
+  #70 = Utf8               Lnet/fabricmc/fabric/impl/networking/NetworkHandlerExtensions;
+  #71 = Utf8               state
+  #72 = Utf8               Lnet/minecraft/network/ProtocolInfo;
+  #73 = Utf8               listener
+  #74 = Utf8               Lnet/minecraft/network/ProtocolInfo<*>;
+  #75 = Utf8               (Lnet/minecraft/network/ProtocolInfo<*>;Lnet/minecraft/network/PacketListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #76 = Utf8               validateListener
+  #77 = Utf8               HEAD
+  #78 = Utf8               disconnectAddon
+  #79 = Utf8               (Lio/netty/channel/ChannelHandlerContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #80 = Utf8               extension
+  #81 = Utf8               handler
+  #82 = Utf8               Lorg/sinytra/fabric/networking_api/NeoListenableNetworkHandler;
+  #83 = Utf8               channelHandlerContext
+  #84 = Utf8               Lio/netty/channel/ChannelHandlerContext;
+  #85 = Utf8               channelInactive
+  #86 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #87 = Utf8               handleDisconnection
+  #88 = Utf8               INVOKE
+  #89 = Utf8               Lnet/minecraft/network/PacketListener;onDisconnect(Lnet/minecraft/network/DisconnectionDetails;)V
+  #90 = Utf8               SourceFile
+  #91 = Utf8               ClientConnectionMixin.java
+  #92 = Utf8               RuntimeInvisibleAnnotations
+  #93 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #94 = Utf8               Lnet/minecraft/network/Connection;
+{
+  private net.minecraft.network.PacketListener packetListener;
+    descriptor: Lnet/minecraft/network/PacketListener;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #37()
+        org.spongepowered.asm.mixin.Shadow
+
+  net.fabricmc.fabric.mixin.networking.ClientConnectionMixin();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+
+  private void checkPacket(net.minecraft.network.protocol.Packet<?>, net.minecraft.network.PacketSendListener, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/protocol/Packet;Lnet/minecraft/network/PacketSendListener;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=5
+         0: aload_0
+         1: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+         4: instanceof    #13                 // class net/fabricmc/fabric/impl/networking/PacketCallbackListener
+         7: ifeq          23
+        10: aload_0
+        11: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+        14: checkcast     #13                 // class net/fabricmc/fabric/impl/networking/PacketCallbackListener
+        17: aload_1
+        18: invokeinterface #15,  2           // InterfaceMethod net/fabricmc/fabric/impl/networking/PacketCallbackListener.sent:(Lnet/minecraft/network/protocol/Packet;)V
+        23: return
+      LineNumberTable:
+        line 41: 0
+        line 42: 10
+        line 44: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+            0      24     1 packet   Lnet/minecraft/network/protocol/Packet;
+            0      24     2 callback   Lnet/minecraft/network/PacketSendListener;
+            0      24     3 flush   Z
+            0      24     4    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      24     1 packet   Lnet/minecraft/network/protocol/Packet<*>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 23 /* same */
+    Signature: #57                          // (Lnet/minecraft/network/protocol/Packet<*>;Lnet/minecraft/network/PacketSendListener;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #58(#59=[s#60],#61=[@#62(#63=s#64,#65=s#66)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["sendPacket"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/network/Connection;sentPackets:I"
+          )]
+        )
+
+  private void unwatchAddon(net.minecraft.network.ProtocolInfo<?>, net.minecraft.network.PacketListener, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/ProtocolInfo;Lnet/minecraft/network/PacketListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=6, args_size=4
+         0: aload_0
+         1: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+         4: astore        5
+         6: aload         5
+         8: instanceof    #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+        11: ifeq          31
+        14: aload         5
+        16: checkcast     #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+        19: astore        4
+        21: aload         4
+        23: invokeinterface #21,  1           // InterfaceMethod net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions.getAddon:()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+        28: invokevirtual #25                 // Method net/fabricmc/fabric/impl/networking/AbstractNetworkAddon.endSession:()V
+        31: return
+      LineNumberTable:
+        line 48: 0
+        line 49: 21
+        line 51: 31
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      10     4 oldListener   Lnet/fabricmc/fabric/impl/networking/NetworkHandlerExtensions;
+            0      32     0  this   Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+            0      32     1 state   Lnet/minecraft/network/ProtocolInfo;
+            0      32     2 listener   Lnet/minecraft/network/PacketListener;
+            0      32     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      32     1 state   Lnet/minecraft/network/ProtocolInfo<*>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 31 /* same */
+    Signature: #75                          // (Lnet/minecraft/network/ProtocolInfo<*>;Lnet/minecraft/network/PacketListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #58(#59=[s#76],#61=[@#62(#63=s#77)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["validateListener"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private void disconnectAddon(io.netty.channel.ChannelHandlerContext, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lio/netty/channel/ChannelHandlerContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+         4: astore        4
+         6: aload         4
+         8: instanceof    #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+        11: ifeq          29
+        14: aload         4
+        16: checkcast     #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+        19: astore_3
+        20: aload_3
+        21: invokeinterface #21,  1           // InterfaceMethod net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions.getAddon:()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+        26: invokevirtual #30                 // Method net/fabricmc/fabric/impl/networking/AbstractNetworkAddon.handleDisconnect:()V
+        29: aload_0
+        30: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+        33: astore        4
+        35: aload         4
+        37: instanceof    #33                 // class org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+        40: ifeq          55
+        43: aload         4
+        45: checkcast     #33                 // class org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+        48: astore_3
+        49: aload_3
+        50: invokeinterface #35,  1           // InterfaceMethod org/sinytra/fabric/networking_api/NeoListenableNetworkHandler.handleDisconnect:()V
+        55: return
+      LineNumberTable:
+        line 55: 0
+        line 56: 20
+        line 58: 29
+        line 59: 49
+        line 61: 55
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           20       9     3 extension   Lnet/fabricmc/fabric/impl/networking/NetworkHandlerExtensions;
+           49       6     3 handler   Lorg/sinytra/fabric/networking_api/NeoListenableNetworkHandler;
+            0      56     0  this   Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+            0      56     1 channelHandlerContext   Lio/netty/channel/ChannelHandlerContext;
+            0      56     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 2
+        frame_type = 29 /* same */
+        frame_type = 25 /* same */
+    RuntimeVisibleAnnotations:
+      0: #58(#59=[s#85],#61=[@#62(#63=s#77)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["channelInactive"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private void disconnectAddon(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=4, args_size=2
+         0: aload_0
+         1: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+         4: astore_3
+         5: aload_3
+         6: instanceof    #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+         9: ifeq          26
+        12: aload_3
+        13: checkcast     #19                 // class net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions
+        16: astore_2
+        17: aload_2
+        18: invokeinterface #21,  1           // InterfaceMethod net/fabricmc/fabric/impl/networking/NetworkHandlerExtensions.getAddon:()Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;
+        23: invokevirtual #30                 // Method net/fabricmc/fabric/impl/networking/AbstractNetworkAddon.handleDisconnect:()V
+        26: aload_0
+        27: getfield      #7                  // Field packetListener:Lnet/minecraft/network/PacketListener;
+        30: astore_3
+        31: aload_3
+        32: instanceof    #33                 // class org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+        35: ifeq          49
+        38: aload_3
+        39: checkcast     #33                 // class org/sinytra/fabric/networking_api/NeoListenableNetworkHandler
+        42: astore_2
+        43: aload_2
+        44: invokeinterface #35,  1           // InterfaceMethod org/sinytra/fabric/networking_api/NeoListenableNetworkHandler.handleDisconnect:()V
+        49: return
+      LineNumberTable:
+        line 65: 0
+        line 66: 17
+        line 68: 26
+        line 69: 43
+        line 71: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           17       9     2 extension   Lnet/fabricmc/fabric/impl/networking/NetworkHandlerExtensions;
+           43       6     2 handler   Lorg/sinytra/fabric/networking_api/NeoListenableNetworkHandler;
+            0      50     0  this   Lnet/fabricmc/fabric/mixin/networking/ClientConnectionMixin;
+            0      50     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 2
+        frame_type = 26 /* same */
+        frame_type = 22 /* same */
+    RuntimeVisibleAnnotations:
+      0: #58(#59=[s#87],#61=[@#62(#63=s#88,#65=s#89)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["handleDisconnection"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/network/PacketListener;onDisconnect(Lnet/minecraft/network/DisconnectionDetails;)V"
+          )]
+        )
+}
+SourceFile: "ClientConnectionMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #93(#63=[c#94])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/network/Connection;]
+    )

@@ -1,0 +1,287 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator.class
+  Last modified Jan 1, 1980; size 2643 bytes
+  SHA-256 checksum cee8faecc144122cb005aaac0c14e5116fca9bc92be6cc5a11fec5e68d5130e2
+  Compiled from "MixinChunkTicketManagerTicketDistanceLevelPropagator.java"
+public class com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkTicketManagerTicketDistanceLevelPropagator implements com.ishland.c2me.rewrites.chunksystem.common.ducks.TicketDistanceLevelPropagatorExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 4, methods: 5, attributes: 3
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               com/ishland/c2me/rewrites/chunksystem/common/ducks/TicketDistanceLevelPropagatorExtension
+   #6 = Class              #5             // com/ishland/c2me/rewrites/chunksystem/common/ducks/TicketDistanceLevelPropagatorExtension
+   #7 = Utf8               MixinChunkTicketManagerTicketDistanceLevelPropagator.java
+   #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #9 = Utf8               value
+  #10 = Utf8               Lnet/minecraft/server/level/DistanceManager$ChunkTicketTracker;
+  #11 = Utf8               net/minecraft/server/level/DistanceManager$ChunkTicketTracker
+  #12 = Class              #11            // net/minecraft/server/level/DistanceManager$ChunkTicketTracker
+  #13 = Utf8               net/minecraft/server/level/DistanceManager
+  #14 = Class              #13            // net/minecraft/server/level/DistanceManager
+  #15 = Utf8               ChunkTicketTracker
+  #16 = Utf8               MAX_LEVEL
+  #17 = Utf8               I
+  #18 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #19 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #20 = Utf8               this$0
+  #21 = Utf8               Lnet/minecraft/server/level/DistanceManager;
+  #22 = Utf8               c2me$levels
+  #23 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #25 = Utf8               c2me$ticketLevelUpdates
+  #26 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+  #27 = Utf8               <init>
+  #28 = Utf8               ()V
+  #29 = NameAndType        #27:#28        // "<init>":()V
+  #30 = Methodref          #4.#29         // java/lang/Object."<init>":()V
+  #31 = Utf8               this
+  #32 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+  #33 = Utf8               postInit
+  #34 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #35 = Utf8               ci
+  #36 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #37 = Utf8               method
+  #38 = Utf8               at
+  #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #40 = Utf8               RETURN
+  #41 = Utf8               it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap
+  #42 = Class              #41            // it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap
+  #43 = Methodref          #42.#29        // it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap."<init>":()V
+  #44 = NameAndType        #22:#23        // c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+  #45 = Fieldref           #2.#44         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator.c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+  #46 = NameAndType        #16:#17        // MAX_LEVEL:I
+  #47 = Fieldref           #2.#46         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator.MAX_LEVEL:I
+  #48 = Utf8               it/unimi/dsi/fastutil/longs/Long2IntMap
+  #49 = Class              #48            // it/unimi/dsi/fastutil/longs/Long2IntMap
+  #50 = Utf8               defaultReturnValue
+  #51 = Utf8               (I)V
+  #52 = NameAndType        #50:#51        // defaultReturnValue:(I)V
+  #53 = InterfaceMethodref #49.#52        // it/unimi/dsi/fastutil/longs/Long2IntMap.defaultReturnValue:(I)V
+  #54 = Utf8               it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap
+  #55 = Class              #54            // it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap
+  #56 = Methodref          #55.#29        // it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap."<init>":()V
+  #57 = NameAndType        #25:#26        // c2me$ticketLevelUpdates:Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+  #58 = Fieldref           #2.#57         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator.c2me$ticketLevelUpdates:Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+  #59 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #60 = Utf8               getLevel
+  #61 = Utf8               (J)I
+  #62 = Utf8               id
+  #63 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #64 = Utf8               get
+  #65 = NameAndType        #64:#61        // get:(J)I
+  #66 = InterfaceMethodref #49.#65        // it/unimi/dsi/fastutil/longs/Long2IntMap.get:(J)I
+  #67 = Utf8               J
+  #68 = Utf8               setLevel
+  #69 = Utf8               (JI)V
+  #70 = Utf8               level
+  #71 = Utf8               remove
+  #72 = NameAndType        #71:#61        // remove:(J)I
+  #73 = InterfaceMethodref #49.#72        // it/unimi/dsi/fastutil/longs/Long2IntMap.remove:(J)I
+  #74 = Utf8               put
+  #75 = Utf8               (JI)I
+  #76 = NameAndType        #74:#75        // put:(JI)I
+  #77 = InterfaceMethodref #49.#76        // it/unimi/dsi/fastutil/longs/Long2IntMap.put:(JI)I
+  #78 = Utf8               putAndMoveToLast
+  #79 = NameAndType        #78:#75        // putAndMoveToLast:(JI)I
+  #80 = Methodref          #55.#79        // it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap.putAndMoveToLast:(JI)I
+  #81 = Utf8               c2me$getTicketLevelUpdates
+  #82 = Utf8               ()Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+  #83 = Utf8               RuntimeVisibleAnnotations
+  #84 = Utf8               Code
+  #85 = Utf8               LineNumberTable
+  #86 = Utf8               LocalVariableTable
+  #87 = Utf8               MethodParameters
+  #88 = Utf8               StackMapTable
+  #89 = Utf8               InnerClasses
+  #90 = Utf8               SourceFile
+  #91 = Utf8               RuntimeInvisibleAnnotations
+{
+  private static int MAX_LEVEL;
+    descriptor: I
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    RuntimeVisibleAnnotations:
+      0: #18()
+        org.spongepowered.asm.mixin.Shadow
+      1: #19()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.DistanceManager this$0;
+    descriptor: Lnet/minecraft/server/level/DistanceManager;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #18()
+        org.spongepowered.asm.mixin.Shadow
+      1: #19()
+        org.spongepowered.asm.mixin.Final
+
+  private it.unimi.dsi.fastutil.longs.Long2IntMap c2me$levels;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Unique
+
+  private it.unimi.dsi.fastutil.longs.Long2IntLinkedOpenHashMap c2me$ticketLevelUpdates;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkTicketManagerTicketDistanceLevelPropagator();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 18: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+
+  private void postInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: new           #42                 // class it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap
+         4: dup
+         5: invokespecial #43                 // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap."<init>":()V
+         8: putfield      #45                 // Field c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+        11: aload_0
+        12: getfield      #45                 // Field c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+        15: getstatic     #47                 // Field MAX_LEVEL:I
+        18: iconst_1
+        19: iadd
+        20: invokeinterface #53,  2           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2IntMap.defaultReturnValue:(I)V
+        25: aload_0
+        26: new           #55                 // class it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap
+        29: dup
+        30: invokespecial #56                 // Method it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap."<init>":()V
+        33: putfield      #58                 // Field c2me$ticketLevelUpdates:Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+        36: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 11
+        line 34: 25
+        line 35: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+            0      37     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #36(#37=[s#27],#38=[@#39(#9=s#40)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  public int getLevel(long);
+    descriptor: (J)I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #45                 // Field c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+         4: lload_1
+         5: invokeinterface #66,  3           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2IntMap.get:(J)I
+        10: ireturn
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+            0      11     1    id   J
+    RuntimeVisibleAnnotations:
+      0: #63()
+        org.spongepowered.asm.mixin.Overwrite
+    MethodParameters:
+      Name                           Flags
+      id
+
+  protected void setLevel(long, int);
+    descriptor: (JI)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=4, locals=4, args_size=3
+         0: iload_3
+         1: getstatic     #47                 // Field MAX_LEVEL:I
+         4: if_icmplt     21
+         7: aload_0
+         8: getfield      #45                 // Field c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+        11: lload_1
+        12: invokeinterface #73,  3           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2IntMap.remove:(J)I
+        17: pop
+        18: goto          33
+        21: aload_0
+        22: getfield      #45                 // Field c2me$levels:Lit/unimi/dsi/fastutil/longs/Long2IntMap;
+        25: lload_1
+        26: iload_3
+        27: invokeinterface #77,  4           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2IntMap.put:(JI)I
+        32: pop
+        33: aload_0
+        34: getfield      #58                 // Field c2me$ticketLevelUpdates:Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+        37: lload_1
+        38: iload_3
+        39: invokevirtual #80                 // Method it/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap.putAndMoveToLast:(JI)I
+        42: pop
+        43: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 21 /* same */
+        frame_type = 11 /* same */
+      LineNumberTable:
+        line 52: 0
+        line 53: 7
+        line 55: 21
+        line 57: 33
+        line 58: 43
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      44     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+            0      44     1    id   J
+            0      44     3 level   I
+    RuntimeVisibleAnnotations:
+      0: #63()
+        org.spongepowered.asm.mixin.Overwrite
+    MethodParameters:
+      Name                           Flags
+      id
+      level
+
+  public it.unimi.dsi.fastutil.longs.Long2IntLinkedOpenHashMap c2me$getTicketLevelUpdates();
+    descriptor: ()Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #58                 // Field c2me$ticketLevelUpdates:Lit/unimi/dsi/fastutil/longs/Long2IntLinkedOpenHashMap;
+         4: areturn
+      LineNumberTable:
+        line 62: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkTicketManagerTicketDistanceLevelPropagator;
+}
+InnerClasses:
+  public #15= #12 of #14;                 // ChunkTicketTracker=class net/minecraft/server/level/DistanceManager$ChunkTicketTracker of class net/minecraft/server/level/DistanceManager
+SourceFile: "MixinChunkTicketManagerTicketDistanceLevelPropagator.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/DistanceManager$ChunkTicketTracker;]
+    )

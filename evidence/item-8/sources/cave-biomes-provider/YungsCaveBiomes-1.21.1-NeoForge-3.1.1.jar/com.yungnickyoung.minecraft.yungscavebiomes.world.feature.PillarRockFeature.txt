@@ -1,0 +1,338 @@
+Compiled from "PillarRockFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.PillarRockFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration> {
+  private static final int RADIUS_MIN = 5;
+
+  private static final int RADIUS_MAX = 10;
+
+  private static final float HEIGHT_RELATIVE_TO_RADIUS_MIN = 1.5f;
+
+  private static final float HEIGHT_RELATIVE_TO_RADIUS_MAX = 2.0f;
+
+  private static final float TOP_HEIGHT_PROPORTION = 0.3f;
+
+  private static final float TOP_START_HEMISPHERE_OFFSET_MIN = 0.875f;
+
+  private static final float TOP_START_HEMISPHERE_OFFSET_MAX = 0.9375f;
+
+  private static final float BOTTOM_START_HEMISPHERE_OFFSET_MIN = 0.25f;
+
+  private static final float BOTTOM_START_HEMISPHERE_OFFSET_MAX = 0.5f;
+
+  private static final double NOISE_FREQUENCY_XZ = 0.1d;
+
+  private static final double NOISE_FREQUENCY_Y = 0.08333333333333334d;
+
+  public static final float NOISE_MODULATION_AMOUNT = 0.6f;
+
+  private static final long NOISE_SEED_FLIP_MASK = 4187418520378946841l;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.PillarRockFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #3                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #9                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #15                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #27                 // class net/minecraft/world/level/levelgen/feature/configurations/SimpleBlockConfiguration
+      23: astore        5
+      25: aload         5
+      27: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/configurations/SimpleBlockConfiguration.toPlace:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      30: aload         4
+      32: aload_1
+      33: invokevirtual #15                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      36: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      39: astore        6
+      41: aload_2
+      42: invokeinterface #39,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+      47: ldc2_w        #45                 // long 4187418520378946841l
+      50: lxor
+      51: lstore        7
+      53: aload         4
+      55: invokeinterface #47,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      60: invokestatic  #53                 // Method net/minecraft/util/Mth.square:(F)F
+      63: ldc           #59                 // float 5.0f
+      65: fmul
+      66: ldc           #59                 // float 5.0f
+      68: fadd
+      69: fstore        9
+      71: aload         4
+      73: ldc           #60                 // float 1.5f
+      75: fconst_2
+      76: invokestatic  #61                 // Method net/minecraft/util/Mth.nextFloat:(Lnet/minecraft/util/RandomSource;FF)F
+      79: fload         9
+      81: fmul
+      82: fstore        10
+      84: fload         9
+      86: ldc           #64                 // float 0.3f
+      88: fmul
+      89: fstore        11
+      91: fload         10
+      93: fload         11
+      95: fsub
+      96: fstore        12
+      98: fload         10
+     100: ldc           #65                 // float 0.5f
+     102: fmul
+     103: fload         11
+     105: fsub
+     106: fstore        13
+     108: aload         4
+     110: ldc           #66                 // float 0.875f
+     112: ldc           #67                 // float 0.9375f
+     114: invokestatic  #61                 // Method net/minecraft/util/Mth.nextFloat:(Lnet/minecraft/util/RandomSource;FF)F
+     117: fstore        14
+     119: aload         4
+     121: ldc           #68                 // float 0.25f
+     123: ldc           #65                 // float 0.5f
+     125: invokestatic  #61                 // Method net/minecraft/util/Mth.nextFloat:(Lnet/minecraft/util/RandomSource;FF)F
+     128: fstore        15
+     130: fconst_1
+     131: fload         14
+     133: fsub
+     134: fload         11
+     136: fdiv
+     137: fstore        16
+     139: fload         15
+     141: fconst_1
+     142: fsub
+     143: fload         12
+     145: fdiv
+     146: fstore        17
+     148: fload         14
+     150: fload         16
+     152: fload         13
+     154: fmul
+     155: fsub
+     156: fstore        18
+     158: fload         15
+     160: fload         17
+     162: fload         13
+     164: fmul
+     165: fsub
+     166: fstore        19
+     168: fload         13
+     170: fload         16
+     172: fmul
+     173: fload         18
+     175: fadd
+     176: invokestatic  #53                 // Method net/minecraft/util/Mth.square:(F)F
+     179: fstore        20
+     181: fload         13
+     183: fload         17
+     185: fmul
+     186: fload         19
+     188: fadd
+     189: invokestatic  #53                 // Method net/minecraft/util/Mth.square:(F)F
+     192: fstore        21
+     194: fconst_1
+     195: fload         20
+     197: fsub
+     198: fload         9
+     200: fload         9
+     202: fmul
+     203: fdiv
+     204: fstore        22
+     206: fconst_1
+     207: fload         21
+     209: fsub
+     210: fload         9
+     212: fload         9
+     214: fmul
+     215: fdiv
+     216: fstore        23
+     218: ldc           #69                 // float -1.0f
+     220: fconst_1
+     221: fload         20
+     223: fsub
+     224: fdiv
+     225: fstore        24
+     227: ldc           #69                 // float -1.0f
+     229: fconst_1
+     230: fload         21
+     232: fsub
+     233: fdiv
+     234: fstore        25
+     236: fconst_1
+     237: fload         24
+     239: fload         20
+     241: fmul
+     242: fsub
+     243: fstore        26
+     245: fconst_1
+     246: fload         25
+     248: fload         21
+     250: fmul
+     251: fsub
+     252: fstore        27
+     254: fload         10
+     256: ldc           #65                 // float 0.5f
+     258: fmul
+     259: invokestatic  #70                 // Method net/minecraft/util/Mth.ceil:(F)I
+     262: istore        28
+     264: fload         9
+     266: invokestatic  #70                 // Method net/minecraft/util/Mth.ceil:(F)I
+     269: istore        29
+     271: iload         28
+     273: ineg
+     274: istore        30
+     276: iload         30
+     278: iload         28
+     280: if_icmpgt     554
+     283: iload         30
+     285: i2f
+     286: fload         13
+     288: fcmpl
+     289: iflt          296
+     292: iconst_1
+     293: goto          297
+     296: iconst_0
+     297: istore        31
+     299: iload         31
+     301: ifeq          319
+     304: iload         30
+     306: i2f
+     307: fload         16
+     309: fmul
+     310: fload         18
+     312: fadd
+     313: invokestatic  #53                 // Method net/minecraft/util/Mth.square:(F)F
+     316: goto          331
+     319: iload         30
+     321: i2f
+     322: fload         17
+     324: fmul
+     325: fload         19
+     327: fadd
+     328: invokestatic  #53                 // Method net/minecraft/util/Mth.square:(F)F
+     331: fstore        32
+     333: iload         29
+     335: ineg
+     336: istore        33
+     338: iload         33
+     340: iload         29
+     342: if_icmpgt     548
+     345: iload         29
+     347: ineg
+     348: istore        34
+     350: iload         34
+     352: iload         29
+     354: if_icmpgt     542
+     357: iload         34
+     359: iload         34
+     361: imul
+     362: iload         33
+     364: iload         33
+     366: imul
+     367: iadd
+     368: i2f
+     369: iload         31
+     371: ifeq          379
+     374: fload         22
+     376: goto          381
+     379: fload         23
+     381: fmul
+     382: fstore        35
+     384: fload         35
+     386: fload         32
+     388: fadd
+     389: fstore        36
+     391: iload         31
+     393: ifeq          407
+     396: fload         36
+     398: fload         24
+     400: fmul
+     401: fload         26
+     403: fadd
+     404: goto          415
+     407: fload         36
+     409: fload         25
+     411: fmul
+     412: fload         27
+     414: fadd
+     415: fstore        37
+     417: fload         37
+     419: ldc           #74                 // float 0.6f
+     421: fcmpl
+     422: iflt          429
+     425: iconst_1
+     426: goto          430
+     429: iconst_0
+     430: istore        38
+     432: iload         38
+     434: ifne          507
+     437: lload         7
+     439: iload         34
+     441: aload_3
+     442: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getX:()I
+     445: iadd
+     446: i2d
+     447: ldc2_w        #81                 // double 0.1d
+     450: dmul
+     451: iload         30
+     453: aload_3
+     454: invokevirtual #83                 // Method net/minecraft/core/BlockPos.getY:()I
+     457: iadd
+     458: i2d
+     459: ldc2_w        #86                 // double 0.08333333333333334d
+     462: dmul
+     463: iload         33
+     465: aload_3
+     466: invokevirtual #88                 // Method net/minecraft/core/BlockPos.getZ:()I
+     469: iadd
+     470: i2d
+     471: ldc2_w        #81                 // double 0.1d
+     474: dmul
+     475: invokestatic  #91                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/noise/OpenSimplex2S.noise3_ImproveXZ:(JDDD)F
+     478: ldc           #64                 // float 0.3f
+     480: fmul
+     481: ldc           #64                 // float 0.3f
+     483: fadd
+     484: fstore        39
+     486: fload         37
+     488: fload         39
+     490: fsub
+     491: fstore        40
+     493: fload         40
+     495: fconst_0
+     496: fcmpl
+     497: ifle          504
+     500: iconst_1
+     501: goto          505
+     504: iconst_0
+     505: istore        38
+     507: iload         38
+     509: ifeq          536
+     512: aload_3
+     513: iload         34
+     515: iload         30
+     517: iload         33
+     519: invokevirtual #97                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     522: astore        39
+     524: aload_2
+     525: aload         39
+     527: aload         6
+     529: iconst_3
+     530: invokeinterface #101,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     535: pop
+     536: iinc          34, 1
+     539: goto          350
+     542: iinc          33, 1
+     545: goto          338
+     548: iinc          30, 1
+     551: goto          276
+     554: iconst_0
+     555: ireturn
+}

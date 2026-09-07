@@ -1,0 +1,231 @@
+Compiled from "NeoForgeNetworkHandler.java"
+public class net.darkhax.bookshelf.neoforge.impl.network.NeoForgeNetworkHandler implements net.darkhax.bookshelf.common.api.network.INetworkHandler {
+  private static final java.util.Map<net.minecraft.resources.ResourceLocation, net.darkhax.bookshelf.common.api.network.IPacket<?>> PACKETS;
+
+  private static final com.google.common.collect.Multimap<java.lang.String, net.darkhax.bookshelf.common.api.network.IPacket<?>> PACKETS_BY_NAMESPACE;
+
+  public net.darkhax.bookshelf.neoforge.impl.network.NeoForgeNetworkHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public <T extends net.minecraft.network.protocol.common.custom.CustomPacketPayload> void register(net.darkhax.bookshelf.common.api.network.IPacket<T>);
+    Code:
+       0: getstatic     #7                  // Field PACKETS:Ljava/util/Map;
+       3: aload_1
+       4: invokeinterface #13,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       9: invokevirtual #19                 // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type.id:()Lnet/minecraft/resources/ResourceLocation;
+      12: aload_1
+      13: invokeinterface #25,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      18: pop
+      19: getstatic     #31                 // Field PACKETS_BY_NAMESPACE:Lcom/google/common/collect/Multimap;
+      22: aload_1
+      23: invokeinterface #13,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      28: invokevirtual #19                 // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type.id:()Lnet/minecraft/resources/ResourceLocation;
+      31: invokevirtual #35                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      34: aload_1
+      35: invokeinterface #41,  3           // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      40: pop
+      41: return
+
+  public void registerPayloadHandlers(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: getstatic     #31                 // Field PACKETS_BY_NAMESPACE:Lcom/google/common/collect/Multimap;
+       3: invokeinterface #46,  1           // InterfaceMethod com/google/common/collect/Multimap.keySet:()Ljava/util/Set;
+       8: invokeinterface #50,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      13: astore_2
+      14: aload_2
+      15: invokeinterface #56,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      20: ifeq          219
+      23: aload_2
+      24: invokeinterface #62,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      29: checkcast     #66                 // class java/lang/String
+      32: astore_3
+      33: aload_1
+      34: aload_3
+      35: invokevirtual #68                 // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      38: invokevirtual #74                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      41: astore        4
+      43: getstatic     #31                 // Field PACKETS_BY_NAMESPACE:Lcom/google/common/collect/Multimap;
+      46: aload_3
+      47: invokeinterface #80,  2           // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      52: invokeinterface #84,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      57: astore        5
+      59: aload         5
+      61: invokeinterface #56,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      66: ifeq          216
+      69: aload         5
+      71: invokeinterface #62,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      76: checkcast     #14                 // class net/darkhax/bookshelf/common/api/network/IPacket
+      79: astore        6
+      81: aload         6
+      83: invokedynamic #87,  0             // InvokeDynamic #0:handle:(Lnet/darkhax/bookshelf/common/api/network/IPacket;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      88: astore        7
+      90: getstatic     #91                 // Field net/darkhax/bookshelf/neoforge/impl/network/NeoForgeNetworkHandler$1.$SwitchMap$net$darkhax$bookshelf$common$api$network$Destination:[I
+      93: aload         6
+      95: invokeinterface #97,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.destination:()Lnet/darkhax/bookshelf/common/api/network/Destination;
+     100: invokevirtual #101                // Method net/darkhax/bookshelf/common/api/network/Destination.ordinal:()I
+     103: iaload
+     104: tableswitch   { // 1 to 3
+                     1: 132
+                     2: 160
+                     3: 188
+               default: 213
+          }
+     132: aload         4
+     134: invokevirtual #74                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     137: aload         6
+     139: invokeinterface #13,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     144: aload         6
+     146: invokeinterface #107,  1          // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.streamCodec:()Lnet/minecraft/network/codec/StreamCodec;
+     151: aload         7
+     153: invokevirtual #111                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.commonToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     156: pop
+     157: goto          213
+     160: aload         4
+     162: invokevirtual #74                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     165: aload         6
+     167: invokeinterface #13,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     172: aload         6
+     174: invokeinterface #107,  1          // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.streamCodec:()Lnet/minecraft/network/codec/StreamCodec;
+     179: aload         7
+     181: invokevirtual #115                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.commonToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     184: pop
+     185: goto          213
+     188: aload         4
+     190: invokevirtual #74                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     193: aload         6
+     195: invokeinterface #13,  1           // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     200: aload         6
+     202: invokeinterface #107,  1          // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.streamCodec:()Lnet/minecraft/network/codec/StreamCodec;
+     207: aload         7
+     209: invokevirtual #118                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.commonBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     212: pop
+     213: goto          59
+     216: goto          14
+     219: return
+
+  public <T extends net.minecraft.network.protocol.common.custom.CustomPacketPayload> void sendToServer(T);
+    Code:
+       0: aload_1
+       1: invokeinterface #121,  1          // InterfaceMethod net/minecraft/network/protocol/common/custom/CustomPacketPayload.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       6: invokevirtual #19                 // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type.id:()Lnet/minecraft/resources/ResourceLocation;
+       9: astore_2
+      10: getstatic     #7                  // Field PACKETS:Ljava/util/Map;
+      13: aload_2
+      14: invokeinterface #124,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      19: ifne          50
+      22: getstatic     #128                // Field net/darkhax/bookshelf/common/impl/Constants.LOG:Lorg/slf4j/Logger;
+      25: ldc           #134                // String Attempted to send unregistered packet {} to the server.
+      27: aload_2
+      28: invokeinterface #136,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      33: new           #142                // class java/lang/IllegalStateException
+      36: dup
+      37: aload_2
+      38: invokestatic  #144                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      41: invokedynamic #148,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      46: invokespecial #152                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      49: athrow
+      50: invokestatic  #155                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      53: getfield      #161                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      56: ifnonnull     87
+      59: getstatic     #128                // Field net/darkhax/bookshelf/common/impl/Constants.LOG:Lorg/slf4j/Logger;
+      62: ldc           #165                // String Attempted to send packet {} to the server before a player instance is available.
+      64: aload_2
+      65: invokeinterface #136,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      70: new           #142                // class java/lang/IllegalStateException
+      73: dup
+      74: aload_2
+      75: invokestatic  #144                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      78: invokedynamic #167,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      83: invokespecial #152                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      86: athrow
+      87: invokestatic  #155                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      90: invokevirtual #168                // Method net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      93: invokestatic  #172                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      96: checkcast     #178                // class net/minecraft/client/multiplayer/ClientPacketListener
+      99: invokevirtual #180                // Method net/minecraft/client/multiplayer/ClientPacketListener.getConnection:()Lnet/minecraft/network/Connection;
+     102: new           #183                // class net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket
+     105: dup
+     106: aload_1
+     107: invokespecial #185                // Method net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     110: invokevirtual #188                // Method net/minecraft/network/Connection.send:(Lnet/minecraft/network/protocol/Packet;)V
+     113: return
+
+  public <T extends net.minecraft.network.protocol.common.custom.CustomPacketPayload> void sendToPlayer(net.minecraft.server.level.ServerPlayer, T);
+    Code:
+       0: aload_2
+       1: invokeinterface #121,  1          // InterfaceMethod net/minecraft/network/protocol/common/custom/CustomPacketPayload.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       6: invokevirtual #19                 // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type.id:()Lnet/minecraft/resources/ResourceLocation;
+       9: astore_3
+      10: getstatic     #7                  // Field PACKETS:Ljava/util/Map;
+      13: aload_3
+      14: invokeinterface #124,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      19: ifne          55
+      22: getstatic     #128                // Field net/darkhax/bookshelf/common/impl/Constants.LOG:Lorg/slf4j/Logger;
+      25: ldc           #194                // String Attempted to send unregistered packet {} to player {}.
+      27: aload_3
+      28: aload_1
+      29: invokeinterface #196,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      34: new           #142                // class java/lang/IllegalStateException
+      37: dup
+      38: aload_3
+      39: invokestatic  #144                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      42: aload_1
+      43: invokestatic  #144                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      46: invokedynamic #199,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      51: invokespecial #152                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      54: athrow
+      55: aload_1
+      56: aload_2
+      57: iconst_0
+      58: anewarray     #122                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+      61: invokestatic  #202                // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      64: return
+
+  public boolean canSendPacket(net.minecraft.server.level.ServerPlayer, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_1
+       1: getfield      #208                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       4: aload_2
+       5: invokevirtual #214                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.hasChannel:(Lnet/minecraft/resources/ResourceLocation;)Z
+       8: ireturn
+
+  private static void lambda$registerPayloadHandlers$0(net.darkhax.bookshelf.common.api.network.IPacket, net.minecraft.network.protocol.common.custom.CustomPacketPayload, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokeinterface #220,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       7: astore        4
+       9: aload         4
+      11: instanceof    #209                // class net/minecraft/server/level/ServerPlayer
+      14: ifeq          27
+      17: aload         4
+      19: checkcast     #209                // class net/minecraft/server/level/ServerPlayer
+      22: astore_3
+      23: aload_3
+      24: goto          28
+      27: aconst_null
+      28: aload_2
+      29: invokeinterface #220,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+      34: invokevirtual #225                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      37: getfield      #231                // Field net/minecraft/world/level/Level.isClientSide:Z
+      40: ifne          47
+      43: iconst_1
+      44: goto          48
+      47: iconst_0
+      48: aload_1
+      49: invokeinterface #237,  4          // InterfaceMethod net/darkhax/bookshelf/common/api/network/IPacket.handle:(Lnet/minecraft/server/level/ServerPlayer;ZLnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      54: return
+
+  static {};
+    Code:
+       0: new           #240                // class java/util/HashMap
+       3: dup
+       4: invokespecial #242                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #7                  // Field PACKETS:Ljava/util/Map;
+      10: invokestatic  #243                // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+      13: putstatic     #31                 // Field PACKETS_BY_NAMESPACE:Lcom/google/common/collect/Multimap;
+      16: return
+}

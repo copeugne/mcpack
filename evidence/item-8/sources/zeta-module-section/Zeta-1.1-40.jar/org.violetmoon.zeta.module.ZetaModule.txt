@@ -1,0 +1,233 @@
+Compiled from "ZetaModule.java"
+public class org.violetmoon.zeta.module.ZetaModule {
+  org.violetmoon.zeta.Zeta zeta;
+
+  org.violetmoon.zeta.module.ZetaCategory category;
+
+  java.lang.String displayName;
+
+  java.lang.String lowercaseName;
+
+  java.lang.String description;
+
+  protected java.util.SortedSet<java.lang.String> antiOverlap;
+
+  boolean enabled;
+
+  boolean enabledByDefault;
+
+  boolean disabledByOverlap;
+
+  boolean ignoreAntiOverlap;
+
+  boolean finalized;
+
+  public org.violetmoon.zeta.module.ZetaModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc           #7                  // String
+       7: putfield      #9                  // Field displayName:Ljava/lang/String;
+      10: aload_0
+      11: ldc           #7                  // String
+      13: putfield      #15                 // Field lowercaseName:Ljava/lang/String;
+      16: aload_0
+      17: ldc           #7                  // String
+      19: putfield      #18                 // Field description:Ljava/lang/String;
+      22: aload_0
+      23: new           #21                 // class java/util/TreeSet
+      26: dup
+      27: invokespecial #23                 // Method java/util/TreeSet."<init>":()V
+      30: putfield      #24                 // Field antiOverlap:Ljava/util/SortedSet;
+      33: aload_0
+      34: iconst_0
+      35: putfield      #28                 // Field enabled:Z
+      38: aload_0
+      39: iconst_0
+      40: putfield      #32                 // Field enabledByDefault:Z
+      43: aload_0
+      44: iconst_0
+      45: putfield      #35                 // Field disabledByOverlap:Z
+      48: aload_0
+      49: iconst_0
+      50: putfield      #38                 // Field ignoreAntiOverlap:Z
+      53: aload_0
+      54: iconst_0
+      55: putfield      #41                 // Field finalized:Z
+      58: return
+
+  public void postConstruct();
+    Code:
+       0: return
+
+  public final void setEnabled(org.violetmoon.zeta.Zeta, boolean);
+    Code:
+       0: aload_1
+       1: getfield      #44                 // Field org/violetmoon/zeta/Zeta.configManager:Lorg/violetmoon/zeta/config/ConfigManager;
+       4: ifnull        23
+       7: aload_1
+       8: getfield      #44                 // Field org/violetmoon/zeta/Zeta.configManager:Lorg/violetmoon/zeta/config/ConfigManager;
+      11: aload_0
+      12: getfield      #50                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+      15: invokevirtual #54                 // Method org/violetmoon/zeta/config/ConfigManager.isCategoryEnabled:(Lorg/violetmoon/zeta/module/ZetaCategory;)Z
+      18: ifne          23
+      21: iconst_0
+      22: istore_2
+      23: aload_0
+      24: getfield      #50                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+      27: ifnull        42
+      30: aload_0
+      31: getfield      #50                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+      34: invokevirtual #60                 // Method org/violetmoon/zeta/module/ZetaCategory.requiredModsLoaded:()Z
+      37: ifne          42
+      40: iconst_0
+      41: istore_2
+      42: aload_0
+      43: getfield      #38                 // Field ignoreAntiOverlap:Z
+      46: ifne          87
+      49: aload_0
+      50: getfield      #24                 // Field antiOverlap:Ljava/util/SortedSet;
+      53: invokeinterface #66,  1           // InterfaceMethod java/util/SortedSet.stream:()Ljava/util/stream/Stream;
+      58: aload_1
+      59: dup
+      60: invokestatic  #72                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      63: pop
+      64: invokedynamic #78,  0             // InvokeDynamic #0:test:(Lorg/violetmoon/zeta/Zeta;)Ljava/util/function/Predicate;
+      69: invokeinterface #82,  2           // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+      74: ifeq          87
+      77: aload_0
+      78: iconst_1
+      79: putfield      #35                 // Field disabledByOverlap:Z
+      82: iconst_0
+      83: istore_2
+      84: goto          92
+      87: aload_0
+      88: iconst_0
+      89: putfield      #35                 // Field disabledByOverlap:Z
+      92: aload_0
+      93: getfield      #28                 // Field enabled:Z
+      96: iload_2
+      97: if_icmpne     101
+     100: return
+     101: aload_0
+     102: iload_2
+     103: putfield      #28                 // Field enabled:Z
+     106: aload_0
+     107: getfield      #41                 // Field finalized:Z
+     110: ifeq          118
+     113: aload_0
+     114: aload_1
+     115: invokevirtual #88                 // Method updateBusSubscriptions:(Lorg/violetmoon/zeta/Zeta;)V
+     118: return
+
+  void updateBusSubscriptions(org.violetmoon.zeta.Zeta);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field enabled:Z
+       4: ifeq          26
+       7: aload_1
+       8: getfield      #92                 // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      11: aload_0
+      12: invokevirtual #96                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: invokevirtual #100                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      18: aload_0
+      19: invokevirtual #100                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      22: pop
+      23: goto          42
+      26: aload_1
+      27: getfield      #92                 // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      30: aload_0
+      31: invokevirtual #96                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      34: invokevirtual #106                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.unsubscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      37: aload_0
+      38: invokevirtual #106                // Method org/violetmoon/zeta/event/bus/ZetaEventBus.unsubscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      41: pop
+      42: return
+
+  public final void addAnnotationHints(org.violetmoon.zeta.event.load.ZGatherHints);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: aload_0
+       3: getfield      #109                // Field zeta:Lorg/violetmoon/zeta/Zeta;
+       6: getfield      #44                 // Field org/violetmoon/zeta/Zeta.configManager:Lorg/violetmoon/zeta/config/ConfigManager;
+       9: invokevirtual #113                // Method org/violetmoon/zeta/config/ConfigManager.getConfigFlagManager:()Lorg/violetmoon/zeta/config/ConfigFlagManager;
+      12: invokeinterface #117,  3          // InterfaceMethod org/violetmoon/zeta/event/load/ZGatherHints.gatherHintsFromModule:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/config/ConfigFlagManager;)V
+      17: return
+
+  public org.violetmoon.zeta.Zeta zeta();
+    Code:
+       0: aload_0
+       1: getfield      #109                // Field zeta:Lorg/violetmoon/zeta/Zeta;
+       4: areturn
+
+  public java.util.List<java.lang.String> antiOverlap();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field antiOverlap:Ljava/util/SortedSet;
+       4: invokestatic  #123                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+       7: areturn
+
+  public boolean disabledByOverlap();
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field disabledByOverlap:Z
+       4: ireturn
+
+  public boolean ignoreAntiOverlap();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field ignoreAntiOverlap:Z
+       4: ireturn
+
+  public org.violetmoon.zeta.module.ZetaCategory category();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+       4: areturn
+
+  public java.lang.String description();
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field description:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String displayName();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field displayName:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String lowerCaseName();
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field lowercaseName:Ljava/lang/String;
+       4: areturn
+
+  public boolean isEnabled();
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field enabled:Z
+       4: ireturn
+
+  public boolean enabledByDefault();
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field enabledByDefault:Z
+       4: ireturn
+
+  public void setEnabledByDefault(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #32                 // Field enabledByDefault:Z
+       5: return
+
+  public void setIgnoreAntiOverlap(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #38                 // Field ignoreAntiOverlap:Z
+       5: return
+}

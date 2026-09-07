@@ -1,0 +1,313 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/FixedLookControl.class
+  Last modified Jun 14, 2024; size 1986 bytes
+  SHA-256 checksum 8da24eafbf2bba2b73d7095167faff3ab523793e825ce98d8b75da1c2dfac7d5
+  Compiled from "FixedLookControl.java"
+public class com.builtbroken.ai.improvements.FixedLookControl extends net.minecraft.world.entity.ai.control.LookControl
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/builtbroken/ai/improvements/FixedLookControl
+  super_class: #2                         // net/minecraft/world/entity/ai/control/LookControl
+  interfaces: 0, fields: 0, methods: 5, attributes: 1
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/entity/ai/control/LookControl."<init>":(Lnet/minecraft/world/entity/Mob;)V
+    #2 = Class              #4            // net/minecraft/world/entity/ai/control/LookControl
+    #3 = NameAndType        #5:#6         // "<init>":(Lnet/minecraft/world/entity/Mob;)V
+    #4 = Utf8               net/minecraft/world/entity/ai/control/LookControl
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lnet/minecraft/world/entity/Mob;)V
+    #7 = Fieldref           #8.#9         // com/builtbroken/ai/improvements/FixedLookControl.wantedX:D
+    #8 = Class              #10           // com/builtbroken/ai/improvements/FixedLookControl
+    #9 = NameAndType        #11:#12       // wantedX:D
+   #10 = Utf8               com/builtbroken/ai/improvements/FixedLookControl
+   #11 = Utf8               wantedX
+   #12 = Utf8               D
+   #13 = Fieldref           #8.#14        // com/builtbroken/ai/improvements/FixedLookControl.mob:Lnet/minecraft/world/entity/Mob;
+   #14 = NameAndType        #15:#16       // mob:Lnet/minecraft/world/entity/Mob;
+   #15 = Utf8               mob
+   #16 = Utf8               Lnet/minecraft/world/entity/Mob;
+   #17 = Methodref          #18.#19       // net/minecraft/world/entity/Mob.getX:()D
+   #18 = Class              #20           // net/minecraft/world/entity/Mob
+   #19 = NameAndType        #21:#22       // getX:()D
+   #20 = Utf8               net/minecraft/world/entity/Mob
+   #21 = Utf8               getX
+   #22 = Utf8               ()D
+   #23 = Fieldref           #8.#24        // com/builtbroken/ai/improvements/FixedLookControl.wantedY:D
+   #24 = NameAndType        #25:#12       // wantedY:D
+   #25 = Utf8               wantedY
+   #26 = Methodref          #18.#27       // net/minecraft/world/entity/Mob.getY:()D
+   #27 = NameAndType        #28:#22       // getY:()D
+   #28 = Utf8               getY
+   #29 = Methodref          #18.#30       // net/minecraft/world/entity/Mob.getEyeHeight:()F
+   #30 = NameAndType        #31:#32       // getEyeHeight:()F
+   #31 = Utf8               getEyeHeight
+   #32 = Utf8               ()F
+   #33 = Fieldref           #8.#34        // com/builtbroken/ai/improvements/FixedLookControl.wantedZ:D
+   #34 = NameAndType        #35:#12       // wantedZ:D
+   #35 = Utf8               wantedZ
+   #36 = Methodref          #18.#37       // net/minecraft/world/entity/Mob.getZ:()D
+   #37 = NameAndType        #38:#22       // getZ:()D
+   #38 = Utf8               getZ
+   #39 = Methodref          #40.#41       // net/minecraft/util/Mth.sqrt:(F)F
+   #40 = Class              #42           // net/minecraft/util/Mth
+   #41 = NameAndType        #43:#44       // sqrt:(F)F
+   #42 = Utf8               net/minecraft/util/Mth
+   #43 = Utf8               sqrt
+   #44 = Utf8               (F)F
+   #45 = Methodref          #8.#46        // com/builtbroken/ai/improvements/FixedLookControl.tan:(DD)F
+   #46 = NameAndType        #47:#48       // tan:(DD)F
+   #47 = Utf8               tan
+   #48 = Utf8               (DD)F
+   #49 = Double             57.2957763671875d
+   #51 = Methodref          #52.#53       // java/lang/Float.valueOf:(F)Ljava/lang/Float;
+   #52 = Class              #54           // java/lang/Float
+   #53 = NameAndType        #55:#56       // valueOf:(F)Ljava/lang/Float;
+   #54 = Utf8               java/lang/Float
+   #55 = Utf8               valueOf
+   #56 = Utf8               (F)Ljava/lang/Float;
+   #57 = Methodref          #58.#59       // java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+   #58 = Class              #60           // java/util/Optional
+   #59 = NameAndType        #61:#62       // of:(Ljava/lang/Object;)Ljava/util/Optional;
+   #60 = Utf8               java/util/Optional
+   #61 = Utf8               of
+   #62 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+   #63 = Float              90.0f
+   #64 = Methodref          #65.#66       // com/builtbroken/ai/improvements/FastTrig.atan2:(DD)F
+   #65 = Class              #67           // com/builtbroken/ai/improvements/FastTrig
+   #66 = NameAndType        #68:#48       // atan2:(DD)F
+   #67 = Utf8               com/builtbroken/ai/improvements/FastTrig
+   #68 = Utf8               atan2
+   #69 = Methodref          #2.#70        // net/minecraft/world/entity/ai/control/LookControl.getWantedX:()D
+   #70 = NameAndType        #71:#22       // getWantedX:()D
+   #71 = Utf8               getWantedX
+   #72 = Methodref          #2.#73        // net/minecraft/world/entity/ai/control/LookControl.getWantedY:()D
+   #73 = NameAndType        #74:#22       // getWantedY:()D
+   #74 = Utf8               getWantedY
+   #75 = Methodref          #2.#76        // net/minecraft/world/entity/ai/control/LookControl.getWantedZ:()D
+   #76 = NameAndType        #77:#22       // getWantedZ:()D
+   #77 = Utf8               getWantedZ
+   #78 = Fieldref           #2.#79        // net/minecraft/world/entity/ai/control/LookControl.lookAtCooldown:I
+   #79 = NameAndType        #80:#81       // lookAtCooldown:I
+   #80 = Utf8               lookAtCooldown
+   #81 = Utf8               I
+   #82 = Fieldref           #8.#79        // com/builtbroken/ai/improvements/FixedLookControl.lookAtCooldown:I
+   #83 = Fieldref           #2.#84        // net/minecraft/world/entity/ai/control/LookControl.xMaxRotAngle:F
+   #84 = NameAndType        #85:#86       // xMaxRotAngle:F
+   #85 = Utf8               xMaxRotAngle
+   #86 = Utf8               F
+   #87 = Fieldref           #8.#84        // com/builtbroken/ai/improvements/FixedLookControl.xMaxRotAngle:F
+   #88 = Fieldref           #2.#89        // net/minecraft/world/entity/ai/control/LookControl.yMaxRotSpeed:F
+   #89 = NameAndType        #90:#86       // yMaxRotSpeed:F
+   #90 = Utf8               yMaxRotSpeed
+   #91 = Fieldref           #8.#89        // com/builtbroken/ai/improvements/FixedLookControl.yMaxRotSpeed:F
+   #92 = Utf8               Code
+   #93 = Utf8               LineNumberTable
+   #94 = Utf8               LocalVariableTable
+   #95 = Utf8               this
+   #96 = Utf8               Lcom/builtbroken/ai/improvements/FixedLookControl;
+   #97 = Utf8               entity
+   #98 = Utf8               getXRotD
+   #99 = Utf8               ()Ljava/util/Optional;
+  #100 = Utf8               lvt_1_1_
+  #101 = Utf8               lvt_3_1_
+  #102 = Utf8               lvt_5_1_
+  #103 = Utf8               lvt_7_1_
+  #104 = Utf8               Signature
+  #105 = Utf8               ()Ljava/util/Optional<Ljava/lang/Float;>;
+  #106 = Utf8               getYRotD
+  #107 = Utf8               a
+  #108 = Utf8               b
+  #109 = Utf8               copyDataIntoSelf
+  #110 = Utf8               (Lnet/minecraft/world/entity/ai/control/LookControl;)V
+  #111 = Utf8               oldHelper
+  #112 = Utf8               Lnet/minecraft/world/entity/ai/control/LookControl;
+  #113 = Utf8               SourceFile
+  #114 = Utf8               FixedLookControl.java
+{
+  public com.builtbroken.ai.improvements.FixedLookControl(net.minecraft.world.entity.Mob);
+    descriptor: (Lnet/minecraft/world/entity/Mob;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method net/minecraft/world/entity/ai/control/LookControl."<init>":(Lnet/minecraft/world/entity/Mob;)V
+         5: return
+      LineNumberTable:
+        line 16: 0
+        line 17: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/builtbroken/ai/improvements/FixedLookControl;
+            0       6     1 entity   Lnet/minecraft/world/entity/Mob;
+
+  protected java.util.Optional<java.lang.Float> getXRotD();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=6, locals=9, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field wantedX:D
+         4: aload_0
+         5: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+         8: invokevirtual #17                 // Method net/minecraft/world/entity/Mob.getX:()D
+        11: dsub
+        12: dstore_1
+        13: aload_0
+        14: getfield      #23                 // Field wantedY:D
+        17: aload_0
+        18: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+        21: invokevirtual #26                 // Method net/minecraft/world/entity/Mob.getY:()D
+        24: aload_0
+        25: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+        28: invokevirtual #29                 // Method net/minecraft/world/entity/Mob.getEyeHeight:()F
+        31: f2d
+        32: dadd
+        33: dsub
+        34: dstore_3
+        35: aload_0
+        36: getfield      #33                 // Field wantedZ:D
+        39: aload_0
+        40: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+        43: invokevirtual #36                 // Method net/minecraft/world/entity/Mob.getZ:()D
+        46: dsub
+        47: dstore        5
+        49: dload_1
+        50: dload_1
+        51: dmul
+        52: dload         5
+        54: dload         5
+        56: dmul
+        57: dadd
+        58: d2f
+        59: invokestatic  #39                 // Method net/minecraft/util/Mth.sqrt:(F)F
+        62: f2d
+        63: dstore        7
+        65: dload_3
+        66: dload         7
+        68: invokestatic  #45                 // Method tan:(DD)F
+        71: f2d
+        72: ldc2_w        #49                 // double 57.2957763671875d
+        75: dmul
+        76: dneg
+        77: d2f
+        78: invokestatic  #51                 // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+        81: invokestatic  #57                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+        84: areturn
+      LineNumberTable:
+        line 22: 0
+        line 23: 13
+        line 24: 35
+        line 25: 49
+        line 26: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      85     0  this   Lcom/builtbroken/ai/improvements/FixedLookControl;
+           13      72     1 lvt_1_1_   D
+           35      50     3 lvt_3_1_   D
+           49      36     5 lvt_5_1_   D
+           65      20     7 lvt_7_1_   D
+    Signature: #105                         // ()Ljava/util/Optional<Ljava/lang/Float;>;
+
+  protected java.util.Optional<java.lang.Float> getYRotD();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=4, locals=5, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field wantedX:D
+         4: aload_0
+         5: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+         8: invokevirtual #17                 // Method net/minecraft/world/entity/Mob.getX:()D
+        11: dsub
+        12: dstore_1
+        13: aload_0
+        14: getfield      #33                 // Field wantedZ:D
+        17: aload_0
+        18: getfield      #13                 // Field mob:Lnet/minecraft/world/entity/Mob;
+        21: invokevirtual #36                 // Method net/minecraft/world/entity/Mob.getZ:()D
+        24: dsub
+        25: dstore_3
+        26: dload_3
+        27: dload_1
+        28: invokestatic  #45                 // Method tan:(DD)F
+        31: f2d
+        32: ldc2_w        #49                 // double 57.2957763671875d
+        35: dmul
+        36: d2f
+        37: ldc           #63                 // float 90.0f
+        39: fsub
+        40: invokestatic  #51                 // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+        43: invokestatic  #57                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+        46: areturn
+      LineNumberTable:
+        line 32: 0
+        line 33: 13
+        line 34: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      47     0  this   Lcom/builtbroken/ai/improvements/FixedLookControl;
+           13      34     1 lvt_1_1_   D
+           26      21     3 lvt_3_1_   D
+    Signature: #105                         // ()Ljava/util/Optional<Ljava/lang/Float;>;
+
+  public static float tan(double, double);
+    descriptor: (DD)F
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=4, args_size=2
+         0: dload_0
+         1: dload_2
+         2: invokestatic  #64                 // Method com/builtbroken/ai/improvements/FastTrig.atan2:(DD)F
+         5: freturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0     a   D
+            0       6     2     b   D
+
+  public void copyDataIntoSelf(net.minecraft.world.entity.ai.control.LookControl);
+    descriptor: (Lnet/minecraft/world/entity/ai/control/LookControl;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #69                 // Method net/minecraft/world/entity/ai/control/LookControl.getWantedX:()D
+         5: putfield      #7                  // Field wantedX:D
+         8: aload_0
+         9: aload_1
+        10: invokevirtual #72                 // Method net/minecraft/world/entity/ai/control/LookControl.getWantedY:()D
+        13: putfield      #23                 // Field wantedY:D
+        16: aload_0
+        17: aload_1
+        18: invokevirtual #75                 // Method net/minecraft/world/entity/ai/control/LookControl.getWantedZ:()D
+        21: putfield      #33                 // Field wantedZ:D
+        24: aload_0
+        25: aload_1
+        26: getfield      #78                 // Field net/minecraft/world/entity/ai/control/LookControl.lookAtCooldown:I
+        29: putfield      #82                 // Field lookAtCooldown:I
+        32: aload_0
+        33: aload_1
+        34: getfield      #83                 // Field net/minecraft/world/entity/ai/control/LookControl.xMaxRotAngle:F
+        37: putfield      #87                 // Field xMaxRotAngle:F
+        40: aload_0
+        41: aload_1
+        42: getfield      #88                 // Field net/minecraft/world/entity/ai/control/LookControl.yMaxRotSpeed:F
+        45: putfield      #91                 // Field yMaxRotSpeed:F
+        48: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 8
+        line 46: 16
+        line 47: 24
+        line 48: 32
+        line 49: 40
+        line 50: 48
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      49     0  this   Lcom/builtbroken/ai/improvements/FixedLookControl;
+            0      49     1 oldHelper   Lnet/minecraft/world/entity/ai/control/LookControl;
+}
+SourceFile: "FixedLookControl.java"

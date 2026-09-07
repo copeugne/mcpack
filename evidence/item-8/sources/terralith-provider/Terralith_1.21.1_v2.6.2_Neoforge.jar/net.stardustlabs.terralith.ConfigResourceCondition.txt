@@ -1,0 +1,100 @@
+Compiled from "ConfigResourceCondition.java"
+public final class net.stardustlabs.terralith.ConfigResourceCondition extends java.lang.Record implements net.neoforged.neoforge.common.conditions.ICondition {
+  private final java.lang.String key;
+
+  private final boolean invert;
+
+  public static final com.mojang.serialization.MapCodec<net.stardustlabs.terralith.ConfigResourceCondition> CODEC;
+
+  public net.stardustlabs.terralith.ConfigResourceCondition(java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #37                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #39                 // Field key:Ljava/lang/String;
+       9: aload_0
+      10: iload_2
+      11: putfield      #41                 // Field invert:Z
+      14: return
+
+  public boolean test(net.neoforged.neoforge.common.conditions.ICondition$IContext);
+    Code:
+       0: invokestatic  #53                 // Method net/stardustlabs/terralith/config/ConfigHandler.getState:()Lnet/stardustlabs/terralith/config/ConfigState;
+       3: aload_0
+       4: getfield      #39                 // Field key:Ljava/lang/String;
+       7: invokevirtual #58                 // Method net/stardustlabs/terralith/config/ConfigState.test:(Ljava/lang/String;)Z
+      10: istore_2
+      11: aload_0
+      12: getfield      #41                 // Field invert:Z
+      15: iload_2
+      16: if_icmpeq     23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: ireturn
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.conditions.ICondition> codec();
+    Code:
+       0: getstatic     #64                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #80,  0             // InvokeDynamic #0:toString:(Lnet/stardustlabs/terralith/ConfigResourceCondition;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #85,  0             // InvokeDynamic #0:hashCode:(Lnet/stardustlabs/terralith/ConfigResourceCondition;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #91,  0             // InvokeDynamic #0:equals:(Lnet/stardustlabs/terralith/ConfigResourceCondition;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.lang.String key();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field key:Ljava/lang/String;
+       4: areturn
+
+  public boolean invert();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field invert:Z
+       4: ireturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #102                // Field com/mojang/serialization/Codec.STRING:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       4: ldc           #103                // String key
+       6: invokeinterface #109,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #126,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #132                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #135                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      22: ldc           #136                // String invert
+      24: iconst_0
+      25: invokestatic  #142                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      28: invokeinterface #146,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #152,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      38: invokevirtual #132                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: invokevirtual #156                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      44: aload_0
+      45: invokedynamic #166,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      50: invokevirtual #169                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      53: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #176,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #180                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #64                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

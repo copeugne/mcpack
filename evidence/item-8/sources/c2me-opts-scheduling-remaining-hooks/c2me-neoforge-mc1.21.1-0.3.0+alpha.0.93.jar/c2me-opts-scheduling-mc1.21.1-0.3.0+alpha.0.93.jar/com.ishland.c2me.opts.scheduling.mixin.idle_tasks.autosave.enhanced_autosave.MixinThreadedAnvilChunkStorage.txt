@@ -1,0 +1,457 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.class
+  Last modified Jan 1, 1980; size 4406 bytes
+  SHA-256 checksum 86fe6d1688cc029704ffd90f7682bdb77c48abf719dcf058118372c8ca111123
+  Compiled from "MixinThreadedAnvilChunkStorage.java"
+public abstract class com.ishland.c2me.opts.scheduling.mixin.idle_tasks.autosave.enhanced_autosave.MixinThreadedAnvilChunkStorage implements com.ishland.c2me.opts.scheduling.common.idle_tasks.IThreadedAnvilChunkStorage
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 7, methods: 5, attributes: 3
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage
+    #2 = Class              #1            // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage
+    #6 = Class              #5            // com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage
+    #7 = Utf8               MixinThreadedAnvilChunkStorage.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #11 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry
+   #12 = Class              #11           // it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry
+   #13 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectMap
+   #14 = Class              #13           // it/unimi/dsi/fastutil/longs/Long2ObjectMap
+   #15 = Utf8               Entry
+   #16 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet
+   #17 = Class              #16           // it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet
+   #18 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap
+   #19 = Class              #18           // it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap
+   #20 = Utf8               FastSortedEntrySet
+   #21 = Utf8               updatingChunkMap
+   #22 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+   #23 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+   #24 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #25 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #26 = Utf8               visibleChunkMap
+   #27 = Utf8               mainThreadExecutor
+   #28 = Utf8               Lnet/minecraft/util/thread/BlockableEventLoop;
+   #29 = Utf8               Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+   #30 = Utf8               level
+   #31 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #32 = Utf8               c2me$maxSearchPerCall
+   #33 = Utf8               I
+   #34 = Integer            128
+   #35 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #36 = Utf8               c2me$saveChunksIterator
+   #37 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+   #38 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator<Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry<Lnet/minecraft/server/level/ChunkHolder;>;>;
+   #39 = Utf8               c2me$saveChunksIteratorHash
+   #40 = Utf8               <init>
+   #41 = Utf8               ()V
+   #42 = NameAndType        #40:#41       // "<init>":()V
+   #43 = Methodref          #4.#42        // java/lang/Object."<init>":()V
+   #44 = NameAndType        #39:#33       // c2me$saveChunksIteratorHash:I
+   #45 = Fieldref           #2.#44        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.c2me$saveChunksIteratorHash:I
+   #46 = Utf8               this
+   #47 = Utf8               Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage;
+   #48 = Utf8               saveChunkIfNeeded
+   #49 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;)Z
+   #50 = Utf8               onTick
+   #51 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #52 = Utf8               ci
+   #53 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #54 = Utf8               method
+   #55 = Utf8               tick
+   #56 = Utf8               at
+   #57 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #58 = Utf8               RETURN
+   #59 = NameAndType        #36:#37       // c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+   #60 = Fieldref           #2.#59        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+   #61 = Utf8               it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator
+   #62 = Class              #61           // it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator
+   #63 = Utf8               hasNext
+   #64 = Utf8               ()Z
+   #65 = NameAndType        #63:#64       // hasNext:()Z
+   #66 = InterfaceMethodref #62.#65       // it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator.hasNext:()Z
+   #67 = Utf8               c2me$enhancedAutoSaveUpdateIterator
+   #68 = NameAndType        #67:#41       // c2me$enhancedAutoSaveUpdateIterator:()V
+   #69 = Methodref          #2.#68        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.c2me$enhancedAutoSaveUpdateIterator:()V
+   #70 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #71 = Utf8               c2me$runOneChunkAutoSave
+   #72 = NameAndType        #27:#28       // mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+   #73 = Fieldref           #2.#72        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+   #74 = Utf8               net/minecraft/util/thread/BlockableEventLoop
+   #75 = Class              #74           // net/minecraft/util/thread/BlockableEventLoop
+   #76 = Utf8               isSameThread
+   #77 = NameAndType        #76:#64       // isSameThread:()Z
+   #78 = Methodref          #75.#77       // net/minecraft/util/thread/BlockableEventLoop.isSameThread:()Z
+   #79 = Utf8               java/util/ConcurrentModificationException
+   #80 = Class              #79           // java/util/ConcurrentModificationException
+   #81 = Utf8               runOneChunkAutoSave called async
+   #82 = String             #81           // runOneChunkAutoSave called async
+   #83 = Utf8               (Ljava/lang/String;)V
+   #84 = NameAndType        #40:#83       // "<init>":(Ljava/lang/String;)V
+   #85 = Methodref          #80.#84       // java/util/ConcurrentModificationException."<init>":(Ljava/lang/String;)V
+   #86 = NameAndType        #30:#31       // level:Lnet/minecraft/server/level/ServerLevel;
+   #87 = Fieldref           #2.#86        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.level:Lnet/minecraft/server/level/ServerLevel;
+   #88 = Utf8               net/minecraft/server/level/ServerLevel
+   #89 = Class              #88           // net/minecraft/server/level/ServerLevel
+   #90 = Utf8               noSave
+   #91 = NameAndType        #90:#64       // noSave:()Z
+   #92 = Methodref          #89.#91       // net/minecraft/server/level/ServerLevel.noSave:()Z
+   #93 = NameAndType        #26:#22       // visibleChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+   #94 = Fieldref           #2.#93        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.visibleChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+   #95 = Utf8               java/lang/System
+   #96 = Class              #95           // java/lang/System
+   #97 = Utf8               identityHashCode
+   #98 = Utf8               (Ljava/lang/Object;)I
+   #99 = NameAndType        #97:#98       // identityHashCode:(Ljava/lang/Object;)I
+  #100 = Methodref          #96.#99       // java/lang/System.identityHashCode:(Ljava/lang/Object;)I
+  #101 = Utf8               next
+  #102 = Utf8               ()Ljava/lang/Object;
+  #103 = NameAndType        #101:#102     // next:()Ljava/lang/Object;
+  #104 = InterfaceMethodref #62.#103      // it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator.next:()Ljava/lang/Object;
+  #105 = Utf8               getLongKey
+  #106 = Utf8               ()J
+  #107 = NameAndType        #105:#106     // getLongKey:()J
+  #108 = InterfaceMethodref #12.#107      // it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry.getLongKey:()J
+  #109 = Utf8               getValue
+  #110 = NameAndType        #109:#102     // getValue:()Ljava/lang/Object;
+  #111 = InterfaceMethodref #12.#110      // it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry.getValue:()Ljava/lang/Object;
+  #112 = Utf8               net/minecraft/server/level/ChunkHolder
+  #113 = Class              #112          // net/minecraft/server/level/ChunkHolder
+  #114 = NameAndType        #21:#22       // updatingChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+  #115 = Fieldref           #2.#114       // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.updatingChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+  #116 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap
+  #117 = Class              #116          // it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap
+  #118 = Utf8               containsKey
+  #119 = Utf8               (J)Z
+  #120 = NameAndType        #118:#119     // containsKey:(J)Z
+  #121 = Methodref          #117.#120     // it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.containsKey:(J)Z
+  #122 = NameAndType        #48:#49       // saveChunkIfNeeded:(Lnet/minecraft/server/level/ChunkHolder;)Z
+  #123 = Methodref          #2.#122       // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage.saveChunkIfNeeded:(Lnet/minecraft/server/level/ChunkHolder;)Z
+  #124 = Utf8               entry
+  #125 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry<Lnet/minecraft/server/level/ChunkHolder;>;
+  #126 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry;
+  #127 = Utf8               pos
+  #128 = Utf8               J
+  #129 = Utf8               chunkHolder
+  #130 = Utf8               Lnet/minecraft/server/level/ChunkHolder;
+  #131 = Utf8               i
+  #132 = Utf8               iterator
+  #133 = Utf8               long2ObjectEntrySet
+  #134 = Utf8               ()Lit/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet;
+  #135 = NameAndType        #133:#134     // long2ObjectEntrySet:()Lit/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet;
+  #136 = Methodref          #117.#135     // it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.long2ObjectEntrySet:()Lit/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet;
+  #137 = Utf8               ()Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+  #138 = NameAndType        #132:#137     // iterator:()Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+  #139 = InterfaceMethodref #17.#138      // it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+  #140 = Utf8               chunkHolders1
+  #141 = Utf8               Signature
+  #142 = Utf8               RuntimeVisibleAnnotations
+  #143 = Utf8               ConstantValue
+  #144 = Utf8               Code
+  #145 = Utf8               LineNumberTable
+  #146 = Utf8               LocalVariableTable
+  #147 = Utf8               StackMapTable
+  #148 = Utf8               MethodParameters
+  #149 = Utf8               LocalVariableTypeTable
+  #150 = Utf8               InnerClasses
+  #151 = Utf8               SourceFile
+  #152 = Utf8               RuntimeInvisibleAnnotations
+{
+  private it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<net.minecraft.server.level.ChunkHolder> updatingChunkMap;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #23                          // Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+      1: #25()
+        org.spongepowered.asm.mixin.Final
+
+  private volatile it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<net.minecraft.server.level.ChunkHolder> visibleChunkMap;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    Signature: #23                          // Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.util.thread.BlockableEventLoop<java.lang.Runnable> mainThreadExecutor;
+    descriptor: Lnet/minecraft/util/thread/BlockableEventLoop;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #29                          // Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+      1: #25()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.ServerLevel level;
+    descriptor: Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+      1: #25()
+        org.spongepowered.asm.mixin.Final
+
+  private static final int c2me$maxSearchPerCall = 128;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 128
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Unique
+
+  private it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator<it.unimi.dsi.fastutil.longs.Long2ObjectMap$Entry<net.minecraft.server.level.ChunkHolder>> c2me$saveChunksIterator;
+    descriptor: Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #38                          // Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator<Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry<Lnet/minecraft/server/level/ChunkHolder;>;>;
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Unique
+
+  private int c2me$saveChunksIteratorHash;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.opts.scheduling.mixin.idle_tasks.autosave.enhanced_autosave.MixinThreadedAnvilChunkStorage();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #43                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #45                 // Field c2me$saveChunksIteratorHash:I
+         9: return
+      LineNumberTable:
+        line 22: 0
+        line 38: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage;
+
+  protected abstract boolean saveChunkIfNeeded(net.minecraft.server.level.ChunkHolder);
+    descriptor: (Lnet/minecraft/server/level/ChunkHolder;)Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void onTick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #60                 // Field c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+         4: ifnull        19
+         7: aload_0
+         8: getfield      #60                 // Field c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+        11: invokeinterface #66,  1           // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator.hasNext:()Z
+        16: ifne          23
+        19: aload_0
+        20: invokevirtual #69                 // Method c2me$enhancedAutoSaveUpdateIterator:()V
+        23: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 19 /* same */
+        frame_type = 3 /* same */
+      LineNumberTable:
+        line 43: 0
+        line 44: 19
+        line 46: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage;
+            0      24     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #53(#54=[s#55],#56=[@#57(#9=s#58)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  public boolean c2me$runOneChunkAutoSave();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=7, args_size=1
+         0: aload_0
+         1: getfield      #73                 // Field mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+         4: invokevirtual #78                 // Method net/minecraft/util/thread/BlockableEventLoop.isSameThread:()Z
+         7: ifne          20
+        10: new           #80                 // class java/util/ConcurrentModificationException
+        13: dup
+        14: ldc           #82                 // String runOneChunkAutoSave called async
+        16: invokespecial #85                 // Method java/util/ConcurrentModificationException."<init>":(Ljava/lang/String;)V
+        19: athrow
+        20: aload_0
+        21: getfield      #87                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        24: invokevirtual #92                 // Method net/minecraft/server/level/ServerLevel.noSave:()Z
+        27: ifeq          32
+        30: iconst_0
+        31: ireturn
+        32: aload_0
+        33: getfield      #45                 // Field c2me$saveChunksIteratorHash:I
+        36: aload_0
+        37: getfield      #94                 // Field visibleChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+        40: invokestatic  #100                // Method java/lang/System.identityHashCode:(Ljava/lang/Object;)I
+        43: if_icmpne     53
+        46: aload_0
+        47: getfield      #60                 // Field c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+        50: ifnonnull     57
+        53: aload_0
+        54: invokevirtual #69                 // Method c2me$enhancedAutoSaveUpdateIterator:()V
+        57: iconst_0
+        58: istore_1
+        59: aload_0
+        60: getfield      #60                 // Field c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+        63: astore_2
+        64: aload_2
+        65: invokeinterface #66,  1           // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator.hasNext:()Z
+        70: ifeq          149
+        73: iload_1
+        74: iinc          1, 1
+        77: sipush        128
+        80: if_icmpge     149
+        83: aload_2
+        84: invokeinterface #104,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator.next:()Ljava/lang/Object;
+        89: checkcast     #12                 // class it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry
+        92: astore_3
+        93: aload_3
+        94: invokeinterface #108,  1          // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry.getLongKey:()J
+        99: lstore        4
+       101: aload_3
+       102: invokeinterface #111,  1          // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry.getValue:()Ljava/lang/Object;
+       107: checkcast     #113                // class net/minecraft/server/level/ChunkHolder
+       110: astore        6
+       112: aload         6
+       114: ifnonnull     120
+       117: goto          64
+       120: aload_0
+       121: getfield      #115                // Field updatingChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+       124: lload         4
+       126: invokevirtual #121                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.containsKey:(J)Z
+       129: ifne          135
+       132: goto          64
+       135: aload_0
+       136: aload         6
+       138: invokevirtual #123                // Method saveChunkIfNeeded:(Lnet/minecraft/server/level/ChunkHolder;)Z
+       141: ifeq          146
+       144: iconst_1
+       145: ireturn
+       146: goto          64
+       149: iconst_0
+       150: ireturn
+      StackMapTable: number_of_entries = 9
+        frame_type = 20 /* same */
+        frame_type = 11 /* same */
+        frame_type = 20 /* same */
+        frame_type = 3 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 6
+          locals = [ int, class it/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator ]
+        frame_type = 254 /* append */
+          offset_delta = 55
+          locals = [ class it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry, long, class net/minecraft/server/level/ChunkHolder ]
+        frame_type = 14 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 10
+        frame_type = 2 /* same */
+      LineNumberTable:
+        line 51: 0
+        line 52: 10
+        line 55: 20
+        line 56: 30
+        line 59: 32
+        line 60: 53
+        line 63: 57
+        line 64: 59
+        line 65: 64
+        line 66: 83
+        line 67: 93
+        line 68: 101
+        line 69: 112
+        line 70: 120
+        line 71: 135
+        line 72: 144
+        line 74: 146
+        line 76: 149
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           93      53     3 entry   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry;
+          101      45     4   pos   J
+          112      34     6 chunkHolder   Lnet/minecraft/server/level/ChunkHolder;
+            0     151     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage;
+           59      92     1     i   I
+           64      87     2 iterator   Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           93      53     3 entry   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry<Lnet/minecraft/server/level/ChunkHolder;>;
+           64      87     2 iterator   Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator<Lit/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry<Lnet/minecraft/server/level/ChunkHolder;>;>;
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Unique
+
+  private void c2me$enhancedAutoSaveUpdateIterator();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #94                 // Field visibleChunkMap:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+         4: astore_1
+         5: aload_1
+         6: invokestatic  #100                // Method java/lang/System.identityHashCode:(Ljava/lang/Object;)I
+         9: istore_2
+        10: aload_0
+        11: aload_1
+        12: invokevirtual #136                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.long2ObjectEntrySet:()Lit/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet;
+        15: invokeinterface #139,  1          // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+        20: putfield      #60                 // Field c2me$saveChunksIterator:Lit/unimi/dsi/fastutil/objects/ObjectBidirectionalIterator;
+        23: aload_0
+        24: iload_2
+        25: putfield      #45                 // Field c2me$saveChunksIteratorHash:I
+        28: return
+      LineNumberTable:
+        line 81: 0
+        line 82: 5
+        line 83: 10
+        line 84: 23
+        line 85: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinThreadedAnvilChunkStorage;
+            5      24     1 chunkHolders1   Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+           10      19     2 identityHashCode   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            5      24     1 chunkHolders1   Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Unique
+}
+InnerClasses:
+  public static #15= #12 of #14;          // Entry=class it/unimi/dsi/fastutil/longs/Long2ObjectMap$Entry of class it/unimi/dsi/fastutil/longs/Long2ObjectMap
+  public static #20= #17 of #19;          // FastSortedEntrySet=class it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap$FastSortedEntrySet of class it/unimi/dsi/fastutil/longs/Long2ObjectSortedMap
+SourceFile: "MixinThreadedAnvilChunkStorage.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkMap;]
+    )

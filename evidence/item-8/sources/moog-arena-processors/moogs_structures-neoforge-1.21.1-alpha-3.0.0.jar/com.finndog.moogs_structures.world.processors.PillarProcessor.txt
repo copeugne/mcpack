@@ -1,0 +1,460 @@
+Compiled from "PillarProcessor.java"
+public class com.finndog.moogs_structures.world.processors.PillarProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  private static final net.minecraft.resources.ResourceLocation EMPTY_RL;
+
+  private static final com.mojang.serialization.Codec<net.minecraft.world.level.block.state.BlockState> BLOCK_STATE_CODEC;
+
+  public static final com.mojang.serialization.MapCodec<com.finndog.moogs_structures.world.processors.PillarProcessor> CODEC;
+
+  public final java.util.Map<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState> pillarTriggerAndReplacementBlocks;
+
+  public final java.util.Optional<net.minecraft.world.level.block.state.BlockState> originalReplacedBlock;
+
+  public final net.minecraft.resources.ResourceLocation processorList;
+
+  public final net.minecraft.core.Direction direction;
+
+  public final int pillarLength;
+
+  public final boolean forcePlacement;
+
+  public final java.util.Optional<com.finndog.moogs_structures.world.randomize.BlockStateRandomizer> pillarRandomizer;
+
+  private com.finndog.moogs_structures.world.processors.PillarProcessor(java.util.Map<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState>, net.minecraft.resources.ResourceLocation, net.minecraft.core.Direction, java.util.Optional<net.minecraft.world.level.block.state.BlockState>, int, boolean, java.util.Optional<com.finndog.moogs_structures.world.randomize.BlockStateRandomizer>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field pillarTriggerAndReplacementBlocks:Ljava/util/Map;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field processorList:Lnet/minecraft/resources/ResourceLocation;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field direction:Lnet/minecraft/core/Direction;
+      19: aload_0
+      20: aload         4
+      22: putfield      #21                 // Field originalReplacedBlock:Ljava/util/Optional;
+      25: aload_0
+      26: iload         5
+      28: putfield      #25                 // Field pillarLength:I
+      31: aload_0
+      32: iload         6
+      34: putfield      #29                 // Field forcePlacement:Z
+      37: aload_0
+      38: aload         7
+      40: putfield      #33                 // Field pillarRandomizer:Ljava/util/Optional;
+      43: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #36                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: astore        7
+       7: aload_0
+       8: getfield      #7                  // Field pillarTriggerAndReplacementBlocks:Ljava/util/Map;
+      11: aload         7
+      13: invokeinterface #42,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      18: ifeq          542
+      21: aload         5
+      23: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      26: astore        8
+      28: aload_0
+      29: getfield      #7                  // Field pillarTriggerAndReplacementBlocks:Ljava/util/Map;
+      32: aload         7
+      34: invokeinterface #52,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      39: checkcast     #56                 // class net/minecraft/world/level/block/state/BlockState
+      42: astore        9
+      44: aload_0
+      45: getfield      #21                 // Field originalReplacedBlock:Ljava/util/Optional;
+      48: aload         9
+      50: invokevirtual #58                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      53: checkcast     #56                 // class net/minecraft/world/level/block/state/BlockState
+      56: astore        10
+      58: new           #63                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      61: dup
+      62: invokespecial #65                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      65: aload         8
+      67: invokevirtual #66                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      70: astore        11
+      72: aconst_null
+      73: astore        12
+      75: aload_0
+      76: getfield      #13                 // Field processorList:Lnet/minecraft/resources/ResourceLocation;
+      79: ifnull        129
+      82: aload_0
+      83: getfield      #13                 // Field processorList:Lnet/minecraft/resources/ResourceLocation;
+      86: getstatic     #70                 // Field EMPTY_RL:Lnet/minecraft/resources/ResourceLocation;
+      89: invokevirtual #73                 // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      92: ifne          129
+      95: aload_1
+      96: invokeinterface #78,  1           // InterfaceMethod net/minecraft/world/level/LevelReader.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     101: getstatic     #84                 // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+     104: invokeinterface #90,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+     109: invokevirtual #96                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     112: checkcast     #99                 // class net/minecraft/core/Registry
+     115: aload_0
+     116: getfield      #13                 // Field processorList:Lnet/minecraft/resources/ResourceLocation;
+     119: invokeinterface #101,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+     124: checkcast     #104                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList
+     127: astore        12
+     129: aload_1
+     130: instanceof    #106                // class net/minecraft/server/level/WorldGenRegion
+     133: ifeq          170
+     136: aload_1
+     137: checkcast     #106                // class net/minecraft/server/level/WorldGenRegion
+     140: astore        13
+     142: aload         13
+     144: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.getCenter:()Lnet/minecraft/world/level/ChunkPos;
+     147: new           #112                // class net/minecraft/world/level/ChunkPos
+     150: dup
+     151: aload         11
+     153: invokespecial #114                // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+     156: invokevirtual #117                // Method net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+     159: ifne          170
+     162: aload         8
+     164: aload         10
+     166: invokestatic  #118                // Method getReturnBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+     169: areturn
+     170: ldc           #124                // int -2147483648
+     172: istore        13
+     174: aload_0
+     175: getfield      #17                 // Field direction:Lnet/minecraft/core/Direction;
+     178: getstatic     #125                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     181: if_acmpne     239
+     184: aload_0
+     185: getfield      #29                 // Field forcePlacement:Z
+     188: ifne          239
+     191: aload_1
+     192: aload         8
+     194: invokestatic  #130                // Method com/finndog/moogs_structures/utils/GeneralUtils.getFirstLandYFromPos:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)I
+     197: istore        13
+     199: iload         13
+     201: aload_1
+     202: invokeinterface #136,  1          // InterfaceMethod net/minecraft/world/level/LevelReader.getMinBuildHeight:()I
+     207: if_icmpgt     239
+     210: aload_0
+     211: getfield      #25                 // Field pillarLength:I
+     214: iconst_2
+     215: iadd
+     216: aload         8
+     218: invokevirtual #140                // Method net/minecraft/core/BlockPos.getY:()I
+     221: aload_1
+     222: invokeinterface #136,  1          // InterfaceMethod net/minecraft/world/level/LevelReader.getMinBuildHeight:()I
+     227: isub
+     228: if_icmplt     239
+     231: aload         8
+     233: aload         10
+     235: invokestatic  #118                // Method getReturnBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+     238: areturn
+     239: aload_1
+     240: aload         8
+     242: aload_0
+     243: getfield      #17                 // Field direction:Lnet/minecraft/core/Direction;
+     246: invokevirtual #145                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     249: invokeinterface #149,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     254: astore        14
+     256: aload_0
+     257: getfield      #29                 // Field forcePlacement:Z
+     260: ifeq          276
+     263: aload         14
+     265: invokevirtual #153                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     268: invokevirtual #157                // Method net/minecraft/world/level/block/Block.defaultDestroyTime:()F
+     271: fconst_0
+     272: fcmpl
+     273: ifge          284
+     276: aload         14
+     278: invokevirtual #163                // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     281: ifne          534
+     284: aload_0
+     285: getfield      #29                 // Field forcePlacement:Z
+     288: ifne          301
+     291: aload         11
+     293: invokevirtual #167                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     296: iload         13
+     298: if_icmplt     534
+     301: aload_1
+     302: aload         11
+     304: invokevirtual #167                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     307: invokeinterface #168,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.isOutsideBuildHeight:(I)Z
+     312: ifne          534
+     315: aload         11
+     317: aload         8
+     319: aload_0
+     320: getfield      #25                 // Field pillarLength:I
+     323: i2d
+     324: invokevirtual #172                // Method net/minecraft/core/BlockPos$MutableBlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+     327: ifeq          534
+     330: aload_0
+     331: getfield      #33                 // Field pillarRandomizer:Ljava/util/Optional;
+     334: invokevirtual #176                // Method java/util/Optional.isPresent:()Z
+     337: ifeq          368
+     340: aload_0
+     341: getfield      #33                 // Field pillarRandomizer:Ljava/util/Optional;
+     344: invokevirtual #96                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     347: checkcast     #179                // class com/finndog/moogs_structures/world/randomize/BlockStateRandomizer
+     350: aload         6
+     352: aload         11
+     354: invokevirtual #181                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+     357: aload         11
+     359: invokevirtual #167                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     362: invokevirtual #187                // Method com/finndog/moogs_structures/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;I)Lnet/minecraft/world/level/block/state/BlockState;
+     365: goto          370
+     368: aload         9
+     370: astore        15
+     372: new           #37                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     375: dup
+     376: aload         11
+     378: aload         8
+     380: invokevirtual #190                // Method net/minecraft/core/BlockPos$MutableBlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     383: aload_2
+     384: invokevirtual #194                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     387: aload         15
+     389: aconst_null
+     390: invokespecial #197                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     393: astore        16
+     395: new           #37                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     398: dup
+     399: aload         11
+     401: invokevirtual #200                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     404: aload         15
+     406: aconst_null
+     407: invokespecial #197                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     410: astore        17
+     412: aload         12
+     414: ifnull        486
+     417: aload         12
+     419: invokevirtual #203                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList.list:()Ljava/util/List;
+     422: invokeinterface #207,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     427: astore        18
+     429: aload         18
+     431: invokeinterface #213,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     436: ifeq          486
+     439: aload         18
+     441: invokeinterface #218,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     446: checkcast     #2                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor
+     449: astore        19
+     451: aload         17
+     453: ifnonnull     459
+     456: goto          486
+     459: aload         19
+     461: aload_1
+     462: aload         16
+     464: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     467: aload         17
+     469: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     472: aload         16
+     474: aload         17
+     476: aload         6
+     478: invokevirtual #221                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor.processBlock:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+     481: astore        17
+     483: goto          429
+     486: aload         17
+     488: ifnull        511
+     491: aload_1
+     492: aload         11
+     494: invokeinterface #225,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+     499: aload         11
+     501: aload         17
+     503: invokevirtual #36                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     506: iconst_0
+     507: invokevirtual #229                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     510: pop
+     511: aload         11
+     513: aload_0
+     514: getfield      #17                 // Field direction:Lnet/minecraft/core/Direction;
+     517: invokevirtual #235                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     520: pop
+     521: aload_1
+     522: aload         11
+     524: invokeinterface #149,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     529: astore        14
+     531: goto          256
+     534: aload         8
+     536: aload         10
+     538: invokestatic  #118                // Method getReturnBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+     541: areturn
+     542: aload         5
+     544: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo getReturnBlock(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: ifnull        14
+       4: aload_1
+       5: getstatic     #239                // Field net/minecraft/world/level/block/Blocks.STRUCTURE_VOID:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #245                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      11: ifeq          18
+      14: aconst_null
+      15: goto          28
+      18: new           #37                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      21: dup
+      22: aload_0
+      23: aload_1
+      24: aconst_null
+      25: invokespecial #197                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+      28: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #249                // Field com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.PILLAR_PROCESSOR:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+       3: invokeinterface #255,  1          // InterfaceMethod com/finndog/moogs_structures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #258                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$10(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #260                // Field BLOCK_STATE_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc_w         #264                // String trigger
+       7: invokeinterface #266,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      12: getstatic     #260                // Field BLOCK_STATE_CODEC:Lcom/mojang/serialization/Codec;
+      15: ldc_w         #272                // String replacement
+      18: invokeinterface #266,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      23: invokestatic  #274                // InterfaceMethod com/mojang/serialization/Codec.mapPair:(Lcom/mojang/serialization/MapCodec;Lcom/mojang/serialization/MapCodec;)Lcom/mojang/serialization/MapCodec;
+      26: invokevirtual #278                // Method com/mojang/serialization/MapCodec.codec:()Lcom/mojang/serialization/Codec;
+      29: invokeinterface #284,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      34: invokedynamic #287,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      39: invokedynamic #291,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      44: invokeinterface #292,  3          // InterfaceMethod com/mojang/serialization/Codec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+      49: ldc_w         #296                // String pillar_trigger_and_replacements
+      52: invokeinterface #266,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      57: invokedynamic #298,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      62: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      65: getstatic     #303                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      68: ldc_w         #306                // String pillar_processor_list
+      71: getstatic     #70                 // Field EMPTY_RL:Lnet/minecraft/resources/ResourceLocation;
+      74: invokeinterface #308,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      79: invokedynamic #312,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      84: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      87: getstatic     #313                // Field net/minecraft/core/Direction.CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+      90: ldc_w         #316                // String direction
+      93: getstatic     #125                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      96: invokevirtual #317                // Method net/minecraft/util/StringRepresentable$EnumCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      99: invokedynamic #320,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     104: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     107: getstatic     #260                // Field BLOCK_STATE_CODEC:Lcom/mojang/serialization/Codec;
+     110: ldc_w         #321                // String original_replaced_block
+     113: invokeinterface #323,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     118: invokedynamic #325,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     123: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     126: getstatic     #326                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     129: ldc_w         #330                // String pillar_length
+     132: sipush        1000
+     135: invokestatic  #332                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     138: invokeinterface #336,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     143: invokedynamic #339,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     148: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     151: getstatic     #340                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     154: ldc_w         #343                // String forced_placement
+     157: iconst_0
+     158: invokestatic  #345                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     161: invokeinterface #336,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     166: invokedynamic #350,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     171: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     174: getstatic     #351                // Field com/finndog/moogs_structures/world/randomize/BlockStateRandomizer.CODEC:Lcom/mojang/serialization/Codec;
+     177: ldc_w         #352                // String pillar_state_randomizer
+     180: invokeinterface #323,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     185: invokedynamic #354,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     190: invokevirtual #299                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     193: invokevirtual #355                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P7;
+     196: aload_0
+     197: aload_0
+     198: invokedynamic #361,  0            // InvokeDynamic #9:apply:()Lcom/mojang/datafixers/util/Function7;
+     203: invokevirtual #364                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     206: invokevirtual #368                // Method com/mojang/datafixers/Products$P7.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     209: areturn
+
+  private static java.util.Optional lambda$static$9(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field pillarRandomizer:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$8(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field forcePlacement:Z
+       4: invokestatic  #345                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$7(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field pillarLength:I
+       4: invokestatic  #332                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.Optional lambda$static$6(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field originalReplacedBlock:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.core.Direction lambda$static$5(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field direction:Lnet/minecraft/core/Direction;
+       4: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$4(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field processorList:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  private static java.util.Map lambda$static$3(com.finndog.moogs_structures.world.processors.PillarProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field pillarTriggerAndReplacementBlocks:Ljava/util/Map;
+       4: areturn
+
+  private static java.util.List lambda$static$2(java.util.Map);
+    Code:
+       0: aload_0
+       1: invokeinterface #373,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       6: invokeinterface #377,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+      11: invokedynamic #383,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+      16: invokeinterface #384,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      21: invokestatic  #390                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+      24: invokeinterface #396,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      29: checkcast     #208                // class java/util/List
+      32: areturn
+
+  private static com.mojang.datafixers.util.Pair lambda$static$1(java.util.Map$Entry);
+    Code:
+       0: aload_0
+       1: invokeinterface #400,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       6: checkcast     #56                 // class net/minecraft/world/level/block/state/BlockState
+       9: aload_0
+      10: invokeinterface #405,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      15: checkcast     #56                 // class net/minecraft/world/level/block/state/BlockState
+      18: invokestatic  #408                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      21: areturn
+
+  private static java.util.Map lambda$static$0(java.util.List);
+    Code:
+       0: aload_0
+       1: invokeinterface #414,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       6: invokedynamic #415,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+      11: invokedynamic #416,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+      16: invokestatic  #417                // Method java/util/stream/Collectors.toMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+      19: invokeinterface #396,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      24: checkcast     #43                 // class java/util/Map
+      27: areturn
+
+  static {};
+    Code:
+       0: ldc_w         #421                // String minecraft
+       3: ldc_w         #423                // String empty
+       6: invokestatic  #425                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: putstatic     #70                 // Field EMPTY_RL:Lnet/minecraft/resources/ResourceLocation;
+      12: getstatic     #429                // Field net/minecraft/world/level/block/state/BlockState.CODEC:Lcom/mojang/serialization/Codec;
+      15: invokestatic  #430                // Method com/finndog/moogs_structures/world/processors/BlockAliasCompatCodec.wrap:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      18: putstatic     #260                // Field BLOCK_STATE_CODEC:Lcom/mojang/serialization/Codec;
+      21: invokedynamic #436,  0            // InvokeDynamic #13:apply:()Ljava/util/function/Function;
+      26: invokestatic  #437                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      29: putstatic     #443                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      32: return
+}

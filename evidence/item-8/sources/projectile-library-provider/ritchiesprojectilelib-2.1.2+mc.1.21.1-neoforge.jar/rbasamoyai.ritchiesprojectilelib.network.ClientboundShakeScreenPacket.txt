@@ -1,0 +1,175 @@
+Compiled from "ClientboundShakeScreenPacket.java"
+public final class rbasamoyai.ritchiesprojectilelib.network.ClientboundShakeScreenPacket extends java.lang.Record implements rbasamoyai.ritchiesprojectilelib.network.RootPacket {
+  private final net.minecraft.resources.ResourceLocation modHandlerId;
+
+  private final rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect effect;
+
+  public rbasamoyai.ritchiesprojectilelib.network.ClientboundShakeScreenPacket(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #26                 // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+       5: ifeq          15
+       8: aload_1
+       9: invokevirtual #30                 // Method net/minecraft/network/FriendlyByteBuf.readResourceLocation:()Lnet/minecraft/resources/ResourceLocation;
+      12: goto          16
+      15: aconst_null
+      16: new           #34                 // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect
+      19: dup
+      20: aload_1
+      21: invokevirtual #38                 // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      24: aload_1
+      25: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      28: aload_1
+      29: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      32: aload_1
+      33: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      36: aload_1
+      37: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      40: aload_1
+      41: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      44: aload_1
+      45: invokevirtual #42                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      48: aload_1
+      49: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readDouble:()D
+      52: aload_1
+      53: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readDouble:()D
+      56: aload_1
+      57: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readDouble:()D
+      60: invokespecial #49                 // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect."<init>":(IFFFFFFDDD)V
+      63: invokespecial #52                 // Method "<init>":(Lnet/minecraft/resources/ResourceLocation;Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+      66: return
+
+  public rbasamoyai.ritchiesprojectilelib.network.ClientboundShakeScreenPacket(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: aload_1
+       3: invokespecial #52                 // Method "<init>":(Lnet/minecraft/resources/ResourceLocation;Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+       6: return
+
+  public rbasamoyai.ritchiesprojectilelib.network.ClientboundShakeScreenPacket(net.minecraft.resources.ResourceLocation, rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: aload_0
+       1: invokespecial #59                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #61                 // Field modHandlerId:Lnet/minecraft/resources/ResourceLocation;
+       9: aload_0
+      10: aload_2
+      11: putfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      14: return
+
+  public void rootEncode(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #61                 // Field modHandlerId:Lnet/minecraft/resources/ResourceLocation;
+       5: ifnull        12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: invokevirtual #68                 // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+      16: pop
+      17: aload_0
+      18: getfield      #61                 // Field modHandlerId:Lnet/minecraft/resources/ResourceLocation;
+      21: ifnull        33
+      24: aload_1
+      25: aload_0
+      26: getfield      #61                 // Field modHandlerId:Lnet/minecraft/resources/ResourceLocation;
+      29: invokevirtual #72                 // Method net/minecraft/network/FriendlyByteBuf.writeResourceLocation:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/network/FriendlyByteBuf;
+      32: pop
+      33: aload_1
+      34: aload_0
+      35: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      38: getfield      #76                 // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.duration:I
+      41: invokevirtual #80                 // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      44: aload_0
+      45: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      48: getfield      #84                 // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.yawMagnitude:F
+      51: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      54: aload_0
+      55: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      58: getfield      #91                 // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.pitchMagnitude:F
+      61: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      64: aload_0
+      65: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      68: getfield      #94                 // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.rollMagnitude:F
+      71: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      74: aload_0
+      75: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      78: getfield      #97                 // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.yawJitter:F
+      81: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      84: aload_0
+      85: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      88: getfield      #100                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.pitchJitter:F
+      91: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      94: aload_0
+      95: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+      98: getfield      #103                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.rollJitter:F
+     101: invokevirtual #88                 // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+     104: aload_0
+     105: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+     108: getfield      #107                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.posX:D
+     111: invokevirtual #111                // Method net/minecraft/network/FriendlyByteBuf.writeDouble:(D)Lnet/minecraft/network/FriendlyByteBuf;
+     114: aload_0
+     115: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+     118: getfield      #114                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.posY:D
+     121: invokevirtual #111                // Method net/minecraft/network/FriendlyByteBuf.writeDouble:(D)Lnet/minecraft/network/FriendlyByteBuf;
+     124: aload_0
+     125: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+     128: getfield      #117                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.posZ:D
+     131: invokevirtual #111                // Method net/minecraft/network/FriendlyByteBuf.writeDouble:(D)Lnet/minecraft/network/FriendlyByteBuf;
+     134: pop
+     135: return
+
+  public void handle();
+    Code:
+       0: aload_0
+       1: invokedynamic #137,  0            // InvokeDynamic #0:get:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;)Ljava/util/function/Supplier;
+       6: invokestatic  #143                // Method rbasamoyai/ritchiesprojectilelib/EnvExecute.executeOnClient:(Ljava/util/function/Supplier;)V
+       9: return
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #159,  0            // InvokeDynamic #1:toString:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #163,  0            // InvokeDynamic #1:hashCode:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #169,  0            // InvokeDynamic #1:equals:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public net.minecraft.resources.ResourceLocation modHandlerId();
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field modHandlerId:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect effect();
+    Code:
+       0: aload_0
+       1: getfield      #63                 // Field effect:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+       4: areturn
+
+  private java.lang.Runnable lambda$handle$1();
+    Code:
+       0: aload_0
+       1: invokedynamic #180,  0            // InvokeDynamic #2:run:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;)Ljava/lang/Runnable;
+       6: areturn
+
+  private void lambda$handle$0();
+    Code:
+       0: aload_0
+       1: invokestatic  #186                // Method rbasamoyai/ritchiesprojectilelib/network/RPLClientHandlers.shakeScreen:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket;)V
+       4: return
+}

@@ -1,0 +1,178 @@
+Compiled from "AercloudFeature.java"
+public class com.aetherteam.aether.world.feature.AercloudFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.aetherteam.aether.world.configuration.AercloudConfiguration> {
+  public com.aetherteam.aether.world.feature.AercloudFeature(com.mojang.serialization.Codec<com.aetherteam.aether.world.configuration.AercloudConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.aetherteam.aether.world.configuration.AercloudConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_3
+      11: invokeinterface #17,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+      16: istore        4
+      18: aload_1
+      19: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      22: aload_3
+      23: bipush        8
+      25: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      30: ineg
+      31: iconst_0
+      32: iload         4
+      34: ifeq          42
+      37: bipush        8
+      39: goto          43
+      42: iconst_0
+      43: aload_3
+      44: bipush        8
+      46: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      51: isub
+      52: invokevirtual #31                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      55: astore        5
+      57: aload_1
+      58: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      61: checkcast     #41                 // class com/aetherteam/aether/world/configuration/AercloudConfiguration
+      64: astore        6
+      66: aload         6
+      68: invokevirtual #43                 // Method com/aetherteam/aether/world/configuration/AercloudConfiguration.block:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      71: aload_3
+      72: aload         5
+      74: invokevirtual #47                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      77: astore        7
+      79: iconst_0
+      80: istore        8
+      82: iload         8
+      84: aload         6
+      86: invokevirtual #53                 // Method com/aetherteam/aether/world/configuration/AercloudConfiguration.bounds:()I
+      89: if_icmpge     356
+      92: aload_3
+      93: iconst_2
+      94: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      99: istore        9
+     101: aload_3
+     102: invokeinterface #17,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     107: ifeq          122
+     110: aload_3
+     111: iconst_3
+     112: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     117: iconst_1
+     118: isub
+     119: goto          123
+     122: iconst_0
+     123: istore        10
+     125: aload_3
+     126: iconst_2
+     127: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     132: istore        11
+     134: iload         4
+     136: ifeq          156
+     139: aload         5
+     141: iload         9
+     143: iload         10
+     145: iload         11
+     147: ineg
+     148: invokevirtual #31                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     151: astore        5
+     153: goto          169
+     156: aload         5
+     158: iload         9
+     160: iload         10
+     162: iload         11
+     164: invokevirtual #31                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     167: astore        5
+     169: aload         5
+     171: invokevirtual #57                 // Method net/minecraft/core/BlockPos.getX:()I
+     174: istore        12
+     176: iload         12
+     178: aload         5
+     180: invokevirtual #57                 // Method net/minecraft/core/BlockPos.getX:()I
+     183: aload_3
+     184: iconst_2
+     185: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     190: iadd
+     191: iconst_3
+     192: iadd
+     193: if_icmpge     350
+     196: aload         5
+     198: invokevirtual #60                 // Method net/minecraft/core/BlockPos.getY:()I
+     201: istore        13
+     203: iload         13
+     205: aload         5
+     207: invokevirtual #60                 // Method net/minecraft/core/BlockPos.getY:()I
+     210: aload_3
+     211: iconst_1
+     212: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     217: iadd
+     218: iconst_2
+     219: iadd
+     220: if_icmpge     344
+     223: aload         5
+     225: invokevirtual #63                 // Method net/minecraft/core/BlockPos.getZ:()I
+     228: istore        14
+     230: iload         14
+     232: aload         5
+     234: invokevirtual #63                 // Method net/minecraft/core/BlockPos.getZ:()I
+     237: aload_3
+     238: iconst_2
+     239: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     244: iadd
+     245: iconst_3
+     246: iadd
+     247: if_icmpge     338
+     250: new           #32                 // class net/minecraft/core/BlockPos
+     253: dup
+     254: iload         12
+     256: iload         13
+     258: iload         14
+     260: invokespecial #66                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     263: astore        15
+     265: aload_2
+     266: aload         15
+     268: invokeinterface #69,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     273: ifeq          332
+     276: iload         12
+     278: aload         5
+     280: invokevirtual #57                 // Method net/minecraft/core/BlockPos.getX:()I
+     283: isub
+     284: invokestatic  #75                 // Method java/lang/Math.abs:(I)I
+     287: iload         13
+     289: aload         5
+     291: invokevirtual #60                 // Method net/minecraft/core/BlockPos.getY:()I
+     294: isub
+     295: invokestatic  #75                 // Method java/lang/Math.abs:(I)I
+     298: iadd
+     299: iload         14
+     301: aload         5
+     303: invokevirtual #63                 // Method net/minecraft/core/BlockPos.getZ:()I
+     306: isub
+     307: invokestatic  #75                 // Method java/lang/Math.abs:(I)I
+     310: iadd
+     311: iconst_4
+     312: aload_3
+     313: iconst_2
+     314: invokeinterface #27,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     319: iadd
+     320: if_icmpge     332
+     323: aload_0
+     324: aload_2
+     325: aload         15
+     327: aload         7
+     329: invokevirtual #80                 // Method setBlock:(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     332: iinc          14, 1
+     335: goto          230
+     338: iinc          13, 1
+     341: goto          203
+     344: iinc          12, 1
+     347: goto          176
+     350: iinc          8, 1
+     353: goto          82
+     356: iconst_1
+     357: ireturn
+}

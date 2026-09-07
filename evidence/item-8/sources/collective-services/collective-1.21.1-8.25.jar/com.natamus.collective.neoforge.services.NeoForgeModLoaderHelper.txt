@@ -1,0 +1,55 @@
+Compiled from "NeoForgeModLoaderHelper.java"
+public class com.natamus.collective.neoforge.services.NeoForgeModLoaderHelper implements com.natamus.collective_common_neoforge.services.helpers.ModLoaderHelper {
+  public com.natamus.collective.neoforge.services.NeoForgeModLoaderHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String getModLoaderName();
+    Code:
+       0: ldc           #7                  // String NeoForge
+       2: areturn
+
+  public java.lang.String getGameDirectory();
+    Code:
+       0: getstatic     #9                  // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #15                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #19,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #25                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #30                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #34                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public boolean isClientSide();
+    Code:
+       0: getstatic     #40                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: getstatic     #46                 // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+       6: invokevirtual #51                 // Method net/neoforged/api/distmarker/Dist.equals:(Ljava/lang/Object;)Z
+       9: ireturn
+
+  public boolean isJarJard(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokestatic  #55                 // Method com/natamus/collective/neoforge/bundle/NeoForgeBundleJarJarCheck.isModJarJard:(Ljava/lang/String;)Z
+       4: ireturn
+
+  public boolean isBundleModEnabled(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokestatic  #60                 // Method com/natamus/collective/neoforge/bundle/NeoForgeBundleConfigCheck.isBundleModEnabled:(Ljava/lang/String;)Z
+       4: ireturn
+}

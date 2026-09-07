@@ -1,0 +1,977 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.class
+  Last modified Apr 21, 2026; size 8138 bytes
+  SHA-256 checksum 08e602fdad3f4716210a97776cf297ec56f6a5c13f272cb5ad3e3571b6376b71
+  Compiled from "ExtendoGripRenderHandler.java"
+public class com.simibubi.create.content.equipment.extendoGrip.ExtendoGripRenderHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 6, attributes: 2
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.mainHandAnimation:F
+    #8 = Class              #10           // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler
+    #9 = NameAndType        #11:#12       // mainHandAnimation:F
+   #10 = Utf8               com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler
+   #11 = Utf8               mainHandAnimation
+   #12 = Utf8               F
+   #13 = Fieldref           #8.#14        // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.lastMainHandAnimation:F
+   #14 = NameAndType        #15:#12       // lastMainHandAnimation:F
+   #15 = Utf8               lastMainHandAnimation
+   #16 = Float              0.8f
+   #17 = Float              0.99f
+   #18 = Methodref          #19.#20       // net/minecraft/util/Mth.clamp:(FFF)F
+   #19 = Class              #21           // net/minecraft/util/Mth
+   #20 = NameAndType        #22:#23       // clamp:(FFF)F
+   #21 = Utf8               net/minecraft/util/Mth
+   #22 = Utf8               clamp
+   #23 = Utf8               (FFF)F
+   #24 = Fieldref           #25.#26       // com/simibubi/create/AllPartialModels.DEPLOYER_HAND_PUNCHING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #25 = Class              #27           // com/simibubi/create/AllPartialModels
+   #26 = NameAndType        #28:#29       // DEPLOYER_HAND_PUNCHING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #27 = Utf8               com/simibubi/create/AllPartialModels
+   #28 = Utf8               DEPLOYER_HAND_PUNCHING
+   #29 = Utf8               Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #30 = Fieldref           #8.#31        // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.pose:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #31 = NameAndType        #32:#29       // pose:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #32 = Utf8               pose
+   #33 = Fieldref           #34.#35       // com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #34 = Class              #36           // com/simibubi/create/AllItems
+   #35 = NameAndType        #37:#38       // EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #36 = Utf8               com/simibubi/create/AllItems
+   #37 = Utf8               EXTENDO_GRIP
+   #38 = Utf8               Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #39 = Methodref          #8.#40        // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.getRenderedOffHandStack:()Lnet/minecraft/world/item/ItemStack;
+   #40 = NameAndType        #41:#42       // getRenderedOffHandStack:()Lnet/minecraft/world/item/ItemStack;
+   #41 = Utf8               getRenderedOffHandStack
+   #42 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+   #43 = Methodref          #44.#45       // com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #44 = Class              #46           // com/tterrag/registrate/util/entry/ItemEntry
+   #45 = NameAndType        #47:#48       // isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #46 = Utf8               com/tterrag/registrate/util/entry/ItemEntry
+   #47 = Utf8               isIn
+   #48 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+   #49 = Methodref          #8.#50        // com/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler.getRenderedMainHandStack:()Lnet/minecraft/world/item/ItemStack;
+   #50 = NameAndType        #51:#42       // getRenderedMainHandStack:()Lnet/minecraft/world/item/ItemStack;
+   #51 = Utf8               getRenderedMainHandStack
+   #52 = Methodref          #53.#54       // net/minecraft/world/item/ItemStack.isEmpty:()Z
+   #53 = Class              #55           // net/minecraft/world/item/ItemStack
+   #54 = NameAndType        #56:#57       // isEmpty:()Z
+   #55 = Utf8               net/minecraft/world/item/ItemStack
+   #56 = Utf8               isEmpty
+   #57 = Utf8               ()Z
+   #58 = Methodref          #53.#59       // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+   #59 = NameAndType        #60:#61       // getItem:()Lnet/minecraft/world/item/Item;
+   #60 = Utf8               getItem
+   #61 = Utf8               ()Lnet/minecraft/world/item/Item;
+   #62 = Class              #63           // net/minecraft/world/item/BlockItem
+   #63 = Utf8               net/minecraft/world/item/BlockItem
+   #64 = Methodref          #65.#66       // net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+   #65 = Class              #67           // net/minecraft/client/Minecraft
+   #66 = NameAndType        #68:#69       // getInstance:()Lnet/minecraft/client/Minecraft;
+   #67 = Utf8               net/minecraft/client/Minecraft
+   #68 = Utf8               getInstance
+   #69 = Utf8               ()Lnet/minecraft/client/Minecraft;
+   #70 = Methodref          #65.#71       // net/minecraft/client/Minecraft.getItemRenderer:()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+   #71 = NameAndType        #72:#73       // getItemRenderer:()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+   #72 = Utf8               getItemRenderer
+   #73 = Utf8               ()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+   #74 = Methodref          #75.#76       // net/minecraft/client/renderer/entity/ItemRenderer.getModel:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+   #75 = Class              #77           // net/minecraft/client/renderer/entity/ItemRenderer
+   #76 = NameAndType        #78:#79       // getModel:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+   #77 = Utf8               net/minecraft/client/renderer/entity/ItemRenderer
+   #78 = Utf8               getModel
+   #79 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+   #80 = InterfaceMethodref #81.#82       // net/minecraft/client/resources/model/BakedModel.isGui3d:()Z
+   #81 = Class              #83           // net/minecraft/client/resources/model/BakedModel
+   #82 = NameAndType        #84:#57       // isGui3d:()Z
+   #83 = Utf8               net/minecraft/client/resources/model/BakedModel
+   #84 = Utf8               isGui3d
+   #85 = Fieldref           #25.#86       // com/simibubi/create/AllPartialModels.DEPLOYER_HAND_HOLDING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #86 = NameAndType        #87:#29       // DEPLOYER_HAND_HOLDING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+   #87 = Utf8               DEPLOYER_HAND_HOLDING
+   #88 = Methodref          #89.#90       // net/neoforged/neoforge/client/event/RenderHandEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+   #89 = Class              #91           // net/neoforged/neoforge/client/event/RenderHandEvent
+   #90 = NameAndType        #92:#42       // getItemStack:()Lnet/minecraft/world/item/ItemStack;
+   #91 = Utf8               net/neoforged/neoforge/client/event/RenderHandEvent
+   #92 = Utf8               getItemStack
+   #93 = Fieldref           #65.#94       // net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+   #94 = NameAndType        #95:#96       // player:Lnet/minecraft/client/player/LocalPlayer;
+   #95 = Utf8               player
+   #96 = Utf8               Lnet/minecraft/client/player/LocalPlayer;
+   #97 = Methodref          #89.#98       // net/neoforged/neoforge/client/event/RenderHandEvent.getHand:()Lnet/minecraft/world/InteractionHand;
+   #98 = NameAndType        #99:#100      // getHand:()Lnet/minecraft/world/InteractionHand;
+   #99 = Utf8               getHand
+  #100 = Utf8               ()Lnet/minecraft/world/InteractionHand;
+  #101 = Fieldref           #102.#103     // net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+  #102 = Class              #104          // net/minecraft/world/InteractionHand
+  #103 = NameAndType        #105:#106     // MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+  #104 = Utf8               net/minecraft/world/InteractionHand
+  #105 = Utf8               MAIN_HAND
+  #106 = Utf8               Lnet/minecraft/world/InteractionHand;
+  #107 = Methodref          #108.#109     // net/minecraft/client/player/LocalPlayer.getMainArm:()Lnet/minecraft/world/entity/HumanoidArm;
+  #108 = Class              #110          // net/minecraft/client/player/LocalPlayer
+  #109 = NameAndType        #111:#112     // getMainArm:()Lnet/minecraft/world/entity/HumanoidArm;
+  #110 = Utf8               net/minecraft/client/player/LocalPlayer
+  #111 = Utf8               getMainArm
+  #112 = Utf8               ()Lnet/minecraft/world/entity/HumanoidArm;
+  #113 = Fieldref           #114.#115     // net/minecraft/world/entity/HumanoidArm.LEFT:Lnet/minecraft/world/entity/HumanoidArm;
+  #114 = Class              #116          // net/minecraft/world/entity/HumanoidArm
+  #115 = NameAndType        #117:#118     // LEFT:Lnet/minecraft/world/entity/HumanoidArm;
+  #116 = Utf8               net/minecraft/world/entity/HumanoidArm
+  #117 = Utf8               LEFT
+  #118 = Utf8               Lnet/minecraft/world/entity/HumanoidArm;
+  #119 = Methodref          #89.#120      // net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #120 = NameAndType        #121:#122     // getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #121 = Utf8               getPoseStack
+  #122 = Utf8               ()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #123 = InterfaceMethodref #124.#125     // dev/engine_room/flywheel/lib/transform/TransformStack.of:(Lcom/mojang/blaze3d/vertex/PoseStack;)Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+  #124 = Class              #126          // dev/engine_room/flywheel/lib/transform/TransformStack
+  #125 = NameAndType        #127:#128     // of:(Lcom/mojang/blaze3d/vertex/PoseStack;)Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+  #126 = Utf8               dev/engine_room/flywheel/lib/transform/TransformStack
+  #127 = Utf8               of
+  #128 = Utf8               (Lcom/mojang/blaze3d/vertex/PoseStack;)Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+  #129 = Methodref          #130.#131     // net/minecraft/client/player/AbstractClientPlayer.getSkin:()Lnet/minecraft/client/resources/PlayerSkin;
+  #130 = Class              #132          // net/minecraft/client/player/AbstractClientPlayer
+  #131 = NameAndType        #133:#134     // getSkin:()Lnet/minecraft/client/resources/PlayerSkin;
+  #132 = Utf8               net/minecraft/client/player/AbstractClientPlayer
+  #133 = Utf8               getSkin
+  #134 = Utf8               ()Lnet/minecraft/client/resources/PlayerSkin;
+  #135 = Methodref          #136.#137     // net/minecraft/client/resources/PlayerSkin.texture:()Lnet/minecraft/resources/ResourceLocation;
+  #136 = Class              #138          // net/minecraft/client/resources/PlayerSkin
+  #137 = NameAndType        #139:#140     // texture:()Lnet/minecraft/resources/ResourceLocation;
+  #138 = Utf8               net/minecraft/client/resources/PlayerSkin
+  #139 = Utf8               texture
+  #140 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #141 = Methodref          #142.#143     // com/mojang/blaze3d/systems/RenderSystem.setShaderTexture:(ILnet/minecraft/resources/ResourceLocation;)V
+  #142 = Class              #144          // com/mojang/blaze3d/systems/RenderSystem
+  #143 = NameAndType        #145:#146     // setShaderTexture:(ILnet/minecraft/resources/ResourceLocation;)V
+  #144 = Utf8               com/mojang/blaze3d/systems/RenderSystem
+  #145 = Utf8               setShaderTexture
+  #146 = Utf8               (ILnet/minecraft/resources/ResourceLocation;)V
+  #147 = Float              -1.0f
+  #148 = Methodref          #89.#149      // net/neoforged/neoforge/client/event/RenderHandEvent.getSwingProgress:()F
+  #149 = NameAndType        #150:#151     // getSwingProgress:()F
+  #150 = Utf8               getSwingProgress
+  #151 = Utf8               ()F
+  #152 = Methodref          #89.#153      // net/neoforged/neoforge/client/event/RenderHandEvent.getEquipProgress:()F
+  #153 = NameAndType        #154:#151     // getEquipProgress:()F
+  #154 = Utf8               getEquipProgress
+  #155 = Float              4.0f
+  #156 = Methodref          #157.#158     // com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+  #157 = Class              #159          // com/mojang/blaze3d/vertex/PoseStack
+  #158 = NameAndType        #160:#6       // pushPose:()V
+  #159 = Utf8               com/mojang/blaze3d/vertex/PoseStack
+  #160 = Utf8               pushPose
+  #161 = Float              0.95f
+  #162 = Methodref          #163.#164     // net/createmod/catnip/animation/AnimationTickHolder.getPartialTicks:()F
+  #163 = Class              #165          // net/createmod/catnip/animation/AnimationTickHolder
+  #164 = NameAndType        #166:#151     // getPartialTicks:()F
+  #165 = Utf8               net/createmod/catnip/animation/AnimationTickHolder
+  #166 = Utf8               getPartialTicks
+  #167 = Methodref          #19.#168      // net/minecraft/util/Mth.lerp:(FFF)F
+  #168 = NameAndType        #169:#23      // lerp:(FFF)F
+  #169 = Utf8               lerp
+  #170 = Float              0.54f
+  #171 = Float              -0.4f
+  #172 = Float              -0.6f
+  #173 = Float              -0.41999996f
+  #174 = Methodref          #157.#175     // com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+  #175 = NameAndType        #176:#177     // translate:(FFF)V
+  #176 = Utf8               translate
+  #177 = Utf8               (FFF)V
+  #178 = Float              75.0f
+  #179 = Methodref          #180.#181     // dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #180 = Class              #182          // dev/engine_room/flywheel/lib/transform/PoseTransformStack
+  #181 = NameAndType        #183:#184     // rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #182 = Utf8               dev/engine_room/flywheel/lib/transform/PoseTransformStack
+  #183 = Utf8               rotateYDegrees
+  #184 = Utf8               (F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #185 = Float              3.6f
+  #186 = Float              3.5f
+  #187 = Float              120.0f
+  #188 = Methodref          #180.#189     // dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateZDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #189 = NameAndType        #190:#184     // rotateZDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #190 = Utf8               rotateZDegrees
+  #191 = Float              200.0f
+  #192 = Methodref          #180.#193     // dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateXDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #193 = NameAndType        #194:#184     // rotateXDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+  #194 = Utf8               rotateXDegrees
+  #195 = Float              -135.0f
+  #196 = Float              5.6f
+  #197 = Float              40.0f
+  #198 = Float              0.05f
+  #199 = Float              -0.3f
+  #200 = Methodref          #65.#201      // net/minecraft/client/Minecraft.getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+  #201 = NameAndType        #202:#203     // getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+  #202 = Utf8               getEntityRenderDispatcher
+  #203 = Utf8               ()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+  #204 = Methodref          #205.#206     // net/minecraft/client/renderer/entity/EntityRenderDispatcher.getRenderer:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/client/renderer/entity/EntityRenderer;
+  #205 = Class              #207          // net/minecraft/client/renderer/entity/EntityRenderDispatcher
+  #206 = NameAndType        #208:#209     // getRenderer:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/client/renderer/entity/EntityRenderer;
+  #207 = Utf8               net/minecraft/client/renderer/entity/EntityRenderDispatcher
+  #208 = Utf8               getRenderer
+  #209 = Utf8               (Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/client/renderer/entity/EntityRenderer;
+  #210 = Class              #211          // net/minecraft/client/renderer/entity/player/PlayerRenderer
+  #211 = Utf8               net/minecraft/client/renderer/entity/player/PlayerRenderer
+  #212 = Methodref          #89.#213      // net/neoforged/neoforge/client/event/RenderHandEvent.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #213 = NameAndType        #214:#215     // getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #214 = Utf8               getMultiBufferSource
+  #215 = Utf8               ()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #216 = Methodref          #89.#217      // net/neoforged/neoforge/client/event/RenderHandEvent.getPackedLight:()I
+  #217 = NameAndType        #218:#219     // getPackedLight:()I
+  #218 = Utf8               getPackedLight
+  #219 = Utf8               ()I
+  #220 = Methodref          #210.#221     // net/minecraft/client/renderer/entity/player/PlayerRenderer.renderRightHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+  #221 = NameAndType        #222:#223     // renderRightHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+  #222 = Utf8               renderRightHand
+  #223 = Utf8               (Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+  #224 = Methodref          #210.#225     // net/minecraft/client/renderer/entity/player/PlayerRenderer.renderLeftHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+  #225 = NameAndType        #226:#223     // renderLeftHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+  #226 = Utf8               renderLeftHand
+  #227 = Methodref          #157.#228     // com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+  #228 = NameAndType        #229:#6       // popPose:()V
+  #229 = Utf8               popPose
+  #230 = Float              -0.1f
+  #231 = Methodref          #205.#232     // net/minecraft/client/renderer/entity/EntityRenderDispatcher.getItemInHandRenderer:()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+  #232 = NameAndType        #233:#234     // getItemInHandRenderer:()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+  #233 = Utf8               getItemInHandRenderer
+  #234 = Utf8               ()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+  #235 = Fieldref           #236.#237     // net/minecraft/world/item/ItemDisplayContext.FIRST_PERSON_RIGHT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+  #236 = Class              #238          // net/minecraft/world/item/ItemDisplayContext
+  #237 = NameAndType        #239:#240     // FIRST_PERSON_RIGHT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+  #238 = Utf8               net/minecraft/world/item/ItemDisplayContext
+  #239 = Utf8               FIRST_PERSON_RIGHT_HAND
+  #240 = Utf8               Lnet/minecraft/world/item/ItemDisplayContext;
+  #241 = Fieldref           #236.#242     // net/minecraft/world/item/ItemDisplayContext.FIRST_PERSON_LEFT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+  #242 = NameAndType        #243:#240     // FIRST_PERSON_LEFT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+  #243 = Utf8               FIRST_PERSON_LEFT_HAND
+  #244 = Methodref          #245.#246     // net/minecraft/client/renderer/ItemInHandRenderer.renderItem:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+  #245 = Class              #247          // net/minecraft/client/renderer/ItemInHandRenderer
+  #246 = NameAndType        #248:#249     // renderItem:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+  #247 = Utf8               net/minecraft/client/renderer/ItemInHandRenderer
+  #248 = Utf8               renderItem
+  #249 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+  #250 = Methodref          #251.#252     // net/neoforged/neoforge/client/ClientHooks.handleCameraTransforms:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;
+  #251 = Class              #253          // net/neoforged/neoforge/client/ClientHooks
+  #252 = NameAndType        #254:#255     // handleCameraTransforms:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;
+  #253 = Utf8               net/neoforged/neoforge/client/ClientHooks
+  #254 = Utf8               handleCameraTransforms
+  #255 = Utf8               (Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;
+  #256 = Float              -0.05f
+  #257 = Float              0.15f
+  #258 = Float              -1.2f
+  #259 = Float              2.25f
+  #260 = Float              45.0f
+  #261 = Float              -0.15f
+  #262 = Float              1.25f
+  #263 = Methodref          #157.#264     // com/mojang/blaze3d/vertex/PoseStack.scale:(FFF)V
+  #264 = NameAndType        #265:#177     // scale:(FFF)V
+  #265 = Utf8               scale
+  #266 = Methodref          #89.#267      // net/neoforged/neoforge/client/event/RenderHandEvent.setCanceled:(Z)V
+  #267 = NameAndType        #268:#269     // setCanceled:(Z)V
+  #268 = Utf8               setCanceled
+  #269 = Utf8               (Z)V
+  #270 = Fieldref           #245.#271     // net/minecraft/client/renderer/ItemInHandRenderer.mainHandItem:Lnet/minecraft/world/item/ItemStack;
+  #271 = NameAndType        #272:#273     // mainHandItem:Lnet/minecraft/world/item/ItemStack;
+  #272 = Utf8               mainHandItem
+  #273 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #274 = Fieldref           #245.#275     // net/minecraft/client/renderer/ItemInHandRenderer.offHandItem:Lnet/minecraft/world/item/ItemStack;
+  #275 = NameAndType        #276:#273     // offHandItem:Lnet/minecraft/world/item/ItemStack;
+  #276 = Utf8               offHandItem
+  #277 = Utf8               Code
+  #278 = Utf8               LineNumberTable
+  #279 = Utf8               LocalVariableTable
+  #280 = Utf8               this
+  #281 = Utf8               Lcom/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler;
+  #282 = Utf8               tick
+  #283 = Utf8               main
+  #284 = Utf8               StackMapTable
+  #285 = Utf8               onRenderPlayerHand
+  #286 = Utf8               (Lnet/neoforged/neoforge/client/event/RenderHandEvent;)V
+  #287 = Utf8               animation
+  #288 = Utf8               playerrenderer
+  #289 = Utf8               Lnet/minecraft/client/renderer/entity/player/PlayerRenderer;
+  #290 = Utf8               firstPersonRenderer
+  #291 = Utf8               Lnet/minecraft/client/renderer/ItemInHandRenderer;
+  #292 = Utf8               transform
+  #293 = Utf8               event
+  #294 = Utf8               Lnet/neoforged/neoforge/client/event/RenderHandEvent;
+  #295 = Utf8               heldItem
+  #296 = Utf8               mc
+  #297 = Utf8               Lnet/minecraft/client/Minecraft;
+  #298 = Utf8               rightHand
+  #299 = Utf8               Z
+  #300 = Utf8               offhandItem
+  #301 = Utf8               notInOffhand
+  #302 = Utf8               ms
+  #303 = Utf8               Lcom/mojang/blaze3d/vertex/PoseStack;
+  #304 = Utf8               msr
+  #305 = Utf8               Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+  #306 = Utf8               abstractclientplayerentity
+  #307 = Utf8               Lnet/minecraft/client/player/AbstractClientPlayer;
+  #308 = Utf8               flip
+  #309 = Utf8               swingProgress
+  #310 = Utf8               blockItem
+  #311 = Utf8               equipProgress
+  #312 = Utf8               RuntimeVisibleAnnotations
+  #313 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #314 = Utf8               <clinit>
+  #315 = Utf8               SourceFile
+  #316 = Utf8               ExtendoGripRenderHandler.java
+  #317 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #318 = Utf8               value
+  #319 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+  #320 = Utf8               CLIENT
+{
+  public static float mainHandAnimation;
+    descriptor: F
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public static float lastMainHandAnimation;
+    descriptor: F
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public static dev.engine_room.flywheel.lib.model.baked.PartialModel pose;
+    descriptor: Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public com.simibubi.create.content.equipment.extendoGrip.ExtendoGripRenderHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/simibubi/create/content/equipment/extendoGrip/ExtendoGripRenderHandler;
+
+  public static void tick();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=1, args_size=0
+         0: getstatic     #7                  // Field mainHandAnimation:F
+         3: putstatic     #13                 // Field lastMainHandAnimation:F
+         6: getstatic     #7                  // Field mainHandAnimation:F
+         9: getstatic     #7                  // Field mainHandAnimation:F
+        12: ldc           #16                 // float 0.8f
+        14: ldc           #17                 // float 0.99f
+        16: invokestatic  #18                 // Method net/minecraft/util/Mth.clamp:(FFF)F
+        19: fmul
+        20: putstatic     #7                  // Field mainHandAnimation:F
+        23: getstatic     #24                 // Field com/simibubi/create/AllPartialModels.DEPLOYER_HAND_PUNCHING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+        26: putstatic     #30                 // Field pose:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+        29: getstatic     #33                 // Field com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        32: invokestatic  #39                 // Method getRenderedOffHandStack:()Lnet/minecraft/world/item/ItemStack;
+        35: invokevirtual #43                 // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        38: ifne          42
+        41: return
+        42: invokestatic  #49                 // Method getRenderedMainHandStack:()Lnet/minecraft/world/item/ItemStack;
+        45: astore_0
+        46: aload_0
+        47: invokevirtual #52                 // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+        50: ifeq          54
+        53: return
+        54: aload_0
+        55: invokevirtual #58                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        58: instanceof    #62                 // class net/minecraft/world/item/BlockItem
+        61: ifne          65
+        64: return
+        65: invokestatic  #64                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        68: invokevirtual #70                 // Method net/minecraft/client/Minecraft.getItemRenderer:()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+        71: aload_0
+        72: aconst_null
+        73: aconst_null
+        74: iconst_0
+        75: invokevirtual #74                 // Method net/minecraft/client/renderer/entity/ItemRenderer.getModel:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+        78: invokeinterface #80,  1           // InterfaceMethod net/minecraft/client/resources/model/BakedModel.isGui3d:()Z
+        83: ifne          87
+        86: return
+        87: getstatic     #85                 // Field com/simibubi/create/AllPartialModels.DEPLOYER_HAND_HOLDING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+        90: putstatic     #30                 // Field pose:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+        93: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 6
+        line 39: 23
+        line 40: 29
+        line 41: 41
+        line 42: 42
+        line 43: 46
+        line 44: 53
+        line 45: 54
+        line 46: 64
+        line 47: 65
+        line 48: 68
+        line 49: 75
+        line 50: 78
+        line 51: 86
+        line 52: 87
+        line 53: 93
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           46      48     0  main   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 4
+        frame_type = 42 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 11
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 10 /* same */
+        frame_type = 21 /* same */
+
+  public static void onRenderPlayerHand(net.neoforged.neoforge.client.event.RenderHandEvent);
+    descriptor: (Lnet/neoforged/neoforge/client/event/RenderHandEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=8, locals=18, args_size=1
+         0: aload_0
+         1: invokevirtual #88                 // Method net/neoforged/neoforge/client/event/RenderHandEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+         4: astore_1
+         5: invokestatic  #64                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         8: astore_2
+         9: aload_2
+        10: getfield      #93                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        13: astore_3
+        14: aload_0
+        15: invokevirtual #97                 // Method net/neoforged/neoforge/client/event/RenderHandEvent.getHand:()Lnet/minecraft/world/InteractionHand;
+        18: getstatic     #101                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+        21: if_acmpne     28
+        24: iconst_1
+        25: goto          29
+        28: iconst_0
+        29: aload_3
+        30: invokevirtual #107                // Method net/minecraft/client/player/LocalPlayer.getMainArm:()Lnet/minecraft/world/entity/HumanoidArm;
+        33: getstatic     #113                // Field net/minecraft/world/entity/HumanoidArm.LEFT:Lnet/minecraft/world/entity/HumanoidArm;
+        36: if_acmpne     43
+        39: iconst_1
+        40: goto          44
+        43: iconst_0
+        44: ixor
+        45: istore        4
+        47: invokestatic  #39                 // Method getRenderedOffHandStack:()Lnet/minecraft/world/item/ItemStack;
+        50: astore        5
+        52: getstatic     #33                 // Field com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        55: aload         5
+        57: invokevirtual #43                 // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        60: ifne          67
+        63: iconst_1
+        64: goto          68
+        67: iconst_0
+        68: istore        6
+        70: iload         6
+        72: ifeq          86
+        75: getstatic     #33                 // Field com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        78: aload_1
+        79: invokevirtual #43                 // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        82: ifne          86
+        85: return
+        86: aload_0
+        87: invokevirtual #119                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+        90: astore        7
+        92: aload         7
+        94: invokestatic  #123                // InterfaceMethod dev/engine_room/flywheel/lib/transform/TransformStack.of:(Lcom/mojang/blaze3d/vertex/PoseStack;)Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+        97: astore        8
+        99: aload_2
+       100: getfield      #93                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+       103: astore        9
+       105: iconst_0
+       106: aload         9
+       108: invokevirtual #129                // Method net/minecraft/client/player/AbstractClientPlayer.getSkin:()Lnet/minecraft/client/resources/PlayerSkin;
+       111: invokevirtual #135                // Method net/minecraft/client/resources/PlayerSkin.texture:()Lnet/minecraft/resources/ResourceLocation;
+       114: invokestatic  #141                // Method com/mojang/blaze3d/systems/RenderSystem.setShaderTexture:(ILnet/minecraft/resources/ResourceLocation;)V
+       117: iload         4
+       119: ifeq          126
+       122: fconst_1
+       123: goto          128
+       126: ldc           #147                // float -1.0f
+       128: fstore        10
+       130: aload_0
+       131: invokevirtual #148                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getSwingProgress:()F
+       134: fstore        11
+       136: aload_1
+       137: invokevirtual #58                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       140: instanceof    #62                 // class net/minecraft/world/item/BlockItem
+       143: istore        12
+       145: iload         12
+       147: ifeq          154
+       150: fconst_0
+       151: goto          161
+       154: aload_0
+       155: invokevirtual #152                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getEquipProgress:()F
+       158: ldc           #155                // float 4.0f
+       160: fdiv
+       161: fstore        13
+       163: aload         7
+       165: invokevirtual #156                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+       168: aload_0
+       169: invokevirtual #97                 // Method net/neoforged/neoforge/client/event/RenderHandEvent.getHand:()Lnet/minecraft/world/InteractionHand;
+       172: getstatic     #101                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+       175: if_acmpne     663
+       178: fconst_1
+       179: fload         11
+       181: fsub
+       182: getstatic     #7                  // Field mainHandAnimation:F
+       185: fcmpl
+       186: ifle          201
+       189: fload         11
+       191: fconst_0
+       192: fcmpl
+       193: ifle          201
+       196: ldc           #161                // float 0.95f
+       198: putstatic     #7                  // Field mainHandAnimation:F
+       201: invokestatic  #162                // Method net/createmod/catnip/animation/AnimationTickHolder.getPartialTicks:()F
+       204: getstatic     #13                 // Field lastMainHandAnimation:F
+       207: getstatic     #7                  // Field mainHandAnimation:F
+       210: invokestatic  #167                // Method net/minecraft/util/Mth.lerp:(FFF)F
+       213: fstore        14
+       215: fload         14
+       217: fload         14
+       219: fmul
+       220: fload         14
+       222: fmul
+       223: fstore        14
+       225: aload         7
+       227: fload         10
+       229: ldc           #170                // float 0.54f
+       231: fmul
+       232: ldc           #171                // float -0.4f
+       234: fload         13
+       236: ldc           #172                // float -0.6f
+       238: fmul
+       239: fadd
+       240: ldc           #173                // float -0.41999996f
+       242: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       245: aload         7
+       247: invokevirtual #156                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+       250: aload         8
+       252: fload         10
+       254: ldc           #178                // float 75.0f
+       256: fmul
+       257: invokevirtual #179                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       260: pop
+       261: aload         7
+       263: fload         10
+       265: ldc           #147                // float -1.0f
+       267: fmul
+       268: ldc           #185                // float 3.6f
+       270: ldc           #186                // float 3.5f
+       272: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       275: aload         8
+       277: fload         10
+       279: ldc           #187                // float 120.0f
+       281: fmul
+       282: invokevirtual #188                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateZDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       285: checkcast     #180                // class dev/engine_room/flywheel/lib/transform/PoseTransformStack
+       288: ldc           #191                // float 200.0f
+       290: invokevirtual #192                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateXDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       293: checkcast     #180                // class dev/engine_room/flywheel/lib/transform/PoseTransformStack
+       296: fload         10
+       298: ldc           #195                // float -135.0f
+       300: fmul
+       301: invokevirtual #179                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       304: pop
+       305: aload         7
+       307: fload         10
+       309: ldc           #196                // float 5.6f
+       311: fmul
+       312: fconst_0
+       313: fconst_0
+       314: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       317: aload         8
+       319: fload         10
+       321: ldc           #197                // float 40.0f
+       323: fmul
+       324: invokevirtual #179                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       327: pop
+       328: aload         7
+       330: fload         10
+       332: ldc           #198                // float 0.05f
+       334: fmul
+       335: ldc           #199                // float -0.3f
+       337: ldc           #199                // float -0.3f
+       339: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       342: aload_2
+       343: invokevirtual #200                // Method net/minecraft/client/Minecraft.getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+       346: aload_3
+       347: invokevirtual #204                // Method net/minecraft/client/renderer/entity/EntityRenderDispatcher.getRenderer:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/client/renderer/entity/EntityRenderer;
+       350: checkcast     #210                // class net/minecraft/client/renderer/entity/player/PlayerRenderer
+       353: astore        15
+       355: iload         4
+       357: ifeq          381
+       360: aload         15
+       362: aload_0
+       363: invokevirtual #119                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       366: aload_0
+       367: invokevirtual #212                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+       370: aload_0
+       371: invokevirtual #216                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPackedLight:()I
+       374: aload_3
+       375: invokevirtual #220                // Method net/minecraft/client/renderer/entity/player/PlayerRenderer.renderRightHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+       378: goto          399
+       381: aload         15
+       383: aload_0
+       384: invokevirtual #119                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       387: aload_0
+       388: invokevirtual #212                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+       391: aload_0
+       392: invokevirtual #216                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPackedLight:()I
+       395: aload_3
+       396: invokevirtual #224                // Method net/minecraft/client/renderer/entity/player/PlayerRenderer.renderLeftHand:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;)V
+       399: aload         7
+       401: invokevirtual #227                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+       404: aload         7
+       406: invokevirtual #156                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+       409: aload         7
+       411: fload         10
+       413: ldc           #230                // float -0.1f
+       415: fmul
+       416: fconst_0
+       417: ldc           #199                // float -0.3f
+       419: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       422: aload_2
+       423: invokevirtual #200                // Method net/minecraft/client/Minecraft.getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+       426: invokevirtual #231                // Method net/minecraft/client/renderer/entity/EntityRenderDispatcher.getItemInHandRenderer:()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+       429: astore        16
+       431: iload         4
+       433: ifeq          442
+       436: getstatic     #235                // Field net/minecraft/world/item/ItemDisplayContext.FIRST_PERSON_RIGHT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+       439: goto          445
+       442: getstatic     #241                // Field net/minecraft/world/item/ItemDisplayContext.FIRST_PERSON_LEFT_HAND:Lnet/minecraft/world/item/ItemDisplayContext;
+       445: astore        17
+       447: aload         16
+       449: aload_2
+       450: getfield      #93                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+       453: iload         6
+       455: ifeq          462
+       458: aload_1
+       459: goto          464
+       462: aload         5
+       464: aload         17
+       466: iload         4
+       468: ifne          475
+       471: iconst_1
+       472: goto          476
+       475: iconst_0
+       476: aload_0
+       477: invokevirtual #119                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       480: aload_0
+       481: invokevirtual #212                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+       484: aload_0
+       485: invokevirtual #216                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPackedLight:()I
+       488: invokevirtual #244                // Method net/minecraft/client/renderer/ItemInHandRenderer.renderItem:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+       491: iload         6
+       493: ifne          658
+       496: aload         7
+       498: aload_2
+       499: invokevirtual #70                 // Method net/minecraft/client/Minecraft.getItemRenderer:()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+       502: aload         5
+       504: aconst_null
+       505: aconst_null
+       506: iconst_0
+       507: invokevirtual #74                 // Method net/minecraft/client/renderer/entity/ItemRenderer.getModel:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+       510: aload         17
+       512: iload         4
+       514: ifne          521
+       517: iconst_1
+       518: goto          522
+       521: iconst_0
+       522: invokestatic  #250                // Method net/neoforged/neoforge/client/ClientHooks.handleCameraTransforms:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;
+       525: pop
+       526: aload         7
+       528: fload         10
+       530: ldc_w         #256                // float -0.05f
+       533: fmul
+       534: ldc_w         #257                // float 0.15f
+       537: ldc_w         #258                // float -1.2f
+       540: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       543: aload         7
+       545: fconst_0
+       546: fconst_0
+       547: fload         14
+       549: fneg
+       550: ldc_w         #259                // float 2.25f
+       553: fmul
+       554: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       557: iload         12
+       559: ifeq          624
+       562: aload_2
+       563: invokevirtual #70                 // Method net/minecraft/client/Minecraft.getItemRenderer:()Lnet/minecraft/client/renderer/entity/ItemRenderer;
+       566: aload_1
+       567: aconst_null
+       568: aconst_null
+       569: iconst_0
+       570: invokevirtual #74                 // Method net/minecraft/client/renderer/entity/ItemRenderer.getModel:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)Lnet/minecraft/client/resources/model/BakedModel;
+       573: invokeinterface #80,  1           // InterfaceMethod net/minecraft/client/resources/model/BakedModel.isGui3d:()Z
+       578: ifeq          624
+       581: aload         8
+       583: fload         10
+       585: ldc_w         #260                // float 45.0f
+       588: fmul
+       589: invokevirtual #179                // Method dev/engine_room/flywheel/lib/transform/PoseTransformStack.rotateYDegrees:(F)Ldev/engine_room/flywheel/lib/transform/Rotate;
+       592: pop
+       593: aload         7
+       595: fload         10
+       597: ldc_w         #257                // float 0.15f
+       600: fmul
+       601: ldc_w         #261                // float -0.15f
+       604: ldc_w         #256                // float -0.05f
+       607: invokevirtual #174                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(FFF)V
+       610: aload         7
+       612: ldc_w         #262                // float 1.25f
+       615: ldc_w         #262                // float 1.25f
+       618: ldc_w         #262                // float 1.25f
+       621: invokevirtual #263                // Method com/mojang/blaze3d/vertex/PoseStack.scale:(FFF)V
+       624: aload         16
+       626: aload_2
+       627: getfield      #93                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+       630: aload_1
+       631: aload         17
+       633: iload         4
+       635: ifne          642
+       638: iconst_1
+       639: goto          643
+       642: iconst_0
+       643: aload_0
+       644: invokevirtual #119                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       647: aload_0
+       648: invokevirtual #212                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+       651: aload_0
+       652: invokevirtual #216                // Method net/neoforged/neoforge/client/event/RenderHandEvent.getPackedLight:()I
+       655: invokevirtual #244                // Method net/minecraft/client/renderer/ItemInHandRenderer.renderItem:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V
+       658: aload         7
+       660: invokevirtual #227                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+       663: aload         7
+       665: invokevirtual #227                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+       668: aload_0
+       669: iconst_1
+       670: invokevirtual #266                // Method net/neoforged/neoforge/client/event/RenderHandEvent.setCanceled:(Z)V
+       673: return
+      LineNumberTable:
+        line 57: 0
+        line 58: 5
+        line 59: 9
+        line 60: 14
+        line 62: 47
+        line 63: 52
+        line 64: 70
+        line 65: 85
+        line 67: 86
+        line 68: 92
+        line 69: 99
+        line 70: 105
+        line 72: 117
+        line 73: 130
+        line 74: 136
+        line 75: 145
+        line 77: 163
+        line 78: 168
+        line 80: 178
+        line 81: 196
+        line 82: 201
+        line 85: 215
+        line 87: 225
+        line 89: 245
+        line 90: 250
+        line 91: 261
+        line 92: 275
+        line 93: 290
+        line 94: 301
+        line 95: 305
+        line 96: 317
+        line 97: 328
+        line 99: 342
+        line 100: 347
+        line 101: 355
+        line 102: 360
+        line 103: 371
+        line 102: 375
+        line 105: 381
+        line 106: 392
+        line 105: 396
+        line 107: 399
+        line 110: 404
+        line 111: 409
+        line 112: 422
+        line 114: 431
+        line 115: 447
+        line 116: 477
+        line 115: 488
+        line 118: 491
+        line 119: 496
+        line 120: 507
+        line 119: 522
+        line 121: 526
+        line 122: 543
+        line 123: 557
+        line 124: 570
+        line 125: 573
+        line 126: 581
+        line 127: 593
+        line 128: 610
+        line 131: 624
+        line 132: 648
+        line 131: 655
+        line 135: 658
+        line 137: 663
+        line 138: 668
+        line 139: 673
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          215     448    14 animation   F
+          355     308    15 playerrenderer   Lnet/minecraft/client/renderer/entity/player/PlayerRenderer;
+          431     232    16 firstPersonRenderer   Lnet/minecraft/client/renderer/ItemInHandRenderer;
+          447     216    17 transform   Lnet/minecraft/world/item/ItemDisplayContext;
+            0     674     0 event   Lnet/neoforged/neoforge/client/event/RenderHandEvent;
+            5     669     1 heldItem   Lnet/minecraft/world/item/ItemStack;
+            9     665     2    mc   Lnet/minecraft/client/Minecraft;
+           14     660     3 player   Lnet/minecraft/client/player/LocalPlayer;
+           47     627     4 rightHand   Z
+           52     622     5 offhandItem   Lnet/minecraft/world/item/ItemStack;
+           70     604     6 notInOffhand   Z
+           92     582     7    ms   Lcom/mojang/blaze3d/vertex/PoseStack;
+           99     575     8   msr   Ldev/engine_room/flywheel/lib/transform/PoseTransformStack;
+          105     569     9 abstractclientplayerentity   Lnet/minecraft/client/player/AbstractClientPlayer;
+          130     544    10  flip   F
+          136     538    11 swingProgress   F
+          145     529    12 blockItem   Z
+          163     511    13 equipProgress   F
+      StackMapTable: number_of_entries = 27
+        frame_type = 254 /* append */
+          offset_delta = 28
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 77 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer ]
+          stack = [ int, int ]
+        frame_type = 253 /* append */
+          offset_delta = 22
+          locals = [ int, class net/minecraft/world/item/ItemStack ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ int ]
+        frame_type = 254 /* append */
+          offset_delta = 39
+          locals = [ class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer ]
+        frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ float ]
+        frame_type = 254 /* append */
+          offset_delta = 25
+          locals = [ float, float, int ]
+        frame_type = 70 /* same_locals_1_stack_item */
+          stack = [ float ]
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ float ]
+        frame_type = 253 /* append */
+          offset_delta = 179
+          locals = [ float, class net/minecraft/client/renderer/entity/player/PlayerRenderer ]
+        frame_type = 17 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 42
+          locals = [ class net/minecraft/client/renderer/ItemInHandRenderer ]
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/world/item/ItemDisplayContext ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 16
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer, class net/minecraft/world/item/ItemStack ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 10
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemDisplayContext ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemDisplayContext, int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 44
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class com/mojang/blaze3d/vertex/PoseStack, class net/minecraft/client/resources/model/BakedModel, class net/minecraft/world/item/ItemDisplayContext ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class com/mojang/blaze3d/vertex/PoseStack, class net/minecraft/client/resources/model/BakedModel, class net/minecraft/world/item/ItemDisplayContext, int ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 101
+        frame_type = 255 /* full_frame */
+          offset_delta = 17
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemDisplayContext ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float, float, class net/minecraft/client/renderer/entity/player/PlayerRenderer, class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/world/item/ItemDisplayContext ]
+          stack = [ class net/minecraft/client/renderer/ItemInHandRenderer, class net/minecraft/client/player/LocalPlayer, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemDisplayContext, int ]
+        frame_type = 14 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 4
+          locals = [ class net/neoforged/neoforge/client/event/RenderHandEvent, class net/minecraft/world/item/ItemStack, class net/minecraft/client/Minecraft, class net/minecraft/client/player/LocalPlayer, int, class net/minecraft/world/item/ItemStack, int, class com/mojang/blaze3d/vertex/PoseStack, class dev/engine_room/flywheel/lib/transform/PoseTransformStack, class net/minecraft/client/player/AbstractClientPlayer, float, float, int, float ]
+          stack = []
+    RuntimeVisibleAnnotations:
+      0: #313()
+        net.neoforged.bus.api.SubscribeEvent
+
+  private static net.minecraft.world.item.ItemStack getRenderedMainHandStack();
+    descriptor: ()Lnet/minecraft/world/item/ItemStack;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: invokestatic  #64                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: invokevirtual #200                // Method net/minecraft/client/Minecraft.getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+         6: invokevirtual #231                // Method net/minecraft/client/renderer/entity/EntityRenderDispatcher.getItemInHandRenderer:()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+         9: getfield      #270                // Field net/minecraft/client/renderer/ItemInHandRenderer.mainHandItem:Lnet/minecraft/world/item/ItemStack;
+        12: areturn
+      LineNumberTable:
+        line 142: 0
+
+  private static net.minecraft.world.item.ItemStack getRenderedOffHandStack();
+    descriptor: ()Lnet/minecraft/world/item/ItemStack;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: invokestatic  #64                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: invokevirtual #200                // Method net/minecraft/client/Minecraft.getEntityRenderDispatcher:()Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;
+         6: invokevirtual #231                // Method net/minecraft/client/renderer/entity/EntityRenderDispatcher.getItemInHandRenderer:()Lnet/minecraft/client/renderer/ItemInHandRenderer;
+         9: getfield      #274                // Field net/minecraft/client/renderer/ItemInHandRenderer.offHandItem:Lnet/minecraft/world/item/ItemStack;
+        12: areturn
+      LineNumberTable:
+        line 146: 0
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #24                 // Field com/simibubi/create/AllPartialModels.DEPLOYER_HAND_PUNCHING:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+         3: putstatic     #30                 // Field pose:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+         6: return
+      LineNumberTable:
+        line 33: 0
+}
+SourceFile: "ExtendoGripRenderHandler.java"
+RuntimeVisibleAnnotations:
+  0: #317(#318=[e#319.#320])
+    net.neoforged.fml.common.EventBusSubscriber(
+      value=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]
+    )

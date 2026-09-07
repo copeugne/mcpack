@@ -1,0 +1,212 @@
+Compiled from "NeoForgeRegisterBlockHelper.java"
+public class com.natamus.collective.neoforge.services.NeoForgeRegisterBlockHelper implements com.natamus.collective_common_neoforge.services.helpers.RegisterBlockHelper {
+  private static final java.util.HashMap<java.lang.String, net.neoforged.neoforge.registries.DeferredRegister$Blocks> deferredBlockRegisterMap;
+
+  private static final java.util.HashMap<net.minecraft.resources.ResourceLocation, net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block>> registeredBlocksWithoutItem;
+
+  private static final java.util.HashMap<net.minecraft.resources.ResourceLocation, com.mojang.datafixers.util.Pair<net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block>, net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item>>> registeredBlockWithItemPairs;
+
+  public com.natamus.collective.neoforge.services.NeoForgeRegisterBlockHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public <T extends net.minecraft.world.level.block.Block> void registerBlockWithoutItem(java.lang.Object, net.minecraft.resources.ResourceLocation, java.util.function.Supplier<T>, boolean);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aconst_null
+       4: iload         4
+       6: iconst_0
+       7: invokestatic  #7                  // Method staticRegisterBlock:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;Lnet/minecraft/resources/ResourceKey;ZZ)V
+      10: return
+
+  public net.minecraft.world.level.block.Block getRegisteredBlockWithoutItem(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #13                 // Field registeredBlocksWithoutItem:Ljava/util/HashMap;
+       3: aload_1
+       4: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       7: checkcast     #23                 // class net/neoforged/neoforge/registries/DeferredBlock
+      10: invokevirtual #25                 // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      13: checkcast     #28                 // class net/minecraft/world/level/block/Block
+      16: areturn
+
+  public <T extends net.minecraft.world.level.block.Block> void registerBlockWithItem(java.lang.Object, net.minecraft.resources.ResourceLocation, java.util.function.Supplier<T>, net.minecraft.resources.ResourceKey<net.minecraft.world.item.CreativeModeTab>, boolean);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: iload         5
+       7: iconst_1
+       8: invokestatic  #7                  // Method staticRegisterBlock:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;Lnet/minecraft/resources/ResourceKey;ZZ)V
+      11: return
+
+  public net.minecraft.world.level.block.Block getRegisteredBlockWithItem(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #30                 // Field registeredBlockWithItemPairs:Ljava/util/HashMap;
+       3: aload_1
+       4: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       7: checkcast     #33                 // class com/mojang/datafixers/util/Pair
+      10: invokevirtual #35                 // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      13: checkcast     #23                 // class net/neoforged/neoforge/registries/DeferredBlock
+      16: invokevirtual #25                 // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      19: checkcast     #28                 // class net/minecraft/world/level/block/Block
+      22: areturn
+
+  public com.mojang.datafixers.util.Pair<net.minecraft.world.level.block.Block, net.minecraft.world.item.BlockItem> getRegisteredBlockWithItemPair(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #30                 // Field registeredBlockWithItemPairs:Ljava/util/HashMap;
+       3: aload_1
+       4: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       7: checkcast     #33                 // class com/mojang/datafixers/util/Pair
+      10: astore_2
+      11: aload_2
+      12: invokevirtual #35                 // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      15: checkcast     #23                 // class net/neoforged/neoforge/registries/DeferredBlock
+      18: invokevirtual #25                 // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      21: checkcast     #28                 // class net/minecraft/world/level/block/Block
+      24: aload_2
+      25: invokevirtual #38                 // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      28: checkcast     #41                 // class net/neoforged/neoforge/registries/DeferredItem
+      31: invokevirtual #43                 // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      34: checkcast     #44                 // class net/minecraft/world/item/BlockItem
+      37: invokestatic  #46                 // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      40: areturn
+
+  public void setRegisteredBlockWithItemPair(net.minecraft.resources.ResourceLocation, java.lang.Class<?>, java.lang.String, java.lang.Class<?>, java.lang.String);
+    Code:
+       0: getstatic     #30                 // Field registeredBlockWithItemPairs:Ljava/util/HashMap;
+       3: aload_1
+       4: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       7: checkcast     #33                 // class com/mojang/datafixers/util/Pair
+      10: astore        6
+      12: aload_2
+      13: aload_3
+      14: invokevirtual #50                 // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+      17: astore        7
+      19: aload         7
+      21: iconst_1
+      22: invokevirtual #56                 // Method java/lang/reflect/Field.setAccessible:(Z)V
+      25: aload         7
+      27: aconst_null
+      28: aload         6
+      30: invokevirtual #35                 // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      33: checkcast     #23                 // class net/neoforged/neoforge/registries/DeferredBlock
+      36: invokevirtual #25                 // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      39: invokevirtual #62                 // Method java/lang/reflect/Field.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+      42: aload         4
+      44: aload         5
+      46: invokevirtual #50                 // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+      49: astore        8
+      51: aload         8
+      53: iconst_1
+      54: invokevirtual #56                 // Method java/lang/reflect/Field.setAccessible:(Z)V
+      57: aload         8
+      59: aconst_null
+      60: aload         6
+      62: invokevirtual #38                 // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      65: checkcast     #41                 // class net/neoforged/neoforge/registries/DeferredItem
+      68: invokevirtual #43                 // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      71: invokevirtual #62                 // Method java/lang/reflect/Field.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+      74: goto          84
+      77: astore        7
+      79: aload         7
+      81: invokevirtual #70                 // Method java/lang/ReflectiveOperationException.printStackTrace:()V
+      84: return
+    Exception table:
+       from    to  target type
+          12    74    77   Class java/lang/NoSuchFieldException
+          12    74    77   Class java/lang/IllegalAccessException
+
+  public static <T extends net.minecraft.world.level.block.Block> void staticRegisterBlock(java.lang.Object, net.minecraft.resources.ResourceLocation, java.util.function.Supplier<T>, net.minecraft.resources.ResourceKey<net.minecraft.world.item.CreativeModeTab>, boolean, boolean);
+    Code:
+       0: aload_1
+       1: invokevirtual #75                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       4: astore        6
+       6: getstatic     #81                 // Field deferredBlockRegisterMap:Ljava/util/HashMap;
+       9: aload         6
+      11: invokevirtual #84                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+      14: ifne          35
+      17: aload         6
+      19: invokestatic  #88                 // Method net/neoforged/neoforge/registries/DeferredRegister.createBlocks:(Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister$Blocks;
+      22: astore        7
+      24: getstatic     #81                 // Field deferredBlockRegisterMap:Ljava/util/HashMap;
+      27: aload         6
+      29: aload         7
+      31: invokevirtual #94                 // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      34: pop
+      35: getstatic     #81                 // Field deferredBlockRegisterMap:Ljava/util/HashMap;
+      38: aload         6
+      40: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      43: checkcast     #98                 // class net/neoforged/neoforge/registries/DeferredRegister$Blocks
+      46: aload_1
+      47: invokevirtual #100                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      50: aload_2
+      51: invokevirtual #103                // Method net/neoforged/neoforge/registries/DeferredRegister$Blocks.register:(Ljava/lang/String;Ljava/util/function/Supplier;)Lnet/neoforged/neoforge/registries/DeferredBlock;
+      54: astore        7
+      56: iload         5
+      58: ifeq          96
+      61: aload_0
+      62: aload_1
+      63: aload         7
+      65: invokedynamic #107,  0            // InvokeDynamic #0:get:(Lnet/neoforged/neoforge/registries/DeferredBlock;)Ljava/util/function/Supplier;
+      70: aload_3
+      71: iload         4
+      73: invokestatic  #110                // Method com/natamus/collective/neoforge/services/NeoForgeRegisterItemHelper.staticRegisterItem:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;Lnet/minecraft/resources/ResourceKey;Z)Lnet/neoforged/neoforge/registries/DeferredItem;
+      76: astore        8
+      78: getstatic     #30                 // Field registeredBlockWithItemPairs:Ljava/util/HashMap;
+      81: aload_1
+      82: aload         7
+      84: aload         8
+      86: invokestatic  #46                 // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      89: invokevirtual #94                 // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      92: pop
+      93: goto          106
+      96: getstatic     #13                 // Field registeredBlocksWithoutItem:Ljava/util/HashMap;
+      99: aload_1
+     100: aload         7
+     102: invokevirtual #94                 // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     105: pop
+     106: iload         4
+     108: ifeq          129
+     111: getstatic     #81                 // Field deferredBlockRegisterMap:Ljava/util/HashMap;
+     114: aload         6
+     116: invokevirtual #17                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     119: checkcast     #98                 // class net/neoforged/neoforge/registries/DeferredRegister$Blocks
+     122: aload_0
+     123: checkcast     #116                // class net/neoforged/bus/api/IEventBus
+     126: invokevirtual #118                // Method net/neoforged/neoforge/registries/DeferredRegister$Blocks.register:(Lnet/neoforged/bus/api/IEventBus;)V
+     129: return
+
+  private static net.minecraft.world.item.BlockItem lambda$staticRegisterBlock$0(net.neoforged.neoforge.registries.DeferredBlock);
+    Code:
+       0: new           #44                 // class net/minecraft/world/item/BlockItem
+       3: dup
+       4: aload_0
+       5: invokevirtual #25                 // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+       8: checkcast     #28                 // class net/minecraft/world/level/block/Block
+      11: new           #121                // class net/minecraft/world/item/Item$Properties
+      14: dup
+      15: invokespecial #123                // Method net/minecraft/world/item/Item$Properties."<init>":()V
+      18: invokespecial #124                // Method net/minecraft/world/item/BlockItem."<init>":(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/item/Item$Properties;)V
+      21: areturn
+
+  static {};
+    Code:
+       0: new           #18                 // class java/util/HashMap
+       3: dup
+       4: invokespecial #127                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #81                 // Field deferredBlockRegisterMap:Ljava/util/HashMap;
+      10: new           #18                 // class java/util/HashMap
+      13: dup
+      14: invokespecial #127                // Method java/util/HashMap."<init>":()V
+      17: putstatic     #13                 // Field registeredBlocksWithoutItem:Ljava/util/HashMap;
+      20: new           #18                 // class java/util/HashMap
+      23: dup
+      24: invokespecial #127                // Method java/util/HashMap."<init>":()V
+      27: putstatic     #30                 // Field registeredBlockWithItemPairs:Ljava/util/HashMap;
+      30: return
+}

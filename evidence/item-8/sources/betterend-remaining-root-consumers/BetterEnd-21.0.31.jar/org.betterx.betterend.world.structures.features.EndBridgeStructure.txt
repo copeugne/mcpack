@@ -1,0 +1,395 @@
+Compiled from "EndBridgeStructure.java"
+public class org.betterx.betterend.world.structures.features.EndBridgeStructure extends org.betterx.betterend.world.structures.features.FeatureBaseStructure {
+  private static final int SCAN_DIRECTIONS = 16;
+
+  private static final int SCAN_MIN_RADIUS = 16;
+
+  private static final int SCAN_MAX_RADIUS = 96;
+
+  private static final int SCAN_RADIUS_STEP = 8;
+
+  private static final int TERRAIN_MIN_Y = 30;
+
+  private static final int TERRAIN_MAX_Y = 90;
+
+  private static final int VOID_MARGIN = 5;
+
+  private static final int MIN_SPAN = 24;
+
+  private static final int MAX_SPAN = 96;
+
+  private static final int MAX_HEIGHT_DELTA = 12;
+
+  private static final double MIN_DIRECTION_SEPARATION = 1.5707963267948966d;
+
+  public org.betterx.betterend.world.structures.features.EndBridgeStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #3                  // Method org/betterx/betterend/world/structures/features/FeatureBaseStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #9                  // Field org/betterx/betterend/registry/EndStructures.END_BRIDGE:Lorg/betterx/wover/structure/api/StructureKey$Simple;
+       3: invokeinterface #15,  1           // InterfaceMethod org/betterx/wover/structure/api/StructureKey$Simple.type:()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       8: areturn
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore_2
+       5: new           #27                 // class net/minecraft/core/BlockPos
+       8: dup
+       9: aload_2
+      10: bipush        8
+      12: invokevirtual #29                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      15: iconst_0
+      16: aload_2
+      17: bipush        8
+      19: invokevirtual #35                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      22: invokespecial #38                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      25: astore_3
+      26: new           #41                 // class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+      29: dup
+      30: aload_3
+      31: aload_0
+      32: aload_1
+      33: invokedynamic #43,  0             // InvokeDynamic #0:accept:(Lorg/betterx/betterend/world/structures/features/EndBridgeStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      38: invokespecial #47                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationStub."<init>":(Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
+      41: invokestatic  #50                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      44: areturn
+
+  protected void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #56                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_3
+       5: aload_2
+       6: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: astore        4
+      11: aload_2
+      12: invokevirtual #60                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      15: astore        5
+      17: aload_2
+      18: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      21: astore        6
+      23: aload_2
+      24: invokevirtual #68                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      27: astore        7
+      29: aload         7
+      31: invokeinterface #72,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+      36: istore        8
+      38: aload         4
+      40: bipush        8
+      42: invokevirtual #29                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      45: istore        9
+      47: aload         4
+      49: bipush        8
+      51: invokevirtual #35                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      54: istore        10
+      56: new           #78                 // class java/util/ArrayList
+      59: dup
+      60: invokespecial #80                 // Method java/util/ArrayList."<init>":()V
+      63: astore        11
+      65: iconst_0
+      66: istore        12
+      68: iload         12
+      70: bipush        16
+      72: if_icmpge     291
+      75: ldc2_w        #85                 // double 6.283185307179586d
+      78: iload         12
+      80: i2d
+      81: dmul
+      82: ldc2_w        #87                 // double 16.0d
+      85: ddiv
+      86: dstore        13
+      88: dload         13
+      90: invokestatic  #89                 // Method java/lang/Math.cos:(D)D
+      93: dstore        15
+      95: dload         13
+      97: invokestatic  #93                 // Method java/lang/Math.sin:(D)D
+     100: dstore        17
+     102: bipush        16
+     104: istore        19
+     106: iload         19
+     108: bipush        96
+     110: if_icmpgt     285
+     113: iload         9
+     115: dload         15
+     117: iload         19
+     119: i2d
+     120: dmul
+     121: invokestatic  #96                 // Method java/lang/Math.round:(D)J
+     124: l2i
+     125: iadd
+     126: istore        20
+     128: iload         10
+     130: dload         17
+     132: iload         19
+     134: i2d
+     135: dmul
+     136: invokestatic  #96                 // Method java/lang/Math.round:(D)J
+     139: l2i
+     140: iadd
+     141: istore        21
+     143: aload         5
+     145: iload         20
+     147: iload         21
+     149: getstatic     #100                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     152: aload         7
+     154: aload         6
+     156: invokevirtual #106                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     159: istore        22
+     161: iload         22
+     163: iload         8
+     165: invokestatic  #112                // Method hasTerrain:(II)Z
+     168: ifne          174
+     171: goto          279
+     174: aload_0
+     175: aload         5
+     177: aload         6
+     179: iload         20
+     181: iconst_2
+     182: ishr
+     183: iload         22
+     185: iconst_2
+     186: ishr
+     187: iload         21
+     189: iconst_2
+     190: ishr
+     191: invokevirtual #116                // Method getNoiseBiome:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/RandomState;III)Lnet/minecraft/core/Holder;
+     194: astore        23
+     196: aload         23
+     198: getstatic     #120                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_SMALL_END_ISLAND:Lnet/minecraft/tags/TagKey;
+     201: invokeinterface #126,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     206: istore        24
+     208: aload         23
+     210: getstatic     #132                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_HIGHLAND:Lnet/minecraft/tags/TagKey;
+     213: invokeinterface #126,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     218: ifne          234
+     221: aload         23
+     223: getstatic     #135                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_MIDLAND:Lnet/minecraft/tags/TagKey;
+     226: invokeinterface #126,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+     231: ifeq          238
+     234: iconst_1
+     235: goto          239
+     238: iconst_0
+     239: istore        25
+     241: iload         24
+     243: ifne          251
+     246: iload         25
+     248: ifeq          279
+     251: aload         11
+     253: new           #138                // class org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor
+     256: dup
+     257: iload         20
+     259: iload         22
+     261: iload         21
+     263: dload         13
+     265: iload         24
+     267: invokespecial #140                // Method org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor."<init>":(IIIDZ)V
+     270: invokeinterface #143,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     275: pop
+     276: goto          285
+     279: iinc          19, 8
+     282: goto          106
+     285: iinc          12, 1
+     288: goto          68
+     291: aload         11
+     293: invokeinterface #149,  1          // InterfaceMethod java/util/List.size:()I
+     298: iconst_2
+     299: if_icmpge     303
+     302: return
+     303: aload         11
+     305: iload         9
+     307: iload         10
+     309: invokedynamic #152,  0            // InvokeDynamic #1:compare:(II)Ljava/util/Comparator;
+     314: invokeinterface #156,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+     319: aload         11
+     321: iconst_0
+     322: invokeinterface #160,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     327: checkcast     #138                // class org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor
+     330: astore        12
+     332: aconst_null
+     333: astore        13
+     335: iconst_1
+     336: istore        14
+     338: iload         14
+     340: aload         11
+     342: invokeinterface #149,  1          // InterfaceMethod java/util/List.size:()I
+     347: if_icmpge     479
+     350: aload         11
+     352: iload         14
+     354: invokeinterface #160,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     359: checkcast     #138                // class org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor
+     362: astore        15
+     364: aload         12
+     366: getfield      #164                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.island:Z
+     369: ifne          383
+     372: aload         15
+     374: getfield      #164                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.island:Z
+     377: ifne          383
+     380: goto          473
+     383: aload         12
+     385: getfield      #168                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.y:I
+     388: aload         15
+     390: getfield      #168                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.y:I
+     393: isub
+     394: invokestatic  #172                // Method java/lang/Math.abs:(I)I
+     397: bipush        12
+     399: if_icmple     405
+     402: goto          473
+     405: aload         12
+     407: getfield      #175                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.angle:D
+     410: aload         15
+     412: getfield      #175                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.angle:D
+     415: invokestatic  #179                // Method angularSeparation:(DD)D
+     418: dstore        16
+     420: dload         16
+     422: ldc2_w        #183                // double 1.5707963267948966d
+     425: dcmpg
+     426: ifge          432
+     429: goto          473
+     432: aload         12
+     434: aload         15
+     436: invokevirtual #185                // Method org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.distSqTo:(Lorg/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor;)I
+     439: i2d
+     440: invokestatic  #189                // Method java/lang/Math.sqrt:(D)D
+     443: dstore        18
+     445: dload         18
+     447: ldc2_w        #192                // double 24.0d
+     450: dcmpg
+     451: iflt          473
+     454: dload         18
+     456: ldc2_w        #194                // double 96.0d
+     459: dcmpl
+     460: ifle          466
+     463: goto          473
+     466: aload         15
+     468: astore        13
+     470: goto          479
+     473: iinc          14, 1
+     476: goto          338
+     479: aload         13
+     481: ifnonnull     485
+     484: return
+     485: new           #196                // class org/betterx/betterend/world/structures/piece/EndBridgePiece
+     488: dup
+     489: new           #27                 // class net/minecraft/core/BlockPos
+     492: dup
+     493: aload         12
+     495: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+     498: aload         12
+     500: getfield      #168                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.y:I
+     503: aload         12
+     505: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+     508: invokespecial #38                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     511: new           #27                 // class net/minecraft/core/BlockPos
+     514: dup
+     515: aload         13
+     517: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+     520: aload         13
+     522: getfield      #168                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.y:I
+     525: aload         13
+     527: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+     530: invokespecial #38                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     533: aload_3
+     534: invokeinterface #204,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextLong:()J
+     539: invokespecial #210                // Method org/betterx/betterend/world/structures/piece/EndBridgePiece."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;J)V
+     542: astore        14
+     544: aload_1
+     545: aload         14
+     547: invokevirtual #213                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     550: return
+
+  private static boolean hasTerrain(int, int);
+    Code:
+       0: iload_0
+       1: iload_1
+       2: iconst_5
+       3: iadd
+       4: if_icmple     23
+       7: iload_0
+       8: bipush        30
+      10: if_icmplt     23
+      13: iload_0
+      14: bipush        90
+      16: if_icmpgt     23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: ireturn
+
+  private static double angularSeparation(double, double);
+    Code:
+       0: dload_0
+       1: dload_2
+       2: dsub
+       3: invokestatic  #219                // Method java/lang/Math.abs:(D)D
+       6: ldc2_w        #85                 // double 6.283185307179586d
+       9: drem
+      10: dstore        4
+      12: dload         4
+      14: ldc2_w        #221                // double 3.141592653589793d
+      17: dcmpl
+      18: ifle          29
+      21: ldc2_w        #85                 // double 6.283185307179586d
+      24: dload         4
+      26: dsub
+      27: dstore        4
+      29: dload         4
+      31: dreturn
+
+  private static int lambda$generatePieces$1(int, int, org.betterx.betterend.world.structures.features.EndBridgeStructure$Anchor, org.betterx.betterend.world.structures.features.EndBridgeStructure$Anchor);
+    Code:
+       0: aload_2
+       1: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+       4: iload_0
+       5: isub
+       6: aload_2
+       7: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+      10: iload_0
+      11: isub
+      12: imul
+      13: aload_2
+      14: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+      17: iload_1
+      18: isub
+      19: aload_2
+      20: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+      23: iload_1
+      24: isub
+      25: imul
+      26: iadd
+      27: aload_3
+      28: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+      31: iload_0
+      32: isub
+      33: aload_3
+      34: getfield      #198                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.x:I
+      37: iload_0
+      38: isub
+      39: imul
+      40: aload_3
+      41: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+      44: iload_1
+      45: isub
+      46: aload_3
+      47: getfield      #201                // Field org/betterx/betterend/world/structures/features/EndBridgeStructure$Anchor.z:I
+      50: iload_1
+      51: isub
+      52: imul
+      53: iadd
+      54: invokestatic  #223                // Method java/lang/Integer.compare:(II)I
+      57: ireturn
+
+  private void lambda$findGenerationPoint$0(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: invokevirtual #228                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)V
+       6: return
+}

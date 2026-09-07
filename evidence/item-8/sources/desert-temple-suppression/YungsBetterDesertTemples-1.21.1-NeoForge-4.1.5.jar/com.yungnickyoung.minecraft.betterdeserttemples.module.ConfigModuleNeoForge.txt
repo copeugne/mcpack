@@ -1,0 +1,349 @@
+Compiled from "ConfigModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.betterdeserttemples.module.ConfigModuleNeoForge {
+  public static final java.lang.String CUSTOM_CONFIG_PATH = "betterdeserttemples";
+
+  public static final java.lang.String VERSION_PATH = "neoforge-1_21";
+
+  public com.yungnickyoung.minecraft.betterdeserttemples.module.ConfigModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: invokestatic  #7                  // Method initCustomFiles:()V
+       3: aload_0
+       4: getstatic     #12                 // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       7: getstatic     #18                 // Field com/yungnickyoung/minecraft/betterdeserttemples/config/BDTConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: ldc           #24                 // String betterdeserttemples-neoforge-1_21.toml
+      12: invokevirtual #26                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      15: getstatic     #32                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      18: invokedynamic #38,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      23: invokeinterface #42,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      28: getstatic     #48                 // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+      31: invokedynamic #53,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      36: invokeinterface #42,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      41: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #54                 // Method bakeConfig:()V
+       3: invokestatic  #57                 // Method loadJSON:()V
+       6: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #60                 // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #66                 // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #18                 // Field com/yungnickyoung/minecraft/betterdeserttemples/config/BDTConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     19
+      13: invokestatic  #54                 // Method bakeConfig:()V
+      16: invokestatic  #57                 // Method loadJSON:()V
+      19: return
+
+  private static void initCustomFiles();
+    Code:
+       0: invokestatic  #72                 // Method createDirectory:()V
+       3: invokestatic  #75                 // Method createBaseReadMe:()V
+       6: invokestatic  #78                 // Method createJsonReadMe:()V
+       9: invokestatic  #57                 // Method loadJSON:()V
+      12: return
+
+  private static void loadJSON();
+    Code:
+       0: invokestatic  #81                 // Method loadArmorStandsJSON:()V
+       3: invokestatic  #84                 // Method loadItemFramesJSON:()V
+       6: return
+
+  private static void createDirectory();
+    Code:
+       0: new           #87                 // class java/io/File
+       3: dup
+       4: getstatic     #89                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       7: invokevirtual #95                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+      10: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      15: ldc           #105                // String betterdeserttemples
+      17: invokespecial #107                // Method java/io/File."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      20: astore_0
+      21: new           #87                 // class java/io/File
+      24: dup
+      25: aload_0
+      26: ldc           #110                // String neoforge-1_21
+      28: invokespecial #112                // Method java/io/File."<init>":(Ljava/io/File;Ljava/lang/String;)V
+      31: astore_1
+      32: aload_1
+      33: invokevirtual #115                // Method java/io/File.getCanonicalPath:()Ljava/lang/String;
+      36: astore_2
+      37: aload_1
+      38: invokevirtual #118                // Method java/io/File.mkdirs:()Z
+      41: ifeq          55
+      44: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      47: ldc           #128                // String Creating directory for additional Better Desert Temples configuration at {}
+      49: aload_2
+      50: invokeinterface #130,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      55: goto          73
+      58: astore_2
+      59: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      62: ldc           #138                // String ERROR creating Better Desert Temples config directory: {}
+      64: aload_2
+      65: invokevirtual #140                // Method java/io/IOException.toString:()Ljava/lang/String;
+      68: invokeinterface #141,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      73: return
+    Exception table:
+       from    to  target type
+          32    55    58   Class java/io/IOException
+
+  private static void createBaseReadMe();
+    Code:
+       0: getstatic     #89                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #95                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_2
+      12: anewarray     #144                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #105                // String betterdeserttemples
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #146                // String README.txt
+      24: aastore
+      25: invokestatic  #148                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      28: astore_0
+      29: new           #87                 // class java/io/File
+      32: dup
+      33: aload_0
+      34: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      39: invokespecial #153                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      42: astore_1
+      43: aload_1
+      44: invokevirtual #156                // Method java/io/File.exists:()Z
+      47: ifne          80
+      50: ldc           #159                // String This directory is for a few additional options for YUNG\'s Better Desert Temples.\nOptions provided may vary by version.\nThis directory contains subdirectories for supported versions. The first time you run Better Desert Temples, a version subdirectory will be created if that version supports advanced options.\nFor example, the first time you use Better Desert Temples for 1.21 on NeoForge, the \'neoforge-1_21\' subdirectory will be created in this folder.\nIf no subdirectory for your version is created, then that version probably does not support the additional options.\nNOTE -- MOST OPTIONS CAN BE FOUND IN A CONFIG FILE OUTSIDE THIS FOLDER!\nFor example, on NeoForge 1.21 the file is \'betterdeserttemples-neoforge-1_21.toml\'.
+      52: astore_2
+      53: aload_0
+      54: aload_2
+      55: invokevirtual #161                // Method java/lang/String.getBytes:()[B
+      58: iconst_0
+      59: anewarray     #165                // class java/nio/file/OpenOption
+      62: invokestatic  #167                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+      65: pop
+      66: goto          80
+      69: astore_3
+      70: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      73: ldc           #173                // String Unable to create README file!
+      75: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      80: return
+    Exception table:
+       from    to  target type
+          53    66    69   Class java/io/IOException
+
+  private static void createJsonReadMe();
+    Code:
+       0: getstatic     #89                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #95                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_3
+      12: anewarray     #144                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #105                // String betterdeserttemples
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #110                // String neoforge-1_21
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: ldc           #146                // String README.txt
+      29: aastore
+      30: invokestatic  #148                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      33: astore_0
+      34: new           #87                 // class java/io/File
+      37: dup
+      38: aload_0
+      39: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      44: invokespecial #153                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      47: astore_1
+      48: aload_1
+      49: invokevirtual #156                // Method java/io/File.exists:()Z
+      52: ifne          85
+      55: ldc           #177                // String ######################################\n#          armorstands.json          #\n######################################\n  This file contains ItemRandomizers describing the probability distribution of armor on armor stands.\nArmor stands spawn in armory rooms and wardrobe rooms.\nFor information on ItemRandomizers, see the bottom of this README.\n######################################\n#          itemframes.json          #\n######################################\n  This file contains ItemRandomizers describing the probability distribution of items in item frames.\nItem frames only spawn in food storage rooms and armoury rooms.\nFor information on ItemRandomizers, see the bottom of this README.\n######################################\n#         ItemRandomizers          #\n######################################\nDescribes a set of items and the probability of each item being chosen.\n - entries: An object where each entry\'s key is a item, and each value is that item\'s probability of being chosen.\n      The total sum of all probabilities SHOULD NOT exceed 1.0!\n - defaultItem: The item used for any leftover probability ranges.\n      For example, if the total sum of all the probabilities of the entries is 0.6, then\n      there is a 0.4 chance of the defaultItem being selected.\nHere\'s an example ItemRandomizer:\n\"entries\": {\n  \"minecraft:stone_axe\": 0.25,\n  \"minecraft:shield\": 0.2,\n  \"minecraft:air\": 0.1\n},\n\"defaultItem\": \"minecraft:iron_axe\"\nFor each item, this randomizer has a 25% chance of returning a stone axe, 20% chance of choosing a shield,\n10% chance of choosing air (nothing), and a 100 - (25 + 20 + 10) = 45% chance of choosing an iron axe (since it\'s the default item).\n
+      57: astore_2
+      58: aload_0
+      59: aload_2
+      60: invokevirtual #161                // Method java/lang/String.getBytes:()[B
+      63: iconst_0
+      64: anewarray     #165                // class java/nio/file/OpenOption
+      67: invokestatic  #167                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+      70: pop
+      71: goto          85
+      74: astore_3
+      75: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      78: ldc           #179                // String Unable to create armorstands and itemframes README file!
+      80: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      85: return
+    Exception table:
+       from    to  target type
+          58    71    74   Class java/io/IOException
+
+  private static void loadArmorStandsJSON();
+    Code:
+       0: getstatic     #89                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #95                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_3
+      12: anewarray     #144                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #105                // String betterdeserttemples
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #110                // String neoforge-1_21
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: ldc           #181                // String armorstands.json
+      29: aastore
+      30: invokestatic  #148                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      33: astore_0
+      34: new           #87                 // class java/io/File
+      37: dup
+      38: aload_0
+      39: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      44: invokespecial #153                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      47: astore_1
+      48: aload_1
+      49: invokevirtual #156                // Method java/io/File.exists:()Z
+      52: ifne          83
+      55: aload_0
+      56: invokestatic  #183                // Method com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances.get:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances;
+      59: invokestatic  #188                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.createJsonFileFromObject:(Ljava/nio/file/Path;Ljava/lang/Object;)V
+      62: goto          141
+      65: astore_2
+      66: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      69: ldc           #194                // String Unable to create armorstands.json file: {}
+      71: aload_2
+      72: invokevirtual #140                // Method java/io/IOException.toString:()Ljava/lang/String;
+      75: invokeinterface #141,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      80: goto          141
+      83: aload_1
+      84: invokevirtual #196                // Method java/io/File.canRead:()Z
+      87: ifne          101
+      90: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      93: ldc           #199                // String Better Desert Temples armorstands.json file not readable! Using default configuration...
+      95: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     100: return
+     101: aload_0
+     102: ldc           #184                // class com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances
+     104: invokestatic  #201                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.loadObjectFromJsonFile:(Ljava/nio/file/Path;Ljava/lang/Class;)Ljava/lang/Object;
+     107: checkcast     #184                // class com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances
+     110: putstatic     #205                // Field com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances.instance:Lcom/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances;
+     113: goto          141
+     116: astore_2
+     117: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     120: ldc           #209                // String Error loading Better Desert Temples armorstands.json file: {}
+     122: aload_2
+     123: invokevirtual #140                // Method java/io/IOException.toString:()Ljava/lang/String;
+     126: invokeinterface #141,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     131: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     134: ldc           #211                // String Using default configuration...
+     136: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     141: return
+    Exception table:
+       from    to  target type
+          55    62    65   Class java/io/IOException
+         101   113   116   Class java/io/IOException
+
+  private static void loadItemFramesJSON();
+    Code:
+       0: getstatic     #89                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #95                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_3
+      12: anewarray     #144                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #105                // String betterdeserttemples
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #110                // String neoforge-1_21
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: ldc           #213                // String itemframes.json
+      29: aastore
+      30: invokestatic  #148                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      33: astore_0
+      34: new           #87                 // class java/io/File
+      37: dup
+      38: aload_0
+      39: invokeinterface #99,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      44: invokespecial #153                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      47: astore_1
+      48: aload_1
+      49: invokevirtual #156                // Method java/io/File.exists:()Z
+      52: ifne          83
+      55: aload_0
+      56: invokestatic  #215                // Method com/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances.get:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances;
+      59: invokestatic  #188                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.createJsonFileFromObject:(Ljava/nio/file/Path;Ljava/lang/Object;)V
+      62: goto          141
+      65: astore_2
+      66: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      69: ldc           #220                // String Unable to create itemframes.json file: {}
+      71: aload_2
+      72: invokevirtual #140                // Method java/io/IOException.toString:()Ljava/lang/String;
+      75: invokeinterface #141,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      80: goto          141
+      83: aload_1
+      84: invokevirtual #196                // Method java/io/File.canRead:()Z
+      87: ifne          101
+      90: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      93: ldc           #222                // String Better Desert Temples itemframes.json file not readable! Using default configuration...
+      95: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     100: return
+     101: aload_0
+     102: ldc           #216                // class com/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances
+     104: invokestatic  #201                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.loadObjectFromJsonFile:(Ljava/nio/file/Path;Ljava/lang/Class;)Ljava/lang/Object;
+     107: checkcast     #216                // class com/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances
+     110: putstatic     #224                // Field com/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances.instance:Lcom/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances;
+     113: goto          141
+     116: astore_2
+     117: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     120: ldc           #227                // String Error loading Better Desert Temples itemframes.json file: {}
+     122: aload_2
+     123: invokevirtual #140                // Method java/io/IOException.toString:()Ljava/lang/String;
+     126: invokeinterface #141,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     131: getstatic     #122                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     134: ldc           #211                // String Using default configuration...
+     136: invokeinterface #175,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     141: return
+    Exception table:
+       from    to  target type
+          55    62    65   Class java/io/IOException
+         101   113   116   Class java/io/IOException
+
+  private static void bakeConfig();
+    Code:
+       0: getstatic     #229                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+       3: getfield      #233                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+       6: getstatic     #239                // Field com/yungnickyoung/minecraft/betterdeserttemples/config/BDTConfigNeoForge.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/config/ConfigGeneralNeoForge;
+       9: getfield      #242                // Field com/yungnickyoung/minecraft/betterdeserttemples/config/ConfigGeneralNeoForge.disableVanillaPyramids:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      12: invokevirtual #248                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      15: checkcast     #253                // class java/lang/Boolean
+      18: invokevirtual #255                // Method java/lang/Boolean.booleanValue:()Z
+      21: putfield      #258                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General.disableVanillaPyramids:Z
+      24: getstatic     #229                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+      27: getfield      #233                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+      30: getstatic     #239                // Field com/yungnickyoung/minecraft/betterdeserttemples/config/BDTConfigNeoForge.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/config/ConfigGeneralNeoForge;
+      33: getfield      #263                // Field com/yungnickyoung/minecraft/betterdeserttemples/config/ConfigGeneralNeoForge.applyMiningFatigue:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      36: invokevirtual #248                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      39: checkcast     #253                // class java/lang/Boolean
+      42: invokevirtual #255                // Method java/lang/Boolean.booleanValue:()Z
+      45: putfield      #266                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General.applyMiningFatigue:Z
+      48: return
+}

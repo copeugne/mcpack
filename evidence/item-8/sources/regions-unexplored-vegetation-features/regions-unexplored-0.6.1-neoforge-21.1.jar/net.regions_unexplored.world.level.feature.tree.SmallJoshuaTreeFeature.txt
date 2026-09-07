@@ -1,0 +1,520 @@
+Compiled from "SmallJoshuaTreeFeature.java"
+public class net.regions_unexplored.world.level.feature.tree.SmallJoshuaTreeFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration> {
+  public net.regions_unexplored.world.level.feature.tree.SmallJoshuaTreeFeature(com.mojang.serialization.Codec<net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #27                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #43                 // class net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #47                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #51                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #55                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      23: astore        5
+      25: aload_1
+      26: invokevirtual #51                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      29: aload_2
+      30: invokevirtual #59                 // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.sizeVariation:()I
+      33: invokeinterface #65,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      38: aload_2
+      39: invokevirtual #68                 // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.minimumSize:()I
+      42: iadd
+      43: istore        6
+      45: iconst_0
+      46: istore        7
+      48: aload_3
+      49: invokevirtual #72                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      52: astore        8
+      54: iload         7
+      56: iload         6
+      58: iconst_2
+      59: iadd
+      60: if_icmpgt     94
+      63: aload_0
+      64: aload         5
+      66: aload         8
+      68: invokevirtual #78                 // Method checkReplaceable:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      71: ifne          76
+      74: iconst_0
+      75: ireturn
+      76: aload         8
+      78: getstatic     #82                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      81: invokevirtual #86                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      84: pop
+      85: iload         7
+      87: iconst_1
+      88: iadd
+      89: istore        7
+      91: goto          54
+      94: iconst_0
+      95: istore        9
+      97: aload_3
+      98: invokevirtual #72                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     101: astore        10
+     103: iload         9
+     105: iload         6
+     107: if_icmpgt     158
+     110: aload_0
+     111: aload         5
+     113: aload         10
+     115: aload         4
+     117: aload_2
+     118: invokevirtual #90                 // Method placeLog:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration;)Z
+     121: pop
+     122: iload         9
+     124: iload         6
+     126: if_icmpne     140
+     129: aload_0
+     130: aload         5
+     132: aload         10
+     134: aload         4
+     136: aload_2
+     137: invokevirtual #94                 // Method placeTop:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration;)V
+     140: aload         10
+     142: getstatic     #82                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     145: invokevirtual #86                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     148: pop
+     149: iload         9
+     151: iconst_1
+     152: iadd
+     153: istore        9
+     155: goto          103
+     158: iconst_1
+     159: ireturn
+
+  public boolean placeLog(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration);
+    Code:
+       0: new           #112                // class java/util/Random
+       3: dup
+       4: invokespecial #115                // Method java/util/Random."<init>":()V
+       7: astore        5
+       9: aload_1
+      10: aload_2
+      11: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          21
+      19: iconst_1
+      20: ireturn
+      21: aload_1
+      22: aload_2
+      23: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      28: getstatic     #131                // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+      31: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      36: checkcast     #139                // class net/minecraft/world/level/block/Block
+      39: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      42: ifeq          71
+      45: aload_1
+      46: aload_2
+      47: getstatic     #148                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+      50: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      55: checkcast     #139                // class net/minecraft/world/level/block/Block
+      58: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      61: iconst_2
+      62: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      67: pop
+      68: goto          229
+      71: aload_1
+      72: aload_2
+      73: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      78: getstatic     #159                // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+      81: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      86: checkcast     #139                // class net/minecraft/world/level/block/Block
+      89: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      92: ifeq          121
+      95: aload_1
+      96: aload_2
+      97: getstatic     #162                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+     100: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     105: checkcast     #139                // class net/minecraft/world/level/block/Block
+     108: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     111: iconst_2
+     112: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     117: pop
+     118: goto          229
+     121: aload_1
+     122: aload_2
+     123: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     128: getstatic     #165                // Field net/regions_unexplored/registry/RUBlocks.ALPHA_GRASS_BLOCK:Ljava/util/function/Supplier;
+     131: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     136: checkcast     #139                // class net/minecraft/world/level/block/Block
+     139: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     142: ifeq          163
+     145: aload_1
+     146: aload_2
+     147: getstatic     #171                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     150: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     153: iconst_2
+     154: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     159: pop
+     160: goto          229
+     163: aload_1
+     164: aload_2
+     165: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     170: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+     173: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     176: ifeq          197
+     179: aload_1
+     180: aload_2
+     181: getstatic     #171                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     184: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     187: iconst_2
+     188: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     193: pop
+     194: goto          229
+     197: aload_1
+     198: aload_2
+     199: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     202: ifeq          227
+     205: aload_1
+     206: aload_2
+     207: aload         4
+     209: invokevirtual #182                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.trunkProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     212: aload_3
+     213: aload_2
+     214: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     217: iconst_2
+     218: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     223: pop
+     224: goto          229
+     227: iconst_1
+     228: ireturn
+     229: aload_1
+     230: aload_2
+     231: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     234: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     239: getstatic     #131                // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+     242: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     247: checkcast     #139                // class net/minecraft/world/level/block/Block
+     250: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     253: ifeq          285
+     256: aload_1
+     257: aload_2
+     258: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     261: getstatic     #148                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+     264: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     269: checkcast     #139                // class net/minecraft/world/level/block/Block
+     272: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     275: iconst_2
+     276: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     281: pop
+     282: goto          426
+     285: aload_1
+     286: aload_2
+     287: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     290: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     295: getstatic     #159                // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+     298: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     303: checkcast     #139                // class net/minecraft/world/level/block/Block
+     306: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     309: ifeq          341
+     312: aload_1
+     313: aload_2
+     314: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     317: getstatic     #162                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+     320: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     325: checkcast     #139                // class net/minecraft/world/level/block/Block
+     328: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     331: iconst_2
+     332: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     337: pop
+     338: goto          426
+     341: aload_1
+     342: aload_2
+     343: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     346: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     351: getstatic     #165                // Field net/regions_unexplored/registry/RUBlocks.ALPHA_GRASS_BLOCK:Ljava/util/function/Supplier;
+     354: invokeinterface #137,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     359: checkcast     #139                // class net/minecraft/world/level/block/Block
+     362: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     365: ifeq          389
+     368: aload_1
+     369: aload_2
+     370: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     373: getstatic     #171                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     376: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     379: iconst_2
+     380: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     385: pop
+     386: goto          426
+     389: aload_1
+     390: aload_2
+     391: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     394: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     399: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+     402: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     405: ifeq          426
+     408: aload_1
+     409: aload_2
+     410: invokevirtual #191                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     413: getstatic     #171                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     416: invokevirtual #152                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     419: iconst_2
+     420: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     425: pop
+     426: iconst_1
+     427: ireturn
+
+  public void placeTop(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: invokevirtual #196                // Method placeBranches:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration;)Z
+       9: pop
+      10: aload_0
+      11: aload_1
+      12: aload_2
+      13: invokevirtual #199                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      16: aload_3
+      17: aload         4
+      19: invokevirtual #202                // Method placeLeavesBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration;)Z
+      22: pop
+      23: return
+
+  public boolean placeBranches(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #205                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+       5: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+       8: ifeq          70
+      11: aload_1
+      12: aload_2
+      13: invokevirtual #205                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      16: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      21: ifne          70
+      24: aload_1
+      25: aload_2
+      26: invokevirtual #205                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      29: aload         4
+      31: invokevirtual #208                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.branchProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      34: aload_3
+      35: aload_2
+      36: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      39: getstatic     #214                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      42: getstatic     #218                // Field net/minecraft/core/Direction$Axis.Z:Lnet/minecraft/core/Direction$Axis;
+      45: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      48: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+      51: getstatic     #226                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      54: getstatic     #229                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      57: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      60: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+      63: iconst_2
+      64: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      69: pop
+      70: aload_1
+      71: aload_2
+      72: invokevirtual #232                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      75: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+      78: ifeq          140
+      81: aload_1
+      82: aload_2
+      83: invokevirtual #232                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      86: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      91: ifne          140
+      94: aload_1
+      95: aload_2
+      96: invokevirtual #232                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      99: aload         4
+     101: invokevirtual #208                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.branchProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     104: aload_3
+     105: aload_2
+     106: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     109: getstatic     #214                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     112: getstatic     #218                // Field net/minecraft/core/Direction$Axis.Z:Lnet/minecraft/core/Direction$Axis;
+     115: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     118: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     121: getstatic     #226                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     124: getstatic     #235                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     127: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     130: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     133: iconst_2
+     134: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     139: pop
+     140: aload_1
+     141: aload_2
+     142: invokevirtual #238                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     145: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     148: ifeq          210
+     151: aload_1
+     152: aload_2
+     153: invokevirtual #238                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     156: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+     161: ifne          210
+     164: aload_1
+     165: aload_2
+     166: invokevirtual #238                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     169: aload         4
+     171: invokevirtual #208                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.branchProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     174: aload_3
+     175: aload_2
+     176: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     179: getstatic     #214                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     182: getstatic     #241                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     185: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     188: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     191: getstatic     #226                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     194: getstatic     #244                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     197: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     200: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     203: iconst_2
+     204: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     209: pop
+     210: aload_1
+     211: aload_2
+     212: invokevirtual #247                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     215: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     218: ifeq          280
+     221: aload_1
+     222: aload_2
+     223: invokevirtual #247                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     226: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+     231: ifne          280
+     234: aload_1
+     235: aload_2
+     236: invokevirtual #247                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     239: aload         4
+     241: invokevirtual #208                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.branchProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     244: aload_3
+     245: aload_2
+     246: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     249: getstatic     #214                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     252: getstatic     #241                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     255: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     258: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     261: getstatic     #226                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     264: getstatic     #250                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     267: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     270: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     273: iconst_2
+     274: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     279: pop
+     280: iconst_1
+     281: ireturn
+
+  public boolean placeLeavesBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.RUTreeConfiguration);
+    Code:
+       0: new           #112                // class java/util/Random
+       3: dup
+       4: invokespecial #115                // Method java/util/Random."<init>":()V
+       7: astore        5
+       9: aload_1
+      10: aload_2
+      11: invokevirtual #199                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      14: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      19: ifeq          24
+      22: iconst_1
+      23: ireturn
+      24: aload_1
+      25: aload_2
+      26: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      31: invokevirtual #254                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      34: ifeq          147
+      37: aload_1
+      38: aload_2
+      39: invokevirtual #199                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      42: invokeinterface #125,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      47: invokevirtual #254                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      50: ifeq          147
+      53: aload_1
+      54: aload_2
+      55: aload         4
+      57: invokevirtual #257                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.foliageProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      60: aload_3
+      61: aload_2
+      62: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      65: getstatic     #263                // Field net/regions_unexplored/block/type/leaves/JoshuaLeavesBlock.NATURAL:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      68: iconst_1
+      69: invokestatic  #269                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      72: invokevirtual #272                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      75: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+      78: getstatic     #275                // Field net/regions_unexplored/block/type/leaves/JoshuaLeavesBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      81: getstatic     #281                // Field net/minecraft/world/level/block/state/properties/DoubleBlockHalf.LOWER:Lnet/minecraft/world/level/block/state/properties/DoubleBlockHalf;
+      84: invokevirtual #272                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      87: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+      90: iconst_2
+      91: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      96: pop
+      97: aload_1
+      98: aload_2
+      99: invokevirtual #199                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     102: aload         4
+     104: invokevirtual #257                // Method net/regions_unexplored/world/level/feature/configuration/RUTreeConfiguration.foliageProvider:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     107: aload_3
+     108: aload_2
+     109: invokevirtual #199                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     112: invokevirtual #188                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     115: getstatic     #263                // Field net/regions_unexplored/block/type/leaves/JoshuaLeavesBlock.NATURAL:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     118: iconst_1
+     119: invokestatic  #269                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     122: invokevirtual #272                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     125: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     128: getstatic     #275                // Field net/regions_unexplored/block/type/leaves/JoshuaLeavesBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     131: getstatic     #284                // Field net/minecraft/world/level/block/state/properties/DoubleBlockHalf.UPPER:Lnet/minecraft/world/level/block/state/properties/DoubleBlockHalf;
+     134: invokevirtual #272                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     137: checkcast     #141                // class net/minecraft/world/level/block/state/BlockState
+     140: iconst_2
+     141: invokeinterface #156,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     146: pop
+     147: iconst_1
+     148: ireturn
+
+  public boolean checkReplaceable(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+       7: ifeq          12
+      10: iconst_0
+      11: ireturn
+      12: aload_1
+      13: aload_2
+      14: invokestatic  #178                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+      17: ifne          22
+      20: iconst_0
+      21: ireturn
+      22: iconst_1
+      23: ireturn
+
+  public static boolean isReplaceableDirtBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #293                // Field net/regions_unexplored/registry/tag/RUBlockTags.TREE_GRASS_REPLACEABLES:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #296                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceableDirt(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #316,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #322,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+
+  public static boolean isReplaceableBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #327                // Field net/regions_unexplored/registry/tag/RUBlockTags.REPLACEABLE_BLOCKS:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #296                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceable(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #331,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #322,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+}

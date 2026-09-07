@@ -1,0 +1,215 @@
+Classfile IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar!/fuzs/illagerinvasion/mixin/FoodDataMixin.class
+  Last modified Jan 1, 1980; size 1858 bytes
+  SHA-256 checksum b8a5443976c355519d979015d0791cdca2dcb48c171d93151f6e49d5da46b4d9
+  Compiled from "FoodDataMixin.java"
+abstract class fuzs.illagerinvasion.mixin.FoodDataMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0420) ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // fuzs/illagerinvasion/mixin/FoodDataMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               fuzs/illagerinvasion/mixin/FoodDataMixin
+   #2 = Class              #1             // fuzs/illagerinvasion/mixin/FoodDataMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               FoodDataMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/food/FoodData;
+   #9 = Utf8               saturationLevel
+  #10 = Utf8               F
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #12 = Utf8               illagerinvasion$lastPlayer
+  #13 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #14 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #15 = Utf8               <init>
+  #16 = Utf8               ()V
+  #17 = NameAndType        #15:#16        // "<init>":()V
+  #18 = Methodref          #4.#17         // java/lang/Object."<init>":()V
+  #19 = Utf8               this
+  #20 = Utf8               Lfuzs/illagerinvasion/mixin/FoodDataMixin;
+  #21 = Utf8               tick
+  #22 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #23 = Utf8               player
+  #24 = Utf8               callback
+  #25 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #26 = Utf8               method
+  #27 = Utf8               at
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #29 = Utf8               HEAD
+  #30 = NameAndType        #12:#13        // illagerinvasion$lastPlayer:Lnet/minecraft/world/entity/player/Player;
+  #31 = Fieldref           #2.#30         // fuzs/illagerinvasion/mixin/FoodDataMixin.illagerinvasion$lastPlayer:Lnet/minecraft/world/entity/player/Player;
+  #32 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #33 = Utf8               addExhaustion
+  #34 = Utf8               (F)F
+  #35 = Utf8               exhaustion
+  #36 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #37 = Utf8               argsOnly
+  #38 = Integer            1
+  #39 = Float              6.0f
+  #40 = NameAndType        #9:#10         // saturationLevel:F
+  #41 = Fieldref           #2.#40         // fuzs/illagerinvasion/mixin/FoodDataMixin.saturationLevel:F
+  #42 = Utf8               net/minecraft/world/entity/EquipmentSlot
+  #43 = Class              #42            // net/minecraft/world/entity/EquipmentSlot
+  #44 = Utf8               LEGS
+  #45 = Utf8               Lnet/minecraft/world/entity/EquipmentSlot;
+  #46 = NameAndType        #44:#45        // LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+  #47 = Fieldref           #43.#46        // net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+  #48 = Utf8               fuzs/illagerinvasion/handler/PlatinumTrimHandler
+  #49 = Class              #48            // fuzs/illagerinvasion/handler/PlatinumTrimHandler
+  #50 = Utf8               hasPlatinumTrim
+  #51 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+  #52 = NameAndType        #50:#51        // hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+  #53 = Methodref          #49.#52        // fuzs/illagerinvasion/handler/PlatinumTrimHandler.hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+  #54 = Utf8               RuntimeVisibleAnnotations
+  #55 = Utf8               RuntimeInvisibleAnnotations
+  #56 = Utf8               RuntimeInvisibleTypeAnnotations
+  #57 = Utf8               Code
+  #58 = Utf8               LineNumberTable
+  #59 = Utf8               LocalVariableTable
+  #60 = Utf8               MethodParameters
+  #61 = Utf8               StackMapTable
+  #62 = Utf8               SourceFile
+{
+  private float saturationLevel;
+    descriptor: F
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.world.entity.player.Player illagerinvasion$lastPlayer;
+    descriptor: Lnet/minecraft/world/entity/player/Player;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeInvisibleAnnotations:
+      0: #14()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #14(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  fuzs.illagerinvasion.mixin.FoodDataMixin();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lfuzs/illagerinvasion/mixin/FoodDataMixin;
+
+  public void tick(net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: putfield      #31                 // Field illagerinvasion$lastPlayer:Lnet/minecraft/world/entity/player/Player;
+         5: return
+      LineNumberTable:
+        line 25: 0
+        line 26: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lfuzs/illagerinvasion/mixin/FoodDataMixin;
+            0       6     1 player   Lnet/minecraft/world/entity/player/Player;
+            0       6     2 callback   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #25(#26=[s#21],#27=[@#28(#7=s#29)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      player
+      callback
+
+  public float addExhaustion(float);
+    descriptor: (F)F
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: fload_1
+         1: ldc           #39                 // float 6.0f
+         3: fcmpl
+         4: ifeq          61
+         7: fload_1
+         8: aload_0
+         9: getfield      #41                 // Field saturationLevel:F
+        12: fcmpl
+        13: ifeq          61
+        16: aload_0
+        17: getfield      #31                 // Field illagerinvasion$lastPlayer:Lnet/minecraft/world/entity/player/Player;
+        20: ifnull        61
+        23: aload_0
+        24: getfield      #31                 // Field illagerinvasion$lastPlayer:Lnet/minecraft/world/entity/player/Player;
+        27: getstatic     #47                 // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+        30: invokestatic  #53                 // Method fuzs/illagerinvasion/handler/PlatinumTrimHandler.hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+        33: ifeq          61
+        36: fload_1
+        37: fconst_0
+        38: fcmpl
+        39: ifle          49
+        42: fload_1
+        43: fconst_2
+        44: fdiv
+        45: fstore_1
+        46: goto          59
+        49: fload_1
+        50: fconst_0
+        51: fcmpg
+        52: ifge          59
+        55: fload_1
+        56: fconst_2
+        57: fmul
+        58: fstore_1
+        59: fload_1
+        60: freturn
+        61: fload_1
+        62: freturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 49 /* same */
+        frame_type = 9 /* same */
+        frame_type = 1 /* same */
+      LineNumberTable:
+        line 31: 0
+        line 32: 16
+        line 33: 36
+        line 34: 42
+        line 35: 49
+        line 36: 55
+        line 38: 59
+        line 41: 61
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      63     0  this   Lfuzs/illagerinvasion/mixin/FoodDataMixin;
+            0      63     1 exhaustion   F
+    RuntimeVisibleAnnotations:
+      0: #36(#26=[s#33],#27=@#28(#7=s#29),#37=Z#38)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["addExhaustion"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )
+          argsOnly=true
+        )
+    MethodParameters:
+      Name                           Flags
+      exhaustion
+}
+SourceFile: "FoodDataMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/food/FoodData;]
+    )

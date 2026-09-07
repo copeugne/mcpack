@@ -1,0 +1,147 @@
+Compiled from "PumpkinPatchFeature.java"
+public class biomesoplenty.worldgen.feature.misc.PumpkinPatchFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public biomesoplenty.worldgen.feature.misc.PumpkinPatchFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      20: astore        5
+      22: aload_1
+      23: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      26: checkcast     #29                 // class net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration
+      29: astore        6
+      31: iconst_0
+      32: istore        7
+      34: iconst_0
+      35: istore        8
+      37: iload         8
+      39: bipush        64
+      41: if_icmpge     309
+      44: aload         5
+      46: aload         4
+      48: bipush        8
+      50: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      55: aload         4
+      57: bipush        8
+      59: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      64: isub
+      65: aload         4
+      67: iconst_4
+      68: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      73: aload         4
+      75: iconst_4
+      76: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      81: isub
+      82: aload         4
+      84: bipush        8
+      86: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      91: aload         4
+      93: bipush        8
+      95: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     100: isub
+     101: invokevirtual #37                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     104: astore        9
+     106: aload_2
+     107: aload         9
+     109: invokestatic  #43                 // Method net/minecraft/world/level/levelgen/feature/TreeFeature.isAirOrLeaves:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     112: ifeq          303
+     115: aload_2
+     116: aload         9
+     118: invokevirtual #49                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     121: invokeinterface #52,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     126: invokevirtual #58                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     129: getstatic     #64                 // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+     132: if_acmpne     303
+     135: aload         4
+     137: iconst_3
+     138: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     143: ifne          271
+     146: aload         4
+     148: bipush        50
+     150: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     155: istore        10
+     157: iload         10
+     159: bipush        10
+     161: if_icmple     183
+     164: aload_2
+     165: aload         9
+     167: getstatic     #70                 // Field net/minecraft/world/level/block/Blocks.PUMPKIN:Lnet/minecraft/world/level/block/Block;
+     170: invokevirtual #73                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     173: iconst_2
+     174: invokeinterface #79,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     179: pop
+     180: goto          268
+     183: iload         10
+     185: iconst_1
+     186: if_icmple     230
+     189: aload_2
+     190: aload         9
+     192: getstatic     #83                 // Field net/minecraft/world/level/block/Blocks.CARVED_PUMPKIN:Lnet/minecraft/world/level/block/Block;
+     195: invokevirtual #73                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     198: getstatic     #86                 // Field net/minecraft/world/level/block/CarvedPumpkinBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     201: iconst_2
+     202: aload         4
+     204: iconst_4
+     205: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     210: iadd
+     211: invokestatic  #92                 // Method net/minecraft/core/Direction.from3DDataValue:(I)Lnet/minecraft/core/Direction;
+     214: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     217: checkcast     #59                 // class net/minecraft/world/level/block/state/BlockState
+     220: iconst_2
+     221: invokeinterface #79,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     226: pop
+     227: goto          268
+     230: aload_2
+     231: aload         9
+     233: getstatic     #102                // Field net/minecraft/world/level/block/Blocks.JACK_O_LANTERN:Lnet/minecraft/world/level/block/Block;
+     236: invokevirtual #73                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     239: getstatic     #86                 // Field net/minecraft/world/level/block/CarvedPumpkinBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     242: iconst_2
+     243: aload         4
+     245: iconst_4
+     246: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     251: iadd
+     252: invokestatic  #92                 // Method net/minecraft/core/Direction.from3DDataValue:(I)Lnet/minecraft/core/Direction;
+     255: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     258: checkcast     #59                 // class net/minecraft/world/level/block/state/BlockState
+     261: iconst_2
+     262: invokeinterface #79,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     267: pop
+     268: goto          300
+     271: aload_2
+     272: aload         9
+     274: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.OAK_LEAVES:Lnet/minecraft/world/level/block/Block;
+     277: invokevirtual #73                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     280: getstatic     #108                // Field net/minecraft/world/level/block/LeavesBlock.PERSISTENT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     283: iconst_1
+     284: invokestatic  #114                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     287: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     290: checkcast     #59                 // class net/minecraft/world/level/block/state/BlockState
+     293: iconst_2
+     294: invokeinterface #79,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     299: pop
+     300: iinc          7, 1
+     303: iinc          8, 1
+     306: goto          37
+     309: iload         7
+     311: ifle          318
+     314: iconst_1
+     315: goto          319
+     318: iconst_0
+     319: ireturn
+}

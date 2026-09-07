@@ -1,0 +1,1455 @@
+Compiled from "VerticalEntrance.java"
+public class com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.VerticalEntrance extends com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.BetterMineshaftPiece {
+  private final net.minecraft.core.BlockPos centerPos;
+
+  private int yAxisLen;
+
+  private int localYEnd;
+
+  private int tunnelLength;
+
+  private int tunnelFloorAltitude;
+
+  private net.minecraft.core.Direction tunnelDirection;
+
+  private boolean hasTunnel;
+
+  private static final int SHAFT_LOCAL_XZ_START = 22;
+
+  private static final int SHAFT_LOCAL_XZ_END = 26;
+
+  public com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.VerticalEntrance(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #3                  // Field com/yungnickyoung/minecraft/bettermineshafts/module/StructurePieceTypeModule.VERTICAL_ENTRANCE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_1
+       5: invokespecial #9                  // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: iconst_0
+      10: putfield      #15                 // Field yAxisLen:I
+      13: aload_0
+      14: iconst_0
+      15: putfield      #21                 // Field localYEnd:I
+      18: aload_0
+      19: iconst_0
+      20: putfield      #24                 // Field tunnelLength:I
+      23: aload_0
+      24: iconst_0
+      25: putfield      #27                 // Field tunnelFloorAltitude:I
+      28: aload_0
+      29: getstatic     #30                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      32: putfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+      35: aload_0
+      36: iconst_0
+      37: putfield      #39                 // Field hasTunnel:Z
+      40: aload_1
+      41: ldc           #43                 // String centerPos
+      43: invokevirtual #45                 // Method net/minecraft/nbt/CompoundTag.getIntArray:(Ljava/lang/String;)[I
+      46: iconst_0
+      47: iaload
+      48: istore_2
+      49: aload_1
+      50: ldc           #43                 // String centerPos
+      52: invokevirtual #45                 // Method net/minecraft/nbt/CompoundTag.getIntArray:(Ljava/lang/String;)[I
+      55: iconst_1
+      56: iaload
+      57: istore_3
+      58: aload_1
+      59: ldc           #43                 // String centerPos
+      61: invokevirtual #45                 // Method net/minecraft/nbt/CompoundTag.getIntArray:(Ljava/lang/String;)[I
+      64: iconst_2
+      65: iaload
+      66: istore        4
+      68: aload_0
+      69: new           #51                 // class net/minecraft/core/BlockPos
+      72: dup
+      73: iload_2
+      74: iload_3
+      75: iload         4
+      77: invokespecial #53                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      80: putfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      83: aload_0
+      84: aload_1
+      85: ldc           #59                 // String yAxisLen
+      87: invokevirtual #60                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      90: putfield      #15                 // Field yAxisLen:I
+      93: aload_0
+      94: aload_0
+      95: getfield      #15                 // Field yAxisLen:I
+      98: iconst_1
+      99: isub
+     100: putfield      #21                 // Field localYEnd:I
+     103: aload_0
+     104: aload_1
+     105: ldc           #64                 // String tunnelLen
+     107: invokevirtual #60                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     110: putfield      #24                 // Field tunnelLength:I
+     113: aload_0
+     114: aload_1
+     115: ldc           #66                 // String floorAltitude
+     117: invokevirtual #60                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     120: putfield      #27                 // Field tunnelFloorAltitude:I
+     123: aload_1
+     124: ldc           #68                 // String tunnelDir
+     126: invokevirtual #60                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     129: istore        5
+     131: aload_0
+     132: iload         5
+     134: iconst_m1
+     135: if_icmpne     142
+     138: aconst_null
+     139: goto          147
+     142: iload         5
+     144: invokestatic  #70                 // Method net/minecraft/core/Direction.from2DDataValue:(I)Lnet/minecraft/core/Direction;
+     147: putfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+     150: aload_0
+     151: aload_1
+     152: ldc           #74                 // String hasTunnel
+     154: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+     157: putfield      #39                 // Field hasTunnel:Z
+     160: return
+
+  public com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.VerticalEntrance(int, net.minecraft.core.BlockPos$MutableBlockPos, net.minecraft.core.Direction, com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration, int);
+    Code:
+       0: aload_0
+       1: getstatic     #3                  // Field com/yungnickyoung/minecraft/bettermineshafts/module/StructurePieceTypeModule.VERTICAL_ENTRANCE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_1
+       5: aload         4
+       7: aload_2
+       8: iload         5
+      10: invokestatic  #79                 // Method getInitialBoundingBox:(Lnet/minecraft/core/BlockPos;I)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      13: invokespecial #83                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      16: aload_0
+      17: iconst_0
+      18: putfield      #15                 // Field yAxisLen:I
+      21: aload_0
+      22: iconst_0
+      23: putfield      #21                 // Field localYEnd:I
+      26: aload_0
+      27: iconst_0
+      28: putfield      #24                 // Field tunnelLength:I
+      31: aload_0
+      32: iconst_0
+      33: putfield      #27                 // Field tunnelFloorAltitude:I
+      36: aload_0
+      37: getstatic     #30                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      40: putfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+      43: aload_0
+      44: iconst_0
+      45: putfield      #39                 // Field hasTunnel:Z
+      48: aload_0
+      49: aload_3
+      50: invokevirtual #86                 // Method setOrientation:(Lnet/minecraft/core/Direction;)V
+      53: aload_0
+      54: aload_2
+      55: putfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      58: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #90                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addAdditionalSaveData:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_2
+       7: ldc           #43                 // String centerPos
+       9: iconst_3
+      10: newarray       int
+      12: dup
+      13: iconst_0
+      14: aload_0
+      15: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      18: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+      21: iastore
+      22: dup
+      23: iconst_1
+      24: aload_0
+      25: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      28: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+      31: iastore
+      32: dup
+      33: iconst_2
+      34: aload_0
+      35: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      38: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+      41: iastore
+      42: invokevirtual #104                // Method net/minecraft/nbt/CompoundTag.putIntArray:(Ljava/lang/String;[I)V
+      45: aload_2
+      46: ldc           #59                 // String yAxisLen
+      48: aload_0
+      49: getfield      #15                 // Field yAxisLen:I
+      52: invokevirtual #108                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      55: aload_2
+      56: ldc           #64                 // String tunnelLen
+      58: aload_0
+      59: getfield      #24                 // Field tunnelLength:I
+      62: invokevirtual #108                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      65: aload_2
+      66: ldc           #66                 // String floorAltitude
+      68: aload_0
+      69: getfield      #27                 // Field tunnelFloorAltitude:I
+      72: invokevirtual #108                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      75: aload_2
+      76: ldc           #68                 // String tunnelDir
+      78: aload_0
+      79: getfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+      82: invokevirtual #112                // Method net/minecraft/core/Direction.get2DDataValue:()I
+      85: invokevirtual #108                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      88: aload_2
+      89: ldc           #74                 // String hasTunnel
+      91: aload_0
+      92: getfield      #39                 // Field hasTunnel:Z
+      95: invokevirtual #115                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      98: return
+
+  private static net.minecraft.world.level.levelgen.structure.BoundingBox getInitialBoundingBox(net.minecraft.core.BlockPos, int);
+    Code:
+       0: new           #119                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+       3: dup
+       4: aload_0
+       5: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+       8: bipush        24
+      10: isub
+      11: aload_0
+      12: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+      15: aload_0
+      16: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+      19: bipush        24
+      21: isub
+      22: aload_0
+      23: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+      26: bipush        24
+      28: iadd
+      29: iload_1
+      30: aload_0
+      31: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+      34: bipush        24
+      36: iadd
+      37: invokespecial #121                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+      40: areturn
+
+  public void addChildren(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: invokevirtual #124                // Method getOrientation:()Lnet/minecraft/core/Direction;
+       4: astore        4
+       6: aload         4
+       8: ifnonnull     12
+      11: return
+      12: getstatic     #128                // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/VerticalEntrance$1.$SwitchMap$net$minecraft$core$Direction:[I
+      15: aload         4
+      17: invokevirtual #134                // Method net/minecraft/core/Direction.ordinal:()I
+      20: iaload
+      21: tableswitch   { // 1 to 4
+                     1: 52
+                     2: 92
+                     3: 132
+                     4: 172
+               default: 52
+          }
+      52: aload_1
+      53: aload_2
+      54: aload_3
+      55: aload_0
+      56: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      59: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+      62: iconst_4
+      63: isub
+      64: aload_0
+      65: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      68: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+      71: aload_0
+      72: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      75: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+      78: iconst_3
+      79: isub
+      80: aload         4
+      82: aload_0
+      83: getfield      #137                // Field genDepth:I
+      86: invokestatic  #140                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/BetterMineshaftGenerator.generateAndAddBigTunnelPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)V
+      89: goto          209
+      92: aload_1
+      93: aload_2
+      94: aload_3
+      95: aload_0
+      96: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      99: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+     102: iconst_4
+     103: iadd
+     104: aload_0
+     105: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     108: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+     111: aload_0
+     112: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     115: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+     118: iconst_3
+     119: iadd
+     120: aload         4
+     122: aload_0
+     123: getfield      #137                // Field genDepth:I
+     126: invokestatic  #140                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/BetterMineshaftGenerator.generateAndAddBigTunnelPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)V
+     129: goto          209
+     132: aload_1
+     133: aload_2
+     134: aload_3
+     135: aload_0
+     136: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     139: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+     142: iconst_3
+     143: isub
+     144: aload_0
+     145: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     148: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+     151: aload_0
+     152: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     155: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+     158: iconst_4
+     159: iadd
+     160: aload         4
+     162: aload_0
+     163: getfield      #137                // Field genDepth:I
+     166: invokestatic  #140                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/BetterMineshaftGenerator.generateAndAddBigTunnelPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)V
+     169: goto          209
+     172: aload_1
+     173: aload_2
+     174: aload_3
+     175: aload_0
+     176: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     179: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+     182: iconst_3
+     183: iadd
+     184: aload_0
+     185: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     188: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+     191: aload_0
+     192: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     195: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+     198: iconst_4
+     199: isub
+     200: aload         4
+     202: aload_0
+     203: getfield      #137                // Field genDepth:I
+     206: invokestatic  #140                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/BetterMineshaftGenerator.generateAndAddBigTunnelPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)V
+     209: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field hasTunnel:Z
+       4: ifne          12
+       7: aload_0
+       8: aload_1
+       9: invokevirtual #146                // Method determineDirection:(Lnet/minecraft/world/level/WorldGenLevel;)V
+      12: aload_0
+      13: getfield      #39                 // Field hasTunnel:Z
+      16: ifeq          37
+      19: aload_0
+      20: aload_1
+      21: aload         4
+      23: aload         5
+      25: invokevirtual #150                // Method generateVerticalShaft:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      28: aload_0
+      29: aload_1
+      30: aload         4
+      32: aload         5
+      34: invokevirtual #154                // Method generateSurfaceTunnel:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      37: return
+
+  private void generateVerticalShaft(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload_2
+       4: aload_0
+       5: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+       8: getfield      #161                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.replacementRate:F
+      11: bipush        22
+      13: iconst_0
+      14: bipush        22
+      16: bipush        26
+      18: aload_0
+      19: getfield      #21                 // Field localYEnd:I
+      22: bipush        26
+      24: aload_0
+      25: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+      28: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+      31: getfield      #171                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.mainRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      34: invokevirtual #177                // Method chanceReplaceNonAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+      37: aload_0
+      38: aload_1
+      39: aload_3
+      40: bipush        22
+      42: iconst_0
+      43: bipush        22
+      45: bipush        26
+      47: aload_0
+      48: getfield      #21                 // Field localYEnd:I
+      51: bipush        26
+      53: aload_0
+      54: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+      57: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+      60: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+      63: invokevirtual #191                // Method replaceAirOrChains:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+      66: aload_0
+      67: aload_1
+      68: aload_3
+      69: bipush        23
+      71: iconst_1
+      72: bipush        23
+      74: bipush        25
+      76: aload_0
+      77: getfield      #21                 // Field localYEnd:I
+      80: iconst_1
+      81: isub
+      82: bipush        25
+      84: getstatic     #195                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+      87: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+      90: aload_0
+      91: aload_1
+      92: aload_3
+      93: bipush        23
+      95: iconst_0
+      96: bipush        23
+      98: bipush        25
+     100: iconst_0
+     101: bipush        25
+     103: aload_0
+     104: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     107: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     110: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     113: invokevirtual #191                // Method replaceAirOrChains:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     116: aload_0
+     117: aload_1
+     118: aload_3
+     119: bipush        24
+     121: iconst_1
+     122: bipush        22
+     124: bipush        24
+     126: aload_0
+     127: getfield      #21                 // Field localYEnd:I
+     130: iconst_4
+     131: isub
+     132: bipush        22
+     134: aload_0
+     135: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     138: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     141: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     144: invokevirtual #191                // Method replaceAirOrChains:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     147: aload_0
+     148: aload_1
+     149: aload_3
+     150: bipush        24
+     152: iconst_1
+     153: bipush        23
+     155: bipush        24
+     157: aload_0
+     158: getfield      #21                 // Field localYEnd:I
+     161: iconst_4
+     162: isub
+     163: bipush        23
+     165: getstatic     #201                // Field net/minecraft/world/level/block/Blocks.LADDER:Lnet/minecraft/world/level/block/Block;
+     168: invokevirtual #207                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     171: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     174: aload_0
+     175: aload_1
+     176: aload_3
+     177: bipush        23
+     179: iconst_1
+     180: bipush        26
+     182: bipush        25
+     184: iconst_2
+     185: bipush        26
+     187: aload_0
+     188: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     191: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     194: getfield      #213                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.stoneWallBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     197: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     200: aload_0
+     201: aload_1
+     202: aload_3
+     203: bipush        24
+     205: iconst_3
+     206: bipush        26
+     208: bipush        24
+     210: iconst_3
+     211: bipush        26
+     213: aload_0
+     214: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     217: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     220: getfield      #216                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.stoneSlabBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     223: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     226: aload_0
+     227: aload_1
+     228: aload_3
+     229: bipush        24
+     231: iconst_1
+     232: bipush        26
+     234: bipush        24
+     236: iconst_2
+     237: bipush        26
+     239: getstatic     #195                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+     242: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     245: aload_0
+     246: aload_1
+     247: aload_3
+     248: aload_2
+     249: bipush        23
+     251: iconst_0
+     252: bipush        23
+     254: bipush        25
+     256: iconst_1
+     257: bipush        25
+     259: invokevirtual #219                // Method addBiomeDecorations:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;IIIIII)V
+     262: aload_0
+     263: aload_1
+     264: aload_3
+     265: aload_2
+     266: aload_0
+     267: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     270: getfield      #223                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.decorationChances:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftDecorationChances;
+     273: getfield      #227                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftDecorationChances.vineChance:F
+     276: bipush        23
+     278: iconst_0
+     279: bipush        23
+     281: bipush        25
+     283: aload_0
+     284: getfield      #21                 // Field localYEnd:I
+     287: iconst_4
+     288: isub
+     289: bipush        25
+     291: invokevirtual #232                // Method addVines:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIII)V
+     294: aload_0
+     295: aload_1
+     296: aload_2
+     297: aload_3
+     298: bipush        22
+     300: bipush        22
+     302: aload_0
+     303: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     306: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+     309: getfield      #236                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.legRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     312: invokevirtual #239                // Method generateLeg:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+     315: aload_0
+     316: aload_1
+     317: aload_2
+     318: aload_3
+     319: bipush        22
+     321: bipush        26
+     323: aload_0
+     324: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     327: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+     330: getfield      #236                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.legRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     333: invokevirtual #239                // Method generateLeg:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+     336: aload_0
+     337: aload_1
+     338: aload_2
+     339: aload_3
+     340: bipush        26
+     342: bipush        22
+     344: aload_0
+     345: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     348: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+     351: getfield      #236                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.legRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     354: invokevirtual #239                // Method generateLeg:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+     357: aload_0
+     358: aload_1
+     359: aload_2
+     360: aload_3
+     361: bipush        26
+     363: bipush        26
+     365: aload_0
+     366: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     369: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+     372: getfield      #236                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.legRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     375: invokevirtual #239                // Method generateLeg:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+     378: return
+
+  private void generateSurfaceTunnel(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: iconst_0
+       1: istore        4
+       3: iconst_0
+       4: istore        5
+       6: iconst_0
+       7: istore        6
+       9: iconst_0
+      10: istore        7
+      12: aload_0
+      13: invokevirtual #124                // Method getOrientation:()Lnet/minecraft/core/Direction;
+      16: astore        8
+      18: aload         8
+      20: invokevirtual #243                // Method net/minecraft/core/Direction.toYRot:()F
+      23: aload_0
+      24: getfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+      27: invokevirtual #243                // Method net/minecraft/core/Direction.toYRot:()F
+      30: fsub
+      31: fstore        9
+      33: getstatic     #30                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      36: invokevirtual #243                // Method net/minecraft/core/Direction.toYRot:()F
+      39: fload         9
+      41: fsub
+      42: f2d
+      43: invokestatic  #247                // Method net/minecraft/core/Direction.fromYRot:(D)Lnet/minecraft/core/Direction;
+      46: astore        10
+      48: aload         10
+      50: getstatic     #30                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      53: if_acmpne     80
+      56: bipush        22
+      58: istore        4
+      60: bipush        26
+      62: istore        5
+      64: bipush        26
+      66: istore        6
+      68: bipush        26
+      70: aload_0
+      71: getfield      #24                 // Field tunnelLength:I
+      74: iadd
+      75: istore        7
+      77: goto          221
+      80: aload         10
+      82: getstatic     #251                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+      85: if_acmpne     104
+      88: aload         8
+      90: getstatic     #254                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+      93: if_acmpeq     104
+      96: aload         8
+      98: getstatic     #251                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     101: if_acmpne     128
+     104: aload         10
+     106: getstatic     #257                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     109: if_acmpne     152
+     112: aload         8
+     114: getstatic     #254                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     117: if_acmpeq     128
+     120: aload         8
+     122: getstatic     #251                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     125: if_acmpne     152
+     128: bipush        22
+     130: aload_0
+     131: getfield      #24                 // Field tunnelLength:I
+     134: isub
+     135: istore        4
+     137: bipush        22
+     139: istore        5
+     141: bipush        22
+     143: istore        6
+     145: bipush        26
+     147: istore        7
+     149: goto          221
+     152: aload         10
+     154: getstatic     #254                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     157: if_acmpne     184
+     160: bipush        22
+     162: istore        4
+     164: bipush        22
+     166: aload_0
+     167: getfield      #24                 // Field tunnelLength:I
+     170: isub
+     171: istore        5
+     173: bipush        26
+     175: istore        6
+     177: bipush        22
+     179: istore        7
+     181: goto          221
+     184: aload         10
+     186: getstatic     #257                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     189: if_acmpeq     200
+     192: aload         10
+     194: getstatic     #251                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     197: if_acmpne     221
+     200: bipush        26
+     202: istore        4
+     204: bipush        22
+     206: istore        5
+     208: bipush        26
+     210: aload_0
+     211: getfield      #24                 // Field tunnelLength:I
+     214: iadd
+     215: istore        6
+     217: bipush        26
+     219: istore        7
+     221: aload_0
+     222: aload_1
+     223: aload_3
+     224: aload_2
+     225: ldc_w         #260                // float 0.6f
+     228: iload         4
+     230: aload_0
+     231: getfield      #27                 // Field tunnelFloorAltitude:I
+     234: iload         5
+     236: iload         6
+     238: aload_0
+     239: getfield      #27                 // Field tunnelFloorAltitude:I
+     242: iconst_4
+     243: iadd
+     244: iload         7
+     246: aload_0
+     247: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     250: getfield      #167                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStateRandomizers:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers;
+     253: getfield      #171                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockstateRandomizers.mainRandomizer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     256: invokevirtual #177                // Method chanceReplaceNonAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;)V
+     259: aload         8
+     261: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     264: aload_0
+     265: getfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+     268: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     271: if_acmpne     346
+     274: aload_0
+     275: aload_1
+     276: aload_3
+     277: iload         4
+     279: iconst_1
+     280: iadd
+     281: aload_0
+     282: getfield      #27                 // Field tunnelFloorAltitude:I
+     285: iload         5
+     287: iload         6
+     289: iconst_1
+     290: isub
+     291: aload_0
+     292: getfield      #27                 // Field tunnelFloorAltitude:I
+     295: iload         7
+     297: aload_0
+     298: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     301: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     304: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     307: invokevirtual #191                // Method replaceAirOrChains:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     310: aload_0
+     311: aload_1
+     312: aload_3
+     313: iload         4
+     315: iconst_1
+     316: iadd
+     317: aload_0
+     318: getfield      #27                 // Field tunnelFloorAltitude:I
+     321: iconst_1
+     322: iadd
+     323: iload         5
+     325: iload         6
+     327: iconst_1
+     328: isub
+     329: aload_0
+     330: getfield      #27                 // Field tunnelFloorAltitude:I
+     333: iconst_3
+     334: iadd
+     335: iload         7
+     337: getstatic     #195                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+     340: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     343: goto          415
+     346: aload_0
+     347: aload_1
+     348: aload_3
+     349: iload         4
+     351: aload_0
+     352: getfield      #27                 // Field tunnelFloorAltitude:I
+     355: iload         5
+     357: iconst_1
+     358: iadd
+     359: iload         6
+     361: aload_0
+     362: getfield      #27                 // Field tunnelFloorAltitude:I
+     365: iload         7
+     367: iconst_1
+     368: isub
+     369: aload_0
+     370: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     373: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     376: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     379: invokevirtual #191                // Method replaceAirOrChains:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     382: aload_0
+     383: aload_1
+     384: aload_3
+     385: iload         4
+     387: aload_0
+     388: getfield      #27                 // Field tunnelFloorAltitude:I
+     391: iconst_1
+     392: iadd
+     393: iload         5
+     395: iconst_1
+     396: iadd
+     397: iload         6
+     399: aload_0
+     400: getfield      #27                 // Field tunnelFloorAltitude:I
+     403: iconst_3
+     404: iadd
+     405: iload         7
+     407: iconst_1
+     408: isub
+     409: getstatic     #195                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+     412: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     415: aload_0
+     416: aload_1
+     417: aload_3
+     418: aload_2
+     419: aload_0
+     420: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     423: getfield      #223                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.decorationChances:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftDecorationChances;
+     426: getfield      #227                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftDecorationChances.vineChance:F
+     429: iload         4
+     431: iconst_1
+     432: iadd
+     433: aload_0
+     434: getfield      #27                 // Field tunnelFloorAltitude:I
+     437: iload         5
+     439: iconst_1
+     440: iadd
+     441: iload         6
+     443: iconst_1
+     444: isub
+     445: aload_0
+     446: getfield      #27                 // Field tunnelFloorAltitude:I
+     449: iconst_4
+     450: iadd
+     451: iload         7
+     453: iconst_1
+     454: isub
+     455: invokevirtual #232                // Method addVines:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIII)V
+     458: aload         8
+     460: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     463: aload_0
+     464: getfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+     467: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     470: if_acmpne     539
+     473: iload         7
+     475: iload         5
+     477: isub
+     478: iconst_1
+     479: iadd
+     480: newarray       boolean
+     482: astore        11
+     484: iconst_0
+     485: istore        12
+     487: iload         12
+     489: aload         11
+     491: arraylength
+     492: if_icmpge     536
+     495: aload_0
+     496: aload_1
+     497: iload         4
+     499: iconst_2
+     500: iadd
+     501: aload_0
+     502: getfield      #27                 // Field tunnelFloorAltitude:I
+     505: iload         5
+     507: iload         12
+     509: iadd
+     510: aload_3
+     511: invokevirtual #265                // Method getBlock:(Lnet/minecraft/world/level/BlockGetter;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/block/state/BlockState;
+     514: astore        13
+     516: aload         13
+     518: invokevirtual #269                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     521: ifeq          530
+     524: aload         11
+     526: iload         12
+     528: iconst_1
+     529: bastore
+     530: iinc          12, 1
+     533: goto          487
+     536: goto          602
+     539: iload         6
+     541: iload         4
+     543: isub
+     544: iconst_1
+     545: iadd
+     546: newarray       boolean
+     548: astore        11
+     550: iconst_0
+     551: istore        12
+     553: iload         12
+     555: aload         11
+     557: arraylength
+     558: if_icmpge     602
+     561: aload_0
+     562: aload_1
+     563: iload         4
+     565: iload         12
+     567: iadd
+     568: aload_0
+     569: getfield      #27                 // Field tunnelFloorAltitude:I
+     572: iload         5
+     574: iconst_2
+     575: iadd
+     576: aload_3
+     577: invokevirtual #265                // Method getBlock:(Lnet/minecraft/world/level/BlockGetter;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/block/state/BlockState;
+     580: astore        13
+     582: aload         13
+     584: invokevirtual #269                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     587: ifeq          596
+     590: aload         11
+     592: iload         12
+     594: iconst_1
+     595: bastore
+     596: iinc          12, 1
+     599: goto          553
+     602: aload         8
+     604: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     607: aload_0
+     608: getfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+     611: invokevirtual #261                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     614: if_acmpne     917
+     617: iload         5
+     619: istore        12
+     621: iload         12
+     623: iload         7
+     625: if_icmpgt     914
+     628: aload_2
+     629: iconst_4
+     630: invokeinterface #275,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     635: istore        13
+     637: iload         13
+     639: ifne          908
+     642: aload         11
+     644: iload         12
+     646: iload         5
+     648: isub
+     649: baload
+     650: ifeq          908
+     653: aload_0
+     654: aload_1
+     655: aload_3
+     656: iload         4
+     658: iconst_1
+     659: iadd
+     660: aload_0
+     661: getfield      #27                 // Field tunnelFloorAltitude:I
+     664: iconst_1
+     665: iadd
+     666: iload         12
+     668: iload         4
+     670: iconst_1
+     671: iadd
+     672: aload_0
+     673: getfield      #27                 // Field tunnelFloorAltitude:I
+     676: iconst_2
+     677: iadd
+     678: iload         12
+     680: aload_0
+     681: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     684: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     687: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     690: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     693: aload_0
+     694: aload_1
+     695: aload_3
+     696: iload         4
+     698: iconst_3
+     699: iadd
+     700: aload_0
+     701: getfield      #27                 // Field tunnelFloorAltitude:I
+     704: iconst_1
+     705: iadd
+     706: iload         12
+     708: iload         4
+     710: iconst_3
+     711: iadd
+     712: aload_0
+     713: getfield      #27                 // Field tunnelFloorAltitude:I
+     716: iconst_2
+     717: iadd
+     718: iload         12
+     720: aload_0
+     721: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     724: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     727: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     730: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     733: aload_0
+     734: aload_1
+     735: aload_3
+     736: iload         4
+     738: iconst_1
+     739: iadd
+     740: aload_0
+     741: getfield      #27                 // Field tunnelFloorAltitude:I
+     744: iconst_3
+     745: iadd
+     746: iload         12
+     748: iload         4
+     750: iconst_3
+     751: iadd
+     752: aload_0
+     753: getfield      #27                 // Field tunnelFloorAltitude:I
+     756: iconst_3
+     757: iadd
+     758: iload         12
+     760: aload_0
+     761: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     764: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     767: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     770: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     773: aload_0
+     774: aload_1
+     775: aload_3
+     776: aload_2
+     777: ldc_w         #284                // float 0.25f
+     780: iload         4
+     782: iconst_1
+     783: iadd
+     784: aload_0
+     785: getfield      #27                 // Field tunnelFloorAltitude:I
+     788: iconst_3
+     789: iadd
+     790: iload         12
+     792: iload         4
+     794: iconst_3
+     795: iadd
+     796: aload_0
+     797: getfield      #27                 // Field tunnelFloorAltitude:I
+     800: iconst_3
+     801: iadd
+     802: iload         12
+     804: aload_0
+     805: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     808: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     811: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     814: invokevirtual #285                // Method chanceReplaceNonAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     817: aload_0
+     818: aload_1
+     819: aload_3
+     820: aload_2
+     821: ldc_w         #288                // float 0.15f
+     824: iload         4
+     826: iconst_1
+     827: iadd
+     828: aload_0
+     829: getfield      #27                 // Field tunnelFloorAltitude:I
+     832: iconst_3
+     833: iadd
+     834: iload         12
+     836: iconst_1
+     837: isub
+     838: iload         4
+     840: iconst_1
+     841: iadd
+     842: aload_0
+     843: getfield      #27                 // Field tunnelFloorAltitude:I
+     846: iconst_3
+     847: iadd
+     848: iload         12
+     850: iconst_1
+     851: iadd
+     852: getstatic     #289                // Field net/minecraft/world/level/block/Blocks.COBWEB:Lnet/minecraft/world/level/block/Block;
+     855: invokevirtual #207                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     858: invokevirtual #292                // Method chanceReplaceAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     861: aload_0
+     862: aload_1
+     863: aload_3
+     864: aload_2
+     865: ldc_w         #288                // float 0.15f
+     868: iload         4
+     870: iconst_3
+     871: iadd
+     872: aload_0
+     873: getfield      #27                 // Field tunnelFloorAltitude:I
+     876: iconst_3
+     877: iadd
+     878: iload         12
+     880: iconst_1
+     881: isub
+     882: iload         4
+     884: iconst_3
+     885: iadd
+     886: aload_0
+     887: getfield      #27                 // Field tunnelFloorAltitude:I
+     890: iconst_3
+     891: iadd
+     892: iload         12
+     894: iconst_1
+     895: iadd
+     896: getstatic     #289                // Field net/minecraft/world/level/block/Blocks.COBWEB:Lnet/minecraft/world/level/block/Block;
+     899: invokevirtual #207                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     902: invokevirtual #292                // Method chanceReplaceAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     905: iinc          12, 3
+     908: iinc          12, 1
+     911: goto          621
+     914: goto          1214
+     917: iload         4
+     919: istore        12
+     921: iload         12
+     923: iload         6
+     925: if_icmpgt     1214
+     928: aload_2
+     929: iconst_4
+     930: invokeinterface #275,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     935: istore        13
+     937: iload         13
+     939: ifne          1208
+     942: aload         11
+     944: iload         12
+     946: iload         4
+     948: isub
+     949: baload
+     950: ifeq          1208
+     953: aload_0
+     954: aload_1
+     955: aload_3
+     956: iload         12
+     958: aload_0
+     959: getfield      #27                 // Field tunnelFloorAltitude:I
+     962: iconst_1
+     963: iadd
+     964: iload         5
+     966: iconst_1
+     967: iadd
+     968: iload         12
+     970: aload_0
+     971: getfield      #27                 // Field tunnelFloorAltitude:I
+     974: iconst_2
+     975: iadd
+     976: iload         5
+     978: iconst_1
+     979: iadd
+     980: aload_0
+     981: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+     984: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+     987: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+     990: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+     993: aload_0
+     994: aload_1
+     995: aload_3
+     996: iload         12
+     998: aload_0
+     999: getfield      #27                 // Field tunnelFloorAltitude:I
+    1002: iconst_1
+    1003: iadd
+    1004: iload         5
+    1006: iconst_3
+    1007: iadd
+    1008: iload         12
+    1010: aload_0
+    1011: getfield      #27                 // Field tunnelFloorAltitude:I
+    1014: iconst_2
+    1015: iadd
+    1016: iload         5
+    1018: iconst_3
+    1019: iadd
+    1020: aload_0
+    1021: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+    1024: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+    1027: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+    1030: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+    1033: aload_0
+    1034: aload_1
+    1035: aload_3
+    1036: iload         12
+    1038: aload_0
+    1039: getfield      #27                 // Field tunnelFloorAltitude:I
+    1042: iconst_3
+    1043: iadd
+    1044: iload         5
+    1046: iconst_1
+    1047: iadd
+    1048: iload         12
+    1050: aload_0
+    1051: getfield      #27                 // Field tunnelFloorAltitude:I
+    1054: iconst_3
+    1055: iadd
+    1056: iload         5
+    1058: iconst_3
+    1059: iadd
+    1060: aload_0
+    1061: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+    1064: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+    1067: getfield      #185                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.mainBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+    1070: invokevirtual #198                // Method fill:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+    1073: aload_0
+    1074: aload_1
+    1075: aload_3
+    1076: aload_2
+    1077: ldc_w         #284                // float 0.25f
+    1080: iload         12
+    1082: aload_0
+    1083: getfield      #27                 // Field tunnelFloorAltitude:I
+    1086: iconst_3
+    1087: iadd
+    1088: iload         5
+    1090: iconst_1
+    1091: iadd
+    1092: iload         12
+    1094: aload_0
+    1095: getfield      #27                 // Field tunnelFloorAltitude:I
+    1098: iconst_3
+    1099: iadd
+    1100: iload         5
+    1102: iconst_3
+    1103: iadd
+    1104: aload_0
+    1105: getfield      #157                // Field config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+    1108: getfield      #181                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration.blockStates:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates;
+    1111: getfield      #281                // Field com/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration$MineshaftBlockStates.supportBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+    1114: invokevirtual #285                // Method chanceReplaceNonAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+    1117: aload_0
+    1118: aload_1
+    1119: aload_3
+    1120: aload_2
+    1121: ldc_w         #288                // float 0.15f
+    1124: iload         12
+    1126: iconst_1
+    1127: isub
+    1128: aload_0
+    1129: getfield      #27                 // Field tunnelFloorAltitude:I
+    1132: iconst_3
+    1133: iadd
+    1134: iload         5
+    1136: iconst_1
+    1137: iadd
+    1138: iload         12
+    1140: iconst_1
+    1141: iadd
+    1142: aload_0
+    1143: getfield      #27                 // Field tunnelFloorAltitude:I
+    1146: iconst_3
+    1147: iadd
+    1148: iload         5
+    1150: iconst_1
+    1151: iadd
+    1152: getstatic     #289                // Field net/minecraft/world/level/block/Blocks.COBWEB:Lnet/minecraft/world/level/block/Block;
+    1155: invokevirtual #207                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1158: invokevirtual #292                // Method chanceReplaceAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+    1161: aload_0
+    1162: aload_1
+    1163: aload_3
+    1164: aload_2
+    1165: ldc_w         #288                // float 0.15f
+    1168: iload         12
+    1170: iconst_1
+    1171: isub
+    1172: aload_0
+    1173: getfield      #27                 // Field tunnelFloorAltitude:I
+    1176: iconst_3
+    1177: iadd
+    1178: iload         5
+    1180: iconst_3
+    1181: iadd
+    1182: iload         12
+    1184: iconst_1
+    1185: iadd
+    1186: aload_0
+    1187: getfield      #27                 // Field tunnelFloorAltitude:I
+    1190: iconst_3
+    1191: iadd
+    1192: iload         5
+    1194: iconst_3
+    1195: iadd
+    1196: getstatic     #289                // Field net/minecraft/world/level/block/Blocks.COBWEB:Lnet/minecraft/world/level/block/Block;
+    1199: invokevirtual #207                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1202: invokevirtual #292                // Method chanceReplaceAir:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+    1205: iinc          12, 3
+    1208: iinc          12, 1
+    1211: goto          921
+    1214: return
+
+  private void determineDirection(net.minecraft.world.level.WorldGenLevel);
+    Code:
+       0: aload_1
+       1: invokeinterface #295,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+       6: iconst_1
+       7: isub
+       8: istore_2
+       9: bipush        -2
+      11: istore_3
+      12: iload_3
+      13: iconst_2
+      14: if_icmpgt     155
+      17: bipush        -2
+      19: istore        4
+      21: iload         4
+      23: iconst_2
+      24: if_icmpgt     149
+      27: aload_0
+      28: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      31: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getX:()I
+      34: iload_3
+      35: iadd
+      36: istore        5
+      38: aload_0
+      39: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+      42: invokevirtual #101                // Method net/minecraft/core/BlockPos.getZ:()I
+      45: iload         4
+      47: iadd
+      48: istore        6
+      50: iload         5
+      52: iconst_4
+      53: ishr
+      54: istore        7
+      56: iload         6
+      58: iconst_4
+      59: ishr
+      60: istore        8
+      62: aload_1
+      63: iload         7
+      65: iload         8
+      67: invokeinterface #300,  3          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunk:(II)Lnet/minecraft/world/level/chunk/ChunkAccess;
+      72: new           #304                // class net/minecraft/server/level/ColumnPos
+      75: dup
+      76: iload         5
+      78: iload         6
+      80: invokespecial #306                // Method net/minecraft/server/level/ColumnPos."<init>":(II)V
+      83: invokestatic  #309                // Method com/yungnickyoung/minecraft/yungsapi/world/util/SurfaceHelper.getSurfaceHeight:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/server/level/ColumnPos;)I
+      86: istore        9
+      88: iload         9
+      90: iconst_1
+      91: if_icmple     101
+      94: iload_2
+      95: iload         9
+      97: invokestatic  #315                // Method java/lang/Math.min:(II)I
+     100: istore_2
+     101: goto          143
+     104: astore        5
+     106: getstatic     #323                // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     109: ldc_w         #327                // String Unexpected YUNG\'s Better Mineshafts error. Please report this!
+     112: invokeinterface #329,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     117: getstatic     #323                // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     120: aload         5
+     122: invokevirtual #335                // Method java/lang/NullPointerException.toString:()Ljava/lang/String;
+     125: invokeinterface #329,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     130: getstatic     #323                // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     133: aload         5
+     135: invokevirtual #339                // Method java/lang/NullPointerException.getMessage:()Ljava/lang/String;
+     138: invokeinterface #329,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     143: iinc          4, 1
+     146: goto          21
+     149: iinc          3, 1
+     152: goto          12
+     155: iload_2
+     156: bipush        60
+     158: if_icmplt     173
+     161: iload_2
+     162: aload_1
+     163: invokeinterface #295,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+     168: iconst_1
+     169: isub
+     170: if_icmpne     174
+     173: return
+     174: iload_2
+     175: iconst_2
+     176: isub
+     177: istore_3
+     178: iload_3
+     179: iconst_4
+     180: isub
+     181: istore        4
+     183: aload_0
+     184: iload_3
+     185: aload_0
+     186: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     189: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getY:()I
+     192: isub
+     193: iconst_1
+     194: iadd
+     195: putfield      #15                 // Field yAxisLen:I
+     198: aload_0
+     199: aload_0
+     200: getfield      #15                 // Field yAxisLen:I
+     203: iconst_1
+     204: isub
+     205: putfield      #21                 // Field localYEnd:I
+     208: aload_0
+     209: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     212: invokevirtual #342                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     215: astore        5
+     217: bipush        8
+     219: istore        6
+     221: iconst_3
+     222: istore        7
+     224: iconst_0
+     225: istore        8
+     227: iload         8
+     229: iload         7
+     231: if_icmpge     424
+     234: invokestatic  #346                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+     237: astore        9
+     239: aload         9
+     241: arraylength
+     242: istore        10
+     244: iconst_0
+     245: istore        11
+     247: iload         11
+     249: iload         10
+     251: if_icmpge     418
+     254: aload         9
+     256: iload         11
+     258: aaload
+     259: astore        12
+     261: aload         12
+     263: getstatic     #350                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     266: if_acmpeq     412
+     269: aload         12
+     271: getstatic     #353                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     274: if_acmpne     280
+     277: goto          412
+     280: aload         5
+     282: aload_0
+     283: getfield      #56                 // Field centerPos:Lnet/minecraft/core/BlockPos;
+     286: aload         12
+     288: iload         6
+     290: iload         8
+     292: imul
+     293: iconst_2
+     294: iadd
+     295: invokevirtual #356                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     298: invokevirtual #360                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     301: pop
+     302: iload         8
+     304: iload         6
+     306: imul
+     307: istore        13
+     309: iload         13
+     311: iload         8
+     313: iload         6
+     315: imul
+     316: iload         6
+     318: iadd
+     319: if_icmpge     412
+     322: aload_1
+     323: aload         5
+     325: invokeinterface #366,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+     330: new           #304                // class net/minecraft/server/level/ColumnPos
+     333: dup
+     334: aload         5
+     336: invokevirtual #369                // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     339: aload         5
+     341: invokevirtual #370                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     344: invokespecial #306                // Method net/minecraft/server/level/ColumnPos."<init>":(II)V
+     347: invokestatic  #309                // Method com/yungnickyoung/minecraft/yungsapi/world/util/SurfaceHelper.getSurfaceHeight:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/server/level/ColumnPos;)I
+     350: istore        14
+     352: iload         14
+     354: iload         4
+     356: if_icmpgt     398
+     359: iload         14
+     361: iconst_1
+     362: if_icmple     398
+     365: aload_0
+     366: iconst_1
+     367: putfield      #39                 // Field hasTunnel:Z
+     370: aload_0
+     371: aload         12
+     373: putfield      #36                 // Field tunnelDirection:Lnet/minecraft/core/Direction;
+     376: aload_0
+     377: iload_3
+     378: iconst_4
+     379: isub
+     380: aload_0
+     381: getfield      #371                // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     384: invokevirtual #375                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     387: isub
+     388: putfield      #27                 // Field tunnelFloorAltitude:I
+     391: aload_0
+     392: iload         13
+     394: putfield      #24                 // Field tunnelLength:I
+     397: return
+     398: aload         5
+     400: aload         12
+     402: invokevirtual #378                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     405: pop
+     406: iinc          13, 1
+     409: goto          309
+     412: iinc          11, 1
+     415: goto          247
+     418: iinc          8, 1
+     421: goto          227
+     424: return
+    Exception table:
+       from    to  target type
+          27   101   104   Class java/lang/NullPointerException
+}

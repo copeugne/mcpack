@@ -1,0 +1,325 @@
+Compiled from "DragonRespawnStage.java"
+final class com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage$5 extends com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage {
+  private com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage$5(java.lang.String, int, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aload_3
+       4: invokespecial #1                  // Method com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage."<init>":(Ljava/lang/String;ILjava/lang/String;)V
+       7: return
+
+  public void tick(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.dimension.end.EndDragonFight, java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal>, int);
+    Code:
+       0: return
+
+  public void onStart(net.minecraft.server.level.ServerLevel, com.yungnickyoung.minecraft.betterendisland.world.IBetterDragonFight);
+    Code:
+       0: aload_2
+       1: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+       4: invokeinterface #9,  1            // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getPortalLocation:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_2
+      11: aconst_null
+      12: invokeinterface #13,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.setDragonRespawnStage:(Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;)V
+      17: aload_2
+      18: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+      21: iconst_0
+      22: invokeinterface #19,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.setDragonKilled:(Z)V
+      27: aload_2
+      28: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+      31: invokeinterface #23,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.invokeCreateNewDragon:()Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+      36: astore        4
+      38: aload_2
+      39: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+      42: invokeinterface #27,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getPreviouslyKilled:()Z
+      47: ifeq          104
+      50: aload_2
+      51: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+      54: invokeinterface #31,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getDragonEvent:()Lnet/minecraft/server/level/ServerBossEvent;
+      59: invokevirtual #35                 // Method net/minecraft/server/level/ServerBossEvent.getPlayers:()Ljava/util/Collection;
+      62: invokeinterface #41,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      67: astore        5
+      69: aload         5
+      71: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      76: ifeq          104
+      79: aload         5
+      81: invokeinterface #52,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      86: checkcast     #56                 // class net/minecraft/server/level/ServerPlayer
+      89: astore        6
+      91: getstatic     #58                 // Field net/minecraft/advancements/CriteriaTriggers.SUMMONED_ENTITY:Lnet/minecraft/advancements/critereon/SummonedEntityTrigger;
+      94: aload         6
+      96: aload         4
+      98: invokevirtual #64                 // Method net/minecraft/advancements/critereon/SummonedEntityTrigger.trigger:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/Entity;)V
+     101: goto          69
+     104: aload_2
+     105: aload_1
+     106: iconst_0
+     107: iconst_0
+     108: iconst_1
+     109: invokestatic  #70                 // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZZ)V
+     112: aload_1
+     113: aconst_null
+     114: aload_3
+     115: invokevirtual #76                 // Method net/minecraft/core/BlockPos.getX:()I
+     118: i2d
+     119: aload_3
+     120: invokevirtual #82                 // Method net/minecraft/core/BlockPos.getY:()I
+     123: bipush        20
+     125: iadd
+     126: i2d
+     127: aload_3
+     128: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+     131: i2d
+     132: ldc           #88                 // float 6.0f
+     134: getstatic     #89                 // Field net/minecraft/world/level/Level$ExplosionInteraction.NONE:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+     137: invokevirtual #95                 // Method net/minecraft/server/level/ServerLevel.explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+     140: pop
+     141: aload_1
+     142: invokevirtual #101                // Method net/minecraft/server/level/ServerLevel.players:()Ljava/util/List;
+     145: aload_1
+     146: aload_3
+     147: invokedynamic #105,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     152: invokeinterface #109,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     157: aload_2
+     158: invokeinterface #115,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.hasDragonEverSpawned:()Z
+     163: ifeq          200
+     166: aload_2
+     167: aload_1
+     168: iconst_0
+     169: iconst_1
+     170: iconst_1
+     171: invokestatic  #70                 // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZZ)V
+     174: aload_1
+     175: aconst_null
+     176: aload_3
+     177: invokevirtual #76                 // Method net/minecraft/core/BlockPos.getX:()I
+     180: i2d
+     181: aload_3
+     182: invokevirtual #82                 // Method net/minecraft/core/BlockPos.getY:()I
+     185: i2d
+     186: aload_3
+     187: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+     190: i2d
+     191: ldc           #88                 // float 6.0f
+     193: getstatic     #89                 // Field net/minecraft/world/level/Level$ExplosionInteraction.NONE:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+     196: invokevirtual #95                 // Method net/minecraft/server/level/ServerLevel.explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+     199: pop
+     200: aload_2
+     201: invokeinterface #118,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.getNumTimesDragonKilled:()I
+     206: iconst_0
+     207: bipush        10
+     209: invokestatic  #121                // Method net/minecraft/util/Mth.clamp:(III)I
+     212: istore        5
+     214: iload         5
+     216: i2f
+     217: ldc           #127                // float 10.0f
+     219: fdiv
+     220: fconst_0
+     221: ldc           #128                // float 0.5f
+     223: invokestatic  #129                // Method net/minecraft/util/Mth.lerp:(FFF)F
+     226: fstore        6
+     228: new           #133                // class java/util/ArrayList
+     231: dup
+     232: iconst_0
+     233: invokestatic  #135                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     236: bipush        20
+     238: invokestatic  #135                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     241: invokestatic  #141                // Method com/google/common/collect/Range.closedOpen:(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lcom/google/common/collect/Range;
+     244: invokestatic  #147                // Method com/google/common/collect/DiscreteDomain.integers:()Lcom/google/common/collect/DiscreteDomain;
+     247: invokestatic  #153                // Method com/google/common/collect/ContiguousSet.create:(Lcom/google/common/collect/Range;Lcom/google/common/collect/DiscreteDomain;)Lcom/google/common/collect/ContiguousSet;
+     250: invokespecial #159                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     253: astore        7
+     255: aload         7
+     257: aload_2
+     258: checkcast     #7                  // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+     261: invokeinterface #162,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getGateways:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+     266: invokeinterface #166,  2          // InterfaceMethod java/util/List.removeAll:(Ljava/util/Collection;)Z
+     271: pop
+     272: aload         7
+     274: aload_1
+     275: fload         6
+     277: invokedynamic #170,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/server/level/ServerLevel;F)Ljava/util/function/Consumer;
+     282: invokeinterface #109,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     287: getstatic     #173                // Field net/minecraft/server/level/ServerLevel.END_SPAWN_POINT:Lnet/minecraft/core/BlockPos;
+     290: astore        8
+     292: aload         8
+     294: invokestatic  #177                // Method net/minecraft/util/Mth.getSeed:(Lnet/minecraft/core/Vec3i;)J
+     297: invokestatic  #181                // InterfaceMethod net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+     300: astore        9
+     302: aload         8
+     304: bipush        -3
+     306: bipush        -15
+     308: bipush        -3
+     310: invokevirtual #186                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     313: aload         8
+     315: iconst_3
+     316: iconst_4
+     317: iconst_3
+     318: invokevirtual #186                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     321: invokestatic  #190                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+     324: aload_1
+     325: aload         9
+     327: fload         6
+     329: invokedynamic #194,  0            // InvokeDynamic #2:accept:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/util/RandomSource;F)Ljava/util/function/Consumer;
+     334: invokeinterface #197,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+     339: aload_2
+     340: iconst_1
+     341: invokeinterface #200,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.setHasDragonEverSpawned:(Z)V
+     346: return
+
+  private static void lambda$onStart$3(net.minecraft.server.level.ServerLevel, net.minecraft.util.RandomSource, float, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #203                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       5: getstatic     #207                // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #213                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      11: ifeq          37
+      14: aload_1
+      15: invokeinterface #219,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      20: fload_2
+      21: fcmpg
+      22: ifge          37
+      25: aload_0
+      26: aload_3
+      27: getstatic     #223                // Field net/minecraft/world/level/block/Blocks.CRYING_OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+      30: invokevirtual #226                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      33: invokevirtual #232                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      36: pop
+      37: return
+
+  private static void lambda$onStart$2(net.minecraft.server.level.ServerLevel, float, java.lang.Integer);
+    Code:
+       0: ldc2_w        #236                // double 96.0d
+       3: ldc2_w        #238                // double 2.0d
+       6: ldc2_w        #242                // double -3.141592653589793d
+       9: ldc2_w        #244                // double 0.15707963267948966d
+      12: aload_2
+      13: invokevirtual #246                // Method java/lang/Integer.intValue:()I
+      16: i2d
+      17: dmul
+      18: dadd
+      19: dmul
+      20: invokestatic  #249                // Method java/lang/Math.cos:(D)D
+      23: dmul
+      24: invokestatic  #253                // Method net/minecraft/util/Mth.floor:(D)I
+      27: istore_3
+      28: ldc2_w        #236                // double 96.0d
+      31: ldc2_w        #238                // double 2.0d
+      34: ldc2_w        #242                // double -3.141592653589793d
+      37: ldc2_w        #244                // double 0.15707963267948966d
+      40: aload_2
+      41: invokevirtual #246                // Method java/lang/Integer.intValue:()I
+      44: i2d
+      45: dmul
+      46: dadd
+      47: dmul
+      48: invokestatic  #257                // Method java/lang/Math.sin:(D)D
+      51: dmul
+      52: invokestatic  #253                // Method net/minecraft/util/Mth.floor:(D)I
+      55: istore        4
+      57: new           #77                 // class net/minecraft/core/BlockPos
+      60: dup
+      61: iload_3
+      62: bipush        75
+      64: iload         4
+      66: invokespecial #260                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      69: astore        5
+      71: aload         5
+      73: invokestatic  #177                // Method net/minecraft/util/Mth.getSeed:(Lnet/minecraft/core/Vec3i;)J
+      76: invokestatic  #181                // InterfaceMethod net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+      79: astore        6
+      81: aload         5
+      83: iconst_m1
+      84: bipush        -4
+      86: iconst_m1
+      87: invokevirtual #186                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      90: aload         5
+      92: iconst_1
+      93: iconst_4
+      94: iconst_1
+      95: invokevirtual #186                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      98: invokestatic  #190                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+     101: aload_0
+     102: aload         6
+     104: fload_1
+     105: invokedynamic #263,  0            // InvokeDynamic #3:accept:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/util/RandomSource;F)Ljava/util/function/Consumer;
+     110: invokeinterface #197,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+     115: return
+
+  private static void lambda$onStart$1(net.minecraft.server.level.ServerLevel, net.minecraft.util.RandomSource, float, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #203                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       5: getstatic     #207                // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #213                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      11: ifeq          37
+      14: aload_1
+      15: invokeinterface #219,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      20: fload_2
+      21: fcmpg
+      22: ifge          37
+      25: aload_0
+      26: aload_3
+      27: getstatic     #223                // Field net/minecraft/world/level/block/Blocks.CRYING_OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+      30: invokevirtual #226                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      33: invokevirtual #232                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      36: pop
+      37: return
+
+  private static void lambda$onStart$0(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: getstatic     #264                // Field net/minecraft/core/particles/ParticleTypes.EXPLOSION_EMITTER:Lnet/minecraft/core/particles/SimpleParticleType;
+       5: iconst_1
+       6: aload_1
+       7: invokevirtual #76                 // Method net/minecraft/core/BlockPos.getX:()I
+      10: i2d
+      11: aload_1
+      12: invokevirtual #82                 // Method net/minecraft/core/BlockPos.getY:()I
+      15: bipush        20
+      17: iadd
+      18: i2d
+      19: aload_1
+      20: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+      23: i2d
+      24: iconst_1
+      25: dconst_0
+      26: dconst_0
+      27: dconst_0
+      28: dconst_0
+      29: invokevirtual #270                // Method net/minecraft/server/level/ServerLevel.sendParticles:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/particles/ParticleOptions;ZDDDIDDDD)Z
+      32: pop
+      33: aload_2
+      34: aload_1
+      35: invokevirtual #76                 // Method net/minecraft/core/BlockPos.getX:()I
+      38: i2d
+      39: aload_1
+      40: invokevirtual #82                 // Method net/minecraft/core/BlockPos.getY:()I
+      43: bipush        20
+      45: iadd
+      46: i2d
+      47: aload_1
+      48: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+      51: i2d
+      52: invokevirtual #274                // Method net/minecraft/server/level/ServerPlayer.distanceToSqr:(DDD)D
+      55: ldc2_w        #278                // double 32.0d
+      58: dcmpl
+      59: ifle          89
+      62: aload_0
+      63: aconst_null
+      64: aload_1
+      65: bipush        20
+      67: invokevirtual #280                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      70: getstatic     #284                // Field net/minecraft/sounds/SoundEvents.GENERIC_EXPLODE:Lnet/minecraft/core/Holder$Reference;
+      73: invokevirtual #290                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      76: checkcast     #295                // class net/minecraft/sounds/SoundEvent
+      79: getstatic     #297                // Field net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+      82: ldc_w         #303                // float 24.0f
+      85: fconst_1
+      86: invokevirtual #304                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+      89: return
+}

@@ -1,0 +1,216 @@
+Compiled from "VaultRandomizingProcessor.java"
+public class com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  private static final net.minecraft.resources.ResourceLocation DEFAULT_KEY;
+
+  private static final net.minecraft.resources.ResourceLocation DEFAULT_OMINOUS_KEY;
+
+  public static final com.mojang.serialization.MapCodec<com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor> CODEC;
+
+  public final net.minecraft.resources.ResourceLocation lootTable;
+
+  public final java.util.Optional<net.minecraft.resources.ResourceLocation> ominousLootTable;
+
+  public final net.minecraft.resources.ResourceLocation keyItem;
+
+  public final net.minecraft.resources.ResourceLocation ominousKeyItem;
+
+  private com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor(net.minecraft.resources.ResourceLocation, java.util.Optional<net.minecraft.resources.ResourceLocation>, net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field lootTable:Lnet/minecraft/resources/ResourceLocation;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field ominousLootTable:Ljava/util/Optional;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field keyItem:Lnet/minecraft/resources/ResourceLocation;
+      19: aload_0
+      20: aload         4
+      22: putfield      #20                 // Field ominousKeyItem:Lnet/minecraft/resources/ResourceLocation;
+      25: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: astore        7
+       7: aload         7
+       9: invokevirtual #29                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      12: instanceof    #35                 // class net/minecraft/world/level/block/VaultBlock
+      15: ifne          21
+      18: aload         5
+      20: areturn
+      21: aload         7
+      23: getstatic     #37                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.OMINOUS:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      26: invokevirtual #43                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      29: checkcast     #47                 // class java/lang/Boolean
+      32: invokevirtual #49                 // Method java/lang/Boolean.booleanValue:()Z
+      35: istore        8
+      37: iload         8
+      39: ifeq          59
+      42: aload_0
+      43: getfield      #13                 // Field ominousLootTable:Ljava/util/Optional;
+      46: aload_0
+      47: getfield      #7                  // Field lootTable:Lnet/minecraft/resources/ResourceLocation;
+      50: invokevirtual #53                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      53: checkcast     #59                 // class net/minecraft/resources/ResourceLocation
+      56: goto          63
+      59: aload_0
+      60: getfield      #7                  // Field lootTable:Lnet/minecraft/resources/ResourceLocation;
+      63: astore        9
+      65: iload         8
+      67: ifeq          77
+      70: aload_0
+      71: getfield      #20                 // Field ominousKeyItem:Lnet/minecraft/resources/ResourceLocation;
+      74: goto          81
+      77: aload_0
+      78: getfield      #17                 // Field keyItem:Lnet/minecraft/resources/ResourceLocation;
+      81: astore        10
+      83: aload         5
+      85: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+      88: astore        11
+      90: aload         11
+      92: ifnull        103
+      95: aload         11
+      97: invokevirtual #65                 // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+     100: goto          110
+     103: new           #66                 // class net/minecraft/nbt/CompoundTag
+     106: dup
+     107: invokespecial #70                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     110: astore        12
+     112: aload         12
+     114: ldc           #71                 // String server_data
+     116: invokevirtual #73                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+     119: aload         12
+     121: ldc           #77                 // String shared_data
+     123: invokevirtual #73                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+     126: aload         12
+     128: ldc           #79                 // String config
+     130: invokevirtual #81                 // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+     133: ifeq          149
+     136: aload         12
+     138: ldc           #79                 // String config
+     140: invokevirtual #85                 // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+     143: invokevirtual #65                 // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+     146: goto          156
+     149: new           #66                 // class net/minecraft/nbt/CompoundTag
+     152: dup
+     153: invokespecial #70                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     156: astore        13
+     158: aload         13
+     160: ldc           #89                 // String loot_table
+     162: aload         9
+     164: invokevirtual #91                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     167: invokevirtual #95                 // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     170: new           #66                 // class net/minecraft/nbt/CompoundTag
+     173: dup
+     174: invokespecial #70                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     177: astore        14
+     179: aload         14
+     181: ldc           #99                 // String id
+     183: aload         10
+     185: invokevirtual #91                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     188: invokevirtual #95                 // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     191: aload         14
+     193: ldc           #101                // String count
+     195: iconst_1
+     196: invokevirtual #103                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+     199: aload         13
+     201: ldc           #107                // String key_item
+     203: aload         14
+     205: invokevirtual #109                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     208: pop
+     209: aload         12
+     211: ldc           #79                 // String config
+     213: aload         13
+     215: invokevirtual #109                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     218: pop
+     219: new           #24                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     222: dup
+     223: aload         5
+     225: invokevirtual #113                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     228: aload         7
+     230: aload         12
+     232: invokespecial #117                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     235: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #120                // Field com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.VAULT_RANDOMIZING_PROCESSOR:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+       3: invokeinterface #126,  1          // InterfaceMethod com/finndog/moogs_structures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #132                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$4(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #134                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #89                 // String loot_table
+       6: invokeinterface #138,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #144,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #148                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #134                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #154                // String ominous_loot_table
+      24: invokeinterface #156,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #159,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      34: invokevirtual #148                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: getstatic     #134                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      40: ldc           #107                // String key_item
+      42: getstatic     #160                // Field DEFAULT_KEY:Lnet/minecraft/resources/ResourceLocation;
+      45: invokeinterface #163,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      50: invokedynamic #166,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      55: invokevirtual #148                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      58: getstatic     #134                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      61: ldc           #167                // String ominous_key_item
+      63: getstatic     #169                // Field DEFAULT_OMINOUS_KEY:Lnet/minecraft/resources/ResourceLocation;
+      66: invokeinterface #163,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      71: invokedynamic #172,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      76: invokevirtual #148                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      79: invokevirtual #173                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      82: aload_0
+      83: aload_0
+      84: invokedynamic #179,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function4;
+      89: invokevirtual #182                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+      92: invokevirtual #186                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+      95: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$3(com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field ominousKeyItem:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$2(com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field keyItem:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  private static java.util.Optional lambda$static$1(com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field ominousLootTable:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$0(com.finndog.moogs_structures.world.processors.VaultRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field lootTable:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  static {};
+    Code:
+       0: ldc           #191                // String minecraft:trial_key
+       2: invokestatic  #193                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       5: putstatic     #160                // Field DEFAULT_KEY:Lnet/minecraft/resources/ResourceLocation;
+       8: ldc           #197                // String minecraft:ominous_trial_key
+      10: invokestatic  #193                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      13: putstatic     #169                // Field DEFAULT_OMINOUS_KEY:Lnet/minecraft/resources/ResourceLocation;
+      16: invokedynamic #199,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      21: invokestatic  #200                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      24: putstatic     #206                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      27: return
+}

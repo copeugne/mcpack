@@ -1,0 +1,709 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler.class
+  Last modified Apr 21, 2026; size 7174 bytes
+  SHA-256 checksum 4922f3a3e5a78c8c4d92273228a471033d499ec625009aa98e32e6d60009aab8
+  Compiled from "ZapperInteractionHandler.java"
+public class com.simibubi.create.content.equipment.zapper.ZapperInteractionHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #38                         // com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+    #8 = Class              #10           // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock
+    #9 = NameAndType        #11:#12       // getLevel:()Lnet/minecraft/world/level/Level;
+   #10 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock
+   #11 = Utf8               getLevel
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Fieldref           #14.#15       // net/minecraft/world/level/Level.isClientSide:Z
+   #14 = Class              #16           // net/minecraft/world/level/Level
+   #15 = NameAndType        #17:#18       // isClientSide:Z
+   #16 = Utf8               net/minecraft/world/level/Level
+   #17 = Utf8               isClientSide
+   #18 = Utf8               Z
+   #19 = Methodref          #8.#20        // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+   #20 = NameAndType        #21:#22       // getEntity:()Lnet/minecraft/world/entity/player/Player;
+   #21 = Utf8               getEntity
+   #22 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+   #23 = Methodref          #24.#25       // net/minecraft/world/entity/player/Player.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+   #24 = Class              #26           // net/minecraft/world/entity/player/Player
+   #25 = NameAndType        #27:#28       // getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+   #26 = Utf8               net/minecraft/world/entity/player/Player
+   #27 = Utf8               getMainHandItem
+   #28 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+   #29 = Methodref          #30.#31       // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+   #30 = Class              #32           // net/minecraft/world/item/ItemStack
+   #31 = NameAndType        #33:#34       // getItem:()Lnet/minecraft/world/item/Item;
+   #32 = Utf8               net/minecraft/world/item/ItemStack
+   #33 = Utf8               getItem
+   #34 = Utf8               ()Lnet/minecraft/world/item/Item;
+   #35 = Class              #36           // com/simibubi/create/content/equipment/zapper/ZapperItem
+   #36 = Utf8               com/simibubi/create/content/equipment/zapper/ZapperItem
+   #37 = Methodref          #38.#39       // com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler.trySelect:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+   #38 = Class              #40           // com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler
+   #39 = NameAndType        #41:#42       // trySelect:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+   #40 = Utf8               com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler
+   #41 = Utf8               trySelect
+   #42 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+   #43 = Methodref          #8.#44        // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setCanceled:(Z)V
+   #44 = NameAndType        #45:#46       // setCanceled:(Z)V
+   #45 = Utf8               setCanceled
+   #46 = Utf8               (Z)V
+   #47 = Methodref          #24.#48       // net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+   #48 = NameAndType        #49:#50       // isShiftKeyDown:()Z
+   #49 = Utf8               isShiftKeyDown
+   #50 = Utf8               ()Z
+   #51 = Methodref          #24.#52       // net/minecraft/world/entity/player/Player.position:()Lnet/minecraft/world/phys/Vec3;
+   #52 = NameAndType        #53:#54       // position:()Lnet/minecraft/world/phys/Vec3;
+   #53 = Utf8               position
+   #54 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+   #55 = Methodref          #24.#56       // net/minecraft/world/entity/player/Player.getEyeHeight:()F
+   #56 = NameAndType        #57:#58       // getEyeHeight:()F
+   #57 = Utf8               getEyeHeight
+   #58 = Utf8               ()F
+   #59 = Methodref          #60.#61       // net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+   #60 = Class              #62           // net/minecraft/world/phys/Vec3
+   #61 = NameAndType        #63:#64       // add:(DDD)Lnet/minecraft/world/phys/Vec3;
+   #62 = Utf8               net/minecraft/world/phys/Vec3
+   #63 = Utf8               add
+   #64 = Utf8               (DDD)Lnet/minecraft/world/phys/Vec3;
+   #65 = Methodref          #24.#66       // net/minecraft/world/entity/player/Player.getLookAngle:()Lnet/minecraft/world/phys/Vec3;
+   #66 = NameAndType        #67:#54       // getLookAngle:()Lnet/minecraft/world/phys/Vec3;
+   #67 = Utf8               getLookAngle
+   #68 = Methodref          #38.#69       // com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler.getRange:(Lnet/minecraft/world/item/ItemStack;)I
+   #69 = NameAndType        #70:#71       // getRange:(Lnet/minecraft/world/item/ItemStack;)I
+   #70 = Utf8               getRange
+   #71 = Utf8               (Lnet/minecraft/world/item/ItemStack;)I
+   #72 = Methodref          #60.#73       // net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+   #73 = NameAndType        #74:#75       // scale:(D)Lnet/minecraft/world/phys/Vec3;
+   #74 = Utf8               scale
+   #75 = Utf8               (D)Lnet/minecraft/world/phys/Vec3;
+   #76 = Methodref          #24.#77       // net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+   #77 = NameAndType        #78:#12       // level:()Lnet/minecraft/world/level/Level;
+   #78 = Utf8               level
+   #79 = Class              #80           // net/minecraft/world/level/ClipContext
+   #80 = Utf8               net/minecraft/world/level/ClipContext
+   #81 = Methodref          #60.#82       // net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #82 = NameAndType        #63:#83       // add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #83 = Utf8               (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #84 = Fieldref           #85.#86       // net/minecraft/world/level/ClipContext$Block.OUTLINE:Lnet/minecraft/world/level/ClipContext$Block;
+   #85 = Class              #87           // net/minecraft/world/level/ClipContext$Block
+   #86 = NameAndType        #88:#89       // OUTLINE:Lnet/minecraft/world/level/ClipContext$Block;
+   #87 = Utf8               net/minecraft/world/level/ClipContext$Block
+   #88 = Utf8               OUTLINE
+   #89 = Utf8               Lnet/minecraft/world/level/ClipContext$Block;
+   #90 = Fieldref           #91.#92       // net/minecraft/world/level/ClipContext$Fluid.NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+   #91 = Class              #93           // net/minecraft/world/level/ClipContext$Fluid
+   #92 = NameAndType        #94:#95       // NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+   #93 = Utf8               net/minecraft/world/level/ClipContext$Fluid
+   #94 = Utf8               NONE
+   #95 = Utf8               Lnet/minecraft/world/level/ClipContext$Fluid;
+   #96 = Methodref          #79.#97       // net/minecraft/world/level/ClipContext."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V
+   #97 = NameAndType        #5:#98        // "<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V
+   #98 = Utf8               (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V
+   #99 = Methodref          #14.#100      // net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+  #100 = NameAndType        #101:#102     // clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+  #101 = Utf8               clip
+  #102 = Utf8               (Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+  #103 = Methodref          #104.#105     // net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+  #104 = Class              #106          // net/minecraft/world/phys/BlockHitResult
+  #105 = NameAndType        #107:#108     // getBlockPos:()Lnet/minecraft/core/BlockPos;
+  #106 = Utf8               net/minecraft/world/phys/BlockHitResult
+  #107 = Utf8               getBlockPos
+  #108 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #109 = Methodref          #24.#110      // net/minecraft/world/entity/player/Player.getId:()I
+  #110 = NameAndType        #111:#112     // getId:()I
+  #111 = Utf8               getId
+  #112 = Utf8               ()I
+  #113 = Methodref          #14.#114      // net/minecraft/world/level/Level.destroyBlockProgress:(ILnet/minecraft/core/BlockPos;I)V
+  #114 = NameAndType        #115:#116     // destroyBlockProgress:(ILnet/minecraft/core/BlockPos;I)V
+  #115 = Utf8               destroyBlockProgress
+  #116 = Utf8               (ILnet/minecraft/core/BlockPos;I)V
+  #117 = Methodref          #14.#118      // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #118 = NameAndType        #119:#120     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #119 = Utf8               getBlockState
+  #120 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #121 = Methodref          #122.#123     // com/simibubi/create/foundation/utility/BlockHelper.getRequiredItem:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/item/ItemStack;
+  #122 = Class              #124          // com/simibubi/create/foundation/utility/BlockHelper
+  #123 = NameAndType        #125:#126     // getRequiredItem:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/item/ItemStack;
+  #124 = Utf8               com/simibubi/create/foundation/utility/BlockHelper
+  #125 = Utf8               getRequiredItem
+  #126 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/item/ItemStack;
+  #127 = Methodref          #30.#128      // net/minecraft/world/item/ItemStack.isEmpty:()Z
+  #128 = NameAndType        #129:#50      // isEmpty:()Z
+  #129 = Utf8               isEmpty
+  #130 = Methodref          #131.#132     // net/minecraft/world/level/block/state/BlockState.hasBlockEntity:()Z
+  #131 = Class              #133          // net/minecraft/world/level/block/state/BlockState
+  #132 = NameAndType        #134:#50      // hasBlockEntity:()Z
+  #133 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #134 = Utf8               hasBlockEntity
+  #135 = Fieldref           #136.#137     // com/simibubi/create/AllTags$AllBlockTags.SAFE_NBT:Lcom/simibubi/create/AllTags$AllBlockTags;
+  #136 = Class              #138          // com/simibubi/create/AllTags$AllBlockTags
+  #137 = NameAndType        #139:#140     // SAFE_NBT:Lcom/simibubi/create/AllTags$AllBlockTags;
+  #138 = Utf8               com/simibubi/create/AllTags$AllBlockTags
+  #139 = Utf8               SAFE_NBT
+  #140 = Utf8               Lcom/simibubi/create/AllTags$AllBlockTags;
+  #141 = Methodref          #136.#142     // com/simibubi/create/AllTags$AllBlockTags.matches:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #142 = NameAndType        #143:#144     // matches:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #143 = Utf8               matches
+  #144 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #145 = Fieldref           #146.#147     // net/minecraft/world/level/block/state/properties/BlockStateProperties.DOUBLE_BLOCK_HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #146 = Class              #148          // net/minecraft/world/level/block/state/properties/BlockStateProperties
+  #147 = NameAndType        #149:#150     // DOUBLE_BLOCK_HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #148 = Utf8               net/minecraft/world/level/block/state/properties/BlockStateProperties
+  #149 = Utf8               DOUBLE_BLOCK_HALF
+  #150 = Utf8               Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #151 = Methodref          #131.#152     // net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #152 = NameAndType        #153:#154     // hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #153 = Utf8               hasProperty
+  #154 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #155 = Fieldref           #146.#156     // net/minecraft/world/level/block/state/properties/BlockStateProperties.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #156 = NameAndType        #157:#158     // ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #157 = Utf8               ATTACHED
+  #158 = Utf8               Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #159 = Fieldref           #146.#160     // net/minecraft/world/level/block/state/properties/BlockStateProperties.HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #160 = NameAndType        #161:#158     // HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #161 = Utf8               HANGING
+  #162 = Fieldref           #146.#163     // net/minecraft/world/level/block/state/properties/BlockStateProperties.BED_PART:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #163 = NameAndType        #164:#150     // BED_PART:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #164 = Utf8               BED_PART
+  #165 = Fieldref           #146.#166     // net/minecraft/world/level/block/state/properties/BlockStateProperties.STAIRS_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #166 = NameAndType        #167:#150     // STAIRS_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #167 = Utf8               STAIRS_SHAPE
+  #168 = Fieldref           #169.#170     // net/minecraft/world/level/block/state/properties/StairsShape.STRAIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+  #169 = Class              #171          // net/minecraft/world/level/block/state/properties/StairsShape
+  #170 = NameAndType        #172:#173     // STRAIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+  #171 = Utf8               net/minecraft/world/level/block/state/properties/StairsShape
+  #172 = Utf8               STRAIGHT
+  #173 = Utf8               Lnet/minecraft/world/level/block/state/properties/StairsShape;
+  #174 = Methodref          #131.#175     // net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #175 = NameAndType        #176:#177     // setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #176 = Utf8               setValue
+  #177 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #178 = Fieldref           #146.#179     // net/minecraft/world/level/block/state/properties/BlockStateProperties.PERSISTENT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #179 = NameAndType        #180:#158     // PERSISTENT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #180 = Utf8               PERSISTENT
+  #181 = Methodref          #182.#183     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #182 = Class              #184          // java/lang/Boolean
+  #183 = NameAndType        #185:#186     // valueOf:(Z)Ljava/lang/Boolean;
+  #184 = Utf8               java/lang/Boolean
+  #185 = Utf8               valueOf
+  #186 = Utf8               (Z)Ljava/lang/Boolean;
+  #187 = Fieldref           #146.#188     // net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #188 = NameAndType        #189:#158     // WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #189 = Utf8               WATERLOGGED
+  #190 = Methodref          #14.#191      // net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #191 = NameAndType        #192:#193     // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #192 = Utf8               getBlockEntity
+  #193 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #194 = Methodref          #24.#195      // net/minecraft/world/entity/player/Player.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #195 = NameAndType        #196:#197     // registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #196 = Utf8               registryAccess
+  #197 = Utf8               ()Lnet/minecraft/core/RegistryAccess;
+  #198 = Methodref          #199.#200     // net/minecraft/world/level/block/entity/BlockEntity.saveWithFullMetadata:(Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+  #199 = Class              #201          // net/minecraft/world/level/block/entity/BlockEntity
+  #200 = NameAndType        #202:#203     // saveWithFullMetadata:(Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+  #201 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+  #202 = Utf8               saveWithFullMetadata
+  #203 = Utf8               (Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+  #204 = String             #205          // x
+  #205 = Utf8               x
+  #206 = Methodref          #207.#208     // net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+  #207 = Class              #209          // net/minecraft/nbt/CompoundTag
+  #208 = NameAndType        #210:#211     // remove:(Ljava/lang/String;)V
+  #209 = Utf8               net/minecraft/nbt/CompoundTag
+  #210 = Utf8               remove
+  #211 = Utf8               (Ljava/lang/String;)V
+  #212 = String             #213          // y
+  #213 = Utf8               y
+  #214 = String             #215          // z
+  #215 = Utf8               z
+  #216 = String             #217          // id
+  #217 = Utf8               id
+  #218 = Fieldref           #219.#220     // com/simibubi/create/AllDataComponents.SHAPER_BLOCK_USED:Lnet/minecraft/core/component/DataComponentType;
+  #219 = Class              #221          // com/simibubi/create/AllDataComponents
+  #220 = NameAndType        #222:#223     // SHAPER_BLOCK_USED:Lnet/minecraft/core/component/DataComponentType;
+  #221 = Utf8               com/simibubi/create/AllDataComponents
+  #222 = Utf8               SHAPER_BLOCK_USED
+  #223 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+  #224 = Methodref          #30.#225      // net/minecraft/world/item/ItemStack.has:(Lnet/minecraft/core/component/DataComponentType;)Z
+  #225 = NameAndType        #226:#227     // has:(Lnet/minecraft/core/component/DataComponentType;)Z
+  #226 = Utf8               has
+  #227 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Z
+  #228 = Methodref          #30.#229      // net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #229 = NameAndType        #230:#231     // get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #230 = Utf8               get
+  #231 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #232 = Fieldref           #219.#233     // com/simibubi/create/AllDataComponents.SHAPER_BLOCK_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #233 = NameAndType        #234:#223     // SHAPER_BLOCK_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #234 = Utf8               SHAPER_BLOCK_DATA
+  #235 = Methodref          #236.#237     // java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #236 = Class              #238          // java/util/Objects
+  #237 = NameAndType        #239:#240     // equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #238 = Utf8               java/util/Objects
+  #239 = Utf8               equals
+  #240 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Z
+  #241 = Methodref          #30.#242      // net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #242 = NameAndType        #243:#244     // set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #243 = Utf8               set
+  #244 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #245 = Methodref          #30.#246      // net/minecraft/world/item/ItemStack.remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #246 = NameAndType        #210:#231     // remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #247 = Fieldref           #248.#249     // com/simibubi/create/AllSoundEvents.CONFIRM:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+  #248 = Class              #250          // com/simibubi/create/AllSoundEvents
+  #249 = NameAndType        #251:#252     // CONFIRM:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+  #250 = Utf8               com/simibubi/create/AllSoundEvents
+  #251 = Utf8               CONFIRM
+  #252 = Utf8               Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+  #253 = Methodref          #24.#254      // net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #254 = NameAndType        #255:#108     // blockPosition:()Lnet/minecraft/core/BlockPos;
+  #255 = Utf8               blockPosition
+  #256 = Methodref          #257.#258     // com/simibubi/create/AllSoundEvents$SoundEntry.playOnServer:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)V
+  #257 = Class              #259          // com/simibubi/create/AllSoundEvents$SoundEntry
+  #258 = NameAndType        #260:#261     // playOnServer:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)V
+  #259 = Utf8               com/simibubi/create/AllSoundEvents$SoundEntry
+  #260 = Utf8               playOnServer
+  #261 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)V
+  #262 = Methodref          #35.#263      // com/simibubi/create/content/equipment/zapper/ZapperItem.getZappingRange:(Lnet/minecraft/world/item/ItemStack;)I
+  #263 = NameAndType        #264:#71      // getZappingRange:(Lnet/minecraft/world/item/ItemStack;)I
+  #264 = Utf8               getZappingRange
+  #265 = Utf8               Code
+  #266 = Utf8               LineNumberTable
+  #267 = Utf8               LocalVariableTable
+  #268 = Utf8               this
+  #269 = Utf8               Lcom/simibubi/create/content/equipment/zapper/ZapperInteractionHandler;
+  #270 = Utf8               leftClickingBlocksWithTheZapperSelectsTheBlock
+  #271 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;)V
+  #272 = Utf8               event
+  #273 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;
+  #274 = Utf8               heldItem
+  #275 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #276 = Utf8               StackMapTable
+  #277 = Utf8               RuntimeVisibleAnnotations
+  #278 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #279 = Utf8               stack
+  #280 = Utf8               player
+  #281 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #282 = Utf8               start
+  #283 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #284 = Utf8               range
+  #285 = Utf8               raytrace
+  #286 = Utf8               Lnet/minecraft/world/phys/BlockHitResult;
+  #287 = Utf8               pos
+  #288 = Utf8               Lnet/minecraft/core/BlockPos;
+  #289 = Utf8               newState
+  #290 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #291 = Utf8               data
+  #292 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #293 = Utf8               blockEntity
+  #294 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #295 = Class              #296          // net/minecraft/core/BlockPos
+  #296 = Utf8               net/minecraft/core/BlockPos
+  #297 = Utf8               SourceFile
+  #298 = Utf8               ZapperInteractionHandler.java
+  #299 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #300 = Utf8               InnerClasses
+  #301 = Class              #302          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #302 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #303 = Utf8               LeftClickBlock
+  #304 = Utf8               Block
+  #305 = Utf8               Fluid
+  #306 = Class              #307          // com/simibubi/create/AllTags
+  #307 = Utf8               com/simibubi/create/AllTags
+  #308 = Utf8               AllBlockTags
+  #309 = Class              #310          // net/minecraft/core/HolderLookup$Provider
+  #310 = Utf8               net/minecraft/core/HolderLookup$Provider
+  #311 = Class              #312          // net/minecraft/core/HolderLookup
+  #312 = Utf8               net/minecraft/core/HolderLookup
+  #313 = Utf8               Provider
+  #314 = Utf8               SoundEntry
+{
+  public com.simibubi.create.content.equipment.zapper.ZapperInteractionHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/simibubi/create/content/equipment/zapper/ZapperInteractionHandler;
+
+  public static void leftClickingBlocksWithTheZapperSelectsTheBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$LeftClickBlock);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+         4: getfield      #13                 // Field net/minecraft/world/level/Level.isClientSide:Z
+         7: ifeq          11
+        10: return
+        11: aload_0
+        12: invokevirtual #19                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+        15: invokevirtual #23                 // Method net/minecraft/world/entity/player/Player.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        18: astore_1
+        19: aload_1
+        20: invokevirtual #29                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        23: instanceof    #35                 // class com/simibubi/create/content/equipment/zapper/ZapperItem
+        26: ifeq          45
+        29: aload_1
+        30: aload_0
+        31: invokevirtual #19                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+        34: invokestatic  #37                 // Method trySelect:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+        37: ifeq          45
+        40: aload_0
+        41: iconst_1
+        42: invokevirtual #43                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setCanceled:(Z)V
+        45: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 10
+        line 34: 11
+        line 35: 15
+        line 36: 19
+        line 37: 40
+        line 39: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      46     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;
+           19      27     1 heldItem   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 33
+          locals = [ class net/minecraft/world/item/ItemStack ]
+    RuntimeVisibleAnnotations:
+      0: #278()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static boolean trySelect(net.minecraft.world.item.ItemStack, net.minecraft.world.entity.player.Player);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=8, locals=9, args_size=2
+         0: aload_1
+         1: invokevirtual #47                 // Method net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+         4: ifeq          9
+         7: iconst_0
+         8: ireturn
+         9: aload_1
+        10: invokevirtual #51                 // Method net/minecraft/world/entity/player/Player.position:()Lnet/minecraft/world/phys/Vec3;
+        13: dconst_0
+        14: aload_1
+        15: invokevirtual #55                 // Method net/minecraft/world/entity/player/Player.getEyeHeight:()F
+        18: f2d
+        19: dconst_0
+        20: invokevirtual #59                 // Method net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+        23: astore_2
+        24: aload_1
+        25: invokevirtual #65                 // Method net/minecraft/world/entity/player/Player.getLookAngle:()Lnet/minecraft/world/phys/Vec3;
+        28: aload_0
+        29: invokestatic  #68                 // Method getRange:(Lnet/minecraft/world/item/ItemStack;)I
+        32: i2d
+        33: invokevirtual #72                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+        36: astore_3
+        37: aload_1
+        38: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+        41: new           #79                 // class net/minecraft/world/level/ClipContext
+        44: dup
+        45: aload_2
+        46: aload_2
+        47: aload_3
+        48: invokevirtual #81                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+        51: getstatic     #84                 // Field net/minecraft/world/level/ClipContext$Block.OUTLINE:Lnet/minecraft/world/level/ClipContext$Block;
+        54: getstatic     #90                 // Field net/minecraft/world/level/ClipContext$Fluid.NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+        57: aload_1
+        58: invokespecial #96                 // Method net/minecraft/world/level/ClipContext."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V
+        61: invokevirtual #99                 // Method net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+        64: astore        4
+        66: aload         4
+        68: invokevirtual #103                // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        71: astore        5
+        73: aload         5
+        75: ifnonnull     80
+        78: iconst_0
+        79: ireturn
+        80: aload_1
+        81: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+        84: aload_1
+        85: invokevirtual #109                // Method net/minecraft/world/entity/player/Player.getId:()I
+        88: aload         5
+        90: iconst_m1
+        91: invokevirtual #113                // Method net/minecraft/world/level/Level.destroyBlockProgress:(ILnet/minecraft/core/BlockPos;I)V
+        94: aload_1
+        95: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+        98: aload         5
+       100: invokevirtual #117                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       103: astore        6
+       105: aload         6
+       107: invokestatic  #121                // Method com/simibubi/create/foundation/utility/BlockHelper.getRequiredItem:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/item/ItemStack;
+       110: invokevirtual #127                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+       113: ifeq          118
+       116: iconst_0
+       117: ireturn
+       118: aload         6
+       120: invokevirtual #130                // Method net/minecraft/world/level/block/state/BlockState.hasBlockEntity:()Z
+       123: ifeq          139
+       126: getstatic     #135                // Field com/simibubi/create/AllTags$AllBlockTags.SAFE_NBT:Lcom/simibubi/create/AllTags$AllBlockTags;
+       129: aload         6
+       131: invokevirtual #141                // Method com/simibubi/create/AllTags$AllBlockTags.matches:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       134: ifne          139
+       137: iconst_0
+       138: ireturn
+       139: aload         6
+       141: getstatic     #145                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.DOUBLE_BLOCK_HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       144: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       147: ifeq          152
+       150: iconst_0
+       151: ireturn
+       152: aload         6
+       154: getstatic     #155                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       157: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       160: ifeq          165
+       163: iconst_0
+       164: ireturn
+       165: aload         6
+       167: getstatic     #159                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       170: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       173: ifeq          178
+       176: iconst_0
+       177: ireturn
+       178: aload         6
+       180: getstatic     #162                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.BED_PART:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       183: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       186: ifeq          191
+       189: iconst_0
+       190: ireturn
+       191: aload         6
+       193: getstatic     #165                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.STAIRS_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       196: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       199: ifeq          218
+       202: aload         6
+       204: getstatic     #165                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.STAIRS_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       207: getstatic     #168                // Field net/minecraft/world/level/block/state/properties/StairsShape.STRAIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+       210: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+       213: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+       216: astore        6
+       218: aload         6
+       220: getstatic     #178                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.PERSISTENT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       223: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       226: ifeq          246
+       229: aload         6
+       231: getstatic     #178                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.PERSISTENT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       234: iconst_1
+       235: invokestatic  #181                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       238: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+       241: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+       244: astore        6
+       246: aload         6
+       248: getstatic     #187                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       251: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       254: ifeq          274
+       257: aload         6
+       259: getstatic     #187                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       262: iconst_0
+       263: invokestatic  #181                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       266: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+       269: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+       272: astore        6
+       274: aconst_null
+       275: astore        7
+       277: aload_1
+       278: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       281: aload         5
+       283: invokevirtual #190                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+       286: astore        8
+       288: aload         8
+       290: ifnull        332
+       293: aload         8
+       295: aload_1
+       296: invokevirtual #194                // Method net/minecraft/world/entity/player/Player.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       299: invokevirtual #198                // Method net/minecraft/world/level/block/entity/BlockEntity.saveWithFullMetadata:(Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+       302: astore        7
+       304: aload         7
+       306: ldc           #204                // String x
+       308: invokevirtual #206                // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+       311: aload         7
+       313: ldc           #212                // String y
+       315: invokevirtual #206                // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+       318: aload         7
+       320: ldc           #214                // String z
+       322: invokevirtual #206                // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+       325: aload         7
+       327: ldc           #216                // String id
+       329: invokevirtual #206                // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+       332: aload_0
+       333: getstatic     #218                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_USED:Lnet/minecraft/core/component/DataComponentType;
+       336: invokevirtual #224                // Method net/minecraft/world/item/ItemStack.has:(Lnet/minecraft/core/component/DataComponentType;)Z
+       339: ifeq          371
+       342: aload_0
+       343: getstatic     #218                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_USED:Lnet/minecraft/core/component/DataComponentType;
+       346: invokevirtual #228                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       349: aload         6
+       351: if_acmpne     371
+       354: aload         7
+       356: aload_0
+       357: getstatic     #232                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_DATA:Lnet/minecraft/core/component/DataComponentType;
+       360: invokevirtual #228                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       363: invokestatic  #235                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       366: ifeq          371
+       369: iconst_0
+       370: ireturn
+       371: aload_0
+       372: getstatic     #218                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_USED:Lnet/minecraft/core/component/DataComponentType;
+       375: aload         6
+       377: invokevirtual #241                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       380: pop
+       381: aload         7
+       383: ifnonnull     397
+       386: aload_0
+       387: getstatic     #232                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_DATA:Lnet/minecraft/core/component/DataComponentType;
+       390: invokevirtual #245                // Method net/minecraft/world/item/ItemStack.remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       393: pop
+       394: goto          407
+       397: aload_0
+       398: getstatic     #232                // Field com/simibubi/create/AllDataComponents.SHAPER_BLOCK_DATA:Lnet/minecraft/core/component/DataComponentType;
+       401: aload         7
+       403: invokevirtual #241                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       406: pop
+       407: getstatic     #247                // Field com/simibubi/create/AllSoundEvents.CONFIRM:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+       410: aload_1
+       411: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       414: aload_1
+       415: invokevirtual #253                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+       418: invokevirtual #256                // Method com/simibubi/create/AllSoundEvents$SoundEntry.playOnServer:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)V
+       421: iconst_1
+       422: ireturn
+      LineNumberTable:
+        line 42: 0
+        line 43: 7
+        line 45: 9
+        line 46: 15
+        line 47: 24
+        line 48: 29
+        line 49: 37
+        line 50: 48
+        line 51: 66
+        line 52: 73
+        line 53: 78
+        line 55: 80
+        line 56: 94
+        line 58: 105
+        line 59: 110
+        line 60: 116
+        line 61: 118
+        line 62: 137
+        line 63: 139
+        line 64: 150
+        line 65: 152
+        line 66: 163
+        line 67: 165
+        line 68: 176
+        line 69: 178
+        line 70: 189
+        line 71: 191
+        line 72: 202
+        line 73: 218
+        line 74: 229
+        line 75: 246
+        line 76: 257
+        line 78: 274
+        line 79: 277
+        line 80: 288
+        line 81: 293
+        line 82: 304
+        line 83: 311
+        line 84: 318
+        line 85: 325
+        line 88: 332
+        line 89: 369
+        line 92: 371
+        line 93: 381
+        line 94: 386
+        line 96: 397
+        line 98: 407
+        line 99: 421
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     423     0 stack   Lnet/minecraft/world/item/ItemStack;
+            0     423     1 player   Lnet/minecraft/world/entity/player/Player;
+           24     399     2 start   Lnet/minecraft/world/phys/Vec3;
+           37     386     3 range   Lnet/minecraft/world/phys/Vec3;
+           66     357     4 raytrace   Lnet/minecraft/world/phys/BlockHitResult;
+           73     350     5   pos   Lnet/minecraft/core/BlockPos;
+          105     318     6 newState   Lnet/minecraft/world/level/block/state/BlockState;
+          277     146     7  data   Lnet/minecraft/nbt/CompoundTag;
+          288     135     8 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+      StackMapTable: number_of_entries = 15
+        frame_type = 9 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 70
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/world/entity/player/Player, class net/minecraft/world/phys/Vec3, class net/minecraft/world/phys/Vec3, class net/minecraft/world/phys/BlockHitResult, class net/minecraft/core/BlockPos ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 37
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 20 /* same */
+        frame_type = 12 /* same */
+        frame_type = 12 /* same */
+        frame_type = 12 /* same */
+        frame_type = 12 /* same */
+        frame_type = 26 /* same */
+        frame_type = 27 /* same */
+        frame_type = 27 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 57
+          locals = [ class net/minecraft/nbt/CompoundTag, class net/minecraft/world/level/block/entity/BlockEntity ]
+        frame_type = 38 /* same */
+        frame_type = 25 /* same */
+        frame_type = 9 /* same */
+
+  public static int getRange(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #29                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+         4: instanceof    #35                 // class com/simibubi/create/content/equipment/zapper/ZapperItem
+         7: ifeq          22
+        10: aload_0
+        11: invokevirtual #29                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        14: checkcast     #35                 // class com/simibubi/create/content/equipment/zapper/ZapperItem
+        17: aload_0
+        18: invokevirtual #262                // Method com/simibubi/create/content/equipment/zapper/ZapperItem.getZappingRange:(Lnet/minecraft/world/item/ItemStack;)I
+        21: ireturn
+        22: iconst_0
+        23: ireturn
+      LineNumberTable:
+        line 103: 0
+        line 104: 10
+        line 105: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0 stack   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 1
+        frame_type = 22 /* same */
+}
+SourceFile: "ZapperInteractionHandler.java"
+RuntimeVisibleAnnotations:
+  0: #299()
+    net.neoforged.fml.common.EventBusSubscriber
+InnerClasses:
+  public static #303= #8 of #301;         // LeftClickBlock=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static final #304= #85 of #79;   // Block=class net/minecraft/world/level/ClipContext$Block of class net/minecraft/world/level/ClipContext
+  public static final #305= #91 of #79;   // Fluid=class net/minecraft/world/level/ClipContext$Fluid of class net/minecraft/world/level/ClipContext
+  public static final #308= #136 of #306; // AllBlockTags=class com/simibubi/create/AllTags$AllBlockTags of class com/simibubi/create/AllTags
+  public static #313= #309 of #311;       // Provider=class net/minecraft/core/HolderLookup$Provider of class net/minecraft/core/HolderLookup
+  public static abstract #314= #257 of #248; // SoundEntry=class com/simibubi/create/AllSoundEvents$SoundEntry of class com/simibubi/create/AllSoundEvents

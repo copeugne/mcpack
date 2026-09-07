@@ -1,0 +1,153 @@
+Compiled from "ModularCompatProcessor.java"
+public class net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  private static final java.lang.String CODEC_FIELD_MOD_ID = "modid";
+
+  private static final java.lang.String CODEC_FIELD_REFERENCE = "reference";
+
+  public static final com.mojang.serialization.MapCodec<net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor> CODEC;
+
+  private final java.lang.String modId;
+
+  private final net.minecraft.resources.ResourceLocation compatProcessorListId;
+
+  public static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor> TYPE;
+
+  public net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor(java.lang.String, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokespecial #47                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #49                 // Field modId:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: putfield      #51                 // Field compatProcessorListId:Lnet/minecraft/resources/ResourceLocation;
+      14: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field modId:Ljava/lang/String;
+       4: invokestatic  #67                 // Method net/choicetheorem/ctov/utils/PlatformHelper.isModLoaded:(Ljava/lang/String;)Z
+       7: ifne          13
+      10: aload         5
+      12: areturn
+      13: aload_0
+      14: aload_1
+      15: aload_2
+      16: aload_3
+      17: aload         4
+      19: aload         5
+      21: aload         6
+      23: invokevirtual #70                 // Method applyCompatProcessorList:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+      26: areturn
+
+  private net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo applyCompatProcessorList(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_1
+       1: invokeinterface #82,  1           // InterfaceMethod net/minecraft/world/level/LevelReader.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       6: getstatic     #88                 // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+       9: invokeinterface #94,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      14: astore        7
+      16: getstatic     #88                 // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+      19: aload_0
+      20: getfield      #51                 // Field compatProcessorListId:Lnet/minecraft/resources/ResourceLocation;
+      23: invokestatic  #100                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      26: astore        8
+      28: aload         7
+      30: aload         8
+      32: invokeinterface #106,  2          // InterfaceMethod net/minecraft/core/Registry.getOptional:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      37: aload         5
+      39: aload_1
+      40: aload_2
+      41: aload_3
+      42: aload         4
+      44: aload         6
+      46: invokedynamic #126,  0            // InvokeDynamic #0:apply:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Ljava/util/function/Function;
+      51: invokevirtual #132                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      54: aload         5
+      56: invokevirtual #135                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      59: checkcast     #7                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      62: areturn
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #146                // Field TYPE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+       3: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo lambda$applyCompatProcessorList$4(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList);
+    Code:
+       0: aload_0
+       1: astore        7
+       3: aload         6
+       5: invokevirtual #152                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList.list:()Ljava/util/List;
+       8: invokeinterface #158,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      13: astore        8
+      15: aload         8
+      17: invokeinterface #164,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      22: ifeq          64
+      25: aload         8
+      27: invokeinterface #168,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #4                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor
+      35: astore        9
+      37: aload         9
+      39: aload_1
+      40: aload_2
+      41: aload_3
+      42: aload         4
+      44: aload         7
+      46: aload         5
+      48: invokevirtual #170                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor.processBlock:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+      51: astore        7
+      53: aload         7
+      55: ifnonnull     61
+      58: goto          64
+      61: goto          15
+      64: aload         7
+      66: areturn
+
+  private static com.mojang.serialization.MapCodec lambda$static$3();
+    Code:
+       0: getstatic     #178                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #187                // Field com/mojang/serialization/Codec.STRING:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       4: ldc           #29                 // String modid
+       6: invokeinterface #193,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #202,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #208                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #213                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #32                 // String reference
+      24: invokeinterface #214,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #221,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      34: invokevirtual #208                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: invokevirtual #225                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      40: aload_0
+      41: invokedynamic #235,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      46: invokevirtual #238                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      49: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$1(net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #51                 // Field compatProcessorListId:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  private static java.lang.String lambda$static$0(net.choicetheorem.ctov.worldgen.processor.ModularCompatProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field modId:Ljava/lang/String;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #246,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #250                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #178                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #257,  0            // InvokeDynamic #5:codec:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+      16: putstatic     #146                // Field TYPE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+      19: return
+}

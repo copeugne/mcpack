@@ -1,0 +1,111 @@
+# Vanilla igloo source inspection
+
+The existing extractor, extended in `3a174ef`, preserves three generation
+classes from the frozen mapped-server archive. Manifest SHA-256:
+`5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e`.
+Archive SHA-256:
+`26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive server-1.21.1-20240808.144430-srg.jar --class-name net/minecraft/world/level/levelgen/structure/structures/IglooStructure.class --class-name net/minecraft/world/level/levelgen/structure/structures/IglooPieces.class --class-name 'net/minecraft/world/level/levelgen/structure/structures/IglooPieces$IglooPiece.class' --output evidence/item-8/sources/vanilla-igloo-code
+uv run ruff check tools/inspect_item8_pool_elements.py
+uv run basedpyright tools/inspect_item8_pool_elements.py
+```
+
+Extraction and scoped checks passed. Reproduce into a fresh output directory.
+The identities manifest binds the archive, class members and disassembly files.
+This is source evidence, not a generated-world observation.
+
+## Generation and placement
+
+`IglooStructure.generatePieces` selects a rotation and calls `IglooPieces.addPieces`.
+The latter always adds `minecraft:igloo/top`. When nextDouble is less than 0.5,
+it also adds `minecraft:igloo/bottom` and repeated `minecraft:igloo/middle`
+components. With n = nextInt(8) + 4, the bottom constructor receives depth 3n;
+middle constructors receive depths 3i for 0 <= i < n - 1. Thus n ranges from
+4 through 11 and there are 3 through 10 middle components. These are code
+selection rules, not measured world frequencies. They describe one family
+with an optional basement, not three independent families.
+
+`makePosition` adds the component offset and subtracts the supplied depth.
+Offsets are top (0, 0, 0), middle (2, -3, 4), bottom (0, -3, -2).
+Rotation pivots are top (3, 5, 5), middle (1, 3, 1), bottom (3, 6, 7).
+Settings use no mirror, ignore structure blocks and ignore waterlogging.
+`postProcess` samples WORLD_SURFACE_WG at the transformed reference position,
+then shifts the template by sampled height minus 91 before calling the base
+template placement. The initial construction Y of 90 is not final placement Y.
+For the top piece, it replaces the transformed (3, 0, 5) block with snow when
+the block below is neither air nor ladder. It restores the stored template
+position after processing.
+
+## Chest marker
+
+`handleDataMarker` handles exactly `chest`: it clears the marker to air, looks
+at the block entity below, and assigns IGLOO_CHEST with a random seed if that
+entity is a ChestBlockEntity. Existing BuiltInLootTables evidence under
+`../vanilla-end-city-code` maps this constant to `minecraft:chests/igloo_chest`.
+That manifest SHA-256 is
+`ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c`.
+The marker handler does not create mobs. This does not establish absence of
+authored entities in templates.
+
+## Remaining integration
+
+Reconcile these three references with the existing frozen template catalog,
+including its entities and block entities, before updating the igloo family.
+The inventory and decisions are unchanged at this source milestone. Effective
+retained-mod transformations and final Item 8 closure remain open. No new
+measurement system was introduced or required for these source facts.
+
+## Delivered family integration
+
+`3a102c3` records the three components and seven attributes; `ca0fa30` delivers
+the rebuilt inventory. This supersedes the pending integration instruction above.
+All three references resolve in the frozen catalog. Top and middle entity lists
+are empty. Bottom contains one villager and one zombie villager, a chest below
+its DATA marker, and one weakness splash potion in the brewing stand. No ordinary
+or trial-spawner block types occur in any of the three template palettes.
+
+Nominal template sizes (X, Y, Z) are top (7, 5, 8), middle (3, 3, 3), bottom
+(7, 6, 9). With no rotation, top spans X 0..6 and Z 0..7; bottom spans X 0..6
+and Z -2..6 after its offset. Middle fits inside that horizontal union. Adding
+each component's horizontal offset to its pivot yields (3, 5) in every case,
+so the shared rotation preserves the union dimensions or exchanges their axes.
+The footprint is therefore 7 by 8 without a basement or 7 by 10 with one.
+
+The transformed terrain reference is also shared: each piece samples five
+blocks behind the common pivot, rotated with the structure. Consequently its
+height adjustment is common to all pieces. Top spans relative Y 0..4; bottom
+minimum Y is -3 - 3n. Total nominal height is 5 without a basement or 8 + 3n
+with one, giving 20, 23, 26, 29, 32, 35, 38 or 41 blocks. These are nominal
+assembled envelopes, not exposed dimensions or observed world measurements.
+
+```sh
+uv run pytest -q tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py
+uv run ruff check tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run pytest -q tests/item8/test_igloo_sources.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-igloo-content.json
+```
+
+All 59 affected tests passed. Ruff passed. Basedpyright initially identified
+an untyped regex result; an explicit list[str] cast fixed it. The affected type
+check and final focused test then passed. Only the igloo family and decision
+input hash change in the inventory; world-observation links are unchanged.
+Decision SHA: `06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+Inventory SHA: `9f2fa36230e5520571b71f9535b3d1291527c939ec9fee4867e04bfaefc06d01`.
+Retained-mod effects and remaining effective attributes are still open.
+
+
+## Remaining descriptive assessment
+
+Surface shelter with an optional basement containing an authored zombie villager and villager; no general combat encounter is authored in the surface shelter.
+
+The small surface igloo is the visible cue; the ladder and basement are below the surface reference. Snow cover and terrain can obscure it; no discovery distance is measured.
+
+These two required descriptions reuse the content and placement evidence already
+integrated above. Dimension attribution now also records the existing inventory
+builder join of effective structure biomes with captured dimension membership,
+keeping observed dimensions separate from eligibility. No new tool, capture,
+population count or sightline measurement is introduced. Earlier statements that
+these descriptive attributes remain open are superseded by this integration.

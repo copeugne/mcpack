@@ -1,0 +1,147 @@
+Compiled from "ShipwreckStructure.java"
+public class net.minecraft.world.level.levelgen.structure.structures.ShipwreckStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.structure.structures.ShipwreckStructure> CODEC;
+
+  public final boolean isBeached;
+
+  public net.minecraft.world.level.levelgen.structure.structures.ShipwreckStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #49                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: iload_2
+       7: putfield      #51                 // Field isBeached:Z
+      10: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: getfield      #51                 // Field isBeached:Z
+       4: ifeq          13
+       7: getstatic     #63                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      10: goto          16
+      13: getstatic     #66                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      16: astore_2
+      17: aload_1
+      18: aload_2
+      19: aload_0
+      20: aload_1
+      21: invokedynamic #86,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/structures/ShipwreckStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      26: invokestatic  #90                 // Method onTopOfChunkCenter:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Ljava/util/function/Consumer;)Ljava/util/Optional;
+      29: areturn
+
+  private void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #99                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: invokestatic  #105                // Method net/minecraft/world/level/block/Rotation.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Rotation;
+       7: astore_3
+       8: new           #107                // class net/minecraft/core/BlockPos
+      11: dup
+      12: aload_2
+      13: invokevirtual #111                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      16: invokevirtual #117                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      19: bipush        90
+      21: aload_2
+      22: invokevirtual #111                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      25: invokevirtual #120                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      28: invokespecial #123                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      31: astore        4
+      33: aload_2
+      34: invokevirtual #127                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+      37: aload         4
+      39: aload_3
+      40: aload_1
+      41: aload_2
+      42: invokevirtual #99                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      45: aload_0
+      46: getfield      #51                 // Field isBeached:Z
+      49: invokestatic  #131                // Method net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces.addRandomPiece:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece;
+      52: astore        5
+      54: aload         5
+      56: invokevirtual #135                // Method net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece.isTooBigToFitInWorldGenRegion:()Z
+      59: ifeq          151
+      62: aload         5
+      64: invokevirtual #139                // Method net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      67: astore        6
+      69: aload_0
+      70: getfield      #51                 // Field isBeached:Z
+      73: ifeq          118
+      76: aload_2
+      77: aload         6
+      79: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+      82: aload         6
+      84: invokevirtual #147                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getXSpan:()I
+      87: aload         6
+      89: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+      92: aload         6
+      94: invokevirtual #153                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getZSpan:()I
+      97: invokestatic  #157                // Method net/minecraft/world/level/levelgen/structure/Structure.getLowestY:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;IIII)I
+     100: istore        8
+     102: aload         5
+     104: iload         8
+     106: aload_2
+     107: invokevirtual #99                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+     110: invokevirtual #161                // Method net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece.calculateBeachedPosition:(ILnet/minecraft/util/RandomSource;)I
+     113: istore        7
+     115: goto          144
+     118: aload_2
+     119: aload         6
+     121: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     124: aload         6
+     126: invokevirtual #147                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getXSpan:()I
+     129: aload         6
+     131: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     134: aload         6
+     136: invokevirtual #153                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getZSpan:()I
+     139: invokestatic  #164                // Method net/minecraft/world/level/levelgen/structure/Structure.getMeanFirstOccupiedHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;IIII)I
+     142: istore        7
+     144: aload         5
+     146: iload         7
+     148: invokevirtual #168                // Method net/minecraft/world/level/levelgen/structure/structures/ShipwreckPieces$ShipwreckPiece.adjustPositionHeight:(I)V
+     151: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #192                // Field net/minecraft/world/level/levelgen/structure/StructureType.SHIPWRECK:Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       3: areturn
+
+  private void lambda$findGenerationPoint$2(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: invokevirtual #194                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)V
+       6: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #202                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #208                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       8: ldc           #210                // String is_beached
+      10: invokeinterface #216,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #228,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      20: invokevirtual #234                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: invokevirtual #238                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      26: aload_0
+      27: invokedynamic #248,  0            // InvokeDynamic #2:apply:()Ljava/util/function/BiFunction;
+      32: invokevirtual #251                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      35: areturn
+
+  private static java.lang.Boolean lambda$static$0(net.minecraft.world.level.levelgen.structure.structures.ShipwreckStructure);
+    Code:
+       0: aload_0
+       1: getfield      #51                 // Field isBeached:Z
+       4: invokestatic  #259                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #267,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #271                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #273                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

@@ -1,0 +1,892 @@
+Compiled from "EnumAppender.java"
+public final class fuzs.extensibleenums.api.v2.core.EnumAppender<T extends java.lang.Enum<T>> {
+  private static final java.util.Map<java.lang.Class<?>, java.lang.Class<?>> PRIMITIVE_TYPES;
+
+  private final java.lang.Class<T> enumClazz;
+
+  private final java.lang.Class<? extends T> enumConcreteClazz;
+
+  private final java.util.List<java.lang.reflect.Field> fields;
+
+  private final java.util.Map<java.lang.String, java.lang.Runnable> additions;
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender(java.lang.Class<T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #50                 // Method java/util/Collections.emptyList:()Ljava/util/List;
+       5: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+       8: return
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender(java.lang.Class<T>, java.util.List<fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_1
+       3: aload_2
+       4: invokespecial #60                 // Method "<init>":(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/List;)V
+       7: return
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender(java.lang.Class<T>, java.lang.Class<? extends T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #50                 // Method java/util/Collections.emptyList:()Ljava/util/List;
+       6: invokespecial #60                 // Method "<init>":(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/List;)V
+       9: return
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender(java.lang.Class<T>, java.lang.Class<? extends T>, java.util.List<fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess>);
+    Code:
+       0: aload_0
+       1: invokespecial #67                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #73                 // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       8: putfield      #75                 // Field additions:Ljava/util/Map;
+      11: aload_0
+      12: aload_1
+      13: putfield      #77                 // Field enumClazz:Ljava/lang/Class;
+      16: aload_0
+      17: aload_2
+      18: putfield      #79                 // Field enumConcreteClazz:Ljava/lang/Class;
+      21: aload_0
+      22: aload_3
+      23: invokeinterface #85,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      28: aload_1
+      29: invokedynamic #105,  0            // InvokeDynamic #0:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+      34: invokeinterface #111,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      39: invokeinterface #114,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      44: putfield      #116                // Field fields:Ljava/util/List;
+      47: return
+
+  private static java.util.Optional<java.lang.Class<?>> findCommonType(java.lang.Class<?>, java.lang.Class<?>, java.lang.Class<?>, java.lang.Class<?>);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: if_acmpeq     10
+       5: aload_0
+       6: aload_3
+       7: if_acmpne     25
+      10: aload_1
+      11: aload_2
+      12: if_acmpeq     20
+      15: aload_1
+      16: aload_3
+      17: if_acmpne     25
+      20: aload_1
+      21: invokestatic  #129                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      24: areturn
+      25: invokestatic  #133                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      28: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>);
+    Code:
+       0: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+       3: dup
+       4: aload_0
+       5: invokespecial #139                // Method "<init>":(Ljava/lang/Class;)V
+       8: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, java.lang.Class<?>...);
+    Code:
+       0: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #145                // InterfaceMethod java/util/stream/Stream.of:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+       9: invokedynamic #154,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      14: invokeinterface #111,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: invokeinterface #114,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      24: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+      27: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        5
+       5: aload         5
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         5
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+      39: dup
+      40: aload_0
+      41: aload         5
+      43: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+      46: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+      49: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        7
+       5: aload         7
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         7
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         7
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+      56: dup
+      57: aload_0
+      58: aload         7
+      60: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+      63: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+      66: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        9
+       5: aload         9
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         9
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         9
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: aload         9
+      55: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      58: dup
+      59: iload         7
+      61: aload         8
+      63: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      66: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      69: pop
+      70: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+      73: dup
+      74: aload_0
+      75: aload         9
+      77: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+      80: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+      83: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        11
+       5: aload         11
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         11
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         11
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: aload         11
+      55: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      58: dup
+      59: iload         7
+      61: aload         8
+      63: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      66: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      69: pop
+      70: aload         11
+      72: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      75: dup
+      76: iload         9
+      78: aload         10
+      80: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      83: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      86: pop
+      87: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+      90: dup
+      91: aload_0
+      92: aload         11
+      94: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+      97: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+     100: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        13
+       5: aload         13
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         13
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         13
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: aload         13
+      55: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      58: dup
+      59: iload         7
+      61: aload         8
+      63: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      66: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      69: pop
+      70: aload         13
+      72: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      75: dup
+      76: iload         9
+      78: aload         10
+      80: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      83: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      86: pop
+      87: aload         13
+      89: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      92: dup
+      93: iload         11
+      95: aload         12
+      97: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     100: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     103: pop
+     104: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+     107: dup
+     108: aload_0
+     109: aload         13
+     111: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+     114: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+     117: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        15
+       5: aload         15
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         15
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         15
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: aload         15
+      55: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      58: dup
+      59: iload         7
+      61: aload         8
+      63: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      66: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      69: pop
+      70: aload         15
+      72: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      75: dup
+      76: iload         9
+      78: aload         10
+      80: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      83: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      86: pop
+      87: aload         15
+      89: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      92: dup
+      93: iload         11
+      95: aload         12
+      97: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     100: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     103: pop
+     104: aload         15
+     106: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+     109: dup
+     110: iload         13
+     112: aload         14
+     114: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     117: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     120: pop
+     121: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+     124: dup
+     125: aload_0
+     126: aload         15
+     128: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+     131: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+     134: areturn
+
+  public static <T extends java.lang.Enum<T>> fuzs.extensibleenums.api.v2.core.EnumAppender<T> create(java.lang.Class<T>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>, int, java.lang.Class<?>);
+    Code:
+       0: invokestatic  #166                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: astore        21
+       5: aload         21
+       7: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      16: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      19: pop
+      20: aload         21
+      22: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      25: dup
+      26: iload_3
+      27: aload         4
+      29: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      32: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      35: pop
+      36: aload         21
+      38: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      41: dup
+      42: iload         5
+      44: aload         6
+      46: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      49: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      52: pop
+      53: aload         21
+      55: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      58: dup
+      59: iload         7
+      61: aload         8
+      63: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      66: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      69: pop
+      70: aload         21
+      72: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      75: dup
+      76: iload         9
+      78: aload         10
+      80: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+      83: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      86: pop
+      87: aload         21
+      89: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+      92: dup
+      93: iload         11
+      95: aload         12
+      97: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     100: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     103: pop
+     104: aload         21
+     106: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+     109: dup
+     110: iload         13
+     112: aload         14
+     114: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     117: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     120: pop
+     121: aload         21
+     123: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+     126: dup
+     127: iload         15
+     129: aload         16
+     131: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     134: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     137: pop
+     138: aload         21
+     140: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+     143: dup
+     144: iload         17
+     146: aload         18
+     148: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     151: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     154: pop
+     155: aload         21
+     157: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+     160: dup
+     161: iload         19
+     163: aload         20
+     165: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+     168: invokevirtual #173                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     171: pop
+     172: new           #2                  // class fuzs/extensibleenums/api/v2/core/EnumAppender
+     175: dup
+     176: aload_0
+     177: aload         21
+     179: invokevirtual #177                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+     182: invokespecial #53                 // Method "<init>":(Ljava/lang/Class;Ljava/util/List;)V
+     185: areturn
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender<T> addEnumConstant(java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_0
+       1: getfield      #75                 // Field additions:Ljava/util/Map;
+       4: aload_1
+       5: aload_0
+       6: aload_1
+       7: aload_2
+       8: invokedynamic #223,  0            // InvokeDynamic #2:run:(Lfuzs/extensibleenums/api/v2/core/EnumAppender;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Runnable;
+      13: invokeinterface #227,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      18: pop
+      19: aload_0
+      20: areturn
+
+  private void add(java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #235                // Method getObjectTypes:([Ljava/lang/Object;)[Ljava/lang/Class;
+       5: astore_3
+       6: aload_0
+       7: getfield      #77                 // Field enumClazz:Ljava/lang/Class;
+      10: aload_0
+      11: getfield      #79                 // Field enumConcreteClazz:Ljava/lang/Class;
+      14: aload_1
+      15: invokestatic  #241                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.invokeEnumConstructor:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+      18: astore        4
+      20: goto          35
+      23: astore        5
+      25: new           #247                // class java/lang/RuntimeException
+      28: dup
+      29: aload         5
+      31: invokespecial #250                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      34: athrow
+      35: iconst_0
+      36: istore        5
+      38: iload         5
+      40: aload_3
+      41: arraylength
+      42: if_icmpge     309
+      45: aload_3
+      46: iload         5
+      48: aaload
+      49: astore        6
+      51: aload_0
+      52: getfield      #116                // Field fields:Ljava/util/List;
+      55: iload         5
+      57: invokeinterface #256,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      62: checkcast     #258                // class java/lang/reflect/Field
+      65: astore        7
+      67: aload         6
+      69: ifnull        303
+      72: aload         7
+      74: ifnonnull     80
+      77: goto          303
+      80: aload_2
+      81: iload         5
+      83: aaload
+      84: astore        8
+      86: aload         6
+      88: getstatic     #265                // Field java/lang/Integer.TYPE:Ljava/lang/Class;
+      91: if_acmpne     112
+      94: aload         7
+      96: aload         4
+      98: aload         8
+     100: checkcast     #262                // class java/lang/Integer
+     103: invokevirtual #269                // Method java/lang/Integer.intValue:()I
+     106: invokestatic  #273                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setIntField:(Ljava/lang/reflect/Field;Ljava/lang/Object;I)V
+     109: goto          303
+     112: aload         6
+     114: getstatic     #276                // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+     117: if_acmpne     138
+     120: aload         7
+     122: aload         4
+     124: aload         8
+     126: checkcast     #275                // class java/lang/Boolean
+     129: invokevirtual #280                // Method java/lang/Boolean.booleanValue:()Z
+     132: invokestatic  #284                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setBooleanField:(Ljava/lang/reflect/Field;Ljava/lang/Object;Z)V
+     135: goto          303
+     138: aload         6
+     140: getstatic     #287                // Field java/lang/Byte.TYPE:Ljava/lang/Class;
+     143: if_acmpne     164
+     146: aload         7
+     148: aload         4
+     150: aload         8
+     152: checkcast     #286                // class java/lang/Byte
+     155: invokevirtual #291                // Method java/lang/Byte.byteValue:()B
+     158: invokestatic  #295                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setByteField:(Ljava/lang/reflect/Field;Ljava/lang/Object;B)V
+     161: goto          303
+     164: aload         6
+     166: getstatic     #298                // Field java/lang/Short.TYPE:Ljava/lang/Class;
+     169: if_acmpne     190
+     172: aload         7
+     174: aload         4
+     176: aload         8
+     178: checkcast     #297                // class java/lang/Short
+     181: invokevirtual #302                // Method java/lang/Short.shortValue:()S
+     184: invokestatic  #306                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setShortField:(Ljava/lang/reflect/Field;Ljava/lang/Object;S)V
+     187: goto          303
+     190: aload         6
+     192: getstatic     #309                // Field java/lang/Character.TYPE:Ljava/lang/Class;
+     195: if_acmpne     216
+     198: aload         7
+     200: aload         4
+     202: aload         8
+     204: checkcast     #308                // class java/lang/Character
+     207: invokevirtual #313                // Method java/lang/Character.charValue:()C
+     210: invokestatic  #317                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setCharField:(Ljava/lang/reflect/Field;Ljava/lang/Object;C)V
+     213: goto          303
+     216: aload         6
+     218: getstatic     #320                // Field java/lang/Long.TYPE:Ljava/lang/Class;
+     221: if_acmpne     242
+     224: aload         7
+     226: aload         4
+     228: aload         8
+     230: checkcast     #319                // class java/lang/Long
+     233: invokevirtual #324                // Method java/lang/Long.longValue:()J
+     236: invokestatic  #328                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setLongField:(Ljava/lang/reflect/Field;Ljava/lang/Object;J)V
+     239: goto          303
+     242: aload         6
+     244: getstatic     #331                // Field java/lang/Float.TYPE:Ljava/lang/Class;
+     247: if_acmpne     268
+     250: aload         7
+     252: aload         4
+     254: aload         8
+     256: checkcast     #330                // class java/lang/Float
+     259: invokevirtual #335                // Method java/lang/Float.floatValue:()F
+     262: invokestatic  #339                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setFloatField:(Ljava/lang/reflect/Field;Ljava/lang/Object;F)V
+     265: goto          303
+     268: aload         6
+     270: getstatic     #342                // Field java/lang/Double.TYPE:Ljava/lang/Class;
+     273: if_acmpne     294
+     276: aload         7
+     278: aload         4
+     280: aload         8
+     282: checkcast     #341                // class java/lang/Double
+     285: invokevirtual #346                // Method java/lang/Double.doubleValue:()D
+     288: invokestatic  #350                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setDoubleField:(Ljava/lang/reflect/Field;Ljava/lang/Object;D)V
+     291: goto          303
+     294: aload         7
+     296: aload         4
+     298: aload         8
+     300: invokestatic  #354                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.setObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;Ljava/lang/Object;)V
+     303: iinc          5, 1
+     306: goto          38
+     309: return
+    Exception table:
+       from    to  target type
+           6    20    23   Class java/lang/Throwable
+
+  public void applyTo(java.lang.Class<?>...);
+    Code:
+       0: aload_0
+       1: getfield      #75                 // Field additions:Ljava/util/Map;
+       4: invokeinterface #375,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+       9: ifeq          23
+      12: new           #377                // class java/lang/IllegalStateException
+      15: dup
+      16: ldc_w         #379                // String Invalid builder, no additions have been made!
+      19: invokespecial #382                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      22: athrow
+      23: aload_0
+      24: getfield      #75                 // Field additions:Ljava/util/Map;
+      27: invokeinterface #386,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      32: invokedynamic #399,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      37: invokeinterface #405,  2          // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+      42: aload_0
+      43: getfield      #75                 // Field additions:Ljava/util/Map;
+      46: invokeinterface #409,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      51: aload_0
+      52: invokedynamic #417,  0            // InvokeDynamic #4:accept:(Lfuzs/extensibleenums/api/v2/core/EnumAppender;)Ljava/util/function/Consumer;
+      57: invokeinterface #420,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+      62: aload_0
+      63: getfield      #77                 // Field enumClazz:Ljava/lang/Class;
+      66: aload_1
+      67: invokestatic  #424                // Method fuzs/extensibleenums/api/v2/core/UnsafeExtensibleEnum.updateRelatedSwitchStatements:(Ljava/lang/Class;[Ljava/lang/Class;)V
+      70: goto          83
+      73: astore_2
+      74: new           #247                // class java/lang/RuntimeException
+      77: dup
+      78: aload_2
+      79: invokespecial #250                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      82: athrow
+      83: aload_0
+      84: getfield      #75                 // Field additions:Ljava/util/Map;
+      87: invokeinterface #427,  1          // InterfaceMethod java/util/Map.clear:()V
+      92: return
+    Exception table:
+       from    to  target type
+          62    70    73   Class java/lang/ReflectiveOperationException
+
+  private java.lang.Class<?>[] getObjectTypes(java.lang.Object[]);
+    Code:
+       0: aload_1
+       1: arraylength
+       2: aload_0
+       3: getfield      #116                // Field fields:Ljava/util/List;
+       6: invokeinterface #432,  1          // InterfaceMethod java/util/List.size:()I
+      11: if_icmpeq     55
+      14: new           #434                // class java/lang/IllegalArgumentException
+      17: dup
+      18: ldc_w         #436                // String Provided constructor args do not match enum description! Size %s does not match %s
+      21: iconst_2
+      22: anewarray     #5                  // class java/lang/Object
+      25: dup
+      26: iconst_0
+      27: aload_1
+      28: arraylength
+      29: invokestatic  #440                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      32: aastore
+      33: dup
+      34: iconst_1
+      35: aload_0
+      36: getfield      #116                // Field fields:Ljava/util/List;
+      39: invokeinterface #432,  1          // InterfaceMethod java/util/List.size:()I
+      44: invokestatic  #440                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      47: aastore
+      48: invokevirtual #444                // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+      51: invokespecial #445                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      54: athrow
+      55: aload_1
+      56: arraylength
+      57: anewarray     #260                // class java/lang/Class
+      60: astore_2
+      61: iconst_0
+      62: istore_3
+      63: iload_3
+      64: aload_1
+      65: arraylength
+      66: if_icmpge     270
+      69: aload_0
+      70: getfield      #116                // Field fields:Ljava/util/List;
+      73: iload_3
+      74: invokeinterface #256,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      79: checkcast     #258                // class java/lang/reflect/Field
+      82: astore        4
+      84: aload         4
+      86: ifnull        97
+      89: aload         4
+      91: invokevirtual #449                // Method java/lang/reflect/Field.getType:()Ljava/lang/Class;
+      94: goto          98
+      97: aconst_null
+      98: astore        5
+     100: aload_1
+     101: iload_3
+     102: aaload
+     103: ifnull        111
+     106: aload         5
+     108: ifnonnull     119
+     111: aload_2
+     112: iload_3
+     113: aload         5
+     115: aastore
+     116: goto          264
+     119: aload_1
+     120: iload_3
+     121: aaload
+     122: invokevirtual #452                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     125: astore        6
+     127: aload         5
+     129: aload         6
+     131: invokevirtual #456                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+     134: ifeq          145
+     137: aload_2
+     138: iload_3
+     139: aload         5
+     141: aastore
+     142: goto          264
+     145: getstatic     #458                // Field PRIMITIVE_TYPES:Ljava/util/Map;
+     148: invokeinterface #461,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     153: invokeinterface #465,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     158: astore        7
+     160: aload         7
+     162: invokeinterface #470,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     167: ifeq          236
+     170: aload         7
+     172: invokeinterface #474,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     177: checkcast     #16                 // class java/util/Map$Entry
+     180: astore        8
+     182: aload         6
+     184: aload         5
+     186: aload         8
+     188: invokeinterface #477,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     193: checkcast     #260                // class java/lang/Class
+     196: aload         8
+     198: invokeinterface #480,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     203: checkcast     #260                // class java/lang/Class
+     206: invokestatic  #482                // Method findCommonType:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Class;)Ljava/util/Optional;
+     209: astore        9
+     211: aload         9
+     213: invokevirtual #485                // Method java/util/Optional.isPresent:()Z
+     216: ifeq          233
+     219: aload_2
+     220: iload_3
+     221: aload         9
+     223: invokevirtual #487                // Method java/util/Optional.get:()Ljava/lang/Object;
+     226: checkcast     #260                // class java/lang/Class
+     229: aastore
+     230: goto          264
+     233: goto          160
+     236: new           #434                // class java/lang/IllegalArgumentException
+     239: dup
+     240: ldc_w         #489                // String Class type mismatch between %s and %s
+     243: iconst_2
+     244: anewarray     #5                  // class java/lang/Object
+     247: dup
+     248: iconst_0
+     249: aload         6
+     251: aastore
+     252: dup
+     253: iconst_1
+     254: aload         5
+     256: aastore
+     257: invokevirtual #444                // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+     260: invokespecial #445                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+     263: athrow
+     264: iinc          3, 1
+     267: goto          63
+     270: aload_2
+     271: areturn
+
+  private void lambda$applyTo$4(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #77                 // Field enumClazz:Ljava/lang/Class;
+       4: invokevirtual #500                // Method java/lang/Class.getEnumConstants:()[Ljava/lang/Object;
+       7: checkcast     #502                // class "[Ljava/lang/Enum;"
+      10: invokestatic  #145                // InterfaceMethod java/util/stream/Stream.of:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+      13: invokedynamic #510,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      18: invokeinterface #111,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      23: aload_1
+      24: invokedynamic #523,  0            // InvokeDynamic #6:test:(Ljava/lang/String;)Ljava/util/function/Predicate;
+      29: invokeinterface #527,  2          // InterfaceMethod java/util/stream/Stream.noneMatch:(Ljava/util/function/Predicate;)Z
+      34: ifeq          59
+      37: new           #377                // class java/lang/IllegalStateException
+      40: dup
+      41: ldc_w         #529                // String Failed to add enum value %s
+      44: iconst_1
+      45: anewarray     #5                  // class java/lang/Object
+      48: dup
+      49: iconst_0
+      50: aload_1
+      51: aastore
+      52: invokevirtual #444                // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+      55: invokespecial #382                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      58: athrow
+      59: return
+
+  private static boolean lambda$applyTo$3(java.lang.String, java.lang.String);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #532                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       5: ireturn
+
+  private void lambda$addEnumConstant$2(java.lang.String, java.lang.Object[]);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #534                // Method add:(Ljava/lang/String;[Ljava/lang/Object;)V
+       6: return
+
+  private static fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess lambda$create$1(java.lang.Class);
+    Code:
+       0: new           #8                  // class fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess
+       3: dup
+       4: iconst_0
+       5: aload_0
+       6: invokespecial #169                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess."<init>":(ILjava/lang/Class;)V
+       9: areturn
+
+  private static java.lang.reflect.Field lambda$new$0(java.lang.Class, fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #539                // Method fuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess.getField:(Ljava/lang/Class;)Ljava/lang/reflect/Field;
+       5: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #544                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+       3: ldc_w         #262                // class java/lang/Integer
+       6: getstatic     #265                // Field java/lang/Integer.TYPE:Ljava/lang/Class;
+       9: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      12: ldc_w         #275                // class java/lang/Boolean
+      15: getstatic     #276                // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+      18: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      21: ldc_w         #286                // class java/lang/Byte
+      24: getstatic     #287                // Field java/lang/Byte.TYPE:Ljava/lang/Class;
+      27: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      30: ldc_w         #297                // class java/lang/Short
+      33: getstatic     #298                // Field java/lang/Short.TYPE:Ljava/lang/Class;
+      36: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      39: ldc_w         #308                // class java/lang/Character
+      42: getstatic     #309                // Field java/lang/Character.TYPE:Ljava/lang/Class;
+      45: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      48: ldc_w         #319                // class java/lang/Long
+      51: getstatic     #320                // Field java/lang/Long.TYPE:Ljava/lang/Class;
+      54: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      57: ldc_w         #330                // class java/lang/Float
+      60: getstatic     #331                // Field java/lang/Float.TYPE:Ljava/lang/Class;
+      63: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      66: ldc_w         #341                // class java/lang/Double
+      69: getstatic     #342                // Field java/lang/Double.TYPE:Ljava/lang/Class;
+      72: invokevirtual #547                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      75: invokevirtual #550                // Method com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+      78: putstatic     #458                // Field PRIMITIVE_TYPES:Ljava/util/Map;
+      81: return
+}

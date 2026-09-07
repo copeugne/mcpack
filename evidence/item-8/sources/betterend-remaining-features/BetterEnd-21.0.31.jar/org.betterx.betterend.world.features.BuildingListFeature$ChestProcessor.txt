@@ -1,0 +1,73 @@
+Compiled from "BuildingListFeature.java"
+class org.betterx.betterend.world.features.BuildingListFeature$ChestProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  org.betterx.betterend.world.features.BuildingListFeature$ChestProcessor(org.betterx.betterend.world.features.BuildingListFeature);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: astore        7
+       7: aload         7
+       9: invokevirtual #13                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      12: instanceof    #19                 // class net/minecraft/world/level/block/ChestBlock
+      15: ifeq          129
+      18: aload         6
+      20: aload         5
+      22: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      25: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      28: astore        8
+      30: aload         5
+      32: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      35: astore        9
+      37: aload         7
+      39: invokevirtual #13                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      42: checkcast     #19                 // class net/minecraft/world/level/block/ChestBlock
+      45: astore        10
+      47: aload         10
+      49: aload         9
+      51: aload         7
+      53: invokevirtual #31                 // Method net/minecraft/world/level/block/ChestBlock.newBlockEntity:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      56: astore        11
+      58: aload_1
+      59: aload         9
+      61: invokeinterface #35,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+      66: aload         11
+      68: invokevirtual #41                 // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockEntity:(Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+      71: aload         11
+      73: checkcast     #47                 // class net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+      76: astore        12
+      78: aload_1
+      79: aload         9
+      81: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getX:()I
+      84: iconst_2
+      85: ishr
+      86: aload         9
+      88: invokevirtual #55                 // Method net/minecraft/core/BlockPos.getY:()I
+      91: iconst_2
+      92: ishr
+      93: aload         9
+      95: invokevirtual #58                 // Method net/minecraft/core/BlockPos.getZ:()I
+      98: iconst_2
+      99: ishr
+     100: invokeinterface #61,  4           // InterfaceMethod net/minecraft/world/level/LevelReader.getNoiseBiome:(III)Lnet/minecraft/core/Holder;
+     105: astore        13
+     107: aload         12
+     109: aload         13
+     111: invokestatic  #65                 // Method org/betterx/betterend/util/LootTableUtil.getTable:(Lnet/minecraft/core/Holder;)Lnet/minecraft/resources/ResourceKey;
+     114: aload         8
+     116: invokeinterface #71,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextLong:()J
+     121: invokevirtual #77                 // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.setLootTable:(Lnet/minecraft/resources/ResourceKey;J)V
+     124: aload         12
+     126: invokevirtual #81                 // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.setChanged:()V
+     129: aload         5
+     131: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #84                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType.NOP:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+       3: areturn
+}

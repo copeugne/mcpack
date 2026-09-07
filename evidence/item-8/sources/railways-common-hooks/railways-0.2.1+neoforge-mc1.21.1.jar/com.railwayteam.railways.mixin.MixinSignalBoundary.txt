@@ -1,0 +1,464 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/MixinSignalBoundary.class
+  Last modified Jun 1, 2026; size 4878 bytes
+  SHA-256 checksum 5d189d4a17b1c8746110725d6cde0e2263406c372d054eca771bd7bcf41cca6d
+  Compiled from "MixinSignalBoundary.java"
+public class com.railwayteam.railways.mixin.MixinSignalBoundary
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #35                         // com/railwayteam/railways/mixin/MixinSignalBoundary
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 4, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/railwayteam/railways/registry/CREdgePointTypes.COUPLER:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+    #8 = Class              #10           // com/railwayteam/railways/registry/CREdgePointTypes
+    #9 = NameAndType        #11:#12       // COUPLER:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+   #10 = Utf8               com/railwayteam/railways/registry/CREdgePointTypes
+   #11 = Utf8               COUPLER
+   #12 = Utf8               Lcom/simibubi/create/content/trains/graph/EdgePointType;
+   #13 = Fieldref           #8.#14        // com/railwayteam/railways/registry/CREdgePointTypes.SWITCH:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+   #14 = NameAndType        #15:#12       // SWITCH:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+   #15 = Utf8               SWITCH
+   #16 = Methodref          #17.#18       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #17 = Class              #19           // java/lang/Boolean
+   #18 = NameAndType        #20:#21       // valueOf:(Z)Ljava/lang/Boolean;
+   #19 = Utf8               java/lang/Boolean
+   #20 = Utf8               valueOf
+   #21 = Utf8               (Z)Ljava/lang/Boolean;
+   #22 = Methodref          #23.#24       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #23 = Class              #25           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #24 = NameAndType        #26:#27       // setReturnValue:(Ljava/lang/Object;)V
+   #25 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #26 = Utf8               setReturnValue
+   #27 = Utf8               (Ljava/lang/Object;)V
+   #28 = Fieldref           #29.#30       // net/createmod/catnip/data/Iterate.trueAndFalse:[Z
+   #29 = Class              #31           // net/createmod/catnip/data/Iterate
+   #30 = NameAndType        #32:#33       // trueAndFalse:[Z
+   #31 = Utf8               net/createmod/catnip/data/Iterate
+   #32 = Utf8               trueAndFalse
+   #33 = Utf8               [Z
+   #34 = Fieldref           #35.#36       // com/railwayteam/railways/mixin/MixinSignalBoundary.blockEntities:Lnet/createmod/catnip/data/Couple;
+   #35 = Class              #37           // com/railwayteam/railways/mixin/MixinSignalBoundary
+   #36 = NameAndType        #38:#39       // blockEntities:Lnet/createmod/catnip/data/Couple;
+   #37 = Utf8               com/railwayteam/railways/mixin/MixinSignalBoundary
+   #38 = Utf8               blockEntities
+   #39 = Utf8               Lnet/createmod/catnip/data/Couple;
+   #40 = Methodref          #41.#42       // net/createmod/catnip/data/Couple.get:(Z)Ljava/lang/Object;
+   #41 = Class              #43           // net/createmod/catnip/data/Couple
+   #42 = NameAndType        #44:#45       // get:(Z)Ljava/lang/Object;
+   #43 = Utf8               net/createmod/catnip/data/Couple
+   #44 = Utf8               get
+   #45 = Utf8               (Z)Ljava/lang/Object;
+   #46 = Class              #47           // java/util/Map
+   #47 = Utf8               java/util/Map
+   #48 = InterfaceMethodref #46.#49       // java/util/Map.size:()I
+   #49 = NameAndType        #50:#51       // size:()I
+   #50 = Utf8               size
+   #51 = Utf8               ()I
+   #52 = Methodref          #53.#54       // net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+   #53 = Class              #55           // net/minecraft/network/FriendlyByteBuf
+   #54 = NameAndType        #56:#57       // writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+   #55 = Utf8               net/minecraft/network/FriendlyByteBuf
+   #56 = Utf8               writeVarInt
+   #57 = Utf8               (I)Lnet/minecraft/network/FriendlyByteBuf;
+   #58 = InterfaceMethodref #46.#59       // java/util/Map.entrySet:()Ljava/util/Set;
+   #59 = NameAndType        #60:#61       // entrySet:()Ljava/util/Set;
+   #60 = Utf8               entrySet
+   #61 = Utf8               ()Ljava/util/Set;
+   #62 = InterfaceMethodref #63.#64       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #63 = Class              #65           // java/util/Set
+   #64 = NameAndType        #66:#67       // iterator:()Ljava/util/Iterator;
+   #65 = Utf8               java/util/Set
+   #66 = Utf8               iterator
+   #67 = Utf8               ()Ljava/util/Iterator;
+   #68 = InterfaceMethodref #69.#70       // java/util/Iterator.hasNext:()Z
+   #69 = Class              #71           // java/util/Iterator
+   #70 = NameAndType        #72:#73       // hasNext:()Z
+   #71 = Utf8               java/util/Iterator
+   #72 = Utf8               hasNext
+   #73 = Utf8               ()Z
+   #74 = InterfaceMethodref #69.#75       // java/util/Iterator.next:()Ljava/lang/Object;
+   #75 = NameAndType        #76:#77       // next:()Ljava/lang/Object;
+   #76 = Utf8               next
+   #77 = Utf8               ()Ljava/lang/Object;
+   #78 = Class              #79           // java/util/Map$Entry
+   #79 = Utf8               java/util/Map$Entry
+   #80 = InterfaceMethodref #78.#81       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #81 = NameAndType        #82:#77       // getKey:()Ljava/lang/Object;
+   #82 = Utf8               getKey
+   #83 = Class              #84           // net/minecraft/core/BlockPos
+   #84 = Utf8               net/minecraft/core/BlockPos
+   #85 = Methodref          #53.#86       // net/minecraft/network/FriendlyByteBuf.writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/network/FriendlyByteBuf;
+   #86 = NameAndType        #87:#88       // writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/network/FriendlyByteBuf;
+   #87 = Utf8               writeBlockPos
+   #88 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/network/FriendlyByteBuf;
+   #89 = InterfaceMethodref #78.#90       // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+   #90 = NameAndType        #91:#77       // getValue:()Ljava/lang/Object;
+   #91 = Utf8               getValue
+   #92 = Methodref          #17.#93       // java/lang/Boolean.booleanValue:()Z
+   #93 = NameAndType        #94:#73       // booleanValue:()Z
+   #94 = Utf8               booleanValue
+   #95 = Methodref          #53.#96       // net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+   #96 = NameAndType        #97:#98       // writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+   #97 = Utf8               writeBoolean
+   #98 = Utf8               (Z)Lnet/minecraft/network/FriendlyByteBuf;
+   #99 = InterfaceMethodref #46.#100      // java/util/Map.clear:()V
+  #100 = NameAndType        #101:#6       // clear:()V
+  #101 = Utf8               clear
+  #102 = Methodref          #53.#103      // net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+  #103 = NameAndType        #104:#51      // readVarInt:()I
+  #104 = Utf8               readVarInt
+  #105 = Methodref          #53.#106      // net/minecraft/network/FriendlyByteBuf.readBlockPos:()Lnet/minecraft/core/BlockPos;
+  #106 = NameAndType        #107:#108     // readBlockPos:()Lnet/minecraft/core/BlockPos;
+  #107 = Utf8               readBlockPos
+  #108 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #109 = Methodref          #53.#110      // net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+  #110 = NameAndType        #111:#73      // readBoolean:()Z
+  #111 = Utf8               readBoolean
+  #112 = InterfaceMethodref #46.#113      // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #113 = NameAndType        #114:#115     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #114 = Utf8               put
+  #115 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #116 = Utf8               Signature
+  #117 = Utf8               Lnet/createmod/catnip/data/Couple<Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;>;
+  #118 = Utf8               RuntimeVisibleAnnotations
+  #119 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #120 = Utf8               Code
+  #121 = Utf8               LineNumberTable
+  #122 = Utf8               LocalVariableTable
+  #123 = Utf8               this
+  #124 = Utf8               Lcom/railwayteam/railways/mixin/MixinSignalBoundary;
+  #125 = Utf8               railways$switchOrCouplerCanCoexist
+  #126 = Utf8               (Lcom/simibubi/create/content/trains/graph/EdgePointType;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #127 = Utf8               otherType
+  #128 = Utf8               front
+  #129 = Utf8               Z
+  #130 = Utf8               cir
+  #131 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #132 = Utf8               LocalVariableTypeTable
+  #133 = Utf8               Lcom/simibubi/create/content/trains/graph/EdgePointType<*>;
+  #134 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #135 = Utf8               StackMapTable
+  #136 = Utf8               (Lcom/simibubi/create/content/trains/graph/EdgePointType<*>;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #137 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #138 = Utf8               method
+  #139 = Utf8               canCoexistWith
+  #140 = Utf8               at
+  #141 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #142 = Utf8               value
+  #143 = Utf8               RETURN
+  #144 = Utf8               cancellable
+  #145 = Integer            1
+  #146 = Utf8               remap
+  #147 = Integer            0
+  #148 = Utf8               writePositions
+  #149 = Utf8               (Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #150 = Utf8               entry
+  #151 = Utf8               Ljava/util/Map$Entry;
+  #152 = Utf8               map
+  #153 = Utf8               Ljava/util/Map;
+  #154 = Utf8               buffer
+  #155 = Utf8               Lnet/minecraft/network/FriendlyByteBuf;
+  #156 = Utf8               dimensions
+  #157 = Utf8               Lcom/simibubi/create/content/trains/graph/DimensionPalette;
+  #158 = Utf8               ci
+  #159 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #160 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;
+  #161 = Utf8               Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;
+  #162 = Class              #33           // "[Z"
+  #163 = Utf8               write(Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;)V
+  #164 = Utf8               readPositions
+  #165 = Utf8               i
+  #166 = Utf8               I
+  #167 = Class              #168          // com/simibubi/create/content/trains/graph/DimensionPalette
+  #168 = Utf8               com/simibubi/create/content/trains/graph/DimensionPalette
+  #169 = Class              #170          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #170 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #171 = Utf8               read(Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;)V
+  #172 = Utf8               SourceFile
+  #173 = Utf8               MixinSignalBoundary.java
+  #174 = Utf8               RuntimeInvisibleAnnotations
+  #175 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #176 = Utf8               Lcom/simibubi/create/content/trains/signal/SignalBoundary;
+  #177 = Utf8               priority
+  #178 = Integer            1023
+  #179 = Utf8               InnerClasses
+  #180 = Utf8               Entry
+{
+  public net.createmod.catnip.data.Couple<java.util.Map<net.minecraft.core.BlockPos, java.lang.Boolean>> blockEntities;
+    descriptor: Lnet/createmod/catnip/data/Couple;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #117                         // Lnet/createmod/catnip/data/Couple<Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;>;
+    RuntimeVisibleAnnotations:
+      0: #119()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.railwayteam.railways.mixin.MixinSignalBoundary();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinSignalBoundary;
+
+  private void railways$switchOrCouplerCanCoexist(com.simibubi.create.content.trains.graph.EdgePointType<?>, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lcom/simibubi/create/content/trains/graph/EdgePointType;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_1
+         1: getstatic     #7                  // Field com/railwayteam/railways/registry/CREdgePointTypes.COUPLER:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+         4: if_acmpeq     14
+         7: aload_1
+         8: getstatic     #13                 // Field com/railwayteam/railways/registry/CREdgePointTypes.SWITCH:Lcom/simibubi/create/content/trains/graph/EdgePointType;
+        11: if_acmpne     22
+        14: aload_3
+        15: iconst_1
+        16: invokestatic  #16                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        19: invokevirtual #22                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        22: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 14
+        line 46: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  this   Lcom/railwayteam/railways/mixin/MixinSignalBoundary;
+            0      23     1 otherType   Lcom/simibubi/create/content/trains/graph/EdgePointType;
+            0      23     2 front   Z
+            0      23     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      23     1 otherType   Lcom/simibubi/create/content/trains/graph/EdgePointType<*>;
+            0      23     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 7 /* same */
+    Signature: #136                         // (Lcom/simibubi/create/content/trains/graph/EdgePointType<*>;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #137(#138=[s#139],#140=[@#141(#142=s#143)],#144=Z#145,#146=Z#147)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["canCoexistWith"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+          cancellable=true
+          remap=false
+        )
+
+  private void writePositions(net.minecraft.network.FriendlyByteBuf, com.simibubi.create.content.trains.graph.DimensionPalette, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=11, args_size=4
+         0: getstatic     #28                 // Field net/createmod/catnip/data/Iterate.trueAndFalse:[Z
+         3: astore        4
+         5: aload         4
+         7: arraylength
+         8: istore        5
+        10: iconst_0
+        11: istore        6
+        13: iload         6
+        15: iload         5
+        17: if_icmpge     131
+        20: aload         4
+        22: iload         6
+        24: baload
+        25: istore        7
+        27: aload_0
+        28: getfield      #34                 // Field blockEntities:Lnet/createmod/catnip/data/Couple;
+        31: iload         7
+        33: invokevirtual #40                 // Method net/createmod/catnip/data/Couple.get:(Z)Ljava/lang/Object;
+        36: checkcast     #46                 // class java/util/Map
+        39: astore        8
+        41: aload_1
+        42: aload         8
+        44: invokeinterface #48,  1           // InterfaceMethod java/util/Map.size:()I
+        49: invokevirtual #52                 // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        52: pop
+        53: aload         8
+        55: invokeinterface #58,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        60: invokeinterface #62,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        65: astore        9
+        67: aload         9
+        69: invokeinterface #68,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        74: ifeq          125
+        77: aload         9
+        79: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        84: checkcast     #78                 // class java/util/Map$Entry
+        87: astore        10
+        89: aload_1
+        90: aload         10
+        92: invokeinterface #80,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        97: checkcast     #83                 // class net/minecraft/core/BlockPos
+       100: invokevirtual #85                 // Method net/minecraft/network/FriendlyByteBuf.writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/network/FriendlyByteBuf;
+       103: pop
+       104: aload_1
+       105: aload         10
+       107: invokeinterface #89,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       112: checkcast     #17                 // class java/lang/Boolean
+       115: invokevirtual #92                 // Method java/lang/Boolean.booleanValue:()Z
+       118: invokevirtual #95                 // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+       121: pop
+       122: goto          67
+       125: iinc          6, 1
+       128: goto          13
+       131: return
+      LineNumberTable:
+        line 50: 0
+        line 51: 27
+        line 52: 41
+        line 53: 53
+        line 54: 89
+        line 55: 104
+        line 56: 122
+        line 50: 125
+        line 58: 131
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           89      33    10 entry   Ljava/util/Map$Entry;
+           41      84     8   map   Ljava/util/Map;
+           27      98     7 front   Z
+            0     132     0  this   Lcom/railwayteam/railways/mixin/MixinSignalBoundary;
+            0     132     1 buffer   Lnet/minecraft/network/FriendlyByteBuf;
+            0     132     2 dimensions   Lcom/simibubi/create/content/trains/graph/DimensionPalette;
+            0     132     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           89      33    10 entry   Ljava/util/Map$Entry<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;
+           41      84     8   map   Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 254 /* append */
+          offset_delta = 13
+          locals = [ class "[Z", int, int ]
+        frame_type = 254 /* append */
+          offset_delta = 53
+          locals = [ int, class java/util/Map, class java/util/Iterator ]
+        frame_type = 248 /* chop */
+          offset_delta = 57
+        frame_type = 248 /* chop */
+          offset_delta = 5
+    RuntimeVisibleAnnotations:
+      0: #137(#138=[s#163],#140=[@#141(#142=s#143)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["write(Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  private void readPositions(net.minecraft.network.FriendlyByteBuf, com.simibubi.create.content.trains.graph.DimensionPalette, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=11, args_size=4
+         0: getstatic     #28                 // Field net/createmod/catnip/data/Iterate.trueAndFalse:[Z
+         3: astore        4
+         5: aload         4
+         7: arraylength
+         8: istore        5
+        10: iconst_0
+        11: istore        6
+        13: iload         6
+        15: iload         5
+        17: if_icmpge     95
+        20: aload         4
+        22: iload         6
+        24: baload
+        25: istore        7
+        27: aload_0
+        28: getfield      #34                 // Field blockEntities:Lnet/createmod/catnip/data/Couple;
+        31: iload         7
+        33: invokevirtual #40                 // Method net/createmod/catnip/data/Couple.get:(Z)Ljava/lang/Object;
+        36: checkcast     #46                 // class java/util/Map
+        39: astore        8
+        41: aload         8
+        43: invokeinterface #99,  1           // InterfaceMethod java/util/Map.clear:()V
+        48: aload_1
+        49: invokevirtual #102                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+        52: istore        9
+        54: iconst_0
+        55: istore        10
+        57: iload         10
+        59: iload         9
+        61: if_icmpge     89
+        64: aload         8
+        66: aload_1
+        67: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.readBlockPos:()Lnet/minecraft/core/BlockPos;
+        70: aload_1
+        71: invokevirtual #109                // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+        74: invokestatic  #16                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        77: invokeinterface #112,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        82: pop
+        83: iinc          10, 1
+        86: goto          57
+        89: iinc          6, 1
+        92: goto          13
+        95: return
+      LineNumberTable:
+        line 62: 0
+        line 63: 27
+        line 64: 41
+        line 65: 48
+        line 66: 54
+        line 67: 64
+        line 66: 83
+        line 62: 89
+        line 70: 95
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           57      32    10     i   I
+           41      48     8   map   Ljava/util/Map;
+           54      35     9  size   I
+           27      62     7 front   Z
+            0      96     0  this   Lcom/railwayteam/railways/mixin/MixinSignalBoundary;
+            0      96     1 buffer   Lnet/minecraft/network/FriendlyByteBuf;
+            0      96     2 dimensions   Lcom/simibubi/create/content/trains/graph/DimensionPalette;
+            0      96     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           41      48     8   map   Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 254 /* append */
+          offset_delta = 13
+          locals = [ class "[Z", int, int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 43
+          locals = [ class com/railwayteam/railways/mixin/MixinSignalBoundary, class net/minecraft/network/FriendlyByteBuf, class com/simibubi/create/content/trains/graph/DimensionPalette, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class "[Z", int, int, int, class java/util/Map, int, int ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 31
+          locals = [ class com/railwayteam/railways/mixin/MixinSignalBoundary, class net/minecraft/network/FriendlyByteBuf, class com/simibubi/create/content/trains/graph/DimensionPalette, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class "[Z", int, int ]
+          stack = []
+        frame_type = 248 /* chop */
+          offset_delta = 5
+    RuntimeVisibleAnnotations:
+      0: #137(#138=[s#171],#140=[@#141(#142=s#143)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["read(Lnet/minecraft/network/FriendlyByteBuf;Lcom/simibubi/create/content/trains/graph/DimensionPalette;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+}
+SourceFile: "MixinSignalBoundary.java"
+RuntimeInvisibleAnnotations:
+  0: #175(#142=[c#176],#177=I#178)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/trains/signal/SignalBoundary;]
+      priority=1023
+    )
+InnerClasses:
+  public static #180= #78 of #46;         // Entry=class java/util/Map$Entry of class java/util/Map

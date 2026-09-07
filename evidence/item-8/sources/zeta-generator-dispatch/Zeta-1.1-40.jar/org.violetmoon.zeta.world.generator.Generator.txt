@@ -1,0 +1,95 @@
+Compiled from "Generator.java"
+public abstract class org.violetmoon.zeta.world.generator.Generator {
+  public final org.violetmoon.zeta.config.type.DimensionConfig dimConfig;
+
+  private final java.util.function.BooleanSupplier condition;
+
+  public org.violetmoon.zeta.world.generator.Generator(org.violetmoon.zeta.config.type.DimensionConfig);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #1                  // Field org/violetmoon/zeta/util/BooleanSuppliers.TRUE:Ljava/util/function/BooleanSupplier;
+       5: invokespecial #7                  // Method "<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Ljava/util/function/BooleanSupplier;)V
+       8: return
+
+  public org.violetmoon.zeta.world.generator.Generator(org.violetmoon.zeta.config.type.DimensionConfig, java.util.function.BooleanSupplier);
+    Code:
+       0: aload_0
+       1: invokespecial #13                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #18                 // Field dimConfig:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       9: aload_0
+      10: aload_2
+      11: putfield      #22                 // Field condition:Ljava/util/function/BooleanSupplier;
+      14: return
+
+  public final int generate(int, long, net.minecraft.world.level.levelgen.GenerationStep$Decoration, net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.levelgen.WorldgenRandom, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         7
+       2: lload_2
+       3: iload_1
+       4: aload         4
+       6: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.ordinal:()I
+       9: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.setFeatureSeed:(JII)V
+      12: aload_0
+      13: aload         5
+      15: aload         6
+      17: aload         7
+      19: aload         8
+      21: invokevirtual #37                 // Method generateChunk:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      24: iload_1
+      25: iconst_1
+      26: iadd
+      27: ireturn
+
+  public abstract void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+
+  public boolean canGenerate(net.minecraft.world.level.ServerLevelAccessor);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field condition:Ljava/util/function/BooleanSupplier;
+       4: invokeinterface #41,  1           // InterfaceMethod java/util/function/BooleanSupplier.getAsBoolean:()Z
+       9: ifeq          32
+      12: aload_0
+      13: getfield      #18                 // Field dimConfig:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+      16: aload_1
+      17: invokeinterface #47,  1           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      22: invokevirtual #53                 // Method org/violetmoon/zeta/config/type/DimensionConfig.canSpawnHere:(Lnet/minecraft/world/level/LevelAccessor;)Z
+      25: ifeq          32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: ireturn
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome> getBiome(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: iload_3
+       1: ifeq          30
+       4: new           #59                 // class net/minecraft/core/BlockPos
+       7: dup
+       8: aload_2
+       9: invokevirtual #61                 // Method net/minecraft/core/BlockPos.getX:()I
+      12: aload_1
+      13: invokeinterface #64,  1           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getMaxBuildHeight:()I
+      18: iconst_1
+      19: isub
+      20: aload_2
+      21: invokevirtual #69                 // Method net/minecraft/core/BlockPos.getZ:()I
+      24: invokespecial #72                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      27: goto          31
+      30: aload_2
+      31: astore        4
+      33: aload_1
+      34: invokeinterface #75,  1           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBiomeManager:()Lnet/minecraft/world/level/biome/BiomeManager;
+      39: aload         4
+      41: invokevirtual #79                 // Method net/minecraft/world/level/biome/BiomeManager.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+      44: areturn
+
+  protected boolean isNether(net.minecraft.world.level.LevelAccessor);
+    Code:
+       0: aload_1
+       1: invokeinterface #85,  1           // InterfaceMethod net/minecraft/world/level/LevelAccessor.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+       6: invokevirtual #89                 // Method net/minecraft/world/level/dimension/DimensionType.ultraWarm:()Z
+       9: ireturn
+}

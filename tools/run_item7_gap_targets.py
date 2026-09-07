@@ -11,11 +11,17 @@ from typing import TYPE_CHECKING, ClassVar, Literal
 from pydantic import BaseModel, ConfigDict
 
 from mcpack_evidence.item7_config import (
-    OVERWORLD_CHUNKY_PATHS,
     ConfigCaptureReceipt,
     capture_runtime_configuration,
 )
-from mcpack_evidence.item7_gap import GapError, GapLifecycleReceipt, GapRequest, run_gap_lifecycle
+from mcpack_evidence.item7_gap import (
+    GAP_TARGETS,
+    GapError,
+    GapLifecycleReceipt,
+    GapRequest,
+    GapTarget,
+    run_gap_lifecycle,
+)
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
     PreflightReceipt,
@@ -44,6 +50,8 @@ class _Arguments(BaseModel):
     captured_config: Path
     receipt: Path
     timeout_seconds: int
+    structure: list[str] | None = None
+    dimension: Literal["minecraft:overworld", "minecraft:the_end"] = "minecraft:overworld"
 
 
 class GapRunReceipt(BaseModel):
@@ -81,7 +89,11 @@ def execute(request: GapRequest) -> GapRunReceipt:
         )
     try:
         configuration = capture_runtime_configuration(
-            request.runtime, chunky_paths=OVERWORLD_CHUNKY_PATHS
+            request.runtime,
+            chunky_paths=(
+                "config/chunky/config.json",
+                f"config/chunky/tasks/minecraft/{request.dimension.split(':')[1]}.properties",
+            ),
         )
     except Item7RuntimeError as error:
         return GapRunReceipt(
@@ -114,6 +126,14 @@ def build_parser() -> argparse.ArgumentParser:
     ):
         _ = parser.add_argument(f"--{name}", type=Path, required=True)
     _ = parser.add_argument("--timeout-seconds", type=int, default=900)
+    _ = parser.add_argument(
+        "--structure", action="append", help="Explicit target ID; repeat for each structure"
+    )
+    _ = parser.add_argument(
+        "--dimension",
+        choices=("minecraft:overworld", "minecraft:the_end"),
+        default="minecraft:overworld",
+    )
     return parser
 
 
@@ -136,7 +156,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         selections=PILOT_SELECTIONS,
         timeout_seconds=arguments.timeout_seconds,
     )
-    receipt = execute(GapRequest(runtime=runtime))
+    targets = (
+        tuple(GapTarget(structure=identifier) for identifier in arguments.structure)
+        if arguments.structure is not None
+        else GAP_TARGETS
+    )
+    receipt = execute(GapRequest(runtime=runtime, targets=targets, dimension=arguments.dimension))
     _atomic_write(arguments.receipt, receipt.model_dump_json(indent=2) + "\n")
     print(receipt.model_dump_json(indent=2))
     return 0 if receipt.rejection_reason is None else 1

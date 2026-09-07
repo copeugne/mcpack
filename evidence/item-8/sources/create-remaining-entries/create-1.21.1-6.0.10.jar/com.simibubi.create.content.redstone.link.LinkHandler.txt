@@ -1,0 +1,546 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/content/redstone/link/LinkHandler.class
+  Last modified Apr 21, 2026; size 6102 bytes
+  SHA-256 checksum c9dc0c35f1033a46e82b41e44381b7f8058b5ef4b951a131422240ca706eec3a
+  Compiled from "LinkHandler.java"
+public class com.simibubi.create.content.redstone.link.LinkHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #213                        // com/simibubi/create/content/redstone/link/LinkHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+    #8 = Class              #10           // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+    #9 = NameAndType        #11:#12       // getLevel:()Lnet/minecraft/world/level/Level;
+   #10 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+   #11 = Utf8               getLevel
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Methodref          #8.#14        // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getPos:()Lnet/minecraft/core/BlockPos;
+   #14 = NameAndType        #15:#16       // getPos:()Lnet/minecraft/core/BlockPos;
+   #15 = Utf8               getPos
+   #16 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #17 = Methodref          #8.#18        // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+   #18 = NameAndType        #19:#20       // getEntity:()Lnet/minecraft/world/entity/player/Player;
+   #19 = Utf8               getEntity
+   #20 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+   #21 = Methodref          #8.#22        // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+   #22 = NameAndType        #23:#24       // getHand:()Lnet/minecraft/world/InteractionHand;
+   #23 = Utf8               getHand
+   #24 = Utf8               ()Lnet/minecraft/world/InteractionHand;
+   #25 = Methodref          #26.#27       // net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+   #26 = Class              #28           // net/minecraft/world/entity/player/Player
+   #27 = NameAndType        #29:#30       // isShiftKeyDown:()Z
+   #28 = Utf8               net/minecraft/world/entity/player/Player
+   #29 = Utf8               isShiftKeyDown
+   #30 = Utf8               ()Z
+   #31 = Methodref          #26.#32       // net/minecraft/world/entity/player/Player.isSpectator:()Z
+   #32 = NameAndType        #33:#30       // isSpectator:()Z
+   #33 = Utf8               isSpectator
+   #34 = Fieldref           #35.#36       // com/simibubi/create/content/redstone/link/LinkBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+   #35 = Class              #37           // com/simibubi/create/content/redstone/link/LinkBehaviour
+   #36 = NameAndType        #38:#39       // TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+   #37 = Utf8               com/simibubi/create/content/redstone/link/LinkBehaviour
+   #38 = Utf8               TYPE
+   #39 = Utf8               Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+   #40 = Methodref          #41.#42       // com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.get:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+   #41 = Class              #43           // com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+   #42 = NameAndType        #44:#45       // get:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+   #43 = Utf8               com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+   #44 = Utf8               get
+   #45 = Utf8               (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+   #46 = Methodref          #26.#47       // net/minecraft/world/entity/player/Player.getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+   #47 = NameAndType        #48:#49       // getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+   #48 = Utf8               getItemInHand
+   #49 = Utf8               (Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+   #50 = Double             10.0d
+   #52 = Methodref          #53.#54       // com/simibubi/create/foundation/utility/RaycastHelper.rayTraceRange:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;D)Lnet/minecraft/world/phys/BlockHitResult;
+   #53 = Class              #55           // com/simibubi/create/foundation/utility/RaycastHelper
+   #54 = NameAndType        #56:#57       // rayTraceRange:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;D)Lnet/minecraft/world/phys/BlockHitResult;
+   #55 = Utf8               com/simibubi/create/foundation/utility/RaycastHelper
+   #56 = Utf8               rayTraceRange
+   #57 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;D)Lnet/minecraft/world/phys/BlockHitResult;
+   #58 = Fieldref           #59.#60       // com/simibubi/create/AllItems.LINKED_CONTROLLER:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #59 = Class              #61           // com/simibubi/create/AllItems
+   #60 = NameAndType        #62:#63       // LINKED_CONTROLLER:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #61 = Utf8               com/simibubi/create/AllItems
+   #62 = Utf8               LINKED_CONTROLLER
+   #63 = Utf8               Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #64 = Methodref          #65.#66       // com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #65 = Class              #67           // com/tterrag/registrate/util/entry/ItemEntry
+   #66 = NameAndType        #68:#69       // isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #67 = Utf8               com/tterrag/registrate/util/entry/ItemEntry
+   #68 = Utf8               isIn
+   #69 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+   #70 = Fieldref           #59.#71       // com/simibubi/create/AllItems.WRENCH:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #71 = NameAndType        #72:#63       // WRENCH:Lcom/tterrag/registrate/util/entry/ItemEntry;
+   #72 = Utf8               WRENCH
+   #73 = Class              #74           // net/neoforged/neoforge/common/util/FakePlayer
+   #74 = Utf8               net/neoforged/neoforge/common/util/FakePlayer
+   #75 = Methodref          #76.#77       // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #76 = Class              #78           // net/minecraft/world/level/Level
+   #77 = NameAndType        #79:#80       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #78 = Utf8               net/minecraft/world/level/Level
+   #79 = Utf8               getBlockState
+   #80 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #81 = Methodref          #82.#83       // net/minecraft/world/phys/BlockHitResult.getLocation:()Lnet/minecraft/world/phys/Vec3;
+   #82 = Class              #84           // net/minecraft/world/phys/BlockHitResult
+   #83 = NameAndType        #85:#86       // getLocation:()Lnet/minecraft/world/phys/Vec3;
+   #84 = Utf8               net/minecraft/world/phys/BlockHitResult
+   #85 = Utf8               getLocation
+   #86 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+   #87 = Methodref          #88.#89       // net/minecraft/world/phys/Vec3.atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+   #88 = Class              #90           // net/minecraft/world/phys/Vec3
+   #89 = NameAndType        #91:#92       // atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+   #90 = Utf8               net/minecraft/world/phys/Vec3
+   #91 = Utf8               atLowerCornerOf
+   #92 = Utf8               (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+   #93 = Methodref          #88.#94       // net/minecraft/world/phys/Vec3.subtract:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #94 = NameAndType        #95:#96       // subtract:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #95 = Utf8               subtract
+   #96 = Utf8               (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+   #97 = Methodref          #82.#98       // net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+   #98 = NameAndType        #99:#100      // getDirection:()Lnet/minecraft/core/Direction;
+   #99 = Utf8               getDirection
+  #100 = Utf8               ()Lnet/minecraft/core/Direction;
+  #101 = Methodref          #102.#103     // net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+  #102 = Class              #104          // net/minecraft/core/Direction
+  #103 = NameAndType        #105:#106     // getNormal:()Lnet/minecraft/core/Vec3i;
+  #104 = Utf8               net/minecraft/core/Direction
+  #105 = Utf8               getNormal
+  #106 = Utf8               ()Lnet/minecraft/core/Vec3i;
+  #107 = Double             0.25d
+  #109 = Methodref          #88.#110      // net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+  #110 = NameAndType        #111:#112     // scale:(D)Lnet/minecraft/world/phys/Vec3;
+  #111 = Utf8               scale
+  #112 = Utf8               (D)Lnet/minecraft/world/phys/Vec3;
+  #113 = Methodref          #88.#114      // net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #114 = NameAndType        #115:#96      // add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #115 = Utf8               add
+  #116 = Fieldref           #35.#117      // com/simibubi/create/content/redstone/link/LinkBehaviour.firstSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+  #117 = NameAndType        #118:#119     // firstSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+  #118 = Utf8               firstSlot
+  #119 = Utf8               Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+  #120 = Methodref          #121.#122     // com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform.getLocalOffset:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/phys/Vec3;
+  #121 = Class              #123          // com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform
+  #122 = NameAndType        #124:#125     // getLocalOffset:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/phys/Vec3;
+  #123 = Utf8               com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform
+  #124 = Utf8               getLocalOffset
+  #125 = Utf8               (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/phys/Vec3;
+  #126 = Methodref          #88.#127      // net/minecraft/world/phys/Vec3.distanceToSqr:(Lnet/minecraft/world/phys/Vec3;)D
+  #127 = NameAndType        #128:#129     // distanceToSqr:(Lnet/minecraft/world/phys/Vec3;)D
+  #128 = Utf8               distanceToSqr
+  #129 = Utf8               (Lnet/minecraft/world/phys/Vec3;)D
+  #130 = Fieldref           #35.#131      // com/simibubi/create/content/redstone/link/LinkBehaviour.secondSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+  #131 = NameAndType        #132:#119     // secondSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+  #132 = Utf8               secondSlot
+  #133 = Class              #134          // java/lang/Boolean
+  #134 = Utf8               java/lang/Boolean
+  #135 = Methodref          #133.#136     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #136 = NameAndType        #137:#138     // valueOf:(Z)Ljava/lang/Boolean;
+  #137 = Utf8               valueOf
+  #138 = Utf8               (Z)Ljava/lang/Boolean;
+  #139 = Methodref          #140.#141     // java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+  #140 = Class              #142          // java/util/Arrays
+  #141 = NameAndType        #143:#144     // asList:([Ljava/lang/Object;)Ljava/util/List;
+  #142 = Utf8               java/util/Arrays
+  #143 = Utf8               asList
+  #144 = Utf8               ([Ljava/lang/Object;)Ljava/util/List;
+  #145 = InterfaceMethodref #146.#147     // java/util/List.iterator:()Ljava/util/Iterator;
+  #146 = Class              #148          // java/util/List
+  #147 = NameAndType        #149:#150     // iterator:()Ljava/util/Iterator;
+  #148 = Utf8               java/util/List
+  #149 = Utf8               iterator
+  #150 = Utf8               ()Ljava/util/Iterator;
+  #151 = InterfaceMethodref #152.#153     // java/util/Iterator.hasNext:()Z
+  #152 = Class              #154          // java/util/Iterator
+  #153 = NameAndType        #155:#30      // hasNext:()Z
+  #154 = Utf8               java/util/Iterator
+  #155 = Utf8               hasNext
+  #156 = InterfaceMethodref #152.#157     // java/util/Iterator.next:()Ljava/lang/Object;
+  #157 = NameAndType        #158:#159     // next:()Ljava/lang/Object;
+  #158 = Utf8               next
+  #159 = Utf8               ()Ljava/lang/Object;
+  #160 = Methodref          #133.#161     // java/lang/Boolean.booleanValue:()Z
+  #161 = NameAndType        #162:#30      // booleanValue:()Z
+  #162 = Utf8               booleanValue
+  #163 = Methodref          #35.#164      // com/simibubi/create/content/redstone/link/LinkBehaviour.testHit:(Ljava/lang/Boolean;Lnet/minecraft/world/phys/Vec3;)Z
+  #164 = NameAndType        #165:#166     // testHit:(Ljava/lang/Boolean;Lnet/minecraft/world/phys/Vec3;)Z
+  #165 = Utf8               testHit
+  #166 = Utf8               (Ljava/lang/Boolean;Lnet/minecraft/world/phys/Vec3;)Z
+  #167 = Methodref          #8.#168       // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getSide:()Lnet/neoforged/fml/LogicalSide;
+  #168 = NameAndType        #169:#170     // getSide:()Lnet/neoforged/fml/LogicalSide;
+  #169 = Utf8               getSide
+  #170 = Utf8               ()Lnet/neoforged/fml/LogicalSide;
+  #171 = Fieldref           #172.#173     // net/neoforged/fml/LogicalSide.CLIENT:Lnet/neoforged/fml/LogicalSide;
+  #172 = Class              #174          // net/neoforged/fml/LogicalSide
+  #173 = NameAndType        #175:#176     // CLIENT:Lnet/neoforged/fml/LogicalSide;
+  #174 = Utf8               net/neoforged/fml/LogicalSide
+  #175 = Utf8               CLIENT
+  #176 = Utf8               Lnet/neoforged/fml/LogicalSide;
+  #177 = Methodref          #35.#178      // com/simibubi/create/content/redstone/link/LinkBehaviour.setFrequency:(ZLnet/minecraft/world/item/ItemStack;)V
+  #178 = NameAndType        #179:#180     // setFrequency:(ZLnet/minecraft/world/item/ItemStack;)V
+  #179 = Utf8               setFrequency
+  #180 = Utf8               (ZLnet/minecraft/world/item/ItemStack;)V
+  #181 = Methodref          #8.#182       // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+  #182 = NameAndType        #183:#184     // setCanceled:(Z)V
+  #183 = Utf8               setCanceled
+  #184 = Utf8               (Z)V
+  #185 = Fieldref           #186.#187     // net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+  #186 = Class              #188          // net/minecraft/world/InteractionResult
+  #187 = NameAndType        #189:#190     // SUCCESS:Lnet/minecraft/world/InteractionResult;
+  #188 = Utf8               net/minecraft/world/InteractionResult
+  #189 = Utf8               SUCCESS
+  #190 = Utf8               Lnet/minecraft/world/InteractionResult;
+  #191 = Methodref          #8.#192       // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #192 = NameAndType        #193:#194     // setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #193 = Utf8               setCancellationResult
+  #194 = Utf8               (Lnet/minecraft/world/InteractionResult;)V
+  #195 = Fieldref           #196.#197     // net/minecraft/sounds/SoundEvents.ITEM_FRAME_ADD_ITEM:Lnet/minecraft/sounds/SoundEvent;
+  #196 = Class              #198          // net/minecraft/sounds/SoundEvents
+  #197 = NameAndType        #199:#200     // ITEM_FRAME_ADD_ITEM:Lnet/minecraft/sounds/SoundEvent;
+  #198 = Utf8               net/minecraft/sounds/SoundEvents
+  #199 = Utf8               ITEM_FRAME_ADD_ITEM
+  #200 = Utf8               Lnet/minecraft/sounds/SoundEvent;
+  #201 = Fieldref           #202.#203     // net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+  #202 = Class              #204          // net/minecraft/sounds/SoundSource
+  #203 = NameAndType        #205:#206     // BLOCKS:Lnet/minecraft/sounds/SoundSource;
+  #204 = Utf8               net/minecraft/sounds/SoundSource
+  #205 = Utf8               BLOCKS
+  #206 = Utf8               Lnet/minecraft/sounds/SoundSource;
+  #207 = Float              0.25f
+  #208 = Float              0.1f
+  #209 = Methodref          #76.#210      // net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #210 = NameAndType        #211:#212     // playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #211 = Utf8               playSound
+  #212 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #213 = Class              #214          // com/simibubi/create/content/redstone/link/LinkHandler
+  #214 = Utf8               com/simibubi/create/content/redstone/link/LinkHandler
+  #215 = Utf8               Code
+  #216 = Utf8               LineNumberTable
+  #217 = Utf8               LocalVariableTable
+  #218 = Utf8               this
+  #219 = Utf8               Lcom/simibubi/create/content/redstone/link/LinkHandler;
+  #220 = Utf8               onBlockActivated
+  #221 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+  #222 = Utf8               blockState
+  #223 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #224 = Utf8               localHit
+  #225 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #226 = Utf8               first
+  #227 = Utf8               Z
+  #228 = Utf8               event
+  #229 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+  #230 = Utf8               world
+  #231 = Utf8               Lnet/minecraft/world/level/Level;
+  #232 = Utf8               pos
+  #233 = Utf8               Lnet/minecraft/core/BlockPos;
+  #234 = Utf8               player
+  #235 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #236 = Utf8               hand
+  #237 = Utf8               Lnet/minecraft/world/InteractionHand;
+  #238 = Utf8               behaviour
+  #239 = Utf8               Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+  #240 = Utf8               heldItem
+  #241 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #242 = Utf8               ray
+  #243 = Utf8               Lnet/minecraft/world/phys/BlockHitResult;
+  #244 = Utf8               fakePlayer
+  #245 = Utf8               fakePlayerChoice
+  #246 = Utf8               StackMapTable
+  #247 = Class              #248          // net/minecraft/core/BlockPos
+  #248 = Utf8               net/minecraft/core/BlockPos
+  #249 = Class              #250          // net/minecraft/world/InteractionHand
+  #250 = Utf8               net/minecraft/world/InteractionHand
+  #251 = Class              #252          // net/minecraft/world/item/ItemStack
+  #252 = Utf8               net/minecraft/world/item/ItemStack
+  #253 = Class              #254          // net/minecraft/world/level/block/state/BlockState
+  #254 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #255 = Utf8               RuntimeVisibleAnnotations
+  #256 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #257 = Utf8               SourceFile
+  #258 = Utf8               LinkHandler.java
+  #259 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #260 = Utf8               InnerClasses
+  #261 = Class              #262          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #262 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #263 = Utf8               RightClickBlock
+{
+  public com.simibubi.create.content.redstone.link.LinkHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 27: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/simibubi/create/content/redstone/link/LinkHandler;
+
+  public static void onBlockActivated(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=7, locals=12, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+         4: astore_1
+         5: aload_0
+         6: invokevirtual #13                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getPos:()Lnet/minecraft/core/BlockPos;
+         9: astore_2
+        10: aload_0
+        11: invokevirtual #17                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+        14: astore_3
+        15: aload_0
+        16: invokevirtual #21                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+        19: astore        4
+        21: aload_3
+        22: invokevirtual #25                 // Method net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+        25: ifne          35
+        28: aload_3
+        29: invokevirtual #31                 // Method net/minecraft/world/entity/player/Player.isSpectator:()Z
+        32: ifeq          36
+        35: return
+        36: aload_1
+        37: aload_2
+        38: getstatic     #34                 // Field com/simibubi/create/content/redstone/link/LinkBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+        41: invokestatic  #40                 // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.get:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+        44: checkcast     #35                 // class com/simibubi/create/content/redstone/link/LinkBehaviour
+        47: astore        5
+        49: aload         5
+        51: ifnonnull     55
+        54: return
+        55: aload_3
+        56: aload         4
+        58: invokevirtual #46                 // Method net/minecraft/world/entity/player/Player.getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+        61: astore        6
+        63: aload_1
+        64: aload_3
+        65: ldc2_w        #50                 // double 10.0d
+        68: invokestatic  #52                 // Method com/simibubi/create/foundation/utility/RaycastHelper.rayTraceRange:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;D)Lnet/minecraft/world/phys/BlockHitResult;
+        71: astore        7
+        73: aload         7
+        75: ifnonnull     79
+        78: return
+        79: getstatic     #58                 // Field com/simibubi/create/AllItems.LINKED_CONTROLLER:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        82: aload         6
+        84: invokevirtual #64                 // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        87: ifeq          91
+        90: return
+        91: getstatic     #70                 // Field com/simibubi/create/AllItems.WRENCH:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        94: aload         6
+        96: invokevirtual #64                 // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        99: ifeq          103
+       102: return
+       103: aload_3
+       104: instanceof    #73                 // class net/neoforged/neoforge/common/util/FakePlayer
+       107: istore        8
+       109: iconst_0
+       110: istore        9
+       112: iload         8
+       114: ifeq          203
+       117: aload_1
+       118: aload_2
+       119: invokevirtual #75                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       122: astore        10
+       124: aload         7
+       126: invokevirtual #81                 // Method net/minecraft/world/phys/BlockHitResult.getLocation:()Lnet/minecraft/world/phys/Vec3;
+       129: aload_2
+       130: invokestatic  #87                 // Method net/minecraft/world/phys/Vec3.atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+       133: invokevirtual #93                 // Method net/minecraft/world/phys/Vec3.subtract:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+       136: aload         7
+       138: invokevirtual #97                 // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+       141: invokevirtual #101                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+       144: invokestatic  #87                 // Method net/minecraft/world/phys/Vec3.atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+       147: ldc2_w        #107                // double 0.25d
+       150: invokevirtual #109                // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+       153: invokevirtual #113                // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+       156: astore        11
+       158: aload         11
+       160: aload         5
+       162: getfield      #116                // Field com/simibubi/create/content/redstone/link/LinkBehaviour.firstSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+       165: aload_1
+       166: aload_2
+       167: aload         10
+       169: invokevirtual #120                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform.getLocalOffset:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/phys/Vec3;
+       172: invokevirtual #126                // Method net/minecraft/world/phys/Vec3.distanceToSqr:(Lnet/minecraft/world/phys/Vec3;)D
+       175: aload         11
+       177: aload         5
+       179: getfield      #130                // Field com/simibubi/create/content/redstone/link/LinkBehaviour.secondSlot:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform;
+       182: aload_1
+       183: aload_2
+       184: aload         10
+       186: invokevirtual #120                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform.getLocalOffset:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/phys/Vec3;
+       189: invokevirtual #126                // Method net/minecraft/world/phys/Vec3.distanceToSqr:(Lnet/minecraft/world/phys/Vec3;)D
+       192: dcmpl
+       193: ifle          200
+       196: iconst_1
+       197: goto          201
+       200: iconst_0
+       201: istore        9
+       203: iconst_2
+       204: anewarray     #133                // class java/lang/Boolean
+       207: dup
+       208: iconst_0
+       209: iconst_0
+       210: invokestatic  #135                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       213: aastore
+       214: dup
+       215: iconst_1
+       216: iconst_1
+       217: invokestatic  #135                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       220: aastore
+       221: invokestatic  #139                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+       224: invokeinterface #145,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       229: astore        10
+       231: aload         10
+       233: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       238: ifeq          336
+       241: aload         10
+       243: invokeinterface #156,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       248: checkcast     #133                // class java/lang/Boolean
+       251: invokevirtual #160                // Method java/lang/Boolean.booleanValue:()Z
+       254: istore        11
+       256: aload         5
+       258: iload         11
+       260: invokestatic  #135                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       263: aload         7
+       265: invokevirtual #81                 // Method net/minecraft/world/phys/BlockHitResult.getLocation:()Lnet/minecraft/world/phys/Vec3;
+       268: invokevirtual #163                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.testHit:(Ljava/lang/Boolean;Lnet/minecraft/world/phys/Vec3;)Z
+       271: ifne          286
+       274: iload         8
+       276: ifeq          333
+       279: iload         9
+       281: iload         11
+       283: if_icmpne     333
+       286: aload_0
+       287: invokevirtual #167                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getSide:()Lnet/neoforged/fml/LogicalSide;
+       290: getstatic     #171                // Field net/neoforged/fml/LogicalSide.CLIENT:Lnet/neoforged/fml/LogicalSide;
+       293: if_acmpeq     305
+       296: aload         5
+       298: iload         11
+       300: aload         6
+       302: invokevirtual #177                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.setFrequency:(ZLnet/minecraft/world/item/ItemStack;)V
+       305: aload_0
+       306: iconst_1
+       307: invokevirtual #181                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+       310: aload_0
+       311: getstatic     #185                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+       314: invokevirtual #191                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+       317: aload_1
+       318: aconst_null
+       319: aload_2
+       320: getstatic     #195                // Field net/minecraft/sounds/SoundEvents.ITEM_FRAME_ADD_ITEM:Lnet/minecraft/sounds/SoundEvent;
+       323: getstatic     #201                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+       326: ldc           #207                // float 0.25f
+       328: ldc           #208                // float 0.1f
+       330: invokevirtual #209                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       333: goto          231
+       336: return
+      LineNumberTable:
+        line 31: 0
+        line 32: 5
+        line 33: 10
+        line 34: 15
+        line 36: 21
+        line 37: 35
+        line 39: 36
+        line 40: 49
+        line 41: 54
+        line 43: 55
+        line 44: 63
+        line 45: 73
+        line 46: 78
+        line 47: 79
+        line 48: 90
+        line 49: 91
+        line 50: 102
+        line 52: 103
+        line 53: 109
+        line 55: 112
+        line 56: 117
+        line 57: 124
+        line 58: 130
+        line 59: 138
+        line 60: 141
+        line 59: 144
+        line 61: 150
+        line 59: 153
+        line 62: 158
+        line 63: 186
+        line 66: 203
+        line 67: 256
+        line 68: 286
+        line 69: 296
+        line 70: 305
+        line 71: 310
+        line 72: 317
+        line 74: 333
+        line 75: 336
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          124      79    10 blockState   Lnet/minecraft/world/level/block/state/BlockState;
+          158      45    11 localHit   Lnet/minecraft/world/phys/Vec3;
+          256      77    11 first   Z
+            0     337     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+            5     332     1 world   Lnet/minecraft/world/level/Level;
+           10     327     2   pos   Lnet/minecraft/core/BlockPos;
+           15     322     3 player   Lnet/minecraft/world/entity/player/Player;
+           21     316     4  hand   Lnet/minecraft/world/InteractionHand;
+           49     288     5 behaviour   Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+           63     274     6 heldItem   Lnet/minecraft/world/item/ItemStack;
+           73     264     7   ray   Lnet/minecraft/world/phys/BlockHitResult;
+          109     228     8 fakePlayer   Z
+          112     225     9 fakePlayerChoice   Z
+      StackMapTable: number_of_entries = 14
+        frame_type = 255 /* full_frame */
+          offset_delta = 35
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock, class net/minecraft/world/level/Level, class net/minecraft/core/BlockPos, class net/minecraft/world/entity/player/Player, class net/minecraft/world/InteractionHand ]
+          stack = []
+        frame_type = 0 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ class com/simibubi/create/content/redstone/link/LinkBehaviour ]
+        frame_type = 253 /* append */
+          offset_delta = 23
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/world/phys/BlockHitResult ]
+        frame_type = 11 /* same */
+        frame_type = 11 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 96
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock, class net/minecraft/world/level/Level, class net/minecraft/core/BlockPos, class net/minecraft/world/entity/player/Player, class net/minecraft/world/InteractionHand, class com/simibubi/create/content/redstone/link/LinkBehaviour, class net/minecraft/world/item/ItemStack, class net/minecraft/world/phys/BlockHitResult, int, int, class net/minecraft/world/level/block/state/BlockState, class net/minecraft/world/phys/Vec3 ]
+          stack = []
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 249 /* chop */
+          offset_delta = 1
+        frame_type = 252 /* append */
+          offset_delta = 27
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 54
+          locals = [ int ]
+        frame_type = 18 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 27
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    RuntimeVisibleAnnotations:
+      0: #256()
+        net.neoforged.bus.api.SubscribeEvent
+}
+SourceFile: "LinkHandler.java"
+RuntimeVisibleAnnotations:
+  0: #259()
+    net.neoforged.fml.common.EventBusSubscriber
+InnerClasses:
+  public static #263= #8 of #261;         // RightClickBlock=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent

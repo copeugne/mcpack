@@ -1,0 +1,113 @@
+Compiled from "SkyScatterFeature.java"
+public abstract class org.betterx.betterend.world.features.SkyScatterFeature extends org.betterx.betterend.world.features.ScatterFeature<org.betterx.betterend.world.features.ScatterFeatureConfig> {
+  public org.betterx.betterend.world.features.SkyScatterFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/ScatterFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/ScatterFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  protected int getChance();
+    Code:
+       0: bipush        10
+       2: ireturn
+
+  public boolean canGenerate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_2
+       1: aload         5
+       3: invokeinterface #13,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+       8: ifne          13
+      11: iconst_0
+      12: ireturn
+      13: getstatic     #19                 // Field org/betterx/bclib/util/BlocksHelper.HORIZONTAL:[Lnet/minecraft/core/Direction;
+      16: astore        7
+      18: aload         7
+      20: arraylength
+      21: istore        8
+      23: iconst_0
+      24: istore        9
+      26: iload         9
+      28: iload         8
+      30: if_icmpge     64
+      33: aload         7
+      35: iload         9
+      37: aaload
+      38: astore        10
+      40: aload_2
+      41: aload         5
+      43: aload         10
+      45: invokevirtual #25                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      48: invokeinterface #13,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      53: ifne          58
+      56: iconst_0
+      57: ireturn
+      58: iinc          9, 1
+      61: goto          26
+      64: aload_0
+      65: invokevirtual #31                 // Method getYOffset:()I
+      68: iconst_2
+      69: iadd
+      70: istore        7
+      72: aload_0
+      73: invokevirtual #31                 // Method getYOffset:()I
+      76: iconst_2
+      77: isub
+      78: istore        8
+      80: aload_2
+      81: aload         5
+      83: iload         7
+      85: invokestatic  #37                 // Method org/betterx/bclib/util/BlocksHelper.upRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+      88: iload         8
+      90: if_icmple     110
+      93: aload_2
+      94: aload         5
+      96: iload         7
+      98: invokestatic  #41                 // Method org/betterx/bclib/util/BlocksHelper.downRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+     101: iload         8
+     103: if_icmple     110
+     106: iconst_1
+     107: goto          111
+     110: iconst_0
+     111: ireturn
+
+  protected boolean canSpawn(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  protected net.minecraft.core.BlockPos getCenterGround(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #26                 // class net/minecraft/core/BlockPos
+       3: dup
+       4: aload_3
+       5: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getX:()I
+       8: bipush        32
+      10: sipush        192
+      13: aload_2
+      14: invokeinterface #47,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+      19: invokestatic  #51                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      22: aload_3
+      23: invokevirtual #57                 // Method net/minecraft/core/BlockPos.getZ:()I
+      26: invokespecial #60                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      29: areturn
+
+  protected boolean getGroundPlant(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos$MutableBlockPos);
+    Code:
+       0: aload_3
+       1: aload_3
+       2: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       5: aload_0
+       6: invokevirtual #31                 // Method getYOffset:()I
+       9: ineg
+      10: aload_0
+      11: invokevirtual #31                 // Method getYOffset:()I
+      14: aload_2
+      15: invokeinterface #47,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+      20: invokestatic  #51                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      23: iadd
+      24: invokevirtual #68                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      27: pop
+      28: iconst_1
+      29: ireturn
+}

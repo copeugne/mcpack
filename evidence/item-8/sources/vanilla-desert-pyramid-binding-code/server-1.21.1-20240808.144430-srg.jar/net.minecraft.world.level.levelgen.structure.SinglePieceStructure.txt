@@ -1,0 +1,72 @@
+Compiled from "SinglePieceStructure.java"
+public abstract class net.minecraft.world.level.levelgen.structure.SinglePieceStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  private final net.minecraft.world.level.levelgen.structure.SinglePieceStructure$PieceConstructor constructor;
+
+  private final int width;
+
+  private final int depth;
+
+  protected net.minecraft.world.level.levelgen.structure.SinglePieceStructure(net.minecraft.world.level.levelgen.structure.SinglePieceStructure$PieceConstructor, int, int, net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload         4
+       3: invokespecial #37                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       6: aload_0
+       7: aload_1
+       8: putfield      #39                 // Field constructor:Lnet/minecraft/world/level/levelgen/structure/SinglePieceStructure$PieceConstructor;
+      11: aload_0
+      12: iload_2
+      13: putfield      #41                 // Field width:I
+      16: aload_0
+      17: iload_3
+      18: putfield      #43                 // Field depth:I
+      21: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #41                 // Field width:I
+       5: aload_0
+       6: getfield      #43                 // Field depth:I
+       9: invokestatic  #57                 // Method getLowestY:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;II)I
+      12: aload_1
+      13: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      16: invokevirtual #67                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+      19: if_icmpge     26
+      22: invokestatic  #73                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      25: areturn
+      26: aload_1
+      27: getstatic     #77                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      30: aload_0
+      31: aload_1
+      32: invokedynamic #97,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/SinglePieceStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      37: invokestatic  #101                // Method onTopOfChunkCenter:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Ljava/util/function/Consumer;)Ljava/util/Optional;
+      40: areturn
+
+  private void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #109                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore_3
+       5: aload_1
+       6: aload_0
+       7: getfield      #39                 // Field constructor:Lnet/minecraft/world/level/levelgen/structure/SinglePieceStructure$PieceConstructor;
+      10: aload_2
+      11: invokevirtual #113                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      14: aload_3
+      15: invokevirtual #118                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      18: aload_3
+      19: invokevirtual #121                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      22: invokeinterface #125,  4          // InterfaceMethod net/minecraft/world/level/levelgen/structure/SinglePieceStructure$PieceConstructor.construct:(Lnet/minecraft/world/level/levelgen/WorldgenRandom;II)Lnet/minecraft/world/level/levelgen/structure/StructurePiece;
+      27: invokevirtual #131                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      30: return
+
+  private void lambda$findGenerationPoint$0(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: invokevirtual #138                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)V
+       6: return
+}

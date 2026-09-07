@@ -1,0 +1,638 @@
+Compiled from "IcicleClusterFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IcicleClusterFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration> {
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IcicleClusterFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      14: checkcast     #21                 // class net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      23: astore        5
+      25: aload_2
+      26: aload_3
+      27: invokestatic  #27                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/DripstoneIceUtils.isEmpty:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      30: ifne          35
+      33: iconst_0
+      34: ireturn
+      35: aload         4
+      37: getfield      #33                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.height:Lnet/minecraft/util/valueproviders/IntProvider;
+      40: aload         5
+      42: invokevirtual #37                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+      45: istore        6
+      47: aload         4
+      49: getfield      #43                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.wetness:Lnet/minecraft/util/valueproviders/FloatProvider;
+      52: aload         5
+      54: invokevirtual #47                 // Method net/minecraft/util/valueproviders/FloatProvider.sample:(Lnet/minecraft/util/RandomSource;)F
+      57: fstore        7
+      59: aload         4
+      61: getfield      #52                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.density:Lnet/minecraft/util/valueproviders/FloatProvider;
+      64: aload         5
+      66: invokevirtual #47                 // Method net/minecraft/util/valueproviders/FloatProvider.sample:(Lnet/minecraft/util/RandomSource;)F
+      69: fstore        8
+      71: aload         4
+      73: getfield      #55                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.radius:Lnet/minecraft/util/valueproviders/IntProvider;
+      76: aload         5
+      78: invokevirtual #37                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+      81: istore        9
+      83: aload         4
+      85: getfield      #55                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.radius:Lnet/minecraft/util/valueproviders/IntProvider;
+      88: aload         5
+      90: invokevirtual #37                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+      93: istore        10
+      95: iload         9
+      97: iload         10
+      99: invokestatic  #58                 // Method java/lang/Math.max:(II)I
+     102: istore        11
+     104: aload         5
+     106: invokeinterface #64,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     111: ldc           #72                 // float 6.2831855f
+     113: fmul
+     114: fstore        12
+     116: fload         12
+     118: invokestatic  #73                 // Method net/minecraft/util/Mth.cos:(F)F
+     121: fstore        13
+     123: fload         12
+     125: invokestatic  #77                 // Method net/minecraft/util/Mth.sin:(F)F
+     128: fstore        14
+     130: fload         13
+     132: iload         9
+     134: i2f
+     135: fdiv
+     136: fstore        15
+     138: fload         14
+     140: iload         9
+     142: i2f
+     143: fdiv
+     144: fstore        16
+     146: fload         14
+     148: iload         10
+     150: i2f
+     151: fdiv
+     152: fstore        17
+     154: fload         13
+     156: fneg
+     157: iload         10
+     159: i2f
+     160: fdiv
+     161: fstore        18
+     163: iload         11
+     165: ineg
+     166: istore        19
+     168: iload         19
+     170: iload         11
+     172: if_icmpgt     292
+     175: iload         11
+     177: ineg
+     178: istore        20
+     180: iload         20
+     182: iload         11
+     184: if_icmpgt     286
+     187: iload         19
+     189: i2f
+     190: fload         15
+     192: fmul
+     193: iload         20
+     195: i2f
+     196: fload         16
+     198: fmul
+     199: fadd
+     200: invokestatic  #80                 // Method net/minecraft/util/Mth.square:(F)F
+     203: iload         19
+     205: i2f
+     206: fload         17
+     208: fmul
+     209: iload         20
+     211: i2f
+     212: fload         18
+     214: fmul
+     215: fadd
+     216: invokestatic  #80                 // Method net/minecraft/util/Mth.square:(F)F
+     219: fadd
+     220: fstore        21
+     222: fload         21
+     224: fconst_1
+     225: fcmpl
+     226: iflt          232
+     229: goto          280
+     232: aload_0
+     233: fload         21
+     235: iload         11
+     237: i2f
+     238: aload         4
+     240: invokevirtual #83                 // Method getChanceOfStalagmiteOrStalactite:(FFLnet/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration;)F
+     243: fstore        22
+     245: aload_3
+     246: iload         19
+     248: iconst_0
+     249: iload         20
+     251: invokevirtual #89                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     254: astore        23
+     256: aload_0
+     257: aload_2
+     258: aload         5
+     260: aload         23
+     262: iload         19
+     264: iload         20
+     266: fload         7
+     268: fload         22
+     270: f2d
+     271: iload         6
+     273: fload         8
+     275: aload         4
+     277: invokevirtual #95                 // Method placeColumn:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;IIFDIFLnet/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration;)V
+     280: iinc          20, 1
+     283: goto          180
+     286: iinc          19, 1
+     289: goto          168
+     292: iconst_1
+     293: ireturn
+
+  private void placeColumn(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, int, int, float, double, int, float, net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration);
+    Code:
+       0: aload_1
+       1: aload_3
+       2: aload         11
+       4: getfield      #99                 // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.floorToCeilingSearchRange:I
+       7: invokedynamic #103,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      12: invokedynamic #107,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      17: invokestatic  #108                // Method net/minecraft/world/level/levelgen/Column.scan:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;ILjava/util/function/Predicate;Ljava/util/function/Predicate;)Ljava/util/Optional;
+      20: astore        12
+      22: aload         12
+      24: invokevirtual #114                // Method java/util/Optional.isEmpty:()Z
+      27: ifeq          31
+      30: return
+      31: aload         12
+      33: invokevirtual #119                // Method java/util/Optional.get:()Ljava/lang/Object;
+      36: checkcast     #109                // class net/minecraft/world/level/levelgen/Column
+      39: invokevirtual #123                // Method net/minecraft/world/level/levelgen/Column.getCeiling:()Ljava/util/OptionalInt;
+      42: astore        13
+      44: aload         12
+      46: invokevirtual #119                // Method java/util/Optional.get:()Ljava/lang/Object;
+      49: checkcast     #109                // class net/minecraft/world/level/levelgen/Column
+      52: invokevirtual #127                // Method net/minecraft/world/level/levelgen/Column.getFloor:()Ljava/util/OptionalInt;
+      55: astore        14
+      57: aload         13
+      59: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+      62: ifne          73
+      65: aload         14
+      67: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+      70: ifeq          664
+      73: aload_2
+      74: invokeinterface #64,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      79: fload         6
+      81: fcmpg
+      82: ifge          89
+      85: iconst_1
+      86: goto          90
+      89: iconst_0
+      90: istore        16
+      92: iload         16
+      94: ifeq          172
+      97: aload         14
+      99: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     102: ifeq          172
+     105: aload_0
+     106: aload_1
+     107: aload_3
+     108: aload         14
+     110: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     113: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     116: invokevirtual #143                // Method canPlacePool:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Z
+     119: ifeq          172
+     122: aload         14
+     124: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     127: istore        17
+     129: aload         12
+     131: invokevirtual #119                // Method java/util/Optional.get:()Ljava/lang/Object;
+     134: checkcast     #109                // class net/minecraft/world/level/levelgen/Column
+     137: iload         17
+     139: iconst_1
+     140: isub
+     141: invokestatic  #147                // Method java/util/OptionalInt.of:(I)Ljava/util/OptionalInt;
+     144: invokevirtual #151                // Method net/minecraft/world/level/levelgen/Column.withFloor:(Ljava/util/OptionalInt;)Lnet/minecraft/world/level/levelgen/Column;
+     147: astore        15
+     149: aload_1
+     150: aload_3
+     151: iload         17
+     153: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     156: getstatic     #155                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+     159: invokevirtual #161                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     162: iconst_2
+     163: invokeinterface #167,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     168: pop
+     169: goto          182
+     172: aload         12
+     174: invokevirtual #119                // Method java/util/Optional.get:()Ljava/lang/Object;
+     177: checkcast     #109                // class net/minecraft/world/level/levelgen/Column
+     180: astore        15
+     182: aload         15
+     184: invokevirtual #127                // Method net/minecraft/world/level/levelgen/Column.getFloor:()Ljava/util/OptionalInt;
+     187: astore        17
+     189: aload_2
+     190: invokeinterface #173,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     195: dload         7
+     197: dcmpg
+     198: ifge          205
+     201: iconst_1
+     202: goto          206
+     205: iconst_0
+     206: istore        18
+     208: aload         13
+     210: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     213: ifeq          321
+     216: iload         18
+     218: ifeq          321
+     221: aload_0
+     222: aload_1
+     223: aload_3
+     224: aload         13
+     226: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     229: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     232: invokevirtual #177                // Method isLava:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     235: ifne          321
+     238: aload         11
+     240: getfield      #181                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.dripstoneBlockLayerThickness:Lnet/minecraft/util/valueproviders/IntProvider;
+     243: aload_2
+     244: invokevirtual #37                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+     247: istore        20
+     249: aload_0
+     250: aload_1
+     251: aload_3
+     252: aload         13
+     254: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     257: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     260: iload         20
+     262: getstatic     #184                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     265: invokevirtual #190                // Method replaceBlocksWithPackedIce:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;ILnet/minecraft/core/Direction;)V
+     268: aload         17
+     270: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     273: ifeq          297
+     276: iload         9
+     278: aload         13
+     280: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     283: aload         17
+     285: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     288: isub
+     289: invokestatic  #194                // Method java/lang/Math.min:(II)I
+     292: istore        21
+     294: goto          301
+     297: iload         9
+     299: istore        21
+     301: aload_0
+     302: aload_2
+     303: iload         4
+     305: iload         5
+     307: fload         10
+     309: iload         21
+     311: aload         11
+     313: invokevirtual #197                // Method getDripstoneHeight:(Lnet/minecraft/util/RandomSource;IIFILnet/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration;)I
+     316: istore        19
+     318: goto          324
+     321: iconst_0
+     322: istore        19
+     324: aload_2
+     325: invokeinterface #173,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     330: dload         7
+     332: dcmpg
+     333: ifge          340
+     336: iconst_1
+     337: goto          341
+     340: iconst_0
+     341: istore        20
+     343: aload         17
+     345: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     348: ifeq          458
+     351: iload         20
+     353: ifeq          458
+     356: aload_0
+     357: aload_1
+     358: aload_3
+     359: aload         17
+     361: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     364: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     367: invokevirtual #177                // Method isLava:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     370: ifne          458
+     373: aload         11
+     375: getfield      #181                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.dripstoneBlockLayerThickness:Lnet/minecraft/util/valueproviders/IntProvider;
+     378: aload_2
+     379: invokevirtual #37                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+     382: istore        22
+     384: aload_0
+     385: aload_1
+     386: aload_3
+     387: aload         17
+     389: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     392: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     395: iload         22
+     397: getstatic     #201                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     400: invokevirtual #190                // Method replaceBlocksWithPackedIce:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;ILnet/minecraft/core/Direction;)V
+     403: aload         13
+     405: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     408: ifeq          438
+     411: iconst_0
+     412: iload         19
+     414: aload_2
+     415: aload         11
+     417: getfield      #204                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff:I
+     420: ineg
+     421: aload         11
+     423: getfield      #204                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.maxStalagmiteStalactiteHeightDiff:I
+     426: invokestatic  #207                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+     429: iadd
+     430: invokestatic  #58                 // Method java/lang/Math.max:(II)I
+     433: istore        21
+     435: goto          455
+     438: aload_0
+     439: aload_2
+     440: iload         4
+     442: iload         5
+     444: fload         10
+     446: iload         9
+     448: aload         11
+     450: invokevirtual #197                // Method getDripstoneHeight:(Lnet/minecraft/util/RandomSource;IIFILnet/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration;)I
+     453: istore        21
+     455: goto          461
+     458: iconst_0
+     459: istore        21
+     461: aload         13
+     463: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     466: ifeq          573
+     469: aload         17
+     471: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     474: ifeq          573
+     477: aload         13
+     479: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     482: iload         19
+     484: isub
+     485: aload         17
+     487: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     490: iload         21
+     492: iadd
+     493: if_icmpgt     573
+     496: aload         17
+     498: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     501: istore        24
+     503: aload         13
+     505: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     508: istore        25
+     510: iload         25
+     512: iload         19
+     514: isub
+     515: iload         24
+     517: iconst_1
+     518: iadd
+     519: invokestatic  #58                 // Method java/lang/Math.max:(II)I
+     522: istore        26
+     524: iload         24
+     526: iload         21
+     528: iadd
+     529: iload         25
+     531: iconst_1
+     532: isub
+     533: invokestatic  #194                // Method java/lang/Math.min:(II)I
+     536: istore        27
+     538: aload_2
+     539: iload         26
+     541: iload         27
+     543: iconst_1
+     544: iadd
+     545: invokestatic  #207                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+     548: istore        28
+     550: iload         28
+     552: iconst_1
+     553: isub
+     554: istore        29
+     556: iload         25
+     558: iload         28
+     560: isub
+     561: istore        23
+     563: iload         29
+     565: iload         24
+     567: isub
+     568: istore        22
+     570: goto          581
+     573: iload         19
+     575: istore        23
+     577: iload         21
+     579: istore        22
+     581: aload_2
+     582: invokeinterface #211,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     587: ifeq          631
+     590: iload         23
+     592: ifle          631
+     595: iload         22
+     597: ifle          631
+     600: aload         15
+     602: invokevirtual #214                // Method net/minecraft/world/level/levelgen/Column.getHeight:()Ljava/util/OptionalInt;
+     605: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     608: ifeq          631
+     611: iload         23
+     613: iload         22
+     615: iadd
+     616: aload         15
+     618: invokevirtual #214                // Method net/minecraft/world/level/levelgen/Column.getHeight:()Ljava/util/OptionalInt;
+     621: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     624: if_icmpne     631
+     627: iconst_1
+     628: goto          632
+     631: iconst_0
+     632: istore        24
+     634: aload         13
+     636: invokevirtual #130                // Method java/util/OptionalInt.isPresent:()Z
+     639: ifeq          664
+     642: aload_1
+     643: aload_3
+     644: aload         13
+     646: invokevirtual #135                // Method java/util/OptionalInt.getAsInt:()I
+     649: iconst_1
+     650: isub
+     651: invokevirtual #139                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     654: getstatic     #201                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     657: iload         23
+     659: iload         24
+     661: invokestatic  #217                // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/DripstoneIceUtils.growIcicle:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;IZ)V
+     664: return
+
+  private boolean isLava(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #221,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: getstatic     #227                // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+      10: invokevirtual #230                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      13: ireturn
+
+  private int getDripstoneHeight(net.minecraft.util.RandomSource, int, int, float, int, net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration);
+    Code:
+       0: aload_1
+       1: invokeinterface #64,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       6: fload         4
+       8: fcmpl
+       9: ifle          14
+      12: iconst_0
+      13: ireturn
+      14: iload_2
+      15: invokestatic  #236                // Method java/lang/Math.abs:(I)I
+      18: iload_3
+      19: invokestatic  #236                // Method java/lang/Math.abs:(I)I
+      22: iadd
+      23: istore        7
+      25: iload         7
+      27: i2d
+      28: dconst_0
+      29: aload         6
+      31: getfield      #240                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.maxDistanceFromCenterAffectingHeightBias:I
+      34: i2d
+      35: iload         5
+      37: i2d
+      38: ldc2_w        #243                // double 2.0d
+      41: ddiv
+      42: dconst_0
+      43: invokestatic  #245                // Method net/minecraft/util/Mth.clampedMap:(DDDDD)D
+      46: d2f
+      47: fstore        8
+      49: aload_1
+      50: fconst_0
+      51: iload         5
+      53: i2f
+      54: fload         8
+      56: aload         6
+      58: getfield      #249                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.heightDeviation:I
+      61: i2f
+      62: invokestatic  #252                // Method randomBetweenBiased:(Lnet/minecraft/util/RandomSource;FFFF)F
+      65: f2i
+      66: ireturn
+
+  private boolean canPlacePool(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #256,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_3
+       8: aload_3
+       9: getstatic     #155                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      12: invokevirtual #230                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      15: ifne          97
+      18: aload_3
+      19: getstatic     #257                // Field net/minecraft/world/level/block/Blocks.DRIPSTONE_BLOCK:Lnet/minecraft/world/level/block/Block;
+      22: invokevirtual #230                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      25: ifne          97
+      28: aload_3
+      29: getstatic     #260                // Field net/minecraft/world/level/block/Blocks.POINTED_DRIPSTONE:Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #230                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      35: ifne          97
+      38: getstatic     #263                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      41: invokevirtual #269                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      44: astore        4
+      46: aload         4
+      48: invokeinterface #273,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      53: ifeq          87
+      56: aload         4
+      58: invokeinterface #278,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      63: checkcast     #185                // class net/minecraft/core/Direction
+      66: astore        5
+      68: aload_0
+      69: aload_1
+      70: aload_2
+      71: aload         5
+      73: invokevirtual #281                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      76: invokevirtual #285                // Method canBeAdjacentToWater:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      79: ifne          84
+      82: iconst_0
+      83: ireturn
+      84: goto          46
+      87: aload_0
+      88: aload_1
+      89: aload_2
+      90: invokevirtual #288                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      93: invokevirtual #285                // Method canBeAdjacentToWater:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      96: ireturn
+      97: iconst_0
+      98: ireturn
+
+  private boolean canBeAdjacentToWater(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #291,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_3
+       8: aload_3
+       9: getstatic     #294                // Field net/minecraft/tags/BlockTags.BASE_STONE_OVERWORLD:Lnet/minecraft/tags/TagKey;
+      12: invokevirtual #300                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      15: ifne          31
+      18: aload_3
+      19: invokevirtual #303                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      22: getstatic     #307                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+      25: invokevirtual #311                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          35
+      31: iconst_1
+      32: goto          36
+      35: iconst_0
+      36: ireturn
+
+  private void replaceBlocksWithPackedIce(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, int, net.minecraft.core.Direction);
+    Code:
+       0: aload_2
+       1: invokevirtual #314                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       4: astore        5
+       6: iconst_0
+       7: istore        6
+       9: iload         6
+      11: iload_3
+      12: if_icmpge     39
+      15: aload_1
+      16: aload         5
+      18: invokestatic  #318                // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/DripstoneIceUtils.placePackedIceIfPossible:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      21: ifne          25
+      24: return
+      25: aload         5
+      27: aload         4
+      29: invokevirtual #321                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      32: pop
+      33: iinc          6, 1
+      36: goto          9
+      39: return
+
+  private float getChanceOfStalagmiteOrStalactite(float, float, net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration);
+    Code:
+       0: fload_1
+       1: fload_2
+       2: fload_2
+       3: fmul
+       4: fmul
+       5: fload_2
+       6: fload_2
+       7: fmul
+       8: aload_3
+       9: getfield      #327                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.maxDistanceFromEdgeAffectingChanceOfDripstoneColumn:I
+      12: i2f
+      13: aload_3
+      14: getfield      #330                // Field net/minecraft/world/level/levelgen/feature/configurations/DripstoneClusterConfiguration.chanceOfDripstoneColumnAtMaxDistanceFromCenter:F
+      17: fconst_1
+      18: invokestatic  #334                // Method net/minecraft/util/Mth.clampedMap:(FFFFF)F
+      21: freturn
+
+  private static float randomBetweenBiased(net.minecraft.util.RandomSource, float, float, float, float);
+    Code:
+       0: aload_0
+       1: fload_3
+       2: fload         4
+       4: fload_1
+       5: fload_2
+       6: invokestatic  #337                // Method net/minecraft/util/valueproviders/ClampedNormalFloat.sample:(Lnet/minecraft/util/RandomSource;FFFF)F
+       9: freturn
+}

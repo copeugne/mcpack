@@ -1,0 +1,60 @@
+Compiled from "MultipleAttemptSingleRandomFeature.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.feature.MultipleAttemptSingleRandomFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig> {
+  public com.yungnickyoung.minecraft.yungsbridges.world.feature.MultipleAttemptSingleRandomFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/MultipleAttemptSingleRandomFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsbridges/world/feature/config/MultipleAttemptSingleRandomFeatureConfig
+       7: invokevirtual #19                 // Method com/yungnickyoung/minecraft/yungsbridges/world/feature/config/MultipleAttemptSingleRandomFeatureConfig.getPlacedFeatures:()Lnet/minecraft/core/HolderSet;
+      10: invokeinterface #23,  1           // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+      15: invokedynamic #29,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      20: invokeinterface #33,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      25: invokestatic  #39                 // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+      28: invokeinterface #45,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      33: checkcast     #49                 // class java/util/List
+      36: astore_2
+      37: aload_2
+      38: invokeinterface #51,  1           // InterfaceMethod java/util/List.size:()I
+      43: istore_3
+      44: iload_3
+      45: ifle          119
+      48: aload_1
+      49: invokevirtual #55                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      52: aload_2
+      53: invokeinterface #51,  1           // InterfaceMethod java/util/List.size:()I
+      58: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      63: istore        4
+      65: aload_2
+      66: iload         4
+      68: invokeinterface #65,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      73: checkcast     #69                 // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+      76: astore        5
+      78: aload         5
+      80: aload_1
+      81: invokevirtual #71                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      84: aload_1
+      85: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      88: aload_1
+      89: invokevirtual #55                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      92: aload_1
+      93: invokevirtual #79                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      96: invokevirtual #83                 // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.place:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+      99: ifeq          104
+     102: iconst_1
+     103: ireturn
+     104: aload_2
+     105: iload         4
+     107: invokeinterface #87,  2           // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+     112: pop
+     113: iinc          3, -1
+     116: goto          44
+     119: iconst_0
+     120: ireturn
+}

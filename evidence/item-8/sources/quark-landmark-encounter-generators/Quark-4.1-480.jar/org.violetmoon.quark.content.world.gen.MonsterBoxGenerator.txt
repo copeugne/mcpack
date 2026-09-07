@@ -1,0 +1,126 @@
+Compiled from "MonsterBoxGenerator.java"
+public class org.violetmoon.quark.content.world.gen.MonsterBoxGenerator extends org.violetmoon.zeta.world.generator.Generator {
+  public org.violetmoon.quark.content.world.gen.MonsterBoxGenerator(org.violetmoon.zeta.config.type.DimensionConfig);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+       5: return
+
+  public void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: instanceof    #7                  // class net/minecraft/world/level/levelgen/FlatLevelSource
+       4: ifeq          8
+       7: return
+       8: getstatic     #9                  // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.chancePerChunk:D
+      11: dstore        5
+      13: dload         5
+      15: dconst_0
+      16: dcmpl
+      17: ifle          154
+      20: aload_3
+      21: invokeinterface #15,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+      26: dload         5
+      28: dcmpg
+      29: ifgt          154
+      32: aload         4
+      34: aload_3
+      35: bipush        16
+      37: invokeinterface #21,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      42: aload_3
+      43: getstatic     #25                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.minY:I
+      46: getstatic     #29                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.maxY:I
+      49: invokeinterface #32,  3           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(II)I
+      54: aload_3
+      55: bipush        16
+      57: invokeinterface #21,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      62: invokevirtual #35                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      65: invokevirtual #41                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      68: astore        7
+      70: iconst_0
+      71: istore        8
+      73: iload         8
+      75: getstatic     #45                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.searchRange:I
+      78: if_icmpge     145
+      81: aload         7
+      83: invokevirtual #48                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      86: getstatic     #25                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.minY:I
+      89: if_icmple     145
+      92: aload_1
+      93: aload         7
+      95: invokevirtual #54                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      98: astore        9
+     100: aload_0
+     101: aload_1
+     102: aload         7
+     104: aload         9
+     106: invokevirtual #60                 // Method canPlaceHere:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+     109: ifeq          129
+     112: aload_1
+     113: aload         7
+     115: getstatic     #66                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.monster_box:Lnet/minecraft/world/level/block/Block;
+     118: invokevirtual #70                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     121: iconst_0
+     122: invokevirtual #76                 // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     125: pop
+     126: goto          145
+     129: aload         7
+     131: iconst_0
+     132: iconst_m1
+     133: iconst_0
+     134: invokevirtual #80                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     137: astore        7
+     139: iinc          8, 1
+     142: goto          73
+     145: dload         5
+     147: dconst_1
+     148: dsub
+     149: dstore        5
+     151: goto          13
+     154: return
+
+  private boolean canPlaceHere(net.minecraft.server.level.WorldGenRegion, net.minecraft.core.BlockPos$MutableBlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: invokevirtual #84                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+       4: ifeq          14
+       7: aload_3
+       8: invokevirtual #90                 // Method net/minecraft/world/level/block/state/BlockState.liquid:()Z
+      11: ifeq          16
+      14: iconst_0
+      15: ireturn
+      16: aload_2
+      17: iconst_0
+      18: iconst_m1
+      19: iconst_0
+      20: invokevirtual #80                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      23: astore        4
+      25: aload_1
+      26: aload         4
+      28: invokevirtual #54                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      31: astore        5
+      33: aload         5
+      35: aload_1
+      36: aload         4
+      38: invokestatic  #93                 // Method org/violetmoon/zeta/util/BlockUtils.isStoneBased:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+      41: ifeq          62
+      44: aload         5
+      46: aload_1
+      47: aload         4
+      49: getstatic     #99                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      52: invokevirtual #105                // Method net/minecraft/world/level/block/state/BlockState.isFaceSturdy:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z
+      55: ifeq          62
+      58: iconst_1
+      59: goto          63
+      62: iconst_0
+      63: istore        6
+      65: aload_2
+      66: iconst_0
+      67: iconst_1
+      68: iconst_0
+      69: invokevirtual #80                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      72: pop
+      73: iload         6
+      75: ireturn
+}

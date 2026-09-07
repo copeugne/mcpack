@@ -1,0 +1,172 @@
+Compiled from "JaggedSandstoneFeature.java"
+public class biomesoplenty.worldgen.feature.misc.JaggedSandstoneFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public biomesoplenty.worldgen.feature.misc.JaggedSandstoneFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_2
+      11: aload_3
+      12: invokestatic  #17                 // Method isInvalidPlacementLocation:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      15: ifeq          20
+      18: iconst_0
+      19: ireturn
+      20: aload_1
+      21: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      24: astore        4
+      26: iconst_5
+      27: istore        5
+      29: iconst_3
+      30: istore        6
+      32: new           #27                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      35: dup
+      36: invokespecial #29                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      39: astore        7
+      41: iconst_0
+      42: istore        8
+      44: iload         8
+      46: iload         5
+      48: if_icmpgt     134
+      51: iconst_0
+      52: istore        9
+      54: iload         9
+      56: iload         5
+      58: if_icmpgt     128
+      61: aload         7
+      63: aload_3
+      64: invokevirtual #32                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      67: iload         8
+      69: aload         4
+      71: iload         6
+      73: ineg
+      74: iload         6
+      76: invokestatic  #36                 // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      79: iload         9
+      81: invokevirtual #42                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      84: pop
+      85: aload_2
+      86: aload         7
+      88: invokestatic  #46                 // Method findFirstAirBlockAboveGround:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Z
+      91: ifeq          122
+      94: aload_2
+      95: aload         7
+      97: invokestatic  #17                 // Method isInvalidPlacementLocation:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+     100: ifne          122
+     103: aload_2
+     104: aload         4
+     106: aload         7
+     108: iconst_2
+     109: aload         4
+     111: bipush        6
+     113: invokeinterface #50,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     118: iadd
+     119: invokestatic  #55                 // Method placeWeepingVinesColumn:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos$MutableBlockPos;I)V
+     122: iinc          9, 1
+     125: goto          54
+     128: iinc          8, 1
+     131: goto          44
+     134: iconst_1
+     135: ireturn
+
+  private static boolean findFirstAirBlockAboveGround(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos$MutableBlockPos);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: iconst_m1
+       3: iconst_0
+       4: invokevirtual #42                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       7: pop
+       8: aload_0
+       9: aload_1
+      10: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      15: ifeq          20
+      18: iconst_0
+      19: ireturn
+      20: aload_0
+      21: aload_1
+      22: invokeinterface #65,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      27: invokevirtual #69                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      30: ifne          0
+      33: aload_1
+      34: iconst_0
+      35: iconst_1
+      36: iconst_0
+      37: invokevirtual #42                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      40: pop
+      41: iconst_1
+      42: ireturn
+
+  public static void placeWeepingVinesColumn(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos$MutableBlockPos, int);
+    Code:
+       0: iconst_1
+       1: istore        4
+       3: iload         4
+       5: iload_3
+       6: if_icmpgt     85
+       9: aload_0
+      10: aload_2
+      11: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          71
+      19: iload         4
+      21: iload_3
+      22: if_icmpeq     38
+      25: aload_0
+      26: aload_2
+      27: invokevirtual #78                 // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+      30: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      35: ifne          56
+      38: aload_0
+      39: aload_2
+      40: getstatic     #81                 // Field biomesoplenty/api/block/BOPBlocks.WHITE_SANDSTONE:Lnet/minecraft/world/level/block/Block;
+      43: invokevirtual #87                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      46: iconst_2
+      47: invokeinterface #93,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      52: pop
+      53: goto          85
+      56: aload_0
+      57: aload_2
+      58: getstatic     #81                 // Field biomesoplenty/api/block/BOPBlocks.WHITE_SANDSTONE:Lnet/minecraft/world/level/block/Block;
+      61: invokevirtual #87                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      64: iconst_2
+      65: invokeinterface #93,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      70: pop
+      71: aload_2
+      72: getstatic     #97                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      75: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      78: pop
+      79: iinc          4, 1
+      82: goto          3
+      85: return
+
+  private static boolean isInvalidPlacementLocation(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+       7: ifne          12
+      10: iconst_1
+      11: ireturn
+      12: aload_0
+      13: aload_1
+      14: invokevirtual #106                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      17: invokeinterface #65,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      22: astore_2
+      23: aload_2
+      24: getstatic     #111                // Field biomesoplenty/api/block/BOPBlocks.WHITE_SAND:Lnet/minecraft/world/level/block/Block;
+      27: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      30: ifne          37
+      33: iconst_1
+      34: goto          38
+      37: iconst_0
+      38: ireturn
+}

@@ -1,0 +1,304 @@
+Compiled from "ScarecrowFeature.java"
+public class com.tristankechlo.explorations.worldgen.features.ScarecrowFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.tristankechlo.explorations.worldgen.features.config.ScarecrowFeatureConfig> {
+  public com.tristankechlo.explorations.worldgen.features.ScarecrowFeature(com.mojang.serialization.Codec<com.tristankechlo.explorations.worldgen.features.config.ScarecrowFeatureConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.tristankechlo.explorations.worldgen.features.config.ScarecrowFeatureConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: getstatic     #17                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      13: aload_3
+      14: invokevirtual #23                 // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      17: astore        4
+      19: aload         4
+      21: getstatic     #27                 // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+      24: invokevirtual #33                 // Method net/minecraft/core/Direction.getClockWise:(Lnet/minecraft/core/Direction$Axis;)Lnet/minecraft/core/Direction;
+      27: astore        5
+      29: aload         4
+      31: getstatic     #27                 // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+      34: invokevirtual #39                 // Method net/minecraft/core/Direction.getCounterClockWise:(Lnet/minecraft/core/Direction$Axis;)Lnet/minecraft/core/Direction;
+      37: astore        6
+      39: aload_1
+      40: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      43: astore        7
+      45: aload         7
+      47: iconst_1
+      48: invokevirtual #46                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      51: astore        8
+      53: aload         7
+      55: iconst_2
+      56: invokevirtual #46                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      59: astore        9
+      61: aload         7
+      63: invokevirtual #52                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      66: aload         5
+      68: invokevirtual #54                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      71: astore        10
+      73: aload         7
+      75: invokevirtual #52                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      78: aload         6
+      80: invokevirtual #54                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      83: astore        11
+      85: aload_2
+      86: aload_1
+      87: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      90: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+      93: invokevirtual #64                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.forcePlace:()Z
+      96: iconst_5
+      97: anewarray     #47                 // class net/minecraft/core/BlockPos
+     100: dup
+     101: iconst_0
+     102: aload         7
+     104: aastore
+     105: dup
+     106: iconst_1
+     107: aload         8
+     109: aastore
+     110: dup
+     111: iconst_2
+     112: aload         9
+     114: aastore
+     115: dup
+     116: iconst_3
+     117: aload         10
+     119: aastore
+     120: dup
+     121: iconst_4
+     122: aload         11
+     124: aastore
+     125: invokestatic  #68                 // Method canBePlaced:(Lnet/minecraft/world/level/WorldGenLevel;Z[Lnet/minecraft/core/BlockPos;)Z
+     128: ifne          133
+     131: iconst_0
+     132: ireturn
+     133: aload_1
+     134: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     137: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+     140: invokevirtual #74                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.head:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     143: aload_3
+     144: aload         9
+     146: invokevirtual #78                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     149: aload         4
+     151: invokestatic  #84                 // Method createHead:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+     154: astore        12
+     156: aload_1
+     157: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     160: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+     163: invokevirtual #88                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.body:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     166: aload_3
+     167: aload         8
+     169: invokevirtual #78                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     172: astore        13
+     174: aload_1
+     175: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     178: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+     181: invokevirtual #91                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.legs:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     184: aload_3
+     185: aload         7
+     187: invokevirtual #78                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     190: astore        14
+     192: aload_1
+     193: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     196: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+     199: invokevirtual #94                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.arms:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     202: aload_3
+     203: aload         10
+     205: invokevirtual #78                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     208: aload         5
+     210: invokestatic  #97                 // Method createArm:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+     213: astore        15
+     215: aload_1
+     216: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     219: checkcast     #62                 // class com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig
+     222: invokevirtual #94                 // Method com/tristankechlo/explorations/worldgen/features/config/ScarecrowFeatureConfig.arms:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     225: aload_3
+     226: aload         11
+     228: invokevirtual #78                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     231: aload         6
+     233: invokestatic  #97                 // Method createArm:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+     236: astore        16
+     238: aload_2
+     239: aload         7
+     241: aload         14
+     243: iconst_3
+     244: invokeinterface #100,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     249: pop
+     250: aload_2
+     251: aload         8
+     253: aload         13
+     255: iconst_3
+     256: invokeinterface #100,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     261: pop
+     262: aload_2
+     263: aload         10
+     265: aload         15
+     267: iconst_3
+     268: invokeinterface #100,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     273: pop
+     274: aload_2
+     275: aload         11
+     277: aload         16
+     279: iconst_3
+     280: invokeinterface #100,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     285: pop
+     286: aload_2
+     287: aload         9
+     289: aload         12
+     291: iconst_3
+     292: invokeinterface #100,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     297: pop
+     298: iconst_1
+     299: ireturn
+
+  private static net.minecraft.world.level.block.state.BlockState createArm(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction);
+    Code:
+       0: aload_1
+       1: getstatic     #106                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+       4: if_acmpne     34
+       7: aload_0
+       8: getstatic     #110                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      11: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      14: ifeq          34
+      17: aload_0
+      18: getstatic     #110                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      21: getstatic     #122                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      24: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      27: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+      30: astore_0
+      31: goto          133
+      34: aload_1
+      35: getstatic     #132                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+      38: if_acmpne     68
+      41: aload_0
+      42: getstatic     #135                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      45: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      48: ifeq          68
+      51: aload_0
+      52: getstatic     #135                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      55: getstatic     #122                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      58: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      61: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+      64: astore_0
+      65: goto          133
+      68: aload_1
+      69: getstatic     #138                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+      72: if_acmpne     102
+      75: aload_0
+      76: getstatic     #140                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      79: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      82: ifeq          102
+      85: aload_0
+      86: getstatic     #140                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      89: getstatic     #122                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      92: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      95: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+      98: astore_0
+      99: goto          133
+     102: aload_1
+     103: getstatic     #142                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     106: if_acmpne     133
+     109: aload_0
+     110: getstatic     #144                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     113: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     116: ifeq          133
+     119: aload_0
+     120: getstatic     #144                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     123: getstatic     #122                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+     126: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     129: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+     132: astore_0
+     133: aload_0
+     134: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState createHead(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: getstatic     #146                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       4: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       7: ifeq          25
+      10: aload_0
+      11: getstatic     #146                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      14: aload_1
+      15: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      18: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+      21: astore_0
+      22: goto          47
+      25: aload_0
+      26: getstatic     #150                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      29: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      32: ifeq          47
+      35: aload_0
+      36: getstatic     #150                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      39: aload_1
+      40: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      43: checkcast     #117                // class net/minecraft/world/level/block/state/BlockState
+      46: astore_0
+      47: aload_0
+      48: areturn
+
+  private static boolean canBePlaced(net.minecraft.world.level.WorldGenLevel, boolean, net.minecraft.core.BlockPos...);
+    Code:
+       0: aload_2
+       1: astore_3
+       2: aload_3
+       3: arraylength
+       4: istore        4
+       6: iconst_0
+       7: istore        5
+       9: iload         5
+      11: iload         4
+      13: if_icmpge     116
+      16: aload_3
+      17: iload         5
+      19: aaload
+      20: astore        6
+      22: aload_0
+      23: aload         6
+      25: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      30: ifne          50
+      33: aload_0
+      34: aload         6
+      36: invokeinterface #157,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      41: getstatic     #161                // Field net/minecraft/tags/BlockTags.FEATURES_CANNOT_REPLACE:Lnet/minecraft/tags/TagKey;
+      44: invokevirtual #167                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          52
+      50: iconst_0
+      51: ireturn
+      52: aload_0
+      53: aload         6
+      55: invokeinterface #157,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      60: astore        7
+      62: iload_1
+      63: ifne          96
+      66: aload_0
+      67: aload         6
+      69: invokeinterface #171,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      74: ifne          96
+      77: aload         7
+      79: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      82: invokevirtual #178                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+      85: ifne          96
+      88: aload         7
+      90: invokevirtual #183                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      93: ifeq          100
+      96: iconst_1
+      97: goto          101
+     100: iconst_0
+     101: istore        8
+     103: iload         8
+     105: ifne          110
+     108: iconst_0
+     109: ireturn
+     110: iinc          5, 1
+     113: goto          9
+     116: iconst_1
+     117: ireturn
+}

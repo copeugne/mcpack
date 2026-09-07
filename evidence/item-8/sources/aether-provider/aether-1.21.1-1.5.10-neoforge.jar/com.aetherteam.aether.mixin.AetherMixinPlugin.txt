@@ -1,0 +1,274 @@
+Classfile aether-1.21.1-1.5.10-neoforge.jar!/com/aetherteam/aether/mixin/AetherMixinPlugin.class
+  Last modified Sep 28, 2025; size 2455 bytes
+  SHA-256 checksum 4a9b032c855da71e71b1519db62ee1844dffcc4a8b3b164495466747f5e22507
+  Compiled from "AetherMixinPlugin.java"
+public class com.aetherteam.aether.mixin.AetherMixinPlugin implements org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/aetherteam/aether/mixin/AetherMixinPlugin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 8, attributes: 1
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/aetherteam/aether/mixin/AetherMixinPlugin.isOptiFineInstalled:Z
+   #8 = Class              #10            // com/aetherteam/aether/mixin/AetherMixinPlugin
+   #9 = NameAndType        #11:#12        // isOptiFineInstalled:Z
+  #10 = Utf8               com/aetherteam/aether/mixin/AetherMixinPlugin
+  #11 = Utf8               isOptiFineInstalled
+  #12 = Utf8               Z
+  #13 = String             #14            // optifine.Installer
+  #14 = Utf8               optifine.Installer
+  #15 = Methodref          #2.#16         // java/lang/Object.getClass:()Ljava/lang/Class;
+  #16 = NameAndType        #17:#18        // getClass:()Ljava/lang/Class;
+  #17 = Utf8               getClass
+  #18 = Utf8               ()Ljava/lang/Class;
+  #19 = Methodref          #20.#21        // java/lang/Class.getClassLoader:()Ljava/lang/ClassLoader;
+  #20 = Class              #22            // java/lang/Class
+  #21 = NameAndType        #23:#24        // getClassLoader:()Ljava/lang/ClassLoader;
+  #22 = Utf8               java/lang/Class
+  #23 = Utf8               getClassLoader
+  #24 = Utf8               ()Ljava/lang/ClassLoader;
+  #25 = Methodref          #20.#26        // java/lang/Class.forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+  #26 = NameAndType        #27:#28        // forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+  #27 = Utf8               forName
+  #28 = Utf8               (Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+  #29 = Class              #30            // java/lang/ClassNotFoundException
+  #30 = Utf8               java/lang/ClassNotFoundException
+  #31 = String             #32            // com.aetherteam.aether.mixin.mixins.client.BossHealthOverlayMixin
+  #32 = Utf8               com.aetherteam.aether.mixin.mixins.client.BossHealthOverlayMixin
+  #33 = Methodref          #34.#35        // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #34 = Class              #36            // java/lang/String
+  #35 = NameAndType        #37:#38        // equals:(Ljava/lang/Object;)Z
+  #36 = Utf8               java/lang/String
+  #37 = Utf8               equals
+  #38 = Utf8               (Ljava/lang/Object;)Z
+  #39 = String             #40            // com.aetherteam.aether.mixin.mixins.client.optifine.BossHealthOverlayMixin
+  #40 = Utf8               com.aetherteam.aether.mixin.mixins.client.optifine.BossHealthOverlayMixin
+  #41 = Class              #42            // org/spongepowered/asm/mixin/extensibility/IMixinConfigPlugin
+  #42 = Utf8               org/spongepowered/asm/mixin/extensibility/IMixinConfigPlugin
+  #43 = Utf8               Code
+  #44 = Utf8               LineNumberTable
+  #45 = Utf8               LocalVariableTable
+  #46 = Utf8               this
+  #47 = Utf8               Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+  #48 = Utf8               onLoad
+  #49 = Utf8               (Ljava/lang/String;)V
+  #50 = Utf8               mixinPackage
+  #51 = Utf8               Ljava/lang/String;
+  #52 = Utf8               StackMapTable
+  #53 = Utf8               getRefMapperConfig
+  #54 = Utf8               ()Ljava/lang/String;
+  #55 = Utf8               shouldApplyMixin
+  #56 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Z
+  #57 = Utf8               targetClassName
+  #58 = Utf8               mixinClassName
+  #59 = Utf8               acceptTargets
+  #60 = Utf8               (Ljava/util/Set;Ljava/util/Set;)V
+  #61 = Utf8               myTargets
+  #62 = Utf8               Ljava/util/Set;
+  #63 = Utf8               otherTargets
+  #64 = Utf8               LocalVariableTypeTable
+  #65 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+  #66 = Utf8               Signature
+  #67 = Utf8               (Ljava/util/Set<Ljava/lang/String;>;Ljava/util/Set<Ljava/lang/String;>;)V
+  #68 = Utf8               getMixins
+  #69 = Utf8               ()Ljava/util/List;
+  #70 = Utf8               ()Ljava/util/List<Ljava/lang/String;>;
+  #71 = Utf8               preApply
+  #72 = Utf8               (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+  #73 = Utf8               targetClass
+  #74 = Utf8               Lorg/objectweb/asm/tree/ClassNode;
+  #75 = Utf8               mixinInfo
+  #76 = Utf8               Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+  #77 = Utf8               postApply
+  #78 = Utf8               SourceFile
+  #79 = Utf8               AetherMixinPlugin.java
+{
+  private boolean isOptiFineInstalled;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  public com.aetherteam.aether.mixin.AetherMixinPlugin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #7                  // Field isOptiFineInstalled:Z
+         9: return
+      LineNumberTable:
+        line 10: 0
+        line 11: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+
+  public void onLoad(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: ldc           #13                 // String optifine.Installer
+         2: iconst_0
+         3: aload_0
+         4: invokevirtual #15                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+         7: invokevirtual #19                 // Method java/lang/Class.getClassLoader:()Ljava/lang/ClassLoader;
+        10: invokestatic  #25                 // Method java/lang/Class.forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+        13: pop
+        14: aload_0
+        15: iconst_1
+        16: putfield      #7                  // Field isOptiFineInstalled:Z
+        19: goto          23
+        22: astore_2
+        23: return
+      Exception table:
+         from    to  target type
+             0    19    22   Class java/lang/ClassNotFoundException
+      LineNumberTable:
+        line 16: 0
+        line 17: 14
+        line 19: 19
+        line 18: 22
+        line 20: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+            0      24     1 mixinPackage   Ljava/lang/String;
+      StackMapTable: number_of_entries = 2
+        frame_type = 86 /* same_locals_1_stack_item */
+          stack = [ class java/lang/ClassNotFoundException ]
+        frame_type = 0 /* same */
+
+  public java.lang.String getRefMapperConfig();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 24: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+
+  public boolean shouldApplyMixin(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #7                  // Field isOptiFineInstalled:Z
+         4: ifeq          29
+         7: aload_2
+         8: ldc           #31                 // String com.aetherteam.aether.mixin.mixins.client.BossHealthOverlayMixin
+        10: invokevirtual #33                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        13: ifeq          18
+        16: iconst_0
+        17: ireturn
+        18: aload_2
+        19: ldc           #39                 // String com.aetherteam.aether.mixin.mixins.client.optifine.BossHealthOverlayMixin
+        21: invokevirtual #33                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        24: ifeq          29
+        27: iconst_1
+        28: ireturn
+        29: aload_2
+        30: ldc           #39                 // String com.aetherteam.aether.mixin.mixins.client.optifine.BossHealthOverlayMixin
+        32: invokevirtual #33                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        35: ifne          42
+        38: iconst_1
+        39: goto          43
+        42: iconst_0
+        43: ireturn
+      LineNumberTable:
+        line 29: 0
+        line 30: 7
+        line 31: 18
+        line 34: 29
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      44     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+            0      44     1 targetClassName   Ljava/lang/String;
+            0      44     2 mixinClassName   Ljava/lang/String;
+      StackMapTable: number_of_entries = 4
+        frame_type = 18 /* same */
+        frame_type = 10 /* same */
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public void acceptTargets(java.util.Set<java.lang.String>, java.util.Set<java.lang.String>);
+    descriptor: (Ljava/util/Set;Ljava/util/Set;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=3, args_size=3
+         0: return
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+            0       1     1 myTargets   Ljava/util/Set;
+            0       1     2 otherTargets   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       1     1 myTargets   Ljava/util/Set<Ljava/lang/String;>;
+            0       1     2 otherTargets   Ljava/util/Set<Ljava/lang/String;>;
+    Signature: #67                          // (Ljava/util/Set<Ljava/lang/String;>;Ljava/util/Set<Ljava/lang/String;>;)V
+
+  public java.util.List<java.lang.String> getMixins();
+    descriptor: ()Ljava/util/List;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+    Signature: #70                          // ()Ljava/util/List<Ljava/lang/String;>;
+
+  public void preApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    descriptor: (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=5, args_size=5
+         0: return
+      LineNumberTable:
+        line 48: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+            0       1     1 targetClassName   Ljava/lang/String;
+            0       1     2 targetClass   Lorg/objectweb/asm/tree/ClassNode;
+            0       1     3 mixinClassName   Ljava/lang/String;
+            0       1     4 mixinInfo   Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+
+  public void postApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    descriptor: (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=5, args_size=5
+         0: return
+      LineNumberTable:
+        line 52: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lcom/aetherteam/aether/mixin/AetherMixinPlugin;
+            0       1     1 targetClassName   Ljava/lang/String;
+            0       1     2 targetClass   Lorg/objectweb/asm/tree/ClassNode;
+            0       1     3 mixinClassName   Ljava/lang/String;
+            0       1     4 mixinInfo   Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+}
+SourceFile: "AetherMixinPlugin.java"

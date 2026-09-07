@@ -1,0 +1,46 @@
+Compiled from "CommonEventsListener.java"
+public class com.illusivesoulworks.polymorph.common.CommonEventsListener {
+  public com.illusivesoulworks.polymorph.common.CommonEventsListener();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void registerCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       4: invokestatic  #13                 // Method com/illusivesoulworks/polymorph/server/PolymorphCommands.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+       7: return
+
+  public void playerLoggedOut(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerLoggedOutEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #19                 // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerLoggedOutEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: astore_3
+       5: aload_3
+       6: instanceof    #25                 // class net/minecraft/server/level/ServerPlayer
+       9: ifeq          21
+      12: aload_3
+      13: checkcast     #25                 // class net/minecraft/server/level/ServerPlayer
+      16: astore_2
+      17: aload_2
+      18: invokestatic  #27                 // Method com/illusivesoulworks/polymorph/common/PolymorphCommonEvents.playerDisconnected:(Lnet/minecraft/server/level/ServerPlayer;)V
+      21: return
+
+  public void openContainer(net.neoforged.neoforge.event.entity.player.PlayerContainerEvent$Open);
+    Code:
+       0: aload_1
+       1: invokevirtual #33                 // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Open.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: aload_1
+       5: invokevirtual #36                 // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Open.getContainer:()Lnet/minecraft/world/inventory/AbstractContainerMenu;
+       8: invokestatic  #40                 // Method com/illusivesoulworks/polymorph/common/PolymorphCommonEvents.openContainer:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+      11: return
+
+  public void levelTick(net.neoforged.neoforge.event.tick.LevelTickEvent$Post);
+    Code:
+       0: aload_1
+       1: invokevirtual #44                 // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Post.getLevel:()Lnet/minecraft/world/level/Level;
+       4: invokestatic  #50                 // Method com/illusivesoulworks/polymorph/common/PolymorphCommonEvents.levelTick:(Lnet/minecraft/world/level/Level;)V
+       7: return
+}

@@ -1,0 +1,106 @@
+Compiled from "LecternEventHandler.java"
+public class vazkii.patchouli.common.handler.LecternEventHandler {
+  public vazkii.patchouli.common.handler.LecternEventHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static net.minecraft.world.InteractionResult rightClick(net.minecraft.world.entity.player.Player, net.minecraft.world.level.Level, net.minecraft.world.InteractionHand, net.minecraft.world.phys.BlockHitResult);
+    Code:
+       0: aload_3
+       1: invokevirtual #7                  // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       4: astore        4
+       6: aload_1
+       7: aload         4
+       9: invokevirtual #13                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      12: astore        5
+      14: aload_1
+      15: aload         4
+      17: invokevirtual #19                 // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      20: astore        6
+      22: aload         6
+      24: instanceof    #23                 // class net/minecraft/world/level/block/entity/LecternBlockEntity
+      27: ifeq          149
+      30: aload         6
+      32: checkcast     #23                 // class net/minecraft/world/level/block/entity/LecternBlockEntity
+      35: astore        7
+      37: aload         5
+      39: getstatic     #25                 // Field net/minecraft/world/level/block/LecternBlock.HAS_BOOK:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      42: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      45: checkcast     #37                 // class java/lang/Boolean
+      48: invokevirtual #39                 // Method java/lang/Boolean.booleanValue:()Z
+      51: ifeq          116
+      54: aload_0
+      55: invokevirtual #43                 // Method net/minecraft/world/entity/player/Player.isSecondaryUseActive:()Z
+      58: ifeq          70
+      61: aload_0
+      62: aload         7
+      64: invokestatic  #48                 // Method takeBook:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/entity/LecternBlockEntity;)V
+      67: goto          149
+      70: aload         7
+      72: invokevirtual #54                 // Method net/minecraft/world/level/block/entity/LecternBlockEntity.getBook:()Lnet/minecraft/world/item/ItemStack;
+      75: invokestatic  #58                 // Method vazkii/patchouli/common/util/ItemStackUtil.getBookFromStack:(Lnet/minecraft/world/item/ItemStack;)Lvazkii/patchouli/common/book/Book;
+      78: astore        8
+      80: aload         8
+      82: ifnull        113
+      85: aload_1
+      86: getfield      #64                 // Field net/minecraft/world/level/Level.isClientSide:Z
+      89: ifne          109
+      92: invokestatic  #68                 // Method vazkii/patchouli/api/PatchouliAPI.get:()Lvazkii/patchouli/api/PatchouliAPI$IPatchouliAPI;
+      95: aload_0
+      96: checkcast     #74                 // class net/minecraft/server/level/ServerPlayer
+      99: aload         8
+     101: getfield      #76                 // Field vazkii/patchouli/common/book/Book.id:Lnet/minecraft/resources/ResourceLocation;
+     104: invokeinterface #82,  3           // InterfaceMethod vazkii/patchouli/api/PatchouliAPI$IPatchouliAPI.openBookGUI:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/resources/ResourceLocation;)V
+     109: getstatic     #88                 // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+     112: areturn
+     113: goto          149
+     116: aload_0
+     117: aload_2
+     118: invokevirtual #94                 // Method net/minecraft/world/entity/player/Player.getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+     121: astore        8
+     123: aload         8
+     125: invokestatic  #58                 // Method vazkii/patchouli/common/util/ItemStackUtil.getBookFromStack:(Lnet/minecraft/world/item/ItemStack;)Lvazkii/patchouli/common/book/Book;
+     128: ifnull        149
+     131: aload_0
+     132: aload_1
+     133: aload         4
+     135: aload         5
+     137: aload         8
+     139: invokestatic  #98                 // Method net/minecraft/world/level/block/LecternBlock.tryPlaceBook:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;)Z
+     142: ifeq          149
+     145: getstatic     #88                 // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+     148: areturn
+     149: getstatic     #102                // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+     152: areturn
+
+  private static void takeBook(net.minecraft.world.entity.player.Player, net.minecraft.world.level.block.entity.LecternBlockEntity);
+    Code:
+       0: aload_1
+       1: invokevirtual #54                 // Method net/minecraft/world/level/block/entity/LecternBlockEntity.getBook:()Lnet/minecraft/world/item/ItemStack;
+       4: astore_2
+       5: aload_1
+       6: getstatic     #105                // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+       9: invokevirtual #111                // Method net/minecraft/world/level/block/entity/LecternBlockEntity.setBook:(Lnet/minecraft/world/item/ItemStack;)V
+      12: aload_0
+      13: aload_1
+      14: invokevirtual #115                // Method net/minecraft/world/level/block/entity/LecternBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+      17: aload_1
+      18: invokevirtual #119                // Method net/minecraft/world/level/block/entity/LecternBlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+      21: aload_1
+      22: invokevirtual #120                // Method net/minecraft/world/level/block/entity/LecternBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      25: iconst_0
+      26: invokestatic  #123                // Method net/minecraft/world/level/block/LecternBlock.resetBookState:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+      29: aload_0
+      30: invokevirtual #127                // Method net/minecraft/world/entity/player/Player.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      33: aload_2
+      34: invokevirtual #131                // Method net/minecraft/world/entity/player/Inventory.add:(Lnet/minecraft/world/item/ItemStack;)Z
+      37: ifne          47
+      40: aload_0
+      41: aload_2
+      42: iconst_0
+      43: invokevirtual #137                // Method net/minecraft/world/entity/player/Player.drop:(Lnet/minecraft/world/item/ItemStack;Z)Lnet/minecraft/world/entity/item/ItemEntity;
+      46: pop
+      47: return
+}

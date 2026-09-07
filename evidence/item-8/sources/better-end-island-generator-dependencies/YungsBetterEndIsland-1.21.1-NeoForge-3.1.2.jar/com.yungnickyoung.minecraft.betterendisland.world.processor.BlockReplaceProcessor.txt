@@ -1,0 +1,474 @@
+Compiled from "BlockReplaceProcessor.java"
+public class com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor> CODEC;
+
+  public final net.minecraft.world.level.block.state.BlockState targetBlock;
+
+  public final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer output;
+
+  public final boolean randomizeFacing;
+
+  public final boolean randomizeHalf;
+
+  public final boolean copyInputProperties;
+
+  public final boolean preserveWaterlog;
+
+  public com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor(net.minecraft.world.level.block.state.BlockState, com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer, boolean, boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field output:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      14: aload_0
+      15: iload_3
+      16: putfield      #17                 // Field randomizeFacing:Z
+      19: aload_0
+      20: iload         4
+      22: putfield      #21                 // Field randomizeHalf:Z
+      25: aload_0
+      26: iload         5
+      28: putfield      #24                 // Field copyInputProperties:Z
+      31: aload_0
+      32: iload         6
+      34: putfield      #27                 // Field preserveWaterlog:Z
+      37: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: aload_0
+       6: getfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+       9: invokevirtual #36                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      12: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      15: ifeq          880
+      18: aload         6
+      20: aload         5
+      22: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      25: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      28: astore        7
+      30: aload_0
+      31: getfield      #13                 // Field output:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      34: aload         7
+      36: invokevirtual #56                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+      39: astore        8
+      41: aload_0
+      42: getfield      #24                 // Field copyInputProperties:Z
+      45: ifeq          516
+      48: aload         5
+      50: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      53: getstatic     #62                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      56: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      59: ifeq          100
+      62: aload         8
+      64: getstatic     #62                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      67: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      70: ifeq          100
+      73: aload         8
+      75: getstatic     #62                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      78: aload         5
+      80: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      83: getstatic     #62                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      86: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      89: checkcast     #76                 // class net/minecraft/core/Direction
+      92: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      95: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+      98: astore        8
+     100: aload         5
+     102: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     105: getstatic     #82                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     108: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     111: ifeq          152
+     114: aload         8
+     116: getstatic     #82                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     119: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     122: ifeq          152
+     125: aload         8
+     127: getstatic     #82                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     130: aload         5
+     132: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     135: getstatic     #82                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     138: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     141: checkcast     #86                 // class net/minecraft/world/level/block/state/properties/Half
+     144: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     147: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     150: astore        8
+     152: aload         5
+     154: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     157: getstatic     #88                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     160: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     163: ifeq          204
+     166: aload         8
+     168: getstatic     #88                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     171: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     174: ifeq          204
+     177: aload         8
+     179: getstatic     #88                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     182: aload         5
+     184: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     187: getstatic     #88                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     190: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     193: checkcast     #91                 // class net/minecraft/world/level/block/state/properties/StairsShape
+     196: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     199: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     202: astore        8
+     204: aload         5
+     206: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     209: getstatic     #93                 // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     212: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     215: ifeq          256
+     218: aload         8
+     220: getstatic     #93                 // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     223: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     226: ifeq          256
+     229: aload         8
+     231: getstatic     #93                 // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     234: aload         5
+     236: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     239: getstatic     #93                 // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     242: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     245: checkcast     #98                 // class net/minecraft/world/level/block/state/properties/SlabType
+     248: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     251: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     254: astore        8
+     256: aload         5
+     258: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     261: getstatic     #100                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     264: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     267: ifeq          308
+     270: aload         8
+     272: getstatic     #100                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     275: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     278: ifeq          308
+     281: aload         8
+     283: getstatic     #100                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     286: aload         5
+     288: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     291: getstatic     #100                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     294: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     297: checkcast     #105                // class net/minecraft/world/level/block/state/properties/WallSide
+     300: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     303: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     306: astore        8
+     308: aload         5
+     310: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     313: getstatic     #107                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     316: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     319: ifeq          360
+     322: aload         8
+     324: getstatic     #107                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     327: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     330: ifeq          360
+     333: aload         8
+     335: getstatic     #107                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     338: aload         5
+     340: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     343: getstatic     #107                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     346: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     349: checkcast     #105                // class net/minecraft/world/level/block/state/properties/WallSide
+     352: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     355: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     358: astore        8
+     360: aload         5
+     362: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     365: getstatic     #110                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     368: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     371: ifeq          412
+     374: aload         8
+     376: getstatic     #110                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     379: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     382: ifeq          412
+     385: aload         8
+     387: getstatic     #110                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     390: aload         5
+     392: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     395: getstatic     #110                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     398: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     401: checkcast     #105                // class net/minecraft/world/level/block/state/properties/WallSide
+     404: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     407: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     410: astore        8
+     412: aload         5
+     414: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     417: getstatic     #113                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     420: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     423: ifeq          464
+     426: aload         8
+     428: getstatic     #113                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     431: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     434: ifeq          464
+     437: aload         8
+     439: getstatic     #113                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     442: aload         5
+     444: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     447: getstatic     #113                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     450: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     453: checkcast     #105                // class net/minecraft/world/level/block/state/properties/WallSide
+     456: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     459: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     462: astore        8
+     464: aload         5
+     466: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     469: getstatic     #116                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     472: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     475: ifeq          516
+     478: aload         8
+     480: getstatic     #116                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     483: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     486: ifeq          516
+     489: aload         8
+     491: getstatic     #116                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     494: aload         5
+     496: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     499: getstatic     #116                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     502: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     505: checkcast     #120                // class java/lang/Boolean
+     508: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     511: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     514: astore        8
+     516: aload_0
+     517: getfield      #17                 // Field randomizeFacing:Z
+     520: ifeq          584
+     523: aload         8
+     525: getstatic     #122                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     528: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     531: ifeq          555
+     534: aload         8
+     536: getstatic     #122                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     539: getstatic     #127                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     542: aload         7
+     544: invokevirtual #133                // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+     547: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     550: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     553: astore        8
+     555: aload         8
+     557: getstatic     #137                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     560: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     563: ifeq          584
+     566: aload         8
+     568: getstatic     #122                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     571: aload         7
+     573: invokestatic  #138                // Method net/minecraft/core/Direction.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+     576: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     579: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     582: astore        8
+     584: aload_0
+     585: getfield      #21                 // Field randomizeHalf:Z
+     588: ifeq          720
+     591: aload         8
+     593: getstatic     #140                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     596: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     599: ifeq          634
+     602: aload         8
+     604: getstatic     #140                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     607: aload         7
+     609: invokeinterface #141,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     614: ifeq          623
+     617: getstatic     #147                // Field net/minecraft/world/level/block/state/properties/Half.TOP:Lnet/minecraft/world/level/block/state/properties/Half;
+     620: goto          626
+     623: getstatic     #151                // Field net/minecraft/world/level/block/state/properties/Half.BOTTOM:Lnet/minecraft/world/level/block/state/properties/Half;
+     626: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     629: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     632: astore        8
+     634: aload         8
+     636: getstatic     #154                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.DOUBLE_BLOCK_HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     639: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     642: ifeq          677
+     645: aload         8
+     647: getstatic     #154                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.DOUBLE_BLOCK_HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     650: aload         7
+     652: invokeinterface #141,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     657: ifeq          666
+     660: getstatic     #157                // Field net/minecraft/world/level/block/state/properties/DoubleBlockHalf.UPPER:Lnet/minecraft/world/level/block/state/properties/DoubleBlockHalf;
+     663: goto          669
+     666: getstatic     #163                // Field net/minecraft/world/level/block/state/properties/DoubleBlockHalf.LOWER:Lnet/minecraft/world/level/block/state/properties/DoubleBlockHalf;
+     669: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     672: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     675: astore        8
+     677: aload         8
+     679: getstatic     #166                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.SLAB_TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     682: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     685: ifeq          720
+     688: aload         8
+     690: getstatic     #166                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.SLAB_TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     693: aload         7
+     695: invokeinterface #141,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     700: ifeq          709
+     703: getstatic     #169                // Field net/minecraft/world/level/block/state/properties/SlabType.TOP:Lnet/minecraft/world/level/block/state/properties/SlabType;
+     706: goto          712
+     709: getstatic     #172                // Field net/minecraft/world/level/block/state/properties/SlabType.BOTTOM:Lnet/minecraft/world/level/block/state/properties/SlabType;
+     712: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     715: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     718: astore        8
+     720: aload_1
+     721: instanceof    #174                // class net/minecraft/server/level/WorldGenRegion
+     724: ifeq          790
+     727: aload_1
+     728: checkcast     #174                // class net/minecraft/server/level/WorldGenRegion
+     731: astore        9
+     733: aload         8
+     735: getstatic     #176                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+     738: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     741: ifne          755
+     744: aload         8
+     746: getstatic     #182                // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+     749: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     752: ifeq          790
+     755: aload         8
+     757: getstatic     #176                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+     760: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     763: ifeq          772
+     766: getstatic     #185                // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+     769: goto          775
+     772: getstatic     #190                // Field net/minecraft/world/level/material/Fluids.LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+     775: astore        10
+     777: aload         9
+     779: aload         5
+     781: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     784: aload         10
+     786: iconst_0
+     787: invokevirtual #192                // Method net/minecraft/server/level/WorldGenRegion.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+     790: aload_0
+     791: getfield      #27                 // Field preserveWaterlog:Z
+     794: ifeq          859
+     797: aload         8
+     799: getstatic     #196                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     802: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     805: ifeq          859
+     808: aload         5
+     810: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     813: getstatic     #196                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     816: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     819: ifeq          859
+     822: aload         5
+     824: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     827: getstatic     #196                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     830: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     833: checkcast     #120                // class java/lang/Boolean
+     836: invokevirtual #199                // Method java/lang/Boolean.booleanValue:()Z
+     839: ifeq          859
+     842: aload         8
+     844: getstatic     #196                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     847: iconst_1
+     848: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     851: invokevirtual #78                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     854: checkcast     #37                 // class net/minecraft/world/level/block/state/BlockState
+     857: astore        8
+     859: new           #31                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     862: dup
+     863: aload         5
+     865: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     868: aload         8
+     870: aload         5
+     872: invokevirtual #206                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+     875: invokespecial #210                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     878: astore        5
+     880: aload         5
+     882: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #213                // Field com/yungnickyoung/minecraft/betterendisland/module/StructureProcessorTypeModule.BLOCK_REPLACE_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+       3: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$6(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #219                // Field net/minecraft/world/level/block/state/BlockState.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #223                // String target_block
+       6: invokeinterface #225,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #231,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #241                // Field com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #242                // String output
+      24: invokeinterface #225,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #243,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      34: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: getstatic     #244                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      40: ldc           #248                // String randomize_facing
+      42: iconst_0
+      43: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      46: invokeinterface #250,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      51: invokedynamic #256,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      56: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      59: getstatic     #244                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      62: ldc_w         #257                // String randomize_half
+      65: iconst_0
+      66: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      69: invokeinterface #250,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      74: invokedynamic #259,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      79: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      82: getstatic     #244                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      85: ldc_w         #260                // String copy_input_properties
+      88: iconst_0
+      89: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      92: invokeinterface #250,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      97: invokedynamic #262,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     102: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     105: getstatic     #244                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     108: ldc_w         #263                // String preserve_waterlog
+     111: iconst_0
+     112: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     115: invokeinterface #250,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     120: invokedynamic #265,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     125: invokevirtual #235                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     128: invokevirtual #266                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P6;
+     131: aload_0
+     132: aload_0
+     133: invokedynamic #272,  0            // InvokeDynamic #6:apply:()Lcom/mojang/datafixers/util/Function6;
+     138: invokevirtual #275                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     141: invokevirtual #279                // Method com/mojang/datafixers/Products$P6.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     144: areturn
+
+  private static java.lang.Boolean lambda$static$5(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field preserveWaterlog:Z
+       4: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Boolean lambda$static$4(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field copyInputProperties:Z
+       4: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Boolean lambda$static$3(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field randomizeHalf:Z
+       4: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Boolean lambda$static$2(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field randomizeFacing:Z
+       4: invokestatic  #202                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer lambda$static$1(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field output:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$static$0(com.yungnickyoung.minecraft.betterendisland.world.processor.BlockReplaceProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #284,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       5: invokestatic  #285                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #291                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

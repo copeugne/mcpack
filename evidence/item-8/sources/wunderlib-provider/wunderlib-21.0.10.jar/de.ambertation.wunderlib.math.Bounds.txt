@@ -1,0 +1,1154 @@
+Compiled from "Bounds.java"
+public class de.ambertation.wunderlib.math.Bounds {
+  public static final com.mojang.serialization.MapCodec<de.ambertation.wunderlib.math.Bounds> CODEC;
+
+  public static final de.ambertation.wunderlib.math.Bounds EMPTY;
+
+  public final de.ambertation.wunderlib.math.Float3 min;
+
+  public final de.ambertation.wunderlib.math.Float3 max;
+
+  private de.ambertation.wunderlib.math.Bounds(double, double, double, double, double, double);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: dload_1
+       6: dload         7
+       8: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      11: dload_3
+      12: dload         9
+      14: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      17: dload         5
+      19: dload         11
+      21: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      24: invokestatic  #13                 // Method de/ambertation/wunderlib/math/Float3.of:(DDD)Lde/ambertation/wunderlib/math/Float3;
+      27: putfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      30: aload_0
+      31: dload_1
+      32: dload         7
+      34: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      37: dload_3
+      38: dload         9
+      40: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      43: dload         5
+      45: dload         11
+      47: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      50: invokestatic  #13                 // Method de/ambertation/wunderlib/math/Float3.of:(DDD)Lde/ambertation/wunderlib/math/Float3;
+      53: putfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      56: return
+
+  public boolean empty();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       4: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       7: ldc2_w        #35                 // double -2.147483648E9d
+      10: dcmpl
+      11: ifne          88
+      14: aload_0
+      15: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      18: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      21: ldc2_w        #35                 // double -2.147483648E9d
+      24: dcmpl
+      25: ifne          88
+      28: aload_0
+      29: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      32: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      35: ldc2_w        #35                 // double -2.147483648E9d
+      38: dcmpl
+      39: ifne          88
+      42: aload_0
+      43: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      46: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      49: ldc2_w        #35                 // double -2.147483648E9d
+      52: dcmpl
+      53: ifne          88
+      56: aload_0
+      57: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      60: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      63: ldc2_w        #35                 // double -2.147483648E9d
+      66: dcmpl
+      67: ifne          88
+      70: aload_0
+      71: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      74: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      77: ldc2_w        #35                 // double -2.147483648E9d
+      80: dcmpl
+      81: ifne          88
+      84: iconst_1
+      85: goto          89
+      88: iconst_0
+      89: ireturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: aload_0
+       5: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+       8: i2d
+       9: aload_0
+      10: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+      13: i2d
+      14: aload_0
+      15: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+      18: i2d
+      19: aload_0
+      20: invokevirtual #55                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+      23: i2d
+      24: aload_0
+      25: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+      28: i2d
+      29: aload_0
+      30: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+      33: i2d
+      34: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      37: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(net.minecraft.core.BlockPos);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: aload_0
+       5: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+       8: i2d
+       9: aload_0
+      10: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      13: i2d
+      14: aload_0
+      15: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      18: i2d
+      19: aload_0
+      20: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      23: i2d
+      24: aload_0
+      25: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      28: i2d
+      29: aload_0
+      30: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      33: i2d
+      34: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      37: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(net.minecraft.core.BlockPos, net.minecraft.core.Vec3i);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: aload_0
+       5: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+       8: i2d
+       9: aload_0
+      10: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      13: i2d
+      14: aload_0
+      15: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      18: i2d
+      19: aload_0
+      20: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      23: aload_1
+      24: invokevirtual #78                 // Method net/minecraft/core/Vec3i.getX:()I
+      27: iadd
+      28: i2d
+      29: aload_0
+      30: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      33: aload_1
+      34: invokevirtual #81                 // Method net/minecraft/core/Vec3i.getY:()I
+      37: iadd
+      38: i2d
+      39: aload_0
+      40: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      43: aload_1
+      44: invokevirtual #82                 // Method net/minecraft/core/Vec3i.getZ:()I
+      47: iadd
+      48: i2d
+      49: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      52: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: aload_0
+       5: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       8: aload_0
+       9: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      12: aload_0
+      13: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      16: aload_0
+      17: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      20: aload_0
+      21: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      24: aload_0
+      25: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      28: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      31: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(de.ambertation.wunderlib.math.Float3, de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: aload_0
+       5: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       8: aload_0
+       9: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      12: aload_0
+      13: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      16: aload_1
+      17: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      20: aload_1
+      21: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      24: aload_1
+      25: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      28: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      31: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds of(double, double, double, double, double, double);
+    Code:
+       0: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+       3: dup
+       4: dload_0
+       5: dload_2
+       6: dload         4
+       8: dload         6
+      10: dload         8
+      12: dload         10
+      14: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      17: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds ofSphere(de.ambertation.wunderlib.math.Float3, double);
+    Code:
+       0: aload_0
+       1: dload_1
+       2: invokestatic  #83                 // Method de/ambertation/wunderlib/math/Float3.of:(D)Lde/ambertation/wunderlib/math/Float3;
+       5: invokestatic  #86                 // Method ofBox:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+       8: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds ofCylinder(de.ambertation.wunderlib.math.Float3, double, double);
+    Code:
+       0: dload_3
+       1: dload_1
+       2: dload_3
+       3: invokestatic  #13                 // Method de/ambertation/wunderlib/math/Float3.of:(DDD)Lde/ambertation/wunderlib/math/Float3;
+       6: astore        5
+       8: aload_0
+       9: aload         5
+      11: invokevirtual #90                 // Method de/ambertation/wunderlib/math/Float3.sub:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      14: aload_0
+      15: aload         5
+      17: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      20: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      23: areturn
+
+  public static de.ambertation.wunderlib.math.Bounds ofBox(de.ambertation.wunderlib.math.Float3, de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc2_w        #99                 // double 2.0d
+       5: invokevirtual #101                // Method de/ambertation/wunderlib/math/Float3.div:(D)Lde/ambertation/wunderlib/math/Float3;
+       8: invokevirtual #90                 // Method de/ambertation/wunderlib/math/Float3.sub:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      11: astore_2
+      12: aload_2
+      13: aload_2
+      14: aload_1
+      15: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      18: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      21: areturn
+
+  public de.ambertation.wunderlib.math.Float3 getSize();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       4: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       7: aload_0
+       8: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      11: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      14: dsub
+      15: aload_0
+      16: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      19: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      22: aload_0
+      23: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      26: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      29: dsub
+      30: aload_0
+      31: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      34: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      37: aload_0
+      38: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      41: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      44: dsub
+      45: invokestatic  #13                 // Method de/ambertation/wunderlib/math/Float3.of:(DDD)Lde/ambertation/wunderlib/math/Float3;
+      48: areturn
+
+  public de.ambertation.wunderlib.math.Float3 getHalfSize();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       4: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       7: aload_0
+       8: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      11: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      14: dsub
+      15: ldc2_w        #99                 // double 2.0d
+      18: ddiv
+      19: aload_0
+      20: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      23: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      26: aload_0
+      27: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      30: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      33: dsub
+      34: ldc2_w        #99                 // double 2.0d
+      37: ddiv
+      38: aload_0
+      39: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      42: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      45: aload_0
+      46: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      49: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      52: dsub
+      53: ldc2_w        #99                 // double 2.0d
+      56: ddiv
+      57: invokestatic  #13                 // Method de/ambertation/wunderlib/math/Float3.of:(DDD)Lde/ambertation/wunderlib/math/Float3;
+      60: areturn
+
+  public double volume();
+    Code:
+       0: aload_0
+       1: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+       4: astore_1
+       5: aload_1
+       6: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       9: aload_1
+      10: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      13: dmul
+      14: aload_1
+      15: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      18: dmul
+      19: dreturn
+
+  public boolean isInside(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: aload_1
+       1: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       4: aload_0
+       5: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       8: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      11: dcmpl
+      12: iflt          94
+      15: aload_1
+      16: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      19: aload_0
+      20: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      23: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      26: dcmpg
+      27: ifgt          94
+      30: aload_1
+      31: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      34: aload_0
+      35: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      38: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      41: dcmpl
+      42: iflt          94
+      45: aload_1
+      46: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      49: aload_0
+      50: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      53: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      56: dcmpg
+      57: ifgt          94
+      60: aload_1
+      61: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      64: aload_0
+      65: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      68: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      71: dcmpl
+      72: iflt          94
+      75: aload_1
+      76: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      79: aload_0
+      80: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      83: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      86: dcmpg
+      87: ifgt          94
+      90: iconst_1
+      91: goto          95
+      94: iconst_0
+      95: ireturn
+
+  public boolean isInside(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+       4: i2d
+       5: aload_0
+       6: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       9: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      12: dcmpl
+      13: iflt          100
+      16: aload_1
+      17: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      20: i2d
+      21: aload_0
+      22: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      25: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      28: dcmpg
+      29: ifgt          100
+      32: aload_1
+      33: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      36: i2d
+      37: aload_0
+      38: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      41: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      44: dcmpl
+      45: iflt          100
+      48: aload_1
+      49: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      52: i2d
+      53: aload_0
+      54: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      57: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      60: dcmpg
+      61: ifgt          100
+      64: aload_1
+      65: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      68: i2d
+      69: aload_0
+      70: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      73: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      76: dcmpl
+      77: iflt          100
+      80: aload_1
+      81: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      84: i2d
+      85: aload_0
+      86: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      89: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      92: dcmpg
+      93: ifgt          100
+      96: iconst_1
+      97: goto          101
+     100: iconst_0
+     101: ireturn
+
+  public de.ambertation.wunderlib.math.Bounds encapsulate(de.ambertation.wunderlib.math.Bounds);
+    Code:
+       0: aload_0
+       1: invokevirtual #108                // Method empty:()Z
+       4: ifeq          9
+       7: aload_1
+       8: areturn
+       9: aload_1
+      10: invokevirtual #108                // Method empty:()Z
+      13: ifeq          18
+      16: aload_0
+      17: areturn
+      18: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+      21: dup
+      22: aload_0
+      23: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      26: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      29: aload_1
+      30: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      33: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      36: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      39: aload_0
+      40: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      43: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      46: aload_1
+      47: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      50: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      53: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      56: aload_0
+      57: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      60: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      63: aload_1
+      64: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      67: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      70: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      73: aload_0
+      74: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      77: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      80: aload_1
+      81: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      84: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      87: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      90: aload_0
+      91: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      94: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      97: aload_1
+      98: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+     101: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+     104: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+     107: aload_0
+     108: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+     111: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+     114: aload_1
+     115: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+     118: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+     121: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+     124: invokespecial #64                 // Method "<init>":(DDDDDD)V
+     127: areturn
+
+  public de.ambertation.wunderlib.math.Bounds encapsulate(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #108                // Method empty:()Z
+       4: ifeq          12
+       7: aload_1
+       8: invokestatic  #112                // Method of:(Lnet/minecraft/core/BlockPos;)Lde/ambertation/wunderlib/math/Bounds;
+      11: areturn
+      12: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+      15: dup
+      16: aload_0
+      17: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      20: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      23: aload_1
+      24: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      27: i2d
+      28: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      31: aload_0
+      32: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      35: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      38: aload_1
+      39: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      42: i2d
+      43: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      46: aload_0
+      47: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      50: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      53: aload_1
+      54: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+      57: i2d
+      58: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      61: aload_0
+      62: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      65: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      68: aload_1
+      69: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      72: i2d
+      73: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      76: aload_0
+      77: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      80: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      83: aload_1
+      84: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+      87: i2d
+      88: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      91: aload_0
+      92: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      95: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      98: aload_1
+      99: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     102: i2d
+     103: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+     106: invokespecial #64                 // Method "<init>":(DDDDDD)V
+     109: areturn
+
+  public de.ambertation.wunderlib.math.Bounds encapsulate(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: aload_0
+       1: invokevirtual #108                // Method empty:()Z
+       4: ifeq          12
+       7: aload_1
+       8: invokestatic  #115                // Method of:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      11: areturn
+      12: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+      15: dup
+      16: aload_0
+      17: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      20: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      23: aload_1
+      24: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      27: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      30: aload_0
+      31: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      34: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      37: aload_1
+      38: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      41: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      44: aload_0
+      45: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      48: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      51: aload_1
+      52: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      55: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      58: aload_0
+      59: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      62: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      65: aload_1
+      66: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      69: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      72: aload_0
+      73: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      76: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      79: aload_1
+      80: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      83: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      86: aload_0
+      87: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      90: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      93: aload_1
+      94: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      97: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+     100: invokespecial #64                 // Method "<init>":(DDDDDD)V
+     103: areturn
+
+  public de.ambertation.wunderlib.math.Float3 get(de.ambertation.wunderlib.math.Bounds$Interpolate);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       5: aload_0
+       6: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       9: invokevirtual #118                // Method de/ambertation/wunderlib/math/Bounds$Interpolate.lerp:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      12: areturn
+
+  public de.ambertation.wunderlib.math.Float3 getBlockAligned(de.ambertation.wunderlib.math.Bounds$Interpolate);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       5: aload_0
+       6: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       9: invokevirtual #124                // Method de/ambertation/wunderlib/math/Bounds$Interpolate.blockAlignedLerp:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      12: areturn
+
+  public de.ambertation.wunderlib.math.Bounds blockAligned();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       4: ldc2_w        #127                // double 0.5d
+       7: invokevirtual #129                // Method de/ambertation/wunderlib/math/Float3.add:(D)Lde/ambertation/wunderlib/math/Float3;
+      10: invokevirtual #131                // Method de/ambertation/wunderlib/math/Float3.blockAligned:()Lde/ambertation/wunderlib/math/Float3;
+      13: astore_1
+      14: aload_1
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+      20: dconst_1
+      21: invokevirtual #134                // Method de/ambertation/wunderlib/math/Float3.sub:(D)Lde/ambertation/wunderlib/math/Float3;
+      24: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      27: invokevirtual #131                // Method de/ambertation/wunderlib/math/Float3.blockAligned:()Lde/ambertation/wunderlib/math/Float3;
+      30: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      33: areturn
+
+  public de.ambertation.wunderlib.math.Float3 getCenter();
+    Code:
+       0: aload_0
+       1: getstatic     #136                // Field de/ambertation/wunderlib/math/Bounds$Interpolate.CENTER:Lde/ambertation/wunderlib/math/Bounds$Interpolate;
+       4: invokevirtual #140                // Method get:(Lde/ambertation/wunderlib/math/Bounds$Interpolate;)Lde/ambertation/wunderlib/math/Float3;
+       7: areturn
+
+  public de.ambertation.wunderlib.math.Bounds moveToCenter(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+       5: invokevirtual #90                 // Method de/ambertation/wunderlib/math/Float3.sub:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+       8: astore_1
+       9: aload_0
+      10: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      13: aload_1
+      14: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      17: aload_0
+      18: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      21: aload_1
+      22: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      25: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      28: areturn
+
+  public de.ambertation.wunderlib.math.Bounds move(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: aload_1
+       1: ifnonnull     6
+       4: aload_0
+       5: areturn
+       6: aload_0
+       7: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      10: aload_1
+      11: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      14: aload_0
+      15: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      18: aload_1
+      19: invokevirtual #94                 // Method de/ambertation/wunderlib/math/Float3.add:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Float3;
+      22: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      25: areturn
+
+  public de.ambertation.wunderlib.math.Bounds$Interpolate isCorner(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: getstatic     #147                // Field de/ambertation/wunderlib/math/Bounds$Interpolate.CORNERS:[Lde/ambertation/wunderlib/math/Bounds$Interpolate;
+       3: astore_2
+       4: aload_2
+       5: arraylength
+       6: istore_3
+       7: iconst_0
+       8: istore        4
+      10: iload         4
+      12: iload_3
+      13: if_icmpge     44
+      16: aload_2
+      17: iload         4
+      19: aaload
+      20: astore        5
+      22: aload_0
+      23: aload         5
+      25: invokevirtual #151                // Method getBlockAligned:(Lde/ambertation/wunderlib/math/Bounds$Interpolate;)Lde/ambertation/wunderlib/math/Float3;
+      28: aload_1
+      29: invokevirtual #154                // Method de/ambertation/wunderlib/math/Float3.equals:(Ljava/lang/Object;)Z
+      32: ifeq          38
+      35: aload         5
+      37: areturn
+      38: iinc          4, 1
+      41: goto          10
+      44: aconst_null
+      45: areturn
+
+  public de.ambertation.wunderlib.math.Bounds$Interpolate isCornerOrCenter(de.ambertation.wunderlib.math.Float3);
+    Code:
+       0: getstatic     #158                // Field de/ambertation/wunderlib/math/Bounds$Interpolate.CORNERS_AND_CENTER:[Lde/ambertation/wunderlib/math/Bounds$Interpolate;
+       3: astore_2
+       4: aload_2
+       5: arraylength
+       6: istore_3
+       7: iconst_0
+       8: istore        4
+      10: iload         4
+      12: iload_3
+      13: if_icmpge     44
+      16: aload_2
+      17: iload         4
+      19: aaload
+      20: astore        5
+      22: aload_0
+      23: aload         5
+      25: invokevirtual #151                // Method getBlockAligned:(Lde/ambertation/wunderlib/math/Bounds$Interpolate;)Lde/ambertation/wunderlib/math/Float3;
+      28: aload_1
+      29: invokevirtual #154                // Method de/ambertation/wunderlib/math/Float3.equals:(Ljava/lang/Object;)Z
+      32: ifeq          38
+      35: aload         5
+      37: areturn
+      38: iinc          4, 1
+      41: goto          10
+      44: aconst_null
+      45: areturn
+
+  public double minExtension();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       4: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       7: aload_0
+       8: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      11: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      14: dsub
+      15: aload_0
+      16: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      19: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      22: aload_0
+      23: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      26: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      29: dsub
+      30: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      33: aload_0
+      34: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      37: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      40: aload_0
+      41: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      44: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      47: dsub
+      48: invokestatic  #7                  // Method java/lang/Math.min:(DD)D
+      51: dreturn
+
+  public double maxExtension();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       4: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+       7: aload_0
+       8: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      11: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      14: dsub
+      15: aload_0
+      16: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      19: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      22: aload_0
+      23: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      26: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      29: dsub
+      30: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      33: aload_0
+      34: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      37: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      40: aload_0
+      41: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      44: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      47: dsub
+      48: invokestatic  #24                 // Method java/lang/Math.max:(DD)D
+      51: dreturn
+
+  public de.ambertation.wunderlib.math.sdf.shapes.Sphere innerSphere();
+    Code:
+       0: new           #161                // class de/ambertation/wunderlib/math/sdf/shapes/Sphere
+       3: dup
+       4: aload_0
+       5: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+       8: aload_0
+       9: invokevirtual #163                // Method minExtension:()D
+      12: ldc2_w        #99                 // double 2.0d
+      15: ddiv
+      16: ldc2_w        #127                // double 0.5d
+      19: dadd
+      20: invokespecial #167                // Method de/ambertation/wunderlib/math/sdf/shapes/Sphere."<init>":(Lde/ambertation/wunderlib/math/Float3;D)V
+      23: areturn
+
+  public de.ambertation.wunderlib.math.sdf.shapes.Sphere outerSphere();
+    Code:
+       0: new           #161                // class de/ambertation/wunderlib/math/sdf/shapes/Sphere
+       3: dup
+       4: aload_0
+       5: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+       8: aload_0
+       9: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+      12: invokevirtual #170                // Method de/ambertation/wunderlib/math/Float3.length:()D
+      15: ldc2_w        #99                 // double 2.0d
+      18: ddiv
+      19: invokespecial #167                // Method de/ambertation/wunderlib/math/sdf/shapes/Sphere."<init>":(Lde/ambertation/wunderlib/math/Float3;D)V
+      22: areturn
+
+  public de.ambertation.wunderlib.math.sdf.shapes.Box innerBox();
+    Code:
+       0: new           #173                // class de/ambertation/wunderlib/math/sdf/shapes/Box
+       3: dup
+       4: aload_0
+       5: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+       8: aload_0
+       9: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+      12: ldc2_w        #99                 // double 2.0d
+      15: invokevirtual #101                // Method de/ambertation/wunderlib/math/Float3.div:(D)Lde/ambertation/wunderlib/math/Float3;
+      18: invokespecial #175                // Method de/ambertation/wunderlib/math/sdf/shapes/Box."<init>":(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)V
+      21: areturn
+
+  public de.ambertation.wunderlib.math.sdf.shapes.Ellipsoid innerEllipsoid();
+    Code:
+       0: new           #178                // class de/ambertation/wunderlib/math/sdf/shapes/Ellipsoid
+       3: dup
+       4: aload_0
+       5: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+       8: aload_0
+       9: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+      12: ldc2_w        #99                 // double 2.0d
+      15: invokevirtual #101                // Method de/ambertation/wunderlib/math/Float3.div:(D)Lde/ambertation/wunderlib/math/Float3;
+      18: invokespecial #180                // Method de/ambertation/wunderlib/math/sdf/shapes/Ellipsoid."<init>":(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)V
+      21: areturn
+
+  public net.minecraft.world.level.levelgen.structure.BoundingBox toBoundingBox();
+    Code:
+       0: new           #44                 // class net/minecraft/world/level/levelgen/structure/BoundingBox
+       3: dup
+       4: aload_0
+       5: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       8: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      11: d2i
+      12: aload_0
+      13: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      16: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      19: d2i
+      20: aload_0
+      21: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      24: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      27: d2i
+      28: aload_0
+      29: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      32: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      35: d2i
+      36: aload_0
+      37: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      40: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      43: d2i
+      44: aload_0
+      45: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      48: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      51: d2i
+      52: invokespecial #181                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+      55: areturn
+
+  public net.minecraft.world.phys.AABB toAABB();
+    Code:
+       0: new           #184                // class net/minecraft/world/phys/AABB
+       3: dup
+       4: aload_0
+       5: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       8: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      11: aload_0
+      12: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      15: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      18: aload_0
+      19: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      22: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      25: aload_0
+      26: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      29: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      32: dconst_1
+      33: dadd
+      34: aload_0
+      35: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      38: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      41: dconst_1
+      42: dadd
+      43: aload_0
+      44: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      47: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      50: dconst_1
+      51: dadd
+      52: invokespecial #186                // Method net/minecraft/world/phys/AABB."<init>":(DDDDDD)V
+      55: areturn
+
+  public de.ambertation.wunderlib.math.Bounds shrink(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #187                // Method isInside:(Lnet/minecraft/core/BlockPos;)Z
+       5: ifne          10
+       8: aconst_null
+       9: areturn
+      10: aload_0
+      11: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      14: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      17: dstore_2
+      18: aload_0
+      19: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      22: getfield      #29                 // Field de/ambertation/wunderlib/math/Float3.x:D
+      25: dstore        4
+      27: aload_0
+      28: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      31: getfield      #37                 // Field de/ambertation/wunderlib/math/Float3.y:D
+      34: dstore        6
+      36: aload_0
+      37: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      40: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      43: dstore        8
+      45: aload_0
+      46: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      49: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      52: dstore        10
+      54: aload_0
+      55: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      58: getfield      #40                 // Field de/ambertation/wunderlib/math/Float3.z:D
+      61: dstore        12
+      63: aload_1
+      64: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      67: i2d
+      68: dload_2
+      69: dsub
+      70: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+      73: dload         4
+      75: aload_1
+      76: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      79: i2d
+      80: dsub
+      81: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+      84: dcmpg
+      85: ifge          97
+      88: aload_1
+      89: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      92: i2d
+      93: dstore_2
+      94: goto          104
+      97: aload_1
+      98: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+     101: i2d
+     102: dstore        4
+     104: aload_1
+     105: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     108: i2d
+     109: dload         6
+     111: dsub
+     112: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+     115: dload         8
+     117: aload_1
+     118: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     121: i2d
+     122: dsub
+     123: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+     126: dcmpg
+     127: ifge          140
+     130: aload_1
+     131: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     134: i2d
+     135: dstore        6
+     137: goto          147
+     140: aload_1
+     141: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     144: i2d
+     145: dstore        8
+     147: aload_1
+     148: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     151: i2d
+     152: dload         10
+     154: dsub
+     155: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+     158: dload         12
+     160: aload_1
+     161: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     164: i2d
+     165: dsub
+     166: invokestatic  #191                // Method java/lang/Math.abs:(D)D
+     169: dcmpg
+     170: ifge          183
+     173: aload_1
+     174: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     177: i2d
+     178: dstore        10
+     180: goto          190
+     183: aload_1
+     184: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     187: i2d
+     188: dstore        12
+     190: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+     193: dup
+     194: dload_2
+     195: dload         6
+     197: dload         10
+     199: dload         4
+     201: dload         8
+     203: dload         12
+     205: invokespecial #64                 // Method "<init>":(DDDDDD)V
+     208: areturn
+
+  public de.ambertation.wunderlib.math.Bounds rotate(de.ambertation.wunderlib.math.Quaternion);
+    Code:
+       0: aload_0
+       1: getstatic     #195                // Field de/ambertation/wunderlib/math/Float3.ZERO:Lde/ambertation/wunderlib/math/Float3;
+       4: invokevirtual #198                // Method moveToCenter:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+       7: astore_2
+       8: getstatic     #195                // Field de/ambertation/wunderlib/math/Float3.ZERO:Lde/ambertation/wunderlib/math/Float3;
+      11: getstatic     #195                // Field de/ambertation/wunderlib/math/Float3.ZERO:Lde/ambertation/wunderlib/math/Float3;
+      14: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      17: astore_3
+      18: getstatic     #147                // Field de/ambertation/wunderlib/math/Bounds$Interpolate.CORNERS:[Lde/ambertation/wunderlib/math/Bounds$Interpolate;
+      21: astore        4
+      23: aload         4
+      25: arraylength
+      26: istore        5
+      28: iconst_0
+      29: istore        6
+      31: iload         6
+      33: iload         5
+      35: if_icmpge     66
+      38: aload         4
+      40: iload         6
+      42: aaload
+      43: astore        7
+      45: aload_3
+      46: aload_2
+      47: aload         7
+      49: invokevirtual #140                // Method get:(Lde/ambertation/wunderlib/math/Bounds$Interpolate;)Lde/ambertation/wunderlib/math/Float3;
+      52: aload_1
+      53: invokevirtual #201                // Method de/ambertation/wunderlib/math/Float3.rotate:(Lde/ambertation/wunderlib/math/Quaternion;)Lde/ambertation/wunderlib/math/Float3;
+      56: invokevirtual #205                // Method encapsulate:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      59: astore_3
+      60: iinc          6, 1
+      63: goto          31
+      66: aload_3
+      67: aload_0
+      68: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+      71: invokevirtual #198                // Method moveToCenter:(Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      74: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokevirtual #108                // Method empty:()Z
+       4: ifeq          12
+       7: ldc           #208                // String EMPTY
+       9: goto          45
+      12: aload_0
+      13: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+      16: invokestatic  #210                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      19: aload_0
+      20: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      23: invokestatic  #210                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      26: aload_0
+      27: invokevirtual #144                // Method getCenter:()Lde/ambertation/wunderlib/math/Float3;
+      30: invokestatic  #210                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      33: aload_0
+      34: invokevirtual #104                // Method getSize:()Lde/ambertation/wunderlib/math/Float3;
+      37: invokestatic  #210                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      40: invokedynamic #216,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      45: areturn
+
+  public void serializeToNetwork(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       4: aload_1
+       5: invokevirtual #220                // Method de/ambertation/wunderlib/math/Float3.serializeToNetwork:(Lnet/minecraft/network/FriendlyByteBuf;)V
+       8: aload_0
+       9: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+      12: aload_1
+      13: invokevirtual #220                // Method de/ambertation/wunderlib/math/Float3.serializeToNetwork:(Lnet/minecraft/network/FriendlyByteBuf;)V
+      16: return
+
+  public static de.ambertation.wunderlib.math.Bounds deserializeFromNetwork(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_0
+       1: invokestatic  #224                // Method de/ambertation/wunderlib/math/Float3.deserializeFromNetwork:(Lnet/minecraft/network/FriendlyByteBuf;)Lde/ambertation/wunderlib/math/Float3;
+       4: astore_1
+       5: aload_0
+       6: invokestatic  #224                // Method de/ambertation/wunderlib/math/Float3.deserializeFromNetwork:(Lnet/minecraft/network/FriendlyByteBuf;)Lde/ambertation/wunderlib/math/Float3;
+       9: astore_2
+      10: aload_1
+      11: aload_2
+      12: invokestatic  #97                 // Method of:(Lde/ambertation/wunderlib/math/Float3;Lde/ambertation/wunderlib/math/Float3;)Lde/ambertation/wunderlib/math/Bounds;
+      15: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #228                // Field de/ambertation/wunderlib/math/Float3.CODEC:Lcom/mojang/serialization/MapCodec;
+       4: ldc           #232                // String min
+       6: invokevirtual #233                // Method com/mojang/serialization/MapCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+       9: invokedynamic #239,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      14: invokevirtual #243                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      17: getstatic     #228                // Field de/ambertation/wunderlib/math/Float3.CODEC:Lcom/mojang/serialization/MapCodec;
+      20: ldc           #247                // String max
+      22: invokevirtual #233                // Method com/mojang/serialization/MapCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      25: invokedynamic #248,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      30: invokevirtual #243                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      33: invokevirtual #249                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      36: aload_0
+      37: invokedynamic #255,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      42: invokevirtual #258                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      45: areturn
+
+  private static de.ambertation.wunderlib.math.Float3 lambda$static$1(de.ambertation.wunderlib.math.Bounds);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field max:Lde/ambertation/wunderlib/math/Float3;
+       4: areturn
+
+  private static de.ambertation.wunderlib.math.Float3 lambda$static$0(de.ambertation.wunderlib.math.Bounds);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field min:Lde/ambertation/wunderlib/math/Float3;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #263,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #264                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #270                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #20                 // class de/ambertation/wunderlib/math/Bounds
+      14: dup
+      15: ldc2_w        #35                 // double -2.147483648E9d
+      18: ldc2_w        #35                 // double -2.147483648E9d
+      21: ldc2_w        #35                 // double -2.147483648E9d
+      24: ldc2_w        #35                 // double -2.147483648E9d
+      27: ldc2_w        #35                 // double -2.147483648E9d
+      30: ldc2_w        #35                 // double -2.147483648E9d
+      33: invokespecial #64                 // Method "<init>":(DDDDDD)V
+      36: putstatic     #271                // Field EMPTY:Lde/ambertation/wunderlib/math/Bounds;
+      39: return
+}

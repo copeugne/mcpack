@@ -1,0 +1,342 @@
+Compiled from "DynamicLegProcessor.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.processor.DynamicLegProcessor implements com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor {
+  private final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer stoneBrickSelector;
+
+  private final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer cobblestoneSelector;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.processor.DynamicLegProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+       8: dup
+       9: getstatic     #9                  // Field net/minecraft/world/level/block/Blocks.STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      12: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      15: invokespecial #21                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      18: getstatic     #24                 // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: ldc           #27                 // float 0.5f
+      26: invokevirtual #28                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      29: getstatic     #32                 // Field net/minecraft/world/level/block/Blocks.CRACKED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      35: ldc           #35                 // float 0.25f
+      37: invokevirtual #28                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      40: putfield      #36                 // Field stoneBrickSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      43: aload_0
+      44: new           #7                  // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+      47: dup
+      48: getstatic     #42                 // Field net/minecraft/world/level/block/Blocks.COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+      51: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      54: invokespecial #21                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      57: getstatic     #45                 // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+      60: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      63: ldc           #48                 // float 0.6f
+      65: invokevirtual #28                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      68: putfield      #49                 // Field cobblestoneSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      71: return
+
+  public void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokeinterface #52,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       8: astore        7
+      10: aload_1
+      11: aload         4
+      13: aload         6
+      15: getstatic     #58                 // Field net/minecraft/world/level/block/Blocks.YELLOW_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+      18: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      21: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore        8
+      28: aload         8
+      30: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      35: ifeq          83
+      38: aload         8
+      40: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      48: astore        9
+      50: aload_0
+      51: aload_2
+      52: aload         9
+      54: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      57: aload_0
+      58: aload         7
+      60: aload         9
+      62: invokedynamic #89,  0             // InvokeDynamic #0:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+      67: aload_0
+      68: aload         7
+      70: aload         9
+      72: invokedynamic #93,  0             // InvokeDynamic #1:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+      77: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+      80: goto          28
+      83: aload_1
+      84: aload         4
+      86: aload         6
+      88: getstatic     #98                 // Field net/minecraft/world/level/block/Blocks.WARPED_FENCE:Lnet/minecraft/world/level/block/Block;
+      91: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      94: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      99: astore        8
+     101: aload         8
+     103: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     108: ifeq          156
+     111: aload         8
+     113: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     118: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     121: astore        9
+     123: aload_0
+     124: aload_2
+     125: aload         9
+     127: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     130: aload_0
+     131: aload         7
+     133: aload         9
+     135: invokedynamic #101,  0            // InvokeDynamic #2:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+     140: aload_0
+     141: aload         7
+     143: aload         9
+     145: invokedynamic #102,  0            // InvokeDynamic #3:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+     150: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     153: goto          101
+     156: aload_1
+     157: aload         4
+     159: aload         6
+     161: getstatic     #103                // Field net/minecraft/world/level/block/Blocks.PINK_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+     164: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     167: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     172: astore        8
+     174: aload         8
+     176: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     181: ifeq          223
+     184: aload         8
+     186: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     191: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     194: astore        9
+     196: aload_0
+     197: aload_2
+     198: aload         9
+     200: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     203: aload_0
+     204: aload_3
+     205: invokedynamic #106,  0            // InvokeDynamic #4:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Supplier;
+     210: aload_0
+     211: aload_3
+     212: invokedynamic #109,  0            // InvokeDynamic #5:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Supplier;
+     217: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     220: goto          174
+     223: aload_1
+     224: aload         4
+     226: aload         6
+     228: getstatic     #110                // Field net/minecraft/world/level/block/Blocks.LIGHT_BLUE_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+     231: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     234: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     239: astore        8
+     241: aload         8
+     243: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     248: ifeq          302
+     251: aload         8
+     253: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     258: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     261: astore        9
+     263: aload_0
+     264: aload_2
+     265: aload         9
+     267: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     270: getstatic     #113                // Field net/minecraft/world/level/block/Blocks.POLISHED_ANDESITE:Lnet/minecraft/world/level/block/Block;
+     273: dup
+     274: invokestatic  #116                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     277: pop
+     278: invokedynamic #122,  0            // InvokeDynamic #6:get:(Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Supplier;
+     283: getstatic     #113                // Field net/minecraft/world/level/block/Blocks.POLISHED_ANDESITE:Lnet/minecraft/world/level/block/Block;
+     286: dup
+     287: invokestatic  #116                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     290: pop
+     291: invokedynamic #122,  0            // InvokeDynamic #6:get:(Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Supplier;
+     296: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     299: goto          241
+     302: aload_1
+     303: aload         4
+     305: aload         6
+     307: getstatic     #125                // Field net/minecraft/world/level/block/Blocks.MAGENTA_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+     310: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     313: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     318: astore        8
+     320: aload         8
+     322: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     327: ifeq          369
+     330: aload         8
+     332: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     337: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     340: astore        9
+     342: aload_0
+     343: aload_2
+     344: aload         9
+     346: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     349: aload_0
+     350: aload_3
+     351: invokedynamic #128,  0            // InvokeDynamic #7:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Supplier;
+     356: aload_0
+     357: aload_3
+     358: invokedynamic #129,  0            // InvokeDynamic #8:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Supplier;
+     363: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     366: goto          320
+     369: aload_1
+     370: aload         4
+     372: aload         6
+     374: getstatic     #130                // Field net/minecraft/world/level/block/Blocks.GRAY_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+     377: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     380: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     385: astore        8
+     387: aload         8
+     389: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     394: ifeq          442
+     397: aload         8
+     399: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     404: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     407: astore        9
+     409: aload_0
+     410: aload_2
+     411: aload         9
+     413: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     416: getstatic     #113                // Field net/minecraft/world/level/block/Blocks.POLISHED_ANDESITE:Lnet/minecraft/world/level/block/Block;
+     419: dup
+     420: invokestatic  #116                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     423: pop
+     424: invokedynamic #122,  0            // InvokeDynamic #6:get:(Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Supplier;
+     429: aload_0
+     430: aload_3
+     431: invokedynamic #133,  0            // InvokeDynamic #9:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Supplier;
+     436: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     439: goto          387
+     442: aload_1
+     443: aload         4
+     445: aload         6
+     447: getstatic     #134                // Field net/minecraft/world/level/block/Blocks.PRISMARINE_WALL:Lnet/minecraft/world/level/block/Block;
+     450: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     453: invokeinterface #67,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     458: astore        8
+     460: aload         8
+     462: invokeinterface #73,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     467: ifeq          511
+     470: aload         8
+     472: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     477: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     480: astore        9
+     482: aload_0
+     483: aload_2
+     484: aload         9
+     486: invokevirtual #85                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     489: aload_0
+     490: aload         9
+     492: invokedynamic #137,  0            // InvokeDynamic #10:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+     497: aload_0
+     498: aload         9
+     500: invokedynamic #140,  0            // InvokeDynamic #11:get:(Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/DynamicLegProcessor;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Ljava/util/function/Supplier;
+     505: invokevirtual #94                 // Method generatePillarDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V
+     508: goto          460
+     511: return
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$10(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: getstatic     #141                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_WALL:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       7: aload_1
+       8: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      11: invokevirtual #147                // Method getFenceBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      14: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$9(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: getstatic     #141                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_WALL:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #15                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       7: aload_1
+       8: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      11: invokevirtual #151                // Method getWallBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      14: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$8(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field stoneBrickSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: aload_1
+       5: invokevirtual #154                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$7(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field cobblestoneSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: aload_1
+       5: invokevirtual #154                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$6(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field cobblestoneSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: aload_1
+       5: invokevirtual #154                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$5(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field stoneBrickSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: aload_1
+       5: invokevirtual #154                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$4(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field stoneBrickSelector:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       4: aload_1
+       5: invokevirtual #154                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$3(net.minecraft.core.Holder, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #157                // Method getFenceBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+       6: aload_2
+       7: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: invokevirtual #147                // Method getFenceBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$2(net.minecraft.core.Holder, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #157                // Method getFenceBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+       6: aload_2
+       7: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: invokevirtual #147                // Method getFenceBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$1(net.minecraft.core.Holder, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #161                // Method getLogBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+       6: aload_2
+       7: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: invokevirtual #164                // Method getLogBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: areturn
+
+  private net.minecraft.world.level.block.state.BlockState lambda$processTemplate$0(net.minecraft.core.Holder, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #161                // Method getLogBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+       6: aload_2
+       7: invokevirtual #144                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: invokevirtual #164                // Method getLogBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: areturn
+}

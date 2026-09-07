@@ -1,0 +1,565 @@
+Compiled from "SableCompanion.java"
+public interface dev.ryanhcode.sable.companion.SableCompanion {
+  public static final dev.ryanhcode.sable.companion.SableCompanion INSTANCE;
+
+  public abstract java.lang.Iterable<? extends dev.ryanhcode.sable.companion.SubLevelAccess> getAllIntersecting(net.minecraft.world.level.Level, dev.ryanhcode.sable.companion.math.BoundingBox3dc);
+
+  public abstract dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, int, int);
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: getfield      #1                  // Field net/minecraft/world/level/ChunkPos.x:I
+       6: aload_2
+       7: getfield      #7                  // Field net/minecraft/world/level/ChunkPos.z:I
+      10: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      15: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, net.minecraft.core.SectionPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #16                 // Method net/minecraft/core/SectionPos.getX:()I
+       6: aload_2
+       7: invokevirtual #22                 // Method net/minecraft/core/SectionPos.getZ:()I
+      10: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      15: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, net.minecraft.core.Vec3i);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #25                 // Method net/minecraft/core/Vec3i.getX:()I
+       6: iconst_4
+       7: ishr
+       8: aload_2
+       9: invokevirtual #28                 // Method net/minecraft/core/Vec3i.getZ:()I
+      12: iconst_4
+      13: ishr
+      14: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      19: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+       8: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      11: iconst_4
+      12: ishr
+      13: aload_2
+      14: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      19: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      22: iconst_4
+      23: ishr
+      24: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      29: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, org.joml.Vector3dc);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #42,  1           // InterfaceMethod org/joml/Vector3dc.x:()D
+       8: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      11: iconst_4
+      12: ishr
+      13: aload_2
+      14: invokeinterface #45,  1           // InterfaceMethod org/joml/Vector3dc.z:()D
+      19: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      22: iconst_4
+      23: ishr
+      24: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      29: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.Level, double, double);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dload_2
+       3: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+       6: iconst_4
+       7: ishr
+       8: dload         4
+      10: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      13: iconst_4
+      14: ishr
+      15: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      20: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #46                 // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+       5: aload_1
+       6: invokevirtual #52                 // Method net/minecraft/world/entity/Entity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+       9: invokeinterface #56,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      14: areturn
+
+  public default dev.ryanhcode.sable.companion.SubLevelAccess getContaining(net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #59                 // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       5: aload_1
+       6: invokevirtual #64                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       9: invokeinterface #68,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      14: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(int, int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: iload_1
+       8: iload_2
+       9: invokeinterface #10,  4           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;II)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      14: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      17: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: aload_1
+       8: invokeinterface #56,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      13: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      16: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: aload_1
+       8: invokeinterface #76,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Position;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      13: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      16: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(org.joml.Vector3dc);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: aload_1
+       8: invokeinterface #79,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      13: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      16: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.core.SectionPos);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: aload_1
+       8: invokeinterface #82,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/SectionPos;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      13: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      16: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.core.Vec3i);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: aload_1
+       8: invokeinterface #68,  3           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      13: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      16: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(double, double);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #71,  1           // InterfaceMethod getClientLevel:()Lnet/minecraft/world/level/Level;
+       7: dload_1
+       8: dload_3
+       9: invokeinterface #85,  6           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/Level;DD)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+      14: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      17: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #88,  2           // InterfaceMethod getContaining:(Lnet/minecraft/world/entity/Entity;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+       7: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      10: areturn
+
+  public default dev.ryanhcode.sable.companion.ClientSubLevelAccess getContainingClient(net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #91,  2           // InterfaceMethod getContaining:(Lnet/minecraft/world/level/block/entity/BlockEntity;)Ldev/ryanhcode/sable/companion/SubLevelAccess;
+       7: checkcast     #74                 // class dev/ryanhcode/sable/companion/ClientSubLevelAccess
+      10: areturn
+
+  public default org.joml.Vector3d projectOutOfSubLevel(net.minecraft.world.level.Level, org.joml.Vector3d);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_2
+       4: invokeinterface #94,  4           // InterfaceMethod projectOutOfSubLevel:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+       9: areturn
+
+  public abstract org.joml.Vector3d projectOutOfSubLevel(net.minecraft.world.level.Level, org.joml.Vector3dc, org.joml.Vector3d);
+
+  public abstract net.minecraft.world.phys.Vec3 projectOutOfSubLevel(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3);
+
+  public default net.minecraft.world.phys.Vec3 projectOutOfSubLevel(net.minecraft.world.level.Level, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: new           #98                 // class net/minecraft/world/phys/Vec3
+       5: dup
+       6: aload_2
+       7: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      12: aload_2
+      13: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      18: aload_2
+      19: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      24: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      27: invokeinterface #107,  3          // InterfaceMethod projectOutOfSubLevel:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      32: areturn
+
+  public abstract <T, S extends dev.ryanhcode.sable.companion.SubLevelAccess> T runIncludingSubLevels(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3, boolean, S, java.util.function.BiFunction<S, net.minecraft.core.BlockPos, T>);
+
+  public default <T, S extends dev.ryanhcode.sable.companion.SubLevelAccess> T runIncludingSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, boolean, S, java.util.function.BiFunction<S, net.minecraft.core.BlockPos, T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: new           #98                 // class net/minecraft/world/phys/Vec3
+       5: dup
+       6: aload_2
+       7: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      12: aload_2
+      13: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      18: aload_2
+      19: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      24: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      27: iload_3
+      28: aload         4
+      30: aload         5
+      32: invokeinterface #110,  6          // InterfaceMethod runIncludingSubLevels:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;ZLdev/ryanhcode/sable/companion/SubLevelAccess;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+      37: areturn
+
+  public abstract <S extends dev.ryanhcode.sable.companion.SubLevelAccess> boolean findIncludingSubLevels(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3, boolean, S, java.util.function.BiFunction<S, net.minecraft.core.BlockPos, java.lang.Boolean>);
+
+  public default <S extends dev.ryanhcode.sable.companion.SubLevelAccess> boolean findIncludingSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, boolean, S, java.util.function.BiFunction<S, net.minecraft.core.BlockPos, java.lang.Boolean>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: new           #98                 // class net/minecraft/world/phys/Vec3
+       5: dup
+       6: aload_2
+       7: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      12: aload_2
+      13: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      18: aload_2
+      19: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      24: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      27: iload_3
+      28: aload         4
+      30: aload         5
+      32: invokeinterface #114,  6          // InterfaceMethod findIncludingSubLevels:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;ZLdev/ryanhcode/sable/companion/SubLevelAccess;Ljava/util/function/BiFunction;)Z
+      37: ireturn
+
+  public abstract double distanceSquaredWithSubLevels(net.minecraft.world.level.Level, org.joml.Vector3dc, org.joml.Vector3dc);
+
+  public abstract double distanceSquaredWithSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, net.minecraft.core.Position);
+
+  public abstract double distanceSquaredWithSubLevels(net.minecraft.world.level.Level, org.joml.Vector3dc, double, double, double);
+
+  public abstract double distanceSquaredWithSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, double, double, double);
+
+  public abstract double distanceSquaredWithSubLevels(net.minecraft.world.level.Level, double, double, double, double, double, double);
+
+  public abstract double rectilinearDistanceWithSubLevels(net.minecraft.world.level.Level, org.joml.Vector3dc, org.joml.Vector3dc);
+
+  public abstract double rectilinearDistanceWithSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, net.minecraft.core.Position);
+
+  public abstract double rectilinearDistanceWithSubLevels(net.minecraft.world.level.Level, org.joml.Vector3dc, double, double, double);
+
+  public abstract double rectilinearDistanceWithSubLevels(net.minecraft.world.level.Level, net.minecraft.core.Position, double, double, double);
+
+  public abstract double rectilinearDistanceWithSubLevels(net.minecraft.world.level.Level, double, double, double, double, double, double);
+
+  public abstract org.joml.Vector3d getVelocity(net.minecraft.world.level.Level, org.joml.Vector3dc, org.joml.Vector3d);
+
+  public default org.joml.Vector3d getVelocity(net.minecraft.world.level.Level, org.joml.Vector3d);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_2
+       4: invokeinterface #118,  4          // InterfaceMethod getVelocity:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+       9: areturn
+
+  public abstract net.minecraft.world.phys.Vec3 getVelocity(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3);
+
+  public default net.minecraft.world.phys.Vec3 getVelocity(net.minecraft.world.level.Level, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: new           #98                 // class net/minecraft/world/phys/Vec3
+       5: dup
+       6: aload_2
+       7: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      12: aload_2
+      13: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      18: aload_2
+      19: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      24: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      27: invokeinterface #121,  3          // InterfaceMethod getVelocity:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      32: areturn
+
+  public abstract org.joml.Vector3d getVelocity(net.minecraft.world.level.Level, dev.ryanhcode.sable.companion.SubLevelAccess, org.joml.Vector3dc, org.joml.Vector3d);
+
+  public default org.joml.Vector3d getVelocity(net.minecraft.world.level.Level, dev.ryanhcode.sable.companion.SubLevelAccess, org.joml.Vector3d);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload_3
+       5: invokeinterface #123,  5          // InterfaceMethod getVelocity:(Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/SubLevelAccess;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+      10: areturn
+
+  public abstract net.minecraft.world.phys.Vec3 getVelocity(net.minecraft.world.level.Level, dev.ryanhcode.sable.companion.SubLevelAccess, net.minecraft.world.phys.Vec3);
+
+  public default net.minecraft.world.phys.Vec3 getVelocity(net.minecraft.world.level.Level, dev.ryanhcode.sable.companion.SubLevelAccess, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: new           #98                 // class net/minecraft/world/phys/Vec3
+       6: dup
+       7: aload_3
+       8: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      13: aload_3
+      14: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      19: aload_3
+      20: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      25: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      28: invokeinterface #126,  4          // InterfaceMethod getVelocity:(Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/SubLevelAccess;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      33: areturn
+
+  public abstract org.joml.Vector3d getVelocityRelativeToAir(net.minecraft.world.level.Level, org.joml.Vector3dc, org.joml.Vector3d);
+
+  public default org.joml.Vector3d getVelocityRelativeToAir(net.minecraft.world.level.Level, org.joml.Vector3d);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_2
+       4: invokeinterface #129,  4          // InterfaceMethod getVelocityRelativeToAir:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+       9: areturn
+
+  public abstract net.minecraft.world.phys.Vec3 getVelocityRelativeToAir(net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3);
+
+  public default net.minecraft.world.phys.Vec3 getVelocityRelativeToAir(net.minecraft.world.level.Level, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: new           #98                 // class net/minecraft/world/phys/Vec3
+       5: dup
+       6: aload_2
+       7: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+      12: aload_2
+      13: invokeinterface #100,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+      18: aload_2
+      19: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      24: invokespecial #103                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      27: invokeinterface #121,  3          // InterfaceMethod getVelocity:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      32: areturn
+
+  public abstract boolean isInPlotGrid(net.minecraft.world.level.Level, int, int);
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.Level, net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: getfield      #1                  // Field net/minecraft/world/level/ChunkPos.x:I
+       6: aload_2
+       7: getfield      #7                  // Field net/minecraft/world/level/ChunkPos.z:I
+      10: invokeinterface #132,  4          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;II)Z
+      15: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.Level, net.minecraft.core.SectionPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #16                 // Method net/minecraft/core/SectionPos.getX:()I
+       6: aload_2
+       7: invokevirtual #22                 // Method net/minecraft/core/SectionPos.getZ:()I
+      10: invokeinterface #132,  4          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;II)Z
+      15: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.Level, net.minecraft.core.Vec3i);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #25                 // Method net/minecraft/core/Vec3i.getX:()I
+       6: iconst_4
+       7: ishr
+       8: aload_2
+       9: invokevirtual #28                 // Method net/minecraft/core/Vec3i.getZ:()I
+      12: iconst_4
+      13: ishr
+      14: invokeinterface #132,  4          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;II)Z
+      19: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.Level, net.minecraft.core.Position);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #29,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+       8: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      11: iconst_4
+      12: ishr
+      13: aload_2
+      14: invokeinterface #40,  1           // InterfaceMethod net/minecraft/core/Position.z:()D
+      19: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      22: iconst_4
+      23: ishr
+      24: invokeinterface #132,  4          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;II)Z
+      29: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.Level, org.joml.Vector3dc);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #42,  1           // InterfaceMethod org/joml/Vector3dc.x:()D
+       8: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      11: iconst_4
+      12: ishr
+      13: aload_2
+      14: invokeinterface #45,  1           // InterfaceMethod org/joml/Vector3dc.z:()D
+      19: invokestatic  #34                 // Method net/minecraft/util/Mth.floor:(D)I
+      22: iconst_4
+      23: ishr
+      24: invokeinterface #132,  4          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;II)Z
+      29: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #46                 // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+       5: aload_1
+       6: invokevirtual #52                 // Method net/minecraft/world/entity/Entity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+       9: invokeinterface #136,  3          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;)Z
+      14: ireturn
+
+  public default boolean isInPlotGrid(net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #59                 // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       5: aload_1
+       6: invokevirtual #64                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       9: invokeinterface #139,  3          // InterfaceMethod isInPlotGrid:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;)Z
+      14: ireturn
+
+  public abstract dev.ryanhcode.sable.companion.SubLevelAccess getTrackingSubLevel(net.minecraft.world.entity.Entity);
+
+  public abstract dev.ryanhcode.sable.companion.SubLevelAccess getLastTrackingSubLevel(net.minecraft.world.entity.Entity);
+
+  public abstract dev.ryanhcode.sable.companion.SubLevelAccess getTrackingOrVehicleSubLevel(net.minecraft.world.entity.Entity);
+
+  public abstract dev.ryanhcode.sable.companion.SubLevelAccess getVehicleSubLevel(net.minecraft.world.entity.Entity);
+
+  public abstract net.minecraft.world.phys.Vec3 getEyePositionInterpolated(net.minecraft.world.entity.Entity, float);
+
+  public abstract org.joml.Vector3d getFeetPos(net.minecraft.world.entity.Entity, float);
+
+  public default org.joml.Vector3d getFeetPos(net.minecraft.world.entity.Entity, float, org.joml.Quaterniondc);
+    Code:
+       0: aload_3
+       1: ifnonnull     23
+       4: aload_1
+       5: invokevirtual #142                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+       8: invokestatic  #146                // Method dev/ryanhcode/sable/companion/math/JOMLConversion.toJOML:(Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+      11: dconst_0
+      12: fload_2
+      13: f2d
+      14: dconst_0
+      15: invokevirtual #152                // Method org/joml/Vector3d.sub:(DDD)Lorg/joml/Vector3d;
+      18: astore        4
+      20: goto          57
+      23: aload_1
+      24: invokevirtual #142                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+      27: invokestatic  #146                // Method dev/ryanhcode/sable/companion/math/JOMLConversion.toJOML:(Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+      30: aload_3
+      31: new           #153                // class org/joml/Vector3d
+      34: dup
+      35: dconst_0
+      36: fload_2
+      37: aload_1
+      38: invokevirtual #158                // Method net/minecraft/world/entity/Entity.getEyeHeight:()F
+      41: fadd
+      42: f2d
+      43: dconst_0
+      44: invokespecial #162                // Method org/joml/Vector3d."<init>":(DDD)V
+      47: invokeinterface #163,  2          // InterfaceMethod org/joml/Quaterniondc.transform:(Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+      52: invokevirtual #169                // Method org/joml/Vector3d.sub:(Lorg/joml/Vector3dc;)Lorg/joml/Vector3d;
+      55: astore        4
+      57: aload         4
+      59: areturn
+
+  public abstract net.minecraft.world.level.Level getClientLevel();
+
+  private static java.lang.RuntimeException lambda$static$1();
+    Code:
+       0: new           #172                // class java/lang/RuntimeException
+       3: dup
+       4: ldc           #174                // String Failed to find any sable companion implementation
+       6: invokespecial #176                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+       9: areturn
+
+  private static int lambda$static$0(java.util.ServiceLoader$Provider);
+    Code:
+       0: aload_0
+       1: invokeinterface #179,  1          // InterfaceMethod java/util/ServiceLoader$Provider.type:()Ljava/lang/Class;
+       6: astore_1
+       7: aload_1
+       8: ldc           #185                // class dev/ryanhcode/sable/companion/SableCompanion$LoadPriority
+      10: invokevirtual #187                // Method java/lang/Class.getAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+      13: checkcast     #185                // class dev/ryanhcode/sable/companion/SableCompanion$LoadPriority
+      16: astore_2
+      17: aload_2
+      18: ifnull        30
+      21: aload_2
+      22: invokeinterface #193,  1          // InterfaceMethod dev/ryanhcode/sable/companion/SableCompanion$LoadPriority.value:()I
+      27: goto          33
+      30: sipush        1000
+      33: ireturn
+
+  static {};
+    Code:
+       0: ldc           #11                 // class dev/ryanhcode/sable/companion/SableCompanion
+       2: invokestatic  #196                // Method java/util/ServiceLoader.load:(Ljava/lang/Class;)Ljava/util/ServiceLoader;
+       5: invokevirtual #202                // Method java/util/ServiceLoader.stream:()Ljava/util/stream/Stream;
+       8: invokedynamic #206,  0            // InvokeDynamic #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+      13: invokestatic  #210                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      16: invokeinterface #216,  2          // InterfaceMethod java/util/stream/Stream.max:(Ljava/util/Comparator;)Ljava/util/Optional;
+      21: invokedynamic #222,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      26: invokevirtual #226                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      29: invokedynamic #232,  0            // InvokeDynamic #2:get:()Ljava/util/function/Supplier;
+      34: invokevirtual #236                // Method java/util/Optional.orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      37: checkcast     #11                 // class dev/ryanhcode/sable/companion/SableCompanion
+      40: putstatic     #240                // Field INSTANCE:Ldev/ryanhcode/sable/companion/SableCompanion;
+      43: return
+}

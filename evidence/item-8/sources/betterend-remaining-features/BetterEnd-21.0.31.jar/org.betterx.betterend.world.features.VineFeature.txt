@@ -1,0 +1,198 @@
+Compiled from "VineFeature.java"
+public class org.betterx.betterend.world.features.VineFeature extends org.betterx.betterend.world.features.InvertedScatterFeature<org.betterx.betterend.world.features.VineFeatureConfig> {
+  private net.minecraft.world.level.block.state.BlockState plant;
+
+  boolean vine;
+
+  public org.betterx.betterend.world.features.VineFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/VineFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/InvertedScatterFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.VineFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload         5
+       5: invokevirtual #13                 // Method org/betterx/betterend/world/features/VineFeatureConfig.getPlantState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: putfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      11: aload_2
+      12: aload         5
+      14: invokeinterface #23,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      19: astore        7
+      21: aload         7
+      23: invokevirtual #29                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      26: ifeq          45
+      29: aload_0
+      30: aload         7
+      32: aload_2
+      33: aload         5
+      35: invokevirtual #35                 // Method canPlaceBlock:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Z
+      38: ifeq          45
+      41: iconst_1
+      42: goto          46
+      45: iconst_0
+      46: ireturn
+
+  public void generate(org.betterx.betterend.world.features.VineFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: aload_3
+       4: aload_1
+       5: getfield      #39                 // Field org/betterx/betterend/world/features/VineFeatureConfig.maxLength:I
+       8: invokeinterface #43,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      13: invokestatic  #49                 // Method org/betterx/bclib/util/BlocksHelper.downRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+      16: iconst_1
+      17: isub
+      18: istore        5
+      20: iload         5
+      22: iconst_2
+      23: if_icmple     94
+      26: aload_0
+      27: invokevirtual #55                 // Method getTopState:()Lnet/minecraft/world/level/block/state/BlockState;
+      30: astore        6
+      32: aload_0
+      33: invokevirtual #59                 // Method getMiddleState:()Lnet/minecraft/world/level/block/state/BlockState;
+      36: astore        7
+      38: aload_0
+      39: invokevirtual #62                 // Method getBottomState:()Lnet/minecraft/world/level/block/state/BlockState;
+      42: astore        8
+      44: aload_2
+      45: aload         4
+      47: aload         6
+      49: invokestatic  #65                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      52: iconst_1
+      53: istore        9
+      55: iload         9
+      57: iload         5
+      59: if_icmpge     81
+      62: aload_2
+      63: aload         4
+      65: iload         9
+      67: invokevirtual #69                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      70: aload         7
+      72: invokestatic  #65                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      75: iinc          9, 1
+      78: goto          55
+      81: aload_2
+      82: aload         4
+      84: iload         5
+      86: invokevirtual #69                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      89: aload         8
+      91: invokestatic  #65                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      94: return
+
+  private boolean canPlaceBlock(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: ifnonnull     9
+       7: iconst_0
+       8: ireturn
+       9: aload_0
+      10: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      13: invokevirtual #75                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      16: astore        5
+      18: aload         5
+      20: instanceof    #79                 // class org/betterx/bclib/blocks/BaseVineBlock
+      23: ifeq          47
+      26: aload         5
+      28: checkcast     #79                 // class org/betterx/bclib/blocks/BaseVineBlock
+      31: astore        4
+      33: aload_0
+      34: iconst_1
+      35: putfield      #81                 // Field vine:Z
+      38: aload         4
+      40: aload_1
+      41: aload_2
+      42: aload_3
+      43: invokevirtual #85                 // Method org/betterx/bclib/blocks/BaseVineBlock.canGenerate:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      46: ireturn
+      47: aload_0
+      48: iconst_0
+      49: putfield      #81                 // Field vine:Z
+      52: aload_1
+      53: aload_2
+      54: aload_3
+      55: invokevirtual #89                 // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      58: ireturn
+
+  private net.minecraft.world.level.block.state.BlockState getTopState();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: astore_1
+       5: aload_0
+       6: getfield      #81                 // Field vine:Z
+       9: ifeq          28
+      12: aload_1
+      13: getstatic     #93                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      16: getstatic     #99                 // Field org/betterx/wover/block/api/BlockProperties$TripleShape.TOP:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+      19: invokevirtual #105                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      22: checkcast     #30                 // class net/minecraft/world/level/block/state/BlockState
+      25: goto          29
+      28: aload_1
+      29: areturn
+
+  private net.minecraft.world.level.block.state.BlockState getMiddleState();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: astore_1
+       5: aload_0
+       6: getfield      #81                 // Field vine:Z
+       9: ifeq          28
+      12: aload_1
+      13: getstatic     #93                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      16: getstatic     #109                // Field org/betterx/wover/block/api/BlockProperties$TripleShape.MIDDLE:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+      19: invokevirtual #105                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      22: checkcast     #30                 // class net/minecraft/world/level/block/state/BlockState
+      25: goto          29
+      28: aload_1
+      29: areturn
+
+  private net.minecraft.world.level.block.state.BlockState getBottomState();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: astore_1
+       5: aload_0
+       6: getfield      #81                 // Field vine:Z
+       9: ifeq          28
+      12: aload_1
+      13: getstatic     #93                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      16: getstatic     #112                // Field org/betterx/wover/block/api/BlockProperties$TripleShape.BOTTOM:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+      19: invokevirtual #105                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      22: checkcast     #30                 // class net/minecraft/world/level/block/state/BlockState
+      25: goto          29
+      28: aload_1
+      29: areturn
+
+  public void generate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/VineFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: invokevirtual #115                // Method generate:(Lorg/betterx/betterend/world/features/VineFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      12: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/VineFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: aload         5
+      11: fload         6
+      13: invokevirtual #119                // Method canGenerate:(Lorg/betterx/betterend/world/features/VineFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;F)Z
+      16: ireturn
+}

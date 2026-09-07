@@ -1,0 +1,128 @@
+Classfile shield_api-neoforge-2.2.0.jar!/net/fabric_extras/shield_api/mixin/item/AxeItemMixin.class
+  Last modified Jan 1, 1980; size 1434 bytes
+  SHA-256 checksum ba8a624a08f6b3c870114580ebcef0a90d8cfe57e6dc3cd8d1e66f7edfdcb994
+  Compiled from "AxeItemMixin.java"
+public class net.fabric_extras.shield_api.mixin.item.AxeItemMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // net/fabric_extras/shield_api/mixin/item/AxeItemMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               net/fabric_extras/shield_api/mixin/item/AxeItemMixin
+   #2 = Class              #1             // net/fabric_extras/shield_api/mixin/item/AxeItemMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               AxeItemMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/item/AxeItem;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lnet/fabric_extras/shield_api/mixin/item/AxeItemMixin;
+  #15 = Utf8               shield_api$shouldCancelStripAttempt
+  #16 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item;)Z
+  #17 = Utf8               instance
+  #18 = Utf8               item
+  #19 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #20 = Utf8               method
+  #21 = Utf8               playerHasShieldUseIntent(Lnet/minecraft/world/item/context/UseOnContext;)Z
+  #22 = Utf8               at
+  #23 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #24 = Utf8               INVOKE
+  #25 = Utf8               target
+  #26 = Utf8               Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z
+  #27 = Utf8               net/minecraft/world/item/Items
+  #28 = Class              #27            // net/minecraft/world/item/Items
+  #29 = Utf8               SHIELD
+  #30 = Utf8               Lnet/minecraft/world/item/Item;
+  #31 = NameAndType        #29:#30        // SHIELD:Lnet/minecraft/world/item/Item;
+  #32 = Fieldref           #28.#31        // net/minecraft/world/item/Items.SHIELD:Lnet/minecraft/world/item/Item;
+  #33 = Utf8               net/minecraft/world/item/ItemStack
+  #34 = Class              #33            // net/minecraft/world/item/ItemStack
+  #35 = Utf8               is
+  #36 = Utf8               (Lnet/minecraft/world/item/Item;)Z
+  #37 = NameAndType        #35:#36        // is:(Lnet/minecraft/world/item/Item;)Z
+  #38 = Methodref          #34.#37        // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+  #39 = Utf8               getItem
+  #40 = Utf8               ()Lnet/minecraft/world/item/Item;
+  #41 = NameAndType        #39:#40        // getItem:()Lnet/minecraft/world/item/Item;
+  #42 = Methodref          #34.#41        // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+  #43 = Utf8               net/fabric_extras/shield_api/item/CustomShieldItem
+  #44 = Class              #43            // net/fabric_extras/shield_api/item/CustomShieldItem
+  #45 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #46 = Utf8               Code
+  #47 = Utf8               LineNumberTable
+  #48 = Utf8               LocalVariableTable
+  #49 = Utf8               StackMapTable
+  #50 = Utf8               RuntimeVisibleAnnotations
+  #51 = Utf8               MethodParameters
+  #52 = Utf8               SourceFile
+  #53 = Utf8               RuntimeInvisibleAnnotations
+{
+  public net.fabric_extras.shield_api.mixin.item.AxeItemMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabric_extras/shield_api/mixin/item/AxeItemMixin;
+
+  private static boolean shield_api$shouldCancelStripAttempt(net.minecraft.world.item.ItemStack, net.minecraft.world.item.Item);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item;)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getstatic     #32                 // Field net/minecraft/world/item/Items.SHIELD:Lnet/minecraft/world/item/Item;
+         4: invokevirtual #38                 // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+         7: ifne          20
+        10: aload_0
+        11: invokevirtual #42                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        14: instanceof    #44                 // class net/fabric_extras/shield_api/item/CustomShieldItem
+        17: ifeq          24
+        20: iconst_1
+        21: goto          25
+        24: iconst_0
+        25: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 20 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 23: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      26     0 instance   Lnet/minecraft/world/item/ItemStack;
+            0      26     1  item   Lnet/minecraft/world/item/Item;
+    RuntimeVisibleAnnotations:
+      0: #19(#20=[s#21],#22=@#23(#7=s#24,#25=s#26))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["playerHasShieldUseIntent(Lnet/minecraft/world/item/context/UseOnContext;)Z"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      item
+}
+SourceFile: "AxeItemMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/item/AxeItem;]
+    )

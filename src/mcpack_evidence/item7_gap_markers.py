@@ -6,13 +6,15 @@ from typing import Final
 
 from mcpack_evidence.item7_runtime import Item7RuntimeError
 
-_COMPLETE = "Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)"
 _LIFECYCLE_STAGE: Final = "lifecycle"
 _MARKER_ERROR: Final = "completion marker differs from requested target"
 
 
-def parse_completion(line: str, target_structure: str) -> str:
+def parse_completion(
+    line: str, target_structure: str, dimension: str = "minecraft:overworld"
+) -> str:
     """Return the completed target after matching its exact Chunky marker."""
-    if _COMPLETE not in line:
+    marker = f"Task finished for {dimension}. Processed: 81 chunks (100.00%)"
+    if marker not in line:
         raise Item7RuntimeError(_LIFECYCLE_STAGE, _MARKER_ERROR)
     return target_structure

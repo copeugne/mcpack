@@ -1,0 +1,262 @@
+Compiled from "NeoForgeClientProxy.java"
+public class fuzs.puzzleslib.neoforge.impl.client.core.NeoForgeClientProxy extends fuzs.puzzleslib.neoforge.impl.core.NeoForgeCommonProxy implements fuzs.puzzleslib.impl.client.core.proxy.ClientProxyImpl {
+  public fuzs.puzzleslib.neoforge.impl.client.core.NeoForgeClientProxy();
+    Code:
+       0: aload_0
+       1: invokespecial #31                 // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeCommonProxy."<init>":()V
+       4: return
+
+  public void registerAllLoadingHandlers();
+    Code:
+       0: aload_0
+       1: invokespecial #36                 // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeCommonProxy.registerAllLoadingHandlers:()V
+       4: invokestatic  #41                 // Method fuzs/puzzleslib/neoforge/impl/client/event/NeoForgeClientEventInvokers.registerLoadingHandlers:()V
+       7: return
+
+  public void registerAllEventHandlers();
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeCommonProxy.registerAllEventHandlers:()V
+       4: invokestatic  #47                 // Method fuzs/puzzleslib/neoforge/impl/client/event/NeoForgeClientEventInvokers.registerEventHandlers:()V
+       7: return
+
+  public fuzs.puzzleslib.api.core.v1.context.PayloadTypesContext createPayloadTypesContext(java.lang.String, net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: new           #9                  // class fuzs/puzzleslib/neoforge/impl/core/context/PayloadTypesContextNeoForgeImpl$ClientImpl
+       3: dup
+       4: aload_1
+       5: aload_2
+       6: invokespecial #54                 // Method fuzs/puzzleslib/neoforge/impl/core/context/PayloadTypesContextNeoForgeImpl$ClientImpl."<init>":(Ljava/lang/String;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+       9: areturn
+
+  public <M1, M2> java.util.concurrent.CompletableFuture<java.lang.Void> registerClientReceiver(fuzs.puzzleslib.impl.network.codec.CustomPacketPayloadAdapter<M1>, net.neoforged.neoforge.network.handling.IPayloadContext, java.util.function.Function<M1, fuzs.puzzleslib.api.network.v3.ClientboundMessage<M2>>);
+    Code:
+       0: aload_2
+       1: aload_2
+       2: aload_3
+       3: aload_1
+       4: invokedynamic #79,  0             // InvokeDynamic #0:run:(Lnet/neoforged/neoforge/network/handling/IPayloadContext;Ljava/util/function/Function;Lfuzs/puzzleslib/impl/network/codec/CustomPacketPayloadAdapter;)Ljava/lang/Runnable;
+       9: invokeinterface #85,  2           // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.enqueueWork:(Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+      14: areturn
+
+  public fuzs.puzzleslib.impl.core.context.ModConstructorImpl<fuzs.puzzleslib.api.client.core.v1.ClientModConstructor> getClientModConstructorImpl();
+    Code:
+       0: new           #95                 // class fuzs/puzzleslib/neoforge/impl/client/core/NeoForgeClientModConstructor
+       3: dup
+       4: invokespecial #96                 // Method fuzs/puzzleslib/neoforge/impl/client/core/NeoForgeClientModConstructor."<init>":()V
+       7: areturn
+
+  public fuzs.puzzleslib.impl.client.init.ItemDisplayOverridesImpl<?> getItemModelDisplayOverrides();
+    Code:
+       0: new           #101                // class fuzs/puzzleslib/neoforge/impl/client/init/NeoForgeItemDisplayOverrides
+       3: dup
+       4: invokespecial #102                // Method fuzs/puzzleslib/neoforge/impl/client/init/NeoForgeItemDisplayOverrides."<init>":()V
+       7: areturn
+
+  public fuzs.puzzleslib.api.client.key.v1.KeyMappingHelper getKeyMappingActivationHelper();
+    Code:
+       0: new           #106                // class fuzs/puzzleslib/neoforge/impl/client/key/NeoForgeKeyMappingHelper
+       3: dup
+       4: invokespecial #107                // Method fuzs/puzzleslib/neoforge/impl/client/key/NeoForgeKeyMappingHelper."<init>":()V
+       7: areturn
+
+  public boolean isKeyActiveAndMatches(net.minecraft.client.KeyMapping, int, int);
+    Code:
+       0: aload_1
+       1: iload_2
+       2: iload_3
+       3: invokestatic  #116                // Method com/mojang/blaze3d/platform/InputConstants.getKey:(II)Lcom/mojang/blaze3d/platform/InputConstants$Key;
+       6: invokevirtual #122                // Method net/minecraft/client/KeyMapping.isActiveAndMatches:(Lcom/mojang/blaze3d/platform/InputConstants$Key;)Z
+       9: ireturn
+
+  public net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent createImageComponent(net.minecraft.world.inventory.tooltip.TooltipComponent);
+    Code:
+       0: aload_1
+       1: invokestatic  #132                // InterfaceMethod net/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipComponent.create:(Lnet/minecraft/world/inventory/tooltip/TooltipComponent;)Lnet/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipComponent;
+       4: areturn
+
+  public boolean onRenderTooltip(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.gui.Font, int, int, java.util.List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent>, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner);
+    Code:
+       0: getstatic     #148                // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+       3: aload_1
+       4: iload_3
+       5: iload         4
+       7: aload_1
+       8: invokevirtual #154                // Method net/minecraft/client/gui/GuiGraphics.guiWidth:()I
+      11: aload_1
+      12: invokevirtual #157                // Method net/minecraft/client/gui/GuiGraphics.guiHeight:()I
+      15: aload         5
+      17: aload_2
+      18: aload         6
+      20: invokestatic  #163                // Method net/neoforged/neoforge/client/ClientHooks.onRenderTooltipPre:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/gui/GuiGraphics;IIIILjava/util/List;Lnet/minecraft/client/gui/Font;Lnet/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipPositioner;)Lnet/neoforged/neoforge/client/event/RenderTooltipEvent$Pre;
+      23: invokevirtual #167                // Method net/neoforged/neoforge/client/event/RenderTooltipEvent$Pre.isCanceled:()Z
+      26: ireturn
+
+  public net.minecraft.client.renderer.block.model.BakedQuad copyBakedQuad(net.minecraft.client.renderer.block.model.BakedQuad);
+    Code:
+       0: aload_1
+       1: invokevirtual #181                // Method net/minecraft/client/renderer/block/model/BakedQuad.getVertices:()[I
+       4: astore_2
+       5: new           #177                // class net/minecraft/client/renderer/block/model/BakedQuad
+       8: dup
+       9: aload_2
+      10: aload_2
+      11: arraylength
+      12: invokestatic  #187                // Method java/util/Arrays.copyOf:([II)[I
+      15: aload_1
+      16: invokevirtual #190                // Method net/minecraft/client/renderer/block/model/BakedQuad.getTintIndex:()I
+      19: aload_1
+      20: invokevirtual #194                // Method net/minecraft/client/renderer/block/model/BakedQuad.getDirection:()Lnet/minecraft/core/Direction;
+      23: aload_1
+      24: invokevirtual #198                // Method net/minecraft/client/renderer/block/model/BakedQuad.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      27: aload_1
+      28: invokevirtual #201                // Method net/minecraft/client/renderer/block/model/BakedQuad.isShade:()Z
+      31: aload_1
+      32: invokevirtual #204                // Method net/minecraft/client/renderer/block/model/BakedQuad.hasAmbientOcclusion:()Z
+      35: invokespecial #207                // Method net/minecraft/client/renderer/block/model/BakedQuad."<init>":([IILnet/minecraft/core/Direction;Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;ZZ)V
+      38: areturn
+
+  public boolean isEffectVisibleInInventory(net.minecraft.world.effect.MobEffectInstance);
+    Code:
+       0: aload_1
+       1: invokestatic  #219                // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions.of:(Lnet/minecraft/world/effect/MobEffectInstance;)Lnet/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions;
+       4: aload_1
+       5: invokeinterface #222,  2          // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions.isVisibleInInventory:(Lnet/minecraft/world/effect/MobEffectInstance;)Z
+      10: ireturn
+
+  public boolean isEffectVisibleInGui(net.minecraft.world.effect.MobEffectInstance);
+    Code:
+       0: aload_1
+       1: invokestatic  #219                // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions.of:(Lnet/minecraft/world/effect/MobEffectInstance;)Lnet/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions;
+       4: aload_1
+       5: invokeinterface #227,  2          // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientMobEffectExtensions.isVisibleInGui:(Lnet/minecraft/world/effect/MobEffectInstance;)Z
+      10: ireturn
+
+  public void registerWoodType(net.minecraft.world.level.block.state.properties.WoodType);
+    Code:
+       0: aload_1
+       1: invokestatic  #235                // Method net/minecraft/client/renderer/Sheets.addWoodType:(Lnet/minecraft/world/level/block/state/properties/WoodType;)V
+       4: return
+
+  public net.minecraft.client.resources.model.BakedModel getBakedModel(net.minecraft.client.resources.model.ModelManager, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokestatic  #246                // Method net/minecraft/client/resources/model/ModelResourceLocation.standalone:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/client/resources/model/ModelResourceLocation;
+       5: invokevirtual #252                // Method net/minecraft/client/resources/model/ModelManager.getModel:(Lnet/minecraft/client/resources/model/ModelResourceLocation;)Lnet/minecraft/client/resources/model/BakedModel;
+       8: areturn
+
+  public net.minecraft.client.renderer.RenderType getRenderType(net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_1
+       1: invokevirtual #263                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       4: invokestatic  #269                // Method net/minecraft/client/renderer/ItemBlockRenderTypes.getRenderLayers:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/neoforged/neoforge/client/ChunkRenderTypeSet;
+       7: astore_2
+       8: aload_2
+       9: invokevirtual #274                // Method net/neoforged/neoforge/client/ChunkRenderTypeSet.isEmpty:()Z
+      12: ifeq          21
+      15: invokestatic  #280                // Method net/minecraft/client/renderer/RenderType.solid:()Lnet/minecraft/client/renderer/RenderType;
+      18: goto          33
+      21: aload_2
+      22: invokevirtual #284                // Method net/neoforged/neoforge/client/ChunkRenderTypeSet.iterator:()Ljava/util/Iterator;
+      25: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      30: checkcast     #276                // class net/minecraft/client/renderer/RenderType
+      33: areturn
+
+  public void registerRenderType(net.minecraft.world.level.block.Block, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokestatic  #299                // Method net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+       5: return
+
+  public void registerRenderType(net.minecraft.world.level.material.Fluid, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokestatic  #304                // Method net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+       5: return
+
+  public int getGuiLeftHeight(net.minecraft.client.gui.Gui);
+    Code:
+       0: aload_1
+       1: getfield      #313                // Field net/minecraft/client/gui/Gui.leftHeight:I
+       4: ireturn
+
+  public int getGuiRightHeight(net.minecraft.client.gui.Gui);
+    Code:
+       0: aload_1
+       1: getfield      #318                // Field net/minecraft/client/gui/Gui.rightHeight:I
+       4: ireturn
+
+  public void addGuiLeftHeight(net.minecraft.client.gui.Gui, int);
+    Code:
+       0: aload_1
+       1: dup
+       2: getfield      #313                // Field net/minecraft/client/gui/Gui.leftHeight:I
+       5: iload_2
+       6: iadd
+       7: putfield      #313                // Field net/minecraft/client/gui/Gui.leftHeight:I
+      10: return
+
+  public void addGuiRightHeight(net.minecraft.client.gui.Gui, int);
+    Code:
+       0: aload_1
+       1: dup
+       2: getfield      #318                // Field net/minecraft/client/gui/Gui.rightHeight:I
+       5: iload_2
+       6: iadd
+       7: putfield      #318                // Field net/minecraft/client/gui/Gui.rightHeight:I
+      10: return
+
+  public void registerConfigurationScreen(java.lang.String, java.lang.String...);
+    Code:
+       0: aload_1
+       1: invokestatic  #330                // Method fuzs/puzzleslib/neoforge/api/core/v1/NeoForgeModContainerHelper.getModContainer:(Ljava/lang/String;)Lnet/neoforged/fml/ModContainer;
+       4: ldc_w         #332                // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+       7: aload_2
+       8: invokedynamic #343,  0            // InvokeDynamic #1:createScreen:([Ljava/lang/String;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+      13: invokevirtual #349                // Method net/neoforged/fml/ModContainer.registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+      16: return
+
+  private static net.minecraft.client.gui.screens.Screen lambda$registerConfigurationScreen$1(java.lang.String[], net.neoforged.fml.ModContainer, net.minecraft.client.gui.screens.Screen);
+    Code:
+       0: new           #354                // class fuzs/puzzleslib/neoforge/impl/client/config/NeoForgeConfigurationScreen
+       3: dup
+       4: aload_1
+       5: invokevirtual #358                // Method net/neoforged/fml/ModContainer.getModId:()Ljava/lang/String;
+       8: aload_2
+       9: aload_0
+      10: invokespecial #361                // Method fuzs/puzzleslib/neoforge/impl/client/config/NeoForgeConfigurationScreen."<init>":(Ljava/lang/String;Lnet/minecraft/client/gui/screens/Screen;[Ljava/lang/String;)V
+      13: areturn
+
+  private static void lambda$registerClientReceiver$0(net.neoforged.neoforge.network.handling.IPayloadContext, java.util.function.Function, fuzs.puzzleslib.impl.network.codec.CustomPacketPayloadAdapter);
+    Code:
+       0: aload_0
+       1: invokeinterface #367,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       6: checkcast     #369                // class net/minecraft/client/player/LocalPlayer
+       9: astore_3
+      10: aload_3
+      11: ldc_w         #371                // String player is null
+      14: invokestatic  #377                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+      17: pop
+      18: aload_1
+      19: aload_2
+      20: invokeinterface #382,  1          // InterfaceMethod fuzs/puzzleslib/impl/network/codec/CustomPacketPayloadAdapter.unwrap:()Ljava/lang/Object;
+      25: invokeinterface #388,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      30: checkcast     #390                // class fuzs/puzzleslib/api/network/v3/ClientboundMessage
+      33: astore        4
+      35: aload         4
+      37: invokeinterface #393,  1          // InterfaceMethod fuzs/puzzleslib/api/network/v3/ClientboundMessage.getHandler:()Ljava/lang/Object;
+      42: checkcast     #395                // class fuzs/puzzleslib/api/network/v3/ClientMessageListener
+      45: aload         4
+      47: invokeinterface #396,  1          // InterfaceMethod fuzs/puzzleslib/api/network/v3/ClientboundMessage.unwrap:()Ljava/lang/Object;
+      52: invokestatic  #402                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      55: aload_3
+      56: getfield      #406                // Field net/minecraft/client/player/LocalPlayer.connection:Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      59: aload_3
+      60: aload_3
+      61: getfield      #410                // Field net/minecraft/client/player/LocalPlayer.clientLevel:Lnet/minecraft/client/multiplayer/ClientLevel;
+      64: invokevirtual #414                // Method fuzs/puzzleslib/api/network/v3/ClientMessageListener.handle:(Ljava/lang/Object;Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/multiplayer/ClientPacketListener;Lnet/minecraft/client/player/LocalPlayer;Lnet/minecraft/client/multiplayer/ClientLevel;)V
+      67: return
+}
