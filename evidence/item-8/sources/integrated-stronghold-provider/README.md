@@ -36,3 +36,65 @@ The provider-scope check separately binds all packaged resources and component
 dispositions to the preserved pool graph. Keep missing armory references and
 disconnected alternate templates unchanged. Shared Integrated API behavior and
 effective family attributes remain separate downstream attribution work.
+
+## Content assessment
+
+The five content/discoverability attributes are now integrated in
+family-decisions.json. Footprint and vertical size remain open. Provider discovery
+is closed; this assessment does not add families or repair missing templates.
+
+Inspect the stronghold root and its reachable template entries in the preserved
+pool-traces-content.json.gz, with original NBT in the template catalog. There are
+58 reachable templates, including 23 with ordinary spawner NBT, and 19 referenced
+processor lists. The two missing armory templates remain explicit failures.
+All retained structure-block markers have CORNER mode, not DATA spawn markers.
+
+The authoritative attributes list all 16 packaged entity IDs. Creepers, spiders
+and zombies are authored hostile sources. Animals, vehicles, displays, Create
+seat/glue entities and Quark frames are not additional enemy species. AlexsMobs
+and MowziesMobs are absent from the retained runtime mod list, so their authored
+entries do not establish live enemies. Reuse registry-r1/debug.log, SHA-256
+e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b,
+with the existing runtime_mod_ids parser. Create and Quark occur at lines1544
+and1660. The piece-bounds silverfish/enderman natural override is separate.
+
+The packaged resource paths below are in packaged-json-redacted.json.gz under
+data/integrated_stronghold/. Resolve a template's pool element processors field
+to worldgen/processor_list/<name>.json, then its
+integrated_api_spawner_resourcelocation to integrated_structure_spawners/<name>.json.
+The complete processor-to-list mapping and seven weighted lists are recorded in
+generated_spawners. Every spawner processor declares the same settings recorded
+there. Bedroom has no spawner processor. Library selects cave spiders/spiders;
+nether_portal selects skeletons; portal_room selects Quark forgotten; enchanting,
+maze, prison and stronghold select skeletons/zombies/forgotten with weights10/10/5.
+
+Raw ordinary spawner defaults name pig with empty SpawnPotentials. Reuse the
+shared SpawnerRandomizingProcessor and MobSpawnerManager inspection in
+integrated-villages-provider/README.md#content-assessment, with exact JAR/class
+identities in processor_inspection. The processor replaces NBT for surviving
+spawner blocks; it does not preserve the raw pig selection. The manager's
+missing-list, unresolved-entity, zero-total and exception paths remain documented
+limitations, not observed failures in this family.
+
+Several rule processors convert monster boxes to ordinary spawners with
+probability0.1. Unconverted boxes are distinct one-use sources. Their source and
+frozen setting bindings are already preserved under quark-monster-box-behavior
+and quark-monster-box-bindings. The spawn-selection table weights witch1,
+cave-spider2 and zombie7. Neither template occurrence nor selection weight is
+an observed encounter count. Floating-block removal and container removal rules
+also prevent treating template contents as guaranteed placed contents.
+
+Six literal template loot-table references and fourteen processor-assigned
+references are listed separately in loot_table_source; the sets overlap at maze.
+Each has a packaged definition at data/<namespace>/loot_table/<path>.json.
+Append-loot rules identify sources, not realized rewards. Fixed inventory Items,
+dispenser traps and Quark's separate mob-selection/extra-drop tables retain their
+different roles. No reward-value measurement is required for this attribution.
+
+The root declares absolute start Y15, strongholds generation step and no surface
+heightmap projection. The preserved JigsawStructure.findGenerationPoint samples
+that start height and passes placement settings into PieceLimitedJigsawManager.
+This supports a qualitative underground discovery assessment, with exposure
+dependent on layout and terrain. It does not establish final dimensions or a
+measured sightline. The declared max_distance_from_center128 is not itself an
+observed footprint, so the two geometry attributes remain open.

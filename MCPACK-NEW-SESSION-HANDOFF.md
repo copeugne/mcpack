@@ -7,6 +7,31 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated Stronghold content assessed after aa1372ac
+
+Five outstanding attributes integrated: hostility, authored/natural enemies,
+spawners, loot sources and qualitative discoverability. Existing mob_source now
+includes authored content. Shared Integrated API spawner inspection reused;
+23 reachable templates have pig-default spawners, replaced through19 referenced
+processor lists (bedroom has no spawner processor), seven weighted selections.
+Six literal and fourteen processor loot references have packaged definitions.
+AlexsMobs and MowziesMobs are absent in retained runtime; their template entities
+are not asserted as live enemies. Quark monster-box source/bindings reused.
+All85 focused tests pass (59.36s). Only stronghold/input identity changed.
+No new tool or runtime. Registry330/408,nonregistry40/40,total370/448 assessed;
+78 families remain,693 explicit attribute slots outstanding. Stronghold retains
+only footprint and height. Its max_distance_from_center128 alone is not adequate
+geometry evidence. Next inspect existing assembly source for a sufficient direct
+bound; otherwise predeclare one seed42 targeted full-start capture with the
+existing runner and infrastructure lifecycle/custody workflow. Do not create a
+new measurement system. Other remaining families: IDAS38,Repurposed17,vanilla13,
+BetterEnd9. Final integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. A read-only probe initially passed a
+Path instead of text to runtime_mod_ids and failed before producing evidence;
+corrected read_text invocation established the recorded runtime attribution.
+Inventory SHA-256: 7d50630d6e6837ead91e233c28682e4aa9b51a6ef90a403a37af5f42ad5c0049.
+
+
 #### Integrated Villages content assessed after a75744b4
 
 Five content attributes integrated, completing the village family. Its empty
