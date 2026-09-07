@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 38f3cbea and reproduces exactly. Canonical backlog: 19, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Farmhouse
+alternatives need comparison; nexus conversion session 44369 was last live.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
 Vineyard, apothecary and beekeeper assemblies are reconciled from existing
 connectors and full contents. Preserve illagers/spawners, missing entity IDs and
 stored-content versus loot-table distinctions. Focused IDAS and scoped checks
