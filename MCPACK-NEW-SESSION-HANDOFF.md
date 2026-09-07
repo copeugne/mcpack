@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS detached ship ruins assessed after 1cd9662f
+
+Nine entries integrated for two independent wreckage alternatives. Nominal
+sizes8 by6 by9 and12 by5 by12; no entities/spawners/markers. Selected spawner
+randomizer has no SpawnerBlock input here, so no enemy is inferred from its
+name. Defined supply/treasure tables preserved. Seabed placement inputs remain
+distinct from observed water depth. No runtime/tool added. All85 focused checks
+pass (66.18s); only ship-ruins/input identity changed. Total418/448 assessed;
+30 IDAS families/270 entries remain. Existing-candidate geometry group now6;
+24 connected assemblies need geometry assessment. Next sunken_ship: two roots,
+three alternatives/nine entries; inspect processor-selected versus raw spawners
+and absent optional authored entities before claiming encounter sources.
+Details: evidence/item-8/sources/idas-ship-ruins-assessment/README.md.
+Inventory SHA-256: a1ec81c49025f213a4ba941c0d79652a1698fa6c9438dc16042aa9d00fba04fa.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS underground camp assessed after 6757d644
 
 Nine entries integrated for two roots/four independent alternatives. Nominal
