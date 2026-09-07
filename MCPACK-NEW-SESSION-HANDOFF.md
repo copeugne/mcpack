@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS existing geometry quantified and integrated after a2d9e5f9
+
+All38 remaining IDAS families compared with original bounds and23 original
+additional decoded captures. Ten have existing full-start candidates; four
+others use independent single-template alternatives;24 connected assemblies
+still need geometry assessment before deciding on runtime work. Ten candidates
+are availability findings, not newly accepted world measurements.
+Eight required size entries integrated for enchantingtower,desert_market,
+lumber_camp,nexus from22 existing templates. No new runtime or tool. All85
+focused checks pass (65.33s). Total410/448 families assessed;38 families/335
+required entries remain. Existing rationale/connector/content findings must be
+reused. Known specific defects: ancient_mines entrance2 pool, desert_pyramid
+villager pool, three lumber-camp biome constraints. No new-experiment count is
+claimed for the24 assemblies; nominal connector derivation may suffice.
+Details and candidate locations:
+evidence/item-8/sources/idas-existing-geometry-assessment/README.md.
+Inventory SHA-256: f1e993efd2863b6a45a8cbd458984dd722bf9b8282c8e7960b9a778c5dc49c9c.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### Repurposed village assessed after d59de7f4
 
 Seven entries integrated for14 variants/1345 distinct shared templates. Exact
