@@ -37084,7 +37084,8 @@
           "evidence/item-8/sources/better-end-island-activation/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "fd67753423f30ae9026bc7a92d2a70ad3fbf6caf4cdb92c26bbc93fd4607a7cf",
           "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee",
           "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb",
-          "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f"
+          "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f",
+          "evidence/item-8/sources/fabric-biome-modifier/README.md": "61d228e8df0034ba24e41ae9e288d2f26e4b0665256a9df1a09ee353158d99f6"
         },
         "processor_effects": {
           "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
@@ -37729,7 +37730,7 @@
                 "placed_feature": "minecraft:end_platform",
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README."
               },
               "underground_surface_classification": {
                 "value": "End arrival infrastructure at its caller-supplied height, not an underground-search structure.",
@@ -37861,7 +37862,7 @@
                 "placed_feature": "minecraft:end_gateway_return",
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README."
               },
               "underground_surface_classification": {
                 "value": "Surface or above-surface return gateway; other lifecycle callers supply their own origins.",
@@ -38061,7 +38062,7 @@
                 "placed_feature": "minecraft:end_spike",
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README."
               },
               "underground_surface_classification": {
                 "value": "Central-island arena with tall spikes and a surface-anchored podium; spike components extend below their top anchors.",
@@ -38538,7 +38539,15 @@
             },
             "finding": "BiomeModificationImpl constructs an empty modifier list. addModifier appends caller-supplied phase, selector and callback records. FabricBiomeModifier.modify applies records only for their matching phase and biome predicate. It performs no unconditional feature insertion or removal itself.",
             "basis": "Retained complete BiomeModificationImpl constructor, both addModifier overloads, and FabricBiomeModifier.modify/isInPhase bodies.",
-            "remaining": "Identify the retained consumer registrations and their selected callbacks before concluding preservation or modification of end_platform, end_spike and end_gateway_return. The generic dispatcher cannot answer that consumer-specific question."
+            "remaining": "Resolved for the frozen packaged direct-consumer path; no further dispatcher tracing is required.",
+            "consumer_resolution": {
+              "evidence": {
+                "evidence/item-8/sources/fabric-biome-modifier/README.md": "61d228e8df0034ba24e41ae9e288d2f26e4b0665256a9df1a09ee353158d99f6"
+              },
+              "verification": "uv run pytest tests/item8/test_fabric_provider_scope.py -k external_fabric -q",
+              "finding": "All 16 packaged class references to the Fabric biome modification API/implementation owners belong to the Fabric biome module itself. No retained external direct consumer is present, including nested archives. The captured empty-list constructor and codec/dispatcher therefore expose no supported direct callback modifying the selected End features.",
+              "scope": "Frozen packaged direct-reference inspection. No reflective/dynamic registration is evidenced; a demonstrated registration would reopen this conclusion. Lifecycle callers remain separate."
+            }
           }
         }
       },

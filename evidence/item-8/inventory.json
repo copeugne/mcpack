@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "cbcceaccbc09178531872147b6137352d80fba38b16e8c0cd675ea555a1949e9",
+    "evidence/item-8/family-decisions.json": "057be2e22dfd52e7bc6d6217687303a0ce12b0784c1737298f03802678df6f5f",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -170306,11 +170306,19 @@
           ],
           "fabric_dispatch_resolution": {
             "basis": "Retained complete BiomeModificationImpl constructor, both addModifier overloads, and FabricBiomeModifier.modify/isInPhase bodies.",
+            "consumer_resolution": {
+              "evidence": {
+                "evidence/item-8/sources/fabric-biome-modifier/README.md": "61d228e8df0034ba24e41ae9e288d2f26e4b0665256a9df1a09ee353158d99f6"
+              },
+              "finding": "All 16 packaged class references to the Fabric biome modification API/implementation owners belong to the Fabric biome module itself. No retained external direct consumer is present, including nested archives. The captured empty-list constructor and codec/dispatcher therefore expose no supported direct callback modifying the selected End features.",
+              "scope": "Frozen packaged direct-reference inspection. No reflective/dynamic registration is evidenced; a demonstrated registration would reopen this conclusion. Lifecycle callers remain separate.",
+              "verification": "uv run pytest tests/item8/test_fabric_provider_scope.py -k external_fabric -q"
+            },
             "evidence": {
               "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f"
             },
             "finding": "BiomeModificationImpl constructs an empty modifier list. addModifier appends caller-supplied phase, selector and callback records. FabricBiomeModifier.modify applies records only for their matching phase and biome predicate. It performs no unconditional feature insertion or removal itself.",
-            "remaining": "Identify the retained consumer registrations and their selected callbacks before concluding preservation or modification of end_platform, end_spike and end_gateway_return. The generic dispatcher cannot answer that consumer-specific question."
+            "remaining": "Resolved for the frozen packaged direct-consumer path; no further dispatcher tracing is required."
           },
           "finding": "These retained NeoForge biome-modifier documents name code-backed modifier types without declaring target biomes or feature changes. Their documents cannot prove either removal or preservation of the packaged End feature lists.",
           "required_followup": "Resolve relevant registrations and callbacks for these two implementations before asserting that the packaged biome feature membership is effective. Reuse existing source extraction; do not infer modifications from provider names alone.",
@@ -170416,6 +170424,7 @@
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
           "evidence/item-8/sources/better-end-island-spike-podium/identities.json": "edd47178444d8218268335284bbe3ae1b394d4249c22b02ad85208caa2d63c52",
+          "evidence/item-8/sources/fabric-biome-modifier/README.md": "61d228e8df0034ba24e41ae9e288d2f26e4b0665256a9df1a09ee353158d99f6",
           "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb"
@@ -170446,11 +170455,11 @@
               "biome_constraints": {
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README.",
                 "packaged_consumers": [
                   "minecraft:the_end"
                 ],
-                "placed_feature": "minecraft:end_platform",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "placed_feature": "minecraft:end_platform"
               },
               "dimension": {
                 "basis": "packaged_biome_entrypoints records these biome consumers only in the captured End dimension; runtime_activation binds the replacement mixins and frozen configuration. Lifecycle invocation is documented separately from biome feature placement.",
@@ -170554,6 +170563,7 @@
               "biome_constraints": {
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README.",
                 "packaged_consumers": [
                   "minecraft:end_highlands",
                   "betterend:amber_land",
@@ -170580,8 +170590,7 @@
                   "biomesoplenty:end_reef",
                   "biomesoplenty:end_wilds"
                 ],
-                "placed_feature": "minecraft:end_gateway_return",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "placed_feature": "minecraft:end_gateway_return"
               },
               "dimension": {
                 "basis": "packaged_biome_entrypoints records these biome consumers only in the captured End dimension; runtime_activation binds the replacement mixins and frozen configuration. Lifecycle invocation is documented separately from biome feature placement.",
@@ -170722,11 +170731,11 @@
               "biome_constraints": {
                 "basis": "packaged_biome_entrypoints.rows retains exact source archive, path and hash for each consumer.",
                 "lifecycle_scope": "Biome filters constrain the packaged feature route, not the separately captured platform/gateway/dragon-fight lifecycle callers.",
+                "modifier_disposition": "The captured Zeta modifier is additive. The complete frozen-archive direct-reference inspection finds no external Fabric biome-modification consumer; the captured Fabric module only registers and dispatches its initially empty callback list. No alteration of this packaged route is supported through those two previously unresolved paths. See effective_biome_gap resolutions and the bound Fabric README.",
                 "packaged_consumers": [
                   "minecraft:the_end"
                 ],
-                "placed_feature": "minecraft:end_spike",
-                "remaining": "effective_biome_gap records code-backed modifier callbacks; reconcile their retained source before asserting this packaged list is the complete effective feature membership."
+                "placed_feature": "minecraft:end_spike"
               },
               "dimension": {
                 "basis": "packaged_biome_entrypoints records these biome consumers only in the captured End dimension; runtime_activation binds the replacement mixins and frozen configuration. Lifecycle invocation is documented separately from biome feature placement.",
