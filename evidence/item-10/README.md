@@ -1,7 +1,8 @@
 # Item 10 baseline density
 
 Status: IN PROGRESS. Pre-experiment dependency inspection, 2026-09-08.
-No new world generation, density measurement or tuning has been performed.
+No Item 10 measurement experiment or tuning has been performed.
+The separately requested player servers generated operational smoke-test worlds.
 The sampling proposal below is not an accepted measurement result.
 
 ## Verified dependencies and delivery
@@ -81,6 +82,48 @@ These facts resolve presence and configured intent only. Actual composition,
 affected placements and contribution to observed distribution remain unmeasured.
 Do not infer a fourfold density reduction or a zero contribution.
 
+Direct reuse of the accepted disassemblies resolves the mutation mechanism.
+The three disassembly files below were hash-checked against
+[existing identities](../item-8/sources/sparsestructures-provider/identities.json)
+on 2026-09-08. Their parent is
+`../item-8/sources/sparsestructures-provider/sparsestructures-neoforge-1.21.1-3.0.jar/`:
+
+- `io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt`,
+  `loadElementFromResource` offsets 0 to 59: only resource-loaded
+  `worldgen/structure_set` JSON enters this path; `minecraft:concentric_rings`
+  returns before any change. Offsets 100 to 202 multiply present spacing and
+  separation by the selected factor, truncate to Java integers, and repair
+  separation greater than or equal to spacing by setting spacing to at least 1
+  and separation to spacing minus 1. Missing fields initially use 1. This is
+  a JSON-load intervention, not evidence that every runtime-generated placement
+  traverses it.
+- `io.github.maxencedc.sparsestructures.SparseStructuresConfig.txt`,
+  `getSpreadFactor` offsets 0 to 116: the first custom entry matching the set ID
+  or any member structure replaces the global factor. It does not multiply the
+  global factor. The mansion override of 2 therefore remains 2, not 4.
+- `io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt`,
+  offsets 205 to 235, and `io.github.maxencedc.sparsestructures.IdBasedSalt.txt`,
+  `getSalt` offsets 0 to 10: enabled ID-based salt replaces the salt with Java
+  `Math.abs(setId.hashCode()) % 2147483647`. Reproduction must preserve Java
+  signed-integer behavior, not substitute a Python hash or unsigned hash.
+
+Consequently, a factor-1 configuration with ID-based salt still enabled would
+not isolate the mod's total contribution. No such control has been run. The
+smallest sufficient next attribution step is to bind loaded placement values to
+these source rules and the actual sampled starts. If a causal difference in
+realized counts is required beyond that attribution, it needs a separately
+predeclared matched control that isolates both interventions. Do not label a
+candidate-grid prediction, source derivation or cross-biome comparison as that
+unmeasured causal difference. This establishes the mechanism only; observed
+whole-stack contribution remains unresolved.
+
+The accepted [dimension capture](../item-8/runtime/dimension-r3/dimension-biomes.json)
+also contains Aether and CreatingSpace dimensions. The draft four-stratum
+scenario below omits those and is not a complete sampling frame. Reuse each
+family's existing dimension eligibility and nonregistry provider evidence to
+include relevant strata or give an explicit supported out-of-population
+reason. Do not infer zero occurrences from an unmeasured dimension.
+
 ## Smallest complete deliverable and batches
 
 1. Resolve measurement semantics and storage, then freeze the Item 10 protocol
@@ -127,7 +170,10 @@ proxy cannot close observed combat density under the current requirements.
 Read-only host inspection on 2026-09-08 found 1.8 GiB free on the 465 GiB
 persistent workspace filesystem. `/tmp` is a 13 GiB RAM-backed filesystem with
 about 11 GiB free; it is not durable evidence storage. Available RAM was about
-8.7 GiB with 11 GiB swap already used. No experiment has been launched.
+8.7 GiB with 11 GiB swap already used. Those are initial observations, not current
+capacity. Authorized duplicate cleanup and player-client setup subsequently left
+about 15 GiB free. See [operational setup](server-setup/README.md). No measurement
+experiment has been launched. Recheck free space and RAM before each experiment.
 
 The [r14 run-a world manifest](../item-7/archive/r14/run-a-worlds-manifest.json)
 records 484,774,742 raw bytes and 291,011,199 compressed bytes for four seeds.
@@ -151,12 +197,12 @@ warm-up replicates. Multiple metrics can share qualifying runs.
 
 Material pending inputs:
 
-- Persistent storage location or explicit disposition of specific disposable
-  data. Existing backups, archives and protected artifacts cannot be removed
-  to make room without authorization.
-- Retain Item 5's observed-combat requirement and arrange its player observations,
-  or obtain an explicit requirement revision. A question has been sent to the
-  user; silence preserves the current requirement.
+- Bound peak experiment storage to current capacity with verified sequential
+  custody, or obtain another persistent location. The authorized duplicate
+  cleanup is complete; it does not authorize removing additional artifacts.
+- Arrange Item 5's required player observations. The user requested separate
+  local profiles for later login; the observed-combat requirement remains in
+  force. Profile creation does not satisfy the observation matrix.
 - Complete the nonregistry occurrence method and Sparse Structures attribution
   design using existing evidence. No new generic framework is justified yet.
 
