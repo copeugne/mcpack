@@ -9,7 +9,10 @@ nexus alternatives. All three SVG gzip files independently reproduce exactly.
 Wizard tower and bottom sheets were visually inspected and fit within the frames.
 The main tower silhouettes correspond; lower pieces preserve material and terrain
 differences. Interior spawners and loot must also inform the family decision.
-Nexus visual inspection is pending; source generation alone does not settle it.
+Nexus conversion completed successfully and all six alternatives were visually
+inspected within their frames. They share a broad multi-lobed arrangement; sculk
+has different extents and raised details. Opaque surfaces hide interior rooms, so
+full contents and processor declarations must also inform the decision.
 
 Templates are independently scaled. Opaque blocks hide interiors. Partial blocks
 appear as cubes, and fully occluded cells are omitted. Green is a plant-name hint.
