@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Worksite views at 4d60aff5 materially clip the larger templates. Fix this within
+the existing selection by increasing row spacing/height from 300 to 400 and
+shifting its origin right by 30. Keep source templates, projection scale and other
+selections unchanged. Preserve the failed attempt; verify the new visible bounds
+before family decisions. This reproduced defect needs no new measurement system.
+
 Next IDAS comparison covers eleven templates for dig_site (six pieces across two
 roots), nether_pump_camp, washing_camp, the_log, train_ruins and winter_wagon.
 Use the existing renderer and preserved contents to distinguish assemblies from
