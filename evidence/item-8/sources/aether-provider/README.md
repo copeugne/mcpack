@@ -191,3 +191,81 @@ source-based discoverability, without measured sightlines or a guarantee that
 terrain leaves the tunnel visible.
 
 No new runtime capture, measurement tool or validation framework was added.
+
+## Gold geometry assessment
+
+Gold's two size descriptions are now resolved by direct source derivation.
+The conservative non-foliage envelope is60x54x60 blocks (X,Y,Z), including cave
+carving. The assembled templates themselves fit within55x43x55; the central
+island is38x43x38. These are bounding envelopes, not occupied volume, measured
+examples, typical sizes, or a claim that one generation attains every bound.
+Golden-oak foliage is a separate surface extension.
+
+Take the central island bounding-box center C as the origin. BoundingBox.getCenter
+uses min + inclusiveSpan/2, with integer division. The unrotated island therefore
+occupies X/Z[-19,18], Y[-21,21]. GoldIsland and GoldStub use default unrotated
+settings; their parent adds processors without changing their pivots.
+
+The15-cube stubs start at C + (floor(cos(angle)*r),-floor(24*u*0.3),
+floor(-sin(angle)*r)) + (-7,-7,-7), where r=(u*0.125+0.7)*24 and each u is a
+separate nextFloat. Thus each horizontal start displacement before the -7
+centering lies within[-20,19], and the vertical displacement within[-7,0].
+All stub boxes fit X/Z[-27,26], Y[-14,7]. Eight to twelve selections do not change
+these bounds or imply that their extreme positions are simultaneously realized.
+
+GoldBossRoom uses pivot(11,0,14) and origin C+(-11,-4,-14)-direction, where
+direction is rotated SOUTH. GoldTunnel uses a zero rotation pivot.
+BlockLogicUtil.tunnelFromOddSquareRoom computes lateral half-width h from the
+boss box's perpendicular span, here23/2=11, and tunnel half-width t=7/2=3.
+Its horizontal offset from boss-box center is
+(dx*h-dz*t-max(0,dx), dz*h+dx*t-max(0,dz)); Y returns to boss minY.
+GoldDungeonStructure then adds(3*dx,1,3*dz). The resulting boxes relative to C are:
+
+| Rotation | Boss X | Boss Z | Tunnel X | Tunnel Z |
+| --- | --- | --- | --- | --- |
+| NONE | [-11,11] | [-15,12] | [-3,3] | [12,27] |
+| CLOCKWISE_90 | [-12,15] | [-11,11] | [-27,-12] | [-3,3] |
+| CLOCKWISE_180 | [-11,11] | [-12,15] | [-3,3] | [-27,-12] |
+| COUNTERCLOCKWISE_90 | [-15,12] | [-11,11] | [12,27] | [-3,3] |
+
+Boss Y is[-4,4]; tunnel Y is[-3,1]. Together with the island and stubs, all
+selected templates therefore fit X/Z[-27,27], Y[-21,21], or55x43x55.
+This includes the tunnel extension missed by using only the central template.
+The terrain correction translates every piece equally and does not change size.
+
+Cave anchors P lie in C+[-23,23] on each axis. GoldStubCave.postProcess sweeps
+31 samples between horizontal endpoints P plus/minus3.75*(sin(angle),cos(angle)).
+The Y endpoints are independently P.y+2+nextInt(3). Each sample's radius is
+((sin(t*pi)+1)*(nextDouble*30/16)+1)/2, bounded above by2.375.
+Consequently its floor-based candidate loops stay within P.x/z+[-7,6] and
+P.y+[-1,6]. Across all anchors this is C+X/Z[-30,29], Y[-24,29], or60x54x60.
+The spherical predicate and AETHER_DIRT/HOLYSTONE tag checks only reduce actual
+writes. Cave point bounding boxes are not substituted for these carving bounds.
+VerticalGradientProcessor can write one block below template dirt; that possible
+extension also fits this non-foliage envelope. Other inspected Gold processors
+operate at their input positions. Foliage attempts remain separately described
+in the content/placement assessment; no whole-canopy extent is claimed.
+
+The additional directly inspected Aether member is BlockLogicUtil.class,
+SHA-2566867de707e469d8b7fcd3795fa4d7ae8c904eb939bb282166b817c67ba985a70,
+under the already pinned Aether JAR; it is added to processor_inspection.members.
+Use the earlier javap command with `com.aetherteam.aether.world.BlockLogicUtil`.
+Minecraft StructureTemplate.transform/getBoundingBox is already captured under
+`evidence/item-8/sources/missing-template-code`, whose identities are bound in
+the family. BoundingBox.getCenter was directly inspected from the same runtime
+server JAR, with these identities:
+
+- JAR: `server-1.21.1-20240808.144430-srg.jar`, SHA-256
+  26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71.
+- Member: `net/minecraft/world/level/levelgen/structure/BoundingBox.class`, SHA-256
+  dda1e9d4d6247e343ddc7f8f50c9bb6a5c02a134482c4a868a749f2fcd4945c3.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar \
+  net.minecraft.world.level.levelgen.structure.BoundingBox
+```
+
+This resolves Item8 approximate geometry without a new capture or measurement
+implementation. It does not establish runtime assembly success or exploration
+pacing, which the source derivation cannot measure.
