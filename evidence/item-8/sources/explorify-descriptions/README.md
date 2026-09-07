@@ -87,3 +87,35 @@ uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_i
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Mangrove hut and End shipwreck
+
+Two families each have three templates and no missing graph references. Twelve
+missing descriptions and eight existing attributions are integrated. Hut main
+is 14x32x16. Its upward connectors [3,22,10] and [3,26,10] meet downward connectors
+at [0,0,0] of 1x2x1 entity templates, placing them inside the main envelope at
+Y=23..24 and 27..28. Children terminate at empty pools. Cat is an animal; witch
+is the authored enemy source. The hut processor only replaces mangrove logs with
+stone where location matches base_stone_overworld. No saved loot table occurs.
+
+Shipwreck's 1x1x1 base points up to the hull's downward Y=0 connector. Sideways
+hull is 12x13x27 with connector [11,0,0]; upside-down is 13x11x25 with connector
+[12,0,0]. Thus one selected hull sits one layer above the base. The base remains
+within its horizontal projection: assembled envelopes are 12x14x27 or 13x12x25,
+including the one air-final-state base layer. Hulls are alternatives, not summed
+pieces, and their connectors terminate at empty pools. No top-level entities or
+physical spawners occur; both preserve End-city loot references. All pools are
+rigid and ship processors empty. Rotation may exchange X/Z; these are nominal
+piece envelopes including padding, not occupied or observed geometry.
+
+Standard jigsaw WORLD_SURFACE_WG start offsets are hut -21..-17 and wreck -7..-5,
+with no terrain adaptation. Empty spawn overrides do not disable ambient spawning.
+Connector/form evidence supports qualitative visibility limitations without a
+world run or measured discovery distance. No new source capture or tooling.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-explorify-hut-wreck-descriptions.json
+uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
