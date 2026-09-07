@@ -686,3 +686,59 @@ changed; biomes, observations and nonregistry content are preserved. Reproduce
 with the existing builder and an absent output path. Inventory matches
 `evidence/raw/item8/inventory-mvs-five-dwellings.json`, SHA-256
 22876ac64f5a49f5decf03c9606a9cf5c89c3f16b9b02976cffb29c0cc354656.
+
+## Six bounded Voyager layouts
+
+After 709273c8, 58 attributes finish six families across eight roots. Direct
+inspection uses the pinned templates-redacted, packaged-json-redacted and
+pool-traces-content sources already referenced by the family decisions. All
+roots intersect only Overworld runtime biomes. No capture or new tooling.
+
+Nominal fully attached XYZ envelopes, derived by matching aligned opposing
+connectors one block apart, are:
+
+| Root | XYZ | Child origins relative to main |
+| --- | --- | --- |
+| cartographer_tower | 22x58x21 | top [0,48,0]; villager [11,24,10] inside main |
+| crystal | 14x31x15 | lower [0,-2,0] |
+| floating_islands | 26x19x30 | standalone |
+| large_floating_island | 26x28x23 | villager [12,21,13] inside main |
+| jungle_tower | 47x62x43 | bottom [0,-3,0]; top [0,47,0] |
+| red_tower | 41x73x41 | top [0,48,0] |
+| large_warped_tower | 24x53x30 | top [11,44,7] inside main XZ |
+| mine_with_campsite | 29x27x48 | lower [0,-12,0]; villagers [14,2,9], [18,2,15] inside main |
+
+Exact matching connector positions and piece dimensions are integrated in each
+geometry attribute. Boxes include air/padding; attachment success and actual
+exposed/buried height are not inferred. All projections are rigid. Versioned
+Cartographer base, Large Floating Island, Jungle base and Large Warped Tower
+base select their 1.21-1.21.8 resources. Floating Islands' blue_to_water processor
+replaces blue_concrete with water at probability 1; other architecture uses empty
+processors. Shared villager alternatives retain weights 1/1/10 and empty
+processors. Floating roots use surface height plus 60, no terrain adaptation and
+omitted liquid flag (false); other roots use surface offset zero, beard_thin and
+explicit liquid checking. Full per-root terrain/biome inputs remain integrated.
+
+Jungle base has four skeleton spawners; Jungle bottom /entities/0 stores an item
+with two feathers. Red has no authored enemy source. Large Warped Tower base has
+19 spawner records: seventeen skeleton assignments and two empty SpawnData.entity
+objects at /block_entities/7 and /block_entities/21. Their mob IDs remain UNKNOWN;
+this descriptive limitation requires no new experiment. Mine lower has one
+skeleton spawner; its two existing hostility assessments are unchanged. Other
+architectural entity lists are empty. Cartographer, Large Floating Island and
+Mine have optional villager attachments, not guaranteed residents. Cartographer
+base, Crystal base/lower and Jungle base contain SAVE-mode structure blocks
+with empty metadata, retained as authoring records rather than enemy markers.
+
+Loot owners are integrated per root and template, including Crystal lower,
+Jungle bottom and both Mine pieces. Natural spawning, actual populations, rolled
+loot, salvage yield and measured discovery distances are not claimed.
+
+One shared ten-test run passes:
+`uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Only the six family rows and decisions input identity change; biome constraints,
+world observations, nonregistry content and existing Mine hostility answers are
+preserved. Inventory matches
+`evidence/raw/item8/inventory-mvs-six-bounded-layouts-final.json`, SHA-256
+0af5280a56a4dad7ff9bdcf69af65c23765c631890638e1af28e0dc99694be60.
