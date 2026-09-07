@@ -6,6 +6,31 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS desert pyramid content assessed after 23d8847e
+
+Seven content/placement entries integrated for31 reachable templates. Eleven source
+spawner blocks are not a per-assembly count: eight randomize to husk15,stray10;
+room8 retains husk/cave_spider sources under ticking-only processing. Six defined
+literal chest tables plus two conditional modern archaeology sources. Two CORNER
+markers and three empty raw spawner compounds dispositioned; no unresolved entity
+NBT. Missing villager pool and disconnected caves preserved, not substituted.
+All85 focused checks pass (62.13s); only desert_pyramid and input identity changed.
+No new tool/runtime for content. Total446/448 fully assessed;11 attributes remain:
+castle9,desert_pyramid2(footprint,height). Do not report pyramid complete yet.
+Pyramid hall/intersection/turn pools branch repeatedly. Existing raw Item8
+chunks.jsonl search finds no pyramid start, so fixed template extents cannot supply
+an honest complete-family size. Use existing frozen gap-target capture for one
+full-start example, not a new measurement system. Inspect Castle's already-known
+village branches and available observations before deciding whether to combine
+its necessary size capture. Existing run command/custody pattern:
+evidence/item-8/sources/integrated-stronghold-provider/README.md lines124 onward.
+Disk free was3.4GB: budget fresh capture/archive/restore space before launch;
+preserve existing evidence. No runtime process launched for this increment.
+Details: evidence/item-8/sources/idas-desert-pyramid-assessment/README.md.
+Inventory SHA-256: 3a99ca3f423a961ba7092d95d4089a44221b214082663c12807e48590421648b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ancient mines assessed after 4a6d46cb
 
 Nine entries integrated for19 known rigid components. Explicit connector table
