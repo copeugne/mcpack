@@ -7,6 +7,27 @@
 ### Continuation update - 2026-09-07
 
 
+#### CTOV descriptions and outpost capture declaration after 805aa36e
+
+Ten outstanding attributes integrated across two CTOV families. Village uses
+three existing distinct full-start layouts, repeated across runs A/B, not six
+independent samples. Exact table sources include four missing packaged bindings
+preserved as defects. Both dimensions are Overworld; entity sources and visual
+assessments are integrated. All85 focused tests pass (58.47s); only CTOV/input
+identities changed. Registry328/408,nonregistry40/40,total368/448 assessed,
+80 families remain,711 explicit attribute slots outstanding.
+CTOV outpost alone retains two size attributes. Its rigid tower plus terrain-
+matching feature plates lacks a retained full-start observation. One81-chunk
+seed42 capture of ctov:pillager_outpost_plains is predeclared in the existing
+CTOV source README, including the exact command and fresh paths. No runtime
+has yet been started and no capture success is claimed. Reuse the existing
+runner, decoder, archive, restore and release workflow; no new machinery.
+Provider discovery stays closed. Final integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+548654041a325ae39435b38b5a688c75b46051328a60f6c649a3b25dbd016f2b.
+
+
 #### Bronze geometry assessed after cbacb732
 
 Bronze's two outstanding sizes resolved from preserved source: conservative
