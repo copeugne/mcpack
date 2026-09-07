@@ -754,3 +754,42 @@ encounter behavior. No retained start or additional capture is claimed.
 Rebuild and focused check commands are the same as the preceding geometry
 increment. Semantic comparison changes only these two families' geometry,
 corresponding grouping decisions and the input identity.
+
+## Plague Asylum geometry target declaration
+
+Remaining requirement: approximate whole-family footprint and vertical size.
+The retained world-bounds catalog contains no Plague Asylum start. Packaged
+33 templates establish a branching rigid assembly, not a fixed envelope:
+start corridor_4_crossing_pit17x18x17 links corridor, room and passage pools;
+stairway changes elevation by9, rooms reach34x18x17, and terminal cells attach
+to passages. Individual piece dimensions cannot substitute for whole-layout
+geometry. A source maximum-distance limit alone is not a useful example size.
+
+Reuse the existing capture path for exactly one target, seed42,
+`dungeons_arise:plague_asylum`, requesting81 chunks with timeout900 seconds.
+This supplies one illustrative saved-piece envelope, not extrema, density,
+encounter balance, occupied volume or complete distant-piece placement.
+No new measurement system or generalized geometry simulator is justified.
+Use fresh verified frozen materialization, readiness, correlated flushed save,
+clean stop, decoded full start, existing observed_bounds, immutable archive
+and verified local/published-download restores. Preserve failures and warnings.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/wda-asylum-geometry-r1 \
+  --log-path evidence/raw/item8/wda-asylum-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/wda-asylum-geometry-r1/configuration \
+  --receipt evidence/raw/item8/wda-asylum-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure dungeons_arise:plague_asylum
+```
+
+This declaration does not claim a successful capture or resolved geometry.
