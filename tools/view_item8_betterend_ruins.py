@@ -355,7 +355,9 @@ def main() -> None:
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
                 pieces.append(diagram(raw, title, (
-                    (50 if (cast("bool", args.idas_worksites)
+                    (100 if (cast("bool", args.idas_castle_farm)
+                             and name == "farmhouse/farmhouse_path") else
+                     50 if (cast("bool", args.idas_worksites)
                            or cast("bool", args.idas_buildings)
                         or cast("bool", args.idas_tower_nexus)
                         or cast("bool", args.idas_castle_farm)) else 20) + index % 2 * 300,
