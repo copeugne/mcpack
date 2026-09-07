@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four AdoraBuild Overworld assessments after 2bc91d31
+
+Retire mountain_mine, ocean_bubble, ocean_shrine and ocean_temple. Seven roots
+now have all source descriptions: 22 missing answers integrated and 16 existing
+attributions reconciled. Custom height checks distinguish mountain eligibility
+from the -12 offset and ocean-floor projection from a second projection.
+Retained can_summon=false shrieker state and exact category spawn overrides are
+recorded without a claim of tested interaction. No new measurement or capture.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-overworld-descriptions.json`, SHA-256
+821bcde1ed61ac198de9b335bff2af6c6ce643e82799cc7891f19b0f24e15771.
+Only these four registry rows changed; biome answers, observations and nonregistry
+contributions are unchanged. Registry assessment is 71/410, with 339 remaining;
+nonregistry is 40/40. AdoraBuild now has only basalt_chambers and nether_fortress
+modular families left. Preserve the missing basalt pool failure; do not replace
+its namespace or conflate individual pieces with full-family geometry.
+Final integration, acceptance, backed-up history consolidation, PR review and
+main delivery remain open. Source derivations are in the existing provider README.
+
 #### Eleven AdoraBuild Nether assessments after 87ef63fa
 
 Retire blackstone_bastion, blackstone_bastion_towers, blackstone_temple,

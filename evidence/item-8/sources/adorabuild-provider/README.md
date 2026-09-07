@@ -219,3 +219,44 @@ uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Four Overworld-generator family assessments
+
+Mountain mine, ocean bubble, ocean shrine and ocean temple cover seven roots.
+Integrated 22 missing descriptions and reconciled 16 existing attribution answers.
+Every root has one fully traced template and no jigsaw block entities, unresolved
+entities, physical-spawner inputs or generation markers. Retained per-template
+sizes resolve six geometry answers; bubble's existing geometry is unchanged.
+
+OverworldJigsawStructure.findGenerationPoint checks projected base height at chunk
+minimum X/Z against configured minimum/maximum before applying the offset. Mine
+uses WORLD_SURFACE_WG, bounds 80..144, offset -12 and bury adaptation. The normal
+branch passes that projection/offset to JigsawPlacement. Ocean roots instead use
+OCEAN_FLOOR_WG with maximum 48 and offset 0. The special ocean-floor branch adds
+the offset to that base height and calls JigsawPlacement with empty projection,
+preventing a second projection. These inputs do not measure effective burial,
+submersion, occupied volume or visibility.
+
+Only adapt_mine is nonempty: its complete packaged rules substitute stone/ores
+and remove cobweb. Ocean pools have empty processors. Minecart in mountain_mine_2
+is an authored object. Ocean temples declare guardian natural monster spawning,
+shrines drowned, with full bounds; both suppress their listed axolotl and
+underground-water-creature categories. Bubble declares empty lists for eight
+categories including monster. Exact overrides are retained by root, not converted
+to observed populations or protection from wandering mobs.
+
+Raw ocean_bubble_1 palette declares sculk_shrieker can_summon=false,
+shrieking=false and waterlogged=false; block-entity warning_level is 0. Record
+these alongside sensor/catalyst content without inventing a Warden encounter.
+The root's ignore_waterlogging liquid setting remains preserved. Bubble and
+shrines have no saved loot-table references; temples retain underwater-ruin-small
+loot. Architecture views omit water and do not establish underwater visibility.
+No new measurement, code capture or interaction experiment is required for these
+source descriptions.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-overworld-descriptions.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
