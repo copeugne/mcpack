@@ -172,3 +172,50 @@ uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Eleven Nether-generator family assessments
+
+Blackstone bastion/towers/temple, crimson hall/tower house, fortress courtyard/
+wart house, fossil, portal, temple and warped house cover 14 roots. Integrated
+52 missing descriptions (eight geometry, eleven placement and 33 interpretations)
+and reconciled 44 existing attribution answers. No new source capture or world run.
+
+NetherJigsawStructure.findGenerationPoint scans the base column at chunk minimum
+X/Z from minAbsoluteHeight+offset through maxAbsoluteHeight. It selects the first
+Y with non-air at Y-1 and air at Y and Y+2, then starts at selectedY+offset and
+calls JigsawPlacement.addPieces. Y+1 is not explicitly tested; non-air is not a
+solid-block test. All selected definitions use offset 0, min 32, max 96, no
+heightmap projection and beard_box. This describes a Nether cavity/floor search,
+not whole-footprint clearance, observed exposure or safe footing.
+
+All traces are complete. Raw templates contain no jigsaw block entities; fossil
+selects among three standalone 9x5x9 alternatives. Other roots each trace one
+template. Preserve per-template nominal geometry with padding and rotations.
+Biome answers resolve without missing/unresolved inputs. Processor lists are
+empty or three vanilla rule lists: randomize_gold_block, replace_glass_with_air,
+and structure/nether_fossil_1. They only replace gold with ancient debris/lodestone,
+remove glass, or replace/remove decorative skull blocks. They do not supply mobs,
+physical spawners or loot assignments. No template spawner/marker inputs occur.
+
+Four families have monster overrides, correcting the initial progress estimate
+of two: fortress courtyard, wart house, temple and fossil. The first three use
+piece-bounded blaze/zombified-piglin/wither-skeleton/skeleton/magma-cube entries.
+Fossil uses its distinct zombified-piglin/wither-skeleton/skeleton weights and
+counts. Exact definitions are retained in both source attribution and enemy-origin
+answers. Overrides configure natural spawn selection, not initial residents or
+physical spawners. The fossil's lack of explicit template mobs is not peacefulness.
+Authored piglins/brutes/hoglins and courtyard enemies remain template-owned.
+Armor stand is an object; strider is an animal. Portal blocks are authored inputs,
+not proof of a safe linked portal. Rewards remain exact saved loot references.
+
+The first working inventory was superseded before acceptance by the final output
+below, which distinguishes the fossil override from the fortress table. Existing
+views and source contents supply the qualitative visual forms. No measured
+visibility, population or interaction outcome is asserted.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-nether-descriptions-final.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
