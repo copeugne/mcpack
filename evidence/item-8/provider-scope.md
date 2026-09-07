@@ -10613,3 +10613,38 @@ candidates with 2,157 literal gaps, forty nonregistry assignments needing
 integration, fifteen filled registry records needing acceptance assessment.
 Twelve families have current-phase assessments. No new measurement or tooling.
 Final Item 8 acceptance, review and main delivery remain open.
+
+
+### Jungle and plains statue attribute increment
+
+Predeclared two-family, eleven-field batch. Decision 44660271 preserves separate
+canonical designs and adds ten source interpretations each with unchanged biome
+constraints. Nominal XYZ sizes: jungle 10 by 14 by 9, plains 15 by 18 by 14.
+No authored entities or spawners occur. Jungle has six archaeology and three
+chest loot references; plains has thirteen archaeology and two treasure references.
+Mechanical parts do not prove a working trap/puzzle. Frozen toggles enable both
+at weight 3 in idas_small. All fifteen jungle biomes and 27 of 29 plains biomes
+overlap only the captured Overworld; plains retains the two absent RU biomes.
+Neither has a retained world occurrence. Visibility remains qualitative.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+c275658a92c4677431a46971407d789877d78c181716bca3cc300c6d71061738.
+Only these two families and decision input identity change; memberships, biome
+constraints, observations, pool trace IDs and other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-jungle-plains-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+cmp evidence/raw/item8/inventory-jungle-plains-attributes-r1.json evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+```
+
+Twelve literal field gaps resolved. Remaining planning counts: 393 registry
+candidates with 2,145 literal gaps, forty nonregistry assignments needing
+integration, seventeen filled registry records needing acceptance assessment.
+Fourteen families have current-phase assessments. No new measurement/tooling.
+Final Item 8 acceptance, review and main delivery remain open.
