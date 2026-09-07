@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Towns and Towers Village attribution after 3ffbac6e
+
+Seven attributes are integrated for Village's 26 variants/777 present templates.
+Dimension exceptions, source inhabitants, malformed/missing payloads, absence
+of present-template spawners, natural overrides, archaeology/loot and visibility
+are explicit. Six applicable tests pass. No capture, new tool or measurement.
+Geometry remains open: approximate whole-settlement footprint and vertical size.
+No retained starts exist; individual template sizes cannot substitute for an
+assembled branching settlement. Determine the smallest adequate geometry proof
+before extending investigation. Existing README records scope and exact sources.
+Inventory SHA: ef7e3b2a9c099eddb88c50f4b34f0a1262b0a1abea4f3d3baed9dc6ceb791c05.
+Total remains 290/450 assessed, 160 remaining; Village now has eight of ten
+explicit attributes including its preexisting placement assessment. Towns and
+Towers remains 7/8. Final canonical integration, acceptance, verified backup/
+history preparation and PR review/main delivery remain open.
+
 #### Towns and Towers Camp assessed after f0496c7b
 
 Nine attributes integrate five variants/35 present templates. Eight preexisting
