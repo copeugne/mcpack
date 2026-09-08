@@ -13,9 +13,9 @@ generation and custody but failed census on one incomplete saved Aether chunk.
 All five remaining planned worlds and the [final fresh retry](full-ocean-heavy-r2-without-sparse-attempt3/README.md)
 passed. The sample contains sixteen complete worlds after eighteen attempts, with
 both failures preserved and the frozen configuration unchanged. The complete
-category, biome, seed, repetition and spatial comparison follows. Final validation,
-review, main delivery and the Items 2 through 10 audit remain incomplete. No tuning
-was performed.
+category, biome, seed, repetition and spatial comparison follows. Local validation
+and clean-checkout reproduction pass. Final review, main delivery and the Items 2
+through 10 audit remain incomplete. No tuning was performed.
 
 The [authorized automated scope](methodology-amendment.md) removes human phases
 from Items 10 and 11. No playing workload or recording is required. Provisional
@@ -497,8 +497,8 @@ source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
 prior reviews, all sixteen world censuses and combined synthesis are resolved.
-Final validation and delivery remain incomplete; runtime acceptance is established
-per world, not from tests.
+Local validation passes; final review and delivery remain incomplete. Runtime
+acceptance is established per world, not from tests.
 
 ### Storage decision before collection
 
@@ -577,7 +577,66 @@ with [zero errors, warnings or notes](final-validation/basedpyright.txt).
 The one subsequently corrected fixture was checked again with all three commands
 and passed. No production code or accepted census bytes changed in that fix.
 
-Clean-checkout reproduction and the final Codex PR review/merge remain pending.
+### Clean-checkout reproduction
+
+PASS at detached source `979f7efded2b16a8066a293367c61b1e9898be02` in a separate
+`../mcpack-item10-reproduction-979f7efd` worktree. `uv sync --frozen` created its own
+virtual environment using CPython 3.13.6. Direct module-path inspection confirmed
+that both the analysis tool and Anvil decoder loaded from that checkout. This
+reproduces processing in a clean checkout, not a clean-machine server rebuild or
+a new gameplay experiment. No server was launched and no accepted world was reused
+as a writable experiment.
+
+A fresh download of the final ocean-heavy retry's immutable release matched the
+committed archive manifest. The [raw restore](final-validation/clean-checkout-raw-restore.json)
+verified 313 members, and the [world restore](final-validation/clean-checkout-world-restore.json)
+verified 502 world files in new targets. Running the exact full census command
+from that world's report in this worktree completed with exit 0 in
+[477.603 seconds](final-validation/clean-checkout-census-runtime.txt). `cmp` confirmed
+byte identity with the 99,115,673-byte accepted output, SHA-256
+`484b6280b09509ef92af6595a33f8515b394579e0569f7ce3c1ec8877aa59f05`.
+`git status --porcelain` was empty after processing.
+
+Executed setup from the original checkout, then commands in the new checkout:
+
+```sh
+git worktree add --detach ../mcpack-item10-reproduction-979f7efd 979f7efded2b16a8066a293367c61b1e9898be02
+cd ../mcpack-item10-reproduction-979f7efd
+uv sync --frozen
+mkdir -p evidence/raw/item10/clean-checkout-download
+gh release download item10-full-ocean-heavy-r2-without-sparse-attempt3-498394f1 --repo copeugne/mcpack --dir evidence/raw/item10/clean-checkout-download
+cmp evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/archive-manifest.json evidence/raw/item10/clean-checkout-download/archive-manifest.json
+mkdir evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt3-custody
+uv run --no-sync python -m tools.archive_item7_evidence restore --archive evidence/raw/item10/clean-checkout-download/item10-full-ocean-heavy-r2-without-sparse-attempt3-498394f1.tar.gz --manifest evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/archive-manifest.json --target evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt3-custody/restored-local --receipt evidence/raw/item10/clean-checkout-download/raw-restore.json
+uv run --no-sync python -m tools.manage_item4_environment restore --archive evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt3-custody/restored-local/world.tar.gz --sha256 c754bbb6d423f6a27acd17f694f4332588a46b2276eeb7da6df5d71761466802 --target evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt3-custody/restored-world
+mkdir evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt3-analysis
+```
+
+Then use the [accepted census command](full-ocean-heavy-r2-without-sparse-attempt3/README.md#reproduction-and-census)
+and compare its SHA-256 to the value above. An initial restore attempt omitted
+the custody parent directory and failed explicitly with `FileNotFoundError` before
+restoration. Creating that documented parent and repeating the command succeeded;
+no archive or world was repaired. The separate complete-biome reproduction above
+also passes for all sixteen hash-verified inputs. Per-world reports retain the
+processor revisions needed to reproduce earlier serialized census versions.
+
+### Local Item 10 exit gate
+
+MEASURED and VERIFIED locally, pending final review and main delivery:
+
+| Item 10 requirement | Authoritative result |
+| --- | --- |
+| Representative regions across selected seeds | Sixteen accepted world reports, four declared seeds, two fresh repetitions per arm, eleven strata per world; 720,896 full selected chunks. |
+| Structure and provisional category densities, including villages | Complete Overworld and other-dimension tables, plus all ten category numerators and exact denominators in each hash-bound census. T2 and T3 are exclusive; T4 remains separate. |
+| Category distances, clustering and empty regions | Complete spatial summary and per-stratum neighbors, censoring, full-cell dispersion and empty-rectangle bounds in every accepted output. |
+| Biome and seed comparisons | Complete 68,217-row biome artifact, explicit unavailable/zero-exposure cases, all four seed blocks and retained fresh repetitions. |
+| Sparse Structures contribution | Eight matched omit-only controls, unchanged frozen configuration and observer; spacing/salt mechanism and observed contrasts with causal limitations. |
+| Evidence integrity and reproducibility | Per-world immutable archives, local/download/world restores, exact source/runtime identities, deterministic complete-biome reproduction and clean-checkout full-census byte identity. |
+| Failure disposition and uncertainty | Eighteen attempts, two rejected runs preserved, explicit saved-content and overlap exclusions, sparse counts, finite-frame censoring and no random-world confidence claim. |
+| Delivery | Final Codex PR review/fix loop, merge verification and subsequent Items 2 through 10 audit remain pending. |
+
+No observed fights, experienced pacing, enjoyment, loot correctness or production
+reliability is established by this density gate.
 
 ## Resource estimate and unresolved gates
 
@@ -607,8 +666,8 @@ its recorded emergency shutdown. No estimated total replaces these observations.
 Remaining validation and delivery work:
 
 - Preserve all accepted worlds and both failed attempts while completing delivery.
-- Complete clean-checkout reproduction, final review, main delivery and the
-  Items 2 through 10 audit. Keep Item 11 workflows untouched.
+- Complete final review, main delivery and the Items 2 through 10 audit.
+  Keep Item 11 workflows untouched.
 
 The observer and control methods are implemented. Reuse them; add no generic
 framework or tuning while completing validation and delivery.

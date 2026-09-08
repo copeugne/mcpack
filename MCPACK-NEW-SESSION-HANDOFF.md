@@ -183,8 +183,10 @@ heap/save errors; 42 focused lifecycle/console/collection tests cover the correc
 
 The full Item 7/10 gate passes 568 tests after a narrow synthetic biome-fixture fix;
 both failed and passing logs are linked from the Item 10 README. Quality checks pass.
-Next: clean-checkout reproduction, consolidated Codex PR review/fix/merge, verified main delivery and
-Items 2 through 10 identity/narrative audit. No new tooling PR or Item 11 work.
+Clean-checkout reproduction at `979f7efd` passed: fresh raw/world restores and
+byte-identical full census in 477.603s, with an independent locked Python environment.
+Next: consolidated Codex PR review/fix/merge, verified main delivery and Items 2
+through 10 identity/narrative audit. No new tooling PR or Item 11 work.
 
 Two local servers are stopped and preserved. Official launcher profiles are prepared;
 first launch/join is unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational

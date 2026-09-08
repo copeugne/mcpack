@@ -1,6 +1,6 @@
 # Item 10 sampling protocol
 
-Status: FROZEN FOR FIRST FULL RUN, `item10-full-v1` (2026-09-08). The user-authorized
+Status: FROZEN SAMPLING PROTOCOL, `item10-full-v1` (2026-09-08). The user-authorized
 [scope amendment](methodology-amendment.md), `item10-automated-v1`, removes human
 sessions and recording from both Items 10 and 11. The former combat collection
 contract and blind-operator requirement are superseded for these items. No
@@ -8,16 +8,21 @@ human workload is scheduled or deferred as a completion condition.
 
 ## Current execution constraint
 
+Collection under this protocol is complete: sixteen accepted worlds, eight
+matched pairs and two preserved failed attempts. The [complete comparison](README.md)
+and [active handoff](../../MCPACK-NEW-SESSION-HANDOFF.md) identify current validation
+and delivery status. No further world or retry is authorized by this checkpoint.
+The sampling geometry, occurrence rules, runtime and observer identities below
+remain unchanged. Reproduction commands are not instructions to restart collection.
+
 The [exit-gate reassessment](README.md#exit-gate-reassessment-2026-09-08)
-supersedes prospective per-generator positive-pilot prerequisites. Historical
-pilot outcomes remain unchanged. The reassessment, storage cleanup and existing
-review obligations are complete. The applicable Item 7/10 gate passed all 535
-tests in 152.60 seconds with `uv run --no-sync pytest -q tests/item7 tests/item10`.
-Proceed with the first complete ordinary-seed baseline world, then verify actual
-observer coverage, saved-world acceptance and resource costs before the remaining
-15 worlds. Consolidate measurement/report into one delivery PR. Complete observation and correct
-occurrence processing remain mandatory. Do not hunt for natural positive examples
-or reinterpret a missing/broken observation mechanism as zero.
+superseded prospective per-generator positive-pilot prerequisites. Historical
+pilot outcomes, earlier failed gates and dated validation counts below remain
+records of their respective checkpoints, not active continuation instructions.
+The pre-collection Item 7/10 gate had 535 passes in 152.60 seconds; the final
+validation record is linked from the complete comparison. Complete observation
+and correct occurrence processing remain mandatory. Do not reinterpret a broken
+observation mechanism as zero. Consolidate measurement/report into one delivery PR.
 
 ## Measurement boundary
 
