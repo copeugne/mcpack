@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `12c9bfd998e0704561e476d00518acbcd11f5301` after PR31.
+  `868df56c1dca5384769315746088dd2776a31157` after PR32.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -147,18 +147,10 @@ review records are in the linked reports:
 - [Registry spatial pilot](evidence/item-10/pilot-r1/README.md): PR31 delivers
   combined actionable, encounter and village categories with unchanged raw data.
 
-PR32 reviews `codex/item10-urn-coverage`. The
-[urn pilot](evidence/item-10/urn-pilot-r1/README.md) completed cleanly; raw download
-and both restores pass. The existing collector records parent placement identity
-and actual write results. Its extended reader and saved-world inspector validate
-all 429 mixed writes, including 161 urn writes at distinct coordinates. The
-summary preserves 87 successful and 987 zero-successful-write patch attempts.
-All 371 Item 7/10 tests pass; the final summary adjustment passes four affected
-checks. PR32's valid missing-archive prerequisite finding is fixed in `ac70f3d5`.
-All 54 retained-trace tests, Ruff, basedpyright and explicit missing-file skip
-verification pass. The fresh review request is
-[5581030747](https://github.com/copeugne/mcpack/pull/32#issuecomment-5581030747);
-the review is running on that head. Inspect the completed cycle before delivery.
+PR32 is cleanly reviewed and merged at `868df56c1dca5384769315746088dd2776a31157`.
+The [urn report](evidence/item-10/urn-pilot-r1/README.md#reviewed-main-delivery)
+records the fixed prerequisite finding, fresh review and verified main delivery.
+Its 161 urn writes are corroborated, but selected-area density remains open.
 
 Current branch: `codex/item10-bridge-coverage`. The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
@@ -167,8 +159,11 @@ sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
 retained-class transformation. The [probe report](evidence/item-10/placement-probe.md#bridge-template-and-processor-preparation)
 records validation. The existing placement callback now retains configured-variant
 registry attribution with explicit null for unavailable identity; 17 focused
-bridge/urn tests and the full 380-test Item 7/10 gate pass. Predeclare the bounded
-bridge run and recheck storage next.
+bridge/urn tests and the full 380-test Item 7/10 gate pass. The
+[bridge diagnostic](evidence/item-10/bridge-pilot-r1/README.md) completed cleanly
+with all hooks installed but no bridge attempts. Raw download and world restore
+passed. Positive bridge capture remains unmet; do not expand this frame to hunt
+for it. Review this bounded milestone, then address remaining occurrence coverage.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
@@ -176,7 +171,7 @@ attribution, exact Sparse Structures control and observer cost/storage checks.
 The [protocol](evidence/item-10/protocol.md) remains DRAFT for the full frame.
 Use accepted Item 8 mechanisms rather than repeating its inventory. Do not expand
 fixed diagnostics to hunt for positive counts. The last prelaunch storage check
-was 4.8 GiB free, below the provisional 5 GiB full-experiment floor.
+was 4.2 GiB free, below the provisional 5 GiB full-experiment floor.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed
