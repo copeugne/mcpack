@@ -143,9 +143,11 @@ after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable
 cleanly but both commands were refused because the target was not loaded. Its
 raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
 fills the platform, but BetterEnd returns false before invoking a template. Its
-raw and nested restores pass. Inspect the rejecting height/terrain predicate
-before another experiment; positive capture and saved-world corroboration remain
-unresolved. The loading fix is pushed as `3cb164d8`.
+raw and nested restores pass. [Ground diagnostic r5](evidence/item-10/betterend-ground-r5/README.md) observes
+the expected `[8,81,8]` ground and false return. Saved air/end-stone states narrow
+the likely rejection to terrain-tag membership, which still needs runtime
+verification. All raw restores pass. Do not assume end stone belongs to the tag;
+positive template capture remains unresolved. Ground tracing is pushed as `3079920f`.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
