@@ -89,8 +89,10 @@ availability or tentative ten-hour offer as an approved workload.
 from actual combat. Resolve the Item 5 contract conflict explicitly. The automated registry pilot is now reproducible; no human workload is scheduled.
 [Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
 fix and raw-coordinate census. It now rejects incomplete denominators and
-inconsistent starts; 31 focused tests pass. Next integrate canonical joins and nonregistry occurrence coverage, then finish
-the full sampling design. The pilot does not close Item 10 or its combat contract.
+inconsistent starts. The accepted family/category join now covers all 24 pilot
+starts, retaining confidence and ambiguity; 34 focused tests pass. Next complete
+nonregistry occurrence coverage and spatial summaries, then finish the full
+sampling design. The pilot does not close Item 10 or its combat contract.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows. The blind-human requirement remains.

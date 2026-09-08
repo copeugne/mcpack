@@ -70,3 +70,44 @@ archive contents and hash were unchanged. The rejected metadata remains locally
 at `evidence/raw/item10/pilot-custody-r1/rejected-wrong-revision-manifest.json`.
 No accepted measurement uses that revision. The prelaunch timer failure above
 and this metadata correction do not become successful experiment observations.
+
+## Accepted category integration
+
+[Classified census](classified-census.json) adds the exact Item 8 family join and
+Item 9 provisional role, confidence, flags, comparison groups, rationale and
+ambiguity to every observed start. The source hashes are embedded in the output
+and checked before joining. All 24 starts mapped. Distinct starts of the same
+family remain distinct observations. Missing mappings fail instead of reducing
+the count. The original raw census remains unchanged in the immutable archive.
+Removing the added `classification` field gives exactly the original census.
+
+| Provisional role | Starts | Per 1,000 selected chunks |
+| --- | ---: | ---: |
+| T0, ambient landmark | 8 | 2.015621 |
+| C, civilization | 1 | 0.251953 |
+| T1, small encounter | 8 | 2.015621 |
+| T2, proper dungeon | 7 | 1.763668 |
+| T3, major expedition | 0 | 0 |
+| T4, world objective | 0 | 0 |
+
+These are exclusive source-supported roles, not measured fights, clear times or
+realized dungeon quality. Zeroes apply only to this selected registry sample.
+The 40 nonregistry families remain outside its coverage. To reproduce after
+restoring the world using the commands above, with a new output path:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density RESTORED_WORLD/world CLASSIFIED_CENSUS.json --dimension minecraft:overworld --bounds -31 31 -31 31 --classify
+```
+
+Validation: 34 focused tests pass, covering the census/decoder boundaries and
+new tests for preserving distinct starts in one family, rejecting unmapped
+observations, and rejecting changed accepted-input hashes. Ruff passes for the
+changed tool and test; basedpyright reports no errors or warnings for Item 10
+tests. The real CLI was run on the restored pilot, then its base observations
+were compared with the original census. Reproduce the focused checks:
+
+```sh
+uv run --no-sync pytest tests/item10 tests/item7/test_anvil_decoder.py tests/item7/test_world_region_dimensions.py -q
+uv run --no-sync ruff check tools/analyze_structure_density.py tests/item10/test_density_census.py
+uv run --no-sync basedpyright tests/item10
+```
