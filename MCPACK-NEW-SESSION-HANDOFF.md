@@ -152,7 +152,9 @@ The [urn report](evidence/item-10/urn-pilot-r1/README.md#reviewed-main-delivery)
 records the fixed prerequisite finding, fresh review and verified main delivery.
 Its 161 urn writes are corroborated, but selected-area density remains open.
 
-Current branch: `codex/item10-bridge-coverage`. The
+Current branch: `codex/item10-extras-coverage`. PR33 reviews the pushed bridge
+milestone at `abc032fd`; its fresh review request is
+[5581156151](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581156151). The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
 reuses accepted selection/geometry evidence and binds 37 direct processor write
 sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
@@ -163,7 +165,11 @@ bridge/urn tests and the full 380-test Item 7/10 gate pass. The
 [bridge diagnostic](evidence/item-10/bridge-pilot-r1/README.md) completed cleanly
 with all hooks installed but no bridge attempts. Raw download and world restore
 passed. Positive bridge capture remains unmet; do not expand this frame to hunt
-for it. Review this bounded milestone, then address remaining occurrence coverage.
+for it. Inspect the completed review before merging. The next
+[Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
+reuses accepted generation records and identifies two template and eleven
+processor write sites. Extend the existing observer and fixtures next; no Extras
+runtime experiment has started.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
