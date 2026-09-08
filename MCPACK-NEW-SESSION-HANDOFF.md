@@ -175,8 +175,13 @@ Its census (session `50314`, terminal 0) passed in 10m28.578s, SHA-256
 All 45,056 chunks and 50 targets pass. Six overlapping T0 candidates were reviewed
 and excluded under the unchanged protocol. Both mountainous pairs have Overworld
 T2/T3 baseline 6/2 versus control 22/7, while total differences vary +44 to +165.
-The full mountainous block now has individual acceptance. No process is active.
-Next run `full-ocean-heavy-r1-baseline`, then finish that block and biome-diverse
+The full mountainous block acceptance is pushed at `5367d2dd`.
+[Ocean-heavy r1 baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md)
+finished from that source in 512.546s; session `84867` is terminal 0. Configuration
+and published/downloaded/restored custody pass (313 raw and 502 world files).
+Its census is active as session `96485`. Poll that handle and inspect/integrate
+the complete result before acceptance. No server is active. Then finish the
+ocean-heavy block and biome-diverse
 in frozen order. Use fresh hash-verified materializations and existing custody/census
 paths. Latest free space is about 28.5 GiB; the eighth world uses about 2.04 GiB.
 Continue checking growth against the roughly 30 GiB working plan.
