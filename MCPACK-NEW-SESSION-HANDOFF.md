@@ -141,9 +141,11 @@ its raw archive/world restores. Its content hook remains the second direct write
 after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
 [Placement fixture r3](evidence/item-10/betterend-fixture-r3/README.md) stopped
 cleanly but both commands were refused because the target was not loaded. Its
-raw archive and nested world restore are verified. Next fix the fixture loading
-precondition in a fresh world, then validate positive template observations and
-saved-world corroboration before accepting counts.
+raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
+fills the platform, but BetterEnd returns false before invoking a template. Its
+raw and nested restores pass. Inspect the rejecting height/terrain predicate
+before another experiment; positive capture and saved-world corroboration remain
+unresolved. The loading fix is pushed as `3cb164d8`.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
