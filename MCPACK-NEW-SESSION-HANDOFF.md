@@ -131,9 +131,13 @@ reviewed head `677eb250`, fixed findings and verified main ancestry.
 [PR26](https://github.com/copeugne/mcpack/pull/26) is cleanly reviewed and merged. Its
 [archived capture](evidence/item-10/monster-box-pilot-r1/README.md) validates all
 202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
-Continue on `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
+PR27 uses `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
 Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
-now validate in `769d11cc`; 340 Item 7/10 tests pass. [PR27](https://github.com/copeugne/mcpack/pull/27) review is running.
+now validate in `769d11cc`; 340 Item 7/10 tests pass. [PR27](https://github.com/copeugne/mcpack/pull/27) review was re-requested after an invalid atomicity finding: the five requested
+commit boundaries already exist; see PR discussion 5580055921.
+Current work is on `codex/item10-spiral`: the source/part hook passes synthetic
+preservation and retained-class transformation; 341 Item 7/10 tests pass. Next predeclare its bounded pilot
+and integrate mixed capture after retaining raw evidence. No natural counts yet.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records

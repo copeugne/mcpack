@@ -707,3 +707,28 @@ All five collector tests pass in 9.46 seconds; changed-test Ruff and basedpyrigh
 pass. This implementation adds no server commands or experiment. Live positive
 capture, incoming runtime identity, trace validation and saved-block corroboration
 remain required before this contribution can enter full sampling.
+
+## Spiral spire source/part hook
+
+The existing collector now brackets SpiralSpireGenerator.generateChunkPart,
+recording the source in begin.origin and the destination chunk in a part event.
+Its two delegated makeSpike write sites use a scoped bridge; direct calls outside
+the outer attempt invoke the original WorldGenRegion method without tracing.
+This extra bridge is required because the writer is public and distinct from
+the source boundary. Treating its direct calls as complete source observations
+or throwing outside an active attempt would change behavior. No new collector
+framework was introduced.
+
+All 341 Item 7/10 tests pass on the final candidate in 61.55 seconds.
+The spiral fixture covers normal, early, refused, exceptional, isolated-loader,
+outside and outside-exception cases. Original stdout includes complete write
+arguments and terminal outcomes; observed stdout matches. Traced write results
+match the fixture refusal setting. Three completed chunk attempts
+retain two source keys, with separate raw attempts and no fabricated boolean
+generator result. The exact retained Quark archive and SpiralSpireGenerator
+class are hash-checked and transform successfully. Class SHA-256:
+`dd57fdac61e67cece06adc078a4538e3949573baff8f65df9819218bd282b771`.
+Reproduce with `uv run --no-sync pytest tests/item10/test_placement_probe.py -q`.
+Changed-test Ruff and basedpyright pass. This is synthetic collector acceptance
+only. A predeclared fresh pilot, mixed-trace reader integration and saved-block
+corroboration remain necessary before accepting natural spiral occurrences.
