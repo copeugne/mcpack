@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Six of sixteen worlds have individual census and raw-custody acceptance:
+Seven of sixteen worlds have individual census and raw-custody acceptance:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
@@ -147,44 +147,32 @@ Six of sixteen worlds have individual census and raw-custody acceptance:
 - [Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md).
 - [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
 - [Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md).
+- [Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md).
 
-The fifth census (session `22204`, terminal 0) passed in 10m38.455s using
-`760aa2f5`. Output SHA-256:
-`bb0f1eeb9f638f050541bf1cb1ee88b4abbbba51ead99264bb77b7962a50f149`.
-All 45,056 selected chunks passed. Its record retains the original gateway
-coverage rejection, the JVM fixture finding and the coverage-v2 correction.
-The frozen observer JAR is archive-bound; 49 captured targets plus the unused
-Gateway target pass the corrected rule. No observer or configuration changed.
-Full Item 7/10 suite: 548 passed in 173.38s; two subsequently added archive-binding
-cases pass in the focused 41-test run. Fifth-world acceptance is pushed at
-`3fa7f311`; sixth-world acceptance is pushed at `1632e3de`.
+Analysis implementation `760aa2f5` applies the documented coverage-v2 correction:
+archive-bound frozen JAR, all target installations except a verified unexercised
+Gateway case, and strict trace/content checks. The fifth world's original
+coverage rejection and fixture investigation remain in its record. Full Item
+7/10 suite passed 548 tests in 173.38s; two added archive-binding cases passed
+in the focused 41-test run. No code changed for the sixth or seventh census.
 
-Mountainous Overworld has 4,039 locations, including 3,784 observed cave-urn
-caches, but only six provisional T2 dungeons. Two content mismatches remain
-excluded. Do not translate those counts into observed gameplay. Per-world
-commands, complete category counts, failures, biomes, spatial outputs and custody
-are linked above; final cross-seed/repetition synthesis remains pending.
-The fifth and sixth working footprints are about 1.98 and 2.06 GiB. Latest free
-space is about 33.1 GiB; continue checking costs against the roughly 30 GiB plan.
+The seventh census (session `95707`, terminal 0) passed in 10m50.946s, SHA-256
+`a96a0a04bbf370871ce4aa51821cd8b7d5e00876ebf2d227ab981fcb731f8873`.
+All 45,056 chunks and 50 observer classes pass. Its two in-frame anomaly/monolith
+candidates share two positions. The completed overlap review keeps them excluded
+under the existing protocol, with raw flags and sensitivity retained. No reader
+change was needed. Two cave-urn content mismatches are also retained.
+The two mountainous controls have Overworld totals 4,083 and 4,182 but identical
+T2/T3 counts (22/7). Outer End and Nether vary; see the full repetition comparison.
 
-[Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md)
-finished from `3fa7f311` in 666.194s; session `9871` is terminal 0. Configuration
-and published/downloaded/restored raw custody pass (313 raw and 501 world files).
-Its census (session `61273`, terminal 0) passed in 10m17.617s, SHA-256
-`ced960a70c4c34581b19c68b2bdcbf76f003894191ae62537aa1a85072e968b7`.
-All 45,056 chunks and 50 observer classes pass. The record retains three content
-exclusions and the matched contrast: Overworld T2 6 to 22, T3 2 to 7, total
-locations 4,039 to 4,083. Do not infer a global ratio from this one pair.
-[Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md)
-finished from `1632e3de` in 663.491s; session `23508` is terminal 0. Configuration
-and published/downloaded/restored raw custody pass (313 raw and 501 world files).
-Its census is active as session `95707`. Poll that handle and record the complete
-result and repetition comparison before acceptance. No server is active.
-Next run mountainous r2 baseline,
-followed by the ocean-heavy and biome-diverse blocks in the frozen order. Use
-fresh hash-verified materializations and existing custody/census paths. Complete
-the remaining ten worlds, final synthesis, consolidated PR review/merge and
-Items 2 through 10 audit. Do not create another tooling PR or Item 11 work.
+No server or census is active. Next run `full-mountainous-r2-baseline`, then
+complete the ocean-heavy and biome-diverse blocks in frozen order. Use fresh
+hash-verified materializations and existing custody/census paths. Latest free
+space is about 30.8 GiB; the seventh world uses about 2.09 GiB including custody
+and analysis. Continue checking growth against the roughly 30 GiB working plan.
+Finish the remaining nine worlds, final biome/seed/repetition/spatial synthesis,
+consolidated PR review/merge and Items 2 through 10 audit. Preserve failures,
+censoring and provisional classifications. No new tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
 profiles and matching client files are prepared; first client launch/join remains
