@@ -164,18 +164,22 @@ chunks, 24 registry starts and 931 nonregistry locations. Its hash, command and
 limits are in the first-run README; output is under
 `evidence/raw/item10/full-ordinary-r1-baseline-analysis`.
 The single-stratum output repeats 68.4 MB of whole-world observation state.
-The `--all-strata` change reuses one nonregistry pass across all eleven censuses.
-The first attempt (session `56885`, terminal 1) rejected the observed Aether cloud
-terrain root after 7m46.709s. Its explicit Item 8 exclusion now integrates into
-the classifier while retaining raw starts and disposition; unknown/inactive roots
-still reject. See the first-run README for the failure and 59 passing tests.
-Corrected analysis is running in exec session `62881`, writing a new
-`all-strata.json` beside the Overworld result; timing/diagnostics are in
-`all-strata-r2-runtime.txt`. Poll that session, never restart on silence. On completion,
-compare its Overworld census/classification/spatial/biome values with the retained
-single-stratum result, verify all 45,056 chunks, record resource costs and commit
-the coupled analysis/test/evidence change. No second world may start before
-acceptance. The raw inputs and published custody remain unchanged.
+First-world acceptance now passes at analysis implementation `14680b79`.
+Corrected analysis session `62881` is terminal 0: all 45,056 selected chunks,
+1,332 observed nonregistry locations, and exact equality with the previous
+Overworld census/classification/spatial/biome object. The Aether terrain exclusion
+retains 26 raw cloud starts. Failed session `56885` remains preserved.
+Full output `all-strata.json` is 83,579,779 bytes, SHA-256
+`3ce081927696641793f9c522520149635341f9714ca3041df5419a6130b51c02`;
+timing is `all-strata-r2-runtime.txt` (8m23.404s). The first-run README records
+per-stratum counts, lifecycle-site limitations and resource acceptance. All 541
+Item 7/10 tests passed in 172.87s. No analysis or test process remains active.
+The first-seed projection is about 4.45 machine-hours for generation/analysis and
+30.3 GiB working allocation; check actual growth per world. Free space is about
+43.7 GiB. These are projections, not guarantees or permission to delete evidence.
+Next: fresh `full-ordinary-r1-without-sparse`, then its complete analysis/custody,
+followed by the other fourteen worlds in protocol order. Commit coupled evidence
+milestones, finish comparisons/report, consolidated review/merge and cross-item audit.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher

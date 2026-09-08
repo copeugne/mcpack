@@ -1,7 +1,8 @@
 # First full ordinary baseline
 
-Status: GENERATED, CONFIGURATION REVALIDATED, RAW CUSTODY VERIFIED; census and location
-acceptance remain pending. Generation source: `7b977af6`. Seed: `42`.
+Status: FIRST-WORLD ACCEPTANCE PASS. Generation source: `7b977af6`; analysis
+implementation: `14680b79`. Seed: `42`. This is one of sixteen planned worlds,
+not Item 10 completion.
 
 The original [run receipt](run.json) is preserved unchanged. All eleven declared
 generation selections finished, the correlated flush passed, and Java exited
@@ -147,7 +148,7 @@ classification and spatial results. Focused validation passes 59 tests with
 `uv run --no-sync pytest -q tests/item10/test_full_world_census.py
 tests/item10/test_density_census.py tests/item10/test_density_spatial.py
 tests/item10/test_collection_trace.py`; scoped Ruff and changed-test type checks
-pass. The corrected full analysis is pending; this is not first-world acceptance.
+pass. The corrected full analysis result is recorded below.
 
 Full analysis command (uses the same restored raw inputs; output must be absent):
 
@@ -160,3 +161,67 @@ Executed command:
 ```sh
 uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-world/world evidence/raw/item10/full-ordinary-r1-baseline-analysis/overworld.json --dimension minecraft:overworld --bounds -32 31 -32 31 --dimension-geometry evidence/item-10/dimension-geometry.json --classify --spatial --biomes --trace-root evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-local --trace-manifest evidence/item-10/full-ordinary-r1-baseline/archive-manifest.json --require-complete-observer
 ```
+
+## Complete first-world acceptance
+
+The corrected command exited 0 after 8m23.404s (user 8m17.610s, system
+0m1.504s). The new `all-strata.json` is 83,579,779 bytes, SHA-256
+`3ce081927696641793f9c522520149635341f9714ca3041df5419a6130b51c02`.
+The exact command above and the already-published raw inputs reproduce it.
+Timing is retained beside it in `all-strata-r2-runtime.txt`; the failed attempt
+and original Overworld result remain unchanged. All 541 applicable Item 7/10
+tests passed in 172.87 seconds with `uv run --no-sync pytest -q tests/item7 tests/item10`.
+
+Every stratum has 4,096 complete selected chunks, totaling 45,056. The table is
+a direct projection of each `strata[label].total_starts` and
+`classification.categories[category].count`. Category densities are those counts
+multiplied by `1000 / 4096`. Registry starts include terrain exclusions; classified
+locations exclude them. Categories remain provisional, not observed fights.
+
+| Stratum | Registry starts | Classified locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| aether | 31 | 5 | 0 | 0 | 0 | 5 | 0 | 0 | 0 |
+| earth-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon | 11 | 11 | 11 | 0 | 0 | 0 | 0 | 0 | 0 |
+| venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| overworld | 24 | 955 | 8 | 1 | 939 | 7 | 0 | 0 | 1 |
+| end-central | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
+| end-outer | 17 | 26 | 23 | 0 | 3 | 0 | 0 | 0 | 0 |
+| nether | 40 | 430 | 22 | 0 | 400 | 4 | 4 | 0 | 0 |
+
+Aether's 26 cloud starts remain explicitly excluded terrain records. Central End
+contains the arrival platform (T0) and dragon arena (T4), reported here as
+lifecycle sites, not ordinary repeatable dungeons. Outer End includes seven
+lifecycle gateways among its 26 locations; the other 19 are separate placements.
+The arena has `NO_LOCATION_HEIGHT`, so its biome remains unavailable. Other
+observed nonregistry locations have biome attribution. Raw candidate dispositions
+are 24,261 NO_CONSTRUCTIVE_CONTENT, 3,039 OUTSIDE_FRAME and 1,332 OBSERVED_LOCATION.
+There are no omitted failure/overlap/unavailable-content dispositions in this run.
+Zeroes describe these finite regions only. Sparse categories and censored nearest
+neighbors remain in the output; they do not establish global rates or gameplay.
+
+Direct comparison passed: remove only `nonregistry_candidates` from the retained
+single-stratum Overworld JSON and compare the remaining object with
+`all-strata.json["strata"]["overworld"]`. They are exactly equal, including census,
+classification, spatial results, input hashes and biome observations/exposure.
+This validates integration consistency, not independent world-generation repeatability.
+
+Resource gate: generation took 497.453 seconds and successful full analysis took
+503.404 seconds, about 16m41s combined for this world. The simple sixteen-world
+projection is about 4.45 machine-hours, excluding custody, failed attempts and
+host contention. This first-seed projection is not a runtime guarantee.
+A single `du -s -B1` invocation, counting `downloads/item3/candidates` and
+`instances/pristine-baseline-v0` first to avoid double-counting shared inodes,
+reported 620,122,112 bytes for this instance, 189,063,168 for raw capture,
+969,420,800 for custody copies, 162,897,920 for analysis (including the old
+Overworld comparison), and 162,885,632 for the outer archive. This is about
+1.96 GiB of reported allocation. Projecting sixteen copies but only one old
+Overworld comparison is about 30.3 GiB, close to the user's roughly 30 GiB budget.
+Filesystem free space is 46,920,826,880 bytes (about 43.7 GiB). Actual seed/control
+costs can differ; check growth after each world and reassess before exceeding
+available space or materially expanding the budget. No preserved file is deleted.
+The first-world gate permits the next fresh ordinary repetition-1 without-Sparse
+control. Its full lifecycle, observer, census and custody acceptance remain required.
