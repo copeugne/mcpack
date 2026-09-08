@@ -197,3 +197,36 @@ This is a processing check on retained evidence, not another world experiment or
 an Item 7 audit. Pair comparisons must compare the complete `generation_content`
 arrays for matching seed, dimension and bounds; archive input hashes will differ
 and are not substitutes for this content comparison.
+
+The retained-pilot command completed with exactly 3,969 selected full chunks and
+3,969 content digests. Output SHA-256:
+`a2dcc24fff88c05dfd973ebe6084641daf5d1b0011b478f088682df567aacdbb`.
+This proves processing completed, not equality with an instrumented world.
+
+## Unsuccessful-run durability
+
+Both r1 and r2 raw directories are retained together in
+[the immutable release](https://github.com/copeugne/mcpack/releases/tag/item-10-probe-rejections-2026-09-08-r1).
+The [manifest](scarecrow-probe-r2/archive-manifest.json) binds 258 files,
+including both nested world archives, to custody source
+`f48066f095e26162a0283041da04286db4784327`; the fetched tag resolves to that
+commit. Individual diagnostic receipts retain their actual run revisions.
+[Release metadata](scarecrow-probe-r2/release.json),
+[local restore](scarecrow-probe-r2/archive-restore.json) and
+[download restore](scarecrow-probe-r2/download-restore.json) record delivery.
+The downloaded manifest matched the committed manifest byte for byte.
+Nested world restores verified [r1's 158 files](scarecrow-probe-r1/world-restore.json)
+and [r2's 86 files](scarecrow-probe-r2/world-restore.json). Restore integrity does
+not make either rejected or insufficient experiment acceptable.
+
+```sh
+gh release download item-10-probe-rejections-2026-09-08-r1 --repo copeugne/mcpack --dir RESTORE_INPUT
+uv run --no-sync python -m tools.archive_item7_evidence restore --archive RESTORE_INPUT/item10-probe-rejections-r1-r2-f48066f0.tar.gz --manifest evidence/item-10/scarecrow-probe-r2/archive-manifest.json --target RESTORED_RAW --receipt RESTORE_RECEIPT.json
+```
+
+The equivalent commands were executed under
+`evidence/raw/item10/probe-rejections-r1-r2-custody`. Use each committed
+world-backup receipt's SHA-256 with the existing world restore command for its
+nested archive. No archive was booted. Initial local manifest metadata used an
+abbreviated revision; it was expanded before publication, with the initial copy
+retained locally. Archive bytes were unchanged.

@@ -107,7 +107,11 @@ r1 had no eligible writer calls and is insufficient. r2 exercised the target
 but failed helper classloading and timed out; its incomplete world is rejected.
 The isolated-loader regression now passes with an explicit system-loader bridge.
 r3 is predeclared on the same mountainous sample. Run its control only after
-actual writer execution and capture health pass. No nonregistry counts are accepted.
+actual writer execution and capture health pass. Real writes now execute in r3;
+its full lifecycle and matched control remain pending. r1/r2 release and downloaded
+world restores are verified, linked from the placement diagnostic. The optional
+generation-content reader completed all 3,969 retained pilot chunks. No nonregistry
+counts are accepted.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed
