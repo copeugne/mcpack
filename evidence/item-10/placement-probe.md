@@ -609,3 +609,33 @@ The [clean review](https://github.com/copeugne/mcpack/pull/24#issuecomment-55792
 completed at 04:30:11 UTC, returned a thumbs-up, and introduced no inline,
 review or discussion findings. This delivers the bounded diagnostic only.
 Full Item 10 occurrence coverage, measurement and final acceptance remain open.
+
+
+## Anomaly and monolith direct-write extension
+
+The accepted Item 8 `bop-feature-scope` disassemblies show both providers'
+setBlock helpers calling Feature.setBlock and returning true after that void
+call, regardless of the underlying world's result. The exact Minecraft helper
+calls LevelWriter.setBlock with flags 3 and discards its boolean. Counting the
+outer helper return would therefore misclassify refused writes.
+
+The existing probe now brackets each provider's place method with the existing
+feature/attempt events. It wraps the one direct write in the shared Minecraft
+helper, recording writes only during those two feature classes. Outside that
+scope it invokes the same LevelWriter interface method without a write event.
+The helper's original POP still discards the unchanged boolean. Provider methods,
+random draws, replacement predicates and feature-return behavior remain in place.
+Incoming bytes and installation records use the existing retention path.
+
+The shared helper is touched because both current consumers discard the needed
+result; no second collector or generalized event framework is introduced.
+The new call adds observer overhead even outside target attempts. Measure that
+cost before full sampling, and inspect the actual incoming helper class before
+acceptance. Synthetic preservation does not prove observer-free world equivalence.
+
+The existing probe test command now passes three tests, covering both new
+providers in normal, early-return, all-refused, exceptional, isolated-loader and
+outside-target cases. Original and observed stdout include complete argument
+sequences and match. Exact retained BOP classes and the hash-verified Minecraft
+helper transform successfully. Changed test lint and type checks pass. No live
+run or accepted occurrence count is supplied by this implementation milestone.

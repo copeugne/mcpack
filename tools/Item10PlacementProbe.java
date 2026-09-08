@@ -27,6 +27,10 @@ public final class Item10PlacementProbe {
         "(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z";
     private static final AtomicLong SEQUENCE = new AtomicLong();
     private static final ConcurrentHashMap<Long, Long> ACTIVE = new ConcurrentHashMap<>();
+    private static final String ANOMALY = "biomesoplenty/worldgen/feature/misc/AnomalyFeature";
+    private static final String MONOLITH = "biomesoplenty/worldgen/feature/misc/MonolithFeature";
+    private static final String BASE_FEATURE = "net/minecraft/world/level/levelgen/feature/Feature";
+    private static final String BASE_WRITE = "(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V";
     private static final String END_FEATURE = "org/betterx/betterend/world/features/NBTFeature";
     private static final String SHIP = "org/betterx/betterend/world/features/CrashedShipFeature";
     private static final String INFO = "org/betterx/betterend/world/features/BuildingListFeature$StructureInfo";
@@ -192,11 +196,30 @@ public final class Item10PlacementProbe {
         }
     }
 
+    public static boolean directWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        String feature = FEATURES.get(Thread.currentThread().threadId());
+        if ("biomesoplenty.worldgen.feature.misc.AnomalyFeature".equals(feature)
+            || "biomesoplenty.worldgen.feature.misc.MonolithFeature".equals(feature)) {
+            return write(world, pos, state, flags);
+        }
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = Class.forName("net.minecraft.world.level.LevelWriter", false, loader)
+            .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
+                Class.forName("net.minecraft.world.level.block.state.BlockState", false, loader), int.class);
+        try {
+            return (Boolean) method.invoke(world, pos, state, flags);
+        } catch (InvocationTargetException error) {
+            throw error.getCause();
+        }
+    }
+
     public static byte[] instrument(String target, byte[] original) {
         if (TARGET.equals(target)) return instrument(original);
-        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target);
+        boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
+        boolean base = BASE_FEATURE.equals(target);
+        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct;
         boolean info = INFO.equals(target);
-        if (!feature && !info && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
+        if (!feature && !info && !base && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
         int[] counts = new int[3];
         new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
@@ -208,6 +231,7 @@ public final class Item10PlacementProbe {
                 boolean match = feature ? name.equals("place") && descriptor.equals(
                     "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")
                     : info ? name.equals("getStructure") && descriptor.equals("()L" + TEMPLATE + ";")
+                    : base ? name.equals("setBlock") && descriptor.equals(BASE_WRITE)
                     : name.equals("placeInWorld") && descriptor.equals(TEMPLATE_DESCRIPTOR);
                 if (!match) return parent;
                 counts[0]++;
@@ -240,6 +264,14 @@ public final class Item10PlacementProbe {
                     @Override
                     public void visitMethodInsn(int opcode, String owner, String name,
                                                 String descriptor, boolean isInterface) {
+                        if (base && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/LevelWriter")
+                            && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$directWrite",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                            return;
+                        }
                         if (feature && opcode == Opcodes.INVOKEVIRTUAL && owner.equals(TEMPLATE)
                             && name.equals("placeInWorld") && descriptor.equals(TEMPLATE_DESCRIPTOR)) {
                             counts[1]++;
@@ -269,7 +301,7 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != 1 || counts[1] != (feature || info ? 1 : 3)) {
+        if (counts[0] != 1 || counts[1] != (direct ? 0 : feature || info || base ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
@@ -281,8 +313,11 @@ public final class Item10PlacementProbe {
             bridge(writer, "beginFeature", "(Ljava/lang/Object;Ljava/lang/Object;)V",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
             bridge(writer, "end", "(Z)V", new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
-            bridge(writer, "template", TEMPLATE_BRIDGE,
+            if (!direct) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        } else if (base) {
+            bridge(writer, "directWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (info) {
             bridge(writer, "selected", "(Ljava/lang/Object;Ljava/lang/Object;)V",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
@@ -394,7 +429,8 @@ public final class Item10PlacementProbe {
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
                 if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
-                    && !INFO.equals(name) && !TEMPLATE.equals(name)) {
+                    && !INFO.equals(name) && !TEMPLATE.equals(name)
+                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name)) {
                     return null;
                 }
                 try {
