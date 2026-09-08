@@ -140,11 +140,13 @@ preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spira
 six zero-write parts from one source. Raw download/world restores pass. The saved
 neighborhood is ice_starfield, outside the frozen end_highlands allowlist. Positive
 capture remains unmet; continue independent generator coverage without expanding this sample.
-Current work is on `codex/item10-fairy`. Direct-site roles and delegated flower
+PR29 reviews `codex/item10-fairy`. Direct-site roles and delegated flower
 return/origin-state capture in `3b163d99` passes all 342 Item 7/10 tests.
 [Fairy r1](evidence/item-10/fairy-run-r1/README.md) completed all 6,852 chunks
 but captured no fairy helper calls. Hook identity and raw/world restores pass.
-Do not expand for positive counts; capture acceptance and mixed-reader integration remain open.
+Current work is on `codex/item10-mixed-traces`: both retained traces now pass
+archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
+Do not expand for positive counts; positive capture and saved-content acceptance remain open.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records

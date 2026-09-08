@@ -122,7 +122,9 @@ def validate_trace(path: Path) -> dict[str, object]:
     }
 
 
-CaptureMode = Literal["bop", "monster", "spike"]
+CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy"]
+SPIRAL = "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator"
+FAIRY = "org/violetmoon/quark/content/world/gen/FairyRingGenerator"
 NETHER_SPIKE = "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator"
 END_BUILDING = "org/betterx/betterend/world/features/BuildingListFeature"
 END_NBT = "org/betterx/betterend/world/features/NBTFeature"
@@ -143,17 +145,25 @@ CAPTURE_CLASSES = {
     "bop": BOP_CLASSES,
     "monster": {MONSTER_BOX},
     "spike": {MONSTER_BOX, NETHER_SPIKE, END_BUILDING},
+    "spiral": {MONSTER_BOX, NETHER_SPIKE, SPIRAL},
+    "fairy": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, END_BUILDING},
 }
 DIAGNOSTICS = {
     "bop": "bop-fixture-r1",
     "monster": "monster-box-pilot-r1",
     "spike": "nether-spike-pilot-r1",
+    "spiral": "spiral-pilot-r1",
+    "fairy": "fairy-run-r1",
 }
 
 
 def installed_classes(mode: CaptureMode) -> set[str]:
     """Bind the observed populations to their actual transformed classes."""
-    return BOP_INSTALLED | (CAPTURE_CLASSES[mode] - {END_BUILDING})
+    return (
+        BOP_INSTALLED
+        | (CAPTURE_CLASSES[mode] - {END_BUILDING})
+        | ({FAIRY} if mode == "fairy" else set[str]())
+    )
 
 
 def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
@@ -164,6 +174,9 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
     required = installed_classes(mode)
     dimensions: dict[int, str] = {}
     grounds: set[int] = set()
+    parts: set[int] = set()
+    origins: dict[int, tuple[int, ...]] = {}
+    spiral_sources: set[tuple[str, tuple[int, ...]]] = set()
     expected_dimensions = dict.fromkeys(classes, "minecraft:the_end")
     expected_dimensions.update(
         {MONSTER_BOX: "minecraft:overworld", NETHER_SPIKE: "minecraft:the_nether"}
@@ -201,7 +214,7 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                 fail("incorrect scarecrow installation")
             installations[name] = digest
             continue
-        if kind not in {"begin", "feature", "write", "end", "generator_end", "ground"}:
+        if kind not in {"begin", "feature", "write", "end", "generator_end", "ground", "part"}:
             fail("unexpected BOP event or unhandled failure")
         expected = (
             {"kind", "attempt", "class"}
@@ -209,13 +222,13 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             else {"kind", "attempt"}
             if kind == "generator_end"
             else {"kind", "attempt", "position"}
-            if kind == "ground"
+            if kind in {"ground", "part"}
             else FIELDS[cast("str", kind)]
         )
         if set(row) != expected or type(row.get("attempt")) is not int:
             fail("malformed BOP event")
         attempt = cast("int", row["attempt"])
-        if kind in {"begin", "write", "ground"}:
+        if kind in {"begin", "write", "ground", "part"}:
             position = row.get("origin" if kind == "begin" else "position")
             if (
                 not isinstance(position, list)
@@ -230,6 +243,7 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                 or row["dimension"] not in set(expected_dimensions.values())
             ):
                 fail("duplicate or wrong-dimension BOP attempt")
+            origins[attempt] = tuple(cast("list[int]", row["origin"]))
             started.add(attempt)
             dimensions[attempt] = cast("str", row["dimension"])
             active[attempt] = None
@@ -252,6 +266,13 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
         if name is None:
             fail("missing feature")
         building = name == END_BUILDING.replace("/", ".")
+        spiral = name == SPIRAL.replace("/", ".")
+        if kind == "part":
+            if not spiral or attempt in parts:
+                fail("unexpected or repeated spiral part")
+            parts.add(attempt)
+            spiral_sources.add((dimensions[attempt], origins[attempt]))
+            continue
         if kind == "ground":
             if not building or attempt in grounds:
                 fail("unexpected or repeated BetterEnd ground")
@@ -261,8 +282,8 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             fail("invalid BOP result")
         if kind == "write":
             flags = row["flags"]
-            if building:
-                fail("unexpected successful-path BetterEnd writes in retained spike pilot")
+            if building or spiral:
+                fail("unexpected writes in retained zero-write feature path")
             if type(flags) is not int or flags not in ((2, 3) if mode == "bop" else (0,)):
                 fail("invalid BOP flags")
             if name.endswith("MonolithFeature") and flags != HELPER_FLAGS:
@@ -279,9 +300,11 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                 path = (name, flags)
                 successful_paths[path] = successful_paths.get(path, 0) + 1
         else:
-            generator = name.replace(".", "/") in {MONSTER_BOX, NETHER_SPIKE}
+            generator = name.replace(".", "/") in {MONSTER_BOX, NETHER_SPIKE, SPIRAL}
             if kind != ("generator_end" if generator else "end"):
                 fail("wrong generator completion event")
+            if spiral and attempt not in parts:
+                fail("missing spiral part")
             if building and (attempt not in grounds or row["returned"] is not False):
                 fail("BetterEnd pilot failure needs ground and false return")
             del active[attempt]
@@ -289,7 +312,7 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
         fail("unfinished or missing BOP attempts")
     if set(installations) != required | {"scarecrow"}:
         fail("incomplete BOP installations")
-    if set(by_feature) != {n.replace("/", ".") for n in classes - {END_BUILDING}}:
+    if set(by_feature) != {n.replace("/", ".") for n in classes - {END_BUILDING, SPIRAL}}:
         fail("no exercised writes for one BOP feature")
     required_paths = {
         (name.replace("/", "."), flags)
@@ -297,14 +320,21 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
         for flags in ((2, 3) if name.endswith("AnomalyFeature") else (3,))
     }
     if mode != "bop":
-        required_paths = {(name.replace("/", "."), 0) for name in classes - {END_BUILDING}}
+        required_paths = {(name.replace("/", "."), 0) for name in classes - {END_BUILDING, SPIRAL}}
     if set(successful_paths) != required_paths:
         fail(
             "Monster Box requires a successful write"
             if mode != "bop"
             else "BOP requires successful writes on all three provider/flag paths"
         )
+    if mode in {"spiral", "fairy"} and not parts:
+        fail("missing spiral attempts in retained diagnostic")
     return {
+        **(
+            {"spiral_parts": len(parts), "spiral_source_keys": len(spiral_sources)}
+            if mode in {"spiral", "fairy"}
+            else {}
+        ),
         "successful_write_paths": [
             {"feature": name, "flags": flags, "writes": count}
             for (name, flags), count in sorted(successful_paths.items())
@@ -369,7 +399,15 @@ def validate_feature_trace(raw_root: Path, *, mode: CaptureMode = "bop") -> dict
             fail("BOP installation differs from incoming class")
     return {
         "status": "PASS",
-        "scope": ({"bop": "BOP r1", "monster": "Monster Box r1", "spike": "Nether spike r1"}[mode])
+        "scope": (
+            {
+                "bop": "BOP r1",
+                "monster": "Monster Box r1",
+                "spike": "Nether spike r1",
+                "spiral": "Spiral r1",
+                "fairy": "Fairy r1",
+            }[mode]
+        )
         + " capture integrity only; not saved-block acceptance",
         "sha256": digests["trace.jsonl"],
         **result,
@@ -381,6 +419,8 @@ if __name__ == "__main__":
         "--bop-r1",
         "--monster-r1",
         "--spike-r1",
+        "--spiral-r1",
+        "--fairy-r1",
     }:
         print(
             json.dumps(

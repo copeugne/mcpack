@@ -9,8 +9,10 @@ from tools.validate_item10_trace import (
     BOP_INSTALLED,
     CLASS_SHA,
     END_BUILDING,
+    FAIRY,
     MONSTER_BOX,
     NETHER_SPIKE,
+    SPIRAL,
     check_feature_rows,
     check_rows,
     validate_feature_trace,
@@ -311,3 +313,69 @@ def test_mixed_capture_rejects_invalid_lifecycle(defect: str) -> None:
         ValueError, match=r"dimension|completion|ground|false return|successful write|shutdown"
     ):
         _ = check_feature_rows(rows, mode="spike")
+
+
+def spiral_rows() -> list[dict[str, object]]:
+    rows = [r for r in spike_rows() if r.get("attempt") != 4]
+    rows.insert(1, {"kind": "feature_installed", "class": SPIRAL, "input_class_sha256": "d" * 64})
+    for attempt, destination in [(4, [0, 0, 0]), (5, [16, 0, 0])]:
+        rows[-1:-1] = [
+            {
+                "kind": "begin",
+                "attempt": attempt,
+                "dimension": "minecraft:the_end",
+                "origin": [16, 0, 16],
+            },
+            {"kind": "feature", "attempt": attempt, "class": SPIRAL.replace("/", ".")},
+            {"kind": "part", "attempt": attempt, "position": destination},
+            {"kind": "generator_end", "attempt": attempt},
+        ]
+    return rows
+
+
+def test_zero_write_spiral_parts_keep_shared_source() -> None:
+    result = check_feature_rows(spiral_rows(), mode="spiral")
+    assert result["attempts"] == 5
+    assert result["spiral_parts"] == 2
+    assert result["spiral_source_keys"] == 1
+    assert result["writes"] == 3
+
+
+def test_absent_fairy_helper_still_requires_installed_class() -> None:
+    rows = spiral_rows()
+    with pytest.raises(ValueError, match="installations"):
+        _ = check_feature_rows(rows, mode="fairy")
+    rows.insert(1, {"kind": "feature_installed", "class": FAIRY, "input_class_sha256": "e" * 64})
+    assert check_feature_rows(rows, mode="fairy")["attempts"] == 5
+
+
+@pytest.mark.parametrize(
+    "defect", ["missing", "duplicate", "wrong-feature", "coordinates", "write", "no-attempts"]
+)
+def test_zero_write_part_capture_rejects_invalid_trace(defect: str) -> None:
+    rows = spiral_rows()
+    index = next(i for i, r in enumerate(rows) if r["kind"] == "part")
+    if defect == "missing":
+        del rows[index]
+    elif defect == "duplicate":
+        rows.insert(index, copy.deepcopy(rows[index]))
+    elif defect == "wrong-feature":
+        rows[index]["attempt"] = 3
+    elif defect == "coordinates":
+        rows[index]["position"] = [True, 0, 0]
+    elif defect == "write":
+        rows.insert(
+            index + 1,
+            {
+                "kind": "write",
+                "attempt": 4,
+                "position": [0, 0, 0],
+                "state": "obsidian",
+                "flags": 0,
+                "returned": True,
+            },
+        )
+    else:
+        rows = [r for r in rows if r.get("attempt") not in {4, 5}]
+    with pytest.raises(ValueError, match=r"spiral|unpaired|coordinates|zero-write"):
+        _ = check_feature_rows(rows, mode="spiral")
