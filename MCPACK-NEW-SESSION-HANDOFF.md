@@ -144,10 +144,13 @@ cleanly but both commands were refused because the target was not loaded. Its
 raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
 fills the platform, but BetterEnd returns false before invoking a template. Its
 raw and nested restores pass. [Ground diagnostic r5](evidence/item-10/betterend-ground-r5/README.md) observes
-the expected `[8,81,8]` ground and false return. Saved air/end-stone states narrow
-the likely rejection to terrain-tag membership, which still needs runtime
-verification. All raw restores pass. Do not assume end stone belongs to the tag;
-positive template capture remains unresolved. Ground tracing is pushed as `3079920f`.
+the expected `[8,81,8]` ground and false return.
+[Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
+both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
+command lookup, not false membership. Raw/world restores pass. Next inspect
+WorldWeaver predicate/tag integration and assess narrowly affected upstream
+claims before further experiments. Do not alter frozen tags/configs or infer
+zero density. Positive template capture and full collection remain gated.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
