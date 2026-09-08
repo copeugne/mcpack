@@ -129,15 +129,18 @@ not establish complete ring visibility. Do not require new positive tiny pilots.
 
 Remaining before full collection: finish the exact complete observer identity
 and provider-event coverage gate, resolve any demonstrated reader defect, and
-wire the full runner to the verified omit-only-Sparse-Structures control. Freeze executable
-commands for the retained 16-world protocol and run the final applicable checks.
+freeze the collector identity and run the final applicable checks. The existing
+runner now accepts full sampling with explicit arm/repetition and rejects its
+older uninstrumented control mode. Commands and operational timeout are in the
+protocol; collection remains paused pending observer readiness.
 The shared harness now accepts the eleven fixed Item 10 generation selections.
 Chunky's odd-width square requests 65 by 65 chunks; the fixed 64 by 64 census
 excludes the positive edge. See protocol for the pinned bytecode derivation and
 34 passing geometry/lifecycle checks. The control materialization now verifies
 the full baseline before omitting only Sparse Structures. Its derived manifest,
 deployed hash and focused preservation checks are in the protocol. No real
-control boot or full collection has run; the full runner is not wired yet.
+control boot or full collection has run. Runner tests build the real collector
+for both arms while substituting server execution.
 Then confirm measured runtime/storage costs on the first full ordinary-seed run,
 collect all frames with durable raw custody, complete paired/biome/seed analysis,
 finish the consolidated PR review/merge and the Items 2 through 10 audit.

@@ -83,6 +83,38 @@ then control for repetition 1, control then baseline for repetition 2. Use the
 same dimension order in every world, sorted by resource location, central End
 before outer End. Keep both raw repetitions, even when their counts disagree.
 
+### Full runner invocation (not yet authorized for collection)
+
+The existing runner accepts one full world at a time:
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe \
+  --name full-ordinary-r1-baseline --mode probe --preset item10 \
+  --role ordinary --arm baseline --repetition 1
+```
+
+This is the first planned invocation, not an instruction to bypass the current
+collection pause or observer gate. Use `without-sparse` for the matched control.
+The runner requires the name `full-ROLE-rREPETITION-ARM`, explicit arm/repetition,
+and probe mode for both arms. Its older `--mode control` disables the observer
+and is rejected for full sampling. Placement fixtures are also rejected. Repeat
+the command for each declared seed role, using `(1, baseline)`,
+`(1, without-sparse)`, `(2, without-sparse)`, `(2, baseline)` in that order.
+Each invocation requires absent instance/output paths and retains its existing
+`diagnostic.json`, collector build identity and lifecycle outputs. The filename
+is retained for compatibility with the existing custody path; its scope field
+distinguishes full collection from diagnostic evidence. Report repetition and
+arm are explicit, independent of the filename.
+
+The full lifecycle ceiling is 14,400 seconds per world, an operational timeout,
+not a measured duration or a new sampling stopping rule. Failure retains raw
+outputs and cannot be accepted as a smaller census. The earlier 900-second
+diagnostic ceiling remains unchanged. Actual time and storage must still be
+checked on the first complete ordinary world before continuing the series.
+Runner tests compile the real collector with the pinned JDK and substitute only
+server execution; they verify both arms retain the observer and reject invalid
+combinations. They do not establish runtime observer coverage.
+
 The area is a finite-region census with a per-run density increment of
 `1000 / 4096 = 0.244140625` locations per 1,000 chunks. It supplies 16 complete
 256-block spatial cells per stratum, with explicit boundary censoring for

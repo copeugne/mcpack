@@ -1,4 +1,4 @@
-"""Run a declared fresh-world placement diagnostic or its control."""
+"""Run a fresh placement diagnostic or one declared Item 10 sampling arm."""
 
 from __future__ import annotations
 
@@ -14,15 +14,17 @@ from typing import Literal, cast
 from tools.run_item7_worldgen import execute
 
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
-from mcpack_evidence.item7_selections import PILOT_SELECTIONS, RUN_SELECTIONS
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS, PILOT_SELECTIONS, RUN_SELECTIONS
 
 
-def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow together.
+def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collection workflow together.
     """Record the observational overlay, then use the established lifecycle unchanged."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--name", required=True)
     _ = parser.add_argument("--mode", choices=("probe", "control"), required=True)
-    _ = parser.add_argument("--preset", choices=("pilot", "run"), default="run")
+    _ = parser.add_argument("--preset", choices=("pilot", "run", "item10"), default="run")
+    _ = parser.add_argument("--arm", choices=("baseline", "without-sparse"))
+    _ = parser.add_argument("--repetition", type=int, choices=(1, 2))
     fixtures = parser.add_mutually_exclusive_group()
     _ = fixtures.add_argument("--betterend-fixture", action="store_true")
     _ = fixtures.add_argument("--bop-fixture", action="store_true")
@@ -35,11 +37,20 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     instance_name = cast("str", args.name)
     mode = cast("str", args.mode)
     role = cast("str", args.role)
-    preset = cast("Literal['pilot', 'run']", args.preset)
+    preset = cast("Literal['pilot', 'run', 'item10']", args.preset)
+    arm = cast("str | None", args.arm)
+    repetition = cast("int | None", args.repetition)
     fixture = cast("bool", args.betterend_fixture)
     bop_fixture = cast("bool", args.bop_fixture)
     if (fixture or bop_fixture) and (mode != "probe" or preset != "pilot"):
         parser.error("placement fixtures require probe mode and the pilot preset")
+    if preset == "item10":
+        if mode != "probe" or arm is None or repetition is None:
+            parser.error("Item 10 sampling requires probe mode, an explicit arm and repetition")
+        if instance_name != f"full-{role}-r{repetition}-{arm}":
+            parser.error("Item 10 name must be full-ROLE-rREPETITION-ARM")
+    elif arm is not None or repetition is not None:
+        parser.error("arm and repetition apply only to the Item 10 sampling preset")
     before_generation = (
         ("execute in minecraft:the_end run forceload add -32 -32 47 47",)
         if fixture or bop_fixture
@@ -95,12 +106,18 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     java, version = validate_java_runtime(java_home)
     output.mkdir(parents=True)
     report: dict[str, object] = {
-        "scope": "instrument diagnostic only; not density acceptance",
+        "scope": (
+            "full Item 10 collection; acceptance requires downstream validation"
+            if preset == "item10"
+            else "instrument diagnostic only; not density acceptance"
+        ),
         "source_revision": subprocess.check_output(
             ["/usr/bin/git", "rev-parse", "HEAD"], text=True
         ).strip(),
         "mode": mode,
         "preset": preset,
+        "arm": arm,
+        "repetition": repetition,
         "fixture_commands": after_generation,
         "before_generation_commands": before_generation,
         "java_version": version,
@@ -183,8 +200,13 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
             log_path=output / "console.log",
             captured_config=output / "captured-config",
             mode=preset,
-            selections=PILOT_SELECTIONS if preset == "pilot" else RUN_SELECTIONS,
-            timeout_seconds=900,
+            omit_sparse_structures=arm == "without-sparse",
+            selections={
+                "pilot": PILOT_SELECTIONS,
+                "run": RUN_SELECTIONS,
+                "item10": ITEM10_SELECTIONS,
+            }[preset],
+            timeout_seconds=14400 if preset == "item10" else 900,
         )
         run = execute(
             request,
