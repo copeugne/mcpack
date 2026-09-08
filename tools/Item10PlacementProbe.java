@@ -21,6 +21,8 @@ import jdk.internal.org.objectweb.asm.Opcodes;
 
 /** Measurement probe: retain targeted feature and template writes without changing their results. */
 public final class Item10PlacementProbe {
+    private static final String PLACED = "net/minecraft/world/level/levelgen/placement/PlacedFeature";
+    private static final String SIMPLE = "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature";
     private static final String TARGET =
         "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature";
     private static final String WRITE_DESCRIPTOR =
@@ -295,7 +297,110 @@ public final class Item10PlacementProbe {
         }
     }
 
+    private static Object registryKey(Object world, String registryName, Object value) throws Throwable {
+        ClassLoader loader = world.getClass().getClassLoader();
+        Object key = Class.forName("net.minecraft.core.registries.Registries", false, loader)
+            .getField(registryName).get(null);
+        Object access = call(world, "registryAccess");
+        Object registry = Class.forName("net.minecraft.core.RegistryAccess", false, loader)
+            .getMethod("registryOrThrow", Class.forName("net.minecraft.resources.ResourceKey", false, loader))
+            .invoke(access, key);
+        return Class.forName("net.minecraft.core.Registry", false, loader)
+            .getMethod("getKey", Object.class).invoke(registry, value);
+    }
+
+    public static boolean urnPatch(Object configured, Object world, Object generator,
+                                   Object random, Object pos, Object context) throws Throwable {
+        ClassLoader loader = world.getClass().getClassLoader();
+        Object feature = call(configured, "feature");
+        boolean traced = feature.getClass().getName().equals("net.minecraft.world.level.levelgen.feature.RandomPatchFeature")
+            && "supplementaries:urns_patch".equals(String.valueOf(registryKey(world, "CONFIGURED_FEATURE", configured)));
+        Method method = configured.getClass().getMethod("place",
+            Class.forName("net.minecraft.world.level.WorldGenLevel", false, loader),
+            Class.forName("net.minecraft.world.level.chunk.ChunkGenerator", false, loader),
+            Class.forName("net.minecraft.util.RandomSource", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader));
+        if (traced) {
+            java.util.Optional<?> top = (java.util.Optional<?>) call(context, "topFeature");
+            Object parent = top.isPresent() ? registryKey(world, "PLACED_FEATURE", top.get()) : null;
+            beginGenerator(feature, world, pos);
+            emit("{\"kind\":\"urn_parent\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+                + ",\"placed_feature\":" + (parent == null ? "null" : quote(parent)) + "}");
+        }
+        try {
+            boolean result = (Boolean) method.invoke(configured, world, generator, random, pos);
+            if (traced) end(result);
+            return result;
+        } catch (InvocationTargetException error) {
+            if (traced) {
+                long thread = Thread.currentThread().threadId();
+                Long id = ACTIVE.remove(thread);
+                FEATURES.remove(thread);
+                emit("{\"kind\":\"attempt_exception\",\"attempt\":" + id
+                    + ",\"exception\":" + quote(error.getCause().getClass().getName()) + "}");
+            }
+            throw error.getCause();
+        }
+    }
+
+    public static boolean urnWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        if ("net.minecraft.world.level.levelgen.feature.RandomPatchFeature".equals(
+                FEATURES.get(Thread.currentThread().threadId()))) return write(world, pos, state, flags);
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = Class.forName("net.minecraft.world.level.WorldGenLevel", false, loader)
+            .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
+                Class.forName("net.minecraft.world.level.block.state.BlockState", false, loader), int.class);
+        try { return (Boolean) method.invoke(world, pos, state, flags); }
+        catch (InvocationTargetException error) { throw error.getCause(); }
+    }
+
+    private static byte[] instrumentUrn(String target, byte[] original) {
+        boolean placed = PLACED.equals(target);
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        int[] counts = new int[2];
+        new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
+            @Override public MethodVisitor visitMethod(int access, String name, String descriptor,
+                                                       String signature, String[] exceptions) {
+                if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
+                MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
+                boolean match = placed ? name.equals("lambda$placeWithContext$4")
+                    && (access & Opcodes.ACC_STATIC) != 0
+                    && descriptor.startsWith("(Lnet/minecraft/world/level/levelgen/feature/ConfiguredFeature;Lnet/minecraft/world/level/levelgen/placement/PlacementContext;") : name.equals("place")
+                    && descriptor.equals("(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z");
+                if (!match) return parent;
+                counts[0]++;
+                return new MethodVisitor(Opcodes.ASM8, parent) {
+                    @Override public void visitMethodInsn(int opcode, String owner, String name,
+                                                          String desc, boolean isInterface) {
+                        if (placed && opcode == Opcodes.INVOKEVIRTUAL
+                            && owner.equals("net/minecraft/world/level/levelgen/feature/ConfiguredFeature")
+                            && name.equals("place") && desc.equals(FLOWER_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitVarInsn(Opcodes.ALOAD, 1);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$urnPatch",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z", false);
+                        } else if (!placed && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/WorldGenLevel")
+                            && name.equals("setBlock") && desc.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$urnWrite",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                        } else super.visitMethodInsn(opcode, owner, name, desc, isInterface);
+                    }
+                };
+            }
+        }, 0);
+        if (counts[0] != 1 || counts[1] != 1) throw new IllegalArgumentException("Unexpected urn hook sites: " + target);
+        if (placed) bridge(writer, "urnPatch",
+            "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.IRETURN);
+        else bridge(writer, "urnWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        return writer.toByteArray();
+    }
+
     public static byte[] instrument(String target, byte[] original) {
+        if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
         if (TARGET.equals(target)) return instrument(original);
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
         boolean base = BASE_FEATURE.equals(target);
@@ -606,7 +711,7 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                if (!PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
                     && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;

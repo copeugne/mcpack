@@ -543,3 +543,92 @@ def test_fairy_keeps_delegate_result_separate_from_origin_content(tmp_path: Path
         timeout=30,
     )
     assert transformed.read_bytes() != payload
+
+
+@pytest.mark.parametrize(
+    "mode", ["normal", "refused", "exception", "galleon", "absent", "unrelated", "isolated"]
+)
+def test_urn_patch_parent_writes_and_exception_cleanup(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    ordinary = subprocess.run(
+        [*command, "UrnFixture", mode], check=True, capture_output=True, text=True
+    )
+    trace = tmp_path / "urn.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "UrnFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert observed.stdout == ordinary.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    assert rows[-1]["unfinished_attempts"] == 0
+    parents = [row for row in rows if row["kind"] == "urn_parent"]
+    if mode == "unrelated":
+        assert not parents
+        assert not any(row["kind"] == "write" for row in rows)
+        return
+    assert len(parents) == 2
+    expected = (
+        None
+        if mode == "absent"
+        else "test:galleon_component"
+        if mode == "galleon"
+        else "supplementaries:cave_urns"
+    )
+    assert all(row["placed_feature"] == expected for row in parents)
+    writes = [row for row in rows if row["kind"] == "write"]
+    assert len(writes) == (1 if mode == "exception" else 2)
+    assert all(row["flags"] == 2 and row["returned"] == (mode != "refused") for row in writes)
+    ends = [row for row in rows if row["kind"] == "end"]
+    assert len(ends) == (1 if mode == "exception" else 2)
+    assert all(row["returned"] is True for row in ends)
+    assert sum(row["kind"] == "attempt_exception" for row in rows) == (mode == "exception")
+
+
+def test_urn_hooks_transform_hash_verified_retained_classes(tmp_path: Path) -> None:
+    _ = _build_probe(tmp_path)
+    archive = (
+        ROOT
+        / "instances/pristine-baseline-v0/libraries/net/minecraft/server"
+        / "1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar"
+    )
+    assert (
+        hashlib.sha256(archive.read_bytes()).hexdigest()
+        == "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71"
+    )
+    classes = {
+        "net/minecraft/world/level/levelgen/placement/PlacedFeature": (
+            "bb5076d73ed849bfb377ffe117575ab98a3cef8134c674de7b39a8eab62e1f9d"
+        ),
+        "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature": (
+            "17907c21c8e522ac39fa9dcc838dd8f4afdcd7bcfc200480b14187b7a01875e2"
+        ),
+    }
+    with zipfile.ZipFile(archive) as source:
+        for name, digest in classes.items():
+            content = source.read(name + ".class")
+            assert hashlib.sha256(content).hexdigest() == digest
+            original = tmp_path / "original.class"
+            transformed = tmp_path / "transformed.class"
+            _ = original.write_bytes(content)
+            _ = subprocess.run(
+                [
+                    str(JDK / "java"),
+                    "--add-exports",
+                    EXPORT,
+                    "-classpath",
+                    str(tmp_path),
+                    "TemplateFixture",
+                    "transform",
+                    name,
+                    str(original),
+                    str(transformed),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            assert transformed.read_bytes() != content

@@ -708,3 +708,82 @@ is not the full density sample and cannot close Item 10.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name fairy-run-r1 --mode probe --role ordinary --preset run
 ```
+
+## Cave urn occurrence boundary
+
+Reuse the accepted contribution `supplementaries:cave_urn_cache` in
+[Item 8 inventory](../item-8/inventory.json), its
+[patch geometry identity](../item-8/sources/urn-patch-geometry/identities.json)
+and the [galleon reuse assessment](../item-8/sources/supplementaries-generation/README.md).
+The nine patch tries and six cave placement repetitions are different levels.
+Neither individual urn blocks nor one outer chunk invocation is the cache count.
+
+Direct inspection of the retained server archive resolves the missing write
+semantics. Archive SHA-256 is
+`26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71`.
+The following class paths are relative to `net/minecraft/world/level/levelgen/`:
+
+| Class | SHA-256 | Relevant bytecode |
+| --- | --- | --- |
+| `placement/PlacedFeature.class` | `bb5076d73ed849bfb377ffe117575ab98a3cef8134c674de7b39a8eab62e1f9d` | `placeWithContext` applies placement modifiers before `forEach` at 96; `lambda$placeWithContext$4` invokes the configured feature at 12 for each resulting origin. |
+| `feature/RandomPatchFeature.class` | `a1ade9f8d487ec9744034a3ce5e50b709733db26975614a8c24ff6fc5006bbff` | `place` delegates each candidate at 145 and increments a success counter at 151 from the delegated boolean. |
+| `feature/SimpleBlockFeature.class` | `17907c21c8e522ac39fa9dcc838dd8f4afdcd7bcfc200480b14187b7a01875e2` | `place` invokes `WorldGenLevel.setBlock` with flags 2 at 90, discards its boolean at 95, and returns true at 96/97. |
+
+Derivation: a patch return can be true despite a refused urn write. Therefore
+record each actual write result within each post-modifier patch attempt, retaining
+zero-write attempts and exceptions. Accept a successful patch only with successful
+urn content writes and the required saved-content corroboration. Retain the exact
+patch origin and parent placement identity. A `urns_patch` configured-feature key
+alone cannot distinguish cave placement from the galleon's reused component.
+Only a verified `supplementaries:cave_urns` calling placement belongs to the
+standalone cave-cache population; retain excluded component context separately.
+Retain distinct attempt IDs when origins coincide and expose overlapping written
+positions. Do not infer distinct locations from repeated writes to one block;
+the final overlap disposition remains part of occurrence acceptance.
+
+The next implementation should extend the existing probe at the placed-feature
+context, patch-attempt and direct-write boundaries. Preserve nested context through
+normal and exceptional exits, exclude unrelated patches and galleon reuse, and
+verify runtime registry identity rather than relying on Java class names or
+configured-feature text. These are required observation boundaries, not completed
+collector coverage. No urn density has been measured. Validate retained incoming
+class identity and original call/result preservation before a controlled run.
+
+Reproduce the direct inspection with the pinned Temurin `javap -c -p`, using
+`instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar`
+as the classpath and the three fully qualified classes above. Verify archive and
+class hashes before relying on offsets; runtime transformation can change bytes.
+No new server run, archive or validator was needed for this source-derived fact.
+
+### Bounded urn diagnostic r1
+
+Before collection, select one ordinary-seed (`42`) fresh `pilot` using the existing
+four 81-chunk selections, 324 selected chunks total. Reuse the fixed centers
+(0,0 for Overworld, Nether and central End; 1536,0 for outer End), radius four
+chunks, and existing generation order. Do not expand the frame for positive
+counts, command-place urns, change tags or tune configuration. This diagnostic
+checks natural callback execution and identity, not density acceptance.
+
+Use the collector implemented in `3a9453f5` and the run's exact source revision,
+recorded by the existing harness. The retained baseline and frozen configuration
+remain unchanged; the harness verifies fresh materialization, pinned Java and
+artifact hashes and retains the agent source/JAR identity. Command:
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name urn-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+Prelaunch storage is 4.8 GiB free; no Java process is running. Reserve 1.5 GiB for
+this bounded diagnostic and sequential archive/download/restore workspace. Prior
+324-chunk diagnostics took approximately 89 seconds and compressed to about
+6 MB; those are cost proxies, not a promised urn trace size. The harness timeout
+is 900 seconds. The full experiment's separate 5 GiB workspace floor is not
+satisfied and full collection is not authorized by this diagnostic.
+
+Acceptance requires all selections, correlated save and clean exit, installed
+hook identities, no unclosed attempts, and positive cave-parent urn writes whose
+saved positions can be corroborated. Retain refused writes, non-cave/null-parent
+contexts, exceptions, halo writes and zero-call outcomes. A missing positive path
+fails that gate without implying zero density. Retain and publish raw observations
+and incoming classes with the existing archive and restore tools even if the
+positive gate fails. Do not start the full sampling frame on this result alone.

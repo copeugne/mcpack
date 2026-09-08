@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `61320b28b5f064b31a2736f11ba687fac7c595bb` after PR30.
+  `12c9bfd998e0704561e476d00518acbcd11f5301` after PR31.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -125,72 +125,44 @@ The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
 Item 10 remains IN PROGRESS; no nonregistry density counts are accepted.
 
-[PR25](https://github.com/copeugne/mcpack/pull/25) is cleanly reviewed and merged.
-[BOP delivery](evidence/item-10/bop-fixture-r1/README.md#reviewed-delivery) records
-reviewed head `677eb250`, fixed findings and verified main ancestry.
-[PR26](https://github.com/copeugne/mcpack/pull/26) is cleanly reviewed and merged. Its
-[archived capture](evidence/item-10/monster-box-pilot-r1/README.md) validates all
-202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
-PR27 uses `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
-Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
-now validate in `769d11cc`; 340 Item 7/10 tests pass. PR27 is cleanly reviewed
-and merged. Its README records the review disposition and verified main delivery.
-PR28 delivered `codex/item10-spiral` after a clean review: the source/part hook passes synthetic
-preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spiral pilot r1](evidence/item-10/spiral-pilot-r1/README.md) completed cleanly with
-six zero-write parts from one source. Raw download/world restores pass. The saved
-neighborhood is ice_starfield, outside the frozen end_highlands allowlist. Positive
-capture remains unmet; continue independent generator coverage without expanding this sample.
-PR29 is cleanly reviewed and merged; its README records verified delivery. Direct-site roles and delegated flower
-return/origin-state capture in `3b163d99` passes all 342 Item 7/10 tests.
-[Fairy r1](evidence/item-10/fairy-run-r1/README.md) completed all 6,852 chunks
-but captured no fairy helper calls. Hook identity and raw/world restores pass.
-PR30 is cleanly reviewed and merged; the fairy README records delivery. Both retained traces pass
-archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
-Do not expand for positive counts; positive capture and saved-content acceptance remain open.
-Reassessment: the registry pilot already supplies exclusive-role spatial results.
-Current branch `codex/item10-category-summary` integrates the overlapping
-actionable, encounter and village summaries in the existing analysis path.
-The [pilot result](evidence/item-10/pilot-r1/README.md#combined-specification-categories)
-retains the unchanged denominator and raw observations; 352 tests pass. This does not waive the 40 nonregistry families
-or the full sampling/control gates. No human workload or capture is scheduled.
-BetterEnd coverage remains unresolved;
-BetterEnd template attribution/content-write hooks now pass the focused retained-
-class transformation and preservation fixtures. The placement diagnostic records
-coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)
-completed cleanly but failed the incoming Minecraft class identity gate and had
-no template placements. Its raw release and both restores are verified. The
-probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-identity-r2/README.md)
-completed its small pilot cleanly, retained the incoming patched class and verified
-its raw archive/world restores. Its content hook remains the second direct write,
-after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
-[BetterEnd fixture history](evidence/item-10/betterend-ground-r5/README.md)
-preserves the unloaded r3, loaded r4 and confirmed-ground r5 failures and custody.
-Do not repeat them; all returned before template placement.
-[Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
-both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
-command lookup, not false membership. Raw/world restores pass. The source follow-up on `codex/item10-tag-bootstrap` resolves the provider listener
-as GatherDataEvent only. Next inspect other runtime subscribers/resources before experiments.
-The linked source inspection shows ordinary tag-map injection and distinguishes
-datagen definitions from runtime bootstrap subscribers; the packaged directory
-constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
-Do not alter frozen tags/configs or infer
-zero density. Positive template capture and full collection remain gated.
-[PR24](https://github.com/copeugne/mcpack/pull/24) merged as
-`a96a2cbad752ca0023058b39c122c66ffa4370ec`, verified in fetched main.
-The [placement diagnostic](evidence/item-10/placement-probe.md) records its
-clean review, 296 passing Item 7/10 tests and delivery. Item 10 remains open.
-Anomaly/monolith hooks now preserve actual results at their shared Minecraft
-helper. Synthetic preservation and exact retained-class transformation pass;
-[Live BOP fixture r1](evidence/item-10/bop-fixture-r1/README.md) completes cleanly
-with both commanded placements, 22,769 successful writes and no unfinished
-attempts. Raw/world restores, incoming helper inspection and archived trace
-validation pass. All 22,769 saved block IDs match, including 5,673 writes in
-initialize_light neighbors excluded from density denominators. Next resolve remaining
-occurrence coverage and observer cost. Keep BetterEnd's
-runtime tag discrepancy explicit and do not change the frozen baseline.
-The protocol records its counting hazards and the selected finite sampling/control
-design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
-protocol remains DRAFT until capture coverage and storage validation pass.
+## Current collector coverage and next batch
+
+PR24 through PR31 are cleanly reviewed and merged. Authoritative results and
+review records are in the linked reports:
+
+- [BetterEnd diagnostics](evidence/item-10/placement-probe.md): retained r1 through
+  r6 failures and source follow-ups. Positive template capture remains unmet.
+  [Tag r6](evidence/item-10/betterend-tags-r6/README.md) distinguishes unavailable
+  command lookup from false tag membership. Do not patch the frozen tags or rerun
+  failed fixtures without new evidence about the runtime population mechanism.
+- [BOP fixture](evidence/item-10/bop-fixture-r1/README.md): artificial positive
+  capture and 22,769 saved block IDs. Excluded from density.
+- [Monster Box](evidence/item-10/monster-box-pilot-r1/README.md) and
+  [Nether spikes](evidence/item-10/nether-spike-pilot-r1/README.md): natural capture,
+  archive-bound traces and saved block-ID corroboration pass.
+- [Spiral](evidence/item-10/spiral-pilot-r1/README.md): six zero-write parts from one
+  source; saved biome outside frozen allowlist. Positive capture remains unmet.
+- [Fairy](evidence/item-10/fairy-run-r1/README.md): no helper calls in the fixed
+  frame. Raw custody and mixed-trace validation pass, not positive capture.
+- [Registry spatial pilot](evidence/item-10/pilot-r1/README.md): PR31 delivers
+  combined actionable, encounter and village categories with unchanged raw data.
+
+Current branch: `codex/item10-urn-coverage`. The
+[urn pilot](evidence/item-10/urn-pilot-r1/README.md) completed cleanly; raw download
+and both restores pass. The existing collector records parent placement identity
+and actual write results. Its extended reader and saved-world inspector validate
+all 429 mixed writes, including 161 urn writes at distinct coordinates. The
+summary preserves 87 successful and 987 zero-successful-write patch attempts.
+All 371 Item 7/10 tests pass; the final summary adjustment passes four affected
+checks. Complete review/delivery of this bounded milestone next.
+
+Do not count these raw totals as selected-area density. Full collection still
+requires the remaining nonregistry mechanisms, occurrence inclusion, biome
+attribution, exact Sparse Structures control and observer cost/storage checks.
+The [protocol](evidence/item-10/protocol.md) remains DRAFT for the full frame.
+Use accepted Item 8 mechanisms rather than repeating its inventory. Do not expand
+fixed diagnostics to hunt for positive counts. The last prelaunch storage check
+was 4.8 GiB free, below the provisional 5 GiB full-experiment floor.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

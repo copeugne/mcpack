@@ -13,16 +13,19 @@ from tools.validate_item10_trace import validate_feature_trace, validate_trace
 from mcpack_evidence.item7_anvil import decode_region_payloads
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
+urn = sys.argv[1:] == ["--urn-r1"]
 spike = sys.argv[1:] == ["--spike-r1"]
 monster = sys.argv[1:] == ["--monster-r1"]
 bop = sys.argv[1:] == ["--bop-r1"]
-feature_mode = bop or monster or spike
+feature_mode = bop or monster or spike or urn
 if sys.argv[1:] and not feature_mode:
-    detail = "Supported inspection modes are --bop-r1, --monster-r1 and --spike-r1"
+    detail = "Supported inspection modes are --bop-r1, --monster-r1, --spike-r1 and --urn-r1"
     raise ValueError(detail)
 if feature_mode:
     diagnostic = (
-        "nether-spike-pilot-r1"
+        "urn-pilot-r1"
+        if urn
+        else "nether-spike-pilot-r1"
         if spike
         else "monster-box-pilot-r1"
         if monster
@@ -32,7 +35,7 @@ if feature_mode:
     world = raw.parent / "restored-world/world"
     trace = raw / "trace.jsonl"
     validated = validate_feature_trace(
-        raw, mode="spike" if spike else "monster" if monster else "bop"
+        raw, mode="urn" if urn else "spike" if spike else "monster" if monster else "bop"
     )
     manifest_path = raw / "world-backup.json"
     archive_path = Path("evidence/item-10") / diagnostic / "archive-manifest.json"
@@ -67,7 +70,7 @@ rows = [json.loads(line) for line in trace_bytes.splitlines()]
 dimensions = {row["attempt"]: row["dimension"] for row in rows if row["kind"] == "begin"}
 writes = [row for row in rows if row["kind"] == "write"]
 dimension_dirs = {dimension: region_dir}
-if spike:
+if spike or urn:
     dimension_dirs = {
         "minecraft:overworld": "region",
         "minecraft:the_nether": "DIM-1/region",
@@ -124,7 +127,7 @@ with _world_backup_lock(world):
         observations.append(
             {
                 "attempt": row["attempt"],
-                **({"dimension": dimensions[row["attempt"]]} if spike else {}),
+                **({"dimension": dimensions[row["attempt"]]} if spike or urn else {}),
                 "returned": row["returned"],
                 "position": row["position"],
                 "recorded_state": row["state"],
@@ -167,7 +170,7 @@ if feature_mode:
             "attempts": [
                 {
                     "attempt": attempt,
-                    **({"dimension": dimensions[attempt]} if spike else {}),
+                    **({"dimension": dimensions[attempt]} if spike or urn else {}),
                     "feature": features[attempt],
                     "returned": returns[attempt],
                     "successful_writes": attempt_counts[attempt],
@@ -182,6 +185,30 @@ if feature_mode:
             ],
         }
     )
+    if urn:
+        # The archive-bound trace retains every attempt; do not duplicate its mixed population.
+        result.pop("attempts")
+        parents = {
+            row["attempt"]: row["placed_feature"] for row in rows if row["kind"] == "urn_parent"
+        }
+        urn_observations = [row for row in observations if row["attempt"] in parents]
+        urn_success = [row for row in urn_observations if row["returned"]]
+        coordinates = Counter(tuple(row["position"]) for row in urn_success)
+        result["urn_capture"] = {
+            "scope": "all captured urn writes including halo; not selected-area cache density",
+            "successful_writes": len(urn_success),
+            "successful_patch_attempts": len({row["attempt"] for row in urn_success}),
+            "zero_successful_write_patch_attempts": len(parents)
+            - len({row["attempt"] for row in urn_success}),
+            "unique_successful_coordinates": len(coordinates),
+            "repeated_coordinates": [
+                list(pos) for pos, count in sorted(coordinates.items()) if count > 1
+            ],
+            "chunk_statuses": dict(Counter(row["chunk_status"] for row in urn_success)),
+            "observations": [
+                {**row, "parent": parents[row["attempt"]]} for row in urn_observations
+            ],
+        }
 else:
     result["observations"] = observations
 print(json.dumps(result, indent=2))  # noqa: T201
