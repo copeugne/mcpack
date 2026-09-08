@@ -187,14 +187,14 @@ Census session `98243` is terminal 1: selected Aether chunk (-16,-22) is saved
 as `minecraft:initialize_light`. Direct decoding finds 4,095 full plus one
 incomplete selected chunk, no missing or duplicated coordinates. Census rejects
 correctly; no result or smaller denominator is accepted. See the retry record.
-The one-retry policy is exhausted. No server is active. Diagnose this distinct
-saved-chunk completion failure before a new explicit continuation decision;
+The retry record links the Aether save exception, source mechanism and restored
+debug report. Accepted full-run logs lack this error; the mutating thread is unknown.
+The one-retry policy is exhausted. No server is active. Resolve continuation;
 no third attempt, changed heap, relaxed status rule or repaired proof world.
 After resolving the failed sample cell, finish the second ocean-heavy baseline and
 four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.
 
-Two local free-roaming/task servers are stopped and preserved. Official launcher
-profiles and matching client files are prepared; first client launch/join remains
-unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational
+Two local servers are stopped and preserved. Official launcher profiles are prepared;
+first launch/join is unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational
 context, not Item 10 measurement acceptance. Keep this handoff concise in place.

@@ -7,7 +7,7 @@ Seed: `95920844204830198`. Source: `ffa51fb9981c438b802f5ae28e4796750636d5da`.
 
 This is the single predeclared fresh retry of the
 [retained failed attempt](../full-ocean-heavy-r2-without-sparse/README.md).
-Its success does not erase that failure or identify the allocation that caused it.
+Its lifecycle completion does not erase that failure or identify the allocation that caused it.
 The original instance and raw evidence remain at their original paths.
 
 The unchanged [run receipt](run.json) explicitly records attempt 2. All eleven
@@ -94,8 +94,43 @@ the existing census correctly rejects this record. Do not relabel
 `initialize_light` as full, omit the chunk, substitute a denominator of 4,095,
 repair the preserved world, or claim that all other strata passed. The census
 stopped at this first failure. No heap-exhaustion signature was recorded in this
-attempt; this is a distinct saved-chunk completion failure with an unresolved
-cause. Raw custody remains valid and does not need another archive revision.
+attempt. The save exception below explains the distinct incomplete saved record.
+The original raw archive remains valid and unchanged.
+
+## Save exception and supplemental raw diagnostic
+
+The archived `console.log`, line 2685, records `Failed to save chunk -16,-22`
+at 17:30:16, followed by `java.util.ConcurrentModificationException` in
+`LargeAercloudChunk.addAdditionalSaveData` (Aether 1.5.10, source line 50).
+This is the exact coordinate rejected by the census. The subsequent log names
+`debug/chunk-world-2026-09-08_17.30.16-server.txt`. The report was still present
+in the stopped instance but omitted from the original archive.
+
+The [supplemental release](https://github.com/copeugne/mcpack/releases/tag/item10-ocean-r2-control-save-diagnostic-852b2929)
+preserves that unchanged 82,391-byte report, SHA-256
+`f7733b582f3ffa1b9976929ae12780dcfbe2a215dad9158a81fe043cbb445332`.
+The [manifest](save-diagnostic-manifest.json) binds its 9,860-byte archive to
+`852b2929bd8eaf0b253215843e5d6debf4df10f6`; the fetched release tag matches.
+[Local restore](save-diagnostic-local-restore.json) and
+[downloaded restore](save-diagnostic-download-restore.json) verify its sole file.
+The downloaded manifest is byte-identical. This supplement preserves an omitted
+raw diagnostic, not a replacement world or revised original archive. Reproduce
+custody with the existing `tools.archive_item7_evidence` create/restore commands,
+using the manifest's archive name, revision and single-file source directory.
+
+Reuse of the [existing Item 8 source inspection](../../item-8/sources/aether-custom-entry/README.md)
+shows that `LargeAercloudChunk` stores positions in a `HashSet`;
+`addAdditionalSaveData` iterates it, while `postProcess` calls `removeIf` on it.
+The retained disassembly's method bytecode directly establishes these accesses.
+Concurrent generation and serialization of that mutable set is a plausible
+mechanism, not a proven attribution to a particular scheduler or mod. The report
+does not capture the mutating thread. Do not claim a root-cause repair.
+
+Targeted signature check: `rg -n -F 'Failed to save chunk'
+evidence/raw/item10/full-*/console.log` returns only this retry's line 2685.
+Thus none of the ten accepted full-run consoles contains this exact signature.
+Their complete saved-chunk census remains accepted; this check does not prove
+general persistence safety or reopen their density measurements by itself.
 
 The one-retry policy is exhausted. Collection is paused for a new explicit
 resource/protocol decision after diagnosis. Both attempts remain failures in the
