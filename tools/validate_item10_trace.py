@@ -122,6 +122,7 @@ def validate_trace(path: Path) -> dict[str, object]:
     }
 
 
+MONSTER_BOX = "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator"
 BOP_CLASSES = {
     "biomesoplenty/worldgen/feature/misc/AnomalyFeature",
     "biomesoplenty/worldgen/feature/misc/MonolithFeature",
@@ -135,8 +136,15 @@ BOP_INSTALLED = BOP_CLASSES | {
 }
 
 
-def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa: C901, PLR0912, PLR0915
-    """Check the bounded BOP r1 event population, retaining refused writes."""
+def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
+    rows: list[dict[str, object]], *, monster_box: bool = False
+) -> dict[str, object]:
+    """Check either retained feature population, keeping failed and void outcomes distinct."""
+    classes = {MONSTER_BOX} if monster_box else BOP_CLASSES
+    required = BOP_INSTALLED | ({MONSTER_BOX} if monster_box else set[str]())
+    dimension = "minecraft:overworld" if monster_box else "minecraft:the_end"
+    ending = "generator_end" if monster_box else "end"
+    attempt_writes: dict[int, int] = {}
     installations: dict[str, str] = {}
     active: dict[int, str | None] = {}
     started: set[int] = set()
@@ -156,7 +164,7 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
             if kind == "feature_installed":
                 expected.add("class")
                 name = cast("str", row.get("class"))
-                if name not in BOP_INSTALLED:
+                if name not in required:
                     fail("unexpected BOP installation class")
             digest = row.get("input_class_sha256")
             if set(row) != expected or name in installations or not isinstance(digest, str):
@@ -167,9 +175,15 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
                 fail("incorrect scarecrow installation")
             installations[name] = digest
             continue
-        if kind not in {"begin", "feature", "write", "end"}:
+        if kind not in {"begin", "feature", "write", ending}:
             fail("unexpected BOP event or unhandled failure")
-        expected = {"kind", "attempt", "class"} if kind == "feature" else FIELDS[cast("str", kind)]
+        expected = (
+            {"kind", "attempt", "class"}
+            if kind == "feature"
+            else {"kind", "attempt"}
+            if kind == "generator_end"
+            else FIELDS[cast("str", kind)]
+        )
         if set(row) != expected or type(row.get("attempt")) is not int:
             fail("malformed BOP event")
         attempt = cast("int", row["attempt"])
@@ -182,7 +196,7 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
             ):
                 fail("invalid BOP coordinates")
         if kind == "begin":
-            if attempt <= 0 or attempt in started or row["dimension"] != "minecraft:the_end":
+            if attempt <= 0 or attempt in started or row["dimension"] != dimension:
                 fail("duplicate or wrong-dimension BOP attempt")
             started.add(attempt)
             active[attempt] = None
@@ -191,23 +205,26 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
             fail("unpaired BOP event")
         if kind == "feature":
             name = row["class"]
-            if not isinstance(name, str) or name.replace(".", "/") not in BOP_CLASSES:
+            if not isinstance(name, str) or name.replace(".", "/") not in classes:
                 fail("unexpected BOP feature")
             if active[attempt] is not None or name.replace(".", "/") not in installations:
                 fail("duplicate feature or feature before installation")
             active[attempt] = name
             continue
         name = active[attempt]
-        if name is None or type(row.get("returned")) is not bool:
+        if name is None or (kind != "generator_end" and type(row.get("returned")) is not bool):
             fail("missing feature or invalid BOP result")
         if kind == "write":
             flags = row["flags"]
-            if type(flags) is not int or flags not in (2, 3):
+            if type(flags) is not int or flags not in ((0,) if monster_box else (2, 3)):
                 fail("invalid BOP flags")
             if name.endswith("MonolithFeature") and flags != HELPER_FLAGS:
                 fail("unexpected monolith flags")
             if not isinstance(row["state"], str) or not row["state"]:
                 fail("invalid BOP block state")
+            attempt_writes[attempt] = attempt_writes.get(attempt, 0) + 1
+            if monster_box and attempt_writes[attempt] > 1:
+                fail("Monster Box exceeds frozen single-write bound")
             writes += 1
             refused += row["returned"] is False
             by_feature[name] = by_feature.get(name, 0) + 1
@@ -215,9 +232,9 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
             del active[attempt]
     if active or started != set(range(1, len(started) + 1)):
         fail("unfinished or missing BOP attempts")
-    if set(installations) != BOP_INSTALLED | {"scarecrow"}:
+    if set(installations) != required | {"scarecrow"}:
         fail("incomplete BOP installations")
-    if set(by_feature) != {n.replace("/", ".") for n in BOP_CLASSES}:
+    if set(by_feature) != {n.replace("/", ".") for n in classes}:
         fail("no exercised writes for one BOP feature")
     return {
         "attempts": len(started),
@@ -228,17 +245,21 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
     }
 
 
-def validate_bop_trace(raw_root: Path) -> dict[str, object]:
-    """Bind BOP r1 trace and incoming classes to its published immutable archive."""
+def validate_feature_trace(raw_root: Path, *, monster_box: bool = False) -> dict[str, object]:
+    """Bind a declared feature trace and incoming classes to its immutable archive."""
+    diagnostic = "monster-box-pilot-r1" if monster_box else "bop-fixture-r1"
+    required = BOP_INSTALLED | ({MONSTER_BOX} if monster_box else set[str]())
     manifest_path = (
         Path(__file__).resolve().parents[1]
-        / "evidence/item-10/bop-fixture-r1/archive-manifest.json"
+        / "evidence/item-10"
+        / diagnostic
+        / "archive-manifest.json"
     )
     manifest = cast("dict[str, object]", parse_strict_json(manifest_path.read_bytes()))
     members = cast("list[dict[str, object]]", manifest["files"])
     names = [
         "trace.jsonl",
-        *["trace.jsonl.classes/" + name + ".class" for name in sorted(BOP_INSTALLED)],
+        *["trace.jsonl.classes/" + name + ".class" for name in sorted(required)],
         "trace.jsonl.classes/com/tristankechlo/explorations/worldgen/features/ScarecrowFeature.class",
     ]
     digests: dict[str, str] = {}
@@ -265,7 +286,7 @@ def validate_bop_trace(raw_root: Path) -> dict[str, object]:
         if not isinstance(row, dict):
             fail("BOP trace row is not an object")
         rows.append(cast("dict[str, object]", row))
-    result = check_bop_rows(rows)
+    result = check_feature_rows(rows, monster_box=monster_box)
     for name, digest in cast("dict[str, str]", result["installations"]).items():
         target = (
             "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature"
@@ -276,15 +297,23 @@ def validate_bop_trace(raw_root: Path) -> dict[str, object]:
             fail("BOP installation differs from incoming class")
     return {
         "status": "PASS",
-        "scope": "BOP r1 capture integrity only; not saved-block acceptance",
+        "scope": ("Monster Box r1" if monster_box else "BOP r1")
+        + " capture integrity only; not saved-block acceptance",
         "sha256": digests["trace.jsonl"],
         **result,
     }
 
 
 if __name__ == "__main__":
-    if len(sys.argv[1:]) == MIN_EVENTS and sys.argv[1] == "--bop-r1":
-        print(json.dumps(validate_bop_trace(Path(sys.argv[2])), indent=2))
+    if len(sys.argv[1:]) == MIN_EVENTS and sys.argv[1] in {"--bop-r1", "--monster-r1"}:
+        print(
+            json.dumps(
+                validate_feature_trace(
+                    Path(sys.argv[2]), monster_box=sys.argv[1] == "--monster-r1"
+                ),
+                indent=2,
+            )
+        )
         raise SystemExit(0)
     if len(sys.argv[1:]) != 1:
         message = "usage: python -m tools.validate_item10_trace TRACE.jsonl"
