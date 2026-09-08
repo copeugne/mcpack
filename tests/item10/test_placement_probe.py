@@ -781,15 +781,19 @@ def test_bridge_hooks_cover_retained_template_and_all_processor_sites(
 
 
 @pytest.mark.parametrize("mode", ["recover", "template-recover"])
-def test_bridge_caught_exception_allows_next_placement(tmp_path: Path, mode: str) -> None:
+@pytest.mark.parametrize("extras", [False, True])
+def test_bridge_caught_exception_allows_next_placement(
+    tmp_path: Path, mode: str, extras: bool
+) -> None:
+    fixture = "ExtrasFixture" if extras else "BridgeFixture"
     agent = _build_probe(tmp_path)
     command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
     original = subprocess.run(
-        [*command, "BridgeFixture", mode], check=True, capture_output=True, text=True, timeout=30
+        [*command, fixture, mode], check=True, capture_output=True, text=True, timeout=30
     )
     trace = tmp_path / "recovery.jsonl"
     observed = subprocess.run(
-        [*command, f"-javaagent:{agent}={trace}", "BridgeFixture", mode],
+        [*command, f"-javaagent:{agent}={trace}", fixture, mode],
         check=True,
         capture_output=True,
         text=True,

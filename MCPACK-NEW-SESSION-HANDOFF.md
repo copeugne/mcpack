@@ -153,8 +153,8 @@ records the fixed prerequisite finding, fresh review and verified main delivery.
 Its 161 urn writes are corroborated, but selected-area density remains open.
 
 Current branch: `codex/item10-extras-coverage`. PR33 reviews the pushed bridge
-milestone with review fix `063c87c0`; its fresh review request is
-[5581299792](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581299792). The
+milestone with exception fix `0a4a07c4`; its fresh review request is
+[5581459025](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581459025). The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
 reuses accepted selection/geometry evidence and binds 37 direct processor write
 sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
@@ -168,8 +168,9 @@ passed. Positive bridge capture remains unmet; do not expand this frame to hunt
 for it. PR33 finding `3955497336` is fixed in the existing reader. Archive-bound
 validation passes, all six prior reports reproduce unchanged, and 388 tests pass
 on the bridge PR branch. The second completed review found `3955590865`: feature
-state survives a caught exception and can disrupt the next placement. Fix shared
-exceptional-exit cleanup and add a recovery regression, then re-request review. The next
+state survived a caught exception and disrupted the next placement. The fix now
+records exceptional completion, clears state and preserves the thrown object.
+All 390 bridge-branch tests pass; fresh review is pending. The next
 [Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
 reuses accepted generation records and identifies two template and eleven
 processor write sites. The existing observer now covers them; all 389 Item 7/10
@@ -178,8 +179,10 @@ tests and focused quality checks pass. See the
 The [Extras diagnostic](evidence/item-10/extras-pilot-r1/README.md) completed all
 324 selected chunks with clean save/stop, no Extras attempts and zero unfinished
 attempts. Published raw download, world restore and archive-bound trace checks
-pass; all 404 Item 7/10 tests pass. Positive capture remains unmet. Fix PR33 before
-further experiments; raw diagnostic evidence does not need rewriting.
+pass; the original 404-test gate passed. Shared exception cleanup is integrated
+and all 22 affected bridge/Extras tests plus quality checks pass. Positive capture
+remains unmet. Complete PR33 review and the Extras delivery gate next; raw
+diagnostic evidence does not need rewriting.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome

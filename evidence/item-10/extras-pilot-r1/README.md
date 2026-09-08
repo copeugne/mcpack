@@ -60,3 +60,10 @@ exception, but its synthetic tests did not cover a caught exception followed by
 another placement on the same thread. Fix that shared behavior before further
 experiments; passing existing tests does not resolve the finding. Raw custody and
 this zero-attempt trace result are unchanged.
+
+The shared exceptional-exit fix from PR33 now applies to all eleven Extras
+feature entrypoints. Extras recovery fixtures cover caught template and processor
+exceptions followed by another placement on the same thread, including original
+processor exception object identity. All 22 affected bridge/Extras tests and
+focused Ruff/basedpyright checks pass. This resolves the demonstrated observer
+state leak in the Extras branch without changing this diagnostic's raw evidence.
