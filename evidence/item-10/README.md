@@ -3,7 +3,7 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Twelve worlds have individual census and
+repetitions and baseline/control arms. Thirteen worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
@@ -217,17 +217,17 @@ worlds only; it does not close the pending full sampling requirement.
 
 ## Failure denominators and uncertainty
 
-Twelve planned cells have accepted complete censuses. The failed planned cell
+Thirteen planned cells have accepted complete censuses. The failed planned cell
 (ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
 generation, then an incomplete saved Aether chunk following a save exception.
-Three planned cells remain unattempted. This is fourteen attempts over thirteen
-attempted cells, not fourteen completed worlds or four measured zero-density cells.
+Two planned cells remain unattempted. This is fifteen attempts over fourteen
+attempted cells, not fifteen completed worlds or three measured zero-density cells.
 The failed attempts retain their immutable archives and diagnoses. No missing
 cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
 control retry after the five untouched planned worlds. Sixteen complete cells
 remain required.
 
-Within the twelve accepted worlds, the observer's call count differs from grouped
+Within the thirteen accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts
 from `nonregistry_candidates.attempts`, `locations` and `location_observations`
 in their accepted, hash-bound outputs. The five disposition columns partition
@@ -247,6 +247,7 @@ the grouped candidates; they do not partition individual observer calls.
 | Ocean-heavy r1 C | 28648 | 28427 | 24078 | 2630 | 1718 | 1 | 0 |
 | Ocean-heavy r2 B | 28700 | 28531 | 24122 | 2625 | 1773 | 1 | 10 |
 | Biome-diverse r1 B | 33034 | 32772 | 25400 | 2859 | 4511 | 2 | 0 |
+| Biome-diverse r1 C | 33086 | 32777 | 25388 | 2857 | 4526 | 6 | 0 |
 
 No constructive content means the candidate did not produce the required content;
 it is not a failed server run. Outside-frame candidates remain excluded by the
@@ -274,7 +275,8 @@ its linked report gives the 73-to-83 outer-End sensitivity and all five overlap 
 
 The four selected seeds are not a random sample. All four now have accepted
 worlds. The [biome-diverse r1 baseline](full-biome-diverse-r1-baseline/README.md)
-is unpaired until its control completes. Ordinary and mountainous each have two complete matched pairs;
+and [its control](full-biome-diverse-r1-without-sparse/README.md) form one complete
+matched pair. Ordinary and mountainous each have two complete matched pairs;
 ocean-heavy has one and an unpaired second baseline. Fresh-repetition
 variation remains visible in the tables and raw outputs. Two repetitions do not
 support a reliable tail estimate or a confidence interval for all generated worlds.

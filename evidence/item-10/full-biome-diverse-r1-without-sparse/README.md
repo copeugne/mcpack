@@ -1,6 +1,6 @@
 # Biome-diverse repetition-1 control
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: CONTROL-WORLD ACCEPTANCE PASS, with six saved-content exclusions.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `-3503646078644842058`.
 Generation source: `44212515b2bea1e1935295e39682f911720c917f`.
@@ -59,4 +59,62 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics are retained in the analysis directory's
-`all-strata-runtime.txt`. No census result is accepted at this checkpoint.
+`all-strata-runtime.txt`. Census session 84601 ended with exit 0 in 597.674 seconds.
+The output is 122,228,779 bytes, SHA-256
+`3be8f73edcde284032686ed32910cd22154897e6b44fbdcaa30bc1229749c4c9`.
+All eleven strata contain exactly 4,096 full selected chunks. Fifty incoming
+target classes pass complete observer coverage and trace validation.
+
+
+## Saved-content exclusions and biome limits
+
+Six Overworld `supplementaries:cave_urn_cache` candidates remain excluded as
+CONTENT_NOT_PRESERVED. All seven inspected content positions are in full saved
+chunks. The raw constructive observations remain preserved; the later writer is
+UNKNOWN. No overlap pairs occur.
+
+| Candidate | Attempt | Content position | Saved block |
+| ---: | ---: | --- | --- |
+| 12995 | 24651 | (-400,-10,107) | minecraft:polished_tuff |
+| 13885 | 24572 | (-434,-16,98) | minecraft:air |
+| 16700 | 22287 | (-63,-37,-158), (-59,-37,-156) | minecraft:air at both |
+| 21261 | 10710 | (225,28,-370) | minecraft:smooth_basalt |
+| 23936 | 11390 | (30,-22,-347) | minecraft:waxed_oxidized_copper_grate |
+| 28233 | 15287 | (473,-45,-348) | minecraft:calcite |
+
+Biome rows plus unavailable anchors conserve every stratum's accepted location
+count. The central-End arena is the sole unavailable biome anchor. Urn candidate
+28296, attempt 6179, at (476,24,354), has observed `terralith:desert_canyon` biome
+at quart height 6 but zero sampled chunk-center exposure in that band. Its count
+remains one and its rate null. It is not discarded or assigned another denominator.
+
+## Accepted counts and limitations
+
+Rates use count times 1,000 / 4,096 within each stratum. Raw output retains all
+category densities, spatial observations, censoring and separate biome bands.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 126 | 8 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 54 | 54 | 54 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 128 | 4227 | 74 | 19 | 4119 | 15 | 0 | 0 | 4 |
+| Central End | 9 | 11 | 10 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 41 | 48 | 42 | 0 | 2 | 2 | 2 | 0 | 0 |
+| Nether | 179 | 597 | 141 | 0 | 442 | 9 | 5 | 0 | 0 |
+
+Aether's 118 cloud starts remain excluded terrain. The observer records 33,086
+calls and 32,777 grouped candidates: 25,388 NO_CONSTRUCTIVE_CONTENT, 2,857
+OUTSIDE_FRAME, 4,526 OBSERVED_LOCATION and six CONTENT_NOT_PRESERVED.
+
+This completes the sixth matched pair and thirteenth planned cell. The matched
+baseline has six Overworld T2 dungeons and one village; this control has fifteen
+and four. T2 nearest-observed mean is 139.29447166395042 blocks; the uncensored
+mean remains null. Dispersion is 0.8625 and the largest empty full-cell rectangle
+is 768 chunks, bounds [-32,15,-16,-1]. These are fixed-window observations under
+the declared observer, not observed fights, exploration pacing, loot correctness
+or proof of observer-free equivalence. The second repetition remains outstanding.
