@@ -132,8 +132,8 @@ reviewed head `677eb250`, fixed findings and verified main ancestry.
 [archived capture](evidence/item-10/monster-box-pilot-r1/README.md) validates all
 202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
 Continue on `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
-Nether pilot with verified raw custody. Its 269 spike writes still need mixed-
-trace and saved-block validation. Do not regenerate for those checks.
+Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
+now validate; 340 Item 7/10 tests pass. Next complete its review after PR26 delivery.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records

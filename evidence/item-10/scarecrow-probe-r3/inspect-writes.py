@@ -13,18 +13,27 @@ from tools.validate_item10_trace import validate_feature_trace, validate_trace
 from mcpack_evidence.item7_anvil import decode_region_payloads
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
+spike = sys.argv[1:] == ["--spike-r1"]
 monster = sys.argv[1:] == ["--monster-r1"]
 bop = sys.argv[1:] == ["--bop-r1"]
-feature_mode = bop or monster
+feature_mode = bop or monster or spike
 if sys.argv[1:] and not feature_mode:
-    detail = "Supported inspection modes are --bop-r1 and --monster-r1"
+    detail = "Supported inspection modes are --bop-r1, --monster-r1 and --spike-r1"
     raise ValueError(detail)
 if feature_mode:
-    diagnostic = "monster-box-pilot-r1" if monster else "bop-fixture-r1"
+    diagnostic = (
+        "nether-spike-pilot-r1"
+        if spike
+        else "monster-box-pilot-r1"
+        if monster
+        else "bop-fixture-r1"
+    )
     raw = Path("evidence/raw/item10") / (diagnostic + "-custody") / "restored"
     world = raw.parent / "restored-world/world"
     trace = raw / "trace.jsonl"
-    validated = validate_feature_trace(raw, monster_box=monster)
+    validated = validate_feature_trace(
+        raw, mode="spike" if spike else "monster" if monster else "bop"
+    )
     manifest_path = raw / "world-backup.json"
     archive_path = Path("evidence/item-10") / diagnostic / "archive-manifest.json"
     manifest_member = "world-backup.json"
@@ -57,13 +66,23 @@ if hashlib.sha256(trace_bytes).hexdigest() != validated["sha256"]:
 rows = [json.loads(line) for line in trace_bytes.splitlines()]
 dimensions = {row["attempt"]: row["dimension"] for row in rows if row["kind"] == "begin"}
 writes = [row for row in rows if row["kind"] == "write"]
-chunks = {(row["position"][0] // 16, row["position"][2] // 16) for row in writes}
-regions = {(x // 32, z // 32) for x, z in chunks}
+dimension_dirs = {dimension: region_dir}
+if spike:
+    dimension_dirs = {
+        "minecraft:overworld": "region",
+        "minecraft:the_nether": "DIM-1/region",
+        "minecraft:the_end": "DIM1/region",
+    }
+chunks = {
+    (dimensions[row["attempt"]], row["position"][0] // 16, row["position"][2] // 16)
+    for row in writes
+}
+regions = {(dim, x // 32, z // 32) for dim, x, z in chunks}
 retained = {}
 inputs = []
 with _world_backup_lock(world):
-    for x, z in sorted(regions):
-        path = world / region_dir / f"r.{x}.{z}.mca"
+    for dim, x, z in sorted(regions):
+        path = world / dimension_dirs[dim] / f"r.{x}.{z}.mca"
         if not path.resolve().is_relative_to(world.resolve()):
             detail = "Region escapes restored world"
             raise ValueError(detail)
@@ -77,22 +96,22 @@ with _world_backup_lock(world):
             if record.external:
                 detail = "Unexpected external chunk in bounded r3 corroboration"
                 raise ValueError(detail)
-            if (record.chunk_x, record.chunk_z) in chunks:
+            if (dim, record.chunk_x, record.chunk_z) in chunks:
                 chunk = decode_compound_nbt(payload)
                 if (chunk.get("xPos"), chunk.get("zPos")) != (record.chunk_x, record.chunk_z):
                     detail = "Stored chunk coordinates differ from region slot"
                     raise ValueError(detail)
-                retained[record.chunk_x, record.chunk_z] = chunk
+                retained[dim, record.chunk_x, record.chunk_z] = chunk
         if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
             detail = f"Region changed during inspection: {relative}"
             raise ValueError(detail)
     observations = []
     for row in writes:
-        if dimensions[row["attempt"]] != dimension:
+        if dimensions[row["attempt"]] not in dimension_dirs:
             detail = "Write dimension differs from selected bounded inspection"
             raise ValueError(detail)
         x, y, z = row["position"]
-        chunk = retained[x // 16, z // 16]
+        chunk = retained[dimensions[row["attempt"]], x // 16, z // 16]
         section = next(part for part in chunk["sections"] if part["Y"] == y // 16)
         states = section["block_states"]
         palette = states["palette"]
@@ -105,6 +124,7 @@ with _world_backup_lock(world):
         observations.append(
             {
                 "attempt": row["attempt"],
+                **({"dimension": dimensions[row["attempt"]]} if spike else {}),
                 "returned": row["returned"],
                 "position": row["position"],
                 "recorded_state": row["state"],
@@ -120,7 +140,7 @@ result = {
 }
 if feature_mode:
     successful = [row for row in observations if row["returned"]]
-    last = {tuple(row["position"]): row for row in successful}
+    last = {(dimensions[row["attempt"]], *row["position"]): row for row in successful}
     attempt_counts = Counter(row["attempt"] for row in successful)
     features = {row["attempt"]: row["class"] for row in rows if row["kind"] == "feature"}
     returns = {
@@ -147,6 +167,7 @@ if feature_mode:
             "attempts": [
                 {
                     "attempt": attempt,
+                    **({"dimension": dimensions[attempt]} if spike else {}),
                     "feature": features[attempt],
                     "returned": returns[attempt],
                     "successful_writes": attempt_counts[attempt],
