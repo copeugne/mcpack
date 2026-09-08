@@ -16,7 +16,8 @@ both failures preserved and the frozen configuration unchanged. The complete
 category, biome, seed, repetition and spatial comparison follows. Local validation
 and clean-checkout reproduction pass. Final review and main delivery are verified
 below. The post-delivery [Items 2 through 10 audit](cross-item-audit.md) passes
-locally and awaits its own review/main delivery. No tuning was performed.
+locally; [PR36](https://github.com/copeugne/mcpack/pull/36) governs its reviewed
+main delivery. No tuning was performed.
 
 The [authorized automated scope](methodology-amendment.md) removes human phases
 from Items 10 and 11. No playing workload or recording is required. Provisional

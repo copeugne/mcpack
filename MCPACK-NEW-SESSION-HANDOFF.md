@@ -26,9 +26,9 @@ had a completed clean Codex cycle and bot thumbs-up; fetched main ancestry passe
 The [delivery record](evidence/item-10/README.md#reviewed-main-delivery) binds the
 review and merge. Both PR35 findings have verified dispositions.
 
-Current branch: `codex/item10-cross-item-audit`, pushed at `87f45249`.
+Current branch: `codex/item10-cross-item-audit`, pushed at `3a8b9f8b`.
 [PR36](https://github.com/copeugne/mcpack/pull/36) is open; Codex review requested
-by comment `5591349325`. It is based on verified PR35 main.
+for the correction by comment `5591506920`. It is based on verified PR35 main.
 PR36 review found that a prose-only Chunky erratum was insufficient. The narrow
 machine-readable correction is now required by the existing Item 6 validator.
 The [audit record](evidence/item-10/cross-item-audit.md) preserves the rejected
@@ -40,8 +40,11 @@ attempt identities agree; all sixteen corrected trace checks pass unchanged.
 No runtime/configuration change or new experiment is needed. The correction
 passes 560 Item 6 tests and 581 Item 7/10 tests plus affected quality checks.
 
-Next: push the verified machine-readable review correction to PR36, request
-a fresh Codex review, obtain a clean result, merge and verify main. No further measurement or tooling expansion.
+The next review required a reproducible cross-item comparison. The existing
+Item 10 test module now checks all Item 7 references and eighteen attempt
+identities; its focused test and quality checks pass. Push this correction,
+request a fresh PR36 review, then merge the clean reviewed head and verify main. No further measurement
+or tooling expansion.
 Do not implement, run, repair or lint Item 11. No additional worlds or retries
 are authorized or needed for this sample.
 

@@ -1,7 +1,10 @@
 # Items 2 through 10 identity and narrative consistency audit
 
 Date: 2026-09-08. Audited delivery: `d507573ead2c2740657129e9ee57a1410f420ed9`
-(fetched main after PR35). Result: **PASS locally with the explicit machine-readable correction below; review and main delivery of this audit remain pending.**
+(fetched main after PR35). Result: **PASS with the explicit machine-readable
+correction below.** The [PR36 delivery record](https://github.com/copeugne/mcpack/pull/36)
+is authoritative for review and merge status; this gate is delivered only once
+that PR has a clean completed review and is merged.
 Item 10 itself is COMPLETE through the reviewed main delivery recorded in its
 [report](README.md#reviewed-main-delivery). No Item 11 workflow was implemented,
 run, repaired or linted during this audit.
@@ -21,7 +24,9 @@ reference was compared with the referenced file's bytes. Every one of the
 sixteen accepted and two failed Item 10 `run.json` preflights was compared with
 those same retained-manifest, configuration-manifest, configuration-audit and
 seed-suite hashes, Java build, declared instrument count and arm. All eighteen
-agree. These are inspections of existing immutable records, not replacement
+agree. The exact comparison is now executable in
+`tests/item10/test_collection_runner.py::test_committed_cross_item_identity_bindings`,
+including the complete sixteen-cell matrix and both separately preserved failures. These are inspections of existing immutable records, not replacement
 empirical measurements. Earlier review/restore/test records retain their original
 scope; this audit does not claim to have rerun them.
 
@@ -161,3 +166,24 @@ All six affected Python files pass [Ruff](final-validation/ruff-audit-correction
 The original snapshot and configuration-manifest hashes still match the table.
 The new correction is 527 bytes, SHA-256
 `5c905eff65549dcd1e2e754911f35fd8208d10fe3097fbd9d36bb8c1a3b2b907`.
+
+The completed review of `3a8b9f8b` raised
+[reproducible cross-item identity validation](https://github.com/copeugne/mcpack/pull/36#discussion_r3962067336).
+The existing test module now contains the exact read-only comparison. It checks
+canonical Item 7 reference paths and recomputed hashes; the sixteen accepted
+cell names plus both failed attempts; every attempt's arm, repetition, seed,
+four shared hashes, Java build, retained/instrumented counts, omit-only flag,
+runtime hashes, Chunky hash and observer source/JAR identities. Missing receipts
+or changed identities fail. This adds one bounded test, not a new audit framework.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_collection_runner.py -k committed_cross_item_identity_bindings
+```
+
+The new check passes in 0.36 seconds
+([output](final-validation/pytest-cross-item-identities.txt)). Affected
+[Ruff](final-validation/ruff-cross-item-identities.txt),
+[formatting](final-validation/format-cross-item-identities.txt) and
+[BasedPyright](final-validation/basedpyright-cross-item-identities.txt) pass.
+Only this additional test and reporting changed after the full 560+581 gate;
+unchanged runtime and measurement tests were not rerun for reassurance.
