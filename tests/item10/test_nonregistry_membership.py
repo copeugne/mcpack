@@ -69,6 +69,31 @@ def test_early_building_failure_does_not_invent_a_design() -> None:
     assert result["reason"] == "NO_DESIGN_SELECTED"
 
 
+def test_existing_ambient_dispositions_are_retained() -> None:
+    membership = nonregistry_membership()
+    ambient = [
+        path for path, decision in membership["excluded"].items() if decision.startswith("AMBIENT")
+    ]
+    assert len(ambient) == 6
+    for path in ambient:
+        result = attribute_nonregistry_attempt(
+            attempt("org.betterx.betterend.world.features.NBTFeature", path), membership
+        )
+        assert result["family"] is None
+        assert result["reason"] == "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY"
+
+
+def test_disconnected_house_observation_reopens_inventory_boundary() -> None:
+    with pytest.raises(ValueError, match="contradicts accepted"):
+        _ = attribute_nonregistry_attempt(
+            attempt(
+                "org.betterx.betterend.world.features.BuildingListFeature",
+                "/data/betterend/structure/biome/blossoming_spires/house.nbt",
+            ),
+            nonregistry_membership(),
+        )
+
+
 def test_conflicting_template_and_generator_rejected() -> None:
     with pytest.raises(ValueError, match="identities disagree"):
         _ = attribute_nonregistry_attempt(

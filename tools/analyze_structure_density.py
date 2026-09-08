@@ -342,7 +342,15 @@ def nonregistry_membership() -> dict[str, dict[str, str]]:  # noqa: C901 - direc
     if set(templates.values()) | set(classes.values()) != accepted:
         detail = "collector membership does not cover exactly the accepted nonregistry families"
         raise ValueError(detail)
-    return {"classes": classes, "templates": templates}
+    excluded = {
+        "/" + path: disposition["decision"]
+        for disposition in contributions["betterend:biome_ruins"]["dispositions"]
+        for path in disposition["templates"]
+    }
+    for contribution in ("betterend:lantern_woods/light_1", "betterend:blossoming_spires/house"):
+        entry = contributions[contribution]
+        excluded["/" + entry["template"]] = entry["dispositions"][0]["decision"]
+    return {"classes": classes, "templates": templates, "excluded": excluded}
 
 
 def attribute_nonregistry_attempt(
@@ -353,6 +361,26 @@ def attribute_nonregistry_attempt(
     feature = str(feature_rows[0]["class"]).replace(".", "/") if feature_rows else SCARECROW_CLASS
     paths = [str(row["path"]) for row in rows if row["kind"] == "template_begin"]
     family = membership["classes"].get(feature)
+    if family is None and feature not in {
+        "org/betterx/betterend/world/features/BuildingListFeature",
+        "org/betterx/betterend/world/features/NBTFeature",
+    }:
+        detail = "unmapped nonregistry generator class"
+        raise ValueError(detail)
+    dispositions = [membership["excluded"].get(path) for path in paths]
+    if "DISCONNECTED_TEMPLATE_NOT_ADDITIONAL_ACTIVE_FAMILY" in dispositions:
+        detail = "observed disconnected template contradicts accepted active-route inventory"
+        raise ValueError(detail)
+    if paths and all(value == "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY" for value in dispositions):
+        if family is not None:
+            detail = "accepted generator selected only excluded decoration"
+            raise ValueError(detail)
+        return {
+            "attempt": rows[0]["attempt"],
+            "family": None,
+            "reason": "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY",
+            "templates": paths,
+        }
     selected = {membership["templates"][path] for path in paths if path in membership["templates"]}
     if any(path not in membership["templates"] for path in paths):
         return {
@@ -365,12 +393,6 @@ def attribute_nonregistry_attempt(
         detail = "observed template and generator family identities disagree"
         raise ValueError(detail)
     if family is None:
-        if feature not in {
-            "org/betterx/betterend/world/features/BuildingListFeature",
-            "org/betterx/betterend/world/features/NBTFeature",
-        }:
-            detail = "unmapped nonregistry generator class"
-            raise ValueError(detail)
         family = next(iter(selected), None)
     if family == "supplementaries:cave_urn_cache":
         parents = [row["placed_feature"] for row in rows if row["kind"] == "urn_parent"]

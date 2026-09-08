@@ -1178,8 +1178,14 @@ Attribution does not establish a successful location. Early building failures
 without a selected design remain `NO_DESIGN_SELECTED`; unknown template paths
 remain `UNMAPPED_TEMPLATE`, and missing cave parent identity remains
 `UNRESOLVED_URN_PARENT`. Conflicting class/template family identities are rejected.
-Ambient-template dispositions, provider success rules and distinct-location
-aggregation still require integration before counts can be accepted.
+The six existing ambient-template dispositions are reused directly from that
+same inventory: five small ruin fixtures and the Lantern Woods light. Their
+attempts remain explicit excluded decoration. An observed Blossoming Spires
+house raises an inventory-conflict error because Item 8 establishes no active
+route for that template. It cannot silently become excluded decoration or an
+accepted family. Other unmapped paths remain unresolved. Provider success rules
+and distinct-location aggregation still require integration before counts can
+be accepted.
 
 Reproduce the focused attribution and downstream regression check with:
 
@@ -1187,6 +1193,6 @@ Reproduce the focused attribution and downstream regression check with:
 uv run --no-sync pytest -q tests/item10/test_nonregistry_membership.py tests/item10/test_collection_trace.py tests/item10/test_density_census.py tests/item10/test_density_spatial.py
 ```
 
-All 55 tests pass. The retained Bridge and Extras traces reproduce their accepted
+All 57 tests pass. The retained Bridge and Extras traces reproduce their accepted
 cave-parent attempt counts through the family join. These are attribution checks,
 not additional density measurements or new experiments.

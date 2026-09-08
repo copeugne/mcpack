@@ -123,9 +123,10 @@ retained pilot spatial category results. Its focused spatial/census gate has
 29 passing tests. The existing trace tool now streams hash-bound complete attempts
 with full event fields and structural pairing; 88 reader tests pass, including
 the retained Bridge/Extras archives. Family attribution now joins exact classes
-and template paths to all 40 accepted nonregistry families, with 55 focused tests
-passing. Attribution does not imply placement success. Provider-specific success,
-ambient exclusions, incoming-class file binding and the location table remain.
+and template paths to all 40 accepted nonregistry families, with 57 focused tests
+passing. Six existing ambient exclusions are integrated; an observed disconnected
+house fails as an inventory conflict. Attribution does not imply placement success.
+Provider-specific success, incoming-class file binding and the location table remain.
 Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
