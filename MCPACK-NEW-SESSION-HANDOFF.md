@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Thirteen planned cells have complete census and raw-custody acceptance:
+Fourteen planned cells have complete census and raw-custody acceptance:
 
 - [full-ordinary-r1-baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [full-ordinary-r1-without-sparse](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
@@ -154,6 +154,7 @@ Thirteen planned cells have complete census and raw-custody acceptance:
 - [full-ocean-heavy-r2-baseline](evidence/item-10/full-ocean-heavy-r2-baseline/README.md).
 - [full-biome-diverse-r1-baseline](evidence/item-10/full-biome-diverse-r1-baseline/README.md).
 - [full-biome-diverse-r1-without-sparse](evidence/item-10/full-biome-diverse-r1-without-sparse/README.md).
+- [full-biome-diverse-r2-without-sparse](evidence/item-10/full-biome-diverse-r2-without-sparse/README.md).
 
 Ocean-heavy r2 baseline completed generation in 526.634s and census in 549.917s.
 Its record binds restored raw evidence, all 45,056 selected full chunks and the
@@ -165,9 +166,8 @@ User-authorized `item10-retry-policy-v2` keeps sixteen complete cells as the tar
 Biome-diverse r1 baseline passed census in 569.638s, with two retained urn exclusions.
 Biome-diverse r1 control census passed in 597.674s; session 84601 is terminal 0.
 Six urn exclusions and one zero-exposure biome row are retained in its report.
-[Biome-diverse r2 control](evidence/item-10/full-biome-diverse-r2-without-sparse/README.md)
-generation/custody passed. Census session 25437 is live, source `3cd0e358`.
-Then r2 baseline and one fresh ocean-heavy r2 control attempt3.
+Biome-diverse r2 control census passed in 510.364s; session 25437 is terminal 0.
+Next: r2 baseline, then one fresh ocean-heavy r2 control attempt3.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)

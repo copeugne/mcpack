@@ -3,7 +3,7 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Thirteen worlds have individual census and
+repetitions and baseline/control arms. Fourteen worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
@@ -217,17 +217,17 @@ worlds only; it does not close the pending full sampling requirement.
 
 ## Failure denominators and uncertainty
 
-Thirteen planned cells have accepted complete censuses. The failed planned cell
+Fourteen planned cells have accepted complete censuses. The failed planned cell
 (ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
 generation, then an incomplete saved Aether chunk following a save exception.
-Two planned cells remain unattempted. This is fifteen attempts over fourteen
-attempted cells, not fifteen completed worlds or three measured zero-density cells.
+One planned cell remains unattempted. This is sixteen attempts over fifteen
+attempted cells, not sixteen completed worlds or two measured zero-density cells.
 The failed attempts retain their immutable archives and diagnoses. No missing
 cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
 control retry after the five untouched planned worlds. Sixteen complete cells
 remain required.
 
-Within the thirteen accepted worlds, the observer's call count differs from grouped
+Within the fourteen accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts
 from `nonregistry_candidates.attempts`, `locations` and `location_observations`
 in their accepted, hash-bound outputs. The five disposition columns partition
@@ -248,6 +248,7 @@ the grouped candidates; they do not partition individual observer calls.
 | Ocean-heavy r2 B | 28700 | 28531 | 24122 | 2625 | 1773 | 1 | 10 |
 | Biome-diverse r1 B | 33034 | 32772 | 25400 | 2859 | 4511 | 2 | 0 |
 | Biome-diverse r1 C | 33086 | 32777 | 25388 | 2857 | 4526 | 6 | 0 |
+| Biome-diverse r2 C | 33020 | 32766 | 25350 | 2855 | 4561 | 0 | 0 |
 
 No constructive content means the candidate did not produce the required content;
 it is not a failed server run. Outside-frame candidates remain excluded by the
@@ -451,7 +452,7 @@ The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
 source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
-prior reviews are resolved. Three worlds, combined synthesis and final delivery
+prior reviews are resolved. Two worlds, combined synthesis and final delivery
 remain incomplete; runtime acceptance is established per world, not from tests.
 
 ### Storage decision before collection
@@ -499,7 +500,7 @@ four seeds and eleven strata, with two fresh repetitions in each of two arms.
 It defines coordinate inclusion, spatial cells, biome attribution, boundary
 censoring, sparse-category limits and a control omitting only Sparse Structures.
 This supersedes the inherited nested-stage draft. Each full-world acceptance
-requires complete occurrence capture and exact experiment identities; thirteen
+requires complete occurrence capture and exact experiment identities; fourteen
 worlds have passed so far.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
@@ -523,7 +524,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Complete the remaining two biome-diverse worlds, then the authorized final control retry; continue
+- Complete the remaining biome-diverse baseline, then the authorized final control retry; continue
   capacity checks. Preserve all existing artifacts and failed observations.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.

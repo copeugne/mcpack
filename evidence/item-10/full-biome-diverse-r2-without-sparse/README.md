@@ -1,6 +1,6 @@
 # Biome-diverse repetition-2 control
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: CONTROL-WORLD ACCEPTANCE PASS.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `-3503646078644842058`.
 Generation source: `3cd0e358918e9ce7965a239129a827ed6d58436d`.
@@ -56,4 +56,44 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics remain in `all-strata-runtime.txt` in the analysis directory.
-Census acceptance is pending. Generation completion alone does not close this world.
+Census session 25437 ended with exit 0 in 510.364 seconds. Its output is
+117,637,348 bytes, SHA-256
+`88978f006449ce5c9dd25a5df97bd80580f33e8adc077d4f51a3781cdb8cdc77`.
+All eleven strata contain exactly 4,096 full selected chunks. Coverage-v2 passes
+with 49 incoming classes and only the declared unexercised Gateway exception.
+
+
+## Accepted counts and limitations
+
+Rates use count times 1,000 / 4,096 within each stratum. All category spatial
+observations, censoring and biome exposures remain in the hash-bound output.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 126 | 8 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 54 | 54 | 54 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 128 | 4271 | 75 | 19 | 4162 | 15 | 0 | 0 | 4 |
+| Central End | 9 | 11 | 10 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 75 | 77 | 72 | 1 | 1 | 1 | 2 | 0 | 1 |
+| Nether | 146 | 560 | 107 | 0 | 438 | 9 | 6 | 0 | 0 |
+
+Aether's 118 cloud starts remain excluded terrain. The observer records 33,020
+calls and 32,766 grouped candidates: 25,350 NO_CONSTRUCTIVE_CONTENT, 2,855
+OUTSIDE_FRAME and 4,561 OBSERVED_LOCATION. No saved-content mismatch or overlap
+occurs. Biome rows plus unavailable anchors conserve every stratum's accepted
+location count. The central-End arena is the sole unavailable biome anchor; no
+positive-count zero-exposure row occurs.
+
+This is the fourteenth accepted planned cell. The matched baseline is still
+outstanding. Compared with the first control repetition, Overworld total rises
+from 4,227 to 4,271 while T2, T3 and village counts remain 15, zero and four.
+Outer End rises from 48 to 77, while Nether falls from 597 to 560. These repeated
+world differences are retained, not selected away. Overworld T2 nearest-observed
+mean is 139.29447166395042 blocks, uncensored mean null, dispersion 0.8625 and
+largest empty full-cell rectangle 768 chunks, bounds [-32,15,-16,-1]. This is
+fixed-window placement evidence, not fights, pacing or observer-free equivalence.
