@@ -110,6 +110,20 @@ selected chunk-center biomes at every stored quart-height, reporting height band
 separately. Do not divide underground starts by an unrelated surface-only biome
 denominator. Sparse biome/category cells remain visible, with raw denominators.
 
+For registry starts, predeclare the biome anchor as the authoritative start chunk's
+center X/Z and floor((minimum piece Y + maximum piece Y) / 2). Retain every
+stored piece bound and their union envelope. This is a geometric attribution
+proxy, not an entrance or Minecraft's placement-time biome predicate. Use the
+anchor's floor(Y/4) band for its biome denominator. Missing bounds and anchors
+outside stored biome height remain explicit unavailable observations, never
+surface substitutions or silent drops. Inverted piece bounds reject attribution.
+Nonregistry writer coordinates will supply their own recorded anchors.
+The existing `--biomes` reader now implements this registry attribution alongside
+height-band exposure. Focused Item 10 validation passes 29 tests, including
+negative heights, missing bounds, out-of-height attribution and inverted bounds;
+Ruff and the changed test's type check pass. Real-world attribution integration
+remains to be run, and does not alter the generation-equivalence projection.
+
 Report per-seed and per-stratum results first. These four deliberately selected
 seeds and origin-centered regions are not a random sample of all Minecraft worlds.
 Report finite-area counts exactly and cross-seed range descriptively. Do not call

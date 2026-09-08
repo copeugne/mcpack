@@ -46,6 +46,49 @@ def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int
     return column
 
 
+def occurrence_biomes(record: ChunkRecord, column: dict[int, str]) -> list[dict[str, object]]:
+    """Attribute starts at chunk center and the midpoint of their complete piece envelope."""
+    rows = []
+    for start in record.structure_starts:
+        if start.start_id == "INVALID":
+            continue
+        boxes = [box.bounds for box in start.boxes]
+        if any(box[axis] > box[axis + 3] for box in boxes for axis in range(3)):
+            detail = "inverted structure piece bounds"
+            raise ValueError(detail)
+        envelope = (
+            [min(box[i] for box in boxes) for i in range(3)]
+            + [max(box[i] for box in boxes) for i in range(3, 6)]
+            if boxes
+            else None
+        )
+        anchor_y = (envelope[1] + envelope[4]) // 2 if envelope else None
+        quart_y = anchor_y // 4 if anchor_y is not None else None
+        biome = column.get(quart_y) if quart_y is not None else None
+        rows.append(
+            {
+                "registry_id": start.structure_id,
+                "chunk_x": record.chunk_x,
+                "chunk_z": record.chunk_z,
+                "piece_bounds": boxes,
+                "envelope": envelope,
+                "anchor_x": 16 * record.chunk_x + 8,
+                "anchor_y": anchor_y,
+                "anchor_z": 16 * record.chunk_z + 8,
+                "quart_y": quart_y,
+                "biome": biome,
+                "unavailable_reason": (
+                    "no stored piece bounds"
+                    if not boxes
+                    else "anchor outside stored biome height"
+                    if biome is None
+                    else None
+                ),
+            }
+        )
+    return rows
+
+
 def generation_digest(payload: bytes) -> str:
     """Hash the predeclared generation projection without tick or entity movement state."""
     root = decode_compound_nbt(payload)
@@ -243,7 +286,7 @@ def start_origins(payload: bytes, chunk: tuple[int, int]) -> list[dict[str, str 
     return result
 
 
-def census(  # noqa: PLR0913 - explicit optional outputs avoid a separate configuration schema.
+def census(  # noqa: C901, PLR0913 - keep optional metrics in the existing single census pass.
     world: Path,
     dimension: str,
     bounds: tuple[int, int, int, int],
@@ -262,6 +305,7 @@ def census(  # noqa: PLR0913 - explicit optional outputs avoid a separate config
     occurrences = []
     inputs = []
     biome_counts = collections.Counter()
+    attributed_biomes = []
     generation = []
     for path, context in world_regions(world, dimension_geometry=geometry):
         if context.dimension != dimension:
@@ -281,11 +325,10 @@ def census(  # noqa: PLR0913 - explicit optional outputs avoid a separate config
                 detail = f"selected chunk is incomplete or duplicated: {dimension} {x},{z}"
                 raise ValueError(detail)
             seen.add((x, z))
-            biome_counts.update(
-                chunk_biome_column(record, context.min_y, context.build_height).items()
-                if include_biomes
-                else ()
-            )
+            if include_biomes:
+                column = chunk_biome_column(record, context.min_y, context.build_height)
+                biome_counts.update(column.items())
+                attributed_biomes.extend(occurrence_biomes(record, column))
             occurrences.extend(start_origins(payload, (x, z)))
             generation.extend(
                 [{"chunk_x": x, "chunk_z": z, "sha256": generation_digest(payload)}]
@@ -326,7 +369,11 @@ def census(  # noqa: PLR0913 - explicit optional outputs avoid a separate config
     }
     return (
         result
-        | ({"biome_exposure": exposure} if include_biomes else {})
+        | (
+            {"biome_exposure": exposure, "occurrence_biomes": attributed_biomes}
+            if include_biomes
+            else {}
+        )
         | (
             {
                 "generation_content": sorted(
