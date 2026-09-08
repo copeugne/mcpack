@@ -139,56 +139,37 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Four of sixteen worlds have individual acceptance:
+Five of sixteen worlds have individual census and raw-custody acceptance:
 
-- [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md):
-  complete 45,056-chunk census, original configuration-capture rejection and
-  unchanged-file revalidation, published/restored custody and resource gate.
-  The first all-strata cloud-root rejection is retained; Item 8's existing
-  terrain exclusion is now integrated. Exact Overworld comparison passed.
-- [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md):
-  complete census/custody and first matched contrast; six retained content exclusions.
-- [Ordinary r2 control](evidence/item-10/full-ordinary-r2-without-sparse/README.md):
-  complete census/custody and repetition comparison; two retained content exclusions.
-  Outer-End classified locations vary from 91 to 70. Do not hide this variation.
+- [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
+- [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
+- [Ordinary r2 control](evidence/item-10/full-ordinary-r2-without-sparse/README.md).
+- [Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md).
+- [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
 
-All accepted outputs, SHA-256 values, commands and limitations are in those records.
-The unchanged analysis implementation is `14680b79`; the full applicable gate
-passed 541 Item 7/10 tests in 172.87s. No new code changes require repeated testing.
-The ordinary worlds occupy roughly 1.9 to 2.0 GiB each; the working projection
-is close to the user's roughly 30 GiB budget. Check growth after each world.
-Last free-space observation is about 37.5 GiB after the fourth world's analysis.
+The fifth census (session `22204`, terminal 0) passed in 10m38.455s using
+`760aa2f5`. Output SHA-256:
+`bb0f1eeb9f638f050541bf1cb1ee88b4abbbba51ead99264bb77b7962a50f149`.
+All 45,056 selected chunks passed. Its record retains the original gateway
+coverage rejection, the JVM fixture finding and the coverage-v2 correction.
+The frozen observer JAR is archive-bound; 49 captured targets plus the unused
+Gateway target pass the corrected rule. No observer or configuration changed.
+Full Item 7/10 suite: 548 passed in 173.38s; two subsequently added archive-binding
+cases pass in the focused 41-test run. No server or analysis process is active.
 
-[Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md) now
-passes complete census/custody acceptance. Generation `43958` and analysis `80092`
-are terminal 0. Its result SHA-256 is
-`df3ee4e68ee57ffc264b97260869f6510a42b4cf575de4fce45c2192912390ff`,
-92,552,776 bytes, 7m41.104s. The record contains the baseline repetition and second
-matched contrast, with one retained cave-urn content exclusion. All four ordinary
-worlds are accepted and the block is pushed at `ee0a82b8`.
-[Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md)
-finished cleanly in 611.564s from `ee0a82b8`; session `68147` is terminal 0.
-Configuration/identity checks and published/restored raw custody pass (312 raw
-files, 501 world files). No server is active. The only absent observer target is
-`com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature`.
-The strict 50-class gate rejects; diagnostic mode validates 32,822 attempts and
-49 installations. Do not call that full acceptance or a measured gateway zero.
-The existing island fixture now confirms with JVM class-load logs that the
-frozen observer captures Gateway only when that route loads the class; other
-routes leave it unloaded. All 24 island cases pass. See the mountainous record's
-bounded class-loading check. This proves the all-targets-loaded premise can fail,
-not this world's acceptance. The documented coverage-v2 correction now binds the
-frozen JAR and permits only the unexercised gateway, with missing-capture and
-installation checks retained. Full Item 7/10 suite: 548 passed in 173.38s; the
-two added archive-binding cases pass in the focused 41-test run. Census session
-`22204` is active on the restored world. Poll that handle; inspect and integrate
-its result before declaring the fifth world accepted or starting more worlds.
-Preserve the current run and resolve this narrow coverage question before more
-worlds. Do not tune, hunt positive gateways, repeat Item 8/9 or change the sample.
-Four worlds are accepted; the fifth has complete generation/custody only.
-After resolution, finish its census, the other eleven worlds, final synthesis,
-consolidated PR review/merge and cross-item audit. Keep the original full goal.
-Do not create another tooling PR or Item 11 work.
+Mountainous Overworld has 4,039 locations, including 3,784 observed cave-urn
+caches, but only six provisional T2 dungeons. Two content mismatches remain
+excluded. Do not translate those counts into observed gameplay. Per-world
+commands, complete category counts, failures, biomes, spatial outputs and custody
+are linked above; final cross-seed/repetition synthesis remains pending.
+The fifth world's allocated working footprint is about 1.98 GiB, consistent
+with the roughly 30 GiB plan. Latest free-space observation is about 35.5 GiB.
+
+Next run `full-mountainous-r1-without-sparse`, then r2 control and r2 baseline,
+followed by the ocean-heavy and biome-diverse blocks in the frozen order. Use
+fresh hash-verified materializations and existing custody/census paths. Complete
+the remaining eleven worlds, final synthesis, consolidated PR review/merge and
+Items 2 through 10 audit. Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
 profiles and matching client files are prepared; first client launch/join remains

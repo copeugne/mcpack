@@ -1,7 +1,7 @@
 # Mountainous repetition-1 baseline
 
-Status: GENERATED, CONFIGURATION VERIFIED, RAW CUSTODY VERIFIED;
-FULL OBSERVER ACCEPTANCE UNRESOLVED. Protocol: `item10-full-v1`.
+Status: BASELINE-WORLD ACCEPTANCE PASS. Five of sixteen worlds are individually
+accepted. Protocol: `item10-full-v1`, coverage correction `item10-observer-coverage-v2`.
 Seed: `6671238423019257953`; generation source:
 `ee0a82b8350221d4e434e3603aa455d5cc7b83aa`.
 
@@ -86,12 +86,71 @@ affected collection/saved-content checks passed together: 41 tests in 10.63
 seconds. Focused Ruff and test-file basedpyright passed after adding explicit
 types for the new fixture containers. No Item 11 checks ran.
 
-The corrected all-strata census is running on the restored world, execution
-session `22204`. This is not yet census acceptance. Its command is:
+The corrected all-strata census completed on the restored world, execution
+session `22204`, exit 0. Its command is:
 
 ```sh
 uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/full-mountainous-r1-baseline-custody/restored-world/world evidence/raw/item10/full-mountainous-r1-baseline-analysis/all-strata.json --all-strata --dimension-geometry evidence/item-10/dimension-geometry.json --trace-root evidence/raw/item10/full-mountainous-r1-baseline-custody/restored-local --trace-manifest evidence/item-10/full-mountainous-r1-baseline/archive-manifest.json
 ```
+
+## Full census and first seed comparison
+
+The analysis implementation is `760aa2f5`. Analysis completed in 10m38.455s
+(user 10m29.764s, system 0m1.644s), including overlap with the test suite.
+Output size: 110,506,948 bytes; SHA-256:
+`bb0f1eeb9f638f050541bf1cb1ee88b4abbbba51ead99264bb77b7962a50f149`.
+Timing is preserved beside it in `all-strata-runtime.txt`. All eleven strata
+contain 4,096 complete chunks, totaling 45,056. Archive-bound class, complete
+trace and saved-world checks pass under coverage-v2. `observer_coverage` retains
+49 captured targets and the single unexercised gateway target explicitly.
+
+This table directly projects `strata[label].total_starts` and
+`classification.categories[category].count`. Density is count times `1000/4096`.
+Categories retain Item 9's provisional confidence and ambiguity.
+
+| Stratum | Registry starts | Classified locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| aether | 30 | 3 | 0 | 0 | 0 | 3 | 0 | 0 | 0 |
+| earth-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon | 12 | 12 | 12 | 0 | 0 | 0 | 0 | 0 | 0 |
+| venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| overworld | 43 | 4039 | 23 | 8 | 4000 | 6 | 2 | 0 | 3 |
+| end-central | 1 | 3 | 2 | 0 | 0 | 0 | 0 | 1 | 0 |
+| end-outer | 13 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 0 |
+| nether | 55 | 426 | 36 | 2 | 380 | 7 | 1 | 0 | 0 |
+
+The 27 Aether cloud starts remain excluded terrain. Central End includes the
+arrival platform and dragon arena as lifecycle sites. No custom gateway location
+was observed. This is scoped to the captured generation, not universal absence.
+The arena is the sole observed nonregistry location with NO_LOCATION_HEIGHT and
+no biome attribution; the other 4,374 have biome attribution. Per-category spatial
+results retain boundary censoring, nearest observed versus uncensored means,
+cell dispersion and empty rectangles. Raw biome exposure remains in each stratum.
+
+The 32,822 attempts yield 25,380 NO_CONSTRUCTIVE_CONTENT, 2,858 OUTSIDE_FRAME,
+4,375 OBSERVED_LOCATION and two CONTENT_NOT_PRESERVED location dispositions.
+The latter are cave-urn candidates 20368 at Overworld (191,24,389) and 21261 at
+(223,-40,27), each with one saved-content mismatch. Neither enters the numerator.
+Attempts and grouped location dispositions have distinct denominators.
+
+Compared with the [ordinary repetition-1 baseline](../full-ordinary-r1-baseline/README.md),
+Overworld classified locations rise from 955 to 4,039 while T2 falls from seven
+to six; T3 rises from zero to two and villages from one to three. The mountainous
+Overworld's accepted nonregistry locations comprise 3,784 cave-urn caches, 208
+monster boxes, three scarecrows and one fairy ring. These are direct counts of
+`locations` joined by candidate ID to OBSERVED_LOCATION dispositions. High total
+location density therefore does not imply a similar increase in proper dungeons,
+observed fights or enjoyable exploration. The remaining seeds and repetitions
+are still required; this single contrast is not a population estimate.
+
+The current world, original raw, custody copies, analysis and outer archive use
+2,126,249,984 allocated bytes (about 1.98 GiB). This `du -s -B1` accounting lists
+the shared candidate, pristine and prior instance directories first so shared
+inodes are not charged twice. About 35.5 GiB was free during analysis. The observed
+working footprint remains near the roughly 30 GiB plan for sixteen worlds.
 
 ## Reproduction
 
