@@ -147,14 +147,20 @@ review records are in the linked reports:
 - [Registry spatial pilot](evidence/item-10/pilot-r1/README.md): PR31 delivers
   combined actionable, encounter and village categories with unchanged raw data.
 
-Current branch: `codex/item10-urn-coverage`. The
+PR32 reviews `codex/item10-urn-coverage`. The
 [urn pilot](evidence/item-10/urn-pilot-r1/README.md) completed cleanly; raw download
 and both restores pass. The existing collector records parent placement identity
 and actual write results. Its extended reader and saved-world inspector validate
 all 429 mixed writes, including 161 urn writes at distinct coordinates. The
 summary preserves 87 successful and 987 zero-successful-write patch attempts.
 All 371 Item 7/10 tests pass; the final summary adjustment passes four affected
-checks. Complete review/delivery of this bounded milestone next.
+checks. Complete the pending review/fix/delivery loop for this bounded milestone.
+
+Current branch: `codex/item10-bridge-coverage`. The
+[bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
+reuses accepted selection/geometry evidence and binds 37 direct processor write
+sites. Next extend the existing template observer through those processor writes
+and validate path/rotation, phase and original behavior before any bridge run.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
