@@ -66,9 +66,12 @@ GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
 `codex/item10-density`, based on that main commit.
 [Item 10 evidence](evidence/item-10/README.md) records verified dependency hashes,
 reusable evidence, missing measurements, proposed batches and resource estimates.
-No Item 10 experiment has run. No Item 8 or Item 9 work was repeated.
+A [fresh registry diagnostic](evidence/item-10/pilot-r1/README.md) measured 24
+starts in 3,969 selected Overworld chunks. Local and downloaded archives passed
+restore verification; a restored-world census reproduced byte for byte. No Item 8
+or Item 9 audit was repeated.
 
-Before experiments, freeze sampling, retention and measurement semantics.
+Before full experiments, freeze sampling, retention and measurement semantics.
 About 15 GiB is now free after authorized cleanup and client setup. Item 5 requires ground-truthed combat
 encounters; the historical static hostility proxy cannot satisfy that contract.
 The user requested local free-roaming and task servers for later login.
@@ -83,13 +86,11 @@ The user rejected the long recorded-play plan and proposed combat logger. Both
 are withdrawn; no capture or logger was started. Do not interpret the six-hour
 availability or tentative ten-hour offer as an approved workload.
 [Protocol reassessment](evidence/item-10/protocol.md) distinguishes spatial census
-from actual combat. Resolve the Item 5 contract conflict explicitly. Next, make
-the smallest automated spatial pilot reproducible before asking for human effort.
+from actual combat. Resolve the Item 5 contract conflict explicitly. The automated registry pilot is now reproducible; no human workload is scheduled.
 [Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
 fix and raw-coordinate census. It now rejects incomplete denominators and
-inconsistent starts; 31 focused tests pass. Next integrate a predeclared fresh
-spatial pilot, canonical joins and nonregistry occurrence coverage. No real
-Item 10 density has been measured yet.
+inconsistent starts; 31 focused tests pass. Next integrate canonical joins and nonregistry occurrence coverage, then finish
+the full sampling design. The pilot does not close Item 10 or its combat contract.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows. The blind-human requirement remains.

@@ -1,7 +1,9 @@
 # Item 10 baseline density
 
-Status: IN PROGRESS. Pre-experiment dependency inspection, 2026-09-08.
-No Item 10 measurement experiment or tuning has been performed.
+Status: IN PROGRESS, 2026-09-08.
+The [fresh registry diagnostic](pilot-r1/README.md) measured 24 starts in 3,969
+full Overworld chunks and reproduced exactly from restored raw evidence. This
+is a limited diagnostic, not the full baseline. No tuning has been performed.
 The separately requested player servers generated operational smoke-test worlds.
 The [sampling protocol](protocol.md) is under reassessment. The user rejected
 long recorded play and the proposed combat logger. No human workload is scheduled.
