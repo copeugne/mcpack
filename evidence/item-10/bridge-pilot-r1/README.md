@@ -46,3 +46,33 @@ Hook installation is recorded by `feature_installed`, not inferred from startup.
 Collector validation is in the [probe report](../placement-probe.md#bridge-template-and-processor-preparation):
 all 380 Item 7/10 tests and focused quality checks pass. Natural positive-path
 validation and full Item 10 measurement remain incomplete.
+
+## PR33 trace-integrity fix
+
+[Finding 3955497336](https://github.com/copeugne/mcpack/pull/33#discussion_r3955497336)
+is valid. Archive custody did not by itself validate the mixed trace's event
+relationships and complete hook population. The existing trace reader now has a
+bounded `--bridge-r1` mode. It binds trace and incoming class bytes to their
+archived members, requires every declared installation, validates all mixed
+attempt/write/parent/part relationships and healthy shutdown, and rejects bridge
+feature/configuration/processor events for this zero-attempt diagnostic.
+
+[Deterministic result](trace-validation.json) reproduces 1,290 attempts, 409 writes,
+1,073 cave-parent urn attempts and six spiral parts from one source. The fourteen
+bridge hooks are part of the complete installation set. This PASS is capture
+integrity only, not a positive bridge placement or saved-block acceptance.
+
+```sh
+uv run --no-sync python -m tools.validate_item10_trace --bridge-r1 evidence/raw/item10/bridge-pilot-r1-custody/restored
+uv run --no-sync pytest -q tests/item10/test_retained_trace.py
+```
+
+All 62 retained-trace tests pass. Added cases cover the actual retained archive,
+missing hooks, unexpected bridge events, missing attempts, malformed write flags,
+unhealthy shutdown, changed trace bytes and changed incoming class bytes.
+Missing external raw data causes an explicit prerequisite skip. Focused Ruff and
+basedpyright pass after correcting initial test lint findings. All six previous
+feature trace results reproduce unchanged. Raw observations, archive, manifests,
+release and restore receipts are unchanged; no archive revision is needed.
+The full Item 7/10 gate for this bridge PR candidate passes all 388 tests in
+84.09 seconds. A fresh Codex review is required before merge.

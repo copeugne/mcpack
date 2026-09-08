@@ -122,7 +122,7 @@ def validate_trace(path: Path) -> dict[str, object]:
     }
 
 
-CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy", "urn"]
+CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy", "urn", "bridge"]
 URN_TRIES = 9
 URN_SPREAD = (4, 1, 4)
 URN = "net/minecraft/world/level/levelgen/feature/RandomPatchFeature"
@@ -146,6 +146,29 @@ BOP_INSTALLED = BOP_CLASSES | {
     "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate",
 }
 
+BRIDGE_ROOT = "com/yungnickyoung/minecraft/yungsbridges/world/"
+BRIDGE_INSTALLED = {
+    BRIDGE_ROOT + "feature/BridgeFeature",
+    BRIDGE_ROOT + "feature/AbstractTemplateFeature",
+    *{
+        BRIDGE_ROOT + "processor/" + name
+        for name in (
+            "FenceBiomeProcessor",
+            "ITemplateFeatureProcessor",
+            "LanternRotProcessor",
+            "LogBiomeProcessor",
+            "OptionalBlockProcessor",
+            "OptionalSlabProcessor",
+            "OptionalStairProcessor",
+            "OptionalWallProcessor",
+            "PlanksBiomeProcessor",
+            "SlabBiomeProcessor",
+            "StairBiomeProcessor",
+            "StoneVariationProcessor",
+        )
+    },
+}
+
 CAPTURE_CLASSES = {
     "bop": BOP_CLASSES,
     "monster": {MONSTER_BOX},
@@ -153,6 +176,7 @@ CAPTURE_CLASSES = {
     "spiral": {MONSTER_BOX, NETHER_SPIKE, SPIRAL},
     "fairy": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, END_BUILDING},
     "urn": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN},
+    "bridge": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN, END_BUILDING},
 }
 DIAGNOSTICS = {
     "bop": "bop-fixture-r1",
@@ -161,6 +185,7 @@ DIAGNOSTICS = {
     "spiral": "spiral-pilot-r1",
     "fairy": "fairy-run-r1",
     "urn": "urn-pilot-r1",
+    "bridge": "bridge-pilot-r1",
 }
 
 
@@ -169,8 +194,9 @@ def installed_classes(mode: CaptureMode) -> set[str]:
     return (
         BOP_INSTALLED
         | (CAPTURE_CLASSES[mode] - {END_BUILDING, URN})
-        | ({FAIRY} if mode in {"fairy", "urn"} else set[str]())
-        | ({PLACED, SIMPLE} if mode == "urn" else set[str]())
+        | ({FAIRY} if mode in {"fairy", "urn", "bridge"} else set[str]())
+        | ({PLACED, SIMPLE} if mode in {"urn", "bridge"} else set[str]())
+        | (BRIDGE_INSTALLED if mode == "bridge" else set[str]())
     )
 
 
@@ -391,12 +417,12 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             if mode != "bop"
             else "BOP requires successful writes on all three provider/flag paths"
         )
-    if mode in {"spiral", "fairy", "urn"} and not parts:
+    if mode in {"spiral", "fairy", "urn", "bridge"} and not parts:
         fail("missing spiral attempts in retained diagnostic")
     return {
         **(
             {"spiral_parts": len(parts), "spiral_source_keys": len(spiral_sources)}
-            if mode in {"spiral", "fairy", "urn"}
+            if mode in {"spiral", "fairy", "urn", "bridge"}
             else {}
         ),
         **(
@@ -406,7 +432,7 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                     parent == "supplementaries:cave_urns" for parent in urn_parents.values()
                 ),
             }
-            if mode == "urn"
+            if mode in {"urn", "bridge"}
             else {}
         ),
         "successful_write_paths": [
@@ -481,6 +507,7 @@ def validate_feature_trace(raw_root: Path, *, mode: CaptureMode = "bop") -> dict
                 "spiral": "Spiral r1",
                 "fairy": "Fairy r1",
                 "urn": "Urn r1",
+                "bridge": "Bridge r1 (zero bridge attempts)",
             }[mode]
         )
         + " capture integrity only; not saved-block acceptance",
@@ -497,6 +524,7 @@ if __name__ == "__main__":
         "--spiral-r1",
         "--fairy-r1",
         "--urn-r1",
+        "--bridge-r1",
     }:
         print(
             json.dumps(
