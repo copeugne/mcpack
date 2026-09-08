@@ -187,8 +187,8 @@ Census session `98243` is terminal 1: selected Aether chunk (-16,-22) is saved
 as `minecraft:initialize_light`. Direct decoding finds 4,095 full plus one
 incomplete selected chunk, no missing or duplicated coordinates. Census rejects
 correctly; no result or smaller denominator is accepted. See the retry record.
-The retry record links the Aether save exception, source mechanism and restored
-debug report. Accepted full-run logs lack this error; the mutating thread is unknown.
+The retry record links the Aether exception, source mechanism, restored debug report
+and stop-on-save-error correction (42 focused tests). Accepted logs lack this error.
 The one-retry policy is exhausted. No server is active. Resolve continuation;
 no third attempt, changed heap, relaxed status rule or repaired proof world.
 After resolving the failed sample cell, finish the second ocean-heavy baseline and

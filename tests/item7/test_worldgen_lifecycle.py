@@ -183,15 +183,27 @@ def test_lifecycle_kills_process_group_on_timeout(
     assert receipt.rejection_reason == "world generation timed out"
 
 
+@pytest.mark.parametrize(
+    ("failure", "reason"),
+    [
+        (
+            "java.lang.OutOfMemoryError: Java heap space\n",
+            "Java heap exhaustion during world generation",
+        ),
+        (
+            "[Server thread/ERROR] [minecraft/MinecraftServer]: Failed to save chunk -16,-22\n",
+            "Minecraft chunk save failed during world generation",
+        ),
+    ],
+)
 @pytest.mark.parametrize("completed", [0, 2, 4])
-def test_heap_exhaustion_flushes_stops_and_never_accepts_generation(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, completed: int
+def test_generation_failure_flushes_stops_and_never_accepts_generation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, completed: int, failure: str, reason: str
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("heap"))
     request = runtime_request(tmp_path, monkeypatch)
     (request.target / "logs").mkdir(parents=True)
     _ = (request.target / "logs/latest.log").write_text("retained heap failure and shutdown\n")
-    failure = "java.lang.OutOfMemoryError: Java heap space\n"
     process = FakeProcess(
         (*READY_LINES[: completed + 1], failure, failure, *READY_LINES[1:5]),
         responses={
@@ -214,7 +226,7 @@ def test_heap_exhaustion_flushes_stops_and_never_accepts_generation(
 
     receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
 
-    assert receipt.rejection_reason == "Java heap exhaustion during world generation"
+    assert receipt.rejection_reason == reason
     assert receipt.clean_stop is False
     assert receipt.save_all_flush is True
     assert receipt.return_code == 0
@@ -234,21 +246,34 @@ def test_heap_exhaustion_flushes_stops_and_never_accepts_generation(
     assert Path(receipt.minecraft_log).read_text() == "retained heap failure and shutdown\n"
 
 
-def test_heap_exhaustion_shutdown_timeout_kills_the_complete_process_group(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+@pytest.mark.parametrize(
+    ("failure", "reason"),
+    [
+        (
+            "java.lang.OutOfMemoryError: Java heap space\n",
+            "Java heap exhaustion during world generation",
+        ),
+        (
+            "[Server thread/ERROR] [minecraft/MinecraftServer]: Failed to save chunk -16,-22\n",
+            "Minecraft chunk save failed during world generation",
+        ),
+    ],
+)
+def test_generation_failure_shutdown_timeout_kills_the_complete_process_group(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure: str, reason: str
 ) -> None:
     request = runtime_request(tmp_path, monkeypatch)
     request.target.mkdir()
-    process = FakeProcess((READY_LINES[0], "java.lang.OutOfMemoryError: Java heap space\n"))
+    process = FakeProcess((READY_LINES[0], failure))
     killed: list[tuple[int, int]] = []
     monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", fake_launch(process))
     monkeypatch.setattr("mcpack_evidence.item7_lifecycle.os.killpg", record_pid_signals(killed))
-    monkeypatch.setattr(item7_lifecycle, "HEAP_FAILURE_SHUTDOWN_SECONDS", 0.0)
+    monkeypatch.setattr(item7_lifecycle, "FAILURE_SHUTDOWN_SECONDS", 0.0)
 
     receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
 
     assert killed == [(43210, SIGKILL)]
-    assert receipt.rejection_reason == "heap-exhaustion shutdown timed out"
+    assert receipt.rejection_reason == f"{reason}: shutdown timed out"
     assert receipt.process_group_killed is True
     assert receipt.clean_stop is receipt.save_all_flush is False
     assert "chunky pause" in receipt.commands

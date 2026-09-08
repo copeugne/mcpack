@@ -132,6 +132,26 @@ Thus none of the ten accepted full-run consoles contains this exact signature.
 Their complete saved-chunk census remains accepted; this check does not prove
 general persistence safety or reopen their density measurements by itself.
 
+## Collection harness correction
+
+The existing `item7_lifecycle` emergency shutdown now also recognizes Minecraft's
+server-thread ERROR `Failed to save chunk X,Z` with signed integer coordinates.
+It pauses Chunky once, uses the existing correlated flush/stop, and always rejects
+the run. The existing 60-second emergency allowance remains bounded by the overall
+deadline; timeout uses whole-process-group termination. Subsequent completion
+markers cannot start more selections or erase the failure. The first fatal reason
+is retained. Successful generation commands and all runtime identities are unchanged.
+This fixes wasted continuation after an explicit save failure, not the Aether defect.
+The original run receipt remains unchanged and records the behavior actually used.
+
+Validation: `uv run --no-sync pytest tests/item7/test_worldgen_lifecycle.py
+tests/item7/test_item7_console.py tests/item10/test_collection_runner.py -q`
+passed 42 tests in 3.53 seconds. The save-error regression covers zero, two and
+four completed selections, repeated error lines, confirmed save/stop with rejection,
+and emergency timeout with process-group termination. Ruff check/format and focused
+BasedPyright pass for the changed lifecycle and test files. These are simulated
+harness tests, not a new Minecraft experiment or proof that the runtime is repaired.
+
 The one-retry policy is exhausted. Collection is paused for a new explicit
 resource/protocol decision after diagnosis. Both attempts remain failures in the
 run matrix: the first failed generation, the second failed complete census.
