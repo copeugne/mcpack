@@ -58,6 +58,7 @@ def execute(
     *,
     java_tool_options: str | None = None,
     after_generation: tuple[str, ...] = (),
+    before_generation: tuple[str, ...] = (),
 ) -> RunReceipt:
     """Run preflight, lifecycle, and sanitized configuration capture."""
     try:
@@ -76,6 +77,7 @@ def execute(
             java_executable,
             java_tool_options=java_tool_options,
             after_generation=after_generation,
+            before_generation=before_generation,
         )
     except Item7RuntimeError as error:
         return RunReceipt(

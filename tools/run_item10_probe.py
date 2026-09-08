@@ -37,6 +37,9 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     fixture = cast("bool", args.betterend_fixture)
     if fixture and (mode != "probe" or preset != "pilot"):
         parser.error("the BetterEnd placement fixture requires probe mode and the pilot preset")
+    before_generation = (
+        ("execute in minecraft:the_end run forceload add -32 -32 47 47",) if fixture else ()
+    )
     after_generation = (
         (
             "execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone",
@@ -68,6 +71,7 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
         "mode": mode,
         "preset": preset,
         "fixture_commands": after_generation,
+        "before_generation_commands": before_generation,
         "java_version": version,
         "java_tool_options": "",
     }
@@ -151,7 +155,12 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
             selections=PILOT_SELECTIONS if preset == "pilot" else RUN_SELECTIONS,
             timeout_seconds=900,
         )
-        run = execute(request, java_tool_options=options, after_generation=after_generation)
+        run = execute(
+            request,
+            java_tool_options=options,
+            after_generation=after_generation,
+            before_generation=before_generation,
+        )
         report["run"] = json.loads(run.model_dump_json())
         if run.rejection_reason:
             raise RuntimeError(run.rejection_reason)  # noqa: TRY301 - retain failure in report.

@@ -29,6 +29,7 @@ def _discard_kill(pid: int, signal_number: int) -> None:
     del pid, signal_number
 
 
+@pytest.mark.parametrize("before_generation", [(), ("say fixture-load",)])
 @pytest.mark.parametrize("after_generation", [(), ("say fixture-first", "say fixture-second")])
 @pytest.mark.parametrize("options", [None, "", "-Dmcpack.probe=1"])
 def test_lifecycle_sends_commands_only_after_matching_markers(
@@ -36,6 +37,7 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
     monkeypatch: pytest.MonkeyPatch,
     options: str | None,
     after_generation: tuple[str, ...],
+    before_generation: tuple[str, ...],
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("fixed"))
     request = runtime_request(tmp_path, monkeypatch)
@@ -77,10 +79,12 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
         request.java_home / "bin/java",
         java_tool_options=options,
         after_generation=after_generation,
+        before_generation=before_generation,
     )
     assert os.environ["JAVA_TOOL_OPTIONS"] == "inherited-value"
 
     assert process.stdin.getvalue().splitlines() == [
+        *before_generation,
         "chunky world minecraft:overworld",
         "chunky center 0 0",
         "chunky radius 4c",
@@ -325,9 +329,11 @@ def test_execute_preserves_completed_stages_when_config_capture_fails(
         *,
         java_tool_options: str | None = None,
         after_generation: tuple[str, ...] = (),
+        before_generation: tuple[str, ...] = (),
     ) -> item7_lifecycle.LifecycleReceipt:
         assert java_tool_options is None
         assert after_generation == ()
+        assert before_generation == ()
         del current_request, java
         return lifecycle
 

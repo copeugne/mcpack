@@ -434,3 +434,30 @@ planning allowance; recheck host capacity before launch.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r3 --mode probe --role mountainous --preset pilot --betterend-fixture
 ```
+
+
+## BetterEnd loaded placement fixture r4
+
+Predeclared before launch. Repeat the r3 diagnostic in fresh
+`betterend-fixture-r4`, with its same seed, pilot selections, heap, timeouts and
+positive-placement gate. Correct only the demonstrated unloaded-target defect:
+after readiness and before the first generation selection, send
+`execute in minecraft:the_end run forceload add -32 -32 47 47`.
+This requests 25 central End chunks around the fixture, leaving the four generation
+selections before the two original placement commands. Require the loading command
+and both fixture commands to succeed; asynchronous loading is not assumed complete
+merely because a ticket was requested. Any refusal still rejects the fixture.
+The retained ticket and artificial platform make this a diagnostic world only.
+Neither changes the frozen configuration or supplies density observations.
+
+The existing lifecycle receives an optional empty-by-default command tuple before
+generation, using its existing send/error path and command receipt. This narrow
+addition fixes the reproduced r3 precondition failure; no new runner is introduced.
+The focused lifecycle and probe suite passes 23 tests, including command order
+with empty and nonempty setup/fixture tuples. Changed Python type checks pass.
+The host check before launch found 7.5 GiB free and no Java server process;
+retain the 1 GiB diagnostic custody allowance.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r4 --mode probe --role mountainous --preset pilot --betterend-fixture
+```
