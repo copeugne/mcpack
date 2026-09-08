@@ -10,7 +10,7 @@ Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md), and the
 before server or infrastructure work. Verify dated claims against Git and evidence.
 
 GitHub `copeugne/mcpack` and fetched `origin/main` are delivery authority.
-Last verified main is `a0b175d7937ede972b7d30396e350e885df6a7fd` after PR33.
+Last verified main is `0c98eeecfaf2cf6ffd6bd7671783f9d76530f893` after PR34.
 Current local branch is `codex/item10-pillar-coverage`, based on the Extras branch.
 Do not create another tooling PR from this branch. Preserve coherent intermediate
 commits for the one consolidated remaining Item 10 delivery.
@@ -76,13 +76,11 @@ PR33 is cleanly reviewed and merged. Its
 [delivery record](evidence/item-10/bridge-pilot-r1/README.md#reviewed-main-delivery)
 links the final review and resolves trace-integrity and exception-cleanup findings.
 
-[PR34](https://github.com/copeugne/mcpack/pull/34) is now ready for review against
-main, head `cba277cbc65885867ce91344447733420103ac07`. Review request
-[5581561706](https://github.com/copeugne/mcpack/pull/34#issuecomment-5581561706)
-is pending. Inspect completed review, inline and discussion comments; fix relevant
-findings narrowly and re-request until clean, then merge and verify main.
-The integrated Extras gate passed all 408 Item 7/10 tests in 99.62 seconds.
-Do not infer completion from those tests or the PR's existence.
+[PR34](https://github.com/copeugne/mcpack/pull/34) is cleanly reviewed and merged.
+Its [delivery record](evidence/item-10/extras-pilot-r1/README.md#reviewed-main-delivery)
+binds the reviewed head, completed cycle and verified main merge. No existing
+review obligation remains. The integrated Extras gate passed all 408 Item 7/10
+tests in 99.62 seconds. This does not establish full Item 10 measurement acceptance.
 
 ## Evidence to reuse and remaining work
 
