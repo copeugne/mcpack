@@ -65,3 +65,12 @@ and validator/test basedpyright checks pass. No Item 11 workflow was run.
 The integrated correction passes all 327 Item 7/10 tests in 56.62 seconds and
 changed validator/test lint and type checks. BOP trace-validation.json reproduces
 byte for byte; Monster Box records its seven successful flags-0 writes.
+
+## Reviewed delivery
+
+[PR26](https://github.com/copeugne/mcpack/pull/26) merged as
+`ab16e2c493e1361320eecacb5311bf741b08ec5f`, verified in fetched origin/main.
+The [completed Codex review](https://github.com/copeugne/mcpack/pull/26#issuecomment-5579876712)
+reviewed `aceb34f85d89f7ccaf800803ce32bd6d7ea4e5eb` with no inline or review
+findings and a bot thumbs-up. The reviewed head is an ancestor of delivered main.
+This closes the diagnostic review, not Item 10.
