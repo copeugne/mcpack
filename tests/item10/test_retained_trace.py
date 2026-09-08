@@ -386,6 +386,8 @@ def test_zero_write_part_capture_rejects_invalid_trace(defect: str) -> None:
 )
 def test_urn_parent_and_write_boundaries(defect: str) -> None:
     raw = TRACE.parents[3] / "evidence/raw/item10/urn-pilot-r1-custody/restored/trace.jsonl"
+    if not raw.is_file():
+        pytest.skip("Restore the published urn diagnostic before running retained-trace mutations")
     rows = cast(
         "list[dict[str, object]]", [json.loads(line) for line in raw.read_text().splitlines()]
     )
