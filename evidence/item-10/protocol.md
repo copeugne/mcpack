@@ -657,3 +657,28 @@ collection remains gated on remaining coverage and measured observer costs.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name spiral-pilot-r1 --mode probe --role ordinary --preset pilot
 ```
+
+## Fairy-ring capture boundary
+
+Use the retained spawnFairyRing invocation as one attempted source location.
+Its four direct write sites include flower removal, surface copies, ore center
+and ore neighbors. Record each result, but cleanup-only successful writes are
+not a constructed location. Retain a separate delegated flower observation:
+requested origin, actual return and the post-call block state at that origin.
+The caller requires empty space before this call and rereads that same position
+afterward; the delegated return alone does not establish visible content.
+
+The accepted Item 8 landmark generator source identifies direct setBlock sites
+at offsets 193, 315, 457 and 510, the delegated PlacedFeature.place at 292 and
+the post-call state read at 299. Keep surface, reward and cleanup outcomes
+distinct in processing; a partial or invisible ring remains partial, not a
+complete visible landmark. Do not count a deposit and its ring as two families.
+This bounded capture does not enumerate the delegated flower feature's entire
+footprint. It establishes origin content and direct generator contributions,
+not that every nested decoration block was observed.
+
+Before a live pilot, preserve ordinary calls/results/exceptions under normal,
+refused, zero-write and isolated-loader fixtures, including a delegated false
+return that leaves non-air and a true return that leaves air. Neither boolean
+may be substituted for the observed origin state. No sample or positive
+occurrence count is accepted by this method declaration.
