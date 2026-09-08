@@ -930,3 +930,34 @@ post-template capture and absence of capture outside an active Extras attempt.
 Natural capture and saved-world corroboration remain missing. Predeclare any
 runtime diagnostic and storage reservation before launch; no Extras experiment
 has run for this increment.
+
+## Extras r1 bounded natural diagnostic
+
+Predeclared 2026-09-08 before launch. Use ordinary seed 42 and the existing fixed
+pilot selections: 81 chunks each in Overworld, Nether, central End and outer End
+(center 1536, 0), totaling 324 selected chunks. Use fresh hash-verified frozen
+runtime/configuration materialization, construction heap and the current observer.
+Do not choose coordinates from observed Extras locations or change biome rules.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name extras-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+The source identity is the commit containing this predeclaration. This is a
+collector diagnostic, not density sampling. Require completed selections,
+correlated save, clean exit, incoming class identities and no unfinished attempts.
+Positive Extras capture requires actual configured/template identity and complete
+template/processor observations, then saved last-successful block-ID
+corroboration. Preserve earlier writes, refusals, exceptions, zero-write attempts
+and halo positions. A missing positive path remains unmet, not zero density; no
+frame expansion is authorized to hunt for a positive result. Mixed traces must
+pass the existing archive-bound reader before being accepted as capture evidence.
+
+Prelaunch storage is 4.0 GiB free and no Java process is running. Reserve 1.5 GiB
+for this bounded run and sequential archive/download/restore. The most recent
+same-frame bridge diagnostic took 89.441 seconds and archived 5,688,682 bytes;
+these are cost proxies, not guaranteed Extras output. Use the existing 900-second
+harness timeout. Full sampling remains gated on the separate provisional 5 GiB
+workspace floor and complete occurrence coverage. Preserve the raw result and
+stopped world with existing tools even if positive capture fails. No tuning,
+client recording, Item 11 execution or new measurement framework is included.
