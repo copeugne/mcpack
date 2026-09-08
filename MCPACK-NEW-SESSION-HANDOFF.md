@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Nine of sixteen worlds have individual census and raw-custody acceptance:
+Ten of sixteen worlds have individual census and raw-custody acceptance:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
@@ -150,6 +150,7 @@ Nine of sixteen worlds have individual census and raw-custody acceptance:
 - [Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md).
 - [Mountainous r2 baseline](evidence/item-10/full-mountainous-r2-baseline/README.md).
 - [Ocean-heavy r1 baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md).
+- [Ocean-heavy r1 control](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md).
 
 Analysis implementation `760aa2f5` applies the documented coverage-v2 correction:
 archive-bound frozen JAR, all target installations except a verified unexercised
@@ -170,19 +171,23 @@ and published/downloaded/restored custody pass (313 raw and 502 world files).
 Its census (session `96485`, terminal 0) passed in 7m43.150s, SHA-256
 `9c2ed4cf58b38f20a0cf7f65c50b2a9f90ac9539722220c67d2cfa7556d3dec7`.
 All 45,056 chunks and 50 observer targets pass. Three cave-urn content failures
-remain excluded, with no overlap cases. Nine worlds are individually accepted.
+remain excluded, with no overlap cases.
 Ninth-world acceptance is pushed at `6142e94b`.
 [Ocean-heavy r1 control](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md)
 finished from that source in 553.698s; session `19670` is terminal 0. All eleven
 selections, lifecycle and configuration checks pass. Published/downloaded/restored
-raw custody verifies 313 raw files and 502 world files. Its census is active as
-session `89527`; poll that handle and inspect the complete result before acceptance.
-No server is active. Then finish r2 control, r2 baseline and the four biome-diverse
-worlds in frozen order. Use fresh
+raw custody verifies 313 raw files and 502 world files. Its census (session
+`89527`, terminal 0) passed in 8m0.325s, SHA-256
+`b58570b27bf0ee532825f80a1ebcf9164223bcfc3d0a2426b957d60cbb0ae959`.
+All 45,056 chunks and 50 observer targets pass. One cave-urn content failure
+remains excluded, with no overlaps. First-pair Overworld T2/T3 counts are
+baseline 7/2 versus control 19/3; the second pair remains necessary.
+No server is active. Next is `full-ocean-heavy-r2-without-sparse`, then r2
+baseline and the four biome-diverse worlds in frozen order. Use fresh
 hash-verified materializations and existing custody/census paths. Latest free
-space is about 26.4 GiB; the ninth world uses about 1.86 GiB. Continue checking
+space is about 24.4 GiB; the tenth world uses about 1.92 GiB. Continue checking
 growth against the roughly 30 GiB working plan.
-Finish the remaining seven worlds, final biome/seed/repetition/spatial synthesis,
+Finish the remaining six worlds, final biome/seed/repetition/spatial synthesis,
 consolidated PR review/merge and Items 2 through 10 audit. Preserve failures,
 censoring and provisional classifications. No new tooling PR or Item 11 work.
 

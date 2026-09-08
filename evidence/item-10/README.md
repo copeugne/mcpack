@@ -3,7 +3,7 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Nine worlds have individual census and
+repetitions and baseline/control arms. Ten worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and identifies the active run. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
@@ -183,7 +183,7 @@ The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
 source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
-prior reviews are resolved. Seven worlds, combined synthesis and final delivery
+prior reviews are resolved. Six worlds, combined synthesis and final delivery
 remain incomplete; runtime acceptance is established per world, not from tests.
 
 ### Storage decision before collection
@@ -231,7 +231,7 @@ four seeds and eleven strata, with two fresh repetitions in each of two arms.
 It defines coordinate inclusion, spatial cells, biome attribution, boundary
 censoring, sparse-category limits and a control omitting only Sparse Structures.
 This supersedes the inherited nested-stage draft. Each full-world acceptance
-requires complete occurrence capture and exact experiment identities; nine
+requires complete occurrence capture and exact experiment identities; ten
 worlds have passed so far.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
@@ -255,7 +255,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Complete the remaining seven worlds under the frozen protocol and continue
+- Complete the remaining six worlds under the frozen protocol and continue
   capacity checks. Preserve all existing artifacts and failed observations.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.
