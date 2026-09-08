@@ -131,8 +131,8 @@ No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
 Continue on `codex/item10-placement-coverage`, created from delivered main.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 start with BetterEnd template attribution and successful content-write capture.
-The local protocol changes record its counting hazards and a selected finite
-sampling/control design. Commit that predeclaration before experiments; the full
+The protocol records its counting hazards and the selected finite sampling/control
+design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,

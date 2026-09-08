@@ -32,19 +32,36 @@ Never pool different dimensions' coordinates or convert their distances by porta
 scaling. The inclusion of space dimensions permits measured zeroes rather than
 assuming the lack of structures from their names.
 
-Use the four nested rectangles in
-`measurement/structure-density-v0.1.json`, translated by chunk offset `(0, 0)`
-for every stratum except the outer End, translated by `(512, 512)`.
-The outer End rectangle does not overlap the central rectangle at any stage.
-Select every target chunk in each rectangle, not only chunks that contain starts.
-Freeze all four stages; do not use a count-based early stopping rule. This avoids
-letting an observed category count determine the sampled area. Retain stage
-results as nested convergence descriptions, never as independent replicates.
+Use one 64 by 64 chunk rectangle per stratum: inclusive X and Z `[-32, 31]`,
+translated by `(512, 512)` for outer End only (both axes `[480, 543]`).
+The central and outer End rectangles are disjoint. Select every target chunk,
+not only chunks that contain starts. This replaces the draft's four-stage ladder;
+no full sampling run used that ladder and no observed count selected this area.
+The historical scaffold remains unchanged and is not an active stopping rule.
 
-Stage sizes per stratum are 4,096, 8,192, 16,384 and 32,768 chunks. Across four
-seeds and eleven strata, final target size is 1,441,792 chunks. The initial
-ordinary-seed, Overworld-only stage is a pipeline pilot and does not represent
-the complete baseline. Preserve a rejected pilot and its disposition.
+Collect two independent fresh worlds per seed and arm, for four seeds, eleven
+strata, two repetitions and two arms: 720,896 selected chunks in 16 worlds.
+Each world contains all eleven fixed strata (45,056 selected chunks). Do not
+reuse a baseline world for its control or a prior repetition. Use seed order
+ordinary, mountainous, ocean-heavy, biome-diverse. Within each seed, run baseline
+then control for repetition 1, control then baseline for repetition 2. Use the
+same dimension order in every world, sorted by resource location, central End
+before outer End. Keep both raw repetitions, even when their counts disagree.
+
+The area is a finite-region census with a per-run density increment of
+`1000 / 4096 = 0.244140625` locations per 1,000 chunks. It supplies 16 complete
+256-block spatial cells per stratum, with explicit boundary censoring for
+nearest neighbors. Two repetitions expose variability but do not establish its
+population distribution. Report sparse categories and zeroes without asserting
+absence elsewhere or precise global rates. These deliberately selected seeds
+and fixed regions do not support random-world confidence intervals. This is
+adequate for the specified descriptive comparisons, not stable rare-event rate
+estimation; expanding until rare categories reach a target would change the
+estimand and is not authorized by this protocol.
+
+The spatial and repetition design is selected before collection. The full
+protocol remains DRAFT until complete occurrence coverage, the exact collector
+and control identities, and measured collector storage costs pass their gates.
 
 ## Occurrences and denominators
 
@@ -110,8 +127,34 @@ occurrence collection beyond the scarecrow diagnostic is still missing.
 | `yungsextras:feature_entrypoints` | 10 | Configured feature/template entrypoints for canonical designs. |
 
 The existing evidence supplies family mappings and nested delegation distinctions.
-Choose hooks or saved-world reconstruction from those records after the bounded
-PR23 review; do not audit providers again or count each delegated write as a site.
+Choose hooks or saved-world reconstruction from those records following the
+clean, merged PR23 diagnostic; do not audit providers again or count each delegated write as a site.
+
+Existing BetterEnd code establishes three concrete constraints for that extension:
+
+- In the retained [NBTFeature disassembly](../item-8/sources/betterend-entry-template-consumers/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.NBTFeature.txt),
+  `place` discards `StructureTemplate.placeInWorld`'s result at bytecode offsets
+  259/262 and returns true at 657/658. The retained
+  [CrashedShipFeature](../item-8/sources/betterend-feature-scope/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.CrashedShipFeature.txt)
+  does the same at 250/253 and 311/312, with erosion between those points.
+  Neither outer success value proves a placed location.
+- The retained [StructureTemplate disassembly](../item-8/sources/missing-template-code/server-1.21.1-20240808.144430-srg.jar/net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.txt)
+  skips blocks outside the clipping box at 250/256, branches past refused content
+  writes at 351/356, and still returns true at 1151/1152. Template success alone
+  also cannot supply a nonempty occurrence. Preserve successful content writes
+  separately from temporary barrier writes, terrain merge and erosion. Empty or
+  fully refused placements must remain distinguishable from observed sites.
+- `BuildingListFeature` stores its selection in a mutable field. The retained
+  [StructureInfo](../item-8/sources/betterend-entry-template-consumers/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.BuildingListFeature$StructureInfo.txt)
+  instead exposes a final `structurePath` and the actual returned template at
+  `getStructure` offsets 18 through 22. Attribution must bind the template used
+  by the placement to its selected path, rather than reread the feature's mutable
+  selection later. This is an attribution constraint, not a diagnosis of the
+  already observed baseline nondeterminism.
+
+These are direct derivations from accepted Item 8 code evidence, not additional
+measurements or accepted nonregistry counts. The next collector validation must
+exercise these failure paths before BetterEnd occurrences enter density numerators.
 
 ## Collector validation under established baseline variability
 
@@ -187,8 +230,9 @@ Nonregistry writer coordinates will supply their own recorded anchors.
 The existing `--biomes` reader now implements this registry attribution alongside
 height-band exposure. Focused Item 10 validation passes 29 tests, including
 negative heights, missing bounds, out-of-height attribution and inverted bounds;
-Ruff and the changed test's type check pass. Real-world attribution integration
-remains to be run, and does not alter the generation-equivalence projection.
+Ruff and the changed test's type check pass. The retained r3 control integrates attribution for all 64 registry starts
+without gaps, as linked in the placement diagnostic. This does not alter the
+generation-equivalence projection.
 
 Report per-seed and per-stratum results first. These four deliberately selected
 seeds and origin-centered regions are not a random sample of all Minecraft worlds.
@@ -198,28 +242,59 @@ deterministic repeat agreement a confidence interval. Categories with fewer than
 
 ## Resource and delivery bounds
 
-The r3 uninstrumented mountainous diagnostic now supplies a measured planning
-proxy: 366.501 seconds for 6,852 selected chunks and 137,748,133 retained world
-bytes, including halo and lifecycle data. Linear scaling to the draft's
-1,441,792 chunks gives about 21.42 generation hours and 26.99 GiB per independent
-repetition, before controls, archives, derived output and restore workspace.
-This single mixed-stratum run does not predict all custom dimensions reliably.
-Offline processing time is additional. These values replace the earlier Item 7
-byte proxy for planning.
+### Sparse Structures control contrast
 
-The smallest proposed rectangle alone would contain 180,224 chunks across the
-same seeds and strata, with corresponding proxies of 2.68 hours and 3.37 GiB
-per repetition. These are planning alternatives; the full frame remains unfrozen. Before freezing collection, justify the selected area
-against required precision and retained sparse-category limitations rather than
-inheriting all four stages from the historical scaffold. No full-frame
-experiment has started, and no result-dependent stopping rule is introduced.
+Use the complete frozen baseline against an explicitly labeled control whose
+only candidate-manifest change is omission of
+`sparsestructures-neoforge-1.21.1-3.0.jar` (SHA-256
+`5aca0b33c0c83154810bbdd8ddc0d3e6a3e4591577274e2d27c10de0b45f2a45`).
+The baseline remains 136 candidates, or 137 with the declared Chunky overlay;
+the control has 135, or 136 with that same overlay. Preserve every configuration
+file unchanged, including the now-unused Sparse Structures configuration. Use
+the same collector, seed, selected regions, generation commands and lifecycle
+contract in both arms. Produce the exact derived control manifest before launch.
 
-Process strata sequentially. Before beginning another stratum, archive the clean
-world without `session.lock`, publish under immutable identity, verify download
-and restore, and retain the committed manifest and durability references under
-`evidence/item-10/`. Release disposable measurement materializations only after
-that custody gate and within explicit authorization. Never remove the operational
-player worlds, prior-item backups or protected artifacts to satisfy this budget.
+This contrast measures removal of Sparse Structures within the retained stack,
+not a spacing-only effect or a recommended configuration change. The accepted
+[MakeStructuresSparse code](../item-8/sources/sparsestructures-provider/sparsestructures-neoforge-1.21.1-3.0.jar/io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt)
+changes spacing/separation and, independently at bytecode 205 through 235,
+conditionally replaces the placement salt. Factor 1 alone is therefore not the
+chosen control. Direct inspection of all `candidates[].dependencies` in
+[Item 3's retained inspection source](../item-3/jar-inspection.json) finds no
+dependency with `mod_id == "sparsestructures"`; this supports attempting the
+control, but does not replace its runtime validation.
+
+Both arms require fresh independent repetitions. Retain per-run counts and
+within-arm variation alongside between-arm differences; do not infer that each
+individual changed location was caused by the omitted mod. Generation order,
+repetition count, sample size and combined resource budget must be frozen before
+collection. This resolves the control contrast, not the remaining sampling gate.
+
+### Runtime and storage estimate
+
+The r3 uninstrumented mountainous diagnostic supplies a measured planning proxy:
+366.501 seconds for 6,852 selected chunks and 137,748,133 retained world bytes,
+including halo and lifecycle data. Linear scaling gives about 10.71 generation
+hours and 13.50 GiB of uncompressed world data across both arms and repetitions,
+before archives, derived output and restore workspace. Each 45,056-chunk world
+has a proxy of 40.17 minutes and 0.844 GiB. This single mixed-stratum run does
+not predict custom dimensions or the farther outer End reliably. Offline
+processing, collector overhead, installation and archiving are additional.
+These are automated machine-time estimates, not a player workload.
+
+About 8.8 GiB was available at this planning checkpoint. Process one world at a
+time, using the existing clean-save/archive/publish/download/restore path. Keep
+at least 5 GiB available before starting a world as a provisional workspace floor.
+This allows three world copies at 0.844 GiB and four archive copies at about
+0.54 GiB using the measured r3 control compression ratio, totaling about 4.7 GiB
+before collector output. Verify this against actual collector and first-world
+storage before scaling.
+The floor is not a disk quota or a guarantee based on the proxy. Archive without
+`session.lock` and retain immutable raw custody and committed evidence references.
+Release disposable measurement materializations only after verified custody and
+within explicit authorization. Never remove operational player worlds, prior
+backups or protected artifacts to satisfy this budget. A failed resource gate
+stops collection before another world; it does not reduce the declared sample.
 
 Complete the ordinary pilot through deterministic analysis and retained evidence
 before scaling across seeds and dimensions. Then integrate all final results,

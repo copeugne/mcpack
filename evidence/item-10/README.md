@@ -151,22 +151,13 @@ reason. Do not infer zero occurrences from an unmeasured dimension.
 5. Audit Items 2 through 10 for identity and narrative consistency. Do not touch
    Item 11 workflows before the audit. Neither item requires human sessions.
 
-The proposed spatial method uses the reconstructed nested rectangles, with
-dimension results kept separate. Reuse Item 7's Overworld, Nether, central End
-and outer End strata; expansion must prevent overlap between the End strata.
-Count each non-INVALID start once by dimension, registry ID and authoritative
-start chunk. Validate every target slot at `minecraft:full` with matching saved
-coordinates. Do not use generated halo chunks to inflate target denominators.
-Map starts to existing canonical families without changing their classification.
-
-Report category numerators and denominators by seed and dimension; biome
-comparisons must use an explicitly matched biome exposure denominator.
-Use horizontal start-anchor nearest neighbors, censoring distances whose search
-circle crosses the sampled boundary. Retain coincident distinct starts.
-Use fixed spatial cells for count dispersion and empty-cell fraction, and
-report the largest fully observed empty area with its boundary limitations.
-Freeze cell sizes, biome sampling height and uncertainty resampling units before
-looking at new density results. These choices are still pending, not hidden defaults.
+The [protocol](protocol.md) selects one fixed 4,096-chunk rectangle in each of
+four seeds and eleven strata, with two fresh repetitions in each of two arms.
+It defines coordinate inclusion, spatial cells, biome attribution, boundary
+censoring, sparse-category limits and a control omitting only Sparse Structures.
+This supersedes the inherited nested-stage draft. Full collection remains gated
+on complete occurrence capture and exact experiment identities; no full-frame
+results are accepted yet.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
 disposition, source-bound deterministic processing, retained raw evidence with
@@ -176,34 +167,14 @@ scope does not require observed combat or human sessions in Items 10 or 11.
 
 ## Resource estimate and unresolved gates
 
-Read-only host inspection on 2026-09-08 found 1.8 GiB free on the 465 GiB
-persistent workspace filesystem. `/tmp` is a 13 GiB RAM-backed filesystem with
-about 11 GiB free; it is not durable evidence storage. Available RAM was about
-8.7 GiB with 11 GiB swap already used. Those are initial observations, not current
-capacity. Authorized duplicate cleanup and player-client setup subsequently left
-about 15 GiB free. See [operational setup](server-setup/README.md). The [pilot](pilot-r1/README.md) now supplies measured generation and storage
-costs. Recheck free space and RAM before each experiment.
-
-The [r14 run-a world manifest](../item-7/archive/r14/run-a-worlds-manifest.json)
-records 484,774,742 raw bytes and 291,011,199 compressed bytes for four seeds.
-Its protocol selects `4 * (3969 + 961 + 961 + 961) = 27,408` chunks.
-The ratio, 17,687 bytes per selected chunk, includes generated halo data and is
-only a planning proxy. A conservative scenario retaining three repetitions over
-four seeds and four strata at 32,768 chunks is 1,572,864 selected chunks.
-Linear extrapolation gives 25.9 GiB raw, or 67.4 GiB for original, compressed
-archive and a simultaneous restore, before runtimes, logs, decoded data or a
-Sparse Structures control. This is not a measured Item 10 storage requirement.
-Sequential custody may lower peak use; the pilot must measure actual costs.
-
-Eight original run receipts, individually rehashed against the r14 core
-manifest, report 228.205 to 332.567 seconds per 6,852 selected chunks on their
-original host. Linear scaling of the scenario above is 14.6 to 21.2 hours,
-excluding extra passes, analysis, restoration and controls. Different current
-host pressure makes this an estimate, not a promised completion time.
-The original Item 5 observation matrix implies 60 runs and 75 server-hours,
-before discarded warm-up replicates. The user rejected both that burden and the
-subsequent proposed recorded-play approach. The subsequent [authorized amendment](methodology-amendment.md) removes that
-human workload from both Items 10 and 11; its clean review and main delivery are recorded in the amendment.
+Use the [protocol resource estimate](protocol.md#runtime-and-storage-estimate)
+as the current planning authority: 720,896 selected chunks across 16 worlds,
+about 10.71 automated generation hours and 13.50 GiB cumulative uncompressed
+world data, using the measured r3 proxy. Sequential custody has a provisional
+5 GiB workspace floor that still needs collector-specific validation. Recheck
+capacity before each experiment; these are estimates, not promised runtimes.
+The human collection matrix is superseded by the delivered
+[methodology amendment](methodology-amendment.md).
 
 Material pending inputs:
 
@@ -212,8 +183,8 @@ Material pending inputs:
   cleanup is complete; it does not authorize removing additional artifacts.
 - Keep provisional encounter-site counts separate from unobserved fights under
   the reviewed, delivered automated methodology amendment.
-- Complete the nonregistry occurrence method and Sparse Structures attribution
-  design using existing evidence. No new generic framework is justified yet.
+- Complete the nonregistry occurrence method and validate the selected Sparse
+  Structures control using existing evidence. No new generic framework is justified yet.
 
 No implementation should expand around unresolved measurement semantics.
 The next work is protocol resolution, not configuration tuning or Item 11.
