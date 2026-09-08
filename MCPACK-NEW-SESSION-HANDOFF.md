@@ -125,8 +125,10 @@ trace validator and ten regressions pass. The typed-NBT digest fix is pushed
 as `56c05626`; 771 shared-consumer tests and the final 14 focused projection
 tests pass. Typed reprocessing completed and confirms the same mismatch counts.
 All eight reader vectors and mismatch coordinates are retained in the compressed
-typed evidence linked from the placement diagnostic. Both review fixes are ready
-for a fresh PR23 review; inspect the new completed cycle before merge.
+typed evidence linked from the placement diagnostic. The second PR23 cycle completed on `c14cb6d3` with one valid input-identity
+finding. The derivation now binds all region hashes to archived world manifests;
+five regressions pass and real reprocessing is byte-identical. Request and inspect
+the next completed review cycle before merge.
 Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
 The placement diagnostic links raw receipts and the full mismatch summary.
 r1/r2 release and downloaded world restores are verified. The biome reader now

@@ -452,3 +452,25 @@ Replace the uppercase placeholders with the fixed member/table values. All eight
 concrete reader invocations and the comparison script were executed. Output paths
 must be absent; reproduce in a separate checkout to preserve the committed bundle.
 No world generation, Item 8 audit or Item 11 workflow was rerun for this correction.
+
+### Retained-world identity binding (PR23 second review)
+
+The second review found that `compare-typed.py` checked the coordinate frame but
+not the source region identities. The corrected derivation binds each probe and
+control `world-backup.json` to its exact member hash and size in the published r3
+archive manifest. Each reader's complete, unique region input map must then
+match that world's dimension-specific region files and hashes. Missing,
+duplicate, stale or substituted inputs fail before outputs are written.
+
+Reprocessing all eight existing typed inputs with this check produced
+byte-identical `typed-comparison.json` and `typed-comparison.json.gz`. No world
+was regenerated and no accepted mismatch count changed. Five focused regressions
+cover the accepted inputs, a wrong region hash, an omitted region, a duplicate
+region and an altered world manifest:
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_typed_comparison_identity.py
+```
+
+Focused Ruff checks pass. This standalone evidence script is checked with
+`--ignore INP001` because its evidence directory is not a Python package.
