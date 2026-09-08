@@ -167,7 +167,7 @@
 - [ ] Define exploration metrics:
   - [ ] structures per 1,000 chunks.
   - [ ] actionable locations per 1,000 chunks.
-  - [ ] combat encounters per 1,000 chunks.
+  - [ ] provisional encounter sites per 1,000 chunks for automated Items 10 and 11; do not claim observed fights.
   - [ ] proper dungeons per 1,000 chunks.
   - [ ] major expeditions per 1,000 chunks.
 
@@ -186,6 +186,8 @@
   - [ ] 4 players.
   - [ ] expected normal concurrency.
   - [ ] expected peak concurrency.
+
+For Items 10 and 11, apply the user-authorized [automated measurement scope](evidence/item-10/methodology-amendment.md). No human sessions, recording or blind operators are required. The frozen Item 5 v1 collection matrix remains historical for these consumers; automated sampling must be predeclared separately.
 
 ### Exit Gate
 - [ ] Every later tuning claim can be tested quantitatively.
@@ -329,10 +331,10 @@
 
 - [ ] Generate representative test regions across all selected seeds.
 - [ ] Measure structures per 1,000 chunks.
-- [ ] Measure actionable locations per 1,000 chunks.
-- [ ] Measure combat encounters per 1,000 chunks.
-- [ ] Measure proper dungeons per 1,000 chunks.
-- [ ] Measure major expeditions per 1,000 chunks.
+- [ ] Measure provisional actionable-candidate locations (C and T1 through T4) per 1,000 chunks.
+- [ ] Measure provisional encounter sites (T1 through T4) per 1,000 chunks, not observed fights.
+- [ ] Measure provisional proper dungeons (exclusive T2) per 1,000 chunks.
+- [ ] Measure provisional major expeditions (exclusive T3) per 1,000 chunks; report T4 objectives separately.
 - [ ] Measure village density.
 - [ ] Measure average nearest-neighbor distance by category.
 - [ ] Measure clustering.
@@ -345,27 +347,21 @@
 - Items 5–9.
 
 
-## 11. Measure Baseline Exploration Pacing and Repetition
+## 11. Measure Automated Route Opportunities and Repetition
 
-- [ ] Perform fixed-duration/fixed-distance exploration on foot.
-- [ ] Repeat by horse.
-- [ ] Repeat by boat.
-- [ ] Record:
-  - [ ] visual discoveries.
-  - [ ] actionable discoveries.
-  - [ ] hostile encounters.
-  - [ ] dungeons.
-  - [ ] major structures.
-  - [ ] villages.
-  - [ ] dead travel time.
+Apply the [automated measurement scope](evidence/item-10/methodology-amendment.md).
+No human sessions, recordings or blind operators are required. Execute only after
+Item 10 delivery and the Items 2 through 10 cross-item audit pass.
 
-- [ ] Calculate Adventure Activity Ratio.
-- [ ] Measure unique structure families encountered per hour.
-- [ ] Measure time to first repeat.
-- [ ] Measure repeated structures over fixed distances.
-- [ ] Identify visual richness that provides little gameplay.
-- [ ] Identify genuinely empty travel.
-- [ ] Separate low spawn density from low discoverability.
+- [ ] Predeclare automated routes, endpoints and capability assumptions for walking, horse and boat travel.
+- [ ] Record failed and infeasible routes with explicit transport limitations.
+- [ ] Measure route-adjacent candidate locations and geometric visibility proxies.
+- [ ] Record provisional actionable candidates, encounter sites, dungeons, major expeditions and villages along each route.
+- [ ] Measure gaps between candidate locations and family repetition over fixed distances.
+- [ ] Measure route opportunity coverage with an explicit geometric numerator and denominator.
+- [ ] Report modeled travel costs and repeated-family intervals with declared assumptions and uncertainty.
+- [ ] Separate placement density from geometric visibility and modeled accessibility.
+- [ ] Keep human recognition, actual fights, meaningful-interaction time, enjoyment and human Adventure Activity Ratio explicitly NOT MEASURED. Do not present automated proxies as observed human gameplay.
 
 ### Depends On
 - Item 10.

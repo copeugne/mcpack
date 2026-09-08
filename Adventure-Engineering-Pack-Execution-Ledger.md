@@ -340,15 +340,26 @@ No Item 8 audit or measurement was repeated. No Item 10 work was performed.
 
 ### 5.9 Item 10 structure-density status
 
-**Status: `BLOCKED` — previously complete; raw reproducibility artifacts lost**
+**Status: `IN PROGRESS`.** Current retained-stack evidence is in
+[evidence/item-10/README.md](evidence/item-10/README.md). The authorized
+[automated scope amendment](evidence/item-10/methodology-amendment.md) removes
+human collection from both Items 10 and 11. The Item 5 methodology gate is
+reopened narrowly for this revision until review and durable delivery pass.
+
+The following paragraph is superseded historical context with lost raw evidence,
+not current measurements or active continuation instructions:
 The predeclared four-stage protocol reached its 131,072-chunk ceiling. Every final one of 32,768 target slots per seed was independently decoded at `minecraft:full` with matching stored/slot coordinates; all four seeds converged monotonically in two clean passes. The baseline contains 1,007 starts (7.6828/1,000 chunks), 831 actionable-location starts (6.3400), a 762-location static hostility proxy (5.8136), 100 Tier 2 starts (0.7629), 47 Tier 3 starts (0.3586), 31 villages (0.2365), and four right-censored Tier 4 starts. Mineshafts are 57.3% of actionable starts, so static density cannot substitute for observed pacing/discoverability. Sparse Structures is absent and contributes exactly zero to this control. Evidence: `Item-10-Baseline-Structure-and-Encounter-Density.md`, `evidence/structure-density/item10-stage-evaluation-r19.json`, and `evidence/structure-density/item10-chunkpregen-full-validation-r19.json`.
 
 The final report survives, but the referenced raw evidence, generator worlds, validators, and original Git objects were lost when the unpushed transient workspace expired. Item 10 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.10 Item 11 preparation status
 
-**Status: `BLOCKED` after all non-human preparation**
-`exploration-pacing-v0.1`, its run schema, manifest initializer, analyzer, and operator runbook are complete. The binding matrix contains up to 72 valid runs: four seeds × three transport modes × two endpoint types × three replicates, with explicit boat not-applicable handling. Completion requires retained real-client video/trace evidence from at least two blind human operators. A headless structure scan cannot truthfully decide visual recognition, actionability, or meaningful-interaction time. No owner response is required while absent; the load-bearing human-observation gate is logged and kept on the back burner.
+**Status: `BLOCKED` on Item 10 and the cross-item audit, not human availability.**
+The user explicitly removed human phases from both Items 10 and 11 on 2026-09-08.
+Apply [the automated scope amendment](evidence/item-10/methodology-amendment.md).
+Earlier human matrices, runbooks and reconstructed preparation are superseded
+acceptance paths. They do not establish completion of the revised automated
+route analysis. No Item 11 workflow was implemented, run, repaired or linted.
 
 ### 5.11 Preservation incident and Recovery Gate R-1
 
@@ -413,8 +424,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 - `STAT-001`: exact seed set and rationale — **development suite resolved: `42`, `6671238423019257953`, `95920844204830198`, `-3503646078644842058`; blinded v1 validation seeds remain later work**.
 - `STAT-002`: generated radius/chunk count per seed and dimension — **resolved: 4,096 initial to 32,768 maximum fully generated chunks/seed until 30 category observations; sparse categories are right-censored**.
-- `STAT-003`: route design and navigation-information controls — **resolved for Item 11 by `exploration-pacing-v0.1`: separate 60-minute and 10,000-block endpoints, fixed bearings, blind operators, and no `/locate`/seed-map knowledge**.
-- `STAT-004`: repetitions per transport mode and progression stage — **resolved: three human gameplay runs/cell with at least two operators; runtime performance uses five measured plus one discarded warm-up replicate**.
+- `STAT-003`: route design and navigation-information controls: **REOPENED: the automated Item 11 route protocol must replace the superseded human navigation controls after the cross-item gate**.
+- `STAT-004`: repetitions per transport mode and progression stage: **REOPENED for automated Items 10/11 sampling; the prior human matrix is superseded. Other runtime-performance repetition rules remain unchanged**.
 - `STAT-005`: warm-up and cache rules — **resolved by `ae-measurement-v0.1`; unlike cache states are never combined**.
 - `STAT-006`: operator/player skill controls.
 - `STAT-007`: aggregation and dispersion statistics — **resolved: sample count, median, p95, p99, max, IQR/range, paired change and bootstrap 95% interval**.
@@ -474,13 +485,13 @@ This register is additive. More variables will be discovered during artifact ins
 | 2 | Freeze original technical baseline | `COMPLETE` | Reconstructed from exact inputs; manifest, configs, archive/overlay, four lifecycle scenarios, clean-room proof, durable retrieval, and pushed/tagged Git receipts pass. |
 | 3 | Compatibility audit | `COMPLETE` | All 190 candidates have explicit dispositions; the 136-candidate retained dedicated-server set passes exact metadata/dependency checks and repeatable lifecycle validation. Evidence: `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/`. |
 | 4 | Controlled test environment | `COMPLETE` | Isolated four-seed environment, reproducible materialization, lifecycle validation, and hash-verified backup/restore with restored-world boot pass. Evidence: `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`. |
-| 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
+| 5 | Measurement/profiling methodology | `IN PROGRESS` | Existing runtime evidence retained. Narrow automated Items 10/11 contract revision authorized; review and delivery pending. See evidence/item-10/methodology-amendment.md. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
-| 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
-| 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
+| 10 | Baseline structure/encounter-site density | `IN PROGRESS` | Fresh diagnostic evidence delivered on the working branch. Full automated protocol and acceptance remain incomplete; see evidence/item-10/README.md. |
+| 11 | Exploration pacing/repetition | `BLOCKED` | Depends on Item 10 delivery and the cross-item audit. Revised automated scope; no human operators required. |
 | 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
@@ -495,6 +506,6 @@ This register is additive. More variables will be discovered during artifact ins
 1. Preserve the accepted Item 7 evidence and merged delivery. The user explicitly authorized proceeding despite the missing final clean review record, as recorded in section 5.7. Do not claim that review occurred.
 2. Item 8 is complete through reviewed, verified PR18 delivery. Preserve its accepted inventory and custody records. Item 9 consumed the 448-family listing unchanged; do not repeat completed inventory or preservation work.
 3. Item 9 is complete through reviewed PR20 delivery. Item 10 is the next dependency, outside the completed Item 9 task. After Item 10, audit Items 2 through 10 together for identity and narrative consistency.
-4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Item 11 will still require real-client evidence from at least two blind human operators.
+4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Both items use the authorized automated scope; no human sessions or blind operators are required.
 
 No later item will be marked complete out of order or from inference.

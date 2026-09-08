@@ -4,7 +4,7 @@ import gzip
 import re
 import struct
 import zlib
-from collections.abc import Iterator
+from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import BinaryIO, Final, Literal, final, override
@@ -230,6 +230,14 @@ def _chunk_payload(
 
 
 def decode_region(path: Path, context: RegionContext | None = None) -> Iterator[ChunkRecord]:
+    for record, _ in decode_region_payloads(path, context):
+        yield record
+
+
+def decode_region_payloads(
+    path: Path, context: RegionContext | None = None
+) -> Iterator[tuple[ChunkRecord, bytes]]:
+    """Keep validated raw NBT available without changing Item 7's normalized schema."""
     resolved_context = context or _context(path)
     region_x, region_z = _region_coordinates(path)
     with path.open("rb") as stream:
@@ -254,21 +262,39 @@ def decode_region(path: Path, context: RegionContext | None = None) -> Iterator[
             expected_z = region_z * 32 + slot.index // 32
             if (record.chunk_x, record.chunk_z) != (expected_x, expected_z):
                 raise _fail(path, slot.index, "chunk coordinates disagree with the region slot")
-            yield record
+            yield record, payload
 
 
-def world_regions(world: Path) -> tuple[tuple[Path, RegionContext], ...]:
+def world_regions(
+    world: Path, *, dimension_geometry: Mapping[str, tuple[int, int]] | None = None
+) -> tuple[tuple[Path, RegionContext], ...]:
+    """Locate dimension regions, requiring explicit geometry for custom dimensions."""
+    geometry = {
+        "minecraft:overworld": (-64, 384),
+        "minecraft:the_nether": (0, 256),
+        "minecraft:the_end": (0, 256),
+        **(dimension_geometry or {}),
+    }
     rows: list[tuple[Path, RegionContext]] = []
     for path in sorted(world.rglob("*.mca")):
         if path.parent.name != "region":
             continue
         relative = path.relative_to(world).as_posix()
         parts = path.relative_to(world).parts
-        if parts[0] == "DIM-1":
-            dimension, min_y, height = "minecraft:the_nether", 0, 256
-        elif parts[0] == "DIM1":
-            dimension, min_y, height = "minecraft:the_end", 0, 256
+        if parts[:-2] == ("DIM-1",):
+            dimension = "minecraft:the_nether"
+        elif parts[:-2] == ("DIM1",):
+            dimension = "minecraft:the_end"
+        elif len(parts) >= 5 and parts[0] == "dimensions":
+            dimension = parts[1] + ":" + "/".join(parts[2:-2])
+        elif len(parts) == 2:
+            dimension = "minecraft:overworld"
         else:
-            dimension, min_y, height = "minecraft:overworld", -64, 384
+            raise _fail(path, None, "region path does not identify a supported dimension layout")
+        if dimension not in geometry:
+            raise _fail(path, None, f"dimension geometry required for {dimension}")
+        min_y, height = geometry[dimension]
+        if min_y % 16 or height <= 0 or height % 16:
+            raise _fail(path, None, f"invalid build geometry for {dimension}")
         rows.append((path, RegionContext(dimension, relative, min_y, height)))
     return tuple(rows)

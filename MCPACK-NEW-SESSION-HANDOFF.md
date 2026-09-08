@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `7cbe06c7d8b074fa6121c1143432d28d02996712`.
+  `edd1dcf9f210097934b17aaa0e054d954077feb4`.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -59,24 +59,59 @@ The final Codex cycle completed with a thumbs-up and no new findings.
 record all 448 classifications and the passing local gate. No classification,
 measurement, Item 8 preservation or PR20 review work remains.
 
-The delivery-status follow-up is on `codex/item9-delivery-record`; it only
-reconciles status and records verified references. The accepted classification
-values, checker and Item 8 inputs remain unchanged.
+## Item 10 active work
 
-Item 10 is the next dependency, outside the completed Item 9 task. No Item 10
-work was performed. The old 21-family Item 9 report is superseded. The cross-item
-audit and human-observation restrictions for Item 11 remain in AGENTS.md and
-SPECS.md. Do not resume historical archive commands as current instructions.
+PR21 merged the Item 9 completion records as `edd1dcf9`, verified against
+GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
+`codex/item10-density`, based on that main commit.
+[Item 10 evidence](evidence/item-10/README.md) records verified dependency hashes,
+reusable evidence, missing measurements, proposed batches and resource estimates.
+A [fresh registry diagnostic](evidence/item-10/pilot-r1/README.md) measured 24
+starts in 3,969 selected Overworld chunks. Local and downloaded archives passed
+restore verification; a restored-world census reproduced byte for byte. No Item 8
+or Item 9 audit was repeated.
+
+Before full experiments, freeze sampling, retention and measurement semantics.
+About 15 GiB is now free after authorized cleanup and client setup. The user now requires no human phase in either Item 10 or Item 11. Apply the
+[authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
+Item 5 methodology gate needs review and durable delivery.
+The user requested local free-roaming and task servers for later login.
+[Server setup](evidence/item-10/server-setup/README.md) records both separate
+profiles and successful startup, correlated save and clean shutdown checks.
+Both are stopped. Two official-launcher client profiles are installed with 108
+hash-verified JARs each. First Play may download assets; client launch and join
+remain unverified. The observed-fight requirement is superseded by provisional encounter-site density. Sparse Structures is present with
+spread factor 2; the historical absent-mod result is superseded context.
+The 40 nonregistry families need occurrence coverage beyond structure starts.
+The user rejected the long recorded-play plan and proposed combat logger. Both
+are withdrawn; no capture or logger was started. Do not interpret the six-hour
+availability or tentative ten-hour offer as an approved workload.
+[Protocol reassessment](evidence/item-10/protocol.md) distinguishes spatial census
+from actual combat. The authorized revision removes human collection in both
+items; no recording or operator workload is deferred to Item 11.
+[Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
+fix and raw-coordinate census. It now rejects incomplete denominators and
+inconsistent starts. The accepted family/category join now covers all 24 pilot
+starts, retaining confidence and ambiguity. Spatial diagnostics retain boundary
+censoring, partial-cell denominators, clustering and empty rectangles; 41 focused
+tests passed before the biome addition. Biome exposure now covers all 96
+quart-height bands with 3,969 chunks each; 46 focused tests pass. Next review
+the methodology amendment, complete nonregistry occurrence coverage and biome
+attribution, and freeze the full sampling design. The pilot does not close Item 10.
+
+After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
+run, repair or lint Item 11 workflows before the audit passes. The user removed
+the human requirement for both items; automated proxies remain explicitly limited.
 
 ## Local workspace to preserve
 
-The delivery-status branch is `codex/item9-delivery-record`. Verify its upstream
-and actual delivered state before continuing.
+The prior branch `codex/item9-delivery-record` remains pushed at `3f758cb2`.
+That unmerged commit changes only the historical reference filename. Preserve it.
 Inspect actual staged, unstaged and untracked state before mutation. A clean
 checkout does not reproduce another workstation's uncommitted edits, deletions
 or private backups; do not invent or recreate those changes from this handoff.
 Preserve any existing local changes and archives. The local historical archive
-at `docs/history/MCPACK-HANDOFF-2026-09-07-ARCHIVE.md` is not a tracked dependency;
+at `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md` is not a tracked dependency;
 the immutable link above supplies durable historical context.
 Protected artifacts include `.codegraph`, `.omo/` and
 `mcpack-reconstructed-28(1).bundle` wherever present. Do not stage or delete them.
