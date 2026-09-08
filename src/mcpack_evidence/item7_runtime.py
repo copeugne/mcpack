@@ -26,6 +26,9 @@ CHUNKY_FILENAME: Final = "Chunky-NeoForge-1.4.23.jar"
 CHUNKY_SIZE_BYTES: Final = 340572
 CHUNKY_SHA256: Final = "d72f235cf1f56f2c374f52c00bdda5034524b28142305a84cfc123a3f92ad274"
 RETAINED_COUNT: Final = 136
+RETAINED_RUNTIME_SHA256: Final = "4062d6179218916c703269f113663b1e078adebbf6d43a691e692d972e07ac50"
+SPARSE_FILENAME: Final = "sparsestructures-neoforge-1.21.1-3.0.jar"
+SPARSE_SHA256: Final = "5aca0b33c0c83154810bbdd8ddc0d3e6a3e4591577274e2d27c10de0b45f2a45"
 RETAINED_MANIFEST_SHA256: Final = "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb"
 FROZEN_MANIFEST_SHA256: Final = "2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f"
 CONFIG_AUDIT_SHA256: Final = "181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd"
@@ -70,6 +73,7 @@ class WorldgenRequest(BaseModel):
     log_path: Path
     captured_config: Path
     mode: Literal["pilot", "run", "item10"] = "pilot"
+    omit_sparse_structures: bool = False
     selections: tuple[WorldgenSelection, ...]
     timeout_seconds: int = Field(ge=0)
 
@@ -81,6 +85,9 @@ class WorldgenRequest(BaseModel):
         ]
         if self.selections != expected:
             detail = f"{self.mode} selections differ from the fixed generation geometry"
+            raise ValueError(detail)
+        if self.omit_sparse_structures and self.mode != "item10":
+            detail = "Sparse Structures omission is restricted to the Item 10 control"
             raise ValueError(detail)
         return self
 
@@ -131,7 +138,8 @@ class PreflightReceipt(BaseModel):
     seed: str
     java_version: str
     retained_candidate_count: Literal[136]
-    instrumented_candidate_count: Literal[137]
+    instrumented_candidate_count: Literal[136, 137]
+    sparse_structures_omitted: bool = False
     retained_runtime_sha256: str
     instrumented_runtime_sha256: str
     retained_manifest_sha256: str
@@ -139,6 +147,14 @@ class PreflightReceipt(BaseModel):
     config_audit_sha256: str
     seed_suite_sha256: str
     chunky_sha256: str
+
+    @model_validator(mode="after")
+    def require_control_count(self) -> PreflightReceipt:
+        """Keep the deployed count consistent with the explicit control arm."""
+        if self.instrumented_candidate_count != 137 - int(self.sparse_structures_omitted):
+            detail = "instrumented count disagrees with Sparse Structures omission"
+            raise ValueError(detail)
+        return self
 
 
 def sha256_file(path: Path) -> str:
@@ -221,16 +237,30 @@ def prepare_worldgen(request: WorldgenRequest) -> PreflightReceipt:
         materialization = _MaterializationReceipt.model_validate_json(completed.stdout)
         _apply_frozen_configuration(request, materialization.seed)
         retained_hashes = _hash_mods(request.target / "mods", retained)
+        if request.mode == "item10":
+            if _hash_rows(retained_hashes) != RETAINED_RUNTIME_SHA256:
+                raise Item7RuntimeError(
+                    _PREFLIGHT_STAGE, "frozen retained runtime identity differs"
+                )
+            _ = _require_document_identity(
+                request.target / "mods" / SPARSE_FILENAME, SPARSE_SHA256, "Sparse Structures JAR"
+            )
+        deployed = retained
+        if request.omit_sparse_structures:
+            # Unlink only the freshly materialized hardlink, preserving the source artifact.
+            (request.target / "mods" / SPARSE_FILENAME).unlink()
+            deployed = tuple(name for name in retained if name != SPARSE_FILENAME)
         _install_chunky(request.target, chunky)
     except (KeyError, OSError, ValueError) as error:
         raise Item7RuntimeError(_PREFLIGHT_STAGE, str(error)) from error
-    instrumented_hashes = _hash_mods(request.target / "mods", (*retained, CHUNKY_FILENAME))
+    instrumented_hashes = _hash_mods(request.target / "mods", (*deployed, CHUNKY_FILENAME))
     return PreflightReceipt(
         seed_role=request.role,
         seed=materialization.seed,
         java_version=java_version,
         retained_candidate_count=RETAINED_COUNT,
-        instrumented_candidate_count=RETAINED_COUNT + 1,
+        instrumented_candidate_count=136 if request.omit_sparse_structures else 137,
+        sparse_structures_omitted=request.omit_sparse_structures,
         retained_runtime_sha256=_hash_rows(retained_hashes),
         instrumented_runtime_sha256=_hash_rows(instrumented_hashes),
         retained_manifest_sha256=retained_manifest_sha,

@@ -302,6 +302,35 @@ file unchanged, including the now-unused Sparse Structures configuration. Use
 the same collector, seed, selected regions, generation commands and lifecycle
 contract in both arms. Produce the exact derived control manifest before launch.
 
+The derived [135-candidate control manifest](control-server-candidates.txt) has
+SHA-256 `a598513faef1248fd4a41da9137c1c721f9d34d307d12166141010bf815a20b4`.
+It preserves the frozen baseline manifest order and omits exactly the one JAR
+above. The shared `prepare_worldgen` path first materializes and verifies all
+136 frozen candidates, then unlinks only that JAR in the fresh control instance
+when `WorldgenRequest(mode="item10", omit_sparse_structures=True)` is requested.
+Item 7 modes reject that option. Configuration materialization is identical.
+The original source JAR and baseline instance remain untouched.
+
+Direct SHA-256 and size verification of the retained acquisition artifacts on
+2026-09-08 gives the baseline plus Chunky identity
+`e2dab4c80cff137d747bd035588882797f85fa8d4d5b6ccb98a5d717fa0749c8`
+and control plus Chunky identity
+`84a884f99e4ac48defb9ea0b2c9e45bf3d0f4f6e881a4be4d8968dc2be14d4da`.
+Derivation: select the filenames from each candidate manifest plus the pinned
+Chunky filename, verify their bytes against Item 3's acquisition manifest, sort
+`(filename, SHA-256)` pairs by filename, serialize with Python
+`json.dumps(rows, separators=(",", ":"))`, and hash its UTF-8 bytes. This is the
+existing runtime `_hash_rows` convention. The preflight receipt retains the
+136-candidate source identity and explicitly records the omission, actual
+deployed count and deployed hash. Collector JAR identity is recorded separately.
+These are verified input identities, not a claim that the control has booted.
+
+Validation: `uv run --no-sync pytest -q tests/item10/test_sparse_control.py
+tests/item10/test_full_selections.py tests/item7/test_worldgen_preflight.py
+tests/item7/test_worldgen_lifecycle.py`. Tests cover exact omission, preservation
+of source and baseline JARs, byte-identical configurations, receipt consistency,
+rejection of nonfrozen runtime input, and unchanged Item 7 lifecycle behavior.
+
 This contrast measures removal of Sparse Structures within the retained stack,
 not a spacing-only effect or a recommended configuration change. The accepted
 [MakeStructuresSparse code](../item-8/sources/sparsestructures-provider/sparsestructures-neoforge-1.21.1-3.0.jar/io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt)
