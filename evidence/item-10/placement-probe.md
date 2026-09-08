@@ -474,3 +474,21 @@ uv run --no-sync pytest -q tests/item10/test_typed_comparison_identity.py
 
 Focused Ruff checks pass. This standalone evidence script is checked with
 `--ignore INP001` because its evidence directory is not a Python package.
+
+### Coordinate inspection identity and acceptance (PR23 third review)
+
+The third review found the same missing identity boundary in `inspect-writes.py`.
+The corrected inspection invokes the existing retained-trace validator, binds the
+world manifest to the published archive member, and verifies each consumed region
+hash before and after decoding under the existing world lock. Unexpected external
+chunks are rejected in this bounded inspection. Its JSON preserves observations,
+including mismatches, and the process fails unless all 30 recorded block IDs match.
+
+The real retained-world rerun passes with an unchanged result. Four regressions
+reject changed trace bytes, world manifest bytes, region bytes and decoded block
+IDs. They require the documented restored r3 world and skip explicitly if it is
+unavailable. No raw world or previously accepted cross-check output was changed.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_write_corroboration.py tests/item10/test_retained_trace.py tests/item10/test_typed_comparison_identity.py
+```

@@ -127,8 +127,11 @@ tests pass. Typed reprocessing completed and confirms the same mismatch counts.
 All eight reader vectors and mismatch coordinates are retained in the compressed
 typed evidence linked from the placement diagnostic. The second PR23 cycle completed on `c14cb6d3` with one valid input-identity
 finding. The derivation now binds all region hashes to archived world manifests;
-five regressions pass and real reprocessing is byte-identical. Request and inspect
-the next completed review cycle before merge.
+five regressions pass and real reprocessing is byte-identical. The third cycle
+on `fbe9cb81` found the corresponding identity/acceptance gap in the coordinate
+inspection. That reader now checks retained identities and requires all 30
+block IDs to match; the real rerun is unchanged and four negative regressions pass.
+Request and inspect the next completed review cycle before merge.
 Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
 The placement diagnostic links raw receipts and the full mismatch summary.
 r1/r2 release and downloaded world restores are verified. The biome reader now
