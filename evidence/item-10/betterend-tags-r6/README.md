@@ -92,3 +92,27 @@ feature IDs exist. Item 8 registry activation evidence and Item 9 provisional
 classification remain reusable; neither proves the unmet terrain predicate.
 Full Item 10 occurrence acceptance remains gated on resolving that distinction.
 No upstream JAR, configuration, inventory or classification has been changed.
+
+## Resolved provider registration boundary
+
+The retained LibWoverTag constructor's invokedynamic at offset 19 is bound, in
+its BootstrapMethods entry 0, to WoverDataGenEntryPoint.onGatherData with a
+NeoForge GatherDataEvent parameter. Reproduce with the pinned javap command
+above using `-p -v` and class `org.betterx.wover.entrypoint.LibWoverTag`.
+It is a data-generation listener, not a runtime tag-bootstrap subscriber.
+
+The newly listed classes in source-identities.json complete this specific path:
+WoverDataGenEntryPoint.onGatherData calls initialize at offset 28; initialize
+calls addDefaultGlobalProviders at 64 and onInitializeProviders at 72.
+WoverDataGenEntryPointImpl.addDefaultGlobalProviders creates the registered
+providers and passes them to PackBuilderImpl.instantiateAutoProvider. That
+method stores providers and redirectors; AutoBlockTagProvider.redirect stores
+matching tag providers, and its prepareTags lambda invokes their prepareTags
+method at offset 47. Thus redirect machinery does not supply evidence of a
+separate runtime call to the missing terrain provider.
+
+This resolves the previously unidentified listener type. It does not prove that
+no other mod supplies the tag or that every natural building attempt fails.
+The next unresolved question is runtime population through other subscribers
+or loaded resources, rather than whether this datagen registration suffices.
+No server was run and no frozen input was changed for this inspection.

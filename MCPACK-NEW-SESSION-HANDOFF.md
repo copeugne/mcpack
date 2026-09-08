@@ -133,7 +133,7 @@ reviewed head `677eb250`, fixed findings and verified main ancestry.
 202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
 Continue on `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
 Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
-now validate in `769d11cc`; 340 Item 7/10 tests pass. Next complete its PR review.
+now validate in `769d11cc`; 340 Item 7/10 tests pass. [PR27](https://github.com/copeugne/mcpack/pull/27) review is running.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
@@ -149,8 +149,8 @@ preserves the unloaded r3, loaded r4 and confirmed-ground r5 failures and custod
 Do not repeat them; all returned before template placement.
 [Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
 both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
-command lookup, not false membership. Raw/world restores pass. Next inspect
-the remaining runtime registration/resource gap before further experiments.
+command lookup, not false membership. Raw/world restores pass. The source follow-up on `codex/item10-tag-bootstrap` resolves the provider listener
+as GatherDataEvent only. Next inspect other runtime subscribers/resources before experiments.
 The linked source inspection shows ordinary tag-map injection and distinguishes
 datagen definitions from runtime bootstrap subscribers; the packaged directory
 constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
