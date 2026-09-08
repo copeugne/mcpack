@@ -155,7 +155,8 @@ coverage rejection, the JVM fixture finding and the coverage-v2 correction.
 The frozen observer JAR is archive-bound; 49 captured targets plus the unused
 Gateway target pass the corrected rule. No observer or configuration changed.
 Full Item 7/10 suite: 548 passed in 173.38s; two subsequently added archive-binding
-cases pass in the focused 41-test run. No server or analysis process is active.
+cases pass in the focused 41-test run. Fifth-world acceptance is pushed at
+`3fa7f311`. The next control census is active as noted below.
 
 Mountainous Overworld has 4,039 locations, including 3,784 observed cave-urn
 caches, but only six provisional T2 dungeons. Two content mismatches remain
@@ -165,7 +166,12 @@ are linked above; final cross-seed/repetition synthesis remains pending.
 The fifth world's allocated working footprint is about 1.98 GiB, consistent
 with the roughly 30 GiB plan. Latest free-space observation is about 35.5 GiB.
 
-Next run `full-mountainous-r1-without-sparse`, then r2 control and r2 baseline,
+[Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md)
+finished from `3fa7f311` in 666.194s; session `9871` is terminal 0. Configuration
+and published/downloaded/restored raw custody pass (313 raw and 501 world files).
+Its census is active as session `61273`. Poll that handle, inspect its complete
+output and record the matched contrast before acceptance. No server is active.
+Then run mountainous r2 control and r2 baseline,
 followed by the ocean-heavy and biome-diverse blocks in the frozen order. Use
 fresh hash-verified materializations and existing custody/census paths. Complete
 the remaining eleven worlds, final synthesis, consolidated PR review/merge and
