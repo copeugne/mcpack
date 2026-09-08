@@ -24,6 +24,7 @@ from tools.analyze_route_opportunities import (
 )
 
 from mcpack_evidence.item6_json import parse_strict_json
+from mcpack_evidence.item7_archive_models import ArchiveManifest
 
 CATEGORIES = (
     "all_locations",
@@ -41,6 +42,26 @@ def primary(route: dict[str, Any], category: str = "all_locations") -> dict[str,
         row
         for row in route["summaries"]
         if row["radius"] == 64 and row["window"] == 768 and row["category"] == category
+    )
+
+
+def cost_text(value: dict[str, float] | None) -> str:
+    if value is None:
+        return "null"
+    return (
+        f"{value['central_seconds']:.2f} [{value['min_seconds']:.2f}, {value['max_seconds']:.2f}]"
+    )
+
+
+def repeat_text(values: list[dict[str, float]]) -> str:
+    if not values:
+        return "0; No repeat: right-censored at 768 blocks"
+    central = distribution([v["central_seconds"] for v in values])
+    low = min(v["min_seconds"] for v in values)
+    high = max(v["max_seconds"] for v in values)
+    return (
+        f"{len(values)}; median {central['median']:.2f}; "
+        f"central [{central['min']:.2f}, {central['max']:.2f}]; speed [{low:.2f}, {high:.2f}]"
     )
 
 
@@ -71,6 +92,14 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
             raise ValueError("route result world/protocol mismatch")
         if result["inputs"]["census_sha256"] != source["input_sha256"]:
             raise ValueError("route result does not bind the accepted census")
+        manifest_raw = read_bound(ROOT / "evidence/item-10" / name / "archive-manifest.json")
+        manifest = ArchiveManifest.model_validate_json(manifest_raw)
+        backup = next(r for r in manifest.files if r.relative_path == "world-backup.json")
+        if (
+            result["inputs"]["archive_manifest_sha256"] != hashlib.sha256(manifest_raw).hexdigest()
+            or result["inputs"]["world_backup_sha256"] != backup.sha256
+        ):
+            raise ValueError("route result world provenance mismatch")
         if (
             result["inputs"]["analysis_sha256"] != code_hash
             or result["inputs"]["protocol_sha256"] != protocol_hash
@@ -97,7 +126,8 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
             for model in route["transport"].values():
                 del model["failures"], model["cumulative_cost_distance"]
             for row in route["summaries"]:
-                del row["modes"]
+                if (row["radius"], row["window"], row["category"]) != (64, 768, "all_locations"):
+                    del row["modes"]
                 row["adjacent"] = {
                     key: row["adjacent"][key]
                     for key in ("count", "maximum_empty_interval", "first_repeat_distance")
@@ -162,6 +192,46 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
             lines.append(
                 f"| {name.removeprefix('full-')} / {label} | {row['adjacent']['count']} | {row['geometric_visible']['count']} | {row['adjacent']['maximum_empty_interval']} | {repeat if repeat is not None else 'NR'} | {prefixes} | {status} |"  # noqa: E501 - generated Markdown row
             )
+    lines += [
+        "",
+        "## Modeled travel costs",
+        "",
+        "Primary 64-block radius, full 768-block window, all-location group; all 192 mode rows.",
+        "Values are central seconds [fast-speed seconds, slow-speed seconds], rounded to two decimals.",  # noqa: E501 - report prose
+        "Completed costs are null for INFEASIBLE/UNKNOWN full-route modes. Prefix costs stop at",
+        "the retained reachable prefix; unconstrained costs ignore feasibility and are not actual travel.",  # noqa: E501 - report prose
+        "Other windows/categories and exact unrounded values remain in the linked raw results.",
+        "",
+        "| World / route / mode | Completed seconds | Prefix seconds | Unconstrained seconds |",
+        "| --- | --- | --- | --- |",
+    ]
+    for name, world in worlds.items():
+        for label, route in world["routes"].items():
+            for mode, costs in primary(route)["modes"].items():
+                lines.append(
+                    f"| {name.removeprefix('full-')} / {label} / {mode} | {cost_text(costs['completed_cost'])} | {cost_text(costs['prefix_cost'])} | {cost_text(costs['unconstrained_cost'])} |"  # noqa: E501 - generated Markdown row
+                )
+    lines += [
+        "",
+        "## Modeled repeated-family interval times",
+        "",
+        "Same primary group/window and all 192 modes. Adjacent-anchor and first-ray-clear events",
+        "remain separate. Each cell gives interval count, central-speed median, central-speed",
+        "minimum/maximum, and the envelope across all intervals and the declared speed range.",
+        "All times are unconstrained modeled seconds, including for infeasible modes. The speed",
+        "envelope expresses assumptions plus interval spread, not a population confidence interval.",  # noqa: E501 - report prose
+        "Zero ties are retained. No-repeat rows are right-censored at 768 blocks, not infinite variety.",  # noqa: E501 - report prose
+        "Category-specific and other window/radius intervals remain in the linked raw results.",
+        "",
+        "| World / route / mode | Adjacent-family interval seconds | Ray-clear-family interval seconds |",  # noqa: E501 - generated Markdown row
+        "| --- | --- | --- |",
+    ]
+    for name, world in worlds.items():
+        for label, route in world["routes"].items():
+            for mode, costs in primary(route)["modes"].items():
+                lines.append(
+                    f"| {name.removeprefix('full-')} / {label} / {mode} | {repeat_text(costs['unconstrained_adjacent_repeat_interval_times'])} | {repeat_text(costs['unconstrained_repeat_interval_times'])} |"  # noqa: E501 - generated Markdown row
+                )
     lines += [
         "",
         "## Radius and distance sensitivity",

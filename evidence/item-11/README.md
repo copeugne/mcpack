@@ -1,6 +1,6 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate PASS after visibility and cost corrections**.
+Status: **IN PROGRESS; local exit gate PASS after visibility, cost and report corrections**.
 Final Codex review and verified main delivery are governed by
 [PR37](https://github.com/copeugne/mcpack/pull/37).
 The [complete generated report](report.md) is the authoritative version 2 numerical result.
@@ -77,7 +77,8 @@ join and saved-block lookup, Item 7's Anvil/NBT and safe-file readers, and Item 
 world lock and lock-excluding inventory enumeration. Missing route measurements
 required only the fixed geometry, ray and transport models and their summaries.
 [The report builder](summarize.py) consumes the existing producer digest records
-and rejects incomplete/misbound matrices. It keeps only the report view in memory;
+and rejects incomplete/misbound matrices, including archive-manifest and backup
+identity mismatches against committed Item 10 manifests. It keeps only the report view in memory;
 raw observations remain in the checked result files. No new schema, archive
 revision, generalized validator or storage service was introduced.
 
@@ -183,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the narrow cost fix, [all 19 affected tests pass](validation/final-tests-cost.txt), including complete report reproduction. Final [Ruff](validation/final-ruff-cost.txt), [formatting](validation/final-format-cost.txt) and [BasedPyright](validation/final-types-cost.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-report.txt), including complete report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-report.txt), [formatting](validation/final-format-report.txt) and [BasedPyright](validation/final-types-report.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -300,3 +301,34 @@ The cost change does not affect Item 7/10 readers or custody; those unchanged
 checks are not repeated solely for reassurance. Final affected lint, formatting
 and type checks pass. The local exit gate is restored; a fresh completed clean
 Codex review and verified main merge remain required.
+
+## Report integration and provenance corrections
+
+The completed review of `56b925f2` found two valid report defects:
+[numerical costs omitted](https://github.com/copeugne/mcpack/pull/37#discussion_r3963289055)
+and [world provenance not checked](https://github.com/copeugne/mcpack/pull/37#discussion_r3963289058).
+The cost measurements already existed in all accepted results; they were available
+but not integrated in the authoritative report. The report now shows completed,
+prefix and unconstrained travel-time ranges plus adjacent/visible repeated-family
+interval counts, medians, central ranges and speed envelopes for all 192 primary
+route/mode rows. Nulls, zero ties, right censoring and unconstrained costs stay
+explicit. Other category/window/radius details remain linked in the raw results.
+
+The existing report builder also compares both recorded world-provenance hashes
+with each committed Item 10 archive manifest and its `world-backup.json` entry.
+It reuses the existing archive model and producer identity checks. No new schema,
+validator framework or world processing is needed. All sixteen final result files
+and producer logs are unchanged from `17ccd330`; the builder accepts their exact
+world identities and rebuilds the report deterministically.
+
+[Three regressions fail before the fix](validation/report-regression-before.txt),
+and [all 22 affected tests pass](validation/final-tests-report.txt) in 28.69 seconds.
+The numerical surface check includes the feasible ordinary boat cost 96.00
+[76.80,128.00] seconds and the infeasible ocean boat's null completed cost with
+94.50 [75.60,126.00] prefix seconds. Ordinary east-north's 59 adjacent repeat
+intervals have central median 0.75 seconds, central range [0,18] and speed envelope
+[0,24], explicitly modeled rather than human observations. The
+[focused numerical regression](validation/report-numerical-regression.txt) checks
+these retained values. The initial regression log is also preserved; the two
+provenance cases were tightened to fail immediately if the first misbound result
+was accepted, avoiding an unrelated later-world error masking the omission.

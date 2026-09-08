@@ -14,8 +14,10 @@ SCRIPT = ROOT / "evidence/item-11/summarize.py"
 PILOT = ROOT / "evidence/item-11/results/full-ordinary-r1-baseline.json.gz"
 
 
-@pytest.mark.parametrize("defect", ["world", "source", "category", "mode", "human", "digest"])
-def test_report_rejects_misbound_or_incomplete_result(
+@pytest.mark.parametrize(
+    "defect", ["world", "source", "archive", "backup", "category", "mode", "human", "digest"]
+)
+def test_report_rejects_misbound_or_incomplete_result(  # noqa: C901 - existing fixed mutation cases
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, defect: str
 ) -> None:
     namespace = runpy.run_path(str(SCRIPT))
@@ -25,6 +27,9 @@ def test_report_rejects_misbound_or_incomplete_result(
         result["world"] = "wrong-world"
     elif defect == "source":
         result["inputs"]["census_sha256"] = "0" * 64
+    elif defect in ("archive", "backup"):
+        key = "archive_manifest_sha256" if defect == "archive" else "world_backup_sha256"
+        result["inputs"][key] = "0" * 64
     elif defect == "category":
         result["routes"]["east-south"]["summaries"].pop()
     elif defect == "mode":
@@ -39,6 +44,8 @@ def test_report_rejects_misbound_or_incomplete_result(
 
     def read(path: Path, expected: str | None = None) -> bytes:
         if path.parent == tmp_path:
+            if defect in ("archive", "backup") and path.name != PILOT.name:
+                pytest.fail("accepted first result with mismatched world provenance")
             return encoded
         if path.parent == ROOT / "evidence/item-11/validation/full" and defect != "digest":
             return json.dumps(
@@ -61,3 +68,18 @@ def test_complete_report_rebuilds_byte_identically() -> None:
         build(ROOT / "evidence/item-11/results")
         == (ROOT / "evidence/item-11/report.md").read_text()
     )
+
+
+def test_report_includes_retained_feasible_and_failed_costs() -> None:
+    report = runpy.run_path(str(SCRIPT))["build"](ROOT / "evidence/item-11/results")
+    assert "| ordinary-r1-baseline / east-north / boat | 96.00 [76.80, 128.00] |" in report
+    assert (
+        "| ocean-heavy-r1-without-sparse / east-south / boat | null | "
+        "94.50 [75.60, 126.00] | 96.00 [76.80, 128.00] |" in report
+    )
+    assert (
+        "| ordinary-r1-baseline / east-north / boat | 59; median 0.75; "
+        "central [0.00, 18.00]; speed [0.00, 24.00] |" in report
+    )
+    assert "## Modeled repeated-family interval times" in report
+    assert "No repeat: right-censored at 768 blocks" in report
