@@ -360,3 +360,24 @@ tests after annotating the runner's argparse strings; the direct runner check
 initially exposed untyped CLI values. No runtime behavior or type-check policy
 was changed by that annotation fix. The legacy whole-reader strict type-check
 limitation recorded above remains explicit. No Item 11 workflow was tested.
+
+## PR23 retained-trace review fix
+
+[Finding 3953767367](https://github.com/copeugne/mcpack/pull/23#discussion_r3953767367)
+is valid: the session-only capture-health check was not a reproducible repository
+boundary. [The retained-trace validator](../../tools/validate_item10_trace.py)
+now binds input bytes to the published r3 archive member before checking exact
+installation identity, strict JSON records, sequential attempt identities,
+pairing, zero-or-five writer counts, return/coordinate field types, shutdown and
+absence of unfinished attempts. Whole-attempt omissions cannot bypass the
+immutable archive hash. It reuses the existing strict JSON parser.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_retained_trace.py
+uv run --no-sync python -m tools.validate_item10_trace evidence/item-10/scarecrow-probe-r3/trace.jsonl
+```
+
+Ten regressions pass, and [the result](scarecrow-probe-r3/trace-validation.json)
+records six attempts and 30 writes, with zero refused writes. Ruff and type checks
+pass for the validator and tests. This validates capture health only; it does not
+reverse the world-equality failure or close the remaining NBT-type review finding.
