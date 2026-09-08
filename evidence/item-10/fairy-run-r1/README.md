@@ -1,0 +1,46 @@
+# Fairy diagnostic r1: installed hook, no helper calls
+
+Source `9121683c1462c16e13b6f018f4629a3091e71f61`; ordinary seed 42 and the
+[predeclared 6,852-chunk frame](../protocol.md#fairy-natural-diagnostic-r1).
+[Diagnostic](diagnostic.json) records all four selections, readiness, correlated
+save, clean stop and exit 0 in 253.19 seconds. No terrain, placement or tuning
+commands ran. This elapsed time is not a paired observer-overhead measurement.
+
+Archived trace.jsonl contains the FairyRingGenerator installation with incoming
+class SHA-256 3a30145aaad2e116ab762a6c090659a3f02f125dfd98972c3df72f4319691a74,
+matching the retained class. There are no fairy feature/helper attempts or flower
+records. Positive fairy capture fails. Outer generateChunk calls rejected before
+spawnFairyRing are outside the declared trace population; neither their count
+nor the cause of rejection is inferred. Do not expand or switch seeds for a
+positive result. No density estimate is accepted from this diagnostic.
+
+Direct event inspection finds 4,306 Monster Box, 270 Nether spike, 72 spiral-part
+and 14 BuildingListFeature attempts (4,662 total). The 16,605 write records
+comprise 111 Monster Box and 16,494 spike writes. All 14 BetterEnd returns are
+false. Shutdown reports zero unfinished attempts. These counts retain the full
+mixed population; the mixed-trace reader still needs integration before accepting
+content or density results. No positive spiral writes occurred either.
+
+The trace is 3,043,293 bytes, SHA-256
+`45ab23b9edf2e7b1a5dfe481284baaefb4b70c5251d07351e7d1b65e092ae006`.
+Inspect its feature, write, end and shutdown records after the verified restore;
+the immutable trace is the authority, not these summary counts.
+
+## Verified custody
+
+[Release](https://github.com/copeugne/mcpack/releases/tag/item-10-fairy-run-2026-09-08-r1).
+The fetched tag resolves to the source above. Archive
+item10-fairy-run-r1-9121683c.tar.gz is 76,943,807 bytes, SHA-256
+`53db66484a7bda655d97339c53fe928f84999f560a0b69418a9fb607590b2768`.
+[Manifest](archive-manifest.json) binds 260 files totaling 81,693,301 bytes.
+The downloaded manifest matches byte for byte; [download restore](download-restore.json)
+verifies every member. The archive root has no wrapper directory.
+
+[World backup](world-backup.json) binds 158 files and nested archive SHA-256
+`250bd4d5e7abb24bc6131f63dcf72f6c0541242a7169a28bed6f1aac1629beea`.
+[World restore](world-restore.json) was compared against every sorted manifest
+path, size and hash without booting. Reuse the existing archive/world restore
+commands and these identities with local custody root
+`evidence/raw/item10/fairy-run-r1-custody/{downloaded,restored,restored-world}`.
+
+Item 10 remains incomplete. No Item 11 workflow ran.

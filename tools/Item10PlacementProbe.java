@@ -30,6 +30,9 @@ public final class Item10PlacementProbe {
     private static final String ANOMALY = "biomesoplenty/worldgen/feature/misc/AnomalyFeature";
     private static final String MONOLITH = "biomesoplenty/worldgen/feature/misc/MonolithFeature";
     private static final String MONSTER_BOX = "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator";
+    private static final String FAIRY = "org/violetmoon/quark/content/world/gen/FairyRingGenerator";
+    private static final String FAIRY_DESCRIPTOR = "(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V";
+    private static final String FLOWER_DESCRIPTOR = "(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z";
     private static final String SPIRAL = "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator";
     private static final String SPIRAL_PART = "(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/WorldGenRegion;)V";
     private static final String SPIRAL_WRITE = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;)V";
@@ -171,6 +174,37 @@ public final class Item10PlacementProbe {
         }
     }
 
+    public static void writer(int site) {
+        emit("{\"kind\":\"writer\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+            + ",\"site\":" + site + "}");
+    }
+
+    public static void flowerState(Object state) {
+        emit("{\"kind\":\"flower_state\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+            + ",\"state\":" + quote(state) + "}");
+    }
+
+    public static boolean flower(Object feature, Object world, Object generator, Object random, Object pos) throws Throwable {
+        Long attempt = ACTIVE.get(Thread.currentThread().threadId());
+        if (attempt == null) throw new IllegalStateException("Flower outside fairy attempt");
+        emit("{\"kind\":\"flower_begin\",\"attempt\":" + attempt + ",\"position\":" + position(pos) + "}");
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = Class.forName("net.minecraft.world.level.levelgen.placement.PlacedFeature", false, loader)
+            .getMethod("place", Class.forName("net.minecraft.world.level.WorldGenLevel", false, loader),
+                Class.forName("net.minecraft.world.level.chunk.ChunkGenerator", false, loader),
+                Class.forName("net.minecraft.util.RandomSource", false, loader),
+                Class.forName("net.minecraft.core.BlockPos", false, loader));
+        try {
+            boolean result = (Boolean) method.invoke(feature, world, generator, random, pos);
+            emit("{\"kind\":\"flower_end\",\"attempt\":" + attempt + ",\"returned\":" + result + "}");
+            return result;
+        } catch (InvocationTargetException error) {
+            emit("{\"kind\":\"flower_exception\",\"attempt\":" + attempt + ",\"exception\":"
+                + quote(error.getCause().getClass().getName()) + "}");
+            throw error.getCause();
+        }
+    }
+
     public static void endGenerator() {
         long thread = Thread.currentThread().threadId();
         FEATURES.remove(thread);
@@ -265,14 +299,15 @@ public final class Item10PlacementProbe {
         if (TARGET.equals(target)) return instrument(original);
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
         boolean base = BASE_FEATURE.equals(target);
-        boolean staticGenerator = NETHER_SPIKE.equals(target);
+        boolean fairy = FAIRY.equals(target);
+        boolean staticGenerator = NETHER_SPIKE.equals(target) || fairy;
         boolean spiral = SPIRAL.equals(target);
         boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
         boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        int[] counts = new int[3];
+        int[] counts = new int[4];
         new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
             @Override
             public MethodVisitor visitMethod(int access, String name, String descriptor,
@@ -283,6 +318,7 @@ public final class Item10PlacementProbe {
                 boolean spikeWriter = spiral && name.equals("makeSpike") && descriptor.equals(SPIRAL_WRITE);
                 boolean match = spiral ? part || spikeWriter : feature ? name.equals("place") && descriptor.equals(
                     "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")
+                    : fairy ? name.equals("spawnFairyRing") && descriptor.equals(FAIRY_DESCRIPTOR)
                     : staticGenerator ? name.equals("placeSpikeAt") && descriptor.equals(SPIKE_DESCRIPTOR)
                     : generator ? name.equals("generateChunk") && descriptor.equals(GENERATOR_DESCRIPTOR)
                     : info ? name.equals("getStructure") && descriptor.equals("()L" + TEMPLATE + ";")
@@ -305,7 +341,7 @@ public final class Item10PlacementProbe {
                             if (staticGenerator) {
                                 super.visitLdcInsn(jdk.internal.org.objectweb.asm.Type.getObjectType(target));
                                 super.visitVarInsn(Opcodes.ALOAD, 0);
-                                super.visitVarInsn(Opcodes.ALOAD, 1);
+                                super.visitVarInsn(Opcodes.ALOAD, fairy ? 2 : 1);
                             } else {
                                 super.visitVarInsn(Opcodes.ALOAD, 0);
                                 super.visitVarInsn(Opcodes.ALOAD, 1);
@@ -340,6 +376,24 @@ public final class Item10PlacementProbe {
                     @Override
                     public void visitMethodInsn(int opcode, String owner, String name,
                                                 String descriptor, boolean isInterface) {
+                        if (fairy && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/WorldGenLevel")
+                            && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitLdcInsn(counts[1]);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$writer", "(I)V", false);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$write",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                            return;
+                        }
+                        if (fairy && opcode == Opcodes.INVOKEVIRTUAL
+                            && owner.equals("net/minecraft/world/level/levelgen/placement/PlacedFeature")
+                            && name.equals("place") && descriptor.equals(FLOWER_DESCRIPTOR)) {
+                            counts[3]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$flower",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z", false);
+                            return;
+                        }
                         if (generator && opcode == Opcodes.INVOKEVIRTUAL
                             && owner.equals("net/minecraft/server/level/WorldGenRegion")
                             && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
@@ -381,6 +435,16 @@ public final class Item10PlacementProbe {
                             }
                         }
                         super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+                        if (fairy && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/WorldGenLevel")
+                            && name.equals("getBlockState")
+                            && descriptor.equals("(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;")) {
+                            counts[2]++;
+                            if (counts[2] == 3) {
+                                super.visitInsn(Opcodes.DUP);
+                                super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$flowerState", "(Ljava/lang/Object;)V", false);
+                            }
+                        }
                         if (END_FEATURE.equals(target) && opcode == Opcodes.INVOKEVIRTUAL
                             && owner.equals(END_FEATURE) && name.equals("getGround")
                             && descriptor.equals("(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;")) {
@@ -393,13 +457,20 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != (spiral ? 2 : 1) || counts[1] != (spiral ? 2 : staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
+        if (counts[0] != (spiral ? 2 : 1) || counts[1] != (spiral ? 2 : fairy ? 4 : staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
         if (END_FEATURE.equals(target)) {
             if (counts[2] != 1) throw new IllegalArgumentException("Unexpected ground hook count");
             bridge(writer, "ground", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+        }
+        if (fairy) {
+            if (counts[2] != 5 || counts[3] != 1) throw new IllegalArgumentException("Unexpected fairy read/delegate sites");
+            bridge(writer, "writer", "(I)V", new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
+            bridge(writer, "flowerState", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+            bridge(writer, "flower", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.IRETURN);
         }
         if (spiral) {
             bridge(writer, "beginPart", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
@@ -537,7 +608,7 @@ public final class Item10PlacementProbe {
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
                 if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
-                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name)) {
+                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;
                 }
                 try {

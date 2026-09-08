@@ -657,3 +657,54 @@ collection remains gated on remaining coverage and measured observer costs.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name spiral-pilot-r1 --mode probe --role ordinary --preset pilot
 ```
+
+## Fairy-ring capture boundary
+
+Use the retained spawnFairyRing invocation as one attempted source location.
+Its four direct write sites include flower removal, surface copies, ore center
+and ore neighbors. Record each result, but cleanup-only successful writes are
+not a constructed location. Retain a separate delegated flower observation:
+requested origin, actual return and the post-call block state at that origin.
+The caller requires empty space before this call and rereads that same position
+afterward; the delegated return alone does not establish visible content.
+
+The accepted Item 8 landmark generator source identifies direct setBlock sites
+at offsets 193, 315, 457 and 510, the delegated PlacedFeature.place at 292 and
+the post-call state read at 299. Keep surface, reward and cleanup outcomes
+distinct in processing; a partial or invisible ring remains partial, not a
+complete visible landmark. Do not count a deposit and its ring as two families.
+This bounded capture does not enumerate the delegated flower feature's entire
+footprint. It establishes origin content and direct generator contributions,
+not that every nested decoration block was observed.
+
+Before a live pilot, preserve ordinary calls/results/exceptions under normal,
+refused, zero-write and isolated-loader fixtures, including a delegated false
+return that leaves non-air and a true return that leaves air. Neither boolean
+may be substituted for the observed origin state. No sample or positive
+occurrence count is accepted by this method declaration.
+
+## Fairy natural diagnostic r1
+
+Predeclared before launch: fresh fairy-run-r1, ordinary seed 42, the existing
+RUN_SELECTIONS frame of 6,852 chunks (3,969 Overworld and 961 each Nether,
+central End and outer End). This reuses the earlier scarecrow diagnostic frame
+rather than adapting the area to fairy counts. Frozen forest/plains chances
+remain 0.00625/0.0025, with the accepted ore list and Overworld allowlist.
+No placement commands, terrain edits or configuration changes.
+
+Preserve every attempt, direct writer role, actual write result, delegated flower
+return/exception and caller-read origin state. Require positive non-cleanup
+content, all incoming class identities, complete lifecycle, raw custody and
+saved-world corroboration before positive capture acceptance. Cleanup-only,
+zero-result or failed runs remain insufficient and will not trigger automatic
+seed/area changes. Other captured generator events stay in the trace.
+
+The previous same-frame ordinary control took 366.501 seconds, a planning proxy
+only. Use the existing 1 to 4 GiB heap and 900-second timeout. Before launch the
+host has 5.5 GiB free and no Java process. Reserve 1.5 GiB for instance/world,
+raw outputs, archive and restored custody; measure actual costs. This diagnostic
+is not the full density sample and cannot close Item 10.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name fairy-run-r1 --mode probe --role ordinary --preset run
+```

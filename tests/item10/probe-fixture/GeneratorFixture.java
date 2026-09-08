@@ -1,6 +1,7 @@
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
 import org.violetmoon.quark.content.world.gen.MonsterBoxGenerator;
+import org.violetmoon.quark.content.world.gen.FairyRingGenerator;
 import org.violetmoon.quark.content.world.gen.SpiralSpireGenerator;
 import org.violetmoon.quark.content.world.gen.ObsidianSpikeGenerator;
 public class GeneratorFixture {
@@ -28,7 +29,13 @@ public class GeneratorFixture {
         var generator = new MonsterBoxGenerator();
         var pos = new BlockPos(1, -5, 3);
         try {
-            if (spiral) {
+            if (args.length > 1 && args[1].equals("fairy")) {
+                world.flowerReturn = args[0].equals("true-air");
+                world.flowerAir = args[0].equals("true-air");
+                world.flowerException = args[0].equals("flower-exception");
+                FairyRingGenerator.spawnFairyRing(world, null, pos, null);
+                System.out.println("reads=" + world.reads);
+            } else if (spiral) {
                 var spire = new SpiralSpireGenerator();
                 if (args[0].equals("outside") || args[0].equals("outside-exception")) {
                     world.throwWrite = args[0].equals("outside-exception");

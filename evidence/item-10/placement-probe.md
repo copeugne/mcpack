@@ -732,3 +732,31 @@ Reproduce with `uv run --no-sync pytest tests/item10/test_placement_probe.py -q`
 Changed-test Ruff and basedpyright pass. This is synthetic collector acceptance
 only. A predeclared fresh pilot, mixed-trace reader integration and saved-block
 corroboration remain necessary before accepting natural spiral occurrences.
+
+## Fairy-ring direct and delegated content hook
+
+The collector now brackets the exact static spawnFairyRing method. A writer
+event identifies each of its four direct call sites: 1 cleanup, 2 surface copy,
+3 ore center, 4 ore neighbor. The following write retains the original returned
+boolean. Cleanup success is not construction success. The one delegated flower
+call records origin, actual return or exception, and the caller's existing third
+getBlockState result records flower_state. No additional world read is inserted.
+The entire delegated footprint is not captured; this records the requested
+origin content and direct ring/deposit writes only, as predeclared.
+
+All 342 Item 7/10 tests pass in 64.32 seconds, including seven focused collector
+tests. The new fixture confirms
+false-with-content and true-with-air stay distinct, refused writes retain false,
+early exits retain no writes, direct/delegated exceptions survive, and isolated
+loading preserves calls. Original/observed stdout matches complete write arguments
+and the five-read count. The first test run rejected an incorrect expected string
+for the fixture's BlockState record; correcting that assertion required no
+collector change. Changed-test Ruff and basedpyright pass.
+
+The retained Quark archive is hash-checked and the exact FairyRingGenerator
+class transforms successfully, with four writes, five reads and one delegated
+call required. Retained packaged class SHA-256:
+`3a30145aaad2e116ab762a6c090659a3f02f125dfd98972c3df72f4319691a74`.
+Reproduce with `uv run --no-sync pytest tests/item10/test_placement_probe.py -q`.
+A natural pilot and raw-reader integration remain pending. No natural fairy-ring
+occurrences or density estimates are accepted by these synthetic checks.
