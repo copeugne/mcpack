@@ -34,7 +34,7 @@ uv run --no-sync python -c "import runpy; runpy.run_path('evidence/item-10/scare
 Block-ID corroboration does not establish complete block-state equality or
 collector noninterference. The PR25 positive-path correction is integrated: BOP requires all three paths,
 and Monster Box requires at least one successful flags-0 write. Refused-only
-capture cannot pass. PR25 review remains pending.
+capture cannot pass. PR25 is cleanly reviewed and merged; see the linked BOP evidence delivery record.
 
 ## Raw custody
 

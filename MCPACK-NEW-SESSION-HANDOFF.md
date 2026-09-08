@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `a96a2cbad752ca0023058b39c122c66ffa4370ec` after PR24.
+  `6d6ba32dd1526859aa0f0f3aa8d485f62e136705` after PR25.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -61,8 +61,7 @@ measurement, Item 8 preservation or PR20 review work remains.
 ## Item 10 active work
 
 PR21 merged the Item 9 completion records as `edd1dcf9`, verified against
-GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
-`codex/item10-density`. PR22 merged the methodology, setup and diagnostic
+GitHub metadata and fetched main on 2026-09-08. PR22 merged the methodology, setup and diagnostic
 preparation as `0a1d9f8f6e0df266eb1f9e1080611c648babf2de`. The completed
 Codex cycle reviewed `362a3e703be51f7487354f83149a7e6e3669f201`, posted no
 findings and returned a thumbs-up; fetched main contains that exact head.
@@ -126,17 +125,15 @@ The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
 Item 10 remains IN PROGRESS; no nonregistry density counts are accepted.
 
-Continue the [PR25](https://github.com/copeugne/mcpack/pull/25) review/fix loop on
-`codex/item10-direct-writes`. Its first review found missing BOP failure status,
-fixed in the review correction; source ancestry loss is disproved by Git and PR commit history.
-`codex/item10-quark` preserves pushed `461a4000`, a separately tested Monster Box
-collector extension. PR25 fixes are merged into that branch without rewriting history.
-[Monster Box pilot r1](evidence/item-10/monster-box-pilot-r1/README.md) is stopped;
-all seven writes match saved block IDs and archive-bound validation passes. Await
-PR25 delivery before opening the Quark milestone PR; its successful-path correction
-is integrated and all 327 Item 7/10 tests pass. `codex/item10-quark-spikes` adds
-the static Nether-spike hook and [natural pilot](evidence/item-10/nether-spike-pilot-r1/README.md).
-Its 269 spike writes await mixed-trace and saved-block validation; custody is verified.
+[PR25](https://github.com/copeugne/mcpack/pull/25) is cleanly reviewed and merged.
+[BOP delivery](evidence/item-10/bop-fixture-r1/README.md#reviewed-delivery) records
+reviewed head `677eb250`, fixed findings and verified main ancestry.
+[PR26](https://github.com/copeugne/mcpack/pull/26) reviews the Monster Box milestone. Its
+[archived capture](evidence/item-10/monster-box-pilot-r1/README.md) validates all
+202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
+Continue on `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
+Nether pilot with verified raw custody. Its 269 spike writes still need mixed-
+trace and saved-block validation. Do not regenerate for those checks.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records

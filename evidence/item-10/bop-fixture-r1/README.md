@@ -112,3 +112,14 @@ path. No new generation or raw archive revision is needed.
 
 This correction passes all 316 Item 7/10 tests in 53.83 seconds, plus changed
 validator/test Ruff and basedpyright checks.
+
+## Reviewed delivery
+
+[PR25](https://github.com/copeugne/mcpack/pull/25) merged on 2026-09-08 at
+05:31:10 UTC as `6d6ba32dd1526859aa0f0f3aa8d485f62e136705`, verified in fetched
+origin/main. The [final clean review](https://github.com/copeugne/mcpack/pull/25#issuecomment-5579781691)
+completed on `677eb2502ad499021eac774c12e8e6d1c2418c1a` at 05:29:53 UTC,
+introduced no findings and returned the Codex bot thumbs-up. Both valid findings
+are fixed; the incorrect ancestry finding is dispositioned above. Merge ancestry
+retains the exact source and reviewed commits. This closes the BOP diagnostic
+milestone, not Item 10 full measurement or acceptance.
