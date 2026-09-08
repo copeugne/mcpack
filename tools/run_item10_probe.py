@@ -23,7 +23,9 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     _ = parser.add_argument("--name", required=True)
     _ = parser.add_argument("--mode", choices=("probe", "control"), required=True)
     _ = parser.add_argument("--preset", choices=("pilot", "run"), default="run")
-    _ = parser.add_argument("--betterend-fixture", action="store_true")
+    fixtures = parser.add_mutually_exclusive_group()
+    _ = fixtures.add_argument("--betterend-fixture", action="store_true")
+    _ = fixtures.add_argument("--bop-fixture", action="store_true")
     _ = parser.add_argument(
         "--role",
         choices=("ordinary", "mountainous", "ocean-heavy", "biome-diverse"),
@@ -35,10 +37,13 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     role = cast("str", args.role)
     preset = cast("Literal['pilot', 'run']", args.preset)
     fixture = cast("bool", args.betterend_fixture)
-    if fixture and (mode != "probe" or preset != "pilot"):
-        parser.error("the BetterEnd placement fixture requires probe mode and the pilot preset")
+    bop_fixture = cast("bool", args.bop_fixture)
+    if (fixture or bop_fixture) and (mode != "probe" or preset != "pilot"):
+        parser.error("placement fixtures require probe mode and the pilot preset")
     before_generation = (
-        ("execute in minecraft:the_end run forceload add -32 -32 47 47",) if fixture else ()
+        ("execute in minecraft:the_end run forceload add -32 -32 47 47",)
+        if fixture or bop_fixture
+        else ()
     )
     after_generation = (
         (
@@ -67,6 +72,16 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
         if fixture
         else ()
     )
+    if bop_fixture:
+        after_generation = (
+            "execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone",
+            (
+                "execute in minecraft:the_end run fill 32 80 0 47 80 15 "
+                "biomesoplenty:unmapped_end_stone"
+            ),
+            "execute in minecraft:the_end run place feature biomesoplenty:anomaly 8 81 8",
+            "execute in minecraft:the_end run place feature biomesoplenty:monolith 36 81 8",
+        )
     if not re.fullmatch(r"[a-z][a-z0-9-]*", instance_name):
         parser.error("name must contain only lowercase letters, digits and hyphens")
     output = Path("evidence/raw/item10") / instance_name

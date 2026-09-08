@@ -639,3 +639,15 @@ outside-target cases. Original and observed stdout include complete argument
 sequences and match. Exact retained BOP classes and the hash-verified Minecraft
 helper transform successfully. Changed test lint and type checks pass. No live
 run or accepted occurrence count is supplied by this implementation milestone.
+
+
+### Anomaly direct final-write coverage correction
+
+Before live collection, inspection of accepted AnomalyFeature.place found its
+additional direct WorldGenLevel.setBlock call at bytecode offset 938 (flags 2),
+which places the final anomaly blocks outside Feature.setBlock. The initial
+shared-helper extension did not capture it. No live evidence used that version.
+The probe now requires and wraps this one extra call site with its existing
+write bridge. The synthetic anomaly case adds a flags-2 write after its three
+helper writes; normal, refusal and exception comparisons retain the distinction.
+Exact retained-class transformation checks now require this call as well.

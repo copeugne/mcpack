@@ -264,6 +264,14 @@ public final class Item10PlacementProbe {
                     @Override
                     public void visitMethodInsn(int opcode, String owner, String name,
                                                 String descriptor, boolean isInterface) {
+                        if (ANOMALY.equals(target) && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/WorldGenLevel")
+                            && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$write",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                            return;
+                        }
                         if (base && opcode == Opcodes.INVOKEINTERFACE
                             && owner.equals("net/minecraft/world/level/LevelWriter")
                             && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
@@ -301,7 +309,7 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != 1 || counts[1] != (direct ? 0 : feature || info || base ? 1 : 3)) {
+        if (counts[0] != 1 || counts[1] != (direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
@@ -313,6 +321,9 @@ public final class Item10PlacementProbe {
             bridge(writer, "beginFeature", "(Ljava/lang/Object;Ljava/lang/Object;)V",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
             bridge(writer, "end", "(Z)V", new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
+            if (ANOMALY.equals(target)) bridge(writer, "write",
+                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
             if (!direct) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (base) {

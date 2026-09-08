@@ -510,3 +510,37 @@ remains excluded from density samples even if placement succeeds.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-tags-r6 --mode probe --role mountainous --preset pilot --betterend-fixture
 ```
+
+
+## BOP direct-write fixture r1
+
+Predeclared before launch. Use fresh `bop-fixture-r1`, mountainous seed, existing
+324-chunk pilot, pinned runtime/configuration and the probe overlay. Request the
+same 25 central End chunks to stay loaded before generation. After all selections,
+fill `[0,80,0]` through `[15,80,15]` with vanilla end stone and `[32,80,0]` through
+`[47,80,15]` with BOP unmapped end stone. Place configured `biomesoplenty:anomaly`
+at `[8,81,8]`, then `biomesoplenty:monolith` at `[36,81,8]`.
+The accepted configured-feature registry contains both IDs. The Item 8 source
+predicates permit end stone/unmapped end stone for anomaly and require unmapped
+end stone for monolith. The commands supply substrate, not predicate bypasses.
+This altered world is excluded permanently from density samples.
+
+Require all fixture commands to succeed, paired feature attempts, retained and
+inspected incoming helper identity, actual non-air successful writes for both
+features, and saved-world corroboration before accepting capture. Preserve flags
+3 helper writes separately from anomaly's direct flags-2 writes, failed writes,
+exceptions, unfinished attempts and later state changes. The anomaly's downward
+construction may attempt out-of-height writes; do not silently omit refusals.
+Count one feature location per successful attempt, never each written block.
+
+Use the existing 1 to 4 GiB heap and 900-second lifecycle timeout. Prior small
+fixtures took approximately 90 seconds; this is a planning proxy, not a promised
+runtime. Keep the 1 GiB custody allowance, measure actual trace/storage/runtime
+cost, and stop before full sampling if the allowance is inadequate. The current
+host has 6.8 GiB free; recheck for Java processes before launch.
+The direct-write fixture and BetterEnd fixture flags are mutually exclusive and
+require probe/pilot mode. Existing default commands remain empty.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name bop-fixture-r1 --mode probe --role mountainous --preset pilot --bop-fixture
+```

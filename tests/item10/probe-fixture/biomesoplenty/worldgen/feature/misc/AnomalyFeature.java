@@ -6,6 +6,7 @@ public class AnomalyFeature extends Feature {
     public boolean place(FeaturePlaceContext context) {
         if (context.early()) return false;
         for (int i = 0; i < 3; i++) setBlock(context.level(), context.origin(), new BlockState("content"));
+        context.level().setBlock(context.origin(), new BlockState("content"), 2);
         return true;
     }
 }

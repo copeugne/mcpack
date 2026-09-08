@@ -256,15 +256,19 @@ def test_direct_feature_helper_preserves_writes(tmp_path: Path) -> None:
             ]
             assert not any(r["kind"] == "installation_failed" for r in rows)
             assert any(
-                r.get("class") == "net/minecraft/world/level/levelgen/feature/Feature"
-                for r in rows
+                r.get("class") == "net/minecraft/world/level/levelgen/feature/Feature" for r in rows
             )
             writes = [r for r in rows if r["kind"] in {"write", "write_exception"}]
-            assert len(writes) == (0 if mode in {"early", "outside"} else 3)
+            expected_writes = 4 if feature == "anomaly" and mode != "exception" else 3
+            assert len(writes) == (0 if mode in {"early", "outside"} else expected_writes)
             assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
             if mode in {"normal", "isolated"}:
-                assert [r["returned"] for r in writes] == [True, False, True]
-                assert all(r["flags"] == 3 for r in writes)
+                assert [r["returned"] for r in writes] == (
+                    [True, False, True, True] if feature == "anomaly" else [True, False, True]
+                )
+                assert [r["flags"] for r in writes] == (
+                    [3, 3, 3, 2] if feature == "anomaly" else [3, 3, 3]
+                )
             if mode == "refused":
                 assert all(r["returned"] is False for r in writes)
 
