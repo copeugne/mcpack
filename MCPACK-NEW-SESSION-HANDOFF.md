@@ -119,7 +119,15 @@ Do not launch r4 to repeat the equality test. The prospective protocol now
 separates collector correctness from established world variability. All 30
 recorded scarecrow block IDs were corroborated in the restored world. Local
 capture/preservation checks pass; observer-free equivalence remains unproven.
-Review this bounded diagnostic before extending capture to the other mechanisms.
+PR23 reviews this bounded diagnostic before extension to other mechanisms.
+The Codex cycle on `ff951e02` completed with two valid P1 findings. The retained
+trace validator and ten regressions pass. The typed-NBT digest fix is pushed
+as `56c05626`; 771 shared-consumer tests and the final 14 focused projection
+tests pass. Typed reprocessing completed and confirms the same mismatch counts.
+All eight reader vectors and mismatch coordinates are retained in the compressed
+typed evidence linked from the placement diagnostic. Both review fixes are ready
+for a fresh PR23 review; inspect the new completed cycle before merge.
+Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
 The placement diagnostic links raw receipts and the full mismatch summary.
 r1/r2 release and downloaded world restores are verified. The biome reader now
 retains registry piece bounds and midpoint-height attribution; 29 focused tests

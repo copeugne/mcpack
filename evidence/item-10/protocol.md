@@ -84,6 +84,35 @@ selected full-chunk denominator. Preserve the provisional classification's
 confidence and ambiguity. Static hostility is a separate descriptor and never
 the observed-combat numerator.
 
+### Existing nonregistry mechanism coverage to integrate
+
+Reuse `non_registry_content.contributions` in the accepted Item 8 inventory.
+The following is a measurement-method grouping of its existing 40 canonical
+families, not a new inventory or classification. Source mechanisms are available;
+occurrence collection beyond the scarecrow diagnostic is still missing.
+
+| Existing contribution | Canonical families | Existing mechanism relevant to collection |
+| --- | ---: | --- |
+| `betterend:biome_buildings` | 6 | Selected complete building templates. |
+| `betterend:biome_ruins` | 10 | Selected complete ruin templates. |
+| `betterend:crashed_ship` | 1 | Configured feature with template placement and erosion. |
+| `betterend:ruined_obsidian_pillar` | 1 | Two direct procedural writers. |
+| `betterendisland:platform_gateway` | 3 | Conditional End feature/lifecycle routes; preserve route-specific applicability. |
+| `biomesoplenty:anomaly` | 1 | Direct anomaly-block construction. |
+| `biomesoplenty:monolith` | 1 | Direct obsidian construction. |
+| `explorations:scarecrow` | 1 | Five direct writes; bounded r3 capture corroborated. |
+| `quark:fairy_ring` | 1 | Zeta generator with delegated flower placement and buried ore. |
+| `quark:monster_box` | 1 | Zeta generator placing an encounter block. |
+| `quark:nether_obsidian_spike` | 1 | Zeta direct procedural generator. |
+| `quark:spiral_spire` | 1 | Zeta direct procedural generator. |
+| `supplementaries:cave_urn_cache` | 1 | Random patch delegates urn placements; patch and block counts differ. |
+| `yungsbridges:bridges` | 1 | Multiple-attempt random selection of inline bridge features. |
+| `yungsextras:feature_entrypoints` | 10 | Configured feature/template entrypoints for canonical designs. |
+
+The existing evidence supplies family mappings and nested delegation distinctions.
+Choose hooks or saved-world reconstruction from those records after the bounded
+PR23 review; do not audit providers again or count each delegated write as a site.
+
 ## Collector validation under established baseline variability
 
 This is a prospective correction to an inappropriate instrument-validation
@@ -169,11 +198,21 @@ deterministic repeat agreement a confidence interval. Categories with fewer than
 
 ## Resource and delivery bounds
 
-Using Item 7's planning proxy of 17,687 raw bytes per selected chunk, the final
-frame is approximately 23.75 GiB raw before tracing, logs and derived data. One
-32,768-chunk stratum is approximately 0.54 GiB raw. These estimates exclude the
-extra pilot and any causal Sparse Structures control. The first pilot must replace
-the proxy with actual runtime and storage measurements before scaling.
+The r3 uninstrumented mountainous diagnostic now supplies a measured planning
+proxy: 366.501 seconds for 6,852 selected chunks and 137,748,133 retained world
+bytes, including halo and lifecycle data. Linear scaling to the draft's
+1,441,792 chunks gives about 21.42 generation hours and 26.99 GiB per independent
+repetition, before controls, archives, derived output and restore workspace.
+This single mixed-stratum run does not predict all custom dimensions reliably.
+Offline processing time is additional. These values replace the earlier Item 7
+byte proxy for planning.
+
+The smallest proposed rectangle alone would contain 180,224 chunks across the
+same seeds and strata, with corresponding proxies of 2.68 hours and 3.37 GiB
+per repetition. These are planning alternatives; the full frame remains unfrozen. Before freezing collection, justify the selected area
+against required precision and retained sparse-category limitations rather than
+inheriting all four stages from the historical scaffold. No full-frame
+experiment has started, and no result-dependent stopping rule is introduced.
 
 Process strata sequentially. Before beginning another stratum, archive the clean
 world without `session.lock`, publish under immutable identity, verify download
