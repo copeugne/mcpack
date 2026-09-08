@@ -2,10 +2,10 @@ from pathlib import Path
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import census, chunk_biome_column
+from tools.analyze_structure_density import census, chunk_biome_column, occurrence_biomes
 
 from mcpack_evidence.item7_anvil import decode_region
-from mcpack_evidence.item7_nbt_models import BiomeSection
+from mcpack_evidence.item7_nbt_models import BiomeSection, StructureBox
 from tests.item10.test_density_census import make_region
 
 
@@ -57,3 +57,45 @@ def test_census_retains_independent_complete_height_denominators(
     assert exposure["rows"] == [
         {"quart_y": y, "biome": "minecraft:plains", "full_chunks": 1} for y in range(4)
     ]
+
+
+def test_occurrence_uses_piece_height_and_retains_unavailable_attribution(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    start = record.structure_starts[0]
+    start = start.model_copy(
+        update={
+            "boxes": (
+                StructureBox(bounds=(0, -12, 0, 15, -4, 15)),
+                StructureBox(bounds=(-5, -8, 2, 22, 0, 17)),
+            )
+        }
+    )
+    record = record.model_copy(update={"structure_starts": (start,)})
+    (row,) = occurrence_biomes(record, {-2: "test:underground"})
+    assert row["envelope"] == [-5, -12, 0, 22, 0, 17]
+    assert row["anchor_y"] == -6
+    assert row["quart_y"] == -2
+    assert row["biome"] == "test:underground"
+    assert row["unavailable_reason"] is None
+    (missing_height,) = occurrence_biomes(record, {0: "test:surface"})
+    assert missing_height["biome"] is None
+    assert missing_height["unavailable_reason"] == "anchor outside stored biome height"
+    record = record.model_copy(
+        update={"structure_starts": (start.model_copy(update={"boxes": ()}),)}
+    )
+    (no_bounds,) = occurrence_biomes(record, {})
+    assert no_bounds["unavailable_reason"] == "no stored piece bounds"
+
+
+def test_inverted_piece_bounds_reject_biome_attribution(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    start = record.structure_starts[0].model_copy(
+        update={"boxes": (StructureBox(bounds=(0, 9, 0, 15, 8, 15)),)}
+    )
+    record = record.model_copy(update={"structure_starts": (start,)})
+    with pytest.raises(ValueError, match="inverted structure"):
+        _ = occurrence_biomes(record, {})

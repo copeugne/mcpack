@@ -343,8 +343,8 @@ No Item 8 audit or measurement was repeated. No Item 10 work was performed.
 **Status: `IN PROGRESS`.** Current retained-stack evidence is in
 [evidence/item-10/README.md](evidence/item-10/README.md). The authorized
 [automated scope amendment](evidence/item-10/methodology-amendment.md) removes
-human collection from both Items 10 and 11. The Item 5 methodology gate is
-reopened narrowly for this revision until review and durable delivery pass.
+human collection from both Items 10 and 11. The narrow Item 5 methodology
+revision passed clean PR22 review and verified main delivery at `0a1d9f8f`.
 
 The following paragraph is superseded historical context with lost raw evidence,
 not current measurements or active continuation instructions:
@@ -485,7 +485,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 2 | Freeze original technical baseline | `COMPLETE` | Reconstructed from exact inputs; manifest, configs, archive/overlay, four lifecycle scenarios, clean-room proof, durable retrieval, and pushed/tagged Git receipts pass. |
 | 3 | Compatibility audit | `COMPLETE` | All 190 candidates have explicit dispositions; the 136-candidate retained dedicated-server set passes exact metadata/dependency checks and repeatable lifecycle validation. Evidence: `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/`. |
 | 4 | Controlled test environment | `COMPLETE` | Isolated four-seed environment, reproducible materialization, lifecycle validation, and hash-verified backup/restore with restored-world boot pass. Evidence: `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`. |
-| 5 | Measurement/profiling methodology | `IN PROGRESS` | Existing runtime evidence retained. Narrow automated Items 10/11 contract revision authorized; review and delivery pending. See evidence/item-10/methodology-amendment.md. |
+| 5 | Measurement/profiling methodology | `COMPLETE` | Existing runtime evidence retained. Narrow automated Items 10/11 contract revision passed clean PR22 review and main delivery at `0a1d9f8f`. See evidence/item-10/methodology-amendment.md. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |

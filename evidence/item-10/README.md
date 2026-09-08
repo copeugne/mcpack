@@ -9,11 +9,13 @@ The [sampling protocol](protocol.md) is under reassessment. The user rejected
 long recorded play and the proposed combat logger. No human workload is scheduled.
 The [authorized automated scope](methodology-amendment.md) now removes human
 phases from both Items 10 and 11. Provisional encounter-site density replaces the
-observed-fight requirement explicitly. Item 5 methodology delta review remains.
+observed-fight requirement explicitly. The narrow Item 5 methodology delta
+passed clean review and main delivery through [PR22](https://github.com/copeugne/mcpack/pull/22).
 
 ## Verified dependencies and delivery
 
-Fetched main is `edd1dcf9f210097934b17aaa0e054d954077feb4`.
+Initial dependency inspection used main `edd1dcf9f210097934b17aaa0e054d954077feb4`.
+PR22 subsequently delivered the preparation to main at `0a1d9f8f6e0df266eb1f9e1080611c648babf2de`.
 GitHub metadata confirms PR18, PR19, PR20 and PR21 are MERGED, respectively at
 `326979dd2eee7da3f881f1316eb845fb16e8ea6b`,
 `be64d458fee3539e5132049d871d1c32ebc3655b`,
@@ -201,15 +203,15 @@ host pressure makes this an estimate, not a promised completion time.
 The original Item 5 observation matrix implies 60 runs and 75 server-hours,
 before discarded warm-up replicates. The user rejected both that burden and the
 subsequent proposed recorded-play approach. The subsequent [authorized amendment](methodology-amendment.md) removes that
-human workload from both Items 10 and 11; its review and delivery remain pending.
+human workload from both Items 10 and 11; its clean review and main delivery are recorded in the amendment.
 
 Material pending inputs:
 
 - Bound peak experiment storage to current capacity with verified sequential
   custody, or obtain another persistent location. The authorized duplicate
   cleanup is complete; it does not authorize removing additional artifacts.
-- Review and durably deliver the authorized automated methodology amendment.
-  Keep provisional encounter-site counts separate from unobserved fights.
+- Keep provisional encounter-site counts separate from unobserved fights under
+  the reviewed, delivered automated methodology amendment.
 - Complete the nonregistry occurrence method and Sparse Structures attribution
   design using existing evidence. No new generic framework is justified yet.
 

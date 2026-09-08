@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `edd1dcf9f210097934b17aaa0e054d954077feb4`.
+  `0a1d9f8f6e0df266eb1f9e1080611c648babf2de` after PR22.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -63,7 +63,11 @@ measurement, Item 8 preservation or PR20 review work remains.
 
 PR21 merged the Item 9 completion records as `edd1dcf9`, verified against
 GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
-`codex/item10-density`, based on that main commit.
+`codex/item10-density`. PR22 merged the methodology, setup and diagnostic
+preparation as `0a1d9f8f6e0df266eb1f9e1080611c648babf2de`. The completed
+Codex cycle reviewed `362a3e703be51f7487354f83149a7e6e3669f201`, posted no
+findings and returned a thumbs-up; fetched main contains that exact head.
+This is preparation delivery, not Item 10 completion.
 [Item 10 evidence](evidence/item-10/README.md) records verified dependency hashes,
 reusable evidence, missing measurements, proposed batches and resource estimates.
 A [fresh registry diagnostic](evidence/item-10/pilot-r1/README.md) measured 24
@@ -74,7 +78,7 @@ or Item 9 audit was repeated.
 Before full experiments, freeze sampling, retention and measurement semantics.
 About 15 GiB is now free after authorized cleanup and client setup. The user now requires no human phase in either Item 10 or Item 11. Apply the
 [authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
-Item 5 methodology gate needs review and durable delivery.
+Item 5 methodology gate is complete through reviewed PR22 main delivery.
 The user requested local free-roaming and task servers for later login.
 [Server setup](evidence/item-10/server-setup/README.md) records both separate
 profiles and successful startup, correlated save and clean shutdown checks.
@@ -95,9 +99,45 @@ inconsistent starts. The accepted family/category join now covers all 24 pilot
 starts, retaining confidence and ambiguity. Spatial diagnostics retain boundary
 censoring, partial-cell denominators, clustering and empty rectangles; 41 focused
 tests passed before the biome addition. Biome exposure now covers all 96
-quart-height bands with 3,969 chunks each; 46 focused tests pass. Next review
-the methodology amendment, complete nonregistry occurrence coverage and biome
-attribution, and freeze the full sampling design. The pilot does not close Item 10.
+quart-height bands with 3,969 chunks each; 46 focused tests pass. Next complete nonregistry occurrence coverage and biome attribution,
+then freeze the full sampling design and Sparse Structures control. The pilot does not close Item 10.
+The [placement probe diagnostic](evidence/item-10/placement-probe.md) now passes
+a synthetic preservation test and transforms the exact retained scarecrow class.
+r1 had no eligible writer calls and is insufficient. r2 exercised the target
+but failed helper classloading and timed out; its incomplete world is rejected.
+The isolated-loader regression now passes with an explicit system-loader bridge.
+r3 completed all four selections in 348.93 seconds with correlated flush and
+clean exit. Its trace retains six complete attempts and 30 successful block
+writes with no unfinished attempts. The fresh control also completed cleanly
+in 366.501 seconds, with identical preflight and selections. Both content readers completed all 6,852 chunks. The declared equality gate
+failed: central End matches; Overworld 3,969, Nether 960 and outer End 671 chunks
+differ. Both worlds are stopped. The r3 498-file archive and both nested world restores
+passed download verification and are durably published; see the placement diagnostic.
+Accepted Item 7 already documents frozen-stack semantic nondeterminism, so this
+pair cannot establish probe causality. That fact was missed during predeclaration.
+Do not launch r4 to repeat the equality test. The prospective protocol now
+separates collector correctness from established world variability. All 30
+recorded scarecrow block IDs were corroborated in the restored world. Local
+capture/preservation checks pass; observer-free equivalence remains unproven.
+PR23 reviews this bounded diagnostic before extension to other mechanisms.
+The Codex cycle on `ff951e02` completed with two valid P1 findings. The retained
+trace validator and ten regressions pass. The typed-NBT digest fix is pushed
+as `56c05626`; 771 shared-consumer tests and the final 14 focused projection
+tests pass. Typed reprocessing completed and confirms the same mismatch counts.
+All eight reader vectors and mismatch coordinates are retained in the compressed
+typed evidence linked from the placement diagnostic. The second PR23 cycle completed on `c14cb6d3` with one valid input-identity
+finding. The derivation now binds all region hashes to archived world manifests;
+five regressions pass and real reprocessing is byte-identical. The third cycle
+on `fbe9cb81` found the corresponding identity/acceptance gap in the coordinate
+inspection. That reader now checks retained identities and requires all 30
+block IDs to match; the real rerun is unchanged and four negative regressions pass.
+Request and inspect the next completed review cycle before merge.
+Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
+The placement diagnostic links raw receipts and the full mismatch summary.
+r1/r2 release and downloaded world restores are verified. The biome reader now
+retains registry piece bounds and midpoint-height attribution; 29 focused tests
+pass. All 64 control registry starts have biome attribution without gaps.
+No nonregistry density counts are accepted.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

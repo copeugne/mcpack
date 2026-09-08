@@ -40,7 +40,16 @@ class _NumberArray:
     values: tuple[int, ...]
 
 
-type _NbtValue = int | float | str | bytes | _Compound | tuple[_NbtValue, ...] | _NumberArray
+@dataclass(frozen=True, slots=True)
+class _TypedValue:
+    tag_id: int
+    value: _NbtValue
+    element_id: int | None = None
+
+
+type _NbtValue = (
+    int | float | str | bytes | _Compound | tuple[_NbtValue, ...] | _NumberArray | _TypedValue
+)
 
 
 class NbtDecodeError(Exception):
@@ -80,7 +89,20 @@ def _array(data: memoryview, offset: int, width: int) -> tuple[tuple[int, ...], 
     return tuple(values), offset
 
 
-def _payload(tag_id: int, data: memoryview, offset: int) -> tuple[_NbtValue, int]:
+def _payload(
+    tag_id: int, data: memoryview, offset: int, *, preserve_types: bool = False
+) -> tuple[_NbtValue, int]:
+    element_id = None
+    if preserve_types and tag_id == 9:
+        _require(data, offset, 1)
+        element_id = data[offset]
+    value, offset = _payload_value(tag_id, data, offset, preserve_types=preserve_types)
+    return (_TypedValue(tag_id, value, element_id) if preserve_types else value), offset
+
+
+def _payload_value(
+    tag_id: int, data: memoryview, offset: int, *, preserve_types: bool
+) -> tuple[_NbtValue, int]:
     if tag_id in {1, 2, 3, 4}:
         return _integer(data, offset, (1, 2, 4, 8)[tag_id - 1])
     if tag_id in {5, 6}:
@@ -101,7 +123,7 @@ def _payload(tag_id: int, data: memoryview, offset: int) -> tuple[_NbtValue, int
             raise NbtDecodeError("invalid NBT list header")
         list_values: list[_NbtValue] = []
         for _ in range(count):
-            value, offset = _payload(element_id, data, offset)
+            value, offset = _payload(element_id, data, offset, preserve_types=preserve_types)
             list_values.append(value)
         return tuple(list_values), offset
     if tag_id == 10:
@@ -113,31 +135,43 @@ def _payload(tag_id: int, data: memoryview, offset: int) -> tuple[_NbtValue, int
             if child_id == 0:
                 return _Compound(compound_values), offset
             name, offset = _text(data, offset)
-            compound_values[name], offset = _payload(child_id, data, offset)
+            compound_values[name], offset = _payload(
+                child_id, data, offset, preserve_types=preserve_types
+            )
     if tag_id in {11, 12}:
         array_values, offset = _array(data, offset, 4 if tag_id == 11 else 8)
         return _NumberArray(tag_id, array_values), offset
     raise NbtDecodeError(f"unsupported NBT tag id: {tag_id}")
 
 
-def _root(payload: bytes) -> _Compound:
+def _root(payload: bytes, *, preserve_types: bool = False) -> _Compound:
     data = memoryview(payload)
     _require(data, 0, 1)
     if data[0] != 10:
         raise NbtDecodeError("NBT root tag is not a compound")
     _, offset = _text(data, 1)
-    value, offset = _payload(10, data, offset)
+    value, offset = _payload(10, data, offset, preserve_types=preserve_types)
+    if isinstance(value, _TypedValue):
+        value = value.value
     if not isinstance(value, _Compound) or offset != len(data):
         raise NbtDecodeError("NBT root payload has trailing bytes")
     return value
 
 
-def decode_compound_nbt(payload: bytes) -> dict[str, JsonValue]:
-    """Decode template or world compound NBT with the existing binary parser."""
-    return {name: _json_value(value) for name, value in _root(payload).values.items()}
+def decode_compound_nbt(payload: bytes, *, preserve_types: bool = False) -> dict[str, JsonValue]:
+    """Decode compound NBT, optionally retaining tag IDs and list element types."""
+    return {
+        name: _json_value(value)
+        for name, value in _root(payload, preserve_types=preserve_types).values.items()
+    }
 
 
 def _json_value(value: _NbtValue) -> JsonValue:
+    if isinstance(value, _TypedValue):
+        tagged: dict[str, JsonValue] = {"tag": value.tag_id, "value": _json_value(value.value)}
+        if value.element_id is not None:
+            tagged["element_tag"] = value.element_id
+        return tagged
     if isinstance(value, _Compound):
         return {name: _json_value(child) for name, child in value.values.items()}
     if isinstance(value, _NumberArray):
