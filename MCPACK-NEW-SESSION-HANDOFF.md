@@ -179,14 +179,16 @@ The failed run's published/downloaded/restored archive preserves 315 raw files,
 two debug reports, emergency commands, sanitized configuration and a 458-file
 partial world. No full census or retry was run. No server is active.
 
-Collection is paused under the protocol's resource-failure rule. The narrow
-heap-error shutdown correction now passes 34 focused lifecycle/console/runner
-tests plus Ruff and type checks. It prevents the observed wait-for-completion
-hang using the existing pause/correlated-save/stop path and a bounded timeout;
-it does not change the frozen runtime or repair heap exhaustion. Decide and
-record a bounded continuation policy before another experiment. The first control passed under identical preflight/probe/selections;
-the allocation cause remains unknown. Do not silently change the pinned heap,
-replace the failed attempt, or accept a smaller census. Preserve all artifacts.
+The heap-error shutdown correction is pushed at `d5e44617`, with 34 focused
+lifecycle/console/runner tests plus Ruff and type checks. It bounds emergency
+save/stop and never accepts heap-exhausted runs; successful-run identity is unchanged.
+The [post-failure retry amendment](evidence/item-10/protocol.md#bounded-retry-amendment-after-the-retained-resource-failure)
+permits exactly one fresh attempt for this cell, retaining the failed attempt.
+The runner's distinct `--attempt 2`/`-attempt2` naming passes 12 focused tests.
+No retry has run yet. Next launch `full-ocean-heavy-r2-without-sparse-attempt2`
+with the same seed, arm, repetition, heap and observer after pushing this policy.
+A second failure stops collection again; no configuration tuning or deletion.
+Latest free disk is about 22.5 GiB; the retry adds roughly 2 GiB working storage.
 After resolving this failure, finish the planned second ocean-heavy pair and
 four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.

@@ -28,6 +28,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
     _ = parser.add_argument("--preset", choices=("pilot", "run", "item10"), default="run")
     _ = parser.add_argument("--arm", choices=("baseline", "without-sparse"))
     _ = parser.add_argument("--repetition", type=int, choices=(1, 2))
+    _ = parser.add_argument("--attempt", type=int, choices=(1, 2))
     fixtures = parser.add_mutually_exclusive_group()
     _ = fixtures.add_argument("--betterend-fixture", action="store_true")
     _ = fixtures.add_argument("--bop-fixture", action="store_true")
@@ -43,6 +44,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
     preset = cast("Literal['pilot', 'run', 'item10']", args.preset)
     arm = cast("str | None", args.arm)
     repetition = cast("int | None", args.repetition)
+    declared_attempt = cast("int | None", args.attempt)
+    attempt = declared_attempt if declared_attempt is not None else 1
     fixture = cast("bool", args.betterend_fixture)
     bop_fixture = cast("bool", args.bop_fixture)
     if (fixture or bop_fixture) and (mode != "probe" or preset != "pilot"):
@@ -50,10 +53,13 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
     if preset == "item10":
         if mode != "probe" or arm is None or repetition is None:
             parser.error("Item 10 sampling requires probe mode, an explicit arm and repetition")
-        if instance_name != f"full-{role}-r{repetition}-{arm}":
-            parser.error("Item 10 name must be full-ROLE-rREPETITION-ARM")
-    elif arm is not None or repetition is not None:
-        parser.error("arm and repetition apply only to the Item 10 sampling preset")
+        expected_name = f"full-{role}-r{repetition}-{arm}"
+        if attempt != 1:
+            expected_name += f"-attempt{attempt}"
+        if instance_name != expected_name:
+            parser.error("Item 10 name must match role, repetition, arm and attempt")
+    elif arm is not None or repetition is not None or declared_attempt is not None:
+        parser.error("arm, repetition and attempt apply only to the Item 10 sampling preset")
     before_generation = (
         ("execute in minecraft:the_end run forceload add -32 -32 47 47",)
         if fixture or bop_fixture
@@ -126,6 +132,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
         "java_version": version,
         "java_tool_options": "",
     }
+    if preset == "item10":
+        report["attempt"] = attempt
     try:
         options = ""
         if mode == "probe":

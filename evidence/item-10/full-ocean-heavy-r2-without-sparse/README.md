@@ -120,3 +120,20 @@ markers, confirmed emergency save/stop and shutdown timeout with process-group
 termination. These are harness tests, not a new Minecraft experiment or a claim
 that heap exhaustion was repaired. Ruff check/format and focused basedpyright
 checks pass. The full applicable gate remains required for the final PR candidate.
+
+## Bounded continuation decision
+
+The post-failure [retry amendment](../protocol.md#bounded-retry-amendment-after-the-retained-resource-failure),
+`item10-retry-policy-v1`, permits one fresh same-identity attempt for this cell.
+It preserves this failure and adds no tuning or automatic retry loop. The
+allocation cause remains UNKNOWN; the justification is the completed first
+control under identical preflight/observer/selections and a bounded opportunity
+to complete the same fixed sample. A second failure pauses collection again.
+
+The existing runner now accepts `--attempt 2` with the distinct `-attempt2`
+name and records attempt identity. Default first-attempt names are unchanged.
+Validation: `uv run --no-sync pytest -q tests/item10/test_collection_runner.py`
+passed 12 tests in 3.14 seconds. The tests compile and hash-check the frozen
+observer for both arms and both attempts, verify untouched first-attempt paths,
+and reject unsupported attempt/preset combinations. Ruff and focused test-file
+basedpyright checks pass. No retry has yet been executed at this checkpoint.

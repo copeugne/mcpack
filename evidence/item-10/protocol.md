@@ -143,6 +143,46 @@ failure uses the existing whole-process-group termination path. Such a run is
 always rejected, including after a confirmed emergency save. Successful-run
 commands, sampling, observer identity and the pinned heap remain unchanged.
 
+### Bounded retry amendment after the retained resource failure
+
+Amendment identity: `item10-retry-policy-v1`, declared after the first failed
+`full-ocean-heavy-r2-without-sparse` attempt and before any retry. This is a
+post-failure operational amendment, not part of the original predeclaration.
+The sixteen planned seed/repetition/arm cells and all spatial, classification,
+observer and runtime identities in `item10-full-v1` remain unchanged.
+
+Allow exactly one additional fresh attempt for this failed cell. The same seed
+and complete frame passed in the first control repetition with identical
+preflight, observer and selections; the preserved reports identify Java heap
+exhaustion but not its allocation source. This supports a bounded same-identity
+retry, not a claim that the cause was repaired. Do not increase heap, change
+configuration, reuse the partial world or change the generation order.
+
+Use `--attempt 2` and the distinct name
+`full-ocean-heavy-r2-without-sparse-attempt2`. Default attempt 1 retains existing
+names; new reports state the attempt number explicitly. Both output and instance
+must be absent. Existing failed paths remain untouched. The runner adds only
+this bounded naming option, without automatic retry or reset logic. It rejects
+attempt numbers beyond two and attempt options on diagnostic presets.
+
+Keep the first attempt as FAILED in the final run matrix with its incomplete
+selections, raw custody, emergency save and unknown allocation cause. If the
+retry passes, report seventeen attempted worlds for sixteen completed planned
+cells, with one retained failed attempt. A failed attempt is neither a zero
+observation nor an extra successful repetition. Results are conditional on
+completed runs, with the resource failure disclosed; do not claim unbiased
+random-world estimates. If this retry fails, stop collection for another explicit
+resource/protocol decision. This amendment does not authorize retries for other
+cells or repeated attempts until success.
+
+The additional materialization and custody are estimated at roughly 2 GiB from
+completed controls, beyond the original sixteen-world estimate. Before retry,
+direct host inspection reports 24,166,539,264 free disk bytes (about 22.5 GiB)
+and 9,385,078,784 available memory bytes. No cleanup is needed or authorized.
+These current capacity observations are not a promise that Java allocation will
+succeed within the unchanged 4 GiB heap. The heap-failure shutdown correction
+must be present, and all normal full-census and durability gates still apply.
+
 ## Occurrences and denominators
 
 ### Frozen observer and full-trace gate

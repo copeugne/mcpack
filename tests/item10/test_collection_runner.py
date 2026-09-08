@@ -15,10 +15,12 @@ from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 
 
 @pytest.mark.parametrize("arm", ["baseline", "without-sparse"])
+@pytest.mark.parametrize("attempt", [1, 2])
 def test_full_runner_builds_observer_for_both_arms(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     arm: str,
+    attempt: int,
 ) -> None:
     root = Path(__file__).parents[2]
     java_home = root / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1"
@@ -60,6 +62,15 @@ def test_full_runner_builds_observer_for_both_arms(
 
     monkeypatch.setattr(runner, "execute", execute)
     name = f"full-ordinary-r1-{arm}"
+    preserved: list[Path] = []
+    if attempt == 2:
+        for parent in ("evidence/raw/item10", "instances/item10"):
+            original = tmp_path / parent / name
+            original.mkdir(parents=True)
+            sentinel = original / "retained-failure.txt"
+            _ = sentinel.write_text("preserve failed attempt\n")
+            preserved.append(sentinel)
+        name += "-attempt2"
     monkeypatch.setattr(
         sys,
         "argv",
@@ -75,6 +86,7 @@ def test_full_runner_builds_observer_for_both_arms(
             arm,
             "--repetition",
             "1",
+            *(["--attempt", "2"] if attempt == 2 else []),
         ],
     )
     runner.main()
@@ -87,6 +99,9 @@ def test_full_runner_builds_observer_for_both_arms(
     report = cast("dict[str, object]", json.loads((output / "diagnostic.json").read_text()))
     assert report["arm"] == arm
     assert report["repetition"] == 1
+    assert report["attempt"] == attempt
+    assert calls[0].target == Path("instances/item10") / name
+    assert all(path.read_text() == "preserve failed attempt\n" for path in preserved)
     probe = cast("dict[str, str]", report["probe"])
     assert probe["jar_sha256"] == sha256_file(output / "probe.jar")
     assert probe["source_sha256"] == sha256_file(root / "tools/Item10PlacementProbe.java")
@@ -144,6 +159,8 @@ def test_changed_collector_source_is_rejected_before_build_or_launch(
         ["--mode", "control", "--preset", "item10", "--arm", "baseline", "--repetition", "1"],
         ["--mode", "probe", "--preset", "item10"],
         ["--mode", "probe", "--preset", "pilot", "--arm", "baseline"],
+        ["--mode", "probe", "--preset", "pilot", "--attempt", "2"],
+        ["--mode", "probe", "--preset", "item10", "--attempt", "3"],
         [
             "--mode",
             "probe",
