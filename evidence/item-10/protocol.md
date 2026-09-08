@@ -603,3 +603,36 @@ density result. This diagnostic cannot substitute for the full sampling frame.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name nether-spike-pilot-r1 --mode probe --role ordinary --preset pilot
 ```
+
+## Spiral spire capture decision before implementation
+
+A makeSpike call is a chunk contribution, not the canonical source occurrence.
+The retained Zeta MultiChunkFeatureGenerator.generateChunk loops over source
+chunks, obtains getSourcesInChunk at offset 201, and passes each source as
+generateChunkPart argument 1 at offset 237. Argument 4 is the destination chunk
+anchor. The retained SpiralSpireGenerator then delegates eligible contributions
+to makeSpike at offset 133. Capturing only makeSpike would lose the shared source
+and could inflate a single multi-chunk site into several counted locations.
+
+Use generateChunkPart as the attempt boundary, retaining both source and target
+chunk anchors. Capture its delegated makeSpike writes without creating nested
+occurrences. Group successful contributions by run, dimension, canonical family
+and source anchor, while retaining each attempt and refused/zero-write outcome.
+Assign density inclusion by the source chunk, and retain boundary-censored
+contributions separately. Multiple successful chunks must not multiply the
+source numerator. This decision does not accept any occurrence counts.
+
+Before a live pilot, fixtures must prove two target chunks sharing one source
+remain distinct raw attempts with one processing key, distinct sources remain
+distinct, early returns and refused writes remain present, and the original
+write arguments/results/exceptions survive. Direct makeSpike calls outside the
+outer attempt must retain their original behavior and must not be mislabeled
+as complete source observations. Extend existing collector/tests only.
+
+Reproduce the Zeta derivation with pinned javap -p -c, classpath
+downloads/item3/candidates/Zeta-1.1-40.jar, class
+org.violetmoon.zeta.world.generator.multichunk.MultiChunkFeatureGenerator.
+Archive SHA-256: 4f17d1a2b9fd6d18ddb7697aa451db7fb154053b8648f79de279ae0d7e68a2fa.
+Class SHA-256: 3ed69dd1642e62c29d55ffa015e90c885e5d0f217887bdd4565b90b80ffc7e4b.
+Reuse the accepted Item 8 Quark end-generator source evidence for the consumer.
+No experiment, configuration tuning or inventory reclassification occurred.
