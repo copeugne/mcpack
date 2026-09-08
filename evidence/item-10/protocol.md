@@ -484,3 +484,29 @@ saved blocks to narrow the failed predicate, disclosing possible later changes.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-ground-r5 --mode probe --role mountainous --preset pilot --betterend-fixture
 ```
+
+
+## BetterEnd tag diagnostic r6
+
+Predeclared before launch. Fresh `betterend-tags-r6` repeats r5 with four
+read-only command checks between platform fill and feature placement: both
+`if` and `unless` checks for air at `[8,81,8]` and for
+`#wover:surfaces/terrain` at `[8,80,8]`. Each successful branch emits its unique
+`item10-fixture-air-true/false` or `item10-fixture-terrain-true/false` marker.
+Require exactly one of each pair; syntax errors, unknown tags or missing output
+are not false-membership evidence. Retain full commands and raw responses.
+
+The resource identifier derives from CommonBlockTags.TERRAIN's
+`surfaces/terrain` path, TagRegistryImpl.makeWorldWeaverTag, LibWoverTag's `wover`
+namespace and ModCore.mk in retained worldweaver-21.0.24.jar. Its BlockTagProvider
+prepareBlockTags adds end stone to END_STONES and includes that tag optionally
+in TERRAIN. This packaged intent is not runtime membership proof. No tags or
+configuration will be modified if runtime behavior disagrees.
+
+Use the same frozen identity, 324-chunk pilot, seed, heap, 900-second deadline
+and 1 GiB custody allowance. This run resolves the predicate discrepancy; it
+remains excluded from density samples even if placement succeeds.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-tags-r6 --mode probe --role mountainous --preset pilot --betterend-fixture
+```

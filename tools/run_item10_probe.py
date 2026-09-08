@@ -43,6 +43,14 @@ def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow to
     after_generation = (
         (
             "execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone",
+            "execute in minecraft:the_end if block 8 81 8 minecraft:air "
+            "run say item10-fixture-air-true",
+            "execute in minecraft:the_end unless block 8 81 8 minecraft:air "
+            "run say item10-fixture-air-false",
+            "execute in minecraft:the_end if block 8 80 8 #wover:surfaces/terrain "
+            "run say item10-fixture-terrain-true",
+            "execute in minecraft:the_end unless block 8 80 8 #wover:surfaces/terrain "
+            "run say item10-fixture-terrain-false",
             (
                 "execute in minecraft:the_end run place feature "
                 "betterend:blossoming_spires_structures 8 81 8"
