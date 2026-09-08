@@ -127,28 +127,15 @@ End lifecycle accessors remain separate; no arrival/dragon campaign is required.
 Fairy cleanup uses raw site 1, not bytecode offset 193; observed flower states do
 not establish complete ring visibility. Do not require new positive tiny pilots.
 
-The observer source/JAR are now pinned in the full runner. Full census analysis
-must use `--require-complete-observer` to require all 50 declared incoming classes
-and matching installations. The provider reader now rejects the reproduced
-missing/misattributed gateway metadata and incorrect completion events; retained
-traces are unchanged. See protocol for hashes, derivation and focused checks.
-The full applicable gate passed 535 Item 7/10 tests in 152.60 seconds. The existing
-runner now accepts full sampling with explicit arm/repetition and rejects its
-older uninstrumented control mode. Commands and operational timeout are in the
-protocol. Next: run the first full ordinary baseline, verify all 50 actual
-installations and selected saved chunks, preserve/restore raw custody, and
-measure storage/runtime before proceeding to the other 15 worlds.
-The shared harness now accepts the eleven fixed Item 10 generation selections.
-Chunky's odd-width square requests 65 by 65 chunks; the fixed 64 by 64 census
-excludes the positive edge. See protocol for the pinned bytecode derivation and
-34 passing geometry/lifecycle checks. The control materialization now verifies
-the full baseline before omitting only Sparse Structures. Its derived manifest,
-deployed hash and focused preservation checks are in the protocol. No real
-control boot or full collection has completed. Runner tests build the real collector
-for both arms while substituting server execution.
-Then confirm measured runtime/storage costs on the first full ordinary-seed run,
-collect all frames with durable raw custody, complete paired/biome/seed analysis,
-finish the consolidated PR review/merge and the Items 2 through 10 audit.
+The full runner pins the observer source/JAR, arm/repetition and eleven fixed
+selections. `--all-strata` requires all 50 incoming classes and installations;
+single-stratum full analysis must pass `--require-complete-observer`. Provider
+metadata and completion validation remain strict. See protocol for identities.
+Chunky requests 65 by 65 chunks per selection; the census excludes the positive
+edge to retain the frozen 64 by 64 frame. Control materialization verifies the
+full baseline before omitting only Sparse Structures, with unchanged configuration.
+Full measurements, paired/biome/seed comparisons, durable custody, the consolidated
+PR review/merge and Items 2 through 10 audit remain the delivery scope.
 The first full run, `full-ordinary-r1-baseline`, finished all eleven selections
 and stopped cleanly after 497.453 seconds from generation source `7b977af6`.
 Session `89854` is terminal. The original post-capture rejection is preserved:
@@ -173,13 +160,22 @@ Full output `all-strata.json` is 83,579,779 bytes, SHA-256
 `3ce081927696641793f9c522520149635341f9714ca3041df5419a6130b51c02`;
 timing is `all-strata-r2-runtime.txt` (8m23.404s). The first-run README records
 per-stratum counts, lifecycle-site limitations and resource acceptance. All 541
-Item 7/10 tests passed in 172.87s. No analysis or test process remains active.
+Item 7/10 tests passed in 172.87s. Baseline analysis and test sessions are terminal.
 The first-seed projection is about 4.45 machine-hours for generation/analysis and
 30.3 GiB working allocation; check actual growth per world. Free space is about
 43.7 GiB. These are projections, not guarantees or permission to delete evidence.
-Next: fresh `full-ordinary-r1-without-sparse`, then its complete analysis/custody,
-followed by the other fourteen worlds in protocol order. Commit coupled evidence
-milestones, finish comparisons/report, consolidated review/merge and cross-item audit.
+First-world acceptance is pushed at `5ceb171c`. The first matched control,
+`full-ordinary-r1-without-sparse`, finished cleanly in 559.034s from that source.
+Generation session `61882` is terminal 0. Its exact control runtime and frozen
+configuration checks pass. [Control evidence](evidence/item-10/full-ordinary-r1-without-sparse/README.md)
+records the unchanged run receipt, 313-member raw archive, published tag and
+local/download restores plus the 504-file world restore. No Java server is active.
+Full control analysis is running in exec session `60402`, output
+`evidence/raw/item10/full-ordinary-r1-without-sparse-analysis/all-strata.json`;
+its `all-strata-runtime.txt` retains timing/diagnostics. Poll this handle, do not
+restart on silence. Next: verify all strata and dispositions, record matched
+results and storage, then run the other fourteen worlds in frozen protocol order.
+Complete paired/biome/seed reporting, consolidated PR review/merge and cross-item audit.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
