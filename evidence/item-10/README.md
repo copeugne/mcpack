@@ -82,11 +82,78 @@ These tables directly display existing accepted fields, rounded only for prose.
 Individual neighbors, censoring, grid counts and rectangle bounds remain in
 those outputs. No world was regenerated and no measurements were recomputed.
 
-Other strata, height-band biome comparisons, remaining seed/repetition coverage,
+Remaining seed/repetition coverage, complete height-band biome comparisons,
 failure sensitivity and final synthesis remain to be integrated. The rejected
 ocean-heavy r2 control attempts supply no density row and no zero observation.
 The [proposed continuation](protocol.md#proposed-continuation-after-both-failed-attempts)
 is awaiting user agreement and is not an active amendment.
+
+## Accepted counts outside the Overworld
+
+The same ten linked census outputs supply the following all-location counts.
+Every cell uses 4,096 full chunks; its density is count times 1,000 / 4,096.
+Earth orbit, Mars orbit, Moon orbit and Venus each have zero accepted locations
+in every one of these worlds. This is observed absence within the selected
+frames, not proof that locations are impossible in those dimensions.
+
+| World | Aether | Mars | Moon | Central End | Outer End | Nether |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ordinary r1 B | 5 | 0 | 11 | 2 | 26 | 430 |
+| Ordinary r1 C | 19 | 0 | 57 | 11 | 91 | 497 |
+| Ordinary r2 B | 5 | 0 | 11 | 2 | 26 | 426 |
+| Ordinary r2 C | 19 | 0 | 57 | 11 | 70 | 502 |
+| Mountainous r1 B | 3 | 0 | 12 | 3 | 19 | 426 |
+| Mountainous r1 C | 10 | 1 | 53 | 8 | 85 | 461 |
+| Mountainous r2 B | 3 | 0 | 12 | 3 | 48 | 398 |
+| Mountainous r2 C | 10 | 1 | 53 | 8 | 108 | 527 |
+| Ocean-heavy r1 B | 3 | 0 | 11 | 2 | 19 | 437 |
+| Ocean-heavy r1 C | 10 | 0 | 49 | 9 | 57 | 532 |
+
+Direct source fields are `strata.<label>.classification.categories.all_locations.count`.
+The census preserves category-specific densities and spatial fields alongside
+these totals. Aether counts exclude the Item 8 terrain-cloud group; they are
+not raw registry-start totals. Every accepted world has one central-End T4
+objective and no T4 locations in the other sampled strata. This fixed objective
+is not evidence of a uniform objective distribution. Central and outer End remain
+separate exposures, not one contiguous region.
+
+Fresh mountainous repetitions differ substantially in outer End and Nether
+totals: baseline outer End is 19 then 48; control is 85 then 108. Nether is
+426 then 398 in baseline and 461 then 527 in control. These measured differences
+must remain visible rather than selecting the repetition with the preferred
+contrast. All-location counts increase in each matched pair in Aether, Moon,
+both End strata and Nether, but the increase is not identical across repetitions.
+
+## Biome attribution limits found during integration
+
+Biome observations are available in the accepted outputs; the complete comparison
+still needs integration. Direct joins identify the following unavailable rates:
+
+- Every accepted world has one central-End dragon-arena location with
+  `NO_LOCATION_HEIGHT`. Retain its location count without assigning a biome band.
+- Both mountainous controls have an `explorify:end_shipwreck` at chunk (505,514)
+  with anchor (8088,-7,8232), quart Y -2. Its reason is
+  `anchor outside stored biome height`. This is a second unavailable biome
+  observation in those two worlds, not a rejected location or a surface-biome case.
+- All four mountainous worlds have one `supplementaries:cave_urn_cache` at
+  (-57,19,-319), quart Y 4, attributed to `regions_unexplored:muddy_river`.
+  The exposure table has zero chunk-center columns for that biome in that band.
+  Candidate IDs are 16603 (r1 B), 16616 (r1 C), 16630 (r2 B), and 16593 (r2 C).
+  The exact-position numerator is valid, but its chunk-center exposure is zero.
+  Its biome density must therefore remain unavailable, with the positive count
+  and zero denominator retained. Do not substitute exposure from another height,
+  use an infinite rate, erase the observation or resample the accepted world.
+
+No other unavailable biome anchor or zero-exposure observed location was found
+in these ten outputs. This follows a direct inspection of every classified
+occurrence in every stratum, not just the examples above. For registry rows,
+join `classification.occurrences` to `occurrence_biomes` by registry ID and chunk
+X/Z within its stratum. Nonregistry rows already carry their biome and quart Y.
+Join valid attributions to `biome_exposure.rows` by `(quart_y, biome)`; absent
+keys have zero sampled chunk-center exposure. Retain unavailable reasons before
+that join. The numerator uses the declared occurrence anchor, while exposure
+uses chunk-center columns, so their horizontal sampling can differ. This is a
+limitation of the declared proxy, not evidence that biome placement is broken.
 
 ## Verified dependencies and delivery
 
