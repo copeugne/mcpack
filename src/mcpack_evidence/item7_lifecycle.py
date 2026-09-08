@@ -55,6 +55,7 @@ class _LifecycleState:
     """Mutable state owned by one synchronous process lifecycle."""
 
     __slots__ = (
+        "after_generation",
         "commands",
         "completed",
         "flush_correlation",
@@ -76,8 +77,11 @@ class _LifecycleState:
     killed: bool
     rejection: str | None
     flush_correlation: FlushCorrelation | None
+    after_generation: tuple[str, ...]
 
-    def __init__(self, request: WorldgenRequest, stdin: IO[str]) -> None:
+    def __init__(
+        self, request: WorldgenRequest, stdin: IO[str], after_generation: tuple[str, ...] = ()
+    ) -> None:
         self.request = request
         self.stdin = stdin
         self.started = time.monotonic()
@@ -88,10 +92,15 @@ class _LifecycleState:
         self.killed = False
         self.rejection = None
         self.flush_correlation = None
+        self.after_generation = after_generation
 
 
 def run_lifecycle(
-    request: WorldgenRequest, java_executable: Path, *, java_tool_options: str | None = None
+    request: WorldgenRequest,
+    java_executable: Path,
+    *,
+    java_tool_options: str | None = None,
+    after_generation: tuple[str, ...] = (),
 ) -> LifecycleReceipt:
     """Generate all four selections, flush, and stop in a new process session."""
     environment = os.environ.copy()
@@ -120,7 +129,7 @@ def run_lifecycle(
         log.close()
         raise Item7RuntimeError(_LIFECYCLE_STAGE, f"server launch failed: {error}") from error
     stdin, stdout = _process_pipes(process, log)
-    state = _LifecycleState(request, stdin)
+    state = _LifecycleState(request, stdin, after_generation)
     lines = OutputSequence()
     reader = threading.Thread(target=read_output, args=(stdout, lines), daemon=True)
     reader.start()
@@ -207,6 +216,10 @@ def _handle_line(state: _LifecycleState, line: str) -> None:
                 next_selection = state.request.selections[len(state.completed)]
                 state.rejection = _send_selection(state, next_selection)
             else:
+                for command in state.after_generation:
+                    if not _send(state, command):
+                        state.rejection = "server console pipe failed"
+                        return
                 state.flush_correlation = begin_correlated_flush(state.stdin, state.commands)
                 if state.flush_correlation is None:
                     state.rejection = "server console pipe failed"

@@ -396,3 +396,41 @@ failures and archive/verify the stopped world through the existing tools.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-identity-r2 --mode probe --role mountainous --preset pilot
 ```
+
+## BetterEnd positive-placement fixture r3
+
+Predeclared before launch on 2026-09-08. Use fresh `betterend-fixture-r3`,
+mountainous seed, probe mode and the existing 324-chunk pilot preset. After the
+four generation selections, the runner sends exactly two recorded commands:
+
+```text
+execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone
+execute in minecraft:the_end run place feature betterend:blossoming_spires_structures 8 81 8
+```
+
+The first creates a small flat terrain fixture in an even-parity chunk; the
+second exercises the registered building-list configuration identified in the
+accepted Item 8 configured-feature registry. The normal feature implementation
+still decides whether placement succeeds. No configuration, provider code or
+predicate is bypassed. This intentionally altered world is permanently excluded
+from density sampling and does not establish natural placement frequency.
+Selection RNG is whatever the real command uses; retain its observed template
+path rather than preselecting or rewriting the outcome.
+
+The existing lifecycle now accepts an optional tuple of commands after generation
+and before its unchanged correlated save-flush. Its default is empty. The fixture
+flag is restricted to probe mode and the pilot preset; all commands enter the raw
+receipt. Focused lifecycle/probe validation passes 17 tests, including command
+ordering before flush; Ruff and changed Python type checks pass.
+
+Require a successful platform command, a paired real template call with at least
+one successful non-air content write, validated source-path attribution, complete
+trace, inspected retained incoming classes, and saved-world corroboration. Record
+refusals, exceptions and later state differences. A successful server lifecycle
+or outer feature result alone does not pass this gate. Use the frozen preflight,
+1 to 4 GiB heap, 900-second timeout and the previous small pilot's 1 GiB custody
+planning allowance; recheck host capacity before launch.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r3 --mode probe --role mountainous --preset pilot --betterend-fixture
+```

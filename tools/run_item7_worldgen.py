@@ -53,7 +53,12 @@ class RunReceipt(BaseModel):
     rejection_reason: str | None
 
 
-def execute(request: WorldgenRequest, *, java_tool_options: str | None = None) -> RunReceipt:
+def execute(
+    request: WorldgenRequest,
+    *,
+    java_tool_options: str | None = None,
+    after_generation: tuple[str, ...] = (),
+) -> RunReceipt:
     """Run preflight, lifecycle, and sanitized configuration capture."""
     try:
         preflight = prepare_worldgen(request)
@@ -66,7 +71,12 @@ def execute(request: WorldgenRequest, *, java_tool_options: str | None = None) -
         )
     try:
         java_executable, _ = validate_java_runtime(request.java_home)
-        lifecycle = run_lifecycle(request, java_executable, java_tool_options=java_tool_options)
+        lifecycle = run_lifecycle(
+            request,
+            java_executable,
+            java_tool_options=java_tool_options,
+            after_generation=after_generation,
+        )
     except Item7RuntimeError as error:
         return RunReceipt(
             preflight=preflight,

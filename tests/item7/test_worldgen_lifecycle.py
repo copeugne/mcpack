@@ -29,9 +29,13 @@ def _discard_kill(pid: int, signal_number: int) -> None:
     del pid, signal_number
 
 
+@pytest.mark.parametrize("after_generation", [(), ("say fixture-first", "say fixture-second")])
 @pytest.mark.parametrize("options", [None, "", "-Dmcpack.probe=1"])
 def test_lifecycle_sends_commands_only_after_matching_markers(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, options: str | None
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    options: str | None,
+    after_generation: tuple[str, ...],
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("fixed"))
     request = runtime_request(tmp_path, monkeypatch)
@@ -69,7 +73,10 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
     monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", launch)
 
     receipt = item7_lifecycle.run_lifecycle(
-        request, request.java_home / "bin/java", java_tool_options=options
+        request,
+        request.java_home / "bin/java",
+        java_tool_options=options,
+        after_generation=after_generation,
     )
     assert os.environ["JAVA_TOOL_OPTIONS"] == "inherited-value"
 
@@ -90,6 +97,7 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
         "chunky center 1536 0",
         "chunky radius 4c",
         "chunky start",
+        *after_generation,
         "say mcpack-item7-flush-fixed-before",
         "save-all flush",
         "say mcpack-item7-flush-fixed-after",
@@ -316,8 +324,10 @@ def test_execute_preserves_completed_stages_when_config_capture_fails(
         java: Path,
         *,
         java_tool_options: str | None = None,
+        after_generation: tuple[str, ...] = (),
     ) -> item7_lifecycle.LifecycleReceipt:
         assert java_tool_options is None
+        assert after_generation == ()
         del current_request, java
         return lifecycle
 
