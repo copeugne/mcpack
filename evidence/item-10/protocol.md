@@ -1287,3 +1287,14 @@ PYTHONPATH=. uv run --no-sync python evidence/item-10/scarecrow-probe-r3/inspect
 This supplies saved observations for candidate acceptance; it does not equate
 block-ID agreement with full-state equality, noninterference or an accepted
 location count. No fresh world generation was performed.
+
+The existing census CLI accepts paired `--trace-root` and `--trace-manifest`
+arguments to add `nonregistry_candidates` to its registry result. The raw archive
+manifest binds the trace, incoming classes and world manifest; the latter must
+also match every registry census input hash. Candidate processing consumes the
+complete stream, then joins saved block observations while preserving missing
+and mismatched results. Registry classification/spatial totals remain registry
+only until nonregistry acceptance passes. Per-attempt last-write checks are not
+claims about global ordering across concurrent attempts. The retained
+[urn integration](urn-pilot-r1/README.md#integrated-offline-analysis) supplies the
+reproduction command, output hash and explicit diagnostic denominators.

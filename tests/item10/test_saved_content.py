@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import saved_block_at, saved_content_observations
+from tools.analyze_structure_density import (
+    nonregistry_analysis,
+    saved_block_at,
+    saved_content_observations,
+)
 
 from tests.item7.anvil_support import packed_values
 from tests.item10.test_density_census import make_region
@@ -92,3 +96,37 @@ def test_full_reader_reproduces_retained_urn_saved_states() -> None:
     assert observed == {
         tuple(cast("list[int]", row["position"])): row["saved_state"] for row in rows
     }
+
+
+def test_integrated_retained_urn_analysis_binds_census_and_preserves_failures() -> None:
+    root = Path(__file__).resolve().parents[2]
+    custody = root / "evidence/raw/item10/urn-pilot-r1-custody"
+    world = custody / "restored-world/world"
+    if not world.is_dir():
+        pytest.skip("Restored urn evidence required")
+    archive = root / "evidence/item-10/urn-pilot-r1/archive-manifest.json"
+    result = nonregistry_analysis(
+        world,
+        custody / "restored",
+        archive,
+        {},
+        {"overworld": ("minecraft:overworld", (-4, 4, -4, 4))},
+        census_inputs=[],
+    )
+    attempts = cast("list[dict[str, object]]", result["attempts"])
+    assert len(attempts) == 1291
+    assert sum(row["outcome"] == "NO_CONTENT_OBSERVED" for row in attempts) == 1195
+    assert (
+        sum(cast("dict[str, int]", row["saved_block_checks"]).get("MATCH", 0) for row in attempts)
+        == 429
+    )
+    assert result["status"] == "CANDIDATES_AWAITING_ACCEPTANCE"
+    with pytest.raises(ValueError, match="registry census inputs differ"):
+        _ = nonregistry_analysis(
+            world,
+            custody / "restored",
+            archive,
+            {},
+            {},
+            census_inputs=[{"path": "region/r.0.0.mca", "sha256": "0" * 64}],
+        )

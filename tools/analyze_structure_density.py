@@ -11,8 +11,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from tools.manage_item4_environment import _world_backup_lock
-from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN
+from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN, collection_attempts
 
+from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
@@ -714,6 +715,102 @@ def nonregistry_location_groups(
     }
 
 
+def nonregistry_analysis(  # noqa: PLR0913 - explicit custody, sample and census identities
+    world: Path,
+    raw: Path,
+    archive_manifest: Path,
+    geometry: dict[str, tuple[int, int]],
+    frames: dict[str, tuple[str, tuple[int, int, int, int]]],
+    *,
+    census_inputs: list[dict[str, str]],
+) -> dict[str, object]:
+    """Connect retained capture, attribution, grouping and saved observations."""
+    archive_bytes = archive_manifest.read_bytes()
+    archive = parse_strict_json(archive_bytes)
+    members = {row["relative_path"]: row for row in archive["files"]}
+    if len(members) != len(archive["files"]):
+        detail = "duplicate retained archive members"
+        raise ValueError(detail)
+    backup_path = raw / "world-backup.json"
+    trace = raw / "trace.jsonl"
+    if any(not path.resolve().is_relative_to(raw.resolve()) for path in (backup_path, trace)):
+        detail = "nonregistry input escapes retained raw root"
+        raise ValueError(detail)
+    backup_bytes = backup_path.read_bytes()
+    backup_member = members["world-backup.json"]
+    if (
+        hashlib.sha256(backup_bytes).hexdigest() != backup_member["sha256"]
+        or len(backup_bytes) != backup_member["size_bytes"]
+    ):
+        detail = "world manifest differs from retained archive"
+        raise ValueError(detail)
+    backup = parse_strict_json(backup_bytes)
+    world_files = {row["path"]: row["sha256"] for row in backup["world_files"]}
+    if len(world_files) != len(backup["world_files"]):
+        detail = "duplicate retained world members"
+        raise ValueError(detail)
+    if any(world_files.get(row["path"]) != row["sha256"] for row in census_inputs):
+        detail = "registry census inputs differ from retained nonregistry world"
+        raise ValueError(detail)
+    prefix = "trace.jsonl.classes/"
+    classes = {
+        name[len(prefix) : -6]: row["sha256"]
+        for name, row in members.items()
+        if name.startswith(prefix) and name.endswith(".class")
+    }
+    membership = nonregistry_membership()
+    outcomes = [
+        nonregistry_attempt_outcome(rows, membership)
+        for rows in collection_attempts(
+            trace,
+            trace_sha256=members["trace.jsonl"]["sha256"],
+            class_digests=classes,
+            dimensions={
+                "minecraft:overworld",
+                "minecraft:the_nether",
+                "minecraft:the_end",
+                *geometry,
+            },
+        )
+    ]
+    requested: dict[str, set[tuple[int, int, int]]] = collections.defaultdict(set)
+    for outcome in outcomes:
+        for write in outcome["last_successful_writes"]:
+            requested[outcome["dimension"]].add(tuple(write["position"]))
+    saved = saved_content_observations(world, requested, world_files, geometry)
+    by_position = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
+    summaries = []
+    for outcome in outcomes:
+        checks = collections.Counter()
+        for write in outcome["last_successful_writes"]:
+            observation = by_position[(outcome["dimension"], *write["position"])]
+            state = observation["saved_state"]
+            checks[
+                "UNAVAILABLE"
+                if state is None
+                else "MATCH"
+                if state["Name"] == write["block_id"]
+                else "MISMATCH"
+            ] += 1
+        summaries.append(
+            {
+                key: value
+                for key, value in outcome.items()
+                if key not in {"last_successful_writes", "content_positions"}
+            }
+            | {"saved_block_checks": dict(sorted(checks.items()))}
+        )
+    return {
+        **nonregistry_location_groups(outcomes, frames),
+        "scope": "candidate evidence only; provider and overlap acceptance remain required",
+        "archive_manifest_sha256": hashlib.sha256(archive_bytes).hexdigest(),
+        "trace_sha256": members["trace.jsonl"]["sha256"],
+        "world_manifest_sha256": backup_member["sha256"],
+        "attempts": summaries,
+        "saved_content": saved,
+    }
+
+
 def classify_census(result: dict[str, object]) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]
@@ -917,9 +1014,13 @@ def main() -> None:
         "--biomes", action="store_true", help="retain biome exposure by quart height"
     )
     parser.add_argument("--generation", action="store_true", help="hash declared generated content")
+    parser.add_argument("--trace-root", type=Path, help="retained raw capture directory")
+    parser.add_argument("--trace-manifest", type=Path, help="committed raw archive manifest")
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
+    if bool(args.trace_root) != bool(args.trace_manifest):
+        parser.error("trace-root and trace-manifest must be supplied together")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
     with _world_backup_lock(args.world):
         result = census(
@@ -929,6 +1030,15 @@ def main() -> None:
             geometry,
             include_biomes=args.biomes,
             include_generation=args.generation,
+        )
+    if args.trace_root:
+        result["nonregistry_candidates"] = nonregistry_analysis(
+            args.world,
+            args.trace_root,
+            args.trace_manifest,
+            geometry,
+            {args.dimension: (args.dimension, tuple(args.bounds))},
+            census_inputs=result["anvil_inputs"],
         )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)

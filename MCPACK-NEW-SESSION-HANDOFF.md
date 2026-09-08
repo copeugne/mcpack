@@ -140,6 +140,11 @@ Saved-content lookup now binds requested coordinates to retained world-file hash
 under the existing world lock. Its 17 focused tests reproduce retained urn saved
 states; the shared diagnostic's 429-write JSON is unchanged. Candidate acceptance
 must still bind custody, provider rules and these observations together.
+The census CLI now integrates archive-bound traces, groups and saved checks via
+paired `--trace-root`/`--trace-manifest`. The retained
+[urn integration](evidence/item-10/urn-pilot-r1/README.md#integrated-offline-analysis)
+reproduces all 1,291 attempts and 429 block matches with identical output hashes.
+Its 18 focused tests pass. This is diagnostic integration, not full measurement.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete
