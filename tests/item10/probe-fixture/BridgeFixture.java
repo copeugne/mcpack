@@ -7,9 +7,10 @@ public class BridgeFixture {
     public static class World extends TemplateFixture.World {
         public net.minecraft.core.RegistryAccess registryAccess() { return key -> value -> value.toString(); }
         public boolean failProcessor, refuseAll;
+        public final IllegalStateException failure = new IllegalStateException("processor failure");
         @Override public boolean setBlock(BlockPos pos, BlockState state, int flags) {
             boolean result = super.setBlock(pos, state, flags);
-            if (failProcessor && state.name().equals("support")) throw new IllegalStateException("processor failure");
+            if (failProcessor && state.name().equals("support")) throw failure;
             return result && !refuseAll;
         }
     }
@@ -35,7 +36,8 @@ public class BridgeFixture {
         }
         World world = new World();
         world.refuseAll = args[0].equals("refused");
-        world.failProcessor = args[0].equals("exception");
+        world.failProcessor = args[0].equals("exception") || args[0].equals("recover");
+        world.throwOnThird = args[0].equals("template-recover");
         try {
             if (args[0].equals("configured")) {
                 var configured = new ConfiguredBridge();
@@ -46,7 +48,15 @@ public class BridgeFixture {
             else if (args[0].equals("outside")) new LogBiomeProcessor().process(world, new BlockPos(1, 2, 3));
             else if (args[0].equals("outside-template")) System.out.println("returned=" + new BridgeFeature().outside(new FeaturePlaceContext(world, new BlockPos(1, 2, 3), false)));
             else System.out.println("returned=" + new BridgeFeature().place(new FeaturePlaceContext(world, new BlockPos(1, 2, 3), args[0].equals("early"))));
-        } catch (IllegalStateException error) { System.out.println("exception=" + error.getMessage()); }
+        } catch (IllegalStateException error) {
+            System.out.println("exception=" + error.getMessage());
+            if (args[0].equals("recover")) System.out.println("same=" + (error == world.failure));
+        }
+        if (args[0].endsWith("recover")) {
+            world.failProcessor = false;
+            world.throwOnThird = false;
+            System.out.println("recovered=" + new BridgeFeature().place(new FeaturePlaceContext(world, new BlockPos(4, 5, 6), false)));
+        }
         System.out.println(world.arguments);
     }
 }
