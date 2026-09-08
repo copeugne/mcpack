@@ -183,6 +183,38 @@ These current capacity observations are not a promise that Java allocation will
 succeed within the unchanged 4 GiB heap. The heap-failure shutdown correction
 must be present, and all normal full-census and durability gates still apply.
 
+### Proposed continuation after both failed attempts
+
+Status: PROPOSED, NOT AUTHORIZED. No collection may use this paragraph until
+the user accepts the changed completion contract. The current retry policy
+remains exhausted. This proposal changes the requirement for sixteen complete
+worlds; it does not reinterpret the original predeclaration.
+
+Keep the frozen runtime, observer, geometry and both failed attempts. Run only
+the five untouched planned cells in their existing order: ocean-heavy r2 baseline,
+then biome-diverse r1 baseline, r1 control, r2 control and r2 baseline. Each gets
+one attempt. No replacement of the failed ocean-heavy r2 control is allowed.
+If another cell fails, stop for a new disposition rather than silently accepting
+additional missing measurements. All accepted worlds still require the complete
+45,056-chunk census and existing custody, coverage and content gates.
+
+If those five pass, the delivered matrix has sixteen planned cells, seventeen
+attempts, fifteen complete cells and one failed cell with two failed attempts.
+Density summaries use observed exposure only. Matched Sparse contrasts use seven
+complete pairs rather than eight; ocean-heavy has one matched pair. Retain the
+unpaired ocean-heavy baseline in descriptive results, without inventing a control
+or treating failure as zero density. Report the reduced repetition coverage and
+results conditional on successful generation. Neither runtime failure is repaired
+by this disposition. Final synthesis, review, merge and cross-item audit still
+apply, including explicit operational limitations from these failures.
+
+Budget: reserve about 10 GiB for five further complete collections and custody,
+based on the accepted first ocean pair's approximately 1.86 and 1.92 GiB totals.
+Observed generation plus census was about 16 to 18 minutes per world in that pair;
+allow roughly two hours plus custody overhead, not a guaranteed bound. The existing
+four-hour generation ceiling remains per attempt. Current free disk is
+22,015,430,656 bytes; recheck capacity before launch. No human play is required.
+
 ## Occurrences and denominators
 
 ### Frozen observer and full-trace gate

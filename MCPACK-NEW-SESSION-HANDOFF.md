@@ -189,8 +189,8 @@ incomplete selected chunk, no missing or duplicated coordinates. Census rejects
 correctly; no result or smaller denominator is accepted. See the retry record.
 The retry record links the Aether exception, source mechanism, restored debug report
 and stop-on-save-error correction (42 focused tests). Accepted logs lack this error.
-The one-retry policy is exhausted. No server is active. Resolve continuation;
-no third attempt, changed heap, relaxed status rule or repaired proof world.
+The one-retry policy is exhausted. No server is active. The protocol's proposed
+continuation needs user agreement: five untouched cells, failed cell retained, no retry.
 After resolving the failed sample cell, finish the second ocean-heavy baseline and
 four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.
