@@ -512,6 +512,95 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
     }
 
 
+def nonregistry_location_groups(
+    outcomes: list[dict[str, object]],
+    frames: dict[str, tuple[str, tuple[int, int, int, int]]],
+) -> dict[str, object]:
+    """Group one world's candidate sources without accepting uncorroborated density."""
+    groups: dict[tuple[object, ...], dict[str, object]] = {}
+    owners: dict[tuple[object, ...], set[tuple[object, ...]]] = collections.defaultdict(set)
+    unresolved = []
+    for outcome in outcomes:
+        family = outcome["family"]
+        if family is None:
+            unresolved.append(outcome["attempt"])
+            continue
+        dimension = outcome["dimension"]
+        x, y, z = cast("list[int]", outcome["anchor"])
+        # Arena components have different heights, but represent one central site.
+        key = (
+            dimension,
+            family,
+            outcome["route"],
+            x,
+            None if family == "betterendisland:dragon_arena" else y,
+            z,
+        )
+        if key not in groups:
+            matched = [
+                name
+                for name, (frame_dimension, (min_x, max_x, min_z, max_z)) in frames.items()
+                if dimension == frame_dimension
+                and min_x <= x // 16 <= max_x
+                and min_z <= z // 16 <= max_z
+            ]
+            if len(matched) > 1:
+                detail = "nonregistry location belongs to overlapping sample frames"
+                raise ValueError(detail)
+            groups[key] = {
+                "family": family,
+                "dimension": dimension,
+                "route": outcome["route"],
+                "anchor_x": x,
+                "anchor_y": key[4],
+                "anchor_z": z,
+                "chunk_x": x // 16,
+                "chunk_z": z // 16,
+                "frame": matched[0] if matched else None,
+                "attempts": [],
+                "outcomes": collections.Counter(),
+                "content_positions": set(),
+            }
+        group = groups[key]
+        cast("list[object]", group["attempts"]).append(outcome["attempt"])
+        cast("collections.Counter[str]", group["outcomes"])[str(outcome["outcome"])] += 1
+        for position in cast("list[list[int]]", outcome["content_positions"]):
+            point = tuple(position)
+            cast("set[tuple[int, ...]]", group["content_positions"]).add(point)
+            owners[(dimension, *point)].add(key)
+    # Overlaps are exposed, not silently converted into extra locations or merged.
+    ordered = sorted(groups, key=lambda key: tuple(str(value) for value in key))
+    indices = {key: index for index, key in enumerate(ordered)}
+    overlaps: dict[tuple[int, int], int] = collections.Counter()
+    for keys in owners.values():
+        ids = sorted(indices[key] for key in keys)
+        for offset, first in enumerate(ids):
+            for second in ids[offset + 1 :]:
+                overlaps[(first, second)] += 1
+    locations = []
+    for key in ordered:
+        group = groups[key]
+        positions = sorted(cast("set[tuple[int, ...]]", group["content_positions"]))
+        locations.append(
+            {
+                **group,
+                "candidate_id": indices[key],
+                "attempts": sorted(cast("list[int]", group["attempts"])),
+                "outcomes": dict(sorted(cast("dict[str, int]", group["outcomes"]).items())),
+                "content_positions": [list(point) for point in positions],
+            }
+        )
+    return {
+        "status": "CANDIDATES_AWAITING_ACCEPTANCE",
+        "locations": locations,
+        "unattributed_attempts": sorted(unresolved),
+        "overlaps": [
+            {"candidates": list(pair), "shared_content_positions": count}
+            for pair, count in sorted(overlaps.items())
+        ],
+    }
+
+
 def classify_census(result: dict[str, object]) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]

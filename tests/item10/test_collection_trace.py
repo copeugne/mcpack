@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import nonregistry_attempt_outcome, nonregistry_membership
+from tools.analyze_structure_density import (
+    nonregistry_attempt_outcome,
+    nonregistry_location_groups,
+    nonregistry_membership,
+)
 from tools.validate_item10_trace import SCARECROW_CLASS, collection_attempts
 
 FEATURE = "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
@@ -195,6 +199,14 @@ def test_collection_reader_preserves_retained_mixed_trace(diagnostic: str) -> No
     assert len(attempts) == accepted["attempts"]
     membership = nonregistry_membership()
     attributed = [nonregistry_attempt_outcome(attempt, membership) for attempt in attempts]
+    grouped = nonregistry_location_groups(attributed, {})
+    assert (
+        sum(
+            row["family"] == "quark:spiral_spire"
+            for row in cast("list[dict[str, object]]", grouped["locations"])
+        )
+        == accepted["spiral_source_keys"]
+    )
     assert (
         sum(row["family"] == "supplementaries:cave_urn_cache" for row in attributed)
         == accepted["cave_parent_attempts"]

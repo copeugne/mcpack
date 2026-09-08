@@ -132,7 +132,10 @@ full-protocol observer identity set and the location table remain.
 Ordered attempt outcomes now retain last successful writes, content surviving
 erosion, exceptions and actual anchors. The 35 attribution/collection tests pass
 against retained urn observations. These are not accepted locations: provider
-completeness, fairy visibility, saved-world corroboration and aggregation remain.
+completeness, fairy visibility and saved-world corroboration remain. Candidate
+aggregation now groups common sources, retains halo/zero outcomes and exposes
+content overlaps; 68 focused tests pass, including retained spiral source counts.
+Overlap dispositions and final acceptance still gate density numerators.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

@@ -1,9 +1,12 @@
 """Reuse accepted canonical membership without promoting attempts to locations."""
 
+from typing import cast
+
 import pytest
 from tools.analyze_structure_density import (
     attribute_nonregistry_attempt,
     nonregistry_attempt_outcome,
+    nonregistry_location_groups,
     nonregistry_membership,
 )
 
@@ -183,3 +186,63 @@ def test_arena_component_keeps_central_location_and_non_worldgen_context() -> No
     assert result["anchor"] == [0, 80, 0]
     assert result["origin"] == [42, 80, 0]
     assert result["route"] == "non_worldgen_accessor"
+
+
+def outcome(number: int, family: str, anchor: list[int]) -> dict[str, object]:
+    return {
+        "attempt": number,
+        "family": family,
+        "anchor": anchor,
+        "dimension": "minecraft:the_end",
+        "route": "ordinary_generation",
+        "outcome": "CONTENT_OBSERVED",
+        "content_positions": [[1, 2, 3]],
+    }
+
+
+def test_components_share_source_and_arena_ignores_component_height() -> None:
+    rows = [
+        outcome(1, "quark:spiral_spire", [1, 0, 2]),
+        outcome(2, "quark:spiral_spire", [1, 0, 2]),
+        outcome(3, "betterendisland:dragon_arena", [0, 70, 0]),
+        outcome(4, "betterendisland:dragon_arena", [0, 100, 0]),
+    ]
+    result = nonregistry_location_groups(
+        rows, {"central": ("minecraft:the_end", (-32, 31, -32, 31))}
+    )
+    locations = cast("list[dict[str, object]]", result["locations"])
+    assert len(locations) == 2
+    assert locations[0]["attempts"] == [3, 4]
+    assert locations[0]["anchor_y"] is None
+    assert locations[1]["attempts"] == [1, 2]
+    assert result == nonregistry_location_groups(
+        list(reversed(rows)), {"central": ("minecraft:the_end", (-32, 31, -32, 31))}
+    )
+
+
+def test_halo_and_zero_content_sources_are_retained() -> None:
+    row = outcome(1, "quark:spiral_spire", [-1, 0, 0])
+    row.update(outcome="NO_CONTENT_OBSERVED", content_positions=[])
+    result = nonregistry_location_groups([row], {"central": ("minecraft:the_end", (0, 0, 0, 0))})
+    locations = cast("list[dict[str, object]]", result["locations"])
+    assert locations[0]["frame"] is None
+    assert locations[0]["chunk_x"] == -1
+    assert locations[0]["outcomes"] == {"NO_CONTENT_OBSERVED": 1}
+
+
+def test_overlapping_patch_origins_remain_explicit() -> None:
+    rows = [
+        outcome(1, "supplementaries:cave_urn_cache", [1, 2, 3]),
+        outcome(2, "supplementaries:cave_urn_cache", [2, 2, 3]),
+    ]
+    result = nonregistry_location_groups(rows, {})
+    assert result["overlaps"] == [{"candidates": [0, 1], "shared_content_positions": 1}]
+    assert result["status"] == "CANDIDATES_AWAITING_ACCEPTANCE"
+
+
+def test_overlapping_frames_reject_ambiguous_denominator() -> None:
+    with pytest.raises(ValueError, match="overlapping sample frames"):
+        _ = nonregistry_location_groups(
+            [outcome(1, "quark:spiral_spire", [0, 0, 0])],
+            {"a": ("minecraft:the_end", (0, 1, 0, 1)), "b": ("minecraft:the_end", (0, 1, 0, 1))},
+        )

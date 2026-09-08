@@ -1240,3 +1240,22 @@ reproduce their cave-parent attempt counts and successful urn content-position
 counts. Synthetic cases retain multiple urn blocks in one attempt, refused writes,
 post-template erosion and exceptions with partial content. Scoped Ruff and test
 basedpyright checks pass. No new runtime observation or density result is claimed.
+
+`nonregistry_location_groups` reduces one world's outcomes by dimension, family,
+accessor route and exact source/placement anchor. Spiral contributions sharing
+their source remain one candidate with every attempt ID retained. Arena height
+is not part of the key: its components share central X/Z, with location Y left
+unavailable instead of choosing a spike height. Other coincident anchors group
+without inventing additional sites from repeated attempts. Distinct anchors that
+share observed content remain separate candidates with explicit overlap pairs
+and shared-position counts, pending overlap acceptance. No proximity threshold
+or adaptive clustering rule is introduced.
+
+Frame membership uses floor-divided anchor X/Z and dimension. Sources outside
+all selected frames, zero-content outcomes and unattributed attempts remain in
+the result; overlapping frame membership is rejected. Output order is deterministic
+under reordered input, and the status remains `CANDIDATES_AWAITING_ACCEPTANCE`.
+Saved-world corroboration and provider acceptance must precede density totals.
+The focused attribution/collection/spatial/census suite passes 68 tests, including
+the retained mixed traces' exact spiral source counts. Scoped Ruff and test-file
+basedpyright checks pass.
