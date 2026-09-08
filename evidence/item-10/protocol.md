@@ -336,3 +336,35 @@ After clean stop, run the counter once over the declared rectangle, retain its
 output or failure, measure actual elapsed time and storage, then archive and
 verify a restored copy with the existing custody tools before releasing any
 materialization or scaling. No player participation or screen recording is used.
+
+## BetterEnd runtime diagnostic r1
+
+Predeclared before launch on 2026-09-08. Use the unchanged existing diagnostic
+runner with `--name betterend-probe-r1 --mode probe --role mountainous` and the
+Item 7 `run` selections: 3,969 Overworld chunks and 961 each in Nether, central
+End and outer End (6,852 total). This tests the extension committed as `3594b2be`;
+the diagnostic receipt records the exact launch revision and built agent hash.
+It is not one of the full-frame sampling worlds or a repeat equality experiment.
+
+The fresh materialization must pass the existing frozen-input preflight. Keep
+the 900-second lifecycle timeout, 1 to 4 GiB heap, unchanged configurations and
+correlated save-flush/clean-stop requirements. Current capacity is 8.8 GiB disk
+and 9.2 GiB available RAM, with no Java process found. The prior same-seed r3
+run took about six minutes and retained about 138 MB of world data. Reserve
+1 GiB for this bounded diagnostic and custody as a planning allowance, with
+additional trace cost measured from this run rather than assumed negligible.
+
+Require installation records for all four new target classes, matching the
+exact input class hashes in the existing Item 8 identities used by the fixture.
+Any changed runtime class identity, installation failure, malformed or incomplete
+trace, unsuccessful lifecycle or missing expected region coverage rejects the
+runtime capture gate and remains retained. At least one paired BetterEnd template
+attempt with successful content writes is required to proceed to saved-world
+corroboration. Zero eligible attempts is INSUFFICIENT, not an accepted zero density.
+Preserve empty, refused and exceptional attempts. Validate source-path attribution
+against the existing canonical family mapping before accepting any occurrence.
+No full-world equality or observer-free equivalence claim is required or implied.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-probe-r1 --mode probe --role mountainous
+```
