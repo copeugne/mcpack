@@ -9,6 +9,7 @@ import re
 import shlex
 import subprocess
 from pathlib import Path
+from typing import cast
 
 from tools.run_item7_worldgen import execute
 
@@ -19,18 +20,21 @@ from mcpack_evidence.item7_selections import RUN_SELECTIONS
 def main() -> None:
     """Record the observational overlay, then use the established lifecycle unchanged."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--name", required=True)
-    parser.add_argument("--mode", choices=("probe", "control"), required=True)
-    parser.add_argument(
+    _ = parser.add_argument("--name", required=True)
+    _ = parser.add_argument("--mode", choices=("probe", "control"), required=True)
+    _ = parser.add_argument(
         "--role",
         choices=("ordinary", "mountainous", "ocean-heavy", "biome-diverse"),
         default="ordinary",
     )
     args = parser.parse_args()
-    if not re.fullmatch(r"[a-z][a-z0-9-]*", args.name):
+    instance_name = cast("str", args.name)
+    mode = cast("str", args.mode)
+    role = cast("str", args.role)
+    if not re.fullmatch(r"[a-z][a-z0-9-]*", instance_name):
         parser.error("name must contain only lowercase letters, digits and hyphens")
-    output = Path("evidence/raw/item10") / args.name
-    target = Path("instances/item10") / args.name
+    output = Path("evidence/raw/item10") / instance_name
+    target = Path("instances/item10") / instance_name
     if output.exists() or target.exists():
         parser.error("diagnostic output and instance must both be absent")
     for name in ("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS"):
@@ -44,13 +48,13 @@ def main() -> None:
         "source_revision": subprocess.check_output(
             ["/usr/bin/git", "rev-parse", "HEAD"], text=True
         ).strip(),
-        "mode": args.mode,
+        "mode": mode,
         "java_version": version,
         "java_tool_options": "",
     }
     try:
         options = ""
-        if args.mode == "probe":
+        if mode == "probe":
             classes = output / "classes"
             classes.mkdir()
             source = Path("tools/Item10PlacementProbe.java")
@@ -120,7 +124,7 @@ def main() -> None:
             frozen_manifest=Path("evidence/item-6/generated-config-manifest.json"),
             config_audit=Path("evidence/item-6/config-audit.json"),
             java_home=java_home,
-            role=args.role,
+            role=role,
             target=target,
             log_path=output / "console.log",
             captured_config=output / "captured-config",
