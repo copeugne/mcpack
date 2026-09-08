@@ -121,6 +121,8 @@ def test_integrated_retained_urn_analysis_binds_census_and_preserves_failures() 
         == 429
     )
     assert result["status"] == "CANDIDATES_AWAITING_ACCEPTANCE"
+    observations = cast("list[dict[str, object]]", result["location_observations"])
+    assert sum(row["disposition"] == "OBSERVED_LOCATION" for row in observations) == 7
     with pytest.raises(ValueError, match="registry census inputs differ"):
         _ = nonregistry_analysis(
             world,

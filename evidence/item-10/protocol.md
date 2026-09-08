@@ -1308,3 +1308,26 @@ that raw sites are 1 through 4, with site 1 corresponding to offset 193. The
 reader now uses site 1. The correction and origin-state integration pass 48
 focused attribution/collection/saved-content tests, including false-return
 non-air and true-return air cases. No recorded raw event was changed.
+
+### Location observation acceptance
+
+For the integrated reader, a location observation is one canonical source group
+with constructive content confirmed at a recorded position in the stopped world.
+It is not proof of an intact dungeon, usable loot or a complete visible ring.
+Require an in-frame anchor, ordinary generation context, no exceptional attempt
+in the group and no unresolved shared-content overlap. Compare the last observed
+constructive block IDs, including post-call flower states, to saved observations.
+Missing required saved content remains unavailable; content with no surviving
+match remains not preserved. Retain the matching and nonmatching position counts
+even when some content survives. Report partial failures and overlaps separately
+instead of accepting them or treating them as generation zeros. Full density
+acceptance still requires the independently complete observer identity/coverage
+gate and full predeclared sampling; diagnostic location observations do not pass
+that gate on their own.
+
+The integrated command implements these dispositions in `location_observations`,
+retaining the candidate records and per-position check counts. The retained urn
+pilot confirms seven in-frame cache observations, with 468 zero-content and 811
+out-of-frame source groups preserved. Its README records the reproducible output
+identity. The 56 focused attribution/collection/saved-content tests pass, including
+missing evidence, changed content, exceptions, non-worldgen context and overlaps.

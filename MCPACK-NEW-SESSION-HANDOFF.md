@@ -148,6 +148,10 @@ Its 18 focused tests pass. This is diagnostic integration, not full measurement.
 Fairy processing now uses collector cleanup site 1 (bytecode offset 193) and
 retains observed flower-origin states separately from direct successful writes.
 All 48 focused tests pass; complete ring visibility is not inferred.
+Location dispositions now connect candidate groups to saved constructive content.
+The retained pilot confirms seven in-frame cache observations and retains 468
+zero-content plus 811 out-of-frame groups. All 56 focused tests pass. Full observer
+coverage, sampling and density integration still gate Item 10 acceptance.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

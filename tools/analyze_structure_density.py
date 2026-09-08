@@ -645,6 +645,10 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
         ),
         "refused_writes": refused,
         "content_positions": [list(position) for position in surviving],
+        "content_blocks": [
+            {"position": list(position), "block_id": observed_states[position]}
+            for position in surviving
+        ],
         "last_successful_writes": [
             {"position": list(position), "block_id": block_id}
             for position, block_id in sorted(final_writes.items())
@@ -742,6 +746,57 @@ def nonregistry_location_groups(
     }
 
 
+def location_observation_acceptance(
+    grouped: dict[str, object], outcomes: list[dict[str, object]], saved: dict[str, object]
+) -> list[dict[str, object]]:
+    """Disposition each source without promoting diagnostic coverage to full acceptance."""
+    attempts = {row["attempt"]: row for row in outcomes}
+    observations = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
+    overlapping = {candidate for row in grouped["overlaps"] for candidate in row["candidates"]}
+    result = []
+    for group in grouped["locations"]:
+        expected: dict[tuple[int, ...], set[str]] = collections.defaultdict(set)
+        for attempt in group["attempts"]:
+            for block in attempts[attempt]["content_blocks"]:
+                expected[tuple(block["position"])].add(block["block_id"])
+        checks = collections.Counter()
+        for position, identifiers in expected.items():
+            row = observations.get((group["dimension"], *position))
+            state = row["saved_state"] if row else None
+            checks[
+                "UNAVAILABLE"
+                if state is None
+                else "MATCH"
+                if state["Name"] in identifiers
+                else "MISMATCH"
+            ] += 1
+        disposition = (
+            "OUTSIDE_FRAME"
+            if group["frame"] is None
+            else "NON_WORLDGEN_CONTEXT"
+            if group["route"] != "ordinary_generation"
+            else "PARTIAL_FAILURE"
+            if any(key.startswith("EXCEPTION") for key in group["outcomes"])
+            else "NO_CONSTRUCTIVE_CONTENT"
+            if not expected
+            else "OVERLAP_REVIEW_REQUIRED"
+            if group["candidate_id"] in overlapping
+            else "SAVED_CONTENT_UNAVAILABLE"
+            if checks["UNAVAILABLE"]
+            else "CONTENT_NOT_PRESERVED"
+            if not checks["MATCH"]
+            else "OBSERVED_LOCATION"
+        )
+        result.append(
+            {
+                "candidate_id": group["candidate_id"],
+                "disposition": disposition,
+                "content_position_checks": dict(sorted(checks.items())),
+            }
+        )
+    return result
+
+
 def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and saved observations
     world: Path,
     raw: Path,
@@ -823,7 +878,7 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
             {
                 key: value
                 for key, value in outcome.items()
-                if key not in {"last_successful_writes", "content_positions"}
+                if key not in {"last_successful_writes", "content_positions", "content_blocks"}
             }
             | {"saved_block_checks": dict(sorted(checks.items()))}
         )
@@ -837,8 +892,10 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
                 }
                 for flower in outcome["flower_observations"]
             ]
+    grouped = nonregistry_location_groups(outcomes, frames)
     return {
-        **nonregistry_location_groups(outcomes, frames),
+        **grouped,
+        "location_observations": location_observation_acceptance(grouped, outcomes, saved),
         "scope": "candidate evidence only; provider and overlap acceptance remain required",
         "archive_manifest_sha256": hashlib.sha256(archive_bytes).hexdigest(),
         "trace_sha256": members["trace.jsonl"]["sha256"],

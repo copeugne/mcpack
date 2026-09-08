@@ -146,8 +146,9 @@ registry start. The complete mixed trace retains 1,291 attempts, including 1,195
 successful block checks match saved block IDs. Grouping yields 1,286 candidate
 sources, including zero-content and out-of-frame sources, with no shared content
 positions between groups. Seven cave-cache candidates have content and anchors
-inside this selected Overworld frame. These are not accepted cache counts:
-provider completeness and the full Item 10 sampling gate remain unresolved.
+inside this selected Overworld frame. The integrated saved-content acceptance
+now confirms those seven as diagnostic location observations. They do not pass
+the full Item 10 observer completeness and sampling gates.
 
 Reproduce into a new output path outside the world:
 
@@ -155,9 +156,13 @@ Reproduce into a new output path outside the world:
 uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/urn-pilot-r1-custody/restored-world/world /tmp/item10-integrated-urn-candidates.json --dimension minecraft:overworld --bounds -4 4 -4 4 --classify --spatial --biomes --trace-root evidence/raw/item10/urn-pilot-r1-custody/restored --trace-manifest evidence/item-10/urn-pilot-r1/archive-manifest.json
 ```
 
-The deterministic output is 1,471,237 bytes, SHA-256
+The initial candidate-only output at `0ef4e693` was 1,471,237 bytes, SHA-256
 `b7c09502a065b4962d7259e10038f00310f54ec1340719eb3c01d21793952692`.
-Two executions produced that same hash. The output is derived from the existing
+Two executions produced that same hash. The current output including location
+dispositions is 1,638,506 bytes, SHA-256
+`7b43e7534c9b3d776ebc98393f34d0d712c53d392117272dc8d513eb9239f47b`.
+It retains seven `OBSERVED_LOCATION`, 468 `NO_CONSTRUCTIVE_CONTENT` and 811
+`OUTSIDE_FRAME` dispositions. The output is derived from the existing
 durable raw evidence, not a new primary archive; this command and the committed
 reader reproduce it. The integrated saved-content/census suite passes 18 tests,
 including rejection of registry census hashes from a different world identity.

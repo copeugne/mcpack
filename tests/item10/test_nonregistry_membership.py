@@ -5,6 +5,7 @@ from typing import cast
 import pytest
 from tools.analyze_structure_density import (
     attribute_nonregistry_attempt,
+    location_observation_acceptance,
     nonregistry_attempt_outcome,
     nonregistry_location_groups,
     nonregistry_membership,
@@ -230,6 +231,7 @@ def outcome(number: int, family: str, anchor: list[int]) -> dict[str, object]:
         "route": "ordinary_generation",
         "outcome": "CONTENT_OBSERVED",
         "content_positions": [[1, 2, 3]],
+        "content_blocks": [{"position": [1, 2, 3], "block_id": "supplementaries:urn"}],
     }
 
 
@@ -279,3 +281,44 @@ def test_overlapping_frames_reject_ambiguous_denominator() -> None:
             [outcome(1, "quark:spiral_spire", [0, 0, 0])],
             {"a": ("minecraft:the_end", (0, 1, 0, 1)), "b": ("minecraft:the_end", (0, 1, 0, 1))},
         )
+
+
+@pytest.mark.parametrize(
+    ("case", "expected"),
+    [
+        ("normal", "OBSERVED_LOCATION"),
+        ("missing", "SAVED_CONTENT_UNAVAILABLE"),
+        ("changed", "CONTENT_NOT_PRESERVED"),
+        ("failure", "PARTIAL_FAILURE"),
+        ("empty", "NO_CONSTRUCTIVE_CONTENT"),
+        ("outside", "OUTSIDE_FRAME"),
+        ("lifecycle", "NON_WORLDGEN_CONTEXT"),
+        ("overlap", "OVERLAP_REVIEW_REQUIRED"),
+    ],
+)
+def test_location_observation_dispositions_preserve_uncertainty(case: str, expected: str) -> None:
+    row = outcome(1, "supplementaries:cave_urn_cache", [1, 2, 3])
+    if case == "failure":
+        row["outcome"] = "EXCEPTION_WITH_CONTENT"
+    if case == "lifecycle":
+        row["route"] = "non_worldgen_accessor"
+    if case == "empty":
+        row.update(content_blocks=[], content_positions=[], outcome="NO_CONTENT_OBSERVED")
+    rows = [row]
+    if case == "overlap":
+        rows.append(outcome(2, "supplementaries:cave_urn_cache", [2, 2, 3]))
+    frames = {} if case == "outside" else {"end": ("minecraft:the_end", (0, 0, 0, 0))}
+    grouped = nonregistry_location_groups(rows, frames)
+    saved: dict[str, object] = {
+        "observations": [
+            {
+                "dimension": "minecraft:the_end",
+                "position": [1, 2, 3],
+                "saved_state": None
+                if case == "missing"
+                else {"Name": "minecraft:air" if case == "changed" else "supplementaries:urn"},
+            }
+        ]
+    }
+    dispositions = location_observation_acceptance(grouped, rows, saved)
+    assert all(item["disposition"] == expected for item in dispositions)
