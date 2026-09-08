@@ -175,12 +175,21 @@ observer/custody checks pass. Result SHA-256 is
 `84181564564b2c5bb5f804852214e6d1105df901a238ef51775dabdd6a5618a4`,
 110,369,600 bytes, runtime 8m21.506s. The control README records per-stratum
 counts, first matched deltas, 1,376 observed nonregistry locations and six retained
-CONTENT_NOT_PRESERVED cave-urn exclusions. No analysis/server process is active.
-Two of sixteen worlds have individual acceptance. Free space is about 41.6 GiB;
-control working allocation is about 1.98 GiB. Next: fresh ordinary repetition-2
-without-Sparse, then repetition-2 baseline, followed by the other twelve worlds.
-Keep frozen order and full per-world checks. Complete cross-repetition/seed,
-spatial/biome synthesis, consolidated PR review/merge and cross-item audit.
+CONTENT_NOT_PRESERVED cave-urn exclusions. First-pair acceptance is pushed at
+`6747b6b1`. The fresh second control `full-ordinary-r2-without-sparse` finished
+cleanly in 561.808s from that source; session `82382` is terminal 0. Its run,
+configuration and observer identities match repetition 1. The
+[second-control evidence](evidence/item-10/full-ordinary-r2-without-sparse/README.md)
+records the published 313-file raw archive, local/download restores and 504-file
+world restore. No Java server is active. Full second-control analysis is running
+in exec session `46192`; poll it, do not restart on silence. Output is
+`evidence/raw/item10/full-ordinary-r2-without-sparse-analysis/all-strata.json`,
+with timing/diagnostics in `all-strata-runtime.txt` beside it.
+Two worlds are accepted, a third has complete generation/custody. Next: finish
+this census and repetition comparison, measure storage, then fresh ordinary
+repetition-2 baseline and the twelve other-seed worlds. Keep frozen order and
+full checks. Complete cross-repetition/seed and spatial/biome synthesis,
+consolidated PR review/merge and the cross-item audit.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
