@@ -69,3 +69,14 @@ byte for byte. No raw archive revision was created for this reader-only change.
 
 Validation: all 350 Item 7/10 tests pass in 65.27 seconds. Changed-reader/test
 Ruff and basedpyright checks pass. No Item 11 workflow ran.
+
+## Reviewed delivery
+
+PR29 merged the collector and retained diagnostic as
+`3b50c59a1504f6cca7240bb4ef99c67569caf5b7`. Fetched `origin/main` contains
+reviewed head `6aa2713d7e16ef66cabd3f114f8317b68797184b`.
+The [clean review](https://github.com/copeugne/mcpack/pull/29#issuecomment-5580397624)
+completed on 2026-09-08 at 06:33:42 UTC with no inline or review findings;
+the Codex bot added a thumbs-up to the pull request at 06:33:45 UTC.
+This delivery preserves the failed positive-capture gate, not Item 10 completion.
+The archive-bound reader extension above is a separate subsequent milestone.
