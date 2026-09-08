@@ -10,8 +10,9 @@ links their authoritative records and current continuation state. The
 with heap exhaustion and remains preserved. The single predeclared
 [same-identity retry](full-ocean-heavy-r2-without-sparse-attempt2/README.md) passed
 generation and custody but failed census on one incomplete saved Aether chunk.
-The retry policy is exhausted and collection is paused for diagnosis and an
-explicit continuation decision. Neither failure reduces the full-sample requirement. Final combined
+The user has authorized the five remaining planned worlds, followed by exactly
+one fresh attempt-3 control retry under the unchanged frozen configuration.
+The target remains sixteen complete worlds; both failures remain preserved. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
 Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
 
@@ -85,8 +86,8 @@ those outputs. No world was regenerated and no measurements were recomputed.
 Remaining seed/repetition coverage and final synthesis
 remain incomplete. The rejected
 ocean-heavy r2 control attempts supply no density row and no zero observation.
-The [proposed continuation](protocol.md#proposed-continuation-after-both-failed-attempts)
-is awaiting user agreement and is not an active amendment.
+The [authorized continuation](protocol.md#authorized-continuation-and-final-bounded-retry)
+runs the five untouched planned worlds before the final fresh control retry.
 
 ## Accepted counts outside the Overworld
 
@@ -222,8 +223,9 @@ generation, then an incomplete saved Aether chunk following a save exception.
 Five planned cells remain unattempted. This is twelve attempts over eleven
 attempted cells, not twelve completed worlds or six measured zero-density cells.
 The failed attempts retain their immutable archives and diagnoses. No missing
-cell enters density, distance or matched-pair denominators. The proposed change
-to the completion contract remains inactive pending the user's decision.
+cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
+control retry after the five untouched planned worlds. Sixteen complete cells
+remain required.
 
 Within the ten accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts

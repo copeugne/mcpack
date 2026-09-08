@@ -183,37 +183,45 @@ These current capacity observations are not a promise that Java allocation will
 succeed within the unchanged 4 GiB heap. The heap-failure shutdown correction
 must be present, and all normal full-census and durability gates still apply.
 
-### Proposed continuation after both failed attempts
+### Authorized continuation and final bounded retry
 
-Status: PROPOSED, NOT AUTHORIZED. No collection may use this paragraph until
-the user accepts the changed completion contract. The current retry policy
-remains exhausted. This proposal changes the requirement for sixteen complete
-worlds; it does not reinterpret the original predeclaration.
+Status: USER AUTHORIZED, 2026-09-08. Amendment `item10-retry-policy-v2`.
+The user approved the five remaining planned worlds, followed by exactly one
+additional fresh attempt of ocean-heavy repetition-2 control. The user explicitly
+rejected reducing the target to fifteen complete worlds. This supersedes the
+unaccepted fifteen-world proposal and the exhausted v1 retry limit for this cell.
 
-Keep the frozen runtime, observer, geometry and both failed attempts. Run only
-the five untouched planned cells in their existing order: ocean-heavy r2 baseline,
-then biome-diverse r1 baseline, r1 control, r2 control and r2 baseline. Each gets
-one attempt. No replacement of the failed ocean-heavy r2 control is allowed.
-If another cell fails, stop for a new disposition rather than silently accepting
-additional missing measurements. All accepted worlds still require the complete
-45,056-chunk census and existing custody, coverage and content gates.
+Execute in this order: ocean-heavy r2 baseline, biome-diverse r1 baseline,
+biome-diverse r1 control, biome-diverse r2 control, biome-diverse r2 baseline,
+then `full-ocean-heavy-r2-without-sparse-attempt3` with `--attempt 3`.
+The original five cells each retain their planned first attempt. The final retry
+uses a fresh absent instance/output path and the unchanged frozen configuration,
+runtime, observer, heap, seed and complete selections. Both previous failures,
+their raw archives and their original paths remain unchanged. No tuning, world
+repair, reused proof world or further automatic retry is authorized.
 
-If those five pass, the delivered matrix has sixteen planned cells, seventeen
-attempts, fifteen complete cells and one failed cell with two failed attempts.
-Density summaries use observed exposure only. Matched Sparse contrasts use seven
-complete pairs rather than eight; ocean-heavy has one matched pair. Retain the
-unpaired ocean-heavy baseline in descriptive results, without inventing a control
-or treating failure as zero density. Report the reduced repetition coverage and
-results conditional on successful generation. Neither runtime failure is repaired
-by this disposition. Final synthesis, review, merge and cross-item audit still
-apply, including explicit operational limitations from these failures.
+The target remains sixteen complete planned cells and eight matched pairs.
+If all six runs pass, report eighteen attempts, sixteen complete cells and the
+two retained failed attempts. Failed attempts are not zeros or successful
+repetitions. Preserve actual failures and censoring if any new run fails; do not
+claim sixteen complete worlds or revise the target silently. Complete all five
+planned runs before the final retry; assess any new failure without authorizing
+an additional retry. Full census, custody, review, merge and cross-item audit
+requirements remain unchanged. Successful-run results remain conditional on
+completion, not proof of runtime reliability or a repaired Aether defect.
 
-Budget: reserve about 10 GiB for five further complete collections and custody,
-based on the accepted first ocean pair's approximately 1.86 and 1.92 GiB totals.
-Observed generation plus census was about 16 to 18 minutes per world in that pair;
-allow roughly two hours plus custody overhead, not a guaranteed bound. The existing
-four-hour generation ceiling remains per attempt. Current free disk is
-22,015,430,656 bytes; recheck capacity before launch. No human play is required.
+Reserve about 12 GiB for the six further materializations, censuses and custody,
+based on the first ocean pair's approximately 1.86 and 1.92 GiB totals per world.
+Generation plus census in that pair took about 16 to 18 minutes per world;
+allow roughly two hours plus custody overhead, not a guaranteed bound. The
+four-hour generation ceiling remains per attempt. Before this batch, free disk
+is 21,946,347,520 bytes and available memory is 9,743,626,240 bytes. Recheck
+capacity before each launch. No cleanup or human play is required.
+
+The existing runner now accepts attempt 3 only for this exact role/repetition/arm.
+Its focused collection tests pass 14 cases in 4.10 seconds, including preservation
+of both previous attempt directories and rejection of other third-attempt arms
+and attempt 4. Ruff check/format and focused test-file BasedPyright pass.
 
 ## Occurrences and denominators
 

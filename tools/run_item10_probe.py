@@ -28,7 +28,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
     _ = parser.add_argument("--preset", choices=("pilot", "run", "item10"), default="run")
     _ = parser.add_argument("--arm", choices=("baseline", "without-sparse"))
     _ = parser.add_argument("--repetition", type=int, choices=(1, 2))
-    _ = parser.add_argument("--attempt", type=int, choices=(1, 2))
+    _ = parser.add_argument("--attempt", type=int, choices=(1, 2, 3))
     fixtures = parser.add_mutually_exclusive_group()
     _ = fixtures.add_argument("--betterend-fixture", action="store_true")
     _ = fixtures.add_argument("--bop-fixture", action="store_true")
@@ -53,6 +53,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
     if preset == "item10":
         if mode != "probe" or arm is None or repetition is None:
             parser.error("Item 10 sampling requires probe mode, an explicit arm and repetition")
+        if attempt == 3 and (role, repetition, arm) != ("ocean-heavy", 2, "without-sparse"):  # noqa: PLR2004 - exact authorized final attempt.
+            parser.error("attempt 3 is authorized only for ocean-heavy repetition-2 control")
         expected_name = f"full-{role}-r{repetition}-{arm}"
         if attempt != 1:
             expected_name += f"-attempt{attempt}"

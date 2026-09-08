@@ -14,13 +14,23 @@ from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate
 from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 
 
-@pytest.mark.parametrize("arm", ["baseline", "without-sparse"])
-@pytest.mark.parametrize("attempt", [1, 2])
-def test_full_runner_builds_observer_for_both_arms(
+@pytest.mark.parametrize(
+    ("arm", "attempt", "role", "repetition"),
+    [
+        ("baseline", 1, "ordinary", 1),
+        ("without-sparse", 1, "ordinary", 1),
+        ("baseline", 2, "ordinary", 1),
+        ("without-sparse", 2, "ordinary", 1),
+        ("without-sparse", 3, "ocean-heavy", 2),
+    ],
+)
+def test_full_runner_builds_observer_for_both_arms(  # noqa: PLR0913, PLR0917 - explicit sampling cases.
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     arm: str,
     attempt: int,
+    role: str,
+    repetition: int,
 ) -> None:
     root = Path(__file__).parents[2]
     java_home = root / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1"
@@ -61,16 +71,17 @@ def test_full_runner_builds_observer_for_both_arms(
         return RunReceipt(preflight=None, lifecycle=None, configuration=None, rejection_reason=None)
 
     monkeypatch.setattr(runner, "execute", execute)
-    name = f"full-ordinary-r1-{arm}"
+    name = f"full-{role}-r{repetition}-{arm}"
     preserved: list[Path] = []
-    if attempt == 2:
-        for parent in ("evidence/raw/item10", "instances/item10"):
-            original = tmp_path / parent / name
-            original.mkdir(parents=True)
-            sentinel = original / "retained-failure.txt"
-            _ = sentinel.write_text("preserve failed attempt\n")
-            preserved.append(sentinel)
-        name += "-attempt2"
+    if attempt > 1:
+        for suffix in ("", "-attempt2")[: attempt - 1]:
+            for parent in ("evidence/raw/item10", "instances/item10"):
+                original = tmp_path / parent / (name + suffix)
+                original.mkdir(parents=True)
+                sentinel = original / "retained-failure.txt"
+                _ = sentinel.write_text("preserve failed attempt\n")
+                preserved.append(sentinel)
+        name += f"-attempt{attempt}"
     monkeypatch.setattr(
         sys,
         "argv",
@@ -85,8 +96,10 @@ def test_full_runner_builds_observer_for_both_arms(
             "--arm",
             arm,
             "--repetition",
-            "1",
-            *(["--attempt", "2"] if attempt == 2 else []),
+            str(repetition),
+            "--role",
+            role,
+            *(["--attempt", str(attempt)] if attempt > 1 else []),
         ],
     )
     runner.main()
@@ -98,7 +111,7 @@ def test_full_runner_builds_observer_for_both_arms(
     output = tmp_path / "evidence/raw/item10" / name
     report = cast("dict[str, object]", json.loads((output / "diagnostic.json").read_text()))
     assert report["arm"] == arm
-    assert report["repetition"] == 1
+    assert report["repetition"] == repetition
     assert report["attempt"] == attempt
     assert calls[0].target == Path("instances/item10") / name
     assert all(path.read_text() == "preserve failed attempt\n" for path in preserved)
@@ -160,7 +173,21 @@ def test_changed_collector_source_is_rejected_before_build_or_launch(
         ["--mode", "probe", "--preset", "item10"],
         ["--mode", "probe", "--preset", "pilot", "--arm", "baseline"],
         ["--mode", "probe", "--preset", "pilot", "--attempt", "2"],
-        ["--mode", "probe", "--preset", "item10", "--attempt", "3"],
+        ["--mode", "probe", "--preset", "item10", "--attempt", "4"],
+        [
+            "--mode",
+            "probe",
+            "--preset",
+            "item10",
+            "--attempt",
+            "3",
+            "--arm",
+            "baseline",
+            "--repetition",
+            "2",
+            "--role",
+            "ocean-heavy",
+        ],
         [
             "--mode",
             "probe",

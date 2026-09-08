@@ -152,7 +152,9 @@ and emergency timeout with process-group termination. Ruff check/format and focu
 BasedPyright pass for the changed lifecycle and test files. These are simulated
 harness tests, not a new Minecraft experiment or proof that the runtime is repaired.
 
-The one-retry policy is exhausted. Collection is paused for a new explicit
-resource/protocol decision after diagnosis. Both attempts remain failures in the
+The one-retry policy was exhausted at rejection. The subsequent user-authorized
+[v2 continuation](../protocol.md#authorized-continuation-and-final-bounded-retry)
+runs the five untouched worlds before one final fresh control retry, keeping
+the target at sixteen complete worlds. Both prior attempts remain failures in the
 run matrix: the first failed generation, the second failed complete census.
 The full planned sample and final report/review/audit remain incomplete.
