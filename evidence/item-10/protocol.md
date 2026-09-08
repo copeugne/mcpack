@@ -49,6 +49,31 @@ not only chunks that contain starts. This replaces the draft's four-stage ladder
 no full sampling run used that ladder and no observed count selected this area.
 The historical scaffold remains unchanged and is not an active stopping rule.
 
+Generation uses the existing Chunky square selection with radius `32c`, centered
+at block `(0, 0)` or outer End `(8192, 8192)`. This requests 4,225 chunks per
+stratum, including 129 edge chunks outside the 4,096-chunk census. The positive
+edge at chunk 32 (544 for outer End) is excluded from all density denominators.
+There are 46,475 requested generation chunks and 45,056 census chunks per world,
+or 743,600 requested and 720,896 census chunks across 16 worlds. Further natural
+generation halo remains possible. The explicit edge adds 3.1494140625 percent
+to requested generation relative to the census; it does not change sampling.
+
+This choice follows direct inspection of the pinned Chunky 1.4.23 JAR (SHA-256
+`d72f235cf1f56f2c374f52c00bdda5034524b28142305a84cfc123a3f92ad274`). Its
+`org.popcraft.chunky.iterator.Loop2ChunkIterator(Selection)` uses inclusive
+`centerChunk +/- radiusChunks` bounds (bytecode offsets 31 through 60).
+`CornersCommand.execute` converts corners to center and radii (179 through 323),
+so corners alone do not avoid the odd-width iterator. Reproduce this inspection
+with the pinned JDK's `bin/javap -c -p -classpath
+downloads/item3/candidates/Chunky-NeoForge-1.4.23.jar` followed by either fully
+qualified class name. `ITEM10_SELECTIONS` in the existing selection module binds
+all eleven requests in lexical dimension order; `WorldgenRequest(mode="item10")`
+rejects selection drift. Existing Item 7 pilot/run geometry remains fixed.
+The focused regression command is `uv run --no-sync pytest -q
+tests/item10/test_full_selections.py tests/item7/test_worldgen_lifecycle.py
+tests/item7/test_protocol.py` (34 passed). This validates request geometry and
+the reused lifecycle, not full collection or complete saved-chunk coverage.
+
 Collect two independent fresh worlds per seed and arm, for four seeds, eleven
 strata, two repetitions and two arms: 720,896 selected chunks in 16 worlds.
 Each world contains all eleven fixed strata (45,056 selected chunks). Do not

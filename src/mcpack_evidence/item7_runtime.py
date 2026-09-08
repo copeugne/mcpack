@@ -15,7 +15,12 @@ from typing import ClassVar, Final, Literal, final, override
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from mcpack_evidence.item6_validation import validate
-from mcpack_evidence.item7_selections import PILOT_SELECTIONS, RUN_SELECTIONS, WorldgenSelection
+from mcpack_evidence.item7_selections import (
+    ITEM10_SELECTIONS,
+    PILOT_SELECTIONS,
+    RUN_SELECTIONS,
+    WorldgenSelection,
+)
 
 CHUNKY_FILENAME: Final = "Chunky-NeoForge-1.4.23.jar"
 CHUNKY_SIZE_BYTES: Final = 340572
@@ -64,16 +69,18 @@ class WorldgenRequest(BaseModel):
     target: Path
     log_path: Path
     captured_config: Path
-    mode: Literal["pilot", "run"] = "pilot"
+    mode: Literal["pilot", "run", "item10"] = "pilot"
     selections: tuple[WorldgenSelection, ...]
     timeout_seconds: int = Field(ge=0)
 
     @model_validator(mode="after")
     def require_fixed_selections(self) -> WorldgenRequest:
         """Reject selection drift from the declared pilot or run geometry."""
-        expected = PILOT_SELECTIONS if self.mode == "pilot" else RUN_SELECTIONS
+        expected = {"pilot": PILOT_SELECTIONS, "run": RUN_SELECTIONS, "item10": ITEM10_SELECTIONS}[
+            self.mode
+        ]
         if self.selections != expected:
-            detail = f"{self.mode} selections differ from the fixed Item 7 geometry"
+            detail = f"{self.mode} selections differ from the fixed generation geometry"
             raise ValueError(detail)
         return self
 
