@@ -651,6 +651,21 @@ def collection_attempts(  # noqa: C901, PLR0912, PLR0915
     for value in (trace_sha256, *class_digests.values()):
         if len(value) != SHA256_HEX_LENGTH or any(c not in "0123456789abcdef" for c in value):
             fail("invalid declared collection digest")
+    class_root = path.with_name(path.name + ".classes")
+    if class_root.is_symlink() or not class_root.is_dir():
+        fail("missing or linked collection incoming-class directory")
+    for name, expected in class_digests.items():
+        parts = name.split("/")
+        if not name or any(part in {"", ".", ".."} or "\\" in part for part in parts):
+            fail("invalid collection incoming-class path")
+        member = class_root / (name + ".class")
+        if not member.resolve().is_relative_to(class_root.resolve()) or member.is_symlink():
+            fail("collection incoming class escapes its directory or is linked")
+        if not member.is_file():
+            fail("missing collection incoming class: " + name)
+        with member.open("rb") as class_stream:
+            if hashlib.file_digest(class_stream, "sha256").hexdigest() != expected:
+                fail("collection incoming class differs from declared identity: " + name)
     with path.open("rb") as stream:
         if hashlib.file_digest(stream, "sha256").hexdigest() != trace_sha256:
             fail("collection trace differs from declared archive identity")

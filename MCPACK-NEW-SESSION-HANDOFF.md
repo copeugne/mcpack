@@ -126,7 +126,9 @@ the retained Bridge/Extras archives. Family attribution now joins exact classes
 and template paths to all 40 accepted nonregistry families, with 57 focused tests
 passing. Six existing ambient exclusions are integrated; an observed disconnected
 house fails as an inventory conflict. Attribution does not imply placement success.
-Provider-specific success, incoming-class file binding and the location table remain.
+The full reader now binds retained incoming-class bytes before yielding attempts;
+91 collection/retained-trace tests pass. Provider-specific success, the complete
+full-protocol observer identity set and the location table remain.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

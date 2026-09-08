@@ -1162,16 +1162,25 @@ metadata, pairs template/flower delegates and requires healthy terminal shutdown
 Failed attempts and refused writes remain explicit output, not accepted locations.
 
 The caller must supply independently verified archive/class identities and exhaust
-the iterator before publishing any result. This is structural trace validation,
-not family attribution, provider-specific success validation or location counting.
-Those acceptance steps and actual incoming-class file verification remain required
-in the full collection integration. Existing fixed-diagnostic readers are unchanged.
+the iterator before publishing any result. Before yielding attempts, the reader
+hashes every declared incoming class in the adjacent `trace.jsonl.classes` tree.
+Missing files, digest mismatches, linked class files and paths escaping that tree
+reject processing. Trace installation hashes must match those same identities.
+This binds retained bytes, not just installation claims. It does not establish
+that the caller supplied the complete required observer set; full-protocol
+identity selection remains mandatory. Provider-specific success validation and
+location counting also remain required. Existing fixed-diagnostic readers are
+unchanged.
 
 Validation: 88 collection/retained-trace tests pass in 0.37 seconds. Both actual
 Bridge and Extras archived traces retain exactly their accepted attempt/write
 counts through this reader. Mutation tests reject mismatched hashes/installations,
 missing ends/shutdown, duplicate attempts/metadata, malformed values, unpaired
 delegates and undeclared dimensions. Focused Ruff and basedpyright checks pass.
+The subsequent incoming-file integration passes 91 collection/retained-trace
+tests, including both restored Bridge/Extras class trees and missing, altered or
+linked incoming files. Reproduce with `uv run --no-sync pytest -q
+tests/item10/test_collection_trace.py tests/item10/test_retained_trace.py`.
 
 ### Nonregistry family attribution
 

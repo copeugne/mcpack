@@ -7,15 +7,16 @@ from typing import cast
 
 import pytest
 from tools.analyze_structure_density import attribute_nonregistry_attempt, nonregistry_membership
-from tools.validate_item10_trace import CLASS_SHA, SCARECROW_CLASS, collection_attempts
+from tools.validate_item10_trace import SCARECROW_CLASS, collection_attempts
 
 FEATURE = "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
-DIGESTS = {SCARECROW_CLASS: CLASS_SHA, FEATURE: "a" * 64}
+CLASS_BYTES = {SCARECROW_CLASS: b"scarecrow fixture", FEATURE: b"gateway fixture"}
+DIGESTS = {name: hashlib.sha256(payload).hexdigest() for name, payload in CLASS_BYTES.items()}
 
 
 def events() -> list[dict[str, object]]:
     return [
-        {"kind": "installed", "input_class_sha256": CLASS_SHA},
+        {"kind": "installed", "input_class_sha256": DIGESTS[SCARECROW_CLASS]},
         {"kind": "feature_installed", "class": FEATURE, "input_class_sha256": DIGESTS[FEATURE]},
         {"kind": "begin", "attempt": 1, "dimension": "minecraft:the_end", "origin": [1, 2, 3]},
         {"kind": "feature", "attempt": 1, "class": FEATURE.replace("/", ".")},
@@ -50,11 +51,29 @@ def events() -> list[dict[str, object]]:
 
 
 def consume(
-    tmp_path: Path, rows: list[dict[str, object]], *, wrong_hash: bool = False
+    tmp_path: Path,
+    rows: list[dict[str, object]],
+    *,
+    wrong_hash: bool = False,
+    class_defect: str | None = None,
 ) -> list[list[dict[str, object]]]:
     path = tmp_path / "trace.jsonl"
     payload = "".join(json.dumps(row) + "\n" for row in rows).encode()
     _ = path.write_bytes(payload)
+    for name, content in CLASS_BYTES.items():
+        member = tmp_path / "trace.jsonl.classes" / (name + ".class")
+        member.parent.mkdir(parents=True, exist_ok=True)
+        _ = member.write_bytes(content)
+    target = tmp_path / "trace.jsonl.classes" / (FEATURE + ".class")
+    if class_defect == "missing":
+        target.unlink()
+    elif class_defect == "changed":
+        _ = target.write_bytes(b"changed")
+    elif class_defect == "linked":
+        outside = tmp_path / "outside.class"
+        _ = outside.write_bytes(CLASS_BYTES[FEATURE])
+        target.unlink()
+        target.symlink_to(outside)
     return list(
         collection_attempts(
             path,
@@ -68,6 +87,12 @@ def consume(
 def test_complete_attempt_preserves_refusals_and_all_metadata(tmp_path: Path) -> None:
     rows = events()
     assert consume(tmp_path, rows) == [rows[2:-1]]
+
+
+@pytest.mark.parametrize("defect", ["missing", "changed", "linked"])
+def test_incoming_class_bytes_are_required(tmp_path: Path, defect: str) -> None:
+    with pytest.raises(ValueError, match="collection incoming class"):
+        _ = consume(tmp_path, events(), class_defect=defect)
 
 
 def test_exception_attempt_is_retained_as_failure_not_a_location(tmp_path: Path) -> None:
