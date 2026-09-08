@@ -22,6 +22,72 @@ methodology amendment passed clean review and main delivery through
 [PR22](https://github.com/copeugne/mcpack/pull/22). Earlier diagnostics below retain
 their original limited scope and cannot substitute for the full sample.
 
+## Accepted Overworld comparisons (incomplete sample)
+
+These are direct values from the ten accepted census outputs, not acceptance of
+the full sampling gate. Each row has exactly 4,096 full selected chunks. Rates
+are locations per 1,000 chunks, displayed to three decimals. B is the frozen
+baseline; C omits only Sparse Structures. Actionable candidates are C plus T1
+through T4; encounter sites are T1 through T4. These provisional categories do
+not establish utility, fights or experienced pacing.
+
+| Accepted world | All | Actionable | Encounter sites | T2 | T3 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| [Ordinary r1 B](full-ordinary-r1-baseline/README.md) | 233.154 | 231.201 | 230.957 | 1.709 | 0.000 | 0.244 |
+| [Ordinary r1 C](full-ordinary-r1-without-sparse/README.md) | 250.732 | 244.141 | 243.652 | 5.615 | 0.488 | 0.488 |
+| [Ordinary r2 B](full-ordinary-r2-baseline/README.md) | 228.271 | 226.318 | 226.074 | 1.709 | 0.000 | 0.244 |
+| [Ordinary r2 C](full-ordinary-r2-without-sparse/README.md) | 249.512 | 242.920 | 242.432 | 5.615 | 0.488 | 0.488 |
+| [Mountainous r1 B](full-mountainous-r1-baseline/README.md) | 986.084 | 980.469 | 978.516 | 1.465 | 0.488 | 0.732 |
+| [Mountainous r1 C](full-mountainous-r1-without-sparse/README.md) | 996.826 | 982.666 | 980.469 | 5.371 | 1.709 | 0.732 |
+| [Mountainous r2 B](full-mountainous-r2-baseline/README.md) | 980.713 | 975.342 | 973.389 | 1.465 | 0.488 | 0.732 |
+| [Mountainous r2 C](full-mountainous-r2-without-sparse/README.md) | 1020.996 | 1006.592 | 1004.395 | 5.371 | 1.709 | 0.732 |
+| [Ocean-heavy r1 B](full-ocean-heavy-r1-baseline/README.md) | 315.918 | 313.232 | 312.988 | 1.709 | 0.488 | 0.244 |
+| [Ocean-heavy r1 C](full-ocean-heavy-r1-without-sparse/README.md) | 342.041 | 334.717 | 334.473 | 4.639 | 0.732 | 0.244 |
+
+In these five matched pairs, omitting Sparse Structures increases T2 and T3
+counts. T2 counts are 7 versus 23 in both ordinary repetitions, 6 versus 22 in
+both mountainous repetitions, and 7 versus 19 in the first ocean-heavy pair.
+T3 counts are respectively 0 versus 2, 2 versus 7, and 2 versus 3. Village counts
+increase only in the ordinary pairs. This is a distribution comparison under the
+measurement overlay, not an observer-free causal effect or a basis for tuning.
+
+The much larger mountainous total does not mean more proper dungeons: its baseline
+T2 count is six, versus seven in ordinary and ocean-heavy. T1 dominates the total
+in these samples. Total counts also vary between fresh repetitions even where
+T2/T3 counts remain equal. Do not use all-location density as a dungeon or combat
+proxy, or infer deterministic generation from unchanged category totals.
+
+T2 spatial summaries below use the same rows. Ordinary and mountainous values
+are identical across their two accepted repetitions, so each is shown once.
+Distances are finite-window nearest-observed means in blocks. **Every corresponding
+uncensored nearest-neighbor mean is null** because boundary-censored cases remain.
+Dispersion is population variance/mean across sixteen full 256-chunk cells;
+empty area is the largest rectangle of empty full cells, not an exact empty disk.
+
+| Seed role | T2 finite-window mean B / C | T2 dispersion B / C | T2 empty area in chunks B / C |
+| --- | ---: | ---: | ---: |
+| Ordinary, r1 and r2 | 202.078 / 150.040 | 1.420 / 0.693 | 1536 / 256 |
+| Mountainous, r1 and r2 | 187.960 / 157.017 | 0.958 / 0.352 | 1024 / 256 |
+| Ocean-heavy, r1 only | 214.750 / 139.508 | 1.420 / 0.760 | 1024 / 256 |
+
+Derivation: each linked report binds its `all-strata.json` output by SHA-256 and
+gives the executable census and raw restore commands. All ten output hashes were
+checked against those reports before integration. Read
+`strata.overworld.classification.categories.<category>.count` and
+`per_1000_chunks` for the first table; the latter is count times 1,000 / 4,096.
+For the second table, read `strata.overworld.spatial.T2` fields
+`mean_nearest_observed_blocks`, `mean_nearest_neighbor_blocks`,
+`full_cell_variance_over_mean` and `largest_empty_full_cell_rectangle.area_chunks`.
+These tables directly display existing accepted fields, rounded only for prose.
+Individual neighbors, censoring, grid counts and rectangle bounds remain in
+those outputs. No world was regenerated and no measurements were recomputed.
+
+Other strata, height-band biome comparisons, remaining seed/repetition coverage,
+failure sensitivity and final synthesis remain to be integrated. The rejected
+ocean-heavy r2 control attempts supply no density row and no zero observation.
+The [proposed continuation](protocol.md#proposed-continuation-after-both-failed-attempts)
+is awaiting user agreement and is not an active amendment.
+
 ## Verified dependencies and delivery
 
 Initial dependency inspection used main `edd1dcf9f210097934b17aaa0e054d954077feb4`.

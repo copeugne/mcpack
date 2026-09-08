@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Ten of sixteen worlds have individual census and raw-custody acceptance:
+Ten worlds are accepted; their Overworld density/spatial comparison is in the Item 10 README:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
