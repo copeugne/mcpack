@@ -3,6 +3,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 public class WorldGenRegion implements WorldGenLevel {
+    public net.minecraft.core.RegistryAccess registryAccess() { return key -> value -> value.toString(); }
     public record Dimension(String location) {}
     public boolean early, refuse, throwWrite, throwOnThird;
     public boolean flowerReturn, flowerAir, flowerException;

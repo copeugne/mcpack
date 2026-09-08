@@ -760,3 +760,42 @@ call required. Retained packaged class SHA-256:
 Reproduce with `uv run --no-sync pytest tests/item10/test_placement_probe.py -q`.
 A natural pilot and raw-reader integration remain pending. No natural fairy-ring
 occurrences or density estimates are accepted by these synthetic checks.
+
+## Cave urn callback and direct-write capture
+
+The existing probe now wraps the configured-feature invocation in
+`PlacedFeature.lambda$placeWithContext$4`, after placement modifiers choose each
+origin. It identifies `supplementaries:urns_patch` through the world's configured
+feature registry, retains the calling placed-feature registry key (or null when
+unavailable), and brackets the original invocation without a new context stack.
+This implements the [declared urn boundary](protocol.md#cave-urn-occurrence-boundary)
+using two hooks. No separate RandomPatchFeature transformation is necessary.
+
+The SimpleBlockFeature write wrapper records the actual flags-2 result only
+inside the traced urn attempt. Unrelated writes invoke the original method.
+A refused write and the caller's true return remain separate observations.
+Thrown target exceptions retain their original cause, produce an
+`attempt_exception` record and clear the completed exceptional attempt so a later
+patch can be recorded. Parent keys do not become additional occurrences.
+Non-cave and null-parent observations remain distinguishable from the standalone
+cave population. Overlapping writes and saved-content acceptance remain pending.
+
+Validation commands:
+
+```sh
+uv run --no-sync pytest -q tests/item10 tests/item7
+uv run --no-sync pytest -q tests/item10/test_placement_probe.py -k urn
+uv run --no-sync ruff check tests/item10/test_placement_probe.py
+uv run --no-sync basedpyright tests/item10/test_placement_probe.py
+```
+
+All 360 Item 7/10 tests passed in 73.01 seconds. After tightening the callback's
+static/context signature check, all eight affected urn tests passed in 7.75
+seconds. Focused lint and type checks pass; initial formatting and JSON typing
+findings were fixed. The tests compile with pinned Temurin and `-Xlint:all -Werror`.
+They compare uninstrumented and observed return values, exceptions and complete
+write arguments for normal, refused, exceptional-then-recovery, non-cave,
+absent-parent, unrelated-patch and isolated-loader cases. The final test verifies
+the retained archive/class hashes and transforms both exact classes. This is
+collector preparation, not a positive runtime capture or urn density result.
+No server experiment or Item 11 workflow ran in this batch.

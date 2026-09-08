@@ -6,6 +6,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 public class PlacedFeature {
+    public String key = "supplementaries:cave_urns";
+    public String toString() { return key; }
+    public static boolean lambda$placeWithContext$4(
+        net.minecraft.world.level.levelgen.feature.ConfiguredFeature configured,
+        PlacementContext context, RandomSource random, Object unused, BlockPos pos) {
+        return configured.place(context.getLevel(), context.generator(), random, pos);
+    }
+
     public boolean place(WorldGenLevel level, ChunkGenerator generator, RandomSource random, BlockPos pos) {
         WorldGenRegion world = (WorldGenRegion) level;
         if (world.flowerException) throw new IllegalStateException("flower failure");

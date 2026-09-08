@@ -148,7 +148,7 @@ PR30 is cleanly reviewed and merged; the fairy README records delivery. Both ret
 archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
 Do not expand for positive counts; positive capture and saved-content acceptance remain open.
 Reassessment: the registry pilot already supplies exclusive-role spatial results.
-PR31 reviews `codex/item10-category-summary`, which integrates the overlapping
+PR31 is cleanly reviewed and merged, delivering the overlapping
 actionable, encounter and village summaries in the existing analysis path.
 The [pilot result](evidence/item-10/pilot-r1/README.md#combined-specification-categories)
 retains the unchanged denominator and raw observations; 352 tests pass. This does not waive the 40 nonregistry families
@@ -156,8 +156,10 @@ or the full sampling/control gates. No human workload or capture is scheduled.
 Current branch `codex/item10-urn-coverage` records the source-bound
 [cave urn boundary](evidence/item-10/protocol.md#cave-urn-occurrence-boundary):
 SimpleBlockFeature discards refused-write results, and galleon reuse requires
-parent placement attribution. Implement those boundaries in the existing probe;
-no urn collection has run. BetterEnd coverage remains unresolved;
+parent placement attribution. Both hooks now pass retained-class transformation
+and original-behavior fixtures; 360 tests pass. The [probe report](evidence/item-10/placement-probe.md#cave-urn-callback-and-direct-write-capture)
+records validation. Next predeclare a bounded fresh urn diagnostic and check
+resources before launching. No urn collection has run. BetterEnd coverage remains unresolved;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
 coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)
