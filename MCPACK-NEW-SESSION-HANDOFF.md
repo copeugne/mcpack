@@ -158,11 +158,11 @@ All sixteen planned cells have complete census and raw-custody acceptance:
 - [full-biome-diverse-r2-baseline](evidence/item-10/full-biome-diverse-r2-baseline/README.md).
 - [full-ocean-heavy-r2-without-sparse-attempt3](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/README.md).
 
-Ocean-heavy r2 baseline completed generation in 526.634s and census in 549.917s.
-Its record binds restored raw evidence, all 45,056 selected full chunks and the
-reviewed ten T0 overlap exclusions plus one saved-content mismatch. Session 90296
-is terminal 0. The initial ten-world comparisons remain in the Item 10 README;
-update the complete synthesis after collection rather than regenerating it per world.
+The [complete comparison](evidence/item-10/README.md) now integrates sixteen worlds,
+all category spatial summaries, biome/seed/repetition contrasts and retained failures.
+The existing biome artifact contains 176 strata, 68,217 height/biome rows,
+18 unavailable anchors and five positive zero-exposure rows. Its README command
+reproduces it byte-for-byte from all sixteen hash-verified accepted inputs.
 
 User-authorized `item10-retry-policy-v2` keeps sixteen complete cells as the target.
 Biome-diverse r1 baseline passed census in 569.638s, with two retained urn exclusions.
@@ -181,8 +181,8 @@ remain rejected with immutable restored raw custody. Neither is erased by a retr
 No tuning, repaired proof worlds or additional retries. The lifecycle now stops on
 heap/save errors; 42 focused lifecycle/console/collection tests cover the correction.
 
-After collection: full synthesis, applicable final checks and clean-checkout
-reproduction, consolidated Codex PR review/fix/merge, verified main delivery and
+Next: applicable final checks and clean-checkout reproduction, consolidated
+Codex PR review/fix/merge, verified main delivery and
 Items 2 through 10 identity/narrative audit. No new tooling PR or Item 11 work.
 
 Two local servers are stopped and preserved. Official launcher profiles are prepared;

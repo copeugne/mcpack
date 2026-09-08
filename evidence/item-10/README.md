@@ -12,9 +12,10 @@ with heap exhaustion and remains preserved. The single predeclared
 generation and custody but failed census on one incomplete saved Aether chunk.
 All five remaining planned worlds and the [final fresh retry](full-ocean-heavy-r2-without-sparse-attempt3/README.md)
 passed. The sample contains sixteen complete worlds after eighteen attempts, with
-both failures preserved and the frozen configuration unchanged. Final combined
-biome, seed, repetition and spatial synthesis, review, main delivery and the
-Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
+both failures preserved and the frozen configuration unchanged. The complete
+category, biome, seed, repetition and spatial comparison follows. Final validation,
+review, main delivery and the Items 2 through 10 audit remain incomplete. No tuning
+was performed.
 
 The [authorized automated scope](methodology-amendment.md) removes human phases
 from Items 10 and 11. No playing workload or recording is required. Provisional
@@ -23,14 +24,14 @@ methodology amendment passed clean review and main delivery through
 [PR22](https://github.com/copeugne/mcpack/pull/22). Earlier diagnostics below retain
 their original limited scope and cannot substitute for the full sample.
 
-## Accepted Overworld comparisons (initial ten-world subset)
+## Complete Overworld comparisons
 
-These are direct values from the ten accepted census outputs, not acceptance of
-the full sampling gate. Each row has exactly 4,096 full selected chunks. Rates
-are locations per 1,000 chunks, displayed to three decimals. B is the frozen
-baseline; C omits only Sparse Structures. Actionable candidates are C plus T1
-through T4; encounter sites are T1 through T4. These provisional categories do
-not establish utility, fights or experienced pacing.
+All sixteen hash-bound census outputs are integrated below. Every row has exactly
+4,096 full selected chunks. Rates are locations per 1,000 chunks, rounded to three
+decimals for display. B is the frozen baseline; C omits only Sparse Structures.
+Ocean-heavy r2 C uses the final authorized attempt 3. Actionable candidates are
+C plus T1 through T4; encounter sites are T1 through T4. These provisional roles
+do not establish utility, fights or experienced pacing.
 
 | Accepted world | All | Actionable | Encounter sites | T2 | T3 | Villages |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -44,58 +45,94 @@ not establish utility, fights or experienced pacing.
 | [Mountainous r2 C](full-mountainous-r2-without-sparse/README.md) | 1020.996 | 1006.592 | 1004.395 | 5.371 | 1.709 | 0.732 |
 | [Ocean-heavy r1 B](full-ocean-heavy-r1-baseline/README.md) | 315.918 | 313.232 | 312.988 | 1.709 | 0.488 | 0.244 |
 | [Ocean-heavy r1 C](full-ocean-heavy-r1-without-sparse/README.md) | 342.041 | 334.717 | 334.473 | 4.639 | 0.732 | 0.244 |
+| [Ocean-heavy r2 B](full-ocean-heavy-r2-baseline/README.md) | 327.393 | 324.463 | 324.219 | 1.709 | 0.488 | 0.244 |
+| [Ocean-heavy r2 C](full-ocean-heavy-r2-without-sparse-attempt3/README.md) | 331.543 | 323.975 | 323.730 | 4.639 | 0.732 | 0.244 |
+| [Biome-diverse r1 B](full-biome-diverse-r1-baseline/README.md) | 1006.104 | 1000.488 | 999.756 | 1.465 | 0.000 | 0.244 |
+| [Biome-diverse r1 C](full-biome-diverse-r1-without-sparse/README.md) | 1031.982 | 1013.916 | 1009.277 | 3.662 | 0.000 | 0.977 |
+| [Biome-diverse r2 B](full-biome-diverse-r2-baseline/README.md) | 1015.869 | 1010.010 | 1009.277 | 1.465 | 0.000 | 0.244 |
+| [Biome-diverse r2 C](full-biome-diverse-r2-without-sparse/README.md) | 1042.725 | 1024.414 | 1019.775 | 3.662 | 0.000 | 0.977 |
 
-In these five matched pairs, omitting Sparse Structures increases T2 and T3
-counts. T2 counts are 7 versus 23 in both ordinary repetitions, 6 versus 22 in
-both mountainous repetitions, and 7 versus 19 in the first ocean-heavy pair.
-T3 counts are respectively 0 versus 2, 2 versus 7, and 2 versus 3. Village counts
-increase only in the ordinary pairs. This is a distribution comparison under the
-measurement overlay, not an observer-free causal effect or a basis for tuning.
+Across both repetitions, Overworld T2 counts are 7 versus 23 for ordinary,
+6 versus 22 for mountainous, 7 versus 19 for ocean-heavy, and 6 versus 15 for
+biome-diverse. Omitting Sparse Structures increases the observed T2 count in all
+eight pairs. T3 counts are respectively 0 versus 2, 2 versus 7, 2 versus 3, and
+0 versus 0. Village counts increase from 1 to 2 in ordinary and 1 to 4 in
+biome-diverse, while mountainous stays at 3 and ocean-heavy at 1.
 
-The much larger mountainous total does not mean more proper dungeons: its baseline
-T2 count is six, versus seven in ordinary and ocean-heavy. T1 dominates the total
-in these samples. Total counts also vary between fresh repetitions even where
-T2/T3 counts remain equal. Do not use all-location density as a dungeon or combat
-proxy, or infer deterministic generation from unchanged category totals.
+This is a distribution contrast under the measurement overlay, including the
+mod's spacing/separation and salt interventions. It is not an observer-free causal
+effect or permission to tune. T2 control/baseline count ratios range from 2.5 to
+22/6 (about 3.667), not a universal fourfold effect. The two repeated T2/T3 totals
+agree within each seed/arm, but other locations and raw states vary.
 
-T2 spatial summaries below use the same rows. Ordinary and mountainous values
-are identical across their two accepted repetitions, so each is shown once.
-Distances are finite-window nearest-observed means in blocks. **Every corresponding
-uncensored nearest-neighbor mean is null** because boundary-censored cases remain.
-Dispersion is population variance/mean across sixteen full 256-chunk cells;
-empty area is the largest rectangle of empty full cells, not an exact empty disk.
+Mountainous and biome-diverse baselines have much larger all-location totals
+than ordinary and ocean-heavy, yet fewer T2 dungeons. T1 cache locations dominate
+those totals. Ocean-heavy r2 actionable density is slightly lower in control
+(323.975 versus 324.463) despite more T2 dungeons. All-location density is not a
+dungeon or combat proxy, and unchanged category totals do not prove deterministic
+generation.
 
-| Seed role | T2 finite-window mean B / C | T2 dispersion B / C | T2 empty area in chunks B / C |
+### Spatial observations
+
+Each of the ten categories has per-stratum nearest-observed distances, boundary
+censoring, full-cell dispersion and empty-region measurements in its accepted
+output. No coordinate or distance is pooled across dimensions or End strata.
+The following ranges summarize those separate outputs; they are not pooled
+means, confidence intervals or population bounds. Each category has 176 stratum
+results. A finite-window mean needs at least two locations; an uncensored mean
+is null if there are no usable neighbors or any boundary-censored neighbor.
+Dispersion is population variance/mean across sixteen full 256-chunk cells.
+Empty area is the largest rectangle of empty full cells, not an exact empty disk.
+
+| Category | Finite-window mean range, blocks (available strata / 176) | Uncensored means available / 176 | Dispersion range | Empty area range, chunks |
+| --- | --- | ---: | --- | --- |
+| all_locations | 7.820 to 752.170 (96/176) | 4 | 0.209 to 78.176 | 0 to 4096 |
+| T0 | 37.307 to 297.321 (76/176) | 0 | 0.209 to 21.314 | 0 to 4096 |
+| C | 117.272 to 913.262 (17/176) | 1 | 0.562 to 2.000 | 768 to 4096 |
+| T1 | 7.933 to 819.912 (40/176) | 1 | 0.688 to 78.566 | 0 to 4096 |
+| T2 | 118.258 to 1097.605 (51/176) | 1 | 0.352 to 1.625 | 256 to 4096 |
+| T3 | 178.811 to 730.414 (27/176) | 0 | 0.625 to 1.420 | 768 to 4096 |
+| T4 | null (0/176) | 0 | 0.938 to 0.938 | 2048 to 4096 |
+| actionable_candidates | 7.894 to 752.170 (58/176) | 0 | 0.575 to 78.102 | 0 to 4096 |
+| encounter_sites | 7.922 to 752.170 (58/176) | 0 | 0.575 to 78.160 | 0 to 4096 |
+| villages | 214.730 to 912.140 (9/176) | 0 | 0.875 to 1.479 | 1024 to 4096 |
+
+T4 has one central-End objective in each world and none in other sampled strata.
+Its nearest-neighbor means are therefore null, rather than zero distance. Empty
+strata retain 4,096 empty chunks; zero-count dispersion remains null. Individual
+neighbor lower bounds, censored flags and rectangle coordinates remain available.
+
+Overworld T2 spatial results agree across the two repetitions within each seed
+and arm, so each pair of repeated values is displayed once below. Every
+corresponding uncensored nearest-neighbor mean is null.
+
+| Seed role, both repetitions | T2 finite-window mean B / C | T2 dispersion B / C | T2 empty area B / C, chunks |
 | --- | ---: | ---: | ---: |
-| Ordinary, r1 and r2 | 202.078 / 150.040 | 1.420 / 0.693 | 1536 / 256 |
-| Mountainous, r1 and r2 | 187.960 / 157.017 | 0.958 / 0.352 | 1024 / 256 |
-| Ocean-heavy, r1 only | 214.750 / 139.508 | 1.420 / 0.760 | 1024 / 256 |
+| ordinary | 202.078 / 150.040 | 1.420 / 0.693 | 1536 / 256 |
+| mountainous | 187.960 / 157.017 | 0.958 / 0.352 | 1024 / 256 |
+| ocean-heavy | 214.750 / 139.508 | 1.420 / 0.760 | 1024 / 256 |
+| biome-diverse | 250.198 / 139.294 | 0.958 / 0.863 | 2304 / 768 |
 
-Derivation: each linked report binds its `all-strata.json` output by SHA-256 and
-gives the executable census and raw restore commands. All ten output hashes were
-checked against those reports before integration. Read
-`strata.overworld.classification.categories.<category>.count` and
-`per_1000_chunks` for the first table; the latter is count times 1,000 / 4,096.
-For the second table, read `strata.overworld.spatial.T2` fields
-`mean_nearest_observed_blocks`, `mean_nearest_neighbor_blocks`,
-`full_cell_variance_over_mean` and `largest_empty_full_cell_rectangle.area_chunks`.
-These tables directly display existing accepted fields, rounded only for prose.
-Individual neighbors, censoring, grid counts and rectangle bounds remain in
-those outputs. No world was regenerated and no measurements were recomputed.
+The control has smaller observed T2 neighbor means and empty full-cell rectangles
+in all eight pairs. Biome-diverse baseline has the largest Overworld T2 empty
+rectangle, 2,304 chunks, versus 768 in control. These finite-frame observations
+do not establish travel time or perceived exploration gaps.
 
-Remaining seed/repetition coverage and final synthesis
-remain incomplete. The rejected
-ocean-heavy r2 control attempts supply no density row and no zero observation.
-The [authorized continuation](protocol.md#authorized-continuation-and-final-bounded-retry)
-runs the five untouched planned worlds before the final fresh control retry.
+Derivation: each linked report binds its `all-strata.json` by SHA-256 and gives
+the executable census and restore commands. All sixteen input hashes were checked
+against those reports. Density fields are `strata.<label>.classification.categories`;
+rates equal count times 1,000 / 4,096. Spatial fields are
+`strata.<label>.spatial.<category>`: `mean_nearest_observed_blocks`,
+`mean_nearest_neighbor_blocks`, `full_cell_variance_over_mean` and
+`largest_empty_full_cell_rectangle.area_chunks`. Ranges use non-null values;
+availability counts retain null cases. No measurement was rerun for these tables.
 
-## Accepted counts outside the Overworld
+## Complete counts outside the Overworld
 
-The same ten linked census outputs supply the following all-location counts.
-Every cell uses 4,096 full chunks; its density is count times 1,000 / 4,096.
-Earth orbit, Mars orbit, Moon orbit and Venus each have zero accepted locations
-in every one of these worlds. This is observed absence within the selected
-frames, not proof that locations are impossible in those dimensions.
+The same sixteen outputs supply the following all-location counts. Every entry
+has a denominator of 4,096 full chunks. Earth orbit, Mars orbit, Moon orbit and
+Venus have zero accepted locations in every selected frame, not proven absence
+throughout those dimensions. Aether totals exclude the Item 8 terrain-cloud group.
 
 | World | Aether | Mars | Moon | Central End | Outer End | Nether |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -109,67 +146,75 @@ frames, not proof that locations are impossible in those dimensions.
 | Mountainous r2 C | 10 | 1 | 53 | 8 | 108 | 527 |
 | Ocean-heavy r1 B | 3 | 0 | 11 | 2 | 19 | 437 |
 | Ocean-heavy r1 C | 10 | 0 | 49 | 9 | 57 | 532 |
+| Ocean-heavy r2 B | 3 | 0 | 11 | 2 | 73 | 474 |
+| Ocean-heavy r2 C | 10 | 0 | 49 | 9 | 57 | 583 |
+| Biome-diverse r1 B | 2 | 0 | 12 | 5 | 29 | 452 |
+| Biome-diverse r1 C | 8 | 0 | 54 | 11 | 48 | 597 |
+| Biome-diverse r2 B | 2 | 0 | 12 | 5 | 39 | 446 |
+| Biome-diverse r2 C | 8 | 0 | 54 | 11 | 77 | 560 |
 
-Direct source fields are `strata.<label>.classification.categories.all_locations.count`.
-The census preserves category-specific densities and spatial fields alongside
-these totals. Aether counts exclude the Item 8 terrain-cloud group; they are
-not raw registry-start totals. Every accepted world has one central-End T4
-objective and no T4 locations in the other sampled strata. This fixed objective
-is not evidence of a uniform objective distribution. Central and outer End remain
-separate exposures, not one contiguous region.
+Control all-location totals exceed baseline in Aether, Moon, central End and
+Nether for every matched pair. This is not universal across all strata: ocean-heavy
+r2 outer End has 73 baseline versus 57 control locations, whereas r1 has 19 versus
+57. Mountainous baseline outer End changes from 19 to 48 across repetitions;
+biome-diverse control changes from 48 to 77. These differences, including reviewed
+exclusions, remain part of the comparison. Mars has one observed location in each
+mountainous control and zero in the other frames. Category-specific counts and
+spatial fields for all dimensions remain in the linked outputs.
 
-Fresh mountainous repetitions differ substantially in outer End and Nether
-totals: baseline outer End is 19 then 48; control is 85 then 108. Nether is
-426 then 398 in baseline and 461 then 527 in control. These measured differences
-must remain visible rather than selecting the repetition with the preferred
-contrast. All-location counts increase in each matched pair in Aether, Moon,
-both End strata and Nether, but the increase is not identical across repetitions.
+## Complete biome comparisons
 
-## Biome attribution limits found during integration
+The [accepted biome comparisons](accepted-biome-comparisons.json.gz) integrate all
+sixteen outputs, 176 strata and 68,217 separate height/biome rows. Every row retains
+chunk-center exposure, all ten category counts and corresponding rates. Positive
+exposure with no occurrences is an explicit zero; zero exposure gives a null rate.
+Eighteen unavailable anchors retain their identities and reasons:
 
-The [accepted biome comparisons](accepted-biome-comparisons.json.gz) integrate the initial
-ten accepted outputs, covering 110 strata and 42,336 height/biome rows. Each row
-retains its chunk-center exposure, all ten category counts and corresponding
-rates. Positive exposure with no category occurrences is an explicit zero count;
-zero exposure produces a null rate. Twelve unavailable anchors remain separate,
-including their location identities and reasons. Direct joins identify these limits:
+- Every world has one central-End arena with `NO_LOCATION_HEIGHT`.
+- Both mountainous controls have `explorify:end_shipwreck` at chunk (505,514),
+  anchor (8088,-7,8232), quart Y -2, outside stored biome height.
 
-- Every accepted world has one central-End dragon-arena location with
-  `NO_LOCATION_HEIGHT`. Retain its location count without assigning a biome band.
-- Both mountainous controls have an `explorify:end_shipwreck` at chunk (505,514)
-  with anchor (8088,-7,8232), quart Y -2. Its reason is
-  `anchor outside stored biome height`. This is a second unavailable biome
-  observation in those two worlds, not a rejected location or a surface-biome case.
-- All four mountainous worlds have one `supplementaries:cave_urn_cache` at
-  (-57,19,-319), quart Y 4, attributed to `regions_unexplored:muddy_river`.
-  The exposure table has zero chunk-center columns for that biome in that band.
-  Candidate IDs are 16603 (r1 B), 16616 (r1 C), 16630 (r2 B), and 16593 (r2 C).
-  The exact-position numerator is valid, but its chunk-center exposure is zero.
-  Its biome density must therefore remain unavailable, with the positive count
-  and zero denominator retained. Do not substitute exposure from another height,
-  use an infinite rate, erase the observation or resample the accepted world.
+Five observed locations have zero chunk-center exposure in their biome/height band:
+the four mountainous urn caches at (-57,19,-319), quart Y 4, in
+`regions_unexplored:muddy_river`, and biome-diverse r1 control urn candidate 28296
+at (476,24,354), quart Y 6, in `terralith:desert_canyon`. Their counts remain
+positive and rates null. No other unavailable anchor or positive zero-exposure
+case occurs in the complete output. These are anchor-versus-column sampling
+limitations, not evidence of broken biome placement.
 
-No other unavailable biome anchor or zero-exposure observed location was found
-in these ten outputs. This follows a direct inspection of every classified
-occurrence in every stratum, not just the examples above. For registry rows,
-join `classification.occurrences` to `occurrence_biomes` by registry ID and chunk
-X/Z within its stratum. Nonregistry rows already carry their biome and quart Y.
-Join valid attributions to `biome_exposure.rows` by `(quart_y, biome)`; absent
-keys have zero sampled chunk-center exposure. Retain unavailable reasons before
-that join. The numerator uses the declared occurrence anchor, while exposure
-uses chunk-center columns, so their horizontal sampling can differ. This is a
-limitation of the declared proxy, not evidence that biome placement is broken.
+For a readable same-height example, the table shows the two largest baseline
+chunk-center exposures at quart Y -8 (block heights -32 through -29) in each
+seed's first repetition, with the matching control biome. Selection is by exposure
+descending, then biome ID, not by the largest outcome difference. This display
+does not replace the complete artifact or pool height bands. Counts are all
+provisional locations anchored in that band, not all locations in the biome.
 
-The comparison is 284,430 compressed bytes (15,203,284 JSON bytes), SHA-256
-`9b1cefc7317ced9a70391ebc8ce0d9aa1784337af6c20eb06e4cf3fc385a171b`.
-Each world's entry binds its accepted census input by SHA-256. The existing census
-tool's `summarize_biomes` function supplies this join and is also used by future
-full-world censuses. Earlier raw worlds and accepted census outputs are unchanged.
-This addition implements the required biome comparison; it does not add a new
-measurement, schema, sampler or acceptance gate. Results remain descriptive
-within each seed, stratum and height band; do not pool bands or interpret these
-selected worlds as a random biome sample. Counts below 30 remain sparse under
-the protocol. The four zero-exposure cases retain their positive numerators.
+| Seed | Biome | Exposed chunks B / C | Locations B / C | Rate per 1,000 B / C |
+| --- | --- | ---: | ---: | ---: |
+| ordinary | minecraft:deep_ocean | 1706 / 1706 | 0 / 2 | 0.000 / 1.172 |
+| ordinary | minecraft:ocean | 1501 / 1501 | 33 / 33 | 21.985 / 21.985 |
+| mountainous | minecraft:deep_dark | 3330 / 3330 | 153 / 134 | 45.946 / 40.240 |
+| mountainous | biomesoplenty:redwood_forest | 209 / 209 | 12 / 12 | 57.416 / 57.416 |
+| ocean-heavy | minecraft:deep_cold_ocean | 1883 / 1883 | 2 / 2 | 1.062 / 1.062 |
+| ocean-heavy | minecraft:cold_ocean | 845 / 845 | 24 / 24 | 28.402 / 28.402 |
+| biome-diverse | biomesoplenty:wasteland | 1803 / 1803 | 75 / 75 | 41.597 / 41.597 |
+| biome-diverse | terralith:cave/deep_caves | 830 / 830 | 43 / 33 | 51.807 / 39.759 |
+
+At equal exposure in this slice, several biome counts stay identical between
+arms, while mountainous deep dark and biome-diverse deep caves have fewer observed
+locations in control. This reinforces that total biome opportunity does not
+uniformly follow the T2 contrast. It does not isolate a causal biome effect:
+the selected seeds, anchor geometry and fresh-world variability remain confounded.
+Counts below 30 remain sparse under the protocol; zeroes do not establish absence.
+
+The complete artifact is 463,442 compressed bytes (24,501,837 JSON bytes), SHA-256
+`fddc0442ad711866d1d07d3d4aac97df414981a9aaaa213cc92ca192a23d4f9f`.
+Each entry binds the accepted census input by SHA-256. The existing
+`summarize_biomes` function joins registry anchors by registry ID and chunk X/Z,
+uses recorded nonregistry anchors, retains unavailable reasons, and joins exposure
+by `(quart_y, biome)`. Its output conserves every stratum's all-location count.
+Earlier worlds and accepted census outputs are unchanged. Reproduction uses the
+same committed function and commands below, with no new sampler or framework.
 
 Reproduce the committed comparison after restoring/reproducing its accepted
 inputs at the paths given in their individual reports. The following command
@@ -212,8 +257,8 @@ Validation: the focused biome, census and spatial suite passes 47 tests, includi
 height separation, overlapping category membership, zero exposure, zero counts,
 unavailable anchors and missing/duplicate joins. Ruff check/format and focused
 test-file BasedPyright pass. Every real stratum's attributed counts plus unavailable
-anchors equals its accepted all-location count. This integrates the ten accepted
-worlds only; it does not close the pending full sampling requirement.
+anchors equals its accepted all-location count. The complete sixteen-world artifact was reproduced byte-for-byte. Final delivery
+validation is recorded separately below.
 
 ## Failure denominators and uncertainty
 
@@ -255,10 +300,7 @@ declared geometry. Saved-content mismatches remain excluded under the existing
 acceptance rule, even if a writer previously reported a successful operation.
 The individual records retain coordinates and content checks. Registry starts
 are counted separately, so observed nonregistry locations alone do not equal
-the all-location totals in the dimension tables. The new
-[ocean-heavy r2 baseline](full-ocean-heavy-r2-baseline/README.md) supplies its
-complete category and spatial results; initial ten-world tables above remain
-explicit subsets until the final combined synthesis.
+the all-location totals in the complete dimension tables above.
 
 The raw overlap disposition stays `OVERLAP_REVIEW_REQUIRED`; the two mountainous
 r2 reports supply its completed human-readable review and exclusion. They do not
@@ -272,6 +314,9 @@ limits and boundary-censored distances remain separate issues with their own
 denominators; none is converted into an omnibus failure rate.
 The new ocean-heavy r2 baseline separately excludes ten reviewed T0 candidates;
 its linked report gives the 73-to-83 outer-End sensitivity and all five overlap pairs.
+The [final ocean-heavy control](full-ocean-heavy-r2-without-sparse-attempt3/README.md)
+excludes two reviewed T0 anomalies, with a 57-to-59 sensitivity (0.48828125 per
+1,000 chunks). Its raw overlap flags also remain unchanged.
 
 The four selected seeds are not a random sample. All four now have accepted
 worlds. The [biome-diverse r1 baseline](full-biome-diverse-r1-baseline/README.md)
@@ -361,10 +406,8 @@ Sparse Structures is present in the retained manifest, artifact SHA-256
 `5aca0b33c0c83154810bbdd8ddc0d3e6a3e4591577274e2d27c10de0b45f2a45`.
 Its [untouched configuration](../item-6/frozen/config/sparsestructures.json5)
 has `spreadFactor: 2`, `idBasedSalt: true` and a mansion override of 2.
-These configuration facts alone resolve presence and intent. The accepted
-[ordinary](full-ordinary-r2-baseline/README.md) and
-[mountainous](full-mountainous-r2-baseline/README.md) matched blocks now measure
-realized differences; the remaining two seed blocks and combined analysis are incomplete.
+These configuration facts resolve presence and intent. The eight accepted
+matched pairs across all four seeds measure realized differences above.
 Do not infer a fourfold density reduction or a zero contribution.
 
 Direct reuse of the accepted disassemblies resolves the mutation mechanism.
@@ -398,8 +441,9 @@ not isolate the mod's total contribution. No such control has been run. The
 only Sparse Structures and retains both fresh repetitions. It measures removal
 within the retained stack, including spacing/separation and salt interventions.
 Individual changed locations cannot all be causally assigned to that omission:
-within-arm generation variability remains in the matched results. Full four-seed
-attribution awaits completion of the fixed sample.
+within-arm generation variability remains in the matched results. The complete
+four-seed comparison above resolves the declared descriptive contrast, with that
+causal limitation retained.
 
 The accepted [dimension capture](../item-8/runtime/dimension-r3/dimension-biomes.json)
 includes Aether and CreatingSpace. The frozen eleven-stratum frame includes those
@@ -452,8 +496,9 @@ The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
 source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
-prior reviews and all sixteen world censuses are resolved. Combined synthesis
-and final delivery remain incomplete; runtime acceptance is established per world, not from tests.
+prior reviews, all sixteen world censuses and combined synthesis are resolved.
+Final validation and delivery remain incomplete; runtime acceptance is established
+per world, not from tests.
 
 ### Storage decision before collection
 
@@ -511,8 +556,8 @@ scope does not require observed combat or human sessions in Items 10 or 11.
 
 ## Resource estimate and unresolved gates
 
-Use the [protocol resource estimate](protocol.md#runtime-and-storage-estimate)
-as the current planning authority: 720,896 selected chunks across 16 worlds,
+The pre-collection [protocol resource estimate](protocol.md#runtime-and-storage-estimate)
+was: 720,896 selected chunks across 16 worlds,
 about 11.05 automated generation hours and 13.92 GiB cumulative uncompressed
 world data, using the measured r3 proxy and including the requested generation
 edge outside the census. Sequential custody has a provisional
@@ -522,16 +567,26 @@ capacity before each experiment; these are estimates, not promised runtimes.
 The human collection matrix is superseded by the delivered
 [methodology amendment](methodology-amendment.md).
 
-Remaining measurement and delivery work:
+Measured resource totals from the eighteen attempt receipts are 10,498.585
+seconds of generation lifecycle time, 7,624,672,105 uncompressed world-file bytes
+and 2,881,277,781 bytes of outer raw archives. The sixteen accepted worlds alone
+account for 9,248.937 seconds, 6,806,284,224 world bytes and 2,574,764,666 archive
+bytes. These exclude census time, downloaded/restored copies, runtime binaries,
+separate diagnostic supplements and other workspace overhead. They are not host
+capacity requirements or a performance benchmark. Derivation: sum
+`run.lifecycle.duration_seconds`, each raw `world-backup.json.world_files.size_bytes`,
+and `archive-manifest.json.archive_size_bytes` over the sixteen comparison inputs
+and the two explicitly linked failed attempts. The failed heap-run duration includes
+its recorded emergency shutdown. No estimated total replaces these observations.
+
+Remaining validation and delivery work:
 
 - Preserve all accepted worlds and both failed attempts while completing delivery.
-- Combine all declared category, spatial, biome, seed and repetition results,
-  including the matched Sparse Structures contrast and uncertainty.
 - Complete clean-checkout reproduction, final review, main delivery and the
   Items 2 through 10 audit. Keep Item 11 workflows untouched.
 
 The observer and control methods are implemented. Reuse them; add no generic
-framework or tuning while completing the remaining sample and report.
+framework or tuning while completing validation and delivery.
 
 [Decoder preparation validation](decoder.md) records the custom-dimension
 identification fix and validated authoritative-start-coordinate extraction.
