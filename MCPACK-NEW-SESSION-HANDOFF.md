@@ -60,12 +60,15 @@ Its proposed 720,896 selected chunks, four seeds, eleven strata, two repetitions
 and two arms are method choices, not specification-mandated sample sizes. No
 full-frame run has started and this reassessment does not reduce the scope.
 
-Storage must resolve before full collection. Current free space is about 3.7 GiB.
+Storage must resolve before full collection. Current free space is about 10 GiB.
 The existing proxy estimates 10.71 generation hours and 13.50 GiB of original
 worlds. Keeping all duplicate local verification workspaces projects about 56 GiB.
 The user was asked for roughly 30 GiB persistent free space using sequential
 verification and disposal only of new temporary verification copies afterward.
-Preserve every preexisting artifact. See the README for measured inputs and limits.
+The user subsequently authorized duplicate cleanup. See the
+[cleanup outcome](evidence/item-10/server-setup/README.md#additional-duplicate-cleanup)
+for removed redundant downloads and verified Btrfs library deduplication.
+Preserve remaining artifacts. See the README for measured inputs and limits.
 No directory/capacity answer has arrived yet. Confirm actual collector costs on
 the first complete ordinary-seed run before proceeding through the full protocol.
 
