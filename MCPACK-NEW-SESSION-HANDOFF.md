@@ -169,8 +169,9 @@ Biome-diverse r1 control census passed in 597.674s; session 84601 is terminal 0.
 Six urn exclusions and one zero-exposure biome row are retained in its report.
 Biome-diverse r2 control census passed in 510.364s; session 25437 is terminal 0.
 Biome-diverse r2 baseline census passed in 525.490s; session 40037 is terminal 0.
-All five authorized planned worlds are accepted. Next: one fresh ocean-heavy
-r2 control attempt3. Both failed archives were rechecked against their manifest hashes.
+All five authorized planned worlds are accepted. The [final ocean-heavy retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/README.md)
+passed generation/custody. Census session 51235 is live, source `498394f1`.
+Both failed archives still match their manifest hashes; no further retries are authorized.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
