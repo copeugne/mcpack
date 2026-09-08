@@ -7,11 +7,12 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from tools.analyze_structure_density import saved_block_at
 from tools.manage_item4_environment import _world_backup_lock
 from tools.validate_item10_trace import validate_feature_trace, validate_trace
 
 from mcpack_evidence.item7_anvil import decode_region_payloads
-from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
+from mcpack_evidence.item7_nbt import decode_compound_nbt
 
 urn = sys.argv[1:] == ["--urn-r1"]
 spike = sys.argv[1:] == ["--spike-r1"]
@@ -115,15 +116,10 @@ with _world_backup_lock(world):
             raise ValueError(detail)
         x, y, z = row["position"]
         chunk = retained[dimensions[row["attempt"]], x // 16, z // 16]
-        section = next(part for part in chunk["sections"] if part["Y"] == y // 16)
-        states = section["block_states"]
-        palette = states["palette"]
-        indices = (
-            (0,) * 4096
-            if len(palette) == 1
-            else _packed(tuple(states["data"]), 4096, max(4, (len(palette) - 1).bit_length()))
-        )
-        state = palette[indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]]
+        state = saved_block_at(chunk, (x, y, z))
+        if state is None:
+            detail = "Retained diagnostic write has no stored block section"
+            raise ValueError(detail)
         observations.append(
             {
                 "attempt": row["attempt"],

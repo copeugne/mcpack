@@ -136,6 +136,10 @@ completeness, fairy visibility and saved-world corroboration remain. Candidate
 aggregation now groups common sources, retains halo/zero outcomes and exposes
 content overlaps; 68 focused tests pass, including retained spiral source counts.
 Overlap dispositions and final acceptance still gate density numerators.
+Saved-content lookup now binds requested coordinates to retained world-file hashes
+under the existing world lock. Its 17 focused tests reproduce retained urn saved
+states; the shared diagnostic's 429-write JSON is unchanged. Candidate acceptance
+must still bind custody, provider rules and these observations together.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

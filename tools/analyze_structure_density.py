@@ -14,9 +14,11 @@ from tools.manage_item4_environment import _world_backup_lock
 from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN
 
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
-from mcpack_evidence.item7_nbt import decode_compound_nbt
+from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping
+
     from mcpack_evidence.item7_nbt_models import ChunkRecord
 
 
@@ -101,6 +103,117 @@ def occurrence_biomes(record: ChunkRecord, column: dict[int, str]) -> list[dict[
             }
         )
     return rows
+
+
+def saved_block_at(
+    chunk: Mapping[str, object], position: tuple[int, int, int]
+) -> dict[str, object] | None:
+    """Read a saved palette entry; absent sections remain unavailable, not assumed air."""
+    x, y, z = position
+    if (chunk.get("xPos"), chunk.get("zPos")) != (x // 16, z // 16):
+        detail = "saved block coordinate does not belong to supplied chunk"
+        raise ValueError(detail)
+    sections = [section for section in chunk["sections"] if section["Y"] == y // 16]
+    if not sections:
+        return None
+    if len(sections) != 1:
+        detail = "duplicate saved block section"
+        raise ValueError(detail)
+    states = sections[0].get("block_states")
+    if states is None:
+        return None
+    palette = states["palette"]
+    if not palette or any(not isinstance(entry.get("Name"), str) for entry in palette):
+        detail = "invalid saved block palette"
+        raise ValueError(detail)
+    indices = (
+        (0,) * 4096
+        if len(palette) == 1
+        else _packed(tuple(states["data"]), 4096, max(4, (len(palette) - 1).bit_length()))
+    )
+    index = indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]
+    if not 0 <= index < len(palette):
+        detail = "saved block palette index out of range"
+        raise ValueError(detail)
+    return cast("dict[str, object]", palette[index])
+
+
+def saved_content_observations(  # noqa: C901, PLR0912 - one locked manifest-bound world pass
+    world: Path,
+    requested: dict[str, set[tuple[int, int, int]]],
+    world_files: dict[str, str],
+    geometry: dict[str, tuple[int, int]],
+) -> dict[str, object]:
+    """Inspect requested positions in a stopped, manifest-bound world."""
+    found = {}
+    inputs = {}
+    targets: dict[tuple[str, int, int], list[tuple[int, int, int]]] = collections.defaultdict(list)
+    for dimension, points in requested.items():
+        for position in points:
+            targets[(dimension, position[0] // 16, position[2] // 16)].append(position)
+    with _world_backup_lock(world):
+        for path, context in world_regions(world, dimension_geometry=geometry):
+            if context.dimension not in requested:
+                continue
+            if not path.resolve().is_relative_to(world.resolve()):
+                detail = "saved-content region escapes world"
+                raise ValueError(detail)
+            before = hashlib.sha256(path.read_bytes()).hexdigest()
+            if world_files.get(context.relative_path) != before:
+                detail = "saved-content region differs from retained world manifest"
+                raise ValueError(detail)
+            inputs[context.relative_path] = before
+            for record, payload in decode_region_payloads(path, context):
+                if record.external:
+                    external = path.with_name(f"c.{record.chunk_x}.{record.chunk_z}.mcc")
+                    name = external.relative_to(world).as_posix()
+                    if not external.resolve().is_relative_to(world.resolve()):
+                        detail = "saved-content external chunk escapes world"
+                        raise ValueError(detail)
+                    digest = hashlib.sha256(external.read_bytes()).hexdigest()
+                    if world_files.get(name) != digest:
+                        detail = "saved-content external chunk differs from retained world manifest"
+                        raise ValueError(detail)
+                    inputs[name] = digest
+                key = (context.dimension, record.chunk_x, record.chunk_z)
+                if key not in targets:
+                    continue
+                chunk = decode_compound_nbt(payload)
+                for position in targets[key]:
+                    state = saved_block_at(chunk, position)
+                    found[(context.dimension, *position)] = {
+                        "dimension": context.dimension,
+                        "position": list(position),
+                        "chunk_status": record.status,
+                        "saved_state": state,
+                        "unavailable_reason": None
+                        if state is not None
+                        else "MISSING_BLOCK_SECTION",
+                    }
+        for name, digest in inputs.items():
+            if hashlib.sha256((world / name).read_bytes()).hexdigest() != digest:
+                detail = "saved-content input changed during inspection"
+                raise ValueError(detail)
+    observations = [
+        found.get(
+            (dimension, *position),
+            {
+                "dimension": dimension,
+                "position": list(position),
+                "chunk_status": None,
+                "saved_state": None,
+                "unavailable_reason": "MISSING_CHUNK",
+            },
+        )
+        for dimension, points in sorted(requested.items())
+        for position in sorted(points)
+    ]
+    return {
+        "observations": observations,
+        "anvil_inputs": [
+            {"path": name, "sha256": digest} for name, digest in sorted(inputs.items())
+        ],
+    }
 
 
 def generation_digest(payload: bytes) -> str:

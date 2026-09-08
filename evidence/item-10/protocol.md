@@ -1259,3 +1259,31 @@ Saved-world corroboration and provider acceptance must precede density totals.
 The focused attribution/collection/spatial/census suite passes 68 tests, including
 the retained mixed traces' exact spiral source counts. Scoped Ruff and test-file
 basedpyright checks pass.
+
+### Saved content integration
+
+The analysis tool's `saved_content_observations` reads requested coordinates from
+a stopped world under the existing POSIX world lock. Region and external-chunk
+bytes must match the caller's verified world manifest, remain within the world
+tree and remain unchanged during inspection. Input hashes are retained. The
+result preserves saved block states and chunk status, including explicit
+`MISSING_CHUNK` and `MISSING_BLOCK_SECTION` observations. Missing evidence is
+never inferred to be air or a matching placement. The caller must bind the world
+manifest to accepted custody before using these observations for acceptance.
+
+Palette lookup is shared with the retained `scarecrow-probe-r3/inspect-writes.py`
+diagnostic instead of maintaining duplicate decoding logic. Negative coordinates,
+singleton/packed palettes, chunk ownership and duplicate sections retain explicit
+handling. The focused saved-content/census suite passes 17 tests, including the
+restored urn world's exact saved states. Re-running the shared urn diagnostic
+produces JSON equal to committed `urn-pilot-r1/write-corroboration.json`, retaining
+all 429 mixed recorded writes. Ruff and saved-content test basedpyright pass.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_saved_content.py tests/item10/test_density_census.py
+PYTHONPATH=. uv run --no-sync python evidence/item-10/scarecrow-probe-r3/inspect-writes.py --urn-r1
+```
+
+This supplies saved observations for candidate acceptance; it does not equate
+block-ID agreement with full-state equality, noninterference or an accepted
+location count. No fresh world generation was performed.
