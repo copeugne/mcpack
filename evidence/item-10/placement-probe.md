@@ -799,3 +799,43 @@ absent-parent, unrelated-patch and isolated-loader cases. The final test verifie
 the retained archive/class hashes and transforms both exact classes. This is
 collector preparation, not a positive runtime capture or urn density result.
 No server experiment or Item 11 workflow ran in this batch.
+
+## Bridge template and processor preparation
+
+The existing probe now brackets BridgeFeature.place, binds the actual template
+path before placement, reuses template content capture, and retains all 37 direct
+processor write sites from the [declared boundary](protocol.md#yung-bridge-occurrence-and-writer-boundary).
+Processor markers distinguish post-template changes, including air removal and
+support extension. Shared interface calls retain the correct interface method
+reference. Outside bridge attempts, both template and processor calls invoke the
+original method without capture. Existing exact reflection invocation and template
+identity handling are shared with their current consumers.
+
+Validation: `uv run --no-sync pytest -q tests/item10 tests/item7` passed all
+379 tests in 82.44 seconds. Focused test Ruff and basedpyright checks pass. Seven
+bridge cases compare original and observed return values, complete write arguments
+and exceptions: normal, all-refused, processor exception, early return, outside
+processor, outside template and isolated loader. The eighth case verifies archive
+and class hashes for both feature/template classes and all twelve writer classes,
+then transforms all fourteen exact retained classes, enforcing the declared site
+counts. Builds use pinned Temurin with `-Xlint:all -Werror`.
+
+The first fixture expectation incorrectly assumed every ordinary content write
+would succeed. The reused fixture deliberately refuses its first content write;
+three assertions failed and were corrected to require that refusal. Original
+behavior matched throughout. Initial lint findings were also corrected.
+
+This is collector preparation, not natural bridge capture. The existing
+PlacedFeature callback now also binds the configured-feature registry key for
+BridgeFeature invocations, retaining it in a `bridge_configured` event beside
+the selected template and rotation. Direct calls or unregistered configurations
+retain null rather than an inferred identity. Thread-local attribution is restored
+in a finally block. No additional runtime class hook was introduced.
+
+The configured-bridge fixture compares original and observed complete write
+arguments and return values, and verifies the exact fixture registry key. Direct
+feature fixtures require null attribution. All 17 focused bridge/urn cases pass
+in 16.14 seconds; focused Ruff and basedpyright pass after correcting one long
+parameter-list line. The full Item 7/10 gate passes all 380 tests in 84.73
+seconds. No bridge server experiment or Item 11 workflow ran.
+Predeclare the bounded runtime diagnostic and storage reservation next.

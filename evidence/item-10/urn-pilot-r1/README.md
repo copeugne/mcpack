@@ -126,3 +126,13 @@ All 54 retained-trace tests pass with the archive present, Ruff and basedpyright
 pass, and a direct invocation with the file-availability check forced false
 raises the expected pytest skip before reading the archive. No raw evidence or
 measurement logic changed. A fresh review is required for the fix.
+
+## Reviewed main delivery
+
+PR32's fresh cycle completed on 2026-09-08 at 07:32:20 UTC for
+`ac70f3d5f386283d25440e37426733cec8caef24`. The
+[clean result](https://github.com/copeugne/mcpack/pull/32#issuecomment-5581098206)
+and Codex thumbs-up were verified with no new inline or review findings. The
+sole earlier finding is resolved above. PR32 merged as
+`868df56c1dca5384769315746088dd2776a31157`; fetched `origin/main` contains the
+exact reviewed head. This delivers the bounded urn evidence, not Item 10 closure.

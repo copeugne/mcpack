@@ -787,3 +787,96 @@ contexts, exceptions, halo writes and zero-call outcomes. A missing positive pat
 fails that gate without implying zero density. Retain and publish raw observations
 and incoming classes with the existing archive and restore tools even if the
 positive gate fails. Do not start the full sampling frame on this result alone.
+
+## YUNG bridge occurrence and writer boundary
+
+Reuse `non_registry_content.contributions["yungsbridges:bridges"]` in the accepted
+[Item 8 inventory](../item-8/inventory.json). Its generation record already
+establishes first-success variant selection, sea-level anchoring, processor order
+and the discarded template-placement boolean. Do not repeat that assessment or
+count its 22 configured variants as separate families. Observe each attempted
+BridgeFeature placement, retaining the selected configuration/template, actual
+anchor, rotation, original return and exceptional completion.
+
+The current template observer can supply the initial template-write boundary.
+It must be extended through the subsequent custom processors before this family
+has complete write coverage. Ending observation at placeInWorld would miss
+material replacement, removal and support extension; a non-null template or true
+BridgeFeature return alone is insufficient acceptance evidence.
+
+The retained archive is `YungsBridges-1.21.1-NeoForge-5.1.1.jar`, SHA-256
+`bf93a85422a6b457358c3b56352641a97ec09cc37dec18b2cedcac2bd1ff9bec`.
+Archive and class bytes were checked against the existing
+[processor identities](../item-8/sources/yungs-bridge-processors/identities.json).
+Pinned `javap -c -p` direct inspection identifies these 37 direct
+WorldGenLevel.setBlock call sites, using their original `(BlockPos, BlockState,
+int)boolean` descriptor. Class names below are under
+`com/yungnickyoung/minecraft/yungsbridges/world/processor/`:
+
+| Class | Direct sites | Bytecode offsets |
+| --- | ---: | --- |
+| FenceBiomeProcessor | 4 | 188, 210, 294, 378 |
+| ITemplateFeatureProcessor | 2 | 12, 75 |
+| LanternRotProcessor | 3 | 64, 128, 192 |
+| LogBiomeProcessor | 1 | 72 |
+| OptionalBlockProcessor | 7 | 65, 129, 193, 257, 321, 404, 426 |
+| OptionalSlabProcessor | 7 | 74, 147, 220, 293, 376, 398, 471 |
+| OptionalStairProcessor | 4 | 74, 147, 220, 291 |
+| OptionalWallProcessor | 1 | 64 |
+| PlanksBiomeProcessor | 1 | 63 |
+| SlabBiomeProcessor | 1 | 72 |
+| StairBiomeProcessor | 1 | 72 |
+| StoneVariationProcessor | 5 | 55, 128, 201, 274, 338 |
+
+The inspected FeatureProcessorModule and DynamicLegProcessor have no direct
+setBlock sites. Dynamic support writes use the shared interface helper already
+listed. This is a count of bytecode sites, not executed writes or a claim about
+all external effects. Reproduce with pinned `javap -c -p -classpath` against the
+hash-verified archive and classes from the existing identity manifest.
+
+Bind loaded template identity in AbstractTemplateFeature.createTemplateWithPlacement
+before its placeInWorld call at 85. Its processor iteration occurs at 108, after
+the discarded boolean at 88. These offsets refer to the class bound in the
+[existing generator identities](../item-8/sources/yungs-bridge-generation/identities.json).
+Retain phase attribution for template versus processor writes so later removal
+cannot be mistaken for missing initial capture. Saved-content checks must compare
+last successful writes and retain earlier observations. Count one accepted bridge
+placement, not processors, support blocks or template attempts independently.
+
+Implement within the existing probe and fixture path. Require original call,
+argument, refusal and exception preservation; template-path/rotation attribution;
+processor coverage including support and removal; no tracing outside the active
+bridge attempt; and incoming class identities. Then predeclare a bounded runtime
+diagnostic and its storage cost before launch. No bridge experiment or accepted
+bridge occurrence measurement has been performed by this increment.
+
+## Bridge r1 bounded natural diagnostic
+
+Predeclared 2026-09-08 before launch. Use ordinary seed 42, the unchanged frozen
+runtime/configuration and construction heap, and the existing pilot selections:
+81 chunks each in Overworld, Nether, central End and outer End, 324 selected
+chunks total. Outer End uses the existing center at (1536, 0); no selection is
+chosen from observed bridge locations. Use a fresh hash-verified materialization.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name bridge-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+The source revision is the commit containing this predeclaration. Retain the
+incoming transformed classes, raw trace, lifecycle logs and stopped world using
+the existing archive/download/restore path. This diagnostic tests natural bridge
+capture, not selected-area density. Require complete selections, correlated flush,
+clean exit, installed hook identities and no unfinished attempts. A positive
+bridge result additionally requires configured variant, template/rotation and
+complete template/processor write observations, followed by saved last-successful
+block-ID corroboration. Retain all earlier writes, refused writes, zero-write
+attempts, exceptions and halo coordinates. A missing positive path fails positive
+capture without establishing zero density; do not expand the frame to hunt for it.
+
+The prelaunch host check reports 4.2 GiB free and no running Java process. Reserve
+1.5 GiB for this bounded diagnostic and sequential raw archive/download/restores.
+Prior 324-chunk runs took about 89 seconds and produced about 6 MB compressed raw
+archives; those are cost proxies, not a prediction of bridge output. The existing
+900-second timeout remains. The provisional 5 GiB full-experiment workspace floor
+is not met, so this declaration does not authorize full sampling. No baseline
+configuration, bridge placement rule or Sparse Structures setting is changed.

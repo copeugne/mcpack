@@ -632,3 +632,152 @@ def test_urn_hooks_transform_hash_verified_retained_classes(tmp_path: Path) -> N
                 text=True,
             )
             assert transformed.read_bytes() != content
+
+
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "normal",
+        "refused",
+        "exception",
+        "early",
+        "outside",
+        "outside-template",
+        "isolated",
+        "configured",
+    ],
+)
+def test_bridge_template_and_processor_phases_preserve_original(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "BridgeFixture", mode], check=True, capture_output=True, text=True, timeout=30
+    )
+    trace = tmp_path / "bridge.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "BridgeFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    templates = [row for row in rows if row["kind"] == "template_begin"]
+    markers = [row for row in rows if row["kind"] == "bridge_processor"]
+    variants = [row for row in rows if row["kind"] == "bridge_configured"]
+    if mode not in {"outside", "outside-template"}:
+        assert len(variants) == 1
+        assert variants[0]["configured_feature"] == (
+            "yungsbridges:wood_17_0" if mode == "configured" else None
+        )
+    else:
+        assert not variants
+    if mode in {"early", "outside", "outside-template"}:
+        assert not templates
+        assert not markers
+    else:
+        assert len(templates) == 1
+        assert templates[0]["path"] == "yungsbridges:bridge/wood/17_0"
+        assert templates[0]["rotation"] == "NONE"
+        assert len(markers) == (1 if mode == "exception" else 3)
+        end = next(i for i, row in enumerate(rows) if row["kind"] == "template_end")
+        assert all(row["kind"] != "bridge_processor" for row in rows[:end])
+        writes = [row for row in rows if row["kind"] == "write"]
+        assert len(writes) == (2 if mode == "exception" else 5)
+        assert writes[0]["returned"] is False  # Shared fixture refuses the first content write.
+        assert all(row["returned"] == (mode != "refused") for row in writes[1:])
+    assert rows[-1]["unfinished_attempts"] == 0
+    failures = [row for row in rows if row["kind"] == "attempt_exception"]
+    assert len(failures) == (1 if mode == "exception" else 0)
+
+
+def test_bridge_hooks_cover_retained_template_and_all_processor_sites(tmp_path: Path) -> None:
+    _ = _build_probe(tmp_path)
+    archive = ROOT / "downloads/item3/candidates/YungsBridges-1.21.1-NeoForge-5.1.1.jar"
+    assert hashlib.sha256(archive.read_bytes()).hexdigest() == (
+        "bf93a85422a6b457358c3b56352641a97ec09cc37dec18b2cedcac2bd1ff9bec"
+    )
+    entries: list[dict[str, str]] = []
+    for source in ("yungs-bridge-generation", "yungs-bridge-processors"):
+        entries.extend(
+            cast(
+                "list[dict[str, str]]",
+                json.loads(
+                    (ROOT / "evidence/item-8/sources" / source / "identities.json").read_text()
+                ),
+            )
+        )
+    selected = [
+        row
+        for row in entries
+        if (
+            "/world/processor/" in row["class"]
+            and not row["class"].endswith("/DynamicLegProcessor.class")
+        )
+        or row["class"].endswith(("/BridgeFeature.class", "/AbstractTemplateFeature.class"))
+    ]
+    assert len(selected) == 14
+    with zipfile.ZipFile(archive) as jar:
+        for row in selected:
+            content = jar.read(row["class"])
+            assert hashlib.sha256(content).hexdigest() == row["class_sha256"]
+            original = tmp_path / "original.class"
+            transformed = tmp_path / "transformed.class"
+            _ = original.write_bytes(content)
+            _ = subprocess.run(
+                [
+                    str(JDK / "java"),
+                    "--add-exports",
+                    EXPORT,
+                    "-classpath",
+                    str(tmp_path),
+                    "TemplateFixture",
+                    "transform",
+                    row["class"][:-6],
+                    str(original),
+                    str(transformed),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            assert transformed.read_bytes() != content
+
+
+@pytest.mark.parametrize("mode", ["recover", "template-recover"])
+def test_bridge_caught_exception_allows_next_placement(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "BridgeFixture", mode], check=True, capture_output=True, text=True, timeout=30
+    )
+    trace = tmp_path / "recovery.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "BridgeFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    assert "recovered=true" in observed.stdout
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    starts = [row["attempt"] for row in rows if row["kind"] == "begin"]
+    assert len(starts) == 2
+    failures = [row for row in rows if row["kind"] == "attempt_exception"]
+    assert failures == [
+        {
+            "kind": "attempt_exception",
+            "attempt": starts[0],
+            "exception": "java.lang.IllegalStateException",
+        }
+    ]
+    ends = [row for row in rows if row["kind"] == "end"]
+    assert ends == [{"kind": "end", "attempt": starts[1], "returned": True}]
+    assert rows[-1]["unfinished_attempts"] == 0
