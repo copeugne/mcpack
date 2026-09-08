@@ -165,11 +165,24 @@ are terminal 0. Its result SHA-256 is
 `df3ee4e68ee57ffc264b97260869f6510a42b4cf575de4fce45c2192912390ff`,
 92,552,776 bytes, 7m41.104s. The record contains the baseline repetition and second
 matched contrast, with one retained cave-urn content exclusion. All four ordinary
-worlds are accepted. No server or analysis process is active.
-Next: mountainous repetition-1 baseline, then the other eleven worlds in frozen
-protocol order. Retain every per-world census/custody check and observed variation;
-finish spatial/biome/seed/repetition synthesis, consolidated PR review/merge and
-the cross-item audit. Do not infer Item 10 completion from this first seed block.
+worlds are accepted and the block is pushed at `ee0a82b8`.
+[Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md)
+finished cleanly in 611.564s from `ee0a82b8`; session `68147` is terminal 0.
+Configuration/identity checks and published/restored raw custody pass (312 raw
+files, 501 world files). No server or analysis process is active.
+Full observer acceptance is unresolved: the only absent target is
+`com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature`.
+The strict 50-class gate rejects; diagnostic mode validates 32,822 attempts and
+49 installations. Do not call that full acceptance or a measured gateway zero.
+The frozen transformer captures targeted class definitions; the retained gateway
+caller is conditional. Investigate unexercised class loading versus failed
+observation with the existing Java fixtures in `test_placement_probe.py` and
+`probe-fixture/IslandFixture.java`. No protocol/reader exception is implemented.
+Preserve the current run and resolve this narrow coverage question before more
+worlds. Do not tune, hunt positive gateways, repeat Item 8/9 or change the sample.
+Four worlds are accepted; the fifth has complete generation/custody only.
+After resolution, finish its census, the other eleven worlds, final synthesis,
+consolidated PR review/merge and cross-item audit. Keep the original full goal.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
