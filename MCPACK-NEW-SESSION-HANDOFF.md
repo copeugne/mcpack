@@ -167,14 +167,19 @@ with all hooks installed but no bridge attempts. Raw download and world restore
 passed. Positive bridge capture remains unmet; do not expand this frame to hunt
 for it. PR33 finding `3955497336` is fixed in the existing reader. Archive-bound
 validation passes, all six prior reports reproduce unchanged, and 388 tests pass
-on the bridge PR branch. Inspect the fresh completed review before merging. The next
+on the bridge PR branch. The second completed review found `3955590865`: feature
+state survives a caught exception and can disrupt the next placement. Fix shared
+exceptional-exit cleanup and add a recovery regression, then re-request review. The next
 [Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
 reuses accepted generation records and identifies two template and eleven
 processor write sites. The existing observer now covers them; all 389 Item 7/10
 tests and focused quality checks pass. See the
 [Extras validation](evidence/item-10/placement-probe.md#extras-template-and-processor-preparation).
-No Extras runtime experiment has started. Predeclare the next diagnostic and
-recheck storage; keep the PR33 review/fix loop separate.
+The [Extras diagnostic](evidence/item-10/extras-pilot-r1/README.md) completed all
+324 selected chunks with clean save/stop, no Extras attempts and zero unfinished
+attempts. Published raw download, world restore and archive-bound trace checks
+pass; all 404 Item 7/10 tests pass. Positive capture remains unmet. Fix PR33 before
+further experiments; raw diagnostic evidence does not need rewriting.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
@@ -182,7 +187,7 @@ attribution, exact Sparse Structures control and observer cost/storage checks.
 The [protocol](evidence/item-10/protocol.md) remains DRAFT for the full frame.
 Use accepted Item 8 mechanisms rather than repeating its inventory. Do not expand
 fixed diagnostics to hunt for positive counts. The last prelaunch storage check
-was 4.2 GiB free, below the provisional 5 GiB full-experiment floor.
+was 4.0 GiB free, below the provisional 5 GiB full-experiment floor.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

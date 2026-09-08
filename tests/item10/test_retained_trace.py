@@ -12,6 +12,8 @@ from tools.validate_item10_trace import (
     BRIDGE_ROOT,
     CLASS_SHA,
     END_BUILDING,
+    EXTRAS_INSTALLED,
+    EXTRAS_ROOT,
     FAIRY,
     MONSTER_BOX,
     NETHER_SPIKE,
@@ -423,32 +425,41 @@ def test_urn_parent_and_write_boundaries(defect: str) -> None:
 @pytest.mark.parametrize(
     "defect", ["none", "hook", "event", "attempt", "write", "shutdown", "class"]
 )
-def test_retained_bridge_archive_integrity(tmp_path: Path, defect: str) -> None:
-    raw = TRACE.parents[3] / "evidence/raw/item10/bridge-pilot-r1-custody/restored"
+@pytest.mark.parametrize("extras", [False, True])
+def test_retained_bridge_archive_integrity(tmp_path: Path, defect: str, extras: bool) -> None:
+    mode = "extras" if extras else "bridge"
+    raw = TRACE.parents[3] / f"evidence/raw/item10/{mode}-pilot-r1-custody/restored"
+    feature_class = (
+        EXTRAS_ROOT + "feature/desert/DesertWellFeature"
+        if extras
+        else BRIDGE_ROOT + "feature/BridgeFeature"
+    )
     if not (raw / "trace.jsonl").is_file():
         pytest.skip("Restore the published bridge diagnostic before retained-trace validation")
     if defect == "none":
-        result = validate_feature_trace(raw, mode="bridge")
-        assert result["attempts"] == 1290
-        assert result["writes"] == 409
-        assert set(cast("dict[str, str]", result["installations"])) >= BRIDGE_INSTALLED
+        result = validate_feature_trace(raw, mode=mode)
+        assert result["attempts"] == (1289 if extras else 1290)
+        assert result["writes"] == (543 if extras else 409)
+        assert set(cast("dict[str, str]", result["installations"])) >= (
+            EXTRAS_INSTALLED | BRIDGE_INSTALLED if extras else BRIDGE_INSTALLED
+        )
         return
     if defect == "class":
         _ = shutil.copyfile(raw / "trace.jsonl", tmp_path / "trace.jsonl")
         _ = shutil.copytree(raw / "trace.jsonl.classes", tmp_path / "trace.jsonl.classes")
-        target = tmp_path / "trace.jsonl.classes" / (BRIDGE_ROOT + "feature/BridgeFeature.class")
+        target = tmp_path / "trace.jsonl.classes" / (feature_class + ".class")
         _ = target.write_bytes(b"changed")
         with pytest.raises(ValueError, match="differs from archived member"):
-            _ = validate_feature_trace(tmp_path, mode="bridge")
+            _ = validate_feature_trace(tmp_path, mode=mode)
         return
     rows = cast(
         "list[dict[str, object]]",
         [json.loads(line) for line in (raw / "trace.jsonl").read_text().splitlines()],
     )
     if defect == "hook":
-        rows = [row for row in rows if row.get("class") != BRIDGE_ROOT + "feature/BridgeFeature"]
+        rows = [row for row in rows if row.get("class") != feature_class]
     elif defect == "event":
-        rows.insert(-1, {"kind": "bridge_configured", "attempt": 1, "configured_feature": None})
+        rows.insert(-1, {"kind": f"{mode}_configured", "attempt": 1, "configured_feature": None})
     elif defect == "shutdown":
         rows[-1]["unfinished_attempts"] = 1
     else:
@@ -459,7 +470,7 @@ def test_retained_bridge_archive_integrity(tmp_path: Path, defect: str) -> None:
         else:
             rows[index]["flags"] = True
     with pytest.raises(ValueError, match=r"BOP|unpaired|flags|unexpected"):
-        _ = check_feature_rows(rows, mode="bridge")
+        _ = check_feature_rows(rows, mode=mode)
 
 
 def test_bridge_changed_trace_rejected_before_class_reads(tmp_path: Path) -> None:
