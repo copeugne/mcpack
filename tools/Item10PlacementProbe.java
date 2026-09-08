@@ -58,6 +58,15 @@ public final class Item10PlacementProbe {
     private static boolean bridgeProcessor(String name) {
         return name != null && name.startsWith(BRIDGE_PROCESSORS) && BRIDGE_WRITERS.containsKey(name.substring(BRIDGE_PROCESSORS.length()));
     }
+    private static final String PILLAR_ROOT = "org/betterx/betterend/world/features/terrain/";
+    private static final String BLOCKS_HELPER = "org/betterx/bclib/util/BlocksHelper";
+    private static final String SDF = "org/betterx/bclib/sdf/SDF";
+    private static boolean pillarFeature(String name) {
+        if (name == null) return false;
+        String normalized = name.replace('.', '/');
+        return normalized.equals(PILLAR_ROOT + "FallenPillarFeature")
+            || normalized.equals(PILLAR_ROOT + "ObsidianPillarBasementFeature");
+    }
     private static final String PLACED = "net/minecraft/world/level/levelgen/placement/PlacedFeature";
     private static final String SIMPLE = "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature";
     private static final String TARGET =
@@ -142,12 +151,16 @@ public final class Item10PlacementProbe {
     }
 
     public static boolean write(Object world, Object pos, Object state, int flags) throws Throwable {
+        return write(world, pos, state, flags, "net.minecraft.world.level.WorldGenLevel");
+    }
+
+    private static boolean write(Object world, Object pos, Object state, int flags, String worldInterface) throws Throwable {
         Long attempt = ACTIVE.get(Thread.currentThread().threadId());
         if (attempt == null) {
             throw new IllegalStateException("Write outside traced attempt");
         }
         String coordinates = position(pos);
-        Method method = Class.forName("net.minecraft.world.level.WorldGenLevel", false,
+        Method method = Class.forName(worldInterface, false,
             world.getClass().getClassLoader()).getMethod("setBlock",
                 Class.forName("net.minecraft.core.BlockPos", false, world.getClass().getClassLoader()),
                 Class.forName("net.minecraft.world.level.block.state.BlockState", false,
@@ -421,8 +434,12 @@ public final class Item10PlacementProbe {
     }
 
     private static boolean untracedWorldWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        return untracedWorldWrite(world, pos, state, flags, "net.minecraft.world.level.WorldGenLevel");
+    }
+
+    private static boolean untracedWorldWrite(Object world, Object pos, Object state, int flags, String worldInterface) throws Throwable {
         ClassLoader loader = world.getClass().getClassLoader();
-        Method method = Class.forName("net.minecraft.world.level.WorldGenLevel", false, loader)
+        Method method = Class.forName(worldInterface, false, loader)
             .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
                 Class.forName("net.minecraft.world.level.block.state.BlockState", false, loader), int.class);
         try { return (Boolean) method.invoke(world, pos, state, flags); }
@@ -492,6 +509,53 @@ public final class Item10PlacementProbe {
         return untracedWorldWrite(world, pos, state, flags);
     }
 
+    public static void pillarFill(Object sdf, Object world, Object anchor) throws Throwable {
+        emit("{\"kind\":\"pillar_fill\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+            + ",\"position\":" + position(anchor) + "}");
+        ClassLoader loader = sdf.getClass().getClassLoader();
+        Method method = Class.forName(SDF.replace('/', '.'), false, loader).getMethod("fillRecursive",
+            Class.forName("net.minecraft.world.level.ServerLevelAccessor", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader));
+        try { method.invoke(sdf, world, anchor); }
+        catch (InvocationTargetException error) { throw error.getCause(); }
+    }
+
+    public static boolean pillarWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        if (pillarFeature(FEATURES.get(Thread.currentThread().threadId()))) {
+            return write(world, pos, state, flags, "net.minecraft.world.level.LevelAccessor");
+        }
+        return untracedWorldWrite(world, pos, state, flags, "net.minecraft.world.level.LevelAccessor");
+    }
+
+    private static byte[] instrumentPillarWriter(byte[] original) {
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        int[] counts = new int[2];
+        new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
+            @Override public MethodVisitor visitMethod(int access, String name, String descriptor,
+                                                       String signature, String[] exceptions) {
+                if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
+                MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
+                if (!name.equals("setWithoutUpdate") || !descriptor.equals(
+                    "(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V")) return parent;
+                counts[0]++;
+                return new MethodVisitor(Opcodes.ASM8, parent) {
+                    @Override public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean iface) {
+                        if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("net/minecraft/world/level/LevelAccessor")
+                            && name.equals("setBlock") && desc.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, BLOCKS_HELPER, "item10$pillarWrite",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                        } else super.visitMethodInsn(opcode, owner, name, desc, iface);
+                    }
+                };
+            }
+        }, 0);
+        if (counts[0] != 1 || counts[1] != 1) throw new IllegalArgumentException("Unexpected pillar helper sites");
+        bridge(writer, "pillarWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        return writer.toByteArray();
+    }
+
     private static byte[] instrumentBridge(String target, byte[] original) {
         boolean extras = target.startsWith(EXTRAS_ROOT);
         boolean templateClass = BRIDGE_TEMPLATE.equals(target) || EXTRAS_TEMPLATE.equals(target);
@@ -537,6 +601,7 @@ public final class Item10PlacementProbe {
     }
 
     public static byte[] instrument(String target, byte[] original) {
+        if (BLOCKS_HELPER.equals(target)) return instrumentPillarWriter(original);
         if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target) || EXTRAS_TEMPLATE.equals(target) || extrasProcessor(target)) return instrumentBridge(target, original);
         if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
         if (TARGET.equals(target)) return instrument(original);
@@ -547,7 +612,9 @@ public final class Item10PlacementProbe {
         boolean spiral = SPIRAL.equals(target);
         boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
         boolean bridgeFeature = yungFeature(target);
-        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct || bridgeFeature;
+        boolean pillar = pillarFeature(target);
+        boolean guardedFeature = bridgeFeature || pillar;
+        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct || guardedFeature;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -576,7 +643,7 @@ public final class Item10PlacementProbe {
                     private final Label attemptFailure = new Label();
                     @Override
                     public void visitMaxs(int maxStack, int maxLocals) {
-                        if (bridgeFeature) {
+                        if (guardedFeature) {
                             super.visitLabel(attemptEnd);
                             super.visitTryCatchBlock(attemptStart, attemptEnd, attemptFailure, "java/lang/Throwable");
                             super.visitLabel(attemptFailure);
@@ -618,7 +685,7 @@ public final class Item10PlacementProbe {
                             super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$beginFeature",
                                 "(Ljava/lang/Object;Ljava/lang/Object;)V", false);
                         }
-                        if (bridgeFeature) super.visitLabel(attemptStart);
+                        if (guardedFeature) super.visitLabel(attemptStart);
                     }
                     @Override
                     public void visitInsn(int opcode) {
@@ -640,6 +707,14 @@ public final class Item10PlacementProbe {
                     @Override
                     public void visitMethodInsn(int opcode, String owner, String name,
                                                 String descriptor, boolean isInterface) {
+                        if (pillar && opcode == Opcodes.INVOKEVIRTUAL && owner.equals(SDF)
+                            && name.equals("fillRecursive") && descriptor.equals(
+                                "(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;)V")) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$pillarFill",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", false);
+                            return;
+                        }
                         if (fairy && opcode == Opcodes.INVOKEINTERFACE
                             && owner.equals("net/minecraft/world/level/WorldGenLevel")
                             && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
@@ -755,9 +830,11 @@ public final class Item10PlacementProbe {
             if (ANOMALY.equals(target)) bridge(writer, "write",
                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
-            if (bridgeFeature) bridge(writer, "featureException", "(Ljava/lang/Object;)V",
+            if (guardedFeature) bridge(writer, "featureException", "(Ljava/lang/Object;)V",
                 new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
-            if (!direct && !bridgeFeature) bridge(writer, "template", TEMPLATE_BRIDGE,
+            if (pillar) bridge(writer, "pillarFill", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
+            if (!direct && !guardedFeature) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (base) {
             bridge(writer, "directWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
@@ -872,7 +949,7 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!extrasFeature(name) && !EXTRAS_TEMPLATE.equals(name) && !extrasProcessor(name) && !BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                if (!pillarFeature(name) && !BLOCKS_HELPER.equals(name) && !extrasFeature(name) && !EXTRAS_TEMPLATE.equals(name) && !extrasProcessor(name) && !BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
                     && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;

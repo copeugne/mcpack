@@ -1015,3 +1015,20 @@ origin. Require retained-class transformation and focused original-versus-observ
 checks for successful writes, refusal, exceptions followed by same-thread recovery,
 and outside calls before full collection. No pillar experiment has started.
 Natural occurrence inclusion and saved-block corroboration remain incomplete.
+
+The collector now brackets both pillar feature entrypoints, records the actual
+`pillar_fill` anchor, and observes the shared helper's real boolean write result
+only during those attempts. It reuses feature completion and exception cleanup.
+The LevelAccessor invocation remains unchanged for unrelated callers; no random
+calls or configuration edits were added. Hash-verified retained transformations
+pass for both BetterEnd classes and BlocksHelper. Synthetic execution compares
+original and observed outputs for normal writes, refusals, early exits, unrelated
+fills, exception-object preservation followed by same-thread recovery, and an
+isolated class loader, for each pillar variant.
+
+Validation: `uv run --no-sync pytest -q tests/item10/test_placement_probe.py`
+passed all 50 collector tests in 66.41 seconds. Focused Ruff and basedpyright
+checks pass. These tests establish observer preparation, not natural occurrence
+measurements. Full-sample reader integration must accept and validate these new
+events and installation identities before collection. No new pilot or PR was
+created for this change.

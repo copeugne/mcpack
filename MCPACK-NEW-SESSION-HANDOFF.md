@@ -57,20 +57,21 @@ full measurement, report and audit into one delivery PR with coherent commits.
 Prioritize completed exit requirements over new tools or per-generator milestones.
 The [protocol](evidence/item-10/protocol.md) remains DRAFT for full sampling.
 Its proposed 720,896 selected chunks, four seeds, eleven strata, two repetitions
-and two arms are method choices, not specification-mandated sample sizes. No
-full-frame run has started and this reassessment does not reduce the scope.
+and two arms are method choices, not specification-mandated sample sizes. The
+user confirmed retaining the original 16-world plan and roughly 30 GiB storage
+budget. No full-frame run has started; do not reduce to eight worlds.
 
-Storage must resolve before full collection. Current free space is about 10 GiB.
+Storage capacity is now available: direct `df -B1` reports 49,406,545,920 bytes
+(about 46 GiB) free after authorized library deduplication and uv cache cleanup.
+The side task reports `uv cache clean` exited 0, removing 38 GiB of disposable
+cache while preserving installed environments and project artifacts. Dependency
+operations may resume. The original 16-world plan and roughly 30 GiB working
+budget are retained by explicit user decision. See the
+[cleanup outcome](evidence/item-10/server-setup/README.md#additional-duplicate-cleanup).
 The existing proxy estimates 10.71 generation hours and 13.50 GiB of original
-worlds. Keeping all duplicate local verification workspaces projects about 56 GiB.
-The user was asked for roughly 30 GiB persistent free space using sequential
-verification and disposal only of new temporary verification copies afterward.
-The user subsequently authorized duplicate cleanup. See the
-[cleanup outcome](evidence/item-10/server-setup/README.md#additional-duplicate-cleanup)
-for removed redundant downloads and verified Btrfs library deduplication.
-Preserve remaining artifacts. See the README for measured inputs and limits.
-No directory/capacity answer has arrived yet. Confirm actual collector costs on
-the first complete ordinary-seed run before proceeding through the full protocol.
+worlds. Confirm actual collector costs on the first complete ordinary-seed run
+before continuing the full protocol. Sampling and observer readiness still gate
+collection; available space alone does not authorize bypassing them.
 
 ## Existing review obligations
 
@@ -106,15 +107,18 @@ tests in 99.62 seconds. This does not establish full Item 10 measurement accepta
   tag population, not proof of false tag membership or zero density. Do not tune
   frozen tags or repeat failed fixtures without new causal evidence.
 
-Genuine remaining capabilities: observable procedural pillar writes and BetterEnd
-post-template effects; applicability/integration of End lifecycle routes; complete
+Pillar entrypoints, fill anchors and delegated writes now have focused collector
+coverage, including retained-class transforms and 50 passing collector tests.
+The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
+records implementation and its limits. Full-sample reader integration remains.
+Genuine remaining capabilities: BetterEnd post-template effects;
+applicability/integration of End lifecycle routes; complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
 Source descriptions do not supply missing occurrence measurements. Traced blocks,
 template parts and halo activity are not already accepted location numerators.
-The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
-records reusable generator/delegated-writer facts. Do not turn it into another
-standalone experimental campaign or tooling PR.
+Do not turn remaining collector work into standalone experimental campaigns
+or tooling PRs.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
 profiles and matching client files are prepared; first client launch/join remains

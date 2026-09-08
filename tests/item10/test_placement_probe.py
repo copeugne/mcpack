@@ -818,3 +818,102 @@ def test_bridge_caught_exception_allows_next_placement(
     ends = [row for row in rows if row["kind"] == "end"]
     assert ends == [{"kind": "end", "attempt": starts[1], "returned": True}]
     assert rows[-1]["unfinished_attempts"] == 0
+
+
+@pytest.mark.parametrize("feature", ["FallenPillarFeature", "ObsidianPillarBasementFeature"])
+@pytest.mark.parametrize("mode", ["normal", "refused", "early", "outside", "recover", "isolated"])
+def test_pillar_fill_preserves_writes_and_recovery(tmp_path: Path, feature: str, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "PillarFixture", mode, feature],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "pillar.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "PillarFixture", mode, feature],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    assert rows[-1]["unfinished_attempts"] == 0
+    fills = [row for row in rows if row["kind"] == "pillar_fill"]
+    writes = [row for row in rows if row["kind"] == "write"]
+    if mode in {"early", "outside"}:
+        assert fills == writes == []
+    else:
+        assert len(fills) == (2 if mode == "recover" else 1)
+        assert all(row["position"] == [11, 22, 33] for row in fills)
+        assert all(row["flags"] == 18 for row in writes)
+        assert len(writes) == (3 if mode == "recover" else 2)
+        if mode == "refused":
+            assert all(row["returned"] is False for row in writes)
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+        assert "recovered=true" in observed.stdout
+        assert len([row for row in rows if row["kind"] == "attempt_exception"]) == 1
+
+
+def test_pillar_hooks_transform_exact_retained_classes(tmp_path: Path) -> None:
+    _ = _build_probe(tmp_path)
+    entries = cast(
+        "list[dict[str, str]]",
+        json.loads(
+            (
+                ROOT / "evidence/item-8/sources/betterend-pillar-end-hooks/identities.json"
+            ).read_text()
+        ),
+    )
+    selected = [
+        row
+        for row in entries
+        if row["class"].endswith(
+            ("/FallenPillarFeature.class", "/ObsidianPillarBasementFeature.class")
+        )
+    ]
+    assert len(selected) == 2
+    selected.append(
+        {
+            "archive": "bclib-21.0.24.jar",
+            "archive_sha256": "a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093",
+            "class": "org/betterx/bclib/util/BlocksHelper.class",
+            "class_sha256": "4196c4a40a0d71d38061a084f005343262eb9d49d18c79e3a62ac6d03d90da72",
+        }
+    )
+    for row in selected:
+        archive = ROOT / "downloads/item3/candidates" / row["archive"]
+        if not archive.is_file():
+            pytest.skip("Pinned candidate archive is required for retained pillar transformation")
+        assert hashlib.sha256(archive.read_bytes()).hexdigest() == row["archive_sha256"]
+        with zipfile.ZipFile(archive) as jar:
+            content = jar.read(row["class"])
+        assert hashlib.sha256(content).hexdigest() == row["class_sha256"]
+        original = tmp_path / "original.class"
+        transformed = tmp_path / "transformed.class"
+        _ = original.write_bytes(content)
+        _ = subprocess.run(
+            [
+                str(JDK / "java"),
+                "--add-exports",
+                EXPORT,
+                "-classpath",
+                str(tmp_path),
+                "TemplateFixture",
+                "transform",
+                row["class"][:-6],
+                str(original),
+                str(transformed),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert transformed.read_bytes() != content
