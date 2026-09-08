@@ -1213,3 +1213,30 @@ uv run --no-sync pytest -q tests/item10/test_nonregistry_membership.py tests/ite
 All 57 tests pass. The retained Bridge and Extras traces reproduce their accepted
 cave-parent attempt counts through the family join. These are attribution checks,
 not additional density measurements or new experiments.
+
+### Ordered attempt outcomes for saved-world integration
+
+`nonregistry_attempt_outcome` consumes structurally paired attempts in event order.
+It retains refused writes, the last successful block ID at each written position,
+source and selected template/fill anchors, and explicit exception outcomes.
+Template-derived families require writes inside the template phase for observed
+content; later terrain/support writes alone cannot create a template occurrence.
+Later successful removal to air removes that position from surviving content.
+Cave-cache content requires actual urn writes, while fairy cleanup site 193 is
+excluded from constructive writes. Boolean generator/template returns alone do
+not establish content.
+
+These are attempt outcomes, not accepted location counts. `CONTENT_OBSERVED` and
+`EXCEPTION_WITH_CONTENT` must still undergo provider completeness, saved-world
+corroboration, overlap/component aggregation and sample inclusion. Fairy delegated
+flower observations remain in raw attempts and need separate visible-ring
+assessment; this function does not establish that assessment. Arena components
+retain their original coordinates but use central X/Z for the eventual location.
+End accessors distinguish `ordinary_generation`, `non_worldgen_accessor` and
+`unresolved`; a non-worldgen accessor does not identify a specific lifecycle cause.
+
+The 35 focused attribution/collection tests pass. Both retained mixed traces
+reproduce their cave-parent attempt counts and successful urn content-position
+counts. Synthetic cases retain multiple urn blocks in one attempt, refused writes,
+post-template erosion and exceptions with partial content. Scoped Ruff and test
+basedpyright checks pass. No new runtime observation or density result is claimed.

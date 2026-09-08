@@ -129,6 +129,10 @@ house fails as an inventory conflict. Attribution does not imply placement succe
 The full reader now binds retained incoming-class bytes before yielding attempts;
 91 collection/retained-trace tests pass. Provider-specific success, the complete
 full-protocol observer identity set and the location table remain.
+Ordered attempt outcomes now retain last successful writes, content surviving
+erosion, exceptions and actual anchors. The 35 attribution/collection tests pass
+against retained urn observations. These are not accepted locations: provider
+completeness, fairy visibility, saved-world corroboration and aggregation remain.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

@@ -1,7 +1,11 @@
 """Reuse accepted canonical membership without promoting attempts to locations."""
 
 import pytest
-from tools.analyze_structure_density import attribute_nonregistry_attempt, nonregistry_membership
+from tools.analyze_structure_density import (
+    attribute_nonregistry_attempt,
+    nonregistry_attempt_outcome,
+    nonregistry_membership,
+)
 
 
 def attempt(feature: str, *paths: str) -> list[dict[str, object]]:
@@ -116,3 +120,66 @@ def test_urn_requires_cave_parent() -> None:
         attribute_nonregistry_attempt(rows, nonregistry_membership())["family"]
         == "supplementaries:cave_urn_cache"
     )
+
+
+def write(position: list[int], state: str, returned: bool = True) -> dict[str, object]:
+    return {
+        "kind": "write",
+        "attempt": 1,
+        "position": position,
+        "state": "Block{" + state + "}",
+        "flags": 2,
+        "returned": returned,
+    }
+
+
+def test_urn_outcome_preserves_multiple_blocks_as_one_attempt() -> None:
+    rows = attempt("net.minecraft.world.level.levelgen.feature.RandomPatchFeature")
+    rows[2:2] = [
+        {"kind": "urn_parent", "placed_feature": "supplementaries:cave_urns"},
+        write([1, 2, 3], "supplementaries:urn"),
+        write([2, 2, 3], "supplementaries:urn"),
+        write([3, 2, 3], "supplementaries:urn", returned=False),
+    ]
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["attempt"] == 1
+    assert result["content_positions"] == [[1, 2, 3], [2, 2, 3]]
+    assert result["refused_writes"] == 1
+    assert result["outcome"] == "CONTENT_OBSERVED"
+
+
+def test_template_eroded_to_air_does_not_retain_initial_content() -> None:
+    rows = attempt("org.betterx.betterend.world.features.CrashedShipFeature")
+    rows[2:2] = [
+        {"kind": "template_begin", "path": "minecraft:end_city/ship", "position": [5, 8, 9]},
+        write([5, 8, 9], "minecraft:purpur_block"),
+        {"kind": "template_end", "returned": True},
+        write([5, 8, 9], "minecraft:air"),
+        write([5, 7, 9], "minecraft:end_stone"),
+    ]
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["anchor"] == [5, 8, 9]
+    assert result["outcome"] == "NO_CONTENT_OBSERVED"
+    assert result["content_positions"] == []
+    assert result["last_successful_writes"] == [
+        {"position": [5, 7, 9], "block_id": "minecraft:end_stone"},
+        {"position": [5, 8, 9], "block_id": "minecraft:air"},
+    ]
+
+
+def test_exception_with_writes_remains_explicit_partial_evidence() -> None:
+    rows = attempt("biomesoplenty.worldgen.feature.misc.MonolithFeature")
+    rows.insert(2, write([1, 2, 3], "minecraft:obsidian"))
+    rows[-1] = {"kind": "attempt_exception", "exception": "test.Failure"}
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["outcome"] == "EXCEPTION_WITH_CONTENT"
+
+
+def test_arena_component_keeps_central_location_and_non_worldgen_context() -> None:
+    rows = attempt("com.yungnickyoung.minecraft.betterendisland.world.feature.BetterSpikeFeature")
+    rows[0]["origin"] = [42, 80, 0]
+    rows.insert(2, {"kind": "island_context", "worldgen_region": False})
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["anchor"] == [0, 80, 0]
+    assert result["origin"] == [42, 80, 0]
+    assert result["route"] == "non_worldgen_accessor"

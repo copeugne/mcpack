@@ -424,6 +424,94 @@ def attribute_nonregistry_attempt(
     }
 
 
+def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered provider event pass
+    rows: list[dict[str, object]], membership: dict[str, dict[str, str]]
+) -> dict[str, object]:
+    """Retain observed content and failures for later saved-world location acceptance."""
+    result = attribute_nonregistry_attempt(rows, membership)
+    family = result["family"]
+    origin = cast("list[int]", rows[0]["origin"])
+    templates = [row for row in rows if row["kind"] == "template_begin"]
+    anchor = origin
+    if templates and isinstance(family, str) and not family.startswith("betterendisland:"):
+        anchor = cast("list[int]", templates[0]["position"])
+    fills = [row for row in rows if row["kind"] == "pillar_fill"]
+    if fills:
+        anchor = cast("list[int]", fills[0]["position"])
+    if family == "betterendisland:dragon_arena":
+        anchor = [0, origin[1], 0]
+    # A template's support/erosion writes cannot alone establish template content.
+    template_family = family in set(membership["templates"].values())
+    final_writes: dict[tuple[int, ...], str] = {}
+    content_positions: set[tuple[int, ...]] = set()
+    in_template = False
+    writer_site = None
+    refused = 0
+    for row in rows:
+        kind = row["kind"]
+        if kind == "template_begin":
+            in_template = True
+        elif kind in {"template_end", "template_exception"}:
+            in_template = False
+        elif kind == "writer":
+            writer_site = row["site"]
+        elif kind == "write":
+            if row["returned"] is False:
+                refused += 1
+                continue
+            position = tuple(cast("list[int]", row["position"]))
+            state = str(row["state"])
+            if not state.startswith("Block{") or "}" not in state:
+                detail = "unrecognized recorded block-state representation"
+                raise ValueError(detail)
+            block_id = state.split("}", 1)[0][len("Block{") :]
+            final_writes[position] = block_id
+            eligible = in_template if template_family else True
+            if family == "quark:fairy_ring" and writer_site == 193:  # noqa: PLR2004 - cleanup site
+                eligible = False
+            if family == "supplementaries:cave_urn_cache":
+                eligible = block_id == "supplementaries:urn"
+            if eligible:
+                content_positions.add(position)
+    air = {"minecraft:air", "minecraft:cave_air", "minecraft:void_air"}
+    surviving = sorted(
+        position for position in content_positions if final_writes[position] not in air
+    )
+    failure = any(str(row["kind"]).endswith("_exception") for row in rows)
+    route = "ordinary_generation"
+    if isinstance(family, str) and family.startswith("betterendisland:"):
+        contexts = [row for row in rows if row["kind"] == "island_context"]
+        route = (
+            "ordinary_generation"
+            if contexts and contexts[0]["worldgen_region"] is True
+            else "non_worldgen_accessor"
+            if contexts
+            else "unresolved"
+        )
+    return {
+        **result,
+        "dimension": rows[0]["dimension"],
+        "origin": origin,
+        "anchor": anchor,
+        "route": route,
+        "outcome": (
+            "EXCEPTION_WITH_CONTENT"
+            if failure and surviving
+            else "EXCEPTION"
+            if failure
+            else "CONTENT_OBSERVED"
+            if surviving
+            else "NO_CONTENT_OBSERVED"
+        ),
+        "refused_writes": refused,
+        "content_positions": [list(position) for position in surviving],
+        "last_successful_writes": [
+            {"position": list(position), "block_id": block_id}
+            for position, block_id in sorted(final_writes.items())
+        ],
+    }
+
+
 def classify_census(result: dict[str, object]) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]

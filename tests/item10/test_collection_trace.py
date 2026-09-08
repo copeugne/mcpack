@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import attribute_nonregistry_attempt, nonregistry_membership
+from tools.analyze_structure_density import nonregistry_attempt_outcome, nonregistry_membership
 from tools.validate_item10_trace import SCARECROW_CLASS, collection_attempts
 
 FEATURE = "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
@@ -194,10 +194,21 @@ def test_collection_reader_preserves_retained_mixed_trace(diagnostic: str) -> No
     )
     assert len(attempts) == accepted["attempts"]
     membership = nonregistry_membership()
-    attributed = [attribute_nonregistry_attempt(attempt, membership) for attempt in attempts]
+    attributed = [nonregistry_attempt_outcome(attempt, membership) for attempt in attempts]
     assert (
         sum(row["family"] == "supplementaries:cave_urn_cache" for row in attributed)
         == accepted["cave_parent_attempts"]
+    )
+    urn_positions = sum(
+        len(cast("list[object]", row["content_positions"]))
+        for row in attributed
+        if row["family"] == "supplementaries:cave_urn_cache"
+    )
+    assert (
+        urn_positions
+        == cast("dict[str, int]", accepted["writes_by_feature"])[
+            "net.minecraft.world.level.levelgen.feature.RandomPatchFeature"
+        ]
     )
     assert (
         sum(row["kind"] == "write" for attempt in attempts for row in attempt) == accepted["writes"]
