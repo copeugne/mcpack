@@ -27,7 +27,8 @@ PR35 delivered the measurement at `d507573e`; PR36 delivered the audit and its
 narrow corrections at `5ec24115`. Both final Codex cycles completed clean with
 bot thumbs-up reactions and no new findings. Fetched main ancestry passed.
 
-Current checkout: `codex/item10-cross-item-audit`. Its reviewed audit head was
+Current checkout: `codex/item11-route-opportunities`. Item 11 is authorized by the
+current user request. The prior audit branch remains preserved at `022990e3`. Its reviewed audit head was
 `0201d5e7737ce033875a498317a8a470bcb1853e`; main contains that head.
 Subsequent housekeeping commits preserve the user-authorized instructions,
 handoff cleanup and ignore rules; their push does not imply main delivery.
@@ -44,8 +45,11 @@ the subsequently added cross-item identity test and affected quality checks pass
 No runtime/configuration change or new experiment was needed for the audit.
 
 There is no remaining Item 10 or audit work. No additional worlds or retries
-are authorized. Do not implement, run, repair or lint Item 11 in this task.
-Future work requires a new instruction under the applicable specification.
+are authorized. Item 11 is IN PROGRESS under the new user instruction. See its
+[predeclared protocol](evidence/item-11/protocol.md) and
+[requirement/evidence report](evidence/item-11/README.md). The current batch binds
+existing restored-world inputs, then completes ordinary r1 baseline end to end
+before expanding. No Item 12 work. Route measurements are not yet accepted.
 
 ## Completed measurement and authoritative evidence
 
@@ -99,5 +103,4 @@ prepared; first launch/join is unverified. The
 [setup record](evidence/item-10/server-setup/README.md) is operational context,
 not measurement acceptance. No recording was started. Earlier six/ten-hour
 availability is not an approved player workload. PR22 delivered the
-[methodology amendment](evidence/item-10/methodology-amendment.md); Item 11
-remains outside this task's execution scope regardless of its future methodology.
+[methodology amendment](evidence/item-10/methodology-amendment.md); Item 11 now uses that automated contract under the current user authorization.
