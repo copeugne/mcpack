@@ -1,8 +1,7 @@
 # Items 2 through 10 identity and narrative consistency audit
 
 Date: 2026-09-08. Audited delivery: `d507573ead2c2740657129e9ee57a1410f420ed9`
-(fetched main after PR35). Result: **PASS locally with the explicit snapshot
-erratum below; review and main delivery of this audit remain pending.**
+(fetched main after PR35). Result: **PASS locally with the explicit machine-readable correction below; review and main delivery of this audit remain pending.**
 Item 10 itself is COMPLETE through the reviewed main delivery recorded in its
 [report](README.md#reviewed-main-delivery). No Item 11 workflow was implemented,
 run, repaired or linted during this audit.
@@ -12,8 +11,9 @@ run, repaired or linted during this audit.
 This is a consistency audit of accepted identities, requirements, evidence
 boundaries and delivery records. It reuses the completed Items 2 through 10
 results. It does not repeat Item 8 discovery, Item 9 classification, world
-collection, runtime admission or history consolidation. No new schema, validator,
-archive revision or measurement framework is needed.
+collection, runtime admission or history consolidation. The existing Item 6 validator now enforces the single machine-readable correction
+required by review finding 3961955118. No new schema, validator framework, archive
+revision or measurement method was added.
 
 Direct inspection compared the item reports and their cited machine-readable
 inputs. SHA-256 inspection matched the input table below. Each Item 7 protocol
@@ -33,7 +33,7 @@ scope; this audit does not claim to have rerun them.
 | 3 | [Admission report](../../docs/items/Item-3-Exact-Version-and-Dependency-Audit.md), [final matrix](../item-3/final-compatibility-matrix.json), [retained manifest](../item-3/runtime/retained-server-candidates.txt) | 190 audited candidates, 136 retained and 54 disabled/quarantined are different populations. Chunky and Spark are `disabled_not_required_on_server`, not retained gameplay dependencies. Later instrumentation is explicitly separate. Excluded runtime failures remain excluded; no admission change is needed. |
 | 4 | [Environment closure](../../docs/items/Item-4-Controlled-Test-Environment-Closure.md), [runtime record](../item-4/runtime-validation.json), [seed suite](../../test-environment/seed-suite.json) | The 136-JAR environment and four seed values agree. Isolation, lifecycle and backup/restore are bounded proofs, not terrain, gameplay or load-capacity acceptance. The preserved watchdog attempt remains a failed historical attempt. |
 | 5 | [Methodology closure](../../docs/items/Item-5-Measurement-Methodology-Closure.md), [accepted pilot](../item-5/pilots/accepted.json), [scope amendment](methodology-amendment.md) | The 137-JAR Spark pilot is an explicit 136+1 instrumented runtime. Its short capture and dirty source state are limitations, not a performance baseline. PR22 supersedes the human-session/player-case matrix for automated Items 10/11 only. The original protocol and accepted/rejected pilots remain unchanged; no 75-hour human workload is required for Item 10. |
-| 6 | [Configuration report](../../docs/items/Item-6-Baseline-Configuration-Audit.md), [manifest](../item-6/generated-config-manifest.json), [audit snapshot](../item-6/config-audit.json), [materialization](../item-6/materialization.json) | 228 frozen paths and their exact configuration identity agree. One credential sentinel is documented sanitization, not tuning. The Chunky status label is corrected below; absence of a Chunky config does not prove it was installed. Actual runtime/configuration identities are unaffected. |
+| 6 | [Configuration report](../../docs/items/Item-6-Baseline-Configuration-Audit.md), [manifest](../item-6/generated-config-manifest.json), [audit snapshot](../item-6/config-audit.json), [materialization](../item-6/materialization.json) | 228 frozen paths and their exact configuration identity agree. One credential sentinel is documented sanitization, not tuning. The current Chunky status is machine-bound below; absence of a Chunky config does not prove it was installed. Actual runtime/configuration identities are unaffected. |
 | 7 | [Worldgen report](../../docs/items/Item-7-Baseline-Worldgen-Audit.md), [protocol](../item-7/protocol/worldgen-audit-v1.json), [completion](../item-7/completion.json) | Exact Item 6 and seed identities agree. Its 54,816 selected chunks are its own sample, not Item 10's denominator. Chunky is an explicit generation instrument. Semantic nondeterminism, confirmed Better Caves failure, warning unknowns and limited provider observations remain stated. The missing final clean GitHub review is the explicit user continuation exception recorded in ledger section 5.7, not an inferred review. |
 | 8 | [Accepted inventory and delivery](../item-8/README.md), [inventory](../item-8/inventory.json) | The accepted population remains 448 active canonical families: 408 registry and 40 nonregistry. Eighteen other groups, 887 runtime roots and 136 providers are separate counts. PR18/19 delivery and the unchanged inventory hash are retained. Item 10 location grouping does not create new canonical families or count every component as a family. |
 | 9 | [Classification and rubric](../item-9/README.md), [classification](../item-9/classification.md) | The exact completed 448-family classification is reused unchanged. C/T1/T2/T3/T4 are provisional source-supported categories. Item 10 uses exclusive T2/T3, separate T4 and the declared overlapping comparison groups. A T1 site is not necessarily a fight; village membership is not a new exclusive tier. |
@@ -76,10 +76,14 @@ in its receipt; it is not an Item 10 runtime.
    `disabled_not_required_on_server`. Current disposition is **not retained;
    no configuration generated in Item 6**. The empty file list is correct.
    The [Item 6 report erratum](../../docs/items/Item-6-Baseline-Configuration-Audit.md#post-item-10-snapshot-erratum)
-   explicitly supersedes that erroneous label. The captured machine-readable
-   snapshot remains immutable because downstream receipts bind its original hash;
-   its old label is a preserved error, not an active membership claim. Membership
-   must come from the unchanged Item 3 manifest/matrix. Actual Item 6 materialization
+   links the [current machine-readable disposition](../item-6/chunky-disposition.json).
+   The existing Item 6 validator requires that correction, validates its exact
+   fields and source hashes, and checks actual retained-manifest absence. It rejects
+   missing, linked, modified or misbound corrections. The historical audit seal
+   remains an integrity check on preserved snapshot bytes, not current membership
+   approval. Machine consumers must read the current disposition together with
+   the snapshot; the unchanged Item 3 manifest/matrix controls runtime membership.
+   Actual Item 6 materialization
    and Item 7/10 instrument counts agree, so no world or configuration rerun is
    required. The affected attribution and downstream consistency gate are resolved.
 2. **Item 10 inspection-command dimensions: corrected.** The optional PR35 trace
@@ -112,11 +116,48 @@ combat, exploration pacing or enjoyment is established by Items 2 through 10.
 ## Gate and validation
 
 All nine item scopes are reconciled. The one erroneous historical membership
-label has an explicit current correction; no unresolved identity conflict requires
-new runtime work. No frozen file, inventory family or classification row changed.
-The audit uses direct artifact inspection and reviewer judgment, with the already
-passing 581-test Item 7/10 review-fix gate retained rather than rerun for prose.
-The corrected existing trace-inspection invocation passes all sixteen worlds.
-Only documentation, the ledger and this evidence report change in this audit.
+label has an enforced machine-readable current correction. No unresolved
+identity conflict requires new runtime work. No frozen file, inventory family or classification row changed.
+The audit uses direct artifact inspection and reviewer judgment. The corrected
+existing trace-inspection invocation passes all sixteen worlds. Review rejected
+the initial prose-only correction because the current machine-readable status
+remained wrong; that finding is valid and the rejected claim remains in Git at
+`87f45249`. The narrow regression also failed before the fix (DID NOT RAISE).
+The correction now uses the existing Item 6 validation and safe path resolver,
+with direct regression tests. Frozen data and experimental outputs are unchanged.
 Final audit review and main delivery are required before treating this cross-item
 gate as durably delivered. Item 11 execution is not part of this task.
+
+## Review correction reproduction
+
+[Finding 3961955118](https://github.com/copeugne/mcpack/pull/36#discussion_r3961955118)
+required a validated current machine-readable disposition. Reproduce through the
+existing command, which now checks both the historical snapshot and current
+Chunky correction:
+
+```sh
+uv run --no-sync python tools/freeze_item6_config.py validate \
+  --root evidence/item-6/frozen \
+  --manifest evidence/item-6/generated-config-manifest.json \
+  --audit evidence/item-6/config-audit.json
+uv run --no-sync pytest -q tests/item6
+uv run --no-sync pytest -q tests/item7 tests/item10
+```
+
+The correction is a single exact record, not a general patch format. It binds
+snapshot path/hash, original status, corrected status, empty config-file list,
+candidate name and retained-manifest path/hash. Validation checks those fields
+and exact referenced bytes. The shared repository resolver rejects missing files,
+symlinks and escaped paths. The old audit is never rewritten to conceal the error.
+
+Validation after the correction: **560 Item 6 tests passed in 17.04 seconds**
+([output](final-validation/pytest-audit-correction-item6.txt)); **581 Item 7/10
+tests passed in 156.94 seconds**
+([output](final-validation/pytest-audit-correction-item7-item10.txt)). The existing
+[Item 6 validation command passed](final-validation/item6-current-disposition.txt).
+All six affected Python files pass [Ruff](final-validation/ruff-audit-correction.txt),
+[formatting](final-validation/format-audit-correction.txt) and
+[BasedPyright](final-validation/basedpyright-audit-correction.txt).
+The original snapshot and configuration-manifest hashes still match the table.
+The new correction is 527 bytes, SHA-256
+`5c905eff65549dcd1e2e754911f35fd8208d10fe3097fbd9d36bb8c1a3b2b907`.

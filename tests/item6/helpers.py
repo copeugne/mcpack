@@ -65,6 +65,10 @@ def copy_item6_repository(tmp_path: Path) -> Item6RepositoryFixture:
         (MATERIALIZATION, materialization),
         (SANITIZATION, sanitization),
         (RETAINED, retained),
+        (
+            ROOT / "evidence/item-6/chunky-disposition.json",
+            repository / "evidence/item-6/chunky-disposition.json",
+        ),
     ):
         _ = shutil.copy2(source, destination)
     return Item6RepositoryFixture(

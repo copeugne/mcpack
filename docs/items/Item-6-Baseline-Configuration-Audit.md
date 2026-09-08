@@ -69,11 +69,16 @@ retained manifest. In the immutable `config-audit.json` snapshot at SHA-256
 `181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd`, the
 `systems` entry named `Chunky` has the erroneous status
 `retained-but-no-config-generated`. Its current disposition is
-`not-retained; no-config-generated`. The empty `files` list is correct.
+`not-retained-no-config-generated`, recorded in the required
+[machine-readable correction](../../evidence/item-6/chunky-disposition.json).
+The empty `files` list is correct.
 The snapshot preserves the original error because Item 7/10 receipts bind those
-exact bytes; it must be read with this explicit correction, not reused as proof
-of runtime membership. The accepted Item 3 manifest and final compatibility
+exact bytes. The existing validation command now requires the correction, binds
+its fields to the original snapshot and retained-manifest bytes, and verifies
+Chunky is absent. It rejects missing, linked or modified correction records.
+The old semantic seal verifies historical integrity; it does not approve the old
+membership label for current consumers. Read the snapshot with the correction. The accepted Item 3 manifest and final compatibility
 matrix remain authoritative for membership. No configuration file, runtime,
 measurement or historical receipt changed. The affected attribution and
-cross-item consistency gate pass with this documented correction; no empirical
+cross-item consistency gate pass with this validated machine-readable correction; no empirical
 gate is invalidated by an instrument that was correctly absent from Item 6.
