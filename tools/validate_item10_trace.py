@@ -122,7 +122,12 @@ def validate_trace(path: Path) -> dict[str, object]:
     }
 
 
-CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy"]
+CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy", "urn"]
+URN_TRIES = 9
+URN_SPREAD = (4, 1, 4)
+URN = "net/minecraft/world/level/levelgen/feature/RandomPatchFeature"
+PLACED = "net/minecraft/world/level/levelgen/placement/PlacedFeature"
+SIMPLE = "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature"
 SPIRAL = "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator"
 FAIRY = "org/violetmoon/quark/content/world/gen/FairyRingGenerator"
 NETHER_SPIKE = "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator"
@@ -147,6 +152,7 @@ CAPTURE_CLASSES = {
     "spike": {MONSTER_BOX, NETHER_SPIKE, END_BUILDING},
     "spiral": {MONSTER_BOX, NETHER_SPIKE, SPIRAL},
     "fairy": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, END_BUILDING},
+    "urn": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN},
 }
 DIAGNOSTICS = {
     "bop": "bop-fixture-r1",
@@ -154,6 +160,7 @@ DIAGNOSTICS = {
     "spike": "nether-spike-pilot-r1",
     "spiral": "spiral-pilot-r1",
     "fairy": "fairy-run-r1",
+    "urn": "urn-pilot-r1",
 }
 
 
@@ -161,8 +168,9 @@ def installed_classes(mode: CaptureMode) -> set[str]:
     """Bind the observed populations to their actual transformed classes."""
     return (
         BOP_INSTALLED
-        | (CAPTURE_CLASSES[mode] - {END_BUILDING})
-        | ({FAIRY} if mode == "fairy" else set[str]())
+        | (CAPTURE_CLASSES[mode] - {END_BUILDING, URN})
+        | ({FAIRY} if mode in {"fairy", "urn"} else set[str]())
+        | ({PLACED, SIMPLE} if mode == "urn" else set[str]())
     )
 
 
@@ -173,13 +181,18 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
     classes = CAPTURE_CLASSES[mode]
     required = installed_classes(mode)
     dimensions: dict[int, str] = {}
+    urn_parents: dict[int, str | None] = {}
     grounds: set[int] = set()
     parts: set[int] = set()
     origins: dict[int, tuple[int, ...]] = {}
     spiral_sources: set[tuple[str, tuple[int, ...]]] = set()
     expected_dimensions = dict.fromkeys(classes, "minecraft:the_end")
     expected_dimensions.update(
-        {MONSTER_BOX: "minecraft:overworld", NETHER_SPIKE: "minecraft:the_nether"}
+        {
+            MONSTER_BOX: "minecraft:overworld",
+            NETHER_SPIKE: "minecraft:the_nether",
+            URN: "minecraft:overworld",
+        }
     )
     attempt_writes: dict[int, int] = {}
     installations: dict[str, str] = {}
@@ -214,11 +227,22 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                 fail("incorrect scarecrow installation")
             installations[name] = digest
             continue
-        if kind not in {"begin", "feature", "write", "end", "generator_end", "ground", "part"}:
+        if kind not in {
+            "begin",
+            "feature",
+            "write",
+            "end",
+            "generator_end",
+            "ground",
+            "part",
+            "urn_parent",
+        }:
             fail("unexpected BOP event or unhandled failure")
         expected = (
             {"kind", "attempt", "class"}
             if kind == "feature"
+            else {"kind", "attempt", "placed_feature"}
+            if kind == "urn_parent"
             else {"kind", "attempt"}
             if kind == "generator_end"
             else {"kind", "attempt", "position"}
@@ -255,7 +279,15 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             if not isinstance(name, str) or name.replace(".", "/") not in classes:
                 fail("unexpected BOP feature")
             source_class = name.replace(".", "/")
-            installed = END_NBT if source_class == END_BUILDING else source_class
+            installed = (
+                END_NBT
+                if source_class == END_BUILDING
+                else PLACED
+                if source_class == URN
+                else source_class
+            )
+            if source_class == URN and SIMPLE not in installations:
+                fail("urn feature before writer installation")
             if active[attempt] is not None or installed not in installations:
                 fail("duplicate feature or feature before installation")
             if dimensions[attempt] != expected_dimensions[source_class]:
@@ -267,6 +299,19 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             fail("missing feature")
         building = name == END_BUILDING.replace("/", ".")
         spiral = name == SPIRAL.replace("/", ".")
+        urn = name == URN.replace("/", ".")
+        if kind == "urn_parent":
+            parent = row["placed_feature"]
+            if (
+                not urn
+                or attempt in urn_parents
+                or (parent is not None and (not isinstance(parent, str) or ":" not in parent))
+            ):
+                fail("unexpected or malformed urn parent")
+            urn_parents[attempt] = parent
+            continue
+        if urn and attempt not in urn_parents:
+            fail("missing urn parent before result")
         if kind == "part":
             if not spiral or attempt in parts:
                 fail("unexpected or repeated spiral part")
@@ -284,7 +329,9 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             flags = row["flags"]
             if building or spiral:
                 fail("unexpected writes in retained zero-write feature path")
-            if type(flags) is not int or flags not in ((2, 3) if mode == "bop" else (0,)):
+            if type(flags) is not int or flags not in (
+                (2,) if urn else (2, 3) if mode == "bop" else (0,)
+            ):
                 fail("invalid BOP flags")
             if name.endswith("MonolithFeature") and flags != HELPER_FLAGS:
                 fail("unexpected monolith flags")
@@ -293,6 +340,18 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             attempt_writes[attempt] = attempt_writes.get(attempt, 0) + 1
             if name == MONSTER_BOX.replace("/", ".") and attempt_writes[attempt] > 1:
                 fail("Monster Box exceeds frozen single-write bound")
+            if urn and (
+                attempt_writes[attempt] > URN_TRIES
+                or not row["state"].startswith("Block{supplementaries:urn}[")
+            ):
+                fail("urn write exceeds patch bound or has wrong block")
+            if urn and any(
+                abs(value - origin) > limit
+                for value, origin, limit in zip(
+                    cast("list[int]", row["position"]), origins[attempt], URN_SPREAD, strict=True
+                )
+            ):
+                fail("urn write outside patch spread")
             writes += 1
             refused += row["returned"] is False
             by_feature[name] = by_feature.get(name, 0) + 1
@@ -303,6 +362,8 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             generator = name.replace(".", "/") in {MONSTER_BOX, NETHER_SPIKE, SPIRAL}
             if kind != ("generator_end" if generator else "end"):
                 fail("wrong generator completion event")
+            if urn and row["returned"] != (attempt_writes.get(attempt, 0) > 0):
+                fail("urn return disagrees with direct writer attempts")
             if spiral and attempt not in parts:
                 fail("missing spiral part")
             if building and (attempt not in grounds or row["returned"] is not False):
@@ -320,19 +381,32 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
         for flags in ((2, 3) if name.endswith("AnomalyFeature") else (3,))
     }
     if mode != "bop":
-        required_paths = {(name.replace("/", "."), 0) for name in classes - {END_BUILDING, SPIRAL}}
+        required_paths = {
+            (name.replace("/", "."), 2 if name == URN else 0)
+            for name in classes - {END_BUILDING, SPIRAL}
+        }
     if set(successful_paths) != required_paths:
         fail(
             "Monster Box requires a successful write"
             if mode != "bop"
             else "BOP requires successful writes on all three provider/flag paths"
         )
-    if mode in {"spiral", "fairy"} and not parts:
+    if mode in {"spiral", "fairy", "urn"} and not parts:
         fail("missing spiral attempts in retained diagnostic")
     return {
         **(
             {"spiral_parts": len(parts), "spiral_source_keys": len(spiral_sources)}
-            if mode in {"spiral", "fairy"}
+            if mode in {"spiral", "fairy", "urn"}
+            else {}
+        ),
+        **(
+            {
+                "urn_patch_attempts": len(urn_parents),
+                "cave_parent_attempts": sum(
+                    parent == "supplementaries:cave_urns" for parent in urn_parents.values()
+                ),
+            }
+            if mode == "urn"
             else {}
         ),
         "successful_write_paths": [
@@ -406,6 +480,7 @@ def validate_feature_trace(raw_root: Path, *, mode: CaptureMode = "bop") -> dict
                 "spike": "Nether spike r1",
                 "spiral": "Spiral r1",
                 "fairy": "Fairy r1",
+                "urn": "Urn r1",
             }[mode]
         )
         + " capture integrity only; not saved-block acceptance",
@@ -421,6 +496,7 @@ if __name__ == "__main__":
         "--spike-r1",
         "--spiral-r1",
         "--fairy-r1",
+        "--urn-r1",
     }:
         print(
             json.dumps(

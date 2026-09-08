@@ -15,13 +15,15 @@ SCRIPT = ROOT / "evidence/item-10/scarecrow-probe-r3/inspect-writes.py"
 WORLD = ROOT / "evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-probe-r3/world"
 
 
-@pytest.mark.parametrize("mode", ["scarecrow", "bop", "monster", "spike"])
+@pytest.mark.parametrize("mode", ["scarecrow", "bop", "monster", "spike", "urn"])
 @pytest.mark.parametrize("defect", ["trace", "manifest", "region", "block"])
 def test_corroboration_rejects_invalid_evidence(
     defect: str, mode: str, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     diagnostic = (
-        "nether-spike-pilot-r1"
+        "urn-pilot-r1"
+        if mode == "urn"
+        else "nether-spike-pilot-r1"
         if mode == "spike"
         else "monster-box-pilot-r1"
         if mode == "monster"

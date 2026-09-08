@@ -379,3 +379,37 @@ def test_zero_write_part_capture_rejects_invalid_trace(defect: str) -> None:
         rows = [r for r in rows if r.get("attempt") not in {4, 5}]
     with pytest.raises(ValueError, match=r"spiral|unpaired|coordinates|zero-write"):
         _ = check_feature_rows(rows, mode="spiral")
+
+
+@pytest.mark.parametrize(
+    "defect", ["missing", "duplicate", "type", "flags", "block", "return", "coordinates"]
+)
+def test_urn_parent_and_write_boundaries(defect: str) -> None:
+    raw = TRACE.parents[3] / "evidence/raw/item10/urn-pilot-r1-custody/restored/trace.jsonl"
+    rows = cast(
+        "list[dict[str, object]]", [json.loads(line) for line in raw.read_text().splitlines()]
+    )
+    parent = next(i for i, row in enumerate(rows) if row["kind"] == "urn_parent")
+    urn_ids = {row["attempt"] for row in rows if row["kind"] == "urn_parent"}
+    write = next(
+        i for i, row in enumerate(rows) if row["kind"] == "write" and row["attempt"] in urn_ids
+    )
+    if defect == "missing":
+        del rows[parent]
+    elif defect == "duplicate":
+        rows.insert(parent, copy.deepcopy(rows[parent]))
+    elif defect == "type":
+        rows[parent]["placed_feature"] = 7
+    elif defect == "flags":
+        rows[write]["flags"] = 0
+    elif defect == "coordinates":
+        rows[write]["position"] = [999999, 0, 0]
+    elif defect == "block":
+        rows[write]["state"] = "Block{minecraft:stone}"
+    else:
+        end = next(
+            row for row in rows if row["kind"] == "end" and row["attempt"] == rows[write]["attempt"]
+        )
+        end["returned"] = False
+    with pytest.raises(ValueError, match=r"urn|flags"):
+        _ = check_feature_rows(rows, mode="urn")
