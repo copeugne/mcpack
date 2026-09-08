@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `6d5852c085cddf7c37862829c947bedf71ac9c39` after PR28.
+  `3b50c59a1504f6cca7240bb4ef99c67569caf5b7` after PR29.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -140,12 +140,19 @@ preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spira
 six zero-write parts from one source. Raw download/world restores pass. The saved
 neighborhood is ice_starfield, outside the frozen end_highlands allowlist. Positive
 capture remains unmet; continue independent generator coverage without expanding this sample.
-Current work is on `codex/item10-fairy`. Direct-site roles and delegated flower
+PR29 is cleanly reviewed and merged; its README records verified delivery. Direct-site roles and delegated flower
 return/origin-state capture in `3b163d99` passes all 342 Item 7/10 tests.
 [Fairy r1](evidence/item-10/fairy-run-r1/README.md) completed all 6,852 chunks
 but captured no fairy helper calls. Hook identity and raw/world restores pass.
-Do not expand for positive counts; capture acceptance and mixed-reader integration remain open.
-The next batch extends the existing collector using accepted Item 8 mechanisms;
+Current work is on `codex/item10-mixed-traces`: both retained traces now pass
+archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
+Do not expand for positive counts; positive capture and saved-content acceptance remain open.
+Reassessment: the registry pilot already supplies exclusive-role spatial results.
+The existing analysis still lacks the required overlapping actionable, encounter
+and village category summaries. Integrate those in the current analysis path
+before extending instrumentation. This does not waive the 40 nonregistry families
+or the full sampling/control gates. No human workload or capture is scheduled.
+BetterEnd coverage remains unresolved;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
 coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)

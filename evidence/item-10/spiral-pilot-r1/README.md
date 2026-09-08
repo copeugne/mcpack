@@ -20,7 +20,7 @@ The trace is 82,322 bytes, SHA-256
 `a73335cbf792c939a2b05058feee383c7ba2c28463f13d5625939272213394f5`.
 Positive spiral capture fails; there are no recorded successful spiral writes
 to corroborate.
-Mixed-trace validator integration remains pending. Do not expand the sample in
+The archive-bound mixed-trace integrity check now passes (see below). Do not expand the sample in
 response to this result. Inspect the existing biome/terrain rejection conditions
 before proposing another experiment. No cause of these early returns is inferred.
 
@@ -79,3 +79,28 @@ The [completed review](https://github.com/copeugne/mcpack/pull/28#issuecomment-5
 reviewed `9cb338e023cc831c2ae0341bc7ab10e94ef71bcd` with no inline, review or
 discussion findings and a Codex bot thumbs-up. That exact head is an ancestor
 of main. Delivery does not turn this zero-write pilot into positive capture.
+
+## Archive-bound mixed-trace integrity
+
+[Trace validation](trace-validation.json) binds the complete trace and every
+required incoming class to the immutable archive. Each spiral attempt requires
+one part event, a correctly typed destination, the End dimension and a void
+generator completion. Source keys are grouped without treating them as
+successful locations. BetterEnd false returns retain their ground observations.
+The fairy diagnostic requires its installed class even though no helper call
+occurred. These bounded zero-write paths do not accept hypothetical successful
+spiral or fairy records. Positive capture and saved-content gates remain unmet.
+
+Reproduce without a server:
+
+```sh
+uv run --no-sync python -m tools.validate_item10_trace --spiral-r1 evidence/raw/item10/spiral-pilot-r1-custody/restored
+```
+
+Focused regressions reject missing/repeated part events, wrong attempt binding,
+malformed coordinates, unexpected writes, omitted spiral attempts and missing
+fairy installation. Existing BOP, Monster Box and Nether trace reports reproduce
+byte for byte. No raw archive revision was created for this reader-only change.
+
+Validation: all 350 Item 7/10 tests pass in 65.27 seconds. Changed-reader/test
+Ruff and basedpyright checks pass. No Item 11 workflow ran.
