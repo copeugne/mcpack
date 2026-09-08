@@ -825,7 +825,17 @@ would succeed. The reused fixture deliberately refuses its first content write;
 three assertions failed and were corrected to require that refusal. Original
 behavior matched throughout. Initial lint findings were also corrected.
 
-This is collector preparation, not natural bridge capture. Selected template path
-and rotation are retained, but configured-variant registry attribution remains
-unimplemented. Resolve that boundary before predeclaring the runtime diagnostic.
-No bridge server experiment or Item 11 workflow ran.
+This is collector preparation, not natural bridge capture. The existing
+PlacedFeature callback now also binds the configured-feature registry key for
+BridgeFeature invocations, retaining it in a `bridge_configured` event beside
+the selected template and rotation. Direct calls or unregistered configurations
+retain null rather than an inferred identity. Thread-local attribution is restored
+in a finally block. No additional runtime class hook was introduced.
+
+The configured-bridge fixture compares original and observed complete write
+arguments and return values, and verifies the exact fixture registry key. Direct
+feature fixtures require null attribution. All 17 focused bridge/urn cases pass
+in 16.14 seconds; focused Ruff and basedpyright pass after correcting one long
+parameter-list line. The full Item 7/10 gate passes all 380 tests in 84.73
+seconds. No bridge server experiment or Item 11 workflow ran.
+Predeclare the bounded runtime diagnostic and storage reservation next.

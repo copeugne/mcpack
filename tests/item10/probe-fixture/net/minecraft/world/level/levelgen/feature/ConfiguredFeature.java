@@ -5,9 +5,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.core.BlockPos;
 public class ConfiguredFeature {
     public String key = "supplementaries:urns_patch";
-    public RandomPatchFeature feature() { return new RandomPatchFeature(); }
+    public Object feature() { return new RandomPatchFeature(); }
     public boolean place(WorldGenLevel world, ChunkGenerator generator, RandomSource random, BlockPos pos) {
-        return feature().place(new FeaturePlaceContext(world, pos, false));
+        return ((RandomPatchFeature) feature()).place(new FeaturePlaceContext(world, pos, false));
     }
     public String toString() { return key; }
 }

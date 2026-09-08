@@ -165,8 +165,10 @@ Current branch: `codex/item10-bridge-coverage`. The
 reuses accepted selection/geometry evidence and binds 37 direct processor write
 sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
 retained-class transformation. The [probe report](evidence/item-10/placement-probe.md#bridge-template-and-processor-preparation)
-records validation. Configured-variant registry attribution remains missing;
-resolve it before predeclaring a bridge run.
+records validation. The existing placement callback now retains configured-variant
+registry attribution with explicit null for unavailable identity; 17 focused
+bridge/urn tests and the full 380-test Item 7/10 gate pass. Predeclare the bounded
+bridge run and recheck storage next.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome

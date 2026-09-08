@@ -69,6 +69,7 @@ public final class Item10PlacementProbe {
         "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z";
     private static final Map<Object, String> TEMPLATE_PATHS =
         Collections.synchronizedMap(new IdentityHashMap<>());
+    private static final ThreadLocal<String> BRIDGE_CONFIGURED = new ThreadLocal<>();
     private static final ConcurrentHashMap<Long, String> FEATURES = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<Long, Boolean> IN_TEMPLATE = new ConcurrentHashMap<>();
     private static Path output;
@@ -158,6 +159,11 @@ public final class Item10PlacementProbe {
         FEATURES.put(thread, feature.getClass().getName());
         emit("{\"kind\":\"feature\",\"attempt\":" + ACTIVE.get(thread)
             + ",\"class\":" + quote(feature.getClass().getName()) + "}");
+        if (BRIDGE.replace('/', '.').equals(feature.getClass().getName())) {
+            String configured = BRIDGE_CONFIGURED.get();
+            emit("{\"kind\":\"bridge_configured\",\"attempt\":" + ACTIVE.get(thread)
+                + ",\"configured_feature\":" + (configured == null ? "null" : quote(configured)) + "}");
+        }
     }
 
     public static void beginGenerator(Object feature, Object world, Object origin) throws Throwable {
@@ -349,6 +355,12 @@ public final class Item10PlacementProbe {
             emit("{\"kind\":\"urn_parent\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
                 + ",\"placed_feature\":" + (parent == null ? "null" : quote(parent)) + "}");
         }
+        boolean bridge = BRIDGE.replace('/', '.').equals(feature.getClass().getName());
+        String previousBridge = BRIDGE_CONFIGURED.get();
+        if (bridge) {
+            Object key = registryKey(world, "CONFIGURED_FEATURE", configured);
+            BRIDGE_CONFIGURED.set(key == null ? null : key.toString());
+        }
         try {
             boolean result = (Boolean) method.invoke(configured, world, generator, random, pos);
             if (traced) end(result);
@@ -362,6 +374,11 @@ public final class Item10PlacementProbe {
                     + ",\"exception\":" + quote(error.getCause().getClass().getName()) + "}");
             }
             throw error.getCause();
+        } finally {
+            if (bridge) {
+                if (previousBridge == null) BRIDGE_CONFIGURED.remove();
+                else BRIDGE_CONFIGURED.set(previousBridge);
+            }
         }
     }
 

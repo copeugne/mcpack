@@ -635,7 +635,17 @@ def test_urn_hooks_transform_hash_verified_retained_classes(tmp_path: Path) -> N
 
 
 @pytest.mark.parametrize(
-    "mode", ["normal", "refused", "exception", "early", "outside", "outside-template", "isolated"]
+    "mode",
+    [
+        "normal",
+        "refused",
+        "exception",
+        "early",
+        "outside",
+        "outside-template",
+        "isolated",
+        "configured",
+    ],
 )
 def test_bridge_template_and_processor_phases_preserve_original(tmp_path: Path, mode: str) -> None:
     agent = _build_probe(tmp_path)
@@ -656,6 +666,14 @@ def test_bridge_template_and_processor_phases_preserve_original(tmp_path: Path, 
     assert not any(row["kind"] == "installation_failed" for row in rows)
     templates = [row for row in rows if row["kind"] == "template_begin"]
     markers = [row for row in rows if row["kind"] == "bridge_processor"]
+    variants = [row for row in rows if row["kind"] == "bridge_configured"]
+    if mode not in {"outside", "outside-template"}:
+        assert len(variants) == 1
+        assert variants[0]["configured_feature"] == (
+            "yungsbridges:wood_17_0" if mode == "configured" else None
+        )
+    else:
+        assert not variants
     if mode in {"early", "outside", "outside-template"}:
         assert not templates
         assert not markers
