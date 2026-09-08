@@ -116,3 +116,13 @@ no other mod supplies the tag or that every natural building attempt fails.
 The next unresolved question is runtime population through other subscribers
 or loaded resources, rather than whether this datagen registration suffices.
 No server was run and no frozen input was changed for this inspection.
+
+The two directly inspected runtime subscriptions also do not populate block
+tags. LibWoverWorldGenerator obtains WorldPresetTags.TAGS at offset 69, calls
+bootstrapEvent at 72 and subscribes at 82. BiomeManagerImpl obtains
+TagManager.BIOMES at 69, calls bootstrapEvent at 72 and subscribes at 85.
+Their class hashes are now included in source-identities.json. Reproduce with
+the same pinned `javap -p -c` command and those fully qualified class names.
+These are world-preset and biome registries respectively. Neither is BLOCKS.
+This rules out these two subscriptions as the missing block-tag population
+path; it does not rule out dynamic loading or other resource providers.
