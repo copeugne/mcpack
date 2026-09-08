@@ -135,11 +135,14 @@ PR27 uses `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped nat
 Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
 now validate in `769d11cc`; 340 Item 7/10 tests pass. PR27 is cleanly reviewed
 and merged. Its README records the review disposition and verified main delivery.
-Current work is on `codex/item10-spiral`: the source/part hook passes synthetic
+PR28 reviews `codex/item10-spiral`: the source/part hook passes synthetic
 preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spiral pilot r1](evidence/item-10/spiral-pilot-r1/README.md) completed cleanly with
 six zero-write parts from one source. Raw download/world restores pass. The saved
 neighborhood is ice_starfield, outside the frozen end_highlands allowlist. Positive
 capture remains unmet; continue independent generator coverage without expanding this sample.
+Current work is on `codex/item10-fairy`. Direct-site roles and delegated flower
+return/origin-state capture pass seven focused collector tests. Next predeclare
+a bounded natural pilot; natural counts and raw-reader integration remain open.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
