@@ -1,7 +1,6 @@
 # mcpack current handoff
 
 Updated: 2026-09-08. This is the single active continuation checkpoint.
-
 ## Authority and reading order
 
 Read [AGENTS.md](AGENTS.md) for standing instructions and
@@ -125,13 +124,16 @@ completed on `73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2` with no new findings
 and a Codex thumbs-up. All four valid findings from earlier cycles were fixed.
 The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
-No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
+Item 10 remains IN PROGRESS; no nonregistry density counts are accepted.
 
 Continue the [PR25](https://github.com/copeugne/mcpack/pull/25) review/fix loop on
 `codex/item10-direct-writes`. Its first review found missing BOP failure status,
 fixed in the review correction; source ancestry loss is disproved by Git and PR commit history.
 `codex/item10-quark` preserves pushed `461a4000`, a separately tested Monster Box
-collector extension. Resume it after PR25 delivery, integrating the accepted fixes.
+collector extension. PR25 fixes are merged into that branch without rewriting history.
+[Monster Box pilot r1](evidence/item-10/monster-box-pilot-r1/README.md) is stopped;
+seven writes were observed and raw/world restores pass. Next validate its archived trace
+and saved blocks without new generation.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
@@ -156,10 +158,8 @@ Do not alter frozen tags/configs or infer
 zero density. Positive template capture and full collection remain gated.
 [PR24](https://github.com/copeugne/mcpack/pull/24) merged as
 `a96a2cbad752ca0023058b39c122c66ffa4370ec`, verified in fetched main.
-Its completed Codex review on `d38099feffee9281abc947b3434557943751db5d`
-returned a thumbs-up and no findings. The milestone passes 296 Item 7/10 tests
-and changed-file checks. Item 10 remains IN PROGRESS. The
-[placement diagnostic](evidence/item-10/placement-probe.md) records delivery.
+The [placement diagnostic](evidence/item-10/placement-probe.md) records its
+clean review, 296 passing Item 7/10 tests and delivery. Item 10 remains open.
 Anomaly/monolith hooks now preserve actual results at their shared Minecraft
 helper. Synthetic preservation and exact retained-class transformation pass;
 [Live BOP fixture r1](evidence/item-10/bop-fixture-r1/README.md) completes cleanly
