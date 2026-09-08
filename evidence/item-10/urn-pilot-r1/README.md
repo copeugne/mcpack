@@ -114,3 +114,15 @@ The immutable trace remains the per-attempt authority; the summary retains all
 161 urn observations and the 987 zero-successful-write patch attempts as a count.
 Changed trace-reader and test Ruff/basedpyright checks pass. Initial lint/type
 findings were corrected before these results. No Item 11 workflow ran.
+
+## PR32 review fix
+
+The [review finding](https://github.com/copeugne/mcpack/pull/32#discussion_r3955305615)
+on `ae5222b5` is valid: the urn mutation tests opened separately restored raw
+trace data without checking its availability. They now use the same explicit
+missing-prerequisite skip as neighboring retained-evidence tests. Present raw
+data still exercises all mutations; absence does not claim validation passed.
+All 54 retained-trace tests pass with the archive present, Ruff and basedpyright
+pass, and a direct invocation with the file-availability check forced false
+raises the expected pytest skip before reading the archive. No raw evidence or
+measurement logic changed. A fresh review is required for the fix.
