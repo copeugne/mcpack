@@ -135,6 +135,14 @@ occurrence coverage and measured storage costs are acceptance gates on the first
 full world, not prerequisites requiring another small pilot. Failures remain
 retained failures; changing this frozen protocol requires an explicit revision.
 
+The [retained ocean-heavy failure](full-ocean-heavy-r2-without-sparse/README.md#narrow-lifecycle-correction-after-preservation)
+exposed delayed shutdown on Java heap exhaustion. Failure handling now pauses
+Chunky and attempts the existing correlated flush/stop with a 60-second save
+confirmation allowance bounded by the run deadline. Timeout or console I/O
+failure uses the existing whole-process-group termination path. Such a run is
+always rejected, including after a confirmed emergency save. Successful-run
+commands, sampling, observer identity and the pinned heap remain unchanged.
+
 ## Occurrences and denominators
 
 ### Frozen observer and full-trace gate

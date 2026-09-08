@@ -91,3 +91,32 @@ continuing. Any retry must preserve this attempt, retain the frozen identity,
 and have an explicit disposition and bounded policy. Do not change heap,
 configuration, sampling, or count this attempt as a smaller successful world.
 The exact allocation cause and the continuation decision remain unresolved.
+
+## Narrow lifecycle correction after preservation
+
+The demonstrated harness defect is delayed response to the exact logged
+`java.lang.OutOfMemoryError: Java heap space` signature. The existing
+`item7_lifecycle` now requests one `chunky pause` and reuses its response-gated
+flush/stop path. Save confirmation has a 60-second allowance, also bounded by
+the original run deadline. If that allowance expires or console I/O fails, the
+existing process-group termination path applies. A completed emergency save
+never converts the failed generation into an accepted run, even if all expected
+selection markers had already arrived. The original source and raw receipt above
+remain unchanged. The stopped Minecraft log is now captured on rejected runs
+that reached readiness and exited zero, preserving shutdown diagnostics too.
+
+This changes failure handling only. It does not alter the observer source/JAR,
+heap, mods, configuration, seeds, generation selections, successful-run commands,
+or accepted census processing. No new failure-recovery framework was added.
+The allocation responsible for the resource failure remains UNKNOWN. The last
+archived trace row records shutdown with zero unfinished attempts; that fact
+alone cannot explain or exonerate any allocation source.
+
+Validation: `uv run --no-sync pytest -q tests/item7/test_worldgen_lifecycle.py
+tests/item7/test_item7_console.py tests/item10/test_collection_runner.py` passed
+34 tests in 1.89 seconds. Added cases replay heap exhaustion before, during and
+after selection completion, repeated error lines, later queued completion
+markers, confirmed emergency save/stop and shutdown timeout with process-group
+termination. These are harness tests, not a new Minecraft experiment or a claim
+that heap exhaustion was repaired. Ruff check/format and focused basedpyright
+checks pass. The full applicable gate remains required for the final PR candidate.

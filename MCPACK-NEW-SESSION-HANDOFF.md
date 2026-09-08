@@ -179,9 +179,12 @@ The failed run's published/downloaded/restored archive preserves 315 raw files,
 two debug reports, emergency commands, sanitized configuration and a 458-file
 partial world. No full census or retry was run. No server is active.
 
-Collection is paused under the protocol's resource-failure rule. Assess the heap
-failure and the harness's delayed failure handling before a bounded continuation
-decision. The first control passed under identical preflight/probe/selections;
+Collection is paused under the protocol's resource-failure rule. The narrow
+heap-error shutdown correction now passes 34 focused lifecycle/console/runner
+tests plus Ruff and type checks. It prevents the observed wait-for-completion
+hang using the existing pause/correlated-save/stop path and a bounded timeout;
+it does not change the frozen runtime or repair heap exhaustion. Decide and
+record a bounded continuation policy before another experiment. The first control passed under identical preflight/probe/selections;
 the allocation cause remains unknown. Do not silently change the pinned heap,
 replace the failed attempt, or accept a smaller census. Preserve all artifacts.
 After resolving this failure, finish the planned second ocean-heavy pair and
