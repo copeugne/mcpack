@@ -112,7 +112,11 @@ merge, ship erosion and block-repair writes now have focused collector coverage,
 including retained-class transforms and 53 passing collector tests.
 The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
 records implementation and its limits. Full-sample reader integration remains.
-Genuine remaining capabilities: applicability/integration of End lifecycle routes; complete
+End route applicability is resolved in the
+[protocol](evidence/item-10/protocol.md#end-generation-and-lifecycle-applicability):
+retain ordinary packaged feature routes and report lifecycle invocations separately.
+No arrival/dragon/respawn campaign is required. End collector integration remains.
+Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
 Source descriptions do not supply missing occurrence measurements. Traced blocks,

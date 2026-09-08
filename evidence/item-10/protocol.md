@@ -93,8 +93,10 @@ event identity. The existing inventory supplies contribution-to-family mappings.
 Record attempted, failed and successful placement separately; a Boolean feature
 return alone must not be assumed to equal one location without checking that
 provider's existing writer evidence. Nested delegated writes must not duplicate
-their parent location. Lifecycle sites, including End arrival and dragon/gateway
-events, must be reported separately from ordinary terrain-generated density.
+their parent location. Lifecycle-triggered End arrival and dragon/gateway events
+must be reported separately from ordinary terrain-generated density. This is a
+route distinction, not a blanket exclusion of those families: their packaged
+chunk-generation routes remain in scope as specified below.
 
 No current generic start counter satisfies that nonregistry requirement. Before
 implementation, select direct tracing or prove a saved-world reconstruction for
@@ -1064,3 +1066,36 @@ successful template call does not establish that all its blocks survived erosion
 All 53 collector tests pass in 63.98 seconds, including hash-verified retained
 NBTFeature, crashed-ship and BlocksHelper transformations. Focused Ruff and
 basedpyright checks pass. Reproduce with the collector test command above.
+
+### End generation and lifecycle applicability
+
+Reuse `betterendisland:platform_gateway` in the accepted Item 8 inventory,
+especially its `packaged_biome_entrypoints`, `packaged_feature_placement`,
+`spike_podium_generators`, `runtime_activation` and `generated_world_observations`.
+The following existing disassemblies were checked against their committed hashes:
+[platform/gateway](../item-8/sources/better-end-island-platform-gateway/identities.json),
+[spike/podium](../item-8/sources/better-end-island-spike-podium/identities.json),
+[exit portal](../item-8/sources/better-end-island-exit-portal/identities.json) and
+[vanilla platform caller](../item-8/sources/vanilla-end-platform-caller/identities.json).
+No new Item 8 measurement or classification is needed.
+
+| Accepted family | Ordinary generation exposure | Location accounting |
+| --- | --- | --- |
+| `betterendisland:arrival_platform` | `minecraft:end_platform` in the central End biome, fixed caller origin `(100,49,0)` with a biome filter. | One distinct platform at its caller anchor, not one location per placement retry or per template block. Record the fixed-position nature; do not extrapolate a uniform spatial rate. |
+| `betterendisland:gateway` | `minecraft:end_gateway_return` in the accepted vanilla/BetterEnd/BOP biome consumers, with rarity 700 and terrain-relative placement. | Distinct gateway anchor positions from the ordinary feature route are eligible for the sampled density. Dragon-fight and travel-triggered gateway events are separate lifecycle observations. |
+| `betterendisland:dragon_arena` | `minecraft:end_spike` in the central End biome. The retained custom layout has ten spike centers at radius 42. | One arena location anchored at central `(0,0)` X/Z when observed, with spikes and podium retained as components. Ten spikes, their template parts and later rebuilds must not become ten or more arena locations. |
+
+The full central-End frame contains the fixed platform and arena coordinates;
+this establishes exposure, not successful placement. Gateways remain subject to
+actual biome filtering and observed writes. Record runtime accessor/route context
+alongside attempt and component identity so ordinary chunk generation can be
+distinguished from ServerLevel lifecycle invocation. Unresolved route attribution
+must remain explicit rather than being silently assigned to the density numerator.
+
+No player arrival, dragon death, respawn or missing-portal recovery campaign is
+required for Item 10. Record such events only if they occur during the prescribed
+run, separately from ordinary generation. Absence of a triggered event is not a
+failed placement or evidence that its design cannot generate. Existing central-End
+block aggregates establish material presence only and cannot replace missing
+platform/gateway/podium occurrences. Four existing generator entrypoints and their
+template/direct-write paths still need collector integration before full sampling.
