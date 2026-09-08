@@ -20,8 +20,21 @@ if TYPE_CHECKING:
     from mcpack_evidence.item7_nbt_models import ChunkRecord
 
 
-def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int, str]:
-    """Read each saved quart-height biome at local block X=8, Z=8."""
+def chunk_biome_column(
+    record: ChunkRecord, min_y: int, height: int, *, anchor: tuple[int, int] | None = None
+) -> dict[int, str]:
+    """Read saved quart-height biomes at the supplied block X/Z, or chunk center."""
+    if anchor is None:
+        local_x = local_z = 8
+    else:
+        if (
+            len(anchor) != 2  # noqa: PLR2004 - horizontal coordinate pair
+            or any(type(value) is not int for value in anchor)
+            or (anchor[0] // 16, anchor[1] // 16) != (record.chunk_x, record.chunk_z)
+        ):
+            detail = "biome anchor must be integer X/Z within the supplied chunk"
+            raise ValueError(detail)
+        local_x, local_z = anchor[0] % 16, anchor[1] % 16
     sections = {section.section_y: section for section in record.biome_sections}
     if len(sections) != len(record.biome_sections):
         detail = f"duplicate biome section at chunk {record.chunk_x},{record.chunk_z}"
@@ -40,9 +53,9 @@ def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int
             )
             raise ValueError(detail)
         for local_quart_y in range(4):
-            # Minecraft palette order is X + 4*Z + 16*Y; X=Z=2 in quart coordinates.
+            # Minecraft palette order is X + 4*Z + 16*Y in quart coordinates.
             column[section_y * 4 + local_quart_y] = section.palette[
-                section.indices[2 + 4 * 2 + 16 * local_quart_y]
+                section.indices[local_x // 4 + 4 * (local_z // 4) + 16 * local_quart_y]
             ]
     return column
 

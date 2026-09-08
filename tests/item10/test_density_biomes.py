@@ -25,6 +25,30 @@ def test_column_uses_saved_quart_order_and_negative_heights(
     }
 
 
+def test_actual_anchor_uses_its_own_quart_with_negative_chunk_coordinates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    indices = [0] * 64
+    indices[3 + 4 + 16] = 1
+    section = BiomeSection(
+        section_y=-1, palette=("test:center", "test:anchor"), indices=tuple(indices)
+    )
+    record = record.model_copy(update={"chunk_x": -1, "chunk_z": -2, "biome_sections": (section,)})
+    assert chunk_biome_column(record, -16, 16)[-3] == "test:center"
+    assert chunk_biome_column(record, -16, 16, anchor=(-1, -27))[-3] == "test:anchor"
+    assert chunk_biome_column(record, -16, 16, anchor=(-4, -28))[-3] == "test:anchor"
+
+
+@pytest.mark.parametrize("anchor", [(16, 0), (0, -1), (True, 0)])
+def test_biome_anchor_cannot_use_a_different_chunk_or_coerced_coordinate(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, anchor: tuple[int, int]
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    with pytest.raises(ValueError, match="biome anchor"):
+        _ = chunk_biome_column(record, 0, 16, anchor=anchor)
+
+
 @pytest.mark.parametrize("defect", ["missing", "duplicate", "bad-index"])
 def test_incomplete_or_invalid_biomes_cannot_shrink_exposure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, defect: str

@@ -239,6 +239,14 @@ anchor's floor(Y/4) band for its biome denominator. Missing bounds and anchors
 outside stored biome height remain explicit unavailable observations, never
 surface substitutions or silent drops. Inverted piece bounds reject attribution.
 Nonregistry writer coordinates will supply their own recorded anchors.
+The same `chunk_biome_column` reader accepts an explicit block X/Z anchor for
+nonregistry attribution. It verifies that the integer coordinates belong to the
+supplied chunk and reads their actual horizontal quart, including negative world
+coordinates. Omitting the anchor preserves the registry chunk-center convention
+and existing height-band exposure. This does not change biome denominators or
+substitute a center biome when a traced anchor is unavailable. Integration into
+the final occurrence table remains required. The focused biome/spatial/census
+suite passes 40 tests; Ruff and test-file basedpyright checks pass.
 The existing `--biomes` reader now implements this registry attribution alongside
 height-band exposure. Focused Item 10 validation passes 29 tests, including
 negative heights, missing bounds, out-of-height attribution and inverted bounds;

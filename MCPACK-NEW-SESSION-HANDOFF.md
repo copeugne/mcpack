@@ -127,8 +127,10 @@ and template paths to all 40 accepted nonregistry families, with 57 focused test
 passing. Six existing ambient exclusions are integrated; an observed disconnected
 house fails as an inventory conflict. Attribution does not imply placement success.
 Provider-specific success, incoming-class file binding and the location table remain.
+The biome reader now supports actual within-chunk traced anchors, with 40 focused
+biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete
-nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
+nonregistry occurrence identity, coordinate inclusion and biome integration;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
 Source descriptions do not supply missing occurrence measurements. Traced blocks,
 template parts and halo activity are not already accepted location numerators.
