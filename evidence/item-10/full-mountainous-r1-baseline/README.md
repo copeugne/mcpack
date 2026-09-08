@@ -50,6 +50,28 @@ requires resolving this distinction without silently weakening coverage or
 hunting for a positive gateway in another world. The protocol and reader are
 unchanged. Further experiments are paused at this coverage question.
 
+### Bounded class-loading check
+
+The existing `test_island_templates_and_route_context` now records the JVM's
+`-Xlog:class+load=info` output as well as the observer trace. In the four normal
+fixture routes, the Gateway route loads and captures `BetterEndGatewayFeature`;
+Podium, SpawnPlatform and Spike do neither, despite the common fixture referring
+to all four classes. Each case asserts that the observer JAR equals the frozen
+`d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782`.
+The full 24-case island fixture also preserves original outputs, route context,
+write outcomes, exception recovery and completed attempts.
+
+Command: `uv run --no-sync pytest -q tests/item10/test_placement_probe.py -k island_templates_and_route_context`.
+Result: 24 passed, 53 deselected in 24.88 seconds. The first Ruff check found one
+overlong added string; splitting that literal fixes formatting only.
+
+This reproduces a false premise in requiring every observer target to load in
+every world. It does not supply a JVM class-load log for this preserved world,
+and does not by itself change its rejection or prove a gateway zero. The next
+correction must bind the frozen observer and distinguish an unexercised target
+from a missing capture or installation. Keep hash, event and healthy-shutdown
+checks strict; document any coverage-rule revision before accepting this census.
+
 ## Reproduction
 
 Use the existing [custody procedure](../full-ordinary-r1-without-sparse/README.md#reproduction)

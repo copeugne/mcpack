@@ -982,8 +982,16 @@ def test_island_templates_and_route_context(tmp_path: Path, kind: str, mode: str
         timeout=30,
     )
     trace = tmp_path / "island.jsonl"
+    class_log = tmp_path / "class-load.log"
     observed = subprocess.run(
-        [*command, f"-javaagent:{agent}={trace}", "IslandFixture", mode, kind],
+        [
+            *command,
+            f"-Xlog:class+load=info:file={class_log}",
+            f"-javaagent:{agent}={trace}",
+            "IslandFixture",
+            mode,
+            kind,
+        ],
         check=True,
         capture_output=True,
         text=True,
@@ -993,6 +1001,18 @@ def test_island_templates_and_route_context(tmp_path: Path, kind: str, mode: str
     rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
     assert not any(row["kind"] == "installation_failed" for row in rows)
     contexts = [row for row in rows if row["kind"] == "island_context"]
+    if mode == "normal":
+        # Referencing every branch in IslandFixture does not load unused generators.
+        gateway = (
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
+        )
+        captures = trace.parent / f"{trace.name}.classes"
+        assert hashlib.sha256(agent.read_bytes()).hexdigest() == (
+            "d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782"
+        )
+        assert (gateway.replace("/", ".") in class_log.read_text()) == (kind == "Gateway")
+        assert (captures / f"{gateway}.class").exists() == (kind == "Gateway")
+        assert any(row.get("class") == gateway for row in rows) == (kind == "Gateway")
     assert len(contexts) == (2 if mode == "recover" else 1)
     assert all(row["worldgen_region"] == (mode != "lifecycle") for row in contexts)
     templates = [row for row in rows if row["kind"] == "template_begin"]

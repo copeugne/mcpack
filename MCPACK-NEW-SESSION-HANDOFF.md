@@ -174,10 +174,13 @@ Full observer acceptance is unresolved: the only absent target is
 `com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature`.
 The strict 50-class gate rejects; diagnostic mode validates 32,822 attempts and
 49 installations. Do not call that full acceptance or a measured gateway zero.
-The frozen transformer captures targeted class definitions; the retained gateway
-caller is conditional. Investigate unexercised class loading versus failed
-observation with the existing Java fixtures in `test_placement_probe.py` and
-`probe-fixture/IslandFixture.java`. No protocol/reader exception is implemented.
+The existing island fixture now confirms with JVM class-load logs that the
+frozen observer captures Gateway only when that route loads the class; other
+routes leave it unloaded. All 24 island cases pass. See the mountainous record's
+bounded class-loading check. This proves the all-targets-loaded premise can fail,
+not this world's acceptance. Next bind the frozen observer and correct the narrow
+coverage distinction while retaining missing-capture/installation rejection.
+No protocol/reader exception is implemented.
 Preserve the current run and resolve this narrow coverage question before more
 worlds. Do not tune, hunt positive gateways, repeat Item 8/9 or change the sample.
 Four worlds are accepted; the fifth has complete generation/custody only.
