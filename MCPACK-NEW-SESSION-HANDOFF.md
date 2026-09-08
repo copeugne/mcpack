@@ -106,12 +106,21 @@ a synthetic preservation test and transforms the exact retained scarecrow class.
 r1 had no eligible writer calls and is insufficient. r2 exercised the target
 but failed helper classloading and timed out; its incomplete world is rejected.
 The isolated-loader regression now passes with an explicit system-loader bridge.
-r3 is predeclared on the same mountainous sample. Run its control only after
-actual writer execution and capture health pass. Real writes now execute in r3;
-its full lifecycle and matched control remain pending. r1/r2 release and downloaded
-world restores are verified, linked from the placement diagnostic. The optional
-generation-content reader completed all 3,969 retained pilot chunks. No nonregistry
-counts are accepted.
+r3 completed all four selections in 348.93 seconds with correlated flush and
+clean exit. Its trace retains six complete attempts and 30 successful block
+writes with no unfinished attempts. The fresh control also completed cleanly
+in 366.501 seconds, with identical preflight and selections. Both content readers completed all 6,852 chunks. The declared equality gate
+failed: central End matches; Overworld 3,969, Nether 960 and outer End 671 chunks
+differ. Both worlds are stopped and backed up. Complete r3 pair custody.
+Accepted Item 7 already documents frozen-stack semantic nondeterminism, so this
+pair cannot establish probe causality. That fact was missed during predeclaration.
+Do not launch r4 or expand the probe; reassess instrument validation using the
+accepted upstream finding, without rerunning Item 7 or tuning frozen settings.
+The placement diagnostic links raw receipts and the full mismatch summary.
+r1/r2 release and downloaded world restores are verified. The biome reader now
+retains registry piece bounds and midpoint-height attribution; 29 focused tests
+pass. All 64 control registry starts have biome attribution without gaps.
+No nonregistry density counts are accepted.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

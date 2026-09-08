@@ -1,7 +1,7 @@
 # Nonregistry placement probe diagnostic
 
 Status: REAL-RUN VALIDATION INCOMPLETE. r1 had no target execution; r2
-was rejected after a reproduced helper classloader failure. No nonregistry
+failed helper classloading; r3 passes capture health but fails declared equality. No nonregistry
 density or runtime generation equivalence is accepted from this probe.
 
 The retained [scarecrow writer evidence](../item-8/sources/explorations-scarecrow-scope/README.md)
@@ -230,3 +230,73 @@ world-backup receipt's SHA-256 with the existing world restore command for its
 nested archive. No archive was booted. Initial local manifest metadata used an
 abbreviated revision; it was expanded before publication, with the initial copy
 retained locally. Archive bytes were unchanged.
+
+## r3 observed lifecycle and pending comparison
+
+The [probe receipt](scarecrow-probe-r3/diagnostic.json) records all four selections,
+correlated save and clean stop in 348.93 seconds. Its [trace](scarecrow-probe-r3/trace.jsonl)
+contains one correct class installation, six begin/end pairs, five successful
+writes in each pair and one shutdown with zero unfinished attempts. This passes
+the predeclared capture-health gate, not generation equivalence or density.
+
+The [control receipt](scarecrow-control-r3/diagnostic.json) records the same
+preflight identity and selections, no probe JVM options, correlated save and
+clean stop in 366.501 seconds. Both stopped worlds are backed up locally; external
+pair custody is pending. The probe content reader completed all 6,852 selected
+chunks across four strata. Control content and biome processing is running.
+Compare the declared projection without changing its fields or ignoring mismatches.
+
+Measured storage from the backup receipts' `world_files[*].size_bytes` sums:
+probe 138,788,002 bytes in 154 files; control 137,748,133 bytes in 155 files.
+Compressed nested archives are respectively 89,301,602 and 88,170,980 bytes.
+These include generated halo and lifecycle data beyond the 6,852 selected chunks.
+Different total file sizes are not a substitute for generation-content comparison.
+Neither the two elapsed runtimes nor their difference is a performance estimate.
+
+Reproduce the pair comparison after all four reader outputs exist. This retains
+both directions of every content mismatch instead of accepting equal counts:
+
+```sh
+for stratum in overworld nether end-central end-outer; do
+  jq -n --slurpfile probe "evidence/raw/item10/scarecrow-probe-r3/generation-$stratum.json" --slurpfile control "evidence/raw/item10/scarecrow-control-r3/generation-$stratum.json" '
+    $probe[0] as $p | $control[0] as $c |
+    {dimension: $p.dimension, bounds_chunks: $p.bounds_chunks,
+     probe_chunks: $p.full_chunks, control_chunks: $c.full_chunks,
+     same_frame: ([$p.dimension,$p.bounds_chunks,$p.full_chunks] == [$c.dimension,$c.bounds_chunks,$c.full_chunks]),
+     same_content: ($p.generation_content == $c.generation_content),
+     probe_only: ($p.generation_content - $c.generation_content),
+     control_only: ($c.generation_content - $p.generation_content)}
+  ' > "evidence/raw/item10/scarecrow-probe-r3/comparison-$stratum.json"
+done
+```
+
+## r3 equality failure and upstream evidence reuse
+
+The [comparison summary](scarecrow-probe-r3/comparison.json) records matching
+frames but only central End equal. All 3,969 Overworld chunks, 960/961 Nether
+chunks and 671/961 outer End chunks fail the declared content projection.
+The raw comparison files retain both sides of every mismatch; their hashes are
+in the summary. Do not remove differing fields or relabel this gate as passed.
+Registry starts are 42 versus 42 in Overworld with identical origins, 16 versus
+20 in Nether, and two versus two with different origins in outer End. Central
+End has zero starts in both. These are diagnostic counts, not all-family density.
+All 64 control registry starts have biome attribution with no unavailable reason.
+
+The accepted [Item 7 repeatability result](../../docs/items/Item-7-Baseline-Worldgen-Audit.md#repeatability-and-control-result)
+already establishes semantic nondeterminism in fresh frozen-stack runs. It
+explicitly keeps provider causality UNKNOWN and the prior Chunky control
+unattributable. This should have informed the probe protocol before execution.
+No Item 7 audit or baseline repetition is required to re-establish that fact.
+R3 therefore cannot attribute its differences to the probe, and cannot validate
+whole-world equivalence. The prior accepted upstream result is consistent with
+these observations, not contradicted or reopened by them.
+
+Direct inspection of chunk (0,0), region r.0.0.mca, in both retained r3 Overworlds
+shows equal structures and block entities but differing section block_states,
+including sculk-vein palettes at section Y=-4. This is not solely a timestamp
+comparison. It is a specific raw-artifact inspection, not a causal diagnosis.
+
+Stop expansion of the probe and do not launch r4. Reassess the validation claim
+against the already measured stack nondeterminism before selecting further
+experiments. Preserve the failed exact-equality gate and both raw worlds.
+Do not tune C2ME or any frozen baseline configuration to force equality.
