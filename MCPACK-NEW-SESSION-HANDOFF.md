@@ -152,7 +152,10 @@ The [urn report](evidence/item-10/urn-pilot-r1/README.md#reviewed-main-delivery)
 records the fixed prerequisite finding, fresh review and verified main delivery.
 Its 161 urn writes are corroborated, but selected-area density remains open.
 
-Current branch: `codex/item10-extras-coverage`. PR33 reviews the pushed bridge
+Current branch: `codex/item10-extras-coverage`. Draft
+[PR34](https://github.com/copeugne/mcpack/pull/34) targets main and awaits PR33
+delivery before review of the Extras-only diff. The final integrated 408-test
+gate passes in 99.62 seconds. PR33 reviews the pushed bridge
 milestone with exception fix `0a4a07c4`; its fresh review request is
 [5581459025](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581459025). The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
@@ -182,7 +185,9 @@ attempts. Published raw download, world restore and archive-bound trace checks
 pass; the original 404-test gate passed. Shared exception cleanup is integrated
 and all 22 affected bridge/Extras tests plus quality checks pass. Positive capture
 remains unmet. Complete PR33 review and the Extras delivery gate next; raw
-diagnostic evidence does not need rewriting.
+diagnostic evidence does not need rewriting. Remaining writer coverage includes
+BetterEnd procedural pillars, template postprocessing and End lifecycle paths.
+Reuse the existing Item 8 contributions and source identities.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
