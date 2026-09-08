@@ -153,3 +153,30 @@ uv run --no-sync pytest tests/item10 tests/item7/test_anvil_decoder.py tests/ite
 uv run --no-sync ruff check tools/analyze_structure_density.py tests/item10
 uv run --no-sync basedpyright tests/item10
 ```
+
+## Biome exposure diagnostic
+
+[Biome census](biome-census.json) retains saved biome counts at local block
+X=8, Z=8 for every four-block height band. All 96 quart-Y bands from -16 through
+79 independently sum to 3,969 full chunks. Nine distinct saved biomes occur in
+530 nonempty band/biome rows. Absent rows mean zero in this complete exposure
+census. Bands are separate denominators and must not be summed into a chunk
+count. Removing `biome_exposure` yields the original registry census exactly.
+This establishes exposure, not yet location-to-biome attribution or comparative
+location density. The saved-world archives retain the underlying observations.
+
+The existing Item 7 biome decoder supplies palettes and indices. The new path
+rejects missing sections, duplicate section heights and invalid palette indices;
+it does not silently discard incomplete columns. Reproduction:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density RESTORED_WORLD/world BIOME_CENSUS.json --dimension minecraft:overworld --bounds -31 31 -31 31 --biomes
+uv run --no-sync pytest tests/item10 tests/item7/test_anvil_decoder.py tests/item7/test_world_region_dimensions.py -q
+uv run --no-sync ruff check tools/analyze_structure_density.py tests/item10
+uv run --no-sync basedpyright tests/item10
+```
+
+The 46 focused tests pass; Ruff and Item 10 test type checks pass. Five new cases
+cover negative-height quart order, missing/duplicate/invalid biome sections and
+complete per-height census denominators. The real CLI processed the restored
+pilot successfully, and every band total was independently checked against 3,969.

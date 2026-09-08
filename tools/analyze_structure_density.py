@@ -8,12 +8,42 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from typing import cast
+from typing import TYPE_CHECKING, cast
 
 from tools.manage_item4_environment import _world_backup_lock
 
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
 from mcpack_evidence.item7_nbt import decode_compound_nbt
+
+if TYPE_CHECKING:
+    from mcpack_evidence.item7_nbt_models import ChunkRecord
+
+
+def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int, str]:
+    """Read each saved quart-height biome at local block X=8, Z=8."""
+    sections = {section.section_y: section for section in record.biome_sections}
+    if len(sections) != len(record.biome_sections):
+        detail = f"duplicate biome section at chunk {record.chunk_x},{record.chunk_z}"
+        raise ValueError(detail)
+    column = {}
+    section_quarts = 4**3
+    for section_y in range(min_y // 16, (min_y + height) // 16):
+        section = sections.get(section_y)
+        if (
+            section is None
+            or len(section.indices) != section_quarts
+            or any(not 0 <= index < len(section.palette) for index in section.indices)
+        ):
+            detail = (
+                f"missing or invalid biome section {section_y} at {record.chunk_x},{record.chunk_z}"
+            )
+            raise ValueError(detail)
+        for local_quart_y in range(4):
+            # Minecraft palette order is X + 4*Z + 16*Y; X=Z=2 in quart coordinates.
+            column[section_y * 4 + local_quart_y] = section.palette[
+                section.indices[2 + 4 * 2 + 16 * local_quart_y]
+            ]
+    return column
 
 
 def spatial_summary(
@@ -198,6 +228,8 @@ def census(
     dimension: str,
     bounds: tuple[int, int, int, int],
     geometry: dict[str, tuple[int, int]],
+    *,
+    include_biomes: bool = False,
 ) -> dict[str, object]:
     """Reject incomplete coverage and retain the actual denominator and occurrences."""
     min_x, max_x, min_z, max_z = bounds
@@ -208,6 +240,7 @@ def census(
     seen = set()
     occurrences = []
     inputs = []
+    biome_counts = collections.Counter()
     for path, context in world_regions(world, dimension_geometry=geometry):
         if context.dimension != dimension:
             continue
@@ -226,6 +259,11 @@ def census(
                 detail = f"selected chunk is incomplete or duplicated: {dimension} {x},{z}"
                 raise ValueError(detail)
             seen.add((x, z))
+            biome_counts.update(
+                chunk_biome_column(record, context.min_y, context.build_height).items()
+                if include_biomes
+                else ()
+            )
             occurrences.extend(start_origins(payload, (x, z)))
         if hashlib.sha256(path.read_bytes()).hexdigest() != before:
             detail = f"region changed during census: {path}"
@@ -238,7 +276,7 @@ def census(
         detail = f"incomplete selected coverage: {len(seen)} of {expected} full chunks"
         raise ValueError(detail)
     counts = collections.Counter(row["registry_id"] for row in occurrences)
-    return {
+    result = {
         "scope": "registry starts only; not all-family density or observed combat",
         "dimension": dimension,
         "bounds_chunks": bounds,
@@ -251,6 +289,15 @@ def census(
         ),
         "anvil_inputs": inputs,
     }
+    exposure = {
+        "scope": "saved chunk-center column biomes; separate quart-height denominators",
+        "local_block_xz": [8, 8],
+        "rows": [
+            {"quart_y": quart_y, "biome": biome, "full_chunks": count}
+            for (quart_y, biome), count in sorted(biome_counts.items())
+        ],
+    }
+    return result | ({"biome_exposure": exposure} if include_biomes else {})
 
 
 def main() -> None:
@@ -263,12 +310,17 @@ def main() -> None:
     parser.add_argument("--dimension-geometry", type=Path)
     parser.add_argument("--classify", action="store_true", help="join accepted Item 8/9 inputs")
     parser.add_argument("--spatial", action="store_true", help="add classified spatial summaries")
+    parser.add_argument(
+        "--biomes", action="store_true", help="retain biome exposure by quart height"
+    )
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
     with _world_backup_lock(args.world):
-        result = census(args.world, args.dimension, tuple(args.bounds), geometry)
+        result = census(
+            args.world, args.dimension, tuple(args.bounds), geometry, include_biomes=args.biomes
+        )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)
     if args.spatial:
