@@ -439,7 +439,7 @@ This register is additive. More variables will be discovered during artifact ins
 - `STAT-001`: exact seed set and rationale — **development suite resolved: `42`, `6671238423019257953`, `95920844204830198`, `-3503646078644842058`; blinded v1 validation seeds remain later work**.
 - `STAT-002`: generated radius/chunk count per seed and dimension — **resolved: 4,096 initial to 32,768 maximum fully generated chunks/seed until 30 category observations; sparse categories are right-censored**.
 - `STAT-003`: route design and navigation-information controls: **resolved for Item 11 by `evidence/item-11/protocol.md`, with fixed automated geometry and explicit visibility/transport assumptions**.
-- `STAT-004`: repetitions per transport mode and progression stage: **resolved for automated Items 10/11 by `item10-full-v1` and `item11-routes-v1`; route/mode observations are not independent world repetitions. Other runtime-performance repetition rules remain unchanged**.
+- `STAT-004`: repetitions per transport mode and progression stage: **resolved for automated Items 10/11 by `item10-full-v1` and `item11-routes-v2`; route/mode observations are not independent world repetitions. Other runtime-performance repetition rules remain unchanged**.
 - `STAT-005`: warm-up and cache rules — **resolved by `ae-measurement-v0.1`; unlike cache states are never combined**.
 - `STAT-006`: operator/player skill controls.
 - `STAT-007`: aggregation and dispersion statistics — **resolved: sample count, median, p95, p99, max, IQR/range, paired change and bootstrap 95% interval**.

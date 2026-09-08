@@ -44,7 +44,9 @@ comparison confirms unchanged adjacency, transport and saved top-cell observatio
 Eleven focused route tests, affected lint/types/formatting and clean-code v2
 representative reproduction pass. Final applicable validation: 600 tests passed
 in 196.80 seconds. Version 1 logs remain historical. Review-fix integration and
-validation are complete; fresh review and verified main delivery remain.
+validation are complete. The completed review of `24aa6af0` found stale ledger
+STAT-004 protocol v1 (3963074296). It is corrected to v2; this documentation-only
+fix needs fresh review and verified main delivery, not another analysis run.
 
 The initial inventory reader released its POSIX lock by opening/closing the lock
 file during inventory enumeration. The failing competing-process probe, rejected

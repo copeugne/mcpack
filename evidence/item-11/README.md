@@ -249,3 +249,10 @@ comparison of retained JSON values, not additional world measurement.
 At the primary radius/window, control ray-clear memberships increase 61 to 67
 and covered blocks 2,464 to 2,800; the baseline primary totals are unchanged.
 All source worlds, census inputs, routes and transport observations are unchanged.
+
+The completed review of `24aa6af0` found one stale protocol label in ledger
+STAT-004 ([finding 3963074296](https://github.com/copeugne/mcpack/pull/37#discussion_r3963074296)).
+It is valid and corrected to `item11-routes-v2`. Direct inspection confirms the
+ledger, protocol, analyzer, result identities and report builder now name v2.
+This documentation-only correction does not invalidate the 600-test final gate
+or require repeating derived analysis. Fresh Codex review remains required.
