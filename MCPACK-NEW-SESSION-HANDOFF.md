@@ -135,8 +135,13 @@ class transformation and preservation fixtures. The placement diagnostic records
 coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)
 completed cleanly but failed the incoming Minecraft class identity gate and had
 no template placements. Its raw release and both restores are verified. The
-probe now retains incoming class bytes; next use a small fresh diagnostic to
-inspect the changed runtime class before accepting a new hook identity.
+probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-identity-r2/README.md)
+completed its small pilot cleanly, retained the incoming patched class and verified
+its raw archive/world restores. Its content hook remains the second direct write,
+after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
+Next obtain positive BetterEnd template observations with predeclared sampling or
+a clearly separate placement fixture, then validate trace completeness and saved
+world corroboration before accepting counts.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
