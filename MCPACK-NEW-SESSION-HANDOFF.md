@@ -148,8 +148,10 @@ the expected `[8,81,8]` ground and false return.
 [Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
 both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
 command lookup, not false membership. Raw/world restores pass. Next inspect
-WorldWeaver predicate/tag integration and assess narrowly affected upstream
-claims before further experiments. Do not alter frozen tags/configs or infer
+the remaining runtime registration/resource gap before further experiments.
+The linked source inspection shows ordinary tag-map injection and distinguishes
+datagen definitions from runtime bootstrap subscribers; the packaged directory
+constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven. Do not alter frozen tags/configs or infer
 zero density. Positive template capture and full collection remain gated.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full

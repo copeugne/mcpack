@@ -50,3 +50,45 @@ manifest matches byte for byte. [World restore](world-restore.json) matches all
 Existing archive tools used root `evidence/raw/item10/betterend-tags-r6` and
 revision `6e93f50f`. Restore the downloaded archive with [manifest](archive-manifest.json),
 then its nested world archive with SHA-256 `92397d08a356a6a59c95bfddd5f6d2497abd879b9d770a16744f4aaa5f75081d`.
+
+
+## Tag-loader path inspection
+
+The [source identities](source-identities.json) bind the following direct
+inspection to the accepted Item 8 WorldWeaver archive SHA-256. Inspect each
+listed class with the pinned JDK command, using dotted class names:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/worldweaver-21.0.24.jar org.betterx.wover.tag.impl.TagManagerImpl
+```
+
+TagLoaderMixin.wover_modifyTags delegates its directory and ordinary tag-entry
+map to TagManagerImpl.didLoadTagMap (offsets 172 to 180). That method looks up
+the registry by directory (offsets 0 to 14), emits its bootstrap event, and adds
+entries to the same map (offsets 17 to 30). The helper creates ordinary Minecraft
+TagLoader.EntryWithSource records. The inspected path is normal tag loading,
+not a separate block-predicate membership database.
+
+The block registry's directory comes from Registries.tagsDirPath through
+TagRegistryImpl.WithRegistry's constructor (offset 13). The raw log confirms
+`tags/block` at line 1621. This refutes an unsupported assumption of a hardcoded
+plural `tags/blocks` directory mismatch in these packaged constructors.
+The prebuild log at line 1622 is before injection and is not final tag evidence.
+The post-readiness command failure is the stronger observed result.
+
+TagRegistryImpl.emitLoadEvent creates its context and emits BOOTSTRAP_EVENT
+outside datagen (offsets 0 to 25). LibWoverTag registers three auto-provider
+factories (offsets 29 to 50); WoverDataGenEntryPointImpl.registerAutoProvider
+only appends a factory to AUTO_PROVIDERS. WoverTagProvider's four-argument
+constructor merely stores its inputs (offsets 0 to 25). None of these inspected
+operations itself subscribes BlockTagProvider.prepareBlockTags to the runtime
+event. Consequently the existence of that datagen method cannot establish
+runtime terrain availability. The exact missing registration/resource cause
+remains unresolved; this inspection does not claim to exclude all callers.
+
+The affected open claim is whether BetterEnd's building-list locations are
+actually placeable under the frozen baseline, not whether their configured
+feature IDs exist. Item 8 registry activation evidence and Item 9 provisional
+classification remain reusable; neither proves the unmet terrain predicate.
+Full Item 10 occurrence acceptance remains gated on resolving that distinction.
+No upstream JAR, configuration, inventory or classification has been changed.
