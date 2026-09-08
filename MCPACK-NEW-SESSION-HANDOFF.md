@@ -10,43 +10,42 @@ Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md), and the
 before server or infrastructure work. Verify dated claims against Git and evidence.
 GitHub `copeugne/mcpack` and fetched `origin/main` are delivery authority.
 
-Preserve local AGENTS.md changes, the CLOUD_HANDOFF.md deletion, `.codegraph`,
-`.omo/`, `mcpack-reconstructed-28(1).bundle`, backups and all existing evidence.
+The user authorized committing the AGENTS.md changes, CLOUD_HANDOFF.md deletion
+and this completion checkpoint. Preserve the ignored local `.codegraph`, `.omo/`,
+`mcpack-reconstructed-28(1).bundle`, backups and all existing evidence.
 The local archive `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md`
-is untracked and unchanged. Never stage it or use it as startup instructions.
+is ignored and unchanged. Never stage it or use it as startup instructions.
 The prior `codex/item9-delivery-record` remains pushed at `3f758cb2`, with only
 an unmerged historical-reference rename. Preserve that reference. Git preserves
 prior active handoffs; consult historical context only for specific open questions.
 
 ## Current delivery gate
 
-Last verified main: `d507573ead2c2740657129e9ee57a1410f420ed9`, merged PR35.
-Item 10 is COMPLETE. Reviewed head `45ee6da10053904fea749c3685a2e8cec34c1577`
-had a completed clean Codex cycle and bot thumbs-up; fetched main ancestry passed.
-The [delivery record](evidence/item-10/README.md#reviewed-main-delivery) binds the
-review and merge. Both PR35 findings have verified dispositions.
+Last verified main: `5ec24115b9394ef162bdff6f65a31180dbb7d7ff`, merged PR36.
+Item 10 and the required Items 2 through 10 consistency audit are COMPLETE.
+PR35 delivered the measurement at `d507573e`; PR36 delivered the audit and its
+narrow corrections at `5ec24115`. Both final Codex cycles completed clean with
+bot thumbs-up reactions and no new findings. Fetched main ancestry passed.
 
-Current branch: `codex/item10-cross-item-audit`, pushed at `3a8b9f8b`.
-[PR36](https://github.com/copeugne/mcpack/pull/36) is open; Codex review requested
-for the correction by comment `5591506920`. It is based on verified PR35 main.
-PR36 review found that a prose-only Chunky erratum was insufficient. The narrow
-machine-readable correction is now required by the existing Item 6 validator.
-The [audit record](evidence/item-10/cross-item-audit.md) preserves the rejected
-claim and links the correction, identity bindings and validation.
-It corrects Item 6's historical Chunky membership label while retaining
-the hash-bound snapshot, and corrects an optional trace-inspection command's
-planet dimension names by importing the existing selection list. All eighteen
-attempt identities agree; all sixteen corrected trace checks pass unchanged.
-No runtime/configuration change or new experiment is needed. The correction
-passes 560 Item 6 tests and 581 Item 7/10 tests plus affected quality checks.
+Current checkout: `codex/item10-cross-item-audit`. Its reviewed audit head was
+`0201d5e7737ce033875a498317a8a470bcb1853e`; main contains that head.
+Subsequent housekeeping commits preserve the user-authorized instructions,
+handoff cleanup and ignore rules; their push does not imply main delivery.
+[PR36](https://github.com/copeugne/mcpack/pull/36) binds review and merge status.
+Its [clean review](https://github.com/copeugne/mcpack/pull/36#issuecomment-5591718610)
+completed at 20:53:26 UTC, followed by the bot thumbs-up at 20:53:29 UTC.
+The [audit](evidence/item-10/cross-item-audit.md) records the rejected prose-only
+Chunky correction, the validated current machine-readable disposition, and the
+executable cross-item identity comparison. Original frozen evidence is unchanged.
 
-The next review required a reproducible cross-item comparison. The existing
-Item 10 test module now checks all Item 7 references and eighteen attempt
-identities; its focused test and quality checks pass. Push this correction,
-request a fresh PR36 review, then merge the clean reviewed head and verify main. No further measurement
-or tooling expansion.
-Do not implement, run, repair or lint Item 11. No additional worlds or retries
-are authorized or needed for this sample.
+All eighteen attempt identities agree, and all sixteen corrected trace checks
+pass unchanged. Validation passed 560 Item 6 tests and 581 Item 7/10 tests;
+the subsequently added cross-item identity test and affected quality checks pass.
+No runtime/configuration change or new experiment was needed for the audit.
+
+There is no remaining Item 10 or audit work. No additional worlds or retries
+are authorized. Do not implement, run, repair or lint Item 11 in this task.
+Future work requires a new instruction under the applicable specification.
 
 ## Completed measurement and authoritative evidence
 
