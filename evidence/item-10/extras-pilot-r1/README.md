@@ -67,3 +67,5 @@ exceptions followed by another placement on the same thread, including original
 processor exception object identity. All 22 affected bridge/Extras tests and
 focused Ruff/basedpyright checks pass. This resolves the demonstrated observer
 state leak in the Extras branch without changing this diagnostic's raw evidence.
+The final Extras branch gate, including the integrated exception fix, passes all
+408 Item 7/10 tests in 99.62 seconds. PR review and main delivery remain required.
