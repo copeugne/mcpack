@@ -379,6 +379,10 @@ public final class Item10PlacementProbe {
                     return null;
                 }
                 try {
+                    Path incoming = output.toAbsolutePath().getParent().resolve(output.getFileName() + ".classes")
+                        .resolve(name + ".class");
+                    Files.createDirectories(incoming.getParent());
+                    Files.write(incoming, bytes, StandardOpenOption.CREATE_NEW);
                     byte[] result = instrument(name, bytes);
                     String sha = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
                     if (TARGET.equals(name)) {

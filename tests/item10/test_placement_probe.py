@@ -149,6 +149,13 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
         rows = [
             cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()
         ]
+        for row in rows:
+            if row["kind"] == "feature_installed":
+                class_name = cast("str", row["class"])
+                incoming = trace.with_name(trace.name + ".classes") / (class_name + ".class")
+                assert (
+                    hashlib.sha256(incoming.read_bytes()).hexdigest() == row["input_class_sha256"]
+                )
         writes = [row for row in rows if row["kind"] in {"write", "write_exception"}]
         assert len(writes) == (0 if mode in {"early", "empty", "outside"} else 2)
         assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)

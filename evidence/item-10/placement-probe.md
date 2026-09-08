@@ -542,3 +542,22 @@ validation, saved-world corroboration and collector cost remain unverified.
 No new server experiment or accepted nonregistry density result is supplied by
 this fixture gate. Extend the existing diagnostic runner for a predeclared fresh
 runtime check before incorporating these observations into Item 10 results.
+
+### Incoming runtime class retention
+
+During BetterEnd diagnostic r1, the three provider classes matched their retained
+hashes, but the incoming Minecraft `StructureTemplate` hash was
+`579560f5341cba7e3a23064fdc7d1938922dd14e18a1ca4ecab434f57379a2bd`,
+instead of the packaged class hash
+`f3fc7951f1e273e94e754ca4dc2ca9475d8b1eac24bcfb4ccd2d583e126e1121`.
+This rejects r1's predeclared runtime identity gate. The exact cause is UNKNOWN
+until the incoming bytes can be inspected; a hash alone cannot explain the change.
+
+The probe now saves each incoming target class before transformation under its
+trace-specific `.classes` directory. This is the smallest addition that makes
+such a mismatch inspectable. The running r1 uses its already-built agent and is
+unaffected; its missing incoming bytes cannot be recreated retrospectively.
+An initial shared directory collided across fixture processes; trace-specific
+paths fixed that defect. Both preservation fixtures pass, including checks that
+retained incoming bytes match each emitted installation hash. No new runtime
+identity has been accepted by this change.
