@@ -1,9 +1,9 @@
 # Adventure & Engineering Pack — Execution and Evidence Ledger
 
-**Ledger version:** 0.18
+**Ledger version:** 0.19
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Recovery Gate R-1 — reconstruct baseline artifacts before Item 11
+**Current execution gate:** Item 10 delivered; cross-item audit PASS. PR36 review and merge metadata govern audit delivery.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -340,21 +340,29 @@ No Item 8 audit or measurement was repeated. No Item 10 work was performed.
 
 ### 5.9 Item 10 structure-density status
 
-**Status: `IN PROGRESS`.** Current retained-stack evidence is in
-[evidence/item-10/README.md](evidence/item-10/README.md). The authorized
-[automated scope amendment](evidence/item-10/methodology-amendment.md) removes
-human collection from both Items 10 and 11. The narrow Item 5 methodology
-revision passed clean PR22 review and verified main delivery at `0a1d9f8f`.
+**Status: `COMPLETE`.** [PR35](https://github.com/copeugne/mcpack/pull/35)
+merged reviewed head `45ee6da1` as `d507573ead2c2740657129e9ee57a1410f420ed9`.
+Fetched main contains the exact accepted head. The completed final Codex review
+introduced no findings and returned a bot thumbs-up. The
+[authoritative result](evidence/item-10/README.md) records sixteen accepted worlds,
+eight matched pairs, 176 strata and 720,896 full selected chunks. Both failed
+ocean-heavy control attempts remain preserved; no target reduction or tuning
+was used. All required category, spatial, biome, seed and omit-only Sparse
+Structures comparisons, uncertainty and raw custody are delivered.
 
-The following paragraph is superseded historical context with lost raw evidence,
-not current measurements or active continuation instructions:
-The predeclared four-stage protocol reached its 131,072-chunk ceiling. Every final one of 32,768 target slots per seed was independently decoded at `minecraft:full` with matching stored/slot coordinates; all four seeds converged monotonically in two clean passes. The baseline contains 1,007 starts (7.6828/1,000 chunks), 831 actionable-location starts (6.3400), a 762-location static hostility proxy (5.8136), 100 Tier 2 starts (0.7629), 47 Tier 3 starts (0.3586), 31 villages (0.2365), and four right-censored Tier 4 starts. Mineshafts are 57.3% of actionable starts, so static density cannot substitute for observed pacing/discoverability. Sparse Structures is absent and contributes exactly zero to this control. Evidence: `Item-10-Baseline-Structure-and-Encounter-Density.md`, `evidence/structure-density/item10-stage-evaluation-r19.json`, and `evidence/structure-density/item10-chunkpregen-full-validation-r19.json`.
-
-The final report survives, but the referenced raw evidence, generator worlds, validators, and original Git objects were lost when the unpushed transient workspace expired. Item 10 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
+The [post-delivery cross-item audit](evidence/item-10/cross-item-audit.md) passes
+locally. [PR36](https://github.com/copeugne/mcpack/pull/36) governs its review and
+main-delivery status; the downstream gate opens only after clean review and merge. It corrects the historical Item 6
+Chunky membership label without changing the captured audit snapshot or runtime.
+The Item 7 missing-final-review continuation exception remains explicit.
+The [PR22 scope amendment](evidence/item-10/methodology-amendment.md) remains the
+current automated contract. Lost historical Item 10 summaries are superseded
+context, not empirical evidence for this completed retained-stack measurement.
 
 ### 5.10 Item 11 preparation status
 
-**Status: `BLOCKED` on Item 10 and the cross-item audit, not human availability.**
+**Status: `UNSTARTED`.** Item 10 is delivered. Starting Item 11 requires the
+clean reviewed PR36 cross-item audit to be merged, and is outside this task.
 The user explicitly removed human phases from both Items 10 and 11 on 2026-09-08.
 Apply [the automated scope amendment](evidence/item-10/methodology-amendment.md).
 Earlier human matrices, runbooks and reconstructed preparation are superseded
@@ -363,7 +371,7 @@ route analysis. No Item 11 workflow was implemented, run, repaired or linted.
 
 ### 5.11 Preservation incident and Recovery Gate R-1
 
-**Status: `IN PROGRESS`**
+**Historical incident; recovery instructions below are superseded for Items 2 through 10 by their accepted evidence.** Do not repeat their reconstruction or measurements. Original lost evidence is not fabricated or retroactively recovered by the new results.
 The original 28-commit repository existed only in a transient workspace and had no remote. Workspace reclamation removed the Git object database, raw evidence, scripts, schemas, server instances, and snapshots. Three durable records survived: this ledger, the Item 10 final report, and the Item 11 runbook. The loss invalidates reproducibility claims even where summarized results survive.
 
 `https://github.com/copeugne/mcpack` is now the canonical remote. Recovery requires reconstructing the project tree, rerunning Items 2–10 where source evidence is unavailable, pushing every atomic commit, and creating tagged/bundled checkpoints for high-cost measurements. No summarized result will be treated as a substitute for missing raw evidence.
@@ -490,8 +498,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
-| 10 | Baseline structure/encounter-site density | `IN PROGRESS` | Fresh diagnostic evidence delivered on the working branch. Full automated protocol and acceptance remain incomplete; see evidence/item-10/README.md. |
-| 11 | Exploration pacing/repetition | `BLOCKED` | Depends on Item 10 delivery and the cross-item audit. Revised automated scope; no human operators required. |
+| 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit PASS; PR36 governs its review/main-delivery gate. |
+| 11 | Exploration pacing/repetition | `UNSTARTED` | No current-scope Item 11 evidence accepted. Starting requires clean reviewed PR36 audit delivery. No Item 11 workflow is authorized in this task. |
 | 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
@@ -503,9 +511,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Preserve the accepted Item 7 evidence and merged delivery. The user explicitly authorized proceeding despite the missing final clean review record, as recorded in section 5.7. Do not claim that review occurred.
-2. Item 8 is complete through reviewed, verified PR18 delivery. Preserve its accepted inventory and custody records. Item 9 consumed the 448-family listing unchanged; do not repeat completed inventory or preservation work.
-3. Item 9 is complete through reviewed PR20 delivery. Item 10 is the next dependency, outside the completed Item 9 task. After Item 10, audit Items 2 through 10 together for identity and narrative consistency.
-4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Both items use the authorized automated scope; no human sessions or blind operators are required.
+1. Preserve all accepted Item 2 through 10 evidence, failed attempts, recovery refs and protected artifacts. The Item 7 final-review exception remains as recorded in section 5.7.
+2. Item 10 is complete through reviewed PR35 main delivery. Finish review and main delivery of the documented Items 2 through 10 consistency audit.
+3. Do not implement, run, repair or lint Item 11 in this task. Later work must use the applicable specification and delivered audit; no human workload is inferred from earlier availability.
 
 No later item will be marked complete out of order or from inference.

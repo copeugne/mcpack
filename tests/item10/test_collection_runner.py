@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 import json
 import subprocess
 import sys
@@ -12,6 +13,95 @@ from tools.run_item7_worldgen import RunReceipt
 
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
 from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
+
+
+def test_committed_cross_item_identity_bindings() -> None:
+    """Reproduce the post-delivery audit's Item 7 and eighteen-attempt comparisons."""
+    root = Path(__file__).parents[2]
+    protocol = cast(
+        "dict[str, dict[str, object]]",
+        json.loads((root / "evidence/item-7/protocol/worldgen-audit-v1.json").read_bytes()),
+    )
+    identity = protocol["identity"]
+    bindings = {
+        "retained_manifest_sha256": (
+            "retained_manifest",
+            "evidence/item-3/runtime/retained-server-candidates.txt",
+        ),
+        "frozen_manifest_sha256": (
+            "frozen_config_manifest",
+            "evidence/item-6/generated-config-manifest.json",
+        ),
+        "config_audit_sha256": ("config_audit", "evidence/item-6/config-audit.json"),
+        "seed_suite_sha256": ("seed_suite", "test-environment/seed-suite.json"),
+    }
+    digests: dict[str, str] = {}
+    for field, (key, path) in bindings.items():
+        reference = cast("dict[str, str]", identity[key])
+        assert reference["path"] == path, key
+        digests[field] = sha256_file(root / path)
+        assert digests[field] == reference["sha256"], key
+    seeds = {
+        "ordinary": "42",
+        "mountainous": "6671238423019257953",
+        "ocean-heavy": "95920844204830198",
+        "biome-diverse": "-3503646078644842058",
+    }
+    cells: dict[str, tuple[str, int, str]] = {}
+    for role in seeds:
+        for repetition in (1, 2):
+            for arm in ("baseline", "without-sparse"):
+                name = f"full-{role}-r{repetition}-{arm}"
+                if (role, repetition, arm) == ("ocean-heavy", 2, "without-sparse"):
+                    name += "-attempt3"
+                cells[name] = (role, repetition, arm)
+    comparison = cast(
+        "dict[str, object]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-10/accepted-biome-comparisons.json.gz").read_bytes()
+            )
+        ),
+    )
+    assert len(cells) == 16
+    assert set(comparison) == set(cells)
+    for suffix in ("", "-attempt2"):
+        cells["full-ocean-heavy-r2-without-sparse" + suffix] = ("ocean-heavy", 2, "without-sparse")
+    assert len(cells) == 18
+    for name, (role, repetition, arm) in cells.items():
+        document = cast(
+            "dict[str, object]",
+            json.loads((root / f"evidence/item-10/{name}/run.json").read_bytes()),
+        )
+        assert (document["arm"], document["repetition"]) == (arm, repetition), name
+        run = cast("dict[str, object]", document["run"])
+        preflight = cast("dict[str, object]", run["preflight"])
+        assert all(preflight[field] == digest for field, digest in digests.items()), name
+        assert preflight["java_version"] == identity["java_build"], name
+        assert (preflight["seed_role"], preflight["seed"]) == (role, seeds[role]), name
+        assert preflight["retained_candidate_count"] == 136, name
+        assert preflight["instrumented_candidate_count"] == (137 if arm == "baseline" else 136), (
+            name
+        )
+        assert preflight["sparse_structures_omitted"] is (arm == "without-sparse"), name
+        assert preflight["retained_runtime_sha256"] == (
+            "4062d6179218916c703269f113663b1e078adebbf6d43a691e692d972e07ac50"
+        ), name
+        assert (
+            preflight["instrumented_runtime_sha256"]
+            == {
+                "baseline": "e2dab4c80cff137d747bd035588882797f85fa8d4d5b6ccb98a5d717fa0749c8",
+                "without-sparse": (
+                    "84a884f99e4ac48defb9ea0b2c9e45bf3d0f4f6e881a4be4d8968dc2be14d4da"
+                ),
+            }[arm]
+        ), name
+        assert preflight["chunky_sha256"] == (
+            "d72f235cf1f56f2c374f52c00bdda5034524b28142305a84cfc123a3f92ad274"
+        ), name
+        probe = cast("dict[str, str]", document["probe"])
+        assert probe["source_sha256"] == runner.COLLECTOR_SOURCE_SHA256, name
+        assert probe["jar_sha256"] == runner.COLLECTOR_JAR_SHA256, name
 
 
 @pytest.mark.parametrize(

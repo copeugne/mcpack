@@ -9,12 +9,48 @@ from typing import TYPE_CHECKING, Literal, assert_never
 
 import pytest
 
-from tests.item6.helpers import AUDIT, FROZEN, MANIFEST, validate, write_audit
+from tests.item6.helpers import (
+    AUDIT,
+    FROZEN,
+    MANIFEST,
+    copy_item6_repository,
+    validate,
+    write_audit,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
 
 AUDIT_DATA = json.loads(AUDIT.read_text(encoding="utf-8"))
+
+
+@pytest.mark.parametrize(
+    "field", ["current_status", "snapshot_sha256", "retained_manifest_sha256", "extra"]
+)
+def test_current_chunky_disposition_cannot_repeat_snapshot_error(
+    tmp_path: Path, field: str
+) -> None:
+    fixture = copy_item6_repository(tmp_path)
+    path = fixture.root / "evidence/item-6/chunky-disposition.json"
+    correction = json.loads(path.read_bytes())
+    correction[field] = "retained-but-no-config-generated"
+    path.write_text(json.dumps(correction))
+    with pytest.raises(ValueError, match="current Chunky disposition"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+@pytest.mark.parametrize("linked", [False, True])
+def test_current_disposition_cannot_be_missing_or_linked(tmp_path: Path, linked: bool) -> None:
+    fixture = copy_item6_repository(tmp_path)
+    path = fixture.root / "evidence/item-6/chunky-disposition.json"
+    original = tmp_path / "correction.json"
+    path.rename(original)
+    if linked:
+        path.symlink_to(original)
+    with pytest.raises(ValueError, match="regular non-symlink file"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 Mutation = Literal[
     "setting-key",
     "remove-setting",

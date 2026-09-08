@@ -4,6 +4,10 @@
 **Protocol:** `ae-measurement-v1`
 **Date:** 2026-09-02
 
+Current applicability: the [delivered PR22 amendment](../../evidence/item-10/methodology-amendment.md)
+supersedes the human-session and generic player-case matrix for automated
+Items 10/11. The protocol and pilot observations below retain their original scope.
+
 ## Admission reconciliation
 
 The handoff asked to confirm Spark inside the frozen 136-file retained manifest. Direct verification found that it is **not** in that manifest: Item 3 classified this server-optional instrument as `disabled_not_required_on_server`. The frozen manifest remains byte-identical at SHA-256 `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`; silently changing it would invalidate Items 3 and 4.

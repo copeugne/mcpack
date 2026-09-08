@@ -28,6 +28,8 @@ class RepositoryReferences:
     retained_manifest: Path
     source_lifecycle: Path
     materialization: Path
+    audit_snapshot: Path
+    chunky_disposition: Path
 
 
 class _LifecycleReceipt(TypedDict):
@@ -62,6 +64,10 @@ def validate_repository_references(manifest_path: Path, manifest: Manifest) -> R
         retained_manifest=retained,
         source_lifecycle=lifecycle,
         materialization=materialization,
+        audit_snapshot=_resolve_regular_file(repository, "evidence/item-6/config-audit.json"),
+        chunky_disposition=_resolve_regular_file(
+            repository, "evidence/item-6/chunky-disposition.json"
+        ),
     )
 
 

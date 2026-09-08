@@ -33,7 +33,9 @@ class _ValidateArguments(BaseModel, frozen=True):
 
     def run(self) -> int:
         validate(self.root, self.manifest, self.audit)
-        print("validated Item 6 frozen configuration and audit")
+        print(
+            "validated Item 6 frozen configuration, historical audit and current Chunky disposition"
+        )
         return 0
 
 

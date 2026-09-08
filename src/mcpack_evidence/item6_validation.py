@@ -8,7 +8,10 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter
 
-from mcpack_evidence.item6_audit_identity import validate_audit_semantic_identity
+from mcpack_evidence.item6_audit_identity import (
+    validate_audit_semantic_identity,
+    validate_chunky_disposition,
+)
 from mcpack_evidence.item6_file_accounting import Classification, validate_file_accounting
 from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
 from mcpack_evidence.item6_legacy_settings import Setting, validate_legacy_settings
@@ -116,6 +119,7 @@ def validate(root: Path, manifest_path: Path, audit_path: Path) -> None:
     validate_audit_semantic_identity(audit)
     if identity != _FROZEN_MANIFEST_IDENTITY:
         raise _AuditValidationError("manifest identity does not match frozen baseline")
+    validate_chunky_disposition(references)
 
 
 def _collect_system_files(systems: list[_System], expected: set[str]) -> set[str]:
