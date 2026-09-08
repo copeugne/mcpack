@@ -72,31 +72,36 @@ restore verification; a restored-world census reproduced byte for byte. No Item 
 or Item 9 audit was repeated.
 
 Before full experiments, freeze sampling, retention and measurement semantics.
-About 15 GiB is now free after authorized cleanup and client setup. Item 5 requires ground-truthed combat
-encounters; the historical static hostility proxy cannot satisfy that contract.
+About 15 GiB is now free after authorized cleanup and client setup. The user now requires no human phase in either Item 10 or Item 11. Apply the
+[authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
+Item 5 methodology gate needs review and durable delivery.
 The user requested local free-roaming and task servers for later login.
 [Server setup](evidence/item-10/server-setup/README.md) records both separate
 profiles and successful startup, correlated save and clean shutdown checks.
 Both are stopped. Two official-launcher client profiles are installed with 108
 hash-verified JARs each. First Play may download assets; client launch and join
-remain unverified. The observed-combat requirement is retained. Sparse Structures is present with
+remain unverified. The observed-fight requirement is superseded by provisional encounter-site density. Sparse Structures is present with
 spread factor 2; the historical absent-mod result is superseded context.
 The 40 nonregistry families need occurrence coverage beyond structure starts.
 The user rejected the long recorded-play plan and proposed combat logger. Both
 are withdrawn; no capture or logger was started. Do not interpret the six-hour
 availability or tentative ten-hour offer as an approved workload.
 [Protocol reassessment](evidence/item-10/protocol.md) distinguishes spatial census
-from actual combat. Resolve the Item 5 contract conflict explicitly. The automated registry pilot is now reproducible; no human workload is scheduled.
+from actual combat. The authorized revision removes human collection in both
+items; no recording or operator workload is deferred to Item 11.
 [Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
 fix and raw-coordinate census. It now rejects incomplete denominators and
 inconsistent starts. The accepted family/category join now covers all 24 pilot
 starts, retaining confidence and ambiguity. Spatial diagnostics retain boundary
 censoring, partial-cell denominators, clustering and empty rectangles; 41 focused
-tests pass. Next complete nonregistry occurrence coverage, biome exposure and
-the full sampling design. The pilot does not close Item 10 or its combat contract.
+tests passed before the biome addition. Biome exposure now covers all 96
+quart-height bands with 3,969 chunks each; 46 focused tests pass. Next review
+the methodology amendment, complete nonregistry occurrence coverage and biome
+attribution, and freeze the full sampling design. The pilot does not close Item 10.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
-run, repair or lint Item 11 workflows. The blind-human requirement remains.
+run, repair or lint Item 11 workflows before the audit passes. The user removed
+the human requirement for both items; automated proxies remain explicitly limited.
 
 ## Local workspace to preserve
 

@@ -91,7 +91,7 @@
 - Item 9 must classify every verified canonical family exactly once with rationale, evidence, confidence, and ambiguity.
 - Item 10 must preserve predeclared sampling, raw observations, denominators, failures, censoring, uncertainty, and deterministic processing. Static density is not observed exploration pacing.
 - After Item 10, audit Items 2 through 10 together for identity and narrative consistency. Reopen affected upstream and downstream gates when evidence conflicts.
-- Do not implement, run, repair, or lint Item 11-specific workflows until Items 2 through 10 pass the cross-item audit. Item 11 requires real-client evidence from at least two blind human operators and cannot be replaced by bots or headless scans.
+- Do not implement, run, repair, or lint Item 11-specific workflows until Items 2 through 10 pass the cross-item audit. Items 10 and 11 use the authorized automated measurement scope in SPECS.md and evidence/item-10/methodology-amendment.md. Neither requires human sessions, recording or blind operators; automated proxies must not be labeled observed human gameplay.
 
 ## Runtime and operational safety
 

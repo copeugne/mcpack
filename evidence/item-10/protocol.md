@@ -1,34 +1,26 @@
 # Item 10 sampling protocol
 
-Status: UNDER REASSESSMENT. On 2026-09-08 the user rejected the proposed long
-recorded-play sessions and subsequent combat-logger proposal. Both approaches
-are withdrawn. The six-hour availability and tentative ten-hour offer do not
-constitute an approved workload. No recording or combat logger was started.
+Status: DRAFT AUTOMATED PROTOCOL. The user-authorized
+[scope amendment](methodology-amendment.md), `item10-automated-v1`, removes human
+sessions and recording from both Items 10 and 11. The former combat collection
+contract and blind-operator requirement are superseded for these items. No
+human workload is scheduled or deferred as a completion condition.
 
 ## Measurement boundary
 
-Item 10 is primarily a spatial census. Its generated-region counts, category
-densities, distances, clustering, empty regions and biome/seed comparisons need
-source-bound automated analysis. Item 11 separately specifies player exploration
-and pacing. Do not import Item 11 play sessions into Item 10 preparation.
+Item 10 measures placement and provisional location categories. Encounter sites
+are T1 through T4, actionable candidates are C and T1 through T4, proper dungeons
+are exclusive T2, major expeditions exclusive T3, and T4 objectives are separate.
+Villages use the accepted Item 9 `village` comparison group. These definitions
+are potential location roles, not observed fights or meaningful human activity.
+Retain confidence, ambiguity and the scope limitations in every final result.
 
-The original Item 5 protocol additionally defines combat density as ground-truthed
-encounters and applies its generic player/repetition matrix to static metrics.
-That contract has not been validly replaced merely by a time-budget discussion.
-The rejected shorter-session proposal is not an accepted successor protocol.
-Resolve the specific metric and collection-contract conflict before claiming
-acceptance. An authored hostile location, a successful spawn activation and a
-player's actual fight are different measured quantities. Never silently substitute
-one for another, infer absence from missing observation, or mark Item 10 complete
-with that requirement unresolved.
-
-The replacement design must first demonstrate a small automated spatial sample
-from raw generation through verified counts and useful output. Human effort is
-not scheduled. Any remaining behavior check must identify the exact unresolved
-claim and prove a bounded method before asking for participation. Avoid a new
-telemetry system or long video archive merely to bypass an undefined metric.
-
-The spatial design below remains a draft, not a frozen experiment protocol.
+The Item 5 methodology delta requires review and durable delivery. The spatial
+frame below remains a draft, not a frozen full experiment protocol. The fresh
+registry pilot and its diagnostic processing remain reusable evidence. Complete
+nonregistry occurrence coverage, biome attribution and the Sparse Structures
+control design before full collection. Do not implement Item 11 workflows until
+Item 10 delivery and the cross-item audit pass.
 
 ## Fixed spatial frame
 
@@ -83,8 +75,8 @@ each mechanism using existing provider evidence. Any tracing instrument must
 have a recorded hash and validate that it preserves generated content on the
 pilot repeat. Do not claim all-family density until that boundary passes.
 
-Report structures, actionable locations, Tier 2+ proper dungeons, Tier 3+ major
-expeditions, exclusive tiers and villages with explicit numerators over the same
+Report structures, actionable candidates, provisional encounter sites, exclusive
+T2 proper dungeons, exclusive T3 major expeditions, T4 objectives and villages with explicit numerators over the same
 selected full-chunk denominator. Preserve the provisional classification's
 confidence and ambiguity. Static hostility is a separate descriptor and never
 the observed-combat numerator.
@@ -142,7 +134,7 @@ player worlds, prior-item backups or protected artifacts to satisfy this budget.
 Complete the ordinary pilot through deterministic analysis and retained evidence
 before scaling across seeds and dimensions. Then integrate all final results,
 uncertainty and failure dispositions into the Item 10 report. The final gate
-still requires observed combat, Sparse Structures attribution, clean Codex PR
+still requires full automated occurrence coverage, Sparse Structures attribution, clean Codex PR
 review, merged main delivery and the subsequent Items 2 through 10 consistency
 audit. Neither this protocol nor a completed static subset closes Item 10.
 
@@ -151,7 +143,7 @@ audit. Neither this protocol nor a completed static subset closes Item 10.
 Declared before launch on 2026-09-08. Purpose: exercise the new registry counter
 against a fresh frozen-runtime world through the existing generation, correlated
 flush and clean-stop path. This is a method diagnostic, not acceptance of the
-unresolved combat contract or the full Item 10 sampling frame.
+remaining full-coverage requirements or the full Item 10 sampling frame.
 
 Use ordinary seed 42 and the hash-verified Item 7 `run` preset. Its unchanged
 four selections generate 3,969 Overworld chunks plus 961 chunks each in Nether,

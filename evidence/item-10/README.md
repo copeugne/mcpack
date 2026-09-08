@@ -7,8 +7,9 @@ is a limited diagnostic, not the full baseline. No tuning has been performed.
 The separately requested player servers generated operational smoke-test worlds.
 The [sampling protocol](protocol.md) is under reassessment. The user rejected
 long recorded play and the proposed combat logger. No human workload is scheduled.
-The static census remains the primary deliverable; the Item 5 combat contract
-conflict must be resolved explicitly, not hidden by a proxy or a shorter session.
+The [authorized automated scope](methodology-amendment.md) now removes human
+phases from both Items 10 and 11. Provisional encounter-site density replaces the
+observed-fight requirement explicitly. Item 5 methodology delta review remains.
 
 ## Verified dependencies and delivery
 
@@ -53,11 +54,11 @@ Each future materialization must verify its actual files and Java executable.
 The [Item 5 protocol](../../measurement/item5/protocol-v1.json) defines
 denominators, repetitions, retained failures and uncertainty. Its original density
 contracts use player cases, 900-second warm-up and 3,600-second observations.
-The rejected Item 10 session proposal does not supersede that contract.
-[protocol.md](protocol.md) records the unresolved scope conflict. `combat_encounters_per_1000_chunks` explicitly
-requires ground-truthed combat encounters. A hostility label or spawner count
-cannot replace that metric. Proper dungeons are Tier 2+ and major expeditions
-Tier 3+ in this protocol; report exclusive tiers separately to avoid ambiguity.
+The later [authorized amendment](methodology-amendment.md) supersedes those
+collection contracts for Items 10 and 11. The original observed-combat metric
+remains historical; the active automated metric is provisional encounter-site
+density. Exclusive T2 and T3 categories supply proper-dungeon and
+major-expedition counts, with T4 objectives reported separately.
 
 The [reconstructed stage geometry](../../measurement/structure-density-v0.1.json)
 is a proposal scaffold, not accepted raw evidence. Its four nested rectangles
@@ -141,12 +142,12 @@ reason. Do not infer zero occurrences from an unmeasured dimension.
    failure without silently replacing it. Use this to validate costs and method.
 3. Apply the frozen stages across all four seeds. Retain every denominator,
    failure, missing slot, invalid start, nonregistry limitation and sparse result.
-   Integrate the required ground-truthed encounter evidence under Item 5.
+   Apply the authorized automated category definitions; do not claim observed fights.
 4. Finish Sparse Structures attribution, final analysis, archive restore and
    clean-checkout reproduction. Push the coherent milestones, open the main PR,
    complete Codex review/fix cycles, merge and verify delivered main.
 5. Audit Items 2 through 10 for identity and narrative consistency. Do not touch
-   Item 11 workflows. Its two-blind-human requirement remains separate.
+   Item 11 workflows before the audit. Neither item requires human sessions.
 
 The proposed spatial method uses the reconstructed nested rectangles, with
 dimension results kept separate. Reuse Item 7's Overworld, Nether, central End
@@ -168,8 +169,8 @@ looking at new density results. These choices are still pending, not hidden defa
 Done means every Item 10 bullet has a measured result or a specification-approved
 disposition, source-bound deterministic processing, retained raw evidence with
 hashes and tested restore, explicit uncertainty and failure dispositions, clean
-final review, merged delivery and the subsequent cross-item audit. A static
-proxy cannot close observed combat density under the current requirements.
+final review, merged delivery and the subsequent cross-item audit. The authorized
+scope does not require observed combat or human sessions in Items 10 or 11.
 
 ## Resource estimate and unresolved gates
 
@@ -199,16 +200,16 @@ excluding extra passes, analysis, restoration and controls. Different current
 host pressure makes this an estimate, not a promised completion time.
 The original Item 5 observation matrix implies 60 runs and 75 server-hours,
 before discarded warm-up replicates. The user rejected both that burden and the
-subsequent proposed recorded-play approach. No replacement human schedule or
-methodology amendment is accepted. Resolve the specific contract conflict.
+subsequent proposed recorded-play approach. The subsequent [authorized amendment](methodology-amendment.md) removes that
+human workload from both Items 10 and 11; its review and delivery remain pending.
 
 Material pending inputs:
 
 - Bound peak experiment storage to current capacity with verified sequential
   custody, or obtain another persistent location. The authorized duplicate
   cleanup is complete; it does not authorize removing additional artifacts.
-- Resolve the combat metric and methodology conflict without assuming a
-  recorded-play workload or silently substituting static hostility.
+- Review and durably deliver the authorized automated methodology amendment.
+  Keep provisional encounter-site counts separate from unobserved fights.
 - Complete the nonregistry occurrence method and Sparse Structures attribution
   design using existing evidence. No new generic framework is justified yet.
 
