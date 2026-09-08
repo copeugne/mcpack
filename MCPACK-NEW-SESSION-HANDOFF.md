@@ -170,12 +170,17 @@ Generation session `61882` is terminal 0. Its exact control runtime and frozen
 configuration checks pass. [Control evidence](evidence/item-10/full-ordinary-r1-without-sparse/README.md)
 records the unchanged run receipt, 313-member raw archive, published tag and
 local/download restores plus the 504-file world restore. No Java server is active.
-Full control analysis is running in exec session `60402`, output
-`evidence/raw/item10/full-ordinary-r1-without-sparse-analysis/all-strata.json`;
-its `all-strata-runtime.txt` retains timing/diagnostics. Poll this handle, do not
-restart on silence. Next: verify all strata and dispositions, record matched
-results and storage, then run the other fourteen worlds in frozen protocol order.
-Complete paired/biome/seed reporting, consolidated PR review/merge and cross-item audit.
+Control analysis session `60402` is terminal 0: all 45,056 chunks and full
+observer/custody checks pass. Result SHA-256 is
+`84181564564b2c5bb5f804852214e6d1105df901a238ef51775dabdd6a5618a4`,
+110,369,600 bytes, runtime 8m21.506s. The control README records per-stratum
+counts, first matched deltas, 1,376 observed nonregistry locations and six retained
+CONTENT_NOT_PRESERVED cave-urn exclusions. No analysis/server process is active.
+Two of sixteen worlds have individual acceptance. Free space is about 41.6 GiB;
+control working allocation is about 1.98 GiB. Next: fresh ordinary repetition-2
+without-Sparse, then repetition-2 baseline, followed by the other twelve worlds.
+Keep frozen order and full per-world checks. Complete cross-repetition/seed,
+spatial/biome synthesis, consolidated PR review/merge and cross-item audit.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
