@@ -415,6 +415,70 @@ def category_occurrences(
     return categories
 
 
+def summarize_biomes(result: dict[str, object]) -> dict[str, object]:  # noqa: C901 - one explicit anchor/exposure join.
+    """Join accepted locations to same-height exposure without dropping unavailable rates."""
+    exposure = {}
+    for row in result["biome_exposure"]["rows"]:
+        key = (row["quart_y"], row["biome"])
+        if key in exposure:
+            detail = "duplicate biome exposure key"
+            raise ValueError(detail)
+        exposure[key] = row["full_chunks"]
+    registry = {}
+    for row in result["occurrence_biomes"]:
+        key = (row["registry_id"], row["chunk_x"], row["chunk_z"])
+        if key in registry:
+            detail = "duplicate registry biome anchor"
+            raise ValueError(detail)
+        registry[key] = row
+    attributed = []
+    unavailable = []
+    for location in result["classification"]["occurrences"]:
+        if "registry_id" in location:
+            key = (location["registry_id"], location["chunk_x"], location["chunk_z"])
+            if key not in registry:
+                detail = "classified registry location has no biome anchor record"
+                raise ValueError(detail)
+            anchor = registry[key]
+            reason = anchor["unavailable_reason"]
+        else:
+            anchor = location
+            reason = anchor["biome_unavailable_reason"]
+        if anchor["biome"] is None or anchor["quart_y"] is None:
+            if not reason:
+                detail = "unavailable biome anchor has no reason"
+                raise ValueError(detail)
+            unavailable.append({**location, "biome_unavailable_reason": reason})
+        else:
+            if reason is not None:
+                detail = "available biome anchor has an unavailable reason"
+                raise ValueError(detail)
+            attributed.append({**location, "biome": anchor["biome"], "quart_y": anchor["quart_y"]})
+    categories = category_occurrences(attributed, total_name="all_locations")
+    counts = {
+        category: collections.Counter((row["quart_y"], row["biome"]) for row in locations)
+        for category, locations in categories.items()
+    }
+    keys = sorted(exposure.keys() | counts["all_locations"].keys())
+    return {
+        "scope": "location-anchor counts per sampled chunk-center biome column, by quart height",
+        "rows": [
+            {
+                "quart_y": key[0],
+                "biome": key[1],
+                "full_chunks": exposure.get(key, 0),
+                "counts": {category: values[key] for category, values in counts.items()},
+                "per_1000_chunks": {
+                    category: values[key] * 1000 / exposure[key] if exposure.get(key, 0) else None
+                    for category, values in counts.items()
+                },
+            }
+            for key in keys
+        ],
+        "unavailable_anchors": unavailable,
+    }
+
+
 def nonregistry_membership() -> dict[str, dict[str, str]]:  # noqa: C901 - direct inventory joins
     """Reuse the frozen forty-family membership, not template filename heuristics."""
     source = Path(__file__).resolve().parents[1] / "evidence/item-8/inventory.json"
@@ -1272,6 +1336,7 @@ def full_world_census(
             ],
         }
         result["classification"] = classify_census({**result, "nonregistry_candidates": selected})
+        result["biome_summary"] = summarize_biomes(result)
         result["spatial"] = {
             category: spatial_summary(rows, frames[label][1])
             for category, rows in category_occurrences(

@@ -82,8 +82,8 @@ These tables directly display existing accepted fields, rounded only for prose.
 Individual neighbors, censoring, grid counts and rectangle bounds remain in
 those outputs. No world was regenerated and no measurements were recomputed.
 
-Remaining seed/repetition coverage, complete height-band biome comparisons,
-failure sensitivity and final synthesis remain to be integrated. The rejected
+Remaining seed/repetition coverage, failure sensitivity and final synthesis
+remain incomplete. The rejected
 ocean-heavy r2 control attempts supply no density row and no zero observation.
 The [proposed continuation](protocol.md#proposed-continuation-after-both-failed-attempts)
 is awaiting user agreement and is not an active amendment.
@@ -126,8 +126,12 @@ both End strata and Nether, but the increase is not identical across repetitions
 
 ## Biome attribution limits found during integration
 
-Biome observations are available in the accepted outputs; the complete comparison
-still needs integration. Direct joins identify the following unavailable rates:
+The [accepted biome comparisons](accepted-biome-comparisons.json.gz) integrate all
+ten accepted outputs, covering 110 strata and 42,336 height/biome rows. Each row
+retains its chunk-center exposure, all ten category counts and corresponding
+rates. Positive exposure with no category occurrences is an explicit zero count;
+zero exposure produces a null rate. Twelve unavailable anchors remain separate,
+including their location identities and reasons. Direct joins identify these limits:
 
 - Every accepted world has one central-End dragon-arena location with
   `NO_LOCATION_HEIGHT`. Retain its location count without assigning a biome band.
@@ -154,6 +158,61 @@ keys have zero sampled chunk-center exposure. Retain unavailable reasons before
 that join. The numerator uses the declared occurrence anchor, while exposure
 uses chunk-center columns, so their horizontal sampling can differ. This is a
 limitation of the declared proxy, not evidence that biome placement is broken.
+
+The comparison is 284,430 compressed bytes (15,203,284 JSON bytes), SHA-256
+`9b1cefc7317ced9a70391ebc8ce0d9aa1784337af6c20eb06e4cf3fc385a171b`.
+Each world's entry binds its accepted census input by SHA-256. The existing census
+tool's `summarize_biomes` function supplies this join and is also used by future
+full-world censuses. Earlier raw worlds and accepted census outputs are unchanged.
+This addition implements the required biome comparison; it does not add a new
+measurement, schema, sampler or acceptance gate. Results remain descriptive
+within each seed, stratum and height band; do not pool bands or interpret these
+selected worlds as a random biome sample. Counts below 30 remain sparse under
+the protocol. The four zero-exposure cases retain their positive numerators.
+
+Reproduce the committed comparison after restoring/reproducing its accepted
+inputs at the paths given in their individual reports. The following command
+checks each input identity and deterministically regenerates the complete output,
+using only the input identities from the committed comparison:
+
+```sh
+uv run --no-sync python - <<'PY'
+import gzip
+import hashlib
+import json
+from pathlib import Path
+from tools.analyze_structure_density import summarize_biomes
+
+path = Path('evidence/item-10/accepted-biome-comparisons.json.gz')
+expected = path.read_bytes()
+inputs = json.loads(gzip.decompress(expected))
+output = {}
+for name, prior in inputs.items():
+    raw = Path(f'evidence/raw/item10/{name}-analysis/all-strata.json').read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != prior['input_sha256']:
+        raise ValueError(f'accepted census identity mismatch: {name}')
+    strata = json.loads(raw)['strata']
+    summaries = {label: summarize_biomes(value) for label, value in strata.items()}
+    for label, summary in summaries.items():
+        counted = sum(row['counts']['all_locations'] for row in summary['rows'])
+        counted += len(summary['unavailable_anchors'])
+        if counted != strata[label]['classification']['categories']['all_locations']['count']:
+            raise ValueError(f'location count not conserved: {name}/{label}')
+    output[name] = {'input_sha256': digest, 'strata': summaries}
+raw = json.dumps(output, sort_keys=True, separators=(',', ':')).encode() + b'\n'
+if gzip.compress(raw, mtime=0) != expected:
+    raise ValueError('biome comparison reproduction mismatch')
+print('All accepted inputs, location counts and comparison bytes verified.')
+PY
+```
+
+Validation: the focused biome, census and spatial suite passes 47 tests, including
+height separation, overlapping category membership, zero exposure, zero counts,
+unavailable anchors and missing/duplicate joins. Ruff check/format and focused
+test-file BasedPyright pass. Every real stratum's attributed counts plus unavailable
+anchors equals its accepted all-location count. This integrates the ten accepted
+worlds only; it does not close the pending full sampling requirement.
 
 ## Verified dependencies and delivery
 

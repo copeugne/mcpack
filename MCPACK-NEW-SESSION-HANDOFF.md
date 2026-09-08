@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Ten worlds are accepted; density/spatial comparisons and biome limits are in the Item 10 README:
+Ten worlds are accepted; the Item 10 README links comparisons for all 110 biome strata:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
