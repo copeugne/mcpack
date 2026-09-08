@@ -181,15 +181,16 @@ cleanly in 561.808s from that source; session `82382` is terminal 0. Its run,
 configuration and observer identities match repetition 1. The
 [second-control evidence](evidence/item-10/full-ordinary-r2-without-sparse/README.md)
 records the published 313-file raw archive, local/download restores and 504-file
-world restore. No Java server is active. Full second-control analysis is running
-in exec session `46192`; poll it, do not restart on silence. Output is
-`evidence/raw/item10/full-ordinary-r2-without-sparse-analysis/all-strata.json`,
-with timing/diagnostics in `all-strata-runtime.txt` beside it.
-Two worlds are accepted, a third has complete generation/custody. Next: finish
-this census and repetition comparison, measure storage, then fresh ordinary
-repetition-2 baseline and the twelve other-seed worlds. Keep frozen order and
-full checks. Complete cross-repetition/seed and spatial/biome synthesis,
-consolidated PR review/merge and the cross-item audit.
+world restore. Second-control analysis session `46192` is terminal 0 and
+acceptance passes: all 45,056 chunks, full observer/custody, 1,333 observed
+nonregistry locations and two retained cave-urn content exclusions. Output
+SHA-256 is `6cf7be9e778b6dc94b76afee86857fd93e9034e9891fa3a25ccf9ca37b5d6225`,
+84,637,179 bytes, 8m2.261s. Its README records all counts and repetition changes,
+including outer-End locations 91 to 70. No analysis/server process is active.
+Three worlds are accepted. Free space is about 39.6 GiB; this run occupies about
+1.93 GiB. Next: fresh ordinary repetition-2 baseline, then the twelve other-seed
+worlds in protocol order. Complete all per-world checks, cross-repetition/seed and
+spatial/biome synthesis, consolidated PR review/merge and the cross-item audit.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
