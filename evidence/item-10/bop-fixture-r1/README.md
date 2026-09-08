@@ -1,4 +1,4 @@
-# BOP fixture r1: positive runtime observations, acceptance pending
+# BOP fixture r1: captured writes corroborated in saved blocks
 
 Source `a9db20957a9a1f2806f73c131b16545f162e5353`. The [diagnostic](diagnostic.json) records frozen
 preflight, all 324 selected chunks, correlated save-flush and clean exit 0 in
@@ -38,8 +38,37 @@ All 21 trace tests pass, including refusal denominators, missing lifecycle event
 missing installation, duplicate feature attribution, malformed arguments, changed
 archive bytes and escaped inputs. Changed-file Ruff and basedpyright checks pass.
 The parser consumes the same bytes whose archive hash was checked.
-Next corroborate saved blocks, preserving overlaps and later changes. No further
-generation is needed for this remaining check on the restored evidence.
+## Saved-block corroboration
+
+The [crosscheck](saved-block-crosscheck.json) binds all four read region files to
+the archived world manifest under the existing Java-compatible world lock. All
+22,769 successful writes match saved block IDs at 22,769 distinct coordinates.
+There are no repeated coordinates or last-recorded-write mismatches. All 25
+attempts remain in the result, including 11 with zero writes. The saved palette
+is decoded with the existing Anvil/NBT reader, with stored/slot coordinate checks.
+This compares block IDs, not block-state properties or collector noninterference.
+
+17,096 writes lie in chunks saved at `minecraft:full`; 5,673 lie in generated
+neighbors saved at `minecraft:initialize_light`. The initial inspection rejected
+these neighbors with `Write coordinate is not in a fully generated chunk`.
+That full-chunk restriction belongs to density exposure, not diagnostic block
+corroboration. The corrected inspection retains status counts and reads the
+saved neighbors without admitting them into a density denominator. No raw data
+or world was changed. This fixture remains excluded from density measurements.
+
+Reuse the existing bounded inspector's BOP mode:
+
+```sh
+uv run --no-sync python -c "import runpy; runpy.run_path('evidence/item-10/scarecrow-probe-r3/inspect-writes.py')" --bop-r1
+```
+
+Its original scarecrow mode still reproduces all 30 prior observations. The
+regressions now cover both modes' archive/region integrity; injected wrong block
+IDs fail the old fixed gate and remain explicit mismatches in the BOP report.
+The first full test run failed four tests because their runpy calls inherited
+pytest arguments. Tests now declare the inspection arguments explicitly.
+Positive BOP capture and block-ID corroboration are established. Full Item 10
+occurrence coverage, observer cost and density collection remain open.
 
 ## Verified raw custody
 
@@ -51,3 +80,7 @@ sizes and hashes in [world backup](world-backup.json), without booting it.
 Existing archive tools used root `evidence/raw/item10/bop-fixture-r1` and revision
 `a9db2095`. Restore the downloaded archive with [manifest](archive-manifest.json),
 then its nested world archive with SHA-256 `cb8904398b15172a7a2f3b7b39b0d0d500cdd684fa7ca9605bc517c1b25a8aa5`.
+
+Validation: `uv run --no-sync pytest -q tests/item7 tests/item10` passes all
+312 tests in 53.59 seconds. Changed inspection/test Ruff checks and test
+basedpyright checks pass. Item 11 was not run or linted.

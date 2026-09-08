@@ -651,3 +651,14 @@ The probe now requires and wraps this one extra call site with its existing
 write bridge. The synthetic anomaly case adds a flags-2 write after its three
 helper writes; normal, refusal and exception comparisons retain the distinction.
 Exact retained-class transformation checks now require this call as well.
+
+
+### BOP positive fixture validation
+
+[BOP fixture r1](bop-fixture-r1/README.md) retains the live capture, incoming
+class identity, raw/world custody, complete trace validation and saved-block
+corroboration. All 22,769 writes match saved block IDs. This includes writes in
+partially generated neighbors, explicitly excluded from full-chunk density
+exposure. The artificial fixture is not a density sample. Both supported BOP
+writers now have positive capture evidence; other mechanism coverage and
+observer cost still gate full sampling.
