@@ -54,11 +54,5 @@ def test_corroboration_rejects_invalid_evidence(
 
     if defect == "block":
         monkeypatch.setattr(item7_nbt, "decode_compound_nbt", changed_blocks)
-    if bop and defect == "block":
-        namespace = runpy.run_path(str(SCRIPT))
-        result = cast("dict[str, object]", namespace["result"])
-        assert result["last_recorded_writes_matching_saved_block_id"] == 0
-        assert result["last_recorded_write_mismatches"]
-    else:
-        with pytest.raises(ValueError, match=r"differs|30 recorded block IDs"):
-            _ = runpy.run_path(str(SCRIPT))
+    with pytest.raises(ValueError, match=r"differs|30 recorded block IDs|BOP last recorded"):
+        _ = runpy.run_path(str(SCRIPT))

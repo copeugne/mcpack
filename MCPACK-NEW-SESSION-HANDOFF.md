@@ -76,14 +76,13 @@ restore verification; a restored-world census reproduced byte for byte. No Item 
 or Item 9 audit was repeated.
 
 Before full experiments, freeze sampling, retention and measurement semantics.
-About 15 GiB is now free after authorized cleanup and client setup. The user now requires no human phase in either Item 10 or Item 11. Apply the
+Recheck storage before experiments. Apply the user-authorized automated scope in the
 [authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
 Item 5 methodology gate is complete through reviewed PR22 main delivery.
 The user requested local free-roaming and task servers for later login.
 [Server setup](evidence/item-10/server-setup/README.md) records both separate
 profiles and successful startup, correlated save and clean shutdown checks.
-Both are stopped. Two official-launcher client profiles are installed with 108
-hash-verified JARs each. First Play may download assets; client launch and join
+Both are stopped. Two official-launcher profiles contain 108 hash-verified JARs each. First Play may download assets; client launch and join
 remain unverified. The observed-fight requirement is superseded by provisional encounter-site density. Sparse Structures is present with
 spread factor 2; the historical absent-mod result is superseded context.
 The 40 nonregistry families need occurrence coverage beyond structure starts.
@@ -128,7 +127,11 @@ The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
 No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
 
-Continue on `codex/item10-direct-writes`, created from verified PR24 main.
+Continue the [PR25](https://github.com/copeugne/mcpack/pull/25) review/fix loop on
+`codex/item10-direct-writes`. Its first review found missing BOP failure status,
+fixed in the review correction; source ancestry loss is disproved by Git and PR commit history.
+`codex/item10-quark` preserves pushed `461a4000`, a separately tested Monster Box
+collector extension. Resume it after PR25 delivery, integrating the accepted fixes.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
@@ -139,12 +142,9 @@ probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-ide
 completed its small pilot cleanly, retained the incoming patched class and verified
 its raw archive/world restores. Its content hook remains the second direct write,
 after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
-[Placement fixture r3](evidence/item-10/betterend-fixture-r3/README.md) stopped
-cleanly but both commands were refused because the target was not loaded. Its
-raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
-fills the platform, but BetterEnd returns false before invoking a template. Its
-raw and nested restores pass. [Ground diagnostic r5](evidence/item-10/betterend-ground-r5/README.md) observes
-the expected `[8,81,8]` ground and false return.
+[BetterEnd fixture history](evidence/item-10/betterend-ground-r5/README.md)
+preserves the unloaded r3, loaded r4 and confirmed-ground r5 failures and custody.
+Do not repeat them; all returned before template placement.
 [Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
 both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
 command lookup, not false membership. Raw/world restores pass. Next inspect

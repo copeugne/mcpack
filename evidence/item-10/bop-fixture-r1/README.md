@@ -64,7 +64,7 @@ uv run --no-sync python -c "import runpy; runpy.run_path('evidence/item-10/scare
 
 Its original scarecrow mode still reproduces all 30 prior observations. The
 regressions now cover both modes' archive/region integrity; injected wrong block
-IDs fail the old fixed gate and remain explicit mismatches in the BOP report.
+IDs fail both acceptance commands after retaining explicit BOP mismatches in the report.
 The first full test run failed four tests because their runpy calls inherited
 pytest arguments. Tests now declare the inspection arguments explicitly.
 Positive BOP capture and block-ID corroboration are established. Full Item 10
@@ -84,3 +84,20 @@ then its nested world archive with SHA-256 `cb8904398b15172a7a2f3b7b39b0d0d500cd
 Validation: `uv run --no-sync pytest -q tests/item7 tests/item10` passes all
 312 tests in 53.59 seconds. Changed inspection/test Ruff checks and test
 basedpyright checks pass. Item 11 was not run or linted.
+
+## PR25 review dispositions
+
+The completed first review identified a valid missing BOP acceptance exit: the
+inspector reported saved-block mismatches but exited zero. It now prints the
+complete mismatch report and raises afterward. Both modes' injected-block
+regressions require failure. Raw evidence and the accepted crosscheck are unchanged.
+
+The ancestry finding is not applicable to the actual PR history. The recorded
+source a9db20957a9a1f2806f73c131b16545f162e5353 is an ancestor of reviewed head
+7ca8ebc8cfc5660bc28905b4f37408103e106829 (`git merge-base --is-ancestor` exits 0).
+All six split commits remain in this PR. The finding's 4fa70ec reference is not
+the reviewed PR head. Delivery will use a merge commit, preserving this ancestry.
+
+The review correction passes all 312 Item 7/10 tests in 53.92 seconds,
+changed-file Ruff and test type checks. The healthy archived BOP command still
+exits zero and reproduces saved-block-crosscheck.json byte for byte.
