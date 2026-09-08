@@ -76,3 +76,23 @@ feature trace results reproduce unchanged. Raw observations, archive, manifests,
 release and restore receipts are unchanged; no archive revision is needed.
 The full Item 7/10 gate for this bridge PR candidate passes all 388 tests in
 84.09 seconds. A fresh Codex review is required before merge.
+
+## PR33 exceptional-exit fix
+
+[Finding 3955590865](https://github.com/copeugne/mcpack/pull/33#discussion_r3955590865)
+is valid. The old exception fixture expected one unfinished attempt, which missed
+the effect on a subsequent placement after the caller caught the exception.
+BridgeFeature.place now has an outer Throwable handler after existing handlers.
+It starts after successful attempt entry, records attempt_exception, clears active
+feature/template state and rethrows the original object. Existing internal catch
+precedence is retained. Other unrelated generator paths are not redesigned.
+
+The bridge exception fixture now requires zero unfinished attempts. Two new cases
+catch processor or template exceptions, then place again on the same thread.
+Original and observed complete outputs agree, the second placement succeeds, and
+exactly one exceptional completion precedes the successful attempt completion.
+The processor case verifies exception object identity. All eleven focused bridge
+cases pass; after adding the identity assertion both recovery cases pass again.
+Focused Ruff and basedpyright pass after adding explicit parsed-row types.
+No raw archive or diagnostic result changed.
+The final bridge PR gate passes all 390 Item 7/10 tests in 85.80 seconds.

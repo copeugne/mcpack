@@ -697,7 +697,9 @@ def test_bridge_template_and_processor_phases_preserve_original(
         assert len(writes) == (2 if mode == "exception" else 5)
         assert writes[0]["returned"] is False  # Shared fixture refuses the first content write.
         assert all(row["returned"] == (mode != "refused") for row in writes[1:])
-    assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+    assert rows[-1]["unfinished_attempts"] == 0
+    failures = [row for row in rows if row["kind"] == "attempt_exception"]
+    assert len(failures) == (1 if mode == "exception" else 0)
 
 
 @pytest.mark.parametrize("extras", [False, True])
@@ -776,3 +778,39 @@ def test_bridge_hooks_cover_retained_template_and_all_processor_sites(
                 timeout=30,
             )
             assert transformed.read_bytes() != content
+
+
+@pytest.mark.parametrize("mode", ["recover", "template-recover"])
+def test_bridge_caught_exception_allows_next_placement(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "BridgeFixture", mode], check=True, capture_output=True, text=True, timeout=30
+    )
+    trace = tmp_path / "recovery.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "BridgeFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    assert "recovered=true" in observed.stdout
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    starts = [row["attempt"] for row in rows if row["kind"] == "begin"]
+    assert len(starts) == 2
+    failures = [row for row in rows if row["kind"] == "attempt_exception"]
+    assert failures == [
+        {
+            "kind": "attempt_exception",
+            "attempt": starts[0],
+            "exception": "java.lang.IllegalStateException",
+        }
+    ]
+    ends = [row for row in rows if row["kind"] == "end"]
+    assert ends == [{"kind": "end", "attempt": starts[1], "returned": True}]
+    assert rows[-1]["unfinished_attempts"] == 0

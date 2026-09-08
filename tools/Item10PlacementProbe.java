@@ -17,6 +17,7 @@ import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.ClassVisitor;
 import jdk.internal.org.objectweb.asm.ClassWriter;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
+import jdk.internal.org.objectweb.asm.Label;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
 /** Measurement probe: retain targeted feature and template writes without changing their results. */
@@ -173,6 +174,15 @@ public final class Item10PlacementProbe {
             throw new IllegalStateException("Exit outside traced attempt");
         }
         emit("{\"kind\":\"end\",\"attempt\":" + id + ",\"returned\":" + returned + "}");
+    }
+
+    public static void featureException(Object failure) {
+        long thread = Thread.currentThread().threadId();
+        Long id = ACTIVE.remove(thread);
+        FEATURES.remove(thread);
+        IN_TEMPLATE.remove(thread);
+        if (id != null) emit("{\"kind\":\"attempt_exception\",\"attempt\":" + id
+            + ",\"exception\":" + quote(failure.getClass().getName()) + "}");
     }
 
     public static void beginFeature(Object feature, Object context) throws Throwable {
@@ -561,6 +571,25 @@ public final class Item10PlacementProbe {
                 if (!match) return parent;
                 counts[0]++;
                 return new MethodVisitor(Opcodes.ASM8, parent) {
+                    private final Label attemptStart = new Label();
+                    private final Label attemptEnd = new Label();
+                    private final Label attemptFailure = new Label();
+                    @Override
+                    public void visitMaxs(int maxStack, int maxLocals) {
+                        if (bridgeFeature) {
+                            super.visitLabel(attemptEnd);
+                            super.visitTryCatchBlock(attemptStart, attemptEnd, attemptFailure, "java/lang/Throwable");
+                            super.visitLabel(attemptFailure);
+                            super.visitFrame(Opcodes.F_FULL, 2,
+                                new Object[] {target, "net/minecraft/world/level/levelgen/feature/FeaturePlaceContext"},
+                                1, new Object[] {"java/lang/Throwable"});
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$featureException",
+                                "(Ljava/lang/Object;)V", false);
+                            super.visitInsn(Opcodes.ATHROW);
+                        }
+                        super.visitMaxs(maxStack, maxLocals);
+                    }
                     @Override
                     public void visitCode() {
                         super.visitCode();
@@ -589,6 +618,7 @@ public final class Item10PlacementProbe {
                             super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$beginFeature",
                                 "(Ljava/lang/Object;Ljava/lang/Object;)V", false);
                         }
+                        if (bridgeFeature) super.visitLabel(attemptStart);
                     }
                     @Override
                     public void visitInsn(int opcode) {
@@ -725,6 +755,8 @@ public final class Item10PlacementProbe {
             if (ANOMALY.equals(target)) bridge(writer, "write",
                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+            if (bridgeFeature) bridge(writer, "featureException", "(Ljava/lang/Object;)V",
+                new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
             if (!direct && !bridgeFeature) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (base) {
