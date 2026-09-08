@@ -23,6 +23,20 @@ public class ProbeFixture {
                     java.nio.file.Path.of(args[1]))));
             return;
         }
+        if (args[0].equals("isolated")) {
+            var location = ProbeFixture.class.getProtectionDomain().getCodeSource().getLocation();
+            try (var loader = new java.net.URLClassLoader(new java.net.URL[] {location}, null) {
+                @Override
+                protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+                    if (name.startsWith("Item10PlacementProbe")) throw new ClassNotFoundException(name);
+                    return super.loadClass(name, resolve);
+                }
+            }) {
+                loader.loadClass("ProbeFixture").getMethod("main", String[].class)
+                    .invoke(null, (Object) new String[] {"normal"});
+            }
+            return;
+        }
         World world = new World();
         world.throwOnThird = args[0].equals("exception");
         try {

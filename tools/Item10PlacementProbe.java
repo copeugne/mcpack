@@ -108,6 +108,9 @@ public final class Item10PlacementProbe {
             @Override
             public MethodVisitor visitMethod(int access, String name, String descriptor,
                                              String signature, String[] exceptions) {
+                if (name.startsWith("item10$")) {
+                    throw new IllegalArgumentException("Probe bridge name collision: " + name);
+                }
                 MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
                 if (!name.equals("place") || !descriptor.equals(
                     "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")) {
@@ -119,14 +122,14 @@ public final class Item10PlacementProbe {
                     public void visitCode() {
                         super.visitCode();
                         super.visitVarInsn(Opcodes.ALOAD, 1);
-                        super.visitMethodInsn(Opcodes.INVOKESTATIC, "Item10PlacementProbe", "begin",
+                        super.visitMethodInsn(Opcodes.INVOKESTATIC, TARGET, "item10$begin",
                             "(Ljava/lang/Object;)V", false);
                     }
                     @Override
                     public void visitInsn(int opcode) {
                         if (opcode == Opcodes.IRETURN) {
                             super.visitInsn(Opcodes.DUP);
-                            super.visitMethodInsn(Opcodes.INVOKESTATIC, "Item10PlacementProbe", "end",
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, TARGET, "item10$end",
                                 "(Z)V", false);
                         }
                         super.visitInsn(opcode);
@@ -138,7 +141,7 @@ public final class Item10PlacementProbe {
                             && owner.equals("net/minecraft/world/level/WorldGenLevel")
                             && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
                             counts[1]++;
-                            super.visitMethodInsn(Opcodes.INVOKESTATIC, "Item10PlacementProbe", "write",
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, TARGET, "item10$write",
                                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
                         } else {
                             super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
@@ -151,7 +154,41 @@ public final class Item10PlacementProbe {
             throw new IllegalArgumentException("Expected one place method and five writes, got "
                 + counts[0] + "," + counts[1]);
         }
+        bridge(writer, "begin", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+        bridge(writer, "end", "(Z)V", new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
+        bridge(writer, "write", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         return writer.toByteArray();
+    }
+
+    // Game module loaders cannot resolve the application-loader helper directly.
+    // Resolve explicitly through java.base; invokeExact preserves original thrown exceptions.
+    private static void bridge(ClassWriter writer, String name, String descriptor,
+                               int[] loads, int returnOpcode) {
+        MethodVisitor method = writer.visitMethod(
+            Opcodes.ACC_PRIVATE | Opcodes.ACC_STATIC | Opcodes.ACC_SYNTHETIC,
+            "item10$" + name, descriptor, null, null);
+        method.visitCode();
+        method.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/invoke/MethodHandles", "publicLookup",
+            "()Ljava/lang/invoke/MethodHandles$Lookup;", false);
+        method.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/ClassLoader", "getSystemClassLoader",
+            "()Ljava/lang/ClassLoader;", false);
+        method.visitLdcInsn("Item10PlacementProbe");
+        method.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/ClassLoader", "loadClass",
+            "(Ljava/lang/String;)Ljava/lang/Class;", false);
+        method.visitLdcInsn(name);
+        method.visitLdcInsn(descriptor);
+        method.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/ClassLoader", "getSystemClassLoader",
+            "()Ljava/lang/ClassLoader;", false);
+        method.visitMethodInsn(Opcodes.INVOKESTATIC, "java/lang/invoke/MethodType", "fromMethodDescriptorString",
+            "(Ljava/lang/String;Ljava/lang/ClassLoader;)Ljava/lang/invoke/MethodType;", false);
+        method.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/invoke/MethodHandles$Lookup", "findStatic",
+            "(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/MethodHandle;", false);
+        for (int index = 0; index < loads.length; index++) method.visitVarInsn(loads[index], index);
+        method.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/lang/invoke/MethodHandle", "invokeExact", descriptor, false);
+        method.visitInsn(returnOpcode);
+        method.visitMaxs(0, 0);
+        method.visitEnd();
     }
 
     public static void premain(String destination, Instrumentation instrumentation) throws Exception {
@@ -168,9 +205,6 @@ public final class Item10PlacementProbe {
                     return null;
                 }
                 try {
-                    instrumentation.redefineModule(module,
-                        java.util.Set.of(Item10PlacementProbe.class.getModule()),
-                        java.util.Map.of(), java.util.Map.of(), java.util.Set.of(), java.util.Map.of());
                     byte[] result = instrument(bytes);
                     String sha = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
                     emit("{\"kind\":\"installed\",\"input_class_sha256\":" + quote(sha) + "}");

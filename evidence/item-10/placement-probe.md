@@ -1,7 +1,7 @@
 # Nonregistry placement probe diagnostic
 
-Status: INSUFFICIENT REAL-RUN COVERAGE. The synthetic test passes and r1
-installed in Minecraft, but did not execute the target writer. No nonregistry
+Status: REAL-RUN VALIDATION INCOMPLETE. r1 had no target execution; r2
+was rejected after a reproduced helper classloader failure. No nonregistry
 density or runtime generation equivalence is accepted from this probe.
 
 The retained [scarecrow writer evidence](../item-8/sources/explorations-scarecrow-scope/README.md)
@@ -142,4 +142,34 @@ and 900-second per-run deadline apply, in addition to retaining r1.
 uv run --no-sync python -m tools.run_item10_probe --name scarecrow-probe-r2 --mode probe --role mountainous
 # Only after complete actual five-write execution is verified:
 uv run --no-sync python -m tools.run_item10_probe --name scarecrow-control-r2 --mode control --role mountainous
+```
+
+## r2 rejection and predeclared r3
+
+The [r2 receipt](scarecrow-probe-r2/diagnostic.json) records a 900.4-second
+timeout, incomplete generation, no save confirmation and process-group kill
+(return code -9). The target executed but could not resolve Item10PlacementProbe
+from NeoForge's game classloader. Raw console lines 2816 onward retain
+NoClassDefFoundError and its ClassNotFoundException cause. This world is rejected,
+not a density sample or a valid control. No r2 control was run. The raw directory
+retains its incomplete world, console, trace and instrumentation artifacts.
+
+An isolated classloader fixture reproduced the failure before the fix. The fix
+adds three private synthetic bridges within the target class that resolve the
+existing helper explicitly through the system classloader. MethodHandle.invokeExact
+preserves original thrown exceptions. The added module read edge was removed:
+it did not provide class visibility. Existing normal, early-return and exception
+cases and the new isolated-loader case pass. The exact retained class still
+transforms; real runtime equivalence remains unproven.
+
+Predeclare r3 with the same mountainous seed, selections, frozen identities,
+900-second deadline, projection and capture acceptance conditions as r2. Use the
+corrected probe from this committed source, recording its compiled hash. Keep
+all rejected evidence. Run a fresh control only after healthy actual execution.
+Storage allowance remains 3 GiB for the new pair, with prior runs preserved.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name scarecrow-probe-r3 --mode probe --role mountainous
+# Only after complete actual five-write execution and capture health are verified:
+uv run --no-sync python -m tools.run_item10_probe --name scarecrow-control-r3 --mode control --role mountainous
 ```

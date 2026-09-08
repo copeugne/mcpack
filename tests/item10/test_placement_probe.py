@@ -89,7 +89,7 @@ def test_probe_preserves_original_write_calls_results_and_exceptions(tmp_path: P
         timeout=30,
     )
     assert transformed_class.read_bytes() != original_class
-    for mode, calls in [("normal", 5), ("early", 0), ("exception", 3)]:
+    for mode, calls in [("normal", 5), ("early", 0), ("exception", 3), ("isolated", 5)]:
         trace = tmp_path / f"{mode}.jsonl"
         command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
         ordinary = subprocess.run(
