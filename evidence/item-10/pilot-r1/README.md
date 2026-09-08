@@ -224,3 +224,10 @@ Initial local-import lint findings were fixed. A broader `basedpyright tests/ite
 invocation reports 19 errors and five warnings in the unchanged
 `test_typed_comparison_identity.py`; this is not a clean whole-directory type gate.
 No Item 11 workflow ran.
+
+The category integration was delivered through PR31 merge
+`12c9bfd998e0704561e476d00518acbcd11f5301`. Fetched main contains reviewed head
+`0a066afd35315c1abc6c534cc0d8fd9c326f2983`. The
+[clean review](https://github.com/copeugne/mcpack/pull/31#issuecomment-5580575411)
+completed at 06:49:12 UTC on 2026-09-08, with no inline/review findings and a
+Codex bot thumbs-up. This is diagnostic analysis delivery, not Item 10 completion.
