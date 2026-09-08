@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `ab16e2c493e1361320eecacb5311bf741b08ec5f` after PR26.
+  `9bad3862a5c7a7eb137a689b0030ae73fc172667` after PR27.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -133,8 +133,8 @@ reviewed head `677eb250`, fixed findings and verified main ancestry.
 202 calls and corroborates seven saved block IDs; 327 Item 7/10 tests pass.
 PR27 uses `codex/item10-quark-spikes`, which preserves `d83f8c97`, a stopped natural
 Nether pilot with verified raw custody. Its mixed trace and all 276 saved block IDs
-now validate in `769d11cc`; 340 Item 7/10 tests pass. [PR27](https://github.com/copeugne/mcpack/pull/27) review was re-requested after an invalid atomicity finding: the five requested
-commit boundaries already exist; see PR discussion 5580055921.
+now validate in `769d11cc`; 340 Item 7/10 tests pass. PR27 is cleanly reviewed
+and merged. Its README records the review disposition and verified main delivery.
 Current work is on `codex/item10-spiral`: the source/part hook passes synthetic
 preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spiral pilot r1](evidence/item-10/spiral-pilot-r1/README.md) completed cleanly with
 six zero-write parts from one source. Raw download/world restores pass. The saved
