@@ -1,224 +1,121 @@
 # mcpack current handoff
 
 Updated: 2026-09-08. This is the single active continuation checkpoint.
-## Authority and reading order
 
-Read [AGENTS.md](AGENTS.md) for standing instructions and
-[SPECS.md](SPECS.md) for dependency-ordered requirements. Use the
-[execution ledger](Adventure-Engineering-Pack-Execution-Ledger.md) for status
-vocabulary and decisions, checking dated status against current delivery evidence.
-Read [infrastructure instructions](INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md)
-before infrastructure installation or server testing.
+## Authority and preservation
 
-The [previous handoff archive](https://github.com/copeugne/mcpack/blob/be64d458fee3539e5132049d871d1c32ebc3655b/MCPACK-NEW-SESSION-HANDOFF.md)
-is preserved verbatim for targeted historical lookup only. Its commands, next
-steps, counters and status claims are historical, not current instructions.
-Relative paths inside that archive refer to the repository root. Do not read the
-entire archive at startup or resume work merely because it appears there.
+Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md), and the
+[execution ledger](Adventure-Engineering-Pack-Execution-Ledger.md). Read
+[infrastructure instructions](INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md)
+before server or infrastructure work. Verify dated claims against Git and evidence.
 
-## Verified delivery checkpoint
+GitHub `copeugne/mcpack` and fetched `origin/main` are delivery authority.
+Last verified main is `a0b175d7937ede972b7d30396e350e885df6a7fd` after PR33.
+Current local branch is `codex/item10-pillar-coverage`, based on the Extras branch.
+Do not create another tooling PR from this branch. Preserve coherent intermediate
+commits for the one consolidated remaining Item 10 delivery.
 
-- Item 8 is COMPLETE. Its inventory gate and reviewed delivery are recorded in
-  [Item 8 evidence](evidence/item-8/README.md).
-- [PR18](https://github.com/copeugne/mcpack/pull/18) merged as
-  `326979dd2eee7da3f881f1316eb845fb16e8ea6b`, including reviewed head
-  `2023a22a84372483841f7ad286a868584df564fa`.
-- [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
-  is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
-- Fetched `origin/main` at this checkpoint is
-  `868df56c1dca5384769315746088dd2776a31157` after PR32.
-- The accepted inventory accounts for 136 providers and 887 runtime roots,
-  with 448 assessed active canonical families and 18 separately dispositioned
-  inactive/excluded registry groups. These are different populations.
-- The evidence report records 495 passing clean-checkout acceptance tests.
-  This handoff cleanup does not rerun or replace that acceptance evidence.
-- Items 9 through 11 were not performed in the Item 8 work.
+Preserve local changes to AGENTS.md, the CLOUD_HANDOFF.md deletion, `.codegraph`,
+`.omo/`, `mcpack-reconstructed-28(1).bundle`, backups and all existing evidence.
+The local archive `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md`
+is untracked and unchanged. Never stage it or use it as startup instructions.
+The prior `codex/item9-delivery-record` branch remains pushed at `3f758cb2`,
+with only an unmerged historical-reference rename. Preserve that reference.
+The [immutable earlier handoff](https://github.com/copeugne/mcpack/blob/be64d458fee3539e5132049d871d1c32ebc3655b/MCPACK-NEW-SESSION-HANDOFF.md)
+is for specific unresolved historical questions only. Do not reread its diary or
+repeat its commands. Inspect actual staged/unstaged/untracked state before edits.
 
-## Where to find the result
+## Delivered dependencies
 
-- [Canonical inventory](evidence/item-8/inventory.json): accepted family records.
-- [Family decisions](evidence/item-8/family-decisions.json): grouping and attribution.
-- [Provider scope](evidence/item-8/provider-scope.md): provider dispositions.
-- [Item 8 report](docs/items/Item-8-Baseline-Structure-Inventory.md): assessment summary.
-- [Evidence and reproduction](evidence/item-8/README.md): delivery, test prerequisites,
-  source references, limitations and validation commands. Use its latest delivery
-  section rather than historical continuation prose lower in that file.
-- [Preservation](evidence/item-8/preservation.md): backups, restore verification
-  and history consolidation. Preserve those artifacts and recovery references.
+Item 8 is COMPLETE through merged PR18 and PR19. Item 9 is COMPLETE through
+merged PR20, with completion records in merged PR21 (`edd1dcf9`). Reuse the
+[448-family inventory](evidence/item-8/inventory.json),
+[Item 8 evidence](evidence/item-8/README.md),
+[completed classification](evidence/item-9/classification.md) and
+[Item 9 evidence](evidence/item-9/README.md). Do not repeat audits, classification,
+preservation or history consolidation. Exact runtime/configuration dependency
+hashes and reusable Item 5/7 evidence are in [Item 10 README](evidence/item-10/README.md).
 
-## Item 9 completion and next dependency
+PR22 delivered the [authorized automated scope](evidence/item-10/methodology-amendment.md)
+and narrow Item 5 methodology amendment. No human sessions, recordings or blind
+operators are required under current SPECS for Items 10/11. No recording/logger
+was started. Do not interpret earlier six/ten-hour availability as an approved
+workload. Do not implement, run, repair or lint Item 11 until Item 10 and the
+Items 2 through 10 cross-item audit pass.
 
-Item 9 is COMPLETE. [PR20](https://github.com/copeugne/mcpack/pull/20) merged
-reviewed head `5073af269d6e253edb0d314346d671acf7d294cf` as
-`7cbe06c7d8b074fa6121c1143432d28d02996712`, verified in fetched main.
-The final Codex cycle completed with a thumbs-up and no new findings.
-[Matrix](evidence/item-9/classification.md),
-[evidence and review dispositions](evidence/item-9/README.md), and
-[current report](docs/items/Item-9-Provisional-Structure-Classification.md)
-record all 448 classifications and the passing local gate. No classification,
-measurement, Item 8 preservation or PR20 review work remains.
+## User-directed reassessment and current gate
 
-## Item 10 active work
+Pause new experiments and new PR creation. Follow the
+[exit-gate reassessment](evidence/item-10/README.md#exit-gate-reassessment-2026-09-08).
+Natural positive capture for every generator is not an Item 10 requirement.
+Preserve failed/unmet pilots without making them prerequisites for more tiny
+pilots. Complete observation, correct location numerators, the full fixed sample,
+required comparisons, raw custody, uncertainty and final review remain mandatory.
 
-PR21 merged the Item 9 completion records as `edd1dcf9`, verified against
-GitHub metadata and fetched main on 2026-09-08. PR22 merged the methodology, setup and diagnostic
-preparation as `0a1d9f8f6e0df266eb1f9e1080611c648babf2de`. The completed
-Codex cycle reviewed `362a3e703be51f7487354f83149a7e6e3669f201`, posted no
-findings and returned a thumbs-up; fetched main contains that exact head.
-This is preparation delivery, not Item 10 completion.
-[Item 10 evidence](evidence/item-10/README.md) records verified dependency hashes,
-reusable evidence, missing measurements, proposed batches and resource estimates.
-A [fresh registry diagnostic](evidence/item-10/pilot-r1/README.md) measured 24
-starts in 3,969 selected Overworld chunks. Local and downloaded archives passed
-restore verification; a restored-world census reproduced byte for byte. No Item 8
-or Item 9 audit was repeated.
+Finish existing review obligations, then consolidate the remaining implementation,
+full measurement, report and audit into one delivery PR with coherent commits.
+Prioritize completed exit requirements over new tools or per-generator milestones.
+The [protocol](evidence/item-10/protocol.md) remains DRAFT for full sampling.
+Its proposed 720,896 selected chunks, four seeds, eleven strata, two repetitions
+and two arms are method choices, not specification-mandated sample sizes. No
+full-frame run has started and this reassessment does not reduce the scope.
 
-Before full experiments, freeze sampling, retention and measurement semantics.
-Recheck storage before experiments. Apply the user-authorized automated scope in the
-[authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
-Item 5 methodology gate is complete through reviewed PR22 main delivery.
-The user requested local free-roaming and task servers for later login.
-[Server setup](evidence/item-10/server-setup/README.md) records both separate
-profiles and successful startup, correlated save and clean shutdown checks.
-Both are stopped. Two official-launcher profiles contain 108 hash-verified JARs each. First Play may download assets; client launch and join
-remain unverified. The observed-fight requirement is superseded by provisional encounter-site density. Sparse Structures is present with
-spread factor 2; the historical absent-mod result is superseded context.
-The 40 nonregistry families need occurrence coverage beyond structure starts.
-The user rejected the long recorded-play plan and proposed combat logger. Both
-are withdrawn; no capture or logger was started. Do not interpret the six-hour
-availability or tentative ten-hour offer as an approved workload.
-[Protocol reassessment](evidence/item-10/protocol.md) distinguishes spatial census
-from actual combat. The authorized revision removes human collection in both
-items; no recording or operator workload is deferred to Item 11.
-[Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
-fix and raw-coordinate census. It now rejects incomplete denominators and
-inconsistent starts. The accepted family/category join now covers all 24 pilot
-starts, retaining confidence and ambiguity. Spatial diagnostics retain boundary
-censoring, partial-cell denominators, clustering and empty rectangles; 41 focused
-tests passed before the biome addition. Biome exposure now covers all 96
-quart-height bands with 3,969 chunks each; 46 focused tests pass. Next complete nonregistry occurrence coverage and biome attribution,
-then freeze the full sampling design and Sparse Structures control. The pilot does not close Item 10.
-The [placement probe diagnostic](evidence/item-10/placement-probe.md) now passes
-a synthetic preservation test and transforms the exact retained scarecrow class.
-r1 had no eligible writer calls and is insufficient. r2 exercised the target
-but failed helper classloading and timed out; its incomplete world is rejected.
-The isolated-loader regression now passes with an explicit system-loader bridge.
-r3 completed all four selections in 348.93 seconds with correlated flush and
-clean exit. Its trace retains six complete attempts and 30 successful block
-writes with no unfinished attempts. The fresh control also completed cleanly
-in 366.501 seconds, with identical preflight and selections. Both content readers completed all 6,852 chunks. The declared equality gate
-failed: central End matches; Overworld 3,969, Nether 960 and outer End 671 chunks
-differ. Both worlds are stopped. The r3 498-file archive and both nested world restores
-passed download verification and are durably published; see the placement diagnostic.
-Accepted Item 7 already documents frozen-stack semantic nondeterminism, so this
-pair cannot establish probe causality. That fact was missed during predeclaration.
-Do not launch r4 to repeat the equality test. The prospective protocol now
-separates collector correctness from established world variability. All 30
-recorded scarecrow block IDs were corroborated in the restored world. Local
-capture/preservation checks pass; observer-free equivalence remains unproven.
-PR23 delivered the bounded diagnostic through merge
-`eabc9ce30f731e9a3471267e09fff615293c1b26`, verified in fetched `origin/main`.
-The [clean review](https://github.com/copeugne/mcpack/pull/23#issuecomment-5578556110)
-completed on `73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2` with no new findings
-and a Codex thumbs-up. All four valid findings from earlier cycles were fixed.
-The placement diagnostic retains validation, raw custody and corrected typed
-comparison evidence. All 64 control registry starts have biome attribution.
-Item 10 remains IN PROGRESS; no nonregistry density counts are accepted.
+Storage must resolve before full collection. Current free space is about 3.7 GiB.
+The existing proxy estimates 10.71 generation hours and 13.50 GiB of original
+worlds. Keeping all duplicate local verification workspaces projects about 56 GiB.
+The user was asked for roughly 30 GiB persistent free space using sequential
+verification and disposal only of new temporary verification copies afterward.
+Preserve every preexisting artifact. See the README for measured inputs and limits.
+No directory/capacity answer has arrived yet. Confirm actual collector costs on
+the first complete ordinary-seed run before proceeding through the full protocol.
 
-## Current collector coverage and next batch
+## Existing review obligations
 
-PR24 through PR31 are cleanly reviewed and merged. Authoritative results and
-review records are in the linked reports:
+PR23 through PR33 delivered bounded collector/analysis increments, not Item 10.
+PR33 is cleanly reviewed and merged. Its
+[delivery record](evidence/item-10/bridge-pilot-r1/README.md#reviewed-main-delivery)
+links the final review and resolves trace-integrity and exception-cleanup findings.
 
-- [BetterEnd diagnostics](evidence/item-10/placement-probe.md): retained r1 through
-  r6 failures and source follow-ups. Positive template capture remains unmet.
-  [Tag r6](evidence/item-10/betterend-tags-r6/README.md) distinguishes unavailable
-  command lookup from false tag membership. Do not patch the frozen tags or rerun
-  failed fixtures without new evidence about the runtime population mechanism.
-- [BOP fixture](evidence/item-10/bop-fixture-r1/README.md): artificial positive
-  capture and 22,769 saved block IDs. Excluded from density.
-- [Monster Box](evidence/item-10/monster-box-pilot-r1/README.md) and
-  [Nether spikes](evidence/item-10/nether-spike-pilot-r1/README.md): natural capture,
-  archive-bound traces and saved block-ID corroboration pass.
-- [Spiral](evidence/item-10/spiral-pilot-r1/README.md): six zero-write parts from one
-  source; saved biome outside frozen allowlist. Positive capture remains unmet.
-- [Fairy](evidence/item-10/fairy-run-r1/README.md): no helper calls in the fixed
-  frame. Raw custody and mixed-trace validation pass, not positive capture.
-- [Registry spatial pilot](evidence/item-10/pilot-r1/README.md): PR31 delivers
-  combined actionable, encounter and village categories with unchanged raw data.
+[PR34](https://github.com/copeugne/mcpack/pull/34) is now ready for review against
+main, head `cba277cbc65885867ce91344447733420103ac07`. Review request
+[5581561706](https://github.com/copeugne/mcpack/pull/34#issuecomment-5581561706)
+is pending. Inspect completed review, inline and discussion comments; fix relevant
+findings narrowly and re-request until clean, then merge and verify main.
+The integrated Extras gate passed all 408 Item 7/10 tests in 99.62 seconds.
+Do not infer completion from those tests or the PR's existence.
 
-PR32 is cleanly reviewed and merged at `868df56c1dca5384769315746088dd2776a31157`.
-The [urn report](evidence/item-10/urn-pilot-r1/README.md#reviewed-main-delivery)
-records the fixed prerequisite finding, fresh review and verified main delivery.
-Its 161 urn writes are corroborated, but selected-area density remains open.
+## Evidence to reuse and remaining work
 
-Current branch: `codex/item10-extras-coverage`. Draft
-[PR34](https://github.com/copeugne/mcpack/pull/34) targets main and awaits PR33
-delivery before review of the Extras-only diff. The final integrated 408-test
-gate passes in 99.62 seconds. PR33 reviews the pushed bridge
-milestone with exception fix `0a4a07c4`; its fresh review request is
-[5581459025](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581459025). The
-[bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
-reuses accepted selection/geometry evidence and binds 37 direct processor write
-sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
-retained-class transformation. The [probe report](evidence/item-10/placement-probe.md#bridge-template-and-processor-preparation)
-records validation. The existing placement callback now retains configured-variant
-registry attribution with explicit null for unavailable identity; 17 focused
-bridge/urn tests and the full 380-test Item 7/10 gate pass. The
-[bridge diagnostic](evidence/item-10/bridge-pilot-r1/README.md) completed cleanly
-with all hooks installed but no bridge attempts. Raw download and world restore
-passed. Positive bridge capture remains unmet; do not expand this frame to hunt
-for it. PR33 finding `3955497336` is fixed in the existing reader. Archive-bound
-validation passes, all six prior reports reproduce unchanged, and 388 tests pass
-on the bridge PR branch. The second completed review found `3955590865`: feature
-state survived a caught exception and disrupted the next placement. The fix now
-records exceptional completion, clears state and preserves the thrown object.
-All 390 bridge-branch tests pass; fresh review is pending. The next
-[Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
-reuses accepted generation records and identifies two template and eleven
-processor write sites. The existing observer now covers them; all 389 Item 7/10
-tests and focused quality checks pass. See the
-[Extras validation](evidence/item-10/placement-probe.md#extras-template-and-processor-preparation).
-The [Extras diagnostic](evidence/item-10/extras-pilot-r1/README.md) completed all
-324 selected chunks with clean save/stop, no Extras attempts and zero unfinished
-attempts. Published raw download, world restore and archive-bound trace checks
-pass; the original 404-test gate passed. Shared exception cleanup is integrated
-and all 22 affected bridge/Extras tests plus quality checks pass. Positive capture
-remains unmet. Complete PR33 review and the Extras delivery gate next; raw
-diagnostic evidence does not need rewriting. Remaining writer coverage includes
-BetterEnd procedural pillars, template postprocessing and End lifecycle paths.
-Reuse the existing Item 8 contributions and source identities.
+- [Registry spatial pilot](evidence/item-10/pilot-r1/README.md): 24 starts in 3,969
+  full chunks; category joins, distances, clustering, empty regions and biome
+  processing exist. These do not replace the full four-seed/control measurement.
+- [Placement report](evidence/item-10/placement-probe.md): collector preservation,
+  exact classes and retained failures. Scarecrow r3 whole-world equality failed;
+  Item 7 already establishes semantic nondeterminism. Do not repeat that test.
+- [BOP](evidence/item-10/bop-fixture-r1/README.md),
+  [Monster Box](evidence/item-10/monster-box-pilot-r1/README.md),
+  [Nether spikes](evidence/item-10/nether-spike-pilot-r1/README.md),
+  [urns](evidence/item-10/urn-pilot-r1/README.md): bounded capture/corroboration.
+- [Spiral](evidence/item-10/spiral-pilot-r1/README.md),
+  [fairy](evidence/item-10/fairy-run-r1/README.md),
+  [bridge](evidence/item-10/bridge-pilot-r1/README.md),
+  [Extras](evidence/item-10/extras-pilot-r1/README.md): preserve limited/no-positive
+  outcomes. Bridge/Extras raw archives and deterministic readers are validated.
+- [BetterEnd r6](evidence/item-10/betterend-tags-r6/README.md): unresolved runtime
+  tag population, not proof of false tag membership or zero density. Do not tune
+  frozen tags or repeat failed fixtures without new causal evidence.
 
-Do not count these raw totals as selected-area density. Full collection still
-requires the remaining nonregistry mechanisms, occurrence inclusion, biome
-attribution, exact Sparse Structures control and observer cost/storage checks.
-The [protocol](evidence/item-10/protocol.md) remains DRAFT for the full frame.
-Use accepted Item 8 mechanisms rather than repeating its inventory. Do not expand
-fixed diagnostics to hunt for positive counts. The last prelaunch storage check
-was 4.0 GiB free, below the provisional 5 GiB full-experiment floor.
+Genuine remaining capabilities: observable procedural pillar writes and BetterEnd
+post-template effects; applicability/integration of End lifecycle routes; complete
+nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
+exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
+Source descriptions do not supply missing occurrence measurements. Traced blocks,
+template parts and halo activity are not already accepted location numerators.
+The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
+records reusable generator/delegated-writer facts. Do not turn it into another
+standalone experimental campaign or tooling PR.
 
-After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
-run, repair or lint Item 11 workflows before the audit passes. The user removed
-the human requirement for both items; automated proxies remain explicitly limited.
-
-## Local workspace to preserve
-
-The prior branch `codex/item9-delivery-record` remains pushed at `3f758cb2`.
-That unmerged commit changes only the historical reference filename. Preserve it.
-Inspect actual staged, unstaged and untracked state before mutation. A clean
-checkout does not reproduce another workstation's uncommitted edits, deletions
-or private backups; do not invent or recreate those changes from this handoff.
-Preserve any existing local changes and archives. The local historical archive
-at `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md` is not a tracked dependency;
-the immutable link above supplies durable historical context.
-Protected artifacts include `.codegraph`, `.omo/` and
-`mcpack-reconstructed-28(1).bundle` wherever present. Do not stage or delete them.
-
-## Maintaining this checkpoint
-
-Update current sections in place. Keep this file roughly within 100 to 200 lines,
-preferably shorter when sufficient. Link evidence rather than duplicating logs,
-commands, per-batch reports or the ledger. Git preserves routine prior versions;
-do not append a new checkpoint or create a new archive for every batch.
-Requirement counters describe coverage, not commit or validation granularity.
-Use coherent milestones and proportionate checks as defined in AGENTS.md.
+Two local free-roaming/task servers are stopped and preserved. Official launcher
+profiles and matching client files are prepared; first client launch/join remains
+unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational
+context, not Item 10 measurement acceptance. Keep this handoff concise in place.

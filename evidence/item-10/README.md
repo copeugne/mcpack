@@ -133,6 +133,62 @@ family's existing dimension eligibility and nonregistry provider evidence to
 include relevant strata or give an explicit supported out-of-population
 reason. Do not infer zero occurrences from an unmeasured dimension.
 
+## Exit-gate reassessment (2026-09-08)
+
+The user paused new experiments and PR creation and directed one consolidated
+remaining Item 10 delivery after the existing reviews. SPECS Item 10 requires
+representative regions across the four selected seeds, all declared category
+densities, category distances, clustering, empty regions, biome/seed comparisons
+and Sparse Structures attribution. Identity, complete denominators, retained raw
+observations, failure/censoring/uncertainty, deterministic processing, durable
+restore, review/merge and the subsequent Items 2 through 10 audit remain required.
+
+Natural positive capture for every generator is not a specification requirement.
+The separate positive-pilot gates were implementation choices. Their failed or
+unmet outcomes remain unchanged, but they do not require further searches for
+positive examples before the full fixed sample. What is required is evidence that
+every applicable occurrence mechanism is observable, preserves behavior and is
+attributed correctly. A completed trace with correctly installed hooks can record
+no calls; a failed hook, unavailable event stream or unhandled failure cannot be
+reported as zero. Corroborate representative actual writes when observed. Do not
+invent a positive example, extrapolate from static density or erase uncertainty.
+
+| Remaining requirement | Why existing evidence is insufficient | Smallest remaining work |
+| --- | --- | --- |
+| Complete occurrence observation | Registry starts omit the 40 accepted nonregistry families. Existing hooks and source records cover many mechanisms, but procedural pillars, BetterEnd post-template effects and applicable End routes are not fully integrated. | Finish only the missing writer boundaries in the existing observer. Integrate accepted lifecycle applicability and report lifecycle observations separately; the specification does not require a new campaign to trigger every possible lifecycle event. |
+| Accepted location numerators | Traces contain block writes, template parts, failed attempts and halo activity. Their totals are not distinct selected-area locations. | Implement the existing family join, occurrence identity/inclusion and last-write/anchor interpretation in the existing processing path. Preserve zeroes, refusals and uncertainty. |
+| Full comparative measurements | The small pilots are not the declared four-seed, two-arm sample. Existing static analysis works for registry pilots but does not supply the missing populations or matched control. | Freeze the complete collector/control identities and sampling protocol, run the full sample, then apply deterministic category/spatial/biome analysis. |
+| Sparse Structures contribution | Packaged placement rules explain a mechanism but are not the matched observed distribution. | Materialize the exact omit-only-Sparse-Structures control and retain matched repetitions without claiming observer-free causal certainty. |
+| Storage, final report and delivery | Current capacity cannot hold full collection. No complete result or cross-item audit exists. | Resolve storage, retain and restore raw evidence, write the complete report, finish the existing PR33/34 obligations, then use one remaining delivery PR with coherent intermediate commits and the required audit. |
+
+The proposed 4,096 chunks per stratum, two repetitions and 16 total worlds are
+sampling-design choices, not numbers mandated by SPECS. They remain the current
+draft design; this reassessment does not silently reduce the measurement scope.
+No additional tiny per-generator pilots, new evidence framework or tooling-only
+PR is authorized by this reassessment. Synthetic preservation checks and immutable
+source inspection address collector correctness; the full declared sample supplies
+the missing measurement. Existing diagnostics and their limitations remain intact.
+
+### Storage decision before collection
+
+The current check reports 3,949,314,048 free bytes (about 3.7 GiB). The existing
+r3-based estimate is 10.71 generation hours and 13.50 GiB of original worlds.
+As a second retained proxy, the [fairy world backup](fairy-run-r1/world-backup.json)
+has 127,859,839 world bytes; its [raw manifest](fairy-run-r1/archive-manifest.json)
+has 81,693,301 raw member bytes and a 76,943,807-byte archive for 6,852 selected chunks. Scaling by
+720,896 / 6,852 gives 12.53 GiB of original worlds, or 56.14 GiB if every original,
+raw copy, archive, downloaded archive, restored raw tree and restored world is
+kept locally. Those are planning proxies, not measured full-collector costs.
+
+Avoid retaining redundant new verification workspaces indefinitely. Plan roughly
+30 GiB of persistent free space for original worlds, one local raw archive set,
+published redundant copies and sequential verification workspace, with the first
+complete ordinary-seed run confirming actual cost before continuing. Remove only
+new explicitly temporary download/restore copies after successful verification;
+all preexisting evidence, worlds, backups and protected artifacts remain intact.
+The user has been asked for a persistent location or additional free space.
+Full collection is paused until the storage decision and capacity check resolve.
+
 ## Smallest complete deliverable and batches
 
 1. Resolve measurement semantics and storage, then freeze the Item 10 protocol

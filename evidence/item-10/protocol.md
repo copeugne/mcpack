@@ -6,6 +6,16 @@ sessions and recording from both Items 10 and 11. The former combat collection
 contract and blind-operator requirement are superseded for these items. No
 human workload is scheduled or deferred as a completion condition.
 
+## Current execution constraint
+
+The [exit-gate reassessment](README.md#exit-gate-reassessment-2026-09-08)
+supersedes prospective per-generator positive-pilot prerequisites. Historical
+pilot outcomes remain unchanged. Pause new experiments and PR creation; finish
+existing review obligations, resolve storage and consolidate the remaining
+measurement/report into one delivery PR. Complete observation and correct
+occurrence processing remain mandatory. Do not hunt for natural positive examples
+or reinterpret a missing/broken observation mechanism as zero.
+
 ## Measurement boundary
 
 Item 10 measures placement and provisional location categories. Encounter sites
@@ -961,3 +971,47 @@ harness timeout. Full sampling remains gated on the separate provisional 5 GiB
 workspace floor and complete occurrence coverage. Preserve the raw result and
 stopped world with existing tools even if positive capture fails. No tuning,
 client recording, Item 11 execution or new measurement framework is included.
+
+## BetterEnd procedural pillar write boundary
+
+Reuse the accepted `betterend:ruined_obsidian_pillar` contribution in
+[Item 8](../item-8/inventory.json). FallenPillarFeature and
+ObsidianPillarBasementFeature are two independently placed variants of one
+canonical family. Their geometry, replacement and mossy-obsidian callbacks are
+already assessed. Do not recount them as two families or infer voxel occupancy
+from the shape envelope.
+
+The retained [generator classes](../item-8/sources/betterend-pillar-end-hooks/identities.json)
+call `SDF.fillRecursive(ServerLevelAccessor, BlockPos)` at offsets 287 and 372,
+respectively. Observe each feature attempt and that actual fill anchor. Capture
+normal and exceptional completion, and preserve refusal and zero-write results.
+The fill is void and the outer generator return is not a successful-write count.
+
+Direct inspection used pinned `javap -c -p -classpath` on `bclib-21.0.24.jar`,
+whose archive SHA-256 was verified against the existing
+[shape identities](../item-8/sources/pillar-shape-semantics/identities.json):
+`a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093`.
+The two inspected classes are:
+
+| Class | SHA-256 |
+| --- | --- |
+| `org/betterx/bclib/sdf/SDF.class` | `048c1c86a07b43ef4ecc6ed4c6b44d66fb119e7bbf4b55ffd100c61c2115a59d` |
+| `org/betterx/bclib/util/BlocksHelper.class` | `4196c4a40a0d71d38061a084f005343262eb9d49d18c79e3a62ac6d03d90da72` |
+
+The server-level fill path invokes the writer callbacks lambda$fillRecursive$3
+and lambda$fillRecursive$6. Both call the BlockState overload of
+BlocksHelper.setWithoutUpdate, at offsets 9 and 37. The second callback first
+rechecks canReplace against the current world state. The helper invokes
+LevelAccessor.setBlock at offset 5 with flags 18, discards its result at 10 and
+returns. Capture that actual boolean, position and state without changing the
+original discard or consuming additional randomness. The StructureWorld overload
+and unrelated SDF fills are separate paths, not additional pillar occurrences.
+
+Extend the existing feature observer and direct-write path. Gate the shared
+BlocksHelper hook on the two exact active pillar classes, leaving other callers
+untraced. Preserve the original LevelAccessor invocation outside that gate.
+Record the actual fill anchor rather than assuming it equals the initial feature
+origin. Require retained-class transformation and focused original-versus-observed
+checks for successful writes, refusal, exceptions followed by same-thread recovery,
+and outside calls before full collection. No pillar experiment has started.
+Natural occurrence inclusion and saved-block corroboration remain incomplete.

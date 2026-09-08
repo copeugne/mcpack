@@ -96,3 +96,13 @@ cases pass; after adding the identity assertion both recovery cases pass again.
 Focused Ruff and basedpyright pass after adding explicit parsed-row types.
 No raw archive or diagnostic result changed.
 The final bridge PR gate passes all 390 Item 7/10 tests in 85.80 seconds.
+
+## Reviewed main delivery
+
+PR33's final cycle completed on 2026-09-08 at 08:07:32 UTC for
+`0a4a07c43fbc7b0d922a0f652a26580ea164038c`. The
+[clean result](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581528664)
+and Codex thumbs-up were verified with no new inline or review findings. Both
+valid earlier findings are resolved above. PR33 merged as
+`a0b175d7937ede972b7d30396e350e885df6a7fd`; fetched main contains the reviewed
+head. This delivers bounded bridge collector evidence, not Item 10 completion.
