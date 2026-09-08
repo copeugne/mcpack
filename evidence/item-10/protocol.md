@@ -368,3 +368,31 @@ No full-world equality or observer-free equivalence claim is required or implied
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-probe-r1 --mode probe --role mountainous
 ```
+
+## BetterEnd incoming-class diagnostic r2
+
+Predeclared before launch on 2026-09-08. Use `betterend-identity-r2`, probe mode,
+mountainous seed and the existing `pilot` preset: 81 chunks in each of the same
+four dimension/End strata, totaling 324 selected chunks. The runner now exposes
+that existing validated preset; its default remains the larger `run` preset.
+The only collector change from r1 is retention of incoming target class bytes.
+Keep the same frozen runtime/configuration, lifecycle, heap and 900-second limit.
+
+Purpose: retain and inspect the incoming Minecraft class that differed from its
+packaged form in r1. Require the four new class files and their emitted SHA-256
+identities, exact provider input identities, complete lifecycle, and no failed
+installation. Compare the incoming Minecraft class against the packaged Item 8
+class using the pinned JDK disassembler. Inspect the actual content-write call
+site and every difference affecting that method before accepting a runtime hook
+identity. The r1 observed Minecraft hash is a comparison input, not a substitute
+for r2's own retained bytes. This is an identity diagnostic, not a density sample;
+no minimum template-placement count is required to inspect the class.
+
+Current disk headroom is 8.0 GiB. Keep the prior diagnostic's 1 GiB planning
+allowance for raw outputs and custody; startup/halo costs prevent extrapolating
+runtime or storage in direct proportion to the smaller selected area. Preserve
+failures and archive/verify the stopped world through the existing tools.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-identity-r2 --mode probe --role mountainous --preset pilot
+```

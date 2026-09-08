@@ -9,12 +9,12 @@ import re
 import shlex
 import subprocess
 from pathlib import Path
-from typing import cast
+from typing import Literal, cast
 
 from tools.run_item7_worldgen import execute
 
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
-from mcpack_evidence.item7_selections import RUN_SELECTIONS
+from mcpack_evidence.item7_selections import PILOT_SELECTIONS, RUN_SELECTIONS
 
 
 def main() -> None:
@@ -22,6 +22,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--name", required=True)
     _ = parser.add_argument("--mode", choices=("probe", "control"), required=True)
+    _ = parser.add_argument("--preset", choices=("pilot", "run"), default="run")
     _ = parser.add_argument(
         "--role",
         choices=("ordinary", "mountainous", "ocean-heavy", "biome-diverse"),
@@ -31,6 +32,7 @@ def main() -> None:
     instance_name = cast("str", args.name)
     mode = cast("str", args.mode)
     role = cast("str", args.role)
+    preset = cast("Literal['pilot', 'run']", args.preset)
     if not re.fullmatch(r"[a-z][a-z0-9-]*", instance_name):
         parser.error("name must contain only lowercase letters, digits and hyphens")
     output = Path("evidence/raw/item10") / instance_name
@@ -49,6 +51,7 @@ def main() -> None:
             ["/usr/bin/git", "rev-parse", "HEAD"], text=True
         ).strip(),
         "mode": mode,
+        "preset": preset,
         "java_version": version,
         "java_tool_options": "",
     }
@@ -128,8 +131,8 @@ def main() -> None:
             target=target,
             log_path=output / "console.log",
             captured_config=output / "captured-config",
-            mode="run",
-            selections=RUN_SELECTIONS,
+            mode=preset,
+            selections=PILOT_SELECTIONS if preset == "pilot" else RUN_SELECTIONS,
             timeout_seconds=900,
         )
         run = execute(request, java_tool_options=options)
