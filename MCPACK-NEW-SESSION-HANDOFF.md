@@ -162,11 +162,20 @@ local/download restores verified all 554 members and the world restore verified
 503 files. Overworld analysis session `39841` completed successfully: 4,096 full
 chunks, 24 registry starts and 931 nonregistry locations. Its hash, command and
 limits are in the first-run README; output is under
-`evidence/raw/item10/full-ordinary-r1-baseline-analysis`. No process is active.
+`evidence/raw/item10/full-ordinary-r1-baseline-analysis`.
 The single-stratum output repeats 68.4 MB of whole-world observation state.
-Next: reuse one nonregistry pass across all eleven existing census calls, compare
-Overworld results, and finish the other ten strata plus resource
-acceptance. No second world may start before acceptance.
+The `--all-strata` change reuses one nonregistry pass across all eleven censuses.
+The first attempt (session `56885`, terminal 1) rejected the observed Aether cloud
+terrain root after 7m46.709s. Its explicit Item 8 exclusion now integrates into
+the classifier while retaining raw starts and disposition; unknown/inactive roots
+still reject. See the first-run README for the failure and 59 passing tests.
+Corrected analysis is running in exec session `62881`, writing a new
+`all-strata.json` beside the Overworld result; timing/diagnostics are in
+`all-strata-r2-runtime.txt`. Poll that session, never restart on silence. On completion,
+compare its Overworld census/classification/spatial/biome values with the retained
+single-stratum result, verify all 45,056 chunks, record resource costs and commit
+the coupled analysis/test/evidence change. No second world may start before
+acceptance. The raw inputs and published custody remain unchanged.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher

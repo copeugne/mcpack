@@ -149,14 +149,30 @@ def test_classification_preserves_distinct_starts_in_one_canonical_family() -> N
     assert json.dumps(measured) == before
 
 
-def test_classification_does_not_silently_drop_unmapped_observations() -> None:
+@pytest.mark.parametrize("root", ["unknown:start", "betterdungeons:small_nether_dungeon"])
+def test_classification_does_not_silently_drop_unmapped_observations(root: str) -> None:
     with pytest.raises(ValueError, match="outside accepted active families"):
         _ = classify_census(
             {
                 "full_chunks": 1,
-                "occurrences": [{"registry_id": "unknown:start", "chunk_x": 0, "chunk_z": 0}],
+                "occurrences": [{"registry_id": root, "chunk_x": 0, "chunk_z": 0}],
             }
         )
+
+
+def test_cloud_terrain_exclusion_preserves_raw_start_and_item8_disposition() -> None:
+    occurrence = {"registry_id": "aether:large_aercloud", "chunk_x": 0, "chunk_z": 0}
+    measured: dict[str, object] = {"full_chunks": 1000, "occurrences": [occurrence]}
+    before = json.dumps(measured)
+    result = classify_census(measured)
+    assert result["occurrences"] == []
+    categories = cast("dict[str, dict[str, float]]", result["categories"])
+    assert categories["all_registry"]["count"] == 0
+    excluded = cast("list[dict[str, object]]", result["excluded_registry_occurrences"])
+    assert len(excluded) == 1
+    assert {key: excluded[0][key] for key in occurrence} == occurrence
+    assert "terrain/cloud block formation" in str(excluded[0]["disposition"])
+    assert json.dumps(measured) == before
 
 
 def test_combined_classification_counts_only_observed_nonregistry_locations() -> None:

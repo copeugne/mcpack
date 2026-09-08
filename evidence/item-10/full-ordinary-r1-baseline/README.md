@@ -127,6 +127,34 @@ one whole-world nonregistry result across all eleven existing census calls,
 preserving this completed Overworld result as a comparison. This changes neither
 the sample nor occurrence rules and does not require a new world experiment.
 
+The first all-strata analysis failed after 7m46.709s (user 7m41.868s,
+system 0m1.236s) during classification with `observed registry start is outside
+accepted active families: aether:large_aercloud`. The diagnostic is retained at
+`evidence/raw/item10/full-ordinary-r1-baseline-analysis/all-strata-runtime.txt`.
+No result JSON was produced. This is an integration defect: Item 8's hash-bound
+`other_registry_groups["aether:large_aercloud"].grouping_decision` already explicitly
+excludes the root as a terrain/cloud block formation. It is not evidence that the
+accepted family inventory or classification needs to be repeated.
+
+The existing classifier now preserves these raw starts in the census and retains
+their exact Item 8 disposition in `classification.excluded_registry_occurrences`.
+They do not enter authored-location category counts or spatial summaries.
+Unknown roots and roots dispositioned as inactive still reject classification;
+the regression includes the inactive Small Nether Dungeon. All other attribution
+rules remain unchanged. The shared full-world path requires all 50 observer
+classes and preserves one whole-world observation object with per-stratum
+classification and spatial results. Focused validation passes 59 tests with
+`uv run --no-sync pytest -q tests/item10/test_full_world_census.py
+tests/item10/test_density_census.py tests/item10/test_density_spatial.py
+tests/item10/test_collection_trace.py`; scoped Ruff and changed-test type checks
+pass. The corrected full analysis is pending; this is not first-world acceptance.
+
+Full analysis command (uses the same restored raw inputs; output must be absent):
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-world/world evidence/raw/item10/full-ordinary-r1-baseline-analysis/all-strata.json --all-strata --dimension-geometry evidence/item-10/dimension-geometry.json --trace-root evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-local --trace-manifest evidence/item-10/full-ordinary-r1-baseline/archive-manifest.json
+```
+
 Executed command:
 
 ```sh

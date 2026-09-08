@@ -16,6 +16,7 @@ from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN, colle
 from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
@@ -958,7 +959,9 @@ def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidenc
     }
 
 
-def classify_census(result: dict[str, object]) -> dict[str, object]:  # noqa: C901 - shared family join
+def classify_census(  # noqa: C901, PLR0912 - shared family join and explicit terrain disposition.
+    result: dict[str, object],
+) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]
     identities = {
@@ -1023,10 +1026,21 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:  # noqa: C9
                     )
     full_chunks = cast("int", result["full_chunks"])
     annotated = []
+    excluded_registry = []
     counts = dict.fromkeys(("T0", "C", "T1", "T2", "T3", "T4"), 0)
     for occurrence in occurrences:
         if "registry_id" in occurrence:
             root = occurrence["registry_id"]
+            if root == "aether:large_aercloud":
+                # Item 8 explicitly excludes this terrain formation, not inactive roots.
+                decision = inventory["other_registry_groups"][root]["grouping_decision"]
+                excluded_registry.append(
+                    {
+                        **occurrence,
+                        "disposition": decision["contribution_disposition"],
+                    }
+                )
+                continue
             if root not in family_by_root:
                 detail = f"observed registry start is outside accepted active families: {root}"
                 raise ValueError(detail)
@@ -1072,6 +1086,7 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:  # noqa: C9
             role: {"count": count, "per_1000_chunks": 1000 * count / full_chunks}
             for role, count in counts.items()
         },
+        **({"excluded_registry_occurrences": excluded_registry} if excluded_registry else {}),
     }
 
 
@@ -1195,13 +1210,73 @@ def census(  # noqa: C901, PLR0913 - keep optional metrics in the existing singl
     )
 
 
-def main() -> None:
+def full_world_census(
+    world: Path,
+    raw: Path,
+    manifest: Path,
+    geometry: dict[str, tuple[int, int]],
+) -> dict[str, object]:
+    """Apply the existing eleven censuses to one shared complete observation pass."""
+    frames = {
+        row.label: (
+            row.dimension,
+            (
+                row.center_x // 16 - 32,
+                row.center_x // 16 + 31,
+                row.center_z // 16 - 32,
+                row.center_z // 16 + 31,
+            ),
+        )
+        for row in ITEM10_SELECTIONS
+    }
+    with _world_backup_lock(world):
+        strata = {
+            label: census(world, dimension, bounds, geometry, include_biomes=True)
+            for label, (dimension, bounds) in frames.items()
+        }
+    observations = nonregistry_analysis(
+        world,
+        raw,
+        manifest,
+        geometry,
+        frames,
+        census_inputs=[entry for result in strata.values() for entry in result["anvil_inputs"]],
+        include_biomes=True,
+        require_complete_observer=True,
+    )
+    locations = {row["candidate_id"]: row for row in observations["locations"]}
+    for label, result in strata.items():
+        selected = {
+            "locations": [row for row in locations.values() if row["frame"] == label],
+            "location_observations": [
+                row
+                for row in observations["location_observations"]
+                if locations[row["candidate_id"]]["frame"] == label
+            ],
+        }
+        result["classification"] = classify_census({**result, "nonregistry_candidates": selected})
+        result["spatial"] = {
+            category: spatial_summary(rows, frames[label][1])
+            for category, rows in category_occurrences(
+                result["classification"]["occurrences"],
+                total_name="all_locations",
+            ).items()
+        }
+    return {"strata": strata, "nonregistry_candidates": observations}
+
+
+def main() -> None:  # noqa: C901 - keep the two explicit census modes together.
     """Run an offline census while holding the existing Java-compatible world lock."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("world", type=Path)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--dimension", required=True)
-    parser.add_argument("--bounds", type=int, nargs=4, required=True)
+    parser.add_argument("--dimension")
+    parser.add_argument("--bounds", type=int, nargs=4)
+    parser.add_argument(
+        "--all-strata",
+        action="store_true",
+        help="analyze all fixed Item 10 strata with one shared observer pass",
+    )
     parser.add_argument("--dimension-geometry", type=Path)
     parser.add_argument("--classify", action="store_true", help="join accepted Item 8/9 inputs")
     parser.add_argument("--spatial", action="store_true", help="add classified spatial summaries")
@@ -1223,7 +1298,18 @@ def main() -> None:
         parser.error("trace-root and trace-manifest must be supplied together")
     if args.require_complete_observer and not args.trace_root:
         parser.error("complete observer validation requires trace-root and trace-manifest")
+    if args.all_strata:
+        if args.dimension is not None or args.bounds is not None or not args.trace_root:
+            parser.error("all-strata requires trace inputs and excludes dimension/bounds overrides")
+    elif args.dimension is None or args.bounds is None:
+        parser.error("single-stratum analysis requires dimension and bounds")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
+    if args.all_strata:
+        result = full_world_census(args.world, args.trace_root, args.trace_manifest, geometry)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open("x", encoding="utf-8") as stream:
+            stream.write(json.dumps(result, indent=2) + "\n")
+        return
     with _world_backup_lock(args.world):
         result = census(
             args.world,
