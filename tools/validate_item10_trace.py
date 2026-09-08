@@ -142,6 +142,7 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
     started: set[int] = set()
     writes = refused = 0
     by_feature: dict[str, int] = {}
+    successful_paths: dict[tuple[str, int], int] = {}
     if (
         not rows
         or rows[-1] != {"kind": "shutdown", "installed": True, "unfinished_attempts": 0}
@@ -211,6 +212,9 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
             writes += 1
             refused += row["returned"] is False
             by_feature[name] = by_feature.get(name, 0) + 1
+            if row["returned"]:
+                path = (name, flags)
+                successful_paths[path] = successful_paths.get(path, 0) + 1
         else:
             del active[attempt]
     if active or started != set(range(1, len(started) + 1)):
@@ -219,7 +223,18 @@ def check_bop_rows(rows: list[dict[str, object]]) -> dict[str, object]:  # noqa:
         fail("incomplete BOP installations")
     if set(by_feature) != {n.replace("/", ".") for n in BOP_CLASSES}:
         fail("no exercised writes for one BOP feature")
+    required_paths = {
+        (name.replace("/", "."), flags)
+        for name in BOP_CLASSES
+        for flags in ((2, 3) if name.endswith("AnomalyFeature") else (3,))
+    }
+    if set(successful_paths) != required_paths:
+        fail("BOP requires successful writes on all three provider/flag paths")
     return {
+        "successful_write_paths": [
+            {"feature": name, "flags": flags, "writes": count}
+            for (name, flags), count in sorted(successful_paths.items())
+        ],
         "attempts": len(started),
         "writes": writes,
         "refused_writes": refused,

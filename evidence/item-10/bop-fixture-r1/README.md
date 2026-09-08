@@ -101,3 +101,14 @@ the reviewed PR head. Delivery will use a merge commit, preserving this ancestry
 The review correction passes all 312 Item 7/10 tests in 53.92 seconds,
 changed-file Ruff and test type checks. The healthy archived BOP command still
 exits zero and reproduces saved-block-crosscheck.json byte for byte.
+
+The second review correctly identified that positive-path coverage counted
+refused writes and did not require anomaly's flags-2 path. The validator now
+requires successful writes on all three provider/flag paths while retaining
+refusals in the total denominator. The unchanged archived capture has 807
+anomaly flags-2, 21,493 anomaly flags-3 and 469 monolith flags-3 successes.
+Focused regressions reject each refused-only path and an omitted final-write
+path. No new generation or raw archive revision is needed.
+
+This correction passes all 316 Item 7/10 tests in 53.83 seconds, plus changed
+validator/test Ruff and basedpyright checks.

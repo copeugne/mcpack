@@ -94,11 +94,15 @@ def bop_rows() -> list[dict[str, object]]:
                     "position": [0, 80, 0],
                     "state": "Block{minecraft:end_stone}",
                     "flags": 3,
-                    "returned": attempt == 1,
+                    "returned": True,
                 },
                 {"kind": "end", "attempt": attempt, "returned": True},
             ]
         )
+        extra = copy.deepcopy(rows[-2])
+        extra["flags"] = 2 if name.endswith("AnomalyFeature") else 3
+        extra["returned"] = name.endswith("AnomalyFeature")
+        rows.insert(len(rows) - 1, extra)
     rows.append({"kind": "shutdown", "installed": True, "unfinished_attempts": 0})
     return rows
 
@@ -107,7 +111,7 @@ def test_bop_capture_preserves_refused_write_denominator() -> None:
 
     result = check_bop_rows(bop_rows())
     assert result["attempts"] == 2
-    assert result["writes"] == 2
+    assert result["writes"] == 4
     assert result["refused_writes"] == 1
 
 
@@ -157,3 +161,21 @@ def test_bop_escaped_trace_rejected(tmp_path: Path) -> None:
     (raw / "trace.jsonl").symlink_to(outside)
     with pytest.raises(ValueError, match="escapes raw root"):
         _ = validate_bop_trace(raw)
+
+
+@pytest.mark.parametrize("path", ["anomaly-helper", "anomaly-direct", "monolith"])
+def test_bop_requires_successful_write_on_each_path(path: str) -> None:
+    rows = bop_rows()
+    attempt = 2 if path == "monolith" else 1
+    flags = 2 if path == "anomaly-direct" else 3
+    for row in rows:
+        if row["kind"] == "write" and row["attempt"] == attempt and row["flags"] == flags:
+            row["returned"] = False
+    with pytest.raises(ValueError, match="successful writes on all three"):
+        _ = check_bop_rows(rows)
+
+
+def test_bop_rejects_omitted_anomaly_final_write() -> None:
+    rows = [row for row in bop_rows() if row.get("flags") != 2]
+    with pytest.raises(ValueError, match="successful writes on all three"):
+        _ = check_bop_rows(rows)
