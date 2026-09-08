@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Three of sixteen worlds have individual acceptance:
+Four of sixteen worlds have individual acceptance:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md):
   complete 45,056-chunk census, original configuration-capture rejection and
@@ -155,21 +155,21 @@ Three of sixteen worlds have individual acceptance:
 All accepted outputs, SHA-256 values, commands and limitations are in those records.
 The unchanged analysis implementation is `14680b79`; the full applicable gate
 passed 541 Item 7/10 tests in 172.87s. No new code changes require repeated testing.
-The first three worlds occupy roughly 1.9 to 2.0 GiB each; the working projection
+The ordinary worlds occupy roughly 1.9 to 2.0 GiB each; the working projection
 is close to the user's roughly 30 GiB budget. Check growth after each world.
-Last free-space observation was about 39.6 GiB before the fourth world's custody.
+Last free-space observation is about 37.5 GiB after the fourth world's analysis.
 
-[Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md) finished
-cleanly in 513.589s from `004b1724`; generation session `43958` is terminal 0.
-Its identities match the first baseline. Published raw custody, local/download
-restores (313 files) and world restore (503 files) pass. No Java server is active.
-Full census is running in exec session `80092`; poll that handle, do not restart
-on silence. Output is `evidence/raw/item10/full-ordinary-r2-baseline-analysis/all-strata.json`,
-with `all-strata-runtime.txt` beside it. Next: finish this census, baseline repeat
-and second matched comparisons, and storage check. Then run the twelve remaining
-worlds in protocol order starting mountainous r1 baseline. Complete all per-world
-checks, final spatial/biome/seed/repetition synthesis, consolidated PR review/merge
-and the cross-item audit. No acceptance is inferred from generation alone.
+[Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md) now
+passes complete census/custody acceptance. Generation `43958` and analysis `80092`
+are terminal 0. Its result SHA-256 is
+`df3ee4e68ee57ffc264b97260869f6510a42b4cf575de4fce45c2192912390ff`,
+92,552,776 bytes, 7m41.104s. The record contains the baseline repetition and second
+matched contrast, with one retained cave-urn content exclusion. All four ordinary
+worlds are accepted. No server or analysis process is active.
+Next: mountainous repetition-1 baseline, then the other eleven worlds in frozen
+protocol order. Retain every per-world census/custody check and observed variation;
+finish spatial/biome/seed/repetition synthesis, consolidated PR review/merge and
+the cross-item audit. Do not infer Item 10 completion from this first seed block.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
