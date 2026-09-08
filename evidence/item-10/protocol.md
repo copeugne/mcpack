@@ -682,3 +682,29 @@ refused, zero-write and isolated-loader fixtures, including a delegated false
 return that leaves non-air and a true return that leaves air. Neither boolean
 may be substituted for the observed origin state. No sample or positive
 occurrence count is accepted by this method declaration.
+
+## Fairy natural diagnostic r1
+
+Predeclared before launch: fresh fairy-run-r1, ordinary seed 42, the existing
+RUN_SELECTIONS frame of 6,852 chunks (3,969 Overworld and 961 each Nether,
+central End and outer End). This reuses the earlier scarecrow diagnostic frame
+rather than adapting the area to fairy counts. Frozen forest/plains chances
+remain 0.00625/0.0025, with the accepted ore list and Overworld allowlist.
+No placement commands, terrain edits or configuration changes.
+
+Preserve every attempt, direct writer role, actual write result, delegated flower
+return/exception and caller-read origin state. Require positive non-cleanup
+content, all incoming class identities, complete lifecycle, raw custody and
+saved-world corroboration before positive capture acceptance. Cleanup-only,
+zero-result or failed runs remain insufficient and will not trigger automatic
+seed/area changes. Other captured generator events stay in the trace.
+
+The previous same-frame ordinary control took 366.501 seconds, a planning proxy
+only. Use the existing 1 to 4 GiB heap and 900-second timeout. Before launch the
+host has 5.5 GiB free and no Java process. Reserve 1.5 GiB for instance/world,
+raw outputs, archive and restored custody; measure actual costs. This diagnostic
+is not the full density sample and cannot close Item 10.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name fairy-run-r1 --mode probe --role ordinary --preset run
+```
