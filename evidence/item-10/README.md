@@ -80,19 +80,22 @@ cost and methods, but cannot be silently relabeled as new Item 10 experiments.
 The old density counter accepts a caller-supplied denominator and has no spatial
 analysis; it cannot establish Item 10's exit gate as written.
 
-The accepted inventory and classification need integration, not reinvestigation:
+The accepted inventory and classification are integrated without reinvestigation:
 448 active canonical families, comprising 408 registry and 40 nonregistry
 families. The latter have empty `structure_ids`; saved structure-start counting
-cannot observe them. Their existing provider evidence must determine a separate
-occurrence method before claiming all-family location or encounter density.
+cannot observe them. Their existing provider evidence supplies the separate
+occurrence method in the
+[frozen protocol](protocol.md#location-observation-acceptance).
 Pieces, references, pools and aliases must not become additional starts.
 
 Sparse Structures is present in the retained manifest, artifact SHA-256
 `5aca0b33c0c83154810bbdd8ddc0d3e6a3e4591577274e2d27c10de0b45f2a45`.
 Its [untouched configuration](../item-6/frozen/config/sparsestructures.json5)
 has `spreadFactor: 2`, `idBasedSalt: true` and a mansion override of 2.
-These facts resolve presence and configured intent only. Actual composition,
-affected placements and contribution to observed distribution remain unmeasured.
+These configuration facts alone resolve presence and intent. The accepted
+[ordinary](full-ordinary-r2-baseline/README.md) and
+[mountainous](full-mountainous-r2-baseline/README.md) matched blocks now measure
+realized differences; the remaining two seed blocks and combined analysis are incomplete.
 Do not infer a fourfold density reduction or a zero contribution.
 
 Direct reuse of the accepted disassemblies resolves the mutation mechanism.
@@ -122,20 +125,17 @@ on 2026-09-08. Their parent is
 
 Consequently, a factor-1 configuration with ID-based salt still enabled would
 not isolate the mod's total contribution. No such control has been run. The
-smallest sufficient next attribution step is to bind loaded placement values to
-these source rules and the actual sampled starts. If a causal difference in
-realized counts is required beyond that attribution, it needs a separately
-predeclared matched control that isolates both interventions. Do not label a
-candidate-grid prediction, source derivation or cross-biome comparison as that
-unmeasured causal difference. This establishes the mechanism only; observed
-whole-stack contribution remains unresolved.
+[declared control](protocol.md#sparse-structures-control-contrast) instead omits
+only Sparse Structures and retains both fresh repetitions. It measures removal
+within the retained stack, including spacing/separation and salt interventions.
+Individual changed locations cannot all be causally assigned to that omission:
+within-arm generation variability remains in the matched results. Full four-seed
+attribution awaits completion of the fixed sample.
 
 The accepted [dimension capture](../item-8/runtime/dimension-r3/dimension-biomes.json)
-also contains Aether and CreatingSpace dimensions. The draft four-stratum
-scenario below omits those and is not a complete sampling frame. Reuse each
-family's existing dimension eligibility and nonregistry provider evidence to
-include relevant strata or give an explicit supported out-of-population
-reason. Do not infer zero occurrences from an unmeasured dimension.
+includes Aether and CreatingSpace. The frozen eleven-stratum frame includes those
+dimensions and supersedes the incomplete four-stratum draft. Unobserved families
+remain unobserved, not impossible or absent from the runtime.
 
 ## Exit-gate reassessment (2026-09-08)
 
@@ -157,7 +157,10 @@ no calls; a failed hook, unavailable event stream or unhandled failure cannot be
 reported as zero. Corroborate representative actual writes when observed. Do not
 invent a positive example, extrapolate from static density or erase uncertainty.
 
-| Remaining requirement | Why existing evidence is insufficient | Smallest remaining work |
+The following table records the gaps at the reassessment checkpoint. Current
+implementation and collection status follows it.
+
+| Requirement at reassessment | Evidence gap at that checkpoint | Required work |
 | --- | --- | --- |
 | Complete occurrence observation | Registry starts omit the 40 accepted nonregistry families. Existing hooks and source records cover many mechanisms, but procedural pillars, BetterEnd post-template effects and applicable End routes are not fully integrated. | Finish only the missing writer boundaries in the existing observer. Integrate accepted lifecycle applicability and report lifecycle observations separately; the specification does not require a new campaign to trigger every possible lifecycle event. |
 | Accepted location numerators | Traces contain block writes, template parts, failed attempts and halo activity. Their totals are not distinct selected-area locations. | Implement the existing family join, occurrence identity/inclusion and last-write/anchor interpretation in the existing processing path. Preserve zeroes, refusals and uncertainty. |
@@ -177,15 +180,15 @@ The implementation portion of the table above is now integrated: the existing
 collector covers the remaining writers, the reader joins actual locations and
 saved biomes, and the runner materializes the exact Sparse Structures control.
 The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
-source/JAR identity and requires all 50 incoming classes for full analysis.
-All 535 Item 7/10 tests passed in 152.60 seconds. Storage and prior reviews are
-resolved. The next missing evidence is the first full ordinary baseline world,
-including actual installed hooks, saved-chunk coverage, custody and measured
-resource use. These runtime acceptance results cannot be inferred from tests.
+source/JAR identity and enforces coverage-v2, including the narrowly verified
+unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
+links the applicable validation and accepted full-world results. Storage and
+prior reviews are resolved. Seven worlds, combined synthesis and final delivery
+remain incomplete; runtime acceptance is established per world, not from tests.
 
 ### Storage decision before collection
 
-The current check reports 3,949,314,048 free bytes (about 3.7 GiB). The existing
+Historical checkpoint: the pre-collection check reported 3,949,314,048 free bytes (about 3.7 GiB). The existing
 r3-based estimate is 10.71 generation hours and 13.50 GiB of original worlds.
 As a second retained proxy, the [fairy world backup](fairy-run-r1/world-backup.json)
 has 127,859,839 world bytes; its [raw manifest](fairy-run-r1/archive-manifest.json)
@@ -200,8 +203,10 @@ published redundant copies and sequential verification workspace, with the first
 complete ordinary-seed run confirming actual cost before continuing. Remove only
 new explicitly temporary download/restore copies after successful verification;
 all preexisting evidence, worlds, backups and protected artifacts remain intact.
-The user has been asked for a persistent location or additional free space.
-Full collection is paused until the storage decision and capacity check resolve.
+That capacity gate was subsequently resolved before full collection. The
+[ninth accepted world](full-ocean-heavy-r1-baseline/README.md#full-census-acceptance)
+records 1.86 GiB of allocated working storage and 26.4 GiB remaining free.
+Continue capacity checks; no additional cleanup is authorized by this record.
 
 ## Smallest complete deliverable and batches
 
@@ -225,9 +230,9 @@ The [protocol](protocol.md) selects one fixed 4,096-chunk rectangle in each of
 four seeds and eleven strata, with two fresh repetitions in each of two arms.
 It defines coordinate inclusion, spatial cells, biome attribution, boundary
 censoring, sparse-category limits and a control omitting only Sparse Structures.
-This supersedes the inherited nested-stage draft. Full collection remains gated
-on complete occurrence capture and exact experiment identities; no full-frame
-results are accepted yet.
+This supersedes the inherited nested-stage draft. Each full-world acceptance
+requires complete occurrence capture and exact experiment identities; nine
+worlds have passed so far.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
 disposition, source-bound deterministic processing, retained raw evidence with
@@ -242,23 +247,23 @@ as the current planning authority: 720,896 selected chunks across 16 worlds,
 about 11.05 automated generation hours and 13.92 GiB cumulative uncompressed
 world data, using the measured r3 proxy and including the requested generation
 edge outside the census. Sequential custody has a provisional
-5 GiB workspace floor that still needs collector-specific validation. Recheck
+5 GiB workspace floor. Actual per-world costs are recorded in each accepted
+world report and supersede proxy estimates for the completed runs. Recheck
 capacity before each experiment; these are estimates, not promised runtimes.
 The human collection matrix is superseded by the delivered
 [methodology amendment](methodology-amendment.md).
 
-Material pending inputs:
+Remaining measurement and delivery work:
 
-- Bound peak experiment storage to current capacity with verified sequential
-  custody, or obtain another persistent location. The authorized duplicate
-  cleanup is complete; it does not authorize removing additional artifacts.
-- Keep provisional encounter-site counts separate from unobserved fights under
-  the reviewed, delivered automated methodology amendment.
-- Complete the nonregistry occurrence method and validate the selected Sparse
-  Structures control using existing evidence. No new generic framework is justified yet.
+- Complete the remaining seven worlds under the frozen protocol and continue
+  capacity checks. Preserve all existing artifacts and failed observations.
+- Combine all declared category, spatial, biome, seed and repetition results,
+  including the matched Sparse Structures contrast and uncertainty.
+- Complete clean-checkout reproduction, final review, main delivery and the
+  Items 2 through 10 audit. Keep Item 11 workflows untouched.
 
-No implementation should expand around unresolved measurement semantics.
-The next work is protocol resolution, not configuration tuning or Item 11.
+The observer and control methods are implemented. Reuse them; add no generic
+framework or tuning while completing the remaining sample and report.
 
 [Decoder preparation validation](decoder.md) records the custom-dimension
 identification fix and validated authoritative-start-coordinate extraction.
