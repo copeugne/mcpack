@@ -85,8 +85,11 @@ availability or tentative ten-hour offer as an approved workload.
 [Protocol reassessment](evidence/item-10/protocol.md) distinguishes spatial census
 from actual combat. Resolve the Item 5 contract conflict explicitly. Next, make
 the smallest automated spatial pilot reproducible before asking for human effort.
-[Decoder validation](evidence/item-10/decoder.md) records the tested custom-
-dimension fix and the still-missing authoritative start coordinates.
+[Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
+fix and raw-coordinate census. It now rejects incomplete denominators and
+inconsistent starts; 31 focused tests pass. Next integrate a predeclared fresh
+spatial pilot, canonical joins and nonregistry occurrence coverage. No real
+Item 10 density has been measured yet.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows. The blind-human requirement remains.

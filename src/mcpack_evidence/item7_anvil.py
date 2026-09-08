@@ -230,6 +230,14 @@ def _chunk_payload(
 
 
 def decode_region(path: Path, context: RegionContext | None = None) -> Iterator[ChunkRecord]:
+    for record, _ in decode_region_payloads(path, context):
+        yield record
+
+
+def decode_region_payloads(
+    path: Path, context: RegionContext | None = None
+) -> Iterator[tuple[ChunkRecord, bytes]]:
+    """Keep validated raw NBT available without changing Item 7's normalized schema."""
     resolved_context = context or _context(path)
     region_x, region_z = _region_coordinates(path)
     with path.open("rb") as stream:
@@ -254,7 +262,7 @@ def decode_region(path: Path, context: RegionContext | None = None) -> Iterator[
             expected_z = region_z * 32 + slot.index // 32
             if (record.chunk_x, record.chunk_z) != (expected_x, expected_z):
                 raise _fail(path, slot.index, "chunk coordinates disagree with the region slot")
-            yield record
+            yield record, payload
 
 
 def world_regions(
