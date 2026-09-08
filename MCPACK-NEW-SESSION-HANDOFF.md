@@ -59,7 +59,7 @@ The [protocol](evidence/item-10/protocol.md) is now frozen as `item10-full-v1`
 for the first full ordinary baseline run. Its 720,896 selected chunks, four seeds, eleven strata, two repetitions
 and two arms are method choices, not specification-mandated sample sizes. The
 user confirmed retaining the original 16-world plan and roughly 30 GiB storage
-budget. The first run is active as recorded below; do not reduce to eight worlds.
+budget. The first run is stopped as recorded below; do not reduce to eight worlds.
 
 Storage capacity is now available: direct `df -B1` reports 48,890,408,960 bytes
 (about 45.5 GiB) free after authorized library deduplication and uv cache cleanup.
@@ -149,12 +149,16 @@ for both arms while substituting server execution.
 Then confirm measured runtime/storage costs on the first full ordinary-seed run,
 collect all frames with durable raw custody, complete paired/biome/seed analysis,
 finish the consolidated PR review/merge and the Items 2 through 10 audit.
-The first full run, `full-ordinary-r1-baseline`, is ACTIVE from pushed source
-`7b977af6`. Its exec session is `89854`; poll that handle before considering a
-restart. Readiness and custom-dimension generation are observed in
-`evidence/raw/item10/full-ordinary-r1-baseline/console.log`. This is not final
-acceptance. Preserve the instance and raw outputs; no second world may start
-before its lifecycle, observer, saved-world, custody and resource checks pass.
+The first full run, `full-ordinary-r1-baseline`, finished all eleven selections
+and stopped cleanly after 497.453 seconds from generation source `7b977af6`.
+Session `89854` is terminal. The original post-capture rejection is preserved:
+the Item 7 allowlist omitted seven custom-dimension Chunky task files. The narrow
+fix revalidated all 239 unchanged captured files without regenerating the world.
+See [first full run](evidence/item-10/full-ordinary-r1-baseline/README.md) for the
+original run receipt, recovery command, focused checks and initial sizes.
+All 50 incoming classes and 28,908 complete attempts pass direct trace checks.
+The stopped-world backup exists. Next: durable raw archive/restore and complete
+saved-world census/location analysis. No second world may start before acceptance.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
