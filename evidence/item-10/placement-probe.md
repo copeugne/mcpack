@@ -412,3 +412,43 @@ CLI selections, writing new files under `evidence/raw/item10/probe-pair-r3-typed
 Require both comparison inputs to declare `generation_encoding=typed-nbt-v2`;
 legacy and typed hash arrays are not comparable. Retain the resulting mismatch
 records separately. This correction does not establish observer-free equivalence.
+
+## Corrected typed r3 comparison
+
+[Typed summary](scarecrow-probe-r3/typed-comparison.json) confirms complete matching
+frames with the `typed-nbt-v2` encoding. Mismatches remain 3,969/3,969 Overworld,
+960/961 Nether, 0/961 central End and 671/961 outer End. The corrected parser
+therefore preserves the failed overall equality conclusion; observer causality
+remains unproven. Legacy normalized results remain retained separately.
+
+[The compressed evidence](scarecrow-probe-r3/typed-comparison.json.gz) contains
+all eight reader data objects, every hash vector and every mismatch coordinate.
+It is 516,390 bytes. Decompression matched the committed uncompressed SHA-256
+and recovered eight inputs and four comparisons covering 6,852 chunks per member.
+The summary also records each original CLI output hash. Compound-key ordering
+inside this semantic bundle is canonical; regenerate original CLI byte formatting
+with the reader when checking those per-input hashes.
+
+[The bounded comparison script](scarecrow-probe-r3/compare-typed.py) rejects mixed
+encodings and incomplete or duplicate coordinate frames before producing the
+bundle. Reproduce the reader outputs from the previously verified nested r3 world
+restores, with the following fixed selections and `--generation`:
+
+| Output suffix | Dimension | Inclusive chunk bounds |
+| --- | --- | --- |
+| overworld | minecraft:overworld | -31 31 -31 31 |
+| nether | minecraft:the_nether | -15 15 -15 15 |
+| end-central | minecraft:the_end | -15 15 -15 15 |
+| end-outer | minecraft:the_end | 81 111 -15 15 |
+
+For each `MEMBER` equal to `probe` or `control`, use the existing reader invocation:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-MEMBER-r3/world evidence/raw/item10/probe-pair-r3-typed/MEMBER-SUFFIX.json --dimension DIMENSION --bounds MIN_X MAX_X MIN_Z MAX_Z --generation
+uv run --no-sync python evidence/item-10/scarecrow-probe-r3/compare-typed.py
+```
+
+Replace the uppercase placeholders with the fixed member/table values. All eight
+concrete reader invocations and the comparison script were executed. Output paths
+must be absent; reproduce in a separate checkout to preserve the committed bundle.
+No world generation, Item 8 audit or Item 11 workflow was rerun for this correction.
