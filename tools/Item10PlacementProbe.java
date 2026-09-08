@@ -30,6 +30,9 @@ public final class Item10PlacementProbe {
     private static final String ANOMALY = "biomesoplenty/worldgen/feature/misc/AnomalyFeature";
     private static final String MONOLITH = "biomesoplenty/worldgen/feature/misc/MonolithFeature";
     private static final String MONSTER_BOX = "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator";
+    private static final String SPIRAL = "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator";
+    private static final String SPIRAL_PART = "(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/WorldGenRegion;)V";
+    private static final String SPIRAL_WRITE = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;)V";
     private static final String NETHER_SPIKE = "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator";
     private static final String SPIKE_DESCRIPTOR = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V";
     private static final String GENERATOR_DESCRIPTOR = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V";
@@ -147,6 +150,27 @@ public final class Item10PlacementProbe {
             + ",\"class\":" + quote(name) + "}");
     }
 
+    public static void beginPart(Object feature, Object world, Object source, Object chunk) throws Throwable {
+        beginGenerator(feature, world, source);
+        emit("{\"kind\":\"part\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+            + ",\"position\":" + position(chunk) + "}");
+    }
+
+    public static boolean spiralWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        if (SPIRAL.replace('/', '.').equals(FEATURES.get(Thread.currentThread().threadId()))) {
+            return write(world, pos, state, flags);
+        }
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = Class.forName("net.minecraft.server.level.WorldGenRegion", false, loader)
+            .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
+                Class.forName("net.minecraft.world.level.block.state.BlockState", false, loader), int.class);
+        try {
+            return (Boolean) method.invoke(world, pos, state, flags);
+        } catch (InvocationTargetException error) {
+            throw error.getCause();
+        }
+    }
+
     public static void endGenerator() {
         long thread = Thread.currentThread().threadId();
         FEATURES.remove(thread);
@@ -242,7 +266,8 @@ public final class Item10PlacementProbe {
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
         boolean base = BASE_FEATURE.equals(target);
         boolean staticGenerator = NETHER_SPIKE.equals(target);
-        boolean generator = MONSTER_BOX.equals(target) || staticGenerator;
+        boolean spiral = SPIRAL.equals(target);
+        boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
         boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
@@ -254,7 +279,9 @@ public final class Item10PlacementProbe {
                                              String signature, String[] exceptions) {
                 if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
                 MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
-                boolean match = feature ? name.equals("place") && descriptor.equals(
+                boolean part = spiral && name.equals("generateChunkPart") && descriptor.equals(SPIRAL_PART);
+                boolean spikeWriter = spiral && name.equals("makeSpike") && descriptor.equals(SPIRAL_WRITE);
+                boolean match = spiral ? part || spikeWriter : feature ? name.equals("place") && descriptor.equals(
                     "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")
                     : staticGenerator ? name.equals("placeSpikeAt") && descriptor.equals(SPIKE_DESCRIPTOR)
                     : generator ? name.equals("generateChunk") && descriptor.equals(GENERATOR_DESCRIPTOR)
@@ -267,7 +294,14 @@ public final class Item10PlacementProbe {
                     @Override
                     public void visitCode() {
                         super.visitCode();
-                        if (generator) {
+                        if (part) {
+                            super.visitVarInsn(Opcodes.ALOAD, 0);
+                            super.visitVarInsn(Opcodes.ALOAD, 5);
+                            super.visitVarInsn(Opcodes.ALOAD, 1);
+                            super.visitVarInsn(Opcodes.ALOAD, 4);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$beginPart",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", false);
+                        } else if (generator && !spiral) {
                             if (staticGenerator) {
                                 super.visitLdcInsn(jdk.internal.org.objectweb.asm.Type.getObjectType(target));
                                 super.visitVarInsn(Opcodes.ALOAD, 0);
@@ -288,7 +322,7 @@ public final class Item10PlacementProbe {
                     }
                     @Override
                     public void visitInsn(int opcode) {
-                        if (generator && opcode == Opcodes.RETURN) {
+                        if (generator && (!spiral || part) && opcode == Opcodes.RETURN) {
                             super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$endGenerator", "()V", false);
                         } else if (feature && opcode == Opcodes.IRETURN) {
                             super.visitInsn(Opcodes.DUP);
@@ -310,7 +344,7 @@ public final class Item10PlacementProbe {
                             && owner.equals("net/minecraft/server/level/WorldGenRegion")
                             && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
                             counts[1]++;
-                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$write",
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, spiral ? "item10$spiralWrite" : "item10$write",
                                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
                             return;
                         }
@@ -359,13 +393,19 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != 1 || counts[1] != (staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
+        if (counts[0] != (spiral ? 2 : 1) || counts[1] != (spiral ? 2 : staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
         if (END_FEATURE.equals(target)) {
             if (counts[2] != 1) throw new IllegalArgumentException("Unexpected ground hook count");
             bridge(writer, "ground", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+        }
+        if (spiral) {
+            bridge(writer, "beginPart", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
+            bridge(writer, "spiralWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         }
         if (generator) {
             bridge(writer, "beginGenerator", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
@@ -497,7 +537,7 @@ public final class Item10PlacementProbe {
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
                 if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
-                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name)) {
+                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name)) {
                     return null;
                 }
                 try {

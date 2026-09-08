@@ -62,3 +62,16 @@ Reuse the existing archive and world restore commands with these hashes.
 
 No Item 11 work ran. Item 10 full sampling remains gated on occurrence coverage,
 collector validation and measured observer/storage cost.
+
+## Reviewed delivery
+
+[PR27](https://github.com/copeugne/mcpack/pull/27) merged as
+`9bad3862a5c7a7eb137a689b0030ae73fc172667`, verified in fetched main.
+The [final review](https://github.com/copeugne/mcpack/pull/27#issuecomment-5580117138)
+completed on `7e1d3b7bc2889ef6d534cdcc9cf08491a3a1e78a` with no new findings
+and a Codex bot thumbs-up. The reviewed head is an ancestor of main.
+The earlier request to split commits was invalid: implementation, protocol, raw
+custody, validation and delivery bookkeeping were already separate commits.
+[Disposition](https://github.com/copeugne/mcpack/pull/27#issuecomment-5580055921)
+records the five commit boundaries. No history rewrite or raw change was needed.
+This closes the Nether diagnostic review, not Item 10.

@@ -408,3 +408,66 @@ def test_nether_spike_static_generator_preserves_all_write_sites(tmp_path: Path)
         timeout=30,
     )
     assert transformed.read_bytes() != payload
+
+
+def test_spiral_preserves_source_parts_and_outside_calls(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    name = "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator"
+    modes = ("normal", "early", "refused", "exception", "isolated", "outside", "outside-exception")
+    for mode in modes:
+        args = ["GeneratorFixture", mode, "spiral"]
+        ordinary = subprocess.run(
+            [*command, *args], check=True, capture_output=True, text=True, timeout=30
+        )
+        trace = tmp_path / f"spiral-{mode}.jsonl"
+        observed = subprocess.run(
+            [*command, f"-javaagent:{agent}={trace}", *args],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert ordinary.stdout == observed.stdout
+        rows = [
+            cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()
+        ]
+        assert not any(r["kind"] == "installation_failed" for r in rows)
+        assert any(r.get("class") == name and r["kind"] == "feature_installed" for r in rows)
+        attempts = [r for r in rows if r["kind"] == "begin"]
+        parts = [r for r in rows if r["kind"] == "part"]
+        writes = [r for r in rows if r["kind"] in {"write", "write_exception"}]
+        outside = mode.startswith("outside")
+        assert len(attempts) == (0 if outside else 1 if mode == "exception" else 3)
+        assert len(parts) == len(attempts)
+        assert len(writes) == (0 if outside or mode == "early" else 1 if mode == "exception" else 6)
+        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        if mode in {"normal", "refused", "isolated", "early"}:
+            assert [r["origin"] for r in attempts] == [[1, -5, 3], [1, -5, 3], [64, 0, 64]]
+            assert [r["position"] for r in parts] == [[16, 0, 16], [32, 0, 16], [48, 0, 16]]
+            assert (
+                len({(r["dimension"], tuple(cast("list[int]", r["origin"]))) for r in attempts})
+                == 2
+            )
+            assert len([r for r in rows if r["kind"] == "generator_end"]) == 3
+            assert all(r["returned"] is (mode != "refused") for r in writes)
+    archive = ROOT / "downloads/item3/candidates/Quark-4.1-480.jar"
+    assert hashlib.sha256(archive.read_bytes()).hexdigest() == (
+        "989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5"
+    )
+    with zipfile.ZipFile(archive) as jar:
+        payload = jar.read(name + ".class")
+    assert hashlib.sha256(payload).hexdigest() == (
+        "dd57fdac61e67cece06adc078a4538e3949573baff8f65df9819218bd282b771"
+    )
+    original = tmp_path / "spiral-original.class"
+    transformed = tmp_path / "spiral-transformed.class"
+    _ = original.write_bytes(payload)
+    _ = subprocess.run(
+        [*command, "TemplateFixture", "transform", name, str(original), str(transformed)],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert transformed.read_bytes() != payload
