@@ -158,7 +158,8 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
                 )
         writes = [row for row in rows if row["kind"] in {"write", "write_exception"}]
         assert len(writes) == (0 if mode in {"early", "empty", "outside"} else 2)
-        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        assert rows[-1]["unfinished_attempts"] == 0
+        assert sum(row["kind"] == "attempt_exception" for row in rows) == int(mode == "exception")
         ground = [row for row in rows if row["kind"] == "ground"]
         assert len(ground) == (0 if mode in {"early", "outside"} else 1)
         if ground:
@@ -176,6 +177,22 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
 
     sources = ROOT / "evidence/item-8/sources"
     targets = (
+        (
+            "better-end-island-platform-gateway",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
+        ),
+        (
+            "better-end-island-platform-gateway",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.class",
+        ),
+        (
+            "better-end-island-spike-podium",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
+        ),
+        (
+            "better-end-island-spike-podium",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+        ),
         ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/AnomalyFeature.class"),
         ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/MonolithFeature.class"),
         (
@@ -818,3 +835,196 @@ def test_bridge_caught_exception_allows_next_placement(
     ends = [row for row in rows if row["kind"] == "end"]
     assert ends == [{"kind": "end", "attempt": starts[1], "returned": True}]
     assert rows[-1]["unfinished_attempts"] == 0
+
+
+@pytest.mark.parametrize("feature", ["FallenPillarFeature", "ObsidianPillarBasementFeature"])
+@pytest.mark.parametrize("mode", ["normal", "refused", "early", "outside", "recover", "isolated"])
+def test_pillar_fill_preserves_writes_and_recovery(tmp_path: Path, feature: str, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "PillarFixture", mode, feature],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "pillar.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "PillarFixture", mode, feature],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    assert rows[-1]["unfinished_attempts"] == 0
+    fills = [row for row in rows if row["kind"] == "pillar_fill"]
+    writes = [row for row in rows if row["kind"] == "write"]
+    if mode in {"early", "outside"}:
+        assert fills == writes == []
+    else:
+        assert len(fills) == (2 if mode == "recover" else 1)
+        assert all(row["position"] == [11, 22, 33] for row in fills)
+        assert all(row["flags"] == 18 for row in writes)
+        assert len(writes) == (3 if mode == "recover" else 2)
+        if mode == "refused":
+            assert all(row["returned"] is False for row in writes)
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+        assert "recovered=true" in observed.stdout
+        assert len([row for row in rows if row["kind"] == "attempt_exception"]) == 1
+
+
+def test_pillar_hooks_transform_exact_retained_classes(tmp_path: Path) -> None:
+    _ = _build_probe(tmp_path)
+    entries = cast(
+        "list[dict[str, str]]",
+        json.loads(
+            (
+                ROOT / "evidence/item-8/sources/betterend-pillar-end-hooks/identities.json"
+            ).read_text()
+        ),
+    )
+    selected = [
+        row
+        for row in entries
+        if row["class"].endswith(
+            ("/FallenPillarFeature.class", "/ObsidianPillarBasementFeature.class")
+        )
+    ]
+    assert len(selected) == 2
+    selected.append(
+        {
+            "archive": "bclib-21.0.24.jar",
+            "archive_sha256": "a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093",
+            "class": "org/betterx/bclib/util/BlocksHelper.class",
+            "class_sha256": "4196c4a40a0d71d38061a084f005343262eb9d49d18c79e3a62ac6d03d90da72",
+        }
+    )
+    for row in selected:
+        archive = ROOT / "downloads/item3/candidates" / row["archive"]
+        if not archive.is_file():
+            pytest.skip("Pinned candidate archive is required for retained pillar transformation")
+        assert hashlib.sha256(archive.read_bytes()).hexdigest() == row["archive_sha256"]
+        with zipfile.ZipFile(archive) as jar:
+            content = jar.read(row["class"])
+        assert hashlib.sha256(content).hexdigest() == row["class_sha256"]
+        original = tmp_path / "original.class"
+        transformed = tmp_path / "transformed.class"
+        _ = original.write_bytes(content)
+        _ = subprocess.run(
+            [
+                str(JDK / "java"),
+                "--add-exports",
+                EXPORT,
+                "-classpath",
+                str(tmp_path),
+                "TemplateFixture",
+                "transform",
+                row["class"][:-6],
+                str(original),
+                str(transformed),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert transformed.read_bytes() != content
+
+
+@pytest.mark.parametrize("mode", ["normal", "refused", "recover"])
+def test_betterend_post_template_writes_and_recovery(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "BetterEndPostFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "betterend.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "BetterEndPostFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert original.stdout == observed.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    auxiliary = [row for row in rows if row["kind"] == "write" and row["flags"] == 18]
+    assert len(auxiliary) == (3 if mode == "recover" else 2)
+    assert rows[-1]["unfinished_attempts"] == 0
+    if mode == "refused":
+        assert all(row["returned"] is False for row in auxiliary)
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+        assert "recovered=true" in observed.stdout
+        assert len([row for row in rows if row["kind"] == "attempt_exception"]) == 1
+
+
+@pytest.mark.parametrize("kind", ["Gateway", "SpawnPlatform", "Podium", "Spike"])
+@pytest.mark.parametrize("mode", ["normal", "early", "refused", "recover", "lifecycle", "isolated"])
+def test_island_templates_and_route_context(tmp_path: Path, kind: str, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "IslandFixture", mode, kind],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "island.jsonl"
+    class_log = tmp_path / "class-load.log"
+    observed = subprocess.run(
+        [
+            *command,
+            f"-Xlog:class+load=info:file={class_log}",
+            f"-javaagent:{agent}={trace}",
+            "IslandFixture",
+            mode,
+            kind,
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    contexts = [row for row in rows if row["kind"] == "island_context"]
+    if mode == "normal":
+        # Referencing every branch in IslandFixture does not load unused generators.
+        gateway = (
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
+        )
+        captures = trace.parent / f"{trace.name}.classes"
+        assert hashlib.sha256(agent.read_bytes()).hexdigest() == (
+            "d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782"
+        )
+        assert (gateway.replace("/", ".") in class_log.read_text()) == (kind == "Gateway")
+        assert (captures / f"{gateway}.class").exists() == (kind == "Gateway")
+        assert any(row.get("class") == gateway for row in rows) == (kind == "Gateway")
+    assert len(contexts) == (2 if mode == "recover" else 1)
+    assert all(row["worldgen_region"] == (mode != "lifecycle") for row in contexts)
+    templates = [row for row in rows if row["kind"] == "template_begin"]
+    assert len(templates) == (
+        0 if mode == "early" else (2 if kind == "Spike" else 1) + int(mode == "recover")
+    )
+    assert all(str(row["path"]).startswith("betterendisland:") for row in templates)
+    assert rows[-1]["unfinished_attempts"] == 0
+    writes = [row for row in rows if row["kind"] == "write"]
+    direct = [row for row in writes if row["flags"] == 3]
+    assert len(direct) == int(kind in {"Gateway", "Spike"} and mode != "early")
+    assert all(row["position"] == [11, 22, 33] for row in direct)
+    if mode == "refused":
+        assert all(row["returned"] is False for row in writes)
+    assert sum(row["kind"] == "attempt_exception" for row in rows) == int(mode == "recover")

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import queue
+import re
 import shutil
 import signal
 import subprocess
@@ -27,6 +28,7 @@ if TYPE_CHECKING:
 
 _READY_MARKER: Final = '! For help, type "help"'
 _LIFECYCLE_STAGE: Final = "lifecycle"
+FAILURE_SHUTDOWN_SECONDS: Final = 60.0
 
 
 class LifecycleReceipt(BaseModel):
@@ -59,6 +61,8 @@ class _LifecycleState:
         "before_generation",
         "commands",
         "completed",
+        "failure_at",
+        "failure_reason",
         "flush_correlation",
         "flushed",
         "killed",
@@ -75,6 +79,8 @@ class _LifecycleState:
     completed: list[str]
     ready: bool
     flushed: bool
+    failure_at: float | None
+    failure_reason: str | None
     killed: bool
     rejection: str | None
     flush_correlation: FlushCorrelation | None
@@ -95,6 +101,8 @@ class _LifecycleState:
         self.completed = []
         self.ready = False
         self.flushed = False
+        self.failure_at = None
+        self.failure_reason = None
         self.killed = False
         self.rejection = None
         self.flush_correlation = None
@@ -157,13 +165,14 @@ def run_lifecycle(
         reader.join(timeout=1)
     expected_labels = tuple(selection.label for selection in request.selections)
     generation_finished = tuple(state.completed) == expected_labels
+    state.rejection = state.rejection or state.failure_reason
     minecraft_log: Path | None = None
-    if return_code == 0 and state.ready and generation_finished and state.flushed:
+    if return_code == 0 and state.ready:
         minecraft_log = request.log_path.with_name("minecraft-latest.log")
         try:
             _ = shutil.copyfile(request.target / "logs/latest.log", minecraft_log)
         except OSError:
-            state.rejection = "authoritative Minecraft log capture failed"
+            state.rejection = state.rejection or "authoritative Minecraft log capture failed"
             minecraft_log = None
     clean = (
         return_code == 0
@@ -192,8 +201,17 @@ def run_lifecycle(
 def _drive_lifecycle(state: _LifecycleState, lines: OutputSequence, log: IO[str]) -> None:
     while state.rejection is None and not state.flushed:
         remaining = state.request.timeout_seconds - (time.monotonic() - state.started)
+        if state.failure_at is not None:
+            remaining = min(
+                remaining,
+                FAILURE_SHUTDOWN_SECONDS - (time.monotonic() - state.failure_at),
+            )
         if remaining <= 0:
-            state.rejection = "world generation timed out"
+            state.rejection = (
+                f"{state.failure_reason}: shutdown timed out"
+                if state.failure_at is not None
+                else "world generation timed out"
+            )
             return
         try:
             output = lines.get(timeout=min(1.0, remaining))
@@ -207,8 +225,26 @@ def _drive_lifecycle(state: _LifecycleState, lines: OutputSequence, log: IO[str]
         _handle_line(state, output)
 
 
-def _handle_line(state: _LifecycleState, line: str) -> None:  # noqa: C901 - keep ordered lifecycle transitions together.
-    if not state.ready and "Done (" in line and _READY_MARKER in line:
+def _handle_line(state: _LifecycleState, line: str) -> None:  # noqa: C901, PLR0912 - keep ordered lifecycle transitions together.
+    failure = None
+    if "java.lang.OutOfMemoryError: Java heap space" in line:
+        failure = "Java heap exhaustion during world generation"
+    elif "[Server thread/ERROR]" in line and re.search(
+        r"\[minecraft/MinecraftServer\]: Failed to save chunk -?\d+,-?\d+\s*$",
+        line,
+    ):
+        failure = "Minecraft chunk save failed during world generation"
+    if failure is not None and state.failure_at is None:
+        state.failure_at = time.monotonic()
+        state.failure_reason = failure
+        if not _send(state, "chunky pause"):
+            state.rejection = "server console pipe failed"
+            return
+        state.flush_correlation = begin_correlated_flush(state.stdin, state.commands)
+        if state.flush_correlation is None:
+            state.rejection = "server console pipe failed"
+        return
+    if state.failure_at is None and not state.ready and "Done (" in line and _READY_MARKER in line:
         state.ready = True
         for command in state.before_generation:
             if not _send(state, command):
@@ -216,7 +252,11 @@ def _handle_line(state: _LifecycleState, line: str) -> None:  # noqa: C901 - kee
                 return
         state.rejection = _send_selection(state, state.request.selections[0])
         return
-    if state.ready and len(state.completed) < len(state.request.selections):
+    if (
+        state.failure_at is None
+        and state.ready
+        and len(state.completed) < len(state.request.selections)
+    ):
         selection = state.request.selections[len(state.completed)]
         marker = (
             f"Task finished for {selection.dimension}. "

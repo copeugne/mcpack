@@ -5,6 +5,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 public class NBTFeature {
     public static BuildingListFeature.StructureInfo selected = new BuildingListFeature.StructureInfo("original.nbt");
+    public static boolean postWrites;
     public static StructurePlaceSettings settings = new StructurePlaceSettings();
     protected net.minecraft.core.BlockPos getGround(net.minecraft.world.level.WorldGenLevel world,
                                                     net.minecraft.core.BlockPos pos) {
@@ -16,6 +17,12 @@ public class NBTFeature {
         StructureTemplate template = selected.getStructure();
         selected = new BuildingListFeature.StructureInfo("later-selection.nbt");
         template.placeInWorld((ServerLevelAccessor) context.level(), context.origin(), context.origin(), settings, null, 4);
+        if (postWrites) {
+            org.betterx.bclib.util.BlocksHelper.setWithoutUpdate(context.level(), context.origin(),
+                new net.minecraft.world.level.block.Block("air"));
+            org.betterx.bclib.util.BlocksHelper.setWithoutUpdate(context.level(), context.origin(),
+                new net.minecraft.world.level.block.state.BlockState("support"));
+        }
         return true;
     }
 }

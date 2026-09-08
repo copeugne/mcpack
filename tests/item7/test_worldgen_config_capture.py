@@ -6,6 +6,7 @@ import pytest
 
 from mcpack_evidence import item7_config, item7_runtime
 from mcpack_evidence.item6_capture import capture as real_capture
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 from tests.item7.runtime_support import FROZEN, runtime_request
 
 if TYPE_CHECKING:
@@ -75,6 +76,36 @@ def test_capture_accepts_exact_overworld_only_chunky_inventory(
     receipt = item7_config.capture_runtime_configuration(request, chunky_paths=overworld_paths)
 
     assert tuple(row.path for row in receipt.chunky_files) == overworld_paths
+
+
+@pytest.mark.parametrize("defect", [None, "missing", "unexpected"])
+def test_full_capture_requires_exact_declared_dimension_task_files(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    defect: str | None,
+) -> None:
+    request = _prepared_request(tmp_path, monkeypatch).model_copy(
+        update={"mode": "item10", "selections": ITEM10_SELECTIONS}
+    )
+    paths = item7_config.ITEM10_CHUNKY_PATHS
+    assert len(paths) == 11
+    for relative in paths:
+        path = request.target / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        _ = path.write_bytes(b"done=true\n")
+    if defect == "missing":
+        (request.target / paths[1]).unlink()
+    elif defect == "unexpected":
+        _ = (request.target / "config/chunky/undeclared.properties").write_text("done=true\n")
+    if defect is None:
+        receipt = item7_config.capture_runtime_configuration(request)
+        assert tuple(row.path for row in receipt.chunky_files) == paths
+        assert receipt.base_file_count == 228
+    else:
+        with pytest.raises(
+            item7_runtime.Item7RuntimeError, match="captured file inventory differs"
+        ):
+            _ = item7_config.capture_runtime_configuration(request)
 
 
 def test_capture_records_comment_only_runtime_normalization(

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import gzip
 import hashlib
 import json
 import math
@@ -11,16 +12,41 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from tools.manage_item4_environment import _world_backup_lock
+from tools.run_item10_probe import COLLECTOR_JAR_SHA256
+from tools.validate_item10_trace import (
+    BRIDGE_ROOT,
+    FULL_COLLECTION_CLASSES,
+    SCARECROW_CLASS,
+    URN,
+    collection_attempts,
+)
 
+from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
-from mcpack_evidence.item7_nbt import decode_compound_nbt
+from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping
+
     from mcpack_evidence.item7_nbt_models import ChunkRecord
 
 
-def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int, str]:
-    """Read each saved quart-height biome at local block X=8, Z=8."""
+def chunk_biome_column(
+    record: ChunkRecord, min_y: int, height: int, *, anchor: tuple[int, int] | None = None
+) -> dict[int, str]:
+    """Read saved quart-height biomes at the supplied block X/Z, or chunk center."""
+    if anchor is None:
+        local_x = local_z = 8
+    else:
+        if (
+            len(anchor) != 2  # noqa: PLR2004 - horizontal coordinate pair
+            or any(type(value) is not int for value in anchor)
+            or (anchor[0] // 16, anchor[1] // 16) != (record.chunk_x, record.chunk_z)
+        ):
+            detail = "biome anchor must be integer X/Z within the supplied chunk"
+            raise ValueError(detail)
+        local_x, local_z = anchor[0] % 16, anchor[1] % 16
     sections = {section.section_y: section for section in record.biome_sections}
     if len(sections) != len(record.biome_sections):
         detail = f"duplicate biome section at chunk {record.chunk_x},{record.chunk_z}"
@@ -39,9 +65,9 @@ def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int
             )
             raise ValueError(detail)
         for local_quart_y in range(4):
-            # Minecraft palette order is X + 4*Z + 16*Y; X=Z=2 in quart coordinates.
+            # Minecraft palette order is X + 4*Z + 16*Y in quart coordinates.
             column[section_y * 4 + local_quart_y] = section.palette[
-                section.indices[2 + 4 * 2 + 16 * local_quart_y]
+                section.indices[local_x // 4 + 4 * (local_z // 4) + 16 * local_quart_y]
             ]
     return column
 
@@ -89,6 +115,129 @@ def occurrence_biomes(record: ChunkRecord, column: dict[int, str]) -> list[dict[
     return rows
 
 
+def saved_block_at(
+    chunk: Mapping[str, object], position: tuple[int, int, int]
+) -> dict[str, object] | None:
+    """Read a saved palette entry; absent sections remain unavailable, not assumed air."""
+    x, y, z = position
+    if (chunk.get("xPos"), chunk.get("zPos")) != (x // 16, z // 16):
+        detail = "saved block coordinate does not belong to supplied chunk"
+        raise ValueError(detail)
+    sections = [section for section in chunk["sections"] if section["Y"] == y // 16]
+    if not sections:
+        return None
+    if len(sections) != 1:
+        detail = "duplicate saved block section"
+        raise ValueError(detail)
+    states = sections[0].get("block_states")
+    if states is None:
+        return None
+    palette = states["palette"]
+    if not palette or any(not isinstance(entry.get("Name"), str) for entry in palette):
+        detail = "invalid saved block palette"
+        raise ValueError(detail)
+    indices = (
+        (0,) * 4096
+        if len(palette) == 1
+        else _packed(tuple(states["data"]), 4096, max(4, (len(palette) - 1).bit_length()))
+    )
+    index = indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]
+    if not 0 <= index < len(palette):
+        detail = "saved block palette index out of range"
+        raise ValueError(detail)
+    return cast("dict[str, object]", palette[index])
+
+
+def saved_content_observations(  # noqa: C901, PLR0912 - one locked manifest-bound world pass
+    world: Path,
+    requested: dict[str, set[tuple[int, int, int]]],
+    world_files: dict[str, str],
+    geometry: dict[str, tuple[int, int]],
+    *,
+    biome_anchors: set[tuple[str, int, int, int]] | None = None,
+) -> dict[str, object]:
+    """Inspect requested positions in a stopped, manifest-bound world."""
+    found = {}
+    inputs = {}
+    targets: dict[tuple[str, int, int], list[tuple[int, int, int]]] = collections.defaultdict(list)
+    for dimension, points in requested.items():
+        for position in points:
+            targets[(dimension, position[0] // 16, position[2] // 16)].append(position)
+    with _world_backup_lock(world):
+        for path, context in world_regions(world, dimension_geometry=geometry):
+            if context.dimension not in requested:
+                continue
+            if not path.resolve().is_relative_to(world.resolve()):
+                detail = "saved-content region escapes world"
+                raise ValueError(detail)
+            before = hashlib.sha256(path.read_bytes()).hexdigest()
+            if world_files.get(context.relative_path) != before:
+                detail = "saved-content region differs from retained world manifest"
+                raise ValueError(detail)
+            inputs[context.relative_path] = before
+            for record, payload in decode_region_payloads(path, context):
+                if record.external:
+                    external = path.with_name(f"c.{record.chunk_x}.{record.chunk_z}.mcc")
+                    name = external.relative_to(world).as_posix()
+                    if not external.resolve().is_relative_to(world.resolve()):
+                        detail = "saved-content external chunk escapes world"
+                        raise ValueError(detail)
+                    digest = hashlib.sha256(external.read_bytes()).hexdigest()
+                    if world_files.get(name) != digest:
+                        detail = "saved-content external chunk differs from retained world manifest"
+                        raise ValueError(detail)
+                    inputs[name] = digest
+                key = (context.dimension, record.chunk_x, record.chunk_z)
+                if key not in targets:
+                    continue
+                chunk = decode_compound_nbt(payload)
+                for position in targets[key]:
+                    state = saved_block_at(chunk, position)
+                    found[(context.dimension, *position)] = {
+                        "dimension": context.dimension,
+                        "position": list(position),
+                        "chunk_status": record.status,
+                        "saved_state": state,
+                        "unavailable_reason": None
+                        if state is not None
+                        else "MISSING_BLOCK_SECTION",
+                    }
+                    if biome_anchors and (context.dimension, *position) in biome_anchors:
+                        column = chunk_biome_column(
+                            record,
+                            context.min_y,
+                            context.build_height,
+                            anchor=(position[0], position[2]),
+                        )
+                        found[(context.dimension, *position)]["biome"] = column.get(
+                            position[1] // 4
+                        )
+        for name, digest in inputs.items():
+            if hashlib.sha256((world / name).read_bytes()).hexdigest() != digest:
+                detail = "saved-content input changed during inspection"
+                raise ValueError(detail)
+    observations = [
+        found.get(
+            (dimension, *position),
+            {
+                "dimension": dimension,
+                "position": list(position),
+                "chunk_status": None,
+                "saved_state": None,
+                "unavailable_reason": "MISSING_CHUNK",
+            },
+        )
+        for dimension, points in sorted(requested.items())
+        for position in sorted(points)
+    ]
+    return {
+        "observations": observations,
+        "anvil_inputs": [
+            {"path": name, "sha256": digest} for name, digest in sorted(inputs.items())
+        ],
+    }
+
+
 def generation_digest(payload: bytes) -> str:
     """Hash the predeclared generation projection without tick or entity movement state."""
     root = decode_compound_nbt(payload, preserve_types=True)
@@ -126,12 +275,37 @@ def generation_digest(payload: bytes) -> str:
     return hashlib.sha256(encoded.encode()).hexdigest()
 
 
+def occurrence_anchor(
+    row: dict[str, str | int], bounds: tuple[int, int, int, int]
+) -> tuple[int, int]:
+    """Use explicit block anchors, retaining the registry start-center convention."""
+    min_x, max_x, min_z, max_z = bounds
+    chunk_x, chunk_z = row["chunk_x"], row["chunk_z"]
+    if type(chunk_x) is not int or type(chunk_z) is not int:
+        detail = "occurrence chunk coordinates must be integers"
+        raise ValueError(detail)
+    if not (min_x <= chunk_x <= max_x and min_z <= chunk_z <= max_z):
+        detail = "occurrence outside selected chunk frame"
+        raise ValueError(detail)
+    if ("anchor_x" in row) != ("anchor_z" in row):
+        detail = "occurrence needs both horizontal anchor coordinates"
+        raise ValueError(detail)
+    x, z = row.get("anchor_x", 16 * chunk_x + 8), row.get("anchor_z", 16 * chunk_z + 8)
+    if type(x) is not int or type(z) is not int:
+        detail = "occurrence anchors must be integer block coordinates"
+        raise ValueError(detail)
+    if x // 16 != chunk_x or z // 16 != chunk_z:
+        detail = "occurrence anchor disagrees with inclusion chunk"
+        raise ValueError(detail)
+    return x, z
+
+
 def spatial_summary(
     occurrences: list[dict[str, str | int]], bounds: tuple[int, int, int, int]
 ) -> dict[str, object]:
-    """Describe fixed-grid density and boundary-censored start-chunk distances."""
+    """Describe fixed-grid density and distances using declared location anchors."""
     min_x, max_x, min_z, max_z = bounds
-    points = [(16 * int(row["chunk_x"]) + 8, 16 * int(row["chunk_z"]) + 8) for row in occurrences]
+    points = [occurrence_anchor(row, bounds) for row in occurrences]
     neighbors = []
     for index, (x, z) in enumerate(points):
         boundary = min(x - 16 * min_x, 16 * (max_x + 1) - x, z - 16 * min_z, 16 * (max_z + 1) - z)
@@ -221,9 +395,11 @@ def spatial_summary(
 
 def category_occurrences(
     rows: list[dict[str, object]],
+    *,
+    total_name: str = "all_registry",
 ) -> dict[str, list[dict[str, object]]]:
     """Select overlapping specification categories without duplicating a start within one."""
-    categories = {"all_registry": rows}
+    categories = {total_name: rows}
     categories.update(
         {
             role: [row for row in rows if row["role"] == role]
@@ -240,7 +416,664 @@ def category_occurrences(
     return categories
 
 
-def classify_census(result: dict[str, object]) -> dict[str, object]:
+def verify_biome_comparison(path: Path, raw_root: Path) -> None:
+    """Reproduce the accepted comparison from hash-bound censuses without rewriting it."""
+    expected = path.read_bytes()
+    inputs = parse_strict_json(gzip.decompress(expected))
+    output = {}
+    for name, prior in inputs.items():
+        census_path = raw_root / (name + "-analysis") / "all-strata.json"
+        if not census_path.resolve().is_relative_to(raw_root.resolve()):
+            detail = "accepted census path escapes raw root"
+            raise ValueError(detail)
+        raw = census_path.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != prior["input_sha256"]:
+            detail = "accepted census identity mismatch: " + name
+            raise ValueError(detail)
+        strata = parse_strict_json(raw)["strata"]
+        summaries = {label: summarize_biomes(value) for label, value in strata.items()}
+        for label, summary in summaries.items():
+            counted = sum(row["counts"]["all_locations"] for row in summary["rows"])
+            counted += len(summary["unavailable_anchors"])
+            if counted != strata[label]["classification"]["categories"]["all_locations"]["count"]:
+                detail = f"location count not conserved: {name}/{label}"
+                raise ValueError(detail)
+        output[name] = {"input_sha256": digest, "strata": summaries}
+    raw = json.dumps(output, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+    if gzip.compress(raw, mtime=0) != expected:
+        detail = "biome comparison reproduction mismatch"
+        raise ValueError(detail)
+
+
+def summarize_biomes(result: dict[str, object]) -> dict[str, object]:  # noqa: C901 - one explicit anchor/exposure join.
+    """Join accepted locations to same-height exposure without dropping unavailable rates."""
+    exposure = {}
+    for row in result["biome_exposure"]["rows"]:
+        key = (row["quart_y"], row["biome"])
+        if key in exposure:
+            detail = "duplicate biome exposure key"
+            raise ValueError(detail)
+        exposure[key] = row["full_chunks"]
+    registry = {}
+    for row in result["occurrence_biomes"]:
+        key = (row["registry_id"], row["chunk_x"], row["chunk_z"])
+        if key in registry:
+            detail = "duplicate registry biome anchor"
+            raise ValueError(detail)
+        registry[key] = row
+    attributed = []
+    unavailable = []
+    for location in result["classification"]["occurrences"]:
+        if "registry_id" in location:
+            key = (location["registry_id"], location["chunk_x"], location["chunk_z"])
+            if key not in registry:
+                detail = "classified registry location has no biome anchor record"
+                raise ValueError(detail)
+            anchor = registry[key]
+            reason = anchor["unavailable_reason"]
+        else:
+            anchor = location
+            reason = anchor["biome_unavailable_reason"]
+        if anchor["biome"] is None or anchor["quart_y"] is None:
+            if not reason:
+                detail = "unavailable biome anchor has no reason"
+                raise ValueError(detail)
+            unavailable.append({**location, "biome_unavailable_reason": reason})
+        else:
+            if reason is not None:
+                detail = "available biome anchor has an unavailable reason"
+                raise ValueError(detail)
+            attributed.append({**location, "biome": anchor["biome"], "quart_y": anchor["quart_y"]})
+    categories = category_occurrences(attributed, total_name="all_locations")
+    counts = {
+        category: collections.Counter((row["quart_y"], row["biome"]) for row in locations)
+        for category, locations in categories.items()
+    }
+    keys = sorted(exposure.keys() | counts["all_locations"].keys())
+    return {
+        "scope": "location-anchor counts per sampled chunk-center biome column, by quart height",
+        "rows": [
+            {
+                "quart_y": key[0],
+                "biome": key[1],
+                "full_chunks": exposure.get(key, 0),
+                "counts": {category: values[key] for category, values in counts.items()},
+                "per_1000_chunks": {
+                    category: values[key] * 1000 / exposure[key] if exposure.get(key, 0) else None
+                    for category, values in counts.items()
+                },
+            }
+            for key in keys
+        ],
+        "unavailable_anchors": unavailable,
+    }
+
+
+def nonregistry_membership() -> dict[str, dict[str, str]]:  # noqa: C901 - direct inventory joins
+    """Reuse the frozen forty-family membership, not template filename heuristics."""
+    source = Path(__file__).resolve().parents[1] / "evidence/item-8/inventory.json"
+    payload = source.read_bytes()
+    if (
+        hashlib.sha256(payload).hexdigest()
+        != "4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d"
+    ):
+        detail = "accepted nonregistry inventory identity changed"
+        raise ValueError(detail)
+    inventory = json.loads(payload)
+    contributions = inventory["non_registry_content"]["contributions"]
+    templates: dict[str, str] = {}
+    for group in ("betterend:biome_buildings", "betterend:biome_ruins"):
+        for family, design in contributions[group]["designs"].items():
+            for path in design.get("templates", [design.get("template")]):
+                templates["/" + path] = family
+    for group in (
+        "yungsbridges:bridges",
+        "yungsextras:feature_entrypoints",
+        "betterendisland:platform_gateway",
+    ):
+        for family in contributions[group]["families"]:
+            for path in family["templates"]:
+                if path in templates and templates[path] != family["family"]:
+                    detail = "one template belongs to multiple accepted families"
+                    raise ValueError(detail)
+                templates[path] = family["family"]
+    templates["minecraft:end_city/ship"] = "betterend:crashed_ship"
+    end_features = "org/betterx/betterend/world/features/"
+    quark_generators = "org/violetmoon/quark/content/world/gen/"
+    classes = {
+        SCARECROW_CLASS: "explorations:scarecrow",
+        "biomesoplenty/worldgen/feature/misc/AnomalyFeature": "biomesoplenty:anomaly",
+        "biomesoplenty/worldgen/feature/misc/MonolithFeature": "biomesoplenty:monolith",
+        quark_generators + "MonsterBoxGenerator": "quark:monster_box",
+        quark_generators + "ObsidianSpikeGenerator": "quark:nether_obsidian_spike",
+        quark_generators + "SpiralSpireGenerator": "quark:spiral_spire",
+        quark_generators + "FairyRingGenerator": "quark:fairy_ring",
+        URN: "supplementaries:cave_urn_cache",
+        end_features + "CrashedShipFeature": "betterend:crashed_ship",
+        end_features + "terrain/FallenPillarFeature": "betterend:ruined_obsidian_pillar",
+        end_features + "terrain/ObsidianPillarBasementFeature": "betterend:ruined_obsidian_pillar",
+        BRIDGE_ROOT + "feature/BridgeFeature": "yungsbridges:bridge",
+    }
+    for name, family in {
+        "BetterEndGatewayFeature": "gateway",
+        "BetterEndSpawnPlatformFeature": "arrival_platform",
+        "BetterSpikeFeature": "dragon_arena",
+        "BetterEndPodiumFeature": "dragon_arena",
+    }.items():
+        classes["com/yungnickyoung/minecraft/betterendisland/world/feature/" + name] = (
+            "betterendisland:" + family
+        )
+    for name, family in {
+        "desert/ChillzoneDesertFeature": "desert_chillzone",
+        "desert/DesertGiantTorchFeature": "desert_giant_torch",
+        "desert/DesertSmallRuinsFeature": "desert_small_ruins",
+        "desert/DesertObeliskFeature": "desert_obelisk",
+        "desert/DesertWellFeature": "desert_well",
+        "swamp/SwampArchFeature": "swamp_arch",
+        "swamp/SwampDoubleArchFeature": "swamp_arch",
+        "swamp/SwampChurchFeature": "swamp_church",
+        "swamp/SwampCubbyFeature": "swamp_cubby",
+        "swamp/SwampOgreFeature": "swamp_ogre",
+        "swamp/SwampPillarFeature": "swamp_pillar",
+    }.items():
+        classes["com/yungnickyoung/minecraft/yungsextras/world/feature/" + name] = (
+            "yungsextras:" + family
+        )
+    accepted = {
+        name for name, family in inventory["families"].items() if not family["structure_ids"]
+    }
+    if set(templates.values()) | set(classes.values()) != accepted:
+        detail = "collector membership does not cover exactly the accepted nonregistry families"
+        raise ValueError(detail)
+    excluded = {
+        "/" + path: disposition["decision"]
+        for disposition in contributions["betterend:biome_ruins"]["dispositions"]
+        for path in disposition["templates"]
+    }
+    for contribution in ("betterend:lantern_woods/light_1", "betterend:blossoming_spires/house"):
+        entry = contributions[contribution]
+        excluded["/" + entry["template"]] = entry["dispositions"][0]["decision"]
+    return {"classes": classes, "templates": templates, "excluded": excluded}
+
+
+def attribute_nonregistry_attempt(
+    rows: list[dict[str, object]], membership: dict[str, dict[str, str]]
+) -> dict[str, object]:
+    """Attribute an already paired attempt without assuming successful placement."""
+    feature_rows = [row for row in rows if row["kind"] == "feature"]
+    feature = str(feature_rows[0]["class"]).replace(".", "/") if feature_rows else SCARECROW_CLASS
+    paths = [str(row["path"]) for row in rows if row["kind"] == "template_begin"]
+    family = membership["classes"].get(feature)
+    if family is None and feature not in {
+        "org/betterx/betterend/world/features/BuildingListFeature",
+        "org/betterx/betterend/world/features/NBTFeature",
+    }:
+        detail = "unmapped nonregistry generator class"
+        raise ValueError(detail)
+    dispositions = [membership["excluded"].get(path) for path in paths]
+    if "DISCONNECTED_TEMPLATE_NOT_ADDITIONAL_ACTIVE_FAMILY" in dispositions:
+        detail = "observed disconnected template contradicts accepted active-route inventory"
+        raise ValueError(detail)
+    if paths and all(value == "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY" for value in dispositions):
+        if family is not None:
+            detail = "accepted generator selected only excluded decoration"
+            raise ValueError(detail)
+        return {
+            "attempt": rows[0]["attempt"],
+            "family": None,
+            "reason": "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY",
+            "templates": paths,
+        }
+    selected = {membership["templates"][path] for path in paths if path in membership["templates"]}
+    if any(path not in membership["templates"] for path in paths):
+        return {
+            "attempt": rows[0]["attempt"],
+            "family": None,
+            "reason": "UNMAPPED_TEMPLATE",
+            "templates": paths,
+        }
+    if len(selected) > 1 or (family is not None and selected and selected != {family}):
+        detail = "observed template and generator family identities disagree"
+        raise ValueError(detail)
+    if family is None:
+        family = next(iter(selected), None)
+    if family == "supplementaries:cave_urn_cache":
+        parents = [row["placed_feature"] for row in rows if row["kind"] == "urn_parent"]
+        if parents != ["supplementaries:cave_urns"]:
+            return {
+                "attempt": rows[0]["attempt"],
+                "family": None,
+                "reason": "UNRESOLVED_URN_PARENT",
+                "templates": paths,
+            }
+    return {
+        "attempt": rows[0]["attempt"],
+        "family": family,
+        "reason": "ATTRIBUTED" if family else "NO_DESIGN_SELECTED",
+        "templates": paths,
+    }
+
+
+def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered provider event pass
+    rows: list[dict[str, object]], membership: dict[str, dict[str, str]]
+) -> dict[str, object]:
+    """Retain observed content and failures for later saved-world location acceptance."""
+    result = attribute_nonregistry_attempt(rows, membership)
+    family = result["family"]
+    origin = cast("list[int]", rows[0]["origin"])
+    templates = [row for row in rows if row["kind"] == "template_begin"]
+    anchor = origin
+    if templates and isinstance(family, str) and not family.startswith("betterendisland:"):
+        anchor = cast("list[int]", templates[0]["position"])
+    fills = [row for row in rows if row["kind"] == "pillar_fill"]
+    if fills:
+        anchor = cast("list[int]", fills[0]["position"])
+    if family == "betterendisland:dragon_arena":
+        anchor = [0, origin[1], 0]
+    # A template's support/erosion writes cannot alone establish template content.
+    template_family = family in set(membership["templates"].values())
+    final_writes: dict[tuple[int, ...], str] = {}
+    observed_states: dict[tuple[int, ...], str] = {}
+    content_positions: set[tuple[int, ...]] = set()
+    in_template = False
+    writer_site = None
+    flower_origin = None
+    flowers = []
+    refused = 0
+    for row in rows:
+        kind = row["kind"]
+        if kind == "template_begin":
+            in_template = True
+        elif kind in {"template_end", "template_exception"}:
+            in_template = False
+        elif kind == "writer":
+            writer_site = row["site"]
+        elif kind == "flower_begin":
+            flower_origin = row["position"]
+        elif kind == "flower_state":
+            if flower_origin is None:
+                detail = "flower state lacks its observed delegate origin"
+                raise ValueError(detail)
+            state = str(row["state"])
+            if not state.startswith("Block{") or "}" not in state:
+                detail = "unrecognized recorded flower-state representation"
+                raise ValueError(detail)
+            flowers.append({"position": flower_origin, "block_id": state.split("}", 1)[0][6:]})
+            observed_states[tuple(flower_origin)] = flowers[-1]["block_id"]
+            flower_origin = None
+        elif kind == "write":
+            if row["returned"] is False:
+                refused += 1
+                continue
+            position = tuple(cast("list[int]", row["position"]))
+            state = str(row["state"])
+            if not state.startswith("Block{") or "}" not in state:
+                detail = "unrecognized recorded block-state representation"
+                raise ValueError(detail)
+            block_id = state.split("}", 1)[0][len("Block{") :]
+            final_writes[position] = block_id
+            observed_states[position] = block_id
+            eligible = in_template if template_family else True
+            if family == "quark:fairy_ring" and writer_site == 1:
+                eligible = False
+            if family == "supplementaries:cave_urn_cache":
+                eligible = block_id == "supplementaries:urn"
+            if eligible:
+                content_positions.add(position)
+    air = {"minecraft:air", "minecraft:cave_air", "minecraft:void_air"}
+    surviving = sorted(
+        position for position in content_positions if observed_states[position] not in air
+    )
+    if family == "quark:fairy_ring":
+        surviving = sorted(
+            set(surviving)
+            | {
+                tuple(flower["position"])
+                for flower in flowers
+                if observed_states[tuple(flower["position"])] not in air
+            }
+        )
+    failure = any(str(row["kind"]).endswith("_exception") for row in rows)
+    route = "ordinary_generation"
+    if isinstance(family, str) and family.startswith("betterendisland:"):
+        contexts = [row for row in rows if row["kind"] == "island_context"]
+        route = (
+            "ordinary_generation"
+            if contexts and contexts[0]["worldgen_region"] is True
+            else "non_worldgen_accessor"
+            if contexts
+            else "unresolved"
+        )
+    return {
+        **result,
+        "dimension": rows[0]["dimension"],
+        "origin": origin,
+        "anchor": anchor,
+        "route": route,
+        "outcome": (
+            "EXCEPTION_WITH_CONTENT"
+            if failure and surviving
+            else "EXCEPTION"
+            if failure
+            else "CONTENT_OBSERVED"
+            if surviving
+            else "NO_CONTENT_OBSERVED"
+        ),
+        "refused_writes": refused,
+        "content_positions": [list(position) for position in surviving],
+        "content_blocks": [
+            {"position": list(position), "block_id": observed_states[position]}
+            for position in surviving
+        ],
+        "last_successful_writes": [
+            {"position": list(position), "block_id": block_id}
+            for position, block_id in sorted(final_writes.items())
+        ],
+        **({"flower_observations": flowers} if family == "quark:fairy_ring" else {}),
+    }
+
+
+def nonregistry_location_groups(
+    outcomes: list[dict[str, object]],
+    frames: dict[str, tuple[str, tuple[int, int, int, int]]],
+) -> dict[str, object]:
+    """Group one world's candidate sources without accepting uncorroborated density."""
+    groups: dict[tuple[object, ...], dict[str, object]] = {}
+    owners: dict[tuple[object, ...], set[tuple[object, ...]]] = collections.defaultdict(set)
+    unresolved = []
+    for outcome in outcomes:
+        family = outcome["family"]
+        if family is None:
+            unresolved.append(outcome["attempt"])
+            continue
+        dimension = outcome["dimension"]
+        x, y, z = cast("list[int]", outcome["anchor"])
+        # Arena components have different heights, but represent one central site.
+        key = (
+            dimension,
+            family,
+            outcome["route"],
+            x,
+            None if family == "betterendisland:dragon_arena" else y,
+            z,
+        )
+        if key not in groups:
+            matched = [
+                name
+                for name, (frame_dimension, (min_x, max_x, min_z, max_z)) in frames.items()
+                if dimension == frame_dimension
+                and min_x <= x // 16 <= max_x
+                and min_z <= z // 16 <= max_z
+            ]
+            if len(matched) > 1:
+                detail = "nonregistry location belongs to overlapping sample frames"
+                raise ValueError(detail)
+            groups[key] = {
+                "family": family,
+                "dimension": dimension,
+                "route": outcome["route"],
+                "anchor_x": x,
+                "anchor_y": key[4],
+                "anchor_z": z,
+                "chunk_x": x // 16,
+                "chunk_z": z // 16,
+                "frame": matched[0] if matched else None,
+                "attempts": [],
+                "outcomes": collections.Counter(),
+                "content_positions": set(),
+            }
+        group = groups[key]
+        cast("list[object]", group["attempts"]).append(outcome["attempt"])
+        cast("collections.Counter[str]", group["outcomes"])[str(outcome["outcome"])] += 1
+        for position in cast("list[list[int]]", outcome["content_positions"]):
+            point = tuple(position)
+            cast("set[tuple[int, ...]]", group["content_positions"]).add(point)
+            owners[(dimension, *point)].add(key)
+    # Overlaps are exposed, not silently converted into extra locations or merged.
+    ordered = sorted(groups, key=lambda key: tuple(str(value) for value in key))
+    indices = {key: index for index, key in enumerate(ordered)}
+    overlaps: dict[tuple[int, int], int] = collections.Counter()
+    for keys in owners.values():
+        ids = sorted(indices[key] for key in keys)
+        for offset, first in enumerate(ids):
+            for second in ids[offset + 1 :]:
+                overlaps[(first, second)] += 1
+    locations = []
+    for key in ordered:
+        group = groups[key]
+        positions = sorted(cast("set[tuple[int, ...]]", group["content_positions"]))
+        locations.append(
+            {
+                **group,
+                "candidate_id": indices[key],
+                "attempts": sorted(cast("list[int]", group["attempts"])),
+                "outcomes": dict(sorted(cast("dict[str, int]", group["outcomes"]).items())),
+                "content_positions": [list(point) for point in positions],
+            }
+        )
+    return {
+        "status": "CANDIDATES_AWAITING_ACCEPTANCE",
+        "locations": locations,
+        "unattributed_attempts": sorted(unresolved),
+        "overlaps": [
+            {"candidates": list(pair), "shared_content_positions": count}
+            for pair, count in sorted(overlaps.items())
+        ],
+    }
+
+
+def location_observation_acceptance(
+    grouped: dict[str, object], outcomes: list[dict[str, object]], saved: dict[str, object]
+) -> list[dict[str, object]]:
+    """Disposition each source without promoting diagnostic coverage to full acceptance."""
+    attempts = {row["attempt"]: row for row in outcomes}
+    observations = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
+    overlapping = {candidate for row in grouped["overlaps"] for candidate in row["candidates"]}
+    result = []
+    for group in grouped["locations"]:
+        expected: dict[tuple[int, ...], set[str]] = collections.defaultdict(set)
+        for attempt in group["attempts"]:
+            for block in attempts[attempt]["content_blocks"]:
+                expected[tuple(block["position"])].add(block["block_id"])
+        checks = collections.Counter()
+        for position, identifiers in expected.items():
+            row = observations.get((group["dimension"], *position))
+            state = row["saved_state"] if row else None
+            checks[
+                "UNAVAILABLE"
+                if state is None
+                else "MATCH"
+                if state["Name"] in identifiers
+                else "MISMATCH"
+            ] += 1
+        disposition = (
+            "OUTSIDE_FRAME"
+            if group["frame"] is None
+            else "NON_WORLDGEN_CONTEXT"
+            if group["route"] != "ordinary_generation"
+            else "PARTIAL_FAILURE"
+            if any(key.startswith("EXCEPTION") for key in group["outcomes"])
+            else "NO_CONSTRUCTIVE_CONTENT"
+            if not expected
+            else "OVERLAP_REVIEW_REQUIRED"
+            if group["candidate_id"] in overlapping
+            else "SAVED_CONTENT_UNAVAILABLE"
+            if checks["UNAVAILABLE"]
+            else "CONTENT_NOT_PRESERVED"
+            if not checks["MATCH"]
+            else "OBSERVED_LOCATION"
+        )
+        result.append(
+            {
+                "candidate_id": group["candidate_id"],
+                "disposition": disposition,
+                "content_position_checks": dict(sorted(checks.items())),
+            }
+        )
+    return result
+
+
+def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidence integration path
+    world: Path,
+    raw: Path,
+    archive_manifest: Path,
+    geometry: dict[str, tuple[int, int]],
+    frames: dict[str, tuple[str, tuple[int, int, int, int]]],
+    *,
+    census_inputs: list[dict[str, str]],
+    include_biomes: bool = False,
+    require_complete_observer: bool = False,
+) -> dict[str, object]:
+    """Connect retained capture, attribution, grouping and saved observations."""
+    archive_bytes = archive_manifest.read_bytes()
+    archive = parse_strict_json(archive_bytes)
+    members = {row["relative_path"]: row for row in archive["files"]}
+    if len(members) != len(archive["files"]):
+        detail = "duplicate retained archive members"
+        raise ValueError(detail)
+    backup_path = raw / "world-backup.json"
+    trace = raw / "trace.jsonl"
+    if any(not path.resolve().is_relative_to(raw.resolve()) for path in (backup_path, trace)):
+        detail = "nonregistry input escapes retained raw root"
+        raise ValueError(detail)
+    backup_bytes = backup_path.read_bytes()
+    backup_member = members["world-backup.json"]
+    if (
+        hashlib.sha256(backup_bytes).hexdigest() != backup_member["sha256"]
+        or len(backup_bytes) != backup_member["size_bytes"]
+    ):
+        detail = "world manifest differs from retained archive"
+        raise ValueError(detail)
+    backup = parse_strict_json(backup_bytes)
+    world_files = {row["path"]: row["sha256"] for row in backup["world_files"]}
+    if len(world_files) != len(backup["world_files"]):
+        detail = "duplicate retained world members"
+        raise ValueError(detail)
+    if any(world_files.get(row["path"]) != row["sha256"] for row in census_inputs):
+        detail = "registry census inputs differ from retained nonregistry world"
+        raise ValueError(detail)
+    prefix = "trace.jsonl.classes/"
+    classes = {
+        name[len(prefix) : -6]: row["sha256"]
+        for name, row in members.items()
+        if name.startswith(prefix) and name.endswith(".class")
+    }
+    if require_complete_observer and members.get("probe.jar", {}).get("sha256") != (
+        COLLECTOR_JAR_SHA256
+    ):
+        detail = "retained archive does not bind the frozen observer JAR"
+        raise ValueError(detail)
+    membership = nonregistry_membership()
+    outcomes = [
+        nonregistry_attempt_outcome(rows, membership)
+        for rows in collection_attempts(
+            trace,
+            trace_sha256=members["trace.jsonl"]["sha256"],
+            class_digests=classes,
+            require_complete_observer=require_complete_observer,
+            dimensions={
+                "minecraft:overworld",
+                "minecraft:the_nether",
+                "minecraft:the_end",
+                *geometry,
+            },
+        )
+    ]
+    requested: dict[str, set[tuple[int, int, int]]] = collections.defaultdict(set)
+    for outcome in outcomes:
+        for write in outcome["last_successful_writes"] + outcome.get("flower_observations", []):
+            requested[outcome["dimension"]].add(tuple(write["position"]))
+    grouped = nonregistry_location_groups(outcomes, frames)
+    biome_anchors = set()
+    if include_biomes:
+        for group in grouped["locations"]:
+            if (
+                group["frame"] is not None
+                and group["content_positions"]
+                and group["anchor_y"] is not None
+            ):
+                position = (group["anchor_x"], group["anchor_y"], group["anchor_z"])
+                requested[group["dimension"]].add(position)
+                biome_anchors.add((group["dimension"], *position))
+    saved = saved_content_observations(
+        world, requested, world_files, geometry, biome_anchors=biome_anchors
+    )
+    by_position = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
+    summaries = []
+    for outcome in outcomes:
+        checks = collections.Counter()
+        for write in outcome["last_successful_writes"]:
+            observation = by_position[(outcome["dimension"], *write["position"])]
+            state = observation["saved_state"]
+            checks[
+                "UNAVAILABLE"
+                if state is None
+                else "MATCH"
+                if state["Name"] == write["block_id"]
+                else "MISMATCH"
+            ] += 1
+        summaries.append(
+            {
+                key: value
+                for key, value in outcome.items()
+                if key not in {"last_successful_writes", "content_positions", "content_blocks"}
+            }
+            | {"saved_block_checks": dict(sorted(checks.items()))}
+        )
+        if "flower_observations" in outcome:
+            summaries[-1]["saved_flower_checks"] = [
+                {
+                    **flower,
+                    "saved_state": by_position[(outcome["dimension"], *flower["position"])][
+                        "saved_state"
+                    ],
+                }
+                for flower in outcome["flower_observations"]
+            ]
+    dispositions = location_observation_acceptance(grouped, outcomes, saved)
+    if include_biomes:
+        for disposition in dispositions:
+            group = grouped["locations"][disposition["candidate_id"]]
+            if disposition["disposition"] == "OBSERVED_LOCATION":
+                anchor = (
+                    group["dimension"],
+                    group["anchor_x"],
+                    group["anchor_y"],
+                    group["anchor_z"],
+                )
+                biome = by_position.get(anchor, {}).get("biome")
+                disposition["biome"] = biome
+                disposition["quart_y"] = (
+                    group["anchor_y"] // 4 if group["anchor_y"] is not None else None
+                )
+                disposition["biome_unavailable_reason"] = (
+                    "NO_LOCATION_HEIGHT"
+                    if group["anchor_y"] is None
+                    else "ANCHOR_BIOME_UNAVAILABLE"
+                    if biome is None
+                    else None
+                )
+    return {
+        **grouped,
+        "location_observations": dispositions,
+        "scope": "candidate evidence only; provider and overlap acceptance remain required",
+        "archive_manifest_sha256": hashlib.sha256(archive_bytes).hexdigest(),
+        "trace_sha256": members["trace.jsonl"]["sha256"],
+        "world_manifest_sha256": backup_member["sha256"],
+        "observer_coverage": {
+            "required": require_complete_observer,
+            "captured_classes": sorted(classes),
+            "uncaptured_target_classes": sorted(FULL_COLLECTION_CLASSES - classes.keys()),
+        },
+        "attempts": summaries,
+        "saved_content": saved,
+    }
+
+
+def classify_census(  # noqa: C901, PLR0912 - shared family join and explicit terrain disposition.
+    result: dict[str, object],
+) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]
     identities = {
@@ -270,16 +1103,68 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:
         if line.startswith("|")
     ][2:]
     classifications = {row[0]: row[1:] for row in rows}
-    occurrences = cast("list[dict[str, str | int]]", result["occurrences"])
+    occurrences = list(cast("list[dict[str, object]]", result["occurrences"]))
+    combined = "nonregistry_candidates" in result
+    if combined:
+        nonregistry = result["nonregistry_candidates"]
+        locations = {row["candidate_id"]: row for row in nonregistry["locations"]}
+        for observation in nonregistry["location_observations"]:
+            if observation["disposition"] == "OBSERVED_LOCATION":
+                location = locations[observation["candidate_id"]]
+                if location["dimension"] != result["dimension"]:
+                    detail = "observed nonregistry location differs from census dimension"
+                    raise ValueError(detail)
+                _ = occurrence_anchor(location, tuple(result["bounds_chunks"]))
+                occurrences.append(
+                    {
+                        key: location[key]
+                        for key in (
+                            "candidate_id",
+                            "family",
+                            "anchor_x",
+                            "anchor_y",
+                            "anchor_z",
+                            "chunk_x",
+                            "chunk_z",
+                        )
+                    }
+                )
+                if "biome" in observation:
+                    occurrences[-1].update(
+                        {
+                            key: observation[key]
+                            for key in ("biome", "quart_y", "biome_unavailable_reason")
+                        }
+                    )
     full_chunks = cast("int", result["full_chunks"])
     annotated = []
+    excluded_registry = []
     counts = dict.fromkeys(("T0", "C", "T1", "T2", "T3", "T4"), 0)
     for occurrence in occurrences:
-        root = occurrence["registry_id"]
-        if root not in family_by_root:
-            detail = f"observed registry start is outside accepted active families: {root}"
-            raise ValueError(detail)
-        family = family_by_root[root]
+        if "registry_id" in occurrence:
+            root = occurrence["registry_id"]
+            if root == "aether:large_aercloud":
+                # Item 8 explicitly excludes this terrain formation, not inactive roots.
+                decision = inventory["other_registry_groups"][root]["grouping_decision"]
+                excluded_registry.append(
+                    {
+                        **occurrence,
+                        "disposition": decision["contribution_disposition"],
+                    }
+                )
+                continue
+            if root not in family_by_root:
+                detail = f"observed registry start is outside accepted active families: {root}"
+                raise ValueError(detail)
+            family = family_by_root[root]
+        else:
+            family = occurrence["family"]
+            if (
+                family not in inventory["families"]
+                or inventory["families"][family]["structure_ids"]
+            ):
+                detail = "observed nonregistry family is outside accepted nonregistry inventory"
+                raise ValueError(detail)
         role, confidence, flags, groups, rationale, ambiguity = classifications[family]
         annotated.append(
             {
@@ -295,17 +1180,25 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:
         )
         counts[role] += 1
     return {
-        "scope": "registry occurrences by provisional family role; not observed combat",
+        "scope": (
+            "observed registry and nonregistry locations; full observer coverage and sampling "
+            "remain separate gates; not observed combat"
+            if combined
+            else "registry occurrences by provisional family role; not observed combat"
+        ),
         "input_sha256": identities,
         "occurrences": annotated,
         "categories": {
             name: {"count": len(rows), "per_1000_chunks": 1000 * len(rows) / full_chunks}
-            for name, rows in category_occurrences(annotated).items()
+            for name, rows in category_occurrences(
+                annotated, total_name="all_locations" if combined else "all_registry"
+            ).items()
         },
         "exclusive_roles": {
             role: {"count": count, "per_1000_chunks": 1000 * count / full_chunks}
             for role, count in counts.items()
         },
+        **({"excluded_registry_occurrences": excluded_registry} if excluded_registry else {}),
     }
 
 
@@ -429,13 +1322,74 @@ def census(  # noqa: C901, PLR0913 - keep optional metrics in the existing singl
     )
 
 
-def main() -> None:
+def full_world_census(
+    world: Path,
+    raw: Path,
+    manifest: Path,
+    geometry: dict[str, tuple[int, int]],
+) -> dict[str, object]:
+    """Apply the existing eleven censuses to one shared complete observation pass."""
+    frames = {
+        row.label: (
+            row.dimension,
+            (
+                row.center_x // 16 - 32,
+                row.center_x // 16 + 31,
+                row.center_z // 16 - 32,
+                row.center_z // 16 + 31,
+            ),
+        )
+        for row in ITEM10_SELECTIONS
+    }
+    with _world_backup_lock(world):
+        strata = {
+            label: census(world, dimension, bounds, geometry, include_biomes=True)
+            for label, (dimension, bounds) in frames.items()
+        }
+    observations = nonregistry_analysis(
+        world,
+        raw,
+        manifest,
+        geometry,
+        frames,
+        census_inputs=[entry for result in strata.values() for entry in result["anvil_inputs"]],
+        include_biomes=True,
+        require_complete_observer=True,
+    )
+    locations = {row["candidate_id"]: row for row in observations["locations"]}
+    for label, result in strata.items():
+        selected = {
+            "locations": [row for row in locations.values() if row["frame"] == label],
+            "location_observations": [
+                row
+                for row in observations["location_observations"]
+                if locations[row["candidate_id"]]["frame"] == label
+            ],
+        }
+        result["classification"] = classify_census({**result, "nonregistry_candidates": selected})
+        result["biome_summary"] = summarize_biomes(result)
+        result["spatial"] = {
+            category: spatial_summary(rows, frames[label][1])
+            for category, rows in category_occurrences(
+                result["classification"]["occurrences"],
+                total_name="all_locations",
+            ).items()
+        }
+    return {"strata": strata, "nonregistry_candidates": observations}
+
+
+def main() -> None:  # noqa: C901 - keep the two explicit census modes together.
     """Run an offline census while holding the existing Java-compatible world lock."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("world", type=Path)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--dimension", required=True)
-    parser.add_argument("--bounds", type=int, nargs=4, required=True)
+    parser.add_argument("--dimension")
+    parser.add_argument("--bounds", type=int, nargs=4)
+    parser.add_argument(
+        "--all-strata",
+        action="store_true",
+        help="analyze all fixed Item 10 strata with one shared observer pass",
+    )
     parser.add_argument("--dimension-geometry", type=Path)
     parser.add_argument("--classify", action="store_true", help="join accepted Item 8/9 inputs")
     parser.add_argument("--spatial", action="store_true", help="add classified spatial summaries")
@@ -443,10 +1397,32 @@ def main() -> None:
         "--biomes", action="store_true", help="retain biome exposure by quart height"
     )
     parser.add_argument("--generation", action="store_true", help="hash declared generated content")
+    parser.add_argument("--trace-root", type=Path, help="retained raw capture directory")
+    parser.add_argument("--trace-manifest", type=Path, help="committed raw archive manifest")
+    parser.add_argument(
+        "--require-complete-observer",
+        action="store_true",
+        help="require all declared collector target classes for full sampling",
+    )
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
+    if bool(args.trace_root) != bool(args.trace_manifest):
+        parser.error("trace-root and trace-manifest must be supplied together")
+    if args.require_complete_observer and not args.trace_root:
+        parser.error("complete observer validation requires trace-root and trace-manifest")
+    if args.all_strata:
+        if args.dimension is not None or args.bounds is not None or not args.trace_root:
+            parser.error("all-strata requires trace inputs and excludes dimension/bounds overrides")
+    elif args.dimension is None or args.bounds is None:
+        parser.error("single-stratum analysis requires dimension and bounds")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
+    if args.all_strata:
+        result = full_world_census(args.world, args.trace_root, args.trace_manifest, geometry)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open("x", encoding="utf-8") as stream:
+            stream.write(json.dumps(result, indent=2) + "\n")
+        return
     with _world_backup_lock(args.world):
         result = census(
             args.world,
@@ -456,13 +1432,26 @@ def main() -> None:
             include_biomes=args.biomes,
             include_generation=args.generation,
         )
+    if args.trace_root:
+        result["nonregistry_candidates"] = nonregistry_analysis(
+            args.world,
+            args.trace_root,
+            args.trace_manifest,
+            geometry,
+            {args.dimension: (args.dimension, tuple(args.bounds))},
+            census_inputs=result["anvil_inputs"],
+            include_biomes=args.biomes,
+            require_complete_observer=args.require_complete_observer,
+        )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)
     if args.spatial:
         rows = result["classification"]["occurrences"]
         result["spatial"] = {
             category: spatial_summary(selected, tuple(args.bounds))
-            for category, selected in category_occurrences(rows).items()
+            for category, selected in category_occurrences(
+                rows, total_name="all_locations" if args.trace_root else "all_registry"
+            ).items()
         }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:

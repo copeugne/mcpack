@@ -36,6 +36,26 @@ dimensions require an explicit dimension-to-`[min_y, build_height]` geometry JSO
 through `--dimension-geometry`; geometry must come from verified dimension types.
 The default CLI does not silently assign Overworld geometry to custom dimensions.
 
+## Full-sample custom dimension inputs
+
+Use [dimension-geometry.json](dimension-geometry.json) with
+`--dimension-geometry evidence/item-10/dimension-geometry.json` for full analyses.
+Values are `[min_y, height]`, directly inspected from the retained packaged
+dimension types. The accepted Item 8 dimension registry capture already includes
+these seven custom type keys; no registry audit or experiment was repeated.
+
+| Dimensions | Retained source | Exact member paths | Geometry |
+| --- | --- | --- | --- |
+| `aether:the_aether` | `aether-1.21.1-1.5.10-neoforge.jar`, SHA-256 `a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8` | `data/aether/dimension/the_aether.json` refers to type `aether:the_aether`; `data/aether/dimension_type/the_aether.json` supplies its height fields. | `[0, 256]` |
+| `creatingspace:earth_orbit`, `mars`, `mars_orbit`, `moon_orbit`, `the_moon`, `venus` | `creatingspace-1.21.1-1.7.18.jar`, SHA-256 `a02eb4c17201f2add8343ebe7b4476890ae9b59a7f5af7e0309f6e00b9c65866` | Each `data/creatingspace/dimension/NAME.json` refers to `creatingspace:NAME`; the matching `data/creatingspace/dimension_type/NAME.json` supplies its height fields. | `[-64, 384]` |
+
+Derivation: inspect each member's `type`, then the referenced member's `min_y`
+and `height` fields. Scanning the retained JARs found one packaged definition per
+listed custom dimension/type path. Reuse Item 3's acquisition manifest for the
+exact source JAR identities and Item 8's
+`runtime/dimension-r3/capture.json` for the accepted dimension-type registry hash.
+These static decoding inputs are not observed density or pacing measurements.
+
 The reconstructed CLI was not an accepted evidence consumer; its old input and
 `--full-chunks` interface is replaced. New interface, exercised by the fixture
 CLI test (paths and bounds here are illustrative, not a real measurement run):

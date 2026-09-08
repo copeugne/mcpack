@@ -140,3 +140,28 @@ logger on 2026-09-08. No capture or combat logger was started. Installed recordi
 tools are not evidence of an adequate measurement workflow. The two local play
 profiles remain available for the user's separate play request; neither implies
 an approved measurement session or acceptance of Item 10 combat density.
+
+## Additional duplicate cleanup
+
+On 2026-09-08 the user requested further byte-identical duplicate cleanup.
+Sixteen `evidence/raw/item10/*-custody/downloaded/*.tar.gz` copies, totaling
+543,806,172 logical bytes, were removed only where the same basename existed
+in the parent custody directory and both SHA-256 and full byte comparison
+matched. Original local archives, restored evidence, worlds and release copies
+remain. Immediate filesystem free space did not establish physical recovery
+from this deletion, so the logical total is not claimed as reclaimed space.
+
+For repeated regular JARs of at least 1 MiB under instance `libraries` paths,
+Linux `FIDEDUPERANGE` on Btrfs shared identical extents without deleting paths,
+changing contents or coupling subsequent writes. Files retain separate inodes
+and copy-on-write behavior. SHA-256 grouping preceded the kernel's own byte
+comparison; each destination was rehashed afterward. All 1,020 destinations
+matched and all ioctl statuses were zero, reporting 10,063,571,124 deduplicated
+bytes. This is not a claim that all those bytes immediately became free.
+
+Measured available space rose from 3,889,635,328 to 10,711,359,488 bytes across
+this operation. Btrfs inspection of the Extras instance libraries reported
+141.17 MiB shared and 34.81 MiB exclusive afterward. No configuration, world,
+raw observation, tracked file, protected artifact or player profile was removed
+by library deduplication. Full collection storage remains unresolved against
+the provisional 30 GiB working-space estimate.

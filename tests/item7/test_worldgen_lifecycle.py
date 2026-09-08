@@ -183,6 +183,103 @@ def test_lifecycle_kills_process_group_on_timeout(
     assert receipt.rejection_reason == "world generation timed out"
 
 
+@pytest.mark.parametrize(
+    ("failure", "reason"),
+    [
+        (
+            "java.lang.OutOfMemoryError: Java heap space\n",
+            "Java heap exhaustion during world generation",
+        ),
+        (
+            "[Server thread/ERROR] [minecraft/MinecraftServer]: Failed to save chunk -16,-22\n",
+            "Minecraft chunk save failed during world generation",
+        ),
+    ],
+)
+@pytest.mark.parametrize("completed", [0, 2, 4])
+def test_generation_failure_flushes_stops_and_never_accepts_generation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, completed: int, failure: str, reason: str
+) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("heap"))
+    request = runtime_request(tmp_path, monkeypatch)
+    (request.target / "logs").mkdir(parents=True)
+    _ = (request.target / "logs/latest.log").write_text("retained heap failure and shutdown\n")
+    process = FakeProcess(
+        (*READY_LINES[: completed + 1], failure, failure, *READY_LINES[1:5]),
+        responses={
+            "say mcpack-item7-flush-heap-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-heap-before\n",
+            ),
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-heap-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-heap-after\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+    )
+    killed: list[tuple[int, int]] = []
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", fake_launch(process))
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.os.killpg", record_pid_signals(killed))
+
+    receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
+
+    assert receipt.rejection_reason == reason
+    assert receipt.clean_stop is False
+    assert receipt.save_all_flush is True
+    assert receipt.return_code == 0
+    assert receipt.process_group_killed is False
+    assert killed == []
+    assert len(receipt.completed_selection_labels) == completed
+    pause = receipt.commands.index("chunky pause")
+    assert receipt.commands[pause:] == (
+        "chunky pause",
+        "say mcpack-item7-flush-heap-before",
+        "save-all flush",
+        "say mcpack-item7-flush-heap-after",
+        "stop",
+    )
+    assert failure in request.log_path.read_text()
+    assert receipt.minecraft_log is not None
+    assert Path(receipt.minecraft_log).read_text() == "retained heap failure and shutdown\n"
+
+
+@pytest.mark.parametrize(
+    ("failure", "reason"),
+    [
+        (
+            "java.lang.OutOfMemoryError: Java heap space\n",
+            "Java heap exhaustion during world generation",
+        ),
+        (
+            "[Server thread/ERROR] [minecraft/MinecraftServer]: Failed to save chunk -16,-22\n",
+            "Minecraft chunk save failed during world generation",
+        ),
+    ],
+)
+def test_generation_failure_shutdown_timeout_kills_the_complete_process_group(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure: str, reason: str
+) -> None:
+    request = runtime_request(tmp_path, monkeypatch)
+    request.target.mkdir()
+    process = FakeProcess((READY_LINES[0], failure))
+    killed: list[tuple[int, int]] = []
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", fake_launch(process))
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.os.killpg", record_pid_signals(killed))
+    monkeypatch.setattr(item7_lifecycle, "FAILURE_SHUTDOWN_SECONDS", 0.0)
+
+    receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
+
+    assert killed == [(43210, SIGKILL)]
+    assert receipt.rejection_reason == f"{reason}: shutdown timed out"
+    assert receipt.process_group_killed is True
+    assert receipt.clean_stop is receipt.save_all_flush is False
+    assert "chunky pause" in receipt.commands
+    assert "stop" not in receipt.commands
+
+
 def test_lifecycle_rejects_broad_or_wrong_chunky_completion(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

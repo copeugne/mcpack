@@ -69,3 +69,19 @@ focused Ruff/basedpyright checks pass. This resolves the demonstrated observer
 state leak in the Extras branch without changing this diagnostic's raw evidence.
 The final Extras branch gate, including the integrated exception fix, passes all
 408 Item 7/10 tests in 99.62 seconds. PR review and main delivery remain required.
+
+## Reviewed main delivery
+
+[PR34](https://github.com/copeugne/mcpack/pull/34) delivered reviewed head
+`cba277cbc65885867ce91344447733420103ac07`. The cycle requested by
+[5581561706](https://github.com/copeugne/mcpack/pull/34#issuecomment-5581561706)
+completed at `2026-09-08T08:15:48.843560Z`, as recorded in the
+[review summary](https://github.com/copeugne/mcpack/pull/34#issuecomment-5581564874).
+The [clean result](https://github.com/copeugne/mcpack/pull/34#issuecomment-5581638645)
+identifies that head. Inspection found no inline or review findings and verified
+the Codex connector bot's thumbs-up reaction on the pull request.
+
+The accepted head merged as `0c98eeecfaf2cf6ffd6bd7671783f9d76530f893`.
+Fetched `origin/main` equals that merge and contains the reviewed head, verified
+with `git merge-base --is-ancestor`. This closes the review/delivery prerequisite
+above for this bounded diagnostic only. Full Item 10 collection remains incomplete.

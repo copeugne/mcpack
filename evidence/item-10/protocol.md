@@ -1,10 +1,28 @@
 # Item 10 sampling protocol
 
-Status: DRAFT AUTOMATED PROTOCOL. The user-authorized
+Status: FROZEN SAMPLING PROTOCOL, `item10-full-v1` (2026-09-08). The user-authorized
 [scope amendment](methodology-amendment.md), `item10-automated-v1`, removes human
 sessions and recording from both Items 10 and 11. The former combat collection
 contract and blind-operator requirement are superseded for these items. No
 human workload is scheduled or deferred as a completion condition.
+
+## Current execution constraint
+
+Collection under this protocol is complete: sixteen accepted worlds, eight
+matched pairs and two preserved failed attempts. The [complete comparison](README.md)
+and [active handoff](../../MCPACK-NEW-SESSION-HANDOFF.md) identify current validation
+and delivery status. No further world or retry is authorized by this checkpoint.
+The sampling geometry, occurrence rules, runtime and observer identities below
+remain unchanged. Reproduction commands are not instructions to restart collection.
+
+The [exit-gate reassessment](README.md#exit-gate-reassessment-2026-09-08)
+superseded prospective per-generator positive-pilot prerequisites. Historical
+pilot outcomes, earlier failed gates and dated validation counts below remain
+records of their respective checkpoints, not active continuation instructions.
+The pre-collection Item 7/10 gate had 535 passes in 152.60 seconds; the final
+validation record is linked from the complete comparison. Complete observation
+and correct occurrence processing remain mandatory. Do not reinterpret a broken
+observation mechanism as zero. Consolidate measurement/report into one delivery PR.
 
 ## Measurement boundary
 
@@ -16,10 +34,10 @@ are potential location roles, not observed fights or meaningful human activity.
 Retain confidence, ambiguity and the scope limitations in every final result.
 
 The Item 5 methodology delta passed clean PR22 review and main delivery. The spatial
-frame below remains a draft, not a frozen full experiment protocol. The fresh
+frame below is frozen for full collection. The fresh
 registry pilot and its diagnostic processing remain reusable evidence. Complete
 nonregistry occurrence coverage, biome attribution and the Sparse Structures
-control design before full collection. Do not implement Item 11 workflows until
+control must pass their implemented runtime/analysis gates for each world. Do not implement Item 11 workflows until
 Item 10 delivery and the cross-item audit pass.
 
 ## Fixed spatial frame
@@ -39,6 +57,31 @@ not only chunks that contain starts. This replaces the draft's four-stage ladder
 no full sampling run used that ladder and no observed count selected this area.
 The historical scaffold remains unchanged and is not an active stopping rule.
 
+Generation uses the existing Chunky square selection with radius `32c`, centered
+at block `(0, 0)` or outer End `(8192, 8192)`. This requests 4,225 chunks per
+stratum, including 129 edge chunks outside the 4,096-chunk census. The positive
+edge at chunk 32 (544 for outer End) is excluded from all density denominators.
+There are 46,475 requested generation chunks and 45,056 census chunks per world,
+or 743,600 requested and 720,896 census chunks across 16 worlds. Further natural
+generation halo remains possible. The explicit edge adds 3.1494140625 percent
+to requested generation relative to the census; it does not change sampling.
+
+This choice follows direct inspection of the pinned Chunky 1.4.23 JAR (SHA-256
+`d72f235cf1f56f2c374f52c00bdda5034524b28142305a84cfc123a3f92ad274`). Its
+`org.popcraft.chunky.iterator.Loop2ChunkIterator(Selection)` uses inclusive
+`centerChunk +/- radiusChunks` bounds (bytecode offsets 31 through 60).
+`CornersCommand.execute` converts corners to center and radii (179 through 323),
+so corners alone do not avoid the odd-width iterator. Reproduce this inspection
+with the pinned JDK's `bin/javap -c -p -classpath
+downloads/item3/candidates/Chunky-NeoForge-1.4.23.jar` followed by either fully
+qualified class name. `ITEM10_SELECTIONS` in the existing selection module binds
+all eleven requests in lexical dimension order; `WorldgenRequest(mode="item10")`
+rejects selection drift. Existing Item 7 pilot/run geometry remains fixed.
+The focused regression command is `uv run --no-sync pytest -q
+tests/item10/test_full_selections.py tests/item7/test_worldgen_lifecycle.py
+tests/item7/test_protocol.py` (34 passed). This validates request geometry and
+the reused lifecycle, not full collection or complete saved-chunk coverage.
+
 Collect two independent fresh worlds per seed and arm, for four seeds, eleven
 strata, two repetitions and two arms: 720,896 selected chunks in 16 worlds.
 Each world contains all eleven fixed strata (45,056 selected chunks). Do not
@@ -47,6 +90,38 @@ ordinary, mountainous, ocean-heavy, biome-diverse. Within each seed, run baselin
 then control for repetition 1, control then baseline for repetition 2. Use the
 same dimension order in every world, sorted by resource location, central End
 before outer End. Keep both raw repetitions, even when their counts disagree.
+
+### Full runner invocation
+
+The existing runner accepts one full world at a time:
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe \
+  --name full-ordinary-r1-baseline --mode probe --preset item10 \
+  --role ordinary --arm baseline --repetition 1
+```
+
+This is the first planned invocation. Its completed observation, saved-world,
+custody and cost checks gate subsequent worlds. Use `without-sparse` for the matched control.
+The runner requires the name `full-ROLE-rREPETITION-ARM`, explicit arm/repetition,
+and probe mode for both arms. Its older `--mode control` disables the observer
+and is rejected for full sampling. Placement fixtures are also rejected. Repeat
+the command for each declared seed role, using `(1, baseline)`,
+`(1, without-sparse)`, `(2, without-sparse)`, `(2, baseline)` in that order.
+Each invocation requires absent instance/output paths and retains its existing
+`diagnostic.json`, collector build identity and lifecycle outputs. The filename
+is retained for compatibility with the existing custody path; its scope field
+distinguishes full collection from diagnostic evidence. Report repetition and
+arm are explicit, independent of the filename.
+
+The full lifecycle ceiling is 14,400 seconds per world, an operational timeout,
+not a measured duration or a new sampling stopping rule. Failure retains raw
+outputs and cannot be accepted as a smaller census. The earlier 900-second
+diagnostic ceiling remains unchanged. Actual time and storage must still be
+checked on the first complete ordinary world before continuing the series.
+Runner tests compile the real collector with the pinned JDK and substitute only
+server execution; they verify both arms retain the observer and reject invalid
+combinations. They do not establish runtime observer coverage.
 
 The area is a finite-region census with a per-run density increment of
 `1000 / 4096 = 0.244140625` locations per 1,000 chunks. It supplies 16 complete
@@ -60,10 +135,167 @@ estimation; expanding until rare categories reach a target would change the
 estimand and is not authorized by this protocol.
 
 The spatial and repetition design is selected before collection. The full
-protocol remains DRAFT until complete occurrence coverage, the exact collector
-and control identities, and measured collector storage costs pass their gates.
+protocol pins collector and control identities before launch. Complete runtime
+occurrence coverage and measured storage costs are acceptance gates on the first
+full world, not prerequisites requiring another small pilot. Failures remain
+retained failures; changing this frozen protocol requires an explicit revision.
+
+The [retained ocean-heavy failure](full-ocean-heavy-r2-without-sparse/README.md#narrow-lifecycle-correction-after-preservation)
+exposed delayed shutdown on Java heap exhaustion. Failure handling now pauses
+Chunky and attempts the existing correlated flush/stop with a 60-second save
+confirmation allowance bounded by the run deadline. Timeout or console I/O
+failure uses the existing whole-process-group termination path. Such a run is
+always rejected, including after a confirmed emergency save. Successful-run
+commands, sampling, observer identity and the pinned heap remain unchanged.
+
+### Bounded retry amendment after the retained resource failure
+
+Amendment identity: `item10-retry-policy-v1`, declared after the first failed
+`full-ocean-heavy-r2-without-sparse` attempt and before any retry. This is a
+post-failure operational amendment, not part of the original predeclaration.
+The sixteen planned seed/repetition/arm cells and all spatial, classification,
+observer and runtime identities in `item10-full-v1` remain unchanged.
+
+Allow exactly one additional fresh attempt for this failed cell. The same seed
+and complete frame passed in the first control repetition with identical
+preflight, observer and selections; the preserved reports identify Java heap
+exhaustion but not its allocation source. This supports a bounded same-identity
+retry, not a claim that the cause was repaired. Do not increase heap, change
+configuration, reuse the partial world or change the generation order.
+
+Use `--attempt 2` and the distinct name
+`full-ocean-heavy-r2-without-sparse-attempt2`. Default attempt 1 retains existing
+names; new reports state the attempt number explicitly. Both output and instance
+must be absent. Existing failed paths remain untouched. The runner adds only
+this bounded naming option, without automatic retry or reset logic. It rejects
+attempt numbers beyond two and attempt options on diagnostic presets.
+
+Keep the first attempt as FAILED in the final run matrix with its incomplete
+selections, raw custody, emergency save and unknown allocation cause. If the
+retry passes, report seventeen attempted worlds for sixteen completed planned
+cells, with one retained failed attempt. A failed attempt is neither a zero
+observation nor an extra successful repetition. Results are conditional on
+completed runs, with the resource failure disclosed; do not claim unbiased
+random-world estimates. If this retry fails, stop collection for another explicit
+resource/protocol decision. This amendment does not authorize retries for other
+cells or repeated attempts until success.
+
+The additional materialization and custody are estimated at roughly 2 GiB from
+completed controls, beyond the original sixteen-world estimate. Before retry,
+direct host inspection reports 24,166,539,264 free disk bytes (about 22.5 GiB)
+and 9,385,078,784 available memory bytes. No cleanup is needed or authorized.
+These current capacity observations are not a promise that Java allocation will
+succeed within the unchanged 4 GiB heap. The heap-failure shutdown correction
+must be present, and all normal full-census and durability gates still apply.
+
+### Authorized continuation and final bounded retry
+
+Status: USER AUTHORIZED, 2026-09-08. Amendment `item10-retry-policy-v2`.
+The user approved the five remaining planned worlds, followed by exactly one
+additional fresh attempt of ocean-heavy repetition-2 control. The user explicitly
+rejected reducing the target to fifteen complete worlds. This supersedes the
+unaccepted fifteen-world proposal and the exhausted v1 retry limit for this cell.
+
+Execute in this order: ocean-heavy r2 baseline, biome-diverse r1 baseline,
+biome-diverse r1 control, biome-diverse r2 control, biome-diverse r2 baseline,
+then `full-ocean-heavy-r2-without-sparse-attempt3` with `--attempt 3`.
+The original five cells each retain their planned first attempt. The final retry
+uses a fresh absent instance/output path and the unchanged frozen configuration,
+runtime, observer, heap, seed and complete selections. Both previous failures,
+their raw archives and their original paths remain unchanged. No tuning, world
+repair, reused proof world or further automatic retry is authorized.
+
+The target remains sixteen complete planned cells and eight matched pairs.
+If all six runs pass, report eighteen attempts, sixteen complete cells and the
+two retained failed attempts. Failed attempts are not zeros or successful
+repetitions. Preserve actual failures and censoring if any new run fails; do not
+claim sixteen complete worlds or revise the target silently. Complete all five
+planned runs before the final retry; assess any new failure without authorizing
+an additional retry. Full census, custody, review, merge and cross-item audit
+requirements remain unchanged. Successful-run results remain conditional on
+completion, not proof of runtime reliability or a repaired Aether defect.
+
+Reserve about 12 GiB for the six further materializations, censuses and custody,
+based on the first ocean pair's approximately 1.86 and 1.92 GiB totals per world.
+Generation plus census in that pair took about 16 to 18 minutes per world;
+allow roughly two hours plus custody overhead, not a guaranteed bound. The
+four-hour generation ceiling remains per attempt. Before this batch, free disk
+is 21,946,347,520 bytes and available memory is 9,743,626,240 bytes. Recheck
+capacity before each launch. No cleanup or human play is required.
+
+The existing runner now accepts attempt 3 only for this exact role/repetition/arm.
+Its focused collection tests pass 14 cases in 4.10 seconds, including preservation
+of both previous attempt directories and rejection of other third-attempt arms
+and attempt 4. Ruff check/format and focused test-file BasedPyright pass.
 
 ## Occurrences and denominators
+
+### Frozen observer and full-trace gate
+
+The full runner pins `tools/Item10PlacementProbe.java` to SHA-256
+`b07ebcacb9043ee7d1fb187a7d93e5b788d890ccd8edc3decc07060609a74396`
+and its compiled JAR to
+`d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782`.
+Two independent pinned-JDK builds in the baseline/control runner tests produced
+that same JAR hash. Reproduce with `uv run --no-sync pytest -q
+tests/item10/test_collection_runner.py`; the existing runner contains the exact
+compiler, manifest and deterministic JAR timestamp commands. Both hashes are
+checked before a full server launch. Failed builds retain their rejection report.
+These pins establish collector identity, not empirical placement counts.
+
+Full analyses must pass `--require-complete-observer` to the existing census CLI.
+The corresponding `collection_attempts(require_complete_observer=True)` gate
+originally required exactly the 50 targeted incoming classes, their archived
+bytes and matching installation events, complete attempt pairing and healthy
+shutdown. The coverage correction below supersedes only the all-classes-loaded
+requirement; the original mountainous rejection remains recorded.
+`FULL_COLLECTION_CLASSES` in `tools/validate_item10_trace.py` reuses the existing
+Extras-era class inventory and adds Scarecrow, four End island classes, two
+procedural pillar classes and BCLib's `BlocksHelper`. This matches the pinned
+collector's `premain` transformation predicate. Incoming hashes remain recorded
+per actual runtime transformation; packaged bytes are not substituted for
+loader-transformed input. Missing installations reject complete coverage, even
+when the remaining trace is structurally valid. No positive placement is required
+for each class or family, and no failed hook is interpreted as zero density.
+
+#### Coverage correction `item10-observer-coverage-v2`
+
+The [mountainous class-loading investigation](full-mountainous-r1-baseline/README.md#bounded-class-loading-check)
+reproduces that the exact frozen observer does not load unused target classes.
+Requiring an unused class to load therefore imposed an unintended positive-route
+condition on the fixed sample. Starting with the preserved fifth world, accept
+either all 50 captures or the same set minus only `BetterEndGatewayFeature`.
+This narrow exception is supported by the existing conditional caller and JVM
+fixture. Other missing targets still reject pending specific evidence.
+
+Full analysis now requires the archive manifest to bind the frozen `probe.jar`
+and hashes the actual nonsymlink JAR against its pin. An absent gateway must have
+neither an incoming class file nor an installation event. Every supplied capture
+still needs its hash and matching installation; any gateway attempt without an
+installation, installation failure, incomplete attempt or unhealthy shutdown
+rejects. Record captured and uncaptured targets in `observer_coverage`.
+
+With the pinned transformer's exhaustive target predicate, healthy complete trace
+and preserved archive, gateway absence is interpreted as an unexercised target,
+not a failed hook. This is an inference from the verified observer behavior, not
+a retrospective JVM class-load measurement in the world. It does not establish
+absence of gateways outside the sampled generation or from other mechanisms.
+Sampling, runtime, configuration, observer source/JAR and location acceptance are
+unchanged. The first four all-50-class results retain their original acceptance;
+no world regeneration or new archive revision is required by this reader change.
+
+Provider metadata is also checked before an attempt reaches location processing.
+Island context, urn parents and YUNG configured-feature markers must be present
+for their respective providers; provider-specific metadata cannot move between
+families, and boolean versus void completion must match the instrumented method.
+The regression reproduced three prior false acceptances: removing a gateway's
+feature marker, relabeling it Scarecrow, or replacing its boolean completion with
+a void completion. All are now rejected. Retained diagnostic raw traces remain
+unchanged and usable without claiming the complete 50-class observer.
+The focused check is `uv run --no-sync pytest -q
+tests/item10/test_collection_trace.py tests/item10/test_saved_content.py
+tests/item10/test_density_census.py` (45 passed). Full-frame saved-content and
+denominator acceptance, uncertainty and durable custody still apply separately.
 
 Decode every selected Anvil slot with the existing Item 7 decoder after correlated
 save-flush and clean exit. Require stored coordinates equal slot coordinates and
@@ -83,8 +315,10 @@ event identity. The existing inventory supplies contribution-to-family mappings.
 Record attempted, failed and successful placement separately; a Boolean feature
 return alone must not be assumed to equal one location without checking that
 provider's existing writer evidence. Nested delegated writes must not duplicate
-their parent location. Lifecycle sites, including End arrival and dragon/gateway
-events, must be reported separately from ordinary terrain-generated density.
+their parent location. Lifecycle-triggered End arrival and dragon/gateway events
+must be reported separately from ordinary terrain-generated density. This is a
+route distinction, not a blanket exclusion of those families: their packaged
+chunk-generation routes remain in scope as specified below.
 
 No current generic start counter satisfies that nonregistry requirement. Before
 implementation, select direct tracing or prove a saved-world reconstruction for
@@ -227,6 +461,17 @@ anchor's floor(Y/4) band for its biome denominator. Missing bounds and anchors
 outside stored biome height remain explicit unavailable observations, never
 surface substitutions or silent drops. Inverted piece bounds reject attribution.
 Nonregistry writer coordinates will supply their own recorded anchors.
+The same `chunk_biome_column` reader accepts an explicit block X/Z anchor for
+nonregistry attribution. It verifies that the integer coordinates belong to the
+supplied chunk and reads their actual horizontal quart, including negative world
+coordinates. Omitting the anchor preserves the registry chunk-center convention
+and existing height-band exposure. This does not change biome denominators or
+substitute a center biome when a traced anchor is unavailable. The integrated
+`--biomes` path now joins these values and quart heights into observed nonregistry
+classification rows. Arena location Y remains unavailable rather than selecting
+a component height. The saved-content/biome/census integration passes 30 tests,
+including all seven retained cache anchors. The earlier focused biome/spatial/census
+suite passes 40 tests; Ruff and test-file basedpyright checks pass.
 The existing `--biomes` reader now implements this registry attribution alongside
 height-band exposure. Focused Item 10 validation passes 29 tests, including
 negative heights, missing bounds, out-of-height attribution and inverted bounds;
@@ -254,6 +499,35 @@ file unchanged, including the now-unused Sparse Structures configuration. Use
 the same collector, seed, selected regions, generation commands and lifecycle
 contract in both arms. Produce the exact derived control manifest before launch.
 
+The derived [135-candidate control manifest](control-server-candidates.txt) has
+SHA-256 `a598513faef1248fd4a41da9137c1c721f9d34d307d12166141010bf815a20b4`.
+It preserves the frozen baseline manifest order and omits exactly the one JAR
+above. The shared `prepare_worldgen` path first materializes and verifies all
+136 frozen candidates, then unlinks only that JAR in the fresh control instance
+when `WorldgenRequest(mode="item10", omit_sparse_structures=True)` is requested.
+Item 7 modes reject that option. Configuration materialization is identical.
+The original source JAR and baseline instance remain untouched.
+
+Direct SHA-256 and size verification of the retained acquisition artifacts on
+2026-09-08 gives the baseline plus Chunky identity
+`e2dab4c80cff137d747bd035588882797f85fa8d4d5b6ccb98a5d717fa0749c8`
+and control plus Chunky identity
+`84a884f99e4ac48defb9ea0b2c9e45bf3d0f4f6e881a4be4d8968dc2be14d4da`.
+Derivation: select the filenames from each candidate manifest plus the pinned
+Chunky filename, verify their bytes against Item 3's acquisition manifest, sort
+`(filename, SHA-256)` pairs by filename, serialize with Python
+`json.dumps(rows, separators=(",", ":"))`, and hash its UTF-8 bytes. This is the
+existing runtime `_hash_rows` convention. The preflight receipt retains the
+136-candidate source identity and explicitly records the omission, actual
+deployed count and deployed hash. Collector JAR identity is recorded separately.
+These are verified input identities, not a claim that the control has booted.
+
+Validation: `uv run --no-sync pytest -q tests/item10/test_sparse_control.py
+tests/item10/test_full_selections.py tests/item7/test_worldgen_preflight.py
+tests/item7/test_worldgen_lifecycle.py`. Tests cover exact omission, preservation
+of source and baseline JARs, byte-identical configurations, receipt consistency,
+rejection of nonfrozen runtime input, and unchanged Item 7 lifecycle behavior.
+
 This contrast measures removal of Sparse Structures within the retained stack,
 not a spacing-only effect or a recommended configuration change. The accepted
 [MakeStructuresSparse code](../item-8/sources/sparsestructures-provider/sparsestructures-neoforge-1.21.1-3.0.jar/io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt)
@@ -274,20 +548,24 @@ collection. This resolves the control contrast, not the remaining sampling gate.
 
 The r3 uninstrumented mountainous diagnostic supplies a measured planning proxy:
 366.501 seconds for 6,852 selected chunks and 137,748,133 retained world bytes,
-including halo and lifecycle data. Linear scaling gives about 10.71 generation
-hours and 13.50 GiB of uncompressed world data across both arms and repetitions,
-before archives, derived output and restore workspace. Each 45,056-chunk world
-has a proxy of 40.17 minutes and 0.844 GiB. This single mixed-stratum run does
+including halo and lifecycle data. Linear scaling to 743,600 requested generation
+chunks gives about 11.05 generation hours and 13.92 GiB of uncompressed world data
+across both arms and repetitions, before archives, derived output and restore
+workspace. Each 46,475-requested-chunk world has a proxy of 41.43 minutes and
+0.870 GiB. The 720,896-chunk census and 16-world design are unchanged; these
+updated proxies include the explicit generation edge. This single mixed-stratum run does
 not predict custom dimensions or the farther outer End reliably. Offline
 processing, collector overhead, installation and archiving are additional.
 These are automated machine-time estimates, not a player workload.
 
-About 8.8 GiB was available at this planning checkpoint. Process one world at a
+Direct `df -B1 .` on 2026-09-08 reports 48,890,408,960 bytes available after the
+authorized cleanup. The user's roughly 30 GiB working budget is retained.
+Process one world at a
 time, using the existing clean-save/archive/publish/download/restore path. Keep
 at least 5 GiB available before starting a world as a provisional workspace floor.
-This allows three world copies at 0.844 GiB and four archive copies at about
-0.54 GiB using the measured r3 control compression ratio, totaling about 4.7 GiB
-before collector output. Verify this against actual collector and first-world
+The earlier floor allowed three world copies and four archive copies using the
+r3 control compression ratio. It is provisional and excludes the full observer's
+unmeasured output. Verify this against actual collector and first-world
 storage before scaling.
 The floor is not a disk quota or a guarantee based on the proxy. Archive without
 `session.lock` and retain immutable raw custody and committed evidence references.
@@ -296,7 +574,7 @@ within explicit authorization. Never remove operational player worlds, prior
 backups or protected artifacts to satisfy this budget. A failed resource gate
 stops collection before another world; it does not reduce the declared sample.
 
-Complete the ordinary pilot through deterministic analysis and retained evidence
+Complete the first full ordinary baseline world through deterministic analysis and retained evidence
 before scaling across seeds and dimensions. Then integrate all final results,
 uncertainty and failure dispositions into the Item 10 report. The final gate
 still requires full automated occurrence coverage, Sparse Structures attribution, clean Codex PR
@@ -961,3 +1239,365 @@ harness timeout. Full sampling remains gated on the separate provisional 5 GiB
 workspace floor and complete occurrence coverage. Preserve the raw result and
 stopped world with existing tools even if positive capture fails. No tuning,
 client recording, Item 11 execution or new measurement framework is included.
+
+## BetterEnd procedural pillar write boundary
+
+Reuse the accepted `betterend:ruined_obsidian_pillar` contribution in
+[Item 8](../item-8/inventory.json). FallenPillarFeature and
+ObsidianPillarBasementFeature are two independently placed variants of one
+canonical family. Their geometry, replacement and mossy-obsidian callbacks are
+already assessed. Do not recount them as two families or infer voxel occupancy
+from the shape envelope.
+
+The retained [generator classes](../item-8/sources/betterend-pillar-end-hooks/identities.json)
+call `SDF.fillRecursive(ServerLevelAccessor, BlockPos)` at offsets 287 and 372,
+respectively. Observe each feature attempt and that actual fill anchor. Capture
+normal and exceptional completion, and preserve refusal and zero-write results.
+The fill is void and the outer generator return is not a successful-write count.
+
+Direct inspection used pinned `javap -c -p -classpath` on `bclib-21.0.24.jar`,
+whose archive SHA-256 was verified against the existing
+[shape identities](../item-8/sources/pillar-shape-semantics/identities.json):
+`a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093`.
+The two inspected classes are:
+
+| Class | SHA-256 |
+| --- | --- |
+| `org/betterx/bclib/sdf/SDF.class` | `048c1c86a07b43ef4ecc6ed4c6b44d66fb119e7bbf4b55ffd100c61c2115a59d` |
+| `org/betterx/bclib/util/BlocksHelper.class` | `4196c4a40a0d71d38061a084f005343262eb9d49d18c79e3a62ac6d03d90da72` |
+
+The server-level fill path invokes the writer callbacks lambda$fillRecursive$3
+and lambda$fillRecursive$6. Both call the BlockState overload of
+BlocksHelper.setWithoutUpdate, at offsets 9 and 37. The second callback first
+rechecks canReplace against the current world state. The helper invokes
+LevelAccessor.setBlock at offset 5 with flags 18, discards its result at 10 and
+returns. Capture that actual boolean, position and state without changing the
+original discard or consuming additional randomness. The StructureWorld overload
+and unrelated SDF fills are separate paths, not additional pillar occurrences.
+
+Extend the existing feature observer and direct-write path. Gate the shared
+BlocksHelper hook on the two exact active pillar classes, leaving other callers
+untraced. Preserve the original LevelAccessor invocation outside that gate.
+Record the actual fill anchor rather than assuming it equals the initial feature
+origin. Require retained-class transformation and focused original-versus-observed
+checks for successful writes, refusal, exceptions followed by same-thread recovery,
+and outside calls before full collection. No pillar experiment has started.
+Natural occurrence inclusion and saved-block corroboration remain incomplete.
+
+The collector now brackets both pillar feature entrypoints, records the actual
+`pillar_fill` anchor, and observes the shared helper's real boolean write result
+only during those attempts. It reuses feature completion and exception cleanup.
+The LevelAccessor invocation remains unchanged for unrelated callers; no random
+calls or configuration edits were added. Hash-verified retained transformations
+pass for both BetterEnd classes and BlocksHelper. Synthetic execution compares
+original and observed outputs for normal writes, refusals, early exits, unrelated
+fills, exception-object preservation followed by same-thread recovery, and an
+isolated class loader, for each pillar variant.
+
+Validation: `uv run --no-sync pytest -q tests/item10/test_placement_probe.py`
+passed all 50 collector tests in 66.41 seconds. Focused Ruff and basedpyright
+checks pass. These tests establish observer preparation, not natural occurrence
+measurements. Full-sample reader integration must accept and validate these new
+events and installation identities before collection. No new pilot or PR was
+created for this change.
+
+### BetterEnd template auxiliary writes
+
+The accepted disassemblies were rechecked against their existing identity hashes:
+[NBTFeature](../item-8/sources/betterend-entry-template-consumers/identities.json),
+[StructureErode](../item-8/sources/crashed-ship-erosion/identities.json) and
+[BlockFixer](../item-8/sources/betterend-lake-helpers/identities.json).
+NBTFeature.place performs terrain-merge writes through BlocksHelper at offsets
+558, 569, 622 and 633. CrashedShipFeature.place calls erodeIntense at 259 and
+BlockFixer.fixBlocks at 308. Erosion and its drop helper use both Block and
+BlockState overloads of BlocksHelper.setWithoutUpdate; BlockFixer's synchronized
+wrapper delegates to the BlockState overload. Its IntStream.range/forEach and
+Set.forEach calls do not introduce parallel execution in the inspected code.
+
+Both BlocksHelper overloads call LevelAccessor.setBlock directly with flags 18,
+at offsets 8 (Block) and 5 (BlockState). The Block overload does not delegate to
+the already observed BlockState overload. The collector now intercepts both
+actual write calls while a pillar, NBTFeature/BuildingListFeature or crashed-ship
+attempt is active. Shared caller behavior outside those attempts is preserved.
+This reuses the pillar helper hook and existing write events, including air
+removal, rather than adding separate erosion or repair observers. Existing event
+order retains template and subsequent auxiliary writes within the same attempt.
+NBTFeature and crashed-ship exceptional exits now use the existing cleanup path.
+
+Synthetic original-versus-observed checks cover both helper overloads after
+template placement, refusals and an original exception followed by a successful
+placement on the same thread. Earlier diagnostic raw traces remain unchanged.
+Full-sample interpretation and saved-world corroboration remain required; a
+successful template call does not establish that all its blocks survived erosion.
+All 53 collector tests pass in 63.98 seconds, including hash-verified retained
+NBTFeature, crashed-ship and BlocksHelper transformations. Focused Ruff and
+basedpyright checks pass. Reproduce with the collector test command above.
+
+### End generation and lifecycle applicability
+
+Reuse `betterendisland:platform_gateway` in the accepted Item 8 inventory,
+especially its `packaged_biome_entrypoints`, `packaged_feature_placement`,
+`spike_podium_generators`, `runtime_activation` and `generated_world_observations`.
+The following existing disassemblies were checked against their committed hashes:
+[platform/gateway](../item-8/sources/better-end-island-platform-gateway/identities.json),
+[spike/podium](../item-8/sources/better-end-island-spike-podium/identities.json),
+[exit portal](../item-8/sources/better-end-island-exit-portal/identities.json) and
+[vanilla platform caller](../item-8/sources/vanilla-end-platform-caller/identities.json).
+No new Item 8 measurement or classification is needed.
+
+| Accepted family | Ordinary generation exposure | Location accounting |
+| --- | --- | --- |
+| `betterendisland:arrival_platform` | `minecraft:end_platform` in the central End biome, fixed caller origin `(100,49,0)` with a biome filter. | One distinct platform at its caller anchor, not one location per placement retry or per template block. Record the fixed-position nature; do not extrapolate a uniform spatial rate. |
+| `betterendisland:gateway` | `minecraft:end_gateway_return` in the accepted vanilla/BetterEnd/BOP biome consumers, with rarity 700 and terrain-relative placement. | Distinct gateway anchor positions from the ordinary feature route are eligible for the sampled density. Dragon-fight and travel-triggered gateway events are separate lifecycle observations. |
+| `betterendisland:dragon_arena` | `minecraft:end_spike` in the central End biome. The retained custom layout has ten spike centers at radius 42. | One arena location anchored at central `(0,0)` X/Z when observed, with spikes and podium retained as components. Ten spikes, their template parts and later rebuilds must not become ten or more arena locations. |
+
+The full central-End frame contains the fixed platform and arena coordinates;
+this establishes exposure, not successful placement. Gateways remain subject to
+actual biome filtering and observed writes. Record runtime accessor/route context
+alongside attempt and component identity so ordinary chunk generation can be
+distinguished from ServerLevel lifecycle invocation. Unresolved route attribution
+must remain explicit rather than being silently assigned to the density numerator.
+
+No player arrival, dragon death, respawn or missing-portal recovery campaign is
+required for Item 10. Record such events only if they occur during the prescribed
+run, separately from ordinary generation. Absence of a triggered event is not a
+failed placement or evidence that its design cannot generate. Existing central-End
+block aggregates establish material presence only and cannot replace missing
+platform/gateway/podium occurrences.
+
+The collector now brackets BetterEndGatewayFeature.place,
+BetterEndSpawnPlatformFeature.place, BetterEndPodiumFeature.place and
+BetterSpikeFeature.placeSpike. It records actual caller anchors and the runtime
+accessor class with a WorldGenRegion instance check in `island_context` events.
+Spike input center/height is retained as a component anchor; each actual template
+position is separately observed. Runtime accessor context supports route attribution
+but does not justify labeling an unknown caller as a known lifecycle event.
+
+The existing template observer captures each helper's selected resource path,
+placement result and content writes. Gateway and spike direct setBlock calls are
+captured with their real results and flags. Multiple spike templates remain under
+one component attempt. Void completion, failed writes and exceptions retain their
+distinct existing event types; exceptional exits clear the attempt for subsequent
+calls. No random calls or configuration changes were added.
+
+Validation: all 77 tests in `tests/item10/test_placement_probe.py` pass in 92.58
+seconds, including hash-verified transformations of all four retained generator
+classes. Synthetic comparisons cover early exits, refused writes, caught template
+exceptions followed by another attempt, generation-region versus other accessor
+context, direct writes and an isolated class loader for all four entrypoints.
+Focused Ruff and basedpyright checks pass. Full-sample event validation, occurrence
+aggregation and saved-world corroboration remain incomplete. No End experiment
+or new PR was started for this collector increment.
+
+### Spatial integration for observed anchors
+
+The shared spatial summary now accepts explicit integer `anchor_x`/`anchor_z`
+block coordinates for traced locations. Registry records without these fields
+retain their declared start-chunk-center convention. Both explicit coordinates
+must be present, must belong to the supplied inclusion chunk using floor division
+(including negative coordinates), and must lie within the selected chunk frame.
+Distances and boundary censoring use these actual anchors; cell occupancy and
+empty-region denominators retain the existing chunk grid. This prevents distinct
+within-chunk locations from being incorrectly assigned zero separation.
+
+The focused spatial/census suite passes 29 tests, including actual-anchor distance,
+negative-coordinate inclusion and rejection of incomplete, coerced or out-of-frame
+coordinates. Ruff passes for the analysis tool and tests; basedpyright passes for
+the spatial tests, matching the existing validation surface. All eleven spatial
+categories recomputed from the committed pilot occurrence records equal the
+retained `pilot-r1/spatial-census.json` results exactly. No pilot was regenerated.
+This enables the downstream location table; trace-to-location aggregation remains
+incomplete and no new density result is claimed.
+
+### Full collection trace reader
+
+`collection_attempts` in the existing `tools/validate_item10_trace.py` streams
+the collector's full event vocabulary, retaining every event within completed
+attempts instead of loading an entire world's writes at once. It verifies the
+declared trace SHA-256 before reading and again while processing, checks declared
+installation digests and dimensions, rejects malformed fields and duplicate
+metadata, pairs template/flower delegates and requires healthy terminal shutdown.
+Failed attempts and refused writes remain explicit output, not accepted locations.
+
+The caller must supply independently verified archive/class identities and exhaust
+the iterator before publishing any result. Before yielding attempts, the reader
+hashes every declared incoming class in the adjacent `trace.jsonl.classes` tree.
+Missing files, digest mismatches, linked class files and paths escaping that tree
+reject processing. Trace installation hashes must match those same identities.
+This binds retained bytes, not just installation claims. It does not establish
+that the caller supplied the complete required observer set; full-protocol
+identity selection remains mandatory. Provider-specific success validation and
+location counting also remain required. Existing fixed-diagnostic readers are
+unchanged.
+
+Validation: 88 collection/retained-trace tests pass in 0.37 seconds. Both actual
+Bridge and Extras archived traces retain exactly their accepted attempt/write
+counts through this reader. Mutation tests reject mismatched hashes/installations,
+missing ends/shutdown, duplicate attempts/metadata, malformed values, unpaired
+delegates and undeclared dimensions. Focused Ruff and basedpyright checks pass.
+The subsequent incoming-file integration passes 91 collection/retained-trace
+tests, including both restored Bridge/Extras class trees and missing, altered or
+linked incoming files. Reproduce with `uv run --no-sync pytest -q
+tests/item10/test_collection_trace.py tests/item10/test_retained_trace.py`.
+
+### Nonregistry family attribution
+
+`nonregistry_membership` and `attribute_nonregistry_attempt` in the existing
+analysis tool join structurally validated attempts to the unchanged, hash-verified
+Item 8 inventory. The 27 generator class bindings and 151 exact template paths
+cover exactly its 40 accepted nonregistry families. Building designs use their
+configured resource paths; aliases and multiple arena templates retain one family.
+Cave urn attribution additionally requires the observed cave placed-feature parent.
+
+Attribution does not establish a successful location. Early building failures
+without a selected design remain `NO_DESIGN_SELECTED`; unknown template paths
+remain `UNMAPPED_TEMPLATE`, and missing cave parent identity remains
+`UNRESOLVED_URN_PARENT`. Conflicting class/template family identities are rejected.
+The six existing ambient-template dispositions are reused directly from that
+same inventory: five small ruin fixtures and the Lantern Woods light. Their
+attempts remain explicit excluded decoration. An observed Blossoming Spires
+house raises an inventory-conflict error because Item 8 establishes no active
+route for that template. It cannot silently become excluded decoration or an
+accepted family. Other unmapped paths remain unresolved. Provider success rules
+and distinct-location aggregation still require integration before counts can
+be accepted.
+
+Reproduce the focused attribution and downstream regression check with:
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_nonregistry_membership.py tests/item10/test_collection_trace.py tests/item10/test_density_census.py tests/item10/test_density_spatial.py
+```
+
+All 57 tests pass. The retained Bridge and Extras traces reproduce their accepted
+cave-parent attempt counts through the family join. These are attribution checks,
+not additional density measurements or new experiments.
+
+### Ordered attempt outcomes for saved-world integration
+
+`nonregistry_attempt_outcome` consumes structurally paired attempts in event order.
+It retains refused writes, the last successful block ID at each written position,
+source and selected template/fill anchors, and explicit exception outcomes.
+Template-derived families require writes inside the template phase for observed
+content; later terrain/support writes alone cannot create a template occurrence.
+Later successful removal to air removes that position from surviving content.
+Cave-cache content requires actual urn writes, while fairy collector site 1 is
+excluded from constructive writes. Boolean generator/template returns alone do
+not establish content.
+
+These are attempt outcomes, not accepted location counts. `CONTENT_OBSERVED` and
+`EXCEPTION_WITH_CONTENT` must still undergo provider completeness, saved-world
+corroboration, overlap/component aggregation and sample inclusion. Fairy delegated
+flower origins and observed post-call block IDs now enter content and saved-world
+processing separately from direct successful writes. A false delegate return with
+non-air origin content remains content; a true return leaving air does not.
+This does not establish complete ring visibility or the delegated feature's full
+footprint. Arena components
+retain their original coordinates but use central X/Z for the eventual location.
+End accessors distinguish `ordinary_generation`, `non_worldgen_accessor` and
+`unresolved`; a non-worldgen accessor does not identify a specific lifecycle cause.
+
+The 35 focused attribution/collection tests pass. Both retained mixed traces
+reproduce their cave-parent attempt counts and successful urn content-position
+counts. Synthetic cases retain multiple urn blocks in one attempt, refused writes,
+post-template erosion and exceptions with partial content. Scoped Ruff and test
+basedpyright checks pass. No new runtime observation or density result is claimed.
+
+`nonregistry_location_groups` reduces one world's outcomes by dimension, family,
+accessor route and exact source/placement anchor. Spiral contributions sharing
+their source remain one candidate with every attempt ID retained. Arena height
+is not part of the key: its components share central X/Z, with location Y left
+unavailable instead of choosing a spike height. Other coincident anchors group
+without inventing additional sites from repeated attempts. Distinct anchors that
+share observed content remain separate candidates with explicit overlap pairs
+and shared-position counts, pending overlap acceptance. No proximity threshold
+or adaptive clustering rule is introduced.
+
+Frame membership uses floor-divided anchor X/Z and dimension. Sources outside
+all selected frames, zero-content outcomes and unattributed attempts remain in
+the result; overlapping frame membership is rejected. Output order is deterministic
+under reordered input, and the status remains `CANDIDATES_AWAITING_ACCEPTANCE`.
+Saved-world corroboration and provider acceptance must precede density totals.
+The focused attribution/collection/spatial/census suite passes 68 tests, including
+the retained mixed traces' exact spiral source counts. Scoped Ruff and test-file
+basedpyright checks pass.
+
+### Saved content integration
+
+The analysis tool's `saved_content_observations` reads requested coordinates from
+a stopped world under the existing POSIX world lock. Region and external-chunk
+bytes must match the caller's verified world manifest, remain within the world
+tree and remain unchanged during inspection. Input hashes are retained. The
+result preserves saved block states and chunk status, including explicit
+`MISSING_CHUNK` and `MISSING_BLOCK_SECTION` observations. Missing evidence is
+never inferred to be air or a matching placement. The caller must bind the world
+manifest to accepted custody before using these observations for acceptance.
+
+Palette lookup is shared with the retained `scarecrow-probe-r3/inspect-writes.py`
+diagnostic instead of maintaining duplicate decoding logic. Negative coordinates,
+singleton/packed palettes, chunk ownership and duplicate sections retain explicit
+handling. The focused saved-content/census suite passes 17 tests, including the
+restored urn world's exact saved states. Re-running the shared urn diagnostic
+produces JSON equal to committed `urn-pilot-r1/write-corroboration.json`, retaining
+all 429 mixed recorded writes. Ruff and saved-content test basedpyright pass.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_saved_content.py tests/item10/test_density_census.py
+PYTHONPATH=. uv run --no-sync python evidence/item-10/scarecrow-probe-r3/inspect-writes.py --urn-r1
+```
+
+This supplies saved observations for candidate acceptance; it does not equate
+block-ID agreement with full-state equality, noninterference or an accepted
+location count. No fresh world generation was performed.
+
+The existing census CLI accepts paired `--trace-root` and `--trace-manifest`
+arguments to add `nonregistry_candidates` to its registry result. The raw archive
+manifest binds the trace, incoming classes and world manifest; the latter must
+also match every registry census input hash. Candidate processing consumes the
+complete stream, then joins saved block observations while preserving missing
+and mismatched results. With trace inputs, classification and spatial summaries
+now combine registry starts and `OBSERVED_LOCATION` nonregistry sources over the
+same selected denominator, using `all_locations` rather than `all_registry`.
+Other dispositions remain explicit outside those numerators. Full observer
+coverage and sampling remain separate acceptance gates. Per-attempt last-write checks are not
+claims about global ordering across concurrent attempts. The retained
+[urn integration](urn-pilot-r1/README.md#integrated-offline-analysis) supplies the
+reproduction command, output hash and explicit diagnostic denominators.
+
+The fairy cleanup reader initially compared the collector's ordinal writer value
+to bytecode offset 193. Inspection of the retained instrumentation establishes
+that raw sites are 1 through 4, with site 1 corresponding to offset 193. The
+reader now uses site 1. The correction and origin-state integration pass 48
+focused attribution/collection/saved-content tests, including false-return
+non-air and true-return air cases. No recorded raw event was changed.
+
+### Location observation acceptance
+
+For the integrated reader, a location observation is one canonical source group
+with constructive content confirmed at a recorded position in the stopped world.
+It is not proof of an intact dungeon, usable loot or a complete visible ring.
+Require an in-frame anchor, ordinary generation context, no exceptional attempt
+in the group and no unresolved shared-content overlap. Compare the last observed
+constructive block IDs, including post-call flower states, to saved observations.
+Missing required saved content remains unavailable; content with no surviving
+match remains not preserved. Retain the matching and nonmatching position counts
+even when some content survives. Report partial failures and overlaps separately
+instead of accepting them or treating them as generation zeros. Full density
+acceptance still requires the independently complete observer identity/coverage
+gate and full predeclared sampling; diagnostic location observations do not pass
+that gate on their own.
+
+The integrated command implements these dispositions in `location_observations`,
+retaining the candidate records and per-position check counts. The retained urn
+pilot confirms seven in-frame cache observations, with 468 zero-content and 811
+out-of-frame source groups preserved. Its README records the reproducible output
+identity. The 56 focused attribution/collection/saved-content tests pass, including
+missing evidence, changed content, exceptions, non-worldgen context and overlaps.
+
+The shared classification join preserves Item 9 confidence, rationale and ambiguity
+for both populations. It rejects wrong-dimension/out-of-frame nonregistry locations
+and families outside the accepted nonregistry inventory. Registry-only invocations
+retain their previous results. The combined retained urn pilot contains eight
+locations: one registry start and seven cave caches, with the latter retaining
+their provisional T1 role. These are encounter-site candidates, not fights.
+The 86 focused integration/census/spatial tests pass; Ruff and census-test
+basedpyright checks pass.

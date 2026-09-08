@@ -1,8 +1,17 @@
+import gzip
+import hashlib
+import json
 from pathlib import Path
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import census, chunk_biome_column, occurrence_biomes
+from tools.analyze_structure_density import (
+    census,
+    chunk_biome_column,
+    occurrence_biomes,
+    summarize_biomes,
+    verify_biome_comparison,
+)
 
 from mcpack_evidence.item7_anvil import decode_region
 from mcpack_evidence.item7_nbt_models import BiomeSection, StructureBox
@@ -23,6 +32,30 @@ def test_column_uses_saved_quart_order_and_negative_heights(
         -2: "test:a",
         -1: "test:a",
     }
+
+
+def test_actual_anchor_uses_its_own_quart_with_negative_chunk_coordinates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    indices = [0] * 64
+    indices[3 + 4 + 16] = 1
+    section = BiomeSection(
+        section_y=-1, palette=("test:center", "test:anchor"), indices=tuple(indices)
+    )
+    record = record.model_copy(update={"chunk_x": -1, "chunk_z": -2, "biome_sections": (section,)})
+    assert chunk_biome_column(record, -16, 16)[-3] == "test:center"
+    assert chunk_biome_column(record, -16, 16, anchor=(-1, -27))[-3] == "test:anchor"
+    assert chunk_biome_column(record, -16, 16, anchor=(-4, -28))[-3] == "test:anchor"
+
+
+@pytest.mark.parametrize("anchor", [(16, 0), (0, -1), (True, 0)])
+def test_biome_anchor_cannot_use_a_different_chunk_or_coerced_coordinate(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, anchor: tuple[int, int]
+) -> None:
+    (record,) = tuple(decode_region(make_region(tmp_path, monkeypatch)))
+    with pytest.raises(ValueError, match="biome anchor"):
+        _ = chunk_biome_column(record, 0, 16, anchor=anchor)
 
 
 @pytest.mark.parametrize("defect", ["missing", "duplicate", "bad-index"])
@@ -99,3 +132,134 @@ def test_inverted_piece_bounds_reject_biome_attribution(
     record = record.model_copy(update={"structure_starts": (start,)})
     with pytest.raises(ValueError, match="inverted structure"):
         _ = occurrence_biomes(record, {})
+
+
+def biome_comparison_input() -> dict[str, object]:
+    return {
+        "biome_exposure": {
+            "rows": [
+                {"quart_y": -2, "biome": "test:cave", "full_chunks": 4},
+                {"quart_y": 4, "biome": "test:cave", "full_chunks": 20},
+                {"quart_y": 4, "biome": "test:empty", "full_chunks": 5},
+            ]
+        },
+        "occurrence_biomes": [
+            {
+                "registry_id": "test:dungeon",
+                "chunk_x": -1,
+                "chunk_z": 0,
+                "quart_y": -2,
+                "biome": "test:cave",
+                "unavailable_reason": None,
+            }
+        ],
+        "classification": {
+            "occurrences": [
+                {
+                    "registry_id": "test:dungeon",
+                    "chunk_x": -1,
+                    "chunk_z": 0,
+                    "role": "T2",
+                    "comparison_groups": [],
+                },
+                {
+                    "candidate_id": 1,
+                    "quart_y": 4,
+                    "biome": "test:cave",
+                    "biome_unavailable_reason": None,
+                    "role": "C",
+                    "comparison_groups": ["village"],
+                },
+                {
+                    "candidate_id": 2,
+                    "quart_y": 4,
+                    "biome": "test:off-center",
+                    "biome_unavailable_reason": None,
+                    "role": "T1",
+                    "comparison_groups": [],
+                },
+                {
+                    "candidate_id": 3,
+                    "quart_y": None,
+                    "biome": None,
+                    "biome_unavailable_reason": "NO_LOCATION_HEIGHT",
+                    "role": "T4",
+                    "comparison_groups": [],
+                },
+            ]
+        },
+    }
+
+
+def test_biome_comparison_preserves_height_zero_exposure_and_unavailable_locations() -> None:
+    summary = summarize_biomes(biome_comparison_input())
+    rows = cast("list[dict[str, object]]", summary["rows"])
+    by_key = {(row["quart_y"], row["biome"]): row for row in rows}
+    underground = by_key[-2, "test:cave"]
+    surface = by_key[4, "test:cave"]
+    assert underground["full_chunks"] == 4
+    assert surface["full_chunks"] == 20
+    assert cast("dict[str, float]", underground["per_1000_chunks"])["T2"] == 250
+    assert cast("dict[str, float]", surface["per_1000_chunks"])["villages"] == 50
+    assert cast("dict[str, int]", surface["counts"])["encounter_sites"] == 0
+    assert cast("dict[str, int]", surface["counts"])["actionable_candidates"] == 1
+    empty = by_key[4, "test:empty"]
+    assert set(cast("dict[str, int]", empty["counts"]).values()) == {0}
+    assert set(cast("dict[str, float]", empty["per_1000_chunks"]).values()) == {0}
+    off_center = by_key[4, "test:off-center"]
+    assert off_center["full_chunks"] == 0
+    assert cast("dict[str, int]", off_center["counts"])["T1"] == 1
+    assert set(cast("dict[str, float | None]", off_center["per_1000_chunks"]).values()) == {None}
+    unavailable = cast("list[dict[str, object]]", summary["unavailable_anchors"])
+    assert len(unavailable) == 1
+    assert unavailable[0]["candidate_id"] == 3
+    assert unavailable[0]["biome_unavailable_reason"] == "NO_LOCATION_HEIGHT"
+
+
+@pytest.mark.parametrize("defect", [None, "identity", "conservation", "output"])
+def test_comparison_reproduction_checks_inputs_counts_and_exact_bytes(
+    tmp_path: Path, defect: str | None
+) -> None:
+    stratum = biome_comparison_input()
+    classification = cast("dict[str, object]", stratum["classification"])
+    classification["categories"] = {
+        "all_locations": {"count": 5 if defect == "conservation" else 4}
+    }
+    raw = json.dumps({"strata": {"overworld": stratum}}).encode()
+    source = tmp_path / "sample-analysis" / "all-strata.json"
+    source.parent.mkdir()
+    _ = source.write_bytes(raw)
+    digest = "0" * 64 if defect == "identity" else hashlib.sha256(raw).hexdigest()
+    expected = {
+        "sample": {
+            "input_sha256": digest,
+            "strata": {"overworld": {} if defect == "output" else summarize_biomes(stratum)},
+        }
+    }
+    payload = json.dumps(expected, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+    path = tmp_path / "comparison.json.gz"
+    compressed = gzip.compress(payload, mtime=0)
+    _ = path.write_bytes(compressed)
+    if defect is None:
+        verify_biome_comparison(path, tmp_path)
+    else:
+        with pytest.raises(
+            ValueError, match=r"identity mismatch|not conserved|reproduction mismatch"
+        ):
+            verify_biome_comparison(path, tmp_path)
+    assert path.read_bytes() == compressed
+
+
+@pytest.mark.parametrize("defect", ["duplicate-exposure", "duplicate-anchor", "missing-anchor"])
+def test_biome_comparison_rejects_ambiguous_or_missing_registry_joins(defect: str) -> None:
+    result = biome_comparison_input()
+    exposure = cast("dict[str, list[dict[str, object]]]", result["biome_exposure"])["rows"]
+    anchors = cast("list[dict[str, object]]", result["occurrence_biomes"])
+    if defect == "duplicate-exposure":
+        exposure.append(exposure[0])
+    elif defect == "duplicate-anchor":
+        anchors.append(anchors[0])
+    else:
+        anchors.clear()
+    with pytest.raises(ValueError, match=r"duplicate|no biome anchor"):
+        _ = summarize_biomes(result)

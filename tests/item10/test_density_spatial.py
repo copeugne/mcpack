@@ -144,3 +144,39 @@ def test_empty_categories_retain_zero_counts_and_unknown_distances() -> None:
         result = spatial_summary(cast("list[dict[str, str | int]]", selected), (-16, 15, -16, 15))
         assert result["nearest_neighbors"] == []
         assert result["mean_nearest_neighbor_blocks"] is None
+
+
+def test_actual_anchors_keep_within_chunk_distances() -> None:
+    rows = starts((0, 0), (0, 0))
+    rows[0].update(anchor_x=1, anchor_z=2)
+    rows[1].update(anchor_x=4, anchor_z=6)
+    result = spatial_summary(rows, (-16, 15, -16, 15))
+    assert result["mean_nearest_neighbor_blocks"] == 5
+
+
+def test_negative_chunk_anchor_uses_floor_inclusion_and_actual_boundary() -> None:
+    rows = starts((-1, -1), (0, -1))
+    rows[0].update(anchor_x=-1, anchor_z=-1)
+    rows[1].update(anchor_x=1, anchor_z=-1)
+    result = spatial_summary(rows, (-1, 0, -1, 0))
+    assert result["mean_nearest_neighbor_blocks"] == 2
+    neighbors = cast("list[dict[str, object]]", result["nearest_neighbors"])
+    assert [row["boundary_distance_blocks"] for row in neighbors] == [15, 15]
+
+
+@pytest.mark.parametrize(
+    "patch",
+    [
+        {"anchor_x": 1},
+        {"anchor_x": True, "anchor_z": 2},
+        {"anchor_x": "1", "anchor_z": 2},
+        {"anchor_x": 16, "anchor_z": 2},
+        {"chunk_x": True},
+        {"chunk_x": 16},
+    ],
+)
+def test_spatial_rejects_ambiguous_or_outside_anchors(patch: dict[str, str | int]) -> None:
+    rows = starts((0, 0))
+    rows[0].update(patch)
+    with pytest.raises(ValueError, match="occurrence"):
+        _ = spatial_summary(rows, (-16, 15, -16, 15))

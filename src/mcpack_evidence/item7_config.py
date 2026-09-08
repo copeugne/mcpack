@@ -16,6 +16,7 @@ from mcpack_evidence.item7_runtime import (
     replace_property,
     sha256_file,
 )
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -29,6 +30,13 @@ CHUNKY_PATHS: Final = (
     *OVERWORLD_CHUNKY_PATHS,
     "config/chunky/tasks/minecraft/the_end.properties",
     "config/chunky/tasks/minecraft/the_nether.properties",
+)
+ITEM10_CHUNKY_PATHS: Final = (
+    "config/chunky/config.json",
+    *(
+        f"config/chunky/tasks/{dimension.replace(':', '/')}.properties"
+        for dimension in dict.fromkeys(row.dimension for row in ITEM10_SELECTIONS)
+    ),
 )
 _COMMENT_NORMALIZED_PATHS: Final = frozenset(
     {
@@ -64,9 +72,11 @@ class ConfigCaptureReceipt(BaseModel):
 
 
 def capture_runtime_configuration(
-    request: WorldgenRequest, *, chunky_paths: tuple[str, ...] = CHUNKY_PATHS
+    request: WorldgenRequest, *, chunky_paths: tuple[str, ...] | None = None
 ) -> ConfigCaptureReceipt:
     """Capture safely, require Item 6 parity, and isolate the expected Chunky files."""
+    if chunky_paths is None:
+        chunky_paths = ITEM10_CHUNKY_PATHS if request.mode == "item10" else CHUNKY_PATHS
     try:
         capture(request.target, request.captured_config)
     except (OSError, ValueError) as error:

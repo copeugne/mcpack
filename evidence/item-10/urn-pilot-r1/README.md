@@ -136,3 +136,38 @@ and Codex thumbs-up were verified with no new inline or review findings. The
 sole earlier finding is resolved above. PR32 merged as
 `868df56c1dca5384769315746088dd2776a31157`; fetched `origin/main` contains the
 exact reviewed head. This delivers the bounded urn evidence, not Item 10 closure.
+
+## Integrated offline analysis
+
+The existing analysis command now consumes this retained world and capture together.
+No new experiment was run. The 81 selected full Overworld chunks contain one
+registry start. The complete mixed trace retains 1,291 attempts, including 1,195
+`NO_CONTENT_OBSERVED` and 96 `CONTENT_OBSERVED` outcomes. All 429 per-attempt last
+successful block checks match saved block IDs. Grouping yields 1,286 candidate
+sources, including zero-content and out-of-frame sources, with no shared content
+positions between groups. Seven cave-cache candidates have content and anchors
+inside this selected Overworld frame. The integrated saved-content acceptance
+now confirms those seven as diagnostic location observations. They do not pass
+the full Item 10 observer completeness and sampling gates.
+
+Reproduce into a new output path outside the world:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/urn-pilot-r1-custody/restored-world/world /tmp/item10-integrated-urn-candidates.json --dimension minecraft:overworld --bounds -4 4 -4 4 --classify --spatial --biomes --trace-root evidence/raw/item10/urn-pilot-r1-custody/restored --trace-manifest evidence/item-10/urn-pilot-r1/archive-manifest.json
+```
+
+The current combined classification/spatial/biome output is 1,672,981 bytes,
+SHA-256 `cc851f8510be96636231b690d2b061aa1b2ede233abd555a6f97a89e76e66338`.
+Earlier deterministic integration outputs remain recorded in Git history.
+It retains seven `OBSERVED_LOCATION`, 468 `NO_CONSTRUCTIVE_CONTENT` and 811
+`OUTSIDE_FRAME` dispositions. All seven cache anchor biomes are available:
+five `minecraft:deep_ocean` and two `minecraft:deep_lukewarm_ocean`, at actual
+anchor heights from -48 through -39. These are stored underground quart biomes,
+not surface or entrance attribution.
+It contains eight observed locations over 81 full chunks: the one registry start
+is T0 and the seven caches are provisionally T1. The observed rate is
+98.765432 locations per 1,000 chunks for this diagnostic frame, not a baseline
+estimate from the full sample. The output is derived from the existing
+durable raw evidence, not a new primary archive; this command and the committed
+reader reproduce it. The integrated saved-content/census suite passes 18 tests,
+including rejection of registry census hashes from a different world identity.
