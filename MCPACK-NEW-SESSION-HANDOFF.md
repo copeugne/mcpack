@@ -157,7 +157,7 @@ The frozen observer JAR is archive-bound; 49 captured targets plus the unused
 Gateway target pass the corrected rule. No observer or configuration changed.
 Full Item 7/10 suite: 548 passed in 173.38s; two subsequently added archive-binding
 cases pass in the focused 41-test run. Fifth-world acceptance is pushed at
-`3fa7f311`. No server or census process is active.
+`3fa7f311`; sixth-world acceptance is pushed at `1632e3de`.
 
 Mountainous Overworld has 4,039 locations, including 3,784 observed cave-urn
 caches, but only six provisional T2 dungeons. Two content mismatches remain
@@ -175,7 +175,12 @@ Its census (session `61273`, terminal 0) passed in 10m17.617s, SHA-256
 All 45,056 chunks and 50 observer classes pass. The record retains three content
 exclusions and the matched contrast: Overworld T2 6 to 22, T3 2 to 7, total
 locations 4,039 to 4,083. Do not infer a global ratio from this one pair.
-Next run mountainous r2 control and r2 baseline,
+[Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md)
+finished from `1632e3de` in 663.491s; session `23508` is terminal 0. Configuration
+and published/downloaded/restored raw custody pass (313 raw and 501 world files).
+Its census is active as session `95707`. Poll that handle and record the complete
+result and repetition comparison before acceptance. No server is active.
+Next run mountainous r2 baseline,
 followed by the ocean-heavy and biome-diverse blocks in the frozen order. Use
 fresh hash-verified materializations and existing custody/census paths. Complete
 the remaining ten worlds, final synthesis, consolidated PR review/merge and
