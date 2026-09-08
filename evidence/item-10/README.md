@@ -82,7 +82,7 @@ These tables directly display existing accepted fields, rounded only for prose.
 Individual neighbors, censoring, grid counts and rectangle bounds remain in
 those outputs. No world was regenerated and no measurements were recomputed.
 
-Remaining seed/repetition coverage, failure sensitivity and final synthesis
+Remaining seed/repetition coverage and final synthesis
 remain incomplete. The rejected
 ocean-heavy r2 control attempts supply no density row and no zero observation.
 The [proposed continuation](protocol.md#proposed-continuation-after-both-failed-attempts)
@@ -213,6 +213,64 @@ unavailable anchors and missing/duplicate joins. Ruff check/format and focused
 test-file BasedPyright pass. Every real stratum's attributed counts plus unavailable
 anchors equals its accepted all-location count. This integrates the ten accepted
 worlds only; it does not close the pending full sampling requirement.
+
+## Failure denominators and uncertainty
+
+Ten planned cells have accepted complete censuses. The eleventh planned cell
+(ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
+generation, then an incomplete saved Aether chunk following a save exception.
+Five planned cells remain unattempted. This is twelve attempts over eleven
+attempted cells, not twelve completed worlds or six measured zero-density cells.
+The failed attempts retain their immutable archives and diagnoses. No missing
+cell enters density, distance or matched-pair denominators. The proposed change
+to the completion contract remains inactive pending the user's decision.
+
+Within the ten accepted worlds, the observer's call count differs from grouped
+location candidates. The following are direct lengths and disposition counts
+from `nonregistry_candidates.attempts`, `locations` and `location_observations`
+in their accepted, hash-bound outputs. The five disposition columns partition
+the grouped candidates; they do not partition individual observer calls.
+
+| World | Calls | Groups | No constructive content | Outside frame | Observed location | Content not preserved | Reviewed overlap exclusion |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ordinary r1 B | 28908 | 28632 | 24261 | 3039 | 1332 | 0 | 0 |
+| Ordinary r1 C | 29008 | 28703 | 24261 | 3060 | 1376 | 6 | 0 |
+| Ordinary r2 B | 28958 | 28667 | 24301 | 3061 | 1304 | 1 | 0 |
+| Ordinary r2 C | 28979 | 28713 | 24313 | 3065 | 1333 | 2 | 0 |
+| Mountainous r1 B | 32822 | 32615 | 25380 | 2858 | 4375 | 2 | 0 |
+| Mountainous r1 C | 32787 | 32601 | 25418 | 2858 | 4322 | 3 | 0 |
+| Mountainous r2 B | 32800 | 32650 | 25411 | 2858 | 4375 | 0 | 6 |
+| Mountainous r2 C | 32854 | 32681 | 25332 | 2877 | 4468 | 2 | 2 |
+| Ocean-heavy r1 B | 28579 | 28394 | 24105 | 2617 | 1669 | 3 | 0 |
+| Ocean-heavy r1 C | 28648 | 28427 | 24078 | 2630 | 1718 | 1 | 0 |
+
+No constructive content means the candidate did not produce the required content;
+it is not a failed server run. Outside-frame candidates remain excluded by the
+declared geometry. Saved-content mismatches remain excluded under the existing
+acceptance rule, even if a writer previously reported a successful operation.
+The individual records retain coordinates and content checks. Registry starts
+are counted separately, so observed nonregistry locations alone do not equal
+the all-location totals in the dimension tables.
+
+The raw overlap disposition stays `OVERLAP_REVIEW_REQUIRED`; the two mountainous
+r2 reports supply its completed human-readable review and exclusion. They do not
+rewrite the raw flags. Counting all six excluded baseline T0 candidates would
+raise its outer-End total from 48 to 54; counting the two control candidates would
+raise its total from 108 to 110. Their contributions are respectively 1.46484375
+and 0.48828125 locations per 1,000 chunks. These are explicit sensitivity cases,
+not corrected estimates, confidence intervals or permission to change numerators.
+They affect total/T0 counts, not T2/T3 counts. Content mismatches, biome attribution
+limits and boundary-censored distances remain separate issues with their own
+denominators; none is converted into an omnibus failure rate.
+
+The four selected seeds are not a random sample, and only three currently have
+accepted worlds. Ordinary and mountainous each have two complete matched pairs;
+ocean-heavy has one. No biome-diverse inference is available. Fresh-repetition
+variation remains visible in the tables and raw outputs. Two repetitions do not
+support a reliable tail estimate or a confidence interval for all generated worlds.
+The raw sampling boundaries censor distances, and all sparse categories retain
+their small counts. Successful-run results are conditional on completion; these
+runtime failures preclude a claim that the full planned sample completed reliably.
 
 ## Verified dependencies and delivery
 
