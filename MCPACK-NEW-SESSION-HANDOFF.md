@@ -165,9 +165,6 @@ protocol. Both matched pairs have Overworld T2/T3 baseline 6/2 versus control
 22/7, while total differences vary +44 to +165. Use their linked records for
 raw failures, sensitivity and complete repetition comparisons.
 
-The first ocean-heavy pair passes complete census and raw custody. Overworld
-T2/T3 counts are baseline 7/2 versus control 19/3; three and one cave-urn
-content failures respectively remain excluded, with no overlap cases.
 [Ocean-heavy r2 control](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 FAILED with Java heap exhaustion in outer End. Session `62268` is terminal 1;
 Java exited 0 after operator pause, correlated flush and stop, without force-kill.
@@ -176,21 +173,24 @@ The unchanged harness rejects lifecycle completion. Ten worlds remain accepted.
 The failed run's published/downloaded/restored archive preserves 315 raw files,
 two debug reports, emergency commands, sanitized configuration and a 458-file
 partial world. No full census was run on the failed world.
-
 The heap-error shutdown correction is pushed at `d5e44617`, with 34 focused
 lifecycle/console/runner tests plus Ruff and type checks. It bounds emergency
 save/stop and never accepts heap-exhausted runs; successful-run identity is unchanged.
 The [post-failure retry amendment](evidence/item-10/protocol.md#bounded-retry-amendment-after-the-retained-resource-failure)
 permits exactly one fresh attempt for this cell, retaining the failed attempt.
-The runner's distinct `--attempt 2`/`-attempt2` naming passes 12 focused tests.
 Policy and naming are pushed at `ffa51fb9`. The
 [retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
 completed all eleven selections and normal save/stop in 549.011s; session `48448`
 is terminal 0. Preflight, observer and selections match the first control.
 Published/downloaded/restored custody verifies 313 raw and 502 world files.
-Its census is active as session `98243`; poll it and review complete output before
-acceptance. No server is active. The original failure remains retained.
-After census acceptance, finish the planned second ocean-heavy baseline and
+Census session `98243` is terminal 1: selected Aether chunk (-16,-22) is saved
+as `minecraft:initialize_light`. Direct decoding finds 4,095 full plus one
+incomplete selected chunk, no missing or duplicated coordinates. Census rejects
+correctly; no result or smaller denominator is accepted. See the retry record.
+The one-retry policy is exhausted. No server is active. Diagnose this distinct
+saved-chunk completion failure before a new explicit continuation decision;
+no third attempt, changed heap, relaxed status rule or repaired proof world.
+After resolving the failed sample cell, finish the second ocean-heavy baseline and
 four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.
 

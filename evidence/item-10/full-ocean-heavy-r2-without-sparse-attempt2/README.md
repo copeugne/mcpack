@@ -1,7 +1,7 @@
 # Ocean-heavy repetition-2 control, attempt 2
 
-Status: GENERATION, CONFIGURATION AND RAW CUSTODY PASS.
-Census acceptance remains pending. Protocol: `item10-full-v1`, observer coverage
+Status: CENSUS FAILED. Generation, configuration and raw custody passed.
+Protocol: `item10-full-v1`, observer coverage
 `item10-observer-coverage-v2`, post-failure amendment `item10-retry-policy-v1`.
 Seed: `95920844204830198`. Source: `ffa51fb9981c438b802f5ae28e4796750636d5da`.
 
@@ -39,8 +39,9 @@ Its 313 files total 192,219,554 bytes before compression. Manifest SHA-256:
 `1138d6b8d0096546e654d5ed85bb95333da71665eaa70c4c62e6032d0be5c6a3`.
 The [local restore](local-restore.json) and [downloaded restore](download-restore.json)
 each verify all 313 members; the downloaded manifest is byte-identical.
-Fifty incoming target classes are preserved; complete trace acceptance awaits
-analysis. The failed first attempt retains its separate immutable archive.
+Fifty incoming target classes are preserved; complete trace analysis was not
+reached because the earlier chunk-status gate failed. The failed first attempt
+retains its separate immutable archive.
 
 ## Reproduction
 
@@ -53,7 +54,7 @@ uv run --no-sync python -m tools.run_item10_probe --name full-ocean-heavy-r2-wit
 uv run --no-sync python -m tools.archive_item7_evidence create --root evidence/raw/item10/full-ocean-heavy-r2-without-sparse-attempt2 --archive evidence/raw/item10/item10-full-ocean-heavy-r2-without-sparse-attempt2-ffa51fb9.tar.gz --manifest evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/archive-manifest.json --revision ffa51fb9981c438b802f5ae28e4796750636d5da
 ```
 
-The census is running as session `98243`, with the unchanged census implementation
+The census ended as session `98243`, exit 1, with the unchanged census implementation
 last modified at `760aa2f5`. Executed command:
 
 ```sh
@@ -61,5 +62,42 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics are retained beside the output in `all-strata-runtime.txt`.
-Ten planned cells remain accepted until this census passes. The total attempted
-world count includes the failed first attempt; it is never a zero-density result.
+Ten planned cells remain accepted; this retry failed census acceptance.
+The total attempted world count includes the failed first attempt; it is never a zero-density result.
+
+## Census rejection and exact chunk diagnosis
+
+The [unchanged rejection output](census-rejection.txt) records failure after
+4.354 seconds: selected Aether chunk (-16,-22) is incomplete or duplicated.
+No `all-strata.json` result was published. Subsequent direct inspection with the
+existing decoder resolves the disjunction: all 4,096 selected Aether coordinates
+are present exactly once. There are 4,095 `minecraft:full` records and one
+`minecraft:initialize_light` record at (-16,-22). There are no missing or
+duplicated selected coordinates. These are failure-diagnostic counts, not an
+accepted reduced-area density denominator.
+
+The affected immutable restored region is
+`dimensions/aether/the_aether/region/r.-1.-1.mca`, SHA-256
+`a20e9a3243e17609934158b1a45c5ab01ca7162cd63d034ec747d050b5138a10`.
+Its slot is 336: local X 16 plus local Z 10 times 32. The existing decoder
+requires stored chunk coordinates to match that slot. Derivation: iterate
+`world_regions(restored_world, dimension_geometry=geometry)`, select
+`aether:the_aether`, decode each region with `decode_region_payloads`, retain
+inclusive X/Z bounds [-32,31], count records by `status` and coordinates, and
+compare coordinates with the 64 by 64 Cartesian frame. Geometry is the unchanged
+[dimension file](../dimension-geometry.json). This direct inspection ended with
+exit 0 and did not modify the world or repeat generation.
+
+Chunky's 100% progress, the normal save flush and Java exit 0 did not establish
+complete saved chunk status. The frozen protocol requires `minecraft:full` and
+the existing census correctly rejects this record. Do not relabel
+`initialize_light` as full, omit the chunk, substitute a denominator of 4,095,
+repair the preserved world, or claim that all other strata passed. The census
+stopped at this first failure. No heap-exhaustion signature was recorded in this
+attempt; this is a distinct saved-chunk completion failure with an unresolved
+cause. Raw custody remains valid and does not need another archive revision.
+
+The one-retry policy is exhausted. Collection is paused for a new explicit
+resource/protocol decision after diagnosis. Both attempts remain failures in the
+run matrix: the first failed generation, the second failed complete census.
+The full planned sample and final report/review/audit remain incomplete.

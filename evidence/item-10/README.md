@@ -9,8 +9,9 @@ links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
 with heap exhaustion and remains preserved. The single predeclared
 [same-identity retry](full-ocean-heavy-r2-without-sparse-attempt2/README.md) passed
-generation and custody; its census is pending. The failure does not reduce the
-full-sample requirement. Final combined
+generation and custody but failed census on one incomplete saved Aether chunk.
+The retry policy is exhausted and collection is paused for diagnosis and an
+explicit continuation decision. Neither failure reduces the full-sample requirement. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
 Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
 
