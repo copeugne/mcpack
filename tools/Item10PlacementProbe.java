@@ -520,14 +520,17 @@ public final class Item10PlacementProbe {
         catch (InvocationTargetException error) { throw error.getCause(); }
     }
 
-    public static boolean pillarWrite(Object world, Object pos, Object state, int flags) throws Throwable {
-        if (pillarFeature(FEATURES.get(Thread.currentThread().threadId()))) {
+    public static boolean bclibWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        String feature = FEATURES.get(Thread.currentThread().threadId());
+        if (pillarFeature(feature) || END_FEATURE.replace('/', '.').equals(feature)
+            || SHIP.replace('/', '.').equals(feature)
+            || "org.betterx.betterend.world.features.BuildingListFeature".equals(feature)) {
             return write(world, pos, state, flags, "net.minecraft.world.level.LevelAccessor");
         }
         return untracedWorldWrite(world, pos, state, flags, "net.minecraft.world.level.LevelAccessor");
     }
 
-    private static byte[] instrumentPillarWriter(byte[] original) {
+    private static byte[] instrumentBclibWriter(byte[] original) {
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
         int[] counts = new int[2];
         new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
@@ -535,23 +538,24 @@ public final class Item10PlacementProbe {
                                                        String signature, String[] exceptions) {
                 if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
                 MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
-                if (!name.equals("setWithoutUpdate") || !descriptor.equals(
-                    "(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V")) return parent;
+                if (!name.equals("setWithoutUpdate") || !(descriptor.equals(
+                    "(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V") || descriptor.equals(
+                    "(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V"))) return parent;
                 counts[0]++;
                 return new MethodVisitor(Opcodes.ASM8, parent) {
                     @Override public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean iface) {
                         if (opcode == Opcodes.INVOKEINTERFACE && owner.equals("net/minecraft/world/level/LevelAccessor")
                             && name.equals("setBlock") && desc.equals(WRITE_DESCRIPTOR)) {
                             counts[1]++;
-                            super.visitMethodInsn(Opcodes.INVOKESTATIC, BLOCKS_HELPER, "item10$pillarWrite",
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, BLOCKS_HELPER, "item10$bclibWrite",
                                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
                         } else super.visitMethodInsn(opcode, owner, name, desc, iface);
                     }
                 };
             }
         }, 0);
-        if (counts[0] != 1 || counts[1] != 1) throw new IllegalArgumentException("Unexpected pillar helper sites");
-        bridge(writer, "pillarWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+        if (counts[0] != 2 || counts[1] != 2) throw new IllegalArgumentException("Unexpected BCLib helper sites");
+        bridge(writer, "bclibWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
             new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         return writer.toByteArray();
     }
@@ -601,7 +605,7 @@ public final class Item10PlacementProbe {
     }
 
     public static byte[] instrument(String target, byte[] original) {
-        if (BLOCKS_HELPER.equals(target)) return instrumentPillarWriter(original);
+        if (BLOCKS_HELPER.equals(target)) return instrumentBclibWriter(original);
         if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target) || EXTRAS_TEMPLATE.equals(target) || extrasProcessor(target)) return instrumentBridge(target, original);
         if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
         if (TARGET.equals(target)) return instrument(original);
@@ -613,7 +617,7 @@ public final class Item10PlacementProbe {
         boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
         boolean bridgeFeature = yungFeature(target);
         boolean pillar = pillarFeature(target);
-        boolean guardedFeature = bridgeFeature || pillar;
+        boolean guardedFeature = bridgeFeature || pillar || END_FEATURE.equals(target) || SHIP.equals(target);
         boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct || guardedFeature;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
@@ -834,7 +838,7 @@ public final class Item10PlacementProbe {
                 new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
             if (pillar) bridge(writer, "pillarFill", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
-            if (!direct && !guardedFeature) bridge(writer, "template", TEMPLATE_BRIDGE,
+            if (!direct && !bridgeFeature && !pillar) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (base) {
             bridge(writer, "directWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",

@@ -158,7 +158,8 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
                 )
         writes = [row for row in rows if row["kind"] in {"write", "write_exception"}]
         assert len(writes) == (0 if mode in {"early", "empty", "outside"} else 2)
-        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        assert rows[-1]["unfinished_attempts"] == 0
+        assert sum(row["kind"] == "attempt_exception" for row in rows) == int(mode == "exception")
         ground = [row for row in rows if row["kind"] == "ground"]
         assert len(ground) == (0 if mode in {"early", "outside"} else 1)
         if ground:
@@ -917,3 +918,36 @@ def test_pillar_hooks_transform_exact_retained_classes(tmp_path: Path) -> None:
             timeout=30,
         )
         assert transformed.read_bytes() != content
+
+
+@pytest.mark.parametrize("mode", ["normal", "refused", "recover"])
+def test_betterend_post_template_writes_and_recovery(tmp_path: Path, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "BetterEndPostFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "betterend.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "BetterEndPostFixture", mode],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert original.stdout == observed.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    auxiliary = [row for row in rows if row["kind"] == "write" and row["flags"] == 18]
+    assert len(auxiliary) == (3 if mode == "recover" else 2)
+    assert rows[-1]["unfinished_attempts"] == 0
+    if mode == "refused":
+        assert all(row["returned"] is False for row in auxiliary)
+    if mode == "recover":
+        assert "same=true" in observed.stdout
+        assert "recovered=true" in observed.stdout
+        assert len([row for row in rows if row["kind"] == "attempt_exception"]) == 1

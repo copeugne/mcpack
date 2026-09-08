@@ -1032,3 +1032,35 @@ checks pass. These tests establish observer preparation, not natural occurrence
 measurements. Full-sample reader integration must accept and validate these new
 events and installation identities before collection. No new pilot or PR was
 created for this change.
+
+### BetterEnd template auxiliary writes
+
+The accepted disassemblies were rechecked against their existing identity hashes:
+[NBTFeature](../item-8/sources/betterend-entry-template-consumers/identities.json),
+[StructureErode](../item-8/sources/crashed-ship-erosion/identities.json) and
+[BlockFixer](../item-8/sources/betterend-lake-helpers/identities.json).
+NBTFeature.place performs terrain-merge writes through BlocksHelper at offsets
+558, 569, 622 and 633. CrashedShipFeature.place calls erodeIntense at 259 and
+BlockFixer.fixBlocks at 308. Erosion and its drop helper use both Block and
+BlockState overloads of BlocksHelper.setWithoutUpdate; BlockFixer's synchronized
+wrapper delegates to the BlockState overload. Its IntStream.range/forEach and
+Set.forEach calls do not introduce parallel execution in the inspected code.
+
+Both BlocksHelper overloads call LevelAccessor.setBlock directly with flags 18,
+at offsets 8 (Block) and 5 (BlockState). The Block overload does not delegate to
+the already observed BlockState overload. The collector now intercepts both
+actual write calls while a pillar, NBTFeature/BuildingListFeature or crashed-ship
+attempt is active. Shared caller behavior outside those attempts is preserved.
+This reuses the pillar helper hook and existing write events, including air
+removal, rather than adding separate erosion or repair observers. Existing event
+order retains template and subsequent auxiliary writes within the same attempt.
+NBTFeature and crashed-ship exceptional exits now use the existing cleanup path.
+
+Synthetic original-versus-observed checks cover both helper overloads after
+template placement, refusals and an original exception followed by a successful
+placement on the same thread. Earlier diagnostic raw traces remain unchanged.
+Full-sample interpretation and saved-world corroboration remain required; a
+successful template call does not establish that all its blocks survived erosion.
+All 53 collector tests pass in 63.98 seconds, including hash-verified retained
+NBTFeature, crashed-ship and BlocksHelper transformations. Focused Ruff and
+basedpyright checks pass. Reproduce with the collector test command above.

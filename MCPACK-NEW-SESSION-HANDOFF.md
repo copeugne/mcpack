@@ -107,12 +107,12 @@ tests in 99.62 seconds. This does not establish full Item 10 measurement accepta
   tag population, not proof of false tag membership or zero density. Do not tune
   frozen tags or repeat failed fixtures without new causal evidence.
 
-Pillar entrypoints, fill anchors and delegated writes now have focused collector
-coverage, including retained-class transforms and 50 passing collector tests.
+Pillar entrypoints, fill anchors and delegated writes, plus BetterEnd terrain
+merge, ship erosion and block-repair writes now have focused collector coverage,
+including retained-class transforms and 53 passing collector tests.
 The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
 records implementation and its limits. Full-sample reader integration remains.
-Genuine remaining capabilities: BetterEnd post-template effects;
-applicability/integration of End lifecycle routes; complete
+Genuine remaining capabilities: applicability/integration of End lifecycle routes; complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
 Source descriptions do not supply missing occurrence measurements. Traced blocks,
