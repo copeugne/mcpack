@@ -107,64 +107,34 @@ tests in 99.62 seconds. This does not establish full Item 10 measurement accepta
   tag population, not proof of false tag membership or zero density. Do not tune
   frozen tags or repeat failed fixtures without new causal evidence.
 
-Pillar entrypoints, fill anchors and delegated writes, plus BetterEnd terrain
-merge, ship erosion and block-repair writes now have focused collector coverage,
-including retained-class transforms. End entrypoints, template/direct writes and
-accessor context are now integrated too; all 77 collector tests pass.
-The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
-records implementation and its limits. Full-sample reader integration remains.
-End route applicability is resolved in the
-[protocol](evidence/item-10/protocol.md#end-generation-and-lifecycle-applicability):
-retain ordinary packaged feature routes and report lifecycle invocations separately.
-No arrival/dragon/respawn campaign is required. Full-sample reader integration,
-occurrence aggregation and saved-world corroboration remain.
-Spatial analysis now supports actual traced anchors while preserving all eleven
-retained pilot spatial category results. Its focused spatial/census gate has
-29 passing tests. The existing trace tool now streams hash-bound complete attempts
-with full event fields and structural pairing; 88 reader tests pass, including
-the retained Bridge/Extras archives. Family attribution now joins exact classes
-and template paths to all 40 accepted nonregistry families, with 57 focused tests
-passing. Six existing ambient exclusions are integrated; an observed disconnected
-house fails as an inventory conflict. Attribution does not imply placement success.
-The full reader now binds retained incoming-class bytes before yielding attempts;
-91 collection/retained-trace tests pass. Provider-specific success, the complete
-full-protocol observer identity set and the location table remain.
-Ordered attempt outcomes now retain last successful writes, content surviving
-erosion, exceptions and actual anchors. The 35 attribution/collection tests pass
-against retained urn observations. These are not accepted locations: provider
-completeness, fairy visibility and saved-world corroboration remain. Candidate
-aggregation now groups common sources, retains halo/zero outcomes and exposes
-content overlaps; 68 focused tests pass, including retained spiral source counts.
-Overlap dispositions and final acceptance still gate density numerators.
-Saved-content lookup now binds requested coordinates to retained world-file hashes
-under the existing world lock. Its 17 focused tests reproduce retained urn saved
-states; the shared diagnostic's 429-write JSON is unchanged. Candidate acceptance
-must still bind custody, provider rules and these observations together.
-The census CLI now integrates archive-bound traces, groups and saved checks via
-paired `--trace-root`/`--trace-manifest`. The retained
+The integrated census CLI now combines registry starts, archive-bound placement
+traces, exact family attribution, source grouping, saved-content dispositions,
+classification, spatial summaries and actual-anchor biomes. Reuse the
 [urn integration](evidence/item-10/urn-pilot-r1/README.md#integrated-offline-analysis)
-reproduces all 1,291 attempts and 429 block matches with identical output hashes.
-Its 18 focused tests pass. This is diagnostic integration, not full measurement.
-Fairy processing now uses collector cleanup site 1 (bytecode offset 193) and
-retains observed flower-origin states separately from direct successful writes.
-All 48 focused tests pass; complete ring visibility is not inferred.
-Location dispositions now connect candidate groups to saved constructive content.
-The retained pilot confirms seven in-frame cache observations and retains 468
-zero-content plus 811 out-of-frame groups. All 56 focused tests pass. Full observer
-coverage, sampling and density integration still gate Item 10 acceptance.
-Classification/spatial summaries now combine observed nonregistry locations with
-registry starts over the same denominator. The pilot has eight observed locations
-(one T0 registry start and seven provisional T1 caches); 86 focused tests pass.
-These are diagnostic counts, not full-coverage baseline measurements.
-The biome reader now supports actual within-chunk traced anchors, with 40 focused
-biome/spatial/census tests passing. Final location-table integration remains.
-Genuine remaining capabilities: complete
-nonregistry occurrence identity, coordinate inclusion and biome integration;
-exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
-Source descriptions do not supply missing occurrence measurements. Traced blocks,
-template parts and halo activity are not already accepted location numerators.
-Do not turn remaining collector work into standalone experimental campaigns
-or tooling PRs.
+for its complete command, current output hash and diagnostic limits. It retains
+1,291 attempts and 429 saved block matches; eight locations are observed in 81
+full Overworld chunks (one T0 registry start and seven provisional T1 caches).
+All seven cache anchors have saved biome attribution. This is a diagnostic,
+not the full Item 10 sample or proof of complete observer coverage.
+
+The [protocol](evidence/item-10/protocol.md) records the implemented rules:
+exact 40-family nonregistry membership and six ambient exclusions; explicit
+unknown/disconnected-template handling; refused/exception/zero-content outcomes;
+source and arena-component grouping; shared-content overlaps; manifest-bound
+saved states; and in-frame ordinary-generation location observations. Collector
+coverage includes the pillar helpers, BetterEnd erosion/repair and End routes.
+End lifecycle accessors remain separate; no arrival/dragon campaign is required.
+Fairy cleanup uses raw site 1, not bytecode offset 193; observed flower states do
+not establish complete ring visibility. Do not require new positive tiny pilots.
+
+Remaining before full collection: finish the exact complete observer identity
+and provider-event coverage gate, resolve any demonstrated reader defect, and
+materialize/verify the omit-only-Sparse-Structures control. Freeze executable
+commands for the retained 16-world protocol and run the final applicable checks.
+Then confirm measured runtime/storage costs on the first full ordinary-seed run,
+collect all frames with durable raw custody, complete paired/biome/seed analysis,
+finish the consolidated PR review/merge and the Items 2 through 10 audit.
+No full-frame run has started. Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
 profiles and matching client files are prepared; first client launch/join remains

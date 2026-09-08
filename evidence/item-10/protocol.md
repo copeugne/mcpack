@@ -244,8 +244,11 @@ nonregistry attribution. It verifies that the integer coordinates belong to the
 supplied chunk and reads their actual horizontal quart, including negative world
 coordinates. Omitting the anchor preserves the registry chunk-center convention
 and existing height-band exposure. This does not change biome denominators or
-substitute a center biome when a traced anchor is unavailable. Integration into
-the final occurrence table remains required. The focused biome/spatial/census
+substitute a center biome when a traced anchor is unavailable. The integrated
+`--biomes` path now joins these values and quart heights into observed nonregistry
+classification rows. Arena location Y remains unavailable rather than selecting
+a component height. The saved-content/biome/census integration passes 30 tests,
+including all seven retained cache anchors. The earlier focused biome/spatial/census
 suite passes 40 tests; Ruff and test-file basedpyright checks pass.
 The existing `--biomes` reader now implements this registry attribution alongside
 height-band exposure. Focused Item 10 validation passes 29 tests, including

@@ -144,6 +144,8 @@ def saved_content_observations(  # noqa: C901, PLR0912 - one locked manifest-bou
     requested: dict[str, set[tuple[int, int, int]]],
     world_files: dict[str, str],
     geometry: dict[str, tuple[int, int]],
+    *,
+    biome_anchors: set[tuple[str, int, int, int]] | None = None,
 ) -> dict[str, object]:
     """Inspect requested positions in a stopped, manifest-bound world."""
     found = {}
@@ -191,6 +193,16 @@ def saved_content_observations(  # noqa: C901, PLR0912 - one locked manifest-bou
                         if state is not None
                         else "MISSING_BLOCK_SECTION",
                     }
+                    if biome_anchors and (context.dimension, *position) in biome_anchors:
+                        column = chunk_biome_column(
+                            record,
+                            context.min_y,
+                            context.build_height,
+                            anchor=(position[0], position[2]),
+                        )
+                        found[(context.dimension, *position)]["biome"] = column.get(
+                            position[1] // 4
+                        )
         for name, digest in inputs.items():
             if hashlib.sha256((world / name).read_bytes()).hexdigest() != digest:
                 detail = "saved-content input changed during inspection"
@@ -799,7 +811,7 @@ def location_observation_acceptance(
     return result
 
 
-def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and saved observations
+def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidence integration path
     world: Path,
     raw: Path,
     archive_manifest: Path,
@@ -807,6 +819,7 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
     frames: dict[str, tuple[str, tuple[int, int, int, int]]],
     *,
     census_inputs: list[dict[str, str]],
+    include_biomes: bool = False,
 ) -> dict[str, object]:
     """Connect retained capture, attribution, grouping and saved observations."""
     archive_bytes = archive_manifest.read_bytes()
@@ -861,7 +874,21 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
     for outcome in outcomes:
         for write in outcome["last_successful_writes"] + outcome.get("flower_observations", []):
             requested[outcome["dimension"]].add(tuple(write["position"]))
-    saved = saved_content_observations(world, requested, world_files, geometry)
+    grouped = nonregistry_location_groups(outcomes, frames)
+    biome_anchors = set()
+    if include_biomes:
+        for group in grouped["locations"]:
+            if (
+                group["frame"] is not None
+                and group["content_positions"]
+                and group["anchor_y"] is not None
+            ):
+                position = (group["anchor_x"], group["anchor_y"], group["anchor_z"])
+                requested[group["dimension"]].add(position)
+                biome_anchors.add((group["dimension"], *position))
+    saved = saved_content_observations(
+        world, requested, world_files, geometry, biome_anchors=biome_anchors
+    )
     by_position = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
     summaries = []
     for outcome in outcomes:
@@ -894,10 +921,32 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
                 }
                 for flower in outcome["flower_observations"]
             ]
-    grouped = nonregistry_location_groups(outcomes, frames)
+    dispositions = location_observation_acceptance(grouped, outcomes, saved)
+    if include_biomes:
+        for disposition in dispositions:
+            group = grouped["locations"][disposition["candidate_id"]]
+            if disposition["disposition"] == "OBSERVED_LOCATION":
+                anchor = (
+                    group["dimension"],
+                    group["anchor_x"],
+                    group["anchor_y"],
+                    group["anchor_z"],
+                )
+                biome = by_position.get(anchor, {}).get("biome")
+                disposition["biome"] = biome
+                disposition["quart_y"] = (
+                    group["anchor_y"] // 4 if group["anchor_y"] is not None else None
+                )
+                disposition["biome_unavailable_reason"] = (
+                    "NO_LOCATION_HEIGHT"
+                    if group["anchor_y"] is None
+                    else "ANCHOR_BIOME_UNAVAILABLE"
+                    if biome is None
+                    else None
+                )
     return {
         **grouped,
-        "location_observations": location_observation_acceptance(grouped, outcomes, saved),
+        "location_observations": dispositions,
         "scope": "candidate evidence only; provider and overlap acceptance remain required",
         "archive_manifest_sha256": hashlib.sha256(archive_bytes).hexdigest(),
         "trace_sha256": members["trace.jsonl"]["sha256"],
@@ -963,6 +1012,13 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:  # noqa: C9
                         )
                     }
                 )
+                if "biome" in observation:
+                    occurrences[-1].update(
+                        {
+                            key: observation[key]
+                            for key in ("biome", "quart_y", "biome_unavailable_reason")
+                        }
+                    )
     full_chunks = cast("int", result["full_chunks"])
     annotated = []
     counts = dict.fromkeys(("T0", "C", "T1", "T2", "T3", "T4"), 0)
@@ -1176,6 +1232,7 @@ def main() -> None:
             geometry,
             {args.dimension: (args.dimension, tuple(args.bounds))},
             census_inputs=result["anvil_inputs"],
+            include_biomes=args.biomes,
         )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)

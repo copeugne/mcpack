@@ -156,15 +156,14 @@ Reproduce into a new output path outside the world:
 uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/urn-pilot-r1-custody/restored-world/world /tmp/item10-integrated-urn-candidates.json --dimension minecraft:overworld --bounds -4 4 -4 4 --classify --spatial --biomes --trace-root evidence/raw/item10/urn-pilot-r1-custody/restored --trace-manifest evidence/item-10/urn-pilot-r1/archive-manifest.json
 ```
 
-The initial candidate-only output at `0ef4e693` was 1,471,237 bytes, SHA-256
-`b7c09502a065b4962d7259e10038f00310f54ec1340719eb3c01d21793952692`.
-Two executions produced that same hash. The intermediate output including location
-dispositions is 1,638,506 bytes, SHA-256
-`7b43e7534c9b3d776ebc98393f34d0d712c53d392117272dc8d513eb9239f47b`.
+The current combined classification/spatial/biome output is 1,672,981 bytes,
+SHA-256 `cc851f8510be96636231b690d2b061aa1b2ede233abd555a6f97a89e76e66338`.
+Earlier deterministic integration outputs remain recorded in Git history.
 It retains seven `OBSERVED_LOCATION`, 468 `NO_CONSTRUCTIVE_CONTENT` and 811
-`OUTSIDE_FRAME` dispositions. The combined classification/spatial output is now
-1,665,571 bytes, SHA-256
-`768151f4653b1c48fa507f0c9062c32a20008e014b4f3d72726794244f29e740`.
+`OUTSIDE_FRAME` dispositions. All seven cache anchor biomes are available:
+five `minecraft:deep_ocean` and two `minecraft:deep_lukewarm_ocean`, at actual
+anchor heights from -48 through -39. These are stored underground quart biomes,
+not surface or entrance attribution.
 It contains eight observed locations over 81 full chunks: the one registry start
 is T0 and the seven caches are provisionally T1. The observed rate is
 98.765432 locations per 1,000 chunks for this diagnostic frame, not a baseline

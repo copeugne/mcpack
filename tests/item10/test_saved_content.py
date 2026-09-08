@@ -112,6 +112,7 @@ def test_integrated_retained_urn_analysis_binds_census_and_preserves_failures() 
         {},
         {"overworld": ("minecraft:overworld", (-4, 4, -4, 4))},
         census_inputs=[],
+        include_biomes=True,
     )
     attempts = cast("list[dict[str, object]]", result["attempts"])
     assert len(attempts) == 1291
@@ -123,6 +124,9 @@ def test_integrated_retained_urn_analysis_binds_census_and_preserves_failures() 
     assert result["status"] == "CANDIDATES_AWAITING_ACCEPTANCE"
     observations = cast("list[dict[str, object]]", result["location_observations"])
     assert sum(row["disposition"] == "OBSERVED_LOCATION" for row in observations) == 7
+    confirmed = [row for row in observations if row["disposition"] == "OBSERVED_LOCATION"]
+    assert all(isinstance(row["biome"], str) for row in confirmed)
+    assert all(row["biome_unavailable_reason"] is None for row in confirmed)
     with pytest.raises(ValueError, match="registry census inputs differ"):
         _ = nonregistry_analysis(
             world,
