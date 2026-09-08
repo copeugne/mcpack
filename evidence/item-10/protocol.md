@@ -1097,5 +1097,28 @@ required for Item 10. Record such events only if they occur during the prescribe
 run, separately from ordinary generation. Absence of a triggered event is not a
 failed placement or evidence that its design cannot generate. Existing central-End
 block aggregates establish material presence only and cannot replace missing
-platform/gateway/podium occurrences. Four existing generator entrypoints and their
-template/direct-write paths still need collector integration before full sampling.
+platform/gateway/podium occurrences.
+
+The collector now brackets BetterEndGatewayFeature.place,
+BetterEndSpawnPlatformFeature.place, BetterEndPodiumFeature.place and
+BetterSpikeFeature.placeSpike. It records actual caller anchors and the runtime
+accessor class with a WorldGenRegion instance check in `island_context` events.
+Spike input center/height is retained as a component anchor; each actual template
+position is separately observed. Runtime accessor context supports route attribution
+but does not justify labeling an unknown caller as a known lifecycle event.
+
+The existing template observer captures each helper's selected resource path,
+placement result and content writes. Gateway and spike direct setBlock calls are
+captured with their real results and flags. Multiple spike templates remain under
+one component attempt. Void completion, failed writes and exceptions retain their
+distinct existing event types; exceptional exits clear the attempt for subsequent
+calls. No random calls or configuration changes were added.
+
+Validation: all 77 tests in `tests/item10/test_placement_probe.py` pass in 92.58
+seconds, including hash-verified transformations of all four retained generator
+classes. Synthetic comparisons cover early exits, refused writes, caught template
+exceptions followed by another attempt, generation-region versus other accessor
+context, direct writes and an isolated class loader for all four entrypoints.
+Focused Ruff and basedpyright checks pass. Full-sample event validation, occurrence
+aggregation and saved-world corroboration remain incomplete. No End experiment
+or new PR was started for this collector increment.

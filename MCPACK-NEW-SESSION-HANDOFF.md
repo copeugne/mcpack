@@ -109,13 +109,15 @@ tests in 99.62 seconds. This does not establish full Item 10 measurement accepta
 
 Pillar entrypoints, fill anchors and delegated writes, plus BetterEnd terrain
 merge, ship erosion and block-repair writes now have focused collector coverage,
-including retained-class transforms and 53 passing collector tests.
+including retained-class transforms. End entrypoints, template/direct writes and
+accessor context are now integrated too; all 77 collector tests pass.
 The [pillar boundary](evidence/item-10/protocol.md#betterend-procedural-pillar-write-boundary)
 records implementation and its limits. Full-sample reader integration remains.
 End route applicability is resolved in the
 [protocol](evidence/item-10/protocol.md#end-generation-and-lifecycle-applicability):
 retain ordinary packaged feature routes and report lifecycle invocations separately.
-No arrival/dragon/respawn campaign is required. End collector integration remains.
+No arrival/dragon/respawn campaign is required. Full-sample reader integration,
+occurrence aggregation and saved-world corroboration remain.
 Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.

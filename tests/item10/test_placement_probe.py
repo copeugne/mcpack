@@ -177,6 +177,22 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
 
     sources = ROOT / "evidence/item-8/sources"
     targets = (
+        (
+            "better-end-island-platform-gateway",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
+        ),
+        (
+            "better-end-island-platform-gateway",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.class",
+        ),
+        (
+            "better-end-island-spike-podium",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
+        ),
+        (
+            "better-end-island-spike-podium",
+            "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+        ),
         ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/AnomalyFeature.class"),
         ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/MonolithFeature.class"),
         (
@@ -951,3 +967,44 @@ def test_betterend_post_template_writes_and_recovery(tmp_path: Path, mode: str) 
         assert "same=true" in observed.stdout
         assert "recovered=true" in observed.stdout
         assert len([row for row in rows if row["kind"] == "attempt_exception"]) == 1
+
+
+@pytest.mark.parametrize("kind", ["Gateway", "SpawnPlatform", "Podium", "Spike"])
+@pytest.mark.parametrize("mode", ["normal", "early", "refused", "recover", "lifecycle", "isolated"])
+def test_island_templates_and_route_context(tmp_path: Path, kind: str, mode: str) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    original = subprocess.run(
+        [*command, "IslandFixture", mode, kind],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    trace = tmp_path / "island.jsonl"
+    observed = subprocess.run(
+        [*command, f"-javaagent:{agent}={trace}", "IslandFixture", mode, kind],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert observed.stdout == original.stdout
+    rows = [cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()]
+    assert not any(row["kind"] == "installation_failed" for row in rows)
+    contexts = [row for row in rows if row["kind"] == "island_context"]
+    assert len(contexts) == (2 if mode == "recover" else 1)
+    assert all(row["worldgen_region"] == (mode != "lifecycle") for row in contexts)
+    templates = [row for row in rows if row["kind"] == "template_begin"]
+    assert len(templates) == (
+        0 if mode == "early" else (2 if kind == "Spike" else 1) + int(mode == "recover")
+    )
+    assert all(str(row["path"]).startswith("betterendisland:") for row in templates)
+    assert rows[-1]["unfinished_attempts"] == 0
+    writes = [row for row in rows if row["kind"] == "write"]
+    direct = [row for row in writes if row["flags"] == 3]
+    assert len(direct) == int(kind in {"Gateway", "Spike"} and mode != "early")
+    assert all(row["position"] == [11, 22, 33] for row in direct)
+    if mode == "refused":
+        assert all(row["returned"] is False for row in writes)
+    assert sum(row["kind"] == "attempt_exception" for row in rows) == int(mode == "recover")

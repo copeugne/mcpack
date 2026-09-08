@@ -58,6 +58,15 @@ public final class Item10PlacementProbe {
     private static boolean bridgeProcessor(String name) {
         return name != null && name.startsWith(BRIDGE_PROCESSORS) && BRIDGE_WRITERS.containsKey(name.substring(BRIDGE_PROCESSORS.length()));
     }
+    private static final String ISLAND_ROOT = "com/yungnickyoung/minecraft/betterendisland/world/feature/";
+    private static boolean islandFeature(String name) {
+        if (name == null) return false;
+        String normalized = name.replace('.', '/');
+        return normalized.equals(ISLAND_ROOT + "BetterEndGatewayFeature")
+            || normalized.equals(ISLAND_ROOT + "BetterEndSpawnPlatformFeature")
+            || normalized.equals(ISLAND_ROOT + "BetterEndPodiumFeature")
+            || normalized.equals(ISLAND_ROOT + "BetterSpikeFeature");
+    }
     private static final String PILLAR_ROOT = "org/betterx/betterend/world/features/terrain/";
     private static final String BLOCKS_HELPER = "org/betterx/bclib/util/BlocksHelper";
     private static final String SDF = "org/betterx/bclib/sdf/SDF";
@@ -493,7 +502,8 @@ public final class Item10PlacementProbe {
 
     public static boolean bridgeTemplate(Object value, Object world, Object pos, Object pivot,
                                         Object settings, Object random, int flags, Object path) throws Throwable {
-        if (!yungFeature(FEATURES.get(Thread.currentThread().threadId()))) {
+        if (!yungFeature(FEATURES.get(Thread.currentThread().threadId()))
+            && !islandFeature(FEATURES.get(Thread.currentThread().threadId()))) {
             try { return (Boolean) templateMethod(value, world).invoke(value, world, pos, pivot, settings, random, flags); }
             catch (InvocationTargetException error) { throw error.getCause(); }
         }
@@ -604,7 +614,117 @@ public final class Item10PlacementProbe {
         return writer.toByteArray();
     }
 
+    public static void islandBegin(Object feature, Object world, Object anchor) throws Throwable {
+        String name = feature instanceof Class<?> type ? type.getName() : feature.getClass().getName();
+        if (anchor == null) {
+            anchor = call(world, "origin");
+            world = call(world, "level");
+        } else if (name.endsWith(".BetterSpikeFeature")) {
+            anchor = Class.forName("net.minecraft.core.BlockPos", false, world.getClass().getClassLoader())
+                .getConstructor(int.class, int.class, int.class)
+                .newInstance(call(anchor, "getCenterX"), call(anchor, "getHeight"), call(anchor, "getCenterZ"));
+        }
+        beginGenerator(feature, world, anchor);
+        boolean worldgen = Class.forName("net.minecraft.server.level.WorldGenRegion", false,
+            world.getClass().getClassLoader()).isInstance(world);
+        emit("{\"kind\":\"island_context\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
+            + ",\"world_class\":" + quote(world.getClass().getName()) + ",\"worldgen_region\":" + worldgen + "}");
+    }
+
+    public static boolean islandWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        return write(world, pos, state, flags, "net.minecraft.world.level.ServerLevelAccessor");
+    }
+
+    private static byte[] instrumentIsland(String target, byte[] original) {
+        boolean spike = target.endsWith("/BetterSpikeFeature");
+        boolean platform = target.endsWith("/BetterEndSpawnPlatformFeature");
+        boolean podium = target.endsWith("/BetterEndPodiumFeature");
+        String entryDescriptor = spike
+            ? "(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/SpikeConfiguration;Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;Z)V"
+            : platform ? "(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)Z"
+            : "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z";
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        int[] counts = new int[3];
+        new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
+            @Override public MethodVisitor visitMethod(int access, String methodName, String descriptor,
+                                                       String signature, String[] exceptions) {
+                if (methodName.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
+                MethodVisitor parent = super.visitMethod(access, methodName, descriptor, signature, exceptions);
+                boolean entry = methodName.equals(spike ? "placeSpike" : "place") && descriptor.equals(entryDescriptor);
+                boolean templateHelper = methodName.equals("placeTemplate");
+                if (!entry && !templateHelper) return parent;
+                if (entry) counts[0]++;
+                return new MethodVisitor(Opcodes.ASM8, parent) {
+                    private final Label start = new Label(), end = new Label(), failure = new Label();
+                    @Override public void visitCode() {
+                        super.visitCode();
+                        if (!entry) return;
+                        if (podium) super.visitVarInsn(Opcodes.ALOAD, 0);
+                        else super.visitLdcInsn(jdk.internal.org.objectweb.asm.Type.getObjectType(target));
+                        super.visitVarInsn(Opcodes.ALOAD, podium ? 1 : 0);
+                        if (spike || platform) super.visitVarInsn(Opcodes.ALOAD, spike ? 3 : 1);
+                        else super.visitInsn(Opcodes.ACONST_NULL);
+                        super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$islandBegin",
+                            "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", false);
+                        super.visitLabel(start);
+                    }
+                    @Override public void visitInsn(int opcode) {
+                        if (entry && opcode == (spike ? Opcodes.RETURN : Opcodes.IRETURN)) {
+                            if (!spike) super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, spike ? "item10$endGenerator" : "item10$end",
+                                spike ? "()V" : "(Z)V", false);
+                        }
+                        super.visitInsn(opcode);
+                    }
+                    @Override public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean iface) {
+                        if (templateHelper && opcode == Opcodes.INVOKEVIRTUAL && owner.equals(TEMPLATE)
+                            && name.equals("placeInWorld") && desc.equals(TEMPLATE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitVarInsn(Opcodes.ALOAD, podium ? 5 : spike ? 4 : 3);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$bridgeTemplate", BRIDGE_TEMPLATE_CALL, false);
+                        } else if (entry && opcode == Opcodes.INVOKEINTERFACE && name.equals("setBlock")
+                            && desc.equals(WRITE_DESCRIPTOR) && (owner.equals("net/minecraft/world/level/ServerLevelAccessor")
+                                || owner.equals("net/minecraft/world/level/WorldGenLevel"))) {
+                            counts[2]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$islandWrite",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                        } else super.visitMethodInsn(opcode, owner, name, desc, iface);
+                    }
+                    @Override public void visitMaxs(int maxStack, int maxLocals) {
+                        if (entry) {
+                            super.visitLabel(end);
+                            super.visitTryCatchBlock(start, end, failure, "java/lang/Throwable");
+                            super.visitLabel(failure);
+                            java.util.List<Object> locals = new java.util.ArrayList<>();
+                            if (podium) locals.add(target);
+                            for (var type : jdk.internal.org.objectweb.asm.Type.getArgumentTypes(descriptor))
+                                locals.add(type.getSort() == jdk.internal.org.objectweb.asm.Type.BOOLEAN ? Opcodes.INTEGER : type.getInternalName());
+                            super.visitFrame(Opcodes.F_FULL, locals.size(), locals.toArray(), 1, new Object[] {"java/lang/Throwable"});
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$featureException", "(Ljava/lang/Object;)V", false);
+                            super.visitInsn(Opcodes.ATHROW);
+                        }
+                        super.visitMaxs(maxStack, maxLocals);
+                    }
+                };
+            }
+        }, 0);
+        if (counts[0] != 1 || counts[1] != 1 || counts[2] != (platform || podium ? 0 : 1))
+            throw new IllegalArgumentException("Unexpected End island hook sites: " + target + " " + java.util.Arrays.toString(counts));
+        bridge(writer, "islandBegin", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
+        bridge(writer, spike ? "endGenerator" : "end", spike ? "()V" : "(Z)V",
+            spike ? new int[] {} : new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
+        bridge(writer, "featureException", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+        bridge(writer, "bridgeTemplate", BRIDGE_TEMPLATE_CALL,
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD, Opcodes.ALOAD}, Opcodes.IRETURN);
+        if (!platform && !podium) bridge(writer, "islandWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        return writer.toByteArray();
+    }
+
     public static byte[] instrument(String target, byte[] original) {
+        if (islandFeature(target)) return instrumentIsland(target, original);
         if (BLOCKS_HELPER.equals(target)) return instrumentBclibWriter(original);
         if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target) || EXTRAS_TEMPLATE.equals(target) || extrasProcessor(target)) return instrumentBridge(target, original);
         if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
@@ -953,7 +1073,7 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!pillarFeature(name) && !BLOCKS_HELPER.equals(name) && !extrasFeature(name) && !EXTRAS_TEMPLATE.equals(name) && !extrasProcessor(name) && !BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                if (!islandFeature(name) && !pillarFeature(name) && !BLOCKS_HELPER.equals(name) && !extrasFeature(name) && !EXTRAS_TEMPLATE.equals(name) && !extrasProcessor(name) && !BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
                     && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;
