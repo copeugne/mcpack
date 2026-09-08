@@ -1,6 +1,6 @@
 # Biome-diverse repetition-1 baseline
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: BASELINE-WORLD ACCEPTANCE PASS, with two saved-content exclusions.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `-3503646078644842058`.
 Generation source: `6bef6d99fa1d4849a5dffb97daed4b2768954cc2`.
@@ -54,4 +54,54 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics are retained in the analysis directory's
-`all-strata-runtime.txt`. No census result is accepted at this checkpoint.
+`all-strata-runtime.txt`. Census session 15991 ended with exit 0 in 569.638 seconds.
+The output is 113,226,244 bytes, SHA-256
+`1bc84c7cdd4cd21e26d722632de4d39730c370ba9c231ffef0463eaa5d6f30d5`.
+All eleven strata have exactly 4,096 complete selected chunks. Fifty archived
+incoming target classes pass complete observer coverage and trace validation.
+
+## Saved-content exclusions
+
+Both excluded candidates are Overworld `supplementaries:cave_urn_cache` locations.
+Candidate 16688, attempt 22298, has anchor (-61,-37,-158) and two content positions
+(-63,-37,-158) and (-59,-37,-156). Candidate 18393, attempt 12523, has anchor
+(120,-8,-105) and content position (116,-9,-105). All three positions are in full
+saved chunks but contain `minecraft:air`. They remain CONTENT_NOT_PRESERVED
+and excluded under the existing rule. Their constructive trace observations do
+not override saved content. The responsible later operation is not identified.
+No overlap pairs or overlap-review dispositions occur in this result.
+
+## Accepted counts and limitations
+
+Rates use count times 1,000 / 4,096 within the same stratum. The output retains
+all category densities, individual spatial observations, censoring and biome bands.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 30 | 2 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 12 | 12 | 12 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 32 | 4121 | 23 | 3 | 4089 | 6 | 0 | 0 | 1 |
+| Central End | 3 | 5 | 4 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 24 | 29 | 28 | 0 | 0 | 0 | 1 | 0 | 0 |
+| Nether | 37 | 452 | 23 | 1 | 422 | 3 | 3 | 0 | 0 |
+
+Aether's 28 cloud starts remain excluded terrain. The observer records 33,034
+calls and 32,772 grouped candidates: 25,400 NO_CONSTRUCTIVE_CONTENT, 2,859
+OUTSIDE_FRAME, 4,511 OBSERVED_LOCATION and two CONTENT_NOT_PRESERVED. These
+are separate call and location denominators. Biome counts conserve all accepted
+locations; the central-End arena is the sole unavailable biome anchor. No
+positive-count zero-exposure row occurs in this world.
+
+The Overworld's 4,121 locations include six T2 dungeons, no T3 expeditions and one
+village. Its high total is dominated by 4,089 provisional T1 locations, not a
+count of fights. T2 finite-window nearest-observed mean is 250.19805617985955
+blocks; the uncensored mean remains null. Dispersion is 0.9583333333333334 and
+the largest empty full-cell rectangle is 2,304 chunks with bounds [-32,15,-32,15].
+This is the first accepted biome-diverse baseline and the twelfth accepted planned
+cell. Its matched control and second repetition remain outstanding. No tuning,
+observer-free causal claim or Item 10 completion follows from this single sample.

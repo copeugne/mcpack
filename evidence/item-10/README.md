@@ -3,7 +3,7 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Eleven worlds have individual census and
+repetitions and baseline/control arms. Twelve worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
@@ -127,7 +127,7 @@ both End strata and Nether, but the increase is not identical across repetitions
 
 ## Biome attribution limits found during integration
 
-The [accepted biome comparisons](accepted-biome-comparisons.json.gz) integrate all
+The [accepted biome comparisons](accepted-biome-comparisons.json.gz) integrate the initial
 ten accepted outputs, covering 110 strata and 42,336 height/biome rows. Each row
 retains its chunk-center exposure, all ten category counts and corresponding
 rates. Positive exposure with no category occurrences is an explicit zero count;
@@ -217,17 +217,17 @@ worlds only; it does not close the pending full sampling requirement.
 
 ## Failure denominators and uncertainty
 
-Eleven planned cells have accepted complete censuses. The failed planned cell
+Twelve planned cells have accepted complete censuses. The failed planned cell
 (ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
 generation, then an incomplete saved Aether chunk following a save exception.
-Four planned cells remain unattempted. This is thirteen attempts over twelve
-attempted cells, not thirteen completed worlds or five measured zero-density cells.
+Three planned cells remain unattempted. This is fourteen attempts over thirteen
+attempted cells, not fourteen completed worlds or four measured zero-density cells.
 The failed attempts retain their immutable archives and diagnoses. No missing
 cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
 control retry after the five untouched planned worlds. Sixteen complete cells
 remain required.
 
-Within the eleven accepted worlds, the observer's call count differs from grouped
+Within the twelve accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts
 from `nonregistry_candidates.attempts`, `locations` and `location_observations`
 in their accepted, hash-bound outputs. The five disposition columns partition
@@ -246,6 +246,7 @@ the grouped candidates; they do not partition individual observer calls.
 | Ocean-heavy r1 B | 28579 | 28394 | 24105 | 2617 | 1669 | 3 | 0 |
 | Ocean-heavy r1 C | 28648 | 28427 | 24078 | 2630 | 1718 | 1 | 0 |
 | Ocean-heavy r2 B | 28700 | 28531 | 24122 | 2625 | 1773 | 1 | 10 |
+| Biome-diverse r1 B | 33034 | 32772 | 25400 | 2859 | 4511 | 2 | 0 |
 
 No constructive content means the candidate did not produce the required content;
 it is not a failed server run. Outside-frame candidates remain excluded by the
@@ -271,9 +272,10 @@ denominators; none is converted into an omnibus failure rate.
 The new ocean-heavy r2 baseline separately excludes ten reviewed T0 candidates;
 its linked report gives the 73-to-83 outer-End sensitivity and all five overlap pairs.
 
-The four selected seeds are not a random sample, and only three currently have
-accepted worlds. Ordinary and mountainous each have two complete matched pairs;
-ocean-heavy has one and an unpaired second baseline. No biome-diverse inference is available. Fresh-repetition
+The four selected seeds are not a random sample. All four now have accepted
+worlds. The [biome-diverse r1 baseline](full-biome-diverse-r1-baseline/README.md)
+is unpaired until its control completes. Ordinary and mountainous each have two complete matched pairs;
+ocean-heavy has one and an unpaired second baseline. Fresh-repetition
 variation remains visible in the tables and raw outputs. Two repetitions do not
 support a reliable tail estimate or a confidence interval for all generated worlds.
 The raw sampling boundaries censor distances, and all sparse categories retain
@@ -519,7 +521,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Complete the four biome-diverse worlds, then the authorized final control retry; continue
+- Complete the remaining three biome-diverse worlds, then the authorized final control retry; continue
   capacity checks. Preserve all existing artifacts and failed observations.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.
