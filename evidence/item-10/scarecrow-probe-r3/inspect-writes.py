@@ -157,6 +157,9 @@ if bop:
 else:
     result["observations"] = observations
 print(json.dumps(result, indent=2))  # noqa: T201
+if bop and result["last_recorded_write_mismatches"]:
+    detail = "BOP last recorded successful writes disagree with saved block IDs"
+    raise ValueError(detail)
 expected_writes = 30
 if not bop and (
     len(observations) != expected_writes or not all(row["same_block_id"] for row in observations)
