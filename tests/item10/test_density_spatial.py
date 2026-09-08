@@ -2,7 +2,7 @@ from itertools import product
 from typing import cast
 
 import pytest
-from tools.analyze_structure_density import spatial_summary
+from tools.analyze_structure_density import category_occurrences, spatial_summary
 
 
 def starts(*points: tuple[int, int]) -> list[dict[str, str | int]]:
@@ -76,3 +76,71 @@ def test_largest_empty_rectangle_matches_exhaustive_small_grid() -> None:
             "area_chunks": expected[0],
             "bounds_chunks": expected[1],
         }
+
+
+def test_overlapping_categories_recompute_neighbors_from_the_selected_union() -> None:
+    rows: list[dict[str, object]] = [
+        {
+            "registry_id": "test:ambient",
+            "chunk_x": 0,
+            "chunk_z": 0,
+            "role": "T0",
+            "comparison_groups": ["village"],
+        },
+        {
+            "registry_id": "test:civilization",
+            "chunk_x": 1,
+            "chunk_z": 0,
+            "role": "C",
+            "comparison_groups": [],
+        },
+        {
+            "registry_id": "test:encounter",
+            "chunk_x": 2,
+            "chunk_z": 0,
+            "role": "T1",
+            "comparison_groups": ["village", "other"],
+        },
+        {
+            "registry_id": "test:dungeon",
+            "chunk_x": 3,
+            "chunk_z": 0,
+            "role": "T2",
+            "comparison_groups": ["not_village"],
+        },
+        {
+            "registry_id": "test:expedition",
+            "chunk_x": 4,
+            "chunk_z": 0,
+            "role": "T3",
+            "comparison_groups": [],
+        },
+        {
+            "registry_id": "test:objective",
+            "chunk_x": 5,
+            "chunk_z": 0,
+            "role": "T4",
+            "comparison_groups": [],
+        },
+    ]
+    groups = category_occurrences(rows)
+    assert groups["actionable_candidates"] == rows[1:]
+    assert groups["encounter_sites"] == rows[2:]
+    assert groups["villages"] == [rows[0], rows[2]]
+    assert groups["T2"] == [rows[3]]
+    assert groups["T3"] == [rows[4]]
+    assert groups["T4"] == [rows[5]]
+    selected = cast("list[dict[str, str | int]]", groups["encounter_sites"])
+    result = spatial_summary(selected, (-16, 15, -16, 15))
+    assert result["mean_nearest_neighbor_blocks"] == 16
+    # Individual singleton tiers have no neighbor; averaging their means would be wrong.
+    assert (
+        spatial_summary([selected[0]], (-16, 15, -16, 15))["mean_nearest_neighbor_blocks"] is None
+    )
+
+
+def test_empty_categories_retain_zero_counts_and_unknown_distances() -> None:
+    for selected in category_occurrences([]).values():
+        result = spatial_summary(cast("list[dict[str, str | int]]", selected), (-16, 15, -16, 15))
+        assert result["nearest_neighbors"] == []
+        assert result["mean_nearest_neighbor_blocks"] is None
