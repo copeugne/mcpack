@@ -492,3 +492,13 @@ unavailable. No raw world or previously accepted cross-check output was changed.
 ```sh
 uv run --no-sync pytest -q tests/item10/test_write_corroboration.py tests/item10/test_retained_trace.py tests/item10/test_typed_comparison_identity.py
 ```
+
+### Reviewed diagnostic delivery
+
+PR23 merged as `eabc9ce30f731e9a3471267e09fff615293c1b26` on 2026-09-08.
+Fetched `origin/main` contains reviewed head
+`73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2`. The
+[final review](https://github.com/copeugne/mcpack/pull/23#issuecomment-5578556110)
+completed at 03:15:05 UTC with no new findings and a Codex bot thumbs-up on the
+pull request. All four valid findings from earlier cycles were fixed. This
+closes the bounded diagnostic delivery, not Item 10's full measurement gate.

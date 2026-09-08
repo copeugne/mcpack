@@ -119,25 +119,21 @@ Do not launch r4 to repeat the equality test. The prospective protocol now
 separates collector correctness from established world variability. All 30
 recorded scarecrow block IDs were corroborated in the restored world. Local
 capture/preservation checks pass; observer-free equivalence remains unproven.
-PR23 reviews this bounded diagnostic before extension to other mechanisms.
-The Codex cycle on `ff951e02` completed with two valid P1 findings. The retained
-trace validator and ten regressions pass. The typed-NBT digest fix is pushed
-as `56c05626`; 771 shared-consumer tests and the final 14 focused projection
-tests pass. Typed reprocessing completed and confirms the same mismatch counts.
-All eight reader vectors and mismatch coordinates are retained in the compressed
-typed evidence linked from the placement diagnostic. The second PR23 cycle completed on `c14cb6d3` with one valid input-identity
-finding. The derivation now binds all region hashes to archived world manifests;
-five regressions pass and real reprocessing is byte-identical. The third cycle
-on `fbe9cb81` found the corresponding identity/acceptance gap in the coordinate
-inspection. That reader now checks retained identities and requires all 30
-block IDs to match; the real rerun is unchanged and four negative regressions pass.
-Request and inspect the next completed review cycle before merge.
-Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
-The placement diagnostic links raw receipts and the full mismatch summary.
-r1/r2 release and downloaded world restores are verified. The biome reader now
-retains registry piece bounds and midpoint-height attribution; 29 focused tests
-pass. All 64 control registry starts have biome attribution without gaps.
-No nonregistry density counts are accepted.
+PR23 delivered the bounded diagnostic through merge
+`eabc9ce30f731e9a3471267e09fff615293c1b26`, verified in fetched `origin/main`.
+The [clean review](https://github.com/copeugne/mcpack/pull/23#issuecomment-5578556110)
+completed on `73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2` with no new findings
+and a Codex thumbs-up. All four valid findings from earlier cycles were fixed.
+The placement diagnostic retains validation, raw custody and corrected typed
+comparison evidence. All 64 control registry starts have biome attribution.
+No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
+
+Continue on `codex/item10-placement-coverage`, created from delivered main.
+The next batch extends the existing collector using accepted Item 8 mechanisms;
+start with BetterEnd template attribution and successful content-write capture.
+The local protocol changes record its counting hazards and a selected finite
+sampling/control design. Commit that predeclaration before experiments; the full
+protocol remains DRAFT until capture coverage and storage validation pass.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed
