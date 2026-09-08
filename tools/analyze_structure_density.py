@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import gzip
 import hashlib
 import json
 import math
@@ -413,6 +414,36 @@ def category_occurrences(
         row for row in rows if "village" in cast("list[str]", row["comparison_groups"])
     ]
     return categories
+
+
+def verify_biome_comparison(path: Path, raw_root: Path) -> None:
+    """Reproduce the accepted comparison from hash-bound censuses without rewriting it."""
+    expected = path.read_bytes()
+    inputs = parse_strict_json(gzip.decompress(expected))
+    output = {}
+    for name, prior in inputs.items():
+        census_path = raw_root / (name + "-analysis") / "all-strata.json"
+        if not census_path.resolve().is_relative_to(raw_root.resolve()):
+            detail = "accepted census path escapes raw root"
+            raise ValueError(detail)
+        raw = census_path.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != prior["input_sha256"]:
+            detail = "accepted census identity mismatch: " + name
+            raise ValueError(detail)
+        strata = parse_strict_json(raw)["strata"]
+        summaries = {label: summarize_biomes(value) for label, value in strata.items()}
+        for label, summary in summaries.items():
+            counted = sum(row["counts"]["all_locations"] for row in summary["rows"])
+            counted += len(summary["unavailable_anchors"])
+            if counted != strata[label]["classification"]["categories"]["all_locations"]["count"]:
+                detail = f"location count not conserved: {name}/{label}"
+                raise ValueError(detail)
+        output[name] = {"input_sha256": digest, "strata": summaries}
+    raw = json.dumps(output, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+    if gzip.compress(raw, mtime=0) != expected:
+        detail = "biome comparison reproduction mismatch"
+        raise ValueError(detail)
 
 
 def summarize_biomes(result: dict[str, object]) -> dict[str, object]:  # noqa: C901 - one explicit anchor/exposure join.

@@ -223,32 +223,12 @@ using only the input identities from the committed comparison:
 
 ```sh
 uv run --no-sync python - <<'PY'
-import gzip
-import hashlib
-import json
 from pathlib import Path
-from tools.analyze_structure_density import summarize_biomes
-
-path = Path('evidence/item-10/accepted-biome-comparisons.json.gz')
-expected = path.read_bytes()
-inputs = json.loads(gzip.decompress(expected))
-output = {}
-for name, prior in inputs.items():
-    raw = Path(f'evidence/raw/item10/{name}-analysis/all-strata.json').read_bytes()
-    digest = hashlib.sha256(raw).hexdigest()
-    if digest != prior['input_sha256']:
-        raise ValueError(f'accepted census identity mismatch: {name}')
-    strata = json.loads(raw)['strata']
-    summaries = {label: summarize_biomes(value) for label, value in strata.items()}
-    for label, summary in summaries.items():
-        counted = sum(row['counts']['all_locations'] for row in summary['rows'])
-        counted += len(summary['unavailable_anchors'])
-        if counted != strata[label]['classification']['categories']['all_locations']['count']:
-            raise ValueError(f'location count not conserved: {name}/{label}')
-    output[name] = {'input_sha256': digest, 'strata': summaries}
-raw = json.dumps(output, sort_keys=True, separators=(',', ':')).encode() + b'\n'
-if gzip.compress(raw, mtime=0) != expected:
-    raise ValueError('biome comparison reproduction mismatch')
+from tools.analyze_structure_density import verify_biome_comparison
+verify_biome_comparison(
+    Path('evidence/item-10/accepted-biome-comparisons.json.gz'),
+    Path('evidence/raw/item10'),
+)
 print('All accepted inputs, location counts and comparison bytes verified.')
 PY
 ```
@@ -677,8 +657,9 @@ identification fix and validated authoritative-start-coordinate extraction.
 
 ## PR35 review corrections
 
-The completed review of `da40837c` identified a missing-identity defect:
-[missing feature identity](https://github.com/copeugne/mcpack/pull/35#discussion_r3961640260).
+The completed review of `da40837c` identified two relevant findings:
+[missing feature identity](https://github.com/copeugne/mcpack/pull/35#discussion_r3961640260)
+and [tracked biome reproduction](https://github.com/copeugne/mcpack/pull/35#discussion_r3961640274).
 The missing-identity regression failed before the fix because plain writes without
 provider metadata were accepted as Scarecrow. The existing collection validator
 now requires the pinned Scarecrow class and its exact five-write signature for
@@ -731,6 +712,17 @@ for name in names:
 PY
 ```
 
-Validation: the focused collection/biome suite passes 61 tests; Ruff, formatting
-and focused test-file BasedPyright pass. The complete trace integrity check above
-passed all sixteen accepted worlds, including every legacy Scarecrow attempt.
+The biome identity, conservation and deterministic byte-comparison workflow now
+lives in the existing analysis module as `verify_biome_comparison`, with focused
+regressions for altered input identity, lost count conservation and changed output.
+The documented invocation above reproduces the existing compressed artifact;
+no new sampling, schema or evidence format was introduced.
+
+Review-fix validation: `uv run --no-sync pytest -q tests/item7 tests/item10`
+passes **581 tests in 156.56 seconds** ([raw output](final-validation/pytest-review-fixes.txt)).
+Ruff check and formatting pass for the four affected Python files
+([check](final-validation/ruff-review-fixes.txt), [format](final-validation/format-review-fixes.txt));
+BasedPyright passes both affected test files with zero errors, warnings or notes
+([output](final-validation/basedpyright-review-fixes.txt)). The tracked biome
+reproduction verified all sixteen input hashes, count conservation and exact
+compressed bytes. No Item 11 workflow was selected.

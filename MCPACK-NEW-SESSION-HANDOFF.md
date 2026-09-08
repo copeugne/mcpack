@@ -185,8 +185,12 @@ The full Item 7/10 gate passes 568 tests after a narrow synthetic biome-fixture 
 both failed and passing logs are linked from the Item 10 README. Quality checks pass.
 Clean-checkout reproduction at `979f7efd` passed: fresh raw/world restores and
 byte-identical full census in 477.603s, with an independent locked Python environment.
-Next: consolidated Codex PR review/fix/merge, verified main delivery and Items 2
-through 10 identity/narrative audit. No new tooling PR or Item 11 work.
+[PR35](https://github.com/copeugne/mcpack/pull/35) reviewed `da40837c` with two findings.
+The strict legacy trace signature fix is `d0f07218`; all sixteen raw traces pass.
+The biome reproduction fix is in the same PR; all comparison bytes reproduce.
+The final review-fix gate passes 581 tests. Request a fresh review after pushing.
+Next: review/fix/merge, verified main delivery, then Items 2 through 10 audit.
+No new tooling PR or Item 11 work.
 
 Two local servers are stopped and preserved. Official launcher profiles are prepared;
 first launch/join is unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational

@@ -1,3 +1,6 @@
+import gzip
+import hashlib
+import json
 from pathlib import Path
 from typing import cast
 
@@ -7,6 +10,7 @@ from tools.analyze_structure_density import (
     chunk_biome_column,
     occurrence_biomes,
     summarize_biomes,
+    verify_biome_comparison,
 )
 
 from mcpack_evidence.item7_anvil import decode_region
@@ -210,6 +214,40 @@ def test_biome_comparison_preserves_height_zero_exposure_and_unavailable_locatio
     assert len(unavailable) == 1
     assert unavailable[0]["candidate_id"] == 3
     assert unavailable[0]["biome_unavailable_reason"] == "NO_LOCATION_HEIGHT"
+
+
+@pytest.mark.parametrize("defect", [None, "identity", "conservation", "output"])
+def test_comparison_reproduction_checks_inputs_counts_and_exact_bytes(
+    tmp_path: Path, defect: str | None
+) -> None:
+    stratum = biome_comparison_input()
+    classification = cast("dict[str, object]", stratum["classification"])
+    classification["categories"] = {
+        "all_locations": {"count": 5 if defect == "conservation" else 4}
+    }
+    raw = json.dumps({"strata": {"overworld": stratum}}).encode()
+    source = tmp_path / "sample-analysis" / "all-strata.json"
+    source.parent.mkdir()
+    _ = source.write_bytes(raw)
+    digest = "0" * 64 if defect == "identity" else hashlib.sha256(raw).hexdigest()
+    expected = {
+        "sample": {
+            "input_sha256": digest,
+            "strata": {"overworld": {} if defect == "output" else summarize_biomes(stratum)},
+        }
+    }
+    payload = json.dumps(expected, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+    path = tmp_path / "comparison.json.gz"
+    compressed = gzip.compress(payload, mtime=0)
+    _ = path.write_bytes(compressed)
+    if defect is None:
+        verify_biome_comparison(path, tmp_path)
+    else:
+        with pytest.raises(
+            ValueError, match=r"identity mismatch|not conserved|reproduction mismatch"
+        ):
+            verify_biome_comparison(path, tmp_path)
+    assert path.read_bytes() == compressed
 
 
 @pytest.mark.parametrize("defect", ["duplicate-exposure", "duplicate-anchor", "missing-anchor"])
