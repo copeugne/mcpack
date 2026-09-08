@@ -158,25 +158,12 @@ coverage rejection and fixture investigation remain in its record. Full Item
 7/10 suite passed 548 tests in 173.38s; two added archive-binding cases passed
 in the focused 41-test run. No code changed for the sixth or seventh census.
 
-The seventh census (session `95707`, terminal 0) passed in 10m50.946s, SHA-256
-`a96a0a04bbf370871ce4aa51821cd8b7d5e00876ebf2d227ab981fcb731f8873`.
-All 45,056 chunks and 50 observer classes pass. Its two in-frame anomaly/monolith
-candidates share two positions. The completed overlap review keeps them excluded
-under the existing protocol, with raw flags and sensitivity retained. No reader
-change was needed. Two cave-urn content mismatches are also retained.
-The two mountainous controls have Overworld totals 4,083 and 4,182 but identical
-T2/T3 counts (22/7). Outer End and Nether vary; see the full repetition comparison.
+The mountainous block is accepted at `5367d2dd`. The seventh and eighth worlds
+retain two and six reviewed overlap exclusions respectively under the unchanged
+protocol. Both matched pairs have Overworld T2/T3 baseline 6/2 versus control
+22/7, while total differences vary +44 to +165. Use their linked records for
+raw failures, sensitivity and complete repetition comparisons.
 
-Seventh-world acceptance is pushed at `b6df8887`.
-[Mountainous r2 baseline](evidence/item-10/full-mountainous-r2-baseline/README.md)
-finished from that source in 618.366s; session `8366` is terminal 0. Configuration
-and published/downloaded/restored raw custody pass (313 raw and 501 world files).
-Its census (session `50314`, terminal 0) passed in 10m28.578s, SHA-256
-`a4567909cc50e7fff796c9854df788f47d888ded444488dac4b97b138a9d1959`.
-All 45,056 chunks and 50 targets pass. Six overlapping T0 candidates were reviewed
-and excluded under the unchanged protocol. Both mountainous pairs have Overworld
-T2/T3 baseline 6/2 versus control 22/7, while total differences vary +44 to +165.
-The full mountainous block acceptance is pushed at `5367d2dd`.
 [Ocean-heavy r1 baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md)
 finished from that source in 512.546s; session `84867` is terminal 0. Configuration
 and published/downloaded/restored custody pass (313 raw and 502 world files).
@@ -184,8 +171,11 @@ Its census (session `96485`, terminal 0) passed in 7m43.150s, SHA-256
 `9c2ed4cf58b38f20a0cf7f65c50b2a9f90ac9539722220c67d2cfa7556d3dec7`.
 All 45,056 chunks and 50 observer targets pass. Three cave-urn content failures
 remain excluded, with no overlap cases. Nine worlds are individually accepted.
-No server is active. Next is `full-ocean-heavy-r1-without-sparse`, then r2 control,
-r2 baseline and the four biome-diverse worlds in frozen order. Use fresh
+Ninth-world acceptance is pushed at `6142e94b`.
+`full-ocean-heavy-r1-without-sparse` is generating from that source, session
+`19670`. The handle and its Java process were confirmed live. Poll this handle;
+do not restart from silence. Then finish r2 control, r2 baseline and the four
+biome-diverse worlds in frozen order. Use fresh
 hash-verified materializations and existing custody/census paths. Latest free
 space is about 26.4 GiB; the ninth world uses about 1.86 GiB. Continue checking
 growth against the roughly 30 GiB working plan.

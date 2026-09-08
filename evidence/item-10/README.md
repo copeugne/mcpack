@@ -1,16 +1,20 @@
 # Item 10 baseline density
 
 Status: IN PROGRESS, 2026-09-08.
-The [fresh registry diagnostic](pilot-r1/README.md) measured 24 starts in 3,969
-full Overworld chunks and reproduced exactly from restored raw evidence. This
-is a limited diagnostic, not the full baseline. No tuning has been performed.
-The separately requested player servers generated operational smoke-test worlds.
-The [sampling protocol](protocol.md) is under reassessment. The user rejected
-long recorded play and the proposed combat logger. No human workload is scheduled.
-The [authorized automated scope](methodology-amendment.md) now removes human
-phases from both Items 10 and 11. Provisional encounter-site density replaces the
-observed-fight requirement explicitly. The narrow Item 5 methodology delta
-passed clean review and main delivery through [PR22](https://github.com/copeugne/mcpack/pull/22).
+The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
+`item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
+repetitions and baseline/control arms. Nine worlds have individual census and
+raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
+links their authoritative records and identifies the active run. Final combined
+biome, seed, repetition and spatial synthesis, review, main delivery and the
+Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
+
+The [authorized automated scope](methodology-amendment.md) removes human phases
+from Items 10 and 11. No playing workload or recording is required. Provisional
+encounter-site density is not observed fights or exploration pacing. The Item 5
+methodology amendment passed clean review and main delivery through
+[PR22](https://github.com/copeugne/mcpack/pull/22). Earlier diagnostics below retain
+their original limited scope and cannot substitute for the full sample.
 
 ## Verified dependencies and delivery
 
