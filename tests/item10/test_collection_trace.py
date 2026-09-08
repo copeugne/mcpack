@@ -89,7 +89,7 @@ def consume(
             path,
             trace_sha256="0" * 64 if wrong_hash else hashlib.sha256(payload).hexdigest(),
             class_digests=DIGESTS,
-            dimensions={"minecraft:the_end"},
+            dimensions={"minecraft:the_end", "minecraft:overworld"},
             require_complete_observer=require_complete_observer,
         )
     )
@@ -98,6 +98,72 @@ def consume(
 def test_complete_attempt_preserves_refusals_and_all_metadata(tmp_path: Path) -> None:
     rows = events()
     assert consume(tmp_path, rows) == [rows[2:-1]]
+
+
+def test_missing_feature_cannot_default_plain_writes_to_scarecrow(tmp_path: Path) -> None:
+    rows = [
+        row
+        for row in events()
+        if row["kind"] in {"installed", "feature_installed", "begin", "write", "end", "shutdown"}
+    ]
+    with pytest.raises(ValueError, match="collection provider"):
+        _ = consume(tmp_path, rows)
+
+
+@pytest.mark.parametrize(
+    "defect", [None, "identity", "empty", "exception", "material", "arm", "flags", "return"]
+)
+def test_legacy_scarecrow_requires_complete_distinct_writer_signature(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, defect: str | None
+) -> None:
+    if defect != "identity":
+        monkeypatch.setattr(validator, "CLASS_SHA", DIGESTS[SCARECROW_CLASS])
+    leg = (
+        "Block{minecraft:oak_fence}"
+        "[east=false,north=false,south=false,waterlogged=false,west=false]"
+    )
+    states = [
+        leg,
+        "Block{minecraft:hay_block}[axis=y]",
+        leg.replace("east=false", "east=true"),
+        leg.replace("west=false", "west=true"),
+        "Block{minecraft:carved_pumpkin}[facing=south]",
+    ]
+    positions = [[1, 2, 3], [1, 3, 3], [0, 3, 3], [2, 3, 3], [1, 4, 3]]
+    rows: list[dict[str, object]] = [
+        {"kind": "begin", "attempt": 1, "dimension": "minecraft:overworld", "origin": [1, 2, 3]},
+        *[
+            {
+                "kind": "write",
+                "attempt": 1,
+                "position": pos,
+                "state": state,
+                "flags": 3,
+                "returned": False,
+            }
+            for pos, state in zip(positions, states, strict=True)
+        ],
+        {"kind": "end", "attempt": 1, "returned": True},
+    ]
+    if defect == "empty":
+        rows = [rows[0], rows[-1]]
+    elif defect == "exception":
+        rows[-1] = {"kind": "attempt_exception", "attempt": 1, "exception": "test.Failure"}
+    elif defect == "material":
+        rows[2]["state"] = "Block{minecraft:stone}"
+    elif defect == "arm":
+        rows[3]["position"] = [2, 3, 3]
+    elif defect == "flags":
+        rows[1]["flags"] = 2
+    elif defect == "return":
+        rows[-1]["returned"] = False
+    stream = [*events()[:2], *rows, events()[-1]]
+    if defect is None:
+        assert consume(tmp_path, stream) == [rows]
+        assert all(row["returned"] is False for row in rows[1:-1])
+    else:
+        with pytest.raises(ValueError, match="collection provider"):
+            _ = consume(tmp_path, stream)
 
 
 def test_partial_observer_cannot_be_promoted_to_full_collection(tmp_path: Path) -> None:

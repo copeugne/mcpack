@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Never, cast
@@ -610,9 +611,66 @@ CONDITIONAL_GATEWAY_CLASS = (
 )
 
 
+def _legacy_scarecrow(rows: list[dict[str, object]]) -> None:
+    """Identify the frozen collector's sole unlabelled writer, or reject ambiguity.
+
+    The pinned Scarecrow bytecode and its nine packaged configurations require
+    these five ordered writes. Zero-write returns and exceptions cannot identify
+    their provider in a mixed stream and are deliberately rejected.
+    """
+    if (
+        [row["kind"] for row in rows] != ["begin", *(["write"] * WRITES_PER_ATTEMPT), "end"]
+        or rows[0]["dimension"] != "minecraft:overworld"
+        or rows[-1]["returned"] is not True
+    ):
+        fail("collection provider missing identity or strict Scarecrow signature")
+    writes = rows[1:-1]
+    fence = re.fullmatch(
+        r"Block\{minecraft:(acacia|bamboo|birch|cherry|dark_oak|jungle|mangrove|oak|spruce)_fence\}"
+        r"\[east=false,north=false,south=false,waterlogged=false,west=false\]",
+        cast("str", writes[0]["state"]),
+    )
+    head = re.fullmatch(
+        r"Block\{minecraft:(carved_pumpkin|jack_o_lantern)\}\[facing=(north|east|south|west)\]",
+        cast("str", writes[-1]["state"]),
+    )
+    if fence is None or head is None:
+        fail("collection provider missing Scarecrow materials")
+    x, y, z = cast("list[int]", rows[0]["origin"])
+    # Clockwise arm first, then counterclockwise, with connections facing inward.
+    dx, dz, inward, opposite = {
+        "north": (1, 0, "west", "east"),
+        "east": (0, 1, "north", "south"),
+        "south": (-1, 0, "east", "west"),
+        "west": (0, -1, "south", "north"),
+    }[head[2]]
+    positions = [
+        [x, y, z],
+        [x, y + 1, z],
+        [x + dx, y + 1, z + dz],
+        [x - dx, y + 1, z - dz],
+        [x, y + 2, z],
+    ]
+    leg = cast("str", writes[0]["state"])
+    states = [
+        leg,
+        "Block{minecraft:hay_block}[axis=y]",
+        leg.replace(inward + "=false", inward + "=true"),
+        leg.replace(opposite + "=false", opposite + "=true"),
+        writes[-1]["state"],
+    ]
+    if any(
+        row["position"] != position or row["state"] != state or row["flags"] != HELPER_FLAGS
+        for row, position, state in zip(writes, positions, states, strict=True)
+    ):
+        fail("collection provider missing exact Scarecrow geometry, states or flags")
+
+
 def _collection_provider(rows: list[dict[str, object]]) -> None:
     """Reject cross-provider metadata and wrong method completion semantics."""
     feature = next((row for row in rows if row["kind"] == "feature"), None)
+    if feature is None:
+        _legacy_scarecrow(rows)
     name = SCARECROW_CLASS if feature is None else cast("str", feature["class"]).replace(".", "/")
     kinds = {cast("str", row["kind"]) for row in rows}
     owners = {
@@ -844,8 +902,10 @@ def collection_attempts(  # noqa: C901, PLR0912, PLR0915
             if kind in {"end", "generator_end", "attempt_exception"}:
                 if nested[attempt]:
                     fail("collection attempt ended inside delegate")
-                if "feature" not in marks[attempt] and SCARECROW_CLASS not in installed:
-                    fail("collection attempt has no installed feature")
+                if "feature" not in marks[attempt] and (
+                    SCARECROW_CLASS not in installed or class_digests[SCARECROW_CLASS] != CLASS_SHA
+                ):
+                    fail("collection provider has no pinned legacy Scarecrow installation")
                 _collection_provider(active[attempt])
                 del marks[attempt], nested[attempt]
                 yield active.pop(attempt)

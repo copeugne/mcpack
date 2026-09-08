@@ -674,3 +674,63 @@ framework or tuning while completing validation and delivery.
 
 [Decoder preparation validation](decoder.md) records the custom-dimension
 identification fix and validated authoritative-start-coordinate extraction.
+
+## PR35 review corrections
+
+The completed review of `da40837c` identified a missing-identity defect:
+[missing feature identity](https://github.com/copeugne/mcpack/pull/35#discussion_r3961640260).
+The missing-identity regression failed before the fix because plain writes without
+provider metadata were accepted as Scarecrow. The existing collection validator
+now requires the pinned Scarecrow class and its exact five-write signature for
+legacy unlabelled attempts: Overworld origin, legs, hay body, clockwise then
+counterclockwise fence arms connected inward, and a correctly facing pumpkin
+head, all with flags 3 and a true method return. Write refusals remain raw evidence.
+Zero-write returns and exceptions without a feature identity are ambiguous in a
+mixed stream and fail validation. Explicitly identified providers retain their
+existing semantics. The frozen collector, worlds and configurations are unchanged.
+
+The signature derives from the retained
+[Scarecrow bytecode identity and packaged configurations](../item-8/sources/explorations-scarecrow-scope/README.md),
+not from fitting accepted observations. `place` bytecode offsets 238 through 299
+establish write order, flags and return; `createArm` establishes inward connections.
+The nine `data/explorations/worldgen/configured_feature/scarecrow_*.json` entries
+in JAR SHA-256 `420d0373711877a5e1a86b7f9b4f54848f3debb2f116c2509a5cc4eb496c979e`
+select matching fence legs/arms and carved-pumpkin or jack-o-lantern heads.
+
+All sixteen complete archive-bound traces passed the strengthened reader.
+Legacy Scarecrow attempt counts in baseline/control order for repetitions 1 and 2:
+ordinary 0/0 and 0/0; mountainous 3/3 and 2/4; ocean-heavy 8/4 and 5/5;
+biome-diverse 1/2 and 2/2. All 41 satisfy the signature. No raw rows, accepted
+locations or census outputs changed. Reproduce this integrity check after the
+restores documented in each world report:
+
+```sh
+uv run --no-sync python - <<'PY'
+import gzip, json
+from pathlib import Path
+from tools.validate_item10_trace import collection_attempts
+names = json.loads(gzip.decompress(Path('evidence/item-10/accepted-biome-comparisons.json.gz').read_bytes()))
+for name in names:
+    manifest = json.loads(Path(f'evidence/item-10/{name}/archive-manifest.json').read_bytes())
+    members = {r['relative_path']: r for r in manifest['files']}
+    prefix = 'trace.jsonl.classes/'
+    classes = {n[len(prefix):-6]: r['sha256'] for n, r in members.items()
+               if n.startswith(prefix) and n.endswith('.class')}
+    dimensions = {'minecraft:overworld', 'minecraft:the_end', 'minecraft:the_nether',
+                  'aether:the_aether', *[f'ad_astra:{n}' for n in
+                  ('earth_orbit', 'mars', 'mars_orbit', 'moon', 'moon_orbit', 'venus')]}
+    attempts = legacy = 0
+    for rows in collection_attempts(
+        Path(f'evidence/raw/item10/{name}-custody/restored-local/trace.jsonl'),
+        trace_sha256=members['trace.jsonl']['sha256'], class_digests=classes,
+        dimensions=dimensions, require_complete_observer=True,
+    ):
+        attempts += 1
+        legacy += not any(r['kind'] == 'feature' for r in rows)
+    print(name, attempts, legacy)
+PY
+```
+
+Validation: the focused collection/biome suite passes 61 tests; Ruff, formatting
+and focused test-file BasedPyright pass. The complete trace integrity check above
+passed all sixteen accepted worlds, including every legacy Scarecrow attempt.
