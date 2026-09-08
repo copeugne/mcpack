@@ -172,10 +172,13 @@ Its census (session `96485`, terminal 0) passed in 7m43.150s, SHA-256
 All 45,056 chunks and 50 observer targets pass. Three cave-urn content failures
 remain excluded, with no overlap cases. Nine worlds are individually accepted.
 Ninth-world acceptance is pushed at `6142e94b`.
-`full-ocean-heavy-r1-without-sparse` is generating from that source, session
-`19670`. The handle and its Java process were confirmed live. Poll this handle;
-do not restart from silence. Then finish r2 control, r2 baseline and the four
-biome-diverse worlds in frozen order. Use fresh
+[Ocean-heavy r1 control](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md)
+finished from that source in 553.698s; session `19670` is terminal 0. All eleven
+selections, lifecycle and configuration checks pass. Published/downloaded/restored
+raw custody verifies 313 raw files and 502 world files. Its census is active as
+session `89527`; poll that handle and inspect the complete result before acceptance.
+No server is active. Then finish r2 control, r2 baseline and the four biome-diverse
+worlds in frozen order. Use fresh
 hash-verified materializations and existing custody/census paths. Latest free
 space is about 26.4 GiB; the ninth world uses about 1.86 GiB. Continue checking
 growth against the roughly 30 GiB working plan.
