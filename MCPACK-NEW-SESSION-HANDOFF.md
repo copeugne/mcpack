@@ -136,61 +136,40 @@ edge to retain the frozen 64 by 64 frame. Control materialization verifies the
 full baseline before omitting only Sparse Structures, with unchanged configuration.
 Full measurements, paired/biome/seed comparisons, durable custody, the consolidated
 PR review/merge and Items 2 through 10 audit remain the delivery scope.
-The first full run, `full-ordinary-r1-baseline`, finished all eleven selections
-and stopped cleanly after 497.453 seconds from generation source `7b977af6`.
-Session `89854` is terminal. The original post-capture rejection is preserved:
-the Item 7 allowlist omitted seven custom-dimension Chunky task files. The narrow
-fix revalidated all 239 unchanged captured files without regenerating the world.
-See [first full run](evidence/item-10/full-ordinary-r1-baseline/README.md) for the
-original run receipt, recovery command, focused checks and initial sizes.
-All 50 incoming classes and 28,908 complete attempts pass direct trace checks.
-Raw custody is published at tag `item10-full-ordinary-r1-baseline-aa409114`;
-local/download restores verified all 554 members and the world restore verified
-503 files. Overworld analysis session `39841` completed successfully: 4,096 full
-chunks, 24 registry starts and 931 nonregistry locations. Its hash, command and
-limits are in the first-run README; output is under
-`evidence/raw/item10/full-ordinary-r1-baseline-analysis`.
-The single-stratum output repeats 68.4 MB of whole-world observation state.
-First-world acceptance now passes at analysis implementation `14680b79`.
-Corrected analysis session `62881` is terminal 0: all 45,056 selected chunks,
-1,332 observed nonregistry locations, and exact equality with the previous
-Overworld census/classification/spatial/biome object. The Aether terrain exclusion
-retains 26 raw cloud starts. Failed session `56885` remains preserved.
-Full output `all-strata.json` is 83,579,779 bytes, SHA-256
-`3ce081927696641793f9c522520149635341f9714ca3041df5419a6130b51c02`;
-timing is `all-strata-r2-runtime.txt` (8m23.404s). The first-run README records
-per-stratum counts, lifecycle-site limitations and resource acceptance. All 541
-Item 7/10 tests passed in 172.87s. Baseline analysis and test sessions are terminal.
-The first-seed projection is about 4.45 machine-hours for generation/analysis and
-30.3 GiB working allocation; check actual growth per world. Free space is about
-43.7 GiB. These are projections, not guarantees or permission to delete evidence.
-First-world acceptance is pushed at `5ceb171c`. The first matched control,
-`full-ordinary-r1-without-sparse`, finished cleanly in 559.034s from that source.
-Generation session `61882` is terminal 0. Its exact control runtime and frozen
-configuration checks pass. [Control evidence](evidence/item-10/full-ordinary-r1-without-sparse/README.md)
-records the unchanged run receipt, 313-member raw archive, published tag and
-local/download restores plus the 504-file world restore. No Java server is active.
-Control analysis session `60402` is terminal 0: all 45,056 chunks and full
-observer/custody checks pass. Result SHA-256 is
-`84181564564b2c5bb5f804852214e6d1105df901a238ef51775dabdd6a5618a4`,
-110,369,600 bytes, runtime 8m21.506s. The control README records per-stratum
-counts, first matched deltas, 1,376 observed nonregistry locations and six retained
-CONTENT_NOT_PRESERVED cave-urn exclusions. First-pair acceptance is pushed at
-`6747b6b1`. The fresh second control `full-ordinary-r2-without-sparse` finished
-cleanly in 561.808s from that source; session `82382` is terminal 0. Its run,
-configuration and observer identities match repetition 1. The
-[second-control evidence](evidence/item-10/full-ordinary-r2-without-sparse/README.md)
-records the published 313-file raw archive, local/download restores and 504-file
-world restore. Second-control analysis session `46192` is terminal 0 and
-acceptance passes: all 45,056 chunks, full observer/custody, 1,333 observed
-nonregistry locations and two retained cave-urn content exclusions. Output
-SHA-256 is `6cf7be9e778b6dc94b76afee86857fd93e9034e9891fa3a25ccf9ca37b5d6225`,
-84,637,179 bytes, 8m2.261s. Its README records all counts and repetition changes,
-including outer-End locations 91 to 70. No analysis/server process is active.
-Three worlds are accepted. Free space is about 39.6 GiB; this run occupies about
-1.93 GiB. Next: fresh ordinary repetition-2 baseline, then the twelve other-seed
-worlds in protocol order. Complete all per-world checks, cross-repetition/seed and
-spatial/biome synthesis, consolidated PR review/merge and the cross-item audit.
+
+## Current full-sample block
+
+Three of sixteen worlds have individual acceptance:
+
+- [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md):
+  complete 45,056-chunk census, original configuration-capture rejection and
+  unchanged-file revalidation, published/restored custody and resource gate.
+  The first all-strata cloud-root rejection is retained; Item 8's existing
+  terrain exclusion is now integrated. Exact Overworld comparison passed.
+- [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md):
+  complete census/custody and first matched contrast; six retained content exclusions.
+- [Ordinary r2 control](evidence/item-10/full-ordinary-r2-without-sparse/README.md):
+  complete census/custody and repetition comparison; two retained content exclusions.
+  Outer-End classified locations vary from 91 to 70. Do not hide this variation.
+
+All accepted outputs, SHA-256 values, commands and limitations are in those records.
+The unchanged analysis implementation is `14680b79`; the full applicable gate
+passed 541 Item 7/10 tests in 172.87s. No new code changes require repeated testing.
+The first three worlds occupy roughly 1.9 to 2.0 GiB each; the working projection
+is close to the user's roughly 30 GiB budget. Check growth after each world.
+Last free-space observation was about 39.6 GiB before the fourth world's custody.
+
+[Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md) finished
+cleanly in 513.589s from `004b1724`; generation session `43958` is terminal 0.
+Its identities match the first baseline. Published raw custody, local/download
+restores (313 files) and world restore (503 files) pass. No Java server is active.
+Full census is running in exec session `80092`; poll that handle, do not restart
+on silence. Output is `evidence/raw/item10/full-ordinary-r2-baseline-analysis/all-strata.json`,
+with `all-strata-runtime.txt` beside it. Next: finish this census, baseline repeat
+and second matched comparisons, and storage check. Then run the twelve remaining
+worlds in protocol order starting mountainous r1 baseline. Complete all per-world
+checks, final spatial/biome/seed/repetition synthesis, consolidated PR review/merge
+and the cross-item audit. No acceptance is inferred from generation alone.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
