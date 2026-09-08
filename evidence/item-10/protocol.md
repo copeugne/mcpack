@@ -32,19 +32,36 @@ Never pool different dimensions' coordinates or convert their distances by porta
 scaling. The inclusion of space dimensions permits measured zeroes rather than
 assuming the lack of structures from their names.
 
-Use the four nested rectangles in
-`measurement/structure-density-v0.1.json`, translated by chunk offset `(0, 0)`
-for every stratum except the outer End, translated by `(512, 512)`.
-The outer End rectangle does not overlap the central rectangle at any stage.
-Select every target chunk in each rectangle, not only chunks that contain starts.
-Freeze all four stages; do not use a count-based early stopping rule. This avoids
-letting an observed category count determine the sampled area. Retain stage
-results as nested convergence descriptions, never as independent replicates.
+Use one 64 by 64 chunk rectangle per stratum: inclusive X and Z `[-32, 31]`,
+translated by `(512, 512)` for outer End only (both axes `[480, 543]`).
+The central and outer End rectangles are disjoint. Select every target chunk,
+not only chunks that contain starts. This replaces the draft's four-stage ladder;
+no full sampling run used that ladder and no observed count selected this area.
+The historical scaffold remains unchanged and is not an active stopping rule.
 
-Stage sizes per stratum are 4,096, 8,192, 16,384 and 32,768 chunks. Across four
-seeds and eleven strata, final target size is 1,441,792 chunks. The initial
-ordinary-seed, Overworld-only stage is a pipeline pilot and does not represent
-the complete baseline. Preserve a rejected pilot and its disposition.
+Collect two independent fresh worlds per seed and arm, for four seeds, eleven
+strata, two repetitions and two arms: 720,896 selected chunks in 16 worlds.
+Each world contains all eleven fixed strata (45,056 selected chunks). Do not
+reuse a baseline world for its control or a prior repetition. Use seed order
+ordinary, mountainous, ocean-heavy, biome-diverse. Within each seed, run baseline
+then control for repetition 1, control then baseline for repetition 2. Use the
+same dimension order in every world, sorted by resource location, central End
+before outer End. Keep both raw repetitions, even when their counts disagree.
+
+The area is a finite-region census with a per-run density increment of
+`1000 / 4096 = 0.244140625` locations per 1,000 chunks. It supplies 16 complete
+256-block spatial cells per stratum, with explicit boundary censoring for
+nearest neighbors. Two repetitions expose variability but do not establish its
+population distribution. Report sparse categories and zeroes without asserting
+absence elsewhere or precise global rates. These deliberately selected seeds
+and fixed regions do not support random-world confidence intervals. This is
+adequate for the specified descriptive comparisons, not stable rare-event rate
+estimation; expanding until rare categories reach a target would change the
+estimand and is not authorized by this protocol.
+
+The spatial and repetition design is selected before collection. The full
+protocol remains DRAFT until complete occurrence coverage, the exact collector
+and control identities, and measured collector storage costs pass their gates.
 
 ## Occurrences and denominators
 
@@ -110,8 +127,34 @@ occurrence collection beyond the scarecrow diagnostic is still missing.
 | `yungsextras:feature_entrypoints` | 10 | Configured feature/template entrypoints for canonical designs. |
 
 The existing evidence supplies family mappings and nested delegation distinctions.
-Choose hooks or saved-world reconstruction from those records after the bounded
-PR23 review; do not audit providers again or count each delegated write as a site.
+Choose hooks or saved-world reconstruction from those records following the
+clean, merged PR23 diagnostic; do not audit providers again or count each delegated write as a site.
+
+Existing BetterEnd code establishes three concrete constraints for that extension:
+
+- In the retained [NBTFeature disassembly](../item-8/sources/betterend-entry-template-consumers/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.NBTFeature.txt),
+  `place` discards `StructureTemplate.placeInWorld`'s result at bytecode offsets
+  259/262 and returns true at 657/658. The retained
+  [CrashedShipFeature](../item-8/sources/betterend-feature-scope/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.CrashedShipFeature.txt)
+  does the same at 250/253 and 311/312, with erosion between those points.
+  Neither outer success value proves a placed location.
+- The retained [StructureTemplate disassembly](../item-8/sources/missing-template-code/server-1.21.1-20240808.144430-srg.jar/net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.txt)
+  skips blocks outside the clipping box at 250/256, branches past refused content
+  writes at 351/356, and still returns true at 1151/1152. Template success alone
+  also cannot supply a nonempty occurrence. Preserve successful content writes
+  separately from temporary barrier writes, terrain merge and erosion. Empty or
+  fully refused placements must remain distinguishable from observed sites.
+- `BuildingListFeature` stores its selection in a mutable field. The retained
+  [StructureInfo](../item-8/sources/betterend-entry-template-consumers/BetterEnd-21.0.31.jar/org.betterx.betterend.world.features.BuildingListFeature$StructureInfo.txt)
+  instead exposes a final `structurePath` and the actual returned template at
+  `getStructure` offsets 18 through 22. Attribution must bind the template used
+  by the placement to its selected path, rather than reread the feature's mutable
+  selection later. This is an attribution constraint, not a diagnosis of the
+  already observed baseline nondeterminism.
+
+These are direct derivations from accepted Item 8 code evidence, not additional
+measurements or accepted nonregistry counts. The next collector validation must
+exercise these failure paths before BetterEnd occurrences enter density numerators.
 
 ## Collector validation under established baseline variability
 
@@ -187,8 +230,9 @@ Nonregistry writer coordinates will supply their own recorded anchors.
 The existing `--biomes` reader now implements this registry attribution alongside
 height-band exposure. Focused Item 10 validation passes 29 tests, including
 negative heights, missing bounds, out-of-height attribution and inverted bounds;
-Ruff and the changed test's type check pass. Real-world attribution integration
-remains to be run, and does not alter the generation-equivalence projection.
+Ruff and the changed test's type check pass. The retained r3 control integrates attribution for all 64 registry starts
+without gaps, as linked in the placement diagnostic. This does not alter the
+generation-equivalence projection.
 
 Report per-seed and per-stratum results first. These four deliberately selected
 seeds and origin-centered regions are not a random sample of all Minecraft worlds.
@@ -198,28 +242,59 @@ deterministic repeat agreement a confidence interval. Categories with fewer than
 
 ## Resource and delivery bounds
 
-The r3 uninstrumented mountainous diagnostic now supplies a measured planning
-proxy: 366.501 seconds for 6,852 selected chunks and 137,748,133 retained world
-bytes, including halo and lifecycle data. Linear scaling to the draft's
-1,441,792 chunks gives about 21.42 generation hours and 26.99 GiB per independent
-repetition, before controls, archives, derived output and restore workspace.
-This single mixed-stratum run does not predict all custom dimensions reliably.
-Offline processing time is additional. These values replace the earlier Item 7
-byte proxy for planning.
+### Sparse Structures control contrast
 
-The smallest proposed rectangle alone would contain 180,224 chunks across the
-same seeds and strata, with corresponding proxies of 2.68 hours and 3.37 GiB
-per repetition. These are planning alternatives; the full frame remains unfrozen. Before freezing collection, justify the selected area
-against required precision and retained sparse-category limitations rather than
-inheriting all four stages from the historical scaffold. No full-frame
-experiment has started, and no result-dependent stopping rule is introduced.
+Use the complete frozen baseline against an explicitly labeled control whose
+only candidate-manifest change is omission of
+`sparsestructures-neoforge-1.21.1-3.0.jar` (SHA-256
+`5aca0b33c0c83154810bbdd8ddc0d3e6a3e4591577274e2d27c10de0b45f2a45`).
+The baseline remains 136 candidates, or 137 with the declared Chunky overlay;
+the control has 135, or 136 with that same overlay. Preserve every configuration
+file unchanged, including the now-unused Sparse Structures configuration. Use
+the same collector, seed, selected regions, generation commands and lifecycle
+contract in both arms. Produce the exact derived control manifest before launch.
 
-Process strata sequentially. Before beginning another stratum, archive the clean
-world without `session.lock`, publish under immutable identity, verify download
-and restore, and retain the committed manifest and durability references under
-`evidence/item-10/`. Release disposable measurement materializations only after
-that custody gate and within explicit authorization. Never remove the operational
-player worlds, prior-item backups or protected artifacts to satisfy this budget.
+This contrast measures removal of Sparse Structures within the retained stack,
+not a spacing-only effect or a recommended configuration change. The accepted
+[MakeStructuresSparse code](../item-8/sources/sparsestructures-provider/sparsestructures-neoforge-1.21.1-3.0.jar/io.github.maxencedc.sparsestructures.mixin.MakeStructuresSparse.txt)
+changes spacing/separation and, independently at bytecode 205 through 235,
+conditionally replaces the placement salt. Factor 1 alone is therefore not the
+chosen control. Direct inspection of all `candidates[].dependencies` in
+[Item 3's retained inspection source](../item-3/jar-inspection.json) finds no
+dependency with `mod_id == "sparsestructures"`; this supports attempting the
+control, but does not replace its runtime validation.
+
+Both arms require fresh independent repetitions. Retain per-run counts and
+within-arm variation alongside between-arm differences; do not infer that each
+individual changed location was caused by the omitted mod. Generation order,
+repetition count, sample size and combined resource budget must be frozen before
+collection. This resolves the control contrast, not the remaining sampling gate.
+
+### Runtime and storage estimate
+
+The r3 uninstrumented mountainous diagnostic supplies a measured planning proxy:
+366.501 seconds for 6,852 selected chunks and 137,748,133 retained world bytes,
+including halo and lifecycle data. Linear scaling gives about 10.71 generation
+hours and 13.50 GiB of uncompressed world data across both arms and repetitions,
+before archives, derived output and restore workspace. Each 45,056-chunk world
+has a proxy of 40.17 minutes and 0.844 GiB. This single mixed-stratum run does
+not predict custom dimensions or the farther outer End reliably. Offline
+processing, collector overhead, installation and archiving are additional.
+These are automated machine-time estimates, not a player workload.
+
+About 8.8 GiB was available at this planning checkpoint. Process one world at a
+time, using the existing clean-save/archive/publish/download/restore path. Keep
+at least 5 GiB available before starting a world as a provisional workspace floor.
+This allows three world copies at 0.844 GiB and four archive copies at about
+0.54 GiB using the measured r3 control compression ratio, totaling about 4.7 GiB
+before collector output. Verify this against actual collector and first-world
+storage before scaling.
+The floor is not a disk quota or a guarantee based on the proxy. Archive without
+`session.lock` and retain immutable raw custody and committed evidence references.
+Release disposable measurement materializations only after verified custody and
+within explicit authorization. Never remove operational player worlds, prior
+backups or protected artifacts to satisfy this budget. A failed resource gate
+stops collection before another world; it does not reduce the declared sample.
 
 Complete the ordinary pilot through deterministic analysis and retained evidence
 before scaling across seeds and dimensions. Then integrate all final results,
@@ -261,3 +336,177 @@ After clean stop, run the counter once over the declared rectangle, retain its
 output or failure, measure actual elapsed time and storage, then archive and
 verify a restored copy with the existing custody tools before releasing any
 materialization or scaling. No player participation or screen recording is used.
+
+## BetterEnd runtime diagnostic r1
+
+Predeclared before launch on 2026-09-08. Use the unchanged existing diagnostic
+runner with `--name betterend-probe-r1 --mode probe --role mountainous` and the
+Item 7 `run` selections: 3,969 Overworld chunks and 961 each in Nether, central
+End and outer End (6,852 total). This tests the extension committed as `3594b2be`;
+the diagnostic receipt records the exact launch revision and built agent hash.
+It is not one of the full-frame sampling worlds or a repeat equality experiment.
+
+The fresh materialization must pass the existing frozen-input preflight. Keep
+the 900-second lifecycle timeout, 1 to 4 GiB heap, unchanged configurations and
+correlated save-flush/clean-stop requirements. Current capacity is 8.8 GiB disk
+and 9.2 GiB available RAM, with no Java process found. The prior same-seed r3
+run took about six minutes and retained about 138 MB of world data. Reserve
+1 GiB for this bounded diagnostic and custody as a planning allowance, with
+additional trace cost measured from this run rather than assumed negligible.
+
+Require installation records for all four new target classes, matching the
+exact input class hashes in the existing Item 8 identities used by the fixture.
+Any changed runtime class identity, installation failure, malformed or incomplete
+trace, unsuccessful lifecycle or missing expected region coverage rejects the
+runtime capture gate and remains retained. At least one paired BetterEnd template
+attempt with successful content writes is required to proceed to saved-world
+corroboration. Zero eligible attempts is INSUFFICIENT, not an accepted zero density.
+Preserve empty, refused and exceptional attempts. Validate source-path attribution
+against the existing canonical family mapping before accepting any occurrence.
+No full-world equality or observer-free equivalence claim is required or implied.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-probe-r1 --mode probe --role mountainous
+```
+
+## BetterEnd incoming-class diagnostic r2
+
+Predeclared before launch on 2026-09-08. Use `betterend-identity-r2`, probe mode,
+mountainous seed and the existing `pilot` preset: 81 chunks in each of the same
+four dimension/End strata, totaling 324 selected chunks. The runner now exposes
+that existing validated preset; its default remains the larger `run` preset.
+The only collector change from r1 is retention of incoming target class bytes.
+Keep the same frozen runtime/configuration, lifecycle, heap and 900-second limit.
+
+Purpose: retain and inspect the incoming Minecraft class that differed from its
+packaged form in r1. Require the four new class files and their emitted SHA-256
+identities, exact provider input identities, complete lifecycle, and no failed
+installation. Compare the incoming Minecraft class against the packaged Item 8
+class using the pinned JDK disassembler. Inspect the actual content-write call
+site and every difference affecting that method before accepting a runtime hook
+identity. The r1 observed Minecraft hash is a comparison input, not a substitute
+for r2's own retained bytes. This is an identity diagnostic, not a density sample;
+no minimum template-placement count is required to inspect the class.
+
+Current disk headroom is 8.0 GiB. Keep the prior diagnostic's 1 GiB planning
+allowance for raw outputs and custody; startup/halo costs prevent extrapolating
+runtime or storage in direct proportion to the smaller selected area. Preserve
+failures and archive/verify the stopped world through the existing tools.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-identity-r2 --mode probe --role mountainous --preset pilot
+```
+
+## BetterEnd positive-placement fixture r3
+
+Predeclared before launch on 2026-09-08. Use fresh `betterend-fixture-r3`,
+mountainous seed, probe mode and the existing 324-chunk pilot preset. After the
+four generation selections, the runner sends exactly two recorded commands:
+
+```text
+execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone
+execute in minecraft:the_end run place feature betterend:blossoming_spires_structures 8 81 8
+```
+
+The first creates a small flat terrain fixture in an even-parity chunk; the
+second exercises the registered building-list configuration identified in the
+accepted Item 8 configured-feature registry. The normal feature implementation
+still decides whether placement succeeds. No configuration, provider code or
+predicate is bypassed. This intentionally altered world is permanently excluded
+from density sampling and does not establish natural placement frequency.
+Selection RNG is whatever the real command uses; retain its observed template
+path rather than preselecting or rewriting the outcome.
+
+The existing lifecycle now accepts an optional tuple of commands after generation
+and before its unchanged correlated save-flush. Its default is empty. The fixture
+flag is restricted to probe mode and the pilot preset; all commands enter the raw
+receipt. Focused lifecycle/probe validation passes 17 tests, including command
+ordering before flush; Ruff and changed Python type checks pass.
+
+Require a successful platform command, a paired real template call with at least
+one successful non-air content write, validated source-path attribution, complete
+trace, inspected retained incoming classes, and saved-world corroboration. Record
+refusals, exceptions and later state differences. A successful server lifecycle
+or outer feature result alone does not pass this gate. Use the frozen preflight,
+1 to 4 GiB heap, 900-second timeout and the previous small pilot's 1 GiB custody
+planning allowance; recheck host capacity before launch.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r3 --mode probe --role mountainous --preset pilot --betterend-fixture
+```
+
+
+## BetterEnd loaded placement fixture r4
+
+Predeclared before launch. Repeat the r3 diagnostic in fresh
+`betterend-fixture-r4`, with its same seed, pilot selections, heap, timeouts and
+positive-placement gate. Correct only the demonstrated unloaded-target defect:
+after readiness and before the first generation selection, send
+`execute in minecraft:the_end run forceload add -32 -32 47 47`.
+This requests 25 central End chunks around the fixture, leaving the four generation
+selections before the two original placement commands. Require the loading command
+and both fixture commands to succeed; asynchronous loading is not assumed complete
+merely because a ticket was requested. Any refusal still rejects the fixture.
+The retained ticket and artificial platform make this a diagnostic world only.
+Neither changes the frozen configuration or supplies density observations.
+
+The existing lifecycle receives an optional empty-by-default command tuple before
+generation, using its existing send/error path and command receipt. This narrow
+addition fixes the reproduced r3 precondition failure; no new runner is introduced.
+The focused lifecycle and probe suite passes 23 tests, including command order
+with empty and nonempty setup/fixture tuples. Changed Python type checks pass.
+The host check before launch found 7.5 GiB free and no Java server process;
+retain the 1 GiB diagnostic custody allowance.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r4 --mode probe --role mountainous --preset pilot --betterend-fixture
+```
+
+
+## BetterEnd ground diagnostic r5
+
+Predeclared before launch. Fresh `betterend-ground-r5` repeats the r4 fixture,
+including loading, with one observer addition: duplicate and record the actual
+position returned by NBTFeature.getGround at its single call site. The original
+reference remains on the operand stack. No extra world query, predicate call or
+RNG draw is made. Strict transformation requires exactly one matching call.
+This fixes the missing observation that prevents diagnosing r4, whose saved chunk
+retains WORLD_SURFACE but not WORLD_SURFACE_WG. Do not substitute the former for
+the latter. The new ground row is diagnostic evidence, not a location occurrence.
+The existing probe fixtures check its coordinates and attempt linkage in normal,
+isolated-loader and failure modes, and retain vanilla/observed argument equality.
+
+Use the same 324 selected chunks, seed, frozen runtime/configuration, 1 to 4 GiB
+heap, 900-second timeout and 1 GiB custody allowance. Retain rejection if no
+positive template placement occurs. Compare the observed ground with immutable
+saved blocks to narrow the failed predicate, disclosing possible later changes.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-ground-r5 --mode probe --role mountainous --preset pilot --betterend-fixture
+```
+
+
+## BetterEnd tag diagnostic r6
+
+Predeclared before launch. Fresh `betterend-tags-r6` repeats r5 with four
+read-only command checks between platform fill and feature placement: both
+`if` and `unless` checks for air at `[8,81,8]` and for
+`#wover:surfaces/terrain` at `[8,80,8]`. Each successful branch emits its unique
+`item10-fixture-air-true/false` or `item10-fixture-terrain-true/false` marker.
+Require exactly one of each pair; syntax errors, unknown tags or missing output
+are not false-membership evidence. Retain full commands and raw responses.
+
+The resource identifier derives from CommonBlockTags.TERRAIN's
+`surfaces/terrain` path, TagRegistryImpl.makeWorldWeaverTag, LibWoverTag's `wover`
+namespace and ModCore.mk in retained worldweaver-21.0.24.jar. Its BlockTagProvider
+prepareBlockTags adds end stone to END_STONES and includes that tag optionally
+in TERRAIN. This packaged intent is not runtime membership proof. No tags or
+configuration will be modified if runtime behavior disagrees.
+
+Use the same frozen identity, 324-chunk pilot, seed, heap, 900-second deadline
+and 1 GiB custody allowance. This run resolves the predicate discrepancy; it
+remains excluded from density samples even if placement succeeds.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-tags-r6 --mode probe --role mountainous --preset pilot --betterend-fixture
+```

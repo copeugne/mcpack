@@ -1,4 +1,4 @@
-"""Run the fixed fresh-world scarecrow instrumentation diagnostic or its control."""
+"""Run a declared fresh-world placement diagnostic or its control."""
 
 from __future__ import annotations
 
@@ -9,19 +9,21 @@ import re
 import shlex
 import subprocess
 from pathlib import Path
-from typing import cast
+from typing import Literal, cast
 
 from tools.run_item7_worldgen import execute
 
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
-from mcpack_evidence.item7_selections import RUN_SELECTIONS
+from mcpack_evidence.item7_selections import PILOT_SELECTIONS, RUN_SELECTIONS
 
 
-def main() -> None:
+def main() -> None:  # noqa: PLR0915 - keep the one fixed diagnostic workflow together.
     """Record the observational overlay, then use the established lifecycle unchanged."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--name", required=True)
     _ = parser.add_argument("--mode", choices=("probe", "control"), required=True)
+    _ = parser.add_argument("--preset", choices=("pilot", "run"), default="run")
+    _ = parser.add_argument("--betterend-fixture", action="store_true")
     _ = parser.add_argument(
         "--role",
         choices=("ordinary", "mountainous", "ocean-heavy", "biome-diverse"),
@@ -31,6 +33,40 @@ def main() -> None:
     instance_name = cast("str", args.name)
     mode = cast("str", args.mode)
     role = cast("str", args.role)
+    preset = cast("Literal['pilot', 'run']", args.preset)
+    fixture = cast("bool", args.betterend_fixture)
+    if fixture and (mode != "probe" or preset != "pilot"):
+        parser.error("the BetterEnd placement fixture requires probe mode and the pilot preset")
+    before_generation = (
+        ("execute in minecraft:the_end run forceload add -32 -32 47 47",) if fixture else ()
+    )
+    after_generation = (
+        (
+            "execute in minecraft:the_end run fill 0 80 0 15 80 15 minecraft:end_stone",
+            (
+                "execute in minecraft:the_end if block 8 81 8 minecraft:air "
+                "run say item10-fixture-air-true"
+            ),
+            (
+                "execute in minecraft:the_end unless block 8 81 8 minecraft:air "
+                "run say item10-fixture-air-false"
+            ),
+            (
+                "execute in minecraft:the_end if block 8 80 8 #wover:surfaces/terrain "
+                "run say item10-fixture-terrain-true"
+            ),
+            (
+                "execute in minecraft:the_end unless block 8 80 8 #wover:surfaces/terrain "
+                "run say item10-fixture-terrain-false"
+            ),
+            (
+                "execute in minecraft:the_end run place feature "
+                "betterend:blossoming_spires_structures 8 81 8"
+            ),
+        )
+        if fixture
+        else ()
+    )
     if not re.fullmatch(r"[a-z][a-z0-9-]*", instance_name):
         parser.error("name must contain only lowercase letters, digits and hyphens")
     output = Path("evidence/raw/item10") / instance_name
@@ -49,6 +85,9 @@ def main() -> None:
             ["/usr/bin/git", "rev-parse", "HEAD"], text=True
         ).strip(),
         "mode": mode,
+        "preset": preset,
+        "fixture_commands": after_generation,
+        "before_generation_commands": before_generation,
         "java_version": version,
         "java_tool_options": "",
     }
@@ -128,11 +167,16 @@ def main() -> None:
             target=target,
             log_path=output / "console.log",
             captured_config=output / "captured-config",
-            mode="run",
-            selections=RUN_SELECTIONS,
+            mode=preset,
+            selections=PILOT_SELECTIONS if preset == "pilot" else RUN_SELECTIONS,
             timeout_seconds=900,
         )
-        run = execute(request, java_tool_options=options)
+        run = execute(
+            request,
+            java_tool_options=options,
+            after_generation=after_generation,
+            before_generation=before_generation,
+        )
         report["run"] = json.loads(run.model_dump_json())
         if run.rejection_reason:
             raise RuntimeError(run.rejection_reason)  # noqa: TRY301 - retain failure in report.

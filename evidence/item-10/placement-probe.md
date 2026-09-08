@@ -492,3 +492,109 @@ unavailable. No raw world or previously accepted cross-check output was changed.
 ```sh
 uv run --no-sync pytest -q tests/item10/test_write_corroboration.py tests/item10/test_retained_trace.py tests/item10/test_typed_comparison_identity.py
 ```
+
+### Reviewed diagnostic delivery
+
+PR23 merged as `eabc9ce30f731e9a3471267e09fff615293c1b26` on 2026-09-08.
+Fetched `origin/main` contains reviewed head
+`73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2`. The
+[final review](https://github.com/copeugne/mcpack/pull/23#issuecomment-5578556110)
+completed at 03:15:05 UTC with no new findings and a Codex bot thumbs-up on the
+pull request. All four valid findings from earlier cycles were fixed. This
+closes the bounded diagnostic delivery, not Item 10's full measurement gate.
+
+## BetterEnd template collector extension (fixture gate only)
+
+The existing Java probe now targets `NBTFeature.place`, `CrashedShipFeature.place`,
+`BuildingListFeature$StructureInfo.getStructure` and the content-write call site
+in `StructureTemplate.placeInWorld`. It records the actual returned template's
+source path by object identity, feature attempt, template origin/pivot, rotation,
+mirror, flags, content write arguments/results and template return/exception.
+The ship route is attributed to `minecraft:end_city/ship`. A conflicting path for
+one template object fails explicitly. Template success is not counted as a site.
+
+Only the second of the retained template method's three direct `setBlock` sites
+is traced: content placement. Temporary barriers and subsequent shape updates
+are excluded. Calls outside targeted BetterEnd placements retain their original
+interface invocation without emitting placement observations. Terrain merge and
+ship erosion occur outside the template trace. Raw content writes remain evidence
+of placement attempts, not proof that every block survives later erosion.
+
+The extension reuses the original probe's explicit system-loader bridges and
+existing test compiler/archive path. Focused validation compiles with pinned
+Temurin `-Xlint:all -Werror`, transforms all four exact classes verified against
+Item 8 artifact identities, and compares ordinary and instrumented fixture output
+including world-call arguments. Cases cover normal, early return, empty template,
+all refused writes, original exception propagation, isolated loader and an
+unobserved template invocation. The selected source remains `original.nbt` even
+when the fixture replaces the feature's mutable selection before placement.
+The original scarecrow preservation cases still pass.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_placement_probe.py
+uv run --no-sync ruff check tests/item10/test_placement_probe.py
+uv run --no-sync basedpyright tests/item10/test_placement_probe.py
+```
+
+Both test functions pass; Ruff and the test's type check pass. Runtime transformed
+class identity, installation completeness, real BetterEnd observations, trace
+validation, saved-world corroboration and collector cost remain unverified.
+No new server experiment or accepted nonregistry density result is supplied by
+this fixture gate. Extend the existing diagnostic runner for a predeclared fresh
+runtime check before incorporating these observations into Item 10 results.
+
+### Incoming runtime class retention
+
+During BetterEnd diagnostic r1, the three provider classes matched their retained
+hashes, but the incoming Minecraft `StructureTemplate` hash was
+`579560f5341cba7e3a23064fdc7d1938922dd14e18a1ca4ecab434f57379a2bd`,
+instead of the packaged class hash
+`f3fc7951f1e273e94e754ca4dc2ca9475d8b1eac24bcfb4ccd2d583e126e1121`.
+This rejects r1's predeclared runtime identity gate. The exact cause is UNKNOWN
+until the incoming bytes can be inspected; a hash alone cannot explain the change.
+
+The probe now saves each incoming target class before transformation under its
+trace-specific `.classes` directory. This is the smallest addition that makes
+such a mismatch inspectable. The running r1 uses its already-built agent and is
+unaffected; its missing incoming bytes cannot be recreated retrospectively.
+An initial shared directory collided across fixture processes; trace-specific
+paths fixed that defect. Both preservation fixtures pass, including checks that
+retained incoming bytes match each emitted installation hash. No new runtime
+identity has been accepted by this change.
+
+
+## BetterEnd diagnostic milestone, current disposition
+
+The shared template collector and optional lifecycle fixture commands are ready
+for review as a diagnostic milestone. They do not close Item 10 or establish a
+complete occurrence collector. Reuse these authoritative attempt records:
+
+- [r1](betterend-probe-r1/README.md): no template placements; incoming class bytes
+  were not retained, so its identity gate failed.
+- [r2](betterend-identity-r2/README.md): retained and inspected patched class,
+  no feature attempts in the small identity pilot.
+- [r3](betterend-fixture-r3/README.md): fixture commands refused unloaded targets.
+- [r4](betterend-fixture-r4/README.md): loading and fill succeed, feature refuses.
+- [r5](betterend-ground-r5/README.md): actual ground matches the platform position.
+- [r6](betterend-tags-r6/README.md): air check passes, terrain tag is unknown to
+  command lookup. Retained source inspection distinguishes datagen definitions
+  from runtime tag loading. The runtime registration/resource gap is unresolved.
+
+Each raw diagnostic is durably archived with verified download and nested-world
+restores. None supplies accepted BetterEnd occurrence counts. Synthetic probes
+preserve original calls, arguments, return values, refusal and exception behavior;
+real template writes and saved-world corroboration remain unexercised here.
+Do not force a positive fixture by adding tags to the frozen baseline. Resolve
+runtime availability and the affected inventory assumptions before accepting
+counts or revising the full sampling gate. No Item 8/9 general audit was repeated.
+
+Validation for the current candidate:
+
+```sh
+uv run --no-sync pytest -q tests/item7 tests/item10
+uv run --no-sync ruff check src/mcpack_evidence/item7_lifecycle.py tests/item10/test_placement_probe.py tests/item7/test_worldgen_lifecycle.py tools/run_item10_probe.py tools/run_item7_worldgen.py
+uv run --no-sync basedpyright src/mcpack_evidence/item7_lifecycle.py tests/item10/test_placement_probe.py tests/item7/test_worldgen_lifecycle.py tools/run_item10_probe.py tools/run_item7_worldgen.py
+```
+
+All 296 tests pass (42.40 seconds); changed Python lint, formatting and type
+checks pass. No Item 11 workflow was implemented, run, repaired or linted.

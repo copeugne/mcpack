@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.security.ProtectionDomain;
 import java.util.HexFormat;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Collections;
 import java.security.MessageDigest;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,7 +19,7 @@ import jdk.internal.org.objectweb.asm.ClassWriter;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
-/** Diagnostic only: trace the five direct scarecrow writes, preserving original results. */
+/** Measurement probe: retain targeted feature and template writes without changing their results. */
 public final class Item10PlacementProbe {
     private static final String TARGET =
         "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature";
@@ -24,6 +27,20 @@ public final class Item10PlacementProbe {
         "(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z";
     private static final AtomicLong SEQUENCE = new AtomicLong();
     private static final ConcurrentHashMap<Long, Long> ACTIVE = new ConcurrentHashMap<>();
+    private static final String END_FEATURE = "org/betterx/betterend/world/features/NBTFeature";
+    private static final String SHIP = "org/betterx/betterend/world/features/CrashedShipFeature";
+    private static final String INFO = "org/betterx/betterend/world/features/BuildingListFeature$StructureInfo";
+    private static final String TEMPLATE = "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate";
+    private static final String TEMPLATE_DESCRIPTOR =
+        "(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;"
+        + "Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;"
+        + "Lnet/minecraft/util/RandomSource;I)Z";
+    private static final String TEMPLATE_BRIDGE =
+        "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z";
+    private static final Map<Object, String> TEMPLATE_PATHS =
+        Collections.synchronizedMap(new IdentityHashMap<>());
+    private static final ConcurrentHashMap<Long, String> FEATURES = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Long, Boolean> IN_TEMPLATE = new ConcurrentHashMap<>();
     private static Path output;
     private static volatile boolean installed;
 
@@ -94,11 +111,186 @@ public final class Item10PlacementProbe {
     }
 
     public static void end(boolean returned) {
+        FEATURES.remove(Thread.currentThread().threadId());
         Long id = ACTIVE.remove(Thread.currentThread().threadId());
         if (id == null) {
             throw new IllegalStateException("Exit outside traced attempt");
         }
         emit("{\"kind\":\"end\",\"attempt\":" + id + ",\"returned\":" + returned + "}");
+    }
+
+    public static void beginFeature(Object feature, Object context) throws Throwable {
+        begin(context);
+        long thread = Thread.currentThread().threadId();
+        FEATURES.put(thread, feature.getClass().getName());
+        emit("{\"kind\":\"feature\",\"attempt\":" + ACTIVE.get(thread)
+            + ",\"class\":" + quote(feature.getClass().getName()) + "}");
+    }
+
+    public static void ground(Object pos) throws Throwable {
+        Long attempt = ACTIVE.get(Thread.currentThread().threadId());
+        if (attempt == null) throw new IllegalStateException("Ground outside traced attempt");
+        emit("{\"kind\":\"ground\",\"attempt\":" + attempt
+            + ",\"position\":" + position(pos) + "}");
+    }
+
+    public static void selected(Object info, Object template) throws ReflectiveOperationException {
+        String path = (String) info.getClass().getField("structurePath").get(info);
+        synchronized (TEMPLATE_PATHS) {
+            String previous = TEMPLATE_PATHS.putIfAbsent(template, path);
+            if (previous != null && !previous.equals(path)) {
+                throw new IllegalStateException("One template object has conflicting source paths");
+            }
+        }
+    }
+
+    public static boolean template(Object template, Object world, Object pos, Object pivot,
+                                   Object settings, Object random, int flags) throws Throwable {
+        long thread = Thread.currentThread().threadId();
+        Long attempt = ACTIVE.get(thread);
+        if (attempt == null || IN_TEMPLATE.putIfAbsent(thread, true) != null) {
+            throw new IllegalStateException("Unpaired or nested BetterEnd template placement");
+        }
+        String path = TEMPLATE_PATHS.get(template);
+        if (SHIP.replace('/', '.').equals(FEATURES.get(thread))) path = "minecraft:end_city/ship";
+        if (path == null) throw new IllegalStateException("Placed template has no observed source path");
+        emit("{\"kind\":\"template_begin\",\"attempt\":" + attempt + ",\"path\":"
+            + quote(path) + ",\"position\":" + position(pos) + ",\"pivot\":" + position(pivot)
+            + ",\"rotation\":" + quote(call(settings, "getRotation"))
+            + ",\"mirror\":" + quote(call(settings, "getMirror")) + ",\"flags\":" + flags + "}");
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = template.getClass().getMethod("placeInWorld",
+            Class.forName("net.minecraft.world.level.ServerLevelAccessor", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader),
+            Class.forName(TEMPLATE.replace("StructureTemplate", "StructurePlaceSettings").replace('/', '.'), false, loader),
+            Class.forName("net.minecraft.util.RandomSource", false, loader), int.class);
+        try {
+            boolean returned = (Boolean) method.invoke(template, world, pos, pivot, settings, random, flags);
+            emit("{\"kind\":\"template_end\",\"attempt\":" + attempt + ",\"returned\":" + returned + "}");
+            return returned;
+        } catch (InvocationTargetException error) {
+            emit("{\"kind\":\"template_exception\",\"attempt\":" + attempt
+                + ",\"exception\":" + quote(error.getCause().getClass().getName()) + "}");
+            throw error.getCause();
+        } finally {
+            IN_TEMPLATE.remove(thread);
+        }
+    }
+
+    public static boolean contentWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        if (IN_TEMPLATE.containsKey(Thread.currentThread().threadId())) return write(world, pos, state, flags);
+        // Outside a targeted placement, invoke the exact original interface method without tracing.
+        ClassLoader loader = world.getClass().getClassLoader();
+        Method method = Class.forName("net.minecraft.world.level.ServerLevelAccessor", false, loader)
+            .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
+                Class.forName("net.minecraft.world.level.block.state.BlockState", false, loader), int.class);
+        try {
+            return (Boolean) method.invoke(world, pos, state, flags);
+        } catch (InvocationTargetException error) {
+            throw error.getCause();
+        }
+    }
+
+    public static byte[] instrument(String target, byte[] original) {
+        if (TARGET.equals(target)) return instrument(original);
+        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target);
+        boolean info = INFO.equals(target);
+        if (!feature && !info && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        int[] counts = new int[3];
+        new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
+            @Override
+            public MethodVisitor visitMethod(int access, String name, String descriptor,
+                                             String signature, String[] exceptions) {
+                if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
+                MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
+                boolean match = feature ? name.equals("place") && descriptor.equals(
+                    "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")
+                    : info ? name.equals("getStructure") && descriptor.equals("()L" + TEMPLATE + ";")
+                    : name.equals("placeInWorld") && descriptor.equals(TEMPLATE_DESCRIPTOR);
+                if (!match) return parent;
+                counts[0]++;
+                return new MethodVisitor(Opcodes.ASM8, parent) {
+                    @Override
+                    public void visitCode() {
+                        super.visitCode();
+                        if (feature) {
+                            super.visitVarInsn(Opcodes.ALOAD, 0);
+                            super.visitVarInsn(Opcodes.ALOAD, 1);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$beginFeature",
+                                "(Ljava/lang/Object;Ljava/lang/Object;)V", false);
+                        }
+                    }
+                    @Override
+                    public void visitInsn(int opcode) {
+                        if (feature && opcode == Opcodes.IRETURN) {
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$end", "(Z)V", false);
+                        } else if (info && opcode == Opcodes.ARETURN) {
+                            counts[1]++;
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitVarInsn(Opcodes.ALOAD, 0);
+                            super.visitInsn(Opcodes.SWAP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$selected",
+                                "(Ljava/lang/Object;Ljava/lang/Object;)V", false);
+                        }
+                        super.visitInsn(opcode);
+                    }
+                    @Override
+                    public void visitMethodInsn(int opcode, String owner, String name,
+                                                String descriptor, boolean isInterface) {
+                        if (feature && opcode == Opcodes.INVOKEVIRTUAL && owner.equals(TEMPLATE)
+                            && name.equals("placeInWorld") && descriptor.equals(TEMPLATE_DESCRIPTOR)) {
+                            counts[1]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$template", TEMPLATE_BRIDGE, false);
+                            return;
+                        }
+                        if (!feature && !info && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/ServerLevelAccessor")
+                            && name.equals("setBlock") && descriptor.equals(WRITE_DESCRIPTOR)) {
+                            counts[1]++;
+                            if (counts[1] == 2) {
+                                super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$contentWrite",
+                                    "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", false);
+                                return;
+                            }
+                        }
+                        super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+                        if (END_FEATURE.equals(target) && opcode == Opcodes.INVOKEVIRTUAL
+                            && owner.equals(END_FEATURE) && name.equals("getGround")
+                            && descriptor.equals("(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;")) {
+                            counts[2]++;
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$ground",
+                                "(Ljava/lang/Object;)V", false);
+                        }
+                    }
+                };
+            }
+        }, 0);
+        if (counts[0] != 1 || counts[1] != (feature || info ? 1 : 3)) {
+            throw new IllegalArgumentException("Unexpected template hook sites: " + target
+                + " " + counts[0] + "," + counts[1]);
+        }
+        if (END_FEATURE.equals(target)) {
+            if (counts[2] != 1) throw new IllegalArgumentException("Unexpected ground hook count");
+            bridge(writer, "ground", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
+        }
+        if (feature) {
+            bridge(writer, "beginFeature", "(Ljava/lang/Object;Ljava/lang/Object;)V",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
+            bridge(writer, "end", "(Z)V", new int[] {Opcodes.ILOAD}, Opcodes.RETURN);
+            bridge(writer, "template", TEMPLATE_BRIDGE,
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        } else if (info) {
+            bridge(writer, "selected", "(Ljava/lang/Object;Ljava/lang/Object;)V",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD}, Opcodes.RETURN);
+        } else {
+            bridge(writer, "contentWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+                new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        }
+        return writer.toByteArray();
     }
 
     public static byte[] instrument(byte[] original) {
@@ -201,18 +393,28 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!TARGET.equals(name)) {
+                if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                    && !INFO.equals(name) && !TEMPLATE.equals(name)) {
                     return null;
                 }
                 try {
-                    byte[] result = instrument(bytes);
+                    Path incoming = output.toAbsolutePath().getParent().resolve(output.getFileName() + ".classes")
+                        .resolve(name + ".class");
+                    Files.createDirectories(incoming.getParent());
+                    Files.write(incoming, bytes, StandardOpenOption.CREATE_NEW);
+                    byte[] result = instrument(name, bytes);
                     String sha = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
-                    emit("{\"kind\":\"installed\",\"input_class_sha256\":" + quote(sha) + "}");
-                    installed = true;
+                    if (TARGET.equals(name)) {
+                        emit("{\"kind\":\"installed\",\"input_class_sha256\":" + quote(sha) + "}");
+                        installed = true;
+                    } else {
+                        emit("{\"kind\":\"feature_installed\",\"class\":" + quote(name)
+                            + ",\"input_class_sha256\":" + quote(sha) + "}");
+                    }
                     return result;
                 } catch (Throwable error) {
                     emit("{\"kind\":\"installation_failed\",\"exception\":" + quote(error.toString()) + "}");
-                    throw new IllegalStateException("Scarecrow instrumentation failed", error);
+                    throw new IllegalStateException("Placement instrumentation failed", error);
                 }
             }
         });

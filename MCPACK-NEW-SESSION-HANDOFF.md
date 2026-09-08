@@ -119,25 +119,47 @@ Do not launch r4 to repeat the equality test. The prospective protocol now
 separates collector correctness from established world variability. All 30
 recorded scarecrow block IDs were corroborated in the restored world. Local
 capture/preservation checks pass; observer-free equivalence remains unproven.
-PR23 reviews this bounded diagnostic before extension to other mechanisms.
-The Codex cycle on `ff951e02` completed with two valid P1 findings. The retained
-trace validator and ten regressions pass. The typed-NBT digest fix is pushed
-as `56c05626`; 771 shared-consumer tests and the final 14 focused projection
-tests pass. Typed reprocessing completed and confirms the same mismatch counts.
-All eight reader vectors and mismatch coordinates are retained in the compressed
-typed evidence linked from the placement diagnostic. The second PR23 cycle completed on `c14cb6d3` with one valid input-identity
-finding. The derivation now binds all region hashes to archived world manifests;
-five regressions pass and real reprocessing is byte-identical. The third cycle
-on `fbe9cb81` found the corresponding identity/acceptance gap in the coordinate
-inspection. That reader now checks retained identities and requires all 30
-block IDs to match; the real rerun is unchanged and four negative regressions pass.
-Request and inspect the next completed review cycle before merge.
-Do not infer approval or merge before that clean cycle. Item 10 remains IN PROGRESS.
-The placement diagnostic links raw receipts and the full mismatch summary.
-r1/r2 release and downloaded world restores are verified. The biome reader now
-retains registry piece bounds and midpoint-height attribution; 29 focused tests
-pass. All 64 control registry starts have biome attribution without gaps.
-No nonregistry density counts are accepted.
+PR23 delivered the bounded diagnostic through merge
+`eabc9ce30f731e9a3471267e09fff615293c1b26`, verified in fetched `origin/main`.
+The [clean review](https://github.com/copeugne/mcpack/pull/23#issuecomment-5578556110)
+completed on `73f25aed57bcdc952ea6d65a1c93ae92ff8dc9b2` with no new findings
+and a Codex thumbs-up. All four valid findings from earlier cycles were fixed.
+The placement diagnostic retains validation, raw custody and corrected typed
+comparison evidence. All 64 control registry starts have biome attribution.
+No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
+
+Continue on `codex/item10-placement-coverage`, created from delivered main.
+The next batch extends the existing collector using accepted Item 8 mechanisms;
+BetterEnd template attribution/content-write hooks now pass the focused retained-
+class transformation and preservation fixtures. The placement diagnostic records
+coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)
+completed cleanly but failed the incoming Minecraft class identity gate and had
+no template placements. Its raw release and both restores are verified. The
+probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-identity-r2/README.md)
+completed its small pilot cleanly, retained the incoming patched class and verified
+its raw archive/world restores. Its content hook remains the second direct write,
+after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
+[Placement fixture r3](evidence/item-10/betterend-fixture-r3/README.md) stopped
+cleanly but both commands were refused because the target was not loaded. Its
+raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
+fills the platform, but BetterEnd returns false before invoking a template. Its
+raw and nested restores pass. [Ground diagnostic r5](evidence/item-10/betterend-ground-r5/README.md) observes
+the expected `[8,81,8]` ground and false return.
+[Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
+both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
+command lookup, not false membership. Raw/world restores pass. Next inspect
+the remaining runtime registration/resource gap before further experiments.
+The linked source inspection shows ordinary tag-map injection and distinguishes
+datagen definitions from runtime bootstrap subscribers; the packaged directory
+constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
+Do not alter frozen tags/configs or infer
+zero density. Positive template capture and full collection remain gated.
+The bounded collector/diagnostic milestone passes 296 Item 7/10 tests plus
+changed-file lint, formatting and type checks. Open its PR for review; the
+[placement diagnostic](evidence/item-10/placement-probe.md) records its scope.
+The protocol records its counting hazards and the selected finite sampling/control
+design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
+protocol remains DRAFT until capture coverage and storage validation pass.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed
