@@ -165,31 +165,28 @@ protocol. Both matched pairs have Overworld T2/T3 baseline 6/2 versus control
 22/7, while total differences vary +44 to +165. Use their linked records for
 raw failures, sensitivity and complete repetition comparisons.
 
-[Ocean-heavy r1 baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md)
-finished from that source in 512.546s; session `84867` is terminal 0. Configuration
-and published/downloaded/restored custody pass (313 raw and 502 world files).
-Its census (session `96485`, terminal 0) passed in 7m43.150s, SHA-256
-`9c2ed4cf58b38f20a0cf7f65c50b2a9f90ac9539722220c67d2cfa7556d3dec7`.
-All 45,056 chunks and 50 observer targets pass. Three cave-urn content failures
-remain excluded, with no overlap cases.
-Ninth-world acceptance is pushed at `6142e94b`.
-[Ocean-heavy r1 control](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md)
-finished from that source in 553.698s; session `19670` is terminal 0. All eleven
-selections, lifecycle and configuration checks pass. Published/downloaded/restored
-raw custody verifies 313 raw files and 502 world files. Its census (session
-`89527`, terminal 0) passed in 8m0.325s, SHA-256
-`b58570b27bf0ee532825f80a1ebcf9164223bcfc3d0a2426b957d60cbb0ae959`.
-All 45,056 chunks and 50 observer targets pass. One cave-urn content failure
-remains excluded, with no overlaps. First-pair Overworld T2/T3 counts are
-baseline 7/2 versus control 19/3; the second pair remains necessary.
-No server is active. Next is `full-ocean-heavy-r2-without-sparse`, then r2
-baseline and the four biome-diverse worlds in frozen order. Use fresh
-hash-verified materializations and existing custody/census paths. Latest free
-space is about 24.4 GiB; the tenth world uses about 1.92 GiB. Continue checking
-growth against the roughly 30 GiB working plan.
-Finish the remaining six worlds, final biome/seed/repetition/spatial synthesis,
-consolidated PR review/merge and Items 2 through 10 audit. Preserve failures,
-censoring and provisional classifications. No new tooling PR or Item 11 work.
+The first ocean-heavy pair passes complete census and raw custody. Overworld
+T2/T3 counts are baseline 7/2 versus control 19/3; three and one cave-urn
+content failures respectively remain excluded, with no overlap cases. Its
+linked records retain exact hashes, commands, denominators and spatial data.
+Tenth-world acceptance is pushed at `662de80c`.
+[Ocean-heavy r2 control](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
+FAILED with Java heap exhaustion in outer End. Session `62268` is terminal 1;
+Java exited 0 after operator pause, correlated flush and stop, without force-kill.
+Nine selections completed, outer End is incomplete and Nether unattempted.
+The unchanged harness rejects lifecycle completion. Ten worlds remain accepted.
+The failed run's published/downloaded/restored archive preserves 315 raw files,
+two debug reports, emergency commands, sanitized configuration and a 458-file
+partial world. No full census or retry was run. No server is active.
+
+Collection is paused under the protocol's resource-failure rule. Assess the heap
+failure and the harness's delayed failure handling before a bounded continuation
+decision. The first control passed under identical preflight/probe/selections;
+the allocation cause remains unknown. Do not silently change the pinned heap,
+replace the failed attempt, or accept a smaller census. Preserve all artifacts.
+After resolving this failure, finish the planned second ocean-heavy pair and
+four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
+Items 2 through 10 audit. No new tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher
 profiles and matching client files are prepared; first client launch/join remains

@@ -5,7 +5,10 @@ The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
 repetitions and baseline/control arms. Ten worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
-links their authoritative records and identifies the active run. Final combined
+links their authoritative records and current continuation state. The
+[second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
+with heap exhaustion; its raw evidence is preserved and collection is paused
+pending assessment. It does not reduce the full-sample requirement. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
 Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
 
