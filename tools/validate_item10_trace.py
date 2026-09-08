@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Never, cast
 
+from tools.run_item10_probe import COLLECTOR_JAR_SHA256
+
 if TYPE_CHECKING:
     from collections.abc import Iterator
 
@@ -603,6 +605,9 @@ FULL_COLLECTION_CLASSES = (
     | PILLAR_CLASSES
     | {SCARECROW_CLASS, "org/betterx/bclib/util/BlocksHelper"}
 )
+CONDITIONAL_GATEWAY_CLASS = (
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
+)
 
 
 def _collection_provider(rows: list[dict[str, object]]) -> None:
@@ -730,8 +735,24 @@ def collection_attempts(  # noqa: C901, PLR0912, PLR0915
     """
     if not class_digests or not dimensions:
         fail("collection requires class identities and dimension exposure")
-    if require_complete_observer and set(class_digests) != FULL_COLLECTION_CLASSES:
-        fail("collection does not bind the complete declared observer class set")
+    if require_complete_observer:
+        missing = FULL_COLLECTION_CLASSES - set(class_digests)
+        if set(class_digests) - FULL_COLLECTION_CLASSES or missing not in (
+            set(),
+            {CONDITIONAL_GATEWAY_CLASS},
+        ):
+            fail("collection does not bind the complete declared observer class set")
+        agent = path.with_name("probe.jar")
+        if agent.is_symlink() or not agent.is_file():
+            fail("full collection requires the frozen observer JAR")
+        with agent.open("rb") as stream:
+            if hashlib.file_digest(stream, "sha256").hexdigest() != COLLECTOR_JAR_SHA256:
+                fail("full collection observer JAR differs from frozen identity")
+        # A loaded-but-undeclared class is not an unexercised generator.
+        for name in missing:
+            capture = path.with_name(path.name + ".classes") / (name + ".class")
+            if capture.exists() or capture.is_symlink():
+                fail("undeclared conditional collection incoming class")
     for value in (trace_sha256, *class_digests.values()):
         if len(value) != SHA256_HEX_LENGTH or any(c not in "0123456789abcdef" for c in value):
             fail("invalid declared collection digest")

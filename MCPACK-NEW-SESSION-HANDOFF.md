@@ -128,7 +128,7 @@ Fairy cleanup uses raw site 1, not bytecode offset 193; observed flower states d
 not establish complete ring visibility. Do not require new positive tiny pilots.
 
 The full runner pins the observer source/JAR, arm/repetition and eleven fixed
-selections. `--all-strata` requires all 50 incoming classes and installations;
+selections. `--all-strata` applies `item10-observer-coverage-v2` (see protocol);
 single-stratum full analysis must pass `--require-complete-observer`. Provider
 metadata and completion validation remain strict. See protocol for identities.
 Chunky requests 65 by 65 chunks per selection; the census excludes the positive
@@ -169,8 +169,7 @@ worlds are accepted and the block is pushed at `ee0a82b8`.
 [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md)
 finished cleanly in 611.564s from `ee0a82b8`; session `68147` is terminal 0.
 Configuration/identity checks and published/restored raw custody pass (312 raw
-files, 501 world files). No server or analysis process is active.
-Full observer acceptance is unresolved: the only absent target is
+files, 501 world files). No server is active. The only absent observer target is
 `com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature`.
 The strict 50-class gate rejects; diagnostic mode validates 32,822 attempts and
 49 installations. Do not call that full acceptance or a measured gateway zero.
@@ -178,9 +177,12 @@ The existing island fixture now confirms with JVM class-load logs that the
 frozen observer captures Gateway only when that route loads the class; other
 routes leave it unloaded. All 24 island cases pass. See the mountainous record's
 bounded class-loading check. This proves the all-targets-loaded premise can fail,
-not this world's acceptance. Next bind the frozen observer and correct the narrow
-coverage distinction while retaining missing-capture/installation rejection.
-No protocol/reader exception is implemented.
+not this world's acceptance. The documented coverage-v2 correction now binds the
+frozen JAR and permits only the unexercised gateway, with missing-capture and
+installation checks retained. Full Item 7/10 suite: 548 passed in 173.38s; the
+two added archive-binding cases pass in the focused 41-test run. Census session
+`22204` is active on the restored world. Poll that handle; inspect and integrate
+its result before declaring the fifth world accepted or starting more worlds.
 Preserve the current run and resolve this narrow coverage question before more
 worlds. Do not tune, hunt positive gateways, repeat Item 8/9 or change the sample.
 Four worlds are accepted; the fifth has complete generation/custody only.

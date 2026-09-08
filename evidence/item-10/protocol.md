@@ -152,8 +152,10 @@ These pins establish collector identity, not empirical placement counts.
 
 Full analyses must pass `--require-complete-observer` to the existing census CLI.
 The corresponding `collection_attempts(require_complete_observer=True)` gate
-requires exactly the 50 targeted incoming classes, their archived bytes and
-matching installation events, complete attempt pairing and healthy shutdown.
+originally required exactly the 50 targeted incoming classes, their archived
+bytes and matching installation events, complete attempt pairing and healthy
+shutdown. The coverage correction below supersedes only the all-classes-loaded
+requirement; the original mountainous rejection remains recorded.
 `FULL_COLLECTION_CLASSES` in `tools/validate_item10_trace.py` reuses the existing
 Extras-era class inventory and adds Scarecrow, four End island classes, two
 procedural pillar classes and BCLib's `BlocksHelper`. This matches the pinned
@@ -162,6 +164,32 @@ per actual runtime transformation; packaged bytes are not substituted for
 loader-transformed input. Missing installations reject complete coverage, even
 when the remaining trace is structurally valid. No positive placement is required
 for each class or family, and no failed hook is interpreted as zero density.
+
+#### Coverage correction `item10-observer-coverage-v2`
+
+The [mountainous class-loading investigation](full-mountainous-r1-baseline/README.md#bounded-class-loading-check)
+reproduces that the exact frozen observer does not load unused target classes.
+Requiring an unused class to load therefore imposed an unintended positive-route
+condition on the fixed sample. Starting with the preserved fifth world, accept
+either all 50 captures or the same set minus only `BetterEndGatewayFeature`.
+This narrow exception is supported by the existing conditional caller and JVM
+fixture. Other missing targets still reject pending specific evidence.
+
+Full analysis now requires the archive manifest to bind the frozen `probe.jar`
+and hashes the actual nonsymlink JAR against its pin. An absent gateway must have
+neither an incoming class file nor an installation event. Every supplied capture
+still needs its hash and matching installation; any gateway attempt without an
+installation, installation failure, incomplete attempt or unhealthy shutdown
+rejects. Record captured and uncaptured targets in `observer_coverage`.
+
+With the pinned transformer's exhaustive target predicate, healthy complete trace
+and preserved archive, gateway absence is interpreted as an unexercised target,
+not a failed hook. This is an inference from the verified observer behavior, not
+a retrospective JVM class-load measurement in the world. It does not establish
+absence of gateways outside the sampled generation or from other mechanisms.
+Sampling, runtime, configuration, observer source/JAR and location acceptance are
+unchanged. The first four all-50-class results retain their original acceptance;
+no world regeneration or new archive revision is required by this reader change.
 
 Provider metadata is also checked before an attempt reaches location processing.
 Island context, urn parents and YUNG configured-feature markers must be present

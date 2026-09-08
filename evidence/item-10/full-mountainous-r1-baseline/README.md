@@ -48,7 +48,7 @@ shows the custom gateway is invoked conditionally from a vanilla feature mixin.
 An unexercised/lazily loaded class is therefore plausible, but full acceptance
 requires resolving this distinction without silently weakening coverage or
 hunting for a positive gateway in another world. The protocol and reader are
-unchanged. Further experiments are paused at this coverage question.
+unchanged at that rejection. Further experiments were paused at this coverage question.
 
 ### Bounded class-loading check
 
@@ -71,6 +71,27 @@ and does not by itself change its rejection or prove a gateway zero. The next
 correction must bind the frozen observer and distinguish an unexercised target
 from a missing capture or installation. Keep hash, event and healthy-shutdown
 checks strict; document any coverage-rule revision before accepting this census.
+
+### Corrected coverage rule and validation
+
+The [protocol correction](../protocol.md#coverage-correction-item10-observer-coverage-v2)
+now admits only the demonstrated unexercised gateway case. It verifies the actual
+frozen JAR and its archive binding, rejects other missing targets, undeclared
+gateway bytes and unmatched installation events, and records the coverage set in
+the result. Original rejection and raw bytes remain unchanged.
+
+The full command `uv run --no-sync pytest -q tests/item7 tests/item10` passed
+548 tests in 173.38 seconds. Two subsequently added archive-binding cases and the
+affected collection/saved-content checks passed together: 41 tests in 10.63
+seconds. Focused Ruff and test-file basedpyright passed after adding explicit
+types for the new fixture containers. No Item 11 checks ran.
+
+The corrected all-strata census is running on the restored world, execution
+session `22204`. This is not yet census acceptance. Its command is:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/full-mountainous-r1-baseline-custody/restored-world/world evidence/raw/item10/full-mountainous-r1-baseline-analysis/all-strata.json --all-strata --dimension-geometry evidence/item-10/dimension-geometry.json --trace-root evidence/raw/item10/full-mountainous-r1-baseline-custody/restored-local --trace-manifest evidence/item-10/full-mountainous-r1-baseline/archive-manifest.json
+```
 
 ## Reproduction
 

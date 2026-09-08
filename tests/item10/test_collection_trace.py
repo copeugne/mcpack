@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import cast
 
 import pytest
+from tools import validate_item10_trace as validator
 from tools.analyze_structure_density import (
     nonregistry_attempt_outcome,
     nonregistry_location_groups,
@@ -103,6 +104,59 @@ def test_partial_observer_cannot_be_promoted_to_full_collection(tmp_path: Path) 
     assert len(FULL_COLLECTION_CLASSES) == 50
     with pytest.raises(ValueError, match="complete declared observer class set"):
         _ = consume(tmp_path, events(), require_complete_observer=True)
+
+
+@pytest.mark.parametrize(
+    "defect",
+    [None, "all_loaded", "other_missing", "jar_missing", "jar_changed", "capture", "event"],
+)
+def test_conditional_gateway_requires_frozen_observer_and_consistent_absence(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, defect: str | None
+) -> None:
+    # Identity checking uses small fixture bytes; the Java fixture separately pins
+    # the actual collector and verifies JVM loading versus capture behavior.
+    agent = b"frozen observer fixture"
+    monkeypatch.setattr(validator, "COLLECTOR_JAR_SHA256", hashlib.sha256(agent).hexdigest())
+    if defect != "jar_missing":
+        _ = (tmp_path / "probe.jar").write_bytes(b"changed" if defect == "jar_changed" else agent)
+    names = FULL_COLLECTION_CLASSES - {FEATURE}
+    if defect == "all_loaded":
+        names = FULL_COLLECTION_CLASSES
+    if defect == "other_missing":
+        names = names - {SCARECROW_CLASS}
+    digests: dict[str, str] = {}
+    rows: list[dict[str, object]] = []
+    for name in sorted(names):
+        payload = name.encode()
+        digests[name] = hashlib.sha256(payload).hexdigest()
+        member = tmp_path / "trace.jsonl.classes" / (name + ".class")
+        member.parent.mkdir(parents=True, exist_ok=True)
+        _ = member.write_bytes(payload)
+        rows.append(
+            {"kind": "installed", "input_class_sha256": digests[name]}
+            if name == SCARECROW_CLASS
+            else {"kind": "feature_installed", "class": name, "input_class_sha256": digests[name]}
+        )
+    if defect == "capture":
+        _ = (tmp_path / "trace.jsonl.classes" / (FEATURE + ".class")).write_bytes(b"undeclared")
+    if defect == "event":
+        rows.append({"kind": "feature_installed", "class": FEATURE, "input_class_sha256": "a" * 64})
+    rows.append({"kind": "shutdown", "installed": True, "unfinished_attempts": 0})
+    path = tmp_path / "trace.jsonl"
+    payload = "".join(json.dumps(row) + "\n" for row in rows).encode()
+    _ = path.write_bytes(payload)
+    attempts = collection_attempts(
+        path,
+        trace_sha256=hashlib.sha256(payload).hexdigest(),
+        class_digests=digests,
+        dimensions={"minecraft:the_end"},
+        require_complete_observer=True,
+    )
+    if defect in {None, "all_loaded"}:
+        assert list(attempts) == []
+    else:
+        with pytest.raises(ValueError, match="collection"):
+            _ = list(attempts)
 
 
 @pytest.mark.parametrize("defect", ["missing_feature", "wrong_provider", "wrong_end"])

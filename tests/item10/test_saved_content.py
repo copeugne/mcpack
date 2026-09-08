@@ -16,6 +16,27 @@ from tests.item7.anvil_support import packed_values
 from tests.item10.test_density_census import make_region
 
 
+@pytest.mark.parametrize("has_wrong_jar", [False, True])
+def test_full_analysis_requires_archive_bound_observer(tmp_path: Path, has_wrong_jar: bool) -> None:
+    backup = b'{"world_files": []}'
+    _ = (tmp_path / "world-backup.json").write_bytes(backup)
+    members: list[dict[str, object]] = [
+        {
+            "relative_path": "world-backup.json",
+            "size_bytes": len(backup),
+            "sha256": hashlib.sha256(backup).hexdigest(),
+        }
+    ]
+    if has_wrong_jar:
+        members.append({"relative_path": "probe.jar", "sha256": "0" * 64})
+    archive = tmp_path / "manifest.json"
+    _ = archive.write_text(json.dumps({"files": members}))
+    with pytest.raises(ValueError, match="archive does not bind the frozen observer"):
+        _ = nonregistry_analysis(
+            tmp_path, tmp_path, archive, {}, {}, census_inputs=[], require_complete_observer=True
+        )
+
+
 def test_saved_palette_order_at_negative_coordinates() -> None:
     values = [0] * 4096
     values[15 + 16 * 2 + 256 * 3] = 1

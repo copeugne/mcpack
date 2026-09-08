@@ -11,7 +11,14 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from tools.manage_item4_environment import _world_backup_lock
-from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN, collection_attempts
+from tools.run_item10_probe import COLLECTOR_JAR_SHA256
+from tools.validate_item10_trace import (
+    BRIDGE_ROOT,
+    FULL_COLLECTION_CLASSES,
+    SCARECROW_CLASS,
+    URN,
+    collection_attempts,
+)
 
 from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
@@ -857,6 +864,11 @@ def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidenc
         for name, row in members.items()
         if name.startswith(prefix) and name.endswith(".class")
     }
+    if require_complete_observer and members.get("probe.jar", {}).get("sha256") != (
+        COLLECTOR_JAR_SHA256
+    ):
+        detail = "retained archive does not bind the frozen observer JAR"
+        raise ValueError(detail)
     membership = nonregistry_membership()
     outcomes = [
         nonregistry_attempt_outcome(rows, membership)
@@ -954,6 +966,11 @@ def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidenc
         "archive_manifest_sha256": hashlib.sha256(archive_bytes).hexdigest(),
         "trace_sha256": members["trace.jsonl"]["sha256"],
         "world_manifest_sha256": backup_member["sha256"],
+        "observer_coverage": {
+            "required": require_complete_observer,
+            "captured_classes": sorted(classes),
+            "uncaptured_target_classes": sorted(FULL_COLLECTION_CLASSES - classes.keys()),
+        },
         "attempts": summaries,
         "saved_content": saved,
     }
