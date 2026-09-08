@@ -157,8 +157,16 @@ fix revalidated all 239 unchanged captured files without regenerating the world.
 See [first full run](evidence/item-10/full-ordinary-r1-baseline/README.md) for the
 original run receipt, recovery command, focused checks and initial sizes.
 All 50 incoming classes and 28,908 complete attempts pass direct trace checks.
-The stopped-world backup exists. Next: durable raw archive/restore and complete
-saved-world census/location analysis. No second world may start before acceptance.
+Raw custody is published at tag `item10-full-ordinary-r1-baseline-aa409114`;
+local/download restores verified all 554 members and the world restore verified
+503 files. Overworld analysis session `39841` completed successfully: 4,096 full
+chunks, 24 registry starts and 931 nonregistry locations. Its hash, command and
+limits are in the first-run README; output is under
+`evidence/raw/item10/full-ordinary-r1-baseline-analysis`. No process is active.
+The single-stratum output repeats 68.4 MB of whole-world observation state.
+Next: reuse one nonregistry pass across all eleven existing census calls, compare
+Overworld results, and finish the other ten strata plus resource
+acceptance. No second world may start before acceptance.
 Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher

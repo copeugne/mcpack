@@ -1,6 +1,6 @@
 # First full ordinary baseline
 
-Status: GENERATED, CONFIGURATION REVALIDATED; census, custody and location
+Status: GENERATED, CONFIGURATION REVALIDATED, RAW CUSTODY VERIFIED; census and location
 acceptance remain pending. Generation source: `7b977af6`. Seed: `42`.
 
 The original [run receipt](run.json) is preserved unchanged. All eleven declared
@@ -70,5 +70,65 @@ and 108,596 write events. These are raw attempt/write counts, not location count
 World backup completed with 503 files totaling 428,092,106 bytes; its archive is
 162,363,995 bytes with SHA-256
 `3aa87e98bf90e00aaa20101412d429c2b163b36a0bff45aee51f42164b6c4580`.
-Trace size is 22,100,158 bytes. Durable archive publication, restore and complete
-saved-world analysis must follow before another world starts.
+Trace size is 22,100,158 bytes. Complete saved-world analysis must pass before
+another world starts.
+
+## Durable raw custody
+
+The immutable [release](https://github.com/copeugne/mcpack/releases/tag/item10-full-ordinary-r1-baseline-aa409114)
+retains `item10-full-ordinary-r1-baseline-aa409114.tar.gz` and its
+[committed manifest](archive-manifest.json). The tag binds
+`aa4091143b26698347731fb1181efd12d50336ed`, which contains the narrow configuration
+correction; the unchanged run receipt separately binds generation source `7b977af6`.
+Archive SHA-256 is
+`76e53df7a6a9cf43e1ace97b1670e63492b95cbcb1d1ab83a4f71dcb9b4959a8`.
+It contains 554 files totaling 187,391,532 uncompressed bytes; archive size is
+162,883,215 bytes. Both the [local restore](local-restore.json) and
+[downloaded restore](download-restore.json) verified all members. The downloaded
+manifest matches the committed manifest byte-for-byte. The nested
+[world restore](world-restore.json) restored all 503 world files from the verified
+world archive. No server was restarted during these checks.
+
+The first local restore invocation failed before extraction because the custody
+parent directory was absent. Creating that parent and retrying succeeded. An
+attempt to use `/usr/bin/time` for analysis also stopped before analysis because
+that optional executable is absent; the shell's existing `time` keyword is used.
+Neither preparation failure modified the retained raw archive or world.
+
+Executed archive command:
+
+```sh
+uv run --no-sync python -m tools.archive_item7_evidence create --root evidence/raw/item10/full-ordinary-r1-baseline --archive evidence/raw/item10/item10-full-ordinary-r1-baseline-aa409114.tar.gz --manifest evidence/item-10/full-ordinary-r1-baseline/archive-manifest.json --revision aa4091143b26698347731fb1181efd12d50336ed
+```
+
+Download into a new directory with `gh release download
+item10-full-ordinary-r1-baseline-aa409114 --repo copeugne/mcpack --dir DOWNLOAD`.
+Then use the existing archive restore command with that archive, the committed
+manifest, an absent restore target and an absent receipt path. Create the target
+parent first. The world restore uses the nested `world.tar.gz` and the world
+SHA-256 above, through `tools.manage_item4_environment restore`.
+
+The first full offline analysis completed against the restored world in
+3 minutes 28.539 seconds (shell `time`). All 4,096 selected Overworld chunks
+passed complete-census validation. There are 24 registry starts and 931 observed
+nonregistry locations: 94 Quark monster boxes and 837 cave urn caches. Combined
+classification gives 955 locations: T0 8, C 1, T1 939, T2 7, T3 0, T4 0, with
+one village. These are provisional location categories, not observed fights.
+The full output is 79,299,838 bytes, SHA-256
+`bef29dfa0bcf52392edd4ae9b96d1425f395f658d5e109702d77a36c9bad1c8c`.
+Its command and durable raw inputs reproduce this derived result; the other ten
+strata remain unaccepted.
+
+The `nonregistry_candidates` object alone serializes to 68,411,635 bytes with
+`json.dumps(value, indent=2)`. It contains whole-world observations despite the
+single-stratum census. Repeating the same capture processing and storing that
+object in every stratum is unnecessary. The next analysis integration will reuse
+one whole-world nonregistry result across all eleven existing census calls,
+preserving this completed Overworld result as a comparison. This changes neither
+the sample nor occurrence rules and does not require a new world experiment.
+
+Executed command:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-world/world evidence/raw/item10/full-ordinary-r1-baseline-analysis/overworld.json --dimension minecraft:overworld --bounds -32 31 -32 31 --dimension-geometry evidence/item-10/dimension-geometry.json --classify --spatial --biomes --trace-root evidence/raw/item10/full-ordinary-r1-baseline-custody/restored-local --trace-manifest evidence/item-10/full-ordinary-r1-baseline/archive-manifest.json --require-complete-observer
+```
