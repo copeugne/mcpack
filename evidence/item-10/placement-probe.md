@@ -561,3 +561,40 @@ An initial shared directory collided across fixture processes; trace-specific
 paths fixed that defect. Both preservation fixtures pass, including checks that
 retained incoming bytes match each emitted installation hash. No new runtime
 identity has been accepted by this change.
+
+
+## BetterEnd diagnostic milestone, current disposition
+
+The shared template collector and optional lifecycle fixture commands are ready
+for review as a diagnostic milestone. They do not close Item 10 or establish a
+complete occurrence collector. Reuse these authoritative attempt records:
+
+- [r1](betterend-probe-r1/README.md): no template placements; incoming class bytes
+  were not retained, so its identity gate failed.
+- [r2](betterend-identity-r2/README.md): retained and inspected patched class,
+  no feature attempts in the small identity pilot.
+- [r3](betterend-fixture-r3/README.md): fixture commands refused unloaded targets.
+- [r4](betterend-fixture-r4/README.md): loading and fill succeed, feature refuses.
+- [r5](betterend-ground-r5/README.md): actual ground matches the platform position.
+- [r6](betterend-tags-r6/README.md): air check passes, terrain tag is unknown to
+  command lookup. Retained source inspection distinguishes datagen definitions
+  from runtime tag loading. The runtime registration/resource gap is unresolved.
+
+Each raw diagnostic is durably archived with verified download and nested-world
+restores. None supplies accepted BetterEnd occurrence counts. Synthetic probes
+preserve original calls, arguments, return values, refusal and exception behavior;
+real template writes and saved-world corroboration remain unexercised here.
+Do not force a positive fixture by adding tags to the frozen baseline. Resolve
+runtime availability and the affected inventory assumptions before accepting
+counts or revising the full sampling gate. No Item 8/9 general audit was repeated.
+
+Validation for the current candidate:
+
+```sh
+uv run --no-sync pytest -q tests/item7 tests/item10
+uv run --no-sync ruff check src/mcpack_evidence/item7_lifecycle.py tests/item10/test_placement_probe.py tests/item7/test_worldgen_lifecycle.py tools/run_item10_probe.py tools/run_item7_worldgen.py
+uv run --no-sync basedpyright src/mcpack_evidence/item7_lifecycle.py tests/item10/test_placement_probe.py tests/item7/test_worldgen_lifecycle.py tools/run_item10_probe.py tools/run_item7_worldgen.py
+```
+
+All 296 tests pass (42.40 seconds); changed Python lint, formatting and type
+checks pass. No Item 11 workflow was implemented, run, repaired or linted.

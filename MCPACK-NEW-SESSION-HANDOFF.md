@@ -151,8 +151,12 @@ command lookup, not false membership. Raw/world restores pass. Next inspect
 the remaining runtime registration/resource gap before further experiments.
 The linked source inspection shows ordinary tag-map injection and distinguishes
 datagen definitions from runtime bootstrap subscribers; the packaged directory
-constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven. Do not alter frozen tags/configs or infer
+constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
+Do not alter frozen tags/configs or infer
 zero density. Positive template capture and full collection remain gated.
+The bounded collector/diagnostic milestone passes 296 Item 7/10 tests plus
+changed-file lint, formatting and type checks. Open its PR for review; the
+[placement diagnostic](evidence/item-10/placement-probe.md) records its scope.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
