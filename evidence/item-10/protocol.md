@@ -574,3 +574,32 @@ measured costs for this new collector. Record actual time and trace/archive size
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name monster-box-pilot-r1 --mode probe --role ordinary --preset pilot
 ```
+
+
+## Nether spike natural pilot r1
+
+Predeclared before launch. Use fresh `nether-spike-pilot-r1`, ordinary seed 42,
+and the existing unchanged 324-chunk pilot with frozen runtime/configuration and
+the current source-bound observer. No commands alter terrain, force placements
+or change settings. The accepted frozen settings remain chancePerChunk 0.1,
+triesPerChunk 4, bigSpikeChance 0.03 and bigSpikeSpawners true.
+
+The new observed attempt is one static placeSpikeAt invocation, not an outer
+generateChunk call and not an individual block. Outer calls failing the chance
+or lava search are outside this event population. Preserve the placement anchor,
+individual write results, zero-write returns and exceptions. Keep other feature
+classes in the raw trace. Require incoming class identity, complete lifecycle,
+positive spike writes, durable custody and saved-block corroboration before
+accepting this diagnostic. Unexercised conditional large-spike/reward paths stay
+explicit; successful block capture does not prove their gameplay behavior.
+
+Use the existing 1 to 4 GiB heap and 900-second timeout. The previous same-sized
+ordinary pilot took 88.452 seconds, a planning proxy only. Reserve 1 GiB for raw
+outputs and custody; the host has 6.0 GiB free and no running Java server before
+launch. Measure actual time and sizes. Do not expand or change seed in response
+to counts. Zero successful writes are insufficient positive capture, not a zero
+density result. This diagnostic cannot substitute for the full sampling frame.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name nether-spike-pilot-r1 --mode probe --role ordinary --preset pilot
+```

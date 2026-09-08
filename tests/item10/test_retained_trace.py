@@ -8,7 +8,9 @@ from tools.validate_item10_trace import (
     BOP_CLASSES,
     BOP_INSTALLED,
     CLASS_SHA,
+    END_BUILDING,
     MONSTER_BOX,
+    NETHER_SPIKE,
     check_feature_rows,
     check_rows,
     validate_feature_trace,
@@ -195,7 +197,7 @@ def monster_rows() -> list[dict[str, object]]:
 
 
 def test_monster_void_completion_keeps_write_denominator() -> None:
-    result = check_feature_rows(monster_rows(), monster_box=True)
+    result = check_feature_rows(monster_rows(), mode="monster")
     assert result["attempts"] == 2
     assert result["writes"] == 2
     assert result["refused_writes"] == 1
@@ -220,7 +222,7 @@ def test_monster_capture_rejects_invalid_generator_contract(defect: str) -> None
     else:
         del rows[next(i for i, r in enumerate(rows) if r["kind"] == "generator_end")]
     with pytest.raises(ValueError, match=r"BOP|Monster Box"):
-        _ = check_feature_rows(rows, monster_box=True)
+        _ = check_feature_rows(rows, mode="monster")
 
 
 @pytest.mark.parametrize("path", ["anomaly-helper", "anomaly-direct", "monolith"])
@@ -239,3 +241,73 @@ def test_bop_rejects_omitted_anomaly_final_write() -> None:
     rows = [row for row in bop_rows() if row.get("flags") != 2]
     with pytest.raises(ValueError, match="successful writes on all three"):
         _ = check_feature_rows(rows)
+
+
+def spike_rows() -> list[dict[str, object]]:
+    rows = monster_rows()
+    rows.insert(
+        1, {"kind": "feature_installed", "class": NETHER_SPIKE, "input_class_sha256": "c" * 64}
+    )
+    rows[-1:-1] = [
+        {"kind": "begin", "attempt": 3, "dimension": "minecraft:the_nether", "origin": [0, 80, 0]},
+        {"kind": "feature", "attempt": 3, "class": NETHER_SPIKE.replace("/", ".")},
+        {
+            "kind": "write",
+            "attempt": 3,
+            "position": [0, 80, 0],
+            "state": "Block{minecraft:obsidian}",
+            "flags": 0,
+            "returned": True,
+        },
+        {"kind": "generator_end", "attempt": 3},
+        {"kind": "begin", "attempt": 4, "dimension": "minecraft:the_end", "origin": [0, 80, 0]},
+        {"kind": "feature", "attempt": 4, "class": END_BUILDING.replace("/", ".")},
+        {"kind": "ground", "attempt": 4, "position": [0, 81, 0]},
+        {"kind": "end", "attempt": 4, "returned": False},
+    ]
+    return rows
+
+
+def test_mixed_capture_keeps_void_and_false_returns_separate() -> None:
+    result = check_feature_rows(spike_rows(), mode="spike")
+    assert result["attempts"] == 4
+    assert result["writes"] == 3
+    assert result["refused_writes"] == 1
+
+
+@pytest.mark.parametrize(
+    "defect",
+    [
+        "dimension",
+        "wrong-ending",
+        "missing-ground",
+        "repeated-ground",
+        "true-building-end",
+        "refused-spike",
+        "shutdown-type",
+    ],
+)
+def test_mixed_capture_rejects_invalid_lifecycle(defect: str) -> None:
+    rows = spike_rows()
+    if defect == "dimension":
+        next(r for r in rows if r["kind"] == "begin" and r["attempt"] == 3)["dimension"] = (
+            "minecraft:overworld"
+        )
+    elif defect == "wrong-ending":
+        end = next(r for r in rows if r["kind"] == "generator_end" and r["attempt"] == 3)
+        end.update(kind="end", returned=False)
+    elif defect == "missing-ground":
+        rows = [r for r in rows if r["kind"] != "ground"]
+    elif defect == "repeated-ground":
+        index = next(i for i, r in enumerate(rows) if r["kind"] == "ground")
+        rows.insert(index, copy.deepcopy(rows[index]))
+    elif defect == "true-building-end":
+        next(r for r in rows if r["kind"] == "end")["returned"] = True
+    elif defect == "refused-spike":
+        next(r for r in rows if r["kind"] == "write" and r["attempt"] == 3)["returned"] = False
+    else:
+        rows[-1]["installed"] = 1
+    with pytest.raises(
+        ValueError, match=r"dimension|completion|ground|false return|successful write|shutdown"
+    ):
+        _ = check_feature_rows(rows, mode="spike")

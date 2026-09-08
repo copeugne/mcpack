@@ -351,3 +351,60 @@ def test_monster_box_void_generator_preserves_write_result(tmp_path: Path) -> No
         timeout=30,
     )
     assert transformed.read_bytes() != payload
+
+
+def test_nether_spike_static_generator_preserves_all_write_sites(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    name = "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator"
+    for mode in ("normal", "early", "refused", "exception", "isolated", "outside"):
+        args = ["GeneratorFixture", mode, "spike"]
+        ordinary = subprocess.run(
+            [*command, *args], check=True, capture_output=True, text=True, timeout=30
+        )
+        trace = tmp_path / f"spike-{mode}.jsonl"
+        observed = subprocess.run(
+            [*command, f"-javaagent:{agent}={trace}", *args],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert ordinary.stdout == observed.stdout
+        rows = [
+            cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()
+        ]
+        assert not any(r["kind"] == "installation_failed" for r in rows)
+        assert any(r.get("class") == name and r["kind"] == "feature_installed" for r in rows)
+        writes = [r for r in rows if r["kind"] in {"write", "write_exception"}]
+        expected = 0 if mode in {"early", "outside"} else 3 if mode == "exception" else 7
+        assert len(writes) == expected
+        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        if mode != "outside":
+            feature = next(r for r in rows if r["kind"] == "feature")
+            assert feature["class"] == name.replace("/", ".")
+        if mode in {"normal", "refused", "isolated"}:
+            assert all(r["flags"] == 0 and r["returned"] is (mode != "refused") for r in writes)
+            assert len([r for r in rows if r["kind"] == "generator_end"]) == 1
+    archive = ROOT / "downloads/item3/candidates/Quark-4.1-480.jar"
+    assert (
+        hashlib.sha256(archive.read_bytes()).hexdigest()
+        == "989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5"
+    )
+    with zipfile.ZipFile(archive) as jar:
+        payload = jar.read(name + ".class")
+    assert (
+        hashlib.sha256(payload).hexdigest()
+        == "509ca413b7bdaae9659a3dae7c6e730e650a11750f53acef592a3fc63d8fc90a"
+    )
+    original = tmp_path / "spike-original.class"
+    transformed = tmp_path / "spike-transformed.class"
+    _ = original.write_bytes(payload)
+    _ = subprocess.run(
+        [*command, "TemplateFixture", "transform", name, str(original), str(transformed)],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert transformed.read_bytes() != payload

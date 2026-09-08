@@ -685,3 +685,25 @@ must support generator_end and count successful monster-box writes under the
 frozen at-most-one-write-per-chunk setting; a completed void call is not success.
 Fairy-ring delegated flower writes remain separate missing coverage. No frozen
 configuration or random draw is changed by this extension.
+
+
+## Nether obsidian spike static-writer extension
+
+Reuse [the accepted spike source](../item-8/sources/quark-nether-spikes/identities.json).
+ObsidianSpikeGenerator.placeSpikeAt is a static void method with seven direct
+WorldGenRegion.setBlock call sites, all flags 0. The existing generator hook now
+accepts its class identity and brackets that placement method. It captures every
+actual write result without substituting the discarded booleans or changing the
+original method return. The passed placement position is the anchor; individual
+writes retain their own coordinates. One call is a placement attempt, not seven
+locations. Outer generateChunk calls which never invoke this method are outside
+this trace population. Spawner/chest block-entity configuration is unchanged and
+not separately observed by these block-write hooks.
+
+The existing fixtures cover all seven sites, refused writes, early returns,
+exceptions, isolated classloading and calls outside the selected method. The
+exact Quark archive and retained class hashes are checked before transformation.
+All five collector tests pass in 9.46 seconds; changed-test Ruff and basedpyright
+pass. This implementation adds no server commands or experiment. Live positive
+capture, incoming runtime identity, trace validation and saved-block corroboration
+remain required before this contribution can enter full sampling.
