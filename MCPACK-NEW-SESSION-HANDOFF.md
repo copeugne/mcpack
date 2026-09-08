@@ -29,7 +29,7 @@ Item 10 and the Items 2 through 10 audit are COMPLETE through reviewed PR35/36.
 The two prior housekeeping commits `1f70f395` and `022990e3` are preserved ancestors
 and included in PR37; they were not PR36-reviewed main delivery.
 
-Item 11: local exit gate PASS under corrected protocol v2.
+Item 11: local exit gate REOPENED for completed-cost finding 3963125325.
 PR37 finding 3962853986 was valid: version 1 coupled target visibility to anchor
 adjacency. Fix `1609ac96` separates the populations under predeclared protocol v2.
 All sixteen corrected derived results and the report are pushed at `56bf88b5`.
@@ -55,8 +55,13 @@ fix reuses Item 4 `_backup_paths` to exclude the lock before opening. All sixtee
 worlds were reanalyzed under corrected source `ff77c6f6`, before the visibility correction. No upstream world was
 regenerated or repaired. Do not repeat the completed collection for reassurance.
 
-Next action: request a fresh `@codex review` on the pushed final PR37 candidate. Finish the review/fix loop, merge and verify main
-before declaring Item 11 COMPLETE. Do not repeat generation or upstream audits.
+The completed review of `e52353ab` found that infeasible routes report completed
+costs for shorter windows. The narrow status gate fixes this under unchanged
+protocol v2. The actual ocean-heavy r1 control regression fails before and twelve
+route tests pass after. Pre-cost-fix results remain at `e52353ab`.
+Next action: finish representative comparison, reproduce the remaining fifteen
+derived results, rebuild the report, run affected final checks, then complete the
+fresh review/fix/merge loop. Do not repeat generation or upstream audits.
 Do not start Item 12.
 
 Human recognition, actual fights, interaction time, enjoyment and human Adventure

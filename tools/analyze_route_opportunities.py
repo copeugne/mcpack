@@ -377,7 +377,9 @@ def summarize_route(
                     modes[mode] = {
                         "reachable_prefix": prefix,
                         "unconstrained_cost": costs(length, mode),
-                        "completed_cost": costs(length, mode) if prefix == window else None,
+                        "completed_cost": (
+                            costs(length, mode) if model["status"] == "MODEL_FEASIBLE" else None
+                        ),
                         "prefix_cost": costs(model["cumulative_cost_distance"][prefix], mode),
                         "prefix_covered_blocks": sum(8 for d in stations if d + 4 <= prefix),
                         "prefix_denominator_blocks": prefix,

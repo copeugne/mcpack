@@ -1,0 +1,18 @@
+...........F                                                             [100%]
+=================================== FAILURES ===================================
+__________ test_infeasible_route_never_reports_completed_window_cost ___________
+
+    def test_infeasible_route_never_reports_completed_window_cost() -> None:
+        source = routes.ROOT / "evidence/item-11/results/full-ocean-heavy-r1-without-sparse.json.gz"
+        route = json.loads(gzip.decompress(source.read_bytes()))["routes"]["east-south"]
+        assert route["transport"]["boat"]["status"] == "INFEASIBLE"
+        assert route["transport"]["boat"]["reachable_prefix"] == 756
+        summaries = routes.summarize_route(route["observations"], route["transport"])
+        for row in summaries:
+>           assert row["modes"]["boat"]["completed_cost"] is None
+E           AssertionError: assert {'central_seconds': 32.0, 'max_seconds': 42.666666666666664, 'min_seconds': 25.6} is None
+
+tests/item11/test_routes.py:202: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item11/test_routes.py::test_infeasible_route_never_reports_completed_window_cost
+1 failed, 11 passed in 0.58s

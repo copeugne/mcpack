@@ -113,7 +113,11 @@ def test_coverage_deduplicates_locations_and_censors_window() -> None:
     }
     other = {**observation, "location_id": "a2", "projection": 256}
     models = {
-        mode: {"reachable_prefix": 9, "cumulative_cost_distance": list(range(769))}
+        mode: {
+            "status": "INFEASIBLE",
+            "reachable_prefix": 9,
+            "cumulative_cost_distance": list(range(769)),
+        }
         for mode in routes.SPEEDS
     }
     summaries = routes.summarize_route([observation, other], models)
@@ -164,7 +168,11 @@ def test_visibility_target_beyond_anchor_cutoff_is_retained() -> None:
     assert len(observations) == 1
     assert observations[0]["adjacent_distance"] == 120
     models = {
-        mode: {"reachable_prefix": 768, "cumulative_cost_distance": list(range(769))}
+        mode: {
+            "status": "MODEL_FEASIBLE",
+            "reachable_prefix": 768,
+            "cumulative_cost_distance": list(range(769)),
+        }
         for mode in routes.SPEEDS
     }
     summary = next(
@@ -190,3 +198,15 @@ def test_retained_outpost_visibility_is_not_anchor_adjacency() -> None:
     )
     assert identity not in {e[2] for e in summary["adjacent"]["events"]}
     assert identity in {e[2] for e in summary["geometric_visible"]["events"]}
+
+
+def test_infeasible_route_never_reports_completed_window_cost() -> None:
+    source = routes.ROOT / "evidence/item-11/results/full-ocean-heavy-r1-without-sparse.json.gz"
+    route = json.loads(gzip.decompress(source.read_bytes()))["routes"]["east-south"]
+    assert route["transport"]["boat"]["status"] == "INFEASIBLE"
+    assert route["transport"]["boat"]["reachable_prefix"] == 756
+    summaries = routes.summarize_route(route["observations"], route["transport"])
+    for row in summaries:
+        assert row["modes"]["boat"]["completed_cost"] is None
+        assert row["modes"]["boat"]["prefix_cost"] is not None
+        assert row["modes"]["boat"]["unconstrained_cost"] is not None

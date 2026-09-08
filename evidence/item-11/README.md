@@ -1,6 +1,6 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate PASS under corrected protocol v2**.
+Status: **IN PROGRESS; local exit gate REOPENED for PR37 completed-cost finding 3963125325**.
 Final Codex review and verified main delivery are governed by
 [PR37](https://github.com/copeugne/mcpack/pull/37).
 The [complete generated report](report.md) is the authoritative version 2 numerical result.
@@ -256,3 +256,24 @@ It is valid and corrected to `item11-routes-v2`. Direct inspection confirms the
 ledger, protocol, analyzer, result identities and report builder now name v2.
 This documentation-only correction does not invalidate the 600-test final gate
 or require repeating derived analysis. Fresh Codex review remains required.
+
+## Completed-cost correction in progress
+
+[Finding 3963125325](https://github.com/copeugne/mcpack/pull/37#discussion_r3963125325)
+is valid. For ocean-heavy r1 control / east-south, boat mode is INFEASIBLE with
+reachable prefix 756. The old summary emitted completed costs for windows 256
+and 512, contradicting the existing protocol's MODEL_FEASIBLE-only rule. The
+narrow fix gates `completed_cost` on the full route/mode status. Reachable-prefix
+and unconstrained costs continue to describe the supported partial window.
+
+The retained-world regression [fails before](validation/cost-regression-before.txt)
+and all twelve route tests [pass afterward](validation/cost-regression-after.txt).
+No protocol or sampling rule changes: this brings implementation into agreement
+with the existing v2 requirement. All pre-cost-fix results, logs and report remain
+preserved at reviewed commit `e52353ab148c91319e22b613917375d5777e6b8a`.
+First rerun the actual ocean-heavy r1 control counterexample, compare all other
+raw and summary fields, then repeat the other fifteen read-only analyses through
+the existing source-hash-bound analyzer. The prior complete pass took 894.423
+seconds and retained 19,364,996 bytes, within the existing 160-minute/1-GiB budget.
+This repairs one field within the existing path. No new result class, schema,
+validator, archive or transformation framework is needed.
