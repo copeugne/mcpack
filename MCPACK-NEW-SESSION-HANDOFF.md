@@ -139,13 +139,14 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Five of sixteen worlds have individual census and raw-custody acceptance:
+Six of sixteen worlds have individual census and raw-custody acceptance:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
 - [Ordinary r2 control](evidence/item-10/full-ordinary-r2-without-sparse/README.md).
 - [Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md).
 - [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
+- [Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md).
 
 The fifth census (session `22204`, terminal 0) passed in 10m38.455s using
 `760aa2f5`. Output SHA-256:
@@ -156,25 +157,28 @@ The frozen observer JAR is archive-bound; 49 captured targets plus the unused
 Gateway target pass the corrected rule. No observer or configuration changed.
 Full Item 7/10 suite: 548 passed in 173.38s; two subsequently added archive-binding
 cases pass in the focused 41-test run. Fifth-world acceptance is pushed at
-`3fa7f311`. The next control census is active as noted below.
+`3fa7f311`. No server or census process is active.
 
 Mountainous Overworld has 4,039 locations, including 3,784 observed cave-urn
 caches, but only six provisional T2 dungeons. Two content mismatches remain
 excluded. Do not translate those counts into observed gameplay. Per-world
 commands, complete category counts, failures, biomes, spatial outputs and custody
 are linked above; final cross-seed/repetition synthesis remains pending.
-The fifth world's allocated working footprint is about 1.98 GiB, consistent
-with the roughly 30 GiB plan. Latest free-space observation is about 35.5 GiB.
+The fifth and sixth working footprints are about 1.98 and 2.06 GiB. Latest free
+space is about 33.1 GiB; continue checking costs against the roughly 30 GiB plan.
 
 [Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md)
 finished from `3fa7f311` in 666.194s; session `9871` is terminal 0. Configuration
 and published/downloaded/restored raw custody pass (313 raw and 501 world files).
-Its census is active as session `61273`. Poll that handle, inspect its complete
-output and record the matched contrast before acceptance. No server is active.
-Then run mountainous r2 control and r2 baseline,
+Its census (session `61273`, terminal 0) passed in 10m17.617s, SHA-256
+`ced960a70c4c34581b19c68b2bdcbf76f003894191ae62537aa1a85072e968b7`.
+All 45,056 chunks and 50 observer classes pass. The record retains three content
+exclusions and the matched contrast: Overworld T2 6 to 22, T3 2 to 7, total
+locations 4,039 to 4,083. Do not infer a global ratio from this one pair.
+Next run mountainous r2 control and r2 baseline,
 followed by the ocean-heavy and biome-diverse blocks in the frozen order. Use
 fresh hash-verified materializations and existing custody/census paths. Complete
-the remaining eleven worlds, final synthesis, consolidated PR review/merge and
+the remaining ten worlds, final synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. Do not create another tooling PR or Item 11 work.
 
 Two local free-roaming/task servers are stopped and preserved. Official launcher

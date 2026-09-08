@@ -1,7 +1,7 @@
 # Mountainous repetition-1 Sparse Structures control
 
-Status: GENERATION, CONFIGURATION AND RAW CUSTODY PASS.
-Census acceptance remains pending. Protocol: `item10-full-v1`, with
+Status: CONTROL-WORLD ACCEPTANCE PASS. Six of sixteen worlds are individually
+accepted. Protocol: `item10-full-v1`, with
 `item10-observer-coverage-v2`. Seed: `6671238423019257953`.
 Generation source: `3fa7f3117d0f9a5fff3fb4545a4fe51144b16dfa`.
 
@@ -50,7 +50,7 @@ uv run --no-sync python -m tools.archive_item7_evidence create --root evidence/r
 Raw observations and existing diagnostics remain unchanged. Generation and raw
 custody do not establish density, gameplay, or Item 10 completion.
 
-The full census is running as session `61273`, using analysis implementation
+The full census completed as session `61273`, exit 0, using analysis implementation
 `760aa2f5`. Executed command:
 
 ```sh
@@ -58,3 +58,71 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics are retained beside the output in `all-strata-runtime.txt`.
+
+## Full census and mountainous matched contrast
+
+The full census passed in 10m17.617s (user 10m11.463s, system 0m1.375s).
+Output: 117,578,014 bytes, SHA-256
+`ced960a70c4c34581b19c68b2bdcbf76f003894191ae62537aa1a85072e968b7`.
+All eleven strata contain 4,096 complete selected chunks, totaling 45,056.
+All 50 incoming classes and installations pass the full trace checks. The
+existing coverage-v2 implementation and its recorded tests are unchanged.
+
+The table projects `strata[label].total_starts` and
+`classification.categories[category].count`; density is count times `1000/4096`.
+The categories retain Item 9's provisional rationale, confidence and ambiguity.
+
+| Stratum | Registry starts | Classified locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| aether | 117 | 10 | 0 | 0 | 1 | 9 | 0 | 0 | 0 |
+| earth-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mars-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon-orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| moon | 53 | 53 | 53 | 0 | 0 | 0 | 0 | 0 | 0 |
+| venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| overworld | 130 | 4083 | 58 | 9 | 3987 | 22 | 7 | 0 | 3 |
+| end-central | 6 | 8 | 7 | 0 | 0 | 0 | 0 | 1 | 0 |
+| end-outer | 80 | 85 | 79 | 0 | 5 | 0 | 1 | 0 | 0 |
+| nether | 99 | 461 | 44 | 6 | 383 | 19 | 9 | 0 | 2 |
+
+Aether's 107 cloud starts remain excluded terrain. Central End includes the
+arrival platform and dragon arena lifecycle sites. One gateway is in the outer
+frame; another raw gateway group is outside the sample. The arena alone lacks
+an anchor height/biome (NO_LOCATION_HEIGHT); the other 4,321 observed nonregistry
+locations have biome attribution. Raw exposure remains separated by quart height.
+
+The 32,787 attempts produce 25,418 NO_CONSTRUCTIVE_CONTENT, 2,858 OUTSIDE_FRAME,
+4,322 OBSERVED_LOCATION and three CONTENT_NOT_PRESERVED grouped dispositions.
+Attempts and grouped locations have different denominators. The rejected cave-urn
+candidates are 11100 at Overworld (-335,24,194), with three content mismatches;
+21265 at (223,-40,27), with one; and 31398 at (98,29,236), with one. Their raw
+writes remain retained, and none contributes to the accepted location count.
+
+Compared directly with the [matched baseline](../full-mountainous-r1-baseline/README.md),
+control-minus-baseline classified-location differences are Aether +7, Mars +1,
+Moon +41, Overworld +44, central End +5, outer End +66 and Nether +35. The other
+four strata remain zero. Overworld T2 rises 6 to 22 and T3 rises 2 to 7, while
+T1 falls 4,000 to 3,987 and villages remain three. Nether T2 rises 7 to 19 and
+T3 rises 1 to 9. These are paired finite-region observations, not universal
+ratios or evidence that every placement mechanism is affected identically.
+
+The control's accepted Overworld nonregistry locations are 3,757 cave-urn caches,
+192 monster boxes, three scarecrows and one fairy ring. These counts join
+`locations` to OBSERVED_LOCATION dispositions by candidate ID. Small caches
+dominate the total, so the +44 overall difference does not describe the much
+larger proportional change in provisional dungeons. Neither measure is observed
+combat or human exploration pacing.
+
+The Overworld all-location nearest-observed mean changes from 8.12949 to 8.02635
+blocks; its uncensored nearest-neighbor mean remains null in both arms because
+of boundary censoring. These use chunk-center anchors and can include colocated
+locations. Cell variance/mean changes from 2.10199 to 2.15930, with no empty full
+cell rectangle in either arm. These values directly project `spatial.all_locations`;
+all category-specific distances, censoring, cell counts and empty rectangles
+remain in the full result rather than being replaced by this illustration.
+
+Allocated working bytes for this instance, original raw, custody, analysis and
+outer archive total 2,207,494,144 (about 2.06 GiB), using the same shared-inode
+accounting as the baseline. Free space after analysis is 35,492,941,824 bytes
+(about 33.1 GiB). Continue checking costs as the remaining ten worlds are collected.
