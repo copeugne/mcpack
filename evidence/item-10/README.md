@@ -3,16 +3,16 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Fifteen worlds have individual census and
+repetitions and baseline/control arms. All sixteen worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
 with heap exhaustion and remains preserved. The single predeclared
 [same-identity retry](full-ocean-heavy-r2-without-sparse-attempt2/README.md) passed
 generation and custody but failed census on one incomplete saved Aether chunk.
-The user has authorized the five remaining planned worlds, followed by exactly
-one fresh attempt-3 control retry under the unchanged frozen configuration.
-The target remains sixteen complete worlds; both failures remain preserved. Final combined
+All five remaining planned worlds and the [final fresh retry](full-ocean-heavy-r2-without-sparse-attempt3/README.md)
+passed. The sample contains sixteen complete worlds after eighteen attempts, with
+both failures preserved and the frozen configuration unchanged. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
 Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
 
@@ -217,17 +217,14 @@ worlds only; it does not close the pending full sampling requirement.
 
 ## Failure denominators and uncertainty
 
-Fifteen planned cells have accepted complete censuses. The failed planned cell
-(ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
-generation, then an incomplete saved Aether chunk following a save exception.
-All planned cells have been attempted. Seventeen attempts cover sixteen cells,
-with fifteen complete censuses and one failed cell awaiting its final retry.
-The failed attempts retain their immutable archives and diagnoses. No missing
-cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
-control retry after the five untouched planned worlds. Sixteen complete cells
-remain required.
+All sixteen planned cells have accepted complete censuses, eight matched pairs
+and 720,896 selected full chunks. Eighteen attempts include two rejected attempts
+for ocean-heavy r2 control: heap exhaustion, then an incomplete saved Aether chunk
+following a save exception. The final authorized fresh retry passed after all five
+remaining planned worlds. Neither earlier failure is erased, repaired or counted
+as zero density. All attempted-run outcomes remain part of the sampling record.
 
-Within the fifteen accepted worlds, the observer's call count differs from grouped
+Within the sixteen accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts
 from `nonregistry_candidates.attempts`, `locations` and `location_observations`
 in their accepted, hash-bound outputs. The five disposition columns partition
@@ -250,6 +247,7 @@ the grouped candidates; they do not partition individual observer calls.
 | Biome-diverse r1 C | 33086 | 32777 | 25388 | 2857 | 4526 | 6 | 0 |
 | Biome-diverse r2 C | 33020 | 32766 | 25350 | 2855 | 4561 | 0 | 0 |
 | Biome-diverse r2 B | 33074 | 32775 | 25357 | 2860 | 4553 | 5 | 0 |
+| Ocean-heavy r2 C attempt3 | 28688 | 28503 | 24194 | 2627 | 1678 | 2 | 2 |
 
 No constructive content means the candidate did not produce the required content;
 it is not a failed server run. Outside-frame candidates remain excluded by the
@@ -280,7 +278,7 @@ worlds. The [biome-diverse r1 baseline](full-biome-diverse-r1-baseline/README.md
 and [its control](full-biome-diverse-r1-without-sparse/README.md), together with
 [repetition 2](full-biome-diverse-r2-baseline/README.md), form two matched pairs.
 Ordinary and mountainous also each have two complete matched pairs;
-ocean-heavy has one and an unpaired second baseline. Fresh-repetition
+ocean-heavy now also has two. Fresh-repetition
 variation remains visible in the tables and raw outputs. Two repetitions do not
 support a reliable tail estimate or a confidence interval for all generated worlds.
 The raw sampling boundaries censor distances, and all sparse categories retain
@@ -454,8 +452,8 @@ The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
 source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
-prior reviews are resolved. One world, combined synthesis and final delivery
-remain incomplete; runtime acceptance is established per world, not from tests.
+prior reviews and all sixteen world censuses are resolved. Combined synthesis
+and final delivery remain incomplete; runtime acceptance is established per world, not from tests.
 
 ### Storage decision before collection
 
@@ -502,8 +500,8 @@ four seeds and eleven strata, with two fresh repetitions in each of two arms.
 It defines coordinate inclusion, spatial cells, biome attribution, boundary
 censoring, sparse-category limits and a control omitting only Sparse Structures.
 This supersedes the inherited nested-stage draft. Each full-world acceptance
-requires complete occurrence capture and exact experiment identities; fifteen
-worlds have passed so far.
+requires complete occurrence capture and exact experiment identities; all sixteen
+worlds have passed.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
 disposition, source-bound deterministic processing, retained raw evidence with
@@ -526,8 +524,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Run the authorized final ocean-heavy control retry; continue
-  capacity checks. Preserve all existing artifacts and failed observations.
+- Preserve all accepted worlds and both failed attempts while completing delivery.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.
 - Complete clean-checkout reproduction, final review, main delivery and the

@@ -1,6 +1,6 @@
 # Ocean-heavy repetition-2 control, final authorized retry
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: CONTROL-WORLD ACCEPTANCE PASS, with retained content and overlap exclusions.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `95920844204830198`.
 Generation source: `498394f1f0ca0de21820bd8a643a68544de59cee`.
@@ -61,4 +61,67 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics remain in `all-strata-runtime.txt` in the analysis directory.
-Census acceptance is pending; do not count this as the sixteenth complete world yet.
+Census session 51235 ended with exit 0 in 482.856 seconds. Output is
+99,115,673 bytes, SHA-256
+`484b6280b09509ef92af6595a33f8515b394579e0569f7ce3c1ec8877aa59f05`.
+All eleven strata contain exactly 4,096 full selected chunks. Fifty incoming
+classes pass complete observer coverage and trace validation.
+
+
+## Exclusions and overlap review
+
+Two Overworld `supplementaries:cave_urn_cache` candidates remain
+CONTENT_NOT_PRESERVED. Candidate 13831, attempt 25265, has content positions
+(-60,-47,326) and (-58,-47,327), saved respectively as `minecraft:amethyst_block`
+and `minecraft:smooth_basalt`. Candidate 13927, attempt 25266, has content position
+(-61,-47,330), saved as `minecraft:air`. All three are in full chunks. Their raw
+constructive observations remain preserved, and the later writer is UNKNOWN.
+
+Outer-End `biomesoplenty:anomaly` candidates 27249 and 27250 have anchors
+(7901,60,8034) and (7910,62,8036), attempts 27367 and 27364. Their 2,503 and 2,622
+content positions all match saved content, but the sets share exactly 22 positions.
+Direct set intersection verifies the raw overlap count. Both in-frame T0 candidates
+are REVIEWED, EXCLUDED under the unchanged overlap rule; raw dispositions remain
+OVERLAP_REVIEW_REQUIRED. They are not merged or admitted because the saved blocks
+match. Admitting both as a sensitivity case would raise outer-End total from 57
+to 59, adding 0.48828125 total/T0 locations per 1,000 chunks. This is not a corrected
+numerator and does not affect T2 or T3.
+
+## Accepted counts and limitations
+
+Rates use count times 1,000 / 4,096 within each stratum. Category spatial
+observations, censoring and biome exposures remain in the hash-bound output.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 122 | 10 | 0 | 0 | 0 | 10 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 49 | 49 | 49 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 90 | 1358 | 31 | 1 | 1304 | 19 | 3 | 0 | 1 |
+| Central End | 7 | 9 | 8 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 45 | 57 | 52 | 0 | 1 | 3 | 1 | 0 | 0 |
+| Nether | 187 | 583 | 134 | 8 | 413 | 26 | 2 | 0 | 0 |
+
+Aether's 112 cloud starts remain excluded terrain. The observer records 28,688
+calls and 28,503 grouped candidates: 24,194 NO_CONSTRUCTIVE_CONTENT, 2,627
+OUTSIDE_FRAME, 1,678 OBSERVED_LOCATION, two CONTENT_NOT_PRESERVED and two
+reviewed overlap exclusions. Biome rows plus unavailable anchors conserve every
+stratum's accepted location count. The central-End arena is the sole unavailable
+biome anchor; no positive-count zero-exposure row occurs.
+
+Overworld T2 nearest-observed mean is 139.5076386733084 blocks; uncensored mean
+remains null. Dispersion is 0.7598684210526315 and the largest empty full-cell
+rectangle is 256 chunks, bounds [-32,-17,-32,-17]. Compared with repetition 1,
+Overworld total changes from 1,401 to 1,358 while T2/T3/village counts remain
+19/3/1. Outer-End total stays 57, and Nether changes from 532 to 583.
+
+The successful retry completes the eighth matched pair and sixteenth planned
+cell after eighteen attempts, with both earlier failures retained. The unchanged
+configuration was not repaired or demonstrated failure-free. All accepted worlds
+together supply 720,896 full selected chunks across 176 strata. Combined analysis,
+final review/merge and the Items 2 through 10 audit remain outstanding. This is
+placement evidence, not observed fights, pacing or observer-free equivalence.

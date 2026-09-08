@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Fifteen planned cells have complete census and raw-custody acceptance:
+All sixteen planned cells have complete census and raw-custody acceptance:
 
 - [full-ordinary-r1-baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [full-ordinary-r1-without-sparse](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
@@ -156,6 +156,7 @@ Fifteen planned cells have complete census and raw-custody acceptance:
 - [full-biome-diverse-r1-without-sparse](evidence/item-10/full-biome-diverse-r1-without-sparse/README.md).
 - [full-biome-diverse-r2-without-sparse](evidence/item-10/full-biome-diverse-r2-without-sparse/README.md).
 - [full-biome-diverse-r2-baseline](evidence/item-10/full-biome-diverse-r2-baseline/README.md).
+- [full-ocean-heavy-r2-without-sparse-attempt3](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/README.md).
 
 Ocean-heavy r2 baseline completed generation in 526.634s and census in 549.917s.
 Its record binds restored raw evidence, all 45,056 selected full chunks and the
@@ -170,7 +171,8 @@ Six urn exclusions and one zero-exposure biome row are retained in its report.
 Biome-diverse r2 control census passed in 510.364s; session 25437 is terminal 0.
 Biome-diverse r2 baseline census passed in 525.490s; session 40037 is terminal 0.
 All five authorized planned worlds are accepted. The [final ocean-heavy retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt3/README.md)
-passed generation/custody. Census session 51235 is live, source `498394f1`.
+passed census in 482.856s. Session 51235 is terminal 0, source `498394f1`.
+Sixteen complete cells, eight matched pairs and eighteen attempts are retained.
 Both failed archives still match their manifest hashes; no further retries are authorized.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
