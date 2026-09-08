@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from tools.manage_item4_environment import _world_backup_lock
+from tools.validate_item10_trace import BRIDGE_ROOT, SCARECROW_CLASS, URN
 
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
 from mcpack_evidence.item7_nbt import decode_compound_nbt
@@ -263,6 +264,129 @@ def category_occurrences(
         row for row in rows if "village" in cast("list[str]", row["comparison_groups"])
     ]
     return categories
+
+
+def nonregistry_membership() -> dict[str, dict[str, str]]:  # noqa: C901 - direct inventory joins
+    """Reuse the frozen forty-family membership, not template filename heuristics."""
+    source = Path(__file__).resolve().parents[1] / "evidence/item-8/inventory.json"
+    payload = source.read_bytes()
+    if (
+        hashlib.sha256(payload).hexdigest()
+        != "4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d"
+    ):
+        detail = "accepted nonregistry inventory identity changed"
+        raise ValueError(detail)
+    inventory = json.loads(payload)
+    contributions = inventory["non_registry_content"]["contributions"]
+    templates: dict[str, str] = {}
+    for group in ("betterend:biome_buildings", "betterend:biome_ruins"):
+        for family, design in contributions[group]["designs"].items():
+            for path in design.get("templates", [design.get("template")]):
+                templates["/" + path] = family
+    for group in (
+        "yungsbridges:bridges",
+        "yungsextras:feature_entrypoints",
+        "betterendisland:platform_gateway",
+    ):
+        for family in contributions[group]["families"]:
+            for path in family["templates"]:
+                if path in templates and templates[path] != family["family"]:
+                    detail = "one template belongs to multiple accepted families"
+                    raise ValueError(detail)
+                templates[path] = family["family"]
+    templates["minecraft:end_city/ship"] = "betterend:crashed_ship"
+    end_features = "org/betterx/betterend/world/features/"
+    quark_generators = "org/violetmoon/quark/content/world/gen/"
+    classes = {
+        SCARECROW_CLASS: "explorations:scarecrow",
+        "biomesoplenty/worldgen/feature/misc/AnomalyFeature": "biomesoplenty:anomaly",
+        "biomesoplenty/worldgen/feature/misc/MonolithFeature": "biomesoplenty:monolith",
+        quark_generators + "MonsterBoxGenerator": "quark:monster_box",
+        quark_generators + "ObsidianSpikeGenerator": "quark:nether_obsidian_spike",
+        quark_generators + "SpiralSpireGenerator": "quark:spiral_spire",
+        quark_generators + "FairyRingGenerator": "quark:fairy_ring",
+        URN: "supplementaries:cave_urn_cache",
+        end_features + "CrashedShipFeature": "betterend:crashed_ship",
+        end_features + "terrain/FallenPillarFeature": "betterend:ruined_obsidian_pillar",
+        end_features + "terrain/ObsidianPillarBasementFeature": "betterend:ruined_obsidian_pillar",
+        BRIDGE_ROOT + "feature/BridgeFeature": "yungsbridges:bridge",
+    }
+    for name, family in {
+        "BetterEndGatewayFeature": "gateway",
+        "BetterEndSpawnPlatformFeature": "arrival_platform",
+        "BetterSpikeFeature": "dragon_arena",
+        "BetterEndPodiumFeature": "dragon_arena",
+    }.items():
+        classes["com/yungnickyoung/minecraft/betterendisland/world/feature/" + name] = (
+            "betterendisland:" + family
+        )
+    for name, family in {
+        "desert/ChillzoneDesertFeature": "desert_chillzone",
+        "desert/DesertGiantTorchFeature": "desert_giant_torch",
+        "desert/DesertSmallRuinsFeature": "desert_small_ruins",
+        "desert/DesertObeliskFeature": "desert_obelisk",
+        "desert/DesertWellFeature": "desert_well",
+        "swamp/SwampArchFeature": "swamp_arch",
+        "swamp/SwampDoubleArchFeature": "swamp_arch",
+        "swamp/SwampChurchFeature": "swamp_church",
+        "swamp/SwampCubbyFeature": "swamp_cubby",
+        "swamp/SwampOgreFeature": "swamp_ogre",
+        "swamp/SwampPillarFeature": "swamp_pillar",
+    }.items():
+        classes["com/yungnickyoung/minecraft/yungsextras/world/feature/" + name] = (
+            "yungsextras:" + family
+        )
+    accepted = {
+        name for name, family in inventory["families"].items() if not family["structure_ids"]
+    }
+    if set(templates.values()) | set(classes.values()) != accepted:
+        detail = "collector membership does not cover exactly the accepted nonregistry families"
+        raise ValueError(detail)
+    return {"classes": classes, "templates": templates}
+
+
+def attribute_nonregistry_attempt(
+    rows: list[dict[str, object]], membership: dict[str, dict[str, str]]
+) -> dict[str, object]:
+    """Attribute an already paired attempt without assuming successful placement."""
+    feature_rows = [row for row in rows if row["kind"] == "feature"]
+    feature = str(feature_rows[0]["class"]).replace(".", "/") if feature_rows else SCARECROW_CLASS
+    paths = [str(row["path"]) for row in rows if row["kind"] == "template_begin"]
+    family = membership["classes"].get(feature)
+    selected = {membership["templates"][path] for path in paths if path in membership["templates"]}
+    if any(path not in membership["templates"] for path in paths):
+        return {
+            "attempt": rows[0]["attempt"],
+            "family": None,
+            "reason": "UNMAPPED_TEMPLATE",
+            "templates": paths,
+        }
+    if len(selected) > 1 or (family is not None and selected and selected != {family}):
+        detail = "observed template and generator family identities disagree"
+        raise ValueError(detail)
+    if family is None:
+        if feature not in {
+            "org/betterx/betterend/world/features/BuildingListFeature",
+            "org/betterx/betterend/world/features/NBTFeature",
+        }:
+            detail = "unmapped nonregistry generator class"
+            raise ValueError(detail)
+        family = next(iter(selected), None)
+    if family == "supplementaries:cave_urn_cache":
+        parents = [row["placed_feature"] for row in rows if row["kind"] == "urn_parent"]
+        if parents != ["supplementaries:cave_urns"]:
+            return {
+                "attempt": rows[0]["attempt"],
+                "family": None,
+                "reason": "UNRESOLVED_URN_PARENT",
+                "templates": paths,
+            }
+    return {
+        "attempt": rows[0]["attempt"],
+        "family": family,
+        "reason": "ATTRIBUTED" if family else "NO_DESIGN_SELECTED",
+        "templates": paths,
+    }
 
 
 def classify_census(result: dict[str, object]) -> dict[str, object]:

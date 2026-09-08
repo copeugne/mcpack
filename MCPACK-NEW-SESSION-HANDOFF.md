@@ -122,8 +122,10 @@ Spatial analysis now supports actual traced anchors while preserving all eleven
 retained pilot spatial category results. Its focused spatial/census gate has
 29 passing tests. The existing trace tool now streams hash-bound complete attempts
 with full event fields and structural pairing; 88 reader tests pass, including
-the retained Bridge/Extras archives. Provider-specific success, family attribution,
-incoming-class file binding and the location table remain to be integrated.
+the retained Bridge/Extras archives. Family attribution now joins exact classes
+and template paths to all 40 accepted nonregistry families, with 55 focused tests
+passing. Attribution does not imply placement success. Provider-specific success,
+ambient exclusions, incoming-class file binding and the location table remain.
 Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.

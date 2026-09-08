@@ -1164,3 +1164,29 @@ Bridge and Extras archived traces retain exactly their accepted attempt/write
 counts through this reader. Mutation tests reject mismatched hashes/installations,
 missing ends/shutdown, duplicate attempts/metadata, malformed values, unpaired
 delegates and undeclared dimensions. Focused Ruff and basedpyright checks pass.
+
+### Nonregistry family attribution
+
+`nonregistry_membership` and `attribute_nonregistry_attempt` in the existing
+analysis tool join structurally validated attempts to the unchanged, hash-verified
+Item 8 inventory. The 27 generator class bindings and 151 exact template paths
+cover exactly its 40 accepted nonregistry families. Building designs use their
+configured resource paths; aliases and multiple arena templates retain one family.
+Cave urn attribution additionally requires the observed cave placed-feature parent.
+
+Attribution does not establish a successful location. Early building failures
+without a selected design remain `NO_DESIGN_SELECTED`; unknown template paths
+remain `UNMAPPED_TEMPLATE`, and missing cave parent identity remains
+`UNRESOLVED_URN_PARENT`. Conflicting class/template family identities are rejected.
+Ambient-template dispositions, provider success rules and distinct-location
+aggregation still require integration before counts can be accepted.
+
+Reproduce the focused attribution and downstream regression check with:
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_nonregistry_membership.py tests/item10/test_collection_trace.py tests/item10/test_density_census.py tests/item10/test_density_spatial.py
+```
+
+All 55 tests pass. The retained Bridge and Extras traces reproduce their accepted
+cave-parent attempt counts through the family join. These are attribution checks,
+not additional density measurements or new experiments.

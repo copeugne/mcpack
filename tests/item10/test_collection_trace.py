@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import cast
 
 import pytest
+from tools.analyze_structure_density import attribute_nonregistry_attempt, nonregistry_membership
 from tools.validate_item10_trace import CLASS_SHA, SCARECROW_CLASS, collection_attempts
 
 FEATURE = "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
@@ -167,6 +168,12 @@ def test_collection_reader_preserves_retained_mixed_trace(diagnostic: str) -> No
         json.loads((root / "evidence/item-10" / diagnostic / "trace-validation.json").read_text()),
     )
     assert len(attempts) == accepted["attempts"]
+    membership = nonregistry_membership()
+    attributed = [attribute_nonregistry_attempt(attempt, membership) for attempt in attempts]
+    assert (
+        sum(row["family"] == "supplementaries:cave_urn_cache" for row in attributed)
+        == accepted["cave_parent_attempts"]
+    )
     assert (
         sum(row["kind"] == "write" for attempt in attempts for row in attempt) == accepted["writes"]
     )
