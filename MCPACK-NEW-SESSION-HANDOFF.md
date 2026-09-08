@@ -139,9 +139,11 @@ probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-ide
 completed its small pilot cleanly, retained the incoming patched class and verified
 its raw archive/world restores. Its content hook remains the second direct write,
 after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
-Next obtain positive BetterEnd template observations with predeclared sampling or
-a clearly separate placement fixture, then validate trace completeness and saved
-world corroboration before accepting counts.
+[Placement fixture r3](evidence/item-10/betterend-fixture-r3/README.md) stopped
+cleanly but both commands were refused because the target was not loaded. Its
+raw archive and nested world restore are verified. Next fix the fixture loading
+precondition in a fresh world, then validate positive template observations and
+saved-world corroboration before accepting counts.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
