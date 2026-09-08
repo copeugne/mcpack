@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import os
 import secrets
 from pathlib import Path
 from signal import SIGKILL
+from typing import cast
 
 import pytest
 from tools.run_item7_worldgen import execute
@@ -27,8 +29,9 @@ def _discard_kill(pid: int, signal_number: int) -> None:
     del pid, signal_number
 
 
+@pytest.mark.parametrize("options", [None, "", "-Dmcpack.probe=1"])
 def test_lifecycle_sends_commands_only_after_matching_markers(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, options: str | None
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("fixed"))
     request = runtime_request(tmp_path, monkeypatch)
@@ -52,15 +55,23 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
         },
     )
     launch_arguments: list[bool] = []
+    monkeypatch.setenv("JAVA_TOOL_OPTIONS", "inherited-value")
 
-    def launch(*args: str, **kwargs: str | bool | int | Path) -> FakeProcess:
+    def launch(*args: str, **kwargs: object) -> FakeProcess:
         del args
         launch_arguments.append(kwargs["start_new_session"] is True)
+        environment = cast("dict[str, str]", kwargs["env"])
+        assert environment["JAVA_TOOL_OPTIONS"] == (
+            "inherited-value" if options is None else options
+        )
         return process
 
     monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", launch)
 
-    receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
+    receipt = item7_lifecycle.run_lifecycle(
+        request, request.java_home / "bin/java", java_tool_options=options
+    )
+    assert os.environ["JAVA_TOOL_OPTIONS"] == "inherited-value"
 
     assert process.stdin.getvalue().splitlines() == [
         "chunky world minecraft:overworld",
@@ -301,8 +312,12 @@ def test_execute_preserves_completed_stages_when_config_capture_fails(
     )
 
     def completed_lifecycle(
-        current_request: item7_runtime.WorldgenRequest, java: Path
+        current_request: item7_runtime.WorldgenRequest,
+        java: Path,
+        *,
+        java_tool_options: str | None = None,
     ) -> item7_lifecycle.LifecycleReceipt:
+        assert java_tool_options is None
         del current_request, java
         return lifecycle
 

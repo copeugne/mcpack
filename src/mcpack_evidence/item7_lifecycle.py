@@ -90,9 +90,13 @@ class _LifecycleState:
         self.flush_correlation = None
 
 
-def run_lifecycle(request: WorldgenRequest, java_executable: Path) -> LifecycleReceipt:
+def run_lifecycle(
+    request: WorldgenRequest, java_executable: Path, *, java_tool_options: str | None = None
+) -> LifecycleReceipt:
     """Generate all four selections, flush, and stop in a new process session."""
     environment = os.environ.copy()
+    if java_tool_options is not None:
+        environment["JAVA_TOOL_OPTIONS"] = java_tool_options
     environment["PATH"] = f"{java_executable.parent}:{environment['PATH']}"
     request.log_path.parent.mkdir(parents=True, exist_ok=True)
     try:
