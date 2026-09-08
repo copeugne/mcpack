@@ -158,8 +158,10 @@ Current branch `codex/item10-urn-coverage` records the source-bound
 SimpleBlockFeature discards refused-write results, and galleon reuse requires
 parent placement attribution. Both hooks now pass retained-class transformation
 and original-behavior fixtures; 360 tests pass. The [probe report](evidence/item-10/placement-probe.md#cave-urn-callback-and-direct-write-capture)
-records validation. Next predeclare a bounded fresh urn diagnostic and check
-resources before launching. No urn collection has run. BetterEnd coverage remains unresolved;
+records validation. The [urn pilot](evidence/item-10/urn-pilot-r1/README.md)
+completed cleanly with 1,074 patch attempts and 161 successful writes; raw download
+and world restores pass. Next integrate archive-bound trace and saved-block
+corroboration, preserving overlap and halo limits. BetterEnd coverage remains unresolved;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
 coverage and limits. [BetterEnd r1](evidence/item-10/betterend-probe-r1/README.md)
