@@ -12,8 +12,9 @@ by the attempt's feature class gives anomaly 21,493 flags-3 writes and 807
 flags-2 writes, plus monolith 469 flags-3 writes. These totals include natural
 attempts and the two commanded fixtures; they are not 22,769 locations.
 The trace is 2,752,225 bytes and is retained in the raw release rather than
-ordinary Git. Counts are preliminary direct inspection, not a completed trace
-validation or saved-block acceptance result.
+ordinary Git. The [trace validation](trace-validation.json) binds these counts and all eight
+incoming classes to the published archive. All attempts are paired and both
+writers are exercised. This establishes capture integrity, not saved-block acceptance.
 
 ## Incoming helper inspection
 
@@ -25,10 +26,20 @@ LevelWriter.setBlock at offset 4, then POP at 9 and RETURN at 10. Thus the chose
 call site observes the actual result before the helper discards it.
 This inspection does not prove the whole collector noninterfering.
 
-Next validate trace identity, pairing and completeness, then corroborate saved
-blocks, preserving overlaps and later changes. Do not use the old fixed scarecrow
-validator as if it accepts this expanded trace. No further generation is needed
-to perform those checks on the restored evidence.
+The existing validator now has a bounded BOP mode. Reproduce from the restored
+raw root (no server run):
+
+```sh
+uv run --no-sync python -m tools.validate_item10_trace --bop-r1 evidence/raw/item10/bop-fixture-r1-custody/restored
+uv run --no-sync pytest -q tests/item10/test_retained_trace.py
+```
+
+All 21 trace tests pass, including refusal denominators, missing lifecycle events,
+missing installation, duplicate feature attribution, malformed arguments, changed
+archive bytes and escaped inputs. Changed-file Ruff and basedpyright checks pass.
+The parser consumes the same bytes whose archive hash was checked.
+Next corroborate saved blocks, preserving overlaps and later changes. No further
+generation is needed for this remaining check on the restored evidence.
 
 ## Verified raw custody
 

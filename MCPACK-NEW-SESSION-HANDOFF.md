@@ -164,8 +164,8 @@ Anomaly/monolith hooks now preserve actual results at their shared Minecraft
 helper. Synthetic preservation and exact retained-class transformation pass;
 [Live BOP fixture r1](evidence/item-10/bop-fixture-r1/README.md) completes cleanly
 with both commanded placements, 22,769 successful writes and no unfinished
-attempts. Raw/world restores and incoming helper inspection pass. Next validate
-the expanded trace and corroborate saved blocks; do not regenerate for those checks. Keep BetterEnd's
+attempts. Raw/world restores, incoming helper inspection and archived trace
+validation pass (21 focused tests). Next corroborate saved blocks; do not regenerate. Keep BetterEnd's
 runtime tag discrepancy explicit and do not change the frozen baseline.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
