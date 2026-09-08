@@ -323,3 +323,40 @@ Equivalent commands were executed under `evidence/raw/item10/probe-pair-r3-custo
 Use each committed world-backup receipt's SHA-256 with the existing world restore
 command for its nested archive. Custody success does not reverse the failed
 equality result or prove probe causality.
+
+## Coordinate corroboration and prospective validation correction
+
+The committed [bounded inspection](scarecrow-probe-r3/inspect-writes.py) reads
+the downloaded/restored probe world with the existing Anvil decoder and packed
+NBT reader. It inspects all 30 recorded write coordinates using palette index
+`localX + 16*localZ + 256*localY` and the saved section's palette. All 30 retain
+the recorded block ID. [Full observations](scarecrow-probe-r3/world-crosscheck.json)
+retain recorded state strings, complete saved states, coordinates and raw input
+hashes. Fence properties may reflect subsequent neighbor updates; block-ID
+corroboration is explicitly narrower than exact state equality.
+
+```sh
+uv run --no-sync python -c "import runpy; runpy.run_path('evidence/item-10/scarecrow-probe-r3/inspect-writes.py')" > CROSSCHECK.json
+```
+
+This command was executed from the repository root. A prior direct script-path
+invocation could not import the root `tools` package and produced no inspection;
+`runpy` uses the documented repository-root import context. This is a direct
+inspection of retained immutable evidence, not a new generation or a generic
+occurrence validator.
+
+The [prospective protocol correction](protocol.md#collector-validation-under-established-baseline-variability)
+replaces whole-world equality as a collector-correctness criterion because its
+premise conflicts with already accepted Item 7 evidence. The r3 equality result
+remains FAILED. Scarecrow capture health, bounded call-preservation checks and
+coordinate corroboration pass; observer-free equivalence remains unproven.
+No other nonregistry writer is validated by these six attempts. Do not extend
+this result to complete Item 10 or silently omit the measurement overlay.
+
+Review-candidate validation: `uv run --no-sync pytest -q tests/item7 tests/item10`
+passes 255 tests. Focused Ruff checks pass for the changed lifecycle, diagnostic
+runner, reader and tests. Type checks pass for the lifecycle, runner and changed
+tests after annotating the runner's argparse strings; the direct runner check
+initially exposed untyped CLI values. No runtime behavior or type-check policy
+was changed by that annotation fix. The legacy whole-reader strict type-check
+limitation recorded above remains explicit. No Item 11 workflow was tested.

@@ -115,8 +115,11 @@ differ. Both worlds are stopped. The r3 498-file archive and both nested world r
 passed download verification and are durably published; see the placement diagnostic.
 Accepted Item 7 already documents frozen-stack semantic nondeterminism, so this
 pair cannot establish probe causality. That fact was missed during predeclaration.
-Do not launch r4 or expand the probe; reassess instrument validation using the
-accepted upstream finding, without rerunning Item 7 or tuning frozen settings.
+Do not launch r4 to repeat the equality test. The prospective protocol now
+separates collector correctness from established world variability. All 30
+recorded scarecrow block IDs were corroborated in the restored world. Local
+capture/preservation checks pass; observer-free equivalence remains unproven.
+Review this bounded diagnostic before extending capture to the other mechanisms.
 The placement diagnostic links raw receipts and the full mismatch summary.
 r1/r2 release and downloaded world restores are verified. The biome reader now
 retains registry piece bounds and midpoint-height attribution; 29 focused tests

@@ -72,14 +72,51 @@ events, must be reported separately from ordinary terrain-generated density.
 No current generic start counter satisfies that nonregistry requirement. Before
 implementation, select direct tracing or prove a saved-world reconstruction for
 each mechanism using existing provider evidence. Any tracing instrument must
-have a recorded hash and validate that it preserves generated content on the
-pilot repeat. Do not claim all-family density until that boundary passes.
+have a recorded hash and pass the collector validation below. The original
+whole-world equality requirement failed in diagnostic r3 and is superseded for
+future validation because Item 7 already demonstrates semantic nondeterminism.
+Do not claim whole-world noninterference or uninstrumented counterfactual density.
+Do not claim all-family coverage until every applicable writer is observable.
 
 Report structures, actionable candidates, provisional encounter sites, exclusive
 T2 proper dungeons, exclusive T3 major expeditions, T4 objectives and villages with explicit numerators over the same
 selected full-chunk denominator. Preserve the provisional classification's
 confidence and ambiguity. Static hostility is a separate descriptor and never
 the observed-combat numerator.
+
+## Collector validation under established baseline variability
+
+This is a prospective correction to an inappropriate instrument-validation
+criterion, not a passing reinterpretation of r3. Its predeclared equality gate
+remains FAILED and all mismatches remain retained in
+[the diagnostic](placement-probe.md). The accepted Item 7 result already showed
+that even unchanged fresh runs differ semantically; another Item 7 repeat would
+not resolve the instrument's causal effect. No frozen configuration is changed.
+
+Separate collector correctness from world-generation reproducibility:
+
+- Bind each hook to exact retained class identity and declared call sites. Verify
+  original arguments, invocation counts, returned values and exceptions are
+  preserved by the transformation, with actual retained-class transformation
+  and focused executable preservation checks. Do not consume game random values.
+- Require complete installation, event and shutdown evidence. Report refused
+  writes, exceptions, unfinished attempts and observation failures separately;
+  none can disappear into a zero occurrence count.
+- Corroborate representative recorded coordinates against the retained world.
+  This tests that the collector observed the claimed writer/location, not that
+  its timing has no effect on other generation. Retain state differences caused
+  by later updates rather than treating logged input state as final world state.
+- Describe results as placements observed under the exact frozen gameplay
+  configuration plus the recorded measurement overlay. Observer-free equivalence
+  and causal attribution of between-run differences remain unproven, consistently
+  with the accepted Item 7 Chunky-control limitation.
+
+The full sampling design must include independent fresh repetitions to retain
+already established run-to-run variability; deterministic reprocessing of one
+world is a separate check. Before collection, update its runtime/storage budget
+and freeze the repetition count and ordering. No new repetition is authorized by
+this paragraph solely to re-establish Item 7's known nondeterminism. Neither the
+six scarecrow attempts nor a passed collector fixture supplies 40-family coverage.
 
 ## Spatial summaries and uncertainty
 
