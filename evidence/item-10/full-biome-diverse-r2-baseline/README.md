@@ -1,6 +1,6 @@
 # Biome-diverse repetition-2 baseline
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: BASELINE-WORLD ACCEPTANCE PASS, with five saved-content exclusions.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `-3503646078644842058`.
 Generation source: `cdde6f07dcecdbfb2c8ca9ba1d679a67a3544ade`.
@@ -54,4 +54,60 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics remain in `all-strata-runtime.txt` in the analysis directory.
-Census acceptance is pending.
+Census session 40037 ended with exit 0 in 525.490 seconds. Output is
+138,485,071 bytes, SHA-256
+`c810618b3ef6eefb09a02470a799357f0c05abb470d14af6667cfaa2f085c163`.
+All eleven strata contain exactly 4,096 full selected chunks. Fifty incoming
+classes pass complete observer coverage and trace validation.
+
+
+## Saved-content exclusions
+
+Five Overworld candidates remain CONTENT_NOT_PRESERVED and excluded under the
+existing rule. Candidate 3876 is `quark:monster_box`; the other four are
+`supplementaries:cave_urn_cache`. All eight inspected content positions are in
+full saved chunks. Later writers are UNKNOWN. No overlap pairs occur.
+
+| Candidate | Attempt | Content positions | Saved blocks in position order |
+| ---: | ---: | --- | --- |
+| 3876 | 6023 | (456,-17,416) | minecraft:air |
+| 12209 | 19420 | (-376,-10,-240), (-375,-10,-240), (-373,-10,-241) | minecraft:calcite, minecraft:calcite, minecraft:air |
+| 16709 | 22267 | (-63,-37,-158), (-59,-37,-156) | minecraft:air at both |
+| 26583 | 15195 | (417,32,-273) | minecraft:calcite |
+| 29327 | 5933 | (508,24,503) | minecraft:smooth_basalt |
+
+## Accepted counts and limitations
+
+Rates use count times 1,000 / 4,096 within each stratum. All spatial observations,
+individual censoring and separate biome exposures remain in the hash-bound output.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 30 | 2 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 12 | 12 | 12 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 32 | 4161 | 24 | 3 | 4128 | 6 | 0 | 0 | 1 |
+| Central End | 3 | 5 | 4 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 19 | 39 | 38 | 0 | 0 | 0 | 1 | 0 | 0 |
+| Nether | 44 | 446 | 30 | 1 | 409 | 5 | 1 | 0 | 0 |
+
+Aether's 28 cloud starts remain excluded terrain. There are 33,074 observer calls
+and 32,775 grouped candidates: 25,357 NO_CONSTRUCTIVE_CONTENT, 2,860
+OUTSIDE_FRAME, 4,553 OBSERVED_LOCATION and five CONTENT_NOT_PRESERVED.
+Biome rows plus unavailable anchors conserve every stratum's accepted location
+count. The central-End arena is the sole unavailable biome anchor; no positive
+zero-exposure row occurs.
+
+This completes the seventh matched pair and fifteenth planned cell. The baseline's
+Overworld T2 and village counts remain six and one in both repetitions, versus
+fifteen and four in both controls. Baseline all-location counts change from 4,121
+to 4,161; outer End changes from 29 to 39 and Nether from 452 to 446. Overworld T2
+nearest-observed mean is 250.19805617985955 blocks; uncensored mean remains null.
+Dispersion is 0.9583333333333334 and the largest empty full-cell rectangle is
+2,304 chunks, bounds [-32,15,-32,15]. These are fixed-window placements, not
+observed fights, pacing or observer-free equivalence. The final authorized
+ocean-heavy control retry is still outstanding; Item 10 is not complete.
