@@ -849,3 +849,34 @@ processor coverage including support and removal; no tracing outside the active
 bridge attempt; and incoming class identities. Then predeclare a bounded runtime
 diagnostic and its storage cost before launch. No bridge experiment or accepted
 bridge occurrence measurement has been performed by this increment.
+
+## Bridge r1 bounded natural diagnostic
+
+Predeclared 2026-09-08 before launch. Use ordinary seed 42, the unchanged frozen
+runtime/configuration and construction heap, and the existing pilot selections:
+81 chunks each in Overworld, Nether, central End and outer End, 324 selected
+chunks total. Outer End uses the existing center at (1536, 0); no selection is
+chosen from observed bridge locations. Use a fresh hash-verified materialization.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name bridge-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+The source revision is the commit containing this predeclaration. Retain the
+incoming transformed classes, raw trace, lifecycle logs and stopped world using
+the existing archive/download/restore path. This diagnostic tests natural bridge
+capture, not selected-area density. Require complete selections, correlated flush,
+clean exit, installed hook identities and no unfinished attempts. A positive
+bridge result additionally requires configured variant, template/rotation and
+complete template/processor write observations, followed by saved last-successful
+block-ID corroboration. Retain all earlier writes, refused writes, zero-write
+attempts, exceptions and halo coordinates. A missing positive path fails positive
+capture without establishing zero density; do not expand the frame to hunt for it.
+
+The prelaunch host check reports 4.2 GiB free and no running Java process. Reserve
+1.5 GiB for this bounded diagnostic and sequential raw archive/download/restores.
+Prior 324-chunk runs took about 89 seconds and produced about 6 MB compressed raw
+archives; those are cost proxies, not a prediction of bridge output. The existing
+900-second timeout remains. The provisional 5 GiB full-experiment workspace floor
+is not met, so this declaration does not authorize full sampling. No baseline
+configuration, bridge placement rule or Sparse Structures setting is changed.
