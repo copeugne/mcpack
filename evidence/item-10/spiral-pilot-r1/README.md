@@ -42,3 +42,31 @@ commands with these hashes and local custody root
 `evidence/raw/item10/spiral-pilot-r1-custody/{downloaded,restored,restored-world}`.
 
 No Item 11 workflow ran. Item 10 remains incomplete.
+
+## Saved-neighborhood biome disposition
+
+The archived captured-config/config/quark-common.toml, lines 1316 through 1336,
+keeps spiral spires enabled with Radius 15, Rarity 200 and a biome allowlist
+containing only minecraft:end_highlands. No configuration change is proposed.
+The accepted Item 8 SpiralSpireGenerator disassembly checks canSpawn at offset
+85 and returns at 91 before the End Stone search and makeSpike invocation.
+
+Direct inspection of DIM1/region/r.3.-1.mca in the restored world finds every
+section biome palette in chunk X 99 through 102, Z -5 through -1 contains only
+betterend:ice_starfield. All 20 slots exist. This rectangle includes the six
+destination chunks and a one-chunk horizontal halo; inspection includes all
+section heights rather than assuming the generator's sampled Y. The region
+SHA-256 is 34785656176a1ef6bba130e32612bf13cb3be8604a8687a619145e885037380c,
+verified against world-backup.json. Reproduce with the existing
+mcpack_evidence.item7_anvil.decode_region_payloads and
+mcpack_evidence.item7_nbt.decode_compound_nbt, selecting those chunk slots and
+reading each sections[].biomes.palette. This is direct immutable-world inspection,
+not a new census or an accepted density denominator. Partial chunk statuses
+remain outside full-chunk exposure.
+
+The saved biome evidence supports a biome-gate explanation for this pilot. The
+trace does not identify the exact early-return branch, so this is not a measured
+branch outcome. It does establish why this sample cannot demonstrate positive
+spiral placement under its frozen biome allowlist. Do not re-run or expand this
+sample to obtain a positive count. Preserve the unmet positive-capture gate
+while completing independent generator coverage.

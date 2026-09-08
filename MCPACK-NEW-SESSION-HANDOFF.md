@@ -137,8 +137,9 @@ now validate in `769d11cc`; 340 Item 7/10 tests pass. [PR27](https://github.com/
 commit boundaries already exist; see PR discussion 5580055921.
 Current work is on `codex/item10-spiral`: the source/part hook passes synthetic
 preservation and retained-class transformation; 341 Item 7/10 tests pass. [Spiral pilot r1](evidence/item-10/spiral-pilot-r1/README.md) completed cleanly with
-six zero-write parts from one source. Raw download/world restores pass. Inspect
-rejection conditions before any further experiment; do not expand for counts.
+six zero-write parts from one source. Raw download/world restores pass. The saved
+neighborhood is ice_starfield, outside the frozen end_highlands allowlist. Positive
+capture remains unmet; continue independent generator coverage without expanding this sample.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
