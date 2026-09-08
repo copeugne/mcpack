@@ -451,7 +451,7 @@ The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
 source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
-prior reviews are resolved. Six worlds, combined synthesis and final delivery
+prior reviews are resolved. Three worlds, combined synthesis and final delivery
 remain incomplete; runtime acceptance is established per world, not from tests.
 
 ### Storage decision before collection
@@ -499,7 +499,7 @@ four seeds and eleven strata, with two fresh repetitions in each of two arms.
 It defines coordinate inclusion, spatial cells, biome attribution, boundary
 censoring, sparse-category limits and a control omitting only Sparse Structures.
 This supersedes the inherited nested-stage draft. Each full-world acceptance
-requires complete occurrence capture and exact experiment identities; ten
+requires complete occurrence capture and exact experiment identities; thirteen
 worlds have passed so far.
 
 Done means every Item 10 bullet has a measured result or a specification-approved
@@ -523,7 +523,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Complete the remaining three biome-diverse worlds, then the authorized final control retry; continue
+- Complete the remaining two biome-diverse worlds, then the authorized final control retry; continue
   capacity checks. Preserve all existing artifacts and failed observations.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.

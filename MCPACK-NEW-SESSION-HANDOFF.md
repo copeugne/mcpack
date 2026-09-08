@@ -165,7 +165,9 @@ User-authorized `item10-retry-policy-v2` keeps sixteen complete cells as the tar
 Biome-diverse r1 baseline passed census in 569.638s, with two retained urn exclusions.
 Biome-diverse r1 control census passed in 597.674s; session 84601 is terminal 0.
 Six urn exclusions and one zero-exposure biome row are retained in its report.
-Next: r2 control, r2 baseline, and one fresh ocean-heavy r2 control attempt3.
+[Biome-diverse r2 control](evidence/item-10/full-biome-diverse-r2-without-sparse/README.md)
+generation/custody passed. Census session 25437 is live, source `3cd0e358`.
+Then r2 baseline and one fresh ocean-heavy r2 control attempt3.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
