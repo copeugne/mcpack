@@ -2,11 +2,14 @@
 """Focused checks for route geometry, censoring, transport and accepted input custody."""
 
 import hashlib
+import shutil
+import subprocess
 from array import array
 from pathlib import Path
 
 import pytest
 from tools import analyze_route_opportunities as routes
+from tools.manage_item4_environment import _world_backup_lock
 
 
 def test_height_field_occlusion_and_missing() -> None:
@@ -121,3 +124,24 @@ def test_coverage_deduplicates_locations_and_censors_window() -> None:
     assert row["denominator_blocks"] == 256
     assert row["modes"]["walking"]["completed_cost"] is None
     assert row["modes"]["walking"]["prefix_covered_blocks"] == 8
+
+
+def test_inventory_check_preserves_java_compatible_lock(tmp_path: Path) -> None:
+    probe = """
+import fcntl,sys
+with open(sys.argv[1], "r+b") as stream:
+    try:
+        fcntl.lockf(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        sys.exit(23)
+sys.exit(0)
+"""
+    uv = shutil.which("uv")
+    assert uv is not None
+    with _world_backup_lock(tmp_path):
+        routes.verify_world(tmp_path, [])
+        result = subprocess.run(  # noqa: S603 - fixed lock probe and test-owned path
+            [uv, "run", "--no-sync", "python", "-c", probe, str(tmp_path / "session.lock")],
+            check=False,
+        )
+        assert result.returncode == 23, "inventory verification released the held world lock"

@@ -56,10 +56,10 @@ Current batch: predeclaration and source integration. Next: ordinary r1 baseline
 representative slice, then reassess measured resource cost before full expansion.
 No Item 12 work is authorized in this task.
 
-## Representative slice
+## Representative slice (initial acceptance, now reopened)
 
 Ordinary repetition 1 baseline passes the first-world route gate. The
-[accepted result](results/full-ordinary-r1-baseline.json.gz) binds the exact
+[initial result, now rejected](rejected-lock-attempt/results/full-ordinary-r1-baseline.json.gz) binds the exact
 census, archive manifest, backup manifest, protocol and analyzer hashes. Complete
 restored-world inventory checks pass before and after the locked read. The result
 retains 9,216 top-cell observations, four routes, all three transport models,
@@ -105,3 +105,39 @@ The invocation was executed with the committed result path; the `/tmp` example
 is a new-output destination and its exact invocation is pending final reproduction.
 Next batch: the other fifteen accepted worlds, retaining this same protocol and
 analyzer identity. Full-report integration and final delivery remain incomplete.
+
+## Reopened lock boundary and narrow correction
+
+The initial representative acceptance above is **REOPENED and superseded**.
+Code review during the first expansion found that `open_tree` opened and then
+closed `session.lock` even though the result comprehension excluded its row.
+POSIX record locks are process-associated: closing that other descriptor released
+the lock held by `_world_backup_lock`. The
+[direct failing test](validation/lock-regression-before.txt) reproduced a second
+process acquiring the lock while the analysis context was still active.
+
+The fix reuses Item 4's existing `_backup_paths`, which excludes `session.lock`
+before opening anything, and Item 7's safe regular-file opening and descriptor
+hashing. It preserves exact complete-file-inventory equality and rejects symlinks.
+No new locking system, schema, validator or archive revision is introduced.
+The [focused regression](validation/lock-regression-after.txt) now passes all nine
+Item 11 tests, including a real competing POSIX lock probe. Affected Ruff and
+BasedPyright pass. The first broad Item 7/10/11 suite passed 590 tests in 173.03
+seconds before this correction; it is retained as earlier regression evidence,
+not proof of the corrected lock boundary.
+
+The original representative output and two completed biome-diverse r1 outputs
+are retained in [rejected-lock-attempt/results](rejected-lock-attempt/results/).
+The [interrupted biome-diverse r2 log](rejected-lock-attempt/timing/full-biome-diverse-r2-baseline.txt)
+preserves the processing interruption. No server was running, and inventory
+checks found no changed world bytes. Nevertheless these outputs cannot satisfy
+the promised continuously held lock and are rejected as current acceptance.
+The new representative read uses the same immutable world, sampling and models.
+
+The [corrected representative result](results/full-ordinary-r1-baseline.json.gz)
+now passes: 47.414 seconds and 325,474 bytes, SHA-256
+`d59cc1ddfe3924ddef69e0efdde2d3477889401d7fd68fa16bcc12e13fd64672`.
+A [complete comparison](validation/corrected-pilot-comparison.txt) confirms that
+all measurements and other input identities equal the rejected prior result;
+only the analyzer digest changes. The corrected lock probe proves exclusion
+before opening. Expansion can resume under the corrected analyzer identity.

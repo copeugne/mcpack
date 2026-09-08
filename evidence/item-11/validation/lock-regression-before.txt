@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_inventory_check_preserves_java_compatible_lock ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-194/test_inventory_check_preserves0')
+
+    def test_inventory_check_preserves_java_compatible_lock(tmp_path: Path) -> None:
+        import subprocess
+    
+        from tools.manage_item4_environment import _world_backup_lock
+    
+        probe = '''
+    import fcntl,sys
+    with open(sys.argv[1], "r+b") as stream:
+        try:
+            fcntl.lockf(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            sys.exit(23)
+    sys.exit(0)
+    '''
+        with _world_backup_lock(tmp_path):
+            routes.verify_world(tmp_path, [])
+            result = subprocess.run(
+                ['uv', 'run', '--no-sync', 'python', '-c', probe, str(tmp_path / 'session.lock')],
+                check=False,
+            )
+>           assert result.returncode == 23, 'inventory verification released the held world lock'
+E           AssertionError: inventory verification released the held world lock
+E           assert 0 == 23
+E            +  where 0 = CompletedProcess(args=['uv', 'run', '--no-sync', 'python', '-c', '\nimport fcntl,sys\nwith open(sys.argv[1], "r+b") as...(23)\nsys.exit(0)\n', '/tmp/pytest-of-lonestar/pytest-194/test_inventory_check_preserves0/session.lock'], returncode=0).returncode
+
+tests/item11/test_routes.py:146: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item11/test_routes.py::test_inventory_check_preserves_java_compatible_lock
+1 failed in 0.14s

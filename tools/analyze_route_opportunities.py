@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any, cast
 
 from tools.analyze_structure_density import category_occurrences, saved_block_at
-from tools.manage_item4_environment import _world_backup_lock
+from tools.manage_item4_environment import _backup_paths, _world_backup_lock
 
 from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_anvil import RegionContext, decode_region_payloads
@@ -24,7 +24,6 @@ from mcpack_evidence.item7_archive_io import (
     duplicate_stream,
     open_directory,
     open_regular,
-    open_tree,
     sha256_descriptor,
 )
 from mcpack_evidence.item7_archive_models import ArchiveManifest
@@ -66,12 +65,20 @@ def verify_world(world: Path, manifest: list[dict[str, Any]]) -> None:
     expected = {row["path"]: (row["size_bytes"], row["sha256"]) for row in manifest}
     if len(expected) != len(manifest):
         raise ValueError("duplicate world inventory member")
-    with open_tree(world) as files:
-        actual = {
-            row.relative_path: (row.size_bytes, sha256_descriptor(row.descriptor))
-            for row in files
-            if row.relative_path != "session.lock"
-        }
+    # POSIX locks are released if this process closes ANY descriptor for session.lock.
+    # Reuse the existing backup enumeration, which excludes that path before opening it.
+    actual = {}
+    with open_directory(world):
+        for path in _backup_paths(world):
+            if path.is_symlink():
+                raise ValueError(f"world inventory contains a symlink: {path}")
+            if path.is_dir():
+                continue
+            with open_regular(path) as (descriptor, metadata):
+                actual[path.relative_to(world).as_posix()] = (
+                    metadata.st_size,
+                    sha256_descriptor(descriptor),
+                )
     if actual != expected:
         raise ValueError("restored world differs from complete accepted inventory")
 

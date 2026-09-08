@@ -47,9 +47,11 @@ No runtime/configuration change or new experiment was needed for the audit.
 There is no remaining Item 10 or audit work. No additional worlds or retries
 are authorized. Item 11 is IN PROGRESS under the new user instruction. See its
 [predeclared protocol](evidence/item-11/protocol.md) and
-[requirement/evidence report](evidence/item-11/README.md). The ordinary r1 baseline representative slice passes its route gate in 43.722
-seconds. Its accepted output and preserved interim pilot are under `evidence/item-11/`.
-The next batch processes the other fifteen accepted worlds, then completes the
+[requirement/evidence report](evidence/item-11/README.md). The initial representative/expansion outputs are rejected for a reproduced POSIX
+lock-release defect. The narrow fix reuses `_backup_paths` to avoid opening the
+lock file during inventory verification; nine focused tests pass. See the Item 11
+report for preserved failures. Repeat the representative read under this fix,
+then process the other fifteen worlds and complete the
 report, final validation and required Codex review/merge loop. No Item 12 work.
 
 ## Completed measurement and authoritative evidence
