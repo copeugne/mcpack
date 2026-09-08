@@ -141,3 +141,46 @@ A [complete comparison](validation/corrected-pilot-comparison.txt) confirms that
 all measurements and other input identities equal the rejected prior result;
 only the analyzer digest changes. The corrected lock probe proves exclusion
 before opening. Expansion can resume under the corrected analyzer identity.
+
+## Complete generated measurement matrix
+
+All sixteen corrected invocations have passed their complete world-inventory
+checks and deterministic route processing under analyzer source `ff77c6f6`.
+The [result directory](results/) contains 19,351,171 compressed JSON bytes;
+[producer outputs and timings](validation/full/) bind every result's SHA-256
+and size. Successful invocation times sum to 896.573 seconds, with per-world
+range 45.509 to 85.163 seconds. These are processing costs, not gameplay or
+production-server performance. Diagnostics and clean reproduction are additional.
+The generated matrix is isolated in its own commit because its binary JSON
+artifacts are the inseparable outputs of the fixed matrix; source implementation
+and direct regressions were already delivered in the preceding milestones.
+
+The representative invocation above was followed by this executed collection
+command. Existing outputs are deliberately refused; use absent output paths when
+reproducing. No original world is regenerated or mutated by the analyzer.
+
+```sh
+uv run --no-sync python - <<'PY' > /tmp/mcpack-item11-remaining.txt
+from tools.analyze_route_opportunities import accepted_inputs
+print('\n'.join(n for n in accepted_inputs() if n != 'full-ordinary-r1-baseline'))
+PY
+while IFS= read -r name; do
+  { time uv run --no-sync python -m tools.analyze_route_opportunities --name "$name" --output "evidence/item-11/results/$name.json.gz"; } > "evidence/item-11/validation/full/$name.txt" 2>&1 || exit 1
+done < /tmp/mcpack-item11-remaining.txt
+```
+
+Verify identities directly from existing producer outputs, without another
+measurement or an additional manifest:
+
+```sh
+uv run --no-sync python - <<'PY'
+import hashlib,json
+from pathlib import Path
+from tools.analyze_route_opportunities import accepted_inputs
+for name in accepted_inputs():
+    result=Path('evidence/item-11/results')/(name+'.json.gz')
+    record=json.loads((Path('evidence/item-11/validation/full')/(name+'.txt')).read_text().splitlines()[0])
+    assert (record['world'],record['output_bytes'],record['sha256']) == (name,result.stat().st_size,hashlib.sha256(result.read_bytes()).hexdigest())
+print('PASS: sixteen produced result identities')
+PY
+```
