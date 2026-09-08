@@ -374,9 +374,11 @@ def spatial_summary(
 
 def category_occurrences(
     rows: list[dict[str, object]],
+    *,
+    total_name: str = "all_registry",
 ) -> dict[str, list[dict[str, object]]]:
     """Select overlapping specification categories without duplicating a start within one."""
-    categories = {"all_registry": rows}
+    categories = {total_name: rows}
     categories.update(
         {
             role: [row for row in rows if row["role"] == role]
@@ -905,7 +907,7 @@ def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and save
     }
 
 
-def classify_census(result: dict[str, object]) -> dict[str, object]:
+def classify_census(result: dict[str, object]) -> dict[str, object]:  # noqa: C901 - shared family join
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]
     identities = {
@@ -935,16 +937,50 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:
         if line.startswith("|")
     ][2:]
     classifications = {row[0]: row[1:] for row in rows}
-    occurrences = cast("list[dict[str, str | int]]", result["occurrences"])
+    occurrences = list(cast("list[dict[str, object]]", result["occurrences"]))
+    combined = "nonregistry_candidates" in result
+    if combined:
+        nonregistry = result["nonregistry_candidates"]
+        locations = {row["candidate_id"]: row for row in nonregistry["locations"]}
+        for observation in nonregistry["location_observations"]:
+            if observation["disposition"] == "OBSERVED_LOCATION":
+                location = locations[observation["candidate_id"]]
+                if location["dimension"] != result["dimension"]:
+                    detail = "observed nonregistry location differs from census dimension"
+                    raise ValueError(detail)
+                _ = occurrence_anchor(location, tuple(result["bounds_chunks"]))
+                occurrences.append(
+                    {
+                        key: location[key]
+                        for key in (
+                            "candidate_id",
+                            "family",
+                            "anchor_x",
+                            "anchor_y",
+                            "anchor_z",
+                            "chunk_x",
+                            "chunk_z",
+                        )
+                    }
+                )
     full_chunks = cast("int", result["full_chunks"])
     annotated = []
     counts = dict.fromkeys(("T0", "C", "T1", "T2", "T3", "T4"), 0)
     for occurrence in occurrences:
-        root = occurrence["registry_id"]
-        if root not in family_by_root:
-            detail = f"observed registry start is outside accepted active families: {root}"
-            raise ValueError(detail)
-        family = family_by_root[root]
+        if "registry_id" in occurrence:
+            root = occurrence["registry_id"]
+            if root not in family_by_root:
+                detail = f"observed registry start is outside accepted active families: {root}"
+                raise ValueError(detail)
+            family = family_by_root[root]
+        else:
+            family = occurrence["family"]
+            if (
+                family not in inventory["families"]
+                or inventory["families"][family]["structure_ids"]
+            ):
+                detail = "observed nonregistry family is outside accepted nonregistry inventory"
+                raise ValueError(detail)
         role, confidence, flags, groups, rationale, ambiguity = classifications[family]
         annotated.append(
             {
@@ -960,12 +996,19 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:
         )
         counts[role] += 1
     return {
-        "scope": "registry occurrences by provisional family role; not observed combat",
+        "scope": (
+            "observed registry and nonregistry locations; full observer coverage and sampling "
+            "remain separate gates; not observed combat"
+            if combined
+            else "registry occurrences by provisional family role; not observed combat"
+        ),
         "input_sha256": identities,
         "occurrences": annotated,
         "categories": {
             name: {"count": len(rows), "per_1000_chunks": 1000 * len(rows) / full_chunks}
-            for name, rows in category_occurrences(annotated).items()
+            for name, rows in category_occurrences(
+                annotated, total_name="all_locations" if combined else "all_registry"
+            ).items()
         },
         "exclusive_roles": {
             role: {"count": count, "per_1000_chunks": 1000 * count / full_chunks}
@@ -1140,7 +1183,9 @@ def main() -> None:
         rows = result["classification"]["occurrences"]
         result["spatial"] = {
             category: spatial_summary(selected, tuple(args.bounds))
-            for category, selected in category_occurrences(rows).items()
+            for category, selected in category_occurrences(
+                rows, total_name="all_locations" if args.trace_root else "all_registry"
+            ).items()
         }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:

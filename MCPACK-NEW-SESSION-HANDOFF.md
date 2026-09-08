@@ -152,6 +152,10 @@ Location dispositions now connect candidate groups to saved constructive content
 The retained pilot confirms seven in-frame cache observations and retains 468
 zero-content plus 811 out-of-frame groups. All 56 focused tests pass. Full observer
 coverage, sampling and density integration still gate Item 10 acceptance.
+Classification/spatial summaries now combine observed nonregistry locations with
+registry starts over the same denominator. The pilot has eight observed locations
+(one T0 registry start and seven provisional T1 caches); 86 focused tests pass.
+These are diagnostic counts, not full-coverage baseline measurements.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

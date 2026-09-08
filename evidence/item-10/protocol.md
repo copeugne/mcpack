@@ -1296,8 +1296,11 @@ arguments to add `nonregistry_candidates` to its registry result. The raw archiv
 manifest binds the trace, incoming classes and world manifest; the latter must
 also match every registry census input hash. Candidate processing consumes the
 complete stream, then joins saved block observations while preserving missing
-and mismatched results. Registry classification/spatial totals remain registry
-only until nonregistry acceptance passes. Per-attempt last-write checks are not
+and mismatched results. With trace inputs, classification and spatial summaries
+now combine registry starts and `OBSERVED_LOCATION` nonregistry sources over the
+same selected denominator, using `all_locations` rather than `all_registry`.
+Other dispositions remain explicit outside those numerators. Full observer
+coverage and sampling remain separate acceptance gates. Per-attempt last-write checks are not
 claims about global ordering across concurrent attempts. The retained
 [urn integration](urn-pilot-r1/README.md#integrated-offline-analysis) supplies the
 reproduction command, output hash and explicit diagnostic denominators.
@@ -1331,3 +1334,12 @@ pilot confirms seven in-frame cache observations, with 468 zero-content and 811
 out-of-frame source groups preserved. Its README records the reproducible output
 identity. The 56 focused attribution/collection/saved-content tests pass, including
 missing evidence, changed content, exceptions, non-worldgen context and overlaps.
+
+The shared classification join preserves Item 9 confidence, rationale and ambiguity
+for both populations. It rejects wrong-dimension/out-of-frame nonregistry locations
+and families outside the accepted nonregistry inventory. Registry-only invocations
+retain their previous results. The combined retained urn pilot contains eight
+locations: one registry start and seven cave caches, with the latter retaining
+their provisional T1 role. These are encounter-site candidates, not fights.
+The 86 focused integration/census/spatial tests pass; Ruff and census-test
+basedpyright checks pass.

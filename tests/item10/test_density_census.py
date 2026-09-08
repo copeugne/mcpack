@@ -159,6 +159,44 @@ def test_classification_does_not_silently_drop_unmapped_observations() -> None:
         )
 
 
+def test_combined_classification_counts_only_observed_nonregistry_locations() -> None:
+    location = {
+        "candidate_id": 0,
+        "family": "supplementaries:cave_urn_cache",
+        "dimension": "minecraft:overworld",
+        "chunk_x": 0,
+        "chunk_z": 0,
+        "anchor_x": 3,
+        "anchor_y": 40,
+        "anchor_z": 7,
+    }
+    measured: dict[str, object] = {
+        "full_chunks": 1,
+        "dimension": "minecraft:overworld",
+        "bounds_chunks": [0, 0, 0, 0],
+        "occurrences": [{"registry_id": "minecraft:shipwreck", "chunk_x": 0, "chunk_z": 0}],
+        "nonregistry_candidates": {
+            "locations": [location, {**location, "candidate_id": 1}],
+            "location_observations": [
+                {"candidate_id": 0, "disposition": "OBSERVED_LOCATION"},
+                {"candidate_id": 1, "disposition": "OVERLAP_REVIEW_REQUIRED"},
+            ],
+        },
+    }
+    before = json.dumps(measured)
+    result = classify_census(measured)
+    categories = cast("dict[str, dict[str, float]]", result["categories"])
+    assert categories["all_locations"] == {"count": 2, "per_1000_chunks": 2000}
+    assert "all_registry" not in categories
+    rows = cast("list[dict[str, object]]", result["occurrences"])
+    assert rows[1]["family_id"] == "supplementaries:cave_urn_cache"
+    assert rows[1]["anchor_x"] == 3
+    assert json.dumps(measured) == before
+    location["dimension"] = "minecraft:the_end"
+    with pytest.raises(ValueError, match="census dimension"):
+        _ = classify_census(measured)
+
+
 def test_classification_rejects_changed_upstream_identity(monkeypatch: pytest.MonkeyPatch) -> None:
     original = Path.read_bytes
 

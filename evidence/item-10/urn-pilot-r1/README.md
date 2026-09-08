@@ -158,11 +158,17 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/u
 
 The initial candidate-only output at `0ef4e693` was 1,471,237 bytes, SHA-256
 `b7c09502a065b4962d7259e10038f00310f54ec1340719eb3c01d21793952692`.
-Two executions produced that same hash. The current output including location
+Two executions produced that same hash. The intermediate output including location
 dispositions is 1,638,506 bytes, SHA-256
 `7b43e7534c9b3d776ebc98393f34d0d712c53d392117272dc8d513eb9239f47b`.
 It retains seven `OBSERVED_LOCATION`, 468 `NO_CONSTRUCTIVE_CONTENT` and 811
-`OUTSIDE_FRAME` dispositions. The output is derived from the existing
+`OUTSIDE_FRAME` dispositions. The combined classification/spatial output is now
+1,665,571 bytes, SHA-256
+`768151f4653b1c48fa507f0c9062c32a20008e014b4f3d72726794244f29e740`.
+It contains eight observed locations over 81 full chunks: the one registry start
+is T0 and the seven caches are provisionally T1. The observed rate is
+98.765432 locations per 1,000 chunks for this diagnostic frame, not a baseline
+estimate from the full sample. The output is derived from the existing
 durable raw evidence, not a new primary archive; this command and the committed
 reader reproduce it. The integrated saved-content/census suite passes 18 tests,
 including rejection of registry census hashes from a different world identity.
