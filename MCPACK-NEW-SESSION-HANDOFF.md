@@ -26,7 +26,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `3b50c59a1504f6cca7240bb4ef99c67569caf5b7` after PR29.
+  `61320b28b5f064b31a2736f11ba687fac7c595bb` after PR30.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -144,7 +144,7 @@ PR29 is cleanly reviewed and merged; its README records verified delivery. Direc
 return/origin-state capture in `3b163d99` passes all 342 Item 7/10 tests.
 [Fairy r1](evidence/item-10/fairy-run-r1/README.md) completed all 6,852 chunks
 but captured no fairy helper calls. Hook identity and raw/world restores pass.
-PR30 reviews `codex/item10-mixed-traces`: both retained traces now pass
+PR30 is cleanly reviewed and merged; the fairy README records delivery. Both retained traces pass
 archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
 Do not expand for positive counts; positive capture and saved-content acceptance remain open.
 Reassessment: the registry pilot already supplies exclusive-role spatial results.

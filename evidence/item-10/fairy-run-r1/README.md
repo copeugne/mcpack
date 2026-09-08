@@ -80,3 +80,10 @@ completed on 2026-09-08 at 06:33:42 UTC with no inline or review findings;
 the Codex bot added a thumbs-up to the pull request at 06:33:45 UTC.
 This delivery preserves the failed positive-capture gate, not Item 10 completion.
 The archive-bound reader extension above is a separate subsequent milestone.
+
+PR30 subsequently delivered the archive-bound mixed-trace reader as
+`61320b28b5f064b31a2736f11ba687fac7c595bb`. Fetched main contains reviewed head
+`275474c02c719f99cab639ad0987d308834d04b2`. Its
+[clean review](https://github.com/copeugne/mcpack/pull/30#issuecomment-5580526347)
+completed at 06:45:05 UTC on 2026-09-08, with no inline/review findings and a
+Codex bot thumbs-up. Positive capture remains unmet.
