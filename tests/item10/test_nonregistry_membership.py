@@ -188,6 +188,39 @@ def test_arena_component_keeps_central_location_and_non_worldgen_context() -> No
     assert result["route"] == "non_worldgen_accessor"
 
 
+@pytest.mark.parametrize(
+    ("returned", "block", "expected"),
+    [
+        (False, "minecraft:dandelion", "CONTENT_OBSERVED"),
+        (True, "minecraft:air", "NO_CONTENT_OBSERVED"),
+    ],
+)
+def test_fairy_origin_state_not_delegate_return_establishes_content(
+    *, returned: bool, block: str, expected: str
+) -> None:
+    rows = attempt("org.violetmoon.quark.content.world.gen.FairyRingGenerator")
+    rows[2:2] = [
+        {"kind": "writer", "site": 1},
+        write([1, 2, 3], "minecraft:air"),
+        {"kind": "flower_begin", "position": [1, 2, 3]},
+        {"kind": "flower_end", "returned": returned},
+        {"kind": "flower_state", "state": "Block{" + block + "}"},
+    ]
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["outcome"] == expected
+    assert result["last_successful_writes"] == [
+        {"position": [1, 2, 3], "block_id": "minecraft:air"}
+    ]
+    assert result["flower_observations"] == [{"position": [1, 2, 3], "block_id": block}]
+
+
+def test_fairy_cleanup_uses_collector_site_one_not_bytecode_offset() -> None:
+    rows = attempt("org.violetmoon.quark.content.world.gen.FairyRingGenerator")
+    rows[2:2] = [{"kind": "writer", "site": 1}, write([1, 2, 3], "minecraft:stone")]
+    result = nonregistry_attempt_outcome(rows, nonregistry_membership())
+    assert result["outcome"] == "NO_CONTENT_OBSERVED"
+
+
 def outcome(number: int, family: str, anchor: list[int]) -> dict[str, object]:
     return {
         "attempt": number,

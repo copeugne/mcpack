@@ -145,6 +145,9 @@ paired `--trace-root`/`--trace-manifest`. The retained
 [urn integration](evidence/item-10/urn-pilot-r1/README.md#integrated-offline-analysis)
 reproduces all 1,291 attempts and 429 block matches with identical output hashes.
 Its 18 focused tests pass. This is diagnostic integration, not full measurement.
+Fairy processing now uses collector cleanup site 1 (bytecode offset 193) and
+retains observed flower-origin states separately from direct successful writes.
+All 48 focused tests pass; complete ring visibility is not inferred.
 The biome reader now supports actual within-chunk traced anchors, with 40 focused
 biome/spatial/census tests passing. Final location-table integration remains.
 Genuine remaining capabilities: complete

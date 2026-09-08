@@ -557,9 +557,12 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
     # A template's support/erosion writes cannot alone establish template content.
     template_family = family in set(membership["templates"].values())
     final_writes: dict[tuple[int, ...], str] = {}
+    observed_states: dict[tuple[int, ...], str] = {}
     content_positions: set[tuple[int, ...]] = set()
     in_template = False
     writer_site = None
+    flower_origin = None
+    flowers = []
     refused = 0
     for row in rows:
         kind = row["kind"]
@@ -569,6 +572,19 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
             in_template = False
         elif kind == "writer":
             writer_site = row["site"]
+        elif kind == "flower_begin":
+            flower_origin = row["position"]
+        elif kind == "flower_state":
+            if flower_origin is None:
+                detail = "flower state lacks its observed delegate origin"
+                raise ValueError(detail)
+            state = str(row["state"])
+            if not state.startswith("Block{") or "}" not in state:
+                detail = "unrecognized recorded flower-state representation"
+                raise ValueError(detail)
+            flowers.append({"position": flower_origin, "block_id": state.split("}", 1)[0][6:]})
+            observed_states[tuple(flower_origin)] = flowers[-1]["block_id"]
+            flower_origin = None
         elif kind == "write":
             if row["returned"] is False:
                 refused += 1
@@ -580,8 +596,9 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
                 raise ValueError(detail)
             block_id = state.split("}", 1)[0][len("Block{") :]
             final_writes[position] = block_id
+            observed_states[position] = block_id
             eligible = in_template if template_family else True
-            if family == "quark:fairy_ring" and writer_site == 193:  # noqa: PLR2004 - cleanup site
+            if family == "quark:fairy_ring" and writer_site == 1:
                 eligible = False
             if family == "supplementaries:cave_urn_cache":
                 eligible = block_id == "supplementaries:urn"
@@ -589,8 +606,17 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
                 content_positions.add(position)
     air = {"minecraft:air", "minecraft:cave_air", "minecraft:void_air"}
     surviving = sorted(
-        position for position in content_positions if final_writes[position] not in air
+        position for position in content_positions if observed_states[position] not in air
     )
+    if family == "quark:fairy_ring":
+        surviving = sorted(
+            set(surviving)
+            | {
+                tuple(flower["position"])
+                for flower in flowers
+                if observed_states[tuple(flower["position"])] not in air
+            }
+        )
     failure = any(str(row["kind"]).endswith("_exception") for row in rows)
     route = "ordinary_generation"
     if isinstance(family, str) and family.startswith("betterendisland:"):
@@ -623,6 +649,7 @@ def nonregistry_attempt_outcome(  # noqa: C901, PLR0912, PLR0915 - one ordered p
             {"position": list(position), "block_id": block_id}
             for position, block_id in sorted(final_writes.items())
         ],
+        **({"flower_observations": flowers} if family == "quark:fairy_ring" else {}),
     }
 
 
@@ -715,7 +742,7 @@ def nonregistry_location_groups(
     }
 
 
-def nonregistry_analysis(  # noqa: PLR0913 - explicit custody, sample and census identities
+def nonregistry_analysis(  # noqa: C901, PLR0913 - bind custody, sample and saved observations
     world: Path,
     raw: Path,
     archive_manifest: Path,
@@ -775,7 +802,7 @@ def nonregistry_analysis(  # noqa: PLR0913 - explicit custody, sample and census
     ]
     requested: dict[str, set[tuple[int, int, int]]] = collections.defaultdict(set)
     for outcome in outcomes:
-        for write in outcome["last_successful_writes"]:
+        for write in outcome["last_successful_writes"] + outcome.get("flower_observations", []):
             requested[outcome["dimension"]].add(tuple(write["position"]))
     saved = saved_content_observations(world, requested, world_files, geometry)
     by_position = {(row["dimension"], *row["position"]): row for row in saved["observations"]}
@@ -800,6 +827,16 @@ def nonregistry_analysis(  # noqa: PLR0913 - explicit custody, sample and census
             }
             | {"saved_block_checks": dict(sorted(checks.items()))}
         )
+        if "flower_observations" in outcome:
+            summaries[-1]["saved_flower_checks"] = [
+                {
+                    **flower,
+                    "saved_state": by_position[(outcome["dimension"], *flower["position"])][
+                        "saved_state"
+                    ],
+                }
+                for flower in outcome["flower_observations"]
+            ]
     return {
         **nonregistry_location_groups(outcomes, frames),
         "scope": "candidate evidence only; provider and overlap acceptance remain required",

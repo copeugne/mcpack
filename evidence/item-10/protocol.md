@@ -1222,15 +1222,18 @@ source and selected template/fill anchors, and explicit exception outcomes.
 Template-derived families require writes inside the template phase for observed
 content; later terrain/support writes alone cannot create a template occurrence.
 Later successful removal to air removes that position from surviving content.
-Cave-cache content requires actual urn writes, while fairy cleanup site 193 is
+Cave-cache content requires actual urn writes, while fairy collector site 1 is
 excluded from constructive writes. Boolean generator/template returns alone do
 not establish content.
 
 These are attempt outcomes, not accepted location counts. `CONTENT_OBSERVED` and
 `EXCEPTION_WITH_CONTENT` must still undergo provider completeness, saved-world
 corroboration, overlap/component aggregation and sample inclusion. Fairy delegated
-flower observations remain in raw attempts and need separate visible-ring
-assessment; this function does not establish that assessment. Arena components
+flower origins and observed post-call block IDs now enter content and saved-world
+processing separately from direct successful writes. A false delegate return with
+non-air origin content remains content; a true return leaving air does not.
+This does not establish complete ring visibility or the delegated feature's full
+footprint. Arena components
 retain their original coordinates but use central X/Z for the eventual location.
 End accessors distinguish `ordinary_generation`, `non_worldgen_accessor` and
 `unresolved`; a non-worldgen accessor does not identify a specific lifecycle cause.
@@ -1298,3 +1301,10 @@ only until nonregistry acceptance passes. Per-attempt last-write checks are not
 claims about global ordering across concurrent attempts. The retained
 [urn integration](urn-pilot-r1/README.md#integrated-offline-analysis) supplies the
 reproduction command, output hash and explicit diagnostic denominators.
+
+The fairy cleanup reader initially compared the collector's ordinal writer value
+to bytecode offset 193. Inspection of the retained instrumentation establishes
+that raw sites are 1 through 4, with site 1 corresponding to offset 193. The
+reader now uses site 1. The correction and origin-state integration pass 48
+focused attribution/collection/saved-content tests, including false-return
+non-air and true-return air cases. No recorded raw event was changed.
