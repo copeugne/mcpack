@@ -70,3 +70,12 @@ branch outcome. It does establish why this sample cannot demonstrate positive
 spiral placement under its frozen biome allowlist. Do not re-run or expand this
 sample to obtain a positive count. Preserve the unmet positive-capture gate
 while completing independent generator coverage.
+
+## Reviewed diagnostic delivery
+
+[PR28](https://github.com/copeugne/mcpack/pull/28) merged as
+`6d5852c085cddf7c37862829c947bedf71ac9c39`, verified in fetched main.
+The [completed review](https://github.com/copeugne/mcpack/pull/28#issuecomment-5580188830)
+reviewed `9cb338e023cc831c2ae0341bc7ab10e94ef71bcd` with no inline, review or
+discussion findings and a Codex bot thumbs-up. That exact head is an ancestor
+of main. Delivery does not turn this zero-write pilot into positive capture.
