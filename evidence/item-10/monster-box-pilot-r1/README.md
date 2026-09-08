@@ -32,8 +32,9 @@ uv run --no-sync python -c "import runpy; runpy.run_path('evidence/item-10/scare
 ```
 
 Block-ID corroboration does not establish complete block-state equality or
-collector noninterference. The BOP positive-path acceptance review remains open
-in PR25; integrate that fix before final delivery of the shared validator.
+collector noninterference. The PR25 positive-path correction is integrated: BOP requires all three paths,
+and Monster Box requires at least one successful flags-0 write. Refused-only
+capture cannot pass. PR25 review remains pending.
 
 ## Raw custody
 
@@ -60,3 +61,7 @@ observer-cost measurement and density collection remain open. No Item 11 work ra
 
 Validation: all 322 Item 7/10 tests pass in 57.36 seconds. Changed Python Ruff
 and validator/test basedpyright checks pass. No Item 11 workflow was run.
+
+The integrated correction passes all 327 Item 7/10 tests in 56.62 seconds and
+changed validator/test lint and type checks. BOP trace-validation.json reproduces
+byte for byte; Monster Box records its seven successful flags-0 writes.

@@ -95,11 +95,15 @@ def bop_rows() -> list[dict[str, object]]:
                     "position": [0, 80, 0],
                     "state": "Block{minecraft:end_stone}",
                     "flags": 3,
-                    "returned": attempt == 1,
+                    "returned": True,
                 },
                 {"kind": "end", "attempt": attempt, "returned": True},
             ]
         )
+        extra = copy.deepcopy(rows[-2])
+        extra["flags"] = 2 if name.endswith("AnomalyFeature") else 3
+        extra["returned"] = name.endswith("AnomalyFeature")
+        rows.insert(len(rows) - 1, extra)
     rows.append({"kind": "shutdown", "installed": True, "unfinished_attempts": 0})
     return rows
 
@@ -108,7 +112,7 @@ def test_bop_capture_preserves_refused_write_denominator() -> None:
 
     result = check_feature_rows(bop_rows())
     assert result["attempts"] == 2
-    assert result["writes"] == 2
+    assert result["writes"] == 4
     assert result["refused_writes"] == 1
 
 
@@ -163,6 +167,17 @@ def test_bop_escaped_trace_rejected(tmp_path: Path) -> None:
 def monster_rows() -> list[dict[str, object]]:
     """Retain both successful and refused single-write generator calls."""
     rows = bop_rows()
+    seen: set[int] = set()
+    single: list[dict[str, object]] = []
+    for row in rows:
+        if row["kind"] == "write":
+            attempt = cast("int", row["attempt"])
+            if attempt in seen:
+                continue
+            seen.add(attempt)
+            row["returned"] = attempt == 1
+        single.append(row)
+    rows = single
     rows.insert(
         1, {"kind": "feature_installed", "class": MONSTER_BOX, "input_class_sha256": "b" * 64}
     )
@@ -186,7 +201,9 @@ def test_monster_void_completion_keeps_write_denominator() -> None:
     assert result["refused_writes"] == 1
 
 
-@pytest.mark.parametrize("defect", ["boolean-end", "excess-write", "dimension", "missing-end"])
+@pytest.mark.parametrize(
+    "defect", ["boolean-end", "excess-write", "dimension", "missing-end", "refused-only"]
+)
 def test_monster_capture_rejects_invalid_generator_contract(defect: str) -> None:
     rows = monster_rows()
     if defect == "boolean-end":
@@ -196,7 +213,29 @@ def test_monster_capture_rejects_invalid_generator_contract(defect: str) -> None
         rows.insert(index, copy.deepcopy(rows[index]))
     elif defect == "dimension":
         next(r for r in rows if r["kind"] == "begin")["dimension"] = "minecraft:the_end"
+    elif defect == "refused-only":
+        for row in rows:
+            if row["kind"] == "write":
+                row["returned"] = False
     else:
         del rows[next(i for i, r in enumerate(rows) if r["kind"] == "generator_end")]
     with pytest.raises(ValueError, match=r"BOP|Monster Box"):
         _ = check_feature_rows(rows, monster_box=True)
+
+
+@pytest.mark.parametrize("path", ["anomaly-helper", "anomaly-direct", "monolith"])
+def test_bop_requires_successful_write_on_each_path(path: str) -> None:
+    rows = bop_rows()
+    attempt = 2 if path == "monolith" else 1
+    flags = 2 if path == "anomaly-direct" else 3
+    for row in rows:
+        if row["kind"] == "write" and row["attempt"] == attempt and row["flags"] == flags:
+            row["returned"] = False
+    with pytest.raises(ValueError, match="successful writes on all three"):
+        _ = check_feature_rows(rows)
+
+
+def test_bop_rejects_omitted_anomaly_final_write() -> None:
+    rows = [row for row in bop_rows() if row.get("flags") != 2]
+    with pytest.raises(ValueError, match="successful writes on all three"):
+        _ = check_feature_rows(rows)

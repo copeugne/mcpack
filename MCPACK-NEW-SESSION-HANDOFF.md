@@ -132,8 +132,9 @@ fixed in the review correction; source ancestry loss is disproved by Git and PR 
 `codex/item10-quark` preserves pushed `461a4000`, a separately tested Monster Box
 collector extension. PR25 fixes are merged into that branch without rewriting history.
 [Monster Box pilot r1](evidence/item-10/monster-box-pilot-r1/README.md) is stopped;
-all seven writes match saved block IDs and archive-bound validation passes. Integrate
-the pending PR25 successful-write-path correction before Quark delivery.
+all seven writes match saved block IDs and archive-bound validation passes. Await
+PR25 delivery before opening the Quark milestone PR; its successful-path correction
+is integrated and all 327 Item 7/10 tests pass.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
