@@ -502,3 +502,43 @@ Fetched `origin/main` contains reviewed head
 completed at 03:15:05 UTC with no new findings and a Codex bot thumbs-up on the
 pull request. All four valid findings from earlier cycles were fixed. This
 closes the bounded diagnostic delivery, not Item 10's full measurement gate.
+
+## BetterEnd template collector extension (fixture gate only)
+
+The existing Java probe now targets `NBTFeature.place`, `CrashedShipFeature.place`,
+`BuildingListFeature$StructureInfo.getStructure` and the content-write call site
+in `StructureTemplate.placeInWorld`. It records the actual returned template's
+source path by object identity, feature attempt, template origin/pivot, rotation,
+mirror, flags, content write arguments/results and template return/exception.
+The ship route is attributed to `minecraft:end_city/ship`. A conflicting path for
+one template object fails explicitly. Template success is not counted as a site.
+
+Only the second of the retained template method's three direct `setBlock` sites
+is traced: content placement. Temporary barriers and subsequent shape updates
+are excluded. Calls outside targeted BetterEnd placements retain their original
+interface invocation without emitting placement observations. Terrain merge and
+ship erosion occur outside the template trace. Raw content writes remain evidence
+of placement attempts, not proof that every block survives later erosion.
+
+The extension reuses the original probe's explicit system-loader bridges and
+existing test compiler/archive path. Focused validation compiles with pinned
+Temurin `-Xlint:all -Werror`, transforms all four exact classes verified against
+Item 8 artifact identities, and compares ordinary and instrumented fixture output
+including world-call arguments. Cases cover normal, early return, empty template,
+all refused writes, original exception propagation, isolated loader and an
+unobserved template invocation. The selected source remains `original.nbt` even
+when the fixture replaces the feature's mutable selection before placement.
+The original scarecrow preservation cases still pass.
+
+```sh
+uv run --no-sync pytest -q tests/item10/test_placement_probe.py
+uv run --no-sync ruff check tests/item10/test_placement_probe.py
+uv run --no-sync basedpyright tests/item10/test_placement_probe.py
+```
+
+Both test functions pass; Ruff and the test's type check pass. Runtime transformed
+class identity, installation completeness, real BetterEnd observations, trace
+validation, saved-world corroboration and collector cost remain unverified.
+No new server experiment or accepted nonregistry density result is supplied by
+this fixture gate. Extend the existing diagnostic runner for a predeclared fresh
+runtime check before incorporating these observations into Item 10 results.

@@ -14,7 +14,7 @@ JDK = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin"
 EXPORT = "java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED"
 
 
-def test_probe_preserves_original_write_calls_results_and_exceptions(tmp_path: Path) -> None:
+def _build_probe(tmp_path: Path) -> Path:
     if not (JDK / "javac").exists():
         pytest.skip("Pinned Temurin compiler is required for the placement-probe fixture")
     sources = sorted((ROOT / "tests/item10/probe-fixture").rglob("*.java"))
@@ -57,6 +57,11 @@ def test_probe_preserves_original_write_calls_results_and_exceptions(tmp_path: P
         text=True,
         timeout=45,
     )
+    return agent
+
+
+def test_probe_preserves_original_write_calls_results_and_exceptions(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
     archive = ROOT / "downloads/item3/candidates/explorations-neoforge-1.21.1-1.6.2.jar"
     assert hashlib.sha256(archive.read_bytes()).hexdigest() == (
         "420d0373711877a5e1a86b7f9b4f54848f3debb2f116c2509a5cc4eb496c979e"
@@ -119,3 +124,95 @@ def test_probe_preserves_original_write_calls_results_and_exceptions(tmp_path: P
                 True,
                 True,
             ]
+
+
+def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    for mode in ("normal", "early", "empty", "refused", "exception", "isolated", "outside"):
+        trace = tmp_path / f"template-{mode}.jsonl"
+        ordinary = subprocess.run(
+            [*command, "TemplateFixture", mode],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        observed = subprocess.run(
+            [*command, f"-javaagent:{agent}={trace}", "TemplateFixture", mode],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert observed.stdout == ordinary.stdout
+        rows = [
+            cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()
+        ]
+        writes = [row for row in rows if row["kind"] in {"write", "write_exception"}]
+        assert len(writes) == (0 if mode in {"early", "empty", "outside"} else 2)
+        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        placements = [row for row in rows if row["kind"] == "template_begin"]
+        if mode not in {"early", "outside"}:
+            assert len(placements) == 1
+            assert placements[0]["path"] == "original.nbt"
+        if mode == "refused":
+            assert all(row["returned"] is False for row in writes)
+        elif mode in {"normal", "isolated"}:
+            assert [row["returned"] for row in writes] == [False, True]
+            assert all("content" in cast("str", row["state"]) for row in writes)
+
+    sources = ROOT / "evidence/item-8/sources"
+    targets = (
+        (
+            "betterend-entry-template-consumers",
+            "org/betterx/betterend/world/features/NBTFeature.class",
+        ),
+        (
+            "betterend-entry-template-consumers",
+            "org/betterx/betterend/world/features/BuildingListFeature$StructureInfo.class",
+        ),
+        (
+            "betterend-feature-scope",
+            "org/betterx/betterend/world/features/CrashedShipFeature.class",
+        ),
+        (
+            "missing-template-code",
+            "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.class",
+        ),
+    )
+    for group, name in targets:
+        identities = cast(
+            "list[dict[str, str]]", json.loads((sources / group / "identities.json").read_text())
+        )
+        identity = next(row for row in identities if row["class"] == name)
+        archive = ROOT / "downloads/item3/candidates" / identity["archive"]
+        if group == "missing-template-code":
+            archive = (
+                ROOT
+                / "instances/item10/scarecrow-probe-r3/libraries/net/minecraft/server"
+                / "1.21.1-20240808.144430"
+                / identity["archive"]
+            )
+        assert hashlib.sha256(archive.read_bytes()).hexdigest() == identity["archive_sha256"]
+        with zipfile.ZipFile(archive) as jar:
+            payload = jar.read(name)
+        assert hashlib.sha256(payload).hexdigest() == identity["class_sha256"]
+        original = tmp_path / "template-original.class"
+        transformed = tmp_path / "template-transformed.class"
+        _ = original.write_bytes(payload)
+        _ = subprocess.run(
+            [
+                *command,
+                "TemplateFixture",
+                "transform",
+                name.removesuffix(".class"),
+                str(original),
+                str(transformed),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert transformed.read_bytes() != payload

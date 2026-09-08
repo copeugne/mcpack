@@ -130,7 +130,10 @@ No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
 
 Continue on `codex/item10-placement-coverage`, created from delivered main.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
-start with BetterEnd template attribution and successful content-write capture.
+BetterEnd template attribution/content-write hooks now pass the focused retained-
+class transformation and preservation fixtures. The placement diagnostic records
+coverage and limits. Next predeclare and run a fresh runtime diagnostic, validating
+actual transformed identities, trace completeness, corroboration and cost.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
