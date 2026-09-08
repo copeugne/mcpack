@@ -173,3 +173,27 @@ uv run --no-sync python -m tools.run_item10_probe --name scarecrow-probe-r3 --mo
 # Only after complete actual five-write execution and capture health are verified:
 uv run --no-sync python -m tools.run_item10_probe --name scarecrow-control-r3 --mode control --role mountainous
 ```
+
+## Generation comparison implementation
+
+The existing density reader now exposes optional `--generation` output using
+the projection declared above. Each selected chunk retains its coordinates and
+content SHA-256. The ordinary census output is unchanged without the option.
+Tests verify that tick timestamps are excluded, block and biome changes alter
+the digest, and the output remains bound to the selected full-chunk denominator.
+The Item 10 suite passes 27 tests; focused Ruff checks pass. A direct strict
+basedpyright invocation on the whole standalone analysis tool failed on its
+existing untyped JSON/CLI paths and the new projection. This invocation is outside
+the configured `src`/`tests` checking surface and is not recorded as a pass.
+The probe fixture's configured type check passes. No type-check policy was relaxed.
+
+Reproduction for the retained ordinary pilot (read-only, new output path):
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/pilot-custody-r1/restored-world/world evidence/raw/item10/pilot-custody-r1/generation-projection.json --dimension minecraft:overworld --bounds -31 31 -31 31 --generation
+```
+
+This is a processing check on retained evidence, not another world experiment or
+an Item 7 audit. Pair comparisons must compare the complete `generation_content`
+arrays for matching seed, dimension and bounds; archive input hashes will differ
+and are not substitutes for this content comparison.

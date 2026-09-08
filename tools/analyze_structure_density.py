@@ -46,6 +46,26 @@ def chunk_biome_column(record: ChunkRecord, min_y: int, height: int) -> dict[int
     return column
 
 
+def generation_digest(payload: bytes) -> str:
+    """Hash the predeclared generation projection without tick or entity movement state."""
+    root = decode_compound_nbt(payload)
+    projection = {
+        "sections": sorted(
+            (
+                {key: row[key] for key in ("Y", "block_states", "biomes") if key in row}
+                for row in root["sections"]
+            ),
+            key=lambda row: row["Y"],
+        ),
+        "block_entities": sorted(
+            root.get("block_entities", []), key=lambda row: (row["x"], row["y"], row["z"])
+        ),
+        "structures": root["structures"],
+    }
+    encoded = json.dumps(projection, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    return hashlib.sha256(encoded.encode()).hexdigest()
+
+
 def spatial_summary(
     occurrences: list[dict[str, str | int]], bounds: tuple[int, int, int, int]
 ) -> dict[str, object]:
@@ -223,13 +243,14 @@ def start_origins(payload: bytes, chunk: tuple[int, int]) -> list[dict[str, str 
     return result
 
 
-def census(
+def census(  # noqa: PLR0913 - explicit optional outputs avoid a separate configuration schema.
     world: Path,
     dimension: str,
     bounds: tuple[int, int, int, int],
     geometry: dict[str, tuple[int, int]],
     *,
     include_biomes: bool = False,
+    include_generation: bool = False,
 ) -> dict[str, object]:
     """Reject incomplete coverage and retain the actual denominator and occurrences."""
     min_x, max_x, min_z, max_z = bounds
@@ -241,6 +262,7 @@ def census(
     occurrences = []
     inputs = []
     biome_counts = collections.Counter()
+    generation = []
     for path, context in world_regions(world, dimension_geometry=geometry):
         if context.dimension != dimension:
             continue
@@ -265,6 +287,11 @@ def census(
                 else ()
             )
             occurrences.extend(start_origins(payload, (x, z)))
+            generation.extend(
+                [{"chunk_x": x, "chunk_z": z, "sha256": generation_digest(payload)}]
+                if include_generation
+                else []
+            )
         if hashlib.sha256(path.read_bytes()).hexdigest() != before:
             detail = f"region changed during census: {path}"
             raise ValueError(detail)
@@ -297,7 +324,19 @@ def census(
             for (quart_y, biome), count in sorted(biome_counts.items())
         ],
     }
-    return result | ({"biome_exposure": exposure} if include_biomes else {})
+    return (
+        result
+        | ({"biome_exposure": exposure} if include_biomes else {})
+        | (
+            {
+                "generation_content": sorted(
+                    generation, key=lambda row: (row["chunk_x"], row["chunk_z"])
+                )
+            }
+            if include_generation
+            else {}
+        )
+    )
 
 
 def main() -> None:
@@ -313,13 +352,19 @@ def main() -> None:
     parser.add_argument(
         "--biomes", action="store_true", help="retain biome exposure by quart height"
     )
+    parser.add_argument("--generation", action="store_true", help="hash declared generated content")
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
     with _world_backup_lock(args.world):
         result = census(
-            args.world, args.dimension, tuple(args.bounds), geometry, include_biomes=args.biomes
+            args.world,
+            args.dimension,
+            tuple(args.bounds),
+            geometry,
+            include_biomes=args.biomes,
+            include_generation=args.generation,
         )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)
