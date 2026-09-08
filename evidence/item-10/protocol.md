@@ -1122,3 +1122,23 @@ context, direct writes and an isolated class loader for all four entrypoints.
 Focused Ruff and basedpyright checks pass. Full-sample event validation, occurrence
 aggregation and saved-world corroboration remain incomplete. No End experiment
 or new PR was started for this collector increment.
+
+### Spatial integration for observed anchors
+
+The shared spatial summary now accepts explicit integer `anchor_x`/`anchor_z`
+block coordinates for traced locations. Registry records without these fields
+retain their declared start-chunk-center convention. Both explicit coordinates
+must be present, must belong to the supplied inclusion chunk using floor division
+(including negative coordinates), and must lie within the selected chunk frame.
+Distances and boundary censoring use these actual anchors; cell occupancy and
+empty-region denominators retain the existing chunk grid. This prevents distinct
+within-chunk locations from being incorrectly assigned zero separation.
+
+The focused spatial/census suite passes 29 tests, including actual-anchor distance,
+negative-coordinate inclusion and rejection of incomplete, coerced or out-of-frame
+coordinates. Ruff passes for the analysis tool and tests; basedpyright passes for
+the spatial tests, matching the existing validation surface. All eleven spatial
+categories recomputed from the committed pilot occurrence records equal the
+retained `pilot-r1/spatial-census.json` results exactly. No pilot was regenerated.
+This enables the downstream location table; trace-to-location aggregation remains
+incomplete and no new density result is claimed.

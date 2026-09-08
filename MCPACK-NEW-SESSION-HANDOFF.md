@@ -118,6 +118,9 @@ End route applicability is resolved in the
 retain ordinary packaged feature routes and report lifecycle invocations separately.
 No arrival/dragon/respawn campaign is required. Full-sample reader integration,
 occurrence aggregation and saved-world corroboration remain.
+Spatial analysis now supports actual traced anchors while preserving all eleven
+retained pilot spatial category results. Its focused spatial/census gate has
+29 passing tests. The full trace reader and location table remain to be integrated.
 Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.

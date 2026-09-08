@@ -126,12 +126,37 @@ def generation_digest(payload: bytes) -> str:
     return hashlib.sha256(encoded.encode()).hexdigest()
 
 
+def occurrence_anchor(
+    row: dict[str, str | int], bounds: tuple[int, int, int, int]
+) -> tuple[int, int]:
+    """Use explicit block anchors, retaining the registry start-center convention."""
+    min_x, max_x, min_z, max_z = bounds
+    chunk_x, chunk_z = row["chunk_x"], row["chunk_z"]
+    if type(chunk_x) is not int or type(chunk_z) is not int:
+        detail = "occurrence chunk coordinates must be integers"
+        raise ValueError(detail)
+    if not (min_x <= chunk_x <= max_x and min_z <= chunk_z <= max_z):
+        detail = "occurrence outside selected chunk frame"
+        raise ValueError(detail)
+    if ("anchor_x" in row) != ("anchor_z" in row):
+        detail = "occurrence needs both horizontal anchor coordinates"
+        raise ValueError(detail)
+    x, z = row.get("anchor_x", 16 * chunk_x + 8), row.get("anchor_z", 16 * chunk_z + 8)
+    if type(x) is not int or type(z) is not int:
+        detail = "occurrence anchors must be integer block coordinates"
+        raise ValueError(detail)
+    if x // 16 != chunk_x or z // 16 != chunk_z:
+        detail = "occurrence anchor disagrees with inclusion chunk"
+        raise ValueError(detail)
+    return x, z
+
+
 def spatial_summary(
     occurrences: list[dict[str, str | int]], bounds: tuple[int, int, int, int]
 ) -> dict[str, object]:
-    """Describe fixed-grid density and boundary-censored start-chunk distances."""
+    """Describe fixed-grid density and distances using declared location anchors."""
     min_x, max_x, min_z, max_z = bounds
-    points = [(16 * int(row["chunk_x"]) + 8, 16 * int(row["chunk_z"]) + 8) for row in occurrences]
+    points = [occurrence_anchor(row, bounds) for row in occurrences]
     neighbors = []
     for index, (x, z) in enumerate(points):
         boundary = min(x - 16 * min_x, 16 * (max_x + 1) - x, z - 16 * min_z, 16 * (max_z + 1) - z)
