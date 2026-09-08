@@ -13,17 +13,17 @@ C/T1/T2/T3/T4 roles are provisional, retaining confidence and ambiguity in each 
 | World | All | Actionable | Encounter sites | T2 | T3 | T4 | Village | Ray-clear all | Covered blocks / 3072 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | biome-diverse-r1-baseline | 1777 | 1769 | 1768 | 5 | 0 | 0 | 0 | 3 | 152 |
-| biome-diverse-r1-without-sparse | 1785 | 1758 | 1756 | 6 | 0 | 0 | 0 | 17 | 504 |
+| biome-diverse-r1-without-sparse | 1785 | 1758 | 1756 | 6 | 0 | 0 | 0 | 18 | 520 |
 | biome-diverse-r2-baseline | 1748 | 1740 | 1739 | 5 | 0 | 0 | 0 | 3 | 176 |
-| biome-diverse-r2-without-sparse | 1835 | 1807 | 1805 | 6 | 0 | 0 | 0 | 16 | 504 |
+| biome-diverse-r2-without-sparse | 1835 | 1807 | 1805 | 6 | 0 | 0 | 0 | 17 | 520 |
 | mountainous-r1-baseline | 1655 | 1647 | 1644 | 5 | 0 | 0 | 0 | 3 | 112 |
 | mountainous-r1-without-sparse | 1741 | 1715 | 1713 | 8 | 3 | 0 | 0 | 7 | 344 |
 | mountainous-r2-baseline | 1660 | 1651 | 1648 | 5 | 0 | 0 | 0 | 3 | 96 |
 | mountainous-r2-without-sparse | 1783 | 1756 | 1754 | 8 | 3 | 0 | 0 | 9 | 360 |
 | ocean-heavy-r1-baseline | 422 | 418 | 418 | 4 | 0 | 0 | 0 | 2 | 136 |
-| ocean-heavy-r1-without-sparse | 466 | 457 | 456 | 6 | 1 | 0 | 1 | 2 | 72 |
+| ocean-heavy-r1-without-sparse | 466 | 457 | 456 | 6 | 1 | 0 | 1 | 4 | 224 |
 | ocean-heavy-r2-baseline | 457 | 453 | 453 | 4 | 0 | 0 | 0 | 2 | 136 |
-| ocean-heavy-r2-without-sparse-attempt3 | 461 | 452 | 451 | 6 | 1 | 0 | 1 | 2 | 72 |
+| ocean-heavy-r2-without-sparse-attempt3 | 461 | 452 | 451 | 6 | 1 | 0 | 1 | 4 | 224 |
 | ordinary-r1-baseline | 325 | 320 | 320 | 2 | 0 | 0 | 0 | 2 | 176 |
 | ordinary-r1-without-sparse | 328 | 320 | 317 | 7 | 0 | 0 | 3 | 4 | 304 |
 | ordinary-r2-baseline | 303 | 298 | 298 | 2 | 0 | 0 | 0 | 2 | 176 |
@@ -42,7 +42,7 @@ Raw rows retain every failure station, cost range and category-specific interval
 | biome-diverse-r1-baseline / east-south | 439 | 0 | 16 | 0 | 5/5/0 | I/I/I |
 | biome-diverse-r1-baseline / south-east | 484 | 2 | 14 | 0 | 13/13/0 | I/I/I |
 | biome-diverse-r1-baseline / south-west | 383 | 0 | 17 | 5 | 26/26/0 | I/I/I |
-| biome-diverse-r1-without-sparse / east-north | 483 | 7 | 13 | 0 | 29/29/0 | I/I/I |
+| biome-diverse-r1-without-sparse / east-north | 483 | 8 | 13 | 0 | 29/29/0 | I/I/I |
 | biome-diverse-r1-without-sparse / east-south | 401 | 2 | 12 | 0 | 5/5/0 | I/I/I |
 | biome-diverse-r1-without-sparse / south-east | 499 | 5 | 11 | 0 | 13/13/0 | I/I/I |
 | biome-diverse-r1-without-sparse / south-west | 402 | 3 | 25 | 0 | 29/29/0 | I/I/I |
@@ -50,7 +50,7 @@ Raw rows retain every failure station, cost range and category-specific interval
 | biome-diverse-r2-baseline / east-south | 432 | 0 | 18 | 0 | 5/5/0 | I/I/I |
 | biome-diverse-r2-baseline / south-east | 506 | 2 | 8 | 0 | 13/13/0 | I/I/I |
 | biome-diverse-r2-baseline / south-west | 351 | 0 | 18 | 1 | 32/32/0 | I/I/I |
-| biome-diverse-r2-without-sparse / east-north | 477 | 7 | 10 | 0 | 25/25/0 | I/I/I |
+| biome-diverse-r2-without-sparse / east-north | 477 | 8 | 10 | 0 | 25/25/0 | I/I/I |
 | biome-diverse-r2-without-sparse / east-south | 439 | 2 | 17 | 0 | 5/5/0 | I/I/I |
 | biome-diverse-r2-without-sparse / south-east | 526 | 4 | 16 | 0 | 13/13/0 | I/I/I |
 | biome-diverse-r2-without-sparse / south-west | 393 | 3 | 17 | 0 | 29/29/0 | I/I/I |
@@ -74,17 +74,17 @@ Raw rows retain every failure station, cost range and category-specific interval
 | ocean-heavy-r1-baseline / east-south | 95 | 0 | 210 | 213 | 0/0/756 | I/I/I |
 | ocean-heavy-r1-baseline / south-east | 174 | 2 | 61 | 0 | 0/0/446 | I/I/I |
 | ocean-heavy-r1-baseline / south-west | 56 | 0 | 352 | 372 | 0/0/768 | I/I/F |
-| ocean-heavy-r1-without-sparse / east-north | 98 | 2 | 87 | 0 | 0/0/37 | I/I/I |
+| ocean-heavy-r1-without-sparse / east-north | 98 | 3 | 87 | 0 | 0/0/37 | I/I/I |
 | ocean-heavy-r1-without-sparse / east-south | 130 | 0 | 76 | 134 | 0/0/756 | I/I/I |
-| ocean-heavy-r1-without-sparse / south-east | 158 | 0 | 88 | 0 | 0/0/623 | I/I/I |
+| ocean-heavy-r1-without-sparse / south-east | 158 | 1 | 88 | 0 | 0/0/623 | I/I/I |
 | ocean-heavy-r1-without-sparse / south-west | 80 | 0 | 175 | 179 | 0/0/768 | I/I/F |
 | ocean-heavy-r2-baseline / east-north | 101 | 0 | 63 | 0 | 0/0/37 | I/I/I |
 | ocean-heavy-r2-baseline / east-south | 128 | 0 | 189 | 208 | 0/0/756 | I/I/I |
 | ocean-heavy-r2-baseline / south-east | 170 | 2 | 56 | 0 | 0/0/446 | I/I/I |
 | ocean-heavy-r2-baseline / south-west | 58 | 0 | 249 | 363 | 0/0/768 | I/I/F |
-| ocean-heavy-r2-without-sparse-attempt3 / east-north | 111 | 2 | 80 | 0 | 0/0/37 | I/I/I |
+| ocean-heavy-r2-without-sparse-attempt3 / east-north | 111 | 3 | 80 | 0 | 0/0/37 | I/I/I |
 | ocean-heavy-r2-without-sparse-attempt3 / east-south | 114 | 0 | 94 | 181 | 0/0/756 | I/I/I |
-| ocean-heavy-r2-without-sparse-attempt3 / south-east | 165 | 0 | 83 | 0 | 0/0/623 | I/I/I |
+| ocean-heavy-r2-without-sparse-attempt3 / south-east | 165 | 1 | 83 | 0 | 0/0/623 | I/I/I |
 | ocean-heavy-r2-without-sparse-attempt3 / south-west | 71 | 0 | 121 | 159 | 0/0/768 | I/I/F |
 | ordinary-r1-baseline / east-north | 65 | 1 | 152 | 0 | 0/0/768 | I/I/F |
 | ordinary-r1-baseline / east-south | 82 | 0 | 120 | 160 | 0/0/768 | I/I/F |
@@ -112,22 +112,22 @@ independent samples. Coverage denominator is 32 times the window length.
 | --- | ---: | ---: | ---: | ---: | --- |
 | baseline | 32 | 256 | 1358 | 0 | 0 / 8192 |
 | baseline | 32 | 512 | 2481 | 2 | 112 / 16384 |
-| baseline | 32 | 768 | 3938 | 4 | 136 / 24576 |
+| baseline | 32 | 768 | 3938 | 6 | 216 / 24576 |
 | baseline | 64 | 256 | 2933 | 0 | 0 / 8192 |
 | baseline | 64 | 512 | 5153 | 6 | 272 / 16384 |
 | baseline | 64 | 768 | 8347 | 20 | 1160 / 24576 |
 | baseline | 96 | 256 | 4817 | 2 | 72 / 8192 |
-| baseline | 96 | 512 | 8214 | 8 | 504 / 16384 |
-| baseline | 96 | 768 | 13601 | 36 | 2144 / 24576 |
+| baseline | 96 | 512 | 8214 | 12 | 560 / 16384 |
+| baseline | 96 | 768 | 13601 | 38 | 2160 / 24576 |
 | without-sparse | 32 | 256 | 1373 | 5 | 128 / 8192 |
-| without-sparse | 32 | 512 | 2598 | 5 | 128 / 16384 |
-| without-sparse | 32 | 768 | 4123 | 11 | 352 / 24576 |
-| without-sparse | 64 | 256 | 3077 | 10 | 224 / 8192 |
-| without-sparse | 64 | 512 | 5432 | 18 | 520 / 16384 |
-| without-sparse | 64 | 768 | 8771 | 61 | 2464 / 24576 |
-| without-sparse | 96 | 256 | 5016 | 23 | 936 / 8192 |
-| without-sparse | 96 | 512 | 8608 | 38 | 1568 / 16384 |
-| without-sparse | 96 | 768 | 14106 | 98 | 5192 / 24576 |
+| without-sparse | 32 | 512 | 2598 | 9 | 168 / 16384 |
+| without-sparse | 32 | 768 | 4123 | 17 | 424 / 24576 |
+| without-sparse | 64 | 256 | 3077 | 12 | 432 / 8192 |
+| without-sparse | 64 | 512 | 5432 | 30 | 856 / 16384 |
+| without-sparse | 64 | 768 | 8771 | 67 | 2800 / 24576 |
+| without-sparse | 96 | 256 | 5016 | 24 | 944 / 8192 |
+| without-sparse | 96 | 512 | 8608 | 58 | 1960 / 16384 |
+| without-sparse | 96 | 768 | 14106 | 102 | 5368 / 24576 |
 
 ## Descriptive dispersion and paired contrasts
 
@@ -175,8 +175,8 @@ population intervals are justified for these nonrandom seeds and overlapping rou
       "n": 32
     },
     "coverage_blocks": {
-      "iqr": 90.0,
-      "max": 160,
+      "iqr": 78.0,
+      "max": 184,
       "median": 104.0,
       "min": 0,
       "n": 32
@@ -205,12 +205,12 @@ remain in Item 10 custody and are not additional route samples.
 
 | Seed / repetition | Adjacent membership difference | Covered-block difference |
 | --- | ---: | ---: |
-| biome-diverse-r1 | 8 | 352 |
-| biome-diverse-r2 | 87 | 328 |
+| biome-diverse-r1 | 8 | 368 |
+| biome-diverse-r2 | 87 | 344 |
 | mountainous-r1 | 86 | 232 |
 | mountainous-r2 | 123 | 264 |
-| ocean-heavy-r1 | 44 | -64 |
-| ocean-heavy-r2 | 4 | -64 |
+| ocean-heavy-r1 | 44 | 88 |
+| ocean-heavy-r2 | 4 | 88 |
 | ordinary-r1 | 3 | 128 |
 | ordinary-r2 | 69 | 128 |
 
@@ -227,19 +227,19 @@ Adventure Activity Ratio are **NOT MEASURED**. No Item 12 result is claimed.
 
 | Result | SHA-256 |
 | --- | --- |
-| [results/full-biome-diverse-r1-baseline.json.gz](results/full-biome-diverse-r1-baseline.json.gz) | `35c10172bf6a31f1121978380c7238a0ca94c88ff40ad259b8f59177498947f4` |
-| [results/full-biome-diverse-r1-without-sparse.json.gz](results/full-biome-diverse-r1-without-sparse.json.gz) | `d161189e52a53f4fcbec92f2b37292c0888f795b108ec64e4530ac575d7e139f` |
-| [results/full-biome-diverse-r2-baseline.json.gz](results/full-biome-diverse-r2-baseline.json.gz) | `72d5db5130651359f27d189e892773716b282d89173eca53f4a48f5b20e63355` |
-| [results/full-biome-diverse-r2-without-sparse.json.gz](results/full-biome-diverse-r2-without-sparse.json.gz) | `2b050cd1616ddf9a1d6dcb74a3b995640819d79981ec4ddc02bc127cc45e7439` |
-| [results/full-mountainous-r1-baseline.json.gz](results/full-mountainous-r1-baseline.json.gz) | `61fbd17668f6176b4009ca2f498fee4e392a5799a90edced3612af9693a83eab` |
-| [results/full-mountainous-r1-without-sparse.json.gz](results/full-mountainous-r1-without-sparse.json.gz) | `aa941e546d4494858e4d222c5a4e4bd1cc4dc30ce8416d65065e207ec611cf62` |
-| [results/full-mountainous-r2-baseline.json.gz](results/full-mountainous-r2-baseline.json.gz) | `bc428469f2c4b70281c09a9587cc7bfa221f2f3e427832ed300c49c44897da95` |
-| [results/full-mountainous-r2-without-sparse.json.gz](results/full-mountainous-r2-without-sparse.json.gz) | `41ebbbaa962791b250af377bb9d350aca5f5792c718f1d1acfbe371f8b3ca176` |
-| [results/full-ocean-heavy-r1-baseline.json.gz](results/full-ocean-heavy-r1-baseline.json.gz) | `ad5f3cca623fa4b6a359f57ef5962dde729d4621d1da60fc57b1bb8ab0ecd3a7` |
-| [results/full-ocean-heavy-r1-without-sparse.json.gz](results/full-ocean-heavy-r1-without-sparse.json.gz) | `7b9d9aee0d79360d1c304e8de0a1c791a2db5b61e2debadde449e5939fa7cc55` |
-| [results/full-ocean-heavy-r2-baseline.json.gz](results/full-ocean-heavy-r2-baseline.json.gz) | `0dc1f7960e502135f8b418a43f0913ed8bab1a80540de214f3d53ff186bb9ba6` |
-| [results/full-ocean-heavy-r2-without-sparse-attempt3.json.gz](results/full-ocean-heavy-r2-without-sparse-attempt3.json.gz) | `24b0812fa3fa01d431147e5da35cf131dadeed2817fa9b5bc5f3ef7d80e7f1d6` |
-| [results/full-ordinary-r1-baseline.json.gz](results/full-ordinary-r1-baseline.json.gz) | `d59cc1ddfe3924ddef69e0efdde2d3477889401d7fd68fa16bcc12e13fd64672` |
-| [results/full-ordinary-r1-without-sparse.json.gz](results/full-ordinary-r1-without-sparse.json.gz) | `c2d246a5dc04457a8af5cfe2c03d01d9d140bac084f014d275d3b06ace0b63d5` |
-| [results/full-ordinary-r2-baseline.json.gz](results/full-ordinary-r2-baseline.json.gz) | `a8baf43579122389e7ddb9634e507ee74e8a11a7296efe0b1f5e016417d8c207` |
-| [results/full-ordinary-r2-without-sparse.json.gz](results/full-ordinary-r2-without-sparse.json.gz) | `3b0aeb4036d87c6c68f77e9b76b0349a14227d6446cd3f5b9521e72f505889d7` |
+| [results/full-biome-diverse-r1-baseline.json.gz](results/full-biome-diverse-r1-baseline.json.gz) | `a7748d097a6473940a6afb406f6af499bf5bbe76d256324f5a6c3a81ef57d3c3` |
+| [results/full-biome-diverse-r1-without-sparse.json.gz](results/full-biome-diverse-r1-without-sparse.json.gz) | `807a369277b3079559acaaa4f681951b78617af9b838f30797fdddf317039fb0` |
+| [results/full-biome-diverse-r2-baseline.json.gz](results/full-biome-diverse-r2-baseline.json.gz) | `1cc6ae294d00735898419cfd72acee24cef5a22cf58231d8a86b143957f58fa0` |
+| [results/full-biome-diverse-r2-without-sparse.json.gz](results/full-biome-diverse-r2-without-sparse.json.gz) | `ecf0e4e934a4d14bdc75c5b17dfe53b0fab2b0d09f82b62d46a846ddefdd9f66` |
+| [results/full-mountainous-r1-baseline.json.gz](results/full-mountainous-r1-baseline.json.gz) | `502d440f0a188c0f08b39938be2a179570bd0581ef82d6b7a2d3fcad1e66a663` |
+| [results/full-mountainous-r1-without-sparse.json.gz](results/full-mountainous-r1-without-sparse.json.gz) | `e09a8bbe9b5ec1fa2da7e61febf70e5b21e9b2f741ce2b8e1c99604e46a63c42` |
+| [results/full-mountainous-r2-baseline.json.gz](results/full-mountainous-r2-baseline.json.gz) | `a823f5abf474aac9b9f352fb9a1afd7728e962743fa7b35c876f3680bb638184` |
+| [results/full-mountainous-r2-without-sparse.json.gz](results/full-mountainous-r2-without-sparse.json.gz) | `48c3692a0a02ed898ba9055165682802ef41759b60ec7b1d285fe0caaaffc753` |
+| [results/full-ocean-heavy-r1-baseline.json.gz](results/full-ocean-heavy-r1-baseline.json.gz) | `cbb3201e3cc2562cb2f30ecb7a07c8cdfb0882a9f904597e81aa4ecb6709cfb4` |
+| [results/full-ocean-heavy-r1-without-sparse.json.gz](results/full-ocean-heavy-r1-without-sparse.json.gz) | `7f8d190ae9ab66f672ff72c0eda2437933d57efe5e63a0ff9fe625cb25db5da3` |
+| [results/full-ocean-heavy-r2-baseline.json.gz](results/full-ocean-heavy-r2-baseline.json.gz) | `54cf613a57d199d1c76dc4725d5d29801e31aa2000258694b4e6aa84b42496d5` |
+| [results/full-ocean-heavy-r2-without-sparse-attempt3.json.gz](results/full-ocean-heavy-r2-without-sparse-attempt3.json.gz) | `82dbf6872f0fb438c966190b7de0233261c884fc5dca5b714b65766b1e2d18ac` |
+| [results/full-ordinary-r1-baseline.json.gz](results/full-ordinary-r1-baseline.json.gz) | `37429818e9249b3e09ee5e7b12b7b828e8c50cef6e714da7f2cc72a953f57fd7` |
+| [results/full-ordinary-r1-without-sparse.json.gz](results/full-ordinary-r1-without-sparse.json.gz) | `8f75485fa7828eb53bab6c819d0495255d8651b394f85434f85d7c16fdd489d5` |
+| [results/full-ordinary-r2-baseline.json.gz](results/full-ordinary-r2-baseline.json.gz) | `191ba76d1f0764fea302711bbcecec55e157146498595c50be9c71cf3c7b092b` |
+| [results/full-ordinary-r2-without-sparse.json.gz](results/full-ordinary-r2-without-sparse.json.gz) | `0d28d9a7bf168682ff78fffcbbc55e1b02631609ada9dc2a4d4c5532d4352b23` |
