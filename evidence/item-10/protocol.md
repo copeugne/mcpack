@@ -754,3 +754,36 @@ Reproduce the direct inspection with the pinned Temurin `javap -c -p`, using
 as the classpath and the three fully qualified classes above. Verify archive and
 class hashes before relying on offsets; runtime transformation can change bytes.
 No new server run, archive or validator was needed for this source-derived fact.
+
+### Bounded urn diagnostic r1
+
+Before collection, select one ordinary-seed (`42`) fresh `pilot` using the existing
+four 81-chunk selections, 324 selected chunks total. Reuse the fixed centers
+(0,0 for Overworld, Nether and central End; 1536,0 for outer End), radius four
+chunks, and existing generation order. Do not expand the frame for positive
+counts, command-place urns, change tags or tune configuration. This diagnostic
+checks natural callback execution and identity, not density acceptance.
+
+Use the collector implemented in `3a9453f5` and the run's exact source revision,
+recorded by the existing harness. The retained baseline and frozen configuration
+remain unchanged; the harness verifies fresh materialization, pinned Java and
+artifact hashes and retains the agent source/JAR identity. Command:
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name urn-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+Prelaunch storage is 4.8 GiB free; no Java process is running. Reserve 1.5 GiB for
+this bounded diagnostic and sequential archive/download/restore workspace. Prior
+324-chunk diagnostics took approximately 89 seconds and compressed to about
+6 MB; those are cost proxies, not a promised urn trace size. The harness timeout
+is 900 seconds. The full experiment's separate 5 GiB workspace floor is not
+satisfied and full collection is not authorized by this diagnostic.
+
+Acceptance requires all selections, correlated save and clean exit, installed
+hook identities, no unclosed attempts, and positive cave-parent urn writes whose
+saved positions can be corroborated. Retain refused writes, non-cave/null-parent
+contexts, exceptions, halo writes and zero-call outcomes. A missing positive path
+fails that gate without implying zero density. Retain and publish raw observations
+and incoming classes with the existing archive and restore tools even if the
+positive gate fails. Do not start the full sampling frame on this result alone.
