@@ -101,6 +101,10 @@ censoring, partial-cell denominators, clustering and empty rectangles; 41 focuse
 tests passed before the biome addition. Biome exposure now covers all 96
 quart-height bands with 3,969 chunks each; 46 focused tests pass. Next complete nonregistry occurrence coverage and biome attribution,
 then freeze the full sampling design and Sparse Structures control. The pilot does not close Item 10.
+The [placement probe diagnostic](evidence/item-10/placement-probe.md) now passes
+a synthetic preservation test and transforms the exact retained scarecrow class.
+It has not run in Minecraft. Next connect it to the existing lifecycle and
+predeclare a matched fresh-world control before accepting nonregistry counts.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed
