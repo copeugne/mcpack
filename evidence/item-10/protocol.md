@@ -880,3 +880,84 @@ archives; those are cost proxies, not a prediction of bridge output. The existin
 900-second timeout remains. The provisional 5 GiB full-experiment workspace floor
 is not met, so this declaration does not authorize full sampling. No baseline
 configuration, bridge placement rule or Sparse Structures setting is changed.
+
+## YUNG Extras occurrence and writer boundary
+
+Reuse the accepted `yungsextras:feature_entrypoints` contribution in
+[Item 8](../item-8/inventory.json), including its ten canonical families,
+eleven configured feature types, template links and processor bindings. Do not
+reclassify designs or count template variants as families. The existing records
+already distinguish non-null template returns from successful block placement.
+
+The exact archive is `YungsExtras-1.21.1-NeoForge-5.1.1.jar`, SHA-256
+`0cd26474e514f5dc3114aaf5ec7e049bcd285f0c5db191bb45223193f35df70d`.
+All 17 class records from the existing
+[generator identities](../item-8/sources/yungs-extras-generators/identities.json)
+and [desert/helper identities](../item-8/sources/yungs-extras-desert-code/identities.json)
+were byte-verified against that archive before inspecting hook sites with pinned
+`javap -c -p -classpath`. No replacement Item 8 source archive is needed.
+
+Observe all eleven concrete feature entrypoints with configured key, original
+origin and actual template anchor/pivot/rotation. Reuse the existing placement
+callback for configured identity and template observer for write results.
+AbstractNbtFeature has two placeInWorld sites: offset 87 in
+createTemplateFromCenterWithPlacement, and offset 85 in
+createTemplateFromCornerWithPlacement. In both, local 1 is the template resource
+location. Their discarded results occur at 90 and 88, then processor iteration at
+110 and 108 respectively. Retain both template and subsequent processor phases.
+
+There are eleven direct WorldGenLevel.setBlock sites in the three bound processor
+classes, under `com/yungnickyoung/minecraft/yungsextras/world/processor/`:
+
+| Class | Sites | Bytecode offsets |
+| --- | ---: | --- |
+| DesertWellProcessor | 3 | processTemplate: 114, 298; placeSusSand: 9 |
+| INbtFeatureProcessor | 2 | generatePillarDown: 12, 75 |
+| SwampFeatureProcessor | 6 | processTemplate: 54, 121, 222, 285, 440, 561 |
+
+These are call-site counts, not observed writes. Shared interface invocation must
+retain an interface method reference. Existing Item 8 rules govern empty
+processor lists, sand-marker replacement, archaeology loot assignment and swamp
+supports. Block-ID occurrence corroboration does not claim loot-table or block
+entity equality. The actual last successful write determines saved block-ID
+comparison; earlier writes and refusals remain raw evidence. Never truncate a
+support column at the template envelope or infer placement from the helper return.
+
+Extend the existing probe and fixtures, without a new collector framework.
+Acceptance of the extension requires exact retained-class transformation, original
+call/argument/result and exception preservation, configured/template attribution,
+post-template capture and absence of capture outside an active Extras attempt.
+Natural capture and saved-world corroboration remain missing. Predeclare any
+runtime diagnostic and storage reservation before launch; no Extras experiment
+has run for this increment.
+
+## Extras r1 bounded natural diagnostic
+
+Predeclared 2026-09-08 before launch. Use ordinary seed 42 and the existing fixed
+pilot selections: 81 chunks each in Overworld, Nether, central End and outer End
+(center 1536, 0), totaling 324 selected chunks. Use fresh hash-verified frozen
+runtime/configuration materialization, construction heap and the current observer.
+Do not choose coordinates from observed Extras locations or change biome rules.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name extras-pilot-r1 --mode probe --role ordinary --preset pilot
+```
+
+The source identity is the commit containing this predeclaration. This is a
+collector diagnostic, not density sampling. Require completed selections,
+correlated save, clean exit, incoming class identities and no unfinished attempts.
+Positive Extras capture requires actual configured/template identity and complete
+template/processor observations, then saved last-successful block-ID
+corroboration. Preserve earlier writes, refusals, exceptions, zero-write attempts
+and halo positions. A missing positive path remains unmet, not zero density; no
+frame expansion is authorized to hunt for a positive result. Mixed traces must
+pass the existing archive-bound reader before being accepted as capture evidence.
+
+Prelaunch storage is 4.0 GiB free and no Java process is running. Reserve 1.5 GiB
+for this bounded run and sequential archive/download/restore. The most recent
+same-frame bridge diagnostic took 89.441 seconds and archived 5,688,682 bytes;
+these are cost proxies, not guaranteed Extras output. Use the existing 900-second
+harness timeout. Full sampling remains gated on the separate provisional 5 GiB
+workspace floor and complete occurrence coverage. Preserve the raw result and
+stopped world with existing tools even if positive capture fails. No tuning,
+client recording, Item 11 execution or new measurement framework is included.

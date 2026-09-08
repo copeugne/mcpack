@@ -152,7 +152,12 @@ The [urn report](evidence/item-10/urn-pilot-r1/README.md#reviewed-main-delivery)
 records the fixed prerequisite finding, fresh review and verified main delivery.
 Its 161 urn writes are corroborated, but selected-area density remains open.
 
-Current branch: `codex/item10-bridge-coverage`. The
+Current branch: `codex/item10-extras-coverage`. Draft
+[PR34](https://github.com/copeugne/mcpack/pull/34) targets main and awaits PR33
+delivery before review of the Extras-only diff. The final integrated 408-test
+gate passes in 99.62 seconds. PR33 reviews the pushed bridge
+milestone with exception fix `0a4a07c4`; its fresh review request is
+[5581459025](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581459025). The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
 reuses accepted selection/geometry evidence and binds 37 direct processor write
 sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
@@ -163,7 +168,26 @@ bridge/urn tests and the full 380-test Item 7/10 gate pass. The
 [bridge diagnostic](evidence/item-10/bridge-pilot-r1/README.md) completed cleanly
 with all hooks installed but no bridge attempts. Raw download and world restore
 passed. Positive bridge capture remains unmet; do not expand this frame to hunt
-for it. Review this bounded milestone, then address remaining occurrence coverage.
+for it. PR33 finding `3955497336` is fixed in the existing reader. Archive-bound
+validation passes, all six prior reports reproduce unchanged, and 388 tests pass
+on the bridge PR branch. The second completed review found `3955590865`: feature
+state survived a caught exception and disrupted the next placement. The fix now
+records exceptional completion, clears state and preserves the thrown object.
+All 390 bridge-branch tests pass; fresh review is pending. The next
+[Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
+reuses accepted generation records and identifies two template and eleven
+processor write sites. The existing observer now covers them; all 389 Item 7/10
+tests and focused quality checks pass. See the
+[Extras validation](evidence/item-10/placement-probe.md#extras-template-and-processor-preparation).
+The [Extras diagnostic](evidence/item-10/extras-pilot-r1/README.md) completed all
+324 selected chunks with clean save/stop, no Extras attempts and zero unfinished
+attempts. Published raw download, world restore and archive-bound trace checks
+pass; the original 404-test gate passed. Shared exception cleanup is integrated
+and all 22 affected bridge/Extras tests plus quality checks pass. Positive capture
+remains unmet. Complete PR33 review and the Extras delivery gate next; raw
+diagnostic evidence does not need rewriting. Remaining writer coverage includes
+BetterEnd procedural pillars, template postprocessing and End lifecycle paths.
+Reuse the existing Item 8 contributions and source identities.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome
@@ -171,7 +195,7 @@ attribution, exact Sparse Structures control and observer cost/storage checks.
 The [protocol](evidence/item-10/protocol.md) remains DRAFT for the full frame.
 Use accepted Item 8 mechanisms rather than repeating its inventory. Do not expand
 fixed diagnostics to hunt for positive counts. The last prelaunch storage check
-was 4.2 GiB free, below the provisional 5 GiB full-experiment floor.
+was 4.0 GiB free, below the provisional 5 GiB full-experiment floor.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

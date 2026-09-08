@@ -122,7 +122,7 @@ def validate_trace(path: Path) -> dict[str, object]:
     }
 
 
-CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy", "urn", "bridge"]
+CaptureMode = Literal["bop", "monster", "spike", "spiral", "fairy", "urn", "bridge", "extras"]
 URN_TRIES = 9
 URN_SPREAD = (4, 1, 4)
 URN = "net/minecraft/world/level/levelgen/feature/RandomPatchFeature"
@@ -169,6 +169,31 @@ BRIDGE_INSTALLED = {
     },
 }
 
+EXTRAS_ROOT = "com/yungnickyoung/minecraft/yungsextras/world/"
+EXTRAS_INSTALLED = {
+    EXTRAS_ROOT + "feature/AbstractNbtFeature",
+    *{
+        EXTRAS_ROOT + "feature/" + name
+        for name in (
+            "desert/ChillzoneDesertFeature",
+            "desert/DesertGiantTorchFeature",
+            "desert/DesertSmallRuinsFeature",
+            "desert/DesertObeliskFeature",
+            "desert/DesertWellFeature",
+            "swamp/SwampArchFeature",
+            "swamp/SwampChurchFeature",
+            "swamp/SwampCubbyFeature",
+            "swamp/SwampDoubleArchFeature",
+            "swamp/SwampOgreFeature",
+            "swamp/SwampPillarFeature",
+        )
+    },
+    *{
+        EXTRAS_ROOT + "processor/" + name
+        for name in ("DesertWellProcessor", "INbtFeatureProcessor", "SwampFeatureProcessor")
+    },
+}
+
 CAPTURE_CLASSES = {
     "bop": BOP_CLASSES,
     "monster": {MONSTER_BOX},
@@ -177,6 +202,7 @@ CAPTURE_CLASSES = {
     "fairy": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, END_BUILDING},
     "urn": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN},
     "bridge": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN, END_BUILDING},
+    "extras": {MONSTER_BOX, NETHER_SPIKE, SPIRAL, URN},
 }
 DIAGNOSTICS = {
     "bop": "bop-fixture-r1",
@@ -186,6 +212,7 @@ DIAGNOSTICS = {
     "fairy": "fairy-run-r1",
     "urn": "urn-pilot-r1",
     "bridge": "bridge-pilot-r1",
+    "extras": "extras-pilot-r1",
 }
 
 
@@ -194,9 +221,10 @@ def installed_classes(mode: CaptureMode) -> set[str]:
     return (
         BOP_INSTALLED
         | (CAPTURE_CLASSES[mode] - {END_BUILDING, URN})
-        | ({FAIRY} if mode in {"fairy", "urn", "bridge"} else set[str]())
-        | ({PLACED, SIMPLE} if mode in {"urn", "bridge"} else set[str]())
-        | (BRIDGE_INSTALLED if mode == "bridge" else set[str]())
+        | ({FAIRY} if mode in {"fairy", "urn", "bridge", "extras"} else set[str]())
+        | ({PLACED, SIMPLE} if mode in {"urn", "bridge", "extras"} else set[str]())
+        | (BRIDGE_INSTALLED if mode in {"bridge", "extras"} else set[str]())
+        | (EXTRAS_INSTALLED if mode == "extras" else set[str]())
     )
 
 
@@ -417,12 +445,12 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
             if mode != "bop"
             else "BOP requires successful writes on all three provider/flag paths"
         )
-    if mode in {"spiral", "fairy", "urn", "bridge"} and not parts:
+    if mode in {"spiral", "fairy", "urn", "bridge", "extras"} and not parts:
         fail("missing spiral attempts in retained diagnostic")
     return {
         **(
             {"spiral_parts": len(parts), "spiral_source_keys": len(spiral_sources)}
-            if mode in {"spiral", "fairy", "urn", "bridge"}
+            if mode in {"spiral", "fairy", "urn", "bridge", "extras"}
             else {}
         ),
         **(
@@ -432,7 +460,7 @@ def check_feature_rows(  # noqa: C901, PLR0912, PLR0915
                     parent == "supplementaries:cave_urns" for parent in urn_parents.values()
                 ),
             }
-            if mode in {"urn", "bridge"}
+            if mode in {"urn", "bridge", "extras"}
             else {}
         ),
         "successful_write_paths": [
@@ -508,6 +536,7 @@ def validate_feature_trace(raw_root: Path, *, mode: CaptureMode = "bop") -> dict
                 "fairy": "Fairy r1",
                 "urn": "Urn r1",
                 "bridge": "Bridge r1 (zero bridge attempts)",
+                "extras": "Extras r1 (zero Extras and bridge attempts)",
             }[mode]
         )
         + " capture integrity only; not saved-block acceptance",
@@ -525,6 +554,7 @@ if __name__ == "__main__":
         "--fairy-r1",
         "--urn-r1",
         "--bridge-r1",
+        "--extras-r1",
     }:
         print(
             json.dumps(
