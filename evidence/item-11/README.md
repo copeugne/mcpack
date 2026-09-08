@@ -1,10 +1,9 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate REOPENED by PR37 finding 3962853986**.
-The numerical report and complete-matrix claims below describe rejected version 1
-until the corrected version 2 matrix is integrated. Final Codex review and verified
-main delivery are governed by [PR37](https://github.com/copeugne/mcpack/pull/37).
-The [complete generated report](report.md) is the authoritative numerical result.
+Status: **IN PROGRESS; local exit gate PASS under corrected protocol v2**.
+Final Codex review and verified main delivery are governed by
+[PR37](https://github.com/copeugne/mcpack/pull/37).
+The [complete generated report](report.md) is the authoritative version 2 numerical result.
 The [predeclared protocol](protocol.md), `item11-routes-v2`, defines every route,
 capability, radius, window, denominator, failure rule and uncertainty boundary.
 No Item 12 work was performed.
@@ -20,7 +19,7 @@ categories, gaps, censored boundaries, family repetitions and modeled costs.
 
 At primary radius 64 and window 768, the baseline has 8,347 adjacent memberships,
 20 ray-clear memberships and 1,160 covered blocks out of 24,576 sampled blocks.
-Omit-Sparse controls have 8,771, 61 and 2,464 respectively. These are overlapping
+Omit-Sparse controls have 8,771, 67 and 2,800 respectively. These are overlapping
 route memberships, not unique world-location totals or human discoveries.
 Zero projected first-repeat distances can arise from several candidate anchors
 in a route's starting endcap. They are not instantaneous player encounters.
@@ -84,8 +83,8 @@ revision, generalized validator or storage service was introduced.
 
 [All accepted compressed JSON results](results/) are committed, with exact digests
 in the generated report and [original producer outputs](validation/full/).
-They total 19,351,171 bytes. The sixteen accepted invocation times sum to 896.573
-seconds, range 45.509 to 85.163 seconds; see [resource totals](validation/resource-totals.txt).
+They total 19,364,996 bytes. The sixteen accepted invocation times sum to 894.423
+seconds, range 45.060 to 78.617 seconds; see [resource totals](validation/resource-totals-v2.txt).
 Derivation: sum result sizes and each producer log's `real` minutes/seconds over
 the sixteen names in the accepted comparison index. Diagnostics and clean-code
 reproduction cost extra. Timings include normal cache effects and some concurrent
@@ -134,28 +133,30 @@ restore and census commands. Default input locations are
 `evidence/raw/item10/NAME-custody/restored-world/world`, adjacent
 `restored-local/world-backup.json`, and `NAME-analysis/all-strata.json`.
 The analyzer verifies their identities; existing source worlds are never booted.
-The executed representative command was:
+The version 2 representative was biome-diverse r1 without-Sparse. These are the
+executed correction commands (the scratch output paths must be absent):
 
 ```sh
 uv run --no-sync python -m tools.analyze_route_opportunities \
-  --name full-ordinary-r1-baseline \
-  --output evidence/item-11/results/full-ordinary-r1-baseline.json.gz
-```
-
-It was followed by the executed remaining-world loop. Existing output paths are
-refused; point `--output` and timing redirects at absent paths for another run.
-
-```sh
-uv run --no-sync python - <<'PY' > /tmp/mcpack-item11-remaining.txt
+  --name full-biome-diverse-r1-without-sparse \
+  --output evidence/raw/item11/visibility-v2/full-biome-diverse-r1-without-sparse.json.gz
+uv run --no-sync python - <<'PYCODE' > /tmp/item11-v2-remaining.txt
 from tools.analyze_route_opportunities import accepted_inputs
-print('\n'.join(n for n in accepted_inputs() if n != 'full-ordinary-r1-baseline'))
-PY
+print('\n'.join(n for n in sorted(accepted_inputs()) if n != 'full-biome-diverse-r1-without-sparse'))
+PYCODE
 while IFS= read -r name; do
-  { time uv run --no-sync python -m tools.analyze_route_opportunities --name "$name" --output "evidence/item-11/results/$name.json.gz"; } > "evidence/item-11/validation/full/$name.txt" 2>&1 || exit 1
-done < /tmp/mcpack-item11-remaining.txt
+  { time uv run --no-sync python -m tools.analyze_route_opportunities --name "$name" --output "evidence/raw/item11/visibility-v2/$name.json.gz"; } > "evidence/raw/item11/visibility-v2/$name.txt" 2>&1 || exit 1
+  mv "evidence/raw/item11/visibility-v2/$name.json.gz" "evidence/item-11/results/$name.json.gz"
+  mv "evidence/raw/item11/visibility-v2/$name.txt" "evidence/item-11/validation/full/$name.txt"
+done < /tmp/item11-v2-remaining.txt
 ```
 
-A clean tracked export of `ff77c6f6` with a separate `uv sync --locked` environment
+The representative output and timed producer log were promoted to the same
+canonical paths after focused regression and comparison passed. Reproduction
+must use distinct absent output/log paths; the `mv` commands above describe the
+original integration, not permission to replace accepted evidence casually.
+
+The version 1 clean tracked export of `ff77c6f6` with a separate `uv sync --locked` environment
 [reproduced the representative bytes](validation/clean-reproduction.txt) in 52.475
 seconds, SHA-256 `d59cc1ddfe3924ddef69e0efdde2d3477889401d7fd68fa16bcc12e13fd64672`.
 It used the existing independently hash-checked raw restores; this is clean-code
@@ -163,11 +164,17 @@ reproduction, not a fresh-machine or new-download claim. The
 [dependency log](validation/clean-sync.txt) records the exact Python/packages and
 cross-filesystem copy fallback. No operational cache or downloaded binary is committed.
 
-## Local exit gate and delivery
+The corrected clean tracked export of `1609ac96` and its separate locked environment
+[reproduce the v2 representative byte for byte](validation/clean-reproduction-v2.txt)
+in 55.553 seconds, SHA-256 `807a369277b3079559acaaa4f681951b78617af9b838f30797fdddf317039fb0`.
+The [v2 environment log](validation/clean-sync-v2.txt) records dependency installation.
+It uses the same accepted raw restores with independent inventory verification.
+
+## Corrected local exit gate and delivery
 
 | Requirement | Evidence and disposition |
 | --- | --- |
-| Declared routes/endpoints/capabilities | Protocol committed at `7a12cff9`, before extraction; full fixed 64-route matrix. PASS. |
+| Declared routes/endpoints/capabilities | Original protocol committed at `7a12cff9`; corrected selection predeclared in v2 at `1609ac96`; full fixed 64-route matrix. PASS. |
 | Failures and limitations | Every route/mode status, failed station, reachable prefix and rejected processing attempt retained. PASS. |
 | Adjacent locations and geometric visibility | Hash-bound candidate joins, saved geometry and per-station ray outcomes in all sixteen results. PASS. |
 | Required candidate categories | Ten overlapping/exclusive groups retain C/T1/T2/T3/T4, actionable, encounter, village and all-location counts, including zeroes. PASS. |
@@ -176,7 +183,7 @@ cross-filesystem copy fallback. No operational cache or downloaded binary is com
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | [598 tests passed in 181.81 seconds](validation/final-tests.txt); [Ruff](validation/final-ruff.txt), [formatting](validation/final-format.txt) and [BasedPyright](validation/final-types.txt) pass. |
+| Validation | [600 tests passed in 196.80 seconds](validation/final-tests-v2.txt). [Ruff](validation/final-ruff-v2.txt), [formatting](validation/final-format-v2.txt) and [BasedPyright](validation/final-types-v2.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -193,7 +200,7 @@ water corridors and biome-diverse dry-route obstacles. No gameplay observation
 is inferred. The next action is the required PR37 review/fix/merge loop, not Item 12.
 
 
-## PR37 visibility correction in progress
+## PR37 visibility correction
 
 [Finding 3962853986](https://github.com/copeugne/mcpack/pull/37#discussion_r3962853986)
 is valid. The version 1 analyzer filtered the visibility population through
@@ -221,12 +228,24 @@ representative is the actual biome-diverse r1 control counterexample. Its
 transport and top-cell observation. East-north visible membership changes 7 to 8
 and covered blocks 160 to 176; the other primary route counts are unchanged.
 The corrected invocation takes 48.654 seconds and produces 1,877,092 bytes.
-This fits the existing budget before the remaining fifteen analyses proceed.
+This fit the existing budget before the remaining fifteen analyses proceeded.
+All sixteen corrected results are now integrated with their producer identities.
 
 All rejected version 1 results, producer logs, report and protocol remain durably
 preserved at immutable reviewed commit `506bc4fd4d9efd2f216f7b59c47b95b0fa1c38b3`.
 For example, `git show 506bc4fd:evidence/item-11/report.md` retrieves that rejected
 report. Current paths are replaced only by freshly reproduced version 2 derived
 results with their new identities; raw Item 10 worlds/censuses remain unchanged.
-The local exit gate stays open until the full corrected matrix, report, affected
-checks and fresh Codex review pass.
+The corrected matrix, report and final validation pass. The fresh Codex review
+and verified main delivery remain open.
+
+The [complete matrix comparison](validation/visibility-matrix-comparison.txt)
+checks the same sixteen `results/NAME.json.gz` paths against immutable `506bc4fd`:
+`top_cells`, each `routes[route].transport`, and every `summaries[].adjacent` are
+identical after matching radius/window/category keys. The 158 changed summary
+rows have different `geometric_visible` or `covered_blocks` fields across the
+three radii, three windows and ten overlapping categories. This is a direct
+comparison of retained JSON values, not additional world measurement.
+At the primary radius/window, control ray-clear memberships increase 61 to 67
+and covered blocks 2,464 to 2,800; the baseline primary totals are unchanged.
+All source worlds, census inputs, routes and transport observations are unchanged.

@@ -29,38 +29,33 @@ Item 10 and the Items 2 through 10 audit are COMPLETE through reviewed PR35/36.
 The two prior housekeeping commits `1f70f395` and `022990e3` are preserved ancestors
 and included in PR37; they were not PR36-reviewed main delivery.
 
-Item 11 local exit gate: REOPENED by PR37 finding 3962853986. Version 1
-reviewed at `506bc4fd` is rejected for coupling target visibility to anchor
-adjacency. Protocol v2 separates the populations. Eleven route tests pass; the
-actual biome-diverse r1 control correction pilot passes and adds the omitted
-outpost (7 to 8 visible; 160 to 176 covered blocks on east-north). The other
-fifteen corrected derived results and report remain to be integrated. Old v1
-results are preserved in Git at `506bc4fd`; no raw worlds are changed.
+Item 11: local exit gate PASS under corrected protocol v2.
+PR37 finding 3962853986 was valid: version 1 coupled target visibility to anchor
+adjacency. Fix `1609ac96` separates the populations under predeclared protocol v2.
+All sixteen corrected derived results and the report are pushed at `56bf88b5`.
+The rejected v1 results remain in Git at `506bc4fd`. Original worlds are unchanged.
 The [numerical report](evidence/item-11/report.md),
 [protocol](evidence/item-11/protocol.md) and
 [closure/reproduction record](evidence/item-11/README.md) are authoritative.
-All sixteen accepted worlds were read under the corrected POSIX lock boundary.
-They provide 64 fixed Overworld routes and 192 walking/horse/boat model evaluations,
-with candidate/category counts, ray proxies, gaps, repetitions, modeled costs,
-failed routes, censoring and sensitivity. No game-world or configuration changes.
+They cover 64 fixed routes and 192 transport evaluations, retaining failures,
+censoring, categories, gaps, family repetitions and modeled costs. The complete
+comparison confirms unchanged adjacency, transport and saved top-cell observations.
 
-Final applicable tests: 598 passed in 181.81 seconds. Affected Ruff and BasedPyright
-pass. The full report rebuilds byte for byte; a clean tracked export with a separate
-locked Python environment reproduces the representative result exactly. The
-complete generated data is committed separately from the report implementation.
+Eleven focused route tests, affected lint/types/formatting and clean-code v2
+representative reproduction pass. Final applicable validation: 600 tests passed
+in 196.80 seconds. Version 1 logs remain historical. Review-fix integration and
+validation are complete; fresh review and verified main delivery remain.
 
 The initial inventory reader released its POSIX lock by opening/closing the lock
 file during inventory enumeration. The failing competing-process probe, rejected
 results and interrupted expansion remain under `evidence/item-11/`. The narrow
 fix reuses Item 4 `_backup_paths` to exclude the lock before opening. All sixteen
-worlds were reanalyzed under corrected source `ff77c6f6`. No upstream world was
+worlds were reanalyzed under corrected source `ff77c6f6`, before the visibility correction. No upstream world was
 regenerated or repaired. Do not repeat the completed collection for reassurance.
 
-Next action: finish the remaining fifteen version 2 read-only analyses, promote
-source-bound results, rebuild the report and rerun affected checks. Then push
-and request a fresh `@codex review` on PR37. Do not repeat world generation,
-upstream audits or Item 10 processing. Finish the review/fix loop, merge and verify
-main before declaring Item 11 COMPLETE. Do not start Item 12.
+Next action: request a fresh `@codex review` on the pushed final PR37 candidate. Finish the review/fix loop, merge and verify main
+before declaring Item 11 COMPLETE. Do not repeat generation or upstream audits.
+Do not start Item 12.
 
 Human recognition, actual fights, interaction time, enjoyment and human Adventure
 Activity Ratio remain NOT MEASURED. Automated geometry/model results are not human
