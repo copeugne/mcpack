@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `0a1d9f8f6e0df266eb1f9e1080611c648babf2de` after PR22.
+  `a96a2cbad752ca0023058b39c122c66ffa4370ec` after PR24.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -128,7 +128,7 @@ The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
 No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
 
-Continue on `codex/item10-placement-coverage`, created from delivered main.
+Continue on `codex/item10-direct-writes`, created from verified PR24 main.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
@@ -154,9 +154,15 @@ datagen definitions from runtime bootstrap subscribers; the packaged directory
 constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
 Do not alter frozen tags/configs or infer
 zero density. Positive template capture and full collection remain gated.
-The bounded collector/diagnostic milestone passes 296 Item 7/10 tests plus
-changed-file lint, formatting and type checks. Open its PR for review; the
-[placement diagnostic](evidence/item-10/placement-probe.md) records its scope.
+[PR24](https://github.com/copeugne/mcpack/pull/24) merged as
+`a96a2cbad752ca0023058b39c122c66ffa4370ec`, verified in fetched main.
+Its completed Codex review on `d38099feffee9281abc947b3434557943751db5d`
+returned a thumbs-up and no findings. The milestone passes 296 Item 7/10 tests
+and changed-file checks. Item 10 remains IN PROGRESS. The
+[placement diagnostic](evidence/item-10/placement-probe.md) records delivery.
+Next cover anomaly/monolith actual write results using the existing collector;
+their Item 8 helper code discards the underlying write result. Keep BetterEnd's
+runtime tag discrepancy explicit and do not change the frozen baseline.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.
