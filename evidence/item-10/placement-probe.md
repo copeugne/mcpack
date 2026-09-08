@@ -839,3 +839,26 @@ in 16.14 seconds; focused Ruff and basedpyright pass after correcting one long
 parameter-list line. The full Item 7/10 gate passes all 380 tests in 84.73
 seconds. No bridge server experiment or Item 11 workflow ran.
 Predeclare the bounded runtime diagnostic and storage reservation next.
+
+## Extras template and processor preparation
+
+The existing observer now includes the eleven concrete Extras feature classes,
+AbstractNbtFeature's two template paths and the three bound processor classes.
+The [declared boundary](protocol.md#yung-extras-occurrence-and-writer-boundary)
+reuses accepted Item 8 generation rules. Configured identity uses the existing
+PlacedFeature callback. Extras-specific configured/processor events distinguish
+these observations from bridge events; template write capture remains shared.
+No new collector framework or server configuration was introduced.
+
+All 26 focused bridge/urn/Extras cases pass in 25.29 seconds. The retained-class
+check verifies hashes and transforms all fifteen Extras classes, enforcing two
+template and eleven direct processor sites. Eight Extras behavior modes compare
+original and observed complete write arguments, returns and exceptions: normal,
+refused, processor exception, early return, outside processor, outside template,
+isolated loader and configured identity. The fixtures reuse the existing world
+implementation. Three synthetic processor writes exercise sand replacement and
+suspicious-sand flags; they are not evidence of real archaeology or loot behavior.
+Focused Ruff and basedpyright checks pass. Compilation uses pinned Temurin with
+`-Xlint:all -Werror`. Natural positive capture, archive-bound trace processing and
+saved-world corroboration remain incomplete. The full Item 7/10 gate passes
+all 389 tests in 93.37 seconds. No Extras server experiment ran.

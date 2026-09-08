@@ -153,7 +153,7 @@ records the fixed prerequisite finding, fresh review and verified main delivery.
 Its 161 urn writes are corroborated, but selected-area density remains open.
 
 Current branch: `codex/item10-extras-coverage`. PR33 reviews the pushed bridge
-milestone at `abc032fd`; its fresh review request is
+milestone at `abc032fd`; its completed review request is
 [5581156151](https://github.com/copeugne/mcpack/pull/33#issuecomment-5581156151). The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
 reuses accepted selection/geometry evidence and binds 37 direct processor write
@@ -165,11 +165,16 @@ bridge/urn tests and the full 380-test Item 7/10 gate pass. The
 [bridge diagnostic](evidence/item-10/bridge-pilot-r1/README.md) completed cleanly
 with all hooks installed but no bridge attempts. Raw download and world restore
 passed. Positive bridge capture remains unmet; do not expand this frame to hunt
-for it. Inspect the completed review before merging. The next
+for it. PR33 finding `3955497336` requests archive-bound trace validation in the
+existing reader. Address that narrow integrity gap and re-request review before
+merging. The next
 [Extras boundary](evidence/item-10/protocol.md#yung-extras-occurrence-and-writer-boundary)
 reuses accepted generation records and identifies two template and eleven
-processor write sites. Extend the existing observer and fixtures next; no Extras
-runtime experiment has started.
+processor write sites. The existing observer now covers them; all 389 Item 7/10
+tests and focused quality checks pass. See the
+[Extras validation](evidence/item-10/placement-probe.md#extras-template-and-processor-preparation).
+No Extras runtime experiment has started. Fix PR33 on its bridge branch before
+predeclaring the next diagnostic.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome

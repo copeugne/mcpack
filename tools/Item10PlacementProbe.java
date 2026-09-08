@@ -21,6 +21,28 @@ import jdk.internal.org.objectweb.asm.Opcodes;
 
 /** Measurement probe: retain targeted feature and template writes without changing their results. */
 public final class Item10PlacementProbe {
+    private static final String EXTRAS_ROOT = "com/yungnickyoung/minecraft/yungsextras/world/";
+    private static final String EXTRAS_TEMPLATE = EXTRAS_ROOT + "feature/AbstractNbtFeature";
+    private static final java.util.Set<String> EXTRAS_FEATURES = java.util.Set.of(
+        "desert/ChillzoneDesertFeature", "desert/DesertGiantTorchFeature",
+        "desert/DesertSmallRuinsFeature", "desert/DesertObeliskFeature", "desert/DesertWellFeature",
+        "swamp/SwampArchFeature", "swamp/SwampChurchFeature", "swamp/SwampCubbyFeature",
+        "swamp/SwampDoubleArchFeature", "swamp/SwampOgreFeature", "swamp/SwampPillarFeature");
+    private static final Map<String, Integer> EXTRAS_WRITERS = Map.of(
+        "DesertWellProcessor", 3, "INbtFeatureProcessor", 2, "SwampFeatureProcessor", 6);
+    private static boolean extrasFeature(String name) {
+        if (name == null) return false;
+        String normalized = name.replace('.', '/');
+        String prefix = EXTRAS_ROOT + "feature/";
+        return normalized.startsWith(prefix) && EXTRAS_FEATURES.contains(normalized.substring(prefix.length()));
+    }
+    private static boolean extrasProcessor(String name) {
+        String prefix = EXTRAS_ROOT + "processor/";
+        return name != null && name.startsWith(prefix) && EXTRAS_WRITERS.containsKey(name.substring(prefix.length()));
+    }
+    private static boolean yungFeature(String name) {
+        return name != null && (BRIDGE.equals(name.replace('.', '/')) || extrasFeature(name));
+    }
     private static final String BRIDGE = "com/yungnickyoung/minecraft/yungsbridges/world/feature/BridgeFeature";
     private static final String BRIDGE_TEMPLATE = "com/yungnickyoung/minecraft/yungsbridges/world/feature/AbstractTemplateFeature";
     private static final String BRIDGE_PROCESSORS = "com/yungnickyoung/minecraft/yungsbridges/world/processor/";
@@ -159,9 +181,9 @@ public final class Item10PlacementProbe {
         FEATURES.put(thread, feature.getClass().getName());
         emit("{\"kind\":\"feature\",\"attempt\":" + ACTIVE.get(thread)
             + ",\"class\":" + quote(feature.getClass().getName()) + "}");
-        if (BRIDGE.replace('/', '.').equals(feature.getClass().getName())) {
+        if (yungFeature(feature.getClass().getName())) {
             String configured = BRIDGE_CONFIGURED.get();
-            emit("{\"kind\":\"bridge_configured\",\"attempt\":" + ACTIVE.get(thread)
+            emit("{\"kind\":" + quote(extrasFeature(feature.getClass().getName()) ? "extras_configured" : "bridge_configured") + ",\"attempt\":" + ACTIVE.get(thread)
                 + ",\"configured_feature\":" + (configured == null ? "null" : quote(configured)) + "}");
         }
     }
@@ -355,7 +377,7 @@ public final class Item10PlacementProbe {
             emit("{\"kind\":\"urn_parent\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId())
                 + ",\"placed_feature\":" + (parent == null ? "null" : quote(parent)) + "}");
         }
-        boolean bridge = BRIDGE.replace('/', '.').equals(feature.getClass().getName());
+        boolean bridge = yungFeature(feature.getClass().getName());
         String previousBridge = BRIDGE_CONFIGURED.get();
         if (bridge) {
             Object key = registryKey(world, "CONFIGURED_FEATURE", configured);
@@ -444,7 +466,7 @@ public final class Item10PlacementProbe {
 
     public static boolean bridgeTemplate(Object value, Object world, Object pos, Object pivot,
                                         Object settings, Object random, int flags, Object path) throws Throwable {
-        if (!BRIDGE.replace('/', '.').equals(FEATURES.get(Thread.currentThread().threadId()))) {
+        if (!yungFeature(FEATURES.get(Thread.currentThread().threadId()))) {
             try { return (Boolean) templateMethod(value, world).invoke(value, world, pos, pivot, settings, random, flags); }
             catch (InvocationTargetException error) { throw error.getCause(); }
         }
@@ -453,15 +475,16 @@ public final class Item10PlacementProbe {
     }
 
     public static boolean bridgeProcessorWrite(Object world, Object pos, Object state, int flags) throws Throwable {
-        if (BRIDGE.replace('/', '.').equals(FEATURES.get(Thread.currentThread().threadId()))) {
-            emit("{\"kind\":\"bridge_processor\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId()) + "}");
+        if (yungFeature(FEATURES.get(Thread.currentThread().threadId()))) {
+            emit("{\"kind\":" + quote(extrasFeature(FEATURES.get(Thread.currentThread().threadId())) ? "extras_processor" : "bridge_processor") + ",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId()) + "}");
             return write(world, pos, state, flags);
         }
         return untracedWorldWrite(world, pos, state, flags);
     }
 
     private static byte[] instrumentBridge(String target, byte[] original) {
-        boolean templateClass = BRIDGE_TEMPLATE.equals(target);
+        boolean extras = target.startsWith(EXTRAS_ROOT);
+        boolean templateClass = BRIDGE_TEMPLATE.equals(target) || EXTRAS_TEMPLATE.equals(target);
         ClassReader reader = new ClassReader(original);
         boolean interfaceClass = (reader.getAccess() & Opcodes.ACC_INTERFACE) != 0;
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -471,7 +494,7 @@ public final class Item10PlacementProbe {
                                                        String signature, String[] exceptions) {
                 if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
                 MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
-                if (templateClass && !name.equals("createTemplateWithPlacement")) return parent;
+                if (templateClass && !(extras ? name.equals("createTemplateFromCenterWithPlacement") || name.equals("createTemplateFromCornerWithPlacement") : name.equals("createTemplateWithPlacement"))) return parent;
                 return new MethodVisitor(Opcodes.ASM8, parent) {
                     @Override public void visitMethodInsn(int opcode, String owner, String name,
                                                           String desc, boolean isInterface) {
@@ -492,7 +515,9 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        int expected = templateClass ? 1 : BRIDGE_WRITERS.get(target.substring(BRIDGE_PROCESSORS.length()));
+        int expected = templateClass ? (extras ? 2 : 1) : extras
+            ? EXTRAS_WRITERS.get(target.substring((EXTRAS_ROOT + "processor/").length()))
+            : BRIDGE_WRITERS.get(target.substring(BRIDGE_PROCESSORS.length()));
         if (count[0] != expected) throw new IllegalArgumentException("Unexpected bridge writer sites: " + target + " " + count[0]);
         if (templateClass) bridge(writer, "bridgeTemplate", BRIDGE_TEMPLATE_CALL,
             new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD, Opcodes.ALOAD}, Opcodes.IRETURN);
@@ -502,7 +527,7 @@ public final class Item10PlacementProbe {
     }
 
     public static byte[] instrument(String target, byte[] original) {
-        if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target)) return instrumentBridge(target, original);
+        if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target) || EXTRAS_TEMPLATE.equals(target) || extrasProcessor(target)) return instrumentBridge(target, original);
         if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
         if (TARGET.equals(target)) return instrument(original);
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
@@ -511,7 +536,7 @@ public final class Item10PlacementProbe {
         boolean staticGenerator = NETHER_SPIKE.equals(target) || fairy;
         boolean spiral = SPIRAL.equals(target);
         boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
-        boolean bridgeFeature = BRIDGE.equals(target);
+        boolean bridgeFeature = yungFeature(target);
         boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct || bridgeFeature;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
@@ -815,7 +840,7 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                if (!extrasFeature(name) && !EXTRAS_TEMPLATE.equals(name) && !extrasProcessor(name) && !BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
                     && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;
