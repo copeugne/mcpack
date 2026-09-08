@@ -461,3 +461,26 @@ retain the 1 GiB diagnostic custody allowance.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name betterend-fixture-r4 --mode probe --role mountainous --preset pilot --betterend-fixture
 ```
+
+
+## BetterEnd ground diagnostic r5
+
+Predeclared before launch. Fresh `betterend-ground-r5` repeats the r4 fixture,
+including loading, with one observer addition: duplicate and record the actual
+position returned by NBTFeature.getGround at its single call site. The original
+reference remains on the operand stack. No extra world query, predicate call or
+RNG draw is made. Strict transformation requires exactly one matching call.
+This fixes the missing observation that prevents diagnosing r4, whose saved chunk
+retains WORLD_SURFACE but not WORLD_SURFACE_WG. Do not substitute the former for
+the latter. The new ground row is diagnostic evidence, not a location occurrence.
+The existing probe fixtures check its coordinates and attempt linkage in normal,
+isolated-loader and failure modes, and retain vanilla/observed argument equality.
+
+Use the same 324 selected chunks, seed, frozen runtime/configuration, 1 to 4 GiB
+heap, 900-second timeout and 1 GiB custody allowance. Retain rejection if no
+positive template placement occurs. Compare the observed ground with immutable
+saved blocks to narrow the failed predicate, disclosing possible later changes.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name betterend-ground-r5 --mode probe --role mountainous --preset pilot --betterend-fixture
+```

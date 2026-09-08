@@ -159,6 +159,11 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
         writes = [row for row in rows if row["kind"] in {"write", "write_exception"}]
         assert len(writes) == (0 if mode in {"early", "empty", "outside"} else 2)
         assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        ground = [row for row in rows if row["kind"] == "ground"]
+        assert len(ground) == (0 if mode in {"early", "outside"} else 1)
+        if ground:
+            assert ground[0]["position"] == [1, -5, 3]
+            assert ground[0]["attempt"] == 1
         placements = [row for row in rows if row["kind"] == "template_begin"]
         if mode not in {"early", "outside"}:
             assert len(placements) == 1

@@ -127,6 +127,13 @@ public final class Item10PlacementProbe {
             + ",\"class\":" + quote(feature.getClass().getName()) + "}");
     }
 
+    public static void ground(Object pos) throws Throwable {
+        Long attempt = ACTIVE.get(Thread.currentThread().threadId());
+        if (attempt == null) throw new IllegalStateException("Ground outside traced attempt");
+        emit("{\"kind\":\"ground\",\"attempt\":" + attempt
+            + ",\"position\":" + position(pos) + "}");
+    }
+
     public static void selected(Object info, Object template) throws ReflectiveOperationException {
         String path = (String) info.getClass().getField("structurePath").get(info);
         synchronized (TEMPLATE_PATHS) {
@@ -191,7 +198,7 @@ public final class Item10PlacementProbe {
         boolean info = INFO.equals(target);
         if (!feature && !info && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        int[] counts = new int[2];
+        int[] counts = new int[3];
         new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM8, writer) {
             @Override
             public MethodVisitor visitMethod(int access, String name, String descriptor,
@@ -250,6 +257,14 @@ public final class Item10PlacementProbe {
                             }
                         }
                         super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+                        if (END_FEATURE.equals(target) && opcode == Opcodes.INVOKEVIRTUAL
+                            && owner.equals(END_FEATURE) && name.equals("getGround")
+                            && descriptor.equals("(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;")) {
+                            counts[2]++;
+                            super.visitInsn(Opcodes.DUP);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$ground",
+                                "(Ljava/lang/Object;)V", false);
+                        }
                     }
                 };
             }
@@ -257,6 +272,10 @@ public final class Item10PlacementProbe {
         if (counts[0] != 1 || counts[1] != (feature || info ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
+        }
+        if (END_FEATURE.equals(target)) {
+            if (counts[2] != 1) throw new IllegalArgumentException("Unexpected ground hook count");
+            bridge(writer, "ground", "(Ljava/lang/Object;)V", new int[] {Opcodes.ALOAD}, Opcodes.RETURN);
         }
         if (feature) {
             bridge(writer, "beginFeature", "(Ljava/lang/Object;Ljava/lang/Object;)V",
