@@ -154,9 +154,11 @@ and actual write results. Its extended reader and saved-world inspector validate
 all 429 mixed writes, including 161 urn writes at distinct coordinates. The
 summary preserves 87 successful and 987 zero-successful-write patch attempts.
 All 371 Item 7/10 tests pass; the final summary adjustment passes four affected
-checks. PR32 review found one valid missing-archive prerequisite in the new urn
-mutation tests. Add the neighboring tests' skip behavior, validate and re-request
-review before delivery.
+checks. PR32's valid missing-archive prerequisite finding is fixed in `ac70f3d5`.
+All 54 retained-trace tests, Ruff, basedpyright and explicit missing-file skip
+verification pass. The fresh review request is
+[5581030747](https://github.com/copeugne/mcpack/pull/32#issuecomment-5581030747);
+the review is running on that head. Inspect the completed cycle before delivery.
 
 Current branch: `codex/item10-bridge-coverage`. The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
