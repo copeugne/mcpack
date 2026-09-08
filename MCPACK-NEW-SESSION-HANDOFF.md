@@ -162,8 +162,10 @@ and changed-file checks. Item 10 remains IN PROGRESS. The
 [placement diagnostic](evidence/item-10/placement-probe.md) records delivery.
 Anomaly/monolith hooks now preserve actual results at their shared Minecraft
 helper. Synthetic preservation and exact retained-class transformation pass;
-next predeclare a bounded live fixture and verify incoming helper identity,
-actual writes, saved-world corroboration and collector cost. Keep BetterEnd's
+[Live BOP fixture r1](evidence/item-10/bop-fixture-r1/README.md) completes cleanly
+with both commanded placements, 22,769 successful writes and no unfinished
+attempts. Raw/world restores and incoming helper inspection pass. Next validate
+the expanded trace and corroborate saved blocks; do not regenerate for those checks. Keep BetterEnd's
 runtime tag discrepancy explicit and do not change the frozen baseline.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
