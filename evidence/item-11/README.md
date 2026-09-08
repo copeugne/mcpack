@@ -1,9 +1,11 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate PASS**. Final Codex review and verified
+Status: **IN PROGRESS; local exit gate REOPENED by PR37 finding 3962853986**.
+The numerical report and complete-matrix claims below describe rejected version 1
+until the corrected version 2 matrix is integrated. Final Codex review and verified
 main delivery are governed by [PR37](https://github.com/copeugne/mcpack/pull/37).
 The [complete generated report](report.md) is the authoritative numerical result.
-The [predeclared protocol](protocol.md), `item11-routes-v1`, defines every route,
+The [predeclared protocol](protocol.md), `item11-routes-v2`, defines every route,
 capability, radius, window, denominator, failure rule and uncertainty boundary.
 No Item 12 work was performed.
 
@@ -189,3 +191,42 @@ Manual surface inspection checked the generated per-world and per-route tables
 against raw candidate, ray, category and failure records, including the ordinary
 water corridors and biome-diverse dry-route obstacles. No gameplay observation
 is inferred. The next action is the required PR37 review/fix/merge loop, not Item 12.
+
+
+## PR37 visibility correction in progress
+
+[Finding 3962853986](https://github.com/copeugne/mcpack/pull/37#discussion_r3962853986)
+is valid. The version 1 analyzer filtered the visibility population through
+anchor adjacency and projection windows. The retained desert outpost at anchor
+(216,328), target (207.5,112,319.5), has anchor distance 72 but ray-clear distances
+63.5963835449784 and 63.65924913160695 at stations 588 and 596 on biome-diverse r1
+control / east-north. It was omitted at radius 64. Anchors beyond 96 were also
+dropped before their targets could be tested.
+
+The narrow fix uses independent candidate-category populations: anchor geometry
+for adjacency, target/ray eligibility at sampled stations for visibility. It also
+retains eligible targets whose anchors exceed the maximum radius. Routes,
+endpoints, worlds, all radii/windows, target/ray definitions, transport models and
+configuration are unchanged. This repairs the demonstrated omission within the
+existing analyzer and result format. No new evidence class, schema, validator,
+archive revision or scope expansion is needed. Protocol version 2 records the
+corrected selection rule before corrected extraction.
+
+[Three regressions fail before the fix](validation/visibility-regression-before.txt):
+the retained outpost, a target with anchor beyond 96, and visibility inside a
+prefix whose anchor projects beyond its endpoint. All eleven core route tests
+[pass after the fix](validation/visibility-regression-after.txt). The corrected
+representative is the actual biome-diverse r1 control counterexample. Its
+[comparison](validation/visibility-pilot-comparison.txt) preserves every adjacency,
+transport and top-cell observation. East-north visible membership changes 7 to 8
+and covered blocks 160 to 176; the other primary route counts are unchanged.
+The corrected invocation takes 48.654 seconds and produces 1,877,092 bytes.
+This fits the existing budget before the remaining fifteen analyses proceed.
+
+All rejected version 1 results, producer logs, report and protocol remain durably
+preserved at immutable reviewed commit `506bc4fd4d9efd2f216f7b59c47b95b0fa1c38b3`.
+For example, `git show 506bc4fd:evidence/item-11/report.md` retrieves that rejected
+report. Current paths are replaced only by freshly reproduced version 2 derived
+results with their new identities; raw Item 10 worlds/censuses remain unchanged.
+The local exit gate stays open until the full corrected matrix, report, affected
+checks and fresh Codex review pass.

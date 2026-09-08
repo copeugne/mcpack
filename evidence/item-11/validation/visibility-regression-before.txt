@@ -1,0 +1,74 @@
+.......F.FF                                                              [100%]
+=================================== FAILURES ===================================
+___________ test_coverage_deduplicates_locations_and_censors_window ____________
+
+    def test_coverage_deduplicates_locations_and_censors_window() -> None:
+        observation = {
+            "projection": 100,
+            "adjacent_distance": 32,
+            "family_id": "a",
+            "location_id": "a1",
+            "role": "T2",
+            "comparison_groups": [],
+            "rays": [
+                {"distance": 4, "target_distance": 32, "result": "RAY_CLEAR"},
+                {"distance": 12, "target_distance": 32, "result": "RAY_CLEAR"},
+            ],
+        }
+        other = {**observation, "location_id": "a2", "projection": 256}
+        models = {
+            mode: {"reachable_prefix": 9, "cumulative_cost_distance": list(range(769))}
+            for mode in routes.SPEEDS
+        }
+        summaries = routes.summarize_route([observation, other], models)
+        row = next(
+            r for r in summaries if r["radius"] == 32 and r["window"] == 256 and r["category"] == "T2"
+        )
+        assert row["adjacent"]["count"] == 1
+>       assert row["geometric_visible"]["count"] == 2
+E       assert 1 == 2
+
+tests/item11/test_routes.py:124: AssertionError
+___________ test_visibility_target_beyond_anchor_cutoff_is_retained ____________
+
+    def test_visibility_target_beyond_anchor_cutoff_is_retained() -> None:
+        heights = array("h", [0]) * 1024**2
+        row = {
+            "location_id": "fixture",
+            "family_id": "fixture",
+            "role": "T2",
+            "comparison_groups": [],
+            "anchor_x": 10,
+            "anchor_z": 120,
+            "target": [10, 3, 0],
+        }
+        observations = routes.route_observations((0, 0, 1, 0), [row], heights)
+>       assert len(observations) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/item11/test_routes.py:164: AssertionError
+___________ test_retained_outpost_visibility_is_not_anchor_adjacency ___________
+
+    def test_retained_outpost_visibility_is_not_anchor_adjacency() -> None:
+        source = routes.ROOT / "evidence/item-11/results/full-biome-diverse-r1-without-sparse.json.gz"
+        route = json.loads(gzip.decompress(source.read_bytes()))["routes"]["east-north"]
+        identity = "repurposed_structures:outpost_desert@13,20"
+        outpost = next(r for r in route["observations"] if r["location_id"] == identity)
+        assert outpost["adjacent_distance"] == 72
+        assert any(r["result"] == "RAY_CLEAR" and r["target_distance"] < 64 for r in outpost["rays"])
+        summary = next(
+            r
+            for r in routes.summarize_route(route["observations"], route["transport"])
+            if (r["radius"], r["window"], r["category"]) == (64, 768, "all_locations")
+        )
+        assert identity not in {e[2] for e in summary["adjacent"]["events"]}
+>       assert identity in {e[2] for e in summary["geometric_visible"]["events"]}
+E       AssertionError: assert 'repurposed_structures:outpost_desert@13,20' in {'explorify:desert_shrine@-13,14', 'minecraft:ruined_portal_desert@9,15', 'mss:castle_tower@12,15', 'mvs:pink_stall@11,16', 'mvs:small_oak_pond@10,19', 'mvs:windmill@-24,13', ...}
+
+tests/item11/test_routes.py:192: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item11/test_routes.py::test_coverage_deduplicates_locations_and_censors_window
+FAILED tests/item11/test_routes.py::test_visibility_target_beyond_anchor_cutoff_is_retained
+FAILED tests/item11/test_routes.py::test_retained_outpost_visibility_is_not_anchor_adjacency
+3 failed, 8 passed in 0.45s

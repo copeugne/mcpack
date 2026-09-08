@@ -1,6 +1,9 @@
 # Item 11 automated route protocol
 
-Status: PREDECLARED, before route extraction. Identifier: `item11-routes-v1`.
+Status: PREDECLARED before corrected visibility extraction. Identifier: `item11-routes-v2`.
+Revision 2 fixes review finding 3962853986: target eligibility must be independent
+of anchor adjacency. Version 1 remains preserved at reviewed commit `506bc4fd`.
+Routes, seeds, worlds, radii, windows, targets, ray and transport models are unchanged.
 Authority: SPECS.md Item 11 and [the scope amendment](../item-10/methodology-amendment.md).
 This is descriptive automated analysis, not a human study or a tuning experiment.
 
@@ -54,8 +57,13 @@ finite horizontal transect, at most 64 blocks. Preserve the target separately:
 an anchor near the route does not imply the whole structure is near it. Report
 32 and 96 block sensitivity alongside the primary 64. Each location counts once
 per route/window; cross-route duplicates remain possible and are not world totals.
-For windows, require nearest anchor projection in [0,window), except the final
-768 endpoint is included. Preserve route-end censoring.
+For adjacency windows only, require nearest anchor projection in [0,window), except the final
+768 endpoint is included. Preserve route-end censoring. Visibility membership
+instead requires a ray-eligible target at a sampled station within the window,
+independently of anchor distance or anchor projection. Retain targets whose
+anchors are beyond the largest adjacency radius; never prefilter them by anchor.
+The population remains accepted Item 10 census locations. Targets of starts
+outside that census and missing target geometry cannot establish visibility absence.
 
 At each midpoint, test candidate geometric targets within the same radius.
 Eye point is the saved WORLD_SURFACE height plus 2.62 blocks (standing feet one
@@ -135,10 +143,13 @@ Adventure Activity Ratio are **NOT MEASURED**. Do not start Item 12.
 
 ## Small complete increment and resource budget
 
-First complete ordinary repetition 1 baseline end to end: verified inputs, all
+The original representative was ordinary repetition 1 baseline. For the version 2
+correction, first complete biome-diverse repetition 1 without-Sparse (the actual
+review counterexample) end to end: verified inputs, all
 four routes, all modes/windows/radii, raw outputs, summary and focused validation.
 Review its denominators and actual processing/storage cost before expanding to
-all sixteen worlds. Preserve failed processing attempts with diagnostics; fix
+the other fifteen worlds. This repeats derived read-only processing to repair
+the demonstrated omission, not world generation or upstream measurement. Preserve failed processing attempts with diagnostics; fix
 analysis defects without changing raw worlds or adapting the sampling frame.
 
 Measured input availability: all sixteen census hashes pass; 1,784,216,273 bytes,

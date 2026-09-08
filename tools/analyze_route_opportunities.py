@@ -192,8 +192,6 @@ def route_observations(
         projection = min(768, max(0, (row["anchor_x"] - sx) * dx + (row["anchor_z"] - sz) * dz))
         px, pz = point(route, projection)
         lateral = math.hypot(row["anchor_x"] - px, row["anchor_z"] - pz)
-        if lateral > 96:
-            continue
         rays = []
         for distance in range(4, 768, 8):
             x, z = point(route, distance)
@@ -209,9 +207,10 @@ def route_observations(
                         "result": ray(heights, x, z, target),
                     }
                 )
-        observations.append(
-            {**row, "projection": projection, "adjacent_distance": lateral, "rays": rays}
-        )
+        if lateral <= 96 or rays:
+            observations.append(
+                {**row, "projection": projection, "adjacent_distance": lateral, "rays": rays}
+            )
     return observations
 
 
@@ -327,6 +326,10 @@ def summarize_route(
     observations: list[dict[str, Any]], transport: dict[str, Any]
 ) -> list[dict[str, Any]]:
     summaries = []
+    visibility_categories = cast(
+        "dict[str, list[dict[str, Any]]]",
+        category_occurrences(observations, total_name="all_locations"),
+    )
     for radius in RADII:
         for window in WINDOWS:
             adjacent = [
@@ -335,11 +338,15 @@ def summarize_route(
                 if r["adjacent_distance"] <= radius
                 and (r["projection"] < window or r["projection"] == window == 768)
             ]
-            for category, rows in cast(
+            adjacent_categories = cast(
                 "dict[str, list[dict[str, Any]]]",
                 category_occurrences(adjacent, total_name="all_locations"),
-            ).items():
-                events = [(r["projection"], r["family_id"], r["location_id"]) for r in rows]
+            )
+            for category, rows in visibility_categories.items():
+                events = [
+                    (r["projection"], r["family_id"], r["location_id"])
+                    for r in adjacent_categories[category]
+                ]
                 visible = []
                 stations = set()
                 unknown = set()
@@ -455,7 +462,7 @@ def analyze(name: str, raw_root: Path) -> dict[str, Any]:
             }
         verify_world(world, backup["world_files"])
     return {
-        "protocol": "item11-routes-v1",
+        "protocol": "item11-routes-v2",
         "world": name,
         "inputs": {
             "analysis_sha256": hashlib.sha256(read_bound(Path(__file__))).hexdigest(),

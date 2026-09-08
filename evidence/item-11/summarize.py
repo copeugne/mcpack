@@ -67,7 +67,7 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         ):
             raise ValueError("result digest differs from retained producer output")
         result = cast("dict[str, Any]", parse_strict_json(gzip.decompress(raw)))
-        if result["world"] != name or result["protocol"] != "item11-routes-v1":
+        if result["world"] != name or result["protocol"] != "item11-routes-v2":
             raise ValueError("route result world/protocol mismatch")
         if result["inputs"]["census_sha256"] != source["input_sha256"]:
             raise ValueError("route result does not bind the accepted census")

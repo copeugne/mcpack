@@ -1,7 +1,9 @@
 # pyright: standard
 """Focused checks for route geometry, censoring, transport and accepted input custody."""
 
+import gzip
 import hashlib
+import json
 import shutil
 import subprocess
 from array import array
@@ -119,7 +121,7 @@ def test_coverage_deduplicates_locations_and_censors_window() -> None:
         r for r in summaries if r["radius"] == 32 and r["window"] == 256 and r["category"] == "T2"
     )
     assert row["adjacent"]["count"] == 1
-    assert row["geometric_visible"]["count"] == 1
+    assert row["geometric_visible"]["count"] == 2
     assert row["covered_blocks"] == 16
     assert row["denominator_blocks"] == 256
     assert row["modes"]["walking"]["completed_cost"] is None
@@ -145,3 +147,46 @@ sys.exit(0)
             check=False,
         )
         assert result.returncode == 23, "inventory verification released the held world lock"
+
+
+def test_visibility_target_beyond_anchor_cutoff_is_retained() -> None:
+    heights = array("h", [0]) * 1024**2
+    row = {
+        "location_id": "fixture",
+        "family_id": "fixture",
+        "role": "T2",
+        "comparison_groups": [],
+        "anchor_x": 10,
+        "anchor_z": 120,
+        "target": [10, 3, 0],
+    }
+    observations = routes.route_observations((0, 0, 1, 0), [row], heights)
+    assert len(observations) == 1
+    assert observations[0]["adjacent_distance"] == 120
+    models = {
+        mode: {"reachable_prefix": 768, "cumulative_cost_distance": list(range(769))}
+        for mode in routes.SPEEDS
+    }
+    summary = next(
+        r
+        for r in routes.summarize_route(observations, models)
+        if (r["radius"], r["window"], r["category"]) == (32, 256, "T2")
+    )
+    assert summary["adjacent"]["count"] == 0
+    assert summary["geometric_visible"]["count"] == 1
+
+
+def test_retained_outpost_visibility_is_not_anchor_adjacency() -> None:
+    source = routes.ROOT / "evidence/item-11/results/full-biome-diverse-r1-without-sparse.json.gz"
+    route = json.loads(gzip.decompress(source.read_bytes()))["routes"]["east-north"]
+    identity = "repurposed_structures:outpost_desert@13,20"
+    outpost = next(r for r in route["observations"] if r["location_id"] == identity)
+    assert outpost["adjacent_distance"] == 72
+    assert any(r["result"] == "RAY_CLEAR" and r["target_distance"] < 64 for r in outpost["rays"])
+    summary = next(
+        r
+        for r in routes.summarize_route(route["observations"], route["transport"])
+        if (r["radius"], r["window"], r["category"]) == (64, 768, "all_locations")
+    )
+    assert identity not in {e[2] for e in summary["adjacent"]["events"]}
+    assert identity in {e[2] for e in summary["geometric_visible"]["events"]}
