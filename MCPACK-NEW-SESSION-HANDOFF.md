@@ -162,7 +162,8 @@ update the complete synthesis after collection rather than regenerating it per w
 
 User-authorized `item10-retry-policy-v2` keeps sixteen complete cells as the target.
 Biome-diverse r1 baseline passed census in 569.638s, with two retained urn exclusions.
-Next: r1 control, r2 control, r2 baseline, then one fresh ocean-heavy r2 control attempt3.
+Biome-diverse r1 control generation/custody passed; census session 84601 is live.
+Then r2 control, r2 baseline, and one fresh ocean-heavy r2 control attempt3.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
