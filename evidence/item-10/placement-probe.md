@@ -381,3 +381,34 @@ Ten regressions pass, and [the result](scarecrow-probe-r3/trace-validation.json)
 records six attempts and 30 writes, with zero refused writes. Ruff and type checks
 pass for the validator and tests. This validates capture health only; it does not
 reverse the world-equality failure or close the remaining NBT-type review finding.
+
+## PR23 typed-NBT review fix
+
+[Finding 3953767365](https://github.com/copeugne/mcpack/pull/23#discussion_r3953767365)
+is valid. The original JSON normalization conflated NBT scalar widths and array
+representations. The shared parser now has opt-in typed decoding that retains
+every tag ID and list element type, including empty lists. Existing untyped
+consumers keep their output. Generation projections use `typed-nbt-v2`, retain
+compound-key canonicalization and the declared section/entity ordering, and keep
+palette/index order. Missing block-entity fields remain distinct from empty lists.
+
+The original r3 hashes and comparison remain retained as legacy normalized
+results, not typed equality evidence. Read-only reprocessing of both restored
+worlds is running under the corrected encoding. No world was regenerated.
+
+Validation: 771 Item 7/8/10 tests pass, exercising shared-parser consumers. The
+final focused projection suite passes 14 tests, including the separately added
+float/double collision case. Ruff and parser/test type checks pass. The collision
+regressions demonstrate equal untyped values with distinct typed digests for
+integer widths, floating widths, array types and empty-list element types.
+
+```sh
+uv run --no-sync pytest -q tests/item7 tests/item8 tests/item10
+uv run --no-sync pytest -q tests/item10/test_generation_projection.py
+```
+
+For typed reprocessing, use each restored r3 world and the same four declared
+CLI selections, writing new files under `evidence/raw/item10/probe-pair-r3-typed`.
+Require both comparison inputs to declare `generation_encoding=typed-nbt-v2`;
+legacy and typed hash arrays are not comparable. Retain the resulting mismatch
+records separately. This correction does not establish observer-free equivalence.

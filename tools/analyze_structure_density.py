@@ -91,20 +91,37 @@ def occurrence_biomes(record: ChunkRecord, column: dict[int, str]) -> list[dict[
 
 def generation_digest(payload: bytes) -> str:
     """Hash the predeclared generation projection without tick or entity movement state."""
-    root = decode_compound_nbt(payload)
+    root = decode_compound_nbt(payload, preserve_types=True)
+    sections = root["sections"]
     projection = {
-        "sections": sorted(
-            (
-                {key: row[key] for key in ("Y", "block_states", "biomes") if key in row}
-                for row in root["sections"]
+        "sections": {
+            **sections,
+            "value": sorted(
+                (
+                    {
+                        **row,
+                        "value": {
+                            key: row["value"][key]
+                            for key in ("Y", "block_states", "biomes")
+                            if key in row["value"]
+                        },
+                    }
+                    for row in sections["value"]
+                ),
+                key=lambda row: row["value"]["Y"]["value"],
             ),
-            key=lambda row: row["Y"],
-        ),
-        "block_entities": sorted(
-            root.get("block_entities", []), key=lambda row: (row["x"], row["y"], row["z"])
-        ),
+        },
         "structures": root["structures"],
     }
+    if "block_entities" in root:
+        entities = root["block_entities"]
+        projection["block_entities"] = {
+            **entities,
+            "value": sorted(
+                entities["value"],
+                key=lambda row: tuple(row["value"][key]["value"] for key in ("x", "y", "z")),
+            ),
+        }
     encoded = json.dumps(projection, sort_keys=True, separators=(",", ":"), allow_nan=False)
     return hashlib.sha256(encoded.encode()).hexdigest()
 
@@ -376,6 +393,7 @@ def census(  # noqa: C901, PLR0913 - keep optional metrics in the existing singl
         )
         | (
             {
+                "generation_encoding": "typed-nbt-v2",
                 "generation_content": sorted(
                     generation, key=lambda row: (row["chunk_x"], row["chunk_z"])
                 )
