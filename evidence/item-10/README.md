@@ -7,8 +7,10 @@ repetitions and baseline/control arms. Ten worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
-with heap exhaustion; its raw evidence is preserved and collection is paused
-pending assessment. It does not reduce the full-sample requirement. Final combined
+with heap exhaustion and remains preserved. The single predeclared
+[same-identity retry](full-ocean-heavy-r2-without-sparse-attempt2/README.md) passed
+generation and custody; its census is pending. The failure does not reduce the
+full-sample requirement. Final combined
 biome, seed, repetition and spatial synthesis, review, main delivery and the
 Items 2 through 10 consistency audit remain incomplete. No tuning was performed.
 

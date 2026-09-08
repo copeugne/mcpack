@@ -167,9 +167,7 @@ raw failures, sensitivity and complete repetition comparisons.
 
 The first ocean-heavy pair passes complete census and raw custody. Overworld
 T2/T3 counts are baseline 7/2 versus control 19/3; three and one cave-urn
-content failures respectively remain excluded, with no overlap cases. Its
-linked records retain exact hashes, commands, denominators and spatial data.
-Tenth-world acceptance is pushed at `662de80c`.
+content failures respectively remain excluded, with no overlap cases.
 [Ocean-heavy r2 control](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 FAILED with Java heap exhaustion in outer End. Session `62268` is terminal 1;
 Java exited 0 after operator pause, correlated flush and stop, without force-kill.
@@ -177,7 +175,7 @@ Nine selections completed, outer End is incomplete and Nether unattempted.
 The unchanged harness rejects lifecycle completion. Ten worlds remain accepted.
 The failed run's published/downloaded/restored archive preserves 315 raw files,
 two debug reports, emergency commands, sanitized configuration and a 458-file
-partial world. No full census or retry was run. No server is active.
+partial world. No full census was run on the failed world.
 
 The heap-error shutdown correction is pushed at `d5e44617`, with 34 focused
 lifecycle/console/runner tests plus Ruff and type checks. It bounds emergency
@@ -185,11 +183,14 @@ save/stop and never accepts heap-exhausted runs; successful-run identity is unch
 The [post-failure retry amendment](evidence/item-10/protocol.md#bounded-retry-amendment-after-the-retained-resource-failure)
 permits exactly one fresh attempt for this cell, retaining the failed attempt.
 The runner's distinct `--attempt 2`/`-attempt2` naming passes 12 focused tests.
-No retry has run yet. Next launch `full-ocean-heavy-r2-without-sparse-attempt2`
-with the same seed, arm, repetition, heap and observer after pushing this policy.
-A second failure stops collection again; no configuration tuning or deletion.
-Latest free disk is about 22.5 GiB; the retry adds roughly 2 GiB working storage.
-After resolving this failure, finish the planned second ocean-heavy pair and
+Policy and naming are pushed at `ffa51fb9`. The
+[retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
+completed all eleven selections and normal save/stop in 549.011s; session `48448`
+is terminal 0. Preflight, observer and selections match the first control.
+Published/downloaded/restored custody verifies 313 raw and 502 world files.
+Its census is active as session `98243`; poll it and review complete output before
+acceptance. No server is active. The original failure remains retained.
+After census acceptance, finish the planned second ocean-heavy baseline and
 four biome-diverse worlds, combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.
 
