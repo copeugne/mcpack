@@ -636,3 +636,24 @@ Archive SHA-256: 4f17d1a2b9fd6d18ddb7697aa451db7fb154053b8648f79de279ae0d7e68a2f
 Class SHA-256: 3ed69dd1642e62c29d55ffa015e90c885e5d0f217887bdd4565b90b80ffc7e4b.
 Reuse the accepted Item 8 Quark end-generator source evidence for the consumer.
 No experiment, configuration tuning or inventory reclassification occurred.
+
+## Spiral natural pilot r1
+
+Predeclared before launch: fresh spiral-pilot-r1, ordinary seed 42, unchanged
+324-chunk pilot (81 selected chunks in each of four strata), frozen runtime and
+configuration, collector source committed with this declaration. No terrain,
+placement or tuning commands. Preserve all source/part attempts and other
+feature events, including failures and zero writes. Require a complete lifecycle,
+incoming class identities, positive spiral writes and saved-block corroboration
+before positive capture acceptance. A zero-result run is retained as insufficient
+coverage, not a density estimate, and will not trigger seed/area expansion.
+
+Use existing 1 to 4 GiB heap and 900-second lifecycle timeout. The same-sized
+Nether pilot took 88.346 seconds, only a planning proxy. The host has 5.7 GiB
+free; reserve 1 GiB for this bounded pilot and its archive/restore custody. Check
+for running Java before launch. Record actual elapsed time and sizes. Full
+collection remains gated on remaining coverage and measured observer costs.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name spiral-pilot-r1 --mode probe --role ordinary --preset pilot
+```
