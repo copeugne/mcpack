@@ -15,7 +15,7 @@ Villages use the accepted Item 9 `village` comparison group. These definitions
 are potential location roles, not observed fights or meaningful human activity.
 Retain confidence, ambiguity and the scope limitations in every final result.
 
-The Item 5 methodology delta requires review and durable delivery. The spatial
+The Item 5 methodology delta passed clean PR22 review and main delivery. The spatial
 frame below remains a draft, not a frozen full experiment protocol. The fresh
 registry pilot and its diagnostic processing remain reusable evidence. Complete
 nonregistry occurrence coverage, biome attribution and the Sparse Structures

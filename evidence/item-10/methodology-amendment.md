@@ -1,6 +1,6 @@
 # Automated measurement scope amendment
 
-Decision date: 2026-09-08. Status: AUTHORIZED, delivery review pending.
+Decision date: 2026-09-08. Status: AUTHORIZED AND DELIVERED through PR22.
 Contract identifier: `item10-automated-v1`.
 
 The user explicitly directed: "No human phase in either 10 or 11 I see no point
@@ -18,9 +18,12 @@ world measurements. They do not invalidate the recorded runtime measurements or
 change the frozen runtime/configuration identity. Other Item 5 metrics retain
 their existing scope unless separately amended.
 
-The Item 5 methodology coverage gate is reopened narrowly for this contract
-change until the revised definitions and affected downstream assumptions pass
-review and durable delivery. Do not rerun its runtime pilots or Items 7 through
+The narrow Item 5 methodology coverage gate passed review and durable delivery
+through PR22. The [clean review](https://github.com/copeugne/mcpack/pull/22#issuecomment-5577411737)
+accepted head `362a3e703be51f7487354f83149a7e6e3669f201` with no inline or
+review findings and a Codex bot thumbs-up. PR22 merged on 2026-09-08 as
+`0a1d9f8f6e0df266eb1f9e1080611c648babf2de`, verified in fetched `origin/main`.
+Do not rerun its runtime pilots or Items 7 through
 9 merely because their downstream consumer changed. Full Item 10 collection
 still requires a frozen, complete sampling protocol and resolved occurrence
 coverage. The existing pilot remains diagnostic evidence.
