@@ -300,3 +300,26 @@ Stop expansion of the probe and do not launch r4. Reassess the validation claim
 against the already measured stack nondeterminism before selecting further
 experiments. Preserve the failed exact-equality gate and both raw worlds.
 Do not tune C2ME or any frozen baseline configuration to force equality.
+
+## r3 durable custody
+
+The [r3 release](https://github.com/copeugne/mcpack/releases/tag/item-10-probe-pair-2026-09-08-r3)
+retains both raw directories, including eight reader outputs and every mismatch.
+The [498-file manifest](scarecrow-probe-r3/archive-manifest.json) binds custody
+source `1658d44ed3cdb50a1a13e44fda2ea35cb46b6eae`; the fetched tag resolves to
+that exact commit. [Local restore](scarecrow-probe-r3/archive-restore.json),
+[download restore](scarecrow-probe-r3/download-restore.json) and
+[release metadata](scarecrow-probe-r3/release.json) verify durable delivery.
+The downloaded manifest matches byte for byte. Nested restores verified
+[154 probe world files](scarecrow-probe-r3/world-restore.json) and
+[155 control world files](scarecrow-control-r3/world-restore.json). Neither was booted.
+
+```sh
+gh release download item-10-probe-pair-2026-09-08-r3 --repo copeugne/mcpack --dir RESTORE_INPUT
+uv run --no-sync python -m tools.archive_item7_evidence restore --archive RESTORE_INPUT/item10-probe-pair-r3-1658d44e.tar.gz --manifest evidence/item-10/scarecrow-probe-r3/archive-manifest.json --target RESTORED_RAW --receipt RESTORE_RECEIPT.json
+```
+
+Equivalent commands were executed under `evidence/raw/item10/probe-pair-r3-custody`.
+Use each committed world-backup receipt's SHA-256 with the existing world restore
+command for its nested archive. Custody success does not reverse the failed
+equality result or prove probe causality.

@@ -111,7 +111,8 @@ clean exit. Its trace retains six complete attempts and 30 successful block
 writes with no unfinished attempts. The fresh control also completed cleanly
 in 366.501 seconds, with identical preflight and selections. Both content readers completed all 6,852 chunks. The declared equality gate
 failed: central End matches; Overworld 3,969, Nether 960 and outer End 671 chunks
-differ. Both worlds are stopped and backed up. Complete r3 pair custody.
+differ. Both worlds are stopped. The r3 498-file archive and both nested world restores
+passed download verification and are durably published; see the placement diagnostic.
 Accepted Item 7 already documents frozen-stack semantic nondeterminism, so this
 pair cannot establish probe causality. That fact was missed during predeclaration.
 Do not launch r4 or expand the probe; reassess instrument validation using the
