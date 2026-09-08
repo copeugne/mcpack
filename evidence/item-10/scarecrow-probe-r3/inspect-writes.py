@@ -1,26 +1,44 @@
-"""Inspect the retained r3 write coordinates, not a general occurrence validator."""
+"""Inspect retained scarecrow or BOP write coordinates, not general occurrences."""
+# ruff: noqa: INP001
 
 import hashlib
 import json
+import sys
+from collections import Counter
 from pathlib import Path
 
 from tools.manage_item4_environment import _world_backup_lock
-from tools.validate_item10_trace import validate_trace
+from tools.validate_item10_trace import validate_bop_trace, validate_trace
 
 from mcpack_evidence.item7_anvil import decode_region_payloads
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
-world = Path("evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-probe-r3/world")
-trace = Path("evidence/item-10/scarecrow-probe-r3/trace.jsonl")
-validate_trace(trace)
-manifest_path = Path("evidence/raw/item10/scarecrow-probe-r3/world-backup.json")
+bop = sys.argv[1:] == ["--bop-r1"]
+if sys.argv[1:] and not bop:
+    detail = "Only the optional --bop-r1 inspection mode is supported"
+    raise ValueError(detail)
+if bop:
+    raw = Path("evidence/raw/item10/bop-fixture-r1-custody/restored")
+    world = raw.parent / "restored-world/world"
+    trace = raw / "trace.jsonl"
+    validated = validate_bop_trace(raw)
+    manifest_path = raw / "world-backup.json"
+    archive_path = Path("evidence/item-10/bop-fixture-r1/archive-manifest.json")
+    manifest_member = "world-backup.json"
+    dimension = "minecraft:the_end"
+    region_dir = "DIM1/region"
+else:
+    world = Path("evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-probe-r3/world")
+    trace = Path("evidence/item-10/scarecrow-probe-r3/trace.jsonl")
+    validated = validate_trace(trace)
+    manifest_path = Path("evidence/raw/item10/scarecrow-probe-r3/world-backup.json")
+    archive_path = trace.with_name("archive-manifest.json")
+    manifest_member = "scarecrow-probe-r3/world-backup.json"
+    dimension = "minecraft:overworld"
+    region_dir = "region"
 manifest_bytes = manifest_path.read_bytes()
-archive = json.loads(trace.with_name("archive-manifest.json").read_text())
-member = [
-    row
-    for row in archive["files"]
-    if row["relative_path"] == "scarecrow-probe-r3/world-backup.json"
-]
+archive = json.loads(archive_path.read_text())
+member = [row for row in archive["files"] if row["relative_path"] == manifest_member]
 if (
     len(member) != 1
     or len(manifest_bytes) != member[0]["size_bytes"]
@@ -29,7 +47,11 @@ if (
     detail = "World manifest differs from the retained archive"
     raise ValueError(detail)
 world_files = {row["path"]: row["sha256"] for row in json.loads(manifest_bytes)["world_files"]}
-rows = [json.loads(line) for line in trace.read_text().splitlines()]
+trace_bytes = trace.read_bytes()
+if hashlib.sha256(trace_bytes).hexdigest() != validated["sha256"]:
+    detail = "Trace changed after identity validation"
+    raise ValueError(detail)
+rows = [json.loads(line) for line in trace_bytes.splitlines()]
 dimensions = {row["attempt"]: row["dimension"] for row in rows if row["kind"] == "begin"}
 writes = [row for row in rows if row["kind"] == "write"]
 chunks = {(row["position"][0] // 16, row["position"][2] // 16) for row in writes}
@@ -38,7 +60,10 @@ retained = {}
 inputs = []
 with _world_backup_lock(world):
     for x, z in sorted(regions):
-        path = world / "region" / f"r.{x}.{z}.mca"
+        path = world / region_dir / f"r.{x}.{z}.mca"
+        if not path.resolve().is_relative_to(world.resolve()):
+            detail = "Region escapes restored world"
+            raise ValueError(detail)
         relative = path.relative_to(world).as_posix()
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
         if digest != world_files.get(relative):
@@ -50,14 +75,18 @@ with _world_backup_lock(world):
                 detail = "Unexpected external chunk in bounded r3 corroboration"
                 raise ValueError(detail)
             if (record.chunk_x, record.chunk_z) in chunks:
-                retained[record.chunk_x, record.chunk_z] = decode_compound_nbt(payload)
+                chunk = decode_compound_nbt(payload)
+                if (chunk.get("xPos"), chunk.get("zPos")) != (record.chunk_x, record.chunk_z):
+                    detail = "Stored chunk coordinates differ from region slot"
+                    raise ValueError(detail)
+                retained[record.chunk_x, record.chunk_z] = chunk
         if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
             detail = f"Region changed during inspection: {relative}"
             raise ValueError(detail)
     observations = []
     for row in writes:
-        if dimensions[row["attempt"]] != "minecraft:overworld":
-            detail = "This bounded inspection expects only r3 Overworld writes"
+        if dimensions[row["attempt"]] != dimension:
+            detail = "Write dimension differs from selected bounded inspection"
             raise ValueError(detail)
         x, y, z = row["position"]
         chunk = retained[x // 16, z // 16]
@@ -73,24 +102,67 @@ with _world_backup_lock(world):
         observations.append(
             {
                 "attempt": row["attempt"],
+                "returned": row["returned"],
                 "position": row["position"],
                 "recorded_state": row["state"],
                 "saved_state": state,
+                "chunk_status": chunk["Status"],
                 "same_block_id": row["state"].split("}")[0] == "Block{" + state["Name"],
             }
         )
-print(  # noqa: T201
-    json.dumps(
+result = {
+    "scope": "coordinate block-ID corroboration only; not full-state equality or noninterference",
+    "trace_sha256": hashlib.sha256(trace_bytes).hexdigest(),
+    "anvil_inputs": inputs,
+}
+if bop:
+    successful = [row for row in observations if row["returned"]]
+    last = {tuple(row["position"]): row for row in successful}
+    attempt_counts = Counter(row["attempt"] for row in successful)
+    features = {row["attempt"]: row["class"] for row in rows if row["kind"] == "feature"}
+    returns = {row["attempt"]: row["returned"] for row in rows if row["kind"] == "end"}
+    result.update(
         {
-            "scope": "r3 coordinate corroboration only; not probe noninterference",
-            "trace_sha256": hashlib.sha256(trace.read_bytes()).hexdigest(),
-            "anvil_inputs": inputs,
-            "observations": observations,
-        },
-        indent=2,
+            "recorded_writes": len(observations),
+            "successful_writes": len(successful),
+            "refused_writes": len(observations) - len(successful),
+            "unique_successful_coordinates": len(last),
+            "successful_write_chunk_statuses": dict(
+                Counter(row["chunk_status"] for row in successful)
+            ),
+            "repeated_coordinate_writes": len(successful) - len(last),
+            "successful_writes_matching_saved_block_id": sum(
+                row["same_block_id"] for row in successful
+            ),
+            "last_recorded_writes_matching_saved_block_id": sum(
+                row["same_block_id"] for row in last.values()
+            ),
+            "attempts": [
+                {
+                    "attempt": attempt,
+                    "feature": features[attempt],
+                    "returned": returns[attempt],
+                    "successful_writes": attempt_counts[attempt],
+                    "matching_saved_block_id": sum(
+                        row["same_block_id"] for row in successful if row["attempt"] == attempt
+                    ),
+                }
+                for attempt in sorted(dimensions)
+            ],
+            "last_recorded_write_mismatches": [
+                row for row in last.values() if not row["same_block_id"]
+            ],
+        }
     )
-)
+else:
+    result["observations"] = observations
+print(json.dumps(result, indent=2))  # noqa: T201
+if bop and result["last_recorded_write_mismatches"]:
+    detail = "BOP last recorded successful writes disagree with saved block IDs"
+    raise ValueError(detail)
 expected_writes = 30
-if len(observations) != expected_writes or not all(row["same_block_id"] for row in observations):
+if not bop and (
+    len(observations) != expected_writes or not all(row["same_block_id"] for row in observations)
+):
     detail = "Retained r3 corroboration requires all 30 recorded block IDs to match"
     raise ValueError(detail)

@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `0a1d9f8f6e0df266eb1f9e1080611c648babf2de` after PR22.
+  `a96a2cbad752ca0023058b39c122c66ffa4370ec` after PR24.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -76,14 +76,13 @@ restore verification; a restored-world census reproduced byte for byte. No Item 
 or Item 9 audit was repeated.
 
 Before full experiments, freeze sampling, retention and measurement semantics.
-About 15 GiB is now free after authorized cleanup and client setup. The user now requires no human phase in either Item 10 or Item 11. Apply the
+Recheck storage before experiments. Apply the user-authorized automated scope in the
 [authorized amendment](evidence/item-10/methodology-amendment.md); its narrow
 Item 5 methodology gate is complete through reviewed PR22 main delivery.
 The user requested local free-roaming and task servers for later login.
 [Server setup](evidence/item-10/server-setup/README.md) records both separate
 profiles and successful startup, correlated save and clean shutdown checks.
-Both are stopped. Two official-launcher client profiles are installed with 108
-hash-verified JARs each. First Play may download assets; client launch and join
+Both are stopped. Two official-launcher profiles contain 108 hash-verified JARs each. First Play may download assets; client launch and join
 remain unverified. The observed-fight requirement is superseded by provisional encounter-site density. Sparse Structures is present with
 spread factor 2; the historical absent-mod result is superseded context.
 The 40 nonregistry families need occurrence coverage beyond structure starts.
@@ -128,7 +127,11 @@ The placement diagnostic retains validation, raw custody and corrected typed
 comparison evidence. All 64 control registry starts have biome attribution.
 No nonregistry density counts are accepted. Item 10 remains IN PROGRESS.
 
-Continue on `codex/item10-placement-coverage`, created from delivered main.
+Continue the [PR25](https://github.com/copeugne/mcpack/pull/25) review/fix loop on
+`codex/item10-direct-writes`. Its first review found missing BOP failure status,
+fixed in the review correction; source ancestry loss is disproved by Git and PR commit history.
+`codex/item10-quark` preserves pushed `461a4000`, a separately tested Monster Box
+collector extension. Resume it after PR25 delivery, integrating the accepted fixes.
 The next batch extends the existing collector using accepted Item 8 mechanisms;
 BetterEnd template attribution/content-write hooks now pass the focused retained-
 class transformation and preservation fixtures. The placement diagnostic records
@@ -139,12 +142,9 @@ probe retains incoming class bytes. [Identity r2](evidence/item-10/betterend-ide
 completed its small pilot cleanly, retained the incoming patched class and verified
 its raw archive/world restores. Its content hook remains the second direct write,
 after Zeta replacement. The r2 hash differs from r1; r1 bytes remain unavailable.
-[Placement fixture r3](evidence/item-10/betterend-fixture-r3/README.md) stopped
-cleanly but both commands were refused because the target was not loaded. Its
-raw archive and nested world restore are verified. [Fresh r4](evidence/item-10/betterend-fixture-r4/README.md) resolves loading and
-fills the platform, but BetterEnd returns false before invoking a template. Its
-raw and nested restores pass. [Ground diagnostic r5](evidence/item-10/betterend-ground-r5/README.md) observes
-the expected `[8,81,8]` ground and false return.
+[BetterEnd fixture history](evidence/item-10/betterend-ground-r5/README.md)
+preserves the unloaded r3, loaded r4 and confirmed-ground r5 failures and custody.
+Do not repeat them; all returned before template placement.
 [Tag diagnostic r6](evidence/item-10/betterend-tags-r6/README.md) confirms air, but
 both terrain checks report unknown `wover:surfaces/terrain`. This is unavailable
 command lookup, not false membership. Raw/world restores pass. Next inspect
@@ -154,9 +154,21 @@ datagen definitions from runtime bootstrap subscribers; the packaged directory
 constructor uses Minecraft tagsDirPath, so a plural-path mismatch is unproven.
 Do not alter frozen tags/configs or infer
 zero density. Positive template capture and full collection remain gated.
-The bounded collector/diagnostic milestone passes 296 Item 7/10 tests plus
-changed-file lint, formatting and type checks. Open its PR for review; the
-[placement diagnostic](evidence/item-10/placement-probe.md) records its scope.
+[PR24](https://github.com/copeugne/mcpack/pull/24) merged as
+`a96a2cbad752ca0023058b39c122c66ffa4370ec`, verified in fetched main.
+Its completed Codex review on `d38099feffee9281abc947b3434557943751db5d`
+returned a thumbs-up and no findings. The milestone passes 296 Item 7/10 tests
+and changed-file checks. Item 10 remains IN PROGRESS. The
+[placement diagnostic](evidence/item-10/placement-probe.md) records delivery.
+Anomaly/monolith hooks now preserve actual results at their shared Minecraft
+helper. Synthetic preservation and exact retained-class transformation pass;
+[Live BOP fixture r1](evidence/item-10/bop-fixture-r1/README.md) completes cleanly
+with both commanded placements, 22,769 successful writes and no unfinished
+attempts. Raw/world restores, incoming helper inspection and archived trace
+validation pass. All 22,769 saved block IDs match, including 5,673 writes in
+initialize_light neighbors excluded from density denominators. Next resolve remaining
+occurrence coverage and observer cost. Keep BetterEnd's
+runtime tag discrepancy explicit and do not change the frozen baseline.
 The protocol records its counting hazards and the selected finite sampling/control
 design: 4,096 chunks per stratum, two repetitions per arm, 16 fresh worlds. The full
 protocol remains DRAFT until capture coverage and storage validation pass.

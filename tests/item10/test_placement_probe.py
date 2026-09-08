@@ -176,6 +176,8 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
 
     sources = ROOT / "evidence/item-8/sources"
     targets = (
+        ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/AnomalyFeature.class"),
+        ("bop-feature-scope", "biomesoplenty/worldgen/feature/misc/MonolithFeature.class"),
         (
             "betterend-entry-template-consumers",
             "org/betterx/betterend/world/features/NBTFeature.class",
@@ -228,3 +230,67 @@ def test_template_probe_preserves_calls_and_records_only_content(tmp_path: Path)
             timeout=30,
         )
         assert transformed.read_bytes() != payload
+
+
+def test_direct_feature_helper_preserves_writes(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    for feature in ("anomaly", "monolith"):
+        for mode in ("normal", "early", "refused", "exception", "isolated", "outside"):
+            arguments = ["DirectFixture", feature, mode]
+            vanilla = subprocess.run(
+                [*command, *arguments], check=True, capture_output=True, text=True, timeout=30
+            )
+            trace = tmp_path / f"{feature}-{mode}.jsonl"
+            observed = subprocess.run(
+                [*command, f"-javaagent:{agent}={trace}", *arguments],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            assert observed.stdout == vanilla.stdout
+            rows = [
+                cast("dict[str, object]", json.loads(line))
+                for line in trace.read_text().splitlines()
+            ]
+            assert not any(r["kind"] == "installation_failed" for r in rows)
+            assert any(
+                r.get("class") == "net/minecraft/world/level/levelgen/feature/Feature" for r in rows
+            )
+            writes = [r for r in rows if r["kind"] in {"write", "write_exception"}]
+            expected_writes = 4 if feature == "anomaly" and mode != "exception" else 3
+            assert len(writes) == (0 if mode in {"early", "outside"} else expected_writes)
+            assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+            if mode in {"normal", "isolated"}:
+                assert [r["returned"] for r in writes] == (
+                    [True, False, True, True] if feature == "anomaly" else [True, False, True]
+                )
+                assert [r["flags"] for r in writes] == (
+                    [3, 3, 3, 2] if feature == "anomaly" else [3, 3, 3]
+                )
+            if mode == "refused":
+                assert all(r["returned"] is False for r in writes)
+
+    archive = (
+        ROOT
+        / "instances/item10/scarecrow-probe-r3/libraries/net/minecraft/server"
+        / "1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar"
+    )
+    assert hashlib.sha256(archive.read_bytes()).hexdigest() == (
+        "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71"
+    )
+    name = "net/minecraft/world/level/levelgen/feature/Feature"
+    with zipfile.ZipFile(archive) as jar:
+        payload = jar.read(name + ".class")
+    original = tmp_path / "feature-original.class"
+    transformed = tmp_path / "feature-transformed.class"
+    _ = original.write_bytes(payload)
+    _ = subprocess.run(
+        [*command, "TemplateFixture", "transform", name, str(original), str(transformed)],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert transformed.read_bytes() != payload

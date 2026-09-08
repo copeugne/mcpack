@@ -598,3 +598,67 @@ uv run --no-sync basedpyright src/mcpack_evidence/item7_lifecycle.py tests/item1
 
 All 296 tests pass (42.40 seconds); changed Python lint, formatting and type
 checks pass. No Item 11 workflow was implemented, run, repaired or linted.
+
+
+### Reviewed diagnostic delivery
+
+[PR24](https://github.com/copeugne/mcpack/pull/24) merged on 2026-09-08 as
+`a96a2cbad752ca0023058b39c122c66ffa4370ec`. Fetched `origin/main` contains
+that merge and reviewed head `d38099feffee9281abc947b3434557943751db5d`.
+The [clean review](https://github.com/copeugne/mcpack/pull/24#issuecomment-5579244068)
+completed at 04:30:11 UTC, returned a thumbs-up, and introduced no inline,
+review or discussion findings. This delivers the bounded diagnostic only.
+Full Item 10 occurrence coverage, measurement and final acceptance remain open.
+
+
+## Anomaly and monolith direct-write extension
+
+The accepted Item 8 `bop-feature-scope` disassemblies show both providers'
+setBlock helpers calling Feature.setBlock and returning true after that void
+call, regardless of the underlying world's result. The exact Minecraft helper
+calls LevelWriter.setBlock with flags 3 and discards its boolean. Counting the
+outer helper return would therefore misclassify refused writes.
+
+The existing probe now brackets each provider's place method with the existing
+feature/attempt events. It wraps the one direct write in the shared Minecraft
+helper, recording writes only during those two feature classes. Outside that
+scope it invokes the same LevelWriter interface method without a write event.
+The helper's original POP still discards the unchanged boolean. Provider methods,
+random draws, replacement predicates and feature-return behavior remain in place.
+Incoming bytes and installation records use the existing retention path.
+
+The shared helper is touched because both current consumers discard the needed
+result; no second collector or generalized event framework is introduced.
+The new call adds observer overhead even outside target attempts. Measure that
+cost before full sampling, and inspect the actual incoming helper class before
+acceptance. Synthetic preservation does not prove observer-free world equivalence.
+
+The existing probe test command now passes three tests, covering both new
+providers in normal, early-return, all-refused, exceptional, isolated-loader and
+outside-target cases. Original and observed stdout include complete argument
+sequences and match. Exact retained BOP classes and the hash-verified Minecraft
+helper transform successfully. Changed test lint and type checks pass. No live
+run or accepted occurrence count is supplied by this implementation milestone.
+
+
+### Anomaly direct final-write coverage correction
+
+Before live collection, inspection of accepted AnomalyFeature.place found its
+additional direct WorldGenLevel.setBlock call at bytecode offset 938 (flags 2),
+which places the final anomaly blocks outside Feature.setBlock. The initial
+shared-helper extension did not capture it. No live evidence used that version.
+The probe now requires and wraps this one extra call site with its existing
+write bridge. The synthetic anomaly case adds a flags-2 write after its three
+helper writes; normal, refusal and exception comparisons retain the distinction.
+Exact retained-class transformation checks now require this call as well.
+
+
+### BOP positive fixture validation
+
+[BOP fixture r1](bop-fixture-r1/README.md) retains the live capture, incoming
+class identity, raw/world custody, complete trace validation and saved-block
+corroboration. All 22,769 writes match saved block IDs. This includes writes in
+partially generated neighbors, explicitly excluded from full-chunk density
+exposure. The artificial fixture is not a density sample. Both supported BOP
+writers now have positive capture evidence; other mechanism coverage and
+observer cost still gate full sampling.
