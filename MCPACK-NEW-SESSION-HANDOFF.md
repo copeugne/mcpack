@@ -167,7 +167,9 @@ Biome-diverse r1 baseline passed census in 569.638s, with two retained urn exclu
 Biome-diverse r1 control census passed in 597.674s; session 84601 is terminal 0.
 Six urn exclusions and one zero-exposure biome row are retained in its report.
 Biome-diverse r2 control census passed in 510.364s; session 25437 is terminal 0.
-Next: r2 baseline, then one fresh ocean-heavy r2 control attempt3.
+[Biome-diverse r2 baseline](evidence/item-10/full-biome-diverse-r2-baseline/README.md)
+generation/custody passed; census session 40037 is live, source `cdde6f07`.
+After acceptance, run one fresh ocean-heavy r2 control attempt3.
 The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
 The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
 and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
