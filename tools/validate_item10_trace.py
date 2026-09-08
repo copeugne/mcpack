@@ -6,7 +6,10 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from typing import Literal, Never, cast
+from typing import TYPE_CHECKING, Literal, Never, cast
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 from mcpack_evidence.item6_json import parse_strict_json
 
@@ -543,6 +546,192 @@ def validate_feature_trace(raw_root: Path, *, mode: CaptureMode = "bop") -> dict
         "sha256": digests["trace.jsonl"],
         **result,
     }
+
+
+COLLECTION_FIELDS = FIELDS | {
+    "feature_installed": {"kind", "class", "input_class_sha256"},
+    "feature": {"kind", "attempt", "class"},
+    "generator_end": {"kind", "attempt"},
+    "template_begin": {
+        "kind",
+        "attempt",
+        "path",
+        "position",
+        "pivot",
+        "rotation",
+        "mirror",
+        "flags",
+    },
+    "template_end": {"kind", "attempt", "returned"},
+    "flower_end": {"kind", "attempt", "returned"},
+    **{
+        kind: {"kind", "attempt", "exception"}
+        for kind in ("attempt_exception", "template_exception", "flower_exception")
+    },
+    "write_exception": {"kind", "attempt", "position", "exception"},
+    **{
+        kind: {"kind", "attempt", "position"}
+        for kind in ("ground", "part", "pillar_fill", "flower_begin")
+    },
+    "urn_parent": {"kind", "attempt", "placed_feature"},
+    **{
+        kind: {"kind", "attempt", "configured_feature"}
+        for kind in ("bridge_configured", "extras_configured")
+    },
+    **{kind: {"kind", "attempt"} for kind in ("bridge_processor", "extras_processor")},
+    "writer": {"kind", "attempt", "site"},
+    "flower_state": {"kind", "attempt", "state"},
+    "island_context": {"kind", "attempt", "world_class", "worldgen_region"},
+}
+SCARECROW_CLASS = "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature"
+
+
+def _collection_event(row: dict[str, object]) -> str:  # noqa: C901 - explicit wire-field checks
+    """Check the existing collector wire fields without coercing raw values."""
+    kind = row.get("kind")
+    if (
+        not isinstance(kind, str)
+        or kind not in COLLECTION_FIELDS
+        or set(row) != COLLECTION_FIELDS[kind]
+    ):
+        fail("unknown or malformed collection event")
+    for field in ("attempt", "flags", "site", "unfinished_attempts"):
+        if field in row and (
+            type(row[field]) is not int
+            or cast("int", row[field]) < (1 if field in {"attempt", "site"} else 0)
+        ):
+            fail("invalid collection integer: " + field)
+    for field in ("origin", "position", "pivot"):
+        if field in row:
+            value = row[field]
+            if (
+                not isinstance(value, list)
+                or len(cast("list[object]", value)) != COORDINATES
+                or any(type(v) is not int for v in cast("list[object]", value))
+            ):
+                fail("invalid collection coordinates: " + field)
+    for field in ("returned", "installed", "worldgen_region"):
+        if field in row and type(row[field]) is not bool:
+            fail("invalid collection boolean: " + field)
+    for field in (
+        "class",
+        "dimension",
+        "state",
+        "path",
+        "rotation",
+        "mirror",
+        "exception",
+        "world_class",
+        "input_class_sha256",
+    ):
+        if field in row and (not isinstance(row[field], str) or not row[field]):
+            fail("invalid collection text: " + field)
+    for field in ("configured_feature", "placed_feature"):
+        if (
+            field in row
+            and row[field] is not None
+            and (not isinstance(row[field], str) or ":" not in cast("str", row[field]))
+        ):
+            fail("invalid collection registry key")
+    return kind
+
+
+def collection_attempts(  # noqa: C901, PLR0912, PLR0915
+    path: Path, *, trace_sha256: str, class_digests: dict[str, str], dimensions: set[str]
+) -> Iterator[list[dict[str, object]]]:
+    """Stream structurally complete attempts from a hash-bound full collection.
+
+    Callers must supply independently verified archive/class identities and consume
+    the iterator completely before publishing results. This preserves every event
+    in an attempt; provider-specific location acceptance is a separate requirement.
+    Memory retains active attempts only, rather than the complete world trace.
+    """
+    if not class_digests or not dimensions:
+        fail("collection requires class identities and dimension exposure")
+    for value in (trace_sha256, *class_digests.values()):
+        if len(value) != SHA256_HEX_LENGTH or any(c not in "0123456789abcdef" for c in value):
+            fail("invalid declared collection digest")
+    with path.open("rb") as stream:
+        if hashlib.file_digest(stream, "sha256").hexdigest() != trace_sha256:
+            fail("collection trace differs from declared archive identity")
+        _ = stream.seek(0)
+        digest = hashlib.sha256()
+        active: dict[int, list[dict[str, object]]] = {}
+        marks: dict[int, set[str]] = {}
+        nested: dict[int, set[str]] = {}
+        seen: set[int] = set()
+        installed: set[str] = set()
+        shutdown = False
+        for line in stream:
+            digest.update(line)
+            raw = parse_strict_json(line)
+            if not isinstance(raw, dict):
+                fail("collection row is not an object")
+            row = cast("dict[str, object]", raw)
+            kind = _collection_event(row)
+            if shutdown:
+                fail("collection event after shutdown")
+            if kind in {"installed", "feature_installed"}:
+                name = SCARECROW_CLASS if kind == "installed" else cast("str", row["class"])
+                if name in installed or class_digests.get(name) != row["input_class_sha256"]:
+                    fail("unexpected or mismatched collection installation")
+                installed.add(name)
+                continue
+            if kind == "shutdown":
+                if active or row["installed"] is not True or row["unfinished_attempts"] != 0:
+                    fail("unfinished or unhealthy collection shutdown")
+                shutdown = True
+                continue
+            attempt = cast("int", row["attempt"])
+            if kind == "begin":
+                if attempt in seen or row["dimension"] not in dimensions:
+                    fail("duplicate collection attempt or undeclared dimension")
+                seen.add(attempt)
+                active[attempt] = [row]
+                marks[attempt] = set()
+                nested[attempt] = set()
+                continue
+            if attempt not in active:
+                fail("unpaired collection event")
+            if kind in {
+                "feature",
+                "ground",
+                "part",
+                "urn_parent",
+                "bridge_configured",
+                "extras_configured",
+                "island_context",
+                "pillar_fill",
+            }:
+                if kind in marks[attempt]:
+                    fail("duplicate collection attempt metadata")
+                marks[attempt].add(kind)
+            if kind == "feature":
+                name = cast("str", row["class"]).replace(".", "/")
+                source = END_NBT if name == END_BUILDING else PLACED if name == URN else name
+                if source not in installed:
+                    fail("collection feature before verified installation")
+            for phase in ("template", "flower"):
+                if kind == phase + "_begin":
+                    if phase in nested[attempt]:
+                        fail("nested collection delegate")
+                    nested[attempt].add(phase)
+                elif kind in {phase + "_end", phase + "_exception"}:
+                    if phase not in nested[attempt]:
+                        fail("unpaired collection delegate completion")
+                    nested[attempt].remove(phase)
+            active[attempt].append(row)
+            if kind in {"end", "generator_end", "attempt_exception"}:
+                if nested[attempt]:
+                    fail("collection attempt ended inside delegate")
+                if "feature" not in marks[attempt] and SCARECROW_CLASS not in installed:
+                    fail("collection attempt has no installed feature")
+                del marks[attempt], nested[attempt]
+                yield active.pop(attempt)
+        if not shutdown or installed != set(class_digests) or seen != set(range(1, len(seen) + 1)):
+            fail("incomplete collection stream or installations")
+        if digest.hexdigest() != trace_sha256:
+            fail("collection trace changed during processing")
 
 
 if __name__ == "__main__":

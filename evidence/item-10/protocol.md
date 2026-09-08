@@ -1142,3 +1142,25 @@ categories recomputed from the committed pilot occurrence records equal the
 retained `pilot-r1/spatial-census.json` results exactly. No pilot was regenerated.
 This enables the downstream location table; trace-to-location aggregation remains
 incomplete and no new density result is claimed.
+
+### Full collection trace reader
+
+`collection_attempts` in the existing `tools/validate_item10_trace.py` streams
+the collector's full event vocabulary, retaining every event within completed
+attempts instead of loading an entire world's writes at once. It verifies the
+declared trace SHA-256 before reading and again while processing, checks declared
+installation digests and dimensions, rejects malformed fields and duplicate
+metadata, pairs template/flower delegates and requires healthy terminal shutdown.
+Failed attempts and refused writes remain explicit output, not accepted locations.
+
+The caller must supply independently verified archive/class identities and exhaust
+the iterator before publishing any result. This is structural trace validation,
+not family attribution, provider-specific success validation or location counting.
+Those acceptance steps and actual incoming-class file verification remain required
+in the full collection integration. Existing fixed-diagnostic readers are unchanged.
+
+Validation: 88 collection/retained-trace tests pass in 0.37 seconds. Both actual
+Bridge and Extras archived traces retain exactly their accepted attempt/write
+counts through this reader. Mutation tests reject mismatched hashes/installations,
+missing ends/shutdown, duplicate attempts/metadata, malformed values, unpaired
+delegates and undeclared dimensions. Focused Ruff and basedpyright checks pass.

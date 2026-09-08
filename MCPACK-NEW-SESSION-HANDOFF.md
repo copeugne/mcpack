@@ -120,7 +120,10 @@ No arrival/dragon/respawn campaign is required. Full-sample reader integration,
 occurrence aggregation and saved-world corroboration remain.
 Spatial analysis now supports actual traced anchors while preserving all eleven
 retained pilot spatial category results. Its focused spatial/census gate has
-29 passing tests. The full trace reader and location table remain to be integrated.
+29 passing tests. The existing trace tool now streams hash-bound complete attempts
+with full event fields and structural pairing; 88 reader tests pass, including
+the retained Bridge/Extras archives. Provider-specific success, family attribution,
+incoming-class file binding and the location table remain to be integrated.
 Genuine remaining capabilities: complete
 nonregistry family/occurrence identity, coordinate inclusion and biome attribution;
 exact omit-only-Sparse-Structures materialization; full sampling and final analysis.
