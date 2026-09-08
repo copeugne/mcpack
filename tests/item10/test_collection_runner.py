@@ -32,6 +32,7 @@ def test_full_runner_builds_observer_for_both_arms(
     monkeypatch.chdir(tmp_path)
     for name in ("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS"):
         monkeypatch.delenv(name, raising=False)
+
     def validated_java(path: Path) -> tuple[Path, str]:
         del path
         return java, version
@@ -89,6 +90,52 @@ def test_full_runner_builds_observer_for_both_arms(
     probe = cast("dict[str, str]", report["probe"])
     assert probe["jar_sha256"] == sha256_file(output / "probe.jar")
     assert probe["source_sha256"] == sha256_file(root / "tools/Item10PlacementProbe.java")
+
+
+def test_changed_collector_source_is_rejected_before_build_or_launch(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    for name in ("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS"):
+        monkeypatch.delenv(name, raising=False)
+    (tmp_path / "tools").mkdir()
+    _ = (tmp_path / "tools/Item10PlacementProbe.java").write_text("changed source")
+
+    def java(path: Path) -> tuple[Path, str]:
+        del path
+        return tmp_path / "unavailable-java", "test"
+
+    def revision(*args: object, **kwargs: object) -> str:
+        del args, kwargs
+        return "test-revision\n"
+
+    monkeypatch.setattr(runner, "validate_java_runtime", java)
+    monkeypatch.setattr(subprocess, "check_output", revision)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "run_item10_probe",
+            "--name",
+            "full-ordinary-r1-baseline",
+            "--mode",
+            "probe",
+            "--preset",
+            "item10",
+            "--arm",
+            "baseline",
+            "--repetition",
+            "1",
+        ],
+    )
+    with pytest.raises(ValueError, match="source differs from the frozen observer"):
+        runner.main()
+    output = tmp_path / "evidence/raw/item10/full-ordinary-r1-baseline"
+    report = cast("dict[str, object]", json.loads((output / "diagnostic.json").read_text()))
+    assert "source differs from the frozen observer" in str(report["rejection_reason"])
+    assert not (output / "probe.jar").exists()
+    assert not (tmp_path / "instances").exists()
 
 
 @pytest.mark.parametrize(

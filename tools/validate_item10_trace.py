@@ -584,6 +584,83 @@ COLLECTION_FIELDS = FIELDS | {
     "island_context": {"kind", "attempt", "world_class", "worldgen_region"},
 }
 SCARECROW_CLASS = "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature"
+ISLAND_CLASSES = {
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/" + name
+    for name in (
+        "BetterEndGatewayFeature",
+        "BetterEndSpawnPlatformFeature",
+        "BetterEndPodiumFeature",
+        "BetterSpikeFeature",
+    )
+}
+PILLAR_CLASSES = {
+    "org/betterx/betterend/world/features/terrain/" + name
+    for name in ("FallenPillarFeature", "ObsidianPillarBasementFeature")
+}
+FULL_COLLECTION_CLASSES = (
+    installed_classes("extras")
+    | ISLAND_CLASSES
+    | PILLAR_CLASSES
+    | {SCARECROW_CLASS, "org/betterx/bclib/util/BlocksHelper"}
+)
+
+
+def _collection_provider(rows: list[dict[str, object]]) -> None:
+    """Reject cross-provider metadata and wrong method completion semantics."""
+    feature = next((row for row in rows if row["kind"] == "feature"), None)
+    name = SCARECROW_CLASS if feature is None else cast("str", feature["class"]).replace(".", "/")
+    kinds = {cast("str", row["kind"]) for row in rows}
+    owners = {
+        "island_context": ISLAND_CLASSES,
+        "pillar_fill": PILLAR_CLASSES,
+        "ground": {END_NBT, END_BUILDING},
+        "part": {SPIRAL},
+        "urn_parent": {URN},
+        "bridge_configured": {BRIDGE_ROOT + "feature/BridgeFeature"},
+        "bridge_processor": {BRIDGE_ROOT + "feature/BridgeFeature"},
+        "extras_configured": {n for n in EXTRAS_INSTALLED if "/feature/" in n},
+        "extras_processor": {n for n in EXTRAS_INSTALLED if "/feature/" in n},
+        **{
+            kind: {FAIRY}
+            for kind in (
+                "writer",
+                "flower_begin",
+                "flower_end",
+                "flower_exception",
+                "flower_state",
+            )
+        },
+    }
+    for kind in kinds & owners.keys():
+        if name not in owners[kind]:
+            fail("collection provider does not own metadata: " + kind)
+    required = (
+        {"island_context"}
+        if name in ISLAND_CLASSES
+        else {"urn_parent"}
+        if name == URN
+        else {"bridge_configured"}
+        if name == BRIDGE_ROOT + "feature/BridgeFeature"
+        else {"extras_configured"}
+        if name.startswith(EXTRAS_ROOT + "feature/")
+        else set[str]()
+    )
+    if not required <= kinds:
+        fail("collection provider metadata is incomplete")
+    void = name in {MONSTER_BOX, NETHER_SPIKE, SPIRAL, FAIRY} or name.endswith(
+        "/BetterSpikeFeature"
+    )
+    if rows[-1]["kind"] not in {"attempt_exception", "generator_end" if void else "end"}:
+        fail("collection provider completion differs from its method return type")
+    if name == SCARECROW_CLASS and kinds - {
+        "begin",
+        "feature",
+        "write",
+        "write_exception",
+        "end",
+        "attempt_exception",
+    }:
+        fail("collection provider metadata cannot be attributed to Scarecrow")
 
 
 def _collection_event(row: dict[str, object]) -> str:  # noqa: C901 - explicit wire-field checks
@@ -637,7 +714,12 @@ def _collection_event(row: dict[str, object]) -> str:  # noqa: C901 - explicit w
 
 
 def collection_attempts(  # noqa: C901, PLR0912, PLR0915
-    path: Path, *, trace_sha256: str, class_digests: dict[str, str], dimensions: set[str]
+    path: Path,
+    *,
+    trace_sha256: str,
+    class_digests: dict[str, str],
+    dimensions: set[str],
+    require_complete_observer: bool = False,
 ) -> Iterator[list[dict[str, object]]]:
     """Stream structurally complete attempts from a hash-bound full collection.
 
@@ -648,6 +730,8 @@ def collection_attempts(  # noqa: C901, PLR0912, PLR0915
     """
     if not class_digests or not dimensions:
         fail("collection requires class identities and dimension exposure")
+    if require_complete_observer and set(class_digests) != FULL_COLLECTION_CLASSES:
+        fail("collection does not bind the complete declared observer class set")
     for value in (trace_sha256, *class_digests.values()):
         if len(value) != SHA256_HEX_LENGTH or any(c not in "0123456789abcdef" for c in value):
             fail("invalid declared collection digest")
@@ -741,6 +825,7 @@ def collection_attempts(  # noqa: C901, PLR0912, PLR0915
                     fail("collection attempt ended inside delegate")
                 if "feature" not in marks[attempt] and SCARECROW_CLASS not in installed:
                     fail("collection attempt has no installed feature")
+                _collection_provider(active[attempt])
                 del marks[attempt], nested[attempt]
                 yield active.pop(attempt)
         if not shutdown or installed != set(class_digests) or seen != set(range(1, len(seen) + 1)):

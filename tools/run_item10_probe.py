@@ -9,12 +9,15 @@ import re
 import shlex
 import subprocess
 from pathlib import Path
-from typing import Literal, cast
+from typing import Final, Literal, cast
 
 from tools.run_item7_worldgen import execute
 
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
 from mcpack_evidence.item7_selections import ITEM10_SELECTIONS, PILOT_SELECTIONS, RUN_SELECTIONS
+
+COLLECTOR_SOURCE_SHA256: Final = "b07ebcacb9043ee7d1fb187a7d93e5b788d890ccd8edc3decc07060609a74396"
+COLLECTOR_JAR_SHA256: Final = "d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782"
 
 
 def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collection workflow together.
@@ -129,6 +132,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
             classes = output / "classes"
             classes.mkdir()
             source = Path("tools/Item10PlacementProbe.java")
+            if preset == "item10" and sha256_file(source) != COLLECTOR_SOURCE_SHA256:
+                detail = "full collection source differs from the frozen observer"
+                raise ValueError(detail)  # noqa: TRY301 - retain the rejected build in the report.
             manifest = output / "probe.mf"
             _ = manifest.write_text(
                 "Manifest-Version: 1.0\nPremain-Class: Item10PlacementProbe\n\n"
@@ -185,6 +191,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - keep the bounded collectio
                 "manifest_sha256": sha256_file(manifest),
                 "jar_sha256": sha256_file(agent),
             }
+            if preset == "item10" and sha256_file(agent) != COLLECTOR_JAR_SHA256:
+                detail = "full collection JAR differs from the frozen observer"
+                raise ValueError(detail)  # noqa: TRY301 - retain the rejected build in the report.
         report["java_tool_options"] = options
         request = WorldgenRequest(
             pristine=Path("instances/pristine-baseline-v0"),

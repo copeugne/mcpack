@@ -11,7 +11,11 @@ from tools.analyze_structure_density import (
     nonregistry_location_groups,
     nonregistry_membership,
 )
-from tools.validate_item10_trace import SCARECROW_CLASS, collection_attempts
+from tools.validate_item10_trace import (
+    FULL_COLLECTION_CLASSES,
+    SCARECROW_CLASS,
+    collection_attempts,
+)
 
 FEATURE = "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature"
 CLASS_BYTES = {SCARECROW_CLASS: b"scarecrow fixture", FEATURE: b"gateway fixture"}
@@ -60,6 +64,7 @@ def consume(
     *,
     wrong_hash: bool = False,
     class_defect: str | None = None,
+    require_complete_observer: bool = False,
 ) -> list[list[dict[str, object]]]:
     path = tmp_path / "trace.jsonl"
     payload = "".join(json.dumps(row) + "\n" for row in rows).encode()
@@ -84,6 +89,7 @@ def consume(
             trace_sha256="0" * 64 if wrong_hash else hashlib.sha256(payload).hexdigest(),
             class_digests=DIGESTS,
             dimensions={"minecraft:the_end"},
+            require_complete_observer=require_complete_observer,
         )
     )
 
@@ -91,6 +97,25 @@ def consume(
 def test_complete_attempt_preserves_refusals_and_all_metadata(tmp_path: Path) -> None:
     rows = events()
     assert consume(tmp_path, rows) == [rows[2:-1]]
+
+
+def test_partial_observer_cannot_be_promoted_to_full_collection(tmp_path: Path) -> None:
+    assert len(FULL_COLLECTION_CLASSES) == 50
+    with pytest.raises(ValueError, match="complete declared observer class set"):
+        _ = consume(tmp_path, events(), require_complete_observer=True)
+
+
+@pytest.mark.parametrize("defect", ["missing_feature", "wrong_provider", "wrong_end"])
+def test_provider_metadata_cannot_be_reassigned_or_dropped(tmp_path: Path, defect: str) -> None:
+    rows = events()
+    if defect == "missing_feature":
+        del rows[3]
+    elif defect == "wrong_provider":
+        rows[3]["class"] = SCARECROW_CLASS
+    else:
+        rows[8] = {"kind": "generator_end", "attempt": 1}
+    with pytest.raises(ValueError, match="collection provider"):
+        _ = consume(tmp_path, rows)
 
 
 @pytest.mark.parametrize("defect", ["missing", "changed", "linked"])

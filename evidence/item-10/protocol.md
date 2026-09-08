@@ -1,6 +1,6 @@
 # Item 10 sampling protocol
 
-Status: DRAFT AUTOMATED PROTOCOL. The user-authorized
+Status: FROZEN FOR FIRST FULL RUN, `item10-full-v1` (2026-09-08). The user-authorized
 [scope amendment](methodology-amendment.md), `item10-automated-v1`, removes human
 sessions and recording from both Items 10 and 11. The former combat collection
 contract and blind-operator requirement are superseded for these items. No
@@ -10,9 +10,12 @@ human workload is scheduled or deferred as a completion condition.
 
 The [exit-gate reassessment](README.md#exit-gate-reassessment-2026-09-08)
 supersedes prospective per-generator positive-pilot prerequisites. Historical
-pilot outcomes remain unchanged. Pause new experiments and PR creation; finish
-existing review obligations, resolve storage and consolidate the remaining
-measurement/report into one delivery PR. Complete observation and correct
+pilot outcomes remain unchanged. The reassessment, storage cleanup and existing
+review obligations are complete. The applicable Item 7/10 gate passed all 535
+tests in 152.60 seconds with `uv run --no-sync pytest -q tests/item7 tests/item10`.
+Proceed with the first complete ordinary-seed baseline world, then verify actual
+observer coverage, saved-world acceptance and resource costs before the remaining
+15 worlds. Consolidate measurement/report into one delivery PR. Complete observation and correct
 occurrence processing remain mandatory. Do not hunt for natural positive examples
 or reinterpret a missing/broken observation mechanism as zero.
 
@@ -26,10 +29,10 @@ are potential location roles, not observed fights or meaningful human activity.
 Retain confidence, ambiguity and the scope limitations in every final result.
 
 The Item 5 methodology delta passed clean PR22 review and main delivery. The spatial
-frame below remains a draft, not a frozen full experiment protocol. The fresh
+frame below is frozen for full collection. The fresh
 registry pilot and its diagnostic processing remain reusable evidence. Complete
 nonregistry occurrence coverage, biome attribution and the Sparse Structures
-control design before full collection. Do not implement Item 11 workflows until
+control must pass their implemented runtime/analysis gates for each world. Do not implement Item 11 workflows until
 Item 10 delivery and the cross-item audit pass.
 
 ## Fixed spatial frame
@@ -83,7 +86,7 @@ then control for repetition 1, control then baseline for repetition 2. Use the
 same dimension order in every world, sorted by resource location, central End
 before outer End. Keep both raw repetitions, even when their counts disagree.
 
-### Full runner invocation (not yet authorized for collection)
+### Full runner invocation
 
 The existing runner accepts one full world at a time:
 
@@ -93,8 +96,8 @@ uv run --no-sync python -m tools.run_item10_probe \
   --role ordinary --arm baseline --repetition 1
 ```
 
-This is the first planned invocation, not an instruction to bypass the current
-collection pause or observer gate. Use `without-sparse` for the matched control.
+This is the first planned invocation. Its completed observation, saved-world,
+custody and cost checks gate subsequent worlds. Use `without-sparse` for the matched control.
 The runner requires the name `full-ROLE-rREPETITION-ARM`, explicit arm/repetition,
 and probe mode for both arms. Its older `--mode control` disables the observer
 and is rejected for full sampling. Placement fixtures are also rejected. Repeat
@@ -127,10 +130,51 @@ estimation; expanding until rare categories reach a target would change the
 estimand and is not authorized by this protocol.
 
 The spatial and repetition design is selected before collection. The full
-protocol remains DRAFT until complete occurrence coverage, the exact collector
-and control identities, and measured collector storage costs pass their gates.
+protocol pins collector and control identities before launch. Complete runtime
+occurrence coverage and measured storage costs are acceptance gates on the first
+full world, not prerequisites requiring another small pilot. Failures remain
+retained failures; changing this frozen protocol requires an explicit revision.
 
 ## Occurrences and denominators
+
+### Frozen observer and full-trace gate
+
+The full runner pins `tools/Item10PlacementProbe.java` to SHA-256
+`b07ebcacb9043ee7d1fb187a7d93e5b788d890ccd8edc3decc07060609a74396`
+and its compiled JAR to
+`d2051d5d5eb38aeda3dfc5c1d61d11ebf2e18a1fb3222ac46c12863556c5a782`.
+Two independent pinned-JDK builds in the baseline/control runner tests produced
+that same JAR hash. Reproduce with `uv run --no-sync pytest -q
+tests/item10/test_collection_runner.py`; the existing runner contains the exact
+compiler, manifest and deterministic JAR timestamp commands. Both hashes are
+checked before a full server launch. Failed builds retain their rejection report.
+These pins establish collector identity, not empirical placement counts.
+
+Full analyses must pass `--require-complete-observer` to the existing census CLI.
+The corresponding `collection_attempts(require_complete_observer=True)` gate
+requires exactly the 50 targeted incoming classes, their archived bytes and
+matching installation events, complete attempt pairing and healthy shutdown.
+`FULL_COLLECTION_CLASSES` in `tools/validate_item10_trace.py` reuses the existing
+Extras-era class inventory and adds Scarecrow, four End island classes, two
+procedural pillar classes and BCLib's `BlocksHelper`. This matches the pinned
+collector's `premain` transformation predicate. Incoming hashes remain recorded
+per actual runtime transformation; packaged bytes are not substituted for
+loader-transformed input. Missing installations reject complete coverage, even
+when the remaining trace is structurally valid. No positive placement is required
+for each class or family, and no failed hook is interpreted as zero density.
+
+Provider metadata is also checked before an attempt reaches location processing.
+Island context, urn parents and YUNG configured-feature markers must be present
+for their respective providers; provider-specific metadata cannot move between
+families, and boolean versus void completion must match the instrumented method.
+The regression reproduced three prior false acceptances: removing a gateway's
+feature marker, relabeling it Scarecrow, or replacing its boolean completion with
+a void completion. All are now rejected. Retained diagnostic raw traces remain
+unchanged and usable without claiming the complete 50-class observer.
+The focused check is `uv run --no-sync pytest -q
+tests/item10/test_collection_trace.py tests/item10/test_saved_content.py
+tests/item10/test_density_census.py` (45 passed). Full-frame saved-content and
+denominator acceptance, uncertainty and durable custody still apply separately.
 
 Decode every selected Anvil slot with the existing Item 7 decoder after correlated
 save-flush and clean exit. Require stored coordinates equal slot coordinates and
@@ -383,20 +427,24 @@ collection. This resolves the control contrast, not the remaining sampling gate.
 
 The r3 uninstrumented mountainous diagnostic supplies a measured planning proxy:
 366.501 seconds for 6,852 selected chunks and 137,748,133 retained world bytes,
-including halo and lifecycle data. Linear scaling gives about 10.71 generation
-hours and 13.50 GiB of uncompressed world data across both arms and repetitions,
-before archives, derived output and restore workspace. Each 45,056-chunk world
-has a proxy of 40.17 minutes and 0.844 GiB. This single mixed-stratum run does
+including halo and lifecycle data. Linear scaling to 743,600 requested generation
+chunks gives about 11.05 generation hours and 13.92 GiB of uncompressed world data
+across both arms and repetitions, before archives, derived output and restore
+workspace. Each 46,475-requested-chunk world has a proxy of 41.43 minutes and
+0.870 GiB. The 720,896-chunk census and 16-world design are unchanged; these
+updated proxies include the explicit generation edge. This single mixed-stratum run does
 not predict custom dimensions or the farther outer End reliably. Offline
 processing, collector overhead, installation and archiving are additional.
 These are automated machine-time estimates, not a player workload.
 
-About 8.8 GiB was available at this planning checkpoint. Process one world at a
+Direct `df -B1 .` on 2026-09-08 reports 48,890,408,960 bytes available after the
+authorized cleanup. The user's roughly 30 GiB working budget is retained.
+Process one world at a
 time, using the existing clean-save/archive/publish/download/restore path. Keep
 at least 5 GiB available before starting a world as a provisional workspace floor.
-This allows three world copies at 0.844 GiB and four archive copies at about
-0.54 GiB using the measured r3 control compression ratio, totaling about 4.7 GiB
-before collector output. Verify this against actual collector and first-world
+The earlier floor allowed three world copies and four archive copies using the
+r3 control compression ratio. It is provisional and excludes the full observer's
+unmeasured output. Verify this against actual collector and first-world
 storage before scaling.
 The floor is not a disk quota or a guarantee based on the proxy. Archive without
 `session.lock` and retain immutable raw custody and committed evidence references.
@@ -405,7 +453,7 @@ within explicit authorization. Never remove operational player worlds, prior
 backups or protected artifacts to satisfy this budget. A failed resource gate
 stops collection before another world; it does not reduce the declared sample.
 
-Complete the ordinary pilot through deterministic analysis and retained evidence
+Complete the first full ordinary baseline world through deterministic analysis and retained evidence
 before scaling across seeds and dimensions. Then integrate all final results,
 uncertainty and failure dispositions into the Item 10 report. The final gate
 still requires full automated occurrence coverage, Sparse Structures attribution, clean Codex PR

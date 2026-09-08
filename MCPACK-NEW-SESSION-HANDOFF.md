@@ -45,7 +45,7 @@ Items 2 through 10 cross-item audit pass.
 
 ## User-directed reassessment and current gate
 
-Pause new experiments and new PR creation. Follow the
+The user-directed experiment pause covered the reassessment. Follow the
 [exit-gate reassessment](evidence/item-10/README.md#exit-gate-reassessment-2026-09-08).
 Natural positive capture for every generator is not an Item 10 requirement.
 Preserve failed/unmet pilots without making them prerequisites for more tiny
@@ -55,20 +55,20 @@ required comparisons, raw custody, uncertainty and final review remain mandatory
 Finish existing review obligations, then consolidate the remaining implementation,
 full measurement, report and audit into one delivery PR with coherent commits.
 Prioritize completed exit requirements over new tools or per-generator milestones.
-The [protocol](evidence/item-10/protocol.md) remains DRAFT for full sampling.
-Its proposed 720,896 selected chunks, four seeds, eleven strata, two repetitions
+The [protocol](evidence/item-10/protocol.md) is now frozen as `item10-full-v1`
+for the first full ordinary baseline run. Its 720,896 selected chunks, four seeds, eleven strata, two repetitions
 and two arms are method choices, not specification-mandated sample sizes. The
 user confirmed retaining the original 16-world plan and roughly 30 GiB storage
 budget. No full-frame run has started; do not reduce to eight worlds.
 
-Storage capacity is now available: direct `df -B1` reports 49,406,545,920 bytes
-(about 46 GiB) free after authorized library deduplication and uv cache cleanup.
+Storage capacity is now available: direct `df -B1` reports 48,890,408,960 bytes
+(about 45.5 GiB) free after authorized library deduplication and uv cache cleanup.
 The side task reports `uv cache clean` exited 0, removing 38 GiB of disposable
 cache while preserving installed environments and project artifacts. Dependency
 operations may resume. The original 16-world plan and roughly 30 GiB working
 budget are retained by explicit user decision. See the
 [cleanup outcome](evidence/item-10/server-setup/README.md#additional-duplicate-cleanup).
-The existing proxy estimates 10.71 generation hours and 13.50 GiB of original
+The edge-adjusted proxy estimates 11.05 generation hours and 13.92 GiB of original
 worlds. Confirm actual collector costs on the first complete ordinary-seed run
 before continuing the full protocol. Sampling and observer readiness still gate
 collection; available space alone does not authorize bypassing them.
@@ -127,12 +127,17 @@ End lifecycle accessors remain separate; no arrival/dragon campaign is required.
 Fairy cleanup uses raw site 1, not bytecode offset 193; observed flower states do
 not establish complete ring visibility. Do not require new positive tiny pilots.
 
-Remaining before full collection: finish the exact complete observer identity
-and provider-event coverage gate, resolve any demonstrated reader defect, and
-freeze the collector identity and run the final applicable checks. The existing
+The observer source/JAR are now pinned in the full runner. Full census analysis
+must use `--require-complete-observer` to require all 50 declared incoming classes
+and matching installations. The provider reader now rejects the reproduced
+missing/misattributed gateway metadata and incorrect completion events; retained
+traces are unchanged. See protocol for hashes, derivation and focused checks.
+The full applicable gate passed 535 Item 7/10 tests in 152.60 seconds. The existing
 runner now accepts full sampling with explicit arm/repetition and rejects its
 older uninstrumented control mode. Commands and operational timeout are in the
-protocol; collection remains paused pending observer readiness.
+protocol. Next: run the first full ordinary baseline, verify all 50 actual
+installations and selected saved chunks, preserve/restore raw custody, and
+measure storage/runtime before proceeding to the other 15 worlds.
 The shared harness now accepts the eleven fixed Item 10 generation selections.
 Chunky's odd-width square requests 65 by 65 chunks; the fixed 64 by 64 census
 excludes the positive edge. See protocol for the pinned bytecode derivation and

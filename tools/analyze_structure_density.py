@@ -820,6 +820,7 @@ def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidenc
     *,
     census_inputs: list[dict[str, str]],
     include_biomes: bool = False,
+    require_complete_observer: bool = False,
 ) -> dict[str, object]:
     """Connect retained capture, attribution, grouping and saved observations."""
     archive_bytes = archive_manifest.read_bytes()
@@ -862,6 +863,7 @@ def nonregistry_analysis(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one evidenc
             trace,
             trace_sha256=members["trace.jsonl"]["sha256"],
             class_digests=classes,
+            require_complete_observer=require_complete_observer,
             dimensions={
                 "minecraft:overworld",
                 "minecraft:the_nether",
@@ -1209,11 +1211,18 @@ def main() -> None:
     parser.add_argument("--generation", action="store_true", help="hash declared generated content")
     parser.add_argument("--trace-root", type=Path, help="retained raw capture directory")
     parser.add_argument("--trace-manifest", type=Path, help="committed raw archive manifest")
+    parser.add_argument(
+        "--require-complete-observer",
+        action="store_true",
+        help="require all declared collector target classes for full sampling",
+    )
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
     if bool(args.trace_root) != bool(args.trace_manifest):
         parser.error("trace-root and trace-manifest must be supplied together")
+    if args.require_complete_observer and not args.trace_root:
+        parser.error("complete observer validation requires trace-root and trace-manifest")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
     with _world_backup_lock(args.world):
         result = census(
@@ -1233,6 +1242,7 @@ def main() -> None:
             {args.dimension: (args.dimension, tuple(args.bounds))},
             census_inputs=result["anvil_inputs"],
             include_biomes=args.biomes,
+            require_complete_observer=args.require_complete_observer,
         )
     if args.classify or args.spatial:
         result["classification"] = classify_census(result)

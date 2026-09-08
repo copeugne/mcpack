@@ -161,13 +161,23 @@ invent a positive example, extrapolate from static density or erase uncertainty.
 | Sparse Structures contribution | Packaged placement rules explain a mechanism but are not the matched observed distribution. | Materialize the exact omit-only-Sparse-Structures control and retain matched repetitions without claiming observer-free causal certainty. |
 | Storage, final report and delivery | Current capacity cannot hold full collection. No complete result or cross-item audit exists. | Resolve storage, retain and restore raw evidence, write the complete report, finish the existing PR33/34 obligations, then use one remaining delivery PR with coherent intermediate commits and the required audit. |
 
-The proposed 4,096 chunks per stratum, two repetitions and 16 total worlds are
-sampling-design choices, not numbers mandated by SPECS. They remain the current
-draft design; this reassessment does not silently reduce the measurement scope.
+The 4,096 chunks per stratum, two repetitions and 16 total worlds are
+sampling-design choices, not numbers mandated by SPECS. They are retained in
+the frozen `item10-full-v1` protocol; this reassessment does not reduce the measurement scope.
 No additional tiny per-generator pilots, new evidence framework or tooling-only
 PR is authorized by this reassessment. Synthetic preservation checks and immutable
 source inspection address collector correctness; the full declared sample supplies
 the missing measurement. Existing diagnostics and their limitations remain intact.
+
+The implementation portion of the table above is now integrated: the existing
+collector covers the remaining writers, the reader joins actual locations and
+saved biomes, and the runner materializes the exact Sparse Structures control.
+The [frozen observer gate](protocol.md#frozen-observer-and-full-trace-gate) pins
+source/JAR identity and requires all 50 incoming classes for full analysis.
+All 535 Item 7/10 tests passed in 152.60 seconds. Storage and prior reviews are
+resolved. The next missing evidence is the first full ordinary baseline world,
+including actual installed hooks, saved-chunk coverage, custody and measured
+resource use. These runtime acceptance results cannot be inferred from tests.
 
 ### Storage decision before collection
 
@@ -225,8 +235,9 @@ scope does not require observed combat or human sessions in Items 10 or 11.
 
 Use the [protocol resource estimate](protocol.md#runtime-and-storage-estimate)
 as the current planning authority: 720,896 selected chunks across 16 worlds,
-about 10.71 automated generation hours and 13.50 GiB cumulative uncompressed
-world data, using the measured r3 proxy. Sequential custody has a provisional
+about 11.05 automated generation hours and 13.92 GiB cumulative uncompressed
+world data, using the measured r3 proxy and including the requested generation
+edge outside the census. Sequential custody has a provisional
 5 GiB workspace floor that still needs collector-specific validation. Recheck
 capacity before each experiment; these are estimates, not promised runtimes.
 The human collection matrix is superseded by the delivered
