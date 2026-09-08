@@ -1,6 +1,6 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate REOPENED for PR37 completed-cost finding 3963125325**.
+Status: **IN PROGRESS; local exit gate PASS after visibility and cost corrections**.
 Final Codex review and verified main delivery are governed by
 [PR37](https://github.com/copeugne/mcpack/pull/37).
 The [complete generated report](report.md) is the authoritative version 2 numerical result.
@@ -83,8 +83,8 @@ revision, generalized validator or storage service was introduced.
 
 [All accepted compressed JSON results](results/) are committed, with exact digests
 in the generated report and [original producer outputs](validation/full/).
-They total 19,364,996 bytes. The sixteen accepted invocation times sum to 894.423
-seconds, range 45.060 to 78.617 seconds; see [resource totals](validation/resource-totals-v2.txt).
+They total 19,363,394 bytes. The sixteen accepted invocation times sum to 900.942
+seconds, range 45.156 to 84.892 seconds; see [resource totals](validation/resource-totals-cost.txt).
 Derivation: sum result sizes and each producer log's `real` minutes/seconds over
 the sixteen names in the accepted comparison index. Diagnostics and clean-code
 reproduction cost extra. Timings include normal cache effects and some concurrent
@@ -133,22 +133,22 @@ restore and census commands. Default input locations are
 `evidence/raw/item10/NAME-custody/restored-world/world`, adjacent
 `restored-local/world-backup.json`, and `NAME-analysis/all-strata.json`.
 The analyzer verifies their identities; existing source worlds are never booted.
-The version 2 representative was biome-diverse r1 without-Sparse. These are the
-executed correction commands (the scratch output paths must be absent):
+The final cost-correction representative was ocean-heavy r1 without-Sparse. These are the
+executed cost-correction commands (the scratch output paths must be absent):
 
 ```sh
 uv run --no-sync python -m tools.analyze_route_opportunities \
-  --name full-biome-diverse-r1-without-sparse \
-  --output evidence/raw/item11/visibility-v2/full-biome-diverse-r1-without-sparse.json.gz
-uv run --no-sync python - <<'PYCODE' > /tmp/item11-v2-remaining.txt
+  --name full-ocean-heavy-r1-without-sparse \
+  --output evidence/raw/item11/cost-correction/full-ocean-heavy-r1-without-sparse.json.gz
+uv run --no-sync python - <<'PYCODE' > /tmp/item11-cost-remaining.txt
 from tools.analyze_route_opportunities import accepted_inputs
-print('\n'.join(n for n in sorted(accepted_inputs()) if n != 'full-biome-diverse-r1-without-sparse'))
+print('\n'.join(n for n in sorted(accepted_inputs()) if n != 'full-ocean-heavy-r1-without-sparse'))
 PYCODE
 while IFS= read -r name; do
-  { time uv run --no-sync python -m tools.analyze_route_opportunities --name "$name" --output "evidence/raw/item11/visibility-v2/$name.json.gz"; } > "evidence/raw/item11/visibility-v2/$name.txt" 2>&1 || exit 1
-  mv "evidence/raw/item11/visibility-v2/$name.json.gz" "evidence/item-11/results/$name.json.gz"
-  mv "evidence/raw/item11/visibility-v2/$name.txt" "evidence/item-11/validation/full/$name.txt"
-done < /tmp/item11-v2-remaining.txt
+  { time uv run --no-sync python -m tools.analyze_route_opportunities --name "$name" --output "evidence/raw/item11/cost-correction/$name.json.gz"; } > "evidence/raw/item11/cost-correction/$name.txt" 2>&1 || exit 1
+  mv "evidence/raw/item11/cost-correction/$name.json.gz" "evidence/item-11/results/$name.json.gz"
+  mv "evidence/raw/item11/cost-correction/$name.txt" "evidence/item-11/validation/full/$name.txt"
+done < /tmp/item11-cost-remaining.txt
 ```
 
 The representative output and timed producer log were promoted to the same
@@ -164,7 +164,7 @@ reproduction, not a fresh-machine or new-download claim. The
 [dependency log](validation/clean-sync.txt) records the exact Python/packages and
 cross-filesystem copy fallback. No operational cache or downloaded binary is committed.
 
-The corrected clean tracked export of `1609ac96` and its separate locked environment
+The earlier visibility-corrected clean tracked export of `1609ac96` and its separate locked environment
 [reproduce the v2 representative byte for byte](validation/clean-reproduction-v2.txt)
 in 55.553 seconds, SHA-256 `807a369277b3079559acaaa4f681951b78617af9b838f30797fdddf317039fb0`.
 The [v2 environment log](validation/clean-sync-v2.txt) records dependency installation.
@@ -183,7 +183,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | [600 tests passed in 196.80 seconds](validation/final-tests-v2.txt). [Ruff](validation/final-ruff-v2.txt), [formatting](validation/final-format-v2.txt) and [BasedPyright](validation/final-types-v2.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the narrow cost fix, [all 19 affected tests pass](validation/final-tests-cost.txt), including complete report reproduction. Final [Ruff](validation/final-ruff-cost.txt), [formatting](validation/final-format-cost.txt) and [BasedPyright](validation/final-types-cost.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -257,7 +257,7 @@ ledger, protocol, analyzer, result identities and report builder now name v2.
 This documentation-only correction does not invalidate the 600-test final gate
 or require repeating derived analysis. Fresh Codex review remains required.
 
-## Completed-cost correction in progress
+## Completed-cost correction
 
 [Finding 3963125325](https://github.com/copeugne/mcpack/pull/37#discussion_r3963125325)
 is valid. For ocean-heavy r1 control / east-south, boat mode is INFEASIBLE with
@@ -271,9 +271,32 @@ and all twelve route tests [pass afterward](validation/cost-regression-after.txt
 No protocol or sampling rule changes: this brings implementation into agreement
 with the existing v2 requirement. All pre-cost-fix results, logs and report remain
 preserved at reviewed commit `e52353ab148c91319e22b613917375d5777e6b8a`.
-First rerun the actual ocean-heavy r1 control counterexample, compare all other
-raw and summary fields, then repeat the other fifteen read-only analyses through
+The actual ocean-heavy r1 control counterexample was rerun first, comparing all
+other raw and summary fields, followed by the other fifteen read-only analyses through
 the existing source-hash-bound analyzer. The prior complete pass took 894.423
 seconds and retained 19,364,996 bytes, within the existing 160-minute/1-GiB budget.
 This repairs one field within the existing path. No new result class, schema,
 validator, archive or transformation framework is needed.
+
+The [complete cost comparison](validation/cost-matrix-comparison.txt) checks the
+same sixteen `results/NAME.json.gz` values against immutable `e52353ab`.
+Remove `inputs.analysis_sha256` and each route/window/category/mode's
+`completed_cost` from both decoded objects: the remaining objects are identical.
+All 660 changed completed costs were non-null and are now null for a mode whose
+full-route status is not MODEL_FEASIBLE. Every raw observation, other cost,
+visibility result, category, gap, repetition and route status is unchanged.
+The generated report's numerical tables are unchanged; only result hashes change.
+
+The final clean tracked export of `f4e99bdf` with a separate locked environment
+[reproduces the cost-corrected representative exactly](validation/clean-reproduction-cost.txt)
+in 55.220 seconds, SHA-256 `4c3e24391c5d982b11c6ac716561b70db84af85bfbd65a6a02202aaf53e88e46`.
+The [environment log](validation/clean-sync-cost.txt) records installation. As before,
+the existing accepted raw restores are independently hash-checked read-only inputs.
+
+Final validation after the cost fix reruns all affected Item 11 tests:
+`uv run --no-sync pytest -q tests/item11` gives 19 passed in 17.51 seconds.
+The earlier complete applicable gate gives 600 passed in 196.80 seconds.
+The cost change does not affect Item 7/10 readers or custody; those unchanged
+checks are not repeated solely for reassurance. Final affected lint, formatting
+and type checks pass. The local exit gate is restored; a fresh completed clean
+Codex review and verified main merge remain required.

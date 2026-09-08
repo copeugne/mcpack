@@ -29,40 +29,32 @@ Item 10 and the Items 2 through 10 audit are COMPLETE through reviewed PR35/36.
 The two prior housekeeping commits `1f70f395` and `022990e3` are preserved ancestors
 and included in PR37; they were not PR36-reviewed main delivery.
 
-Item 11: local exit gate REOPENED for completed-cost finding 3963125325.
-PR37 finding 3962853986 was valid: version 1 coupled target visibility to anchor
-adjacency. Fix `1609ac96` separates the populations under predeclared protocol v2.
-All sixteen corrected derived results and the report are pushed at `56bf88b5`.
-The rejected v1 results remain in Git at `506bc4fd`. Original worlds are unchanged.
+Item 11: local exit gate PASS after visibility and completed-cost corrections.
 The [numerical report](evidence/item-11/report.md),
 [protocol](evidence/item-11/protocol.md) and
 [closure/reproduction record](evidence/item-11/README.md) are authoritative.
-They cover 64 fixed routes and 192 transport evaluations, retaining failures,
-censoring, categories, gaps, family repetitions and modeled costs. The complete
-comparison confirms unchanged adjacency, transport and saved top-cell observations.
+All sixteen accepted worlds provide 64 fixed routes and 192 transport evaluations,
+retaining failures, categories, gaps, repetitions, costs, censoring and sensitivity.
 
-Eleven focused route tests, affected lint/types/formatting and clean-code v2
-representative reproduction pass. Final applicable validation: 600 tests passed
-in 196.80 seconds. Version 1 logs remain historical. Review-fix integration and
-validation are complete. The completed review of `24aa6af0` found stale ledger
-STAT-004 protocol v1 (3963074296). It is corrected to v2; this documentation-only
-fix needs fresh review and verified main delivery, not another analysis run.
+PR37 findings are dispositioned: visibility selection (3962853986) fixed in
+`1609ac96`; stale ledger protocol (3963074296) fixed in `e52353ab`; completed costs
+for infeasible modes (3963125325) fixed in `f4e99bdf`. The final full matrix/report
+is pushed at `17ccd330`. Compared with `e52353ab`, only analyzer identities and
+660 completed-cost fields change; every other raw/summary value is identical.
+Rejected versions remain in Git at `506bc4fd` and `e52353ab`. The earlier rejected
+POSIX lock attempt remains under `evidence/item-11/`; the existing lock fix is
+preserved. No original worlds were regenerated, tuned or repaired.
 
-The initial inventory reader released its POSIX lock by opening/closing the lock
-file during inventory enumeration. The failing competing-process probe, rejected
-results and interrupted expansion remain under `evidence/item-11/`. The narrow
-fix reuses Item 4 `_backup_paths` to exclude the lock before opening. All sixteen
-worlds were reanalyzed under corrected source `ff77c6f6`, before the visibility correction. No upstream world was
-regenerated or repaired. Do not repeat the completed collection for reassurance.
+Validation: full applicable gate 600 passed in 196.80 seconds before the narrow
+cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. Final
+lint/types/formatting pass. A clean export of `f4e99bdf` with a separate locked
+environment reproduces the final representative bytes. No repeat of unchanged
+Item 7/10 checks is needed for the isolated summary-cost change.
 
-The completed review of `e52353ab` found that infeasible routes report completed
-costs for shorter windows. The narrow status gate fixes this under unchanged
-protocol v2. The actual ocean-heavy r1 control regression fails before and twelve
-route tests pass after. Pre-cost-fix results remain at `e52353ab`.
-Next action: finish representative comparison, reproduce the remaining fifteen
-derived results, rebuild the report, run affected final checks, then complete the
-fresh review/fix/merge loop. Do not repeat generation or upstream audits.
-Do not start Item 12.
+Next action: request fresh `@codex review` on the pushed final PR37 candidate.
+Complete the review/fix loop, obtain the current-head clean result, merge and
+verify fetched main before declaring Item 11 COMPLETE. Do not repeat upstream
+collection/audits or start Item 12.
 
 Human recognition, actual fights, interaction time, enjoyment and human Adventure
 Activity Ratio remain NOT MEASURED. Automated geometry/model results are not human
