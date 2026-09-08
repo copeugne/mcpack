@@ -3,7 +3,7 @@
 **Ledger version:** 0.19
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 10 delivered; cross-item audit PASS. PR36 review and merge metadata govern audit delivery.
+**Current execution gate:** Item 11 local exit gate PASS; PR37 final review and main delivery pending. Item 10 and the cross-item audit are COMPLETE through PR35/36.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -350,24 +350,29 @@ ocean-heavy control attempts remain preserved; no target reduction or tuning
 was used. All required category, spatial, biome, seed and omit-only Sparse
 Structures comparisons, uncertainty and raw custody are delivered.
 
-The [post-delivery cross-item audit](evidence/item-10/cross-item-audit.md) passes
-locally. [PR36](https://github.com/copeugne/mcpack/pull/36) governs its review and
-main-delivery status; the downstream gate opens only after clean review and merge. It corrects the historical Item 6
+The [post-delivery cross-item audit](evidence/item-10/cross-item-audit.md) is COMPLETE
+through clean reviewed [PR36](https://github.com/copeugne/mcpack/pull/36), merged at
+`5ec24115b9394ef162bdff6f65a31180dbb7d7ff`. The Item 11 dependency gate is open. It corrects the historical Item 6
 Chunky membership label without changing the captured audit snapshot or runtime.
 The Item 7 missing-final-review continuation exception remains explicit.
 The [PR22 scope amendment](evidence/item-10/methodology-amendment.md) remains the
 current automated contract. Lost historical Item 10 summaries are superseded
 context, not empirical evidence for this completed retained-stack measurement.
 
-### 5.10 Item 11 preparation status
+### 5.10 Item 11 automated route opportunities
 
-**Status: `UNSTARTED`.** Item 10 is delivered. Starting Item 11 requires the
-clean reviewed PR36 cross-item audit to be merged, and is outside this task.
-The user explicitly removed human phases from both Items 10 and 11 on 2026-09-08.
-Apply [the automated scope amendment](evidence/item-10/methodology-amendment.md).
-Earlier human matrices, runbooks and reconstructed preparation are superseded
-acceptance paths. They do not establish completion of the revised automated
-route analysis. No Item 11 workflow was implemented, run, repaired or linted.
+**Status: `IN PROGRESS`; local exit gate PASS.**
+The [authoritative numerical report](evidence/item-11/report.md),
+[protocol](evidence/item-11/protocol.md) and
+[closure/reproduction record](evidence/item-11/README.md) cover all sixteen accepted
+worlds, 64 fixed Overworld routes and 192 transport-model evaluations. Raw
+observations, category coverage, gaps, family repetition, modeled costs, failures,
+censoring and sensitivity are retained. The rejected lock-release attempts and
+the corrected competing-process regression remain explicit. Final validation
+passes 598 tests, affected lint/types and clean-code representative reproduction.
+[PR37](https://github.com/copeugne/mcpack/pull/37) must complete its clean final Codex
+review and verified main merge before Item 11 is COMPLETE. No human evidence is
+required or claimed; Item 12 was not started.
 
 ### 5.11 Preservation incident and Recovery Gate R-1
 
@@ -432,8 +437,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 - `STAT-001`: exact seed set and rationale — **development suite resolved: `42`, `6671238423019257953`, `95920844204830198`, `-3503646078644842058`; blinded v1 validation seeds remain later work**.
 - `STAT-002`: generated radius/chunk count per seed and dimension — **resolved: 4,096 initial to 32,768 maximum fully generated chunks/seed until 30 category observations; sparse categories are right-censored**.
-- `STAT-003`: route design and navigation-information controls: **REOPENED: the automated Item 11 route protocol must replace the superseded human navigation controls after the cross-item gate**.
-- `STAT-004`: repetitions per transport mode and progression stage: **REOPENED for automated Items 10/11 sampling; the prior human matrix is superseded. Other runtime-performance repetition rules remain unchanged**.
+- `STAT-003`: route design and navigation-information controls: **resolved for Item 11 by `evidence/item-11/protocol.md`, with fixed automated geometry and explicit visibility/transport assumptions**.
+- `STAT-004`: repetitions per transport mode and progression stage: **resolved for automated Items 10/11 by `item10-full-v1` and `item11-routes-v1`; route/mode observations are not independent world repetitions. Other runtime-performance repetition rules remain unchanged**.
 - `STAT-005`: warm-up and cache rules — **resolved by `ae-measurement-v0.1`; unlike cache states are never combined**.
 - `STAT-006`: operator/player skill controls.
 - `STAT-007`: aggregation and dispersion statistics — **resolved: sample count, median, p95, p99, max, IQR/range, paired change and bootstrap 95% interval**.
@@ -498,8 +503,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
-| 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit PASS; PR36 governs its review/main-delivery gate. |
-| 11 | Exploration pacing/repetition | `UNSTARTED` | No current-scope Item 11 evidence accepted. Starting requires clean reviewed PR36 audit delivery. No Item 11 workflow is authorized in this task. |
+| 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
+| 11 | Automated route opportunities/repetition | `IN PROGRESS` | Local exit gate PASS with all sixteen worlds, 64 routes and 192 mode evaluations. PR37 final review and verified main delivery pending. Evidence: `evidence/item-11/README.md`. |
 | 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
@@ -511,8 +516,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Preserve all accepted Item 2 through 10 evidence, failed attempts, recovery refs and protected artifacts. The Item 7 final-review exception remains as recorded in section 5.7.
-2. Item 10 is complete through reviewed PR35 main delivery. Finish review and main delivery of the documented Items 2 through 10 consistency audit.
-3. Do not implement, run, repair or lint Item 11 in this task. Later work must use the applicable specification and delivered audit; no human workload is inferred from earlier availability.
+1. Preserve accepted Items 2 through 11 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
+2. Finish PR37's required Codex review/fix loop, obtain a clean final review, merge and verify fetched `origin/main`. Item 11 remains IN PROGRESS until that delivery gate passes.
+3. Do not repeat completed collection, audits, classification or preservation. Do not start Item 12 under this authorization.
 
 No later item will be marked complete out of order or from inference.

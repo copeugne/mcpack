@@ -1,6 +1,6 @@
 # mcpack current handoff
 
-Updated: 2026-09-08. This is the single active continuation checkpoint.
+Updated: 2026-09-09. This is the single active continuation checkpoint.
 
 ## Authority and preservation
 
@@ -21,38 +21,44 @@ prior active handoffs; consult historical context only for specific open questio
 
 ## Current delivery gate
 
-Last verified main: `5ec24115b9394ef162bdff6f65a31180dbb7d7ff`, merged PR36.
-Item 10 and the required Items 2 through 10 consistency audit are COMPLETE.
-PR35 delivered the measurement at `d507573e`; PR36 delivered the audit and its
-narrow corrections at `5ec24115`. Both final Codex cycles completed clean with
-bot thumbs-up reactions and no new findings. Fetched main ancestry passed.
+Branch: `codex/item11-route-opportunities`. PR37 is the current delivery PR:
+https://github.com/copeugne/mcpack/pull/37 . Its final report/closure commit follows
+measurement head `28d544b8`; use current Git/PR head metadata for the exact candidate.
+Last verified main remains `5ec24115b9394ef162bdff6f65a31180dbb7d7ff` (merged PR36).
+Item 10 and the Items 2 through 10 audit are COMPLETE through reviewed PR35/36.
+The two prior housekeeping commits `1f70f395` and `022990e3` are preserved ancestors
+and included in PR37; they were not PR36-reviewed main delivery.
 
-Current checkout: `codex/item11-route-opportunities`. Item 11 is authorized by the
-current user request. The prior audit branch remains preserved at `022990e3`. Its reviewed audit head was
-`0201d5e7737ce033875a498317a8a470bcb1853e`; main contains that head.
-Subsequent housekeeping commits preserve the user-authorized instructions,
-handoff cleanup and ignore rules; their push does not imply main delivery.
-[PR36](https://github.com/copeugne/mcpack/pull/36) binds review and merge status.
-Its [clean review](https://github.com/copeugne/mcpack/pull/36#issuecomment-5591718610)
-completed at 20:53:26 UTC, followed by the bot thumbs-up at 20:53:29 UTC.
-The [audit](evidence/item-10/cross-item-audit.md) records the rejected prose-only
-Chunky correction, the validated current machine-readable disposition, and the
-executable cross-item identity comparison. Original frozen evidence is unchanged.
+Item 11 local exit gate: PASS. Final Codex review and main delivery: PENDING.
+The [numerical report](evidence/item-11/report.md),
+[protocol](evidence/item-11/protocol.md) and
+[closure/reproduction record](evidence/item-11/README.md) are authoritative.
+All sixteen accepted worlds were read under the corrected POSIX lock boundary.
+They provide 64 fixed Overworld routes and 192 walking/horse/boat model evaluations,
+with candidate/category counts, ray proxies, gaps, repetitions, modeled costs,
+failed routes, censoring and sensitivity. No game-world or configuration changes.
 
-All eighteen attempt identities agree, and all sixteen corrected trace checks
-pass unchanged. Validation passed 560 Item 6 tests and 581 Item 7/10 tests;
-the subsequently added cross-item identity test and affected quality checks pass.
-No runtime/configuration change or new experiment was needed for the audit.
+Final applicable tests: 598 passed in 181.81 seconds. Affected Ruff and BasedPyright
+pass. The full report rebuilds byte for byte; a clean tracked export with a separate
+locked Python environment reproduces the representative result exactly. The
+complete generated data is committed separately from the report implementation.
 
-There is no remaining Item 10 or audit work. No additional worlds or retries
-are authorized. Item 11 is IN PROGRESS under the new user instruction. See its
-[predeclared protocol](evidence/item-11/protocol.md) and
-[requirement/evidence report](evidence/item-11/README.md). The initial representative/expansion outputs are rejected for a reproduced POSIX
-lock-release defect. The narrow fix reuses `_backup_paths` to avoid opening the
-lock file during inventory verification; nine focused tests pass. See the Item 11
-report for preserved failures. Repeat the representative read under this fix,
-then process the other fifteen worlds and complete the
-report, final validation and required Codex review/merge loop. No Item 12 work.
+The initial inventory reader released its POSIX lock by opening/closing the lock
+file during inventory enumeration. The failing competing-process probe, rejected
+results and interrupted expansion remain under `evidence/item-11/`. The narrow
+fix reuses Item 4 `_backup_paths` to exclude the lock before opening. All sixteen
+worlds were reanalyzed under corrected source `ff77c6f6`. No upstream world was
+regenerated or repaired. Do not repeat the completed collection for reassurance.
+
+Next action: mark PR37 ready, request `@codex review`, inspect every completed
+cycle and fix valid findings. The validated report/closure is included in this candidate.
+Repeat the review loop until the final head receives a clean completed Codex result
+and bot thumbs-up, then merge and verify fetched main ancestry. Do not declare
+Item 11 COMPLETE before that delivery boundary. Do not start Item 12.
+
+Human recognition, actual fights, interaction time, enjoyment and human Adventure
+Activity Ratio remain NOT MEASURED. Automated geometry/model results are not human
+observations. The prior Item 7 final-review continuation exception remains explicit.
 
 ## Completed measurement and authoritative evidence
 
@@ -91,19 +97,11 @@ The strengthened collection reader accepts all sixteen archive-bound raw traces,
 including all 41 legacy Scarecrow attempts. Raw observations and censuses did not
 change during review fixes. Density is not observed fights or experienced pacing.
 
-## Validation and operational context
+## Operational context
 
-The final review-fix Item 7/10 suite passes 581 tests in 156.56 seconds. Affected
-Ruff, formatting and test-file BasedPyright pass. Logs and commands are in the
-[review-correction record](evidence/item-10/README.md#pr35-review-corrections).
-Clean-checkout reproduction at `979f7efd` used its own locked Python environment,
-freshly downloaded/restored final-retry evidence and a byte-identical full census
-in 477.603 seconds. The detached reproduction checkout and restored evidence
-remain preserved. No server, generation or census process remains active.
-
-Two local servers are stopped and preserved. Official launcher profiles are
-prepared; first launch/join is unverified. The
-[setup record](evidence/item-10/server-setup/README.md) is operational context,
-not measurement acceptance. No recording was started. Earlier six/ten-hour
-availability is not an approved player workload. PR22 delivered the
-[methodology amendment](evidence/item-10/methodology-amendment.md); Item 11 now uses that automated contract under the current user authorization.
+No server or world-generation process was started for Item 11. Existing local
+server/client setup remains operational context, not acceptance evidence. Original
+Item 10 worlds and failed attempts remain under their immutable custody. No new
+archives, history consolidation or infrastructure rollout are needed for Item 11.
+The clean-code export at `/tmp/mcpack-item11-clean-jZCYoWsn` is retained local
+reproduction context; accepted proof is committed under `evidence/item-11/`.
