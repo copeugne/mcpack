@@ -111,3 +111,45 @@ uv run --no-sync pytest tests/item10 tests/item7/test_anvil_decoder.py tests/ite
 uv run --no-sync ruff check tools/analyze_structure_density.py tests/item10/test_density_census.py
 uv run --no-sync basedpyright tests/item10
 ```
+
+## Spatial diagnostic
+
+[Spatial census](spatial-census.json) adds deterministic spatial summaries for all
+registry starts and each exclusive provisional role. This is a diagnostic
+application of the draft spatial method to retained pilot data, not acceptance
+of the full sampling protocol. Removing `spatial` yields exactly the classified
+census above. No generation, configuration or classification was changed.
+
+Coordinates are the centers of authoritative start chunks, not entrances or
+structure edges. Of 24 starts, five have boundary-censored nearest neighbors.
+The mean distance to the nearest observed start inside the finite window is
+93.77346215097855 blocks. The uncensored nearest-neighbor mean is UNKNOWN
+(JSON null); it is not calculated by discarding the five censored observations.
+Every observed distance, boundary distance and lower bound is retained.
+
+Globally aligned 16 by 16 chunk cells retain all 3,969 selected chunks, including
+partial cells at the edges. Nine complete cells cover 2,304 chunks. Equal-area
+population variance divided by mean count is 2.7863247863247866 for those cells.
+The largest fully observed rectangle of empty cells covers 768 chunks at
+inclusive bounds X [-16, 31], Z [-16, -1]. Empty means no selected registry
+start, not no structures crossing into the area, nonregistry features, enemies
+or gameplay activity. Resolution is 256 blocks per cell side. Category results,
+including zero and single-observation cases, remain in the JSON.
+
+Reproduce against the restored pilot with a new output path:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density RESTORED_WORLD/world SPATIAL_CENSUS.json --dimension minecraft:overworld --bounds -31 31 -31 31 --spatial
+```
+
+The complete focused surface now has 41 passing tests. Seven spatial cases cover
+coincident starts, boundary censoring, exact interior distances, empty and
+single-start cases, partial-cell denominators, and maximal empty rectangles
+against an independent exhaustive oracle for all 64 occupancies of a 3 by 2
+cell grid, including tie resolution. Ruff and Item 10 test type checks pass:
+
+```sh
+uv run --no-sync pytest tests/item10 tests/item7/test_anvil_decoder.py tests/item7/test_world_region_dimensions.py -q
+uv run --no-sync ruff check tools/analyze_structure_density.py tests/item10
+uv run --no-sync basedpyright tests/item10
+```

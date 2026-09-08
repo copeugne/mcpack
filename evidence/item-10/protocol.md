@@ -91,14 +91,23 @@ the observed-combat numerator.
 
 ## Spatial summaries and uncertainty
 
-Use horizontal Euclidean distance in blocks within each seed and dimension/stratum.
+Use horizontal Euclidean distance between authoritative start-chunk centers
+`(16 * ChunkX + 8, 16 * ChunkZ + 8)`, in blocks, within each seed and
+dimension/stratum. This is a declared chunk-based placement distance, not a
+measured entrance, bounding-box gap or walking distance.
 Report nearest-neighbor distances by category. A target's nearest observed
 neighbor is exact only when that distance is no greater than its distance to the
 sampling boundary; otherwise retain it as boundary-censored. Do not calculate an
 uncensored mean by silently dropping those cases. Zero or one observed member
-does not have an estimable nearest-neighbor mean.
+does not have an estimable nearest-neighbor mean. Report the finite-window
+nearest-observed mean separately from the uncensored nearest-neighbor mean;
+the latter remains null if any member is boundary-censored. Preserve each
+observed distance and its lower bound rather than dropping censored cases.
 
-Partition each rectangle into aligned 16 by 16 chunk cells. Report count
+Partition each rectangle into globally aligned 16 by 16 chunk cells. Preserve
+partial boundary cells with their actual denominators. Only completely sampled
+cells enter equal-area dispersion and largest-empty-rectangle calculations. Use
+population variance divided by the mean, or null when the mean is zero. Report count
 distributions and variance/mean by category as a descriptive clustering measure.
 Report all zero-count cells and the largest axis-aligned rectangle of zero cells
 fully inside the sample, resolving equal-area ties lexicographically by bounds.

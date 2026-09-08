@@ -6,6 +6,7 @@ import argparse
 import collections
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import cast
 
@@ -13,6 +14,99 @@ from tools.manage_item4_environment import _world_backup_lock
 
 from mcpack_evidence.item7_anvil import decode_region_payloads, world_regions
 from mcpack_evidence.item7_nbt import decode_compound_nbt
+
+
+def spatial_summary(
+    occurrences: list[dict[str, str | int]], bounds: tuple[int, int, int, int]
+) -> dict[str, object]:
+    """Describe fixed-grid density and boundary-censored start-chunk distances."""
+    min_x, max_x, min_z, max_z = bounds
+    points = [(16 * int(row["chunk_x"]) + 8, 16 * int(row["chunk_z"]) + 8) for row in occurrences]
+    neighbors = []
+    for index, (x, z) in enumerate(points):
+        boundary = min(x - 16 * min_x, 16 * (max_x + 1) - x, z - 16 * min_z, 16 * (max_z + 1) - z)
+        distance = min(
+            (math.dist((x, z), other) for i, other in enumerate(points) if i != index), default=None
+        )
+        exact = distance is not None and distance <= boundary
+        neighbors.append(
+            {
+                **occurrences[index],
+                "nearest_observed_blocks": distance,
+                "boundary_distance_blocks": boundary,
+                "boundary_censored": not exact,
+                "nearest_distance_lower_bound_blocks": distance if exact else boundary,
+            }
+        )
+    cells = []
+    counts = collections.Counter(
+        (int(row["chunk_x"]) // 16, int(row["chunk_z"]) // 16) for row in occurrences
+    )
+    for cell_z in range(min_z // 16, max_z // 16 + 1):
+        for cell_x in range(min_x // 16, max_x // 16 + 1):
+            x0, x1 = max(min_x, cell_x * 16), min(max_x, cell_x * 16 + 15)
+            z0, z1 = max(min_z, cell_z * 16), min(max_z, cell_z * 16 + 15)
+            cells.append(
+                {
+                    "bounds_chunks": [x0, x1, z0, z1],
+                    "full_chunks": (x1 - x0 + 1) * (z1 - z0 + 1),
+                    "count": counts[cell_x, cell_z],
+                }
+            )
+    full_cell_chunks = 16 * 16
+    full_cells = [cell for cell in cells if cell["full_chunks"] == full_cell_chunks]
+    cell_counts = [cell["count"] for cell in full_cells]
+    mean = sum(cell_counts) / len(cell_counts) if cell_counts else None
+    dispersion = (
+        sum((count - mean) ** 2 for count in cell_counts) / len(cell_counts) / mean
+        if mean
+        else None
+    )
+    # Maximal all-zero rectangle on the fully observed 16-chunk grid.
+    empty = {
+        (cell["bounds_chunks"][0] // 16, cell["bounds_chunks"][2] // 16)
+        for cell in full_cells
+        if cell["count"] == 0
+    }
+    best_area, best_bounds = 0, None
+    for top in range(min_z // 16, max_z // 16 + 1):
+        eligible = set(range(min_x // 16, max_x // 16 + 1))
+        for bottom in range(top, max_z // 16 + 1):
+            eligible &= {x for x in eligible if (x, bottom) in empty}
+            left = None
+            for right in range(min_x // 16, max_x // 16 + 2):
+                if right in eligible:
+                    left = right if left is None else left
+                    continue
+                if left is not None:
+                    area = (right - left) * (bottom - top + 1) * 256
+                    rectangle = [left * 16, right * 16 - 1, top * 16, (bottom + 1) * 16 - 1]
+                    if area > best_area or (area == best_area and rectangle < best_bounds):
+                        best_area, best_bounds = area, rectangle
+                    left = None
+    distances = [row["nearest_observed_blocks"] for row in neighbors]
+    return {
+        "coordinate_convention": "horizontal centers of authoritative start chunks, in blocks",
+        "nearest_neighbors": neighbors,
+        "mean_nearest_observed_blocks": (
+            sum(distances) / len(distances) if len(distances) > 1 else None
+        ),
+        "mean_nearest_neighbor_blocks": (
+            sum(distances) / len(distances)
+            if distances and all(not row["boundary_censored"] for row in neighbors)
+            else None
+        ),
+        "mean_rule": "null if no observations or any boundary-censored neighbor; no dropped cases",
+        "grid_cell_side_chunks": 16,
+        "cells": cells,
+        "full_cell_count": len(full_cells),
+        "full_cell_variance_over_mean": dispersion,
+        "full_cell_zero_fraction": len(empty) / len(full_cells) if full_cells else None,
+        "largest_empty_full_cell_rectangle": {
+            "area_chunks": best_area,
+            "bounds_chunks": best_bounds,
+        },
+    }
 
 
 def classify_census(result: dict[str, object]) -> dict[str, object]:
@@ -168,14 +262,24 @@ def main() -> None:
     parser.add_argument("--bounds", type=int, nargs=4, required=True)
     parser.add_argument("--dimension-geometry", type=Path)
     parser.add_argument("--classify", action="store_true", help="join accepted Item 8/9 inputs")
+    parser.add_argument("--spatial", action="store_true", help="add classified spatial summaries")
     args = parser.parse_args()
     if args.output.exists() or args.output.resolve().is_relative_to(args.world.resolve()):
         parser.error("output must be new and outside the input world")
     geometry = json.loads(args.dimension_geometry.read_text()) if args.dimension_geometry else {}
     with _world_backup_lock(args.world):
         result = census(args.world, args.dimension, tuple(args.bounds), geometry)
-    if args.classify:
+    if args.classify or args.spatial:
         result["classification"] = classify_census(result)
+    if args.spatial:
+        rows = result["classification"]["occurrences"]
+        result["spatial"] = {
+            role: spatial_summary(
+                [row for row in rows if role == "all_registry" or row["role"] == role],
+                tuple(args.bounds),
+            )
+            for role in ("all_registry", "T0", "C", "T1", "T2", "T3", "T4")
+        }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:
         stream.write(json.dumps(result, indent=2) + "\n")

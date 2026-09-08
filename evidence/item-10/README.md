@@ -178,8 +178,8 @@ persistent workspace filesystem. `/tmp` is a 13 GiB RAM-backed filesystem with
 about 11 GiB free; it is not durable evidence storage. Available RAM was about
 8.7 GiB with 11 GiB swap already used. Those are initial observations, not current
 capacity. Authorized duplicate cleanup and player-client setup subsequently left
-about 15 GiB free. See [operational setup](server-setup/README.md). No measurement
-experiment has been launched. Recheck free space and RAM before each experiment.
+about 15 GiB free. See [operational setup](server-setup/README.md). The [pilot](pilot-r1/README.md) now supplies measured generation and storage
+costs. Recheck free space and RAM before each experiment.
 
 The [r14 run-a world manifest](../item-7/archive/r14/run-a-worlds-manifest.json)
 records 484,774,742 raw bytes and 291,011,199 compressed bytes for four seeds.
@@ -216,4 +216,4 @@ No implementation should expand around unresolved measurement semantics.
 The next work is protocol resolution, not configuration tuning or Item 11.
 
 [Decoder preparation validation](decoder.md) records the custom-dimension
-identification fix and remaining authoritative-start-coordinate limitation.
+identification fix and validated authoritative-start-coordinate extraction.

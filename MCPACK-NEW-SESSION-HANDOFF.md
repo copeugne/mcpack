@@ -90,9 +90,10 @@ from actual combat. Resolve the Item 5 contract conflict explicitly. The automat
 [Decoder validation](evidence/item-10/decoder.md) records the custom-dimension
 fix and raw-coordinate census. It now rejects incomplete denominators and
 inconsistent starts. The accepted family/category join now covers all 24 pilot
-starts, retaining confidence and ambiguity; 34 focused tests pass. Next complete
-nonregistry occurrence coverage and spatial summaries, then finish the full
-sampling design. The pilot does not close Item 10 or its combat contract.
+starts, retaining confidence and ambiguity. Spatial diagnostics retain boundary
+censoring, partial-cell denominators, clustering and empty rectangles; 41 focused
+tests pass. Next complete nonregistry occurrence coverage, biome exposure and
+the full sampling design. The pilot does not close Item 10 or its combat contract.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows. The blind-human requirement remains.
