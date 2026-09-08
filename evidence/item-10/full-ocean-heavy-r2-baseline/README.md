@@ -1,6 +1,6 @@
 # Ocean-heavy repetition-2 baseline
 
-Status: GENERATION AND RAW CUSTODY PASS; CENSUS IN PROGRESS.
+Status: BASELINE-WORLD ACCEPTANCE PASS, with ten reviewed overlap exclusions.
 Protocol: `item10-full-v1`, observer coverage `item10-observer-coverage-v2`,
 continuation `item10-retry-policy-v2`. Seed: `95920844204830198`.
 Generation source: `7a60ad986d84f886876ece1ac77f20bf510a2cb0`.
@@ -54,4 +54,70 @@ uv run --no-sync python -m tools.analyze_structure_density evidence/raw/item10/f
 ```
 
 Timing and diagnostics are retained in the analysis directory's
-`all-strata-runtime.txt`. No census result is accepted at this checkpoint.
+`all-strata-runtime.txt`. Census session 90296 ended with exit 0 in 549.917 seconds.
+The output is 130,582,629 bytes, SHA-256
+`6bcf618583014bd62f39a0e406d5e5f6eadfe2c330935b572eb4e26f31ad10d5`.
+All eleven strata have exactly 4,096 complete selected chunks. Fifty archived
+incoming target classes pass complete observer coverage and trace validation.
+
+## Overlap and saved-content review
+
+Direct set intersections of `locations[].content_positions` reproduce all five
+raw `overlaps` entries. Every listed candidate is inside the outer-End frame,
+and the accepted Item 9 roles for anomalies and monoliths are T0:
+
+| Candidates | Families | Anchors X,Y,Z | Shared positions |
+| --- | --- | --- | ---: |
+| 27214 / 27215 | anomaly / anomaly | (8334,63,8141) / (8337,64,8134) | 210 |
+| 27232 / 27273 | anomaly / monolith | (8383,61,8287) / (8378,61,8288) | 20 |
+| 27234 / 27235 | anomaly / anomaly | (8391,57,8311) / (8395,58,8303) | 143 |
+| 27245 / 27280 | anomaly / monolith | (8454,58,8262) / (8451,58,8268) | 13 |
+| 27246 / 27282 | anomaly / monolith | (8455,59,8243) / (8454,59,8239) | 29 |
+
+Family namespace is `biomesoplenty`. Disposition: REVIEWED, EXCLUDED UNDER THE
+EXISTING PROTOCOL, as in the [mountainous overlap review](../full-mountainous-r2-baseline/README.md).
+These candidates retain matching saved content as well as their raw flags; they
+are overlapping observations, not absent generation. No proximity merge or new
+exception is introduced. The accepted outer-End total is 73. Counting all ten
+excluded T0 candidates would give 83, an additional 2.44140625 per 1,000 chunks.
+This sensitivity is not a corrected numerator or confidence interval.
+
+Candidate 4016 is `quark:monster_box`, attempt 2766, Overworld anchor (48,0,464).
+Its content position (58,-49,469) is in a full saved chunk but contains
+`minecraft:smooth_basalt`. The single mismatch remains CONTENT_NOT_PRESERVED
+and excluded. The trace's constructive observation does not override saved content.
+The evidence does not identify the later writer responsible for the mismatch.
+
+## Accepted counts and limitations
+
+All rates are count times 1,000 / 4,096 within the same stratum. The output retains
+all category densities, individual spatial observations, censoring and biome bands.
+
+| Stratum | Raw registry starts | All locations | T0 | C | T1 | T2 | T3 | T4 | Villages |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Aether | 32 | 3 | 0 | 0 | 0 | 3 | 0 | 0 | 0 |
+| Earth orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Mars orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon orbit | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Moon | 11 | 11 | 11 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Venus | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overworld | 28 | 1341 | 12 | 1 | 1319 | 7 | 2 | 0 | 1 |
+| Central End | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Outer End | 15 | 73 | 73 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Nether | 74 | 474 | 59 | 1 | 409 | 3 | 2 | 0 | 0 |
+
+Aether's 29 cloud starts remain excluded terrain. The observer records 28,700
+calls and 28,531 grouped candidates: 24,122 NO_CONSTRUCTIVE_CONTENT, 2,625
+OUTSIDE_FRAME, 1,773 OBSERVED_LOCATION, one CONTENT_NOT_PRESERVED and ten
+reviewed overlap exclusions. These are separate call and location denominators.
+Biome counts conserve all accepted locations. The central-End arena is the sole
+unavailable biome anchor; no positive-count zero-exposure row occurs in this world.
+
+Compared with the first baseline, Overworld totals change from 1,294 to 1,341,
+outer End from 19 to 73, and Nether from 437 to 474. Overworld T2/T3 remain 7/2;
+their stability is not proof of deterministic generation. Overworld T2 finite-window
+nearest-observed mean is 214.74959351842614 blocks, while the uncensored mean
+remains null. Dispersion is 1.4196428571428572 and largest empty full-cell rectangle
+is 1,024 chunks. The final matched r2 control is not yet available. This is the
+eleventh accepted planned cell, not Item 10 completion or a reduction of its target.

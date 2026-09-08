@@ -3,7 +3,7 @@
 Status: IN PROGRESS, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
-repetitions and baseline/control arms. Ten worlds have individual census and
+repetitions and baseline/control arms. Eleven worlds have individual census and
 raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
@@ -23,7 +23,7 @@ methodology amendment passed clean review and main delivery through
 [PR22](https://github.com/copeugne/mcpack/pull/22). Earlier diagnostics below retain
 their original limited scope and cannot substitute for the full sample.
 
-## Accepted Overworld comparisons (incomplete sample)
+## Accepted Overworld comparisons (initial ten-world subset)
 
 These are direct values from the ten accepted census outputs, not acceptance of
 the full sampling gate. Each row has exactly 4,096 full selected chunks. Rates
@@ -217,17 +217,17 @@ worlds only; it does not close the pending full sampling requirement.
 
 ## Failure denominators and uncertainty
 
-Ten planned cells have accepted complete censuses. The eleventh planned cell
+Eleven planned cells have accepted complete censuses. The failed planned cell
 (ocean-heavy r2 control) has two rejected attempts: heap exhaustion during
 generation, then an incomplete saved Aether chunk following a save exception.
-Five planned cells remain unattempted. This is twelve attempts over eleven
-attempted cells, not twelve completed worlds or six measured zero-density cells.
+Four planned cells remain unattempted. This is thirteen attempts over twelve
+attempted cells, not thirteen completed worlds or five measured zero-density cells.
 The failed attempts retain their immutable archives and diagnoses. No missing
 cell enters density, distance or matched-pair denominators. The user rejected the proposed fifteen-world target and authorized a final fresh
 control retry after the five untouched planned worlds. Sixteen complete cells
 remain required.
 
-Within the ten accepted worlds, the observer's call count differs from grouped
+Within the eleven accepted worlds, the observer's call count differs from grouped
 location candidates. The following are direct lengths and disposition counts
 from `nonregistry_candidates.attempts`, `locations` and `location_observations`
 in their accepted, hash-bound outputs. The five disposition columns partition
@@ -245,6 +245,7 @@ the grouped candidates; they do not partition individual observer calls.
 | Mountainous r2 C | 32854 | 32681 | 25332 | 2877 | 4468 | 2 | 2 |
 | Ocean-heavy r1 B | 28579 | 28394 | 24105 | 2617 | 1669 | 3 | 0 |
 | Ocean-heavy r1 C | 28648 | 28427 | 24078 | 2630 | 1718 | 1 | 0 |
+| Ocean-heavy r2 B | 28700 | 28531 | 24122 | 2625 | 1773 | 1 | 10 |
 
 No constructive content means the candidate did not produce the required content;
 it is not a failed server run. Outside-frame candidates remain excluded by the
@@ -252,7 +253,10 @@ declared geometry. Saved-content mismatches remain excluded under the existing
 acceptance rule, even if a writer previously reported a successful operation.
 The individual records retain coordinates and content checks. Registry starts
 are counted separately, so observed nonregistry locations alone do not equal
-the all-location totals in the dimension tables.
+the all-location totals in the dimension tables. The new
+[ocean-heavy r2 baseline](full-ocean-heavy-r2-baseline/README.md) supplies its
+complete category and spatial results; initial ten-world tables above remain
+explicit subsets until the final combined synthesis.
 
 The raw overlap disposition stays `OVERLAP_REVIEW_REQUIRED`; the two mountainous
 r2 reports supply its completed human-readable review and exclusion. They do not
@@ -264,10 +268,12 @@ not corrected estimates, confidence intervals or permission to change numerators
 They affect total/T0 counts, not T2/T3 counts. Content mismatches, biome attribution
 limits and boundary-censored distances remain separate issues with their own
 denominators; none is converted into an omnibus failure rate.
+The new ocean-heavy r2 baseline separately excludes ten reviewed T0 candidates;
+its linked report gives the 73-to-83 outer-End sensitivity and all five overlap pairs.
 
 The four selected seeds are not a random sample, and only three currently have
 accepted worlds. Ordinary and mountainous each have two complete matched pairs;
-ocean-heavy has one. No biome-diverse inference is available. Fresh-repetition
+ocean-heavy has one and an unpaired second baseline. No biome-diverse inference is available. Fresh-repetition
 variation remains visible in the tables and raw outputs. Two repetitions do not
 support a reliable tail estimate or a confidence interval for all generated worlds.
 The raw sampling boundaries censor distances, and all sparse categories retain
@@ -513,7 +519,7 @@ The human collection matrix is superseded by the delivered
 
 Remaining measurement and delivery work:
 
-- Complete the remaining six worlds under the frozen protocol and continue
+- Complete the four biome-diverse worlds, then the authorized final control retry; continue
   capacity checks. Preserve all existing artifacts and failed observations.
 - Combine all declared category, spatial, biome, seed and repetition results,
   including the matched Sparse Structures contrast and uncertainty.

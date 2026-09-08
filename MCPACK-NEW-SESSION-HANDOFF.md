@@ -139,61 +139,39 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Ten worlds are accepted; the Item 10 README integrates comparisons and failure denominators:
+Eleven planned cells have complete census and raw-custody acceptance:
 
-- [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
-- [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
-- [Ordinary r2 control](evidence/item-10/full-ordinary-r2-without-sparse/README.md).
-- [Ordinary r2 baseline](evidence/item-10/full-ordinary-r2-baseline/README.md).
-- [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
-- [Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md).
-- [Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md).
-- [Mountainous r2 baseline](evidence/item-10/full-mountainous-r2-baseline/README.md).
-- [Ocean-heavy r1 baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md).
-- [Ocean-heavy r1 control](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md).
+- [full-ordinary-r1-baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
+- [full-ordinary-r1-without-sparse](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
+- [full-ordinary-r2-without-sparse](evidence/item-10/full-ordinary-r2-without-sparse/README.md).
+- [full-ordinary-r2-baseline](evidence/item-10/full-ordinary-r2-baseline/README.md).
+- [full-mountainous-r1-baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
+- [full-mountainous-r1-without-sparse](evidence/item-10/full-mountainous-r1-without-sparse/README.md).
+- [full-mountainous-r2-without-sparse](evidence/item-10/full-mountainous-r2-without-sparse/README.md).
+- [full-mountainous-r2-baseline](evidence/item-10/full-mountainous-r2-baseline/README.md).
+- [full-ocean-heavy-r1-baseline](evidence/item-10/full-ocean-heavy-r1-baseline/README.md).
+- [full-ocean-heavy-r1-without-sparse](evidence/item-10/full-ocean-heavy-r1-without-sparse/README.md).
+- [full-ocean-heavy-r2-baseline](evidence/item-10/full-ocean-heavy-r2-baseline/README.md).
 
-Analysis implementation `760aa2f5` applies the documented coverage-v2 correction:
-archive-bound frozen JAR, all target installations except a verified unexercised
-Gateway case, and strict trace/content checks. The fifth world's original
-coverage rejection and fixture investigation remain in its record. Full Item
-7/10 suite passed 548 tests in 173.38s; two added archive-binding cases passed
-in the focused 41-test run. No code changed for the sixth or seventh census.
+Ocean-heavy r2 baseline completed generation in 526.634s and census in 549.917s.
+Its record binds restored raw evidence, all 45,056 selected full chunks and the
+reviewed ten T0 overlap exclusions plus one saved-content mismatch. Session 90296
+is terminal 0. The initial ten-world comparisons remain in the Item 10 README;
+update the complete synthesis after collection rather than regenerating it per world.
 
-The mountainous block is accepted at `5367d2dd`. The seventh and eighth worlds
-retain two and six reviewed overlap exclusions respectively under the unchanged
-protocol. Both matched pairs have Overworld T2/T3 baseline 6/2 versus control
-22/7, while total differences vary +44 to +165. Use their linked records for
-raw failures, sensitivity and complete repetition comparisons.
+User-authorized `item10-retry-policy-v2` keeps sixteen complete cells as the target.
+Next: biome-diverse r1 baseline, r1 control, r2 control, r2 baseline, then exactly
+one fresh ocean-heavy r2 control attempt3. Preserve unchanged frozen identities.
+The runner restricts attempt3 to that cell; 14 collection tests and quality checks pass.
+The original [heap failure](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
+and [save-failure retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
+remain rejected with immutable restored raw custody. Neither is erased by a retry.
+No tuning, repaired proof worlds or additional retries. The lifecycle now stops on
+heap/save errors; 42 focused lifecycle/console/collection tests cover the correction.
 
-[Ocean-heavy r2 control](evidence/item-10/full-ocean-heavy-r2-without-sparse/README.md)
-FAILED with Java heap exhaustion in outer End. Session `62268` is terminal 1;
-Java exited 0 after operator pause, correlated flush and stop, without force-kill.
-Nine selections completed, outer End is incomplete and Nether unattempted.
-The unchanged harness rejects lifecycle completion. Ten worlds remain accepted.
-The failed run's published/downloaded/restored archive preserves 315 raw files,
-two debug reports, emergency commands, sanitized configuration and a 458-file
-partial world. No full census was run on the failed world.
-The heap-error shutdown correction is pushed at `d5e44617`, with 34 focused
-lifecycle/console/runner tests plus Ruff and type checks. It bounds emergency
-save/stop and never accepts heap-exhausted runs; successful-run identity is unchanged.
-The [post-failure retry amendment](evidence/item-10/protocol.md#bounded-retry-amendment-after-the-retained-resource-failure)
-permits exactly one fresh attempt for this cell, retaining the failed attempt.
-Policy and naming are pushed at `ffa51fb9`. The
-[retry](evidence/item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
-completed all eleven selections and normal save/stop in 549.011s; session `48448`
-is terminal 0. Preflight, observer and selections match the first control.
-Published/downloaded/restored custody verifies 313 raw and 502 world files.
-Census session `98243` is terminal 1: selected Aether chunk (-16,-22) is saved
-as `minecraft:initialize_light`. Direct decoding finds 4,095 full plus one
-incomplete selected chunk, no missing or duplicated coordinates. Census rejects
-correctly; no result or smaller denominator is accepted. See the retry record.
-The retry record links the Aether exception, source mechanism, restored debug report
-and stop-on-save-error correction (42 focused tests). Accepted logs lack this error.
-User authorized retry-policy-v2: run ocean-heavy r2 baseline, then all four
-biome-diverse worlds in planned order, then one fresh ocean-heavy r2 control attempt3.
-Ocean-heavy r2 baseline generation/custody passed; census session 90296 is live.
-Then finish combined synthesis, consolidated PR review/merge and
-Items 2 through 10 audit. No new tooling PR or Item 11 work.
+After collection: full synthesis, applicable final checks and clean-checkout
+reproduction, consolidated Codex PR review/fix/merge, verified main delivery and
+Items 2 through 10 identity/narrative audit. No new tooling PR or Item 11 work.
 
 Two local servers are stopped and preserved. Official launcher profiles are prepared;
 first launch/join is unverified. [Setup evidence](evidence/item-10/server-setup/README.md) is operational
