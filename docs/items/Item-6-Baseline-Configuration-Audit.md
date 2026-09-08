@@ -43,7 +43,7 @@ YUNG's API, YUNG's Bridges, and YUNG's Extras generated no standalone config sur
 * Loot Integrations uses generated defaults: maps are skipped for added loot, existing items are not skipped, and modded-item weight is 3. Provider-specific integration JARs do not emit separate user configuration.
 * ServerCore dynamic adaptation, breeding caps, entity activation range, and special spawning mobcap enforcement are disabled. Its natural monster category remains 70 at a one-tick interval. Its non-parity `reduce-sync-loads` and `cache-ticking-chunks` optimizations are enabled by generated default.
 * The materialized server difficulty is `easy`; animal, monster, and NPC spawning are enabled. This is baseline input, not a tuning recommendation.
-* C2ME leaves user-facing values at `"default"`. It records that the End biome cache optimization is disabled at runtime due to Biolith 3.0.10 incompatibility. Chunky is retained but generated no config file, which is explicitly different from a generated default.
+* C2ME leaves user-facing values at `"default"`. It records that the End biome cache optimization is disabled at runtime due to Biolith 3.0.10 incompatibility. Chunky is excluded from the retained 136-JAR manifest, so no Chunky config was generated in Item 6. It is separately declared as a generation instrument in Items 7 and 10. The earlier retained-status description was incorrect; see the snapshot erratum below.
 
 ## Precedence, uncertainty, and downstream gates
 
@@ -60,3 +60,20 @@ uv run python tools/freeze_item6_config.py validate \
   --audit evidence/item-6/config-audit.json
 uv run pytest -q tests/item6
 ```
+
+## Post-Item-10 snapshot erratum
+
+The [cross-item audit](../../evidence/item-10/cross-item-audit.md) reopened the
+Chunky attribution claim and resolved it against the Item 3 disposition and
+retained manifest. In the immutable `config-audit.json` snapshot at SHA-256
+`181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd`, the
+`systems` entry named `Chunky` has the erroneous status
+`retained-but-no-config-generated`. Its current disposition is
+`not-retained; no-config-generated`. The empty `files` list is correct.
+The snapshot preserves the original error because Item 7/10 receipts bind those
+exact bytes; it must be read with this explicit correction, not reused as proof
+of runtime membership. The accepted Item 3 manifest and final compatibility
+matrix remain authoritative for membership. No configuration file, runtime,
+measurement or historical receipt changed. The affected attribution and
+cross-item consistency gate pass with this documented correction; no empirical
+gate is invalidated by an instrument that was correctly absent from Item 6.

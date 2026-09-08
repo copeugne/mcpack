@@ -1,10 +1,10 @@
 # Item 10 baseline density
 
-Status: IN PROGRESS, 2026-09-08.
+Status: COMPLETE through reviewed PR35 main delivery, 2026-09-08.
 The [sampling protocol](protocol.md) is frozen as `item10-full-v1`, with
 `item10-observer-coverage-v2`: sixteen fresh worlds covering four seeds, two
 repetitions and baseline/control arms. All sixteen worlds have individual census and
-raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#current-full-sample-block)
+raw-custody acceptance. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md#completed-measurement-and-authoritative-evidence)
 links their authoritative records and current continuation state. The
 [second ocean-heavy control](full-ocean-heavy-r2-without-sparse/README.md) failed
 with heap exhaustion and remains preserved. The single predeclared
@@ -14,8 +14,9 @@ All five remaining planned worlds and the [final fresh retry](full-ocean-heavy-r
 passed. The sample contains sixteen complete worlds after eighteen attempts, with
 both failures preserved and the frozen configuration unchanged. The complete
 category, biome, seed, repetition and spatial comparison follows. Local validation
-and clean-checkout reproduction pass. Final review, main delivery and the Items 2
-through 10 audit remain incomplete. No tuning was performed.
+and clean-checkout reproduction pass. Final review and main delivery are verified
+below. The post-delivery [Items 2 through 10 audit](cross-item-audit.md) passes
+locally and awaits its own review/main delivery. No tuning was performed.
 
 The [authorized automated scope](methodology-amendment.md) removes human phases
 from Items 10 and 11. No playing workload or recording is required. Provisional
@@ -432,6 +433,9 @@ remain unobserved, not impossible or absent from the runtime.
 
 ## Exit-gate reassessment (2026-09-08)
 
+Historical pre-collection decision record. Its then-open measurement and storage
+gaps are superseded by the completed result and delivery record in this report.
+
 The user paused new experiments and PR creation and directed one consolidated
 remaining Item 10 delivery after the existing reviews. SPECS Item 10 requires
 representative regions across the four selected seeds, all declared category
@@ -477,8 +481,8 @@ source/JAR identity and enforces coverage-v2, including the narrowly verified
 unexercised Gateway case. The [current handoff](../../MCPACK-NEW-SESSION-HANDOFF.md)
 links the applicable validation and accepted full-world results. Storage and
 prior reviews, all sixteen world censuses and combined synthesis are resolved.
-Local validation passes; final review and delivery remain incomplete. Runtime
-acceptance is established per world, not from tests.
+Local validation, clean review and PR35 main delivery pass. Runtime acceptance
+is established per world, not from tests. The subsequent audit is linked above.
 
 ### Storage decision before collection
 
@@ -602,7 +606,7 @@ processor revisions needed to reproduce earlier serialized census versions.
 
 ### Local Item 10 exit gate
 
-MEASURED and VERIFIED locally, pending final review and main delivery:
+COMPLETE through clean PR35 review and verified main delivery; see the delivery record below.
 
 | Item 10 requirement | Authoritative result |
 | --- | --- |
@@ -613,7 +617,7 @@ MEASURED and VERIFIED locally, pending final review and main delivery:
 | Sparse Structures contribution | Eight matched omit-only controls, unchanged frozen configuration and observer; spacing/salt mechanism and observed contrasts with causal limitations. |
 | Evidence integrity and reproducibility | Per-world immutable archives, local/download/world restores, exact source/runtime identities, deterministic complete-biome reproduction and clean-checkout full-census byte identity. |
 | Failure disposition and uncertainty | Eighteen attempts, two rejected runs preserved, explicit saved-content and overlap exclusions, sparse counts, finite-frame censoring and no random-world confidence claim. |
-| Delivery | Final Codex PR review/fix loop, merge verification and subsequent Items 2 through 10 audit remain pending. |
+| Delivery | Clean PR35 review and main merge verified below. The required post-delivery audit is recorded separately. |
 
 No observed fights, experienced pacing, enjoyment, loot correctness or production
 reliability is established by this density gate.
@@ -646,7 +650,7 @@ its recorded emergency shutdown. No estimated total replaces these observations.
 Remaining validation and delivery work:
 
 - Preserve all accepted worlds and both failed attempts while completing delivery.
-- Complete final review, main delivery and the Items 2 through 10 audit.
+- Deliver the Items 2 through 10 audit following verified PR35 main delivery.
   Keep Item 11 workflows untouched.
 
 The observer and control methods are implemented. Reuse them; add no generic
@@ -690,6 +694,7 @@ uv run --no-sync python - <<'PY'
 import gzip, json
 from pathlib import Path
 from tools.validate_item10_trace import collection_attempts
+from mcpack_evidence.item7_selections import ITEM10_SELECTIONS
 names = json.loads(gzip.decompress(Path('evidence/item-10/accepted-biome-comparisons.json.gz').read_bytes()))
 for name in names:
     manifest = json.loads(Path(f'evidence/item-10/{name}/archive-manifest.json').read_bytes())
@@ -697,9 +702,7 @@ for name in names:
     prefix = 'trace.jsonl.classes/'
     classes = {n[len(prefix):-6]: r['sha256'] for n, r in members.items()
                if n.startswith(prefix) and n.endswith('.class')}
-    dimensions = {'minecraft:overworld', 'minecraft:the_end', 'minecraft:the_nether',
-                  'aether:the_aether', *[f'ad_astra:{n}' for n in
-                  ('earth_orbit', 'mars', 'mars_orbit', 'moon', 'moon_orbit', 'venus')]}
+    dimensions = {selection.dimension for selection in ITEM10_SELECTIONS}
     attempts = legacy = 0
     for rows in collection_attempts(
         Path(f'evidence/raw/item10/{name}-custody/restored-local/trace.jsonl'),
@@ -726,3 +729,19 @@ BasedPyright passes both affected test files with zero errors, warnings or notes
 ([output](final-validation/basedpyright-review-fixes.txt)). The tracked biome
 reproduction verified all sixteen input hashes, count conservation and exact
 compressed bytes. No Item 11 workflow was selected.
+
+## Reviewed main delivery
+
+[PR35](https://github.com/copeugne/mcpack/pull/35) merged accepted head
+`45ee6da10053904fea749c3685a2e8cec34c1577` as
+`d507573ead2c2740657129e9ee57a1410f420ed9`. A fresh fetch and
+`git merge-base --is-ancestor 45ee6da10053904fea749c3685a2e8cec34c1577 origin/main`
+verified delivery. The [final review](https://github.com/copeugne/mcpack/pull/35#issuecomment-5591215054)
+identifies that head. The cycle completed at 2026-09-08 20:11:11 UTC, introduced
+no inline or discussion findings, and received the Codex bot's PR thumbs-up
+(reaction 495211066 at 20:11:15 UTC). Both earlier findings were fixed and
+validated in separate commits; their replies are linked in the PR.
+
+Item 10 is COMPLETE. The [post-delivery cross-item audit](cross-item-audit.md)
+checks Items 2 through 10 together without repeating their experiments or
+reclassifying families. Item 11 remains outside this task's execution scope.
