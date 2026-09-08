@@ -191,7 +191,7 @@ The retry record links the Aether exception, source mechanism, restored debug re
 and stop-on-save-error correction (42 focused tests). Accepted logs lack this error.
 User authorized retry-policy-v2: run ocean-heavy r2 baseline, then all four
 biome-diverse worlds in planned order, then one fresh ocean-heavy r2 control attempt3.
-Keep sixteen complete worlds as the target and both failures intact. No tuning.
+Ocean-heavy r2 baseline generation/custody passed; census session 90296 is live.
 Then finish combined synthesis, consolidated PR review/merge and
 Items 2 through 10 audit. No new tooling PR or Item 11 work.
 
