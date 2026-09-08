@@ -55,3 +55,53 @@ costs under the amended contract.
 Current batch: predeclaration and source integration. Next: ordinary r1 baseline
 representative slice, then reassess measured resource cost before full expansion.
 No Item 12 work is authorized in this task.
+
+## Representative slice
+
+Ordinary repetition 1 baseline passes the first-world route gate. The
+[accepted result](results/full-ordinary-r1-baseline.json.gz) binds the exact
+census, archive manifest, backup manifest, protocol and analyzer hashes. Complete
+restored-world inventory checks pass before and after the locked read. The result
+retains 9,216 top-cell observations, four routes, all three transport models,
+three radii, three windows and ten category groups. Existing input/classification
+identity regression plus eight route tests pass. Ruff and BasedPyright pass.
+
+The [first pilot](pilot/ordinary-r1.json.gz) and [timing](pilot/attempt1.txt)
+retain an interim result before adjacent-repeat modeled times were integrated.
+It is not the accepted result. The complete [second timing](pilot/attempt2.txt)
+is 43.722 seconds; accepted output is 325,480 bytes, SHA-256
+`3f67cacc9d018f5489e94168c7646d8d8a44bd9c1ad5a5e3eab3dfda8b81b0a6`.
+Linear projection is 699.552 seconds and 5,207,680 result bytes for sixteen worlds,
+not a measured full-run cost. A mid-run process sample showed 256,372 KiB RSS;
+this is not peak-memory measurement. The pilot is comfortably within the declared
+2 GiB memory, 1 GiB output and provisional 160-minute runtime allowances.
+
+Manual result inspection: all four fixed transects have water top cells and
+MODEL_FEASIBLE boat corridors. Walking and horse are INFEASIBLE from the initial
+station, with all failed stations preserved. This is consistent with the model's
+no-swimming assumption, not a general claim that those modes cannot explore seed
+42. At radius 64 and distance 768, adjacent counts are 65/82/119/59 in route
+order east-north/east-south/south-east/south-west; ray-clear counts are 1/0/1/0.
+Covered blocks are 120/0/56/0. Actionable ray-clear counts are zero on all four.
+The contrast retains underground candidate density separately from geometric
+visibility and modeled accessibility. No desirable-pacing claim is made.
+
+The first test invocation failed because the new test directory lacked its package
+marker; adding the existing repository package pattern resolved collection.
+Initial syntax and type-check errors were corrected before representative reading.
+These development failures did not modify raw worlds or produce accepted evidence.
+No processing exception occurred in either representative invocation.
+
+Reproduce the accepted representative slice into an absent output path:
+
+```sh
+uv run --no-sync python -m tools.analyze_route_opportunities \
+  --name full-ordinary-r1-baseline --output /tmp/item11-ordinary-reproduction.json.gz
+cmp evidence/item-11/results/full-ordinary-r1-baseline.json.gz /tmp/item11-ordinary-reproduction.json.gz
+uv run --no-sync pytest -q tests/item11 tests/item10/test_collection_runner.py::test_committed_cross_item_identity_bindings
+```
+
+The invocation was executed with the committed result path; the `/tmp` example
+is a new-output destination and its exact invocation is pending final reproduction.
+Next batch: the other fifteen accepted worlds, retaining this same protocol and
+analyzer identity. Full-report integration and final delivery remain incomplete.
