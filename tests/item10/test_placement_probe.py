@@ -294,3 +294,60 @@ def test_direct_feature_helper_preserves_writes(tmp_path: Path) -> None:
         timeout=30,
     )
     assert transformed.read_bytes() != payload
+
+
+def test_monster_box_void_generator_preserves_write_result(tmp_path: Path) -> None:
+    agent = _build_probe(tmp_path)
+    command = [str(JDK / "java"), "--add-exports", EXPORT, "-classpath", str(tmp_path)]
+    name = "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator"
+    for mode in ("normal", "early", "refused", "exception", "isolated", "outside"):
+        arguments = ["GeneratorFixture", mode]
+        ordinary = subprocess.run(
+            [*command, *arguments], check=True, capture_output=True, text=True, timeout=30
+        )
+        trace = tmp_path / f"generator-{mode}.jsonl"
+        observed = subprocess.run(
+            [*command, f"-javaagent:{agent}={trace}", *arguments],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert observed.stdout == ordinary.stdout
+        rows = [
+            cast("dict[str, object]", json.loads(line)) for line in trace.read_text().splitlines()
+        ]
+        assert not any(r["kind"] == "installation_failed" for r in rows)
+        assert any(r.get("class") == name and r["kind"] == "feature_installed" for r in rows)
+        writes = [r for r in rows if r["kind"] in {"write", "write_exception"}]
+        assert len(writes) == (0 if mode in {"early", "outside"} else 1)
+        ends = [r for r in rows if r["kind"] == "generator_end"]
+        assert len(ends) == (0 if mode in {"outside", "exception"} else 1)
+        assert all(set(r) == {"kind", "attempt"} for r in ends)
+        assert rows[-1]["unfinished_attempts"] == (1 if mode == "exception" else 0)
+        if mode in {"normal", "refused", "isolated"}:
+            assert writes[0]["returned"] is (mode != "refused")
+            assert writes[0]["flags"] == 0
+            assert writes[0]["position"] == [1, -5, 3]
+    archive = ROOT / "downloads/item3/candidates/Quark-4.1-480.jar"
+    assert (
+        hashlib.sha256(archive.read_bytes()).hexdigest()
+        == "989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5"
+    )
+    with zipfile.ZipFile(archive) as jar:
+        payload = jar.read(name + ".class")
+    assert (
+        hashlib.sha256(payload).hexdigest()
+        == "bffcb41fcefa591835aff3ca7efc8ded0ba971bb409ab9a751dbede417c62eb8"
+    )
+    original = tmp_path / "monster-original.class"
+    transformed = tmp_path / "monster-transformed.class"
+    _ = original.write_bytes(payload)
+    _ = subprocess.run(
+        [*command, "TemplateFixture", "transform", name, str(original), str(transformed)],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert transformed.read_bytes() != payload

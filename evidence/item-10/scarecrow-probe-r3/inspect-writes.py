@@ -8,25 +8,28 @@ from collections import Counter
 from pathlib import Path
 
 from tools.manage_item4_environment import _world_backup_lock
-from tools.validate_item10_trace import validate_bop_trace, validate_trace
+from tools.validate_item10_trace import validate_feature_trace, validate_trace
 
 from mcpack_evidence.item7_anvil import decode_region_payloads
 from mcpack_evidence.item7_nbt import _packed, decode_compound_nbt
 
+monster = sys.argv[1:] == ["--monster-r1"]
 bop = sys.argv[1:] == ["--bop-r1"]
-if sys.argv[1:] and not bop:
-    detail = "Only the optional --bop-r1 inspection mode is supported"
+feature_mode = bop or monster
+if sys.argv[1:] and not feature_mode:
+    detail = "Supported inspection modes are --bop-r1 and --monster-r1"
     raise ValueError(detail)
-if bop:
-    raw = Path("evidence/raw/item10/bop-fixture-r1-custody/restored")
+if feature_mode:
+    diagnostic = "monster-box-pilot-r1" if monster else "bop-fixture-r1"
+    raw = Path("evidence/raw/item10") / (diagnostic + "-custody") / "restored"
     world = raw.parent / "restored-world/world"
     trace = raw / "trace.jsonl"
-    validated = validate_bop_trace(raw)
+    validated = validate_feature_trace(raw, monster_box=monster)
     manifest_path = raw / "world-backup.json"
-    archive_path = Path("evidence/item-10/bop-fixture-r1/archive-manifest.json")
+    archive_path = Path("evidence/item-10") / diagnostic / "archive-manifest.json"
     manifest_member = "world-backup.json"
-    dimension = "minecraft:the_end"
-    region_dir = "DIM1/region"
+    dimension = "minecraft:overworld" if monster else "minecraft:the_end"
+    region_dir = "region" if monster else "DIM1/region"
 else:
     world = Path("evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-probe-r3/world")
     trace = Path("evidence/item-10/scarecrow-probe-r3/trace.jsonl")
@@ -115,12 +118,16 @@ result = {
     "trace_sha256": hashlib.sha256(trace_bytes).hexdigest(),
     "anvil_inputs": inputs,
 }
-if bop:
+if feature_mode:
     successful = [row for row in observations if row["returned"]]
     last = {tuple(row["position"]): row for row in successful}
     attempt_counts = Counter(row["attempt"] for row in successful)
     features = {row["attempt"]: row["class"] for row in rows if row["kind"] == "feature"}
-    returns = {row["attempt"]: row["returned"] for row in rows if row["kind"] == "end"}
+    returns = {
+        row["attempt"]: row.get("returned")
+        for row in rows
+        if row["kind"] in {"end", "generator_end"}
+    }
     result.update(
         {
             "recorded_writes": len(observations),
@@ -157,11 +164,11 @@ if bop:
 else:
     result["observations"] = observations
 print(json.dumps(result, indent=2))  # noqa: T201
-if bop and result["last_recorded_write_mismatches"]:
+if feature_mode and result["last_recorded_write_mismatches"]:
     detail = "BOP last recorded successful writes disagree with saved block IDs"
     raise ValueError(detail)
 expected_writes = 30
-if not bop and (
+if not feature_mode and (
     len(observations) != expected_writes or not all(row["same_block_id"] for row in observations)
 ):
     detail = "Retained r3 corroboration requires all 30 recorded block IDs to match"

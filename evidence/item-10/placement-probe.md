@@ -662,3 +662,26 @@ partially generated neighbors, explicitly excluded from full-chunk density
 exposure. The artificial fixture is not a density sample. Both supported BOP
 writers now have positive capture evidence; other mechanism coverage and
 observer cost still gate full sampling.
+
+
+## Monster Box generator extension
+
+Reuse the accepted [generator identity](../item-8/sources/quark-landmark-encounter-generators/identities.json)
+and frozen Monster Box interpretation. The retained generateChunk method returns
+void and its single WorldGenRegion.setBlock call (offset 122, flags 0) discards
+the actual boolean. The existing collector now brackets this exact method,
+records the actual write result, and emits generator_end without inventing a
+boolean return. Early normal returns, refused writes and exceptional incomplete
+attempts remain distinct. The anchor is the passed generator chunk position;
+actual block coordinates come from write records, not that anchor.
+
+The existing fixtures now cover this fourth collector test: normal, early,
+refused, exceptional, isolated-loader and outside-method execution preserve
+stdout and complete world-call arguments. The exact retained Quark archive and
+MonsterBoxGenerator class hashes are checked before transformation. All four
+collector tests pass in 7.78 seconds; changed-test Ruff and basedpyright pass.
+No live run or accepted occurrence count is supplied. The collection consumer
+must support generator_end and count successful monster-box writes under the
+frozen at-most-one-write-per-chunk setting; a completed void call is not success.
+Fairy-ring delegated flower writes remain separate missing coverage. No frozen
+configuration or random draw is changed by this extension.

@@ -544,3 +544,33 @@ require probe/pilot mode. Existing default commands remain empty.
 ```sh
 uv run --no-sync python -m tools.run_item10_probe --name bop-fixture-r1 --mode probe --role mountainous --preset pilot --bop-fixture
 ```
+
+
+## Monster Box natural pilot r1
+
+Predeclared before launch. Use fresh `monster-box-pilot-r1`, ordinary seed 42,
+the unchanged 324-chunk pilot (81 chunks each in Overworld, Nether, central End
+and outer End), frozen Item 6 configuration and the current recorded probe
+source. Use no forced placements, terrain commands or configuration changes.
+This run checks runtime capture, not representative density. Preserve all
+attempts, including void returns without writes; a generator_end is completion
+only. Count successful monster-box writes separately from attempts and other
+feature classes. Snapshot the actual write coordinates before mutable positions
+can move. Retain incoming classes, failures and the complete raw trace.
+
+Acceptance requires installation of the exact incoming MonsterBoxGenerator hook,
+paired generator attempts with actual write results, correlated save and clean
+shutdown, durable raw custody and saved-block corroboration. Zero successful
+writes are an insufficient positive diagnostic, not proof of zero density; do
+not adapt the area or seed based on counts. Other family hooks retain their
+existing scope. Full sampling remains gated on complete occurrence coverage.
+
+Use the existing 1 to 4 GiB heap and 900-second lifecycle timeout. Previous
+324-chunk diagnostics took approximately 90 seconds. Reserve 1 GiB for this
+pilot and custody; available storage was 6.3 GiB before declaration. No Java
+server was running. These are resource allowances and planning proxies, not
+measured costs for this new collector. Record actual time and trace/archive sizes.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name monster-box-pilot-r1 --mode probe --role ordinary --preset pilot
+```

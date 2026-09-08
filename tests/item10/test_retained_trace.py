@@ -8,9 +8,10 @@ from tools.validate_item10_trace import (
     BOP_CLASSES,
     BOP_INSTALLED,
     CLASS_SHA,
-    check_bop_rows,
+    MONSTER_BOX,
+    check_feature_rows,
     check_rows,
-    validate_bop_trace,
+    validate_feature_trace,
     validate_trace,
 )
 
@@ -109,7 +110,7 @@ def bop_rows() -> list[dict[str, object]]:
 
 def test_bop_capture_preserves_refused_write_denominator() -> None:
 
-    result = check_bop_rows(bop_rows())
+    result = check_feature_rows(bop_rows())
     assert result["attempts"] == 2
     assert result["writes"] == 4
     assert result["refused_writes"] == 1
@@ -142,14 +143,14 @@ def test_bop_capture_rejects_broken_contract(defect: str) -> None:
     else:
         rows[index]["unfinished_attempts"] = 1
     with pytest.raises(ValueError, match=r"BOP|duplicate feature|feature before installation"):
-        _ = check_bop_rows(rows)
+        _ = check_feature_rows(rows)
 
 
 def test_bop_changed_trace_rejected_before_class_reads(tmp_path: Path) -> None:
 
     _ = (tmp_path / "trace.jsonl").write_text("{}\n")
     with pytest.raises(ValueError, match=r"differs from archived member: trace\.jsonl"):
-        _ = validate_bop_trace(tmp_path)
+        _ = validate_feature_trace(tmp_path)
 
 
 def test_bop_escaped_trace_rejected(tmp_path: Path) -> None:
@@ -160,7 +161,66 @@ def test_bop_escaped_trace_rejected(tmp_path: Path) -> None:
     _ = outside.write_text("{}\n")
     (raw / "trace.jsonl").symlink_to(outside)
     with pytest.raises(ValueError, match="escapes raw root"):
-        _ = validate_bop_trace(raw)
+        _ = validate_feature_trace(raw)
+
+
+def monster_rows() -> list[dict[str, object]]:
+    """Retain both successful and refused single-write generator calls."""
+    rows = bop_rows()
+    seen: set[int] = set()
+    single: list[dict[str, object]] = []
+    for row in rows:
+        if row["kind"] == "write":
+            attempt = cast("int", row["attempt"])
+            if attempt in seen:
+                continue
+            seen.add(attempt)
+            row["returned"] = attempt == 1
+        single.append(row)
+    rows = single
+    rows.insert(
+        1, {"kind": "feature_installed", "class": MONSTER_BOX, "input_class_sha256": "b" * 64}
+    )
+    for row in rows:
+        if row["kind"] == "begin":
+            row["dimension"] = "minecraft:overworld"
+        elif row["kind"] == "feature":
+            row["class"] = MONSTER_BOX.replace("/", ".")
+        elif row["kind"] == "write":
+            row["flags"] = 0
+        elif row["kind"] == "end":
+            row["kind"] = "generator_end"
+            del row["returned"]
+    return rows
+
+
+def test_monster_void_completion_keeps_write_denominator() -> None:
+    result = check_feature_rows(monster_rows(), monster_box=True)
+    assert result["attempts"] == 2
+    assert result["writes"] == 2
+    assert result["refused_writes"] == 1
+
+
+@pytest.mark.parametrize(
+    "defect", ["boolean-end", "excess-write", "dimension", "missing-end", "refused-only"]
+)
+def test_monster_capture_rejects_invalid_generator_contract(defect: str) -> None:
+    rows = monster_rows()
+    if defect == "boolean-end":
+        next(r for r in rows if r["kind"] == "generator_end")["returned"] = True
+    elif defect == "excess-write":
+        index = next(i for i, r in enumerate(rows) if r["kind"] == "write")
+        rows.insert(index, copy.deepcopy(rows[index]))
+    elif defect == "dimension":
+        next(r for r in rows if r["kind"] == "begin")["dimension"] = "minecraft:the_end"
+    elif defect == "refused-only":
+        for row in rows:
+            if row["kind"] == "write":
+                row["returned"] = False
+    else:
+        del rows[next(i for i, r in enumerate(rows) if r["kind"] == "generator_end")]
+    with pytest.raises(ValueError, match=r"BOP|Monster Box"):
+        _ = check_feature_rows(rows, monster_box=True)
 
 
 @pytest.mark.parametrize("path", ["anomaly-helper", "anomaly-direct", "monolith"])
@@ -172,10 +232,10 @@ def test_bop_requires_successful_write_on_each_path(path: str) -> None:
         if row["kind"] == "write" and row["attempt"] == attempt and row["flags"] == flags:
             row["returned"] = False
     with pytest.raises(ValueError, match="successful writes on all three"):
-        _ = check_bop_rows(rows)
+        _ = check_feature_rows(rows)
 
 
 def test_bop_rejects_omitted_anomaly_final_write() -> None:
     rows = [row for row in bop_rows() if row.get("flags") != 2]
     with pytest.raises(ValueError, match="successful writes on all three"):
-        _ = check_bop_rows(rows)
+        _ = check_feature_rows(rows)

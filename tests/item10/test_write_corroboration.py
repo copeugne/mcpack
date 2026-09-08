@@ -15,20 +15,25 @@ SCRIPT = ROOT / "evidence/item-10/scarecrow-probe-r3/inspect-writes.py"
 WORLD = ROOT / "evidence/raw/item10/probe-pair-r3-custody/world-scarecrow-probe-r3/world"
 
 
-@pytest.mark.parametrize("bop", [False, True])
+@pytest.mark.parametrize("mode", ["scarecrow", "bop", "monster"])
 @pytest.mark.parametrize("defect", ["trace", "manifest", "region", "block"])
 def test_corroboration_rejects_invalid_evidence(
-    defect: str, bop: bool, monkeypatch: pytest.MonkeyPatch
+    defect: str, mode: str, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    diagnostic = "monster-box-pilot-r1" if mode == "monster" else "bop-fixture-r1"
     world = (
-        ROOT / "evidence/raw/item10/bop-fixture-r1-custody/restored-world/world" if bop else WORLD
+        WORLD
+        if mode == "scarecrow"
+        else ROOT / "evidence/raw/item10" / (diagnostic + "-custody") / "restored-world/world"
     )
     if not world.is_dir():
         pytest.skip(
             "Restore the published diagnostic world before running retained-world regressions"
         )
     monkeypatch.chdir(ROOT)
-    monkeypatch.setattr(sys, "argv", [str(SCRIPT), *(["--bop-r1"] if bop else [])])
+    monkeypatch.setattr(
+        sys, "argv", [str(SCRIPT), *([] if mode == "scarecrow" else ["--" + mode + "-r1"])]
+    )
     read_bytes = Path.read_bytes
 
     def changed_bytes(path: Path) -> bytes:
