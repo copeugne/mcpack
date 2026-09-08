@@ -154,13 +154,17 @@ and actual write results. Its extended reader and saved-world inspector validate
 all 429 mixed writes, including 161 urn writes at distinct coordinates. The
 summary preserves 87 successful and 987 zero-successful-write patch attempts.
 All 371 Item 7/10 tests pass; the final summary adjustment passes four affected
-checks. Complete the pending review/fix/delivery loop for this bounded milestone.
+checks. PR32 review found one valid missing-archive prerequisite in the new urn
+mutation tests. Add the neighboring tests' skip behavior, validate and re-request
+review before delivery.
 
 Current branch: `codex/item10-bridge-coverage`. The
 [bridge boundary](evidence/item-10/protocol.md#yung-bridge-occurrence-and-writer-boundary)
 reuses accepted selection/geometry evidence and binds 37 direct processor write
-sites. Next extend the existing template observer through those processor writes
-and validate path/rotation, phase and original behavior before any bridge run.
+sites. Template and processor hooks now pass all 379 Item 7/10 tests and exact
+retained-class transformation. The [probe report](evidence/item-10/placement-probe.md#bridge-template-and-processor-preparation)
+records validation. Configured-variant registry attribution remains missing;
+resolve it before predeclaring a bridge run.
 
 Do not count these raw totals as selected-area density. Full collection still
 requires the remaining nonregistry mechanisms, occurrence inclusion, biome

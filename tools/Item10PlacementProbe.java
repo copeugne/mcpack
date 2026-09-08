@@ -21,6 +21,20 @@ import jdk.internal.org.objectweb.asm.Opcodes;
 
 /** Measurement probe: retain targeted feature and template writes without changing their results. */
 public final class Item10PlacementProbe {
+    private static final String BRIDGE = "com/yungnickyoung/minecraft/yungsbridges/world/feature/BridgeFeature";
+    private static final String BRIDGE_TEMPLATE = "com/yungnickyoung/minecraft/yungsbridges/world/feature/AbstractTemplateFeature";
+    private static final String BRIDGE_PROCESSORS = "com/yungnickyoung/minecraft/yungsbridges/world/processor/";
+    private static final String BRIDGE_TEMPLATE_CALL = "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Z";
+    private static final Map<String, Integer> BRIDGE_WRITERS = Map.ofEntries(
+        Map.entry("FenceBiomeProcessor", 4), Map.entry("ITemplateFeatureProcessor", 2),
+        Map.entry("LanternRotProcessor", 3), Map.entry("LogBiomeProcessor", 1),
+        Map.entry("OptionalBlockProcessor", 7), Map.entry("OptionalSlabProcessor", 7),
+        Map.entry("OptionalStairProcessor", 4), Map.entry("OptionalWallProcessor", 1),
+        Map.entry("PlanksBiomeProcessor", 1), Map.entry("SlabBiomeProcessor", 1),
+        Map.entry("StairBiomeProcessor", 1), Map.entry("StoneVariationProcessor", 5));
+    private static boolean bridgeProcessor(String name) {
+        return name != null && name.startsWith(BRIDGE_PROCESSORS) && BRIDGE_WRITERS.containsKey(name.substring(BRIDGE_PROCESSORS.length()));
+    }
     private static final String PLACED = "net/minecraft/world/level/levelgen/placement/PlacedFeature";
     private static final String SIMPLE = "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature";
     private static final String TARGET =
@@ -224,12 +238,26 @@ public final class Item10PlacementProbe {
 
     public static void selected(Object info, Object template) throws ReflectiveOperationException {
         String path = (String) info.getClass().getField("structurePath").get(info);
+        rememberTemplate(template, path);
+    }
+
+    private static void rememberTemplate(Object template, String path) {
         synchronized (TEMPLATE_PATHS) {
             String previous = TEMPLATE_PATHS.putIfAbsent(template, path);
             if (previous != null && !previous.equals(path)) {
                 throw new IllegalStateException("One template object has conflicting source paths");
             }
         }
+    }
+
+    private static Method templateMethod(Object template, Object world) throws ReflectiveOperationException {
+        ClassLoader loader = world.getClass().getClassLoader();
+        return template.getClass().getMethod("placeInWorld",
+            Class.forName("net.minecraft.world.level.ServerLevelAccessor", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader),
+            Class.forName("net.minecraft.core.BlockPos", false, loader),
+            Class.forName(TEMPLATE.replace("StructureTemplate", "StructurePlaceSettings").replace('/', '.'), false, loader),
+            Class.forName("net.minecraft.util.RandomSource", false, loader), int.class);
     }
 
     public static boolean template(Object template, Object world, Object pos, Object pivot,
@@ -246,13 +274,7 @@ public final class Item10PlacementProbe {
             + quote(path) + ",\"position\":" + position(pos) + ",\"pivot\":" + position(pivot)
             + ",\"rotation\":" + quote(call(settings, "getRotation"))
             + ",\"mirror\":" + quote(call(settings, "getMirror")) + ",\"flags\":" + flags + "}");
-        ClassLoader loader = world.getClass().getClassLoader();
-        Method method = template.getClass().getMethod("placeInWorld",
-            Class.forName("net.minecraft.world.level.ServerLevelAccessor", false, loader),
-            Class.forName("net.minecraft.core.BlockPos", false, loader),
-            Class.forName("net.minecraft.core.BlockPos", false, loader),
-            Class.forName(TEMPLATE.replace("StructureTemplate", "StructurePlaceSettings").replace('/', '.'), false, loader),
-            Class.forName("net.minecraft.util.RandomSource", false, loader), int.class);
+        Method method = templateMethod(template, world);
         try {
             boolean returned = (Boolean) method.invoke(template, world, pos, pivot, settings, random, flags);
             emit("{\"kind\":\"template_end\",\"attempt\":" + attempt + ",\"returned\":" + returned + "}");
@@ -346,6 +368,10 @@ public final class Item10PlacementProbe {
     public static boolean urnWrite(Object world, Object pos, Object state, int flags) throws Throwable {
         if ("net.minecraft.world.level.levelgen.feature.RandomPatchFeature".equals(
                 FEATURES.get(Thread.currentThread().threadId()))) return write(world, pos, state, flags);
+        return untracedWorldWrite(world, pos, state, flags);
+    }
+
+    private static boolean untracedWorldWrite(Object world, Object pos, Object state, int flags) throws Throwable {
         ClassLoader loader = world.getClass().getClassLoader();
         Method method = Class.forName("net.minecraft.world.level.WorldGenLevel", false, loader)
             .getMethod("setBlock", Class.forName("net.minecraft.core.BlockPos", false, loader),
@@ -399,7 +425,67 @@ public final class Item10PlacementProbe {
         return writer.toByteArray();
     }
 
+    public static boolean bridgeTemplate(Object value, Object world, Object pos, Object pivot,
+                                        Object settings, Object random, int flags, Object path) throws Throwable {
+        if (!BRIDGE.replace('/', '.').equals(FEATURES.get(Thread.currentThread().threadId()))) {
+            try { return (Boolean) templateMethod(value, world).invoke(value, world, pos, pivot, settings, random, flags); }
+            catch (InvocationTargetException error) { throw error.getCause(); }
+        }
+        rememberTemplate(value, path.toString());
+        return template(value, world, pos, pivot, settings, random, flags);
+    }
+
+    public static boolean bridgeProcessorWrite(Object world, Object pos, Object state, int flags) throws Throwable {
+        if (BRIDGE.replace('/', '.').equals(FEATURES.get(Thread.currentThread().threadId()))) {
+            emit("{\"kind\":\"bridge_processor\",\"attempt\":" + ACTIVE.get(Thread.currentThread().threadId()) + "}");
+            return write(world, pos, state, flags);
+        }
+        return untracedWorldWrite(world, pos, state, flags);
+    }
+
+    private static byte[] instrumentBridge(String target, byte[] original) {
+        boolean templateClass = BRIDGE_TEMPLATE.equals(target);
+        ClassReader reader = new ClassReader(original);
+        boolean interfaceClass = (reader.getAccess() & Opcodes.ACC_INTERFACE) != 0;
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        int[] count = {0};
+        reader.accept(new ClassVisitor(Opcodes.ASM8, writer) {
+            @Override public MethodVisitor visitMethod(int access, String name, String descriptor,
+                                                       String signature, String[] exceptions) {
+                if (name.startsWith("item10$")) throw new IllegalArgumentException("Probe bridge collision");
+                MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
+                if (templateClass && !name.equals("createTemplateWithPlacement")) return parent;
+                return new MethodVisitor(Opcodes.ASM8, parent) {
+                    @Override public void visitMethodInsn(int opcode, String owner, String name,
+                                                          String desc, boolean isInterface) {
+                        if (templateClass && opcode == Opcodes.INVOKEVIRTUAL && owner.equals(TEMPLATE)
+                            && name.equals("placeInWorld") && desc.equals(TEMPLATE_DESCRIPTOR)) {
+                            count[0]++;
+                            super.visitVarInsn(Opcodes.ALOAD, 1);
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$bridgeTemplate",
+                                BRIDGE_TEMPLATE_CALL, false);
+                        } else if (!templateClass && opcode == Opcodes.INVOKEINTERFACE
+                            && owner.equals("net/minecraft/world/level/WorldGenLevel")
+                            && name.equals("setBlock") && desc.equals(WRITE_DESCRIPTOR)) {
+                            count[0]++;
+                            super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$bridgeProcessorWrite",
+                                "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z", interfaceClass);
+                        } else super.visitMethodInsn(opcode, owner, name, desc, isInterface);
+                    }
+                };
+            }
+        }, 0);
+        int expected = templateClass ? 1 : BRIDGE_WRITERS.get(target.substring(BRIDGE_PROCESSORS.length()));
+        if (count[0] != expected) throw new IllegalArgumentException("Unexpected bridge writer sites: " + target + " " + count[0]);
+        if (templateClass) bridge(writer, "bridgeTemplate", BRIDGE_TEMPLATE_CALL,
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD, Opcodes.ALOAD}, Opcodes.IRETURN);
+        else bridge(writer, "bridgeProcessorWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
+            new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
+        return writer.toByteArray();
+    }
+
     public static byte[] instrument(String target, byte[] original) {
+        if (BRIDGE_TEMPLATE.equals(target) || bridgeProcessor(target)) return instrumentBridge(target, original);
         if (PLACED.equals(target) || SIMPLE.equals(target)) return instrumentUrn(target, original);
         if (TARGET.equals(target)) return instrument(original);
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
@@ -408,7 +494,8 @@ public final class Item10PlacementProbe {
         boolean staticGenerator = NETHER_SPIKE.equals(target) || fairy;
         boolean spiral = SPIRAL.equals(target);
         boolean generator = MONSTER_BOX.equals(target) || staticGenerator || spiral;
-        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct;
+        boolean bridgeFeature = BRIDGE.equals(target);
+        boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct || bridgeFeature;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
@@ -562,7 +649,7 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != (spiral ? 2 : 1) || counts[1] != (spiral ? 2 : fairy ? 4 : staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
+        if (counts[0] != (spiral ? 2 : 1) || counts[1] != (bridgeFeature ? 0 : spiral ? 2 : fairy ? 4 : staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
@@ -596,7 +683,7 @@ public final class Item10PlacementProbe {
             if (ANOMALY.equals(target)) bridge(writer, "write",
                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
-            if (!direct) bridge(writer, "template", TEMPLATE_BRIDGE,
+            if (!direct && !bridgeFeature) bridge(writer, "template", TEMPLATE_BRIDGE,
                 new int[] {Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ALOAD, Opcodes.ILOAD}, Opcodes.IRETURN);
         } else if (base) {
             bridge(writer, "directWrite", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)Z",
@@ -711,7 +798,7 @@ public final class Item10PlacementProbe {
             @Override
             public byte[] transform(Module module, ClassLoader loader, String name,
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
-                if (!PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
+                if (!BRIDGE.equals(name) && !BRIDGE_TEMPLATE.equals(name) && !bridgeProcessor(name) && !PLACED.equals(name) && !SIMPLE.equals(name) && !TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
                     && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name) && !SPIRAL.equals(name) && !FAIRY.equals(name)) {
                     return null;
