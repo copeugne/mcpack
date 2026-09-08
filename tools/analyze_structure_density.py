@@ -219,6 +219,27 @@ def spatial_summary(
     }
 
 
+def category_occurrences(
+    rows: list[dict[str, object]],
+) -> dict[str, list[dict[str, object]]]:
+    """Select overlapping specification categories without duplicating a start within one."""
+    categories = {"all_registry": rows}
+    categories.update(
+        {
+            role: [row for row in rows if row["role"] == role]
+            for role in ("T0", "C", "T1", "T2", "T3", "T4")
+        }
+    )
+    categories["actionable_candidates"] = [
+        row for row in rows if row["role"] in ("C", "T1", "T2", "T3", "T4")
+    ]
+    categories["encounter_sites"] = [row for row in rows if row["role"] in ("T1", "T2", "T3", "T4")]
+    categories["villages"] = [
+        row for row in rows if "village" in cast("list[str]", row["comparison_groups"])
+    ]
+    return categories
+
+
 def classify_census(result: dict[str, object]) -> dict[str, object]:
     """Join measured starts to the exact accepted inventory and provisional matrix."""
     repository = Path(__file__).resolve().parents[1]
@@ -277,6 +298,10 @@ def classify_census(result: dict[str, object]) -> dict[str, object]:
         "scope": "registry occurrences by provisional family role; not observed combat",
         "input_sha256": identities,
         "occurrences": annotated,
+        "categories": {
+            name: {"count": len(rows), "per_1000_chunks": 1000 * len(rows) / full_chunks}
+            for name, rows in category_occurrences(annotated).items()
+        },
         "exclusive_roles": {
             role: {"count": count, "per_1000_chunks": 1000 * count / full_chunks}
             for role, count in counts.items()
@@ -396,7 +421,7 @@ def census(  # noqa: C901, PLR0913 - keep optional metrics in the existing singl
                 "generation_encoding": "typed-nbt-v2",
                 "generation_content": sorted(
                     generation, key=lambda row: (row["chunk_x"], row["chunk_z"])
-                )
+                ),
             }
             if include_generation
             else {}
@@ -436,11 +461,8 @@ def main() -> None:
     if args.spatial:
         rows = result["classification"]["occurrences"]
         result["spatial"] = {
-            role: spatial_summary(
-                [row for row in rows if role == "all_registry" or row["role"] == role],
-                tuple(args.bounds),
-            )
-            for role in ("all_registry", "T0", "C", "T1", "T2", "T3", "T4")
+            category: spatial_summary(selected, tuple(args.bounds))
+            for category, selected in category_occurrences(rows).items()
         }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:

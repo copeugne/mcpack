@@ -144,13 +144,14 @@ PR29 is cleanly reviewed and merged; its README records verified delivery. Direc
 return/origin-state capture in `3b163d99` passes all 342 Item 7/10 tests.
 [Fairy r1](evidence/item-10/fairy-run-r1/README.md) completed all 6,852 chunks
 but captured no fairy helper calls. Hook identity and raw/world restores pass.
-Current work is on `codex/item10-mixed-traces`: both retained traces now pass
+PR30 reviews `codex/item10-mixed-traces`: both retained traces now pass
 archive-bound integrity, preserving zero-write spiral parts and absent fairy calls.
 Do not expand for positive counts; positive capture and saved-content acceptance remain open.
 Reassessment: the registry pilot already supplies exclusive-role spatial results.
-The existing analysis still lacks the required overlapping actionable, encounter
-and village category summaries. Integrate those in the current analysis path
-before extending instrumentation. This does not waive the 40 nonregistry families
+Current branch `codex/item10-category-summary` integrates the overlapping
+actionable, encounter and village summaries in the existing analysis path.
+The [pilot result](evidence/item-10/pilot-r1/README.md#combined-specification-categories)
+retains the unchanged denominator and raw observations; 352 tests pass. This does not waive the 40 nonregistry families
 or the full sampling/control gates. No human workload or capture is scheduled.
 BetterEnd coverage remains unresolved;
 BetterEnd template attribution/content-write hooks now pass the focused retained-

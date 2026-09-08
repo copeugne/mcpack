@@ -117,7 +117,7 @@ uv run --no-sync basedpyright tests/item10
 [Spatial census](spatial-census.json) adds deterministic spatial summaries for all
 registry starts and each exclusive provisional role. This is a diagnostic
 application of the draft spatial method to retained pilot data, not acceptance
-of the full sampling protocol. Removing `spatial` yields exactly the classified
+of the full sampling protocol. Removing `spatial` and `classification.categories` yields exactly the classified
 census above. No generation, configuration or classification was changed.
 
 Coordinates are the centers of authoritative start chunks, not entrances or
@@ -180,3 +180,47 @@ The 46 focused tests pass; Ruff and Item 10 test type checks pass. Five new case
 cover negative-height quart order, missing/duplicate/invalid biome sections and
 complete per-height census denominators. The real CLI processed the restored
 pilot successfully, and every band total was independently checked against 3,969.
+
+## Combined specification categories
+
+[Spatial census](spatial-census.json) extends the same restored-world analysis
+with actionable candidates (C and T1 through T4), encounter sites (T1 through T4)
+and the exact `village` comparison group. The original exclusive T2, T3 and T4
+results remain separate. These overlapping categories must not be summed.
+
+| Category | Registry starts | Per 1,000 selected chunks |
+| --- | ---: | ---: |
+| Actionable candidates | 16 | 4.031242 |
+| Provisional encounter sites | 15 | 3.779289 |
+| Villages | 1 | 0.251953 |
+
+The denominator remains 3,969 full chunks. Distances, clustering and empty-cell
+rectangles are recalculated on each selected union, not averaged from individual
+tiers. Mean nearest observed distances are 84.512266 blocks for actionable
+candidates and 85.111868 for encounter sites. Both uncensored means remain
+UNKNOWN because boundary censoring is present. The single village has no
+observed neighbor. All per-location uncertainty and classification annotations
+remain in the JSON. These are diagnostic registry results, not all-family
+measurements, observed fights, a new sample or Item 10 completion.
+
+Reproduce with the existing restored world and a new output path:
+
+```sh
+uv run --no-sync python -m tools.analyze_structure_density RESTORED_WORLD/world CATEGORY_CENSUS.json --dimension minecraft:overworld --bounds -31 31 -31 31 --spatial
+```
+
+The CLI completed against the previously verified restored pilot. Removing
+`classification.categories` and the three added `spatial` keys
+(`actionable_candidates`, `encounter_sites`, `villages`) reproduces the parsed
+prior `spatial-census.json` at `275474c0` exactly, including every Anvil input hash, observation,
+classification and original spatial field. The original raw archive is unchanged.
+
+Validation: `uv run --no-sync pytest -q tests/item10 tests/item7` passed all
+352 tests in 72.14 seconds. Focused Ruff checks on the analysis tool and spatial
+tests pass; `uv run --no-sync basedpyright tests/item10/test_density_spatial.py`
+passes. New cases cover all roles, exact village-group membership independent
+of role, overlapping unions, recalculated neighbors and empty categories.
+Initial local-import lint findings were fixed. A broader `basedpyright tests/item10`
+invocation reports 19 errors and five warnings in the unchanged
+`test_typed_comparison_identity.py`; this is not a clean whole-directory type gate.
+No Item 11 workflow ran.
