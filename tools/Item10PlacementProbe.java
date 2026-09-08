@@ -30,6 +30,8 @@ public final class Item10PlacementProbe {
     private static final String ANOMALY = "biomesoplenty/worldgen/feature/misc/AnomalyFeature";
     private static final String MONOLITH = "biomesoplenty/worldgen/feature/misc/MonolithFeature";
     private static final String MONSTER_BOX = "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator";
+    private static final String NETHER_SPIKE = "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator";
+    private static final String SPIKE_DESCRIPTOR = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V";
     private static final String GENERATOR_DESCRIPTOR = "(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V";
     private static final String BASE_FEATURE = "net/minecraft/world/level/levelgen/feature/Feature";
     private static final String BASE_WRITE = "(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V";
@@ -139,9 +141,10 @@ public final class Item10PlacementProbe {
     public static void beginGenerator(Object feature, Object world, Object origin) throws Throwable {
         beginAt(world, origin);
         long thread = Thread.currentThread().threadId();
-        FEATURES.put(thread, feature.getClass().getName());
+        String name = feature instanceof Class<?> type ? type.getName() : feature.getClass().getName();
+        FEATURES.put(thread, name);
         emit("{\"kind\":\"feature\",\"attempt\":" + ACTIVE.get(thread)
-            + ",\"class\":" + quote(feature.getClass().getName()) + "}");
+            + ",\"class\":" + quote(name) + "}");
     }
 
     public static void endGenerator() {
@@ -238,7 +241,8 @@ public final class Item10PlacementProbe {
         if (TARGET.equals(target)) return instrument(original);
         boolean direct = ANOMALY.equals(target) || MONOLITH.equals(target);
         boolean base = BASE_FEATURE.equals(target);
-        boolean generator = MONSTER_BOX.equals(target);
+        boolean staticGenerator = NETHER_SPIKE.equals(target);
+        boolean generator = MONSTER_BOX.equals(target) || staticGenerator;
         boolean feature = END_FEATURE.equals(target) || SHIP.equals(target) || direct;
         boolean info = INFO.equals(target);
         if (!feature && !info && !base && !generator && !TEMPLATE.equals(target)) throw new IllegalArgumentException(target);
@@ -252,6 +256,7 @@ public final class Item10PlacementProbe {
                 MethodVisitor parent = super.visitMethod(access, name, descriptor, signature, exceptions);
                 boolean match = feature ? name.equals("place") && descriptor.equals(
                     "(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z")
+                    : staticGenerator ? name.equals("placeSpikeAt") && descriptor.equals(SPIKE_DESCRIPTOR)
                     : generator ? name.equals("generateChunk") && descriptor.equals(GENERATOR_DESCRIPTOR)
                     : info ? name.equals("getStructure") && descriptor.equals("()L" + TEMPLATE + ";")
                     : base ? name.equals("setBlock") && descriptor.equals(BASE_WRITE)
@@ -263,9 +268,15 @@ public final class Item10PlacementProbe {
                     public void visitCode() {
                         super.visitCode();
                         if (generator) {
-                            super.visitVarInsn(Opcodes.ALOAD, 0);
-                            super.visitVarInsn(Opcodes.ALOAD, 1);
-                            super.visitVarInsn(Opcodes.ALOAD, 4);
+                            if (staticGenerator) {
+                                super.visitLdcInsn(jdk.internal.org.objectweb.asm.Type.getObjectType(target));
+                                super.visitVarInsn(Opcodes.ALOAD, 0);
+                                super.visitVarInsn(Opcodes.ALOAD, 1);
+                            } else {
+                                super.visitVarInsn(Opcodes.ALOAD, 0);
+                                super.visitVarInsn(Opcodes.ALOAD, 1);
+                                super.visitVarInsn(Opcodes.ALOAD, 4);
+                            }
                             super.visitMethodInsn(Opcodes.INVOKESTATIC, target, "item10$beginGenerator",
                                 "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", false);
                         } else if (feature) {
@@ -348,7 +359,7 @@ public final class Item10PlacementProbe {
                 };
             }
         }, 0);
-        if (counts[0] != 1 || counts[1] != (direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
+        if (counts[0] != 1 || counts[1] != (staticGenerator ? 7 : direct ? (ANOMALY.equals(target) ? 1 : 0) : feature || info || base || generator ? 1 : 3)) {
             throw new IllegalArgumentException("Unexpected template hook sites: " + target
                 + " " + counts[0] + "," + counts[1]);
         }
@@ -486,7 +497,7 @@ public final class Item10PlacementProbe {
                                     Class<?> previous, ProtectionDomain domain, byte[] bytes) {
                 if (!TARGET.equals(name) && !END_FEATURE.equals(name) && !SHIP.equals(name)
                     && !INFO.equals(name) && !TEMPLATE.equals(name)
-                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name)) {
+                    && !ANOMALY.equals(name) && !MONOLITH.equals(name) && !BASE_FEATURE.equals(name) && !MONSTER_BOX.equals(name) && !NETHER_SPIKE.equals(name)) {
                     return null;
                 }
                 try {

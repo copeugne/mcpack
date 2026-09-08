@@ -1,6 +1,7 @@
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
 import org.violetmoon.quark.content.world.gen.MonsterBoxGenerator;
+import org.violetmoon.quark.content.world.gen.ObsidianSpikeGenerator;
 public class GeneratorFixture {
     public static void main(String[] args) throws Exception {
         if (args[0].equals("isolated")) {
@@ -12,18 +13,23 @@ public class GeneratorFixture {
                 }
             }) {
                 loader.loadClass("GeneratorFixture").getMethod("main", String[].class)
-                    .invoke(null, (Object) new String[] {"normal"});
+                    .invoke(null, (Object) new String[] {"normal", args.length > 1 ? args[1] : "monster"});
             }
             return;
         }
         WorldGenRegion world = new WorldGenRegion();
         world.early = args[0].equals("early");
         world.refuse = args[0].equals("refused");
-        world.throwWrite = args[0].equals("exception");
+        boolean spike = args.length > 1 && args[1].equals("spike");
+        world.throwWrite = args[0].equals("exception") && !spike;
+        world.throwOnThird = args[0].equals("exception") && spike;
         var generator = new MonsterBoxGenerator();
         var pos = new BlockPos(1, -5, 3);
         try {
-            if (args[0].equals("outside")) generator.outside(world, pos);
+            if (spike) {
+                if (args[0].equals("outside")) ObsidianSpikeGenerator.outside(world, pos);
+                else ObsidianSpikeGenerator.placeSpikeAt(world, pos, null);
+            } else if (args[0].equals("outside")) generator.outside(world, pos);
             else generator.generateChunk(world, null, null, pos);
             System.out.println("completed;arguments=" + world.arguments);
         } catch (IllegalStateException error) {
