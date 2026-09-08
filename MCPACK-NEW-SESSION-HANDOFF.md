@@ -103,8 +103,10 @@ quart-height bands with 3,969 chunks each; 46 focused tests pass. Next complete 
 then freeze the full sampling design and Sparse Structures control. The pilot does not close Item 10.
 The [placement probe diagnostic](evidence/item-10/placement-probe.md) now passes
 a synthetic preservation test and transforms the exact retained scarecrow class.
-It has not run in Minecraft. Next connect it to the existing lifecycle and
-predeclare a matched fresh-world control before accepting nonregistry counts.
+r1 installed and shut down cleanly but had no eligible biome exposure or writer
+calls, so it is insufficient. r2 is predeclared on the mountainous seed using
+existing Item 7 eligibility evidence; run its control only after actual writer
+execution and capture health pass. No nonregistry counts are accepted yet.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows before the audit passes. The user removed

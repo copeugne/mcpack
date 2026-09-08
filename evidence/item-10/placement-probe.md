@@ -1,7 +1,8 @@
 # Nonregistry placement probe diagnostic
 
-Status: SYNTHETIC VALIDATION ONLY. No Minecraft generation run has used this
-probe, and no nonregistry density is accepted from it.
+Status: INSUFFICIENT REAL-RUN COVERAGE. The synthetic test passes and r1
+installed in Minecraft, but did not execute the target writer. No nonregistry
+density or runtime generation equivalence is accepted from this probe.
 
 The retained [scarecrow writer evidence](../item-8/sources/explorations-scarecrow-scope/README.md)
 shows five direct WorldGenLevel.setBlock calls whose booleans are discarded.
@@ -104,3 +105,41 @@ Retain rejected runs as well as accepted ones. Use the existing world-backup and
 raw-archive tools for immutable archive, manifest, download and restore checks
 before relying on externally stored results. No instrumented generation has yet
 run at this predeclaration checkpoint.
+
+## r1 disposition and predeclared r2
+
+The [r1 receipt](scarecrow-probe-r1/diagnostic.json) records 253.354 seconds,
+all four selections completed, correlated save confirmation, clean stop and exit
+0 under source `8b0850622ceb2be5730410d54f793d6bcf2fd0da`. The
+[trace](scarecrow-probe-r1/trace.jsonl) contains one installation and one shutdown,
+with zero attempted placements. Status: INSUFFICIENT for writer validation.
+The [stopped-world backup](scarecrow-probe-r1/world-backup.json) retains the world;
+raw console and configuration remain under `evidence/raw/item10/scarecrow-probe-r1`.
+Do not run the r1 control or interpret absent calls as complete family coverage.
+
+The initial seed choice failed to use available eligibility evidence. Directly
+reusing the hash-verified r14 `run-a/<role>/analysis/overworld.json` artifacts in
+[the retained core manifest](../item-7/archive/r14/core-manifest.json), intersect
+their biome rows with the union of `families["explorations:scarecrow"]`.
+`biome_constraints.resolved_variants[*].biomes` in the accepted Item 8 inventory.
+Summing the existing `quart_cells` for matching rows gives ordinary 0,
+mountainous 13,459, biome-diverse 3,038 and ocean-heavy 3,151. These are existing
+surface exposure counts, not new placement measurements. The restored core
+artifacts were rehashed against that manifest before reuse; no Item 7 audit or
+world measurement was repeated.
+
+Predeclare r2 on mountainous seed `6671238423019257953`, keeping the same fixed
+selection sizes, frozen identities, probe source and comparison projection.
+Use new `scarecrow-probe-r2` and `scarecrow-control-r2` paths. Targeting a region
+with known eligible biomes is appropriate for instrumentation validation; this
+is not a representative density estimate or a change to the full sampling frame.
+Keep the same probe-health and five-write-execution gate before launching the
+control. Do not change selection or seed again without preserving and
+explicitly dispositioning this attempt. The same sequential 3 GiB pair allowance
+and 900-second per-run deadline apply, in addition to retaining r1.
+
+```sh
+uv run --no-sync python -m tools.run_item10_probe --name scarecrow-probe-r2 --mode probe --role mountainous
+# Only after complete actual five-write execution is verified:
+uv run --no-sync python -m tools.run_item10_probe --name scarecrow-control-r2 --mode control --role mountainous
+```
