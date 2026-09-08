@@ -38,7 +38,14 @@ def test_all_strata_share_one_observation_pass_without_cross_frame_counts(
     observations: dict[str, object] = {
         "locations": locations,
         "location_observations": [
-            {"candidate_id": i, "disposition": "OBSERVED_LOCATION"} for i in range(4)
+            {
+                "candidate_id": i,
+                "disposition": "OBSERVED_LOCATION",
+                "biome": "test:biome",
+                "quart_y": 5,
+                "biome_unavailable_reason": None,
+            }
+            for i in range(4)
         ],
     }
 
@@ -58,6 +65,10 @@ def test_all_strata_share_one_observation_pass_without_cross_frame_counts(
             "bounds_chunks": list(bounds),
             "full_chunks": 4096,
             "occurrences": [],
+            "occurrence_biomes": [],
+            "biome_exposure": {
+                "rows": [{"quart_y": 5, "biome": "test:biome", "full_chunks": 4096}],
+            },
             "anvil_inputs": [{"path": str(len(calls)), "sha256": "a" * 64}],
         }
 
@@ -95,3 +106,7 @@ def test_all_strata_share_one_observation_pass_without_cross_frame_counts(
         classified = cast("list[dict[str, object]]", classification["occurrences"])
         expected = {"overworld": [0], "end-central": [1], "end-outer": [2]}.get(label, [])
         assert [entry["candidate_id"] for entry in classified] == expected
+        biome_summary = cast("dict[str, object]", row["biome_summary"])
+        biome_rows = cast("list[dict[str, object]]", biome_summary["rows"])
+        counts = cast("dict[str, int]", biome_rows[0]["counts"])
+        assert counts["all_locations"] == len(expected)

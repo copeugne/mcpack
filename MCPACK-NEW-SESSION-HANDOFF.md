@@ -181,8 +181,9 @@ remain rejected with immutable restored raw custody. Neither is erased by a retr
 No tuning, repaired proof worlds or additional retries. The lifecycle now stops on
 heap/save errors; 42 focused lifecycle/console/collection tests cover the correction.
 
-Next: applicable final checks and clean-checkout reproduction, consolidated
-Codex PR review/fix/merge, verified main delivery and
+The full Item 7/10 gate passes 568 tests after a narrow synthetic biome-fixture fix;
+both failed and passing logs are linked from the Item 10 README. Quality checks pass.
+Next: clean-checkout reproduction, consolidated Codex PR review/fix/merge, verified main delivery and
 Items 2 through 10 identity/narrative audit. No new tooling PR or Item 11 work.
 
 Two local servers are stopped and preserved. Official launcher profiles are prepared;

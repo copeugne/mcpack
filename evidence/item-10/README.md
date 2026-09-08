@@ -554,6 +554,31 @@ hashes and tested restore, explicit uncertainty and failure dispositions, clean
 final review, merged delivery and the subsequent cross-item audit. The authorized
 scope does not require observed combat or human sessions in Items 10 or 11.
 
+## Final validation
+
+At source `46c657556c8a8510aa128f309e233d951ee2869b`, the full command
+`uv run --no-sync pytest -q tests/item7 tests/item10` produced
+[567 passes and one failure](final-validation/pytest-before-fixture-fix.txt).
+The synthetic shared-observation routing fixture omitted biome exposure and
+anchor fields now required by the existing integrated biome summary. Real census
+outputs already contain those fields; no runtime or measurement repair was needed.
+
+The fixture correction in this commit supplies those requested fields and checks
+that biome counts retain each frame's own locations. The focused full-world/biome
+suite passes 16 tests in 0.70s. The same full command then passes
+[all 568 tests in 155.49s](final-validation/pytest.txt). Both logs are preserved verbatim, including pytest
+traceback whitespace in the failed log. No Item 11 test or workflow was selected.
+
+For the 21 changed Python files from `git diff origin/main...HEAD --name-only --
+'*.py'`, `uv run --no-sync ruff check` and `ruff format --check` pass
+([lint](final-validation/ruff.txt), [format](final-validation/format.txt)).
+`uv run --no-sync basedpyright` passes for the changed `src/` and `tests/` paths
+with [zero errors, warnings or notes](final-validation/basedpyright.txt).
+The one subsequently corrected fixture was checked again with all three commands
+and passed. No production code or accepted census bytes changed in that fix.
+
+Clean-checkout reproduction and the final Codex PR review/merge remain pending.
+
 ## Resource estimate and unresolved gates
 
 The pre-collection [protocol resource estimate](protocol.md#runtime-and-storage-estimate)
