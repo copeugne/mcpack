@@ -139,7 +139,7 @@ PR review/merge and Items 2 through 10 audit remain the delivery scope.
 
 ## Current full-sample block
 
-Seven of sixteen worlds have individual census and raw-custody acceptance:
+Eight of sixteen worlds have individual census and raw-custody acceptance:
 
 - [Ordinary r1 baseline](evidence/item-10/full-ordinary-r1-baseline/README.md).
 - [Ordinary r1 control](evidence/item-10/full-ordinary-r1-without-sparse/README.md).
@@ -148,6 +148,7 @@ Seven of sixteen worlds have individual census and raw-custody acceptance:
 - [Mountainous r1 baseline](evidence/item-10/full-mountainous-r1-baseline/README.md).
 - [Mountainous r1 control](evidence/item-10/full-mountainous-r1-without-sparse/README.md).
 - [Mountainous r2 control](evidence/item-10/full-mountainous-r2-without-sparse/README.md).
+- [Mountainous r2 baseline](evidence/item-10/full-mountainous-r2-baseline/README.md).
 
 Analysis implementation `760aa2f5` applies the documented coverage-v2 correction:
 archive-bound frozen JAR, all target installations except a verified unexercised
@@ -169,13 +170,17 @@ Seventh-world acceptance is pushed at `b6df8887`.
 [Mountainous r2 baseline](evidence/item-10/full-mountainous-r2-baseline/README.md)
 finished from that source in 618.366s; session `8366` is terminal 0. Configuration
 and published/downloaded/restored raw custody pass (313 raw and 501 world files).
-Its census is active as session `50314`. Poll the handle and record the complete
-result and second matched contrast before acceptance. No server is active.
-Then complete the ocean-heavy and biome-diverse blocks in frozen order. Use fresh
-hash-verified materializations and existing custody/census paths. Latest free
-space is about 30.8 GiB; the seventh world uses about 2.09 GiB including custody
-and analysis. Continue checking growth against the roughly 30 GiB working plan.
-Finish the remaining nine worlds, final biome/seed/repetition/spatial synthesis,
+Its census (session `50314`, terminal 0) passed in 10m28.578s, SHA-256
+`a4567909cc50e7fff796c9854df788f47d888ded444488dac4b97b138a9d1959`.
+All 45,056 chunks and 50 targets pass. Six overlapping T0 candidates were reviewed
+and excluded under the unchanged protocol. Both mountainous pairs have Overworld
+T2/T3 baseline 6/2 versus control 22/7, while total differences vary +44 to +165.
+The full mountainous block now has individual acceptance. No process is active.
+Next run `full-ocean-heavy-r1-baseline`, then finish that block and biome-diverse
+in frozen order. Use fresh hash-verified materializations and existing custody/census
+paths. Latest free space is about 28.5 GiB; the eighth world uses about 2.04 GiB.
+Continue checking growth against the roughly 30 GiB working plan.
+Finish the remaining eight worlds, final biome/seed/repetition/spatial synthesis,
 consolidated PR review/merge and Items 2 through 10 audit. Preserve failures,
 censoring and provisional classifications. No new tooling PR or Item 11 work.
 
