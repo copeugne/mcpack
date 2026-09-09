@@ -60,7 +60,7 @@ def build(results: Path, *, representative: bool = False) -> str:
         if (
             doc["inputs"] != expected
             or doc["world"] != name
-            or doc["protocol"] != "item12-discoverability-v2"
+            or doc["protocol"] != "item12-discoverability-v3"
             or doc.get("human_metrics") != "NOT MEASURED"
         ):
             raise ValueError("result provenance mismatch")
@@ -74,11 +74,11 @@ def build(results: Path, *, representative: bool = False) -> str:
         if representative
         else "Complete predeclared viewpoint matrix. See README for acceptance, review and delivery status.",
         "",
-        "Protocol: [item12-discoverability-v2](protocol.md). Human recognition and player discovery rates: NOT MEASURED.",
+        "Protocol: [item12-discoverability-v3](protocol.md). Human recognition and player discovery rates: NOT MEASURED.",
         "",
         "These are family-balanced saved-world cases, not discovery probabilities. Each case retains its full family abundance per 4,096 chunks separately from geometric rays. Overworld only; other dimensions retain Item 8 source assessment and Item 10 density. Architectural/entrance judgments are in [assessments](assessments.md); navigation evidence is [separate](navigation-source/README.md).",
         "",
-        "C/O/U means CLEAR/OCCLUDED/UNKNOWN, followed by the full ray denominator. Low/high use the complete eight-cell ring; UNKNOWN means at least one missing eye. Relief can include buildings or water, not just terrain. Low and high cells also differ in azimuth, so this is not a causal elevation experiment. A clear envelope point is not a visible authored block, recognizable silhouette or entrance.",
+        "C/O/U means CLEAR/OCCLUDED/UNKNOWN, followed by the full ray denominator. Low/high use the complete eight-cell ring; UNKNOWN means at least one missing eye or observer cell inside the target envelope. Internal viewpoints remain UNKNOWN in the full ray denominator. Relief can include buildings or water, not just terrain. Low and high cells also differ in azimuth, so this is not a causal elevation experiment. A clear envelope point is not a visible authored block, recognizable silhouette or entrance.",
         "",
         "WORLD_SURFACE (WS) and MOTION_BLOCKING_NO_LEAVES (NL) use the same observer eye. NL is a foliage-sensitive heightmap comparison, not a measured no-trees world. Finite boundaries, fluid opacity, ignored overhangs/caves, purposive seeds and two repetitions limit interpretation. Zeroes do not prove absence.",
         "",

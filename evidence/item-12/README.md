@@ -1,6 +1,11 @@
 # Item 12 structure discoverability
 
-Status: IN PROGRESS, corrected v2 local gate PASS. [PR39](https://github.com/copeugne/mcpack/pull/39)
+Status: IN PROGRESS, local gate REOPENED by the second PR39 finding.
+Protocol v3 and the ordinary pilot exclude internal observers. The remaining
+fifteen results and full report still retain rejected v2 pending correction.
+Do not treat the historical v2 PASS below as current acceptance.
+
+Historical v2 checkpoint: [PR39](https://github.com/copeugne/mcpack/pull/39)
 requires a fresh completed clean review, merge and verified main delivery.
 Item 13 is not started.
 

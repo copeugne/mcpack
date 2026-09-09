@@ -16,8 +16,9 @@ def test_representative_report_and_diagram_reproduce() -> None:
     report = build(BASE / "results", representative=True)
     assert "| 837 / 4096 |" in report
     assert "0/8/0 of 8; 0/8/0 of 8" in report
-    assert report.count("UNKNOWN extremum") == 6
-    assert "132.0" in report
+    assert report.count("UNKNOWN extremum") == 8
+    assert "132.0" not in report
+    assert "observer cell inside the target envelope" in report
     render = runpy.run_path(str(BASE / "render.py"))["render"]
     assert (
         render(BASE / "results" / f"{NAME}.json.gz") == (BASE / "ordinary-sections.svg").read_text()

@@ -79,16 +79,15 @@ Authoritative [Item 12 requirement map](evidence/item-12/README.md) and
 [predeclared protocol](evidence/item-12/protocol.md) define the smallest complete
 proof. All sixteen existing world restores and census hashes pass the
 [availability inspection](evidence/item-12/validation/input-availability.txt).
-PR39's completed review of `aa9f700f` found valid target-boundary self-occlusion
-(finding 3968701864). The narrow fix and predeclared protocol v2 are delivered in
-`51268726`. All sixteen corrected outputs now pass comparison: 364 rays become
-clear; two retain occlusion with updated first-blocker diagnostics; every non-ray
-field, sample and source identity is unchanged. All eight affected tests, lint,
-formatting and types pass; the v2 counterexample reproduces byte for byte from a
-clean tracked export. The earlier full applicable gate passed 610 tests.
-Next: push the complete corrected matrix, request a fresh Codex review, inspect
-all reviews/comments/reactions, fix valid findings and repeat until clean, then
-merge and verify main. Item 12 is not COMPLETE until delivery; Item 13 is unstarted.
+PR39's completed v2 review found valid internal observer cells (3969034729).
+Protocol v3 marks internal rays and incomplete external-ring extrema UNKNOWN,
+preserving cells, heights, source worlds and sample selection. The ordinary pilot
+passes the new regression and report: eight internal airship cells and four trial
+chamber cells are excluded. Pilot: 40.228 seconds, 19,317 bytes. Remaining fifteen
+worlds and the full report are still rejected v2; the local gate is reopened.
+Next: complete the unchanged matrix with v3, update affected assessments and tests,
+commit/push and request fresh review. Repeat until clean, merge and verify main.
+Item 12 is not COMPLETE until delivery; Item 13 remains unstarted.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored

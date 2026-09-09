@@ -1,11 +1,14 @@
 # Item 12 discoverability assessment protocol
 
-Status: PREDECLARED. Identifier: `item12-discoverability-v2`. Date: 2026-09-09.
+Status: PREDECLARED. Identifier: `item12-discoverability-v3`. Date: 2026-09-09.
 
-Revision 2 is predeclared before corrected processing. It fixes PR39 finding
-3968701864: a point exactly on a top boundary must not self-occlude. Version 1,
-its raw results and rejected local-gate claim remain at `aa9f700f`. Sampling,
-worlds, targets and all other assumptions remain unchanged.
+Revision 3 is predeclared before corrected processing. It fixes PR39 finding
+3969034729: candidate observers inside the target's horizontal saved envelope
+cannot count as external discoverability. Their ray outcomes and the complete
+ring's low/high selection become UNKNOWN. Retain their measured heights for
+placement context. Version 2 and its rejected local-gate claim remain at
+`eb2742a2`; version 1 remains at `aa9f700f`. The v2 strict top-boundary fix remains.
+Worlds, family selection, targets and candidate observer cells do not change.
 
 ## Authorized method and acceptance boundary
 
@@ -61,10 +64,14 @@ For each case take eight candidate observer cells at offsets (64,0), (45,45),
 (or nonregistry anchor). Use saved MOTION_BLOCKING_NO_LEAVES plus 2.62 for eye Y.
 This reduces canopy bias but is not a walkability/collision guarantee; logs,
 buildings and fluids can still support the proxy. Retain all observer heights and
-WORLD_SURFACE height. Lowest and highest observer cells are respectively the
+WORLD_SURFACE height. A registry observer cell inside the inclusive horizontal
+envelope (minX <= cellX <= maxX and minZ <= cellZ <= maxZ) is ineligible for
+external visibility, regardless of its eye Y. Retain each ray as UNKNOWN with
+reason observer_inside_envelope; never reinterpret roof or courtyard arrival as
+external discovery. Nonregistry anchors have no wide envelope. Lowest and highest observer cells are respectively the
 local low and high viewpoint, ties broken by the listed offset order. Call these
 valley/high-terrain proxies, not geomorphological valley classification. Report
-actual relief so flat cases are distinguishable. Missing any observer height makes
+actual relief so flat cases are distinguishable. Missing any observer height or any internal observer cell makes
 extremum selection UNKNOWN rather than selecting a biased partial ring.
 
 At each viewpoint test all targets using one-block-or-finer horizontal ray samples,
@@ -130,13 +137,16 @@ Java-compatible lock before and after analysis. Recheck archive-bound backup
 manifest and census hashes at consumption. A new controlled experiment, if ever
 needed, would require fresh materialization and a separate predeclaration.
 
-The original representative was ordinary r1 baseline. For the revision-2 correction,
-first complete biome-diverse r1 baseline, an actual self-occlusion counterexample,
-then expand to the other fifteen unchanged worlds. Include raw observations, family assessments,
-world-section visual inspection, report and affected tests. It includes ships,
-buried temples/chambers, underground caches and an elevated settlement. Do not
-expand until actual runtime/output size is recorded and projected against a
-provisional 160-minute processing allowance (Item 11's conservative allowance),
-2 GiB memory target, 1 GiB additional output budget and 5 GiB free-space floor.
-Item 11's accepted 900.942-second full processing cost is context, not an Item 12
-benchmark. Item 12 runtime remains UNKNOWN until the representative completes.
+The original representative was ordinary r1 baseline and included ships, buried
+temples/chambers, underground caches and an elevated settlement. Revision 2 first
+completed biome-diverse r1 baseline for the top-boundary defect. Revision 3 first
+completes ordinary r1 baseline, including the elevated settlement with internal
+viewpoints. Complete its raw observations, report, updated assessment and focused
+checks before expanding to the remaining fifteen unchanged worlds.
+
+Version 2 measured 787.711 summed producer seconds and 814,577 result bytes for
+all sixteen worlds. Revision 3 uses the same read/verification path and reduces
+ray work, so budget 20 minutes and 1 MiB for the full matrix, still within the
+original 160-minute and 1-GiB limits. Retain the 2-GiB memory target and 5-GiB
+free-space floor. Record actual representative time/size before expansion. No
+peak-memory or server-performance claim follows from these budgets.

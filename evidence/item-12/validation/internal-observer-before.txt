@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_internal_observers_cannot_count_as_external_discovery __________
+
+    def test_internal_observers_cannot_count_as_external_discovery() -> None:
+        maps = {name: array("h", [0]) * (1024 * 1024) for name in FIELDS}
+        # Inclusive saved-block envelope ends at x=64; the observer cell is internal.
+        case = {"envelope": [-64, 0, -10, 64, 4, 10], "target": [0, 5, 0]}
+        result = observe(case, maps)
+>       assert result["low_view"] is None
+E       assert 0 is None
+
+tests/item12/test_discoverability.py:67: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item12/test_discoverability.py::test_internal_observers_cannot_count_as_external_discovery
+1 failed, 4 deselected in 0.14s

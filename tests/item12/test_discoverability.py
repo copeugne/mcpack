@@ -57,3 +57,30 @@ def test_target_on_top_boundary_is_not_its_own_occluder() -> None:
     assert ray(heights, [0.5, 3, 0.5], [4.5, 1, 0.5]) == {"status": "CLEAR"}
     heights[512 * 1024 + 514] = 2
     assert ray(heights, [0.5, 3, 0.5], [4.5, 1, 0.5])["status"] == "OCCLUDED"
+
+
+def test_internal_observers_cannot_count_as_external_discovery() -> None:
+    maps = {name: array("h", [0]) * (1024 * 1024) for name in FIELDS}
+    # Inclusive saved-block envelope ends at x=64; the observer cell is internal.
+    case = {"envelope": [-64, 0, -10, 64, 4, 10], "target": [0, 5, 0]}
+    result = observe(case, maps)
+    assert result["low_view"] is None
+    assert result["high_view"] is None
+    assert result["relief"] is None
+    for i in (0, 4):
+        view = result["views"][i]
+        assert view["eye"] is not None
+        for field in FIELDS:
+            assert all(
+                r == {"status": "UNKNOWN", "reason": "observer_inside_envelope"}
+                for r in view["rays"][field]
+            )
+    assert result["views"][2]["rays"][FIELDS[0]][0]["status"] == "CLEAR"
+    case["envelope"] = [-64, 0, -64, 64, 4, 64]
+    result = observe(case, maps)
+    assert all(
+        r["status"] == "UNKNOWN"
+        for v in result["views"]
+        for field in FIELDS
+        for r in v["rays"][field]
+    )

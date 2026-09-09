@@ -117,9 +117,12 @@ def observe(case: dict[str, Any], maps: dict[str, array[int]]) -> dict[str, Any]
         heights = {name: height_at(maps[name], x, z) for name in FIELDS}
         base = heights[FIELDS[1]]
         eye = [x + 0.5, base + 2.62, z + 0.5] if base is not None else None
+        internal = box is not None and box[0] <= x <= box[3] and box[2] <= z <= box[5]
         outcomes = {
             name: [
-                ray(maps[name], eye, point)
+                {"status": "UNKNOWN", "reason": "observer_inside_envelope"}
+                if internal
+                else ray(maps[name], eye, point)
                 if eye
                 else {"status": "UNKNOWN", "reason": "missing_eye_height"}
                 for point in targets
@@ -127,7 +130,11 @@ def observe(case: dict[str, Any], maps: dict[str, array[int]]) -> dict[str, Any]
             for name in FIELDS
         }
         views.append({"cell": [x, z], "heights": heights, "eye": eye, "rays": outcomes})
-    complete = all(view["eye"] is not None for view in views)
+    complete = all(
+        view["eye"] is not None
+        and view["rays"][FIELDS[0]][0].get("reason") != "observer_inside_envelope"
+        for view in views
+    )
     low = min(range(8), key=lambda i: views[i]["eye"][1]) if complete else None
     high = min(range(8), key=lambda i: -views[i]["eye"][1]) if complete else None
     profiles = {}
@@ -197,7 +204,7 @@ def analyze(name: str, raw_root: Path) -> dict[str, Any]:
             case["observation"] = observe(case, maps)
         verify_world(world, backup["world_files"])
     return {
-        "protocol": "item12-discoverability-v2",
+        "protocol": "item12-discoverability-v3",
         "world": name,
         "inputs": {
             "census_sha256": accepted[name]["input_sha256"],
