@@ -260,3 +260,10 @@ and unused-suppression findings have been fixed.
 The [house quality assessment](../fixed-blocks/mns-medium-house-report.md) integrates
 room sensitivity, connections, roof-cavity exclusion, contents and unresolved
 requirements. Its source-derived statements are not additional runtime samples.
+
+
+The literal-style finding is now resolved by using the declared entry's floor
+height as the pose boundary. Focused lint, types and two collision tests pass.
+Both rejected upright and accepted crouched outcomes remain unchanged. For exact
+r2 output reproduction use producer/helper commitc35c925c; later style cleanup
+changes only the producer identity field. No raw capture was rewritten.

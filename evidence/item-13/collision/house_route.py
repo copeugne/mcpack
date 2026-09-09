@@ -41,7 +41,7 @@ def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
     route = OUTBOUND + list(reversed(OUTBOUND[:-1]))
     segments = []
     for a, b in pairwise(route):
-        height = 1.5 if crouch_balcony and min(a[1], b[1]) > 45 else 1.8
+        height = 1.5 if crouch_balcony and min(a[1], b[1]) > OUTBOUND[0][1] else 1.8
         if sum(x != y for x, y in zip(a, b, strict=True)) != 1:
             raise ValueError("Only cardinal or vertical segments are declared")
         sweep = [
