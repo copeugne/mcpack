@@ -136,6 +136,40 @@ def test_existing_console_log_is_preserved(tmp_path: Path) -> None:
     assert log.read_text() == "preserved"
 
 
+def test_probe_only_capture_still_requires_correlated_flush(
+    tmp_path: Path, fake_java: Callable[[str], Path], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    def probe(command: tuple[str, ...], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        assert kwargs["check"] is True
+        assert command[-1] == str(tmp_path / "collision.json")
+        return subprocess.CompletedProcess(command, 0)
+
+    monkeypatch.setattr(subprocess, "run", probe)
+    result = run_registry_lifecycle(
+        tmp_path,
+        fake_java("pass"),
+        tmp_path / "console.log",
+        5,
+        dimension_probe=tmp_path / "probe.jar",
+        registries=(),
+        probe_output_name="collision.json",
+    )
+    assert result.clean_stop
+    assert result.completed_registries == ()
+    assert result.commands[0].startswith("say mcpack-item7-flush-")
+    assert result.commands[1] == "save-all flush"
+    assert result.commands[-1] == "stop"
+
+
+@pytest.mark.parametrize("name", ["../collision.json", "/collision.json", "x/y.json", ".."])
+def test_probe_output_cannot_escape_capture_directory(tmp_path: Path, name: str) -> None:
+    with pytest.raises(ValueError, match="basename"):
+        _ = run_registry_lifecycle(
+            tmp_path, tmp_path / "java", tmp_path / "log", 5, probe_output_name=name
+        )
+    assert not (tmp_path / "log").exists()
+
+
 def test_configurable_exit_timeout_rejects_hung_shutdown(
     tmp_path: Path, fake_java: Callable[[str], Path]
 ) -> None:

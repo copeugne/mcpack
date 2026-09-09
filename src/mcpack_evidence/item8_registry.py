@@ -54,6 +54,7 @@ class RegistryLifecycle(BaseModel):
 
 @dataclass
 class _Capture:
+    registries: tuple[str, ...] = REGISTRIES
     probe_command: tuple[str, ...] = ()
     probe_log: Path | None = None
     commands: list[str] = field(default_factory=list)
@@ -77,12 +78,15 @@ class _Capture:
                         raise OSError(message)
                     with self.probe_log.open("x", encoding="utf-8") as probe_log:
                         _ = subprocess.run(  # noqa: S603 - constructed from the pinned JVM and probe.
-                            self.probe_command, stdout=probe_log, stderr=subprocess.STDOUT,
-                            check=True, timeout=45,
+                            self.probe_command,
+                            stdout=probe_log,
+                            stderr=subprocess.STDOUT,
+                            check=True,
+                            timeout=45,
                         )
                 self._next(stdin)
-        elif len(self.completed) < len(REGISTRIES):
-            registry = REGISTRIES[len(self.completed)]
+        elif len(self.completed) < len(self.registries):
+            registry = self.registries[len(self.completed)]
             if f"New file created with {registry} registry's contents is at " in line:
                 self.completed.append(registry)
                 self._next(stdin)
@@ -90,8 +94,8 @@ class _Capture:
                 self.rejection = f"registry command failed: {line.strip()}"
 
     def _next(self, stdin: IO[str]) -> None:
-        if len(self.completed) < len(REGISTRIES):
-            registry = REGISTRIES[len(self.completed)]
+        if len(self.completed) < len(self.registries):
+            registry = self.registries[len(self.completed)]
             self.rejection = send_command(
                 stdin, self.commands, f"neoforge dump registry {registry} true false"
             )
@@ -101,7 +105,7 @@ class _Capture:
                 self.rejection = "server console pipe failed"
 
 
-def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and console cleanup together.
+def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913, PLR0915 - retain probe and console cleanup together.
     target: Path,
     java: Path,
     console_log: Path,
@@ -109,12 +113,20 @@ def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and c
     exit_timeout_seconds: int = 120,
     *,
     dimension_probe: Path | None = None,
+    registries: tuple[str, ...] = REGISTRIES,
+    probe_output_name: str = "dimension-biomes.json",
 ) -> RegistryLifecycle:
     """Dump each registry after readiness, then correlate flush and require clean exit."""
     if timeout_seconds <= 0 or exit_timeout_seconds <= 0:
         message = "capture and clean-exit timeouts must be positive"
         raise ValueError(message)
-    state = _Capture()
+    if len(set(registries)) != len(registries) or any(key not in REGISTRIES for key in registries):
+        message = "capture registries must be distinct declared registry names"
+        raise ValueError(message)
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_.-]*\.json", probe_output_name):
+        message = "probe output must be a simple JSON basename"
+        raise ValueError(message)
+    state = _Capture(registries=registries)
     killed = False
     deadline = time.monotonic() + timeout_seconds
     reader: threading.Thread | None = None
@@ -138,9 +150,14 @@ def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and c
         try:
             if dimension_probe is not None:
                 state.probe_command = (
-                    str(java), "--add-modules", "jdk.attach", "-jar", str(dimension_probe),
-                    str(process.pid), str(dimension_probe),
-                    str(console_log.parent / "dimension-biomes.json"),
+                    str(java),
+                    "--add-modules",
+                    "jdk.attach",
+                    "-jar",
+                    str(dimension_probe),
+                    str(process.pid),
+                    str(dimension_probe),
+                    str(console_log.parent / probe_output_name),
                 )
                 state.probe_log = console_log.parent / "dimension-probe.log"
             if process.stdin is None or process.stdout is None:
@@ -176,7 +193,7 @@ def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and c
                 process.stdout.close()
         clean = (
             state.ready
-            and tuple(state.completed) == REGISTRIES
+            and tuple(state.completed) == registries
             and state.flushed
             and return_code == 0
             and not killed

@@ -127,6 +127,11 @@ all nine selected layouts: 556,065 voxels, 87,559 compressed bytes, 60.887 secon
 The first house reproduced exactly and has an inspected slice sheet. Empty enemy
 assignments and the Dome's external-margin barrel are explicit raw limitations.
 
+The [collision pilot](evidence/item-13/collision/README.md) now has a bounded
+producer and predeclaration. Build, focused lint/types and 25 lifecycle tests pass.
+Next run it from a clean committed tree with fresh declared paths; retain the
+result or failure before expansion. It measures empty-context shapes, not actors.
+
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental

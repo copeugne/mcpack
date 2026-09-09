@@ -27,6 +27,11 @@ Dependencies are the delivered Item 9 classification, Item 10 density/custody,
 Item 11 routes and Item 12 discoverability. Their closure records and the delivered
 [cross-item audit](../item-10/cross-item-audit.md) are reused, not rerun.
 
+The [saved-view collision pilot](collision/README.md) predeclares the next bounded
+measurement for the first fixed house. Preparation passes 25 affected lifecycle
+tests, focused lint/types and pinned-JDK compilation. No collision result or
+playable connectivity is claimed yet.
+
 ## Requirement map
 
 | Requirement | Existing evidence available | Concrete missing measurement or assessment |
