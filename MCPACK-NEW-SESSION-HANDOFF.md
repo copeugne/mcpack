@@ -181,7 +181,7 @@ Supplemental Circle task estimates are 47/64/93s for two piglins and two brutes,
 with explicit provisional budgets and censoring. Resume layout coverage under
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
 original Circle and other layouts still need their own complete task budgets.
-[Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): first passage verified; capped shaft/sealed partition require route dispositions.
+[Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): conditional plank breach and cap/two-ladder link recorded; full graph/timing pending.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
