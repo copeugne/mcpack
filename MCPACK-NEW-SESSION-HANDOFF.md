@@ -91,7 +91,9 @@ Authoritative current work: [Item 13 README](evidence/item-13/README.md),
 The intake verifies all sixteen accepted restored worlds and census hashes and
 joins existing occurrences across every dimension. It includes 192 canonical
 families with 357 registry roots; 119 included families have no Item 10 occurrence.
-This is not proof that Item 7/8 have no usable evidence. No quality measurement,
+Item 8 separate captures add starts for 49 of those 119 families, with full saved
+envelope coverage for 13. The common Item 7 index still needs integration.
+This is not proof of playable topology. No quality measurement,
 new world experiment or scoring has run. Do not infer completion from intake.
 
 Next: resolve material variants and consult existing Item 7/8 world references
@@ -101,3 +103,8 @@ one representative end to end before expansion. Do not invent a combat constant,
 use pieces as rooms, or accept incomplete topology. Reuse original custody and
 record established results in the authoritative Item 13 report. Commit/push coherent
 verified milestones and complete the required clean PR review/merge/main delivery.
+
+Scope check: retain concise coverage references in the existing intake rather than
+copying every prior start into another evidence set. The original streams remain
+authoritative. Latest local intake checks pass lint, formatting and types; no
+quality-measurement gate has been claimed.

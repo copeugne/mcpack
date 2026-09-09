@@ -59,18 +59,38 @@ routes or discoverability. No new evidence validator or archive class is introdu
 
 The first inspection passed all sixteen restored inventories: 6,806,284,224 world
 bytes and 1,784,216,273 census bytes. It took 20.745 seconds and observed
-42,464,829,440 free bytes. The deterministic intake is 624,139 bytes, SHA-256
-`2df8baa8daa4faa1b7757974f691ecf5f905ddde78f0561f1e77be0e4fc73ee7`.
-These are input-availability measurements, not dungeon results or a full-run budget.
-The [intake](intake.json) retains per-world identities and per-family root,
-dimension and baseline/control occurrence counts.
+42,464,829,440 free bytes. That original intake is preserved in commit `67003da1`.
+
+The integrated second inspection also reads existing Item 8 geometry captures.
+Each decoded chunk stream and run record is hash-bound to its committed archive
+manifest, whose hash matches the restore receipt. Runtime/configuration preflight
+identities match the frozen baseline. This is an index of existing saved starts,
+not a new world decode, archive restore, or assertion that all archived blocks
+have been consumed. Full-envelope chunk coverage is a prerequisite for block
+inspection, not proof of correct room topology or complete authored assembly.
+
+The current deterministic intake is 806,008 bytes, SHA-256
+`30a3c1c45a67a6df3cf962443197fa850fe6e596f36f0c07d18ad263acd3e56e`.
+The second inspection took 27.817 seconds and observed 42,485,305,344 free bytes.
+The [intake](intake.json) retains per-world census identities and per-family root,
+dimension and baseline/control counts, plus prior capture references and exact
+saved-envelope chunk denominators. To avoid duplicating the raw streams, it keeps
+one best-coverage reference per root/dimension, breaking coverage ties by full
+start status then original manifest/line order. This is an availability index,
+not selection on gameplay quality or the final sampling matrix.
 
 There are 357 registry roots within the 192 included canonical families. Of those
 families, 73 have at least one accepted Item 10 occurrence in any arm/dimension;
-119 have none. Absence in that finite frame is a sampling gap, not insignificance
-or generation failure. Presence alone does not prove complete geometry or adequate
-material-variant coverage. Item 7/8 world references must be inspected before
-calling any gap genuinely missing. Controls remain separate from baseline.
+119 have none. Among those 119, Item 8's separate geometry captures contain starts
+for 49. Thirteen have at least one candidate with full saved chunk coverage of its
+envelope; the other 36 have only incomplete-envelope candidates. For example,
+Integrated Stronghold is missing 143 envelope chunks in its existing capture,
+and WDA Foundry's best indexed candidate is missing 75. These gaps cannot be
+closed with the previously accepted piece-envelope measurement.
+
+The common Item 7 world-bounds index still needs its separate coverage integration,
+and root presence is not full material-variant coverage. Absence in a finite frame
+is not insignificance or generation failure. Controls remain separate from baseline.
 
 The complete inclusion/exclusion record cites the exact existing family rationale,
 ambiguity, dimension evidence and variant record. It does not change Item 9 roles.
@@ -103,10 +123,10 @@ resolve findings, merge and verify fetched main before COMPLETE. No Item 14 work
 Executed from repository root with the locked environment:
 
 ```sh
-uv run --no-sync python -m evidence.item-13.intake
+uv run --no-sync python -m evidence.item-13.intake --output /tmp/item13-intake-v2-compact.json
 ```
 
-The output must be absent. For comparison in a clean tracked export, run there
+The output must be absent. Compare the result with the committed intake.json. For comparison in a clean tracked export, run there
 with the documented Item 10 raw restore layout, then compare intake.json bytes.
 The local operational timing/free-space line varies and is not part of that file.
 The same accepted census can be reused without repeating upstream measurements.

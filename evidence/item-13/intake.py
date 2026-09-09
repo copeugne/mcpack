@@ -4,11 +4,13 @@
 # ruff: noqa: D103, EM101, TRY003, INP001, E501, T201, PLR2004
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import shutil
 import time
 from collections import Counter
+from pathlib import Path
 
 from tools.analyze_route_opportunities import ROOT, accepted_inputs, read_bound, verify_world
 from tools.manage_item4_environment import _world_backup_lock
@@ -73,7 +75,103 @@ ADDITIONAL = {
 }
 
 
+def prior_geometry(inventory):  # noqa: ANN201, ANN001, C901
+    """Locate existing saved starts without mistaking envelopes for full geometry."""
+    roots = {
+        root: family
+        for family, record in inventory["families"].items()
+        for root in record.get("structure_ids", [])
+    }
+    found = {}
+    for path in sorted((ROOT / "evidence/item-8/raw-custody").glob("*-manifest.json")):
+        manifest_raw = read_bound(path)
+        manifest = ArchiveManifest.model_validate_json(manifest_raw)
+        entries = {row.relative_path: row for row in manifest.files}
+        if "chunks.jsonl" not in entries:
+            continue
+        receipt_path = path.with_name(path.name.replace("-manifest.json", "-local-restore.json"))
+        receipt = json.loads(read_bound(receipt_path))
+        if receipt["manifest_sha256"] != hashlib.sha256(manifest_raw).hexdigest():
+            raise ValueError("prior restore receipt does not match manifest")
+        relative = Path(receipt["restored_target"])
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError("prior restore target escapes repository")
+        restored = ROOT / relative
+        run = json.loads(read_bound(restored / "run.json", entries["run.json"].sha256))
+        preflight = run["preflight"]
+        if (
+            preflight["retained_runtime_sha256"]
+            != "4062d6179218916c703269f113663b1e078adebbf6d43a691e692d972e07ac50"
+            or preflight["frozen_manifest_sha256"]
+            != "2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f"
+            or preflight["config_audit_sha256"]
+            != "181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd"
+        ):
+            raise ValueError("prior capture differs from frozen input identity")
+        raw = read_bound(restored / "chunks.jsonl", entries["chunks.jsonl"].sha256)
+        complete = set()
+        candidates = []
+        for line_number, line in enumerate(raw.splitlines(), 1):
+            chunk = json.loads(line)
+            if chunk["full"]:
+                complete.add((chunk["dimension"], chunk["chunk_x"], chunk["chunk_z"]))
+            for start in chunk["structure_starts"]:
+                root = start["structure_id"]
+                if root not in roots or not start["boxes"]:
+                    continue
+                boxes = [box["bounds"] for box in start["boxes"]]
+                envelope = [min(box[i] for box in boxes) for i in range(3)] + [
+                    max(box[i] for box in boxes) for i in range(3, 6)
+                ]
+                candidates.append(
+                    {
+                        "family_id": roots[root],
+                        "root": root,
+                        "dimension": chunk["dimension"],
+                        "start_chunk": [chunk["chunk_x"], chunk["chunk_z"]],
+                        "start_full": chunk["full"],
+                        "envelope": envelope,
+                        "archive_manifest": path.relative_to(ROOT).as_posix(),
+                        "decoded_line": line_number,
+                        "decoded_sha256": entries["chunks.jsonl"].sha256,
+                        "seed": preflight["seed"],
+                    }
+                )
+        for candidate in candidates:
+            box = candidate["envelope"]
+            required = {
+                (candidate["dimension"], x, z)
+                for x in range(box[0] // 16, box[3] // 16 + 1)
+                for z in range(box[2] // 16, box[5] // 16 + 1)
+            }
+            candidate["envelope_chunks"] = len(required)
+            candidate["full_envelope_chunks"] = len(required & complete)
+            candidate["adequacy"] = (
+                "candidate for block inspection"
+                if required <= complete
+                else "incomplete saved envelope; cannot close topology"
+            )
+            family = candidate.pop("family_id")
+            key = (candidate["root"], candidate["dimension"])
+            by_root = found.setdefault(family, {})
+            previous = by_root.get(key)
+            # This is an availability index, not quality-based sample selection.
+            # The raw candidate population stays in the already retained streams.
+            if previous is None or (
+                candidate["full_envelope_chunks"] / candidate["envelope_chunks"],
+                candidate["start_full"],
+            ) > (
+                previous["full_envelope_chunks"] / previous["envelope_chunks"],
+                previous["start_full"],
+            ):
+                by_root[key] = candidate
+    return {family: [rows[key] for key in sorted(rows)] for family, rows in found.items()}
+
+
 def main() -> None:  # noqa: C901 - one bounded input inspection
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=ROOT / "evidence/item-13/intake.json")
+    args = parser.parse_args()
     started = time.monotonic()
     inventory_path = ROOT / "evidence/item-8/inventory.json"
     inventory = json.loads(
@@ -138,6 +236,7 @@ def main() -> None:  # noqa: C901 - one bounded input inspection
                 "status": "PASS",
             }
         )
+    prior = prior_geometry(inventory)
     rows = []
     for family, data in sorted(inventory["families"].items()):
         role, confidence, flags, _groups, rationale, ambiguity = classifications[family]
@@ -163,6 +262,7 @@ def main() -> None:  # noqa: C901 - one bounded input inspection
                 "ambiguity": ambiguity,
                 "dimension_evidence": data["dimension"],
                 "registry_roots": data.get("structure_ids", []),
+                "prior_world_candidates": prior.get(family, []),
                 "variant_evidence": f"evidence/item-8/inventory.json#/families/{family}/grouping_decision",
                 "occurrences": [
                     {"root": k[0], "dimension": k[1], "arm": k[2], "count": v}
@@ -177,7 +277,7 @@ def main() -> None:  # noqa: C901 - one bounded input inspection
         "included": sum(row["included"] for row in rows),
         "excluded": sum(not row["included"] for row in rows),
     }
-    output = ROOT / "evidence/item-13/intake.json"
+    output = args.output
     with output.open("x") as stream:
         json.dump(result, stream, indent=2, sort_keys=True)
         stream.write("\n")
