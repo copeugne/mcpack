@@ -507,3 +507,44 @@ endpoint; original raw logs remain preserved. The full raw-capture custody
 follow-up is still open. Both right-door halves retain the closed local AABB
 [0,0,0.8125,1,1,1]; the probe did not open either door or simulate an actor.
 Zero unsupported shapes is geometric coverage, not completed topology or gameplay.
+
+
+## Second-house first route predeclaration
+
+Use the previously declared right-door opening model and first-house actor,
+equipment, full knowledge, rates and exclusions. Start/end at (19.5,34,115.5)
+after opening; door interaction latency and external approach are excluded.
+Lower route: (19.5,34,112.5), (15.5,34,112.5), (15.5,34,114.5),
+(14.5,34,114.5). Climb the south vine to (14.5,36.5,114.5), crouch, then
+travel north with points (14.5,36.5,112.7), (14.5,36.1875,112.7),
+(14.5,36.1875,112.3), (14.5,36.5,112.3), (14.5,36.5,111.5).
+Return in reverse, restoring upright pose for vine descent. The trapdoor
+transitions occur at slab support-loss/contact boundaries for a 0.6-wide actor.
+No jump, mining, flight or other door change is permitted.
+
+Reuse the complete swept-box checker. Its only required extensions are the
+second saved input/waypoint choice, the two explicit door-box substitutions,
+and slab adjacency in Z as well as X. This avoids duplicating verification code.
+Reject source/state mismatch, unsupported shapes, collision or missing step
+support. Manual lower-floor and vine support remain required. Do not score a
+failed route. Budget remains 60 seconds, 100 MiB memory and 1 MiB output; no
+new world restore or runtime experiment. Retain this first attempt even if it
+fails. A valid path supplies one connection, not proof of every possible route.
+
+
+Second-house first route result: [house2-r1-route.json](house2-r1-route.json)
+passes twenty swept segments with supported Z-axis slab transitions. The
+original first-house r3 segments remain identical under the extended checker.
+Four focused tests, lint, formatting and types pass; the new route reproduces
+byte for byte. The new regression rejects an unsupported centered Z transition.
+Reproduction (absent output):
+
+```sh
+uv run python -m evidence.item-13.collision.house_route --second-house --crouch-balcony /tmp/item13-house2-route.json
+```
+
+Historical first-house outputs retain their original producer references; the
+additional modeled-state field and second-layout support do not rewrite them.
+Manual floor/vine support, route arithmetic and three barrel rays are integrated
+in the [second-house assessment](../fixed-blocks/mns-medium_house_2-report.md#validated-south-vine-circuit-and-storage-access).
+The north-vine alternative remains pending before final graph and depth scoring.

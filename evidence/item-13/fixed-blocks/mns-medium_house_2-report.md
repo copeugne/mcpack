@@ -99,10 +99,69 @@ actor and default step/vine capabilities reuse the first-house declarations;
 actual door interaction and its latency are not measured. This resolves the
 material capability choice without inventing a saved-open state.
 
+## Validated south-vine circuit and storage access
+
+The [first route result](../collision/house2-r1-route.json) passes all twenty
+complete swept segments under the declared right-door opening substitution.
+All lower-route floor cells at Y33 are full crimson planks/hyphae, deepslate
+bricks or polished blackstone bricks. The continuous south vine at (14,114),
+Y34..36, supports the declared climb to feet Y36.5. The upper ledge at X14 has
+bottom slabs at Z111 and113 and a bottom trapdoor at Z112, so its floor tops
+are 36.5 and36.1875. The checker verifies slab adjacency at the Z112.7/112.3
+height transitions as well as full collision sweeps. This is a supported
+kinematic connection, not an observed climb or tick-accurate physics trace.
+
+Closed circuit distance is **32.25 blocks**: 20 upright horizontal, 6 crouched
+horizontal, 5 vine vertical and 1.25 step/drop vertical. Feet span=2.5;
+ascent=descent=3.125. Reusing the declared rate vectors gives **17.5 seconds**
+nominal, **11.75 seconds** faster and **28.333333 seconds** slower. Direct
+nominal derivation: 20/4+6/1.2+5/1+1.25/0.5. These are sensitivity scenarios,
+not confidence intervals, observed travel or full clears. They exclude opening
+the door, pose-change latency, menus, looting, combat and exterior/roof access.
+The prefix to the storage station is 16.125 blocks on this declared route;
+a shortest-path claim awaits the other proposed vine connection.
+
+At the endpoint (14.5,36.5,111.5), the upright box
+[14.2,36.5,111.2,14.8,38.3,111.8] clears all captured AABBs. The actor can
+stand for interaction on the slab, using source-supported eye offset1.62 and
+ordinary three-block reach, then resume the declared crouched return route.
+Its eye is (14.5,38.12,111.5). Three distinct aim lines establish source/geometry
+access under the declared unlocked ordinary-barrel model:
+
+- Upper barrel (13,38,111): aim (13.5,38.5,111.5), distance1.06977.
+  Before entering its east face, the ray crosses only air at (14,38,111).
+- Lower barrel (13,37,111): aim (13.5,37.5,111.5), distance1.17661.
+  At its east face X14 the ray is Y37.81; preceding Y37/38 cells at (14,111)
+  are air. It does not enter the upper barrel first.
+- North barrel (13,37,110): aim (13.99,37.85,110.9), distance0.83247.
+  At Z111 the ray has X14.075,Y37.895; it then reaches X14 at Z110.911765,
+  Y37.855294. The intervening twisting-vine head at (14,37,110) has source
+  selection bounds X14.25..14.75,Z110.25..110.75, so the ray passes west of
+  that shape before entering the target. Using unequal X/Z aim offsets avoids
+  an ambiguous hit exactly on the shared corner of two barrels.
+
+The latter selection bounds come from mapped TwistingVinesBlock initializer
+11..30, Block.box(4,0,4,12,15,12), and GrowingPlantBlock.getShape returning that
+constant shape. Reproduce with the pinned javap command in the existing
+[model-source notes](../model-source/README.md), substituting those class names.
+Raw air/plant/barrel states come from the linked immutable block dataset; these
+rays are explicit coordinate derivations, not a runtime ray-cast observation.
+The already-inspected BarrelBlock.useWithoutItem path has no chest-lid test.
+All three ordinary storage barrels are accessible under this model; generated
+and acquired loot remain NOT MEASURED. The roof barrel remains a breach case.
+
+The lower furnished living/work area and raised west storage ledge support the
+same one-open-plan-room versus two-activity-space sensitivity as the first
+house. One inter-space connection is now verified. The north vine is still
+unresolved, so final edge/cycle counts must not be inferred from this circuit.
+Both candidate spaces have facilities/reward nodes; no room-count denominator
+or finale assessment is finalized before the remaining connection inspection.
+
 ## Next required measurement
 
-Validate the declared open-state route, lower-floor access, two proposed vine links,
-west-ledge support/headroom and ordinary barrel interaction positions. Reuse
+Validate the north-vine alternative and finalize room boundaries and graph counts.
+The south circuit, west-ledge support and ordinary storage access are resolved
+under the declared model above. Reuse
 existing source and collision machinery only where its input/state assumptions
 apply. Declare the actor, route and costs before dependent processing. Then
 record room/branch/depth counts, traversal model, hazards/chokepoints, dead/empty

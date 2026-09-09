@@ -31,21 +31,67 @@ OUTBOUND = [
 ]
 
 
-def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
-    collision = ROOT / "evidence/item-13/collision/r1-collision.json.gz"
+SECOND_OUTBOUND = [
+    [19.5, 34.0, 115.5],
+    [19.5, 34.0, 112.5],
+    [15.5, 34.0, 112.5],
+    [15.5, 34.0, 114.5],
+    [14.5, 34.0, 114.5],
+    [14.5, 36.5, 114.5],
+    [14.5, 36.5, 112.7],
+    [14.5, 36.1875, 112.7],
+    [14.5, 36.1875, 112.3],
+    [14.5, 36.5, 112.3],
+    [14.5, 36.5, 111.5],
+]
+
+
+def verify(  # noqa: C901 - same bounded verifier for two current layouts.
+    *, crouch_balcony: bool = False, second_house: bool = False
+) -> dict[str, object]:
+    collision = Path(__file__).with_name(
+        "house2-r1-collision.json.gz" if second_house else "r1-collision.json.gz"
+    )
     raw = collision.read_bytes()
     shapes = json.loads(gzip.decompress(raw))
-    blocks = ROOT / "evidence/item-13/fixed-blocks/mns-medium-house.json.gz"
+    blocks = (
+        ROOT
+        / "evidence/item-13/fixed-blocks"
+        / ("mns-medium_house_2.json.gz" if second_house else "mns-medium-house.json.gz")
+    )
     if hashlib.sha256(blocks.read_bytes()).hexdigest() != shapes["input_sha256"]:
         raise ValueError("Saved blocks and collision input differ")
     case = json.loads(gzip.decompress(blocks.read_bytes()))["cases"][0]
     if shapes["bounds"] != case["bounds"] or shapes["unsupported"]:
         raise ValueError("Collision coverage is incomplete")
+    if second_house:
+        bounds = case["bounds"]
+        nx, nz = bounds[3] - bounds[0] + 1, bounds[5] - bounds[2] + 1
+        for y, half in ((34, "lower"), (35, "upper")):
+            index = ((y - bounds[1]) * nz + 115 - bounds[2]) * nx + 19 - bounds[0]
+            state = case["palette"][case["blocks_yzx"][index]]
+            if state != {
+                "Name": "minecraft:crimson_door",
+                "Properties": {
+                    "facing": "north",
+                    "half": half,
+                    "hinge": "right",
+                    "open": "false",
+                    "powered": "false",
+                },
+            }:
+                raise ValueError("Second-house door state differs from the declared model")
+            shape_index = shapes["shape_indices_yzx"][index]
+            if shapes["local_aabbs"][shape_index] != [[0, 0, 0.8125, 1, 1, 1]]:
+                raise ValueError("Second-house closed-door collision differs")
+            shapes["shape_indices_yzx"][index] = len(shapes["local_aabbs"])
+            shapes["local_aabbs"].append([[0.8125, 0, 0, 1, 1, 1]])
     boxes = expand_shapes(shapes, case["bounds"])
-    route = OUTBOUND + list(reversed(OUTBOUND[:-1]))
+    outbound = SECOND_OUTBOUND if second_house else OUTBOUND
+    route = outbound + list(reversed(outbound[:-1]))
     segments = []
     for a, b in pairwise(route):
-        height = 1.5 if crouch_balcony and min(a[1], b[1]) > OUTBOUND[0][1] else UPRIGHT_HEIGHT
+        height = 1.5 if crouch_balcony and min(a[1], b[1]) > outbound[0][1] else UPRIGHT_HEIGHT
         if sum(x != y for x, y in zip(a, b, strict=True)) != 1:
             raise ValueError("Only cardinal or vertical segments are declared")
         sweep = [
@@ -65,9 +111,12 @@ def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
                 for box in boxes
                 if box[4] == upper
                 and box[1] <= lower < box[4]
-                and box[2] < sweep[5]
-                and sweep[2] < box[5]
-                and (box[3] == sweep[0] or box[0] == sweep[3])
+                and any(
+                    (box[axis + 3] == sweep[axis] or box[axis] == sweep[axis + 3])
+                    and box[2 - axis] < sweep[5 - axis]
+                    and sweep[2 - axis] < box[5 - axis]
+                    for axis in (0, 2)
+                )
             ]
             if not adjacent:
                 raise ValueError("No adjacent support at the balcony height transition")
@@ -87,6 +136,9 @@ def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
         "geometry_helper_sha256": hashlib.sha256(
             Path(__file__).with_name("clearance.py").read_bytes()
         ).hexdigest(),
+        "modeled_state_changes": (
+            "Right crimson door at 19,34/35,115 opened in geometry only" if second_house else None
+        ),
         "segments": segments,
         "collision_free": all(not s["collisions"] for s in segments),
         "support": (
@@ -159,7 +211,14 @@ if __name__ == "__main__":
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--crouch-balcony", action="store_true")
     mode.add_argument("--measure", action="store_true")
+    parser.add_argument("--second-house", action="store_true")
     args = parser.parse_args()
-    result = measure_saved_route() if args.measure else verify(crouch_balcony=args.crouch_balcony)
+    if args.measure and args.second_house:
+        parser.error("--measure retains the historical first-house r2 calculation only")
+    result = (
+        measure_saved_route()
+        if args.measure
+        else verify(crouch_balcony=args.crouch_balcony, second_house=args.second_house)
+    )
     with args.output.open("x") as stream:
         _ = stream.write(json.dumps(result, indent=2) + "\n")
