@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_target_on_top_boundary_is_not_its_own_occluder ______________
+
+    def test_target_on_top_boundary_is_not_its_own_occluder() -> None:
+        heights = array("h", [0]) * (1024 * 1024)
+>       assert ray(heights, [0.5, 3, 0.5], [4.5, 1, 0.5]) == {"status": "CLEAR"}
+E       AssertionError: assert {'at': [4, 0]...': 'OCCLUDED'} == {'status': 'CLEAR'}
+E         
+E         Differing items:
+E         {'status': 'OCCLUDED'} != {'status': 'CLEAR'}
+E         Left contains 3 more items:
+E         {'at': [4, 0], 'height': 0, 'ray_y': 1.0}
+E         Use -v to get more diff
+
+tests/item12/test_discoverability.py:57: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item12/test_discoverability.py::test_target_on_top_boundary_is_not_its_own_occluder
+1 failed, 3 deselected in 0.12s

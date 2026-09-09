@@ -369,6 +369,11 @@ Item 10 delivery and the Items 2 through 10 cross-item audit pass.
 
 ## 12. Measure Structure Discoverability
 
+Apply the separately user-authorized [Item 12 inspection and automated assessment
+protocol](evidence/item-12/protocol.md). Architectural recognition, entrance cues
+and realistic `/locate` dependence are evidence-supported assessments. Human
+recognition and discovery rates remain NOT MEASURED; no human trials are required.
+
 - [ ] Evaluate surface visibility.
 - [ ] Evaluate underground entrance visibility.
 - [ ] Evaluate visibility from valleys.
