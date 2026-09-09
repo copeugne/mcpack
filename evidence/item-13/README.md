@@ -70,8 +70,8 @@ not a new world decode, archive restore, or assertion that all archived blocks
 have been consumed. Full-envelope chunk coverage is a prerequisite for block
 inspection, not proof of correct room topology or complete authored assembly.
 
-The current deterministic intake is 806,008 bytes, SHA-256
-`30a3c1c45a67a6df3cf962443197fa850fe6e596f36f0c07d18ad263acd3e56e`.
+The current deterministic intake is 806,285 bytes, SHA-256
+`1f2f117214c1daa9d20a48f08e855405be63db86ee192e4b20f242869be46873`.
 The second inspection took 27.817 seconds and observed 42,485,305,344 free bytes.
 The [intake](intake.json) retains per-world census identities and per-family root,
 dimension and baseline/control counts, plus prior capture references and exact
@@ -159,8 +159,9 @@ No other family absent from Item 10 has an observation index in its accepted
 Item 8 `world_observations` field. This is a direct keyed inventory inspection,
 not a new population audit. It adds one family with complete-envelope candidates
 to the thirteen from the separate Item 8 captures. Consequently 105 of the 119
-Item 10-absent families still lack a complete-envelope candidate in these existing
-references. Some have partial saved starts; do not replace that distinction with
+Item 10-absent families lack a complete-envelope candidate in these start-based
+references. The non-registry central-End input below must also be considered
+before declaring a new experiment necessary. Some have partial saved starts; do not replace that distinction with
 an assertion of no evidence. All 14 candidates still require hash-verified block
 inspection and material-variant assessment. No new world experiment has run.
 
@@ -193,3 +194,42 @@ remaining family/variant sampling matrix or authorize broad processing. Full
 coverage still requires every one of 192 included families and their material
 variants, including dimensions and missing generated-world evidence. No Item 14
 work has started.
+
+## Non-registry variants and reference correction
+
+Variant mapping exposed a concrete intake-link defect: slash-containing family IDs
+were not JSON Pointer escaped, and non-registry families do not have the referenced
+`grouping_decision` field. The producer now escapes keys and points non-registry
+rows to their existing contribution records. Exactly 50 references changed across
+448 rows. Every resulting pointer was directly resolved against the accepted
+inventory; all other intake fields compare equal. This correction does not reopen
+classification or change the 192/256 inclusion decision. The reproduced intake
+ran in 42.010 seconds with 41,945,993,216 free bytes. Earlier intake bytes remain
+in Git. No new evidence schema or validator was needed.
+
+These three included non-registry families require explicit feature/lifecycle
+handling, not invented registry IDs. Their existing contribution records establish
+the following variant scope before dependent measurements:
+
+| Family | Material design scope and dimension | Generated evidence disposition |
+| --- | --- | --- |
+| `betterend:shadow_forest_mansion` | End, one `biome/shadow_forest/small_mansion.nbt` design, nominal 17x24x16. Offset -1 with OBJECT terrain merging; rotation/mirroring and terrain interaction remain placement conditions. No second authored design is listed | No exact saved candidate identified by the start census. A feature-specific saved-block search or a narrowly declared placement is needed before topology claims |
+| `yungsextras:swamp_church` | Overworld, one `swamp/misc/swamp_church` design, nominal 13x13x5. Four corner support checks, randomized masonry/stair processing and downward support columns require generated validation. Candle color alone is not a separate dungeon design | No exact saved candidate identified. Ordinary root `/place structure` is inapplicable; preserve the configured-feature invocation and support conditions if an additional experiment is required |
+| `betterendisland:dragon_arena` | End lifecycle assembly. Initial versus respawn guarded/broken pillar states; indices 1 through 9 with index 9 reused in the ten-spike layout. Full initial/broken podium versus bottom-only, and active/inactive portal states materially affect access and objective state. Pillars are components, not 27 additional dungeon families | Existing central-End raw world must be inspected before requesting new generation. Initial-state source intent does not prove podium placement, dragon state or respawn variant coverage |
+
+Sources: `inventory.json#/non_registry_content/contributions/` keys
+`betterend:biome_buildings` (`designs/betterend:shadow_forest_mansion`),
+`yungsextras:feature_entrypoints` (family `yungsextras:swamp_church` and
+`swamp_generation`), and `betterendisland:platform_gateway`
+(`spike_podium_generators`). These are the accepted Item 8 records and their bound
+source references, not new player observations. Remaining families still need
+material-variant mapping; these rows do not predeclare a full experiment matrix.
+
+The existing [central-End projection](../item-8/world-observations/central-end/README.md)
+is hash-verified at `10836fec936f904a0fedaf38304b7f0e4aabeb747433d8b176a861d346202730`.
+Its 64 chunk rows, X/Z -4 through 3, are all `minecraft:full`, each retaining section
+counts for Y 0 through 15. This is available saved coverage around the source spike
+ring, separate from the structure-start index. Exact block positions, podium
+location and lifecycle state are not retained in that projection and must be read
+from its existing Item 7 hash-verified world. Therefore 105 is a start-index gap
+count, not proof that 105 new worlds or placements are necessary.

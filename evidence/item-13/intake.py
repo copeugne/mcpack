@@ -249,6 +249,11 @@ def main() -> None:  # noqa: C901 - one bounded input inspection
             reasons.append(
                 "localized or mixed design warrants interior, vertical, arena or hostile-variant inspection"
             )
+        pointer_key = family.replace("~", "~0").replace("/", "~1")
+        variant_pointer = f"/families/{pointer_key}/grouping_decision"
+        if "grouping_decision" not in data:
+            contribution = data["contribution_id"].replace("~", "~0").replace("/", "~1")
+            variant_pointer = f"/non_registry_content/contributions/{contribution}"
         rows.append(
             {
                 "family_id": family,
@@ -263,7 +268,7 @@ def main() -> None:  # noqa: C901 - one bounded input inspection
                 "dimension_evidence": data["dimension"],
                 "registry_roots": data.get("structure_ids", []),
                 "prior_world_candidates": prior.get(family, []),
-                "variant_evidence": f"evidence/item-8/inventory.json#/families/{family}/grouping_decision",
+                "variant_evidence": f"evidence/item-8/inventory.json#{variant_pointer}",
                 "occurrences": [
                     {"root": k[0], "dimension": k[1], "arm": k[2], "count": v}
                     for k, v in sorted(occurrences.get(family, {}).items())

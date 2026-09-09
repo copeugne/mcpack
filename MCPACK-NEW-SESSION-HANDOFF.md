@@ -94,14 +94,16 @@ families with 357 registry roots; 119 included families have no Item 10 occurren
 Item 8 separate captures add starts for 49 of those 119 families, with full saved
 envelope coverage for 13. The common Item 7 index adds complete-envelope
 candidates for Starlight Voyager, leaving 105 without such a candidate in the
-existing references. Exact dispositions and limitations are in the README.
+start-based references. The existing central-End raw world is also available for
+non-registry arena inspection. Exact dispositions and limitations are in the README.
 The intake is not proof of playable topology. The first
 [representative report](evidence/item-13/pilot/report.md) now validates two small
 dungeon chambers and covers all quality dimensions under conditional models.
 No new world experiment has run. Do not infer full coverage from this pilot.
 
-Latest pushed intake milestone: `b50fab2f` on `codex/item13-dungeon-quality`.
-The coupled representative milestone follows it; inspect current pushed head.
+Latest pushed representative milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
+A narrow intake reference correction follows it; inspect current pushed head.
+The README integrates variant scope for the three included non-registry families.
 
 Next: finish the complete material-variant and sample/repetition matrix, using the
 representative's measured cost only for comparable compact cases. Quantify larger
