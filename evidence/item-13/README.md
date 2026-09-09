@@ -335,7 +335,8 @@ block validation. No gameplay quality score follows from these component fields.
 Reproduction command:
 
 ```sh
-uv run python -m evidence.item-13.inspect_starts --world full-ocean-heavy-r1-baseline --region region/r.0.0.mca --output /tmp/item13-start-inspection-reproduction.json.gz
+git show 2b88f73c:evidence/item-13/inspect_starts.py > /tmp/item13-inspect-starts-pilot.py
+PYTHONPATH=. uv run python /tmp/item13-inspect-starts-pilot.py --world full-ocean-heavy-r1-baseline --region region/r.0.0.mca --output /tmp/item13-start-inspection-reproduction.json.gz
 cmp evidence/item-13/start-inspection-pilot.json.gz /tmp/item13-start-inspection-reproduction.json.gz
 ```
 
@@ -350,3 +351,84 @@ same compressed bytes, SHA-256
 `c1695114acd82e118160274190f2a755b61dc21de20ae28c5f95a64d84cc6952`.
 The 23.494-second first read provides a planning reference for remaining metadata
 reads, not a bound for differently populated regions or full block extraction.
+
+## Complete baseline saved-start batch declaration
+
+Extend the successful metadata reader to all eight accepted baseline worlds,
+using Item 10's accepted custom-dimension geometry. Read the union of start and
+padded-envelope regions: 106 region files, 929,058,816 bytes. This resolves saved
+component membership and full-chunk coverage for the 266 candidates together,
+without loading every voxel. Keep missing chunks, non-full chunks and missing
+starts explicit. Chunk completeness does not establish every block section or
+playability. Preserve all raw start compounds for subsequent material selection.
+
+Budget before execution: 50 minutes total, six minutes per world, 1.5 GiB peak
+memory and 100 MiB compressed output total (10 MiB per world). The first region
+cost 23.494 seconds; 106 such reads would be 41.5 minutes, a planning estimate
+rather than a throughput guarantee. Verify each accepted world inventory under
+the existing lock before and after its batch. No server, regeneration, mutation
+or new gameplay model is involved. Earlier pilot reproduction uses the exact
+producer at commit `2b88f73c`; retrieve it with `git show` and run with
+`PYTHONPATH=.` if reproducing that historical raw hash after this extension.
+
+The integration step joins raw inspection files to the candidate index, requiring
+exact per-world case coverage and agreement with the census's component-bounds
+digest. Named template fields are an assembly-selection aid; custom procedural
+records remain in the raw compounds even when they have no template names.
+The focused regression cases reject changed raw bytes, omitted or duplicated
+candidates and changed component bounds. They do not assert gameplay correctness.
+Run `uv run python -m pytest -q evidence/item-13/start-inspection/test_summary.py`.
+The standalone `uv run pytest` entry point did not resolve the repository tools
+package during collection; the documented Python-module invocation passed all
+five cases. No inspection output was changed by that collection failure.
+
+Full-batch reproduction (outputs must be absent; preserve existing evidence):
+
+```sh
+mkdir /tmp/item13-starts-reproduction
+set -o noclobber
+timeout 3000 bash evidence/item-13/inspect-baseline.sh /tmp/item13-starts-reproduction > /tmp/item13-starts-reproduction/execution.txt 2>&1
+uv run python -m evidence.item-13.start-inspection.summarize --directory /tmp/item13-starts-reproduction > /tmp/item13-baseline-assemblies.json
+```
+
+### Baseline assembly inspection result
+
+The completed [assembly index](start-inspection/summary.json) accounts for all 266
+candidates, all 44 included families observed in this baseline frame, and all 59
+observed root/dimension groups. Each raw file's hash matches the
+[execution record](start-inspection/execution.txt), and every start's ordered
+component bounds match the accepted census digest. All eight producer hashes
+match the committed reader; the ten earlier pilot compounds are unchanged.
+The summary reproduced byte for byte (291,237 bytes). All five focused boundary
+checks, Ruff, formatting, types and shell syntax pass.
+
+The eight reads took 664.286 seconds in total, with a maximum of 102.718 seconds
+per world and 201,600 KiB peak RSS. Compressed raw output totals 1,827,307 bytes.
+All 266 starts are present. Of their padded envelopes, 256 have full saved chunk
+coverage and ten include `minecraft:initialize_light` chunks. The exact chunk
+coordinates and statuses are retained per candidate in the assembly index.
+These ten cases comprise both r1 and r2 at each of the following five locations:
+
+| Seed role, dimension, root, start chunk | Non-full chunks in padded envelope | Non-full chunks intersecting original component envelope | Disposition |
+| --- | --- | --- | --- |
+| Ocean-heavy, Overworld, `explorations:slime_cave`, -26,-31 | 3 | 0 | Interior envelope is full; external margin remains incomplete |
+| Ordinary, Overworld, `explorations:underground_temple`, -31,1 | 8 | 8 | Interior topology cannot close from this saved occurrence |
+| Ocean-heavy, Overworld, `minecraft:ancient_city`, 25,-26 | 11 | 11 | Interior topology cannot close from this saved occurrence |
+| Ocean-heavy, Nether, `minecraft:bastion_remnant`, -15,-29 | 5 | 0 | Interior envelope is full; external margin remains incomplete |
+| Ordinary, Overworld, `minecraft:trial_chambers`, 29,30 | 8 | 0 | Interior envelope is full; external margin remains incomplete |
+
+The interior count is derived by intersecting each recorded non-full chunk with
+`candidates.json`'s original envelope X/Z chunk range, before the three-block
+padding. Missing external margins are not invented missing rooms. Every one of
+the 59 observed root/dimension groups also has at least one candidate with a full
+padded envelope, so these failures alone do not require a new experiment.
+
+Thirty-two groups have candidates from only one seed role. This is not a blanket
+failure for fixed layouts, and same-seed r1/r2 runs are not distinct-seed coverage
+for procedural families. Named component membership and custom record types now
+support the next selection step. They do not prove playable links or cover all
+material alternatives. In particular, Aether Silver Dungeon includes procedural
+block/position records, so a template-name-only selection would be incomplete.
+All 148 included families absent from this baseline frame remain in scope.
+Supplemental accepted worlds and the exact material requirements in
+[coverage.md](coverage.md) must be considered before new experiments are declared.

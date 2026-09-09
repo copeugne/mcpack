@@ -109,19 +109,21 @@ anchor and dimension differences. The 256 exclusions stay in the intake.
 CTOV badlands/mesa share a verified definition; Nilotic has no resolved eligible
 biomes. These source dispositions avoid unnecessary duplicate/forced samples.
 
-The [baseline candidate index](evidence/item-13/candidates.json) now identifies 266
-starts across 44 included families and 59 roots. Its 88 start regions total
-868,245,504 bytes; padded envelopes total 112,141,277 voxels before selection.
-Metadata reproduction passed. The [start-NBT pilot](evidence/item-13/start-inspection-pilot.json.gz)
-identifies ten ocean-world assemblies in 23.494 seconds; all 1,024 region chunks
-are full. Design identities are integrated in the README. Other region coverage
-and final sample selection remain pending.
+The [baseline candidate index](evidence/item-13/candidates.json) identifies 266
+starts across 44 included families and 59 observed roots. The completed
+[assembly index](evidence/item-13/start-inspection/summary.json) now retains their
+component membership and saved chunk coverage. All starts are present; 256 padded
+envelopes are full. Ten have non-full chunks, with exact interior versus margin
+limitations in the README. Every observed root/dimension has a full-envelope
+alternative. The batch took 664.286 seconds and retained 1,827,307 compressed bytes.
 
-Next: inspect these saved starts and supplemental Item 8/7 candidates for material
-component membership. Record selected bounds, repetitions, missing alternatives,
-actor/model support and runtime/storage totals before expensive expansion. Use the
-pilot cost only for comparable compact cases. Check the existing central-End raw
-world before declaring an arena generation gap. Do not repeat the scope pass.
+Next: select samples against material variants and distinct-seed requirements.
+Thirty-two observed groups currently have one seed role only. Reuse supplemental
+Item 8/7 worlds for missing families and variants before declaring new generation.
+Record selected bounds, model support and full extraction costs before expansion.
+Do not repeat the scope pass or baseline start inspection. Named components and
+full chunks are not playable topology. Check central-End raw evidence before
+claiming an arena generation gap. All 192 included families remain required.
 
 The pilot protocol and producer bytes are hash-bound to its observations. Preserve
 that historical version when extending measurement logic or the full protocol.
