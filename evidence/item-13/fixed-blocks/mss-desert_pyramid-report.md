@@ -346,3 +346,74 @@ for z in range(463,470):
 print('Stair critical intervals and six-block lower corridor pass.')
 PYRAMID_STAIRS
 ```
+
+## Lower ladder and upper double-chest access
+
+The deeper connection now has a source-supported route. From the preceding
+corridor endpoint (124.5,177,463.5), move east to X125.5, north through Z462.5 to
+the ladder center Z461.5, descend to feet Y172, then move east to the clear
+landing (126.5,172,461.5). This adds four horizontal and five vertical blocks.
+The five existing ladders occupy (125,Y172..176,461), face north, and have full
+sandstone/smooth-sandstone backing at Z462. Reuse the pinned ladder/climbable
+source identity and transfer model in the
+[Large House report](mns-large_house_1-report.md#conditional-connections-with-explicit-construction-costs).
+A north-facing ladder's blocking plate occupies the southern 3/16 of its cell;
+the centered actor's Z461.2..461.8 body stays north of that plate, while its feet
+occupy the climbable block. Air at Y177/178 permits the top transfer. Full floors
+at Y171 support the ladder center and east landing; the latter has air at Y172/173.
+This is a reversible native modeled link, with no block changes. A runtime climb
+has not been observed. The remaining chamber contains pointed dripstone and
+other obstacles; a clear landing does not establish unrestricted floor access.
+
+For the upper double chest, use the dry station (119.5,182,452.5), eye
+(119.5,183.62,452.5), and aim at (120.5,182.5,453.0625), the north face of its
+western half. The interaction ray is approximately 1.603 blocks, below the
+three-block modeled reach. It crosses Z453 only after X120, so it avoids the
+sandstone wall at X119,Z453. Before that crossing, intersected body-level cells
+are air. The target is the first chest face; water below feet level does not
+intercept the ray. Both halves have air above, mutually consistent north-facing
+left/right states, the same chest block type, and no saved Lock field. Under the
+existing no-blocking-entity and unlocked-container scenario, this supports one
+54-slot opening. No GUI opening, rolled loot or acquired loot was observed.
+The dry station also connects west six blocks to (113.5,182,452.5) on full-height
+saved sand/sandstone floors with clear body cells. Connecting that surface strip
+to the full objective circuit remains required before timing synthesis.
+
+Reproduce these local block conditions using the same hash-bound extraction and
+`state_at` helper as the preceding command:
+
+```sh
+uv run python - <<'PYRAMID_ACCESS'
+import gzip, hashlib, importlib, json, math
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+full={'minecraft:sandstone','minecraft:smooth_sandstone','minecraft:sand'}
+for y in range(172,177):
+    assert s(c,125,y,461)=={'Name':'minecraft:ladder','Properties':{'facing':'north','waterlogged':'false'}}
+    assert s(c,125,y,462)['Name'] in full
+for x,z in ((124,463),(125,463),(125,462)):
+    assert s(c,x,176,z)['Name'] in full
+    assert all(s(c,x,y,z)['Name']=='minecraft:air' for y in (177,178))
+for y in (177,178):
+    assert s(c,125,y,461)['Name']=='minecraft:air'
+for x in (125,126):
+    assert s(c,x,171,461)['Name'] in full
+assert all(s(c,126,y,461)['Name']=='minecraft:air' for y in (172,173))
+for x in range(113,120):
+    assert s(c,x,181,452)['Name'] in full
+    assert all(s(c,x,y,452)['Name']=='minecraft:air' for y in (182,183))
+for x,kind in ((120,'left'),(121,'right')):
+    assert s(c,x,182,453)=={'Name':'minecraft:chest','Properties':{'facing':'north','type':kind,'waterlogged':'false'}}
+    assert s(c,x,183,453)['Name']=='minecraft:air'
+    be=next(b for b in c['block_entities'] if (b.get('x'),b.get('y'),b.get('z'))==(x,182,453))
+    assert 'Lock' not in be
+assert s(c,120,182,452)['Name']=='minecraft:air'
+assert s(c,120,183,452)['Name']=='minecraft:air'
+length=math.dist((119.5,183.62,452.5),(120.5,182.5,453.0625))
+assert length<3
+print(f'Ladder/landing and dry chest access conditions pass; ray {length:.6f} blocks.')
+PYRAMID_ACCESS
+```
