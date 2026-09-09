@@ -105,4 +105,6 @@ and remaining roof/parkour uncertainty are now integrated.
 The [Large House 1 intake](mns-large_house_1-report.md) maps all seven spawners
 and sixteen barrels to the active source. Its `empty` table supplies mixed
 empty/item alternatives, so none of those assignments is a guaranteed empty room.
-Topology and complete task timing remain pending.
+Its saved slices and first main-level passage are now inspected; a capped vine
+shaft and solid second partition prevent assuming continuous access. The full
+access graph and complete task timing remain pending.

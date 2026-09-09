@@ -91,3 +91,79 @@ Direct block/source checks use the existing 72,981-voxel sample: budget one minu
 one bounded render up to 180 seconds and 20 MiB of temporary image/SVG output;
 record a timeout instead of repeatedly rerunning it. Preserve raw input unchanged.
 No new server or world materialization is part of this step. Item 14 is UNSTARTED.
+
+## Authored vine columns and blocked axial exits
+
+The active template has exactly three X/Z columns of twisting vines. The mapped
+saved columns retain the following geometry:
+
+| Column | Vine blocks | Immediate upper geometry | Current conclusion |
+| --- | --- | --- | --- |
+| (77,60) | Y35..40 plant, Y41 tip | Full crying obsidian at Y42, air Y43..45 | The axial ascent is capped. Seven vine blocks alone do not prove access to the upper floor. A side transfer or explicit breach must be resolved. |
+| (80,59) | Y44..46 plant, Y47 tip | Open south-facing bottom-half crimson trapdoor Y48, east-facing top nether-brick stair Y49, warped planks Y50, wart block Y51 | The vine does not establish an unobstructed vertical shaft or roof connection. Exact side-exit geometry remains required. |
+| (74,55) | One tip at Y44 | Wall-mounted crimson button at Y45, then air | This single plant is not evidence of a floor-to-floor route. |
+
+At (77,60), full polished-blackstone bricks at Y33/34 support the vine base.
+At (80,59), the base floor is nether bricks at Y43. The third base is crimson
+planks at (74,43,55). Source positions establish authorship; saved block properties
+above establish present obstructions. Do not count these three columns as three
+playable links or infer a total vertical progression from their combined length.
+
+These are direct inspections of the retained sample and active source named above:
+filter source palette names for `twisting_vines`/`twisting_vines_plant`, transform
+positions with (90-w,32+v,25+u), and read the adjacent saved cells using the existing
+`render_pilot.state_at`. No runtime movement has been observed.
+
+The initial render wrapper attempted `/usr/bin/time`, which is absent and returned
+127 before starting the renderer. The same predeclared render was then started
+with Bash's built-in `time -p` and the original 180-second timeout. This is a
+wrapper failure, not a failed world sample or evidence regeneration. No tool was
+installed to repair it.
+
+## Saved main-level partitions
+
+The bounded render completed successfully in 102.29 seconds (Bash time: user 86.89,
+system 15.17). SVG plus PNG output totaled 12,109,694 bytes, within the 20 MiB
+allowance. A live process snapshot showed 119,500 KiB RSS; this is not a measured
+peak. The [retained slice image](mns-large_house_1-slices.png) is the 296,087-byte
+PNG; the 11,813,607-byte SVG need not be duplicated in Git. The agent inspected
+all Y32..76 slices and detailed Y32..39 and Y44..51 crops. These are saved block
+categories, not collision shapes or a rendered human gameplay observation.
+
+Reproduce with existing tooling:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/mns-large_house_1.json.gz --output /tmp/item13-large-house-slices.svg
+time -p timeout 180 convert -background white /tmp/item13-large-house-slices.svg /tmp/item13-large-house-slices.png
+convert /tmp/item13-large-house-slices.png -crop 1436x1370+0+2100 +repage /tmp/item13-large-house-upper.png
+convert /tmp/item13-large-house-slices.png -crop 1436x1370+0+60 +repage /tmp/item13-large-house-lower.png
+```
+
+The main-level interior is visibly partitioned near Z42 and Z50, between the
+northern furnished space, middle furnished space and southern blaze space.
+This is a room-boundary observation, not yet the complete building room count.
+Exact saved cells resolve an actual link at the first partition: actor feet
+(75.5,44,41.5) to (75.5,44,43.5), crossing Z42, traverse two horizontal blocks
+with air at Y44/45 and full crimson-plank support at Y43. The 0.6-wide,
+1.8-high adult fits without changing pose, mining, opening a door or traversing
+a partial block. X76 also has air at Y44/45 through the partition, so the opening
+has a two-block-wide clear span at that height. Stair decoration at Y46 does not
+intrude into this actor's 1.8-block-high swept box.
+
+The Z50 partition differs. Every X73..81 cell at Y44 and Y45 is a full nether-brick
+or crimson-plank block. It is not an open doorway at the main walking height.
+A direct passage there requires a breach or a separately established alternative;
+no link is accepted merely because the rooms share a floor elevation. Upper
+partial shapes and exterior access have not been relabeled as a proven bypass.
+
+The long lower vine shaft also cannot supply an axial main-level link: all four
+cardinal neighbors of (77,60) at Y40..42 are full polished-blackstone bricks,
+while crying obsidian caps its center at Y42. At Y43 the four neighbors are
+reinforced deepslate and the center is air. This supports a capped-shaft finding,
+not an unobstructed climb from the lower treasure cluster into the blaze space.
+Potential lower side exits or permitted breaching still need explicit routes.
+
+These findings resolve one real inter-space connection and two concrete obstacles.
+The outstanding requirement is a complete access graph covering lower reward
+clusters, the three main spaces, upper reward positions and any other playable
+activity space. Do not infer that graph from spawner heights or the tall tower.
