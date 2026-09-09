@@ -43,8 +43,9 @@ The rejected upright crossing is preserved. The report now includes the local
 traversal model, piglin workload scenarios, conditional bed hazard, empty/dead
 space counts, finale and replay assessment. The frozen-runtime lookup now resolves the three empty first-house assignments
 and, by identical input, the two in its second variant: no entity type or
-potential-list fallback. Actor-context validation and container access still
-prevent final sample acceptance.
+potential-list fallback. Balcony container access is now resolved under its
+declared source/geometry model. Actor-context and remaining movement/depth
+validation still prevent final sample acceptance.
 
 ## Requirement map
 

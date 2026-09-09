@@ -108,3 +108,61 @@ Before acceptance they were losslessly recompressed with the existing gzip -n
 command so capture.sh reproduces their headers as well as their contents. Both
 original encodings remain in evidence/raw/item13/source-compression-r1; decompressed
 payload equality was verified. This changes no disassembly or observation.
+
+## First-house container access: declared inspection
+
+Use the existing upright actor at feet(463.5,47.5,431.5) for the chest and
+(466.5,47.5,431.5) for the balcony barrel. Both positions are in the retained
+upright clearance set and lie on the accepted circuit. Permit standing at those
+stops; the circuit's interaction time remains excluded. Use the existing modeled
+1.62 eye offset and conservative3-block reach. Aim from the first eye point at
+(463.5,49.5,430.5), and from the second at(466.5,48.85,430.99), slightly inside
+the barrel's front face. Resolve intervening selection shapes, not just physical
+collision. No item is generated, menu opened, block changed or runtime started.
+
+For opening disposition, apply the inspected ordinary container source with an
+unlocked container and no entity blocking the chest. This is a declared modeled
+access condition, not a statement that cats or other entities were observed absent.
+The raw block entities contain no Lock key. Keep generated/acquired loot and live
+interaction outcomes NOT MEASURED. Modded interception is not tested by a ray.
+
+Container derivation, using the hash-verified mapped Minecraft server JAR already
+bound by capture.sh (SHA-256 26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71):
+
+- ChestBlock.getShape returns its single-chest AABB for the saved type=single.
+  The retained runtime shape is [0.0625,0,0.0625,0.9375,0.875,0.9375].
+  From eye(463.5,49.12,431.5) toward(463.5,49.5,430.5), only the air voxel
+  at 463,49,431 precedes that chest. The first chest-face intersection is at
+  z430.9375,y49.33375. The full aim distance is sqrt(1+0.38^2)=1.06977,
+  below the declared 3-block limit. No template-volume proxy is involved.
+- The barrel ray from(466.5,49.12,431.5) to(466.5,48.85,430.99) has length
+  sqrt(0.27^2+0.51^2)=0.57706. It passes through air at Y49, then the sign
+  voxel 466,48,431. WallSignBlock.getShape selects a facing-dependent AABB;
+  every variant in its initializer lies between local Y 4.5/16 and 12.5/16.
+  While the ray is in that sign voxel, its lowest Y is 48.855294, above the
+  sign's maximum 48.78125. It then hits the full barrel front face at z431.
+  Treating the whole sign voxel as opaque would have falsely rejected this line.
+- ChestBlock.isBlockedChestByBlock offsets 0-17 test the block above with
+  isRedstoneConductor, not mere non-air occupancy. The saved block above is a
+  top, north-facing straight crimson stair. Its runtime AABB union omits the
+  local region with y<0.5,z>0.5, so it is not a full collision cube.
+  Blocks' crimson_stairs registration invokes legacyStair(CRIMSON_PLANKS).
+  legacyStair uses Properties.ofLegacyCopy, which retains the new default
+  redstone predicate. StairBlock passes those properties directly to its Block
+  superclass constructor. Properties constructor bootstrap 3 points to lambda$new$4,
+  which tests isCollisionShapeFullBlock. This gives an unblocked-by-block
+  source disposition; the separately declared no-sitting-cat condition still
+  matters. No live lid animation or menu was observed.
+- BarrelBlock.useWithoutItem directly obtains its BarrelBlockEntity and calls
+  Player.openMenu; it has no chest-style block-above or sitting-cat check.
+  Both the chest and barrel use paths invoke PiglinAi.angerNearbyPiglins.
+  That source call is not an observed aggro outcome or an Item 14 AI experiment.
+
+Reproduce the direct source inspection with the pinned javap -p -c, using classes
+net.minecraft.world.level.block.ChestBlock, BarrelBlock, WallSignBlock, Blocks,
+and net.minecraft.world.level.block.state.BlockBehaviour$Properties. Use -v for
+Properties to inspect bootstrap 3's lambda binding. Resolve the short block class
+names under net.minecraft.world.level.block. The saved voxel references and
+runtime AABBs above are retained in the existing first-house dataset/collision
+projection. Direct immutable-artifact inspection requires no additional capture
+or validator solely to restate these facts.

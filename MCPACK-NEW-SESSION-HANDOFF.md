@@ -148,8 +148,11 @@ activity spaces, source support, blocked east-vine access and reward tables.
 The report now includes the 36.25-block local circuit and 20.83-second nominal
 modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
 spaces, finale and replay assessments. These are not observed gameplay. Next
-resolve actor-context validation and container access;
+resolve actor-context and remaining movement validation;
 shortest objective distance/terrain cover and exact connection widths remain open.
+Balcony chest/barrel access is now source/geometry-supported under the declared
+unlocked, no-entity-blocker model. Exact rays and lid/sign rules are in the report;
+no container was opened and no loot generated or acquired.
 A [predeclared spawner lookup](evidence/item-13/collision/README.md#predeclared-saved-spawner-lookup-experiment)
 completed at 48089961 in 229.279 seconds with clean lifecycle and frozen identity.
 The piglin resolves; three empty assignments do not resolve to any entity type.

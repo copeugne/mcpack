@@ -96,6 +96,25 @@ full dungeon floors merely from the stacked spawner/container heights. Whether
 it meets the final large-but-shallow assessment remains tied to the complete
 access, hazard, reward and traversal analysis.
 
+## Container access under the declared model
+
+The [source and ray derivation](../model-source/README.md#first-house-container-access-declared-inspection)
+resolves access to both balcony containers from positions on the accepted circuit.
+At feet 463.5,47.5,431.5, standing eye height 49.12 gives a 1.06977-block aim
+line to the chest through air. At feet 466.5,47.5,431.5, the 0.57706-block
+barrel aim line passes above the wall sign's selection shape. Both standing
+positions occur in the retained upright clearance set; the actor may stand at
+these stops and crouch again before the centerline lantern crossing. These extra
+interaction/pose actions are not included in the earlier traversal-time budget.
+
+The top stair above the chest is not a full collision cube and does not block
+opening under the inspected source predicate. The barrel has no corresponding
+lid-headroom test. Raw containers have no Lock field. Under the explicitly
+unlocked, no-entity-blocker model, both are accessible for ordinary interaction.
+This is source-supported modeled access, not an observed menu opening, generated
+loot or acquired item. The roof barrel remains a separate breach/access scenario.
+Both source use paths call PiglinAi.angerNearbyPiglins; live aggro was not tested.
+
 ## Route length and conditional traversal time
 
 The [retained route model](../collision/r2-route-model.json) measures a closed
@@ -190,9 +209,10 @@ of this assessment still requires the unresolved access and movement checks belo
 ## Concrete unresolved work
 
 Finish actor-context and movement support validation, shortest entry-to-objective
-route/terrain-cover measurement, container interaction/opening, and precise
-connection widths. Empty-spawner decoding/type disposition is resolved; actual
-activation and encounters remain outside the authorized observed metrics.
+route/terrain-cover measurement and precise connection widths. Balcony
+container access is resolved under the declared source/geometry model; live
+opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
+disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.
 Roof approach and mining time remain conditional/unmeasured. Preserve the room
 sensitivity and modeled-versus-observed boundaries. This report does not claim
 final quality acceptance, complete family sampling or review/merge delivery.
