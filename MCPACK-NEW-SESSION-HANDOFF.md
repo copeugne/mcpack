@@ -182,7 +182,7 @@ Circle's complete-objective budget is UNRESOLVED; movement-only times do not pas
 Nominal mining is 13.8s; pickup eligibility and a conditional spawn deadline are
 supported. Pending user decision: can an explicitly unresolved total close timing?
 Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
-First collision [raw custody](evidence/item-13/collision/r1-custody/README.md) passes local/download restores and external delivery.
+All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
 claiming an arena generation gap. All 192 included families remain required.

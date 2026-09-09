@@ -1,5 +1,12 @@
 # Saved-view collision pilot
 
+Current raw custody: [first collision](r1-custody/README.md),
+[spawner lookup](spawner-r1-custody/README.md) and
+[second-house collision](house2-r1-custody/README.md) each have verified local
+and downloaded restores of all 240 members, with external releases bound to
+their launch commits. These records supersede historical broader-custody-pending
+notes below. They do not resolve the separate complete-objective timing gate.
+
 Status: first capture PASSED for empty-context geometry only. This resolves the specific missing collision
 geometry for the first selected Medium House. It does not establish playable
 rooms, actor movement, traversal time or combat outcomes. The original selected

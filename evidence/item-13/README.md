@@ -54,7 +54,8 @@ The output is empty-context geometry; by itself it does not establish actor
 clearance or playable connectivity. The derived upright standing pass retains 352 clearance
 positions from 1,411 supported candidates; those are not rooms or reachable
 positions. Crouching adds six positions (358 total), without resolving central
-upper reward access. Broader raw capture custody is still pending.
+upper reward access. All three runtime captures now have verified
+[external raw custody and downloaded restores](collision/README.md).
 
 The [first-house assessment](fixed-blocks/mns-medium-house-report.md) now integrates
 the verified crouched balcony route, one-versus-two open-plan room sensitivity,
@@ -71,7 +72,7 @@ NOT MEASURED. Scoped shortest station distances (14.5 and 18.125 blocks),
 room-graph depth and burial context are now integrated. The local modeled
 assessment is recorded. The [second-house assessment](fixed-blocks/mns-medium_house_2-report.md)
 now records both vine links and all local quality dimensions under the model.
-Broader family sampling, raw-capture custody and final delivery remain outstanding.
+Broader family sampling, complete-objective timing and final delivery remain outstanding.
 
 ## Requirement map
 
