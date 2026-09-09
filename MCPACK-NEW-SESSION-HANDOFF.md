@@ -148,7 +148,8 @@ modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
 spaces, finale and replay assessments. These are not observed gameplay. A later support check rejects r2's center
 ascent; r3 uses slab-edge transitions and passes eighteen swept segments plus
 step-support checks. Source context support is integrated; full actor runtime
-equivalence remains unmeasured. Shortest objective distance/terrain cover remain open. The report now derives
+equivalence remains unmeasured. Station depths (14.5/18.125 blocks), room depth
+and burial context are integrated; the local model assessment is recorded. It derives
 local doorway clearance, vine access and balcony support/headroom from saved AABBs.
 Balcony chest/barrel access is now source/geometry-supported under the declared
 unlocked, no-entity-blocker model. Exact rays and lid/sign rules are in the report;
@@ -160,8 +161,9 @@ The identical two Medium House 2 payloads reuse that disposition. Core projectio
 capture and redacted console are retained; broader raw custody remains pending.
 No spawning, actor or repeated collision pass occurred.
 
-Next: resolve collision/movement support, room connectivity and encounter models
-for those layouts; finish other family/variant/seed selection and measurements.
+Next: assess the second Medium House layout and the other selected fixed layouts,
+reusing the first-house source/model support; finish other family/variant/seed
+selection and measurements. First-house broader raw-capture custody is pending.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental
 Item 8/7 worlds for missing families and variants before declaring new generation.
 Record selected bounds, model support and full extraction costs before expansion.

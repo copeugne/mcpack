@@ -1,7 +1,8 @@
 # Medium House 1: developing quality assessment
 
-Status: IN PROGRESS. This is one selected fixed Nether layout, not completion of
-its family coverage or Item 13. Evidence classes below are deliberately separate.
+Status: local modeled/inspection assessment recorded for this selected fixed
+Nether layout. Family coverage, raw capture custody and Item 13 delivery remain
+IN PROGRESS. Evidence classes below are deliberately separate.
 
 Sample: `full-ordinary-r1-baseline|minecraft:the_nether|mns:medium_house|29|27`.
 [Saved blocks](mns-medium-house.json.gz), [selection](../fixed-moog-selection.json),
@@ -180,11 +181,69 @@ faster/slower rates for the other two values. No revised empirical speed is impl
 These values are conditional kinematic budgets, not observed gameplay, confidence
 intervals, shortest paths or full clears. They exclude combat, activation waits,
 interaction/looting time, approach and the roof cavity. The one-versus-two room
-sensitivity implies graph depth zero or one for the balcony; shortest spatial
-entry-to-objective distance and terrain cover are still unresolved. Sub-block
+sensitivity implies graph depth zero or one for the balcony; station distances
+and burial context are derived separately below. Sub-block
 routes around the lantern were not exhaustively searched: the rejected upright
 centerline does not prove that every possible upright crossing fails or that
 crouching is mandatory. The accepted crouched circuit is one verified option.
+
+## Depth and burial context
+
+Depth uses the already-declared entry (467.5,45,435.5), west-vine centerline,
+cardinal motion and two balcony interaction stations. No new target is chosen
+by searching for a favorable distance. These are shortest distances on the
+validated centerline connection model, not a global optimum over arbitrary
+sub-block positions, jumps, mining or every possible three-block interaction
+ray. A shortest path to an authored finale is N/A because finale is NONE.
+
+The chest inspection station (463.5,47.5,431.5) is **14.5 route blocks** from
+entry: 10 lower-floor blocks, 2.5 climbing and 2 along the balcony. The lower
+segment achieves the Manhattan lower bound |467.5-461.5|+|435.5-431.5|=10;
+the declared sole unmodified vertical link then requires the 2.5 climb and
+2 eastward blocks. The station lies on the first balcony segment of r3.
+The east barrel station (466.5,47.5,431.5) is **18.125 route blocks** from
+entry: 10+2.5+5+0.3125+0.3125, including the supported trapdoor drop/step.
+The r3 graph is a chain with no alternate link, so these prefixes are its
+shortest entry-to-station paths. A successful local container interaction is
+supported separately; the metric is travel to the declared station, not the
+minimum distance at which any possible actor could first click a container.
+
+For two activity spaces, reachable graph nodes=2, inter-room edges=1,
+components=1, deepest room depth=1 and both balcony reward nodes have depth1.
+For the one-open-plan-room sensitivity these become 1,0,1,0 and depth0.
+The roof-cavity barrel is outside that playable graph and has no unmodified
+upright/crouched route distance in this model. It is not assigned zero distance.
+R1 has zero reward-table nodes, R2 has two, and the inaccessible cavity has one:
+2/3 saved reward nodes are on the modeled ordinary-interaction route. This
+fraction describes table nodes, not item value or acquired loot. There is no
+finale reward concentration because no finale is identified.
+
+For burial context, reuse the pilot's saved WORLD_SURFACE minus envelope-top
+metric across the complete footprint, keeping it separate from solid cover.
+The saved surface_xzy has 209 columns (19*11), all at Y127; envelope top is
+Y56. Therefore the height difference is **71 blocks at all 209 columns**.
+The decoder records the highest occupied block coordinate (unpacked heightmap
+value + dimension minimum Y - 1), not the top face of that block. This is the
+Nether upper surface context; it must not imply 71 blocks of material to mine,
+a local surface approach or a roof thickness.
+
+Local contiguous natural overburden immediately above the inspected authored
+roof is **0 blocks** at these three representative columns: R1 center
+(464,433), balcony chest station (463,431), and roof-barrel column (464,432).
+The first two have authored roof blocks through Y52 followed by air Y53..59;
+the last has its authored bottom trapdoor at Y54 followed by air Y55..59.
+Thus each retained column already contains an air break above the roof. This
+zero is scoped to those three columns, not the whole footprint. The material
+and thickness of the remote Nether ceiling are not sampled by the retained
+Y40..59 block window; they are not needed to interpret the heightmap offset
+or these local roof exposures. Authored roof cover and conditional roof access
+remain the distinct bypass facts recorded below.
+
+Derivation uses the linked saved blocks and r3 route directly: the extraction
+index is ((y-minY)*sizeZ+z-minZ)*sizeX+x-minX; surface_xzy rows are [x,z,y].
+No world generation, re-extraction, route search or additional runtime is needed.
+The explicit coordinates, arithmetic and immutable input references reproduce
+these small measurements without another processor or evidence schema.
 
 ## Encounter component and interaction hazards
 
@@ -255,18 +314,20 @@ is not a dungeon reset. No player enjoyment or actual replay behavior was measur
 The modest house is mechanically shallow in graph depth under the declared model:
 one open-plan space or two connected activity spaces, with no separate finale.
 Its layered roof and stacked content positions overstate playable-floor count.
-It is not categorized as a giant dungeon from its envelope alone. Full acceptance
-of this assessment still requires the unresolved depth measurements below.
+It is not categorized as a giant dungeon from its envelope alone. The assessment
+uses the declared model and the scoped depth measurements above.
 
-## Concrete unresolved work
+## Remaining coverage, custody and delivery
 
-Finish shortest entry-to-objective route/terrain-cover measurement. The corrected
-step/drop sequence and mapped-source context treatment support the declared
-kinematic model; full runtime actor-context equivalence remains NOT MEASURED.
+The corrected step/drop sequence, scoped station depths and mapped-source
+context treatment support the declared kinematic model. Full runtime
+actor-context equivalence remains NOT MEASURED.
 Local connection dimensions are resolved above; balcony
 container access is resolved under the declared source/geometry model; live
 opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
 disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.
 Roof approach and mining time remain conditional/unmeasured. Preserve the room
 sensitivity and modeled-versus-observed boundaries. This report does not claim
-final quality acceptance, complete family sampling or review/merge delivery.
+complete family sampling, completed raw-capture custody or review/merge delivery.
+The Medium House 2 material layout still requires its own quality assessment;
+its two empty-spawner dispositions are already resolved and should be reused.
