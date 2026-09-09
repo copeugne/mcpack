@@ -292,3 +292,61 @@ Next, inspect saved start NBT for material component membership. Do not extract
 112 million voxels indiscriminately or infer design coverage from the 266 starts.
 Supplemental Item 8/7 candidates and non-registry saved evidence remain necessary
 for families absent from this baseline index.
+
+### Saved-start inspection pilot declaration
+
+Inspect `full-ocean-heavy-r1-baseline`, `region/r.0.0.mca` first. The candidate
+index identifies ten included starts here: small and skeleton dungeons, ocean
+monument, illager galley, unicorn galleon, slime cave, underground temple, IDAS
+sunken ship, cold ocean ruin and small tower. This mixture tests procedural,
+fixed and large assemblies before reading the other 87 start regions. Read only
+saved start NBT and chunk status, with full accepted-world inventory verification
+before and after under the existing world lock. No server or gameplay actor is
+involved. Preserve absent/incomplete starts as explicit failures, not empty rooms.
+Budget: three minutes, 1.5 GiB memory and 10 MiB compressed output. This is a
+metadata benchmark; it does not measure traversal or component playability.
+
+The [saved-start pilot](start-inspection-pilot.json.gz) completed in 23.494 seconds,
+46,708 KiB peak RSS and 43,543 compressed bytes. All ten starts are present; all
+1,024 chunk records in this one region are `minecraft:full`. World inventories
+matched before and after the read. Structures extending into other regions still
+require those chunks to be checked. The small-dungeon start NBT equals the earlier
+accepted pilot exactly, giving a direct check against independently retained
+extraction. This read resolves the following candidate design identities:
+
+| Root (same ocean world and Overworld) | Saved start chunk | Established assembly fact |
+| --- | --- | --- |
+| `betterdungeons:skeleton_dungeon` | 27,5 | Starts with `skeleton_dungeon/skeleton_shell`, skeleton processor; additional children retained for selection |
+| `betterdungeons:small_dungeon` | 27,0 | `small_shell_9x7` and skeleton processor, identical to completed pilot |
+| `betteroceanmonuments:ocean_monument` | 2,9 | Full start compound and 1,436 component records retained; this count is not rooms or playable depth |
+| `dungeons_arise:illager_galley` | 5,0 | Both hull `part_1` and `part_0`, eight pillager-component records and one vindicator-spawner component; realized enemies remain unmeasured |
+| `dungeons_arise_seven_seas:unicorn_galleon` | 14,4 | Hull `unicorn_galleon_0` and all six named spawner-component alternatives 0 through 5 occur in this assembly |
+| `explorations:slime_cave` | 6,11 | Custom piece `Template=explorations:slime_cave`, clockwise-90 rotation |
+| `explorations:underground_temple` | 17,23 | Start `rooms/large_hall`; procedural children retained, not equated with rooms |
+| `idas:sunken_ship/sunken_ship` | 4,0 | Whole layout `idas:sunken_ship/sunken_ship` with `idas:sunken_ship_processor`; layout 2 and coral remain separate coverage requirements |
+| `minecraft:ocean_ruin_cold` | 15,4 | Three overlaid brick/cracked/mossy `_6` templates, cold and `IsLarge=0`; not three separate rooms |
+| `mss:small_tower` | 26,20 | Whole layout `mss:small_tower`, clockwise-90 rotation |
+
+Derivation: select the matching `starts[].id`, inspect its `start_nbt.Children`
+`pool_element.location`/`processors`, or custom `Template`/`Rot` and ruin flags.
+The full compound is retained, including bounds and junction metadata, for later
+block validation. No gameplay quality score follows from these component fields.
+
+Reproduction command:
+
+```sh
+uv run python -m evidence.item-13.inspect_starts --world full-ocean-heavy-r1-baseline --region region/r.0.0.mca --output /tmp/item13-start-inspection-reproduction.json.gz
+cmp evidence/item-13/start-inspection-pilot.json.gz /tmp/item13-start-inspection-reproduction.json.gz
+```
+
+The producer rejects escaped region paths and retains missing/incomplete start
+states. It reuses the existing Anvil decoder and full-world custody checks.
+Custom dimensions require their accepted geometry before extension. Focused type
+and formatting checks pass; Ruff uses `--ignore TRY004` for the two explicit
+malformed saved-value errors, which deliberately use `ValueError`.
+
+The repeated read took 12.284 seconds and 47,564 KiB peak RSS and reproduced the
+same compressed bytes, SHA-256
+`c1695114acd82e118160274190f2a755b61dc21de20ae28c5f95a64d84cc6952`.
+The 23.494-second first read provides a planning reference for remaining metadata
+reads, not a bound for differently populated regions or full block extraction.

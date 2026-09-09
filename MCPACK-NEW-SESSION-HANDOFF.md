@@ -112,7 +112,10 @@ biomes. These source dispositions avoid unnecessary duplicate/forced samples.
 The [baseline candidate index](evidence/item-13/candidates.json) now identifies 266
 starts across 44 included families and 59 roots. Its 88 start regions total
 868,245,504 bytes; padded envelopes total 112,141,277 voxels before selection.
-Metadata reproduction passed; full saved chunks and material membership are pending.
+Metadata reproduction passed. The [start-NBT pilot](evidence/item-13/start-inspection-pilot.json.gz)
+identifies ten ocean-world assemblies in 23.494 seconds; all 1,024 region chunks
+are full. Design identities are integrated in the README. Other region coverage
+and final sample selection remain pending.
 
 Next: inspect these saved starts and supplemental Item 8/7 candidates for material
 component membership. Record selected bounds, repetitions, missing alternatives,
