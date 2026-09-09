@@ -86,9 +86,12 @@ extrema UNKNOWN. Every external view, source identity and selected case is
 unchanged. The v3 report and assessments cover 464 cases and 94 observed families.
 Nine affected tests, lint, format and types pass; the pilot reproduces byte for
 byte from a clean export. Full applicable pre-review gate: 610 passed.
-Next: push the corrected full matrix and request a fresh Codex review. Inspect
-all comments and reactions, fix valid findings, repeat until clean, merge and
-verify main. Item 12 is not COMPLETE until delivery; Item 13 remains unstarted.
+The complete matrix is pushed in `0e8bc2da`; `a3924ecc` fixes ledger punctuation.
+[PR39](https://github.com/copeugne/mcpack/pull/39) is the active delivery review.
+Next: inspect its latest completed Codex review and reviewed commit, all comments
+and reactions. Fix valid findings and repeat review until the current candidate
+is clean, then merge and verify fetched main. Do not repeat the completed matrix
+push or processing. Item 12 is not COMPLETE until delivery; Item 13 is unstarted.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored
