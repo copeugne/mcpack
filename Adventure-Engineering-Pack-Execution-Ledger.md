@@ -511,7 +511,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
 | 12 | Structure discoverability | `IN PROGRESS` | User separately authorized inspection and automated assessment with explicit limits. Predeclared protocol and requirement map: evidence/item-12/README.md. |
-| 13–18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
+| 13-18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
 | 48 | Progression implementation | `UNSTARTED` | Must first be atomized into independent gates. |
