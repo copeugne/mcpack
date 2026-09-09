@@ -80,14 +80,15 @@ Authoritative [Item 12 requirement map](evidence/item-12/README.md) and
 proof. All sixteen existing world restores and census hashes pass the
 [availability inspection](evidence/item-12/validation/input-availability.txt).
 PR39's completed v2 review found valid internal observer cells (3969034729).
-Protocol v3 marks internal rays and incomplete external-ring extrema UNKNOWN,
-preserving cells, heights, source worlds and sample selection. The ordinary pilot
-passes the new regression and report: eight internal airship cells and four trial
-chamber cells are excluded. Pilot: 40.228 seconds, 19,317 bytes. Remaining fifteen
-worlds and the full report are still rejected v2; the local gate is reopened.
-Next: complete the unchanged matrix with v3, update affected assessments and tests,
-commit/push and request fresh review. Repeat until clean, merge and verify main.
-Item 12 is not COMPLETE until delivery; Item 13 remains unstarted.
+Protocol v3 and the regression/pilot fix are in `62401a14`. All sixteen corrected
+worlds now exclude 398 internal cells (3,980 UNKNOWN rays), with affected ring
+extrema UNKNOWN. Every external view, source identity and selected case is
+unchanged. The v3 report and assessments cover 464 cases and 94 observed families.
+Nine affected tests, lint, format and types pass; the pilot reproduces byte for
+byte from a clean export. Full applicable pre-review gate: 610 passed.
+Next: push the corrected full matrix and request a fresh Codex review. Inspect
+all comments and reactions, fix valid findings, repeat until clean, merge and
+verify main. Item 12 is not COMPLETE until delivery; Item 13 remains unstarted.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored

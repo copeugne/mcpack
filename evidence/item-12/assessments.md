@@ -97,9 +97,10 @@ profiles; the following forgotten-well panels show a larger WS/NL separation
 around vegetation. These technical profiles support terrain/concealment context,
 not perspective renders or cave-opening observations.
 
-The abandoned-temple case has 89 blocks of observer-ring relief, with 3/5 WS target
-rays clear from the low cell and 4/5 from the high cell. The monastery has 66 blocks
-of relief but 3/5 low and 0/5 high WS rays clear. The high/low cells are at different
+All eight abandoned-temple observer cells lie inside its horizontal envelope, so
+external visibility and low/high relief are UNKNOWN. Its section remains placement
+context only. The monastery has 66 blocks of eligible observer relief but 3/5 low
+and 0/5 high WS rays clear. The high/low cells are at different
 azimuths as well as elevations, so these are paired viewpoint outcomes, not the
 causal benefit of raising one observer. The small dungeon remains 0/5 from both
 extrema despite 89 blocks of relief. These are the actual retained case results,
