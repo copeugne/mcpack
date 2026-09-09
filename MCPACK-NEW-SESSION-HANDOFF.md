@@ -96,8 +96,7 @@ envelope coverage for 13. The common Item 7 index adds complete-envelope
 candidates for Starlight Voyager, leaving 105 without such a candidate in the
 start-based references. The existing central-End raw world is also available for
 non-registry arena inspection. Exact dispositions and limitations are in the README.
-The intake is not proof of playable topology. The first
-[representative report](evidence/item-13/pilot/report.md) now validates two small
+The intake is not proof of playable topology. The first [representative report](evidence/item-13/pilot/report.md) now validates two small
 dungeon chambers and covers all quality dimensions under conditional models.
 No additional dungeon-generation survey has run. A fresh runtime collision probe
 now supplies empty-context shapes from saved house blocks. Do not infer full
@@ -182,6 +181,7 @@ with explicit provisional budgets and censoring. Resume layout coverage under
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
 original Circle and other layouts still need their own complete task budgets.
 [Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): 16/16 barrels and 7/7 spawners have conditional access evidence; exterior link requires 19 bridge blocks; full conditional model gives 376/583/969s for two successful entities per source; local five-room quality assessment recorded; family repetitions and broader coverage pending.
+[Nether Tower](evidence/item-13/fixed-blocks/mns-nether_tower-report.md): 17 source/saved rewards matched, no explicit enemy sources; slices and axial obstructions inspected. Resolve entrance and vertical access next.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
