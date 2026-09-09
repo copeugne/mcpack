@@ -159,3 +159,85 @@ was started and no source world changed. The supplemental palette includes lava
 and soul fire, so absence of another recorded structure intersection must not
 be misrepresented as hazard-free terrain. Exact positions/topology remain to
 be inspected. The original mixed case and all earlier source findings remain.
+
+
+## Supplemental saved hazards and bounded southern approach
+
+The [supplemental slice sheet](mns-circle-supplement-slices.svg) was visually
+inspected and reproduces with the existing renderer using the supplemental input.
+The saved start has no rotation, origin(360,32,72), so source coordinates map
+by direct addition. The two ancient-debris blocks are at (365,33,75) and
+(371,33,81); the source soul fire is actually present here at (368,36,79).
+Its presence in this sample does not repair its absence in the original case.
+The piglin/brute spawners are respectively (368,34,79) and (367,34,80).
+
+There are nine magma blocks inside the envelope, all at floor Y32:
+X370..372,Z78; X369..372,Z79; and X371..372,Z80. No lava lies inside the
+original supplemental envelope; its presence in the wider raw palette comes
+from padding. Do not infer an interior lava obstacle from palette membership.
+These floor blocks are a real optional contact-hazard region. Mapped MagmaBlock
+stepOn offsets 0..29 calls hotFloor damage for a living entity that is not
+stepping carefully; runtime immunity, modifiers and actual damage were not tested.
+BaseFireBlock.entityInside supplies fire-contact behavior for the saved soul
+fire. It does not demonstrate an enemy/player encounter merely by existing.
+
+For a bounded geometry check, declare one upright 0.6-wide, 1.8-high actor with
+existing iron equipment, full knowledge, no block changes, jumping or flight.
+Use feet (368.5,33,85.5) as a local southern approach station, walk straight to
+(368.5,33,81.5), inspect the two spawner targets, and return. This is a local
+approach circuit, not an authored entrance, complete loot route or whole-ruin
+clear. Use the existing flat rates 3/4/5 blocks per second. Interaction, combat,
+external approach, mining and acquisition are excluded. Source assumptions are
+explicit; no new actor or runtime observation is invented.
+
+Direct retained-block inspection proves support/clearance for all five corridor
+cells X368,Z81..85: Y32 is full crimson nylium, and Y33/34 are air in every
+cell. The complete continuous actor sweep stays inside those air cells, with
+0.2-block horizontal margins and its top below Y35. NyliumBlock extends Block
+without a shape/collision override; Blocks initializer 32374..32414 constructs
+crimson nylium with ordinary collidable Properties. The mapped base shape rules
+already inspected give a full support cube and empty air collision. Neighboring
+wall/fence shapes stay in their originating horizontal cell; none enters this
+corridor. This directly supports this simple route without inventing partial
+block geometry or rerunning a whole saved-view collision experiment.
+
+The closed path is 8 blocks, with zero ascent/descent and zero feet-height span.
+Nominal modeled travel is 8/4=2 seconds; the stipulated faster/slower values are
+8/5=1.6 and 8/3=2.666667 seconds. These are conditional kinematic budgets for
+this short approach only, not observed traversal times or a scored whole dungeon.
+The corridor never steps on the nine magma blocks. Its actor top Y34.8 remains
+below the soul-fire cell Y36; no contact with that saved block occurs on this
+static route. Neither fact establishes safety from spawned enemies or later
+world changes.
+
+At its inner station, eye(368.5,34.62,81.5) is 1.419296 blocks from the brute
+spawner center(367.5,34.5,80.5) and 2.003597 from the piglin spawner center
+(368.5,34.5,79.5), within the declared three-block reach. Both target lines
+cross only Y34 air cells before their target. The wall below at (368,33,80)
+cannot obstruct them: even its conservative collision maximum is Y34.5, while
+the rays stay above 34.5 until reaching their target centers. WallBlock constructor
+112..128 uses height 24/16 for its collision shapes; its selection shape is no
+taller. Thus both spawners have supported geometric inspection access here.
+This is not an observed interaction, spawning trial, mining or encounter clear.
+
+Reproduce the small corridor fact check directly, using the already retained
+extractor indexing helper (no new processor or schema):
+
+```sh
+uv run python - <<'CHECK'
+import gzip, importlib, json
+from pathlib import Path
+source = Path('evidence/item-13/fixed-blocks/mns-circle-supplement.json.gz')
+case = json.loads(gzip.decompress(source.read_bytes()))['cases'][0]
+state_at = importlib.import_module('evidence.item-13.render_pilot').state_at
+for z in range(81, 86):
+    assert state_at(case, 368, 32, z)['Name'] == 'minecraft:crimson_nylium'
+    for y in (33, 34):
+        assert state_at(case, 368, y, z)['Name'] == 'minecraft:air'
+CHECK
+```
+
+The pinned javap procedure in the existing model-source notes reproduces the
+NyliumBlock, Blocks, WallBlock, MagmaBlock and BaseFireBlock source derivations.
+Reward access/mining capability, activity-space boundary and complete sample
+quality scoring remain pending; the corridor must not substitute for those.
