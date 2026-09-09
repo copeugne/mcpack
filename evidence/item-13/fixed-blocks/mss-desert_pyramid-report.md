@@ -505,3 +505,67 @@ print('Lower source-access route passes after three declared removals.', dict(co
 print('Spawner interaction ray:', math.hypot(1,1.62))
 PYRAMID_CHAMBER
 ```
+
+## Upper corridor gap and declared bridge
+
+The reward corridor north of the lower chamber resumes at (125.5,177,452.5).
+It does not have a continuous native floor back to the southern ladder landing
+(125.5,177,462.5). Along X125,Y176,Z453..460 all eight cells are air; Z461
+contains the existing top ladder. All nine cells have air at Y177/178. Therefore
+an air-only route query at feet Y177 would incorrectly accept a walk across the
+chamber. This is a specific support failure, not proof that no other native or
+parkour route exists anywhere in the Pyramid.
+
+Predeclare the following connector for the complete engineering objective, after
+finishing the lower chamber and returning up its ladder. Remove the top ladder
+at (125,176,461), then place nine cobblestone blocks at (125,176,Z453..461).
+The remaining lower ladder is retained but its original top transfer is changed;
+do not reuse the untouched-ladder route after this modification without assessing
+that changed state. The declared objective visits the lower chamber first, so
+no later lower transfer is required by this route.
+
+From the south landing the top ladder is reachable at its upper plate, with no
+intercepting block above it. For bridge construction, use the existing crouched
+edge-placement model: feet Y177, eye Y178.27, X125.5, center Z=k-0.1 for support
+cell Z=k, beginning k=462. The body retains 0.2 blocks of horizontal overlap with
+that support. Aim at its north face (125.5,176.5,k); the 1.773-block ray approaches
+the exposed face through the next empty cell and places the new block at Z=k-1.
+Repeat k=462 down through 454. Each newly placed cell supplies the next support;
+body and eye remain below the ceiling and above the placed floor. The actor is
+stipulated to crouch and place successfully, with no entity interference, as in
+the approved engineering model. This is not an observed build.
+
+The completed crossing is ten horizontal blocks from Z462.5 to Z452.5 at feet
+Y177, including the two half-cell approaches. Charge one ladder removal, nine
+placements, selection/decision allowances and crouched movement in the eventual
+complete timing model. No world/configuration edits were performed. The bridge
+bypasses the chamber's fall exposure while the separately assessed lower route
+still supplies its two-source objective. Both are conditional engineering
+choices, not evidence of authored protection or a reason to prohibit bridging.
+
+The northern landing connects on saved full-height floors through X125,Z452..449,
+then west along Z449 to X117. The intervening body cells are air. This supplies
+eleven further horizontal blocks to (117.5,177,449.5), at the eastern edge of the
+rare-chest activity area. Its central chiseled-sandstone blocks at X114..116,
+Z448..449 occupy Y177 and must not be mistaken for open floor-level cells.
+
+Reproduce the gap and northern corridor from the retained extraction:
+
+```sh
+uv run python - <<'PYRAMID_BRIDGE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+for z in range(453,462):
+    assert s(c,125,176,z)['Name']==('minecraft:ladder' if z==461 else 'minecraft:air')
+    assert all(s(c,125,y,z)['Name']=='minecraft:air' for y in (177,178))
+route={(125,z) for z in range(449,453)} | {(x,449) for x in range(117,126)}
+for x,z in route | {(125,462)}:
+    assert s(c,x,176,z)['Name'] in ('minecraft:sandstone','minecraft:smooth_sandstone','minecraft:sand')
+    assert all(s(c,x,y,z)['Name']=='minecraft:air' for y in (177,178))
+print('Nine-cell unsupported crossing and northern floor/body conditions verified.')
+PYRAMID_BRIDGE
+```
