@@ -69,6 +69,12 @@ assessment is recorded. The [second-house assessment](fixed-blocks/mns-medium_ho
 now records both vine links and all local quality dimensions under the model.
 Broader family sampling, complete-objective timing and final delivery remain outstanding.
 
+The [Warped Dome assessment](fixed-blocks/mns-warped_dome-report.md) now records
+one ground room, external resource access and a complete conditional survey/harvest
+scenario of approximately 16/27/45 seconds. Its tall shell does not gate the two
+modeled rewards, supporting the shallow-landmark assessment. Acquisition remains
+conditional, and this local result does not resolve full-family sampling.
+
 ## Requirement map
 
 | Requirement | Existing evidence available | Concrete missing measurement or assessment |

@@ -1,8 +1,8 @@
 # Warped Dome: quality assessment
 
-Status: IN PROGRESS. Saved/source content and visual layout are recorded;
-a northern ground route and harvest-table potential are now established.
-Room boundaries, complete resource-task timing and quality synthesis remain pending.
+Status: local sampled assessment recorded under the accepted conditional method.
+One ground room, resource access, full scenario timing and quality dimensions are
+integrated below. Family repetitions and Item 13 delivery remain IN PROGRESS.
 
 Sample: full-ordinary-r2-baseline|minecraft:the_nether|mns:warped_dome|11|2.
 The existing [saved blocks](mns-warped_dome.json.gz), SHA-256
@@ -100,10 +100,8 @@ assert {p[2] for p in case['surface_xzy']}=={127}
 DOME_CHECK
 ```
 
-Northern access is now resolved below. Next, delineate the central activity
-boundary and predeclare a complete resource task, actor and failure conditions.
-Resolve its external route and magma/soul-sand exposure before timing. Item 14
-remains UNSTARTED.
+The completed local route, predeclared resource task and resulting quality
+assessment follow below. Item 14 remains UNSTARTED.
 
 ## Northern ground access, geometric measurement
 
@@ -156,12 +154,10 @@ print('Northern access: ten horizontal blocks, eleven supported air positions.')
 DOME_ROUTE
 ```
 
-The next complete-objective model must include a declared resource-acquisition
-objective and its external resource route. A ten-block interior inspection alone
-cannot represent completion of this resource-bearing site. Use the accepted
-[conditional accounting method](../timing-scenario-proposal.md); retain separate
-provisional pickup costs, source work and failure conditions. No runtime or new
-materialization was used for this geometric measurement.
+The complete-objective model below adds resource acquisition and its external
+route using the accepted [conditional accounting method](../timing-scenario-proposal.md).
+The ten-block interior inspection alone is not completion timing. No runtime or
+new materialization was used for this geometric measurement.
 
 ## Harvest potential, source inspection
 
@@ -185,3 +181,130 @@ These resources were read directly from the pinned local extra JAR at
 `instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-extra.jar`,
 SHA-256 24a5d2d162cfad2a1a574c4d552e99dc6c6303a49d1e68b43a7b638f3b0930fd.
 The JSON conditions above are the derivation; no runtime harvest was performed.
+
+## Resource-task predeclaration
+
+The site has no authored boss, clear trigger or terminal reward. Define its complete
+modeled expedition task explicitly: start at the northern entry (176.5,65,26.5),
+inspect the central floor to (174.5,65,34.5), return through the same entry, harvest
+one exposed ore at (175,64,24) and one mature wart at (176,65,22), acquire their
+drops, and return alive to the entry. This is a representative resource-acquisition
+objective, not exhaustive stripping of all 43 resource positions, an authored
+completion trigger, or proof that every peripheral deposit is accessible.
+
+Reuse the approved single-adult actor, full knowledge, iron armor, unenchanted
+iron sword/diamond pick, full health/food and free inventory. No natural or
+pre-existing mobs are stipulated; the source supplies no residents/spawners.
+Combat work is therefore zero in this scenario only. No construction, flight,
+teleportation, healing, extra mining or assistance is allowed. Use 20 TPS.
+
+After the 20-block out-and-back interior route, take entry cell (176,26) to
+(176,25), (176,24), then crouch into magma cell (176,23). Reverse to the entry
+after resource work. Mine the neighboring ore from (176.5,65,24.5), without
+removing the route's supporting nylium. Break the wart from the crouched magma
+station. Exact target rays and supporting cells must pass before calculating.
+Magma crossing uses the already sourced shift-key avoidance mechanism.
+
+Use the accepted A/B/C speeds and action allowances. Predeclare five decision
+budgets: entry orientation, central inspection, resource sequence, ore-to-wart
+transition and return. Two targeting budgets cover the two broken blocks; one
+tool selection equips the pickaxe. One final verification checks acquired items
+and return. Mining work uses source hardness/tool mechanics; instant plant breaking
+still consumes the targeting/input budget. There is no menu or container action.
+
+For each of the two drops, use two accepted acquisition allowances, not an
+unverified extra path at ordinary speed. The doubled allowance includes local
+pickup movement, footing adjustments, remaining pickup delay and inventory
+confirmation, with return to the mining station. This is a provisional 2/4/8-second
+budget per resource, varied with A/B/C, not calibrated pickup time. It explicitly
+covers the ore pit and wart's soul-sand edge; no guaranteed route or success is
+claimed. No additional pickup-distance term is charged. Censor failed acquisition
+within that budget, magma damage from incorrect pose, required healing/death,
+extra enemies, mining disruption beyond allowances, invalid access or non-20-TPS
+conditions. Do not estimate success probability or count censoring as a clear.
+
+This local calculation reuses the retained 18,816-voxel dataset and pinned sources.
+It requires no server/materialization and no new extraction. Limit the remaining
+direct checks to the two rays, route cells and source breaking work, with under
+one minute of processing and no new raw dataset. Existing broader resource and
+shell observations supply the quality assessment; do not repeat them as a survey.
+
+## Resource-task result and quality synthesis
+
+The four resource-route cells at X176, Z23..26 have air at Y65/66. Their Y64
+supports are magma at Z23 and nylium at Z24..26. Mining (175,64,24) does not remove
+that support. The standing eye (176.5,66.62,24.5) can aim at the ore's top-center
+(175.5,65,24.5), approximately 1.90 blocks away, through air. The crouched eye
+(176.5,66.27,23.5) can aim at (176.5,65.5,22.5), approximately 1.26 blocks away.
+The wart's mature outline occupies the full X/Z cell and Y65..65.875, so this ray
+enters that target after crossing air above the magma. Both targets are within
+three blocks; no intervening stem or shell block lies on either segment. This
+resolves breaking access only; acquisition remains explicitly conditional.
+
+Mapped source `Blocks` assigns nether gold ore hardness 3 and correct-tool drops.
+The previously verified diamond-pick mechanism therefore gives ceil(3*30/8)=12
+nominal ticks, or 0.6 seconds. Nether wart's registration sets no strength, leaving
+`BlockBehaviour.Properties.destroyTime` at its default zero; its input is an
+instant break, charged in targeting rather than an added mining-duration term.
+`NetherWartBlock.SHAPE_BY_AGE[3]` is Block.box(0,0,0,16,14,16), and the registration
+sets no collision. These are direct inspections of the pinned mapped server JAR,
+SHA-256 26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71.
+Reproduce with the pinned `javap -c -p` on `net.minecraft.world.level.block.Blocks`,
+`net.minecraft.world.level.block.NetherWartBlock`, and
+`net.minecraft.world.level.block.state.BlockBehaviour$Properties` in that JAR.
+The existing Circle source derivation supplies tool progress and magma behavior.
+
+The route has 24 upright and two crouched blocks, including the full interior
+return and resource return. Let u,c,n,a,s,k,v retain the accepted profile meanings.
+Complete successful-scenario time is T=24/u+2/c+0.6+5n+2a+s+4k+v.
+Combat contributes zero under the explicitly empty encounter condition. Decision
+budgets include the two shift-pose transitions, without an additional latency term.
+
+| Profile | Movement component | Complete task, seconds |
+| --- | ---: | ---: |
+| A | 6.13 | 15.98 |
+| B | 7.67 | 26.77 |
+| C | 10.22 | 45.32 |
+
+Report approximately 16/27/45 seconds, conditional on the predeclared successful
+resource pickup, actor and encounter conditions. This is not a confidence interval,
+measured human time, typical expedition duration or guaranteed bound. Reproduce:
+
+```sh
+uv run python - <<'DOME_TIME'
+for name,u,c,n,a,s,k,v in [('A',5,1.5,.5,.25,.25,1,2),
+                          ('B',4,1.2,1,.5,.5,2,4),
+                          ('C',3,.9,1.5,1,1,4,8)]:
+    movement = 24/u + 2/c
+    print(name, movement, movement + .6 + 5*n + 2*a + s + 4*k + v)
+DOME_TIME
+```
+
+Room R1 is the single central ground activity volume inside the curved shell,
+roughly X171..181, Z27..37, feet Y65; its footprint follows the shell, not the
+rectangle. The central four trapdoors are decoration within this open volume,
+not partitions. The verified northern route and an unobstructed cross-floor row
+at Z30, X171..181, establish continuous use around them. That row has air at Y65/66
+and full-cube floor throughout. Peripheral outdoor vegetation/resource patches
+are not separately bounded rooms or arenas. Higher shell rings enclose the same
+void; they do not supply additional activity floors, objectives or connections.
+Roof standing through additional climbing/construction is not an authored room.
+
+| Requirement | Local assessment and denominator |
+| --- | --- |
+| Rooms and branching | 1 room, 1 connected room component, 0 inter-room edges, junctions or cycles. The exterior is not an extra room. Alternative paths around decoration do not create room-graph branches. |
+| Vertical progression | 0 ascent/descent and 0 floor-height span on the declared centerline. Pickup footing adjustments are covered conditionally, not a measured vertical route. No authored upper objective or activity floor is identified. |
+| Depth | Deepest room graph depth 0 edges. Entry to declared interior station is 10 blocks, achieving its Manhattan lower bound. This is station depth, not a global maximum over every floor position. The 49-block surface-height difference remains context, not measured cover. |
+| Enemies | 0 template-authored residents and spawners, 0 authored hostile types. Realized/natural populations NOT MEASURED. |
+| Hazards | The resource route crosses magma at (176,64,23); shift avoidance makes it a meaningful, avoidable contact hazard. Soul-sand pickup footing is an explicit conditional allowance. Supported concrete powder on the inspected interior route is not a working trap. |
+| Chokepoint | Northern entry cell (176,65,26) is a one-block-wide full-height air lane between the neighboring stair cells. A centered adult route passes. This is a conservative clear lane, not the exact widest opening after partial-shape optimization. The southern axis is obstructed; no live enemy exploitation is claimed. |
+| Empty/dead rooms | R1 contains no supported authored encounter, hazard, reward or usable facility: 1 empty / 1 room. It is dead for a resource-only visit (1/1), because resources are outside. The stipulated survey task gives it an inspection purpose by definition (dead 0/1 under that task); this does not create an authored gameplay objective. |
+| Loot distribution | 26 ore and 17 mature-wart positions are outside the central activity room, near Y64/65. No container or terminal reward. Two representative positions enter the acquisition model; remaining positions are potential, not proven harvested. |
+| Finale | NONE. Authored objective clarity, distinctive terminal challenge, terminal reward linkage and route integration are ABSENT. External resource access is PRESENT for the two modeled targets. |
+| Bypass/external access | Starting at the same northern entry, the six-block resource excursion can omit the twenty-block interior survey entirely, with identical harvest work and pickup conditions. No mining breach, flight or special capability is required. Thus the shell interior does not gate these rewards. |
+| Replay | Fixed template gives no demonstrated authored layout/encounter variation. Natural terrain may vary access. Ore depletion persists; wart can support later cultivation under normal mechanics, which is a resource activity rather than a reset dungeon encounter. No player enjoyment or observed replay outcome is claimed. |
+| Large but shallow | The 15-block-high authored shell surrounds one unchallenged ground activity volume, while the demonstrated rewards are outside and bypass its interior. This supports a visually substantial but mechanically shallow landmark assessment, not a conclusion drawn from volume or template count alone. |
+
+This completes the local sampled assessment under the accepted conditional method.
+It does not complete family repetitions, broader Item 13 coverage or delivery gates.
+No human observation, realized combat or acquired loot has been manufactured.
