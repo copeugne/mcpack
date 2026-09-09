@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-report.txt), including complete report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-report.txt), [formatting](validation/final-format-report.txt) and [BasedPyright](validation/final-types-report.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-category.txt), including per-route categories, report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-category.txt), [formatting](validation/final-format-category.txt) and [BasedPyright](validation/final-types-category.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -332,3 +332,20 @@ intervals have central median 0.75 seconds, central range [0,18] and speed envel
 these retained values. The initial regression log is also preserved; the two
 provenance cases were tightened to fail immediately if the first misbound result
 was accepted, avoiding an unrelated later-world error masking the omission.
+
+The completed review of `7dd94a65` identified
+[missing per-route category reporting](https://github.com/copeugne/mcpack/pull/37#discussion_r3963365255).
+The finding is valid: the values existed in retained summaries, while the report
+aggregated the required category memberships by world. The report now contains
+all 64 routes with all-location, actionable, encounter, T2, T3, T4 and village
+adjacent counts, ray-clear counts and covered-block numerators, each with the
+explicit 768-block denominator. Zeroes and overlapping categories remain clear.
+The [retained-route regression fails before](validation/category-report-before.txt)
+this integration; it checks the distinct ordinary control east-north village and
+east-south dungeon profiles. No source results, protocol or measurement changes.
+
+The final category-integrated report passes [all 22 affected tests](validation/final-tests-category.txt)
+in 28.35 seconds, including exact report reproduction, provenance rejection and
+the retained numerical/category checks. Final lint, formatting and types pass.
+The local exit gate remains PASS; fresh clean review and verified main delivery
+are still required.

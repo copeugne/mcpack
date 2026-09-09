@@ -29,6 +29,80 @@ C/T1/T2/T3/T4 roles are provisional, retaining confidence and ambiguity in each 
 | ordinary-r2-baseline | 303 | 298 | 298 | 2 | 0 | 0 | 0 | 2 | 176 |
 | ordinary-r2-without-sparse | 372 | 364 | 361 | 7 | 0 | 0 | 3 | 4 | 304 |
 
+## Per-route primary category membership and coverage
+
+Each cell is adjacent candidate count / ray-clear count / covered-block numerator.
+Radius is 64 blocks and every coverage denominator is 768 sampled route blocks.
+Categories overlap; adjacent and visible populations are independently selected.
+Zeroes are retained. These are geometric proxies, not human encounters or activities.
+
+| World / route | All | Actionable | Encounter sites | T2 | T3 | T4 | Village |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| biome-diverse-r1-baseline / east-north | 471 / 1 / 64 | 469 / 1 / 64 | 469 / 1 / 64 | 2 / 1 / 64 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-baseline / east-south | 439 / 0 / 0 | 439 / 0 / 0 | 439 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-baseline / south-east | 484 / 2 / 88 | 479 / 1 / 56 | 478 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-baseline / south-west | 383 / 0 / 0 | 382 / 0 / 0 | 382 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-without-sparse / east-north | 483 / 8 / 176 | 477 / 4 / 80 | 475 / 2 / 24 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-without-sparse / east-south | 401 / 2 / 112 | 397 / 0 / 0 | 397 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-without-sparse / south-east | 499 / 5 / 104 | 487 / 1 / 72 | 487 / 1 / 72 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r1-without-sparse / south-west | 402 / 3 / 128 | 397 / 0 / 0 | 397 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-baseline / east-north | 459 / 1 / 80 | 457 / 1 / 80 | 457 / 1 / 80 | 2 / 1 / 80 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-baseline / east-south | 432 / 0 / 0 | 432 / 0 / 0 | 432 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-baseline / south-east | 506 / 2 / 96 | 501 / 1 / 64 | 500 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-baseline / south-west | 351 / 0 / 0 | 350 / 0 / 0 | 350 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-without-sparse / east-north | 477 / 8 / 176 | 470 / 4 / 88 | 468 / 2 / 24 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-without-sparse / east-south | 439 / 2 / 120 | 435 / 0 / 0 | 435 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-without-sparse / south-east | 526 / 4 / 96 | 515 / 1 / 72 | 515 / 1 / 72 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| biome-diverse-r2-without-sparse / south-west | 393 / 3 / 128 | 387 / 0 / 0 | 387 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-baseline / east-north | 402 / 1 / 24 | 400 / 1 / 24 | 399 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-baseline / east-south | 429 / 0 / 0 | 428 / 0 / 0 | 428 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-baseline / south-east | 396 / 2 / 88 | 392 / 1 / 72 | 390 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-baseline / south-west | 428 / 0 / 0 | 427 / 0 / 0 | 427 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-without-sparse / east-north | 397 / 1 / 112 | 396 / 1 / 112 | 395 / 1 / 112 | 3 / 1 / 112 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-without-sparse / east-south | 467 / 1 / 16 | 456 / 0 / 0 | 456 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-without-sparse / south-east | 449 / 3 / 112 | 442 / 2 / 80 | 441 / 1 / 64 | 1 / 1 / 64 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r1-without-sparse / south-west | 428 / 2 / 104 | 421 / 0 / 0 | 421 / 0 / 0 | 2 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-baseline / east-north | 397 / 1 / 24 | 395 / 1 / 24 | 394 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-baseline / east-south | 417 / 0 / 0 | 415 / 0 / 0 | 415 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-baseline / south-east | 424 / 2 / 72 | 420 / 1 / 56 | 418 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-baseline / south-west | 422 / 0 / 0 | 421 / 0 / 0 | 421 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-without-sparse / east-north | 388 / 1 / 112 | 387 / 1 / 112 | 386 / 1 / 112 | 3 / 1 / 112 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-without-sparse / east-south | 487 / 2 / 16 | 476 / 0 / 0 | 476 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-without-sparse / south-east | 466 / 3 / 120 | 458 / 2 / 88 | 457 / 1 / 72 | 1 / 1 / 72 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| mountainous-r2-without-sparse / south-west | 442 / 3 / 112 | 435 / 0 / 0 | 435 / 0 / 0 | 2 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-baseline / east-north | 97 / 0 / 0 | 96 / 0 / 0 | 96 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-baseline / east-south | 95 / 0 / 0 | 95 / 0 / 0 | 95 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-baseline / south-east | 174 / 2 / 136 | 172 / 1 / 120 | 172 / 1 / 120 | 2 / 1 / 120 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-baseline / south-west | 56 / 0 / 0 | 55 / 0 / 0 | 55 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-without-sparse / east-north | 98 / 3 / 184 | 96 / 3 / 184 | 95 / 2 / 128 | 0 / 1 / 112 | 1 / 1 / 16 | 0 / 0 / 0 | 1 / 1 / 56 |
+| ocean-heavy-r1-without-sparse / east-south | 130 / 0 / 0 | 127 / 0 / 0 | 127 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r1-without-sparse / south-east | 158 / 1 / 40 | 157 / 1 / 40 | 157 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 1 / 40 |
+| ocean-heavy-r1-without-sparse / south-west | 80 / 0 / 0 | 77 / 0 / 0 | 77 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-baseline / east-north | 101 / 0 / 0 | 100 / 0 / 0 | 100 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-baseline / east-south | 128 / 0 / 0 | 128 / 0 / 0 | 128 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-baseline / south-east | 170 / 2 / 136 | 168 / 1 / 120 | 168 / 1 / 120 | 2 / 1 / 120 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-baseline / south-west | 58 / 0 / 0 | 57 / 0 / 0 | 57 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-without-sparse-attempt3 / east-north | 111 / 3 / 184 | 109 / 3 / 184 | 108 / 2 / 128 | 0 / 1 / 112 | 1 / 1 / 16 | 0 / 0 / 0 | 1 / 1 / 56 |
+| ocean-heavy-r2-without-sparse-attempt3 / east-south | 114 / 0 / 0 | 111 / 0 / 0 | 111 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ocean-heavy-r2-without-sparse-attempt3 / south-east | 165 / 1 / 40 | 164 / 1 / 40 | 164 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 1 / 40 |
+| ocean-heavy-r2-without-sparse-attempt3 / south-west | 71 / 0 / 0 | 68 / 0 / 0 | 68 / 0 / 0 | 3 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-baseline / east-north | 65 / 1 / 120 | 63 / 0 / 0 | 63 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-baseline / east-south | 82 / 0 / 0 | 82 / 0 / 0 | 82 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-baseline / south-east | 119 / 1 / 56 | 117 / 0 / 0 | 117 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-baseline / south-west | 59 / 0 / 0 | 58 / 0 / 0 | 58 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-without-sparse / east-north | 51 / 1 / 72 | 50 / 1 / 72 | 49 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 1 / 72 |
+| ordinary-r1-without-sparse / east-south | 105 / 1 / 104 | 103 / 0 / 0 | 103 / 0 / 0 | 4 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r1-without-sparse / south-east | 118 / 1 / 104 | 115 / 1 / 104 | 114 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 1 / 104 |
+| ordinary-r1-without-sparse / south-west | 54 / 1 / 24 | 52 / 0 / 0 | 51 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 0 / 0 |
+| ordinary-r2-baseline / east-north | 55 / 1 / 120 | 53 / 0 / 0 | 53 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r2-baseline / east-south | 83 / 0 / 0 | 83 / 0 / 0 | 83 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r2-baseline / south-east | 110 / 1 / 56 | 108 / 0 / 0 | 108 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r2-baseline / south-west | 55 / 0 / 0 | 54 / 0 / 0 | 54 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r2-without-sparse / east-north | 54 / 1 / 72 | 53 / 1 / 72 | 52 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 1 / 72 |
+| ordinary-r2-without-sparse / east-south | 109 / 1 / 104 | 107 / 0 / 0 | 107 / 0 / 0 | 4 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ordinary-r2-without-sparse / south-east | 135 / 1 / 104 | 132 / 1 / 104 | 131 / 0 / 0 | 2 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 1 / 104 |
+| ordinary-r2-without-sparse / south-west | 74 / 1 / 24 | 72 / 0 / 0 | 71 / 0 / 0 | 1 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 0 / 0 |
+
 ## Per-route primary gaps, repetition and transport
 
 All-location gaps include censored beginning/end intervals. First repeat is distance from

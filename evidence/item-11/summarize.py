@@ -168,6 +168,25 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         )
     lines += [
         "",
+        "## Per-route primary category membership and coverage",
+        "",
+        "Each cell is adjacent candidate count / ray-clear count / covered-block numerator.",
+        "Radius is 64 blocks and every coverage denominator is 768 sampled route blocks.",
+        "Categories overlap; adjacent and visible populations are independently selected.",
+        "Zeroes are retained. These are geometric proxies, not human encounters or activities.",
+        "",
+        "| World / route | All | Actionable | Encounter sites | T2 | T3 | T4 | Village |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for name, world in worlds.items():
+        for label, route in world["routes"].items():
+            cells = [
+                f"{row['adjacent']['count']} / {row['geometric_visible']['count']} / {row['covered_blocks']}"  # noqa: E501 - generated Markdown cell
+                for row in (primary(route, category) for category in CATEGORIES)
+            ]
+            lines.append(f"| {name.removeprefix('full-')} / {label} | {' | '.join(cells)} |")
+    lines += [
+        "",
         "## Per-route primary gaps, repetition and transport",
         "",
         "All-location gaps include censored beginning/end intervals. First repeat is distance from",

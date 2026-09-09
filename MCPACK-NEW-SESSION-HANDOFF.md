@@ -46,7 +46,7 @@ POSIX lock attempt remains under `evidence/item-11/`; the existing lock fix is
 preserved. No original worlds were regenerated, tuned or repaired.
 
 Validation: full applicable gate 600 passed in 196.80 seconds before the narrow
-cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests in 28.69 seconds. Final
+cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final category-integrated report passes in 28.35 seconds. Final
 lint/types/formatting pass. A clean export of `f4e99bdf` with a separate locked
 environment reproduces the final representative bytes. No repeat of unchanged
 Item 7/10 checks is needed for the isolated summary-cost change.
@@ -55,6 +55,11 @@ The completed review of `56b925f2` found omitted numerical report costs
 (3963289055) and unchecked report world provenance (3963289058). Both are fixed
 in the existing report path using retained evidence. All sixteen result files
 and producer logs remain unchanged from `17ccd330`; no new world analysis.
+
+The completed review of `7dd94a65` found per-route category counts missing from
+the report (3963365255), though retained in JSON. The report now integrates all
+64 routes with required category counts and geometric coverage. Raw evidence
+is unchanged.
 
 Next action: request fresh `@codex review` on the pushed final PR37 candidate.
 Complete the review/fix loop, obtain the current-head clean result, merge and

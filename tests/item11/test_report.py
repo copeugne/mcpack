@@ -83,3 +83,11 @@ def test_report_includes_retained_feasible_and_failed_costs() -> None:
     )
     assert "## Modeled repeated-family interval times" in report
     assert "No repeat: right-censored at 768 blocks" in report
+    assert (
+        "| ordinary-r1-without-sparse / east-north | 51 / 1 / 72 | "
+        "50 / 1 / 72 | 49 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 1 / 1 / 72 |" in report
+    )
+    assert (
+        "| ordinary-r1-without-sparse / east-south | 105 / 1 / 104 | "
+        "103 / 0 / 0 | 103 / 0 / 0 | 4 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |" in report
+    )
