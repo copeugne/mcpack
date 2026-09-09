@@ -304,3 +304,67 @@ unrepresented component/mechanism or terrain supplement. Sample IDs, extraction
 bounds, actor/model support and resource totals are still pending. Saved-block
 coverage and the actual outcome of versioned/conditional processors must be
 checked before asserting a room graph or encounter potential for a sample.
+
+## Repurposed Structures variant scope
+
+All 13 included families retain all 91 registry roots. In this table each entry
+is a root suffix: the exact root is `repurposed_structures:<family>_<suffix>`.
+A blank dimension column means no compatible dimension in the accepted per-root
+biome intersection, not a failed experiment. The source is each family's
+`grouping_decision/variants`, `dimension/biome_compatible_by_structure`, template
+trace and linked `repurposed-*-assessment` record in Item 8. The complete roots
+and dimensions are also preserved in the intake.
+
+| Family | Overworld suffixes | Nether suffixes | End suffixes |
+| --- | --- | --- | --- |
+| ancient_city | ocean | nether | end |
+| bastion | underground | | |
+| city | overworld | nether | |
+| fortress | jungle | | |
+| mansion | birch, desert, jungle, mangrove, oak, savanna, snowy, taiga | | |
+| mineshaft | birch, dark_forest, desert, icy, jungle, ocean, savanna, stone, swamp, taiga | basalt, crimson, nether, soul, warped | end |
+| monument | desert, icy, jungle | nether | |
+| outpost | badlands, birch, desert, giant_tree_taiga, icy, jungle, mangrove, oak, ocean, savanna, snowy, taiga | basalt, crimson, nether_brick, soul, warped | end |
+| pyramid | badlands, dark_forest, flower_forest, giant_tree_taiga, icy, jungle, mushroom, ocean, snowy | nether | end |
+| shipwreck | | crimson, nether_bricks, warped | end |
+| stronghold | | nether | end |
+| temple | ocean, taiga | nether_basalt, nether_crimson, nether_soul, nether_warped, nether_wasteland | |
+| village | badlands, bamboo, birch, cherry, dark_forest, giant_taiga, jungle, mountains, mushroom, oak, ocean, swamp | crimson, warped | |
+
+Root coverage alone is insufficient. Preserve these architectural and mechanical
+alternatives within each applicable root:
+
+| Family | Required within-root coverage |
+| --- | --- |
+| ancient_city | Procedural city assembly in each dimension; authored residents, physical spawners and natural overrides stay distinct. Dimension-specific source reward/encounter content must not be borrowed from vanilla Ancient City |
+| bastion | Four starting designs: units, skeleton-horse stable, treasure and bridge. The packaged starts pool selects `units/air_base`, `skeleton_horse_stable/air_base`, `treasure/big_air_full`, and `bridge/starting_pieces/entrance_base` under `repurposed_structures:bastions/underground/`. Each starts a procedural assembly; two generic bastion examples cannot establish all four |
+| city | Procedural tower/bridge network, preserving Overworld villagers versus Nether authored enemies and separate feature-selected bow skeletons |
+| fortress | Procedural jungle fortress, including reward/archaeology content and the conditional water-dependent drowned feature; dry absence is not a failed enemy source |
+| mansion | Procedural mansion generator for each `mansion_type`, with room selectors and one-level child/fallback attachments. Equal generator code does not make biome-specific component contents identical |
+| mineshaft | Procedural network for each environment, with feature-selected minecart loot and processor-selected spawners retained separately; water/lava, support and external access are sample conditions |
+| monument | Custom room graph and ordered fitters per root; at least two generated graphs per root. Nether's fixed Y30 placement differs from terrain-weighted surface variants |
+| outpost | Tower/camp site per root, including cage and other material attachments. End feature shulkers and different natural overrides are not a universal pillager count |
+| pyramid | Complete body/pit arrangement per root, plus Jungle's hidden room. Nether selects its single `pyramids/nether` template. Spawner replacement, infested blocks and archaeology require their own source and saved-state attribution |
+| shipwreck | Three single-template Nether hulls and all 18 End fragment/position alternatives. Partial hull alternatives carry different map/supply/treasure nodes and access; the one accepted End example does not cover them all |
+| stronghold | Procedural room/corridor system in both dimensions; portal-room versus general spawners, End feature shulkers and low-elevation access stay distinct |
+| temple | One selected compact template per root, with its own spawner replacement and literal/processor-appended loot treatment; no universal trap-operation claim |
+| village | Procedural village per root. Normal/zombie branches where reachable, Nether inhabitants and aquatic layouts must remain material coverage cases, not averaged into a peaceful-village assumption |
+
+The Bastion start alternatives are read directly from
+`data/repurposed_structures/worldgen/template_pool/bastions/underground/starts.json`
+in the accepted packaged JSON catalog (member SHA-256
+`060b3c17ce4b74d6274f38af8f66a019860aca7c720450bfdadabb5301432a7e`).
+End wreck alternatives are the exact 18 template IDs in
+`pool-traces-content.json.gz#/structures/repurposed_structures:shipwreck_end/templates`;
+these are selected fragment/position alternatives, not 18 new families. No new
+source extractor is needed to preserve those already enumerated IDs.
+
+Apply the procedural minimum of two distinct-seed examples per root/design for
+cities, Bastion starting designs, fortress, mansions, mineshafts, monuments,
+strongholds and villages. Outposts require the complete tower/camp arrangement
+and every unrepresented material attachment, rather than a detached tower.
+Fixed temple, pyramid and wreck alternatives initially require one complete saved
+example each. Source enemy/loot rolls are assessed as potential under their exact
+root and processor; a missing architectural or consequential mechanism alternative
+still needs a concrete gap and minimal experiment before dependent claims.
+This is a design coverage policy, not a completed sample list or a runtime budget.
