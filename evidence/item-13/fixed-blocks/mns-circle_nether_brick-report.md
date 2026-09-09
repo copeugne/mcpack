@@ -675,3 +675,52 @@ print('cover/debris face ray Y',ys)
 print('external circuit movement seconds',[60.4/v for v in (4,5,3)])
 CONNECTION_CHECK
 ```
+
+## Original-case quality synthesis and exact remaining boundary
+
+The original provides a measured overlap outcome, not a second pristine
+instance of the supplemental arena. Its source still identifies one open ruin
+with two material rewards and two ordinary-spawner types. Saved brick blocks
+obstruct the transferred interior route, while the retained detour links both
+reward faces through exterior terrain. These established facts support the
+following original-case conclusions without counting fortress content as Circle
+content or silently accepting a template as playable topology.
+
+| Requirement | Original-case result |
+| --- | --- |
+| Traversal/vertical progression | The declared two-reward external circuit is 60.4 blocks and has zero ascent, descent and feet-height span. Nominal 15.1 movement-only seconds excludes the recorded interaction and combat tasks. This is a validated route, not a full clear time or a global shortest-path proof. |
+| Enemy count/diversity and combat | Two saved spawners with explicit piglin/brute IDs, two potential types. Reuse the declared p,b composition grid and its source-supported 0..31.2/0..62.4-second workloads. No realized enemies, encounters or human combat duration is measured. |
+| Hazards | Original authored soul fire is absent. The six-block lava column belongs to the neighboring fortress source and does not intersect the validated detour. Its presence is retained as surrounding hazard evidence, not an unavoidable Circle trap. Future flow and enemy displacement are not observed. |
+| Rewards and final room | Both original debris nodes survive and have checked face access. One needs a trapdoor toggle; the other needs one ore-cover removal in the model. Harvesting with the iron baseline receives no credit. No separate Circle terminal room or authored ordered finale is identified; finale remains NONE. |
+| Bypass and external exposure | Western external access reaches the first reward face without traversing the central spawners. The detour reaches the second without mining the intervening brick obstruction. Both observations are geometric access results, not spawner-activation or combat bypasses. |
+| Expected replay | This pair demonstrates saved environmental variation that changes routes and fire presence, despite a fixed Circle template. Finite embedded rewards and repeat spawner attempts remain different revisit mechanisms. No player preference, enjoyment or satisfaction is invented. |
+| Large but shallow | The neighboring fortress can make this combined site visually imposing. Its rooms, height and challenges cannot be attributed to the Circle. The Circle has no supported vertical objective sequence; the overlap's longer detour is not evidence of deeper authored progression. |
+
+For room/branching attribution, retain an explicit unresolved boundary. Restrict
+the same admitted flat cells to the original Circle envelope: 173 cells qualify;
+the western station's component has 13 and excludes the eastern station. This
+does not prove two rooms because the predicate excludes partial blocks and
+the envelope is not an authored wall. Nor do 327 padded cells or 313 reachable
+cells prove an arena room count. The two verified reward-access zones are
+nonempty, but a whole-sample empty/dead-room denominator remains UNKNOWN until
+the remaining activity boundaries are resolved. The supplemental one-room
+denominator must not be silently copied onto the overlapped sample.
+
+No more source inventory, hazard attribution, reward-face geometry or flat
+route processing is needed to establish those facts. The exact outstanding
+original-case claim is the playable activity-space/connection boundary under
+the partial-block and overlap geometry, including any actual constrained
+transition. The existing saved dataset is sufficient input; source generation
+or another world survey is not required to resolve it. Blackstone material
+coverage remains a separate requirement. The item exit gate has not passed.
+
+Reproduce the restricted connectivity derivation by appending this to
+CONNECTION_CHECK, reusing its exact cells and path implementation:
+
+```python
+e = case['envelope']
+inside = {p for p in cells if e[0]<=p[0]<=e[3] and e[2]<=p[2]<=e[5]}
+west = paths(inside,(281,66,99))
+assert len(inside)==173 and len(west)==13 and (289,66,95) not in west
+print('restricted interior/west-component cells',len(inside),len(west))
+```
