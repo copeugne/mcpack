@@ -180,3 +180,86 @@ renderer adjustment must remain confined to selecting explicit layers in the
 existing path, retaining raw identity and default behavior; no second renderer
 or new evidence framework is justified. This is a visualization failure, not a
 failed generated-world sample or permission to omit uninspected topology.
+
+## Bounded sectional-render correction
+
+The full-sheet timeout justifies one narrow change to the existing renderer:
+`--layers` accepts explicit unique Y heights within the saved envelope. Its panels
+retain actual coordinates and original raw-file hash, and label the view as
+selected layers only. Omission preserves default output byte for byte. Empty,
+duplicate and out-of-envelope selections are rejected; no new renderer or raw
+extraction is introduced.
+
+Predeclare a sixteen-layer Y169..184 view, bracketing the Y171..182 activity band.
+Allow one 180-second conversion and 24 MiB combined SVG/PNG output. Other levels
+remain available for direct inspection and are not silently declared inspected.
+This targeted visualization resolves the demonstrated full-sheet budget failure.
+
+Focused validation verified default Nether Tower SVG bytes unchanged against its
+previous render, selection labels and original input hash, and rejection of empty,
+duplicate and out-of-envelope layers. Ruff lint/formatting pass. The initial type
+command mistakenly used unavailable `pyright`; use the configured `basedpyright`.
+The configured focused type check passes with zero errors/warnings/notes.
+Reproduce the focused boundary/default checks without converting an image:
+
+```sh
+uv run ruff check evidence/item-13/render_pilot.py
+uv run ruff format --check evidence/item-13/render_pilot.py
+uv run basedpyright evidence/item-13/render_pilot.py
+uv run python - <<'LAYER_CHECK'
+import hashlib, importlib, subprocess, tempfile
+from pathlib import Path
+current = importlib.import_module('evidence.item-13.render_pilot')
+prior = {'__file__': current.__file__, '__name__': 'prior_renderer'}
+code = subprocess.check_output(['git','show','28ac65c9:evidence/item-13/render_pilot.py'])
+exec(compile(code,'prior renderer','exec'),prior)
+source = Path('evidence/item-13/fixed-blocks/mns-nether_tower.json.gz')
+with tempfile.TemporaryDirectory() as directory:
+    old, new = Path(directory)/'old.svg', Path(directory)/'new.svg'
+    prior['render_slices'](source,old)
+    current.render_slices(source,new)
+    assert old.read_bytes()==new.read_bytes()
+    current.render_slices(source,new,layers=[55,75])
+    text = new.read_text()
+    assert 'Selected layers only: 55, 75' in text
+    assert 'Y=55;' in text and 'Y=75;' in text and 'Y=56;' not in text
+    assert hashlib.sha256(source.read_bytes()).hexdigest() in text
+    for invalid in ([],[55,55],[50],[97]):
+        try:
+            current.render_slices(source,new,layers=invalid)
+        except ValueError:
+            continue
+        raise AssertionError(invalid)
+print('Layer selection and unchanged default verified.')
+LAYER_CHECK
+```
+
+The first sectional conversion completed in 14.82 seconds (user 14.35, system
+0.78), producing 150,578 PNG bytes and 9,207,469 SVG bytes. Visual inspection
+found the selected-layer caption overlapped the first row's labels. Preserve
+that [rejected presentation](mss-desert_pyramid-169-184-header-overlap.png).
+The narrow fix gives selected views fifteen more header pixels, leaving default
+rendering unchanged. This defect justified one corrected conversion, not a retry
+of the timed-out full sheet.
+
+The [corrected Y169..184 sheet](mss-desert_pyramid-169-184.png) completed in
+37.78 seconds (user 35.18, system 1.88), with clean exit. It is 150,773 bytes at
+2972x2882 pixels; SVG is 9,208,181 bytes, combined 9,358,954 bytes. Both conversions
+fit their declared time/storage budgets. The agent inspected the corrected sheet
+and confirmed that the caption and row labels no longer overlap. Focused default,
+selection-boundary, lint, formatting and type checks pass after the fix.
+
+Reproduce the accepted selected view:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz --output /tmp/item13-pyramid-169-184.svg --layers 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184
+time -p timeout 180 convert -background white /tmp/item13-pyramid-169-184.svg /tmp/item13-pyramid-169-184.png
+```
+
+The selected slices expose a narrow buried cavity/connection band and the rare
+chest area at Y177/178, plus surface reward geometry at Y182. Much of the lower
+selected footprint is solid. These are visual leads for exact floor/body queries,
+not room counts or proof that the apparent connections fit an actor. Continue
+with access from the upper surface into the buried corridor and the lower Y171
+sources. Unselected Y134..168 and Y185..196 remain outside this visual inspection;
+they must not be represented as reviewed merely because their raw bytes exist.

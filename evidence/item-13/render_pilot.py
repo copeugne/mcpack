@@ -44,7 +44,7 @@ def appearance(name):  # noqa: ANN001, ANN201, PLR0911
     return "#89908d", ""
 
 
-def render_slices(source, output) -> None:  # noqa: ANN001
+def render_slices(source, output, *, layers: list[int] | None = None) -> None:  # noqa: ANN001
     raw = source.read_bytes()
     doc = json.loads(gzip.decompress(raw))
     if len(doc["cases"]) != 1:
@@ -52,11 +52,16 @@ def render_slices(source, output) -> None:  # noqa: ANN001
     case = doc["cases"][0]
     bounds = case["bounds"]
     ys = list(range(case["envelope"][1], case["envelope"][4] + 1))
+    if layers is not None:
+        if not layers or len(set(layers)) != len(layers) or any(y not in ys for y in layers):
+            raise ValueError("selected layers must be unique heights within the saved envelope")
+        ys = layers
     cell = 12
     width = (bounds[3] - bounds[0] + 1) * cell + 30
     height = (bounds[5] - bounds[2] + 1) * cell + 40
     canvas_width = 4 * width + 20
-    canvas_height = ((len(ys) + 3) // 4) * height + 115
+    header_height = 115 if layers is None else 130
+    canvas_height = ((len(ys) + 3) // 4) * height + header_height
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_width}" height="{canvas_height}">',
         '<rect width="100%" height="100%" fill="#f5f3ec"/>',
@@ -65,8 +70,15 @@ def render_slices(source, output) -> None:  # noqa: ANN001
         '<text x="10" y="45" font-size="12">X right, Z down. White air; grey other blocks; h slab/stair; D door; T trapdoor; G gate; F fire. Not collision shapes.</text>',
         f'<text x="10" y="64" font-size="11">Raw SHA-256: {hashlib.sha256(raw).hexdigest()}</text>',
     ]
+    parts.extend(
+        [
+            f'<text x="10" y="80" font-size="12">Selected layers only: {", ".join(map(str, ys))}</text>'
+        ]
+        if layers is not None
+        else []
+    )
     for panel, y in enumerate(ys):
-        px, py = 10 + (panel % 4) * width, 95 + (panel // 4) * height
+        px, py = 10 + (panel % 4) * width, header_height - 20 + (panel // 4) * height
         parts.append(
             f'<text x="{px}" y="{py - 8}" font-size="12">Y={y}; X={bounds[0]}..{bounds[3]}, Z={bounds[2]}..{bounds[5]}</text>'
         )
@@ -166,10 +178,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument(
+        "--layers", type=int, nargs="+", help="explicit envelope Y layers to render"
+    )
     args = parser.parse_args()
     if args.input:
         if args.output is None:
             raise ValueError("slice rendering requires an output path")
-        render_slices(args.input, args.output)
+        render_slices(args.input, args.output, layers=args.layers)
     else:
+        if args.layers is not None:
+            raise ValueError("layer selection requires a slice input")
         main()
