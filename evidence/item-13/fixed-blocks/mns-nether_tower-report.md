@@ -107,3 +107,63 @@ columns and a palette-name query over the exact envelope. They resolve the axial
 obstruction and preserve the distinction between decorative height and playable
 access. Entrance, cache-container access and the complete vertical route remain
 the next measurements; no unsupported traversal time is assigned.
+
+## Conditional lower-cache entrance and all-barrel access
+
+Predeclare a west-side engineering entry at (216.5,55,260.5). This is a local
+breach boundary, not a claim of a discovered authored door. Both actor body cells
+are air above full cobbled-deepslate support at Y54. Remove (217,56,260), crying
+obsidian, then (217,55,260), obsidian, using the declared diamond pickaxe from
+this supported station. Both west faces are within three blocks. The preserved
+floor is full cobbled deepslate. After removal, the two-block eastward movement
+to (218.5,55,260.5) has full support and two-high air clearance. This is two paid
+cover removals, not native entrance connectivity.
+
+The stacked cache has hidden barrels. Predeclare four front-barrel removals,
+each only after opening and transferring that barrel's full contents, plus one
+soul-lantern removal. The barrel remains counted once as a reward node even when
+its empty block is subsequently removed. Ignore the resulting empty block and
+lantern drops; sufficient inventory for the reward transfers remains conditional.
+Failure to transfer a front barrel censors the dependent access, not permission
+to destroy its contents and claim acquisition.
+
+Use feet Y55 and upright eye Y56.62 at these four stations:
+
+| Station | X/Z | Operations and exposed targets |
+| --- | --- | --- |
+| A | (218.5,260.5) | Transfer barrel (218,55,259), remove lantern (218,56,259), then remove the emptied barrel. Access (218,Y55/56/57,258) through that cleared column. Transfer and remove (218,55,261), then access (218,Y55/56,262). This covers all seven west-stack barrels. |
+| B | (219.5,260.5) | Transfer and remove (219,55,259), then access (219,Y55/56,258). Access (219,55,262) through the clear Z261 column. This covers four inner-stack barrels. |
+| C | (221.5,261.5) | Access (221,55,262) and (222,55,261). After transferring the latter, remove it and move east into its former cell. |
+| D | (222.5,261.5) | Access (222,Y55/56,262) and the high barrel (223,57,262). This completes the remaining three east-stack barrels. |
+
+For a neighboring lower barrel, target its exposed side at Y55.9, staying below
+any lantern or barrel above it. At A, the northern backs have south faces at
+Z259; the southern backs have north faces at Z262. For middle-height barrels use
+Y56.5. The highest northern barrel can be targeted on its south face at Y57.8,
+above the intervening lower stack. At B the same Z259/Y55.9 or Y56.5 rays pass
+through the removed front barrel and air above it. The southern barrel's north
+face at Z262/Y55.9 is reached before its overhead lantern can intersect the ray.
+
+At D the two directly southern barrels have north faces at Z262/Y55.9 and Y56.5.
+For the high eastern barrel, aim at west-face point (223,57.8,262.5). The ray from
+D's eye passes above the Y56 barrel at (222,56,262), whose top is Y57, then reaches
+the target above the wall at (223,56,262). It stays west of the purple-wool column
+at (223,Y55..58,261). The target is approximately 1.63 blocks from the eye, within
+the three-block interaction condition. These are explicit face rays, not an
+assumption that all barrels in a stack can be opened from a common viewpoint.
+Barrel access does not require chest-style lid clearance; no barrel was opened
+in the saved world.
+
+Connect the stations by the following X/Z waypoints at feet Y55:
+(216.5,260.5), A, B, (221.5,260.5), C, D, C, (221.5,260.5), (216.5,260.5).
+All retained floor cells are full cobbled deepslate at Y54, and all body cells
+are air or the explicitly removed wall/front-barrel cells. The full lower-cache
+out-and-back path is fourteen horizontal blocks. No step, jump, crouch or
+standing atop a barrel is implicit. Additional vertical access is separate.
+
+This resolves all sixteen lower barrel targets with two wall removals, four
+emptied-barrel removals and one lantern removal. It does not yet resolve the
+seventeenth reward, elevated chest, or the complete tower task. Source/saved
+queries use the same extraction: inspect Y54..58 at the listed stations, target
+positions and ray cells with `render_pilot.state_at`. Preserve every unmodified
+block and the conditional nature of the declared removals.
