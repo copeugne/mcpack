@@ -115,3 +115,68 @@ one bounded render up to 180 seconds and at most 60 MiB SVG/PNG output, reflecti
 its larger footprint than the prior tower. Preserve timeout or overrun rather
 than repeatedly rerunning it. Reuse the existing renderer and extraction; no new
 world generation, server work or evidence re-extraction is planned.
+
+## Side-component disposition and husk model inputs
+
+Inspection corrects the provisional entrance priority: the side component is not
+an established doorway. Its complete active source has 486 air, 162 sandstone,
+23 sand, seven stone, one dead bush and one jigsaw blocks. This is a terrain
+appendage with no source reward or enemy, not evidence of a playable room or
+entrance merely because its resource is named `side`. Saved Y175..179 sections
+in that region are predominantly solid. Find the actual access through occupied
+floor/body geometry rather than treating the component junction as a door.
+
+Pinned mapped source supports a husk-specific nominal combat input without a
+new runtime experiment. `DefaultAttributes` offsets 405..414 register HUSK using
+`Zombie.createAttributes`. Reuse the established health 20, intrinsic armor 2
+and iron-sword damage derivation in the model-source notes: ordinary unarmored
+adults receive 5.904 nominal damage per full attack and require four hits, or
+2.6 seconds of reserved 13-tick attack cycles. This is active attack work per
+entity, not total combat time or a prediction of encounter count.
+
+`Husk` extends Zombie, returns false from `isSunSensitive`, and applies HUNGER
+when `doHurtTarget` succeeds with an empty main hand against a living target.
+Its source duration is 140 times the integer effective local difficulty, in
+game ticks. Do not assume an observed hunger duration or food consumption here.
+`checkHuskSpawnRules` accepts spawner origin without the additional sky-visibility
+condition required for its non-spawner branch; it still calls the underlying
+monster spawn checks. This does not guarantee a successful attempt in these rooms.
+These differences support two assigned enemy types, even though the nominal
+per-entity attack-cycle workload matches. Actual sunlight exposure, hunger hits,
+reinforcements, equipment, survival and realized populations remain unobserved.
+
+Reproduce these source facts with `javap -c -p` on `Husk` and `DefaultAttributes`
+in the already pinned mapped server JAR. They resolve the missing husk mechanism
+input; route activation and repeated-spawn accounting are still required before
+complete conditional timing can be declared.
+
+A bounded full-envelope block-name query finds 39 vanilla cactus blocks and ten
+`biomesoplenty:tiny_cactus` blocks. It finds no TNT, pressure plate, tripwire,
+redstone, lava, fire or dispenser block. This rejects an assumed vanilla-pyramid
+TNT trap for this retained envelope; it does not prove all gameplay hazards absent.
+Cactus contact relevance and the modded tiny-cactus behavior require route/source
+support before hazard scoring. No trigger or damage observation is fabricated.
+
+## Preserved full-sheet render timeout
+
+The first predeclared full-sheet attempt failed at the 180-second conversion
+limit, exit 124. Bash timing: real 180.02, user 187.22, system 1.09 seconds.
+The SVG producer completed and wrote 36,017,200 bytes; the converter did not
+return a successful image. No rendered-sheet inspection or complete visual
+validation is claimed from this attempt. A live RSS snapshot during conversion
+was 563,464 KiB, not a measured peak. The source extraction is unchanged.
+
+Exact reproduction command:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz --output /tmp/item13-desert-pyramid-slices.svg
+time -p timeout 180 convert -background white /tmp/item13-desert-pyramid-slices.svg /tmp/item13-desert-pyramid-slices.png
+```
+
+Do not rerun the unchanged full conversion. The 63-layer conversion exceeded
+its time budget; the raw blocks are already retained. Continue direct saved-block inspection
+and use a bounded sectional view for the relevant Y171..182 activity band. Any
+renderer adjustment must remain confined to selecting explicit layers in the
+existing path, retaining raw identity and default behavior; no second renderer
+or new evidence framework is justified. This is a visualization failure, not a
+failed generated-world sample or permission to omit uninspected topology.
