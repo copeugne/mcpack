@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-category.txt), including per-route categories, report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-category.txt), [formatting](validation/final-format-category.txt) and [BasedPyright](validation/final-types-category.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-unknown.txt), including category/UNKNOWN reporting, report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-unknown.txt), [formatting](validation/final-format-unknown.txt) and [BasedPyright](validation/final-types-unknown.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -349,3 +349,18 @@ in 28.35 seconds, including exact report reproduction, provenance rejection and
 the retained numerical/category checks. Final lint, formatting and types pass.
 The local exit gate remains PASS; fresh clean review and verified main delivery
 are still required.
+
+The completed review of `8cad4c41` found
+[UNKNOWN visibility outcomes missing from the report](https://github.com/copeugne/mcpack/pull/37#discussion_r3963434898).
+The finding is valid. Existing `unknown_only_blocks` values now appear for every
+primary route/category and every pooled radius/window sensitivity row, with
+explicit denominators and the UNKNOWN-only definition. All retained values are
+zero; zero is now reported rather than left implicit. The
+[retained-report regression fails before the fix](validation/unknown-report-before.txt).
+This is report integration of available evidence, with no changed raw inputs,
+results, protocol or measurement.
+
+The final UNKNOWN-integrated suite passes [22 tests in 28.10 seconds](validation/final-tests-unknown.txt).
+A final explanatory wording change also passes [exact report reproduction](validation/unknown-final-rebuild.txt).
+Final lint, formatting and types pass; clean current-head review and main delivery
+remain the only open gates.

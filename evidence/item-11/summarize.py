@@ -170,8 +170,10 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "",
         "## Per-route primary category membership and coverage",
         "",
-        "Each cell is adjacent candidate count / ray-clear count / covered-block numerator.",
+        "Each cell is adjacent count / ray-clear count / covered blocks / UNKNOWN-only blocks.",
         "Radius is 64 blocks and every coverage denominator is 768 sampled route blocks.",
+        "UNKNOWN-only blocks have an UNKNOWN ray but no ray-clear target at the sampled station.",
+        "UNKNOWN-only numerators are reported even when zero.",
         "Categories overlap; adjacent and visible populations are independently selected.",
         "Zeroes are retained. These are geometric proxies, not human encounters or activities.",
         "",
@@ -181,7 +183,7 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
     for name, world in worlds.items():
         for label, route in world["routes"].items():
             cells = [
-                f"{row['adjacent']['count']} / {row['geometric_visible']['count']} / {row['covered_blocks']}"  # noqa: E501 - generated Markdown cell
+                f"{row['adjacent']['count']} / {row['geometric_visible']['count']} / {row['covered_blocks']} / {row['unknown_only_blocks']}"  # noqa: E501 - generated Markdown cell
                 for row in (primary(route, category) for category in CATEGORIES)
             ]
             lines.append(f"| {name.removeprefix('full-')} / {label} | {' | '.join(cells)} |")
@@ -258,8 +260,8 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "Each row pools 32 routes within one arm. These are overlapping fixed transects, not",
         "independent samples. Coverage denominator is 32 times the window length.",
         "",
-        "| Arm | Radius | Window | Adjacent memberships | Ray-clear memberships | Covered / denominator |",  # noqa: E501 - generated Markdown row
-        "| --- | ---: | ---: | ---: | ---: | --- |",
+        "| Arm | Radius | Window | Adjacent memberships | Ray-clear memberships | Covered / denominator | Unknown-only / denominator |",  # noqa: E501 - generated Markdown row
+        "| --- | ---: | ---: | ---: | ---: | --- | --- |",
     ]
     for arm in ("baseline", "without-sparse"):
         selected = [
@@ -277,7 +279,7 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                     and s["window"] == window
                 ]
                 lines.append(
-                    f"| {arm} | {radius} | {window} | {sum(s['adjacent']['count'] for s in rows)} | {sum(s['geometric_visible']['count'] for s in rows)} | {sum(s['covered_blocks'] for s in rows)} / {32 * window} |"  # noqa: E501 - generated Markdown row
+                    f"| {arm} | {radius} | {window} | {sum(s['adjacent']['count'] for s in rows)} | {sum(s['geometric_visible']['count'] for s in rows)} | {sum(s['covered_blocks'] for s in rows)} / {32 * window} | {sum(s['unknown_only_blocks'] for s in rows)} / {32 * window} |"  # noqa: E501 - generated Markdown row
                 )
     lines += [
         "",
