@@ -145,7 +145,11 @@ soul lantern blocks the upright balcony crossing. The second, crouched balcony
 route passes all sixteen swept segments and reproduces exactly. The developing
 [house assessment](evidence/item-13/fixed-blocks/mns-medium-house-report.md) integrates
 activity spaces, source support, blocked east-vine access and reward tables.
-Next finish interaction access, timing/combat models, hazards, finale and replay.
+The report now includes the 36.25-block local circuit and 20.83-second nominal
+modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
+spaces, finale and replay assessments. These are not observed gameplay. Next
+resolve actor-context validation, container access and empty-spawner behavior;
+shortest objective distance/terrain cover and exact connection widths remain open.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

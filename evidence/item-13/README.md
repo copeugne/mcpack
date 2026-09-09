@@ -39,7 +39,10 @@ upper reward access. Broader raw capture custody is still pending.
 The [first-house assessment](fixed-blocks/mns-medium-house-report.md) now integrates
 the verified crouched balcony route, one-versus-two open-plan room sensitivity,
 blocked east-vine access, roof-cavity exclusion and the three reward-table nodes.
-The rejected upright crossing is preserved. Full quality acceptance remains open.
+The rejected upright crossing is preserved. The report now includes the local
+traversal model, piglin workload scenarios, conditional bed hazard, empty/dead
+space counts, finale and replay assessment. Actor-context validation, container
+access and empty-spawner behavior still prevent final sample acceptance.
 
 ## Requirement map
 

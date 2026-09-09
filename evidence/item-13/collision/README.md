@@ -267,3 +267,46 @@ height as the pose boundary. Focused lint, types and two collision tests pass.
 Both rejected upright and accepted crouched outcomes remain unchanged. For exact
 r2 output reproduction use producer/helper commitc35c925c; later style cleanup
 changes only the producer identity field. No raw capture was rewritten.
+
+## Predeclared route-time model
+
+Apply only to retained r2-route.json, SHA-256
+1174496c1e0629df468b31516a0d70ca583d9c485094b9a39bc808e9720c9aca.
+The actor, knowledge, poses, no-block-change rule, route start/end and movement
+sequence remain those of the accepted geometric route. Reuse the pilot equipment:
+unenchanted iron armor, iron sword and pickaxe, with no buffs, flight, teleport,
+sprinting or additional building. Speeds remain stipulated model inputs. This is a local inspection
+circuit visiting the lower space and balcony, not a shortest route, whole-building
+clear or completed all-container survey. No encounters are simulated. No combat,
+activation wait, menu time, looting, external approach, roof breaching or reaction
+time is included. The sealed roof cavity is outside this circuit.
+
+Separate upright horizontal, crouched horizontal, vine vertical and small
+trapdoor vertical distances. Use rate vectors in that order, in blocks/second:
+nominal (4,1.2,1,0.5), faster (5,1.5,2,1), slower (3,0.9,0.5,0.25).
+The upright values reuse the declared pilot/Item 11 rate assumptions; all other
+rates are explicit sensitivity inputs, not measurements or source-derived speed
+claims. Charge both descent and ascent, including each modeled trapdoor height
+adjustment. Do not call the faster/slower values empirical bounds or confidence
+intervals. Runtime stalls, navigation, encounter interruption and failure can
+produce arbitrarily longer real times. A rejected/nonclosed route or input hash
+mismatch rejects modeling. Report feet-height span and accumulated ascent/descent
+separately from distance. Graph depth and terrain cover are separate quantities.
+
+Reproducible command after implementation, with absent output:
+
+```sh
+uv run python -m evidence.item-13.collision.house_route --measure /tmp/item13-house-route-model.json
+```
+
+This small arithmetic transformation reuses retained observations and needs no
+world restore or runtime experiment. The existing 60-second/100-MiB/1-MiB
+processing ceiling applies.
+
+
+Route-time result: [r2-route-model.json](r2-route-model.json) records 36.25 blocks,
+2.5 feet-height span and 3.125 ascent/descent each. Nominal 20.833333 seconds,
+faster 14.416667 and slower 32.777778 are scenario budgets only. Direct arithmetic
+20/4 +10/1.2 +5/1 +1.25/0.5 independently checks the nominal result. Reproduction
+is byte-identical. Two collision tests plus focused lint/types pass. No accepted
+raw route, collision capture, world or configuration was changed.

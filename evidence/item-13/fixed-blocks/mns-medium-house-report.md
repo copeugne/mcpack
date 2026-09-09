@@ -92,11 +92,100 @@ full dungeon floors merely from the stacked spawner/container heights. Whether
 it meets the final large-but-shallow assessment remains tied to the complete
 access, hazard, reward and traversal analysis.
 
+## Route length and conditional traversal time
+
+The [retained route model](../collision/r2-route-model.json) measures a closed
+36.25-block inspection circuit: 20 horizontal blocks upright, 10 crouched, 5 on
+vines, and 1.25 of explicit trapdoor height adjustments. Feet-height span is 2.5
+blocks; accumulated ascent and descent are each 3.125. The nominal rate scenario
+produces 20.83 seconds; the illustrative faster/slower scenarios produce 14.42
+and 32.78 seconds. All rates, equipment, exclusions and failure rules were declared
+in the [route protocol](../collision/README.md#predeclared-route-time-model).
+
+These values are conditional kinematic budgets, not observed gameplay, confidence
+intervals, shortest paths or full clears. They exclude combat, activation waits,
+interaction/looting time, approach and the roof cavity. The one-versus-two room
+sensitivity implies graph depth zero or one for the balcony; shortest spatial
+entry-to-objective distance and terrain cover are still unresolved. Sub-block
+routes around the lantern were not exhaustively searched: the rejected upright
+centerline does not prove that every possible upright crossing fails or that
+crouching is mandatory. The accepted crouched circuit is one verified option.
+
+## Encounter component and interaction hazards
+
+The captured [Piglin source](../model-source/captured/world.entity.monster.piglin.Piglin.txt.gz)
+assigns 16 maximum health. Under the predeclared ordinary adult, no-armor scenario,
+the reused 6-damage iron-sword model takes three 13-tick cycles per piglin. At 20
+ticks/second that is 1.95 seconds of reserved attack cycles per successful enemy.
+
+| Successful enemies in the one-wave scenario | 100% contact seconds | 50% contact seconds |
+| ---: | ---: | ---: |
+| 0 | 0 | 0 |
+| 1 | 1.95 | 3.90 |
+| 2 | 3.90 | 7.80 |
+| 3 | 5.85 | 11.70 |
+| 4 | 7.80 | 15.60 |
+
+Derivation for n=0..4: n*ceil(16/6)*13/20; double for the stipulated 50% duty
+scenario. This is the explicit piglin-spawner component only. Equipment, attack
+conditions and exclusions are in the [model declaration](../model-source/README.md#first-house-piglin-component-and-bed-mechanism).
+The saved 733-tick delay corresponds to 36.65 seconds at an ideal 20 ticks/second
+once its countdown conditions hold. Do not automatically add it to walking or
+attack time, since clocks can overlap. The three empty assignments and natural
+population remain outside this workload. Whole-house combat duration is unresolved;
+actual enemies, encounters and combat times remain NOT MEASURED.
+
+BedBlock's captured source and the packaged Nether bed_works=false setting identify
+optional bed interaction in R1 as a conditional explosion hazard. Walking past
+beds is not its trigger. Source power 5 and fire-enabled behavior are not measured
+blast reach, damage or proof that modded interception is absent. No explosion was
+run. Avoiding bed use avoids this particular source trigger. The two unlit saved
+campfires are not counted as active fire damage. Spawner pressure remains
+conditional on valid activation and successful spawning, not block count alone.
+
+## Empty spaces, finale, bypass and replay assessment
+
+Neither delineated activity space is empty or dead under the protocol: R1 has
+an anvil/work function and R2 has two reward-table nodes. Counts are 0/2, or 0/1
+when treating both as one open-plan room. The inaccessible roof cavity is excluded
+from both numerator and denominator; this does not erase its saved contents.
+
+No distinct authored terminal objective or final activity room is evidenced in
+this fixed house. Finale: NONE. Objective clarity and a separate terminal
+challenge are absent from the inspected design; balcony rewards are ordinary
+storage opportunities. The high barrel does not become a finale by elevation.
+Its route integration is absent from the unmodified upright/crouched circuit,
+and its roof exposure is conditional on an earned access/breaching capability.
+
+A concrete roof-access scenario has three blocks directly above the barrel at
+464,51,432: stripped crimson hyphae at Y52, crimson planks at Y53 and a closed
+crimson trapdoor at Y54; Y55..56 are air. Given access to that roof location,
+removing those three covering blocks exposes the barrel from above, bypassing
+the lower room and balcony. This is a geometric three-block cover measurement,
+not a tested mining duration, safe approach or acquired-loot result. Supplying
+roof access remains a real prerequisite. It is an earned modification scenario,
+not a reason to ban breaching. The one-leaf east-vine opening is another explicit
+local modification with the same distinction between source geometry and runtime.
+
+Expected replay value is an assessment: this fixed layout offers little new
+route structure on another instance of the same variant, while terrain overlap,
+loot-table rolls and potential spawn outcomes can change expedition details.
+The second family variant remains separately required. Revisiting this persistent
+instance does not by itself restore its physical layout or rewards; no reset or
+replenishment was demonstrated. A surviving spawner's repeat-attempt potential
+is not a dungeon reset. No player enjoyment or actual replay behavior was measured.
+
+The modest house is mechanically shallow in graph depth under the declared model:
+one open-plan space or two connected activity spaces, with no separate finale.
+Its layered roof and stacked content positions overstate playable-floor count.
+It is not categorized as a giant dungeon from its envelope alone. Full acceptance
+of this assessment still requires the unresolved access and movement checks below.
+
 ## Concrete unresolved work
 
-Finish actor-context and movement support validation; measure the declared route's
-length, depth and conditional time; inspect container interaction/opening and
-roof breaching costs; resolve empty spawner behavior and the piglin combat model;
-complete meaningful hazards, dead/empty-room dispositions, finale and replay
-assessment. Preserve the one-versus-two open-plan sensitivity. This report does
-not claim final quality acceptance, full family sampling or review/merge delivery.
+Finish actor-context and movement support validation, shortest entry-to-objective
+route/terrain-cover measurement, container interaction/opening, empty-spawner
+behavior and whole-house encounter disposition, and precise connection widths.
+Roof approach and mining time remain conditional/unmeasured. Preserve the room
+sensitivity and modeled-versus-observed boundaries. This report does not claim
+final quality acceptance, complete family sampling or review/merge delivery.

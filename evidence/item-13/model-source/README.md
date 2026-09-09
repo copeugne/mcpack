@@ -72,3 +72,39 @@ model. Do not label these values an observed clear time, prediction interval,
 measured fight or evidence of encounter quality. Other enemy mechanics need their
 own supported model before their dependent batch; this simple profile is not a
 universal boss or modded-enemy fallback.
+
+## First-house piglin component and bed mechanism
+
+Two additional classes are captured through the same pinned javap and mapped
+server identity: world.entity.monster.piglin.Piglin and world.level.block.BedBlock.
+All previous captured file hashes remain unchanged. The updated capture.sh
+reproduces the complete set; no earlier disassembly or runtime was repeated.
+
+Piglin.createAttributes offsets 0-9 explicitly assigns maximum health 16. This
+supports extending the existing nominal melee workload to an ordinary adult
+piglin with stipulated no armor, effects, equipment modifiers, reinforcements or
+incoming damage. It does not establish actual runtime attributes or spawn gear.
+The existing 6-damage iron-sword, 13-tick full-cycle model requires ceil(16/6)=3
+hits per such enemy. Before calculating a house component total, use zero through
+four successful enemies for its one explicit piglin spawner's saved SpawnCount 4,
+100% and 50% contact duty, with the existing actor/equipment and attack start/end
+conditions. Keep the stored Delay 733 as a separate ideal 20-tick/second activation
+countdown, not an extra duration automatically added to the walking model. The
+countdown and motion can overlap. Do not assign this profile to the other three
+empty-entity spawners, or call the sum a whole-house clear time.
+
+BedBlock.useWithoutItem offsets 58-144 branch on canSetSpawn; when false, the
+source removes the bed and invokes an explosion with power 5 and fire enabled.
+canSetSpawn offsets 0-7 reads dimensionType.bedWorks. The reused packaged catalog
+contains data/minecraft/dimension_type/the_nether.json with bed_works=false,
+resource SHA-256 26953e0426b058a44a4c1f2060a1a15823c03dd511f57dd7ef97dfa6327a3825.
+This identifies bed interaction as a source-supported conditional Nether hazard.
+It does not mean that walking past a bed triggers it, or that an explosion was
+observed. No bed was used, and no block, world or frozen configuration was altered.
+Actual blast reach, damage, modded interception and consequences were not measured.
+
+The two new text payloads were initially compressed with Python's gzip helper.
+Before acceptance they were losslessly recompressed with the existing gzip -n
+command so capture.sh reproduces their headers as well as their contents. Both
+original encodings remain in evidence/raw/item13/source-compression-r1; decompressed
+payload equality was verified. This changes no disassembly or observation.

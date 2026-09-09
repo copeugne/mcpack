@@ -9,7 +9,7 @@ printf '%s  %s\n' 26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec
 printf '%s  %s\n' afb1f28271ee3b622947f533aa754bb22ed67edd4940a3e9fdf2cca1edb7b8a9 "$combat" | sha256sum -c -
 javap=downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap
 mkdir "$out"
-for type in world.item.SwordItem world.item.Tiers world.item.Items world.entity.player.Player world.entity.ai.attributes.Attributes world.entity.LivingEntity world.entity.monster.Zombie world.entity.monster.Spider world.entity.monster.AbstractSkeleton world.level.BaseSpawner world.damagesource.CombatRules; do
+for type in world.item.SwordItem world.item.Tiers world.item.Items world.entity.player.Player world.entity.ai.attributes.Attributes world.entity.LivingEntity world.entity.monster.Zombie world.entity.monster.Spider world.entity.monster.AbstractSkeleton world.level.BaseSpawner world.damagesource.CombatRules world.entity.monster.piglin.Piglin world.level.block.BedBlock; do
   "$javap" -p -c -classpath "$server" "net.minecraft.$type" > "$out/$type.txt"
 done
 for type in PlayerAttackHelper; do
