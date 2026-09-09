@@ -64,10 +64,25 @@ Reuse [Item 8's 448-family inventory](evidence/item-8/inventory.json) and
 exception and retained-stack nondeterminism limitations remain as recorded in
 its closure and ledger, without new claims or repeated upstream audits.
 
-## Continuation boundary
+## Current Item 12 continuation
 
-The authorized Item 11 work is complete. No Item 12 work is authorized or started.
-Wait for the next user instruction. Do not repeat completed audits, classification,
-world generation, preservation, history consolidation or route processing.
-No server was started for Item 11; existing local runtime setup is operational
-context only. No frozen configuration or original world was changed.
+The user authorized Item 12 end to end on 2026-09-09, superseding the earlier wait
+instruction. A separate user decision authorizes inspection and automated
+assessment with explicit limits; human recognition and discovery rates remain
+NOT MEASURED. Item 13 is not authorized or started.
+
+Started `codex/item12-discoverability` from fetched main
+`486c2dd6e5fcb9967f69de05176aa52bdaa5903f`, which delivers PR38 and contains
+PR35/36/37. The prior branch was clean and tree-identical to main.
+
+Authoritative [Item 12 requirement map](evidence/item-12/README.md) and
+[predeclared protocol](evidence/item-12/protocol.md) define the smallest complete
+proof. All sixteen existing world restores and census hashes pass the
+[availability inspection](evidence/item-12/validation/input-availability.txt).
+Proceed with the ordinary r1 baseline representative end to end before expanding.
+No new archive, validator framework or server work is required: existing custody,
+Anvil/NBT readers and world lock support the missing viewpoint measurement.
+Entrance and silhouette assessments must not mistake envelope targets for authored
+entrances or human recognition. Reuse existing source assessments and navigation
+lead evidence. Preserve source worlds and configuration. Do not repeat routes,
+audits, classification, generation, preservation or history consolidation.

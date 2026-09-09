@@ -1,9 +1,9 @@
 # Adventure & Engineering Pack — Execution and Evidence Ledger
 
-**Ledger version:** 0.19
+**Ledger version:** 0.20
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 11 COMPLETE through clean-reviewed PR37 and verified main `c4281c65`. Item 10 and the cross-item audit are COMPLETE through PR35/36. Item 12 is unstarted and not authorized.
+**Current execution gate:** Item 11 COMPLETE through clean-reviewed PR37 and verified main `c4281c65`. Item 10 and the cross-item audit are COMPLETE through PR35/36. Item 12 is authorized and IN PROGRESS under evidence/item-12/protocol.md. Item 13 remains unstarted.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -510,7 +510,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
-| 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
+| 12 | Structure discoverability | `IN PROGRESS` | User separately authorized inspection and automated assessment with explicit limits. Predeclared protocol and requirement map: evidence/item-12/README.md. |
+| 13–18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
 | 48 | Progression implementation | `UNSTARTED` | Must first be atomized into independent gates. |
@@ -522,7 +523,7 @@ This register is additive. More variables will be discovered during artifact ins
 ## 8. Next Authorized Execution Step
 
 1. Preserve accepted Items 2 through 11 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
-2. The authorized Item 11 work is complete through PR37. Wait for the next user instruction; do not reopen completed work merely for reassurance.
-3. Do not repeat completed collection, audits, classification or preservation. Do not start Item 12 under this authorization.
+2. Item 12 is now authorized. Follow evidence/item-12/protocol.md and its requirement map; do not reopen completed work merely for reassurance.
+3. Do not repeat completed collection, audits, classification or preservation. Do not start Item 13.
 
 No later item will be marked complete out of order or from inference.
