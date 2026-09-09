@@ -75,6 +75,12 @@ scenario of approximately 16/27/45 seconds. Its tall shell does not gate the two
 modeled rewards, supporting the shallow-landmark assessment. Acquisition remains
 conditional, and this local result does not resolve full-family sampling.
 
+The [Giant Skull assessment](fixed-blocks/mns-giant_skull-report.md) now records
+one covered activity space (zero fully enclosed rooms under the stricter reading),
+a covered-spawner breach, both chest routes and complete conditional timing.
+Its tall sculpture adds no demonstrated upper objective progression; natural
+roof thickness and optional parkour remain explicit limits.
+
 ## Requirement map
 
 | Requirement | Existing evidence available | Concrete missing measurement or assessment |

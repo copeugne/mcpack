@@ -99,4 +99,5 @@ The [accepted timing method](../timing-scenario-proposal.md) resolves the earlie
 methodology pause; full coverage and layout-specific budgets remain required.
 The [Giant Skull assessment](mns-giant_skull-report.md) now integrates source/saved
 content, chest access and a conditional 46/74/125..146-second complete task.
-Its playable activity boundaries and quality synthesis remain open.
+Its one-covered-space/zero-enclosed-room sensitivity, shallow-topology assessment
+and remaining roof/parkour uncertainty are now integrated.

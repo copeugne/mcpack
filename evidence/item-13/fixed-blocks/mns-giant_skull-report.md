@@ -1,8 +1,8 @@
 # Giant Skull: quality assessment
 
-Status: IN PROGRESS. Source/saved content, visual evidence and ground chest
-access, covered-spawner breach and full conditional task budget are integrated.
-Playable activity boundaries and final quality synthesis remain open.
+Status: local sampled quality assessment recorded, including activity-space
+sensitivity and complete conditional task timing. Family repetitions and Item 13
+coverage/review/delivery remain IN PROGRESS.
 
 Sample: full-mountainous-r1-baseline|minecraft:the_nether|mns:giant_skull|22|13.
 The retained [saved blocks](mns-giant_skull.json.gz), SHA-256
@@ -272,6 +272,57 @@ for name,u,n,a,s,k,v,d in [('A',5,.5,.25,.25,1,2,1),
 SKULL_TIME
 ```
 
-This resolves the local complete-task budget and covered-spawner access.
-Room/activity delineation, vertical/depth synthesis and final quality assessment
-remain required; a finite conditional total does not close those requirements.
+The complete-task budget and covered-spawner access feed the activity-space and
+quality assessment below; timing alone does not establish those other dimensions.
+
+## Activity-space judgment and quality synthesis
+
+Use one covered mouth/under-skull activity space, R1, for the protocol's inclusive
+activity-space count. Its approximate ground sector is X347..358, Z200..218 at
+feet Y76, following the skull/jaw rather than filling that rectangle. The covered
+spawner and first chest occupy this sector. The verified ground routes connect
+them without an interior dividing wall. The second chest at (368,76,217) lies in
+the exterior eastern reward sector, which has no separate enclosing room boundary.
+Surrounding ore/wart patches and the terrain detour are not extra rooms.
+
+R1 is semi-open, not a conventional enclosed chamber. Report sensitivity explicitly:
+1 covered activity space under the adopted definition, 0 fully enclosed ground
+rooms under a strict enclosure-only definition. Neither construction records nor
+all air cells in a rectangular volume are counted as rooms. The shape above the
+activity sector narrows and fills in upper slices; its rings/ledges do not establish
+additional rooms. No upper authored enemy, container, usable facility or terminal
+goal is present. Optional climbing onto sculptural surfaces is not evidence of a
+separate authored progression floor; its exact parkour reach remains unmeasured.
+
+Direct overhead attribution reinforces this distinction. Above the start station
+(X350,Z212), non-air blocks inside the retained vertical range occur at Y85..88
+and Y91..93; all seven match the active source's corresponding block names.
+Above the first-chest station (X355,Z205), Y80 and Y88..93 likewise match the
+source. These are sculptural overhead blocks, not measured natural burial cover.
+Netherrack at Y109 over the first and second chest stations is outside the source
+placement. The retained sample does not determine the whole roof thickness above
+that level. Preserve that cover uncertainty rather than substituting the Y127
+heightmap or counting the Nether roof as an authored upper floor.
+
+| Requirement | Local result and evidence boundary |
+| --- | --- |
+| Room count | 1 covered activity space (R1); sensitivity 0 fully enclosed rooms. The eastern external cache is a reward sector, not an invented second room. |
+| Branching | Adopted room graph: 1 node, 0 inter-room edges, junctions or cycles, 1 connected component. Under strict enclosure, the room graph is empty. The two reward stations and route turns are not room branches. |
+| Vertical progression | Declared ground centerline remains at Y76: 0 ascent/descent and 0 floor-elevation span. Breaching is performed from the same floor. Two chest block elevations do not imply two playable floors. Optional sculptural climbing is not measured or needed for either chest. |
+| Depth | Room-graph depth 0. Ground station distances are 12 blocks to the first chest and 50 to the second in the declared conservative route subset; the inter-chest link is 40. These are not global shortest paths over jumps/partial shapes. Entry and targets share the same actor-floor elevation, so there is no required descent. Natural roof thickness remains censored above retained Y109. |
+| Traversal and combat | Complete conditional budgets above: approximately 46, 74, or 125..146 seconds. Movement-only components are 20.4/25.5/34 seconds. Authored combat work is 2.6p/d seconds, with p constrained by the spawner lifecycle. Human timing and realized combat remain NOT MEASURED. |
+| Enemy count/diversity | No source-resident entities; one wither-skeleton spawner, one explicit authored hostile type. Realized count unknown. The conditional population is zero before initial-delay expiry or 0..4 after one permitted batch, not a general population cap. |
+| Hazards | Authored lava lies across the direct eastern travel area and is avoided by the retained detour; fire is also excluded from its admitted cells. Lava is therefore a meaningful route-denial/contact hazard, not merely a palette entry. Successful wither-skeleton hits apply a source-supported 200-tick wither effect. Actual damage, pursuit and survival are not observed. |
+| Chokepoints | No mandatory inter-room chokepoint exists in the adopted one-space graph. Lava/decorative obstacles constrain local ground travel, but the restricted-cell detour is not proof of a unique bottleneck or live AI exploit. The source slab cover constrains spawner targeting until two permitted breaks. |
+| Empty/dead spaces | R1 contains encounter and reward potential: 0 empty / 1 and 0 dead / 1. Under strict enclosure both room denominators are 0, so ratios are NOT APPLICABLE, not 0 percent. No unvalidated upper cavity is added to inflate the denominator. |
+| Loot distribution | One uncommon-table chest inside the covered activity sector and one in the eastern exterior sector, plus 54 source ore positions and 32 source wart positions. Container potential is spread across the site, not concentrated in a verified terminal room. Generated contents and acquired items remain NOT MEASURED. |
+| Final-room quality | NONE as an authored terminal room. A visible landmark and local hostile source are present, but there is no source-supported terminal trigger, distinct final encounter or reward gate. The modeled clear-and-loot objective is analyst-declared, not an authored completion event. |
+| Bypass/external access | Both chest stations can be visited on the retained ground routes without breaking the spawner cover or entering an upper skull cavity. Omitting the breach leaves the hostile source active and can change encounters, so this is access bypass with retained risk, not a cost-free combat-clear result. The early-disable scenario separately shows how two slab breaks can prevent the initial batch under its conditions. |
+| Expected replay | Fixed sculpture and one fixed hostile type offer no demonstrated authored layout/encounter-composition variation. Table alternatives and natural terrain can change inputs. Revisiting a mined spawner/opened ordinary chest does not itself reset the physical site. No chest-refill mechanism or realized replay enjoyment is established here. |
+| Visually large but shallow | The 32-block-high sculpture supports one ground activity sector and no demonstrated upper objective progression. The 102-block task route is largely a hazard/terrain detour and must not be mistaken for many rooms. This supports a large landmark with shallow authored topology, while retaining meaningful lava exposure, breach effort and conditional hostile pressure. |
+
+The local sampled quality assessment is now recorded across all Item 13 dimensions.
+This is not completion of family repetitions, material coverage or the final
+review/delivery gate. Roof-thickness and optional parkour limits remain explicit;
+no human session, spawned population, inventory transfer or successful clear was
+fabricated to resolve them.
