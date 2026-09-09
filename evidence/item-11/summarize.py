@@ -53,14 +53,14 @@ def cost_text(value: dict[str, float] | None) -> str:
     )
 
 
-def repeat_text(values: list[dict[str, float]]) -> str:
+def repeat_text(values: list[dict[str, float]], window: int) -> str:
     if not values:
-        return "0; No repeat: right-censored at 768 blocks"
+        return f"0; No repeat: right-censored at {window} blocks"
     central = distribution([v["central_seconds"] for v in values])
     low = min(v["min_seconds"] for v in values)
     high = max(v["max_seconds"] for v in values)
     return (
-        f"{len(values)}; median {central['median']:.2f}; "
+        f"{len(values)}; median {central['median']:.2f}; IQR {central['iqr']:.2f}; "
         f"central [{central['min']:.2f}, {central['max']:.2f}]; speed [{low:.2f}, {high:.2f}]"
     )
 
@@ -138,14 +138,13 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                 )
                 del model["failures"], model["cumulative_cost_distance"]
             for row in route["summaries"]:
-                if (row["radius"], row["window"], row["category"]) != (64, 768, "all_locations"):
-                    row["modes"] = {
-                        mode: {
-                            key: values[key]
-                            for key in ("prefix_covered_blocks", "prefix_denominator_blocks")
-                        }
-                        for mode, values in row["modes"].items()
-                    }
+                for values in row["modes"].values():
+                    values["adjacent_time"] = repeat_text(
+                        values.pop("unconstrained_adjacent_repeat_interval_times"), row["window"]
+                    )
+                    values["visible_time"] = repeat_text(
+                        values.pop("unconstrained_repeat_interval_times"), row["window"]
+                    )
                 for population in ("adjacent", "geometric_visible"):
                     for key in ("events", "gaps", "repeats"):
                         del row[population][key]
@@ -242,7 +241,7 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "lacks level water width. HEIGHT_STEP_EXCEEDS_CAPABILITY is an excessive height change.",
         "UNKNOWN_TOP_BLOCK and UNKNOWN_WATER_NEIGHBORHOOD mean unavailable block evidence.",
         "None means the model has no recorded failure. Exact failure stations remain in raw results.",  # noqa: E501 - report prose
-        "Other windows/categories and exact unrounded values remain in the linked raw results.",
+        "Complete window/category costs are reported with reachable coverage below; raw values are unrounded.",  # noqa: E501 - report prose
         "",
         "| World / route / mode | Completed seconds | Prefix seconds | Unconstrained seconds | Failure reasons |",  # noqa: E501 - generated Markdown row
         "| --- | --- | --- | --- | --- |",
@@ -259,12 +258,12 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "## Modeled repeated-family interval times",
         "",
         "Same primary group/window and all 192 modes. Adjacent-anchor and first-ray-clear events",
-        "remain separate. Each cell gives interval count, central-speed median, central-speed",
+        "remain separate. Each cell gives interval count, central-speed median and IQR, central-speed",  # noqa: E501 - report prose
         "minimum/maximum, and the envelope across all intervals and the declared speed range.",
         "All times are unconstrained modeled seconds, including for infeasible modes. The speed",
         "envelope expresses assumptions plus interval spread, not a population confidence interval.",  # noqa: E501 - report prose
         "Zero ties are retained. No-repeat rows are right-censored at 768 blocks, not infinite variety.",  # noqa: E501 - report prose
-        "Category-specific and other window/radius intervals remain in the linked raw results.",
+        "All category/window/radius time summaries appear with distance statistics below.",
         "",
         "| World / route / mode | Adjacent-family interval seconds | Ray-clear-family interval seconds |",  # noqa: E501 - generated Markdown row
         "| --- | --- | --- |",
@@ -273,7 +272,7 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         for label, route in world["routes"].items():
             for mode, costs in primary(route)["modes"].items():
                 lines.append(
-                    f"| {name.removeprefix('full-')} / {label} / {mode} | {repeat_text(costs['unconstrained_adjacent_repeat_interval_times'])} | {repeat_text(costs['unconstrained_repeat_interval_times'])} |"  # noqa: E501 - generated Markdown row
+                    f"| {name.removeprefix('full-')} / {label} / {mode} | {costs['adjacent_time']} | {costs['visible_time']} |"  # noqa: E501 - generated Markdown row
                 )
     lines += [
         "",
@@ -399,6 +398,9 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "single boundary entry is the entire empty window. Maximum empty includes boundaries.",
         "First repeat is distance from route start; NR@window is right censoring. Same-position",
         "ties and zero repeat intervals remain. Counts are overlapping route/category memberships.",
+        "Each mode's repeat-time cell gives n, central-speed median/IQR/range and the speed envelope.",  # noqa: E501 - report prose
+        "Time values are unconstrained modeled seconds, including for infeasible modes; the speed",
+        "envelope is assumption sensitivity, not a confidence interval. NR uses that row's window.",
         "Individual events, family identities and unrounded values remain in the linked results.",
         "",
     ]
@@ -406,8 +408,8 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         lines += [
             f"### {name.removeprefix('full-')}",
             "",
-            "| Route | Radius | Window | Category | Population | Locations | Families | Gap distribution | Censored boundary gaps | Maximum empty | Repeats | First repeat | Repeat-interval distribution |",  # noqa: E501 - generated Markdown row
-            "| --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- |",
+            "| Route | Radius | Window | Category | Population | Locations | Families | Gap distribution | Censored boundary gaps | Maximum empty | Repeats | First repeat | Repeat-interval distribution | Walking repeat seconds | Horse repeat seconds | Boat repeat seconds |",  # noqa: E501 - generated Markdown row
+            "| --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- | --- | --- | --- |",  # noqa: E501 - generated Markdown row
         ]
         for label, route in world["routes"].items():
             for row in route["summaries"]:
@@ -419,8 +421,10 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                         if stats["first_repeat_distance"] is not None
                         else f"NR@{stats['no_repeat_right_censored_at']}"
                     )
+                    time_key = "adjacent_time" if population == "adjacent" else "visible_time"
+                    times = " | ".join(row["modes"][mode][time_key] for mode in SPEEDS)
                     lines.append(
-                        f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {population} | {stats['count']} | {stats['unique_families']} | {distribution_text(stats['gap_distribution'])} | [{boundaries}] | {stats['maximum_empty_interval']:.2f} | {stats['repeat_count']} | {first} | {distribution_text(stats['repeat_interval_distribution'])} |"  # noqa: E501 - generated Markdown row
+                        f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {population} | {stats['count']} | {stats['unique_families']} | {distribution_text(stats['gap_distribution'])} | [{boundaries}] | {stats['maximum_empty_interval']:.2f} | {stats['repeat_count']} | {first} | {distribution_text(stats['repeat_interval_distribution'])} | {times} |"  # noqa: E501 - generated Markdown row
                     )
         lines.append("")
     lines += [
@@ -432,14 +436,17 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "0/0 means no modeled reachable distance; its coverage ratio is undefined, not zero percent.",  # noqa: E501 - report prose
         "An infeasible full route may still have a nonempty prefix. These modeled reachable",
         "opportunities are separate from full-route geometry and are not observed interactions.",
+        "Each cost cell gives completed / prefix / unconstrained seconds, with central [fast, slow]",  # noqa: E501 - report prose
+        "speed values. Completed cost is null for an infeasible/unknown full-route mode even when",
+        "a shorter prefix is reachable. The transport reason codes are listed above.",
         "",
     ]
     for name, world in worlds.items():
         lines += [
             f"### {name.removeprefix('full-')} reachable coverage",
             "",
-            "| Route | Radius | Window | Category | Walking coverage | Horse coverage | Boat coverage |",  # noqa: E501 - generated Markdown row
-            "| --- | ---: | ---: | --- | --- | --- | --- |",
+            "| Route | Radius | Window | Category | Walking coverage | Horse coverage | Boat coverage | Walking cost seconds | Horse cost seconds | Boat cost seconds |",  # noqa: E501 - generated Markdown row
+            "| --- | ---: | ---: | --- | --- | --- | --- | --- | --- | --- |",
         ]
         for label, route in world["routes"].items():
             for row in route["summaries"]:
@@ -447,8 +454,15 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                     f"{row['modes'][mode]['prefix_covered_blocks']}/{row['modes'][mode]['prefix_denominator_blocks']}"
                     for mode in SPEEDS
                 ]
+                costs = [
+                    " / ".join(
+                        cost_text(row["modes"][mode][key])
+                        for key in ("completed_cost", "prefix_cost", "unconstrained_cost")
+                    )
+                    for mode in SPEEDS
+                ]
                 lines.append(
-                    f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {' | '.join(cells)} |"  # noqa: E501 - generated Markdown row
+                    f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {' | '.join(cells)} | {' | '.join(costs)} |"  # noqa: E501 - generated Markdown row
                 )
         lines.append("")
     return "\n".join(lines) + "\n"

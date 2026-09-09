@@ -46,7 +46,7 @@ POSIX lock attempt remains under `evidence/item-11/`; the existing lock fix is
 preserved. No original worlds were regenerated, tuned or repaired.
 
 Validation: full applicable gate 600 passed in 196.80 seconds before the narrow
-cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final reachable-coverage report passes in 30.37 seconds. Final
+cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final all-modeled-times report passes in 26.71 seconds. Final
 lint/types/formatting pass. A clean export of `f4e99bdf` with a separate locked
 environment reproduces the final representative bytes. No repeat of unchanged
 Item 7/10 checks is needed for the isolated summary-cost change.
@@ -80,6 +80,15 @@ reporting (3963575258). The existing report now exposes all 5,760 category/windo
 rows with three modes, including explicit undefined 0/0 ratios. The final report
 is 1,821,556 bytes and its generated expansion is isolated. This integrates
 retained evidence only; no new measurement or framework.
+
+The completed review of `b6d08dff` found nonprimary modeled repeat-time ranges
+missing from the report (3963622347). Reassessment: the report view must preserve
+the complete existing cost contract for the fixed category/window matrix, rather
+than discarding fields as a memory optimization. The same builder now summarizes
+all adjacent/visible interval-time arrays before releasing them and emits all
+completed/prefix/unconstrained costs with the existing coverage rows. This directly
+serves SPECS Item 11 and protocol cost/reporting requirements, without new data,
+schema, framework or measurements. The 4,506,694-byte generated report expansion stays isolated.
 
 Next action: request fresh `@codex review` on the pushed final PR37 candidate.
 Complete the review/fix loop, obtain the current-head clean result, merge and

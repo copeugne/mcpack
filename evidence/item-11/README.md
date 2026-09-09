@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-prefix.txt), including reachable coverage, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-prefix.txt), [formatting](validation/final-format-prefix.txt) and [BasedPyright](validation/final-types-prefix.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-all-times.txt), including all modeled times, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-all-times.txt), [formatting](validation/final-format-all-times.txt) and [BasedPyright](validation/final-types-all-times.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -415,3 +415,26 @@ Final reachable-coverage validation: [22 affected tests pass in 30.37 seconds](v
 including full row counts, the retained prefix example and exact report reproduction.
 Final lint, formatting and types pass. Fresh clean review and verified main
 delivery remain required.
+
+## Complete modeled-time reporting
+
+The completed review of `b6d08dff` found
+[nonprimary repeat-time ranges omitted](https://github.com/copeugne/mcpack/pull/37#discussion_r3963622347).
+The finding is valid. Reassessment against the protocol's complete cost/reporting
+contract showed that the report projection should summarize the time arrays
+before releasing them, rather than drop required fields to save memory. The same
+report builder now emits all adjacent and visible repeated-family time counts,
+medians, IQRs, central ranges and speed envelopes alongside all 11,520 distance
+statistics rows. Censoring uses each row's actual 256/512/768 window. All three
+modes' completed/prefix/unconstrained cost ranges are also shown with every one
+of the existing 5,760 coverage rows, completing the same modeled-cost contract.
+All infeasible full-route completed costs remain null.
+
+No source result or protocol changes are involved. The report is 4,506,694 bytes,
+within the original output budget, and the generated expansion is isolated. This
+adds no evidence class, schema, helper framework or measurement. The
+[retained-report regression fails before integration](validation/all-times-before.txt).
+All [22 affected tests pass in 26.71 seconds](validation/final-tests-all-times.txt),
+including nonprimary T1 modeled interval median/IQR/range, 256-block censoring,
+all row counts, full report reproduction and identity rejection. Final lint,
+formatting and types pass. Fresh clean review and main delivery remain pending.

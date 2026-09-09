@@ -72,13 +72,15 @@ def test_complete_report_rebuilds_byte_identically() -> None:
 
 def test_report_includes_retained_feasible_and_failed_costs() -> None:
     report = runpy.run_path(str(SCRIPT))["build"](ROOT / "evidence/item-11/results")
+    assert "Walking repeat seconds" in report
+    assert "Walking cost seconds" in report
     assert "| ordinary-r1-baseline / east-north / boat | 96.00 [76.80, 128.00] |" in report
     assert (
         "| ocean-heavy-r1-without-sparse / east-south / boat | null | "
         "94.50 [75.60, 126.00] | 96.00 [76.80, 128.00] |" in report
     )
     assert (
-        "| ordinary-r1-baseline / east-north / boat | 59; median 0.75; "
+        "| ordinary-r1-baseline / east-north / boat | 59; median 0.75; IQR 1.81; "
         "central [0.00, 18.00]; speed [0.00, 24.00] |" in report
     )
     assert "## Modeled repeated-family interval times" in report
@@ -126,3 +128,12 @@ def test_report_includes_retained_feasible_and_failed_costs() -> None:
         )
         == 5760
     )
+
+    ordinary = report.split("### ordinary-r1-without-sparse\n", 1)[1]
+    timed = next(
+        line
+        for line in ordinary.splitlines()
+        if line.startswith("| east-north | 64 | 512 | T1 | adjacent |")
+    )
+    assert timed.endswith("46; median 0.81; IQR 2.56; central [0.00, 18.00]; speed [0.00, 24.00] |")
+    assert "0; No repeat: right-censored at 256 blocks" in report
