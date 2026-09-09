@@ -163,7 +163,9 @@ No spawning, actor or repeated collision pass occurred.
 
 The [second-house report](evidence/item-13/fixed-blocks/mns-medium_house_2-report.md)
 now integrates saved layout/source facts and an inspected slice sheet. Both doors
-are closed; west-ledge/vine access requires its own model.
+are closed; west-ledge/vine access requires its own model. The collision protocol
+now predeclares one fresh saved-view capture for its 8,500 voxels; use the existing
+runner with --second-house. Its runtime result is not yet recorded.
 Next: validate that layout and assess the other selected fixed layouts,
 reusing the first-house source/model support; finish other family/variant/seed
 selection and measurements. First-house broader raw-capture custody is pending.

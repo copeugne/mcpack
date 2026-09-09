@@ -17,10 +17,16 @@ DESTINATION = Path(__file__).parent
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    _ = parser.add_argument("--spawner-lookup", action="store_true")
-    spawner_lookup = cast("bool", parser.parse_args().spawner_lookup)
+    mode = parser.add_mutually_exclusive_group()
+    _ = mode.add_argument("--spawner-lookup", action="store_true")
+    _ = mode.add_argument("--second-house", action="store_true")
+    args = parser.parse_args()
+    spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW
     prefix = "spawner-r1-" if spawner_lookup else "r1-"
+    if cast("bool", args.second_house):
+        raw_directory = ROOT / "evidence/raw/item13/house2-collision-r1"
+        prefix = "house2-r1-"
     projection = "spawners.json" if spawner_lookup else "collision.json"
     manifest: dict[str, object] = {}
     for name in (

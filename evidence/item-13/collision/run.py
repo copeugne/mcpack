@@ -24,11 +24,21 @@ INPUT = ROOT / "evidence/item-13/fixed-blocks/mns-medium-house.json.gz"
 INPUT_HASH = "a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496"
 
 
-def run(output: Path, target: Path, *, spawner_lookup: bool = False) -> None:  # noqa: C901 - preserve one experiment and its failure.
+def run(  # noqa: C901 - preserve one experiment and its failure.
+    output: Path, target: Path, *, spawner_lookup: bool = False, second_house: bool = False
+) -> None:
+    input_file = (
+        ROOT / "evidence/item-13/fixed-blocks/mns-medium_house_2.json.gz" if second_house else INPUT
+    )
+    input_hash = (
+        "c1fa53cbbae3cc48f56a48baacdfd80746bd937662a57db35d49f98b698447a6"
+        if second_house
+        else INPUT_HASH
+    )
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
-    if sha256_file(INPUT) != INPUT_HASH:
+    if sha256_file(input_file) != input_hash:
         raise ValueError("Saved house input hash mismatch")
     if shutil.disk_usage(ROOT).free < 5 * 1024**3:
         raise ValueError("Probe requires at least 5 GiB free")
@@ -43,7 +53,7 @@ def run(output: Path, target: Path, *, spawner_lookup: bool = False) -> None:  #
         "source_revision": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip(),
-        "input_sha256": INPUT_HASH,
+        "input_sha256": input_hash,
         "rejection_reason": "capture did not finish",
     }
     request = ControlRequest(
@@ -106,7 +116,7 @@ def run(output: Path, target: Path, *, spawner_lookup: bool = False) -> None:  #
                     command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=45
                 )
         report["probe_sha256"] = sha256_file(probe)
-        shutil.copyfile(INPUT, output / "input.json.gz")
+        shutil.copyfile(input_file, output / "input.json.gz")
         projection = "spawners.json" if spawner_lookup else "collision.json"
         lifecycle = run_registry_lifecycle(
             target,
@@ -143,6 +153,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
     parser.add_argument("target", type=Path)
-    parser.add_argument("--spawner-lookup", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--spawner-lookup", action="store_true")
+    mode.add_argument("--second-house", action="store_true")
     args = parser.parse_args()
-    run(args.output.absolute(), args.target.absolute(), spawner_lookup=args.spawner_lookup)
+    run(
+        args.output.absolute(),
+        args.target.absolute(),
+        spawner_lookup=args.spawner_lookup,
+        second_house=args.second_house,
+    )

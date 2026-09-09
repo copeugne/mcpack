@@ -447,3 +447,44 @@ Mapped-source collision-context support is now recorded in the
 [model derivation](../model-source/README.md#first-house-route-context-and-movement-support).
 Earlier r2 support claims above are superseded by this correction; its raw
 collision result and arithmetic remain preserved without rewriting.
+
+
+## Second-house saved-view collision predeclaration
+
+Requirement: validate the second fixed house layout's playable topology. Its
+127 saved states and changed floor/door/ledge arrangement cannot be replaced
+by the first house's shapes. Reuse the unchanged Java probe and lifecycle, adding
+only a second pinned input choice and distinct retention prefix to the existing
+runner. This is the same evidence class, not a new validator or framework.
+
+Input: fixed-blocks/mns-medium_house_2.json.gz, SHA-256
+c1fa53cbbae3cc48f56a48baacdfd80746bd937662a57db35d49f98b698447a6,
+8,500 voxels, bounds [4,29,104,28,48,120], one preselected fixed-layout case.
+One fresh frozen runtime materialization and one collision query are required.
+No actor is present. Keep both doors closed as saved; do not create/open a door,
+spawn mobs, populate containers or change the source world. The query returns
+empty-context AABB unions, palette flags and unsupported queries just as before.
+The already-resolved empty-spawner lookup is not repeated. Door-opening geometry
+and actor movement are subsequent declared models, not observations from this run.
+
+Runtime/configuration pins and readiness, correlated flush, clean-stop and failure
+rules are unchanged. The existing runner verifies 136 artifacts, frozen config,
+pinned Java and a new target. Before launch, free space is 39,374,368,768 bytes.
+Budget: 2 GiB instance, 20 MiB capture, 600-second lifecycle readiness budget,
+30-second server-thread query, 45-second attach and 120-second clean exit.
+The earlier equivalent-size query took 206.424 seconds end to end; this is a
+planning reference, not a promised duration or a second measurement. Preserve
+any failed run and do not expand beyond the selected 8,500 voxels. A missing
+shape remains unsupported and prevents dependent route acceptance.
+
+Reproducible commands (new paths; execution result to follow):
+
+```sh
+uv run python -m evidence.item-13.collision.run --second-house evidence/raw/item13/house2-collision-r1 instances/item13-house2-collision-r1
+uv run python -m evidence.item-13.collision.retain --second-house
+```
+
+The retained projection and capture record will bind the input and producer.
+The original full logs/configuration remain preserved under raw custody, with
+publication using the same explicit console bind-endpoint redaction. Broader
+raw-capture durability remains an existing required follow-up.
