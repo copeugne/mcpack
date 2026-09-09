@@ -1,6 +1,7 @@
 # Item 12 structure discoverability
 
-Status: IN PROGRESS. Item 13 is not started.
+Status: IN PROGRESS, local gate PASS; [PR39](https://github.com/copeugne/mcpack/pull/39)
+is open for required Codex review and main delivery. Item 13 is not started.
 Authority: SPECS.md Item 12 and the separately user-authorized
 [inspection/automated protocol](protocol.md), `item12-discoverability-v1`.
 Human recognition and discovery rates remain NOT MEASURED.

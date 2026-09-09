@@ -84,9 +84,10 @@ The full Item 12 local gate now passes: sixteen worlds, 464 family/world cases,
 assessments. Source-world representative reproduces byte for byte from a clean
 tracked export. Full applicable gate: 610 tests passed; final affected seven tests,
 lint, formatting and types pass. Runtime/output remain within predeclared budgets.
-Next: push the complete candidate, open the PR, request Codex review, inspect
-all review/comments/reactions, fix valid findings and repeat until clean, then
-merge and verify origin/main. Do not declare Item 12 COMPLETE before those gates.
+The complete candidate is pushed through `18eefde8` and [PR39](https://github.com/copeugne/mcpack/pull/39) is open.
+Next: complete Codex review, inspect all review/comments/reactions, fix valid
+findings and repeat until clean, then merge and verify origin/main.
+Do not declare Item 12 COMPLETE before those gates.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored
