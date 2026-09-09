@@ -128,3 +128,76 @@ or material variant after existing Item 7/8/10 coverage is checked. Do not regen
 accepted worlds or launch a broad new survey. Its exact root, dimension, seed,
 placement conditions, repetition count and resource bound must be recorded here
 before execution. Full-scale execution is not yet predeclared.
+
+## Frozen representative declaration: small dungeon
+
+The following representative is authorized for execution under the approved method;
+unfinished full-matrix sections above still prevent full-scale expansion. It resolves
+one complete sample path before expanding machinery or experiments.
+
+Family `betterdungeons:small_dungeon`, root of the same name, Overworld only.
+All six authored shell sizes (5x5, 7x5, 7x7, 9x5, 9x7, 9x9 internal nominal labels)
+and skeleton/spider/zombie processor themes are included in source assessment.
+Do not infer room count from those labels: validate the generated playable floor,
+partitions, connections, reward/spawner placement and complete survey route.
+Loot-pile alternatives are internal reward/salvage variation, not extra families.
+
+Select two natural baseline cases from the eight accepted Item 10 baseline worlds,
+using minimum SHA-256 of `world|overworld|registry_id|chunk_x|chunk_z`, with that
+string as tie-breaker. After the first selection, require a different seed role
+for the second. Do not select by geometry, loot, enemies or successful traversal.
+Retain the selected cases if either fails. Repeated layouts are legitimate results.
+Other roots, dimensions and omit-Sparse controls are not pilot substitutes.
+
+Extract saved blocks in each selected envelope plus three blocks on every side,
+all block entities within it, the exact start NBT, and WORLD_SURFACE heights above
+the envelope. This is sufficient for the compact chamber's internal topology and
+local wall access; distant cave connectivity and surface approach are not claimed.
+Every extracted chunk must be full and every required block section present.
+Verify the complete accepted world inventory before and after, under its POSIX lock.
+Keep source inventory, archive, backup, census, producer and protocol hashes.
+
+Actor: one modeled adult player, unenchanted iron sword and pickaxe, unenchanted
+iron armor, no buffs, criticals, sweep damage, dual wielding, flight, teleport or
+additional building during the internal route. The actor knows the entire sampled
+layout and reward/spawner positions. The survey begins at the first interior
+standing cell at the declared local entry/breach boundary, visits the spawner and
+all retained container interaction positions, and returns to that standing cell.
+Record the entry coordinate and any necessary breach separately; survey timing
+excludes pre-entry cave search, approach excavation, inventory menus and looting
+animation. This is not first-discovery or first-clear player timing.
+
+Use cardinal standing-cell paths verified against actual blocks. Room delineation
+and the entry/target cells require manual block-plan inspection before route
+calculation. Flat movement cost is distance / 4 blocks per second, with 3 and 5
+blocks/second sensitivity scenarios reused from Item 11's explicit modeling
+assumptions. These speeds are model inputs, not observed retained-pack movement.
+Stairs, ladders, fluids or unsupported collision shapes must have an explicit
+movement treatment before use; do not silently pass them as air. Unreachable or
+ambiguous routes are censored, not assigned zero traversal time.
+
+Combat uses the [source-supported nominal workload](model-source/README.md).
+Declare one activation wave, zero through saved SpawnCount successful ordinary
+naked adults, no natural population, jockeys, reinforcement or random equipment
+inside this scenario. Source spawner delay and repeated-activation potential are
+reported separately. Kill budget starts with the first reserved attack cycle and
+ends after the final cycle; count complete 13-tick cycles for each necessary hit.
+Show 100% and 50% contact-duty scenarios. No live spawner is disabled or modified:
+this is a mathematical one-wave comparison, not a runtime intervention. Outside
+this bounded workload, active-spawner clear time is unbounded/UNKNOWN. Model failure
+or unsupported enemy identity retains UNKNOWN; never substitute a generic enemy.
+
+Bypass assessment permits ordinary mining, roof/side access and tunneling as
+capability scenarios. Give actual wall/cover and objective-distribution evidence;
+no cannon, flight, mining-speed or live extraction experiment is claimed. Final-room
+and replay conclusions use the definitions above and preserve conditional outcomes.
+
+Pilot budget: at most 10 minutes producer time, 2 GiB working memory and 1 MiB new
+compressed raw observation output, with a 5 GiB free-space floor. Two compact
+maximal 11x7x11 shells plus a three-block border require at most 7,514 voxel cells
+in the envelope extraction; actual saved envelopes must be checked against the
+budget before reading blocks. Census reads reuse existing files, no duplicate
+worlds or runtime launches are needed. Source capture is separate and already
+bounded by the exact listed classes. Record actual time/output size. Stop and
+retain an overrun or incomplete sample. Do not extrapolate a full-run budget from
+this compact chamber to large procedural dungeons without their own size counts.

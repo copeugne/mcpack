@@ -393,6 +393,12 @@ recognition and discovery rates remain NOT MEASURED; no human trials are require
 
 ## 13. Measure Baseline Dungeon Quality
 
+Apply the separately user-authorized [Item 13 source, geometry and modeled
+assessment protocol](evidence/item-13/protocol.md). Validate playable topology;
+model traversal and combat under explicitly declared assumptions. Human times,
+realized encounters and player outcomes remain NOT MEASURED. This authorization
+is separate from the Items 10/11 amendment and Item 12 inspection scope.
+
 - [ ] Sample every significant dungeon family.
 - [ ] Record room count.
 - [ ] Record branching.

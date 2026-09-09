@@ -15,7 +15,8 @@ silently extend the Items 10/11 amendment or Item 12 authorization.
 The [protocol](protocol.md) records the method boundary and definitions before
 scoring. A numerical model must state its inputs and assumptions; authorization
 for modeling is not permission to invent calibrated player outcomes or substitute
-piece counts for rooms. The current intake has not measured dungeon quality.
+piece counts for rooms. The intake is an availability index; the first quality results are in the
+[small-dungeon representative](pilot/report.md).
 
 Startup fetched refs and tags, inspected branch/upstream, both diffs, graph and
 relevant path history. The clean previous branch was identical in tree to fetched
@@ -134,7 +135,8 @@ The same accepted census can be reused without repeating upstream measurements.
 Initial read-only jq probes incorrectly treated keyed census strata as an array;
 they failed without changing inputs. Initial lint found formatting, unused names
 and a missing annotation in the intake script; those are corrected before delivery.
-No server experiment or quality score has run yet.
+No server experiment has run. The first representative now has geometric and
+modeled quality results, as recorded below.
 
 ## Common Item 7 coverage disposition
 
@@ -176,3 +178,18 @@ Those exact inputs were read from the restored core target in
 from four immutable chunk records per stream. A new validator or rerun is not
 needed to establish it. Identical coordinates across these repeated worlds do
 not imply independent layouts, semantic determinism or player observations.
+
+## Representative quality results
+
+The [small-dungeon report](pilot/report.md) integrates every required quality
+dimension for two natural samples of `betterdungeons:small_dungeon`. Both are
+validated single chambers with no separate finale. Exact blocks, manual topology
+coding, conditional routes, nominal combat inputs and deterministic results are
+retained together. Extraction and reproduction pass the declared resource bounds.
+Human times, realized encounters and generated/acquired loot remain NOT MEASURED.
+
+This establishes the compact representative path only. It does not resolve the
+remaining family/variant sampling matrix or authorize broad processing. Full
+coverage still requires every one of 192 included families and their material
+variants, including dimensions and missing generated-world evidence. No Item 14
+work has started.

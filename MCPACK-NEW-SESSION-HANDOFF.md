@@ -95,18 +95,22 @@ Item 8 separate captures add starts for 49 of those 119 families, with full save
 envelope coverage for 13. The common Item 7 index adds complete-envelope
 candidates for Starlight Voyager, leaving 105 without such a candidate in the
 existing references. Exact dispositions and limitations are in the README.
-This is not proof of playable topology. No quality measurement,
-new world experiment or scoring has run. Do not infer completion from intake.
+The intake is not proof of playable topology. The first
+[representative report](evidence/item-13/pilot/report.md) now validates two small
+dungeon chambers and covers all quality dimensions under conditional models.
+No new world experiment has run. Do not infer full coverage from this pilot.
 
-Latest pushed milestone before the common-index disposition: `6011a264` on
-`codex/item13-dungeon-quality`. Verify current pushed head before continuing.
+Latest pushed intake milestone: `b50fab2f` on `codex/item13-dungeon-quality`.
+The coupled representative milestone follows it; inspect current pushed head.
 
-Next: finish material-variant mapping and sample/repetition choices,
-actor/model inputs and runtime/storage bounds in the existing protocol. Then finish
-one representative end to end before expansion. Do not invent a combat constant,
-use pieces as rooms, or accept incomplete topology. Reuse original custody and
-record established results in the authoritative Item 13 report. Commit/push coherent
-verified milestones and complete the required clean PR review/merge/main delivery.
+Next: finish the complete material-variant and sample/repetition matrix, using the
+representative's measured cost only for comparable compact cases. Quantify larger
+geometry and the smallest additional experiments for the exact gaps before running
+them. The pilot protocol bytes are hash-bound to its raw observations; preserve
+that historical version when evolving the full protocol. Do not use pieces as
+rooms or accept incomplete topology. Reuse original custody and record established
+results in the authoritative report. Commit/push coherent verified milestones and
+complete the required clean PR review/merge/main delivery. Item 14 stays UNSTARTED.
 
 Scope check: retain concise coverage references in the existing intake rather than
 copying every prior start into another evidence set. The original streams remain
