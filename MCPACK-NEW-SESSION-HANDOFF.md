@@ -79,7 +79,11 @@ Authoritative [Item 12 requirement map](evidence/item-12/README.md) and
 [predeclared protocol](evidence/item-12/protocol.md) define the smallest complete
 proof. All sixteen existing world restores and census hashes pass the
 [availability inspection](evidence/item-12/validation/input-availability.txt).
-Proceed with the ordinary r1 baseline representative end to end before expanding.
+The ordinary r1 baseline representative now passes its bounded local gate: 14
+family cases, report, source assessments, 28 technical panels and six focused tests.
+See the Item 12 README for resource projection and preserved initial failures.
+Proceed to the remaining fifteen predeclared worlds, then integrate their family
+assessments and complete final validation, PR review/fixes and verified merge.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored

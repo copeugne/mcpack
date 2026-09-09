@@ -47,9 +47,9 @@ views or recognition. It cannot close the missing Item 12 perceptual claims.
 
 ## Current batch
 
-Method decision and sampling are predeclared. Input availability passes.
-Implementation, representative result, visual inspection, complete report,
-validation and reviewed main delivery remain outstanding.
+Method decision, input availability and the ordinary representative pass.
+The remaining fifteen worlds, their assessments, full report, final validation
+and reviewed main delivery remain outstanding.
 
 ## Reproduce input availability
 
@@ -87,3 +87,61 @@ print(json.dumps(dict(world_bytes=total, census_bytes=census_bytes,
                      free_bytes=shutil.disk_usage(ROOT).free)))
 PY
 ```
+
+## Representative completed before expansion
+
+Ordinary r1 baseline is complete as a bounded fourteen-family increment:
+[raw observations](results/full-ordinary-r1-baseline.json.gz),
+[numerical report](report.md), [architectural assessments](assessments.md) and
+[technical sections](ordinary-sections.svg). The [producer log](validation/full/full-ordinary-r1-baseline.txt)
+records 37.150 seconds and 19,960 compressed bytes. A simple sixteen-world
+extrapolation is 594.4 seconds and 319,360 bytes; family counts and world content
+vary, so retain the larger predeclared 160-minute/1-GiB ceilings. This is an
+operational projection, not a benchmark or guarantee. No expansion has occurred
+at this checkpoint.
+
+The report preserves 14 selected cases, eight observer cells per geometric case,
+separate WS/NL rays, all three UNKNOWN-extremum cases, and full occurrence counts.
+The six [focused checks](validation/representative-six-tests.txt) pass, including
+selection order, obstruction/UNKNOWN, same-eye contrast, retained report values,
+diagram reproduction and rejection of changed/misbound evidence.
+[Types](validation/representative-final-types.txt) and
+[lint](validation/representative-lint.txt) pass. Initial import/type errors are
+retained in validation/initial-* and representative-types.txt; the package marker
+and explicit type narrowing corrected them before accepted collection. No world
+processing attempt failed or source evidence changed.
+
+Manual inspection of all 28 panels found the surface ships, buried selected
+objects, minimal temple envelope, elevated settlement and edge gaps consistent
+with the retained coordinates and heights. The panels explicitly disclose their
+heightmap-only scope; they cannot reveal a cave entrance or rendered silhouette.
+The first SVG is retained in [validation](validation/ordinary-sections-first.svg).
+ImageMagick's initial rasterization omitted stroke paths; it was rejected for
+visual inspection. CairoSVG rendered the paths, and an explicit fill-opacity
+replaced the inconsistently supported eight-digit fill color. Final SVG inspection
+shows readable identity/axes, retained gaps and transparent envelopes. This is
+artifact visual QA, not player testing. Browser local-file policy blocked the
+browser inspection; local rasterization required no browser action.
+
+Executed reproduction commands (choose absent output paths):
+
+```sh
+uv run --no-sync python -m tools.analyze_discoverability \
+  --name full-ordinary-r1-baseline --output /tmp/item12-representative.json.gz
+PYTHONPATH=. uv run --no-sync python evidence/item-12/summarize.py \
+  --results evidence/item-12/results --representative --output /tmp/item12-report.md
+uv run --no-sync python evidence/item-12/render.py \
+  --result evidence/item-12/results/full-ordinary-r1-baseline.json.gz \
+  --output /tmp/item12-sections.svg
+uv run --no-sync pytest -q tests/item12
+uv run --no-sync ruff check tools/analyze_discoverability.py tests/item12 \
+  evidence/item-12/render.py evidence/item-12/summarize.py
+uv run --no-sync basedpyright tools/analyze_discoverability.py tests/item12 \
+  evidence/item-12/render.py evidence/item-12/summarize.py
+```
+
+For visual inspection only, the SVG was rasterized with the isolated pinned
+CairoSVG 2.9.0 package via `uv run --with cairosvg==2.9.0 python`, calling
+`cairosvg.svg2png(url='evidence/item-12/ordinary-sections.svg', write_to=...)`.
+The deterministic SVG is committed; no project dependency or client installation
+is required for numerical reproduction.
