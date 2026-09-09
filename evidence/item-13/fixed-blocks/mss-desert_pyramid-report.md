@@ -417,3 +417,91 @@ assert length<3
 print(f'Ladder/landing and dry chest access conditions pass; ray {length:.6f} blocks.')
 PYRAMID_ACCESS
 ```
+
+## Lower chamber: source access and stalagmite hazard
+
+The lower activity space occupies interior X123..126,Z453..461 above its Y171
+floor. Its two zombie spawners are embedded in that floor at (126,171,457) and
+(123,171,459). The saved chamber has 23 pointed-dripstone blocks in Y172..178:
+17 upward tips, five upward frustums and one upward base, with no downward
+stalactites in that inspected volume. These are collision/hazard ingredients,
+not 23 independent hazards or enemies. There is no loot-table container in this
+lower space; the decorated pot at (126,172,454) has no stored item or LootTable,
+as recorded in the intake. The source pair makes this an encounter-bearing
+space rather than an empty room even though realized spawning is unmeasured.
+
+The pinned mapped `PointedDripstoneBlock.fallOn` applies
+`causeFallDamage(fallDistance + 2, 2, damageSources.stalagmite())` when direction
+is UP and thickness TIP. Other states delegate to the base block. This supports
+an amplified fall-on-tip hazard, not damage merely from standing near a spike.
+The chamber's ladder gives an alternative to jumping down among those tips.
+Falling-stalactite damage is not established here: no downward state is present
+in the inspected chamber. The full Pyramid may have other hazards outside this
+volume. Reproduce the mechanism with the pinned mapped JAR SHA-256
+26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar -c -p net.minecraft.world.level.block.PointedDripstoneBlock
+```
+
+Predeclare a small engineering bypass for source access. From the ladder's east
+landing (126.5,172,461.5), move north to Z458.5, then west to X123.5. Remove the
+skeleton skull at (126,172,459), four-candle block at (126,172,458), and two-candle
+block at (123,172,458) before entering their cells. Each is accessible from the
+preceding adjacent clear cell: respectively (126.5,172,460.5),
+(126.5,172,459.5), and (124.5,172,458.5). Aim at their top centers, with modeled
+eye Y173.62. Candle targets use Y172.375 at the block X/Z center. Pinned
+`CandleBlock` TWO_AABB is (5,0,6)..(11,6,9)/16 and FOUR_AABB is
+(5,0,5)..(11,6,10)/16, so those target points lie on the top face. Reproduce
+these constants with the same `javap` command, substituting `CandleBlock`.
+Each target is within two blocks, with air above it and no preceding
+intercepting block on that local ray. This removes three decorative blocks,
+not three stalagmites. Their breaking and selection costs remain to be included
+in the complete task budget; they are not treated as free actions.
+
+After those explicit removals, the six-block L-shaped route has full support at
+Y171 and clear body cells Y172/173. It avoids all spike cells. From the eastern
+endpoint (126.5,172,458.5), target the first spawner's top center
+(126.5,172,457.5); from the western endpoint (123.5,172,458.5), target the second
+at (123.5,172,459.5). Both rays are about 1.904 blocks and reach exposed top faces
+without standing on the spawners. Removing them therefore does not remove route
+support. Reverse the same six blocks to return to the ladder landing. This
+establishes conditional access to both lower sources, not combat success or a
+claim that the untouched chamber is freely walkable. No saved block was changed.
+
+Reproduce the saved route and hazard ingredients:
+
+```sh
+uv run python - <<'PYRAMID_CHAMBER'
+import collections, gzip, hashlib, importlib, json, math
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+removed={(126,172,459):'minecraft:skeleton_skull',
+         (126,172,458):'minecraft:light_gray_candle',
+         (123,172,458):'minecraft:light_gray_candle'}
+for xyz,name in removed.items():
+    assert s(c,*xyz)['Name']==name
+route={(126,z) for z in range(458,462)} | {(x,458) for x in range(123,127)}
+for x,z in route:
+    assert s(c,x,171,z)['Name'] in ('minecraft:sandstone','minecraft:smooth_sandstone')
+    for y in (172,173):
+        assert (x,y,z) in removed or s(c,x,y,z)['Name']=='minecraft:air'
+for x,z in ((126,457),(123,459)):
+    assert s(c,x,171,z)['Name']=='minecraft:spawner'
+    assert all(s(c,x,y,z)['Name']=='minecraft:air' for y in (172,173))
+counts=collections.Counter()
+for x in range(123,127):
+    for z in range(453,462):
+        for y in range(172,179):
+            state=s(c,x,y,z)
+            if state['Name']=='minecraft:pointed_dripstone':
+                props=state['Properties']
+                counts[props['vertical_direction'],props['thickness']]+=1
+assert counts=={('up','tip'):17,('up','frustum'):5,('up','base'):1}
+print('Lower source-access route passes after three declared removals.', dict(counts))
+print('Spawner interaction ray:', math.hypot(1,1.62))
+PYRAMID_CHAMBER
+```
