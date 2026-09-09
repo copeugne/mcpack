@@ -31,7 +31,7 @@ Item 11 routes and Item 12 discoverability. Their closure records and the delive
 
 | Requirement | Existing evidence available | Concrete missing measurement or assessment |
 | --- | --- | --- |
-| Every significant family | Item 8's 448 canonical families, Item 9 roles/flags/ambiguities | Complete [intake](intake.json) includes 192, excludes 256; resolve material variants and sample all included designs, including non-Overworld content |
+| Every significant family | Item 8's 448 canonical families, Item 9 roles/flags/ambiguities | Complete [intake](intake.json) includes 192, excludes 256; [material coverage](coverage.md) resolves variants incrementally and sample all included designs, including non-Overworld content |
 | Room count | Packaged templates, custom generator source and accepted saved worlds | Delineate playable spaces and validate room boundaries against blocks and connections |
 | Branching | Pool links and piece envelopes | Actual room/connector graph, junctions, dead ends and loops; pool branches are not playable branches |
 | Vertical progression | Source vertical designs and Item 12 placement context | Reachable floor changes and their traversal order |

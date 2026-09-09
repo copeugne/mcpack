@@ -104,6 +104,9 @@ No new world experiment has run. Do not infer full coverage from this pilot.
 Latest pushed representative milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
 A narrow intake reference correction follows it; inspect current pushed head.
 The README integrates variant scope for the three included non-registry families.
+[Material coverage](evidence/item-13/coverage.md) also resolves 25 Adorabuild families
+into 38 root alternatives. Its proposed 40-case minimum has not been selected,
+budgeted or run. Continue the full matrix before expensive expansion.
 
 Next: finish the complete material-variant and sample/repetition matrix, using the
 representative's measured cost only for comparable compact cases. Quantify larger
