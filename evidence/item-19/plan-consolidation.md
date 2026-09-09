@@ -13,13 +13,10 @@ from code, the web or commits/PRs. This amendment implements that request using
 the actual versioned repository specification, not external mod recommendations.
 
 The source is [SPECS.md at the delivered PR40 main revision](https://github.com/copeugne/mcpack/blob/3a086467fcd25fffd3b39ed3112d5cb49a0a7bdf/SPECS.md),
-commit 3a086467fcd25fffd3b39ed3112d5cb49a0a7bdf. The active Item 13 branch at 2345748d was
-inspected before editing; its only SPECS.md difference from this base was the
-Item 13 methodology paragraph. No post-baseline content differed. Work is isolated
-on codex/post-baseline-consolidation from verified main, so none of that branch's
-measurements, uncommitted Large House work, worlds or handoff are changed.
-The review and merge record is available through this branch's GitHub PR and Git
-history; this document does not claim future delivery before it occurs.
+commit 3a086467fcd25fffd3b39ed3112d5cb49a0a7bdf. This is the immutable input
+for the source mapping and baseline-preservation comparison below. The amendment
+changes the post-baseline specification, its ledger reference and this provenance
+record. It does not alter earlier requirements or empirical evidence.
 
 ## What changed
 
@@ -157,12 +154,10 @@ git diff --check
 
 This command deliberately verifies against the amendment's source. A later accepted
 change to Items 1-18 requires its own provenance rather than rewriting this historical
-preservation claim. The ongoing Item 13 branch must incorporate the reviewed plan
-through a normal merge when appropriate, preserving its separate methodology change;
-no checkout, reset or cherry-pick into active work is part of this amendment.
+preservation claim.
 
-A read-only prospective merge found that replacing the future ledger rows adjacent
-to Item 13 would conflict with its ongoing status amendment. The ledger edit was
+A read-only prospective integration check found that replacing future ledger rows
+adjacent to baseline status changes would create a merge conflict. The edit was
 narrowed to the governing-plan explanation and the already-atomized Item 48 note.
 The seven delivery packages remain authoritative in SPECS.md. This avoids coupling
-the plan amendment to an unrelated Item 13 status resolution.
+the plan amendment to unrelated baseline status edits.
