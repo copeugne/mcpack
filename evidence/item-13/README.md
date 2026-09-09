@@ -251,3 +251,44 @@ Neither disposition is based on absence in the observed frame. The next missing
 requirement is the selected saved-instance/component matrix and its resource
 budget, followed by actual quality measurements across that coverage. The pilot
 remains the only completed sample analysis; Item 13 is not ready for final review.
+
+## Saved-instance selection, metadata stage
+
+Before block extraction, enumerate every included registered start in the eight
+accepted baseline censuses. Preserve world, dimension, root, start chunk, component
+bounds identity and census identity. Duplicate starts across frames must agree. Join the
+accepted backup inventory to budget start-region reads and envelope-plus-three
+block reads. This is candidate enumeration, not final material-variant selection
+or a topology measurement. All candidates remain available until saved component
+membership is inspected; absence in this list does not exclude a family.
+
+This metadata-only step reads committed records and bound census/backup metadata,
+without opening or changing worlds. Budget: five minutes, 1.5 GiB resident memory,
+10 MiB output. Missing region inventory entries are explicit coverage gaps, not
+empty terrain. Full saved chunk status and component membership still require
+subsequent hash-verified world inspection. Reproduce with
+`uv run python -m evidence.item-13.select_samples --output evidence/item-13/candidates.json`.
+
+The resulting [candidate index](candidates.json) contains 266 unique saved starts,
+44 included families and 59 roots. This is the baseline-only population, distinct
+from the earlier all-arm availability count. Before variant selection, their
+padded envelopes total 112,141,277 voxels. The 88 unique start regions total
+868,245,504 bytes; all envelope regions together total 929,058,816 bytes. No
+required region path is missing from the backup inventories. This does not prove
+that every required chunk or section is saved and full.
+
+The first metadata pass took 5.752 seconds and 793,200 KiB peak RSS. The final
+compact output is 294,624 bytes, SHA-256
+`479fe8f8a1099ed81c5d7b8289d456c6915848622f74ee58b0a04a7d67d15fca`;
+a second module invocation produced byte-identical output. Component bounds stay
+in the bound census, with a canonical JSON digest in each candidate, avoiding a
+6.5 MB duplicate. Focused Ruff and type checks pass. The attempted `/usr/bin/time`
+wrapper was unavailable; a Python `resource`/monotonic wrapper measured the first
+pass instead. Direct script invocation did not resolve the repository `tools`
+package; the documented module invocation resolves it and passed reproduction.
+Neither failed invocation changed a world or produced accepted observations.
+
+Next, inspect saved start NBT for material component membership. Do not extract
+112 million voxels indiscriminately or infer design coverage from the 266 starts.
+Supplemental Item 8/7 candidates and non-registry saved evidence remain necessary
+for families absent from this baseline index.

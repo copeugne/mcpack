@@ -109,8 +109,13 @@ anchor and dimension differences. The 256 exclusions stay in the intake.
 CTOV badlands/mesa share a verified definition; Nilotic has no resolved eligible
 biomes. These source dispositions avoid unnecessary duplicate/forced samples.
 
-Next: select exact existing saved instances and identify their material component
-membership. Record full saved-block bounds, repetitions, missing alternatives,
+The [baseline candidate index](evidence/item-13/candidates.json) now identifies 266
+starts across 44 included families and 59 roots. Its 88 start regions total
+868,245,504 bytes; padded envelopes total 112,141,277 voxels before selection.
+Metadata reproduction passed; full saved chunks and material membership are pending.
+
+Next: inspect these saved starts and supplemental Item 8/7 candidates for material
+component membership. Record selected bounds, repetitions, missing alternatives,
 actor/model support and runtime/storage totals before expensive expansion. Use the
 pilot cost only for comparable compact cases. Check the existing central-End raw
 world before declaring an arena generation gap. Do not repeat the scope pass.
