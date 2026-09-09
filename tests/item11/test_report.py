@@ -137,3 +137,5 @@ def test_report_includes_retained_feasible_and_failed_costs() -> None:
     )
     assert timed.endswith("46; median 0.81; IQR 2.56; central [0.00, 18.00]; speed [0.00, 24.00] |")
     assert "0; No repeat: right-censored at 256 blocks" in report
+
+    assert "| biome-diverse-r1 | 8 | 15 | 368 |" in report

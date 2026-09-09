@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-all-times.txt), including all modeled times, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-all-times.txt), [formatting](validation/final-format-all-times.txt) and [BasedPyright](validation/final-types-all-times.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-contrast.txt), including independent visibility contrasts, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-contrast.txt), [formatting](validation/final-format-contrast.txt) and [BasedPyright](validation/final-types-contrast.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -438,3 +438,17 @@ All [22 affected tests pass in 26.71 seconds](validation/final-tests-all-times.t
 including nonprimary T1 modeled interval median/IQR/range, 256-block censoring,
 all row counts, full report reproduction and identity rejection. Final lint,
 formatting and types pass. Fresh clean review and main delivery remain pending.
+
+The completed review of `ade6a86f` identified
+[missing paired ray-clear membership contrasts](https://github.com/copeugne/mcpack/pull/37#discussion_r3963679904).
+The finding is valid. The existing eight-pair table now reports the independent
+ray-clear candidate-count difference alongside adjacency and covered blocks.
+The retained biome-diverse r1 example is 18 control minus 3 baseline ray-clear
+memberships, giving 15. The [regression fails before integration](validation/visibility-contrast-before.txt).
+This is a direct contrast of retained measurements, with no changed source
+results, protocol, model or sampling.
+
+Final contrast-integrated validation: [22 affected tests pass in 27.15 seconds](validation/final-tests-contrast.txt).
+Final lint, formatting and types pass. The report is 4,506,769 bytes; the current
+small table correction is coupled with its builder/regression, not a new large
+generated migration. Fresh clean review and main delivery remain pending.

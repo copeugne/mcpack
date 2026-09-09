@@ -341,8 +341,8 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "The final ocean-heavy r2 control uses the accepted third attempt. Rejected attempts",
         "remain in Item 10 custody and are not additional route samples.",
         "",
-        "| Seed / repetition | Adjacent membership difference | Covered-block difference |",
-        "| --- | ---: | ---: |",
+        "| Seed / repetition | Adjacent membership difference | Ray-clear membership difference | Covered-block difference |",  # noqa: E501 - generated Markdown row
+        "| --- | ---: | ---: | ---: |",
     ]
     for name, baseline in worlds.items():
         if not name.endswith("-baseline"):
@@ -352,20 +352,18 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         control = worlds[control_name]
         difference = [
             sum(
-                primary(r)[metric]
-                if metric == "covered_blocks"
-                else primary(r)["adjacent"]["count"]
+                primary(r)[metric] if metric == "covered_blocks" else primary(r)[metric]["count"]
                 for r in control["routes"].values()
             )
             - sum(
-                primary(r)[metric]
-                if metric == "covered_blocks"
-                else primary(r)["adjacent"]["count"]
+                primary(r)[metric] if metric == "covered_blocks" else primary(r)[metric]["count"]
                 for r in baseline["routes"].values()
             )
-            for metric in ("count", "covered_blocks")
+            for metric in ("adjacent", "geometric_visible", "covered_blocks")
         ]
-        lines.append(f"| {prefix.removeprefix('full-')} | {difference[0]} | {difference[1]} |")
+        lines.append(
+            f"| {prefix.removeprefix('full-')} | {difference[0]} | {difference[1]} | {difference[2]} |"  # noqa: E501 - generated Markdown row
+        )
     lines += [
         "",
         "## Scope and input identities",

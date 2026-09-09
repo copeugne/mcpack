@@ -692,16 +692,16 @@ Pair differences below are omit-Sparse minus baseline for the same seed/repetiti
 The final ocean-heavy r2 control uses the accepted third attempt. Rejected attempts
 remain in Item 10 custody and are not additional route samples.
 
-| Seed / repetition | Adjacent membership difference | Covered-block difference |
-| --- | ---: | ---: |
-| biome-diverse-r1 | 8 | 368 |
-| biome-diverse-r2 | 87 | 344 |
-| mountainous-r1 | 86 | 232 |
-| mountainous-r2 | 123 | 264 |
-| ocean-heavy-r1 | 44 | 88 |
-| ocean-heavy-r2 | 4 | 88 |
-| ordinary-r1 | 3 | 128 |
-| ordinary-r2 | 69 | 128 |
+| Seed / repetition | Adjacent membership difference | Ray-clear membership difference | Covered-block difference |
+| --- | ---: | ---: | ---: |
+| biome-diverse-r1 | 8 | 15 | 368 |
+| biome-diverse-r2 | 87 | 14 | 344 |
+| mountainous-r1 | 86 | 4 | 232 |
+| mountainous-r2 | 123 | 6 | 264 |
+| ocean-heavy-r1 | 44 | 2 | 88 |
+| ocean-heavy-r2 | 4 | 2 | 88 |
+| ordinary-r1 | 3 | 2 | 128 |
+| ordinary-r2 | 69 | 2 | 128 |
 
 ## Scope and input identities
 
