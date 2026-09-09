@@ -98,4 +98,5 @@ external reward access and a complete conditional 16/27/45-second resource task.
 The [accepted timing method](../timing-scenario-proposal.md) resolves the earlier
 methodology pause; full coverage and layout-specific budgets remain required.
 The [Giant Skull assessment](mns-giant_skull-report.md) now integrates source/saved
-content and inspected slices. Its playable boundaries and task budget remain open.
+content, chest access and a conditional 46/74/125..146-second complete task.
+Its playable activity boundaries and quality synthesis remain open.

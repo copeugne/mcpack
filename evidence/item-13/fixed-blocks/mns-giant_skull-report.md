@@ -1,8 +1,8 @@
 # Giant Skull: quality assessment
 
 Status: IN PROGRESS. Source/saved content, visual evidence and ground chest
-access are integrated. Playable activity boundaries, covered-spawner access,
-full task budget and quality synthesis remain open.
+access, covered-spawner breach and full conditional task budget are integrated.
+Playable activity boundaries and final quality synthesis remain open.
 
 Sample: full-mountainous-r1-baseline|minecraft:the_nether|mns:giant_skull|22|13.
 The retained [saved blocks](mns-giant_skull.json.gz), SHA-256
@@ -146,3 +146,132 @@ assert state(case,352,76,212) == {'Name':'minecraft:polished_deepslate_slab',
     'Properties':{'type':'double','waterlogged':'false'}}
 SKULL_ACCESS
 ```
+
+## Complete-task predeclaration
+
+Use the accepted conditional accounting method with a fully informed single adult
+at (350.5,76,212.5), full health/food, unenchanted iron armor/sword and diamond
+pickaxe, and sufficient inventory for both chest results. Start the model at first
+spawner activation with its saved Delay 160 and no pre-existing/natural hostiles.
+This is a stipulated local starting state, not a reconstructed population history.
+
+Objective: remove the west bottom slab and central double slab, disable the
+spawner, defeat any hostiles it produced, transfer both chest inventories, and
+return alive to the starting station. The two slab removals and spawner breaking
+are permitted; no extra mining, construction, flight, healing, pre-applied effects, criticals,
+sweeps or assistance. Ignore incidental slab drops and scattered ore/wart, which
+are not the two-container expedition objective. Use 20 TPS throughout.
+
+All three mining targets are approached from the starting station. Two initial
+decision budgets cover orientation and breach sequence. Three targeting events,
+one initial tool selection and actual breaking work must precede disablement.
+Disable before 160 ticks to prevent the first attempt batch; if that deadline is
+missed, allow one batch with successful count p=0..4, provided disablement still
+occurs before 360 ticks. The latter conservatively precedes the earliest second
+batch after the saved initial delay and minimum 200-tick reset. Do not treat
+SpawnCount as a lifetime cap outside this condition.
+
+For the full route use the verified 12-block start-to-first-chest path, a 40-block
+first-to-second-chest path in the same conservative cell subset, and the reverse
+50-block second-chest-to-start path: 102 upright blocks. The inter-chest path
+starts west to (354,205), then follows the previously recorded northern/eastern
+detour. That cell is step 11 of the retained 50-block path, so the remaining
+39 blocks plus the one-block west move establish the 40-block inter-chest link.
+Combat pursuit is excluded from these distances and included only in contact duty. No speed term is used for unverified pickup excursions.
+
+Use A/B/C's existing speeds and allowances. Predeclare six decision events:
+orientation, breach sequence, encounter confirmation, first-chest route/inspection,
+second-chest route/inspection, and return. Three selections equip pickaxe, sword
+for encounter confirmation/combat, and an empty hand for containers. Charge 61
+targeting/interaction events: three mined blocks, two opens, two closes, and a
+fixed scan/shift-click through all 27 slots of each chest. This is an explicitly
+provisional inventory-operation budget, not a measurement of GUI performance or
+an assertion that 54 slots contain loot. Two acquisition-confirmation allowances
+check the transfers. Charge one final verification allowance. No ground-item pickup
+or mining duration is charged again in the GUI budget.
+
+Combat is source-based full-cycle iron-sword work for ordinary unarmored wither
+skeletons, scaled by the accepted contact-duty profiles. Unmodeled modifiers, extra
+armor/targets, pursuit outside the duty budget, death/healing, failed transfers,
+mining interruptions beyond allowances, invalid access, disablement at/after
+360 ticks or non-20-TPS conditions censor successful completion. No survival or
+success probability is estimated. The method does not guarantee a successful rush.
+
+## Covered-spawner access and complete conditional timing
+
+The two permitted slab removals resolve the earlier obstruction without moving
+onto partial blocks. From eye (350.5,77.62,212.5), target the west bottom slab at
+(351.5,76.25,212.5), then the central double slab at (352.5,76.75,212.5), then the
+spawner's top at (352.5,76,212.5). Target distances are approximately 1.70, 2.18
+and 2.57 blocks. The first ray reaches the bottom slab; after its removal the
+second crosses air and enters the double slab; after both removals the third
+crosses the cleared cells and reaches the spawner top. No floor under the actor
+is removed. Y77/78 over the relevant X350..352 cells is air. This is conditional
+breach geometry, not a claim that the saved spawner was actually destroyed.
+
+In the pinned mapped server JAR, `Blocks` copies polished-deepslate-slab properties
+from polished deepslate, which copies cobbled deepslate. The latter sets strength
+(3.5,6), so breaking hardness is 3.5. Both slab states use that same hardness;
+a double slab is one block break, not two. The diamond-pick calculation is
+ceil(3.5*30/8)=14 ticks per slab, plus the previously sourced 19-tick spawner:
+47 nominal ticks or 2.35 seconds. Input and targeting remain separate budgets.
+
+`DefaultAttributes` registers WITHER_SKELETON with `AbstractSkeleton.createAttributes`,
+which changes movement speed but inherits max health 20. `Attributes.MAX_HEALTH`
+defaults to 20. For the declared ordinary unarmored target and iron sword, four
+full-strength six-damage hits require 4*13=52 nominal ticks, or 2.6 seconds of
+active cycle work per target. These are source/model inputs, not actual hit or
+kill observations. `WitherSkeleton.doHurtTarget` also applies WITHER for 200 ticks
+after a successful hit on a living target. That pressure is not treated as harmless:
+withering may occur, but survival without healing is a condition, not a modeled
+guarantee. Extra delay outside the stated action/contact budgets censors the case.
+The model contains no estimated incoming-damage or survival probability.
+
+All these class derivations use mapped JAR SHA-256
+26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71;
+inspect the named methods with the pinned `javap -c -p`. The retained Minecraft
+pickaxe-mining tag includes `minecraft:polished_deepslate_slab`; no new tool or
+runtime experiment is needed to reuse the already sourced breaking formula.
+
+Disablement D=2.35+2n+3a+s gives A/B/C 4.35/6.35/9.35 seconds. A and B precede
+the eight-second saved delay and therefore use p=0. C crosses the initial-delay
+boundary and uses p=0..4 while remaining below the conservative 18-second second-
+batch cutoff. A profile cannot be reported with an incompatible population just
+because a different composition makes a more appealing result.
+
+With the predeclared interaction counts, full successful-scenario time is:
+
+T=102/u+2.35+6n+61a+3s+2k+v+2.6p/d.
+
+| Profile | Movement only | Population scenario | Complete task, seconds |
+| --- | ---: | --- | ---: |
+| A | 20.40 | p=0, early disablement | 45.75 |
+| B | 25.50 | p=0, early disablement | 73.85 |
+| C | 34.00 | p=0..4, at most one batch | 125.35..146.15 |
+
+Thus report approximately 46, 74, and 125..146 seconds under the stated profiles
+and lifecycle. This is not a confidence interval, observed human performance,
+expected natural population or guaranteed completion bound. Mining, route travel,
+combat contact, decisions, all chest-slot interactions, acquisition confirmation
+and final return verification are accounted for. The 102-block route alone is
+not reported as complete timing.
+
+Reproduce the arithmetic:
+
+```sh
+uv run python - <<'SKULL_TIME'
+for name,u,n,a,s,k,v,d in [('A',5,.5,.25,.25,1,2,1),
+                          ('B',4,1,.5,.5,2,4,.75),
+                          ('C',3,1.5,1,1,4,8,.5)]:
+    disable = 2.35+2*n+3*a+s
+    assert disable < 18
+    populations = [0] if disable < 8 else range(5)
+    base = 102/u+2.35+6*n+61*a+3*s+2*k+v
+    print(name,'disable',disable,'population/time',
+          [(p,base+2.6*p/d) for p in populations])
+SKULL_TIME
+```
+
+This resolves the local complete-task budget and covered-spawner access.
+Room/activity delineation, vertical/depth synthesis and final quality assessment
+remain required; a finite conditional total does not close those requirements.
