@@ -1,8 +1,8 @@
 # Large House 1: quality assessment
 
-Status: IN PROGRESS. Saved/source enemy and reward inputs, conditional access
-routes and complete-task timing are integrated. Room/quality synthesis and
-family repetitions remain required. Human gameplay remains NOT MEASURED.
+Status: local conditional assessment recorded. Saved/source inputs, access
+routes, complete-task timing and room/quality synthesis are integrated. Family
+repetitions and broader coverage remain required. Human gameplay is NOT MEASURED.
 
 Sample: full-biome-diverse-r2-baseline|minecraft:the_nether|mns:large_house_1|5|3.
 The retained [saved blocks](mns-large_house_1.json.gz), SHA-256
@@ -806,3 +806,142 @@ for name,u,c,h,n,a,s,k,v,d in profiles:
           'noncombat', base, 'two per source', base+work/d)
 LARGE_HOUSE_TASK
 ```
+
+## Integrated topology and quality assessment
+
+Apply the protocol's activity-space definition to the saved layout and the declared
+actor/removals. Delineate five authored spaces below. Bounds identify their walls,
+fixtures and activity area; they do not assert that every cell in each rectangle
+is walkable. The exact occupied stations and links remain those inspected above.
+Do not count the exterior banks, bridge, narrow vine shaft, solid roof mass or
+unreached decorative cavities as additional rooms.
+
+| Node | Authored space and coordinate boundary | Access disposition | Barrels / spawners |
+| --- | --- | --- | --- |
+| N | North lower cache, fixture/alcove band X75..77, Z31..35, feet Y33 | Open-gate approach; crouching and one stair removal expose all rewards | 5 / 1 |
+| S | South lower cache, alcove X76..78, Z61..62, feet Y35 | Existing standing alcove reached through the declared pillar breach and ladders | 3 / 1 |
+| B | Southern main hall, interior band X74..80, Z51..63, feet Y44 | Capped lower shaft requires the declared cap removal and ladder extension | 3 / 2 |
+| M | Middle main room, interior band X74..80, Z43..49, feet Y44 | Two-plank breach from B; native opening to F | 0 / 0 |
+| F | Northern main room, interior band X74..80, Z31..41, feet Y44 | Native opening from M; inspected objective stations at Z37..41 | 3 / 1 |
+
+The roof's two barrels/two sources form a sixth objective group R at X76..78,
+Z62..63, feet Y51. The standing bays at (78,51..52,62) and (77,51..52,62) are
+created by cover removal; this is an engineered workspace, not a sixth authored
+playable room. Report five authored activity spaces plus one created workspace,
+not six native rooms. The five-room count includes pre-existing spaces whose
+access is conditional on engineering, and does not claim five rooms reachable
+from the initial entry without modification. It also does not imply that every
+possible block-breaking capability has been enumerated.
+
+For the five delineated rooms, the established native inter-room edge is M-F.
+That graph has five nodes, one edge and four components. Only N is reached by the
+declared initial approach without the subsequent constructed links. The complete
+engineering route adds N-S (exterior bridge and pillar entry), S-B (shaft breach/
+extension), and B-M (partition breach): five nodes, four edges, one component,
+zero independent cycles and zero degree-three room junctions. Its terminal room
+nodes are N and F. Including the created roof workspace adds B-R, yielding one
+degree-three activity junction at B and terminal objective groups N/F/R. This
+separates room branching from a roof-resource detour. Neither graph establishes
+that no alternative route could be built elsewhere.
+
+Native M-F opening: two clear blocks in width, at least two in height at the
+validated X75/76 passage. Engineered B-M opening: one block wide and two high.
+The south tunnel, ladder/vine shaft and scaffold column are each one cell wide;
+the northern cache also requires the documented 1.5-high crouched passage.
+The bridge is one block wide without rails. These are geometric constraints;
+no live enemy doorway exploitation or pathfinding result is claimed.
+
+The objective route progresses from feet Y33 through Y35 and Y44 to Y51, then
+reverses. Accessible objective-floor span is 18 blocks, with 18 blocks of ascent
+and 18 of descent in the full circuit. The 45-block template height is not this
+progression. In the declared five-room graph, deepest room F is four edges from
+N; R is three edges from N when included as an objective node. Under the fixed
+validated connectors, entry-to-station movement depths are 12 blocks to the north
+cache's crouched station, 42 to the southern cache's west station, 52 to B's
+landing, 63 to M at (76.5,44,49.5), 76 to F's east-barrel station and 66 to R's
+central bay. These are shortest paths within the declared connector set, not
+global minima over unspecified new breaches. For example, B is 34 exterior
+blocks plus 7 lower horizontal and 11 vertical blocks; F adds 21 corridor and
+3 east-branch blocks. R adds 7 horizontal and 7 vertical blocks to B. The full
+210-block task circuit revisits branches and is distinct from these depths.
+Terrain burial remains UNKNOWN: the saved Y127 heightmap does not establish
+solid cover thickness above any room.
+
+### Empty space, hazards and reward distribution
+
+All N/S/B/F rooms have authored encounter and barrel potential. M has no barrel
+or spawner and is a quiet connector under the sixteen-barrel objective, so the
+objective-only empty-room sensitivity is 1/5. It is not dead: it connects B to F.
+M also contains a lava cauldron at (80,44,43) and a decorated pot at (80,44,49).
+An optional supported approach at feet Y44 along Z44, X76..79 has air at Y44/45;
+the cauldron's upper east rim can be targeted from (79.5,44,44.5) above the adjacent
+top slab. A bucket is outside the timed loadout. Including that accessible lava
+facility under the protocol definition yields an empty-room count of 0/5. Dead
+rooms are 0/5 under either interpretation. The roof workspace has source/reward potential and is not empty,
+but is outside the five-room denominator.
+
+Both saved decorated-pot payloads, at (80,44,49) and (80,44,51), contain only id,
+position and keepPacked; neither has item contents or a LootTable. They are not
+additional authored reward nodes in this sample. Their raw records are retained
+in the same extraction, not inferred from a pot's appearance.
+
+Meaningful conditional hazards are the exterior lava beneath the required bridge,
+fall/displacement exposure on that unrailed one-cell link, the lower shaft and
+roof construction, and lava columns beside the southern hall. Saved lava includes
+(75/79,Y44..48,54/58) and (77,Y44..48,62); the validated X76.5 corridor avoids
+those occupied cells. Source changes, flowing lava or displacement invalidate
+continued-clearance assumptions. Two blaze sources create source-supported fire/
+ranged-pressure potential; wither skeletons and brutes add distinct hostile
+potential. No successful projectile, wither application, trap trigger or damage
+was observed. The campfire at (75,44,51) is unlit, so it is not scored as an active
+fire hazard. No working redstone trap is claimed from decoration alone.
+
+The sixteen-barrel distribution is N5/S3/B3/M0/F3/R2. Treasure-table potential is
+concentrated in N (one), S (three) and B (one); the highest workspace has two
+`empty`-table barrels, whose nonempty alternatives are documented above. Neither
+height nor the final visitation order proves superior reward. Actual rolled
+contents and acquisition remain NOT MEASURED.
+
+### Finale, bypass and replay assessment
+
+Authored finale: NONE established. No unique terminal objective behavior is
+present in the inspected template/source assignments. The main brute and roof
+brute are ordinary spawner sources; the last modeled target is an analyst-selected
+route endpoint. Final-room quality therefore records objective clarity ABSENT,
+distinctive terminal challenge ABSENT, terminal reward linkage ABSENT, route
+integration CONDITIONAL (engineering connects separate groups), and external
+bypass exposure PRESENT for the lower cache. These judgments do not erase the
+multiple distributed encounters/rewards or claim that a player cannot enjoy them.
+
+A concrete partial-objective bypass is the north cache: the initial 12-block
+one-way route, one stair removal and one source disablement expose five of sixteen
+barrels, including treasure-table potential, without crossing the lava bridge,
+ascending, visiting main rooms or opening the roof. Its source pressure and
+mining/interaction effort remain. This is direct external access to a substantial
+reward group, not evidence that the entire house can be cleared cheaply. The
+full route's pillar, shaft and roof breaches demonstrate paid engineering access;
+unmodeled aircraft, bombardment or arbitrary side tunnels remain UNKNOWN.
+
+Expected replay value is assessed as limited authored-layout novelty with
+conditional encounter/reward variation. This active fixed template has no piece
+assembly branch or random processor in its saved component; repeated generation
+can vary surrounding terrain, orientation, obstruction and loot/spawn results,
+which are not sampled distributions here. The same persistent site retains the
+player's bridge, breaches and removed spawners under the declared objective;
+per-player loot mechanics do not restore that physical topology. No respawning
+or re-sealing mechanism is established by this template inspection. Repeat
+visit enjoyment and player outcomes remain NOT MEASURED.
+
+Large-but-shallow assessment: the tall exterior overstates native route depth.
+The saved authored rooms provide one established unmodified inter-room edge,
+while the complete objective requires a bridge and multiple breaches/climbing
+extensions. The roof is casing around rewards, not a demonstrated series of
+playable tower floors. Nevertheless five activity spaces, seven hostile sources,
+sixteen barrel nodes and concrete engineering obstacles prevent labeling the
+whole sample an empty facade. Its supported weakness is disconnected native
+progression and no clear finale, rather than absence of all mechanical content.
+
+This completes this sample's local assessment under the accepted conditional
+scope, including its source/geometry limits. It does not complete this family's
+repetitions, other material variants or Item 13's 192-family coverage and delivery
+gates. No new world or runtime experiment was performed for this synthesis.

@@ -102,9 +102,11 @@ content, chest access and a conditional 46/74/125..146-second complete task.
 Its one-covered-space/zero-enclosed-room sensitivity, shallow-topology assessment
 and remaining roof/parkour uncertainty are now integrated.
 
-The [Large House 1 intake](mns-large_house_1-report.md) maps all seven spawners
+The [Large House 1 assessment](mns-large_house_1-report.md) maps all seven spawners
 and sixteen barrels to the active source. Its `empty` table supplies mixed
 empty/item alternatives, so none of those assignments is a guaranteed empty room.
-Its saved slices and first main-level passage are now inspected; a capped vine
-shaft and solid second partition prevent assuming continuous access. The full
-access graph and complete task timing remain pending.
+Its five authored activity spaces and separate engineered roof workspace now
+have an access graph, complete conditional task timing and quality synthesis.
+A capped vine shaft and solid partition remain baseline obstacles, overcome only
+by declared construction. Family repetitions and broader coverage remain pending;
+the report retains all native-versus-engineered and unobserved-gameplay limits.
