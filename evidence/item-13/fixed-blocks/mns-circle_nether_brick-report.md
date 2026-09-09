@@ -825,9 +825,9 @@ prevents successful completion; an unsupported duration is UNRESOLVED, not zero.
 | --- | --- | --- |
 | Inspection movement | 26-block circuit, 22 upright/4 crouched; 8.833333 nominal seconds, 7.066667 faster, 11.777778 slower | Reusable movement component only. Pickup, spawner-mining positions and pursuit may add motion; complete movement cost UNKNOWN. |
 | Navigation and decisions | Complete target/route knowledge is stipulated | Search for locations is excluded by scenario. Execution, aiming, tool changes and decision latency UNKNOWN; no invented player constant. |
-| Interactions/acquisition | One trapdoor toggle and both reward faces geometrically supported | Input latency, drop creation/pickup and inventory acquisition not measured or modeled to completion. UNKNOWN. |
+| Interactions/acquisition | One toggle and both reward faces supported; source drop creation and ten-tick pickup eligibility recorded below | Eligible contact, added motion and inventory acquisition are not modeled to completion. UNKNOWN. |
 | Mining | Required blocks: two spawners, one ore cover, two debris; diamond capability declared | Nominal uninterrupted source work is 13.8 seconds, derived below. Input cadence, interruptions and full elapsed mining cost remain UNKNOWN. |
-| Combat | Prior source health/damage model for successful piglin/brute counts | Existing 0..4 per source grid is one-wave sensitivity, not a bound on enemies produced before disablement. Spawn timing/success, pursuit and interruption remain UNKNOWN for this objective. |
+| Combat | Prior source health/damage model; one-wave grid applies conditionally if both spawners are disabled before 200 ticks, as derived below | Meeting that deadline, spawn success, pursuit and interruptions remain UNKNOWN. Without the condition, the grid is not a population bound. |
 | Waiting/recovery | Saved delays and conditional workload inputs retained | No supported encounter-clear verification, injury/recovery or idle schedule. UNKNOWN where required. |
 
 For a sequential model, total would be the sum of nonoverlapping movement,
@@ -902,3 +902,75 @@ delays between blocks and server tick-rate variation. No finite bound on those
 omissions is asserted. In particular, the spawners remain active while being
 approached and mined; this work term does not resolve enemy count or schedule.
 The complete-objective time remains UNRESOLVED, and layout expansion stays paused.
+
+## V2 acquisition and spawner-schedule conditions
+
+Direct source inspection resolves why resource contact and acquisition must
+remain distinct. In the pinned extra JAR, ancient_debris block loot-table
+resource SHA-256 14125055edd8b94e7819540ff2f5d063395f451d2f7883bf79ece79894cd546d
+contains one roll yielding ancient_debris, conditional on survives_explosion.
+This is source loot potential for the correct-tool mining model, not a sampled
+drop or inventory receipt. Block.popResource checks server side, nonempty stack
+and doTileDrops before creating the item. Its positional overload randomizes
+each coordinate around the block center by up to 0.25 and adjusts Y by half the
+item height. Do not assume the item appears at the inspection ray endpoint.
+
+Block.popResource's private overload offsets 38..44 sets the default pickup delay
+before adding the entity. ItemEntity.setDefaultPickUpDelay sets 10; tick offsets
+19..43 decrement a positive non-infinite delay. playerTouch offsets 27..63 requires
+delay zero, a compatible target and successful Inventory.add. Thus the source
+model has ten eligible item ticks before pickup, nominally 0.5 seconds at 20 TPS,
+plus actual eligible contact. It does not establish an elapsed acquisition time.
+Movement, combat or other work may consume those ticks concurrently; adding
+one second for two drops would be unjustified double counting. The retained
+face-access stations do not prove pickup contact after randomized item movement.
+Added pickup motion and acquisition completion therefore remain UNKNOWN.
+
+Predeclare a conditional spawner-first schedule for this same objective: walk
+the already validated four-block southern approach, mine both spawners from
+the inner station before voluntarily starting combat or collecting rewards,
+then finish combat and extraction. Let H be all extra elapsed ticks before
+the second spawner is disabled beyond the nominal approach and two uninterrupted
+breaks: aiming, input delays, interruptions, displacement and any lost progress.
+H is nonnegative and currently unbounded; this declaration does not claim the
+actor can ignore incoming attacks or survive them. Start the clock at activation
+in the stipulated initially empty, Delay 0 encounter state.
+
+The retained BaseSpawner.serverTick checks activation, decrements positive delay
+and returns (offsets 0..41), then attempts up to spawnCount entries (63..69).
+A successful spawn sets the success flag (723..724); the end-of-loop delay
+reset occurs at 731..738. delay offsets 27..48 chooses minDelay+nextInt(max-min),
+so these saved spawners reset to 200..799 ticks. Failed positioning attempts
+are not guaranteed enemies and do not justify a fixed actual count. Nevertheless,
+if both spawners are disabled strictly before 200 elapsed game ticks, each can
+have at most one successful spawn batch of up to four in this source model.
+That is a condition under which the earlier p,b in 0..4 grid applies, not proof
+that the condition holds for the complete objective.
+
+At the nominal four-blocks-per-second rate, approach takes 20 tick slots and the
+two uninterrupted breaks take 38. The conditional second-disable deadline is
+D=58+H ticks. D<200 therefore requires H<142 ticks(7.1 nominal seconds).
+No estimate or upper bound for H has been established, and death prevents a
+successful schedule. If the condition fails, the old one-wave combat grid is
+insufficient; later successful batches must be represented. This links the
+mining and encounter models without assigning a fabricated eight-enemy census.
+
+Reproduce the schedule condition's arithmetic:
+
+```sh
+uv run python - <<'SCHEDULE_CHECK'
+import math
+approach_ticks = math.ceil(4/4*20)
+break_ticks = 2*math.ceil(5*30/8)
+assert approach_ticks+break_ticks==58
+assert 200-(approach_ticks+break_ticks)==142
+print('nominal approach+mining ticks',approach_ticks+break_ticks)
+print('strict extra-time threshold in seconds',142/20)
+print('default item pickup delay at 20 TPS',10/20)
+SCHEDULE_CHECK
+```
+
+These findings reduce two missing components to explicit source constraints.
+They do not resolve navigation/input latency, survival, actual spawn success,
+post-break movement or inventory acquisition. Total completion time remains
+UNRESOLVED; no new layout, runtime actor or player observation was introduced.
