@@ -101,29 +101,29 @@ The intake is not proof of playable topology. The first
 dungeon chambers and covers all quality dimensions under conditional models.
 No new world experiment has run. Do not infer full coverage from this pilot.
 
-Latest pushed representative milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
-A narrow intake reference correction follows it; inspect current pushed head.
-The README integrates variant scope for the three included non-registry families.
-[Material coverage](evidence/item-13/coverage.md) also resolves 25 Adorabuild families
-into 38 root alternatives. Its proposed 40-case minimum has not been selected,
-budgeted or run. WDA/Seven Seas adds 40 families and 43 root/dimension
-combinations, including whole-layout and component alternatives. IDAS adds 24
-families with 38 named main-layout/dimension alternatives and explicit frozen
-connector failures. Moog adds 39 families and 50 roots, retaining 52 named
-root/whole-template alternatives. Repurposed adds 13 families and 91 roots, with
-four Bastion starts and 18 End wreck alternatives retained. Continue the full
-matrix before expansion.
+Pushed measurement milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
+Later scope milestones follow it; verify the current branch/upstream before work.
+The [material coverage](evidence/item-13/coverage.md) now accounts for all 192
+included families and all 357 registry roots, including whole-layout, component,
+anchor and dimension differences. The 256 exclusions stay in the intake.
+CTOV badlands/mesa share a verified definition; Nilotic has no resolved eligible
+biomes. These source dispositions avoid unnecessary duplicate/forced samples.
 
-Next: finish the complete material-variant and sample/repetition matrix, using the
-representative's measured cost only for comparable compact cases. Quantify larger
-geometry and the smallest additional experiments for the exact gaps before running
-them. The pilot protocol bytes are hash-bound to its raw observations; preserve
-that historical version when evolving the full protocol. Do not use pieces as
-rooms or accept incomplete topology. Reuse original custody and record established
-results in the authoritative report. Commit/push coherent verified milestones and
-complete the required clean PR review/merge/main delivery. Item 14 stays UNSTARTED.
+Next: select exact existing saved instances and identify their material component
+membership. Record full saved-block bounds, repetitions, missing alternatives,
+actor/model support and runtime/storage totals before expensive expansion. Use the
+pilot cost only for comparable compact cases. Check the existing central-End raw
+world before declaring an arena generation gap. Do not repeat the scope pass.
+
+The pilot protocol and producer bytes are hash-bound to its observations. Preserve
+that historical version when extending measurement logic or the full protocol.
+Missing generated chunks censor topology; a fully saved building truncated by a
+known frozen connector defect is a valid baseline result with the defect retained.
+Do not repair frozen content or count absent intended pieces as rooms. Reuse
+original custody, commit/push verified milestones and finish the required clean
+PR review/merge/main delivery. Item 14 stays UNSTARTED.
 
 Scope check: retain concise coverage references in the existing intake rather than
 copying every prior start into another evidence set. The original streams remain
 authoritative. Latest local intake checks pass lint, formatting and types; no
-quality-measurement gate has been claimed.
+full Item 13 exit gate has been claimed.

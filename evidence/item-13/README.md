@@ -31,7 +31,7 @@ Item 11 routes and Item 12 discoverability. Their closure records and the delive
 
 | Requirement | Existing evidence available | Concrete missing measurement or assessment |
 | --- | --- | --- |
-| Every significant family | Item 8's 448 canonical families, Item 9 roles/flags/ambiguities | Complete [intake](intake.json) includes 192, excludes 256; [material coverage](coverage.md) resolves variants incrementally; all included designs still need samples, including non-Overworld content |
+| Every significant family | Item 8's 448 canonical families, Item 9 roles/flags/ambiguities | Complete [intake](intake.json) includes 192, excludes 256; [material coverage](coverage.md) accounts for all 192 families and 357 roots; exact sample/component coverage remains pending, including non-Overworld content |
 | Room count | Packaged templates, custom generator source and accepted saved worlds | Delineate playable spaces and validate room boundaries against blocks and connections |
 | Branching | Pool links and piece envelopes | Actual room/connector graph, junctions, dead ends and loops; pool branches are not playable branches |
 | Vertical progression | Source vertical designs and Item 12 placement context | Reachable floor changes and their traversal order |
@@ -233,3 +233,21 @@ ring, separate from the structure-start index. Exact block positions, podium
 location and lifecycle state are not retained in that projection and must be read
 from its existing Item 7 hash-verified world. Therefore 105 is a start-index gap
 count, not proof that 105 new worlds or placements are necessary.
+
+## Full population scope checkpoint
+
+[Material coverage](coverage.md) now assigns every included family a design scope,
+with explicit root/dimension lists, whole-layout alternatives, consequential
+component classes, repetitions and frozen-source exceptions. Direct table-to-intake
+checks account for 189 registered families and all 357 roots, plus the three
+non-registry families. Expanded root lists and dimension mappings match the accepted
+inventory. All 256 excluded rows remain unchanged. No new world experiment,
+quality score or upstream audit was performed for this scope pass.
+
+Two exact source dispositions prevent unnecessary work: CTOV badlands and mesa
+share the common definition and equal variant/start-pool records; Towns Nilotic
+has an empty resolved biome set with no unresolved or missing required biome tags.
+Neither disposition is based on absence in the observed frame. The next missing
+requirement is the selected saved-instance/component matrix and its resource
+budget, followed by actual quality measurements across that coverage. The pilot
+remains the only completed sample analysis; Item 13 is not ready for final review.
