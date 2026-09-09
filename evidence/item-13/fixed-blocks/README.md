@@ -101,3 +101,8 @@ The [Giant Skull assessment](mns-giant_skull-report.md) now integrates source/sa
 content, chest access and a conditional 46/74/125..146-second complete task.
 Its one-covered-space/zero-enclosed-room sensitivity, shallow-topology assessment
 and remaining roof/parkour uncertainty are now integrated.
+
+The [Large House 1 intake](mns-large_house_1-report.md) maps all seven spawners
+and sixteen barrels to the active source. Its `empty` table supplies mixed
+empty/item alternatives, so none of those assignments is a guaranteed empty room.
+Topology and complete task timing remain pending.
