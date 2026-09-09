@@ -10,7 +10,9 @@
 
 ## 1. Purpose
 
-This ledger prevents a checkbox from being treated as evidence. The submitted 51-item plan remains the governing adventure-system specification. This companion record tracks:
+This ledger prevents a checkbox from being treated as evidence. SPECS.md is the governing adventure-system specification. Its user-authorized
+[post-baseline consolidation](evidence/item-19/plan-consolidation.md) retains legacy
+IDs 19-51 as requirements within seven delivery packages; Items 1-18 are unchanged. This companion record tracks:
 
 - decisions and their rationale;
 - measurements and raw evidence;
@@ -512,11 +514,13 @@ This register is additive. More variables will be discovered during artifact ins
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
 | 12 | Structure discoverability | `COMPLETE` | Sixteen accepted worlds, 464 cases and 94 observed families under separately authorized inspection/automated scope. Clean reviewed head `4fc7e605` merged through PR39; fetched main `33e11923` verified. Closure and limitations: `evidence/item-12/README.md#verified-delivery`. |
 | 13-18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
-| 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
-| 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
-| 48 | Progression implementation | `UNSTARTED` | Must first be atomized into independent gates. |
-| 49–50 | Hardening/lifecycle validation | `UNSTARTED` | Quantitative budgets and corrective loops absent. |
-| 51 | Adventure v1 freeze | `UNSTARTED` | Whole-pack release gates are incomplete. |
+| A (19-37) | Adventure system design | `UNSTARTED` | Requires completed Item 18; consolidate decisions and targets in one ratified report. |
+| B (38-40) | Feasible provisional stack | `UNSTARTED` | Requires A; feasibility, controlled pruning and provisional freeze remain ordered gates. |
+| C (41-43) | Dungeon layer and distribution | `UNSTARTED` | Requires B; accept the layer, measure the combined stack, then tune. |
+| D (44-45) | Encounters and AI | `UNSTARTED` | Requires C; composition-only control precedes AI/elite selection. |
+| E (46-48) | Rewards and expedition implementation | `UNSTARTED` | Requires D; container semantics and provider freeze precede exact rewards. Each 48A-F increment retains affected regression. |
+| F (49-50) | Performance and lifecycle validation | `UNSTARTED` | Requires E; performance, gameplay, exploit and regression gates remain mandatory. |
+| G (51) | Adventure v1 freeze | `UNSTARTED` | Requires F and all definition-of-done domains, reviewed delivery and exact release archive. |
 
 ---
 
