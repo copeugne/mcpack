@@ -1,7 +1,8 @@
 # Warped Dome: quality assessment
 
 Status: IN PROGRESS. Saved/source content and visual layout are recorded;
-playable room boundaries, access, routes and quality synthesis remain pending.
+a northern ground route and harvest-table potential are now established.
+Room boundaries, complete resource-task timing and quality synthesis remain pending.
 
 Sample: full-ordinary-r2-baseline|minecraft:the_nether|mns:warped_dome|11|2.
 The existing [saved blocks](mns-warped_dome.json.gz), SHA-256
@@ -99,10 +100,88 @@ assert {p[2] for p in case['surface_xzy']}=={127}
 DOME_CHECK
 ```
 
-Next, establish a supported entry and central activity boundary using the saved
-blocks and existing shape/source rules. Predeclare an actor, objective route,
-resource interactions and failure handling before its timing or quality scoring.
-Resolve magma/soul-sand exposure on that route and distinguish the shell's
-visual height from connected progression. No inventory/classification repeat,
-new machinery or world generation is justified by the current gaps. Item 14
+Northern access is now resolved below. Next, delineate the central activity
+boundary and predeclare a complete resource task, actor and failure conditions.
+Resolve its external route and magma/soul-sand exposure before timing. Item 14
 remains UNSTARTED.
+
+## Northern ground access, geometric measurement
+
+The retained blocks resolve a direct northern entry without interacting with the
+shell. A 0.6-block-wide, 1.8-block-high adult actor can follow this axis-aligned
+centerline at feet Y65. Add 0.5 to each listed X/Z cell coordinate:
+
+(176,26), (176,27), (176,28), (176,29), (176,30), (175,30),
+(175,31), (174,31), (174,32), (174,33), (174,34).
+
+All eleven positions have ordinary full-cube support at Y64 and air at Y65/66.
+The eight concrete-powder supports have netherrack immediately beneath them at
+Y63. They are supported floor on this route, not an activated falling trap.
+The other three supports are warped nylium, warped planks and a copper bulb.
+The centerline stays within the air cells, including at its right-angle turns;
+no stair, door, fence or trapdoor shape is traversed. Adjacent decoration is not
+counted as traversed collision geometry. No mining, jumping, crouching, magma or
+soul-sand contact is required along these ten blocks. The path connects the
+northern opening to the central southern floor sector without a vertical change.
+This is geometric access evidence, not observed movement or complete task timing.
+
+The southern axial approach is different: the wall at (176,65,37) and fence at
+(176,66,37) interrupt it. Do not infer symmetric access from the shell's appearance.
+The northern path avoids the four closed central trapdoors rather than treating
+them as air. This establishes a usable entrance and a route through the central
+volume, not a proof of all peripheral resource access or an exhaustive route graph.
+
+Reproduce the direct inspection against the already retained hash:
+
+```sh
+uv run python - <<'DOME_ROUTE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-warped_dome.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == '5529ab7797e146dc660a7d2f1e6cec6f5b357c5b03052b15725481f5bd25b602'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+route = [(176,26),(176,27),(176,28),(176,29),(176,30),(175,30),
+         (175,31),(174,31),(174,32),(174,33),(174,34)]
+supports = {'minecraft:warped_nylium', 'minecraft:warped_planks',
+            'minecraft:cyan_concrete_powder', 'minecraft:waxed_oxidized_copper_bulb'}
+for x,z in route:
+    assert state(case,x,64,z)['Name'] in supports
+    assert state(case,x,63,z)['Name'] == 'minecraft:netherrack'
+    assert all(state(case,x,y,z)['Name'] == 'minecraft:air' for y in (65,66))
+assert sum(abs(a-c)+abs(b-d) for (a,b),(c,d) in zip(route,route[1:])) == 10
+assert state(case,176,65,37)['Name'] == 'minecraft:deepslate_brick_wall'
+assert state(case,176,66,37)['Name'] == 'minecraft:warped_fence'
+print('Northern access: ten horizontal blocks, eleven supported air positions.')
+DOME_ROUTE
+```
+
+The next complete-objective model must include a declared resource-acquisition
+objective and its external resource route. A ten-block interior inspection alone
+cannot represent completion of this resource-bearing site. Use the accepted
+[conditional accounting method](../timing-scenario-proposal.md); retain separate
+provisional pickup costs, source work and failure conditions. No runtime or new
+materialization was used for this geometric measurement.
+
+## Harvest potential, source inspection
+
+All 17 saved wart plants listed in the envelope have `age=3` in the retained
+palette and block positions. In the pinned Minecraft extra JAR, the resource
+`data/minecraft/loot_table/blocks/nether_wart.json`, SHA-256
+205549738d20027a55381b8dcc2f47110c9669fdb6661d32e6db12ea9a7a583b,
+sets mature-plant item-count potential to 2..4 before the declared Fortune and
+explosion modifiers. Under the accepted standard actor assumptions, ordinary breaking uses no Fortune.
+This supports mature resource potential, not an acquired inventory count.
+
+The same JAR's `data/minecraft/loot_table/blocks/nether_gold_ore.json`, SHA-256
+ebe0027917b98546370bfbc086ab60cbe29ccf131777954c642ab74bf39d449b,
+selects the ore block with Silk Touch, otherwise 2..6 gold nuggets before its
+Fortune/explosion modifiers. The unenchanted diamond-pick scenario follows the
+nugget branch. The ore is a material opportunity rather than a dungeon
+loot-table chest or an engineering-progression reward. Source-table potential
+does not establish collection, tool use, approach safety or actual generated drops.
+
+These resources were read directly from the pinned local extra JAR at
+`instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-extra.jar`,
+SHA-256 24a5d2d162cfad2a1a574c4d552e99dc6c6303a49d1e68b43a7b638f3b0930fd.
+The JSON conditions above are the derivation; no runtime harvest was performed.

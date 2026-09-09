@@ -181,7 +181,7 @@ Supplemental Circle task estimates are 47/64/93s for two piglins and two brutes,
 with explicit provisional budgets and censoring. Resume layout coverage under
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
 original Circle and other layouts still need their own complete task budgets.
-Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
+[Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md): northern ten-block ground access and harvest potential resolved; full task pending.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
