@@ -1,7 +1,8 @@
 # Large House 1: quality assessment
 
-Status: IN PROGRESS. Saved/source enemy and reward inputs are integrated;
-room topology, routes, full task timing and quality synthesis remain required.
+Status: IN PROGRESS. Saved/source enemy and reward inputs, conditional access
+routes and complete-task timing are integrated. Room/quality synthesis and
+family repetitions remain required. Human gameplay remains NOT MEASURED.
 
 Sample: full-biome-diverse-r2-baseline|minecraft:the_nether|mns:large_house_1|5|3.
 The retained [saved blocks](mns-large_house_1.json.gz), SHA-256
@@ -77,7 +78,7 @@ uncommon tables likewise contain weighted equipment/material alternatives.
 All 987 saved WORLD_SURFACE columns are Y127. The 51-block difference above the
 envelope top is heightmap context, not 51 solid blocks of burial or playable depth.
 
-## Next bounded measurement
+## Original bounded inspection predeclaration
 
 Inspect the retained slices and source layout to delineate actual rooms and links,
 then validate one complete entrance-to-objective route before timing. Prioritize
@@ -614,4 +615,194 @@ for name,count,hardness,speed in rows:
 assert total == 1669
 print('breaking only, seconds', total/20)
 LARGE_HOUSE_BREAKING
+```
+
+## Complete-task scenario and accounting predeclaration
+
+Apply the separately accepted timing method to this local objective: begin at
+(85.5,33,36.5), disable all seven spawners, transfer the contents of all sixteen
+barrels, defeat the modeled spawned population, and return alive to that station.
+Use one fully informed adult, full health/food, unenchanted iron armor/sword and
+diamond pickaxe with sufficient durability, 19 cobblestone, 4 ladders and 7
+scaffolds. No additional construction, cover removal, flight, teleportation,
+assistance, pre-applied effects, critical hits, sweeps or healing is allowed. Ignore incidental
+mining/creature drops. Construction is left in place. Pre-entry discovery, material
+procurement and travel are outside the local objective.
+
+At task start stipulate no pre-existing entities, no natural spawning and the
+seven saved initial delays. This is a scenario reset, not an observation of the
+accepted world's entity history. All subsequent spawn opportunities remain active
+until each source is removed. Do not reset their delays between branches. The
+actor postpones voluntary combat until every source is disabled and all barrels
+are visited, then starts and ends the combat phase at the main landing. Surviving
+this uninterrupted work is a condition, not a prediction. Contact duty includes
+pursuit to any remaining spawned targets and return to that landing; failure to
+complete that pursuit within the duty allowance censors the scenario.
+
+All generated container results must fit the actor's available inventory as each
+transfer occurs, after accounting for equipment/materials. This is a conditional
+capacity requirement, not a claim that sixteen rolled inventories fit by default.
+A full inventory, rejected transfer or unmodeled container interaction censors
+completion. A fixed scan/shift-click of all 27 slots, plus open and close, costs
+29 interaction allowances per barrel, irrespective of how many slots are occupied.
+Add one acquisition-confirmation allowance per barrel. This follows the existing
+Skull accounting and does not label potential loot as generated or acquired loot.
+
+Use the accepted A/B/C upright/crouch speeds and decision, interaction, selection,
+acquisition, verification and combat-duty allowances. Predeclare vertical climb
+and controlled descent rates of 1.5/1/0.75 blocks/s for A/B/C respectively, across
+vines, ladders and scaffolding. These are analyst-selected conditional rates, not
+measured movement or a claim of equal in-game maximum speeds. Stationary placement,
+mining and decisions are excluded from movement time. Decision allowances include
+all pose transitions and orientation changes in their respective phase.
+
+| Sequential phase | Upright/crouch/vertical blocks | Breaking seconds | Decisions | Interactions | Selections | Acquisition checks |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1. North cache and return to initial station | 22/2/0 | 3.95 | 3 | 147 | 2 | 5 |
+| 2. Build east bridge, reach south entry | 14/20/0 | 0 | 3 | 19 | 1 | 0 |
+| 3. South cache and shaft, reach main landing | 9/0/11 | 53.75 | 5 | 101 | 6 | 3 |
+| 4. Main corridor out/back including east barrel branch | 52/0/0 | 8.85 | 6 | 180 | 5 | 6 |
+| 5. Roof branch out/back to main landing | 14/0/14 | 16.9 | 4 | 72 | 7 | 2 |
+| 6. Encounter clear, returning to main landing | Included in combat duty only | 0 | 1 | 0 | 1 | 0 |
+| 7. Descend and cross bridge back to initial station | 21/20/11 | 0 | 3 | 0 | 0 | 0 |
+| Total | 132/42/36 | 83.45 | 25 | 519 | 22 | 16 |
+
+Phase 1 uses pickaxe then empty hand, with orientation/cache/return decisions.
+Phase 2 selects bridge blocks, with route/bridge/south-entry decisions. Phase 3
+selects pickaxe for the pillar, ladders, pickaxe for its spawner, empty hand for
+three barrels, pickaxe for the shaft cap, then ladders. Its decisions cover tunnel,
+cache, shaft, cap and main entry. Visit the three south barrels from X78.5 to X76.5,
+then return to X77.5 for the shaft, accounting for the asymmetric lower path.
+
+Phase 4 disables the two blazes before southern barrels, breaches the partition,
+visits northern barrels, toggles the brute trapdoor and disables that source,
+then returns. Five selections alternate pickaxe/empty hand/pickaxe/empty hand/
+pickaxe. Six decisions cover blazes, southern barrels, partition, northern barrels,
+brute and return. Phase 5 selects scaffold/pickaxe/scaffold/pickaxe/empty hand/
+pickaxe/empty hand in the documented construction and right-barrel/source/left-
+barrel sequence. Four decisions cover tower, first bay, sources and return.
+Phase 6 selects sword and confirms encounter state. Phase 7 decisions cover
+lower descent, bridge and final entry, followed by one final verification budget.
+
+Interaction totals include 24 mined targets, 30 placements, one trapdoor toggle
+and 16*29 container operations: 519. Each includes its own aiming/input allowance;
+breaking duration is charged separately. The circuit distances are the sum of
+previously established branches, not straight-line distances through obstacles.
+No attack switching or pursuit distance is charged a second time outside duty.
+There is no deliberate spawn wait; the actual time spent working advances delays.
+
+## Repeated-source envelope and conditional task results
+
+Track each source only until its removal phase: north skeleton in phase 1,
+south skeleton in phase 3, both blazes and main brute in phase 4, roof piglin and
+brute in phase 5. At the initial station only the north source is within its
+sixteen-block radius. The other sources may activate as the route approaches;
+activation does not require line of sight. Exact tickwise player movement and
+spawn successes are NOT MEASURED.
+
+Use a deliberately conservative activation envelope rather than inventing that
+history. For each source i, its actual active ticks A_i cannot exceed
+ceil(20*D_i), where D_i is elapsed noncombat time through the end of its removal
+phase. This bounds the actual route even where the player is outside radius,
+the source is removed early in a phase, or there are failed attempts. Retain its
+saved initial delay L_i. Bound cumulative successful ordinary entities by zero
+if ceil(20*D_i)<L_i; otherwise use
+4*(1+floor((ceil(20*D_i)-L_i)/200)). This intentionally overcounts boundary ticks
+and inactive periods. It is a workload envelope, not a probable or jointly
+attainable population, and is not an assertion of continuous activation.
+
+Pinned `BaseSpawner.serverTick` returns when no player is near, decrements a
+positive delay and returns, loops through at most SpawnCount attempts at zero,
+and invokes `delay` after successful addition. `delay` chooses at least the saved
+MinSpawnDelay 200 before further success. Failed attempts or the local cap can
+reduce successes; MaxNearbyEntities 6 is not a cumulative lifetime cap. The source
+paths are `serverTick` offsets 0..69 and 671..741, and `delay` 0..48. This derivation
+reuses saved fields without altering them or assuming a single initial wave.
+
+| Source in original position-table order | Removal phase | A count ceiling | B count ceiling | C count ceiling |
+| --- | ---: | ---: | ---: | ---: |
+| North wither skeleton | 1 | 24 | 40 | 76 |
+| South wither skeleton | 3 | 72 | 108 | 176 |
+| East blaze | 4 | 100 | 160 | 272 |
+| West blaze | 4 | 100 | 160 | 272 |
+| Main piglin brute | 4 | 96 | 156 | 272 |
+| Roof piglin | 5 | 116 | 188 | 324 |
+| Roof piglin brute | 5 | 112 | 184 | 316 |
+
+These intentionally loose ceilings show why a four-per-source lifetime claim
+would fail. They do not predict hundreds of mobs. In particular, nearby caps,
+failed placement and source inactivity are not resolved into invented frequencies.
+Use actual total successful counts as explicit scenario inputs within this
+conservative envelope, retaining the count for each source independently.
+
+For combat, ordinary unarmored blazes inherit health 20 and armor 0:
+`Blaze.createAttributes` starts with `Monster.createMonsterAttributes` and only
+adds attack damage, movement speed and follow range. Reuse the existing default
+health and iron-sword derivation in the model-source notes. Each blaze therefore
+costs ceil(20/6)*13/20 = 2.6 nominal attack seconds, as does each wither skeleton.
+Piglin and brute work remains 1.95 and 5.85 seconds respectively. Let w,z,p,b be
+total surviving modeled wither skeletons, blazes, piglins and brutes requiring
+combat. Stipulate no despawns, environmental deaths, extra equipment, passengers,
+reinforcements or modified attributes in the worked scenario. Active attack work
+is W=2.6*(w+z)+1.95*p+5.85*b; combat budget is W/d. Flight, wither and fire pressure
+are not thereby neutralized: survival and successful contact remain conditions.
+
+The complete conditional task formula is
+
+T = 132/u + 42/c + 36/h + 83.45 + 25*n + 519*a + 22*s + 16*k + v + W/d.
+
+Here h is the predeclared vertical rate and the other symbols use the accepted
+A/B/C definitions. No required task phase is silently omitted from this formula.
+
+| Conditional result, seconds | A | B | C |
+| --- | ---: | ---: | ---: |
+| Noncombat task budget | 327.6 | 519.0 | 872.6 |
+| Worked scenario: two successful entities per source in total | 375.7 | 583.1 | 968.8 |
+
+The worked composition is w=4,z=4,p=2,b=4, giving W=48.1 seconds. These are total
+successful counts over all source opportunities, not two creatures guaranteed
+per wave or a claimed baseline population. Report approximately 376/583/969
+seconds, keeping profile and composition visible. This is not an expected clear
+time, success probability, confidence interval or measured play. Counts above
+those in the worked example increase W explicitly; the source ceilings constrain
+the specified schedule but do not turn its extreme count combinations into
+feasible successful clears.
+
+Censor completion on death, required healing, interrupted construction/mining
+beyond allowances, failed support/placement/transfer, insufficient inventory,
+changed fluid/obstacle state, source survival beyond its removal phase, unmodeled
+population modifiers, combat pursuit outside duty, or departure from 20 TPS.
+Actual censoring time is NOT MEASURED. Human times, realized encounters and
+acquired loot remain NOT MEASURED. This establishes a complete conditional task
+model for this one saved layout; room/quality synthesis and family repetitions
+remain required before broader completion.
+
+Reproduce phase arithmetic and source ceilings:
+
+```sh
+uv run python - <<'LARGE_HOUSE_TASK'
+import math
+profiles = [('A',5,1.5,1.5,.5,.25,.25,1,2,1),
+            ('B',4,1.2,1,1,.5,.5,2,4,.75),
+            ('C',3,.9,.75,1.5,1,1,4,8,.5)]
+phases = [(22,2,0,3.95,3,147,2,5), (14,20,0,0,3,19,1,0),
+          (9,0,11,53.75,5,101,6,3), (52,0,0,8.85,6,180,5,6),
+          (14,0,14,16.9,4,72,7,2), (0,0,0,0,1,0,1,0),
+          (21,20,11,0,3,0,0,0)]
+work = 2.6*(4+4)+1.95*2+5.85*4
+assert math.isclose(work,48.1)
+for name,u,c,h,n,a,s,k,v,d in profiles:
+    times = [x/u+y/c+z/h+breaks+nd*n+na*a+ns*s+nk*k
+             for x,y,z,breaks,nd,na,ns,nk in phases]
+    ends = [sum(times[:i+1]) for i in range(7)]
+    ceilings = []
+    for phase,delay in [(0,0),(2,0),(3,32),(3,79),(3,173),(4,237),(4,497)]:
+        ticks = math.ceil(20*ends[phase])
+        ceilings.append(0 if ticks<delay else 4*(1+(ticks-delay)//200))
+    base = sum(times)+v
+    direct = 132/u+42/c+36/h+83.45+25*n+519*a+22*s+16*k+v
+    assert math.isclose(base,direct)
+    print(name, 'phase ends', ends[:5], 'count ceilings', ceilings,
+          'noncombat', base, 'two per source', base+work/d)
+LARGE_HOUSE_TASK
 ```
