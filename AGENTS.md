@@ -3,11 +3,12 @@
 ## Authority and startup
 
 - Read `SPECS.md` before changing the repository. It is the chronological, dependency-ordered requirements authority.
-- Treat `MCPACK-NEW-SESSION-HANDOFF.md` and `CLOUD_HANDOFF.md` as dated checkpoints. Preserve their recovery context, but verify all status claims against current Git history, committed evidence, reviews, and the latest item closure reports.
+- Treat `MCPACK-NEW-SESSION-HANDOFF.md` as a dated checkpoint. Preserve its recovery context, but verify all status claims against current Git history, committed evidence, reviews, and the latest item closure reports.
 - Use `Adventure-Engineering-Pack-Execution-Ledger.md` for status vocabulary, evidence rules, decisions, unknowns, and blockers. Cross-check its item table against later commits because the ledger may lag delivered work.
 - Before editing, fetch current refs and tags, then inspect the branch, upstream, working tree, staged and unstaged diffs, recent graph, and relevant path history.
 - Preserve `.codegraph` and `mcpack-reconstructed-28(1).bundle`. Do not delete, stage, or commit them.
 - Keep current branch names, commit IDs, pull request numbers, item status, active defects, and continuation instructions in handoff or ledger documents, not in this file.
+- Maintain one active handoff, updated in place and normally no more than 200 lines. Link authoritative evidence instead of appending batch reports; Git preserves routine prior versions. Archived handoffs are historical reference only, not startup reading or executable continuation instructions.
 
 ## General engineering discipline
 
@@ -62,24 +63,38 @@
 ## Evidence and completion rules
 
 - Store every committed evidence artifact under `evidence/`, grouped by the applicable item. Do not place authoritative evidence in documentation, measurement, temporary, instance, or tool directories. Large raw evidence that cannot be committed must still have its committed manifest, identity, durability, and restore receipts under `evidence/`.
-- Commit every source file, script, schema, test, decoder, transformer, validator, and renderer required to reproduce or verify accepted evidence. An authoritative result must not depend on inline commands, shell history, session-only code, or transient scratch. If a one-off probe informs an acceptance claim, promote its exact logic into a tracked tool or test and record the reproducible command under `evidence/` before closing the item.
+- Preserve and commit executable logic needed to reproduce accepted transformations or measurements, with reproducible commands under `evidence/`. These results must not depend on shell history, session-only code or transient scratch. Direct inspection of immutable artifacts may instead be recorded through precise artifact references and an explicit derivation; it does not require a bespoke tool or test merely to restate the inspected facts.
 - Do not infer completion from a commit subject, report prose, filename, reconstructed summary, successful launch, or green tests alone.
 - Reconstructed history and `evidence/reconstruction/` are context and scaffolding, not primary empirical acceptance evidence.
 - Unknown values remain `UNKNOWN` until resolved by a user decision, artifact inspection, authoritative source, controlled experiment, reproducible measurement, or documented derivation from verified facts.
 - An item is complete only when every input and subitem is resolved, raw evidence is retained and linked, the exit gate explicitly passes, failures have dispositions, downstream assumptions are updated, exact identities and protocol versions are recorded, and evidence is durably delivered.
 - Preserve failed attempts, rejected pilots, uncertainty, and limitations. Never rewrite raw evidence to make it pass.
-- Machine-readable and narrative outputs must agree exactly. Validators must bind claims to preserved artifacts and fail on omissions, unexplained files, escaped paths, changed hashes, unknown fields, or identity mismatches.
+- Machine-readable and narrative claims must agree. Validate the boundaries relevant to each claim, with strict identity, integrity and lifecycle checks where failures could invalidate evidence. Validators must reject violations of those boundaries, including material omissions, escaped paths and identity mismatches. Use direct evidence references and reviewer judgment for descriptive assessments; do not create bespoke validators merely to verify prose.
 - A server reaching readiness proves only that lifecycle point. It does not prove gameplay, compatibility, persistence, performance, or scientific reproducibility.
 
 ## Completion efficiency
 
+- When process rules compete, choose the smallest coherent workflow that satisfies explicit acceptance requirements and material risk boundaries. Atomic means independently understandable and reviewable, not the fewest possible changed lines. This precedence does not waive specification gates or evidence integrity.
+- Apply the strongest verification to correctness, security, privacy, data integrity, reproducibility, dependency gates and irreversible actions. For descriptive attribution, reversible edits and already-established facts, use direct evidence references, focused checks and reviewer judgment. Before adding process or tooling, name the concrete failure it prevents and explain why the existing path is insufficient. If no material failure or explicit requirement is identified, proceed without the addition.
 - Treat scope growth as a blocking defect. Before adding a new evidence class, schema, receipt, validator, archive revision, review framework, or broader regression surface, compare it directly with the current `SPECS.md` exit gate and the demonstrated defect. Proceed only when the defect cannot be fixed within the existing path, record that reason in the active handoff, and reject cumulative locally reasonable additions that expand the item beyond its smallest complete proof.
 - Define the smallest evidence set and validation surface that directly prove the current item exit gate before implementation expands.
 - After the required behavior, focused tests, manual surface check, evidence, and affected quality checks pass, stop local expansion and open the pull request promptly.
 - Do not add validators, receipts, review frameworks, adversarial matrices, or duplicate evidence merely to make an already-passing item feel safer. Add them only when `SPECS.md` requires them, a real trust or safety boundary requires them, or a concrete defect has been reproduced.
 - Treat review findings narrowly. Fix the demonstrated defect and its direct regression without generalizing it into a redesign of neighboring clean code.
-- After a narrow fix, rerun affected checks. Run the full applicable gate once before pushing or merging, but do not repeat unchanged validation solely for reassurance.
+- After a narrow fix, rerun affected checks. Run the full applicable gate for the final PR candidate; after subsequent changes, rerun affected checks and broaden only when their impact requires it. Do not repeat unchanged validation solely for reassurance.
+- Maintain one authoritative result and a concise continuation checkpoint. Update other documents only when their requirements or assumptions change; avoid duplicating the same progress narrative across evidence reports, ledgers and handoffs.
 - These limits prevent process growth, not required rigor. Explicit specification gates and material correctness, security, privacy, reproducibility, and data-integrity risks remain mandatory.
+
+## Complete requirements as evidence is gathered
+
+- When an investigation establishes a required fact, record it in the authoritative deliverable in the same logical increment. Do not leave the fact only in a rationale, handoff or progress report.
+- Before investigating a requirement, inspect its existing evidence and relevant history. Reuse established findings; investigate again only when evidence is missing, contradictory, invalidated or insufficient for the specific claim.
+- Distinguish evidence available but not integrated, evidence genuinely missing, and validation/delivery remaining. An empty field or `UNKNOWN` is not proof that investigation is needed.
+- Before extending an investigation, identify the exact unmet requirement and explain why existing evidence cannot satisfy it. Stop when that requirement is sufficiently supported.
+- Report progress against requirements satisfied and concrete unresolved claims. Do not use commit counts, placeholder counts or successful narrow tests as completion measures.
+- Use existing records and validation paths. Do not introduce another tracking system to enforce these rules.
+- Complete a small, representative portion end to end early, as dependencies allow, so missing integration steps are exposed before the work expands across the full inventory.
+- If successive batches mostly restate known facts, pause and reassess the workflow before continuing. Verify that the authoritative deliverable is advancing rather than merely repackaging evidence.
 
 ## Dependency and experiment discipline
 
@@ -105,14 +120,14 @@
 
 - GitHub `copeugne/mcpack` is canonical. Use `origin/main` as the delivery authority, not the aggregate `work` branch.
 - Preserve atomic commits and valid history. Do not squash, rewrite, or move existing recovery tags.
-- An atomic commit must be small, narrowly contained, independently understandable, independently verifiable, and easy to review.
-- One commit must implement one behavior, fix, or evidence increment, together with its direct tests.
+- An atomic commit must deliver one coherent, independently understandable, verifiable and reviewable outcome.
+- Keep implementation, direct tests, evidence and necessary documentation together when they are coupled parts of that outcome.
 - A broad item label does not make a large mixed change or a massive change atomic.
-- Split code, tests, generated or machine evidence, documentation, and review fixes into the smallest independently green and revertible increments wherever technically possible.
+- Split independent outcomes and unrelated changes. Do not split coupled code, tests, evidence or documentation merely because they are different file types or can technically be committed separately.
 - Before every commit, inspect the staged diff and reject it if a reviewer cannot validate it as one compact unit.
 - Isolate any irreducible large generated or evidence migration in its own commit, with a clear reason, the generation and verification command, and no unrelated changes.
-- Never batch several completed steps into a late omnibus commit. Make commits continuously after each verified increment.
-- When a task includes delivery, validate each atomic increment, push it through the authorized workflow, and verify the delivered ref before starting dependent work.
+- Commit at coherent verified milestones. Avoid both late omnibus commits and fragmenting one outcome into administrative micro-commits.
+- Push through the authorized workflow at completed milestones and session checkpoints. Verify delivery before relying on externally stored evidence or declaring completion; a separate push is not required before every locally dependent step. Do not leave substantial accepted work only in a transient workspace.
 - Keep review fixes separate from substantive item milestones.
 - When an item satisfies its local exit gate and appears ready for completion, push its branch and open a pull request targeting `main`. Do not mark the item complete merely because the pull request exists.
 - Request a Codex review on the pull request with `@codex review` and wait for that review cycle to finish. An eyes reaction means the review is still in progress and is not approval.

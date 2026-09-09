@@ -1,0 +1,57 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_report_includes_retained_feasible_and_failed_costs ____________
+
+    def test_report_includes_retained_feasible_and_failed_costs() -> None:
+        report = runpy.run_path(str(SCRIPT))["build"](ROOT / "evidence/item-11/results")
+        assert "| ordinary-r1-baseline / east-north / boat | 96.00 [76.80, 128.00] |" in report
+        assert (
+            "| ocean-heavy-r1-without-sparse / east-south / boat | null | "
+            "94.50 [75.60, 126.00] | 96.00 [76.80, 128.00] |" in report
+        )
+        assert (
+            "| ordinary-r1-baseline / east-north / boat | 59; median 0.75; "
+            "central [0.00, 18.00]; speed [0.00, 24.00] |" in report
+        )
+        assert "## Modeled repeated-family interval times" in report
+        assert "No repeat: right-censored at 768 blocks" in report
+        assert (
+            "| ordinary-r1-without-sparse / east-north | 51 / 1 / 72 / 0 | "
+            "50 / 1 / 72 / 0 | 49 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | "
+            "0 / 0 / 0 / 0 | 1 / 1 / 72 / 0 |" in report
+        )
+        assert (
+            "| ordinary-r1-without-sparse / east-south | 105 / 1 / 104 / 0 | "
+            "103 / 0 / 0 / 0 | 103 / 0 / 0 / 0 | 4 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | "
+            "0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |" in report
+        )
+    
+        assert "Unknown-only / denominator" in report
+    
+        assert "Failure reasons" in report
+        failure = next(
+            line
+            for line in report.splitlines()
+            if line.startswith("| ordinary-r1-without-sparse / east-north / boat | null |")
+        )
+        assert failure.endswith("HEIGHT_STEP_EXCEEDS_CAPABILITY, NO_LEVEL_3X3_WATER |")
+        assert (
+            "| east-north | 64 | 256 | villages | adjacent | 0 | 0 | 0; NA | "
+            "[256.00] | 256.00 | 0 | NR@256 | 0; NA |" in report
+        )
+        assert sum(" | adjacent | " in line for line in report.splitlines()) == 5760
+        assert sum(" | geometric_visible | " in line for line in report.splitlines()) == 5760
+    
+        assert (
+            "| east-north | 64 | 512 | T1 | adjacent | 49 | 3 | "
+            "48; 6.00; 10.25; [0.00, 90.00] | [0.00, 17.00] | 90.00 | 46 | 0.00 | "
+            "46; 6.50; 20.50; [0.00, 144.00] |" in report
+        )
+    
+>       assert "## Reachable-prefix geometric opportunity coverage" in report
+E       AssertionError: assert '## Reachable-prefix geometric opportunity coverage' in '# Item 11 complete automated route measurements\n\nLocal matrix: PASS. Review and main delivery are separate gates re...n| south-west | 96 | 768 | villages | geometric_visible | 0 | 0 | 0; NA | [768.00] | 768.00 | 0 | NR@768 | 0; NA |\n\n'
+
+tests/item11/test_report.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item11/test_report.py::test_report_includes_retained_feasible_and_failed_costs
+1 failed in 10.09s

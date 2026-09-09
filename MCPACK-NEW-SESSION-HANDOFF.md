@@ -1,6 +1,6 @@
 # mcpack current handoff
 
-Updated: 2026-09-08. This is the single active continuation checkpoint.
+Updated: 2026-09-09. This is the single active continuation checkpoint.
 
 ## Authority and preservation
 
@@ -10,43 +10,98 @@ Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md), and the
 before server or infrastructure work. Verify dated claims against Git and evidence.
 GitHub `copeugne/mcpack` and fetched `origin/main` are delivery authority.
 
-Preserve local AGENTS.md changes, the CLOUD_HANDOFF.md deletion, `.codegraph`,
-`.omo/`, `mcpack-reconstructed-28(1).bundle`, backups and all existing evidence.
+The user authorized committing the AGENTS.md changes, CLOUD_HANDOFF.md deletion
+and this completion checkpoint. Preserve the ignored local `.codegraph`, `.omo/`,
+`mcpack-reconstructed-28(1).bundle`, backups and all existing evidence.
 The local archive `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md`
-is untracked and unchanged. Never stage it or use it as startup instructions.
+is ignored and unchanged. Never stage it or use it as startup instructions.
 The prior `codex/item9-delivery-record` remains pushed at `3f758cb2`, with only
 an unmerged historical-reference rename. Preserve that reference. Git preserves
 prior active handoffs; consult historical context only for specific open questions.
 
 ## Current delivery gate
 
-Last verified main: `d507573ead2c2740657129e9ee57a1410f420ed9`, merged PR35.
-Item 10 is COMPLETE. Reviewed head `45ee6da10053904fea749c3685a2e8cec34c1577`
-had a completed clean Codex cycle and bot thumbs-up; fetched main ancestry passed.
-The [delivery record](evidence/item-10/README.md#reviewed-main-delivery) binds the
-review and merge. Both PR35 findings have verified dispositions.
+Branch: `codex/item11-route-opportunities`. PR37 is the current delivery PR:
+https://github.com/copeugne/mcpack/pull/37 . Its final report/closure commit follows
+measurement head `28d544b8`; use current Git/PR head metadata for the exact candidate.
+Last verified main remains `5ec24115b9394ef162bdff6f65a31180dbb7d7ff` (merged PR36).
+Item 10 and the Items 2 through 10 audit are COMPLETE through reviewed PR35/36.
+The two prior housekeeping commits `1f70f395` and `022990e3` are preserved ancestors
+and included in PR37; they were not PR36-reviewed main delivery.
 
-Current branch: `codex/item10-cross-item-audit`, pushed at `3a8b9f8b`.
-[PR36](https://github.com/copeugne/mcpack/pull/36) is open; Codex review requested
-for the correction by comment `5591506920`. It is based on verified PR35 main.
-PR36 review found that a prose-only Chunky erratum was insufficient. The narrow
-machine-readable correction is now required by the existing Item 6 validator.
-The [audit record](evidence/item-10/cross-item-audit.md) preserves the rejected
-claim and links the correction, identity bindings and validation.
-It corrects Item 6's historical Chunky membership label while retaining
-the hash-bound snapshot, and corrects an optional trace-inspection command's
-planet dimension names by importing the existing selection list. All eighteen
-attempt identities agree; all sixteen corrected trace checks pass unchanged.
-No runtime/configuration change or new experiment is needed. The correction
-passes 560 Item 6 tests and 581 Item 7/10 tests plus affected quality checks.
+Item 11: local exit gate PASS after visibility, completed-cost and report corrections.
+The [numerical report](evidence/item-11/report.md),
+[protocol](evidence/item-11/protocol.md) and
+[closure/reproduction record](evidence/item-11/README.md) are authoritative.
+All sixteen accepted worlds provide 64 fixed routes and 192 transport evaluations,
+retaining failures, categories, gaps, repetitions, costs, censoring and sensitivity.
 
-The next review required a reproducible cross-item comparison. The existing
-Item 10 test module now checks all Item 7 references and eighteen attempt
-identities; its focused test and quality checks pass. Push this correction,
-request a fresh PR36 review, then merge the clean reviewed head and verify main. No further measurement
-or tooling expansion.
-Do not implement, run, repair or lint Item 11. No additional worlds or retries
-are authorized or needed for this sample.
+PR37 findings are dispositioned: visibility selection (3962853986) fixed in
+`1609ac96`; stale ledger protocol (3963074296) fixed in `e52353ab`; completed costs
+for infeasible modes (3963125325) fixed in `f4e99bdf`. The final full matrix/report
+is pushed at `17ccd330`. Compared with `e52353ab`, only analyzer identities and
+660 completed-cost fields change; every other raw/summary value is identical.
+Rejected versions remain in Git at `506bc4fd` and `e52353ab`. The earlier rejected
+POSIX lock attempt remains under `evidence/item-11/`; the existing lock fix is
+preserved. No original worlds were regenerated, tuned or repaired.
+
+Validation: full applicable gate 600 passed in 196.80 seconds before the narrow
+cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final contrast-integrated report passes in 27.15 seconds. Final
+lint/types/formatting pass. A clean export of `f4e99bdf` with a separate locked
+environment reproduces the final representative bytes. No repeat of unchanged
+Item 7/10 checks is needed for the isolated summary-cost change.
+
+The completed review of `56b925f2` found omitted numerical report costs
+(3963289055) and unchecked report world provenance (3963289058). Both are fixed
+in the existing report path using retained evidence. All sixteen result files
+and producer logs remain unchanged from `17ccd330`; no new world analysis.
+
+The completed review of `7dd94a65` found per-route category counts missing from
+the report (3963365255), though retained in JSON. The report now integrates all
+64 routes with required category counts and geometric coverage. Raw evidence
+is unchanged.
+
+The completed review of `8cad4c41` found omitted UNKNOWN visibility reporting
+(3963434898). Retained UNKNOWN-only numerators are now explicit per route/category
+and radius/window sensitivity, with denominators. All current values are zero;
+no raw data changed.
+
+The completed review of `b2b59760` found missing report failure reasons
+(3963504006) and full category/window gap/repetition statistics (3963504008).
+These are retained values awaiting report integration, not missing measurements.
+The existing report builder now emits reason-code sets and a full statistics
+appendix. The appendix has 16 x 4 x 3 x 3 x 10 x 2 = 11,520 rows. This directly
+serves the protocol/SPECS reporting gate and remains within the 1-GiB output
+budget. The 1,498,235-byte generated report expansion is isolated; no new schema, tool framework
+or source/world processing is justified.
+
+The completed review of `9b83183c` found missing reachable-prefix coverage
+reporting (3963575258). The existing report now exposes all 5,760 category/window
+rows with three modes, including explicit undefined 0/0 ratios. The final report
+is 1,821,556 bytes and its generated expansion is isolated. This integrates
+retained evidence only; no new measurement or framework.
+
+The completed review of `b6d08dff` found nonprimary modeled repeat-time ranges
+missing from the report (3963622347). Reassessment: the report view must preserve
+the complete existing cost contract for the fixed category/window matrix, rather
+than discarding fields as a memory optimization. The same builder now summarizes
+all adjacent/visible interval-time arrays before releasing them and emits all
+completed/prefix/unconstrained costs with the existing coverage rows. This directly
+serves SPECS Item 11 and protocol cost/reporting requirements, without new data,
+schema, framework or measurements. The 4,506,694-byte generated report expansion stays isolated.
+
+The completed review of `ade6a86f` found missing paired ray-clear count
+contrasts (3963679904). The eight-pair table now includes that independent
+population alongside adjacency/coverage. Retained source results are unchanged.
+
+Next action: request fresh `@codex review` on the pushed final PR37 candidate.
+Complete the review/fix loop, obtain the current-head clean result, merge and
+verify fetched main before declaring Item 11 COMPLETE. Do not repeat upstream
+collection/audits or start Item 12.
+
+Human recognition, actual fights, interaction time, enjoyment and human Adventure
+Activity Ratio remain NOT MEASURED. Automated geometry/model results are not human
+observations. The prior Item 7 final-review continuation exception remains explicit.
 
 ## Completed measurement and authoritative evidence
 
@@ -85,20 +140,11 @@ The strengthened collection reader accepts all sixteen archive-bound raw traces,
 including all 41 legacy Scarecrow attempts. Raw observations and censuses did not
 change during review fixes. Density is not observed fights or experienced pacing.
 
-## Validation and operational context
+## Operational context
 
-The final review-fix Item 7/10 suite passes 581 tests in 156.56 seconds. Affected
-Ruff, formatting and test-file BasedPyright pass. Logs and commands are in the
-[review-correction record](evidence/item-10/README.md#pr35-review-corrections).
-Clean-checkout reproduction at `979f7efd` used its own locked Python environment,
-freshly downloaded/restored final-retry evidence and a byte-identical full census
-in 477.603 seconds. The detached reproduction checkout and restored evidence
-remain preserved. No server, generation or census process remains active.
-
-Two local servers are stopped and preserved. Official launcher profiles are
-prepared; first launch/join is unverified. The
-[setup record](evidence/item-10/server-setup/README.md) is operational context,
-not measurement acceptance. No recording was started. Earlier six/ten-hour
-availability is not an approved player workload. PR22 delivered the
-[methodology amendment](evidence/item-10/methodology-amendment.md); Item 11
-remains outside this task's execution scope regardless of its future methodology.
+No server or world-generation process was started for Item 11. Existing local
+server/client setup remains operational context, not acceptance evidence. Original
+Item 10 worlds and failed attempts remain under their immutable custody. No new
+archives, history consolidation or infrastructure rollout are needed for Item 11.
+The clean-code export at `/tmp/mcpack-item11-clean-jZCYoWsn` is retained local
+reproduction context; accepted proof is committed under `evidence/item-11/`.
