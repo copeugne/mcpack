@@ -1,7 +1,7 @@
 # Item 12 structure discoverability
 
-Status: IN PROGRESS, corrected v3 local gate PASS. [PR39](https://github.com/copeugne/mcpack/pull/39)
-requires a fresh completed clean review, merge and verified main delivery.
+Status: COMPLETE through clean-reviewed, merged [PR39](https://github.com/copeugne/mcpack/pull/39).
+[Verified delivery](#verified-delivery) records the accepted head and fetched main.
 Item 13 is not started.
 
 The user separately authorized inspection and automated assessment on 2026-09-09.
@@ -190,5 +190,26 @@ No project dependency or Minecraft client/server installation was added.
 The initial availability command remains in the
 [predeclaration milestone](https://github.com/copeugne/mcpack/blob/a93a42f3/evidence/item-12/README.md#reproduce-input-availability).
 
-Final clean Codex review, merge and verified main delivery remain required.
-Do not declare Item 12 COMPLETE or start Item 13 at this local gate.
+## Verified delivery
+
+**COMPLETE under the separately authorized inspection and automated assessment scope.**
+Codex completed its final review of
+`4fc7e6050d449c69c91ebcddc56e86ee16648ddd` at 2026-09-09 14:10:42 UTC,
+posted the [clean result](https://github.com/copeugne/mcpack/pull/39#issuecomment-5603273097)
+and returned its thumbs-up (reaction `496740300`, 14:10:47 UTC).
+The completed cycle introduced no new inline or discussion findings. All four
+previous findings were fixed and their threads resolved: top-boundary occlusion,
+internal observers, ledger punctuation (`a3924ecc`) and stale handoff continuation
+(`4fc7e605`). The measurement results remain unchanged since `0e8bc2da`.
+
+PR39 merged at 2026-09-09 14:11:53 UTC as
+`33e11923091af76d7ada3b5f59f6681a49b16e4e`. A fresh fetch verified that exact
+`origin/main` ref, accepted-head ancestry and zero tree differences from the
+reviewed head. The local gate, raw evidence, failure dispositions, clean review
+and durable main delivery therefore all pass. Human metrics remain NOT MEASURED.
+
+This completion record is authored on `codex/item12-completion-record` from that
+verified main. Its later delivery ref is verified through current Git/PR history;
+the PR39 snapshot above is the immutable Item 12 acceptance reference. No source,
+protocol, result or upstream evidence changes accompany this record. Do not start
+Item 13 without a new user instruction.
