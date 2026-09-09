@@ -16,8 +16,10 @@ NOT MEASURED.
 
 The declared actor is upright 0.6 by 1.8, crouching to 1.5 on the balcony. It knows
 the layout, uses the saved-open right-hand entrance and west twisting vines,
-and makes no block changes. Source-supported climbing and static empty-context
-collision are model assumptions; this is not an observed player trial.
+and makes no block changes. Source-supported climbing, default step height and static collision are model
+assumptions; this is not an observed player trial. The
+[mapped-source context derivation](../model-source/README.md#first-house-route-context-and-movement-support)
+supports the intersected block types without claiming a live actor equivalence test.
 
 Two activity spaces are identifiable under the protocol's floor-change rule:
 
@@ -31,7 +33,7 @@ Two activity spaces are identifiable under the protocol's floor-change rule:
   of one open-plan room versus two activity spaces, not an invented exact count
   insensitive to the definition.
 
-The [crouched route](../collision/r2-route.json) is collision-free over all sixteen
+The [corrected crouched route](../collision/r3-route.json) is collision-free over all eighteen
 complete swept segments, starting/ending at 467.5,45,435.5. The west vine column
 at 461,431 is continuous at Y45..47 and supplies the vertical link to the balcony.
 The earlier [upright attempt](../collision/r1-route.json) is rejected: the soul
@@ -157,13 +159,23 @@ Both source use paths call PiglinAi.angerNearbyPiglins; live aggro was not teste
 
 ## Route length and conditional traversal time
 
-The [retained route model](../collision/r2-route-model.json) measures a closed
-36.25-block inspection circuit: 20 horizontal blocks upright, 10 crouched, 5 on
+The corrected r3 circuit measures 36.25 blocks: 20 horizontal blocks upright, 10 crouched, 5 on
 vines, and 1.25 of explicit trapdoor height adjustments. Feet-height span is 2.5
 blocks; accumulated ascent and descent are each 3.125. The nominal rate scenario
 produces 20.83 seconds; the illustrative faster/slower scenarios produce 14.42
 and 32.78 seconds. All rates, equipment, exclusions and failure rules were declared
 in the [route protocol](../collision/README.md#predeclared-route-time-model).
+
+The earlier r2 route and its [timing calculation](../collision/r2-route-model.json)
+remain preserved but are superseded for movement support: r2 raised the actor
+from the middle of the trapdoor without an adjacent riser. R3 places the drop
+at X464.3 and the step at X464.7, with the reverse sequence on return. The
+checker now rejects a balcony height transition without an adjacent support
+face or above the declared 0.6 step limit. The additional 0.4-block lower
+horizontal segment replaces equal upper travel, so all distance totals remain
+unchanged. Reproduction of r3 is byte-identical. Direct nominal derivation is
+20/4 + 10/1.2 + 5/1 + 1.25/0.5 = 20.833333 seconds; substitute the declared
+faster/slower rates for the other two values. No revised empirical speed is implied.
 
 These values are conditional kinematic budgets, not observed gameplay, confidence
 intervals, shortest paths or full clears. They exclude combat, activation waits,
@@ -244,12 +256,14 @@ The modest house is mechanically shallow in graph depth under the declared model
 one open-plan space or two connected activity spaces, with no separate finale.
 Its layered roof and stacked content positions overstate playable-floor count.
 It is not categorized as a giant dungeon from its envelope alone. Full acceptance
-of this assessment still requires the unresolved access and movement checks below.
+of this assessment still requires the unresolved depth measurements below.
 
 ## Concrete unresolved work
 
-Finish actor-context and movement support validation, shortest entry-to-objective
-route/terrain-cover measurement. Local connection dimensions are resolved above; balcony
+Finish shortest entry-to-objective route/terrain-cover measurement. The corrected
+step/drop sequence and mapped-source context treatment support the declared
+kinematic model; full runtime actor-context equivalence remains NOT MEASURED.
+Local connection dimensions are resolved above; balcony
 container access is resolved under the declared source/geometry model; live
 opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
 disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.

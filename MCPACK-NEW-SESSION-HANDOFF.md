@@ -138,18 +138,17 @@ remains pending. The three-argument collision call bypasses the state cache, so
 non-dynamic flags alone do not prove actor-context independence. The derived
 upright standing pass retains 352 positions from 1,411 supported candidates,
 reproduced exactly. Crouching at source-supported height 1.5 adds six positions
-(358 total), none in central upper reward bands, also reproduced exactly. Next
-validate connections, reward interaction positions and room delineation;
-clearance positions are not rooms. The first swept route is rejected: a hanging
-soul lantern blocks the upright balcony crossing. The second, crouched balcony
-route passes all sixteen swept segments and reproduces exactly. The developing
+(358 total), none in central upper reward bands, also reproduced exactly.
+Clearance positions are not rooms. The first upright route fails at a hanging
+lantern; r2 passes collision but fails later movement support inspection. The developing
 [house assessment](evidence/item-13/fixed-blocks/mns-medium-house-report.md) integrates
 activity spaces, source support, blocked east-vine access and reward tables.
 The report now includes the 36.25-block local circuit and 20.83-second nominal
 modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
-spaces, finale and replay assessments. These are not observed gameplay. Next
-resolve actor-context and remaining movement validation;
-shortest objective distance/terrain cover remain open. The report now derives
+spaces, finale and replay assessments. These are not observed gameplay. A later support check rejects r2's center
+ascent; r3 uses slab-edge transitions and passes eighteen swept segments plus
+step-support checks. Source context support is integrated; full actor runtime
+equivalence remains unmeasured. Shortest objective distance/terrain cover remain open. The report now derives
 local doorway clearance, vine access and balcony support/headroom from saved AABBs.
 Balcony chest/barrel access is now source/geometry-supported under the declared
 unlocked, no-entity-blocker model. Exact rays and lid/sign rules are in the report;

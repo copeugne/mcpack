@@ -166,3 +166,46 @@ names under net.minecraft.world.level.block. The saved voxel references and
 runtime AABBs above are retained in the existing first-house dataset/collision
 projection. Direct immutable-artifact inspection requires no additional capture
 or validator solely to restate these facts.
+
+## First-house route context and movement support
+
+The corrected r3 swept volumes intersect twelve saved palette states: air;
+closed top crimson trapdoor; crimson and warped wall signs; floor and wall
+polished-blackstone buttons; twisting vines and twisting-vines plant;
+the saved-open warped door's two halves; bottom warped slab; and closed bottom
+warped trapdoor. These are voxel intersections, not collision counts. None is a
+fluid or saved waterlogged state. The full retained AABB sweep still includes
+neighboring shapes, including any extension beyond its originating voxel.
+
+Direct pinned javap inspection of the hash-verified mapped server JAR, SHA-256
+26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71,
+finds no getCollisionShape override in AirBlock, TrapDoorBlock, DoorBlock,
+SlabBlock, SignBlock, WallSignBlock, ButtonBlock, GrowingPlantBlock,
+GrowingPlantHeadBlock, GrowingPlantBodyBlock, TwistingVinesBlock or
+TwistingVinesPlantBlock. Their inspected intermediate bases Block, BaseEntityBlock,
+HorizontalDirectionalBlock and FaceAttachedHorizontalDirectionalBlock also have
+no override. BlockBehaviour.getCollisionShape offsets 0..19 tests hasCollision,
+then returns either Shapes.empty or state.getShape(BlockGetter,BlockPos), without
+reading the supplied CollisionContext. Therefore these mapped implementations
+supply the same collision result regardless of supplied actor context. This is
+source support for the declared static model, not proof against every runtime
+transformation or a full-stack actor experiment. The captured frozen-runtime
+empty-context shapes remain the actual geometric input. Do not relabel their
+352 standing centers as observed reachable player positions.
+
+Reproduce this direct inspection using the pinned javap from repository root:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar \
+  net.minecraft.world.level.block.state.BlockBehaviour
+```
+
+For the inheritance checks substitute each named class under
+net.minecraft.world.level.block. The existing captured Attributes initializer
+742..769 gives default step height 0.6; LivingEntity.createLivingAttributes
+39..42 adds that attribute and maxUpStep reads it. Combined with the retained
+vine/tag derivation, this supports the explicitly default, unmodified-capability
+kinematic route. R3's 0.3125 step/drop transitions occur at slab contact/loss
+boundaries; the checker rejects the earlier unsupported center ascent. This
+supports modeled movement only, not literal tick trajectories or measured speeds.

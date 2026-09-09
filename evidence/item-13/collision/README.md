@@ -403,3 +403,47 @@ hashes. Projection, capture, redacted console and two empty diagnostic logs tota
 published files. Original logs/configuration remain at the declared raw path;
 broader raw custody is still pending. No collision pass, registry survey or
 accepted-world modification occurred.
+
+## Movement-support correction and third route predeclaration
+
+The r2 swept boxes prove collision freedom only. Subsequent support inspection
+finds its ascent at X464.5,Y47.1875,Z431.5 is in the center of the lowered
+trapdoor, away from a slab riser. The preceding horizontal segment also delays
+the drop until that center. Preserve r2 and its timing as a rejected movement
+sequence; do not treat collision freedom as validated support.
+
+For r3, keep all lower-floor and vine waypoints, equipment, poses and timing
+rates. Replace the balcony center descent/ascent with these ordered points:
+(464.3,47.5,431.5), (464.3,47.1875,431.5),
+(464.7,47.1875,431.5), (464.7,47.5,431.5), then the existing east endpoint.
+The 0.6-wide actor loses overlap with the west slab at center X464.3 and
+contacts the east riser at X464.7. Reverse the same sequence on return.
+This is a piecewise kinematic drop/step model at the support boundaries, not
+literal tick-by-tick physics. The captured Attributes static initializer
+742..769 supplies default STEP_HEIGHT 0.6; LivingEntity.createLivingAttributes
+39..42 adds it and maxUpStep reads it. The declared 0.3125 step is within that
+source-supported default, assuming no modifier. Vine support remains as declared.
+Recheck every swept segment with the existing checker. Retain failures, and
+reject a collision before using the corrected route. Same 60-second/100-MiB/1-MiB
+processing ceiling; no new world or runtime. Existing --measure remains the
+historical r2 calculation with its explicit input hash, not the corrected model.
+For r3 timing use the direct distance/rate derivation in the house report.
+
+
+R3 result: [r3-route.json](r3-route.json) passes eighteen swept segments and the
+new adjacent-support/default-step checks. A focused regression rejects r2's
+collision-free but unsupported center ascent. All three focused tests, lint,
+formatting and types pass; r3 reproduces byte for byte. Initial geometric output
+before the support-check addition remains in ignored
+`evidence/raw/item13/route-support-draft/r3-route.json`; it is not the accepted
+producer. The authoritative r3 includes the final producer hash. Distance and
+rate arithmetic are integrated in the house report. Reproduce into an absent path:
+
+```sh
+uv run python -m evidence.item-13.collision.house_route --crouch-balcony /tmp/item13-r3-route.json
+```
+
+Mapped-source collision-context support is now recorded in the
+[model derivation](../model-source/README.md#first-house-route-context-and-movement-support).
+Earlier r2 support claims above are superseded by this correction; its raw
+collision result and arithmetic remain preserved without rewriting.

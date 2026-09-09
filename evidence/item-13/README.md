@@ -30,8 +30,8 @@ Item 11 routes and Item 12 discoverability. Their closure records and the delive
 The [saved-view collision pilot](collision/README.md) now records all 8,500 first-house
 cells as 42 AABB unions, with no unsupported queries. Its fresh runtime completed
 in 206.424 seconds with clean shutdown and frozen configuration verification.
-The output is empty-context geometry; actor clearance and playable connectivity
-remain unresolved. The derived upright standing pass retains 352 clearance
+The output is empty-context geometry; by itself it does not establish actor
+clearance or playable connectivity. The derived upright standing pass retains 352 clearance
 positions from 1,411 supported candidates; those are not rooms or reachable
 positions. Crouching adds six positions (358 total), without resolving central
 upper reward access. Broader raw capture custody is still pending.
@@ -44,8 +44,11 @@ traversal model, piglin workload scenarios, conditional bed hazard, empty/dead
 space counts, finale and replay assessment. The frozen-runtime lookup now resolves the three empty first-house assignments
 and, by identical input, the two in its second variant: no entity type or
 potential-list fallback. Balcony container access is now resolved under its
-declared source/geometry model. Actor-context and remaining movement/depth
-validation still prevent final sample acceptance.
+declared source/geometry model. The corrected r3 route resolves the earlier
+unsupported center ascent with slab-edge transitions and a regression check.
+Mapped-source context support is recorded; a full runtime actor trial remains
+NOT MEASURED. Shortest objective distance and terrain cover still prevent final
+sample acceptance.
 
 ## Requirement map
 

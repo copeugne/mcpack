@@ -14,6 +14,7 @@ from pathlib import Path
 from .clearance import ROOT, expand_shapes, overlaps
 
 UPRIGHT_HEIGHT = 1.8
+DEFAULT_STEP_HEIGHT = 0.6
 
 # Coordinates mark turns, vine transfer and the central trapdoor height change.
 OUTBOUND = [
@@ -22,9 +23,10 @@ OUTBOUND = [
     [461.5, 45.0, 433.5],
     [461.5, 45.0, 431.5],
     [461.5, 47.5, 431.5],
-    [464.5, 47.5, 431.5],
-    [464.5, 47.1875, 431.5],
-    [464.5, 47.5, 431.5],
+    [464.3, 47.5, 431.5],
+    [464.3, 47.1875, 431.5],
+    [464.7, 47.1875, 431.5],
+    [464.7, 47.5, 431.5],
     [466.5, 47.5, 431.5],
 ]
 
@@ -54,6 +56,21 @@ def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
             max(a[1], b[1]) + height,
             max(a[2], b[2]) + 0.3,
         ]
+        if height < UPRIGHT_HEIGHT and a[1] != b[1]:
+            lower, upper = sorted((a[1], b[1]))
+            if upper - lower > DEFAULT_STEP_HEIGHT:
+                raise ValueError("Balcony transition exceeds declared default step height")
+            adjacent = [
+                box
+                for box in boxes
+                if box[4] == upper
+                and box[1] <= lower < box[4]
+                and box[2] < sweep[5]
+                and sweep[2] < box[5]
+                and (box[3] == sweep[0] or box[0] == sweep[3])
+            ]
+            if not adjacent:
+                raise ValueError("No adjacent support at the balcony height transition")
         collisions = [box for box in boxes if overlaps(sweep, box)]
         segments.append(
             {
@@ -72,7 +89,10 @@ def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
         ).hexdigest(),
         "segments": segments,
         "collision_free": all(not s["collisions"] for s in segments),
-        "support": "Manual block inspection required; this checker verifies collision only",
+        "support": (
+            "Manual floor/vine inspection required; checker verifies swept collision "
+            "and balcony step adjacency"
+        ),
     }
 
 
