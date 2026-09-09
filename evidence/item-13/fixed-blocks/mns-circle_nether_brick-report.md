@@ -1,7 +1,8 @@
 # Nether Brick Circle: quality assessment
 
-Status: IN PROGRESS. Saved/source evidence is integrated; playable topology and
-route scoring remain pending. This is one material layout of mns:circle_ruin;
+Status: IN PROGRESS. Saved/source evidence and a supplemental reward inspection
+circuit are integrated; full topology and alternate routes remain pending.
+This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
 
 Sample: full-ordinary-r2-baseline|minecraft:the_nether|mns:circle_nether_brick|18|6.
@@ -241,3 +242,187 @@ The pinned javap procedure in the existing model-source notes reproduces the
 NyliumBlock, Blocks, WallBlock, MagmaBlock and BaseFireBlock source derivations.
 Reward access/mining capability, activity-space boundary and complete sample
 quality scoring remain pending; the corridor must not substitute for those.
+
+## Supplemental reward-face access model
+
+Predeclare two local access checks using the same known-layout actor and saved
+blocks. These are geometric/source models, not new world experiments. Retain
+the original raw states. No enemies, dynamic updates or interaction latency
+are modeled. Stop a check at any unsupported support, collision or sight line;
+do not count that target as accessible. Acquisition and mining duration remain
+NOT MEASURED, and the iron-pick profile cannot harvest ancient debris.
+
+Northern target: from feet(367.5,33,75.5), upright eye height 1.62, first aim at
+(366.09375,33.75,75.5) to toggle the east crimson trapdoor at(366,33,75) from
+open=true to false. Then aim at debris center(365.5,33.5,75.5). Only that
+trapdoor state changes in the model. The closed lid above the debris remains.
+This check is conditional on reaching the station; it is not a route claim.
+
+Southern target: extend the existing southern approach from(368.5,33,81.5)
+to(369.3,33,81.5), then crouch with eye height 1.27. Aim along the line to
+(371.5,33.1,81.5), initially contacting the west nether-gold-ore cover at
+(370,33,81). Model removal of that one cover block, then use the same line
+to inspect the ancient-debris face. Leave the bottom slab above the cover,
+the surrounding ore and roots unchanged. This declares one cover removal,
+not a minimum-cost proof over every possible access direction. Walking rates
+remain 3/4/5 blocks per second; crouching, interaction and mining time are
+excluded from the movement-only budget.
+
+Result: both local face-access checks pass under those declared changes. The
+northern station has full nylium support and air in Y33/34. Its open east panel
+occupies X366..366.1875, Y33..34, Z75..76; the first ray contacts its east face
+at Y33.808. Folding that panel gives a bottom plate only Y33..33.1875. The
+second ray reaches the debris east face at X366,Y33.78, above the folded panel
+and below the unchanged lid at Y34..34.1875. Its target-center distance is
+2.292248 blocks, within the declared three-block reach. No mining is required
+to expose this face. This local check alone does not credit access to the
+northern station; the subsequent connecting-circuit section resolves it.
+
+The southern extension crosses only the existing air cell and a crimson-roots
+cell with air above, both supported by full nylium. Crimson roots have no
+collision (mapped Blocks initializer 32712); they do not require removal for
+this actor sweep. The crouched ray enters the cover cell at X370,Y33.897727,
+below the slab's bottom Y34. After the declared cover removal it enters the
+debris cell at X371,Y33.365909. Even allowing a conservative 0.25-block XZ
+plant offset, the ray stays above the roots' 13/16 selection height until
+beyond their possible extent. Its endpoint distance is 2.491766 blocks.
+The complete southern approach plus extension and return is 9.6 horizontal
+blocks, zero vertical travel: movement-only nominal 2.4 seconds, faster 1.92,
+slower 3.2. This excludes the explicitly declared pose change and cover removal,
+so it is not an entry-to-reward completion time.
+
+Source derivation uses the same pinned mapped Minecraft JAR and javap procedure
+as the existing model-source notes. TrapDoorBlock.getShape selects EAST_OPEN_AABB
+for an open east-facing state; its static initializer 35..50 builds local
+[0,0,0,3/16,1,1]. The bottom closed shape is [0,0,0,1,3/16,1].
+useWithoutItem offsets 0..20 checks canOpenByHand and calls toggle, whose
+offsets 0..17 cycle OPEN and set the changed state. Blocks initializer 33138
+binds the crimson trapdoor to BlockSetType.CRIMSON; that type's initializer
+427..463 sets canOpenByHand=true. This supports the conditional toggle rather
+than inventing an unlocked opening. RootsBlock static initializer 11..30
+defines its selection box [2/16,0,2/16,14/16,13/16,14/16]. The already captured
+Player initializer 136..149 supplies crouching height 1.5 and eye height 1.27.
+No source inference here proves a live modded interaction or mining outcome.
+
+Reproduce the retained-state and ray arithmetic checks:
+
+```sh
+uv run python - <<'REWARD_CHECK'
+import gzip, hashlib, importlib, json, math
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-circle-supplement.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == '3310bbc00d4e28a8d924168ca96e236628f0b581590227ac90cd1f36fc4b8f45'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for x, z in [(367,75), (368,81), (369,81)]:
+    assert state(case,x,32,z)['Name'] == 'minecraft:crimson_nylium'
+    assert state(case,x,34,z)['Name'] == 'minecraft:air'
+assert state(case,367,33,75)['Name'] == 'minecraft:air'
+assert state(case,368,33,81)['Name'] == 'minecraft:air'
+assert state(case,369,33,81)['Name'] == 'minecraft:crimson_roots'
+panel = state(case,366,33,75)
+assert panel['Name'] == 'minecraft:crimson_trapdoor'
+assert panel['Properties'] == dict(facing='east',half='bottom',open='true',powered='false',waterlogged='false')
+assert state(case,366,34,75)['Name'] == 'minecraft:air'
+lid = state(case,365,34,75)
+assert lid['Name'] == 'minecraft:crimson_trapdoor'
+assert lid['Properties']['open'] == 'false' and lid['Properties']['half'] == 'bottom'
+assert state(case,370,33,81)['Name'] == 'minecraft:nether_gold_ore'
+slab = state(case,370,34,81)
+assert slab['Name'] == 'minecraft:nether_brick_slab' and slab['Properties']['type'] == 'bottom'
+for p in [(365,33,75), (371,33,81)]:
+    assert state(case,*p)['Name'] == 'minecraft:ancient_debris'
+north_eye, north_aim = (367.5,34.62,75.5), (365.5,33.5,75.5)
+south_eye, south_aim = (369.3,34.27,81.5), (371.5,33.1,81.5)
+panel_aim = (366.09375,33.75,75.5)
+def ray_y(eye, aim, x):
+    return eye[1] + (aim[1]-eye[1])*(x-eye[0])/(aim[0]-eye[0])
+assert 33 < ray_y(north_eye,panel_aim,366.1875) < 34
+assert 33.1875 < ray_y(north_eye,north_aim,366) < 34
+assert 33 < ray_y(south_eye,south_aim,370) < 34
+assert ray_y(south_eye,south_aim,370.125) > 33.8125
+assert 33 < ray_y(south_eye,south_aim,371) < 34
+for eye, aim in [(north_eye,panel_aim), (north_eye,north_aim), (south_eye,south_aim)]:
+    assert math.dist(eye,aim) < 3
+print('north panel contact Y', ray_y(north_eye,panel_aim,366.1875))
+print('north debris aim distance', math.dist(north_eye,north_aim))
+print('south cover/debris face Y', ray_y(south_eye,south_aim,370), ray_y(south_eye,south_aim,371))
+print('south debris aim distance', math.dist(south_eye,south_aim))
+print('movement-only seconds at 3/4/5 blocks per second', [9.6/v for v in (3,4,5)])
+REWARD_CHECK
+```
+
+## Predeclared connection to the northern reward station
+
+Resolve the outstanding northern-station connection with one explicit circuit,
+using the same local southern start and reward-face objective. Outbound feet
+waypoints are (368.5,33,85.5), (368.5,33,81.5), (369.5,33,81.5),
+(369.5,33,80.5), (369.5,33,78.5), (369.5,33,75.5), (367.5,33,75.5).
+Return on the same line. Pause at the already checked southern reward station
+(369.3,33,81.5), which lies on that route, and at the inner southern station
+for the spawner inspection. Keep the reward-face model's two declared changes.
+
+Hold shift and use the crouching pose across the entire segment between
+Z80.5 and Z78.5 in both directions, so the complete body crosses the magma
+cell at(369,32,79) while stepping carefully. Use the prior house model's
+upright 3/4/5 and crouched 0.9/1.2/1.5 blocks per second, without interaction,
+mining, combat or pose-transition latency. All other segments are upright.
+No jump, bridging, cover removal for movement or flight is permitted. Failure
+of support/clearance or the source hazard-avoidance condition censors this
+connection rather than silently substituting another route. This is a static
+inspection circuit, not a survival or enemy-navigation experiment.
+
+The initial draft incorrectly attributed crouched rates 1/1.3/2 to the house
+model. Source inspection of house_route.py's profiles corrected that attribution
+before accepting this circuit's timing. The provisional 11.333333/8.576923/6.4
+second calculation is rejected; use the corrected calculation below.
+
+Result: the circuit has complete continuous flat support and body clearance.
+All traversed feet cells have air at Y33/34 except the already supported
+noncolliding roots at(369,33,81). Floors are full nylium except quartz ore at
+(369,32,80) and magma at(369,32,79). Mapped DropExperienceBlock and MagmaBlock
+extend Block without shape overrides, and their Blocks registrations use
+ordinary collidable properties (quartz offsets 16395..16434, magma through
+25109). Thus the sweep requires no invented partial-block shapes. Its body
+stays within the inspected cell strips, including each corner's shared cell.
+All feet stay at Y33; ascent, descent and feet-height span are zero.
+
+Mapped Entity.isSteppingCarefully offsets 0..4 returns isShiftKeyDown. Combined
+with MagmaBlock.stepOn, this supports a specific conditional way to avoid the
+floor-contact damage call throughout the magma crossing. The shift segment
+begins/ends 0.5 blocks outside the magma cell, exceeding the actor half-width
+0.3. This is a meaningful route hazard with an explicit avoidance condition,
+not an observed safe crossing. Spawned enemies, loss of shift and displacement
+can invalidate the condition and are not modeled. The saved soul fire at Y36
+is above this route's maximum body top Y34.8.
+
+The closed circuit is 26 blocks: 22 upright and four crouched. Movement-only
+seconds are 22/4+4/1.2=8.833333 nominal, 22/5+4/1.5=7.066667 faster,
+and 22/3+4/0.9=11.777778 slower. The north station is 13 route blocks from
+the declared local start, while the south reward station is 4.8. These are
+depths on this validated route, not proven global shortest paths. The circuit
+connects both debris-face inspections and the two spawner targets. It does not
+measure harvesting, combat, whole-arena room boundaries or all alternate routes.
+
+Extend the preceding REWARD_CHECK after its existing assertions to reproduce
+the complete route-strip support and timing calculation:
+
+```python
+route_cells = ({(368,z) for z in range(81,86)}
+               | {(369,z) for z in range(75,82)}
+               | {(x,75) for x in range(367,370)})
+for x,z in route_cells:
+    floor = ('minecraft:magma_block' if (x,z)==(369,79) else
+             'minecraft:nether_quartz_ore' if (x,z)==(369,80) else
+             'minecraft:crimson_nylium')
+    assert state(case,x,32,z)['Name'] == floor
+    assert state(case,x,34,z)['Name'] == 'minecraft:air'
+    assert state(case,x,33,z)['Name'] == (
+        'minecraft:crimson_roots' if (x,z)==(369,81) else 'minecraft:air')
+waypoints = [(368.5,85.5),(368.5,81.5),(369.5,81.5),
+             (369.5,80.5),(369.5,78.5),(369.5,75.5),(367.5,75.5)]
+outbound = sum(math.dist(a,b) for a,b in zip(waypoints,waypoints[1:]))
+assert outbound == 13 and 2*outbound-4 == 22
+print('corrected nominal/faster/slower seconds',
+      [22/u+4/c for u,c in [(4,1.2),(5,1.5),(3,0.9)]])
+```
