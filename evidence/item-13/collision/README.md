@@ -235,3 +235,28 @@ style findings (successive-pair iteration and a now-unnecessary complexity
 suppression), to be corrected with the next producer version while preserving
 this one for exact reproduction. Focused types pass; the shared AABB expansion
 preserves every default upright clearance value apart from producer identity.
+
+
+Second route attempt predeclaration: use the identical route and states, but
+shrink to the source-supported 1.5-high pose before balcony travel and restore
+upright pose at the vine transfer point before descending. Keep the lower floor
+and vertical vine segments upright. The capture already contains both pose
+clearance inputs; this is deterministic geometric processing, not a second
+runtime experiment. No lantern removal, changed block or unreported bypass is
+permitted. Reuse the same processing budget and preserve the rejected upright
+result unchanged. This resolves one demonstrated obstruction only.
+
+
+Second route result: [r2-route.json](r2-route.json) passes all sixteen swept
+segments with crouched balcony movement and upright lower-floor/vine movement.
+The complete result reproduces byte for byte. This is conditional geometry and
+manual support validation, not observed gameplay or container opening. Original
+rejected route and its exact producer remain at commit375ceb5d. Shared expansion
+now rejects omitted collision cells; two focused tests and focused types pass.
+One minor literal-style finding remains in this producer version and will be
+fixed separately without rewriting its raw output. The related initial pairwise
+and unused-suppression findings have been fixed.
+
+The [house quality assessment](../fixed-blocks/mns-medium-house-report.md) integrates
+room sensitivity, connections, roof-cavity exclusion, contents and unresolved
+requirements. Its source-derived statements are not additional runtime samples.

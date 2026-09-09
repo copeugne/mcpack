@@ -141,8 +141,11 @@ reproduced exactly. Crouching at source-supported height 1.5 adds six positions
 (358 total), none in central upper reward bands, also reproduced exactly. Next
 validate connections, reward interaction positions and room delineation;
 clearance positions are not rooms. The first swept route is rejected: a hanging
-soul lantern blocks the upright balcony crossing. Lower-floor and vine segments
-are clear. Preserve r1-route.json and test a crouched balcony crossing next.
+soul lantern blocks the upright balcony crossing. The second, crouched balcony
+route passes all sixteen swept segments and reproduces exactly. The developing
+[house assessment](evidence/item-13/fixed-blocks/mns-medium-house-report.md) integrates
+activity spaces, source support, blocked east-vine access and reward tables.
+Next finish interaction access, timing/combat models, hazards, finale and replay.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

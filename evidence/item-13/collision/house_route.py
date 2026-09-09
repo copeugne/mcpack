@@ -8,6 +8,7 @@ import argparse
 import gzip
 import hashlib
 import json
+from itertools import pairwise
 from pathlib import Path
 
 from .clearance import ROOT, expand_shapes, overlaps
@@ -26,7 +27,7 @@ OUTBOUND = [
 ]
 
 
-def verify() -> dict[str, object]:
+def verify(*, crouch_balcony: bool = False) -> dict[str, object]:
     collision = ROOT / "evidence/item-13/collision/r1-collision.json.gz"
     raw = collision.read_bytes()
     shapes = json.loads(gzip.decompress(raw))
@@ -39,7 +40,8 @@ def verify() -> dict[str, object]:
     boxes = expand_shapes(shapes, case["bounds"])
     route = OUTBOUND + list(reversed(OUTBOUND[:-1]))
     segments = []
-    for a, b in zip(route, route[1:], strict=False):
+    for a, b in pairwise(route):
+        height = 1.5 if crouch_balcony and min(a[1], b[1]) > 45 else 1.8
         if sum(x != y for x, y in zip(a, b, strict=True)) != 1:
             raise ValueError("Only cardinal or vertical segments are declared")
         sweep = [
@@ -47,11 +49,19 @@ def verify() -> dict[str, object]:
             min(a[1], b[1]),
             min(a[2], b[2]) - 0.3,
             max(a[0], b[0]) + 0.3,
-            max(a[1], b[1]) + 1.8,
+            max(a[1], b[1]) + height,
             max(a[2], b[2]) + 0.3,
         ]
         collisions = [box for box in boxes if overlaps(sweep, box)]
-        segments.append({"from": a, "to": b, "swept_box": sweep, "collisions": collisions})
+        segments.append(
+            {
+                "from": a,
+                "to": b,
+                "actor_height": height,
+                "swept_box": sweep,
+                "collisions": collisions,
+            }
+        )
     return {
         "collision_gzip_sha256": hashlib.sha256(raw).hexdigest(),
         "producer_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
@@ -67,6 +77,7 @@ def verify() -> dict[str, object]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--crouch-balcony", action="store_true")
     args = parser.parse_args()
     with args.output.open("x") as stream:
-        _ = stream.write(json.dumps(verify(), indent=2) + "\n")
+        _ = stream.write(json.dumps(verify(crouch_balcony=args.crouch_balcony), indent=2) + "\n")

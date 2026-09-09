@@ -21,6 +21,8 @@ def expand_shapes(shapes, b) -> list[list[float]]:  # noqa: ANN001
     """Translate the retained local unions for both clearance and route checks."""
     nx, nz = b[3] - b[0] + 1, b[5] - b[2] + 1
     cells = shapes["shape_indices_yzx"]
+    if len(cells) != nx * nz * (b[4] - b[1] + 1):
+        raise ValueError("Collision grid omits retained cells")
     boxes: list[list[float]] = []
     for i, index in enumerate(cells):
         if not 0 <= index < len(shapes["local_aabbs"]):
@@ -32,7 +34,7 @@ def expand_shapes(shapes, b) -> list[list[float]]:  # noqa: ANN001
     return boxes
 
 
-def calculate(actor_height: float = 1.8) -> dict[str, object]:  # noqa: C901 - one bounded geometric pass.
+def calculate(actor_height: float = 1.8) -> dict[str, object]:
     if actor_height not in (1.8, 1.5):
         raise ValueError("Only predeclared upright or crouched dimensions are supported")
     source = ROOT / "evidence/item-13/collision/r1-collision.json.gz"

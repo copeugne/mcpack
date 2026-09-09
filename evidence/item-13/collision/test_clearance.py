@@ -4,6 +4,8 @@
 # ruff: noqa: INP001, S101, D103
 import importlib
 
+import pytest
+
 clearance = importlib.import_module("evidence.item-13.collision.clearance")
 
 
@@ -14,3 +16,8 @@ def test_touching_floor_and_face_allow_clearance_but_overlap_rejects() -> None:
     assert clearance.overlaps(actor, [0.79, 1, 0, 1, 3, 1])
     assert clearance.overlaps(actor, [0, 2.79, 0, 1, 3, 1])
     assert not clearance.overlaps(actor, [0, 2.8, 0, 1, 3, 1])
+
+
+def test_expansion_rejects_missing_collision_cells() -> None:
+    with pytest.raises(ValueError, match="omits"):
+        clearance.expand_shapes({"shape_indices_yzx": [], "local_aabbs": []}, [0, 0, 0, 0, 0, 0])
