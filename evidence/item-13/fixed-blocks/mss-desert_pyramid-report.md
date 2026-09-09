@@ -263,3 +263,86 @@ not room counts or proof that the apparent connections fit an actor. Continue
 with access from the upper surface into the buried corridor and the lower Y171
 sources. Unselected Y134..168 and Y185..196 remain outside this visual inspection;
 they must not be represented as reviewed merely because their raw bytes exist.
+
+## Native entrance stair and buried corridor
+
+Direct saved-block inspection resolves a native passage from (114.5,182,469.5)
+to (124.5,177,469.5). It contains 10 horizontal blocks and five blocks of vertical
+descent. At Z469, the stair cells are (115,181), (116,180), (120,179), (121,178)
+and (122,177), expressed as (X,Y). All five are bottom, straight, west-facing,
+non-waterlogged sandstone stairs. Their source-shape model combines a whole-cell
+bottom half with a west-half upper half. The intermediate full floors are X114
+at Y181, X117..119 at Y179, and X123..124 at Y176. A 0.6-wide, 1.8-high actor
+therefore encounters half-block support changes, within the declared 0.6 step
+limit. The center lane has sufficient headroom throughout. This establishes a
+reversible modeled stair connection without mining, doors or ladders. It is not
+a timed traversal or runtime actor observation.
+
+The claim is specifically the Z469.5 centerline. The adjacent lanes contain
+fences and pots; do not generalize it to three unobstructed lanes. A preliminary
+1,001-position support/headroom sample passed. The reproduction below replaces
+sampling with finite critical intervals: support and intersected block columns
+can change only at collision-box edges shifted by the actor half-width. Testing
+those boundaries and each interval midpoint checks the entire declared centerline
+under this source-shape model. It does not validate actor-context equivalence.
+
+From the lower endpoint, X124.5 at feet Y177 continues six blocks north to
+Z463.5 on full sandstone floors with air at Y177/178. At Z462 a two-cell-high
+fence occupies X124, so the straight centerline does not continue through it.
+The adjacent X125 corridor has air at Y177/178 and full support at Y176 through
+Z462. A north-facing ladder at (125,Y172..176,461), backed by the Z462 wall,
+provides a concrete lead for the deeper chamber. Its approach, climbing contact
+and lower landing remain to be validated before adding a graph edge.
+
+The upper paired chest has air immediately above both halves at Y183. Its north
+face borders water at Y181 in X120..121,Z452, rather than a full dry standing
+floor. Side sandstone walls also constrain approach. Thus clear lids alone do
+not yet prove the declared actor can reach/open this double container. Preserve
+that distinction when completing its route and acquisition budget.
+
+Reproduce the stair and corridor derivation from the hash-bound extraction:
+
+```sh
+uv run python - <<'PYRAMID_STAIRS'
+import gzip, hashlib, importlib, json
+from fractions import Fraction as F
+from pathlib import Path
+p = Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest() == '7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c = json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s = importlib.import_module('evidence.item-13.render_pilot').state_at
+floor = {114:181,115:181,116:180,117:179,118:179,119:179,
+         120:179,121:178,122:177,123:176,124:176}
+boxes = []
+for x, y in floor.items():
+    state = s(c,x,y,469)
+    if state['Name'] == 'minecraft:sandstone_stairs':
+        assert state['Properties'] == dict(facing='west',half='bottom',
+                                          shape='straight',waterlogged='false')
+        boxes += [(F(x),F(x+1),F(y)+F(1,2)),
+                  (F(x),F(x)+F(1,2),F(y+1))]
+    else:
+        assert state['Name'] in ('minecraft:sandstone','minecraft:smooth_sandstone')
+        boxes += [(F(x),F(x+1),F(y+1))]
+a,b,r = F(229,2),F(249,2),F(3,10)
+points = sorted({a,b} | {v+d for lo,hi,_ in boxes for v in (lo,hi)
+                        for d in (-r,r) if a <= v+d <= b})
+probes = sorted(set(points + [(u+v)/2 for u,v in zip(points,points[1:])]))
+levels = []
+for x in probes:
+    feet = max(top for lo,hi,top in boxes if x+r>lo and x-r<hi)
+    for bx,y0 in floor.items():
+        if x+r<=bx or x-r>=bx+1:
+            continue
+        for y in range(y0+1,185):
+            if y<feet+F(9,5) and y+1>feet:
+                assert s(c,bx,y,469)['Name']=='minecraft:air', (x,bx,y)
+    levels.append(feet)
+assert levels[0]==182 and levels[-1]==177
+assert all(abs(u-v)<=F(1,2) for u,v in zip(levels,levels[1:]))
+for z in range(463,470):
+    assert s(c,124,176,z)['Name'] in ('minecraft:sandstone','minecraft:smooth_sandstone')
+    assert all(s(c,124,y,z)['Name']=='minecraft:air' for y in (177,178))
+print('Stair critical intervals and six-block lower corridor pass.')
+PYRAMID_STAIRS
+```
