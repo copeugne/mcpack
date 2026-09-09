@@ -1,8 +1,8 @@
 # Nether Tower: quality assessment
 
-Status: IN PROGRESS. Source/saved enemy and reward inputs are integrated.
-Conditional access and complete-task timing are integrated below. Room/quality
-synthesis and family repetitions remain required.
+Status: local conditional assessment recorded. Source/saved inputs, access,
+complete-task timing and room/quality synthesis are integrated. Family repetitions
+and broader Item 13 coverage remain required.
 
 Sample: full-ocean-heavy-r1-baseline|minecraft:the_nether|mns:nether_tower|14|16.
 Reuse the retained [saved blocks](mns-nether_tower.json.gz), SHA-256
@@ -328,3 +328,116 @@ for name,u,h,n,a,s,k,v in profiles:
     print(name,total)
 TOWER_TASK
 ```
+
+## Integrated topology and quality assessment
+
+Delineate two authored activity spaces under the protocol definition. L is the
+lower furnished/cache hall, interior band X218..230, Z250..262, feet Y55 above
+the Y54 floor. U is the upper chest chamber, interior band X221..227, Z253..259,
+feet Y67 above the Y66 floor, surrounding the central column. Bounds include
+fixtures and obstacles, not an assertion that every enclosed cell is walkable.
+The slice sheet shows these broad spaces without a supported sequence of
+intermediate rooms. The one-high air layer at Y65 between solid Y64/Y66 layers
+is not a room for the declared 1.8-high actor. Exterior ledges, roof ornament,
+solid mass and the scaffold itself are not extra rooms.
+
+The upper room is more than air beside a pillar: at (222,256), (222,255),
+(223,255) and (224,255), Y66 is full polished blackstone and Y67/68 are air.
+After constructing the declared shaft, an optional one-block west transfer from
+(223.5,67,256.5) to (222.5,67,256.5) therefore lands on an existing upper floor.
+This demonstrates room access. It is not added to the timed objective, whose
+chest interaction takes place higher on the scaffold and does not require this
+optional detour. Existing upper floor height is twelve blocks above the lower
+floor; the chest interaction stance is nineteen blocks above the lower entry.
+
+The established native room graph has two nodes and no verified inter-room edge,
+so two components. This records the accepted link set, not a proof that every
+possible parkour trajectory or arbitrary breach has been ruled out. The complete
+engineering route adds one L-U connection through the two removed overhead
+blocks: two nodes, one edge, one component, zero degree-three junctions and zero
+independent cycles. Both rooms are terminal nodes of that chain. There is no
+supported succession of forty-six playable tower levels.
+
+The entry breach is one block wide and two high; the constructed vertical shaft
+is one block wide. These are geometric chokepoints, not observed enemy bottlenecks.
+Full objective movement is 65.4 blocks (27.4 horizontal, 38 vertical), with nineteen
+blocks ascent and nineteen descent. The deepest room is one graph edge from L.
+Within the declared connectors, the chest-stance depth from the local entry is
+30 movement blocks: five east, four north, two east and nineteen up. Construction
+adds the documented 1.4-block out-and-back placement adjustment, distinct from
+this shortest connector depth. The optional upper-floor landing is 24 blocks from
+entry (eleven approach, twelve up, one west). Lower-cache station D is seven
+blocks from entry. None is a global optimum across unspecified engineering.
+All 529 saved footprint heightmap values are Y127; actual solid terrain cover
+above rooms remains UNKNOWN rather than inferred from the 31-block difference
+to envelope top Y96.
+
+### Enemy, hazard, empty-space and loot conclusions
+
+Authored enemy count/diversity are zero template residents and zero spawner
+sources/types. The source-only count does not include natural mobs. Realized
+encounters and human combat time remain NOT MEASURED; zero modeled combat applies
+only to the explicitly no-encounter task. There is no source-supported dungeon
+encounter composition to score as challenging here.
+
+The meaningful route hazard is fall/displacement exposure during the nineteen-
+block climb, especially the placement stance with only 0.1 blocks of support
+overlap. Continued support and controlled descent are conditions, not measured
+survival. The retained envelope contains lava at (213,51,260) and magma at
+(216,51,267), (220,51,267), (224,51,267), all outside/below the verified route.
+These do not establish a required lava or magma crossing. No active fire or
+working redstone trap is established on the declared path. The two unlit blast
+furnaces at (227,Y55/56,262), two cauldrons at (230,55,259/260) and enchanting
+table at (228,55,252) are facility/source content, not extra enemies or rooms.
+Their operation is outside the acquisition objective and is not observed.
+
+Empty rooms: 0/2. Dead rooms: 0/2. L has sixteen authored barrel rewards and
+facilities; U has the elevated treasure chest. There is no supported empty-room
+claim based merely on absence of enemies. Loot distribution is 16/17 containers
+in L using houses, 1/17 in U using treasure. Table class is potential, not rolled
+quantity, value or acquisition. Stacked containers require the documented prior
+transfers and removals; their count overstates independently approachable reward
+stations if treated as seventeen separate activities.
+
+### Finale, bypass, replay and large-but-shallow conclusions
+
+The upper chamber is a supported terminal reward candidate: it contains the
+single elevated treasure-table chest, contrasting with the lower houses-table
+barrels. It is not a boss or a scripted completion trigger. Final-room assessment:
+objective clarity CONDITIONAL (visible chest placement and differentiated table,
+without an explicit quest signal); distinctive terminal encounter ABSENT;
+terminal reward linkage PRESENT as source potential; native route integration
+UNKNOWN (no validated native climb), engineering integration PRESENT; external
+bypass exposure CONDITIONAL on construction. These distinguish a reward finale
+from an observed satisfying conclusion.
+
+The concrete partial-objective bypass is lower-cache extraction. The fourteen-
+block ground circuit, two obsidian-family entrance removals, four emptied-barrel
+removals and one lantern removal expose 16/17 reward containers without upper
+construction or ascent. Their source table differs from the upper treasure table,
+so this does not establish 16/17 of reward value. The complete scaffold route
+provides a construction alternative with nineteen carried blocks and two overhead
+removals, preserving effort and fall exposure without assuming a native climb. It demonstrates an
+earned construction alternative, not a free roof access or an observed exploit.
+
+Expected replay value: limited authored-layout and encounter novelty, with
+conditional loot/terrain variation. The sampled component is a fixed template
+with empty processors and no authored mob sources. Further instances can vary
+orientation, surrounding terrain and loot results, but those are not observed
+probability distributions here. Revisiting the same site after this objective
+retains the breach, removed front barrels and scaffold; loot access mechanics
+do not reconstruct those physical obstacles. No template mechanism establishes
+re-sealing or renewable authored encounters. Player enjoyment/replay behavior
+remains NOT MEASURED.
+
+Large-but-shallow: supported in native dungeon-content terms. The tall exterior
+contains two delineated activity spaces and no explicit encounter sources, with
+most reward nodes in one ground cache and no verified native vertical link.
+Construction creates meaningful access work, but template height alone is not
+room depth or combat quality. Describe it as a tall resource/extraction structure
+with an elevated reward, rather than assuming a multi-floor combat dungeon.
+
+This sample's local assessment is recorded under the accepted conditional scope.
+The other selected candidate, family repetitions, remaining families/variants and
+Item 13 review/delivery gates are not completed by this result. No new world or
+runtime experiment was performed, and Item 14 remains UNSTARTED.

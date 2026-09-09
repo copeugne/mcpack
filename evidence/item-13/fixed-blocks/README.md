@@ -111,6 +111,7 @@ A capped vine shaft and solid partition remain baseline obstacles, overcome only
 by declared construction. Family repetitions and broader coverage remain pending;
 the report retains all native-versus-engineered and unobserved-gameplay limits.
 
-The [Nether Tower intake](mns-nether_tower-report.md) resolves seventeen source/
+The [Nether Tower assessment](mns-nether_tower-report.md) resolves seventeen source/
 saved reward assignments and zero explicit spawner/resident-entity sources.
-Its vertical access and complete quality assessment remain pending.
+Its conditional access, complete task timing and two-room quality assessment
+are integrated. Family repetitions and broader coverage remain pending.
