@@ -88,8 +88,8 @@ Integrated Stronghold is missing 143 envelope chunks in its existing capture,
 and WDA Foundry's best indexed candidate is missing 75. These gaps cannot be
 closed with the previously accepted piece-envelope measurement.
 
-The common Item 7 world-bounds index still needs its separate coverage integration,
-and root presence is not full material-variant coverage. Absence in a finite frame
+The common Item 7 world-bounds disposition is integrated below; root presence
+is not full material-variant coverage. Absence in a finite frame
 is not insignificance or generation failure. Controls remain separate from baseline.
 
 The complete inclusion/exclusion record cites the exact existing family rationale,
@@ -135,3 +135,44 @@ Initial read-only jq probes incorrectly treated keyed census strata as an array;
 they failed without changing inputs. Initial lint found formatting, unused names
 and a missing annotation in the intake script; those are corrected before delivery.
 No server experiment or quality score has run yet.
+
+## Common Item 7 coverage disposition
+
+Direct inspection of the existing Item 8 world-bounds record resolves the remaining
+common-index check for families absent from Item 10. The exact references below
+address `observations[index]` in `evidence/item-8/sources/world-bounds.json.gz`.
+Its input list binds the original decoded streams to the Item 7 core archive.
+
+| Family | Existing observation indexes | Disposition |
+| --- | --- | --- |
+| adorabuild_structures:prison | 200, 597 | Both start chunks non-full; not adequate topology evidence |
+| betterjungletemples:jungle_temple | 372, 752 | Both non-full; use the separately indexed Item 8 capture instead |
+| idas:apothecary_abode | 261, 650 | Both non-full; separate Item 8 candidates also have incomplete envelopes |
+| mes:starlight_voyager | 242, 632 | Both full starts; all four envelope chunks are full in each original stream; candidates for block inspection |
+| mss:leaf_hollow | 96, 499 | Both start chunks non-full; not adequate topology evidence |
+| mvs:mine_with_campsite | 94, 497 | Both non-full; separate Item 8 candidates also have incomplete envelopes |
+| towns_and_towers:ocean_outpost | 63, 466 | Both start chunks non-full; not adequate topology evidence |
+
+No other family absent from Item 10 has an observation index in its accepted
+Item 8 `world_observations` field. This is a direct keyed inventory inspection,
+not a new population audit. It adds one family with complete-envelope candidates
+to the thirteen from the separate Item 8 captures. Consequently 105 of the 119
+Item 10-absent families still lack a complete-envelope candidate in these existing
+references. Some have partial saved starts; do not replace that distinction with
+an assertion of no evidence. All 14 candidates still require hash-verified block
+inspection and material-variant assessment. No new world experiment has run.
+
+For Starlight Voyager, both decoded lines are 7848. The envelope is
+`[1752,122,64,1767,145,95]`, so the required chunk coordinates are X 109 and 110,
+Z 4 and 5. Each appears as `full=true` in the corresponding hash-verified stream:
+
+- `run-a/ocean-heavy/chunks.jsonl`, SHA-256
+  `5fcf9c91553eedcef7b454c4aa29f1be88e4af69f28a4d8c22031cde740f33f9`.
+- `run-b/ocean-heavy/chunks.jsonl`, SHA-256
+  `dc2889d8325e17330e5eef765376b5ba205b256be478b4acfbd49070d5d537e4`.
+
+Those exact inputs were read from the restored core target in
+`evidence/item-7/archive/r14/core-restore.json`. This is an explicit derivation
+from four immutable chunk records per stream. A new validator or rerun is not
+needed to establish it. Identical coordinates across these repeated worlds do
+not imply independent layouts, semantic determinism or player observations.
