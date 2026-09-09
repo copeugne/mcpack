@@ -176,8 +176,8 @@ now attributes the saved lava to an overlapping fortress template. The original
 case is preserved; a predeclared non-overlapping candidate was extracted in 6.644s
 (8464 voxels). Its one-area assessment, 26-block circuit and northern external
 approach are integrated. The original rejects that circuit; both reward faces now
-connect by a checked detour. Quality synthesis isolates the remaining original
-room-boundary question. Next: resolve partial-block connectivity and other layouts,
+connect by a checked detour. Both local assessments now record room-boundary
+sensitivity and remaining model limits. Next: measure the other selected layouts,
 reusing the first-house source/model support; finish other family/variant/seed
 selection and measurements. First-house broader raw-capture custody is pending.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental

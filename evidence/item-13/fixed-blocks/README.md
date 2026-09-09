@@ -89,5 +89,6 @@ retain full-runtime/human-observation limitations and pending raw-capture custod
 The [Nether Brick Circle assessment](mns-circle_nether_brick-report.md) records
 its authored debris rewards, saved/source hazard differences and mixed spawner
 workload. The supplemental sample now has a connected reward inspection circuit,
-northern external approach and one-area quality assessment. Original mixed-case
-topology and the blackstone root remain unresolved.
+northern external approach and one-area quality assessment. The original mixed
+case records a detour and explicit one-area/two-sector room sensitivity. Both
+local assessments retain their model limits; the blackstone root remains required.

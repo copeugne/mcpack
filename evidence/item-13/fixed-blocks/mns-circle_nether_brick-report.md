@@ -1,7 +1,7 @@
 # Nether Brick Circle: quality assessment
 
-Status: IN PROGRESS. The supplemental local modeled assessment and northern
-external approach are recorded. Original mixed-case topology remains pending.
+Status: local modeled/inspection assessments recorded for the original mixed
+case and supplemental case. Item 13 coverage and delivery remain IN PROGRESS.
 This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
 
@@ -723,4 +723,65 @@ inside = {p for p in cells if e[0]<=p[0]<=e[3] and e[2]<=p[2]<=e[5]}
 west = paths(inside,(281,66,99))
 assert len(inside)==173 and len(west)==13 and (289,66,95) not in west
 print('restricted interior/west-component cells',len(inside),len(west))
+```
+
+## Room-boundary disposition
+
+Resolve the preceding room-denominator uncertainty by direct layout assessment,
+not by equating the restricted flat-cell components with rooms. Reinspection of
+the original retained slice sheet at Y66..74 shows a solid obstruction through
+the western-central portion of the ruin, with the surviving cache embedded
+in it. Direct saved-state inspection at Y67 confirms full nether bricks across
+X282..285,Z94..100 except the cache lid at(283,67,99). That solid mass is not
+a playable room or a hidden upper activity floor. The surviving perimeter
+fragments, eastern spawners and two resource objectives delimit the same
+outdoor ruin site. Both objective sectors have validated access and connect
+through the measured exterior detour. Counting every excluded partial block
+is unnecessary to distinguish solid mass from an activity room.
+
+Use one outdoor activity area within the original ruined perimeter limits
+X280..296,Z88..104, with two separated reward-access sectors. This is a
+descriptive room boundary, not a claim that every cell in the rectangle is
+playable or internally connected at Y66. Retain a two-area sensitivity if the
+overlap's interruption is considered a meaningful activity boundary: western
+cache sector anchored at(281.3,66,99.5) and eastern resource/encounter sector
+anchored at(289.5,66,95.7). The checked exterior connection between those
+anchors is 28.4 blocks. It does not pass through an authored doorway and does
+not convert surrounding terrain or the neighboring fortress into Circle rooms.
+
+Under the one-area coding, the room graph has one node and zero inter-room
+edges, branches or cycles; both objectives have graph depth zero. Under the
+split sensitivity, the validated graph has two nodes and one exterior link,
+with zero degree-three junctions or cycles and one link from the western to
+eastern sector. This latter graph records the demonstrated connection, not
+an exhaustive inventory of all possible parallel exterior routes. There is no
+measured inter-room chokepoint on that link. Geometric movement alternatives
+inside a single open area are not new room-graph branches.
+
+Empty/dead counts resolve to 0/1 under the one-area coding and 0/2 under the
+split sensitivity: each sector has a surviving, accessible reward face, and
+the eastern sector also contains both recorded enemy sources. Zero enclosed
+Circle rooms are established in this cropped ruin assessment. The fortress's
+own enclosed spaces remain outside this family's denominator. Final room NONE,
+reward distribution, hazards, replay assessment and modeled timing retain the
+evidence and limits above. The two-area sensitivity puts one debris node in
+each sector rather than concentrating them in a final room.
+
+The earlier UNKNOWN denominator is therefore resolved as an explicitly
+ambiguous descriptive coding, supported by saved layout and complete objective
+connections. It is not resolved by pretending that the flat-cell predicate
+proves every partial-block route. Global shortest walking distance and a
+complete movement graph through every obstacle remain unmeasured. Those limits
+do not supply extra rooms or justify another source/world-generation pass.
+This closes the local original-case assessment under the authorized inspection
+scope, while leaving the separate blackstone-root sample and broader Item 13
+coverage, raw custody and delivery gates outstanding.
+
+The focused solid-mass check reproduces after ORIGINAL_CHECK:
+
+```python
+for x in range(282,286):
+    for z in range(94,101):
+        expected = 'crimson_trapdoor' if (x,z)==(283,99) else 'nether_bricks'
+        assert state(case,x,67,z)['Name']=='minecraft:'+expected
 ```
