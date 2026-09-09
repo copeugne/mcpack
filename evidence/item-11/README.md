@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-unknown.txt), including category/UNKNOWN reporting, report reproduction and world-provenance rejection. Final [Ruff](validation/final-ruff-unknown.txt), [formatting](validation/final-format-unknown.txt) and [BasedPyright](validation/final-types-unknown.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-statistics.txt), including complete statistics, failure reasons, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-statistics.txt), [formatting](validation/final-format-statistics.txt) and [BasedPyright](validation/final-types-statistics.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -364,3 +364,34 @@ The final UNKNOWN-integrated suite passes [22 tests in 28.10 seconds](validation
 A final explanatory wording change also passes [exact report reproduction](validation/unknown-final-rebuild.txt).
 Final lint, formatting and types pass; clean current-head review and main delivery
 remain the only open gates.
+
+## Complete statistics and transport limitations in the report
+
+The completed review of `b2b59760` found
+[missing report failure reasons](https://github.com/copeugne/mcpack/pull/37#discussion_r3963504006)
+and [omitted category/window gap and repetition statistics](https://github.com/copeugne/mcpack/pull/37#discussion_r3963504008).
+Both findings are valid report integration gaps. The existing report builder now
+emits distinct failure reason codes for each route/mode, explains their meanings,
+and retains the exact station failures in the linked raw results. Null completed
+costs can now be read alongside the applicable transport limitation.
+
+The report appendix emits both adjacent and geometric-visible summaries for every
+world/route/radius/window/category: 16 x 4 x 3 x 3 x 10 x 2 = 11,520 rows. Each row
+retains location/family counts, gap distribution n/median/inclusive IQR/range,
+censored boundary gaps, maximum empty distance, repeat count, first repeat or
+right censoring, and repeat-interval distribution. Zero ties and absent intervals
+remain distinct. The report is 1,498,235 bytes, within the existing output budget.
+This is a required expansion to present already measured facts. It uses the same
+builder and report file, without new evidence classes or processing frameworks.
+The large generated Markdown expansion is isolated in its own commit as required
+by the repository's generated-evidence rule; its producer command remains the
+existing `summarize.py` invocation in Reproduction above.
+
+The [retained report regression fails before integration](validation/statistics-report-before.txt).
+All [22 affected tests pass in 31.10 seconds](validation/final-tests-statistics.txt),
+including full row counts and report reproduction. The
+[focused numerical regression](validation/statistics-numerical-regression.txt)
+checks the known village zero/censoring row and ordinary control T1 gap/repeat
+medians, IQRs and ranges. Final lint, formatting and types pass. All sixteen source
+result files and producer logs are unchanged from `17ccd330`; no world analysis
+was repeated. Local exit gate PASS, with fresh clean review/main delivery pending.

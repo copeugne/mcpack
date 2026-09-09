@@ -65,6 +65,15 @@ def repeat_text(values: list[dict[str, float]]) -> str:
     )
 
 
+def distribution_text(value: dict[str, Any]) -> str:
+    if not value["n"]:
+        return "0; NA"
+    return (
+        f"{value['n']}; {value['median']:.2f}; {value['iqr']:.2f}; "
+        f"[{value['min']:.2f}, {value['max']:.2f}]"
+    )
+
+
 def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed report, no new framework
     worlds = {}
     hashes = {}
@@ -124,15 +133,16 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
             # Keep the report view small; raw observations remain in the checked input file.
             del route["observations"]
             for model in route["transport"].values():
+                model["failure_reasons"] = sorted(
+                    {reason for failure in model["failures"] for reason in failure["reasons"]}
+                )
                 del model["failures"], model["cumulative_cost_distance"]
             for row in route["summaries"]:
                 if (row["radius"], row["window"], row["category"]) != (64, 768, "all_locations"):
                     del row["modes"]
-                row["adjacent"] = {
-                    key: row["adjacent"][key]
-                    for key in ("count", "maximum_empty_interval", "first_repeat_distance")
-                }
-                row["geometric_visible"] = {"count": row["geometric_visible"]["count"]}
+                for population in ("adjacent", "geometric_visible"):
+                    for key in ("events", "gaps", "repeats"):
+                        del row[population][key]
         del result["top_cells"]
         worlds[name] = result
         hashes[name] = hashlib.sha256(raw).hexdigest()
@@ -221,16 +231,22 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         "Values are central seconds [fast-speed seconds, slow-speed seconds], rounded to two decimals.",  # noqa: E501 - report prose
         "Completed costs are null for INFEASIBLE/UNKNOWN full-route modes. Prefix costs stop at",
         "the retained reachable prefix; unconstrained costs ignore feasibility and are not actual travel.",  # noqa: E501 - report prose
+        "Failure reasons list distinct retained codes across all stations for that route/mode.",
+        "NO_DRY_SUPPORT means a wet/air surface; NO_LEVEL_3X3_WATER means the boat corridor",
+        "lacks level water width. HEIGHT_STEP_EXCEEDS_CAPABILITY is an excessive height change.",
+        "UNKNOWN_TOP_BLOCK and UNKNOWN_WATER_NEIGHBORHOOD mean unavailable block evidence.",
+        "None means the model has no recorded failure. Exact failure stations remain in raw results.",  # noqa: E501 - report prose
         "Other windows/categories and exact unrounded values remain in the linked raw results.",
         "",
-        "| World / route / mode | Completed seconds | Prefix seconds | Unconstrained seconds |",
-        "| --- | --- | --- | --- |",
+        "| World / route / mode | Completed seconds | Prefix seconds | Unconstrained seconds | Failure reasons |",  # noqa: E501 - generated Markdown row
+        "| --- | --- | --- | --- | --- |",
     ]
     for name, world in worlds.items():
         for label, route in world["routes"].items():
             for mode, costs in primary(route)["modes"].items():
+                reasons = ", ".join(route["transport"][mode]["failure_reasons"]) or "None"
                 lines.append(
-                    f"| {name.removeprefix('full-')} / {label} / {mode} | {cost_text(costs['completed_cost'])} | {cost_text(costs['prefix_cost'])} | {cost_text(costs['unconstrained_cost'])} |"  # noqa: E501 - generated Markdown row
+                    f"| {name.removeprefix('full-')} / {label} / {mode} | {cost_text(costs['completed_cost'])} | {cost_text(costs['prefix_cost'])} | {cost_text(costs['unconstrained_cost'])} | {reasons} |"  # noqa: E501 - generated Markdown row
                 )
     lines += [
         "",
@@ -365,6 +381,42 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
         f"| [results/{n}.json.gz](results/{n}.json.gz) | `{digest}` |"
         for n, digest in hashes.items()
     ]
+    lines += [
+        "",
+        "## Complete gap and repetition statistics",
+        "",
+        "All sixteen worlds, four routes, three radii, three windows, ten categories and two",
+        "independent populations are reported below: 11,520 rows. Distances are horizontal blocks.",
+        "Distribution cells give n; median; inclusive IQR; [minimum, maximum], rounded to two decimals.",  # noqa: E501 - report prose
+        "NA means no intervals, not a measured zero. Gap distributions use successive candidate",
+        "locations; boundary gaps are separately right/left censored. With no candidate, the",
+        "single boundary entry is the entire empty window. Maximum empty includes boundaries.",
+        "First repeat is distance from route start; NR@window is right censoring. Same-position",
+        "ties and zero repeat intervals remain. Counts are overlapping route/category memberships.",
+        "Individual events, family identities and unrounded values remain in the linked results.",
+        "",
+    ]
+    for name, world in worlds.items():
+        lines += [
+            f"### {name.removeprefix('full-')}",
+            "",
+            "| Route | Radius | Window | Category | Population | Locations | Families | Gap distribution | Censored boundary gaps | Maximum empty | Repeats | First repeat | Repeat-interval distribution |",  # noqa: E501 - generated Markdown row
+            "| --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- |",
+        ]
+        for label, route in world["routes"].items():
+            for row in route["summaries"]:
+                for population in ("adjacent", "geometric_visible"):
+                    stats = row[population]
+                    boundaries = ", ".join(f"{v:.2f}" for v in stats["censored_boundary_gaps"])
+                    first = (
+                        f"{stats['first_repeat_distance']:.2f}"
+                        if stats["first_repeat_distance"] is not None
+                        else f"NR@{stats['no_repeat_right_censored_at']}"
+                    )
+                    lines.append(
+                        f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {population} | {stats['count']} | {stats['unique_families']} | {distribution_text(stats['gap_distribution'])} | [{boundaries}] | {stats['maximum_empty_interval']:.2f} | {stats['repeat_count']} | {first} | {distribution_text(stats['repeat_interval_distribution'])} |"  # noqa: E501 - generated Markdown row
+                    )
+        lines.append("")
     return "\n".join(lines) + "\n"
 
 

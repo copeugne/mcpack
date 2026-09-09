@@ -95,3 +95,23 @@ def test_report_includes_retained_feasible_and_failed_costs() -> None:
     )
 
     assert "Unknown-only / denominator" in report
+
+    assert "Failure reasons" in report
+    failure = next(
+        line
+        for line in report.splitlines()
+        if line.startswith("| ordinary-r1-without-sparse / east-north / boat | null |")
+    )
+    assert failure.endswith("HEIGHT_STEP_EXCEEDS_CAPABILITY, NO_LEVEL_3X3_WATER |")
+    assert (
+        "| east-north | 64 | 256 | villages | adjacent | 0 | 0 | 0; NA | "
+        "[256.00] | 256.00 | 0 | NR@256 | 0; NA |" in report
+    )
+    assert sum(" | adjacent | " in line for line in report.splitlines()) == 5760
+    assert sum(" | geometric_visible | " in line for line in report.splitlines()) == 5760
+
+    assert (
+        "| east-north | 64 | 512 | T1 | adjacent | 49 | 3 | "
+        "48; 6.00; 10.25; [0.00, 90.00] | [0.00, 17.00] | 90.00 | 46 | 0.00 | "
+        "46; 6.50; 20.50; [0.00, 144.00] |" in report
+    )

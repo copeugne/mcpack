@@ -46,7 +46,7 @@ POSIX lock attempt remains under `evidence/item-11/`; the existing lock fix is
 preserved. No original worlds were regenerated, tuned or repaired.
 
 Validation: full applicable gate 600 passed in 196.80 seconds before the narrow
-cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final UNKNOWN-integrated report passes in 28.10 seconds. Final
+cost fix; all 19 affected Item 11 tests pass in 17.51 seconds afterward. The later report-only fixes pass all 22 affected tests; the final statistics-integrated report passes in 31.10 seconds. Final
 lint/types/formatting pass. A clean export of `f4e99bdf` with a separate locked
 environment reproduces the final representative bytes. No repeat of unchanged
 Item 7/10 checks is needed for the isolated summary-cost change.
@@ -65,6 +65,15 @@ The completed review of `8cad4c41` found omitted UNKNOWN visibility reporting
 (3963434898). Retained UNKNOWN-only numerators are now explicit per route/category
 and radius/window sensitivity, with denominators. All current values are zero;
 no raw data changed.
+
+The completed review of `b2b59760` found missing report failure reasons
+(3963504006) and full category/window gap/repetition statistics (3963504008).
+These are retained values awaiting report integration, not missing measurements.
+The existing report builder now emits reason-code sets and a full statistics
+appendix. The appendix has 16 x 4 x 3 x 3 x 10 x 2 = 11,520 rows. This directly
+serves the protocol/SPECS reporting gate and remains within the 1-GiB output
+budget. The 1,498,235-byte generated report expansion is isolated; no new schema, tool framework
+or source/world processing is justified.
 
 Next action: request fresh `@codex review` on the pushed final PR37 candidate.
 Complete the review/fix loop, obtain the current-head clean result, merge and
