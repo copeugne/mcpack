@@ -504,3 +504,50 @@ between the lower entrances, combined path/event schedule, source work, encounte
 activation history and final room/quality synthesis remain required. The original
 closed pillar, capped shaft, sealed partition and roof casing are preserved as
 baseline constraints; the construction routes do not relabel them as native links.
+
+## Exterior connection and bridge requirement
+
+The saved lower entrances do not justify a flat unmodified connection. The direct
+middle ground contains air over lava; the east-side route below requires nineteen
+new floor blocks. This is a conditional engineering connection, not a native
+corridor or a claim that no other route exists. Carry nineteen cobblestone blocks
+in addition to the four ladders and seven scaffolds. No bridge was built in the
+accepted world.
+
+At feet Y33, use these X/Z waypoints from the northern entry to the southern one:
+(85.5,36.5), (86.5,36.5), (86.5,37.5), (88.5,37.5), (88.5,38.5),
+(88.5,58.5), (88.5,59.5), (82.5,59.5), (82.5,61.5).
+The first five horizontal blocks have full basalt-family support at Y32 and air
+at Y33/34. The last nine have full warped-nylium support and air at Y33/34.
+Between them, cells (88,32,Z39..57) are cave air over source lava at Y31, with air
+at Y33/34. Place one cobblestone in each of those nineteen cells, progressively
+from the northern bank. The route avoids the obsidian obstruction at X85..87,
+Z50..52 without mining it.
+
+For placement, crouch and face back toward the last supported block. At each
+south edge, a center 0.2 blocks beyond that edge retains 0.1 blocks of overlap
+for the 0.6-wide body. From eye Y34.27, target that block's south face at Y32.9;
+the short ray is outside the old block until the face and within three blocks.
+The new block occupies Y32, below the actor's feet. After successful placement,
+advance to the next edge and repeat. This explicitly requires the declared
+controlled crouching/placement behavior; failure to maintain support, missed
+placement, entity displacement or changed fluids censors the scenario. The
+nineteen placements and pose/tool selections require their own action budgets.
+The bridge has no rails and runs directly above lava, so support geometry does
+not make it a safe observed traverse.
+
+Count the entire twenty-block bank-to-bank segment as crouched movement, including
+its entry/exit offsets. The remaining fourteen blocks are upright movement.
+Returning over the completed bridge follows the same cautious path without
+repeating construction. The exterior round trip therefore contributes 28 upright
+and 40 crouched horizontal blocks plus nineteen placements. The bridge remains
+in place at the end; material recovery is outside this declared objective.
+
+Reproduce these floor/body facts from the same hash-bound extraction using
+`render_pilot.state_at`: query Y32..34 at X88, Z38..58; the five approach blocks
+follow the waypoint line, and the southern supported run follows Z59, X82..88,
+then X82, Z59..61. The nineteen middle floor values are `cave_air`, the endpoint
+floor values are `basalt` and `warped_nylium`, and every queried body value is
+`air`. Lava beneath the bridge is retained as a hazard, not replaced in raw data.
+This resolves the last connection needed to combine the local access branches;
+source timings, activation windows and the complete task assessment still remain.
