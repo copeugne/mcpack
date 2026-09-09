@@ -27,10 +27,11 @@ Dependencies are the delivered Item 9 classification, Item 10 density/custody,
 Item 11 routes and Item 12 discoverability. Their closure records and the delivered
 [cross-item audit](../item-10/cross-item-audit.md) are reused, not rerun.
 
-The [saved-view collision pilot](collision/README.md) predeclares the next bounded
-measurement for the first fixed house. Preparation passes 25 affected lifecycle
-tests, focused lint/types and pinned-JDK compilation. No collision result or
-playable connectivity is claimed yet.
+The [saved-view collision pilot](collision/README.md) now records all 8,500 first-house
+cells as 42 AABB unions, with no unsupported queries. Its fresh runtime completed
+in 206.424 seconds with clean shutdown and frozen configuration verification.
+The output is empty-context geometry; actor clearance and playable connectivity
+remain unresolved. Broader raw capture custody is still pending.
 
 ## Requirement map
 

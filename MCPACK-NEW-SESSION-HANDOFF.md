@@ -99,7 +99,9 @@ non-registry arena inspection. Exact dispositions and limitations are in the REA
 The intake is not proof of playable topology. The first
 [representative report](evidence/item-13/pilot/report.md) now validates two small
 dungeon chambers and covers all quality dimensions under conditional models.
-No new world experiment has run. Do not infer full coverage from this pilot.
+No additional dungeon-generation survey has run. A fresh runtime collision probe
+now supplies empty-context shapes from saved house blocks. Do not infer full
+quality coverage from either pilot.
 
 Pushed measurement milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
 Later scope milestones follow it; verify the current branch/upstream before work.
@@ -127,10 +129,13 @@ all nine selected layouts: 556,065 voxels, 87,559 compressed bytes, 60.887 secon
 The first house reproduced exactly and has an inspected slice sheet. Empty enemy
 assignments and the Dome's external-margin barrel are explicit raw limitations.
 
-The [collision pilot](evidence/item-13/collision/README.md) now has a bounded
-producer and predeclaration. Build, focused lint/types and 25 lifecycle tests pass.
-Next run it from a clean committed tree with fresh declared paths; retain the
-result or failure before expansion. It measures empty-context shapes, not actors.
+The [collision pilot](evidence/item-13/collision/README.md) completed at producer
+`73208407`: 8,500 cells, 151 palette states, 42 AABB unions, zero unsupported
+queries. Runtime/configuration identity, correlated flush and clean exit passed
+in 206.424 seconds. It measures empty-context shapes, not actors. Projection,
+capture result and redacted console are retained; broader raw capture custody
+remains pending. The three-argument collision call bypasses the state cache, so
+non-dynamic flags alone do not prove actor-context independence.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

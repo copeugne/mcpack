@@ -1,6 +1,6 @@
 # Saved-view collision pilot
 
-Status: PREDECLARED, not yet run. This resolves the specific missing collision
+Status: first capture PASSED for empty-context geometry only. This resolves the specific missing collision
 geometry for the first selected Medium House. It does not establish playable
 rooms, actor movement, traversal time or combat outcomes. The original selected
 [raw house](../fixed-blocks/mns-medium-house.json.gz) remains authoritative for
@@ -74,3 +74,48 @@ probe-only correlated flush and path rejection alongside existing failure cleanu
 The agent compiles with the pinned JDK and explicit classpath, -Xlint:all -Werror.
 The first build attempt without explicit classpath failed on an inherited invalid
 classpath entry; no server ran. The explicit-classpath build passes.
+
+## First capture result
+
+Source revision: `7320840758736e360697d6f932b5f524ec94a2aa`. The declared command
+completed in 206.424 seconds. The fresh instance occupied 650 MiB and capture
+folder 6.4 MiB by du, within the planning ceilings. Preflight verified all 136
+retained candidates, runtime identity and frozen manifest/audit. Readiness,
+correlated flush, stop and exit code 0 passed without process-group killing.
+The post-run audit retained 228 configuration files and only the four permitted
+comment-only normalizations. No registry dump or gameplay trial ran.
+
+The [projection](r1-collision.json.gz) records 8,500 cells, 151 saved palette
+states and 42 distinct local AABB unions. All cells have valid shape indices,
+no unsupported query was reported, and all palette dynamic-shape flags are false.
+Bounds and palette/voxel lengths were checked against the hash-bound raw input.
+An initial verification assertion incorrectly expected 146 palette states from
+working notes; comparison against the actual saved input corrected that check to
+151. No producer or raw output was changed to satisfy it.
+
+The original output SHA-256 is
+`e594135780e485250a7be9145904f588d591118302dd626862a3cb64759e3fb3`.
+The [capture result](r1-capture.json.gz) records lifecycle, identities, elapsed
+time and configuration audit. The [console](r1-console.txt.gz) preserves startup,
+warnings and lifecycle text with only its bind endpoint redacted. Empty attach
+and build logs are retained too. These five compressed outputs total 43,482 bytes.
+[Retention identities](r1-retention.json) bind original and published hashes;
+`uv run python -m evidence.item-13.collision.retain` reproduces them from the
+original capture into absent destination files. It refuses overwrites. Original
+console, full debug/latest logs, compiled probe and captured configuration remain
+under `evidence/raw/item13/collision-r1/`; their broader raw custody remains pending.
+Do not claim that local retention is independent redundant storage.
+
+Source inspection of the hash-verified mapped server JAR
+`26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71`
+shows `BlockBehaviour$BlockStateBase.initCache` offsets 36-58 populate a cache when
+hasDynamicShape is false. However, the three-argument getCollisionShape used by
+this probe delegates directly to Block.getCollisionShape at offsets 0-14. The
+two-argument overload's cache return is not the call made here. Accordingly,
+non-dynamic flags alone do not prove actor-context independence. Reproduce this
+inspection with the pinned javap, `-p -c -classpath` pointing to the existing
+mapped server JAR and quoted class name
+`net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase`.
+This is source inspection, not evidence that every retained override is context
+independent. The 42 unions support the declared empty-context geometric view;
+actor clearance, interaction changes and playable topology remain unresolved.
