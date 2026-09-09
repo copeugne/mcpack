@@ -61,6 +61,7 @@ def build(results: Path, *, representative: bool = False) -> str:
             doc["inputs"] != expected
             or doc["world"] != name
             or doc["protocol"] != "item12-discoverability-v1"
+            or doc.get("human_metrics") != "NOT MEASURED"
         ):
             raise ValueError("result provenance mismatch")
         if len(doc["cases"]) != producer["cases"]:
@@ -77,7 +78,7 @@ def build(results: Path, *, representative: bool = False) -> str:
         "",
         "These are family-balanced saved-world cases, not discovery probabilities. Each case retains its full family abundance per 4,096 chunks separately from geometric rays. Overworld only; other dimensions retain Item 8 source assessment and Item 10 density. Architectural/entrance judgments are in [assessments](assessments.md); navigation evidence is [separate](navigation-source/README.md).",
         "",
-        "C/O/U means CLEAR/OCCLUDED/UNKNOWN, followed by the full ray denominator. Low/high use the complete eight-cell ring; UNKNOWN means at least one missing eye. Relief can include buildings or water, not just terrain. A clear envelope point is not a visible authored block, recognizable silhouette or entrance.",
+        "C/O/U means CLEAR/OCCLUDED/UNKNOWN, followed by the full ray denominator. Low/high use the complete eight-cell ring; UNKNOWN means at least one missing eye. Relief can include buildings or water, not just terrain. Low and high cells also differ in azimuth, so this is not a causal elevation experiment. A clear envelope point is not a visible authored block, recognizable silhouette or entrance.",
         "",
         "WORLD_SURFACE (WS) and MOTION_BLOCKING_NO_LEAVES (NL) use the same observer eye. NL is a foliage-sensitive heightmap comparison, not a measured no-trees world. Finite boundaries, fluid opacity, ignored overhangs/caves, purposive seeds and two repetitions limit interpretation. Zeroes do not prove absence.",
         "",
@@ -132,7 +133,64 @@ def build(results: Path, *, representative: bool = False) -> str:
                 f"| {biome} | {len(cases)} | {counts(ws)} | {counts(nl)} | {contrast} / {len(ws)} |"
             )
         lines += [""]
+    lines.extend(family_table(docs))
     return "\n".join(lines).rstrip() + "\n"
+
+
+def family_table(docs: list[tuple[dict[str, Any], str]]) -> list[str]:
+    inventory_raw = read_bound(
+        ROOT / "evidence/item-8/inventory.json",
+        "4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d",
+    )
+    inventory = json.loads(inventory_raw)["families"]
+    grouped = {}
+    for doc, _ in docs:
+        for case in doc["cases"]:
+            grouped.setdefault(case["family_id"], []).append((doc["world"], case))
+    lines = [
+        "## Independent family abundance and discovery cues",
+        "",
+        f"{len(grouped)} observed canonical families out of the accepted 448 have sampled Overworld cases in this report. The other {448 - len(grouped)} have no case here, not proven absence from the pack. Their source assessments remain in the unchanged Item 8 inventory; Item 10 retains all-dimension density.",
+        "",
+        "The count ranges below are existing full-frame placement counts, separately for baseline (B) and omit-Sparse control (C), among worlds in which the family occurs. Zero-occurrence worlds are shown separately. A case is WS-clear when any of its sampled rays clears; WS-occluded means every ray is occluded; the remaining cases are UNKNOWN/mixed without a clear ray. These are case counts, not all-placement discoverability rates. Source forms are reused artifact assessments, not new human recognition data.",
+        "",
+        "| Family | B count range; absent worlds | C count range; absent worlds | WS clear / all-occluded / other cases | Reused architectural cue assessment |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for family, members in sorted(grouped.items()):
+        ranges = []
+        for arm in ("baseline", "without-sparse"):
+            values = [case["family_count"] for name, case in members if arm in name]
+            total_worlds = sum(arm in doc["world"] for doc, _ in docs)
+            extent = f"{min(values)}..{max(values)}" if values else "no occurrences"
+            ranges.append(f"{extent}; {total_worlds - len(values)}/{total_worlds}")
+        statuses = Counter()
+        for _, case in members:
+            rays = [r["status"] for v in case["observation"]["views"] for r in v["rays"][FIELDS[0]]]
+            statuses[
+                "clear"
+                if "CLEAR" in rays
+                else "occluded"
+                if rays and set(rays) == {"OCCLUDED"}
+                else "other"
+            ] += 1
+        source = inventory[family]["visual_discoverability"]
+        if isinstance(source, dict):
+            text = next(
+                (source[k] for k in ("source_form", "value", "assessment") if k in source),
+                json.dumps(source, sort_keys=True),
+            )
+        else:
+            text = source
+        text = str(text).replace("|", "\\|").replace("\n", " ")
+        lines.append(
+            f"| {family} | {ranges[0]} | {ranges[1]} | {statuses['clear']} / {statuses['occluded']} / {statuses['other']} of {len(members)} | {text} |"
+        )
+    lines += [
+        "",
+        "Source identity: Item 8 inventory SHA-256 `4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d`. Each row uses `families[ID].visual_discoverability`; placement definitions and original limitations remain linked in that record. The full world tables retain selected variant, biome, geometry and count denominators. Source visual forms cannot prove actual doorway visibility.",
+    ]
+    return lines
 
 
 def main() -> None:

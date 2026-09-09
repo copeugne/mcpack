@@ -47,3 +47,13 @@ def test_report_rejects_wrong_archive_binding(monkeypatch: pytest.MonkeyPatch) -
     monkeypatch.setitem(build.__globals__, "read_bound", read)
     with pytest.raises(ValueError, match="provenance"):
         build(BASE / "results", representative=True)
+
+
+def test_complete_report_reproduces_all_worlds_and_family_join() -> None:
+    build = runpy.run_path(str(BASE / "summarize.py"))["build"]
+    report = build(BASE / "results")
+    assert report == (BASE / "report.md").read_text()
+    assert report.count("## full-") == 16
+    assert "94 observed canonical families" in report
+    assert "354 have no case here" in report
+    assert "### Biome-grouped ray denominators" in report

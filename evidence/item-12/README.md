@@ -5,20 +5,20 @@ Authority: SPECS.md Item 12 and the separately user-authorized
 [inspection/automated protocol](protocol.md), `item12-discoverability-v1`.
 Human recognition and discovery rates remain NOT MEASURED.
 
-## Requirement map before implementation
+## Requirement map and delivered evidence
 
-| Item 12 requirement | Existing evidence reused | Missing deliverable |
+| Item 12 requirement | Existing evidence reused | New evidence delivered |
 | --- | --- | --- |
-| Surface visibility | Item 11 raw rays and explicit limitations; Item 8 architecture | Independent sampled viewpoints and external exposure proxies |
-| Underground entrance visibility | Item 8 placement/architecture, Item 7 burial context | Explicit entrance assessment, actual saved-world placement sections, no envelope-as-entrance claim |
-| Valley viewpoints | Item 11 retained terrain observations | Predeclared low observer, relief and ray outcomes |
-| High-terrain viewpoints | Same accepted worlds | Matched high observer and ray outcomes |
-| Biome concealment | Item 10 occurrence biome attribution | Same-eye heightmap contrast grouped by recorded biome |
-| Recognizable silhouettes | All 448 Item 8 visual descriptions and their source references | Sampled-family architectural judgments with evidence and limitations |
-| Entrance importance | Item 8 source forms, underground placement | External lead versus internal-only cue assessments |
-| Realistic /locate dependence | Item 8 packaged navigation evidence where present | Inspect applicable survival leads and state bounded command-dependence risk |
-| Frequent but concealed versus rare | Item 10 complete counts and denominators | Join existing abundance to independent visibility and assessment results |
-| Independent discoverability | Item 11 already distinguishes adjacency/rays/density | Report separate quantities and uncertainties without human-discovery labels |
+| Surface visibility | Item 11 raw rays and explicit limitations; Item 8 architecture | [All sixteen viewpoint matrices](report.md) |
+| Underground entrance visibility | Item 8 placement/architecture, Item 7 burial context | [Conditional source/entrance assessments](assessments.md), [ordinary](ordinary-sections.svg) and [mountainous](mountainous-sections.svg) placement context; no envelope-as-entrance claim |
+| Valley viewpoints | Item 11 retained terrain observations | [Per-case low observer, relief and ray outcomes](report.md) |
+| High-terrain viewpoints | Same accepted worlds | [Per-case high observer and ray outcomes](report.md), with azimuth confounding explicit |
+| Biome concealment | Item 10 occurrence biome attribution | [Complete same-eye heightmap contrasts by recorded biome](report.md) |
+| Recognizable silhouettes | All 448 Item 8 visual descriptions and their source references | [Family cue appendix](report.md#independent-family-abundance-and-discovery-cues) and [bounded judgments](assessments.md) |
+| Entrance importance | Item 8 source forms, underground placement | [External leads versus internal-only cues](assessments.md) |
+| Realistic /locate dependence | Item 8 packaged navigation evidence where present | [Packaged trial-map lead](navigation-source/README.md) and [conditional risks](assessments.md) |
+| Frequent but concealed versus rare | Item 10 complete counts and denominators | [Independent family abundance/cue join](report.md#independent-family-abundance-and-discovery-cues) |
+| Independent discoverability | Item 11 already distinguishes adjacency/rays/density | [Separate count, ray and assessment quantities](report.md), with explicit denominators and uncertainty |
 
 ## Dependency and input disposition
 
@@ -47,9 +47,9 @@ views or recognition. It cannot close the missing Item 12 perceptual claims.
 
 ## Current batch
 
-Method decision, input availability and the ordinary representative pass.
-The remaining fifteen worlds, their assessments, full report, final validation
-and reviewed main delivery remain outstanding.
+The full local exit gate passes under the separately authorized assessment scope.
+Final completed clean Codex review, merge and verified main delivery remain.
+Item 13 is unstarted.
 
 ## Reproduce input availability
 
@@ -145,3 +145,86 @@ CairoSVG 2.9.0 package via `uv run --with cairosvg==2.9.0 python`, calling
 `cairosvg.svg2png(url='evidence/item-12/ordinary-sections.svg', write_to=...)`.
 The deterministic SVG is committed; no project dependency or client installation
 is required for numerical reproduction.
+
+## Clean reproduction and expansion method
+
+A clean tracked export of `bbad023d` with a separate locked environment reproduced
+the ordinary raw result byte for byte in 41.701 seconds, SHA-256
+`3500ea443906cae3d7b26de8ee2eaec0e9a74b845a998c2b907d4794c6e4baac`.
+[Environment installation](validation/clean-sync.txt) and
+[producer output](validation/clean-reproduction.txt) are retained. The clean code
+consumed the existing hash-verified accepted restores through explicit `--raw-root`;
+it does not claim fresh world generation, a new restore or a clean-machine benchmark.
+
+The remaining-world collection uses the same unchanged producer and protocol:
+
+```sh
+uv run --no-sync python - <<'PY' > /tmp/item12-remaining.txt
+from tools.analyze_route_opportunities import accepted_inputs
+print('\n'.join(n for n in sorted(accepted_inputs()) if n != 'full-ordinary-r1-baseline'))
+PY
+while IFS= read -r name; do
+  { time uv run --no-sync python -m tools.analyze_discoverability --name "$name" \
+      --output "evidence/item-12/results/$name.json.gz"; } \
+    > "evidence/item-12/validation/full/$name.txt" 2>&1 || exit 1
+done < /tmp/item12-remaining.txt
+```
+
+For reproduction, use an absent output directory and retain new logs separately;
+the producer refuses to overwrite accepted results. The original representative
+and report are preserved in the milestone commit. No route matrix, world generation,
+classification, preservation or configuration audit was repeated for these outputs.
+
+## Full local exit gate
+
+**PASS for the separately authorized Item 12 scope; review and main delivery are
+still required.** All ten requirement rows above have delivered evidence and
+explicit inference limits. The complete [report](report.md) covers sixteen worlds,
+464 selected family/world cases and 94 distinct canonical families. The remaining
+354 accepted families have source assessments but no case in this finite viewpoint
+frame; no zero discoverability or all-dimension visibility claim is inferred.
+The ordinary result bytes and producer are unchanged from the representative
+milestone; the other fifteen outputs use the same source and protocol identities. The [assessments](assessments.md) integrate source-supported entrance
+mechanisms, importance cues, silhouettes and conditional command-dependence risks.
+These assess entrances; they do not measure exact opening coordinates, cave
+connectivity, human recognition or actual player reliance on commands.
+
+All sixteen collections succeeded without changing selection or configuration.
+Item 10's [heap-failed ocean attempt](../item-10/full-ocean-heavy-r2-without-sparse/README.md)
+and [incomplete-save attempt](../item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
+remain excluded, preserved evidence. The accepted third attempt remains the only
+r2 ocean control input. Missing viewpoints and occlusion are retained outcomes,
+not producer failures or reasons to substitute locations.
+
+[Resource totals](validation/resource-totals.txt): 815,332 compressed result bytes;
+1,037.807 total producer seconds, range 37.150 to 192.525 seconds. The report is
+129,273 bytes. This fits the 160-minute and 1-GiB ceilings. Concurrent source
+inspection, clean reproduction and tests affect wall times; these are operational
+costs, not server-performance measurements. Exact totals are reproduced by summing
+result sizes and the `real` line of each named producer log over the accepted
+sixteen-name index, with family/case counts from those same results.
+
+[Full applicable gate](validation/full-gate.txt): **610 tests pass in 450.28 seconds**
+for `tests/item7 tests/item10 tests/item11 tests/item12`. The final report integration
+adds a focused complete-matrix reproduction check; all [seven final Item 12 tests](validation/final-tests.txt)
+pass in 19.14 seconds. Final [lint](validation/final-lint.txt),
+[formatting](validation/final-format.txt), and [types](validation/final-types.txt)
+pass. No unchanged full gate is repeated solely for reassurance. The source-world
+representative reproduces from the clean tracked export as recorded above.
+
+The final generated report is rebuilt with the same script, omitting
+`--representative`:
+
+```sh
+PYTHONPATH=. uv run --no-sync python evidence/item-12/summarize.py \
+  --results evidence/item-12/results --output /tmp/item12-full-report.md
+cmp evidence/item-12/report.md /tmp/item12-full-report.md
+```
+
+The mountainous gallery uses the same renderer with
+`--result evidence/item-12/results/full-mountainous-r1-baseline.json.gz`.
+Its inspected terrain and vegetation panels and numerical comparisons are recorded
+in assessments.md. No graphical client, new world, operational server, config
+change or new archive revision was needed. This completion scope must accompany
+future Item 13/20/21/31 use; do not promote it to observed human discovery or use
+an envelope ray as proof of a visible entrance.

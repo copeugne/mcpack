@@ -55,3 +55,60 @@ No exploration-time, recognition-probability, enjoyment, observed human search,
 entrance traversal or cave-connectivity result is claimed. This bounded assessment
 identifies evidence needs for future navigation design without starting Item 13
 or implementing Item 31.
+
+## Expanded source-form assessment rules and exceptions
+
+The report's family appendix integrates each sampled family's existing architectural
+cue assessment with its independent full-frame count range and observed ray outcomes.
+It does not classify silhouettes from family names or box dimensions. The inventory's
+full placement and limitation fields remain authoritative for each listed form.
+These are the Item 12 implications of the retained forms, including important
+exceptions to a simple surface-versus-underground split:
+
+| Source-supported form | Silhouette and entrance-importance judgment | Navigation consequence and limitation |
+| --- | --- | --- |
+| Surface houses, towers, settlements, temples, vessels and statues | Potentially distinctive built or figurative outlines. A visible building marks a destination; it does not reveal the location, danger or importance of every internal entrance. Doors and roof entry are not identified by envelope rays. | Lower reliance on coordinate leads when actually exposed. Woodland, cliffs and water can conceal even a tall built form. Retain selected variant and observer context. |
+| Camps, benches, paths, ponds, scattered ruins, log forms, crops and small cache installations | Low or terrain-like local cues, with weaker separation from surrounding vegetation or terrain. Containers and hidden lower pieces are not skyline cues. | A high generation count can coexist with poor surface notice. Local exploration remains possible; geometric occlusion does not establish player failure. |
+| Trees, planted structures and natural-looking landforms | Silhouettes can be large but visually similar to their biome. Size is insufficient evidence of recognition as authored or important content. | Elevation may improve geometric exposure without improving semantic recognition. Biome-grouped NL/WS contrasts are model evidence only; texture and attention remain unmeasured. |
+| betterdungeons:zombie_dungeon | Source establishes a conditional surface staircase, unlike a guaranteed permanently sealed chamber. Terrain-responsive stairs can provide an entrance cue; visibility and importance are conditional. | Treat as a possible external lead, not guaranteed visible stairs in every selected world. Inventory cites the actual staircase processor and frozen maximum length. |
+| bettermineshafts:mineshaft | VerticalEntrance includes vertical-shaft and surface-tunnel paths. These can communicate a mine entrance; successful surface exposure is terrain-dependent. | Do not label the whole family command-dependent because its envelope is mostly underground. Exact generated entry coordinates and exposure are not established by these surface-heightmap targets. |
+| betterdungeons:skeleton_dungeon, small_dungeon and spider_dungeon; repurposed_structures:mineshaft; minecraft:ancient_city; IDAS nexus/ancient_portal/underground_camp; terralith underground sites | Masonry, supports, rails, tunnels and rooms are internal recognition cues. No guaranteed exterior entrance is established by the cited forms. | Elevated dependence on cave discovery or leads under ordinary surface searching. Excavation can expose content but does not explain how an unknown target is located. |
+| IDAS entrance-bearing designs, including ancient_mines, desert_pyramid, frozen_crypt, labyrinth and ruins_of_the_deep | The accepted source explicitly distinguishes a surface entrance component from extensive lower architecture. Entrance architecture can communicate that a deeper destination exists; total envelope size cannot measure that cue. | A surface-led discovery path is source-supported. Local terrain, snow and vegetation still control exposure. Do not assume a family appears in these finite Overworld samples merely because its source has an entrance. |
+| minecraft:trail_ruins; minecraft:igloo; repurposed_structures:igloo | Exposed tower material or a small shelter can cue inspection of concealed lower content. A trapdoor/ladder may lead down, but alternative layouts and terrain can remove that implication. | A subtle external cue can matter more than underground footprint. Surface exposure and the presence of a basement are separate claims. |
+| betteroceanmonuments:ocean_monument | Monument dome/ring/shrine architecture offers a potentially distinctive aquatic silhouette. Underwater room cues remain concealed from the surface. | Item 8 verifies ocean-explorer-map tag eligibility, and the retained VillagerTrades source includes the normal ocean map listing. This supports a packaged lead, not successful runtime acquisition. |
+| quark:fairy_ring | Source flower-ring cue marks buried ore, but failed/incomplete ring placement can prevent that cue. | Retained Item 10 failed attempts and mixed traces remain relevant. A sampled anchor or clear geometric point does not prove an intact visible ring; do not silently turn every attempted patch into a landmark. |
+| supplementaries:road_sign and explorify:guide_post | Source sign/post architecture can communicate navigation intent. A tall post or a campfire input does not guarantee a meaningful destination or emitted smoke. | Supplementaries can create a notice board for empty destinations; the prior map integration limitation remains. Explorify processors can alter/remove a campfire. No successful lead or smoke range is inferred from config/source presence alone. |
+
+These implications apply to source forms, not to every placement of a canonical
+family. The numerical report keeps each selected registry variant visible so, for
+example, an airship does not stand in for every Integrated Villages design.
+Families outside the viewpoint frame keep source-only confidence. No unobserved
+family is assigned a zero discoverability rate. Surface-entrance exposure, exact
+opening coordinates and recognizable importance are assessed conditionally where
+the source provides an entrance mechanism; they are not invented from heightmaps.
+
+## Terrain and biome inspection
+
+The [mountainous r1 baseline sections](mountainous-sections.svg) supply a contrasting
+terrain surface check to ordinary ocean-dominated views. The inspected first four
+case pairs show strong slopes, local depressions and differing building/terrain
+profiles; the following forgotten-well panels show a larger WS/NL separation
+around vegetation. These technical profiles support terrain/concealment context,
+not perspective renders or cave-opening observations.
+
+The abandoned-temple case has 89 blocks of observer-ring relief, with 3/5 WS target
+rays clear from the low cell and 4/5 from the high cell. The monastery has 66 blocks
+of relief but 3/5 low and 0/5 high WS rays clear. The high/low cells are at different
+azimuths as well as elevations, so these are paired viewpoint outcomes, not the
+causal benefit of raising one observer. The small dungeon remains 0/5 from both
+extrema despite 89 blocks of relief. These are the actual retained case results,
+not a rule that high ground reveals every entrance.
+
+For the large-oak case in the recorded prairie biome, the low observer gives
+2/5 WS-clear versus 5/5 NL-clear targets, while the high observer gives 0/5 for
+both. This is a same-eye foliage-sensitive geometric contrast; the source warns
+that tree forms may blend into nearby woodland. The bearclaw-inn case in redwood
+forest gives 0/5 WS-clear versus 1/5 NL-clear from its high observer. These examples
+separate concealment opportunity from the source question of recognizing a
+building or tree as important. Every biome's complete counts and UNKNOWN outcomes
+remain in the generated report rather than only these illustrative cases.
