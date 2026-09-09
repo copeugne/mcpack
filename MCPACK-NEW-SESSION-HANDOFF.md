@@ -176,10 +176,10 @@ now attributes the saved lava to an overlapping fortress template. The original
 case is preserved; a predeclared non-overlapping candidate was extracted in 6.644s
 (8464 voxels). Its one-area assessment, 26-block circuit and northern external
 approach are integrated. The original rejects that circuit; both reward faces now
-connect by a checked detour. Both local assessments now record room-boundary
-sensitivity and remaining model limits. Next: measure the other selected layouts,
-reusing the first-house source/model support; finish other family/variant/seed
-selection and measurements. First-house broader raw-capture custody is pending.
+connect by a checked detour. Latest steering pauses layout expansion for
+[protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction).
+Circle's complete-objective budget is UNRESOLVED; movement-only times do not pass.
+Next: resolve mining, interactions, encounter schedule and acquisition on that sample.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental
 Item 8/7 worlds for missing families and variants before declaring new generation.
 Do not repeat the scope pass or baseline start inspection. Named components and

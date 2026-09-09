@@ -1,8 +1,43 @@
 # Item 13 protocol
 
-Version: item13-quality-v1, PREDECLARATION IN PROGRESS. No scoring or runtime
+Version: item13-quality-v2, PREDECLARATION IN PROGRESS. No scoring or runtime
 experiment is authorized by an unfinished sampling/model section below.
 The user-approved method boundary is recorded in [README.md](README.md).
+
+## Complete-objective timing correction
+
+The latest user-authorized steering requires a complete dungeon objective before
+timing acceptance. Earlier route calculations remain movement components, even
+when labeled conditional traversal or accompanied by a separate combat workload.
+They do not satisfy the complete timing requirement. Historical raw protocol
+hashes continue to identify v1 and are not rebound to this correction.
+
+Before expanding layout measurements, demonstrate on an existing sample an
+objective with explicit start, terminal conditions, actor/resources, navigation
+knowledge, encounter state, permitted bypasses and failures. Account for movement,
+navigation/decisions, interactions and item collection, mining/breaching, combat,
+and required waiting/recovery. Define phases so concurrent activity is not counted
+twice. A sequential sum is an explicit scenario, not proof that real play is
+sequential. Existing path length may omit pursuit, pickup and mining-position
+adjustments; those omissions need their own disposition.
+
+Use source-supported numerical mechanisms where available, declared scenario
+assumptions where defensible, and UNKNOWN where neither supplies an estimate.
+Known layout can remove search from a stipulated oracle scenario; it does not
+measure player navigation or justify zero aiming/menu/decision latency. A fixed
+one-wave enemy workload cannot represent a clear while active spawners continue
+attempting to spawn. Likewise geometric contact is not item pickup or mining.
+
+If any required cost, lifecycle or objective condition remains unsupported, total
+completion time is UNRESOLVED. Do not fill it with a guessed seconds-per-action
+constant, treat it as zero, sum incomplete pieces into a total, or report a finite
+upper bound. Preserve partial components and their uncertainty. First-clear,
+discovery and observed-human claims remain outside the authorized modeled scope.
+
+The [Circle complete-objective demonstration](fixed-blocks/mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
+is the current representative. Its unresolved components block expansion, not
+read-only work that resolves this methodological gap. No new framework, world
+generation or repeated block audit is justified merely to restate known inputs.
 
 ## Population and significance
 

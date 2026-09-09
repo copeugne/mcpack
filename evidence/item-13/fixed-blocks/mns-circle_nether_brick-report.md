@@ -1,7 +1,8 @@
 # Nether Brick Circle: quality assessment
 
-Status: local modeled/inspection assessments recorded for the original mixed
-case and supplemental case. Item 13 coverage and delivery remain IN PROGRESS.
+Status: local inspection assessments recorded for both cases. Complete-objective
+timing is UNRESOLVED under protocol v2; prior movement results do not pass that
+requirement. Item 13 coverage and delivery remain IN PROGRESS.
 This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
 
@@ -59,7 +60,7 @@ geometric assessment. Source level0 does not demonstrate a player encounter.
 
 Two saved ordinary spawners remain: piglin at (287,67,96) and piglin brute at
 (288,67,97). Each has SpawnCount4, SpawnRange4, MaxNearbyEntities6,
-RequiredPlayerRange16, MinSpawnDelay200, MaxSpawnDelay800, Delay0 and empty
+RequiredPlayerRange16, MinSpawnDelay200, MaxSpawnDelay800, Delay 0 and empty
 SpawnPotentials. These are two authored enemy types and potential attempt
 counts, not two realized encounters or eight guaranteed enemies. Unlike the
 houses' missing assignments, both IDs are explicit.
@@ -785,3 +786,60 @@ for x in range(282,286):
         expected = 'crimson_trapdoor' if (x,z)==(283,99) else 'nether_bricks'
         assert state(case,x,67,z)['Name']=='minecraft:'+expected
 ```
+
+## Complete-objective timing demonstration v2
+
+The timing correction supersedes any implication above that a local assessment
+closes the timing requirement. Use the existing supplemental sample, unchanged
+raw blocks and source observations. No further layout expansion is authorized
+until this representative's complete budget is resolved or its limitation has
+an explicit accepted methodological disposition.
+
+Objective: starting at the declared southern station(368.5,33,85.5), disable
+both authored spawners, defeat every hostile produced by those sources before
+disablement, acquire both placed ancient-debris blocks into inventory, and
+return alive to that station. Touching a target or merely exposing its face
+does not complete the objective. This is a local clear-and-extract objective;
+travel from world spawn and first discovery are outside its explicit boundary.
+
+Actor: one adult player with full health/food, unenchanted iron armor and iron
+sword, and an unenchanted diamond pickaxe with enough durability for the declared
+blocks, available hotbar slots and inventory capacity for both debris drops.
+The diamond pick is an explicit capability change from the earlier iron-pick
+inspection profile, required by the recorded debris tool constraint. No buffs,
+critical/sweep attacks, flight, teleportation, additional building or external
+assistance. Navigation knowledge is complete, with no search for target locations;
+navigation execution, aiming and interaction costs are not thereby zero.
+
+Use a stipulated initially empty encounter state for this controlled model,
+distinct from the unmeasured entity population in the accepted world. Both saved
+spawners remain active with their actual Delay 0 and other retained parameters
+until broken. Natural spawning is excluded from this narrowly identified model,
+not asserted absent in the baseline. The declared route may use the known
+trapdoor toggle, one ore-cover removal and source-supported shift crossing.
+Additional pickup/pursuit motion must be counted if required. Death, inability
+to reach a required target, failed acquisition or an unresolved encounter state
+prevents successful completion; an unsupported duration is UNRESOLVED, not zero.
+
+| Cost component | Existing support | Current complete-objective disposition |
+| --- | --- | --- |
+| Inspection movement | 26-block circuit, 22 upright/4 crouched; 8.833333 nominal seconds, 7.066667 faster, 11.777778 slower | Reusable movement component only. Pickup, spawner-mining positions and pursuit may add motion; complete movement cost UNKNOWN. |
+| Navigation and decisions | Complete target/route knowledge is stipulated | Search for locations is excluded by scenario. Execution, aiming, tool changes and decision latency UNKNOWN; no invented player constant. |
+| Interactions/acquisition | One trapdoor toggle and both reward faces geometrically supported | Input latency, drop creation/pickup and inventory acquisition not measured or modeled to completion. UNKNOWN. |
+| Mining | Required blocks: two spawners, one ore cover, two debris; diamond capability declared | Five block-breaking operations, not five instantaneous actions. Supported hardness/tool-speed/tick and interruption model still required. UNKNOWN duration. |
+| Combat | Prior source health/damage model for successful piglin/brute counts | Existing 0..4 per source grid is one-wave sensitivity, not a bound on enemies produced before disablement. Spawn timing/success, pursuit and interruption remain UNKNOWN for this objective. |
+| Waiting/recovery | Saved delays and conditional workload inputs retained | No supported encounter-clear verification, injury/recovery or idle schedule. UNKNOWN where required. |
+
+For a sequential model, total would be the sum of nonoverlapping movement,
+navigation, interaction/acquisition, mining, combat and waiting/recovery phases.
+Combat interruption pauses mining; its duration is not charged twice. No such
+schedule has yet been justified. Therefore total completion time is UNRESOLVED;
+8.833333 seconds is neither a dungeon completion estimate nor a finite upper
+bound, and adding the old one-wave combat range would not fix the missing costs.
+
+This demonstration reuses the existing sample and identifies the exact next
+work: source-supported mining/interaction mechanics and an explicit encounter
+schedule, followed by acquisition and any added movement. Investigate blocks
+again only if they affect one of those required costs. Do not expand to another
+layout or claim a timing pass while these components remain unresolved. Human
+times, realized encounters and actual acquired loot remain NOT MEASURED.

@@ -2,6 +2,14 @@
 
 Status: IN PROGRESS. Item 14 is UNSTARTED.
 
+Current gate: layout expansion is PAUSED for protocol v2's complete-objective
+timing correction. All existing route times remain movement components; none
+alone satisfies dungeon completion timing. The [Circle demonstration](fixed-blocks/mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
+accounts for the required phases and leaves total time UNRESOLVED where costs
+are unsupported. Earlier local/representative PASS language does not pass this
+revised gate. Preserve prior raw evidence and solve this representative before
+scaling; do not repeat block investigations that cannot change a required cost.
+
 ## Authorized method and delivery boundary
 
 On 2026-09-09 the user authorized starting Item 13, superseding the old handoff's

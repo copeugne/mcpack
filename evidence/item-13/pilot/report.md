@@ -1,7 +1,9 @@
 # Small-dungeon representative
 
-Status: representative analysis PASS under the separate Item 13 inspection/model
-scope. This is two samples of one of 192 included families, not Item 13 completion.
+Status: historical representative inspection/model analysis PASS under v1;
+complete-objective timing is NOT PASSED under protocol v2. Existing survey and
+combat components remain valid within their original scope. This is two samples
+of one of 192 included families, not Item 13 completion.
 It validates the compact-chamber measurement path before larger designs. The full
 material-variant sampling matrix remains unfinished.
 
