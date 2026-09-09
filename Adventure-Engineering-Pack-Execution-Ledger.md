@@ -3,7 +3,7 @@
 **Ledger version:** 0.20
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 11 COMPLETE through clean-reviewed PR37 and verified main `c4281c65`. Item 10 and the cross-item audit are COMPLETE through PR35/36. Item 12 is authorized and IN PROGRESS under evidence/item-12/protocol.md. Item 13 remains unstarted.
+**Current execution gate:** Item 12 COMPLETE through clean-reviewed PR39 and verified main `33e11923`, under the separately authorized inspection/automated scope. Item 11 and the Items 2 through 10 audit remain COMPLETE through PR37 and PR36. Item 13 remains unstarted and is not authorized. Authoritative closure: evidence/item-12/README.md#verified-delivery.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -479,7 +479,7 @@ This register is additive. More variables will be discovered during artifact ins
 - `ADV-003`: target cadence by tier, stage, and transport mode.
 - `ADV-004`: Activity Ratio target and dead-travel ceiling.
 - `ADV-005`: repetition limits and family-equivalence rules.
-- `ADV-006`: discoverability scoring rubric.
+- `ADV-006`: discoverability rubric: **resolved for Item 12 by `item12-discoverability-v3` and evidence/item-12/assessments.md under the separately authorized inspection/automated scope. Human recognition, discovery rates and actual player command dependence remain NOT MEASURED.**
 - `ADV-007`: minimum dungeon topology metrics.
 - `ADV-008`: dungeon persistence/repeatability policy.
 - `ADV-009`: encounter difficulty budgets by group size.
@@ -510,7 +510,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
-| 12 | Structure discoverability | `IN PROGRESS` | User separately authorized inspection and automated assessment with explicit limits. Predeclared protocol and requirement map: evidence/item-12/README.md. |
+| 12 | Structure discoverability | `COMPLETE` | Sixteen accepted worlds, 464 cases and 94 observed families under separately authorized inspection/automated scope. Clean reviewed head `4fc7e605` merged through PR39; fetched main `33e11923` verified. Closure and limitations: `evidence/item-12/README.md#verified-delivery`. |
 | 13-18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
@@ -522,8 +522,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Preserve accepted Items 2 through 11 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
-2. Item 12 is now authorized. Follow evidence/item-12/protocol.md and its requirement map; do not reopen completed work merely for reassurance.
-3. Do not repeat completed collection, audits, classification or preservation. Do not start Item 13.
+1. Preserve accepted Items 2 through 12 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
+2. Item 12 is COMPLETE through PR39. Deliver this completion record through its required review/merge workflow if still pending; no measurement work remains.
+3. Wait for a new user instruction before Item 13. Do not repeat completed collection, audits, classification, preservation or route processing.
 
 No later item will be marked complete out of order or from inference.
