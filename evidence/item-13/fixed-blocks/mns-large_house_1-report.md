@@ -303,3 +303,61 @@ assert state(case,76,34,32)=={'Name':'minecraft:crimson_slab',
 print('Eleven-block native approach, crouched alcove and one declared stair breach.')
 NORTH_CACHE
 ```
+
+## Southern lower cache: conditional pillar entrance
+
+The southern cache has a three-cell-wide inner alcove at X76..78, Z61, feet Y35.
+All three cells have air at Y35/36 over full support at Y34. Its ceiling starts
+at Y37, above the 1.8-high adult. The three treasure barrels at (76,35,62),
+(77,35,62) and (76,36,62), plus the wither-skeleton spawner at (78,35,62), face
+this alcove. Direct native entry is not inferred from these empty interior cells.
+The eastern pillar skin blocks a walk-in approach.
+
+Declare a specific engineering entry from (82.5,33,61.5), supported by warped
+nylium at Y32. This alternative uses the existing diamond pick and two additional
+ladders, separate from the two ladders already declared for the higher cap route.
+No claim is made that this is the globally cheapest breach or an authored entrance.
+Remove the following eight blocks, retaining the floor at Y32:
+
+| X,Y,Z | Saved block | Role in the declared opening |
+| --- | --- | --- |
+| 81,34,61 | crimson fence | Upper obstruction of first tunnel cell |
+| 81,33,61 | bottom deepslate-brick stair, south-facing | Lower obstruction of first tunnel cell |
+| 80,34,61 | deepslate bricks | Upper obstruction of second tunnel cell |
+| 80,33,61 | polished-blackstone bricks | Lower obstruction of second tunnel cell |
+| 79,34,61 | polished-blackstone bricks | Upper obstruction of third tunnel cell |
+| 79,33,61 | polished-blackstone bricks | Lower obstruction of third tunnel cell |
+| 79,35,61 | polished-blackstone bricks | Ceiling removed after entering the third cell |
+| 79,36,61 | polished-blackstone bricks | Further head clearance for the two-block ascent |
+
+For each horizontal cell, remove the upper then lower obstruction from the previous
+standing cell, then advance. After entering X79 at feet Y33, mine its ceiling
+upward at Y35 then Y36; do not aim through the still-solid ceiling at X80. The
+three tunnel floors (X79..81,Y32,Z61) are full polished-blackstone bricks. Target
+faces are within the three-block interaction limit at each step. Mining durations,
+input allowances and tool selection must be charged later; this is not free access.
+
+Place south-facing ladders at (79,34,61) then (79,33,61), supported by the full
+polished-blackstone bricks immediately north at (79,34,60) and (79,33,60).
+The existing ladder-source derivation applies: their northern 3/16 plates leave
+clearance for the centered adult. Climb from feet Y33 to Y35, then transfer west
+to (78.5,35,61.5), whose full Y34 floor and Y35/36 air were verified. Continue
+west through the alcove to (77.5,35,61.5) for the already declared vine route.
+This entry has three horizontal approach blocks, two vertical climb blocks and
+one horizontal transfer to the alcove; movement within the alcove is additional.
+
+From each matching X76/77/78 station at feet Y35, aim south at Z62 to access the
+barrels/spawner. Lower targets can be hit on their north faces at Y35.9, below
+any block stacked at Y36. The upper barrel at (76,36,62) is reached on its north
+face at Y36.5. Eye Y36.62 and the short half-block face distance keep each ray
+below the Y37 ceiling and within reach. Barrel opening has no chest-lid clearance
+condition. This resolves three more barrel targets and the second lower spawner;
+no inventory or realized encounter has been observed.
+
+Failure to create the exact opening, attach the ladders or transfer to the alcove
+censors this conditional route. The unmodified pillar remains recorded as closed.
+The total declared lower engineering chain now needs eight pillar removals, one
+crying-obsidian cap removal, and four ladders to reach the main-level landing.
+Those costs are distinct from the northern cache's single stair removal and the
+main partition's two-plank breach. Full activation history and total task timing
+are still pending; do not assume one spawn batch per source during construction.
