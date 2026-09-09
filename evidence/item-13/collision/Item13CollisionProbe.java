@@ -32,7 +32,7 @@ public final class Item13CollisionProbe {
         ClassLoader loader = server.getClass().getClassLoader();
         Path destination = Path.of(output);
         FutureTask<String> query = new FutureTask<>(() -> snapshot(loader,
-            destination.resolveSibling("input.json.gz")));
+            destination.resolveSibling("input.json.gz"), destination.getFileName().toString()));
         server.getClass().getMethod("execute", Runnable.class).invoke(server, query);
         Files.writeString(destination, query.get(30, TimeUnit.SECONDS), StandardOpenOption.CREATE_NEW);
     }
@@ -47,7 +47,44 @@ public final class Item13CollisionProbe {
         return number.intValue();
     }
 
-    private static String snapshot(ClassLoader loader, Path input) throws Exception {
+    private static String spawners(ClassLoader loader, Object gson, Map<?, ?> saved,
+            String inputHash) throws Exception {
+        Class<?> gsonType = type(loader, "com.google.gson.Gson");
+        Method tree = gsonType.getMethod("toJsonTree", Object.class);
+        Class<?> spawnType = type(loader, "net.minecraft.world.level.SpawnData");
+        Object codec = spawnType.getField("CODEC").get(null);
+        Class<?> opsType = type(loader, "com.mojang.serialization.DynamicOps");
+        Object ops = type(loader, "com.mojang.serialization.JsonOps").getField("INSTANCE").get(null);
+        Method parse = type(loader, "com.mojang.serialization.Decoder").getMethod("parse", opsType, Object.class);
+        Method result = type(loader, "com.mojang.serialization.DataResult").getMethod("result");
+        Class<?> tagType = type(loader, "net.minecraft.nbt.CompoundTag");
+        Class<?> entityType = type(loader, "net.minecraft.world.entity.EntityType");
+        ArrayList<Map<String, Object>> rows = new ArrayList<>();
+        for (Object value : (List<?>) saved.get("block_entities")) {
+            Map<?, ?> block = (Map<?, ?>) value;
+            if (!"minecraft:mob_spawner".equals(block.get("id"))) continue;
+            Object decoded = ((Optional<?>) result.invoke(parse.invoke(codec, ops,
+                tree.invoke(gson, block.get("SpawnData"))))).orElseThrow();
+            Object tag = spawnType.getMethod("getEntityToSpawn").invoke(decoded);
+            Optional<?> resolved = (Optional<?>) entityType.getMethod("by", tagType).invoke(null, tag);
+            LinkedHashMap<String, Object> row = new LinkedHashMap<>();
+            row.put("position", List.of(integer(block.get("x")), integer(block.get("y")), integer(block.get("z"))));
+            row.put("decoded_id", tagType.getMethod("getString", String.class).invoke(tag, "id"));
+            row.put("lookup_present", resolved.isPresent());
+            row.put("resolved_entity_type", resolved.isPresent()
+                ? entityType.getMethod("getKey", entityType).invoke(null, resolved.get()).toString() : null);
+            row.put("saved_spawn_potentials_count", ((List<?>) block.get("SpawnPotentials")).size());
+            rows.add(row);
+        }
+        if (rows.size() != 4) throw new IllegalStateException("Expected four saved house spawners");
+        LinkedHashMap<String, Object> output = new LinkedHashMap<>();
+        output.put("input_sha256", inputHash);
+        output.put("method", "Frozen-runtime SpawnData.CODEC decoding and EntityType.by lookup; no tick or spawn");
+        output.put("spawners", rows);
+        return gsonType.getMethod("toJson", Object.class).invoke(gson, output) + "\n";
+    }
+
+    private static String snapshot(ClassLoader loader, Path input, String mode) throws Exception {
         String inputHash = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256")
             .digest(Files.readAllBytes(input)));
         String text;
@@ -65,6 +102,8 @@ public final class Item13CollisionProbe {
         Map<?, ?> saved = (Map<?, ?>) cases.getFirst();
         if (!"minecraft:the_nether".equals(saved.get("dimension")))
             throw new IllegalArgumentException("Pilot supports Nether build height only");
+        if (mode.equals("spawners.json")) return spawners(loader, gson, saved, inputHash);
+        if (!mode.equals("collision.json")) throw new IllegalArgumentException("Unknown probe output mode");
         List<?> bounds = (List<?>) saved.get("bounds");
         int x0 = integer(bounds.get(0)), y0 = integer(bounds.get(1)), z0 = integer(bounds.get(2));
         int nx = integer(bounds.get(3)) - x0 + 1, ny = integer(bounds.get(4)) - y0 + 1;

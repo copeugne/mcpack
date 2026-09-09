@@ -24,7 +24,7 @@ INPUT = ROOT / "evidence/item-13/fixed-blocks/mns-medium-house.json.gz"
 INPUT_HASH = "a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496"
 
 
-def run(output: Path, target: Path) -> None:  # noqa: C901 - preserve one experiment and its failure.
+def run(output: Path, target: Path, *, spawner_lookup: bool = False) -> None:  # noqa: C901 - preserve one experiment and its failure.
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
@@ -107,6 +107,7 @@ def run(output: Path, target: Path) -> None:  # noqa: C901 - preserve one experi
                 )
         report["probe_sha256"] = sha256_file(probe)
         shutil.copyfile(INPUT, output / "input.json.gz")
+        projection = "spawners.json" if spawner_lookup else "collision.json"
         lifecycle = run_registry_lifecycle(
             target,
             java,
@@ -114,7 +115,7 @@ def run(output: Path, target: Path) -> None:  # noqa: C901 - preserve one experi
             600,
             dimension_probe=probe,
             registries=(),
-            probe_output_name="collision.json",
+            probe_output_name=projection,
         )
         report["lifecycle"] = json.loads(lifecycle.model_dump_json())
         if not lifecycle.clean_stop:
@@ -122,7 +123,9 @@ def run(output: Path, target: Path) -> None:  # noqa: C901 - preserve one experi
         report["configuration"] = json.loads(
             capture_control_configuration(request).model_dump_json()
         )
-        report["collision_sha256"] = sha256_file(output / "collision.json")
+        report["spawners_sha256" if spawner_lookup else "collision_sha256"] = sha256_file(
+            output / projection
+        )
         report["rejection_reason"] = None
     except Exception as error:
         report["rejection_reason"] = str(error)
@@ -140,5 +143,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
     parser.add_argument("target", type=Path)
+    parser.add_argument("--spawner-lookup", action="store_true")
     args = parser.parse_args()
-    run(args.output.absolute(), args.target.absolute())
+    run(args.output.absolute(), args.target.absolute(), spawner_lookup=args.spawner_lookup)

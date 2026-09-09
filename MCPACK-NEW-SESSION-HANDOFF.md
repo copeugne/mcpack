@@ -150,6 +150,9 @@ modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
 spaces, finale and replay assessments. These are not observed gameplay. Next
 resolve actor-context validation, container access and empty-spawner behavior;
 shortest objective distance/terrain cover and exact connection widths remain open.
+A [predeclared spawner lookup](evidence/item-13/collision/README.md#predeclared-saved-spawner-lookup-experiment)
+is prepared: four saved SpawnData codec/type queries in a fresh frozen instance,
+with no spawning, actor or repeated collision pass. Run it from committed code.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

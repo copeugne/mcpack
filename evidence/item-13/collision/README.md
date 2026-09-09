@@ -310,3 +310,51 @@ faster 14.416667 and slower 32.777778 are scenario budgets only. Direct arithmet
 20/4 +10/1.2 +5/1 +1.25/0.5 independently checks the nominal result. Reproduction
 is byte-identical. Two collision tests plus focused lint/types pass. No accepted
 raw route, collision capture, world or configuration was changed.
+
+## Predeclared saved-spawner lookup experiment
+
+The precise missing fact is whether the four first-house SpawnData assignments
+resolve to registered entity types in the frozen runtime. Decode each saved
+SpawnData through the runtime CODEC, then call EntityType.by on its decoded tag.
+Record position, decoded ID, optional resolved entity type and saved potential-list
+length. Denominator: all four saved ordinary spawners in the same hash-bound house
+input. Reject any decode failure or count mismatch. No player, actor equipment,
+combat, navigation, spawner tick, entity creation or world modification is part
+of the query. The expected empty assignments are a question, not a forced result.
+No observed spawning or encounter claim may be inferred from a type lookup.
+
+Use the existing probe launcher, fresh retained-136 materialization, frozen
+configuration audit and correlated save/clean-stop lifecycle. Skip the completed
+collision pass and registry dumps. The new instance's incidental startup world
+is not dungeon evidence; the query reads only saved input and runtime registry.
+Each failure is retained and any retry requires fresh paths/materialization.
+One run is planned. Reuse the30-second server-thread,45-second attach,600-second
+readiness/capture and120-second clean-exit limits. Based on the previous capture,
+budget2 GiB instance storage and20 MiB capture output with5 GiB free required;
+39,830,286,336 bytes were free at planning. Expected duration is comparable to
+the previous206-second startup/capture lifecycle, not a measured duration yet.
+
+After committing the producer and declaration, run:
+
+```sh
+uv run python -m evidence.item-13.collision.run --spawner-lookup evidence/raw/item13/spawner-lookup-r1 instances/item13-spawner-lookup-r1
+```
+
+Source inspection already narrows the result: SpawnData's constructor does not
+insert an ID into an empty entity tag. CompoundTag.getString returns an empty
+string when the key is absent; ResourceLocation.parse then uses the default
+namespace, and its path predicate permits the empty string. EntityType.by uses
+DefaultedMappedRegistry.getOptional, which calls MappedRegistry.get directly and
+does not substitute the default entity. The remaining registry-presence question
+is what this experiment resolves. These methods are directly reproducible with
+the pinned javap -p -c against the hash-bound mapped Minecraft JAR, using classes
+net.minecraft.world.level.SpawnData, net.minecraft.nbt.CompoundTag,
+net.minecraft.resources.ResourceLocation, net.minecraft.world.entity.EntityType
+and net.minecraft.core.DefaultedMappedRegistry. No new source-extraction framework
+is needed to restate those immutable artifact inspections.
+
+The previous frozen-runtime debug log reports three BaseSpawner mixins: Servercore,
+Aether's accessor and Collective. Direct inspection of their classes shows a
+post-entity mob-cap check, a nextSpawnData getter and an existing-mob tag addition,
+respectively. None inserts a missing entity ID. Their JAR hashes match the accepted
+Item3 acquisition manifest. This is source/transform evidence, not a spawner tick.
