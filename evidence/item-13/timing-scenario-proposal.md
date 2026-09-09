@@ -1,9 +1,11 @@
-# Proposed complete-objective timing scenario
+# Accepted complete-objective timing scenario
 
-Status: PROPOSED, NOT ACCEPTED. User approval is required before treating these
-results as Item 13 timing evidence or applying this method to other layouts.
-This proposal replaces the pending request to accept unresolved totals. It does
-not waive timing, alter frozen configuration or start Item 14.
+Status: ACCEPTED as a conditional modeled scenario on 2026-09-10. The user
+approved this concrete proposal with "i approve" after its delivery at commit
+9b863297a34f7792873b298697075967864db70f. Approval covers the declared provisional
+allowances and reusable complete-task cost accounting. It does not waive timing,
+validate pickup geometry, establish observed gameplay or complete Item 13.
+Item 14 remains UNSTARTED.
 
 ## Objective and conditions
 
@@ -50,10 +52,10 @@ fractions are also modeled assumptions, even where reused from earlier evidence.
 | Combat contact duty | 1 | 0.75 | 0.5 | Sensitivity for target switching, pursuit, attack repositioning and pauses within the combat phase; active attack work comes from pinned source |
 
 These values deliberately span several multiples for input and acquisition costs
-instead of presenting an unsupported universal action speed. They are proposed
-working budgets for a specified successful scenario. The user may change them
-before acceptance. Increasing them can invalidate the spawner deadline, so they
-cannot be adjusted independently of encounter conditions.
+instead of presenting an unsupported universal action speed. They are accepted
+provisional working budgets for a specified successful scenario. Increasing them
+can invalidate the spawner deadline, so they cannot be adjusted independently
+of encounter conditions.
 
 Reuse 22 upright and four crouched blocks in the existing circuit. Provisionally
 allocate four additional upright blocks per reward for approach to pickup contact
@@ -62,8 +64,8 @@ analyst-selected budget, NOT a validated pickup route. Its rationale is a short
 local excursion from each already verified face-access station. Feasible pickup
 within that budget is a conditional assumption, not a consequence of ray reach.
 If it fails, censor the scenario; do not call the current route a proven harvest.
-No further block investigation is needed to present this proposal. Approval may
-require a focused pickup observation if this condition is unacceptable.
+The approved scenario accepts this conditional budget; no pickup observation
+is claimed.
 
 Uninterrupted mining is the source-derived 276 ticks/13.8 seconds for two
 spawners, one ore cover and two debris with the declared diamond pick. Source
@@ -122,14 +124,13 @@ failed and elapsed time if actually observed; never fabricate such an observatio
 An interruption already represented inside combat duty is not a second failure
 or charge. There is no estimated survival or scenario-success probability.
 
-If approved, this establishes a transparent conditional complete-task estimate
+This approval establishes a transparent conditional complete-task estimate
 and a reusable cost-accounting method, alongside source/geometry evidence and
 explicit failure conditions. It does not establish observed human timing, typical
 first-clear time, guaranteed acquisition/survival, actual baseline entity counts
 or completion of Item 13's family/variant coverage and review/delivery gates.
-If numerical acceptance must require validated pickup rather than a conditional
-pickup budget, the smallest additional evidence is one focused pickup test for
-each casing on a fresh verified materialization, not another world survey.
+A future claim of validated pickup would require a focused pickup test for each
+casing on fresh verified materialization; it is not established by this approval.
 
 Reproduce all arithmetic without adding machinery:
 

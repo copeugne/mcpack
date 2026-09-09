@@ -2,21 +2,20 @@
 
 Status: IN PROGRESS. Item 14 is UNSTARTED.
 
-Current gate: layout expansion is PAUSED for protocol v2's complete-objective
-timing correction. All existing route times remain movement components; none
-alone satisfies dungeon completion timing. The [Circle demonstration](fixed-blocks/mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
-accounts for the required phases and leaves total time UNRESOLVED where costs
-are unsupported. Earlier local/representative PASS language does not pass this
-revised gate. Preserve prior raw evidence and solve this representative before
-scaling; do not repeat block investigations that cannot change a required cost.
+Current gate: complete-objective conditional timing methodology ACCEPTED by the
+user on 2026-09-10. The [accepted Circle scenario](timing-scenario-proposal.md)
+accounts for movement, decisions, interactions, mining, combat, acquisition and
+verification. Its two-piglin/two-brute cases are approximately 47/64/93 seconds
+under profiles A/B/C. Provisional allowances and pickup feasibility remain
+explicit assumptions, with failure/censoring conditions. These are not human
+observations, typical times or guaranteed bounds. Earlier movement-only results
+remain components and must receive a complete task budget before timing acceptance.
 
-The latest user-authorized steering requests a concrete conditional model rather
-than permission to leave totals unresolved. The [worked scenario proposal](timing-scenario-proposal.md)
-now accounts for the complete Circle task using source-derived work and explicitly
-uncalibrated analyst allowances. Its approximately 47/64/93-second worked cases
-are PROPOSED, NOT ACCEPTED. Approval of that concrete methodology is pending;
-do not scale it or claim a timing pass. Existing evidence and coverage obligations
-remain intact. The earlier unresolved-total acceptance question is superseded.
+The representative methodology gate is resolved. Resume material-variant coverage
+and quality assessment using this accounting method; adapt objectives, source work,
+phase counts and failure conditions to each layout before calculating results.
+The original overlapping Circle and other inspected layouts still need their own
+complete budgets. All 192 included families and final review/delivery remain required.
 
 ## Authorized method and delivery boundary
 

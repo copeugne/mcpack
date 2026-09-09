@@ -6,8 +6,9 @@ The user-approved method boundary is recorded in [README.md](README.md).
 
 ## Complete-objective timing correction
 
-Current proposed resolution: [complete Circle scenario and worked example](timing-scenario-proposal.md).
-It is pending user approval, not an accepted protocol change or permission to scale.
+Accepted resolution (user approval, 2026-09-10): [complete Circle scenario and worked example](timing-scenario-proposal.md).
+The conditional accounting method and its provisional sensitivity allowances are
+authorized. Predeclare layout-specific objectives, costs and conditions before use.
 
 The latest user-authorized steering requires a complete dungeon objective before
 timing acceptance. Earlier route calculations remain movement components, even
@@ -31,16 +32,20 @@ measure player navigation or justify zero aiming/menu/decision latency. A fixed
 one-wave enemy workload cannot represent a clear while active spawners continue
 attempting to spawn. Likewise geometric contact is not item pickup or mining.
 
-If any required cost, lifecycle or objective condition remains unsupported, total
-completion time is UNRESOLVED. Do not fill it with a guessed seconds-per-action
-constant, treat it as zero, sum incomplete pieces into a total, or report a finite
-upper bound. Preserve partial components and their uncertainty. First-clear,
+If a required cost, lifecycle or objective condition has neither source support
+nor an explicit approved scenario assumption, total completion time is UNRESOLVED.
+The accepted proposal permits provisional analyst allowances, labeled as such and
+varied in sensitivity profiles. They are not calibration or guaranteed bounds.
+Do not treat omitted phases as zero or sum incomplete pieces into a total.
+Preserve partial components and their uncertainty. First-clear,
 discovery and observed-human claims remain outside the authorized modeled scope.
 
 The [Circle complete-objective demonstration](fixed-blocks/mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
-is the current representative. Its unresolved components block expansion, not
-read-only work that resolves this methodological gap. No new framework, world
-generation or repeated block audit is justified merely to restate known inputs.
+is the current representative. Its complete conditional scenario now passes this
+methodology demonstration; its actual gameplay total remains NOT MEASURED.
+No new framework, world generation or repeated block audit is justified merely
+to restate known inputs. Historical unresolved sections preserve the investigation
+that preceded the accepted scenario and do not override its current acceptance.
 
 ## Population and significance
 

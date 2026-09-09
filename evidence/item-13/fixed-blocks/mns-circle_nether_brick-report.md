@@ -1,8 +1,14 @@
 # Nether Brick Circle: quality assessment
 
-Status: local inspection assessments recorded for both cases. Complete-objective
-timing is UNRESOLVED under protocol v2; prior movement results do not pass that
-requirement. Item 13 coverage and delivery remain IN PROGRESS.
+Status: local inspection assessments recorded for both cases. The supplemental
+case now has an [accepted complete-objective conditional scenario](../timing-scenario-proposal.md),
+approved by the user on 2026-09-10. Its two-piglin/two-brute task totals are
+47.3/63.9/93.4 seconds under profiles A/B/C; the declared full population/profile
+grid spans 31.7..124.6 seconds. These are conditional model results, not observed
+gameplay or guaranteed bounds. Prior movement results alone do not pass timing.
+The original overlapping case still needs its own complete budget. Historical v2
+unresolved sections below are superseded only for this supplemental scenario.
+Item 13 coverage and delivery remain IN PROGRESS.
 This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
 

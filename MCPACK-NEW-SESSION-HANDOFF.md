@@ -176,11 +176,11 @@ now attributes the saved lava to an overlapping fortress template. The original
 case is preserved; a predeclared non-overlapping candidate was extracted in 6.644s
 (8464 voxels). Its one-area assessment, 26-block circuit and northern external
 approach are integrated. The original rejects that circuit; both reward faces now
-connect by a checked detour. Latest steering pauses layout expansion for
-[protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction).
-Circle's complete-objective budget is UNRESOLVED; movement-only times do not pass.
-Nominal mining is 13.8s; pickup eligibility and a conditional spawn deadline are
-supported. [Complete scenario proposal](evidence/item-13/timing-scenario-proposal.md) awaits methodology approval; do not scale.
+connect by a checked detour. The user approved the [complete conditional scenario](evidence/item-13/timing-scenario-proposal.md) on 2026-09-10.
+Supplemental Circle task estimates are 47/64/93s for two piglins and two brutes,
+with explicit provisional budgets and censoring. Resume layout coverage under
+[protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
+original Circle and other layouts still need their own complete task budgets.
 Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
