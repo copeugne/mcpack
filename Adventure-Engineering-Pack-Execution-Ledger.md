@@ -3,7 +3,7 @@
 **Ledger version:** 0.19
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 11 local exit gate PASS after visibility/cost/report corrections; fresh PR37 review and main delivery pending. Item 10 and the cross-item audit are COMPLETE through PR35/36.
+**Current execution gate:** Item 11 COMPLETE through clean-reviewed PR37 and verified main `c4281c65`. Item 10 and the cross-item audit are COMPLETE through PR35/36. Item 12 is unstarted and not authorized.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -361,21 +361,23 @@ context, not empirical evidence for this completed retained-stack measurement.
 
 ### 5.10 Item 11 automated route opportunities
 
-**Status: `IN PROGRESS`; local exit gate PASS after visibility/cost/report corrections; PR37 delivery pending.**
-The [authoritative numerical report](evidence/item-11/report.md),
+**Status: `COMPLETE` through merged PR37.**
+The [authoritative report](evidence/item-11/report.md),
 [protocol](evidence/item-11/protocol.md) and
-[closure/reproduction record](evidence/item-11/README.md) cover all sixteen accepted
-worlds, 64 fixed Overworld routes and 192 transport-model evaluations. Raw
-observations, category coverage, gaps, family repetition, modeled costs, failures,
-censoring and sensitivity are retained. The rejected lock-release attempts and
-the corrected competing-process regression remain explicit. Protocol v2 fixes PR37 visibility finding 3962853986; the full corrected matrix
-and report are integrated at `17ccd330`. Cost finding 3963125325 is fixed in
-`f4e99bdf`. The full gate passed 600 tests before that narrow fix; all 19 affected
-tests pass afterward. Final report integration and world-provenance fixes pass
-all 22 affected tests; final lint/types and clean-code reproduction pass.
-[PR37](https://github.com/copeugne/mcpack/pull/37) must complete its clean final Codex
-review and verified main merge before Item 11 is COMPLETE. No human evidence is
-required or claimed; Item 12 was not started.
+[closure/reproduction record](evidence/item-11/README.md#verified-delivery) cover
+sixteen accepted worlds, 64 routes and 192 transport evaluations. Required
+categories, geometry, reachable coverage, gaps, repetition, modeled costs,
+failures, censoring and uncertainty are explicit throughout the declared matrix.
+Protocol `item11-routes-v2` and all failed/rejected evidence remain preserved.
+
+The full applicable gate passed 600 tests before narrow review fixes; all 22
+final affected tests pass, with lint/types and clean-code reproduction. Codex
+completed the review of `14a9b2788b85930fe36f0137f53d7bdbecc43217` without new
+findings and returned its thumbs-up. PR37 merged at 2026-09-09 01:16:22 UTC;
+fetched main `c4281c6536e45fecf5fc15ab51e06403db28e25f` contains the accepted head
+with no tree differences. Full delivery evidence and review dispositions are
+linked in the closure record. Human metrics remain NOT MEASURED. Item 12 was
+not started.
 
 ### 5.11 Preservation incident and Recovery Gate R-1
 
@@ -507,7 +509,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `COMPLETE` | All 448 canonical families classified; local gate PASS, clean PR20 review and main delivery verified at `7cbe06c7`. Evidence: `evidence/item-9/README.md`. |
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
-| 11 | Automated route opportunities/repetition | `IN PROGRESS` | Protocol v2 fixes anchor-filtered visibility; complete corrected matrix/report integrated. Completed-cost finding 3963125325 fixed; final matrix at 17ccd330. Local gate PASS with full 600-test baseline and final 22 affected tests after report fixes. PR37 delivery pending. Evidence: `evidence/item-11/README.md`. |
+| 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
 | 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
@@ -520,7 +522,7 @@ This register is additive. More variables will be discovered during artifact ins
 ## 8. Next Authorized Execution Step
 
 1. Preserve accepted Items 2 through 11 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
-2. Finish PR37's required Codex review/fix loop, obtain a clean final review, merge and verify fetched `origin/main`. Item 11 remains IN PROGRESS until that delivery gate passes.
+2. The authorized Item 11 work is complete through PR37. Wait for the next user instruction; do not reopen completed work merely for reassurance.
 3. Do not repeat completed collection, audits, classification or preservation. Do not start Item 12 under this authorization.
 
 No later item will be marked complete out of order or from inference.

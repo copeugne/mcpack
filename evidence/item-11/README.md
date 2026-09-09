@@ -1,8 +1,9 @@
 # Item 11 automated route opportunities and repetition
 
-Status: **IN PROGRESS; local exit gate PASS after visibility, cost and report corrections**.
-Final Codex review and verified main delivery are governed by
-[PR37](https://github.com/copeugne/mcpack/pull/37).
+Status: **COMPLETE through clean-reviewed and merged PR37**.
+[PR37](https://github.com/copeugne/mcpack/pull/37) delivered accepted head
+`14a9b2788b85930fe36f0137f53d7bdbecc43217` to verified main
+`c4281c6536e45fecf5fc15ab51e06403db28e25f`. See Verified delivery below.
 The [complete generated report](report.md) is the authoritative version 2 numerical result.
 The [predeclared protocol](protocol.md), `item11-routes-v2`, defines every route,
 capability, radius, window, denominator, failure rule and uncertainty boundary.
@@ -185,7 +186,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
 | Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-contrast.txt), including independent visibility contrasts, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-contrast.txt), [formatting](validation/final-format-contrast.txt) and [BasedPyright](validation/final-types-contrast.txt) pass. |
-| Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
+| Final review and main delivery | PASS. Clean review of `14a9b278`, bot thumbs-up, PR37 merge and fetched main `c4281c65` verified. |
 
 Reproduce the final applicable checks with:
 
@@ -198,7 +199,7 @@ uv run --no-sync basedpyright tools/analyze_route_opportunities.py evidence/item
 Manual surface inspection checked the generated per-world and per-route tables
 against raw candidate, ray, category and failure records, including the ordinary
 water corridors and biome-diverse dry-route obstacles. No gameplay observation
-is inferred. The next action is the required PR37 review/fix/merge loop, not Item 12.
+is inferred. The required review/fix/merge loop is complete. Item 12 remains unstarted.
 
 
 ## PR37 visibility correction
@@ -238,7 +239,7 @@ For example, `git show 506bc4fd:evidence/item-11/report.md` retrieves that rejec
 report. Current paths are replaced only by freshly reproduced version 2 derived
 results with their new identities; raw Item 10 worlds/censuses remain unchanged.
 The corrected matrix, report and final validation pass. The fresh Codex review
-and verified main delivery remain open.
+and verified main delivery remained open at that checkpoint.
 
 The [complete matrix comparison](validation/visibility-matrix-comparison.txt)
 checks the same sixteen `results/NAME.json.gz` paths against immutable `506bc4fd`:
@@ -256,7 +257,7 @@ STAT-004 ([finding 3963074296](https://github.com/copeugne/mcpack/pull/37#discus
 It is valid and corrected to `item11-routes-v2`. Direct inspection confirms the
 ledger, protocol, analyzer, result identities and report builder now name v2.
 This documentation-only correction does not invalidate the 600-test final gate
-or require repeating derived analysis. Fresh Codex review remains required.
+or require repeating derived analysis. Fresh Codex review was still required at that checkpoint.
 
 ## Completed-cost correction
 
@@ -300,7 +301,7 @@ The earlier complete applicable gate gives 600 passed in 196.80 seconds.
 The cost change does not affect Item 7/10 readers or custody; those unchanged
 checks are not repeated solely for reassurance. Final affected lint, formatting
 and type checks pass. The local exit gate is restored; a fresh completed clean
-Codex review and verified main merge remain required.
+Codex review and verified main merge were still required at that checkpoint.
 
 ## Report integration and provenance corrections
 
@@ -348,7 +349,7 @@ The final category-integrated report passes [all 22 affected tests](validation/f
 in 28.35 seconds, including exact report reproduction, provenance rejection and
 the retained numerical/category checks. Final lint, formatting and types pass.
 The local exit gate remains PASS; fresh clean review and verified main delivery
-are still required.
+were still required at that checkpoint.
 
 The completed review of `8cad4c41` found
 [UNKNOWN visibility outcomes missing from the report](https://github.com/copeugne/mcpack/pull/37#discussion_r3963434898).
@@ -363,7 +364,7 @@ results, protocol or measurement.
 The final UNKNOWN-integrated suite passes [22 tests in 28.10 seconds](validation/final-tests-unknown.txt).
 A final explanatory wording change also passes [exact report reproduction](validation/unknown-final-rebuild.txt).
 Final lint, formatting and types pass; clean current-head review and main delivery
-remain the only open gates.
+were the only open gates at that checkpoint.
 
 ## Complete statistics and transport limitations in the report
 
@@ -394,7 +395,7 @@ including full row counts and report reproduction. The
 checks the known village zero/censoring row and ordinary control T1 gap/repeat
 medians, IQRs and ranges. Final lint, formatting and types pass. All sixteen source
 result files and producer logs are unchanged from `17ccd330`; no world analysis
-was repeated. Local exit gate PASS, with fresh clean review/main delivery pending.
+was repeated. Local exit gate PASS, with fresh clean review/main delivery pending at that checkpoint.
 
 The completed review of `9b83183c` identified
 [missing reachable-prefix coverage reporting](https://github.com/copeugne/mcpack/pull/37#discussion_r3963575258).
@@ -414,7 +415,7 @@ results and producer logs remain unchanged from `17ccd330`.
 Final reachable-coverage validation: [22 affected tests pass in 30.37 seconds](validation/final-tests-prefix.txt),
 including full row counts, the retained prefix example and exact report reproduction.
 Final lint, formatting and types pass. Fresh clean review and verified main
-delivery remain required.
+delivery were still required at that checkpoint.
 
 ## Complete modeled-time reporting
 
@@ -437,7 +438,7 @@ adds no evidence class, schema, helper framework or measurement. The
 All [22 affected tests pass in 26.71 seconds](validation/final-tests-all-times.txt),
 including nonprimary T1 modeled interval median/IQR/range, 256-block censoring,
 all row counts, full report reproduction and identity rejection. Final lint,
-formatting and types pass. Fresh clean review and main delivery remain pending.
+formatting and types pass. Fresh clean review and main delivery remained pending at that checkpoint.
 
 The completed review of `ade6a86f` identified
 [missing paired ray-clear membership contrasts](https://github.com/copeugne/mcpack/pull/37#discussion_r3963679904).
@@ -451,4 +452,31 @@ results, protocol, model or sampling.
 Final contrast-integrated validation: [22 affected tests pass in 27.15 seconds](validation/final-tests-contrast.txt).
 Final lint, formatting and types pass. The report is 4,506,769 bytes; the current
 small table correction is coupled with its builder/regression, not a new large
-generated migration. Fresh clean review and main delivery remain pending.
+generated migration. Fresh clean review and main delivery remained pending at that checkpoint.
+
+## Verified delivery
+
+Item 11 is COMPLETE. The final [Codex clean result](https://github.com/copeugne/mcpack/pull/37#issuecomment-5594263545)
+identifies reviewed head `14a9b2788b85930fe36f0137f53d7bdbecc43217`.
+The [review summary](https://github.com/copeugne/mcpack/pull/37#issuecomment-5592697750)
+records completion at 2026-09-09 01:15:32 UTC. The issue's Codex bot thumbs-up
+reaction `495697968` was created at 01:15:37 UTC. After that cycle completed,
+all reviews, inline comments and discussion comments were inspected. No new
+findings were introduced; every earlier valid finding is fixed and dispositioned
+in the linked review records above. Eyes reactions and superseded reviews were
+not treated as approval.
+
+PR37 merged at 2026-09-09 01:16:22 UTC as
+`c4281c6536e45fecf5fc15ab51e06403db28e25f`. A fresh fetch verified that
+`origin/main` equals that merge, contains the exact reviewed head and has no tree
+differences from it. The earlier unmerged housekeeping commits `1f70f395` and
+`022990e3` are now delivered ancestors through reviewed PR37, not lost or confused
+with PR36 delivery. Git history and recovery references remain preserved.
+
+The complete report, deterministic producer/report logic, direct regressions,
+retained results, raw custody links, failed attempts and validation are delivered.
+The full applicable baseline gate passed 600 tests; all 22 affected tests pass
+after final corrections, including full report reproduction and identity checks.
+No source world or frozen configuration was tuned or regenerated. Item 12 was
+not started. Human metrics remain NOT MEASURED. The earlier pending statements
+above describe historical review checkpoints, not current continuation actions.
