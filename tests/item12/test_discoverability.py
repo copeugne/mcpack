@@ -50,3 +50,10 @@ def test_same_eye_foliage_contrast_and_missing_extremum() -> None:
     assert result["high_view"] is None
     assert result["relief"] is None
     assert result["views"][0]["rays"][FIELDS[0]][0]["status"] == "UNKNOWN"
+
+
+def test_target_on_top_boundary_is_not_its_own_occluder() -> None:
+    heights = array("h", [0]) * (1024 * 1024)
+    assert ray(heights, [0.5, 3, 0.5], [4.5, 1, 0.5]) == {"status": "CLEAR"}
+    heights[512 * 1024 + 514] = 2
+    assert ray(heights, [0.5, 3, 0.5], [4.5, 1, 0.5])["status"] == "OCCLUDED"

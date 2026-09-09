@@ -1,9 +1,9 @@
 # Item 12 structure discoverability
 
-Status: IN PROGRESS, local gate PASS; [PR39](https://github.com/copeugne/mcpack/pull/39)
+Status: IN PROGRESS, local gate reopened for the PR39 top-boundary finding; [PR39](https://github.com/copeugne/mcpack/pull/39)
 is open for required Codex review and main delivery. Item 13 is not started.
 Authority: SPECS.md Item 12 and the separately user-authorized
-[inspection/automated protocol](protocol.md), `item12-discoverability-v1`.
+[inspection/automated protocol](protocol.md), `item12-discoverability-v2`.
 Human recognition and discovery rates remain NOT MEASURED.
 
 ## Requirement map and delivered evidence
@@ -48,8 +48,8 @@ views or recognition. It cannot close the missing Item 12 perceptual claims.
 
 ## Current batch
 
-The full local exit gate passes under the separately authorized assessment scope.
-Final completed clean Codex review, merge and verified main delivery remain.
+The v1 local gate was rejected by PR39 finding 3968701864. Corrected v2 results,
+affected validation, fresh clean review, merge and verified delivery remain.
 Item 13 is unstarted.
 
 ## Reproduce input availability
@@ -176,10 +176,9 @@ the producer refuses to overwrite accepted results. The original representative
 and report are preserved in the milestone commit. No route matrix, world generation,
 classification, preservation or configuration audit was repeated for these outputs.
 
-## Full local exit gate
+## Historical v1 local exit gate, rejected by PR39
 
-**PASS for the separately authorized Item 12 scope; review and main delivery are
-still required.** All ten requirement rows above have delivered evidence and
+**The initial local PASS below was superseded by finding 3968701864.** All ten requirement rows above have delivered evidence and
 explicit inference limits. The complete [report](report.md) covers sixteen worlds,
 464 selected family/world cases and 94 distinct canonical families. The remaining
 354 accepted families have source assessments but no case in this finite viewpoint
@@ -229,3 +228,35 @@ in assessments.md. No graphical client, new world, operational server, config
 change or new archive revision was needed. This completion scope must accompany
 future Item 13/20/21/31 use; do not promote it to observed human discovery or use
 an envelope ray as proof of a visible entrance.
+
+## PR39 top-boundary correction
+
+[Finding 3968701864](https://github.com/copeugne/mcpack/pull/39#discussion_r3968701864)
+is valid. Direct inspection confirms 364 retained WS/NL rays across 19 families
+with `status=OCCLUDED`, `ray_y=target_y` and `ray_y=height+1`. They self-occlude at
+the target's top boundary. The [focused regression](validation/top-boundary-before.txt)
+fails before correction. Version 1, all results, reports and initial acceptance
+claims remain preserved at pushed reviewed commit `aa9f700f`.
+
+Protocol v2 predeclares the narrow correction: obstruct only strictly below the
+top boundary, including for endpoint samples. Preserve later obstruction, UNKNOWNs,
+world identities, family selection, viewpoints and target definitions. Existing
+world readers and producer paths suffice; no new schema, archive or framework.
+Biomes and family counts are not remeasured. Fresh read-only analysis is required
+because v1 retained only the first blocker, so an interior equality may conceal
+later ray samples. Do not relabel every formerly occluded ray as clear.
+
+Item 11 keeps its separately declared conservative height-field metric and raw
+values. Item 12 v2 deliberately uses a different boundary definition; it does not
+retroactively change that earlier contract or turn its proxies into physical
+visibility. No placement, source-world or frozen-identity conflict was found.
+The completed upstream audit and routes are not repeated.
+
+The corrected biome-diverse r1 baseline representative completes in 37.977 seconds
+and 40,549 bytes. Its [comparison](validation/top-boundary-pilot.txt) retains all
+36 changed rays; each becomes CLEAR. Removing ray outcomes and the changed
+protocol/producer identity fields makes the old and corrected documents identical.
+All [four geometry tests](validation/top-boundary-after.txt) pass. The v2 result
+for this world is promoted; the other fifteen v1 results remain pending correction,
+so the complete report gate intentionally remains open. No sampling or source
+assessment is repeated. The existing 160-minute/1-GiB ceiling still applies.

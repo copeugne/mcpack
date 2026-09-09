@@ -93,7 +93,7 @@ def ray(heights: array[int], eye: list[float], target: list[float]) -> dict[str,
         height = height_at(heights, x, z)
         if height is None:
             return {"status": "UNKNOWN", "at": [x, z], "reason": "missing_height"}
-        if p[1] <= height + 1:
+        if p[1] < height + 1:
             return {"status": "OCCLUDED", "at": [x, z], "height": height, "ray_y": p[1]}
     return {"status": "CLEAR"}
 
@@ -197,7 +197,7 @@ def analyze(name: str, raw_root: Path) -> dict[str, Any]:
             case["observation"] = observe(case, maps)
         verify_world(world, backup["world_files"])
     return {
-        "protocol": "item12-discoverability-v1",
+        "protocol": "item12-discoverability-v2",
         "world": name,
         "inputs": {
             "census_sha256": accepted[name]["input_sha256"],

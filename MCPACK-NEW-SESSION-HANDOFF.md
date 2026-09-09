@@ -79,15 +79,15 @@ Authoritative [Item 12 requirement map](evidence/item-12/README.md) and
 [predeclared protocol](evidence/item-12/protocol.md) define the smallest complete
 proof. All sixteen existing world restores and census hashes pass the
 [availability inspection](evidence/item-12/validation/input-availability.txt).
-The full Item 12 local gate now passes: sixteen worlds, 464 family/world cases,
-94 distinct sampled families, complete report and bounded entrance/navigation
-assessments. Source-world representative reproduces byte for byte from a clean
-tracked export. Full applicable gate: 610 tests passed; final affected seven tests,
-lint, formatting and types pass. Runtime/output remain within predeclared budgets.
-The complete candidate is pushed through `18eefde8` and [PR39](https://github.com/copeugne/mcpack/pull/39) is open.
-Next: complete Codex review, inspect all review/comments/reactions, fix valid
-findings and repeat until clean, then merge and verify origin/main.
-Do not declare Item 12 COMPLETE before those gates.
+PR39's completed review of `aa9f700f` found valid self-occlusion at the target
+surface boundary (finding 3968701864). A focused test fails before the fix; direct
+inspection confirms 364 endpoint-equality rays across 19 families in v1.
+The local gate is reopened. Protocol v2 predeclares strict below-top obstruction;
+all worlds, sample locations and other assumptions are unchanged. First correct
+biome-diverse r1 baseline, then the other fifteen worlds, update affected report
+claims and rerun focused validation. Preserve v1 at the pushed reviewed commit.
+After pushing the narrow fix and corrected results, request a fresh Codex review;
+repeat until clean, then merge and verify main. Item 13 remains unstarted.
 No new archive, validator framework or server work is required: existing custody,
 Anvil/NBT readers and world lock support the missing viewpoint measurement.
 Entrance and silhouette assessments must not mistake envelope targets for authored

@@ -60,7 +60,7 @@ def build(results: Path, *, representative: bool = False) -> str:
         if (
             doc["inputs"] != expected
             or doc["world"] != name
-            or doc["protocol"] != "item12-discoverability-v1"
+            or doc["protocol"] != "item12-discoverability-v2"
             or doc.get("human_metrics") != "NOT MEASURED"
         ):
             raise ValueError("result provenance mismatch")
@@ -74,7 +74,7 @@ def build(results: Path, *, representative: bool = False) -> str:
         if representative
         else "Complete predeclared viewpoint matrix. See README for acceptance, review and delivery status.",
         "",
-        "Protocol: [item12-discoverability-v1](protocol.md). Human recognition and player discovery rates: NOT MEASURED.",
+        "Protocol: [item12-discoverability-v2](protocol.md). Human recognition and player discovery rates: NOT MEASURED.",
         "",
         "These are family-balanced saved-world cases, not discovery probabilities. Each case retains its full family abundance per 4,096 chunks separately from geometric rays. Overworld only; other dimensions retain Item 8 source assessment and Item 10 density. Architectural/entrance judgments are in [assessments](assessments.md); navigation evidence is [separate](navigation-source/README.md).",
         "",

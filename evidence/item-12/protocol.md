@@ -1,6 +1,11 @@
 # Item 12 discoverability assessment protocol
 
-Status: PREDECLARED. Identifier: `item12-discoverability-v1`. Date: 2026-09-09.
+Status: PREDECLARED. Identifier: `item12-discoverability-v2`. Date: 2026-09-09.
+
+Revision 2 is predeclared before corrected processing. It fixes PR39 finding
+3968701864: a point exactly on a top boundary must not self-occlude. Version 1,
+its raw results and rejected local-gate claim remain at `aa9f700f`. Sampling,
+worlds, targets and all other assumptions remain unchanged.
 
 ## Authorized method and acceptance boundary
 
@@ -64,7 +69,9 @@ extremum selection UNKNOWN rather than selecting a biased partial ring.
 
 At each viewpoint test all targets using one-block-or-finer horizontal ray samples,
 excluding the eye and including the target cell. Compare with WORLD_SURFACE plus
-one as opaque height field. Also test MOTION_BLOCKING_NO_LEAVES with the SAME eye
+one as the top boundary of the opaque height field. A sample strictly below
+that boundary is occluded; equality is clear at that sample, including at the
+target endpoint. A later blocking sample can still occlude the ray. Also test MOTION_BLOCKING_NO_LEAVES with the SAME eye
 and targets. Retain both outcomes and obstruction locations/heights. Their contrast
 is a foliage-sensitive heightmap model, not a counterfactual world with trees
 removed. Fluids, transparent blocks, roofs and overhangs limit both models; neither
@@ -123,7 +130,9 @@ Java-compatible lock before and after analysis. Recheck archive-bound backup
 manifest and census hashes at consumption. A new controlled experiment, if ever
 needed, would require fresh materialization and a separate predeclaration.
 
-First complete ordinary r1 baseline, including raw observations, family assessments,
+The original representative was ordinary r1 baseline. For the revision-2 correction,
+first complete biome-diverse r1 baseline, an actual self-occlusion counterexample,
+then expand to the other fifteen unchanged worlds. Include raw observations, family assessments,
 world-section visual inspection, report and affected tests. It includes ships,
 buried temples/chambers, underground caches and an elevated settlement. Do not
 expand until actual runtime/output size is recorded and projected against a
