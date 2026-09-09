@@ -57,9 +57,13 @@ additional authored activity spaces.
 
 Four saved spawners are present: one explicit piglin assignment on the balcony
 at 465,48,430 and three empty entity assignments, each with empty SpawnPotentials.
-These are four authored block locations, one explicitly named enemy type and
-three unresolved operational assignments, not four realized encounters. Spawn
-counts, delay and other NBT are retained in the raw dataset. Do not invent default
+These are four authored block locations, one resolvable enemy type and three
+assignments with no resolvable type, not four realized encounters. The
+[frozen-runtime lookup](../collision/README.md#saved-spawner-lookup-result) confirms
+that all three empty payloads decode without acquiring a default entity. Their
+empty potential lists supply no fallback; the inspected server path returns
+before creation. Preserve them as baseline missing assignments, without repair.
+Spawn counts, delay and other NBT are retained in the raw dataset. Do not invent default
 pigs, guaranteed spawning, a live enemy population or a combat duration.
 
 There are three saved reward-table nodes, with no generated item inventory shown:
@@ -131,9 +135,11 @@ scenario. This is the explicit piglin-spawner component only. Equipment, attack
 conditions and exclusions are in the [model declaration](../model-source/README.md#first-house-piglin-component-and-bed-mechanism).
 The saved 733-tick delay corresponds to 36.65 seconds at an ideal 20 ticks/second
 once its countdown conditions hold. Do not automatically add it to walking or
-attack time, since clocks can overlap. The three empty assignments and natural
-population remain outside this workload. Whole-house combat duration is unresolved;
-actual enemies, encounters and combat times remain NOT MEASURED.
+attack time, since clocks can overlap. The three empty assignments have no
+resolvable enemy potential, so this model now covers the sample's resolvable ordinary-spawner source for one stipulated
+wave. Natural population and repeated waves remain outside its scope. Full-clear
+time has no finite bound from this model; actual enemies, encounters and combat
+times remain NOT MEASURED.
 
 BedBlock's captured source and the packaged Nether bed_works=false setting identify
 optional bed interaction in R1 as a conditional explosion hazard. Walking past
@@ -184,8 +190,9 @@ of this assessment still requires the unresolved access and movement checks belo
 ## Concrete unresolved work
 
 Finish actor-context and movement support validation, shortest entry-to-objective
-route/terrain-cover measurement, container interaction/opening, empty-spawner
-behavior and whole-house encounter disposition, and precise connection widths.
+route/terrain-cover measurement, container interaction/opening, and precise
+connection widths. Empty-spawner decoding/type disposition is resolved; actual
+activation and encounters remain outside the authorized observed metrics.
 Roof approach and mining time remain conditional/unmeasured. Preserve the room
 sensitivity and modeled-versus-observed boundaries. This report does not claim
 final quality acceptance, complete family sampling or review/merge delivery.

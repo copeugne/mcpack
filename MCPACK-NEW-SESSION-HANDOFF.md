@@ -148,11 +148,14 @@ activity spaces, source support, blocked east-vine access and reward tables.
 The report now includes the 36.25-block local circuit and 20.83-second nominal
 modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
 spaces, finale and replay assessments. These are not observed gameplay. Next
-resolve actor-context validation, container access and empty-spawner behavior;
+resolve actor-context validation and container access;
 shortest objective distance/terrain cover and exact connection widths remain open.
 A [predeclared spawner lookup](evidence/item-13/collision/README.md#predeclared-saved-spawner-lookup-experiment)
-is prepared: four saved SpawnData codec/type queries in a fresh frozen instance,
-with no spawning, actor or repeated collision pass. Run it from committed code.
+completed at 48089961 in 229.279 seconds with clean lifecycle and frozen identity.
+The piglin resolves; three empty assignments do not resolve to any entity type.
+The identical two Medium House 2 payloads reuse that disposition. Core projection,
+capture and redacted console are retained; broader raw custody remains pending.
+No spawning, actor or repeated collision pass occurred.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

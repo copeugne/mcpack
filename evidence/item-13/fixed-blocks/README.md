@@ -24,6 +24,10 @@ envelope**, not room counts, realized enemies, activated encounters or acquired
 loot. Other inventory blocks and loot-table assignments still need assessment.
 Named enemy types are only explicit `SpawnData.entity.id` values. Empty assignments
 are retained without inventing a default mob or treating a spawner as operational.
+The later [runtime lookup](../collision/README.md#saved-spawner-lookup-result)
+resolves the Medium House 1/2 empty payloads: no entity type is returned, and
+empty potential lists supply no alternative. That result is reused for identical
+payloads; it is not a realized-spawn observation.
 
 | Raw file | Voxels | Ordinary spawners | Explicit types / empty assignments | Chests / barrels |
 | --- | ---: | ---: | --- | ---: |

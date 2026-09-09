@@ -358,3 +358,48 @@ Aether's accessor and Collective. Direct inspection of their classes shows a
 post-entity mob-cap check, a nextSpawnData getter and an existing-mob tag addition,
 respectively. None inserts a missing entity ID. Their JAR hashes match the accepted
 Item3 acquisition manifest. This is source/transform evidence, not a spawner tick.
+
+
+### Saved-spawner lookup result
+
+The [runtime projection](spawner-r1-spawners.json.gz) and
+[capture result](spawner-r1-capture.json.gz) are from producer commit 48089961.
+The run completed in 229.279 seconds, with readiness, correlated flush, clean
+exit 0 and no process-group kill. Retained 136 runtime identity and the 228-file
+configuration audit passed; only the four permitted comment normalizations
+occurred. Instance/capture sizes were 650 MiB/6.4 MiB by du, within budget.
+
+All four SpawnData values decoded successfully through the actual runtime CODEC
+using JsonOps over their retained JSON projection. These particular entity data
+contain only an ID string or an empty compound, so no numeric-NBT conversion
+claim is involved. The assignment at 465,48,430 resolves to minecraft:piglin.
+Assignments at 462,51,432;465,48,434;466,51,432 preserve empty decoded IDs and
+return lookup_present=false. Their saved SpawnPotentials lists are empty.
+No default pig or other entity type is substituted. Null optional type fields
+are omitted by Gson, so the explicit lookup_present boolean is authoritative.
+
+The [existing BaseSpawner source](../model-source/captured/world.level.BaseSpawner.txt.gz)
+loads present SpawnData at offsets 21-71 and present SpawnPotentials at 85-139.
+serverTick returns after delay when EntityType.by is empty, before entity
+creation. delay offsets 51-67 only selects a replacement when the potential list
+has a random entry. getOrCreateNextSpawnData retains a nonnull assignment.
+Together with the runtime lookup and inspected mixins, this supports the baseline
+disposition: these three assignments have no resolvable enemy potential and do
+not reach creation through that path unless reconfigured. It is not an observed
+activation, zero-mob gameplay session or proof about unrelated natural spawns.
+Do not repair them or count them as independent enemy species.
+
+The same disposition applies by input equivalence to the two empty assignments
+in [Medium House 2](../fixed-blocks/mns-medium_house_2.json.gz), at 14,40,112 and
+18,40,112: each has exactly SpawnData={entity:{}} and SpawnPotentials=[]. The
+raw files already bind that world's same frozen runtime. This is reuse of the
+verified decoding/type behavior, not another runtime sample or full variant
+quality assessment.
+
+The [retention record](spawner-r1-retention.json) binds original and published
+hashes. Projection, capture, redacted console and two empty diagnostic logs total
+42,046 compressed bytes. Reproduce retention with
+`uv run python -m evidence.item-13.collision.retain --spawner-lookup` into absent
+published files. Original logs/configuration remain at the declared raw path;
+broader raw custody is still pending. No collision pass, registry survey or
+accepted-world modification occurred.
