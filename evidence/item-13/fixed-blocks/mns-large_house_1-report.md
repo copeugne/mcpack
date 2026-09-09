@@ -551,3 +551,67 @@ floor values are `basalt` and `warped_nylium`, and every queried body value is
 `air`. Lava beneath the bridge is retained as a hazard, not replaced in raw data.
 This resolves the last connection needed to combine the local access branches;
 source timings, activation windows and the complete task assessment still remain.
+
+## Uninterrupted breaking component for the declared route
+
+Use the approved unenchanted diamond pickaxe throughout these removals, with no
+mining effects or modified break-speed attributes. This avoids silently adding
+an axe to the declared equipment. It is deliberately not an optimal loadout.
+The shaft cap is mined while holding position on the vine, off the ground; all
+other listed targets use the supported stations described above. The scaffold
+roof-cap stance must actually be standing on its top for the grounded assumption.
+
+The existing [Circle mining derivation](mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
+provides the nominal progress rule. In the same pinned mapped JAR, `Blocks`
+registers crimson/warped planks, crimson fence and `netherStem` with hardness 2;
+`legacyStair` copies its parent properties. Polished-blackstone bricks explicitly
+use hardness 1.5 (initializer 34483..34489), despite their parent's hardness 2.
+Deepslate bricks copy cobbled deepslate, hardness 3.5 (39667..39673), and their
+stairs copy those properties. Crying obsidian uses hardness 50 (34146..34152).
+The pinned pickaxe tag includes the stone targets and spawners, but none of the
+listed wood targets. Wood does not require a particular tool for drops, so the
+30 divisor still applies, with default tool speed 1 instead of effective speed 8.
+`Player.hasCorrectToolForDrops` explicitly accepts blocks without that requirement;
+`getDestroySpeed` offsets 164..176 divides by five when not on the ground.
+These are source-supported nominal rules, not a new runtime-tag or timing test.
+
+| Targets | Count | Hardness | Effective speed | Whole ticks per block | Subtotal seconds |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| North crimson stair, south crimson fence, two main planks, three roof stairs and two roof stems | 9 | 2 | 1 | 60 | 27 |
+| South polished-blackstone bricks | 5 | 1.5 | 8 | 6 | 1.5 |
+| South deepslate brick and stair | 2 | 3.5 | 8 | 14 | 1.4 |
+| Shaft crying-obsidian cap, off ground | 1 | 50 | 8/5 | 938 | 46.9 |
+| All seven spawners | 7 | 5 | 8 | 19 | 6.65 |
+
+The route requires seventeen cover removals and seven spawner removals, totaling
+1,669 nominal game ticks or 83.45 seconds at the declared 20 TPS. This is only
+uninterrupted breaking work. It excludes and must not replace targeting, tool
+selection, movement, thirty placements (19 bridge, 4 ladder, 7 scaffold), the
+main trapdoor interaction, all container acquisition, navigation, combat and
+completion verification. It is not the dungeon's traversal or completion time.
+A different tool, grounded cap strategy or interrupted mining is a different
+schedule and cannot silently reuse this component.
+
+In particular, the 46.9-second cap operation alone exceeds four minimum ten-second
+spawner reset intervals. Its station is within sixteen blocks of the two main
+blaze sources. A single initial wave per source is therefore not a justified
+population bound for this route. Successful spawns, local entity caps, delays and
+activation time must remain distinct in the eventual encounter model.
+
+Reproduce the arithmetic with the pinned source constants:
+
+```sh
+uv run python - <<'LARGE_HOUSE_BREAKING'
+import math
+rows = [('wood',9,2,1), ('blackstone bricks',5,1.5,8),
+        ('deepslate',2,3.5,8), ('hanging cap',1,50,8/5),
+        ('spawners',7,5,8)]
+total = 0
+for name,count,hardness,speed in rows:
+    ticks = math.ceil(hardness*30/speed)
+    total += count*ticks
+    print(name, count, ticks, count*ticks/20)
+assert total == 1669
+print('breaking only, seconds', total/20)
+LARGE_HOUSE_BREAKING
+```
