@@ -81,3 +81,105 @@ identify their feature/lifecycle routes and existing central-End evidence.
 All other included families still require explicit material-variant resolution,
 concrete sample selection and measurement integration. This document will be updated
 in place; an unresolved variant is not excluded or declared source-only complete.
+
+## WDA and Seven Seas variant scope
+
+The 35 included `dungeons_arise` roots and five included
+`dungeons_arise_seven_seas` roots each retain their canonical family name as the
+registry-root name. No root alias or extra family is introduced. The following
+scope comes from the accepted inventory's `grouping_decision`, `dimension`,
+`approximate_footprint`, `mob_source`, `generated_spawners` and
+`loot_table_source`, with exact alternatives in the bound pool trace
+`structures/<root>` and `template_contents/<template>` records. Reuse the
+[WDA source derivations](../item-8/sources/wda-provider-scope/README.md).
+
+Sampling terms below are specific to design coverage, not a quality score:
+
+- Fixed assembly: inspect at least one complete generated assembly in each listed
+  dimension. Aligned authored sections are parts of that assembly, not extra rooms.
+  Equal source envelopes alone do not prove equal playable topology.
+- Procedural assembly: inspect at least two complete generated assemblies from
+  different seed roles per listed dimension. Missing/unreadable generated chunks
+  censor topology coverage. A fully saved assembly truncated by an established
+  frozen connector or missing-component defect is instead a valid baseline result
+  with that defect retained. Never count the absent intended pieces as rooms.
+- Component coverage: retain every named architectural alternative as a required
+  variant input. Generated sample selection must expose each alternative, or give
+  its exact remaining gap before a minimal additional experiment. Do not multiply
+  every independent loot/spawner roll into an invented family. Interactions that
+  change connectivity, hazards or objectives cannot be disposed of as cosmetics.
+
+Every selected assembly also needs source-supported assessment of all reachable
+encounter/reward mechanisms, including the exact nested NBT in the accepted
+records. A skeleton rider, potion passenger, evoker fangs, trial spawner and direct
+saved entity cannot be collapsed into one ordinary skeleton workload. Source
+alternatives remain potential; generated sample counts use only their saved data.
+A missing component is not an observed empty room or a reason to repair the frozen
+pack. These requirements may increase the minimum sample count once actual saved
+component membership is inspected; no full processing budget is asserted yet.
+
+All unqualified family names in the next table use `dungeons_arise:`.
+
+| Family/root | Dimension | Required architectural variant coverage | Material conditions to preserve |
+| --- | --- | --- | --- |
+| abandoned_temple | Overworld | Procedural temple assembly | Authored illusioner/skeletons versus conditional stray override; buried and exposed portions |
+| aviary | End | Fixed three-layer assembly | Five different spawner alternatives, crystal content and external vertical access |
+| bandit_towers | Overworld | Procedural tower/bridge assembly | Rocket/passenger and different spawner payloads; actual bridge continuity |
+| bandit_village | Overworld | Procedural village assembly | Hoglin/passenger and rocket mechanisms; missing `bandit_village_deco_3` remains a failed source reference |
+| bathhouse | Overworld | Component coverage: six bases, four middles, seven tops | Source height combinations differ; curse dispenser/cloud and three spawner alternatives are not interchangeable decoration |
+| ceryneian_hind | Overworld | Fixed three-section ship | Surface-relative -16 placement, reward-bearing hull without authored enemy source in its selected templates |
+| coliseum | Overworld | Fixed four-quadrant arena | Phantom/skeleton spawner has its own long interval/count; entity-drop reward differs from container loot |
+| foundry | Overworld | Procedural underground assembly | Missing `underworld/foundry/foundry_corridor_gears` pool; retain resulting omissions and machinery access |
+| giant_mushroom | Overworld | Two separate assemblies: red and twins | Matching connector names keep these layouts separate; one sample of either does not cover the other |
+| greenwood_pub | Overworld | Procedural pub/lower-room assembly | Surface-relative -18 placement and buried lower access |
+| heavenly_challenger | Overworld, End | Fixed six-section ship in each dimension | Absolute Y200, mounted/flying enemy sources and access over distinct terrain/void context |
+| heavenly_conqueror | Overworld, End | Fixed four-quadrant ship in each dimension | Absolute Y200 and four spawner alternatives; no inferred ground entrance |
+| heavenly_rider | Overworld, End | Fixed two-layer ship in each dimension | Absolute Y200, mounted/flying sources including a distinct 2400/4800-tick interval |
+| illager_campsite | Overworld | Procedural terrain-following camp | Street/tent continuity, direct illager residents and zombie-villager decoration source; no physical spawner substitution |
+| illager_corsair | Overworld | Fixed two-section ship | Starting from either half translates the same authored assembly; evoker/pillager residents and vindicator spawner remain separate |
+| illager_fort | Overworld | Fixed enclosing assembly plus all nine internal room alternatives | Room alternatives and four saved-entity alternatives; equal room envelopes do not establish equal contents |
+| illager_galley | Overworld | Fixed two-section ship | Half-start translation is not a new design; direct pillager and vindicator spawner, with retained arrow/equipment differences |
+| illager_windmill | Overworld | Fixed two-section core plus procedural terrain-matching fields | Core access and attached field continuity must be assessed together; one isolated core is incomplete site coverage |
+| infested_temple | Overworld | Fixed main assembly plus five level and ten room alternatives | Five trial-spawner and three vault alternatives; final objectives and trial/vault state stay explicit |
+| jungle_tree_house | Overworld | Two anchor alternatives: main-start and roots-start | Same connected source shape, different surface-relative placement because vertical start piece changes; direct husk/skeleton residents |
+| keep_kayra | Overworld | Fixed main assembly | Connector-specific high/middle/low spawners, incompatible horizontal connector, fixed harmful-potion inventory and decorative/passive residents |
+| kisegi_sanctuary | Overworld | Fixed main/lower/middle/final top sections plus three `top_room_0` alternatives | Twelve trial-spawner and four vault alternatives; selected top-room variant must be identified |
+| lighthouse | Overworld | Fixed two-section tower | Vertical access and reward distribution without invented authored enemies |
+| mechanical_nest | Overworld | Procedural elevated assembly | Missing decoration pool, bridge terminator 6 and spawner 6 references; preserve actual access gaps |
+| mining_complex | Overworld | Procedural mining assembly | Fixed low anchor with tall architecture/blimp components; underground flag does not establish total burial |
+| mushroom_house | Overworld | Component coverage: four bottoms and five tops joined to roots | Shared connector envelope does not establish equal interior contents or routes |
+| mushroom_mines | Overworld | Fixed eight-section assembly | Two authored layers and conditional encounter/reward attachment content |
+| mushroom_village | Overworld | Fixed central house plus procedural perimeter houses | All reachable small-house alternatives; collisions/failed attachments affect actual branches |
+| plague_asylum | Overworld | Procedural underground assembly | Six different spawner alternatives, including fangs; ordinary block spawner does not imply an evoker mob |
+| scorched_mines | Overworld | Procedural surface-anchored mine | Buried route continuity and three distinct enemy payloads |
+| shiraz_palace | Overworld | Fixed three-layer assembly | Fourteen reachable spawner alternatives and their passenger/equipment differences |
+| small_blimp | Overworld | Fixed ladder and two hull sections | No matching connector supports an invented repeating ladder; three spawner payloads and fixed dispenser contents require separate treatment |
+| thornborn_towers | Overworld | Procedural towers/hanging architecture | Missing hanging-bridge terminator; flying/mounted and other spawner alternatives |
+| typhon | Overworld | Fixed three-section ship | Ocean-floor-relative -4 placement and waterlogging differ materially from Hind; no authored enemy source in selected templates |
+| undead_pirate_ship | Overworld | Fixed two-section ship | Direct skeletons and nested skeleton/carrier/passenger spawners; carrier types do not replace hostile passenger counts |
+
+The five Seven Seas rows use `dungeons_arise_seven_seas:`. Each has one main hull
+with subordinate spawner components, all in the Overworld. One generated hull per
+root is the architectural minimum; its complete room/connector graph remains to be
+validated. The selected spawner alternatives and all nested NBT remain required
+source inputs, not five universal enemy-per-room assumptions.
+
+| Family/root | Main hull template | Material content distinction |
+| --- | --- | --- |
+| corsair_corvette | corsair_corvette/corsair_corvette_0 | Skeleton and silverfish source types |
+| pirate_junk | pirate_junk/pirate_junk_0 | Illusioner, pillager and vindicator source types |
+| small_yacht | small_yacht/small_yacht_0 | Pillager/vindicator source types; missing `small_yacht_spawner_3` template remains an unresolved authored alternative |
+| unicorn_galleon | unicorn_galleon/unicorn_galleon_0 | Bat, skeleton and zombie source types; bats are not automatically hostile enemies |
+| victory_frigate | victory_frigate/victory_frigate_0 | Bat, hoglin, illager, skeleton and zombie source types; retain nested riders and attributes rather than count base IDs alone |
+
+Dimension denominator: 40 canonical families, 40 roots and 43 root/dimension
+combinations. The three extra combinations are the Heavenly designs in the End.
+Aviary is End-only in the accepted biome intersection. This is independent of
+Item 12's Overworld observation frame. The source's inactive Mining System is
+not reintroduced as a family. Fishing Hut, Merchant Campsite and Wishing Well
+retain their existing exclusion decisions in the complete intake.
+
+No WDA/Seven Seas quality score, source-to-room conversion or new experiment is
+accepted by this scope table. Concrete existing sample IDs, whole-envelope block
+availability, component membership, actor models and resource costs remain the
+next required selection work.
