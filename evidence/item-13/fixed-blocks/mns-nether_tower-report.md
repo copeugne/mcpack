@@ -167,3 +167,61 @@ seventeenth reward, elevated chest, or the complete tower task. Source/saved
 queries use the same extraction: inspect Y54..58 at the listed stations, target
 positions and ray cells with `render_pilot.state_at`. Preserve every unmodified
 block and the conditional nature of the declared removals.
+
+## Elevated chest: explicit scaffold connection
+
+Predeclare nineteen carried scaffolding blocks for a vertical column at (223,256),
+west of the chest's solid support. From the lower-cache circuit's (221.5,55,260.5)
+waypoint, walk north four blocks to (221.5,55,256.5), then east to the column.
+All six horizontal blocks have retained full floors at Y54 and air at Y55/56.
+Place the base at (223,55,256) from adjacent (222.5,55,256.5), on full deepslate
+tiles. No bridge or unrelated shaft is implicit.
+
+Build seven scaffolds at Y55..61, enter and climb to stand at feet Y62. Head
+height is Y63.8, below the red-nether-brick layer at Y64. From this supported
+stance, mine (223,64,256), then (223,66,256), polished blackstone, through the
+now-cleared lower layer and air at Y65. Their undersides at Y64 and Y66 are
+respectively 0.38 and 2.38 blocks above eye Y63.62, within three-block reach.
+The lower block must be removed first. This preserves a supported mining stance
+for both actions rather than charging grounded work while hanging.
+
+For the first six extensions, click the base's west side near its top rail at
+(223,55.95,256.5) from the adjacent station. For the twelve later extensions,
+move 0.7 blocks west on the Y62 scaffold top to center X222.8, retaining 0.1 blocks
+of body overlap with its support. Keep upright and do not activate descent. Click
+the existing scaffold's west face near its top rail at (223,61.95,256.5), then
+repeat for all twelve extensions at Y62..73. Return 0.7 blocks east to the center
+and climb to feet Y74. The west neighboring cells at Y61..63 are air. This explicit
+1.4-block stance adjustment is required, with loss of support censoring the model.
+Pinned `ScaffoldingBlockItem.updatePlacementContext` directs an ordinary side
+click UP and advances through the existing column to the first replaceable cell;
+clicking its top without secondary use instead requests a horizontal extension.
+The side-click sequence therefore matters and is included in placement input
+allowances, not treated as direct reach to every new top block.
+The full inspected column is air from Y55 through Y77 apart from the two named
+removals. Every scaffold inherits distance zero from the supported vertical stack,
+using the already documented pinned ScaffoldingBlock rules in the Large House
+assessment. Supported standing and controlled climb/descent are conditional on
+successful placement and actor behavior, not runtime observations.
+
+From (223.5,74,256.5), eye Y75.62, target the chest's west face at
+(224.0625,75.5,256.5). This uses the chest's inset shape rather than the full-cell
+boundary. The ray is short, passes through the scaffold's open space above its
+top, and meets the chest without crossing the solid support at Y74. The chest is
+single, with no saved Lock and air immediately above at (224,76,256). Under the
+existing no-entity-blocker assumption, saved block geometry therefore satisfies
+the chest-opening conditions. Generated inventory, transfer and successful opening
+remain NOT MEASURED. No extra upper floor or platform is assumed at chest height.
+
+The out-and-back branch contributes 13.4 horizontal and thirty-eight vertical
+blocks, nineteen placements and two additional mined targets. Return follows the
+same scaffold column under controlled descent. Keep the tower in place; recovery
+is outside the objective. Failure of placement, support, chest access or transfer
+censors this branch. Together with the lower-cache route, all seventeen reward
+nodes now have conditional access, with 27.4 horizontal and 38 vertical route blocks.
+Complete task timing must still add all actions, inventory work and verification.
+
+Reproduce geometry from the same hash-bound extraction: query (223,Y54..77,256),
+(224,Y74..76,256), Z256 at X221..223 and X221 at Z256..260, including floor Y54
+and body Y55/56. The exact two solid breaks and continuous remaining column are
+recorded above; this derivation requires no new world or runtime experiment.

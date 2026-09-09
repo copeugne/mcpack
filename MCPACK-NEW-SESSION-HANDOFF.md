@@ -181,7 +181,7 @@ with explicit provisional budgets and censoring. Resume layout coverage under
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
 original Circle and other layouts still need their own complete task budgets.
 [Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): 16/16 barrels and 7/7 spawners have conditional access evidence; exterior link requires 19 bridge blocks; full conditional model gives 376/583/969s for two successful entities per source; local five-room quality assessment recorded; family repetitions and broader coverage pending.
-[Nether Tower](evidence/item-13/fixed-blocks/mns-nether_tower-report.md): 17 source/saved rewards matched, no explicit enemy sources; all 16 lower barrels have conditional breach/transfer access; elevated chest and full timing/quality remain.
+[Nether Tower](evidence/item-13/fixed-blocks/mns-nether_tower-report.md): 17 source/saved rewards matched, no explicit enemy sources; all 17 rewards have conditional access, including a 19-scaffold chest route; full timing/quality remain.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
