@@ -12,10 +12,22 @@ from pathlib import Path
 
 from tools.analyze_route_opportunities import ROOT, read_bound
 
+from mcpack_evidence.item8_pool_links import _versioned_edges
 
-def named_components(value):
+
+def named_components(value):  # noqa: C901 - saved ordinary, custom and versioned components.
     names = set()
     if isinstance(value, dict):
+        if value.get("element_type") == "moogs_structures:versioned_single_pool_element":
+            for edge in _versioned_edges(value.get("locations"), "/saved_pool_element"):
+                if not isinstance(edge, dict):
+                    raise TypeError("version resolver returned a non-object edge")
+                if edge.get("selected"):
+                    name = edge["id"]
+                    if not isinstance(name, str):
+                        raise TypeError("version resolver returned a non-text template")
+                    names.add(name)
+            return names
         for key, child in value.items():
             if key in {"Template", "location"} and isinstance(child, str):
                 names.add(child)

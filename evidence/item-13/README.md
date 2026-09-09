@@ -432,3 +432,19 @@ block/position records, so a template-name-only selection would be incomplete.
 All 148 included families absent from this baseline frame remain in scope.
 Supplemental accepted worlds and the exact material requirements in
 [coverage.md](coverage.md) must be considered before new experiments are declared.
+
+### Narrow versioned-component correction
+
+The first fixed-layout selection attempt rejected Giant Skull and Desert Pyramid
+before writing output: the summary had treated the serialized fallback `location`
+as active. Their raw Moog elements also retain a `locations` map, whose
+`1.21-1.21.8` entry selects the unprefixed template on frozen 1.21.1. This is a
+summary defect, not a runtime/source contradiction. The accepted Item 8 resolver
+`item8_pool_links._versioned_edges` already implements this exact choice, so the
+summary now reuses it instead of inventing another version parser.
+
+Exactly five candidates change named component IDs: one Giant Skull, two Mega
+Fortresses and two Desert Pyramids. All other summary fields and all raw inspection
+bytes remain unchanged. The earlier derived summary remains in Git at `a5453858`.
+A focused regression rejects treating the `1_21_9` fallback as selected; six tests
+now pass. No upstream classification, configuration or source evidence changes.

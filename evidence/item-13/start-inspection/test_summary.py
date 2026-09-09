@@ -95,3 +95,12 @@ def test_changed_bounds_rejected(inspection):
     save()
     with pytest.raises(ValueError, match="bounds disagree"):
         summarize.main()
+
+
+def test_versioned_component_uses_frozen_mapping():
+    element = {
+        "element_type": "moogs_structures:versioned_single_pool_element",
+        "location": "mns:1_21_9/giant_skull",
+        "locations": {"1.21-1.21.8": "mns:giant_skull", "1.21.9-1.21.11": "mns:1_21_9/giant_skull"},
+    }
+    assert summarize.named_components({"pool_element": element}) == {"mns:giant_skull"}
