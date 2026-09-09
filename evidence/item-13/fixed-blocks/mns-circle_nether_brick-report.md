@@ -1,7 +1,7 @@
 # Nether Brick Circle: quality assessment
 
-Status: IN PROGRESS. Saved/source evidence and a supplemental reward inspection
-circuit are integrated; full topology and alternate routes remain pending.
+Status: IN PROGRESS. The supplemental local modeled assessment and northern
+external approach are recorded. Original mixed-case topology remains pending.
 This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
 
@@ -425,4 +425,83 @@ outbound = sum(math.dist(a,b) for a,b in zip(waypoints,waypoints[1:]))
 assert outbound == 13 and 2*outbound-4 == 22
 print('corrected nominal/faster/slower seconds',
       [22/u+4/c for u,c in [(4,1.2),(5,1.5),(3,0.9)]])
+```
+
+## Northern external approach and quality synthesis
+
+Predeclare one alternative approach: upright feet(369.5,33,71.5), outside
+the recorded envelope's northern boundary Z72, straight south to(369.5,33,75.5),
+then west to the existing northern reward station(367.5,33,75.5), and return.
+Use the same 0.6-wide, 1.8-high actor, known layout and 3/4/5 flat movement
+rates. Permit only the already declared northern trapdoor toggle. No mining,
+jumping, flight or assumed enemy suppression supports this route. A missing
+floor or unsupported body obstruction fails this proposed connection. The
+external approach before the declared station remains outside the measurement.
+
+Retained-state inspection validates this connection: X369,Z71..75 has full
+nylium at Y32 and air at Y34. Feet Y33 are air except crimson fungus at Z71
+and roots at Z73. Blocks initializer 32436..32460 registers crimson fungus
+with noCollission; roots use the source rule already established above.
+The western segment uses the already checked X367..369,Z75 air strip.
+The continuous sweep stays inside these supported strips, so no plant removal
+is needed. The six-block outward path and return total 12 horizontal blocks,
+zero vertical change, with movement-only nominal 3 seconds (2.4 faster,
+4 slower). Northern reward access still requires its trapdoor toggle and a
+different harvesting capability to acquire debris; neither receives a timing
+or acquired-loot credit.
+
+This is a supported bypass of the southern approach and its magma crossing,
+not proof of avoiding enemies. The external starting station is approximately
+8.20 blocks from the piglin spawner and 9.34 from the brute spawner, already
+inside both saved RequiredPlayerRange16 distances. The route avoids traversing
+their central pedestal but cannot be called an activation bypass or safe loot.
+It demonstrates that one material reward has local external access without
+progressing through the central hazard region. No arbitrary route protection
+or dungeon tuning is proposed.
+
+The supplemental sample supports the following assessment under the declared
+room definition. Delineate one outdoor ruin activity area within the broken
+perimeter at X360..376,Z72..88, with the validated interior circuit at feet Y33.
+The rectangle records the outer limits of the curved fragmented perimeter,
+not 289 proven playable cells. Solid pillars, vegetation, reward casings and
+the spawner pedestal are obstacles, not additional rooms. The mapped source
+positions at local Y1/2 show separated perimeter fragments and a central
+pedestal without intervening authored room walls; the saved slices and complete
+reward circuit establish a connected activity space. Natural trees obstruct
+parts of it, and unvisited pockets are not counted as separate rooms.
+
+| Requirement | Supported assessment and denominator |
+| --- | --- |
+| Rooms | One outdoor activity area, zero enclosed rooms. Under a strict enclosed-room-only sensitivity, zero rooms and one outdoor encounter site; do not discard that site as empty evidence. |
+| Branching/depth | One room-graph node, zero inter-room edges, zero degree-three room junctions and zero room-graph cycles. Entry and both reward objectives occupy the same node, graph depth zero. These do not count free walking alternatives as corridor branches. |
+| Route depth | Validated southern-start routes place reward stations at 4.8 and 13 blocks. The northern external alternative reaches its reward station in six blocks. These are route-specific upper bounds on shortest walking depth, not an exhaustive shortest-path result. |
+| Vertical progression | The complete two-reward inspection circuit has zero ascent/descent and feet-height span. Higher pillar/pedestal blocks do not constitute validated upper rooms or progression. No distinct authored upper objective is identified in this layout. |
+| Dead/empty rooms | Zero empty and zero dead over the one outdoor area: it has two reward materials, two enemy-source types and a meaningful floor hazard. Enclosed-room sensitivity has a zero denominator, so its empty/dead fraction is not defined. |
+| Reward distribution | Both debris nodes are in the same activity area, with distinct local casings and access costs. Zero chest/barrel nodes, two embedded material opportunities; acquired items remain NOT MEASURED. No separate final-room concentration exists. |
+| Chokepoints | No inter-room chokepoint in this one-area graph. The validated routes fit a 0.6-wide actor without a doorway transition. Plant/terrain obstacles and reward casing apertures remain local constraints, not evidence of a defended corridor or enemy funnel. |
+| Final room | NONE. No separate terminal room, ordered prerequisite chain or distinct final encounter is supported by the fixed template and saved reward/spawner layout. The northern approach weakens any inferred mandatory progression to that reward. |
+| Finale quality dimensions | Terminal objective clarity, distinctive terminal challenge, terminal reward linkage and ordered route integration are ABSENT as authored finale features. External exposure is PRESENT for the northern reward by the validated alternative, but there is no final room to assign that exposure to. |
+| Expected replay value | Low expected authored-layout variation for this fixed root, with two differently covered resource nodes and the same two spawner types. Saved terrain/overlap and the original-versus-supplement fire difference support environmental variation. Actual encounter outcomes, enjoyment and player revisits remain NOT MEASURED. |
+| Persistent revisit | Embedded debris is a finite placed resource in this source layout. No regenerating reward mechanism is identified here. Spawner parameters allow repeated attempts; they do not restore mined blocks or establish replay satisfaction. Other runtime regeneration mechanisms are not measured. |
+| Visually large but shallow | Mechanically shallow as a single outdoor resource/encounter site with no validated vertical objective sequence. The fragmentary 17-by-17 ruin is not a demonstrated large-building exemplar; do not promote envelope size or ten-block authored height into a claim of dungeon depth or perceived grandeur. |
+
+These conclusions apply to the supplemental fixed-root layout and preserve
+the original fortress-overlap case separately. They do not resolve the original
+case's complete playable topology, the blackstone material root, every alternate
+path or whole-population replay value. The source-supported mixed combat model
+above remains the combat assessment; the geometric circuit supplies no realized
+enemy count, human traversal/combat time or acquired loot.
+
+Reproduce the added route facts after REWARD_CHECK:
+
+```python
+for z in range(71,76):
+    assert state(case,369,32,z)['Name'] == 'minecraft:crimson_nylium'
+    assert state(case,369,34,z)['Name'] == 'minecraft:air'
+    expected = {71:'crimson_fungus',73:'crimson_roots'}.get(z,'air')
+    assert state(case,369,33,z)['Name'] == 'minecraft:'+expected
+start = (369.5,33,71.5)
+print('external start to spawner-center distances',
+      [math.dist(start,p) for p in [(368.5,34.5,79.5),(367.5,34.5,80.5)]])
+print('north circuit nominal/faster/slower seconds', [12/v for v in (4,5,3)])
 ```
