@@ -9,6 +9,7 @@ import pytest
 from tools.analyze_structure_density import (
     nonregistry_analysis,
     saved_block_at,
+    saved_block_section,
     saved_content_observations,
 )
 
@@ -58,6 +59,31 @@ def test_saved_palette_order_at_negative_coordinates() -> None:
     assert saved_block_at(chunk, (-1, 0, -30)) is None
     with pytest.raises(ValueError, match="supplied chunk"):
         _ = saved_block_at(chunk, (0, -13, -30))
+
+
+def test_bulk_section_matches_every_coordinate() -> None:
+    values = tuple(index % 3 for index in range(4096))
+    palette = [{"Name": name} for name in ("minecraft:air", "minecraft:stone", "minecraft:water")]
+    chunk = {
+        "xPos": -1,
+        "zPos": 2,
+        "sections": [
+            {
+                "Y": -2,
+                "block_states": {
+                    "palette": palette,
+                    "data": packed_values(values, 4),
+                },
+            }
+        ],
+    }
+    decoded = saved_block_section(chunk, -2)
+    assert decoded is not None
+    assert decoded == (tuple(palette), values)
+    for index in (0, 15, 16, 255, 256, 4095):
+        position = (-16 + index % 16, -32 + index // 256, 32 + (index // 16) % 16)
+        assert saved_block_at(chunk, position) == decoded[0][decoded[1][index]]
+    assert saved_block_section(chunk, 0) is None
 
 
 @pytest.mark.parametrize("external", [False, True])

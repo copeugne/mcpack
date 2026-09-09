@@ -123,7 +123,22 @@ def saved_block_at(
     if (chunk.get("xPos"), chunk.get("zPos")) != (x // 16, z // 16):
         detail = "saved block coordinate does not belong to supplied chunk"
         raise ValueError(detail)
-    sections = [section for section in chunk["sections"] if section["Y"] == y // 16]
+    section = saved_block_section(chunk, y // 16)
+    if section is None:
+        return None
+    palette, indices = section
+    index = indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]
+    if not 0 <= index < len(palette):
+        detail = "saved block palette index out of range"
+        raise ValueError(detail)
+    return palette[index]
+
+
+def saved_block_section(
+    chunk: Mapping[str, object], section_y: int
+) -> tuple[tuple[dict[str, object], ...], tuple[int, ...]] | None:
+    """Decode a saved section once for callers reading many positions in it."""
+    sections = [section for section in chunk["sections"] if section["Y"] == section_y]
     if not sections:
         return None
     if len(sections) != 1:
@@ -141,11 +156,7 @@ def saved_block_at(
         if len(palette) == 1
         else _packed(tuple(states["data"]), 4096, max(4, (len(palette) - 1).bit_length()))
     )
-    index = indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]
-    if not 0 <= index < len(palette):
-        detail = "saved block palette index out of range"
-        raise ValueError(detail)
-    return cast("dict[str, object]", palette[index])
+    return tuple(cast("dict[str, object]", entry) for entry in palette), indices
 
 
 def saved_content_observations(  # noqa: C901, PLR0912 - one locked manifest-bound world pass

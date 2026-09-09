@@ -448,3 +448,39 @@ Fortresses and two Desert Pyramids. All other summary fields and all raw inspect
 bytes remain unchanged. The earlier derived summary remains in Git at `a5453858`.
 A focused regression rejects treating the `1_21_9` fallback as selected; six tests
 now pass. No upstream classification, configuration or source evidence changes.
+
+## Fixed-layout block extraction
+
+The repeated point/section benchmark returns identical 4,096 block states.
+The first run took 1.4169 seconds for point lookups and 0.0004184 seconds for a
+single section decode plus lookup. A repeat took 1.5187 and 0.0004679 seconds,
+with 45,068 KiB peak RSS. These are synthetic decoder costs, not game performance.
+The existing decoder implementation is shared by both paths; no alternate palette
+format was introduced. Nine affected saved-content tests pass, including packed
+ordering and negative coordinates. The configured whole-project type check
+reports 20 errors and five warnings in two unchanged files (`item7_world_manifest.py`
+and `test_typed_comparison_identity.py`); it is not reported as a clean global gate.
+The Item 13 extractor's focused type and lint checks pass.
+
+Under `item13-fixed-blocks-v1` in [coverage.md](coverage.md), the first selected
+[Medium House raw extraction](fixed-blocks/mns-medium-house.json.gz) passed in
+5.971 seconds, at 49,388 KiB peak RSS, retaining 8,500 voxels in 5,294 compressed
+bytes. SHA-256 is `a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496`.
+The [execution record](fixed-blocks/mns-medium-house-execution.txt) retains these
+measurements. The complete world inventory matched before and after the locked
+read, and all requested chunks and sections were present.
+
+The saved site includes four physical spawner block entities, one chest and two
+barrels, plus stairs, slabs, trapdoors, doors, fences and vegetation. These are
+raw block facts, not four realized enemies or a room count. The earlier flat
+small-dungeon route model is insufficient for this site's movement. Its topology
+and supported collision/movement treatment remain to be resolved before scoring.
+The first read passed its cap, so the remaining eight preselected block reads
+may proceed within the already declared fifteen-minute batch budget.
+
+The original small-dungeon producer remains in Git at `6ba360fa`. To reproduce its
+historical hash after extending the extractor, retrieve that exact producer with
+`git show 6ba360fa:evidence/item-13/measure.py > /tmp/item13-original-measure.py`
+and run it with `PYTHONPATH=.` under `uv run python`. The unchanged protocol hash
+remains the one in its original report; the new fixed-layout protocol is not a
+retroactive change to that pilot.

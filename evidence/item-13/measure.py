@@ -8,13 +8,14 @@ import argparse
 import gzip
 import hashlib
 import json
+import resource
 import shutil
 import time
 from pathlib import Path
 from typing import Any, cast
 
 from tools.analyze_route_opportunities import ROOT, accepted_inputs, read_bound, verify_world
-from tools.analyze_structure_density import saved_block_at
+from tools.analyze_structure_density import saved_block_section
 from tools.manage_item4_environment import _world_backup_lock
 
 from mcpack_evidence.item7_anvil import RegionContext, decode_region_payloads
@@ -69,7 +70,7 @@ def select():  # noqa: ANN201
     return chosen, len(candidates)
 
 
-def extract(case):  # noqa: ANN001, ANN201, C901, PLR0912
+def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PLR0915
     name = case["world"]
     custody = ROOT / "evidence/raw/item10" / f"{name}-custody"
     world = custody / "restored-world/world"
@@ -84,8 +85,14 @@ def extract(case):  # noqa: ANN001, ANN201, C901, PLR0912
     envelope = case["envelope"]
     bounds = [v - 3 if i < 3 else v + 3 for i, v in enumerate(envelope)]
     volume = (bounds[3] - bounds[0] + 1) * (bounds[4] - bounds[1] + 1) * (bounds[5] - bounds[2] + 1)
-    if volume > 3757:
+    if volume > voxel_budget:
         raise ValueError(f"pilot volume budget exceeded: {volume}")
+    dimension = case.get("dimension", "minecraft:overworld")
+    directory, min_y, height = {
+        "minecraft:overworld": ("region", -64, 384),
+        "minecraft:the_nether": ("DIM-1/region", 0, 256),
+        "minecraft:the_end": ("DIM1/region", 0, 256),
+    }[dimension]
     needed = {
         (x, z)
         for x in range(bounds[0] // 16, bounds[3] // 16 + 1)
@@ -97,9 +104,9 @@ def extract(case):  # noqa: ANN001, ANN201, C901, PLR0912
     with _world_backup_lock(world):
         verify_world(world, backup["world_files"])
         for rx, rz in sorted({(x // 32, z // 32) for x, z in needed}):
-            relative = f"region/r.{rx}.{rz}.mca"
+            relative = f"{directory}/r.{rx}.{rz}.mca"
             for record, payload in decode_region_payloads(
-                world / relative, RegionContext("minecraft:overworld", relative, -64, 384)
+                world / relative, RegionContext(dimension, relative, min_y, height)
             ):
                 key = record.chunk_x, record.chunk_z
                 if key not in needed:
@@ -114,15 +121,27 @@ def extract(case):  # noqa: ANN001, ANN201, C901, PLR0912
                     start = chunk["structures"]["starts"][case["root"]]
         if set(chunks) != needed or start is None:
             raise ValueError("incomplete pilot geometry")
+        sections = {}
+        for (cx, cz), chunk in chunks.items():
+            for sy in range(bounds[1] // 16, bounds[4] // 16 + 1):
+                section = saved_block_section(chunk, sy)
+                if section is None:
+                    raise ValueError(f"missing block section: {(cx, sy, cz)}")
+                palette, indices = section
+                sections[(cx, sy, cz)] = (
+                    [json.dumps(value, sort_keys=True, separators=(",", ":")) for value in palette],
+                    indices,
+                )
         states = []
         block_entities = []
         for y in range(bounds[1], bounds[4] + 1):
             for z in range(bounds[2], bounds[5] + 1):
                 for x in range(bounds[0], bounds[3] + 1):
-                    value = saved_block_at(chunks[(x // 16, z // 16)], (x, y, z))
-                    if value is None:
-                        raise ValueError(f"missing pilot block section: {(x, y, z)}")
-                    states.append(json.dumps(value, sort_keys=True, separators=(",", ":")))
+                    palette, indices = sections[(x // 16, y // 16, z // 16)]
+                    index = indices[x % 16 + 16 * (z % 16) + 256 * (y % 16)]
+                    if not 0 <= index < len(palette):
+                        raise ValueError("saved block palette index out of range")
+                    states.append(palette[index])
         for chunk in chunks.values():
             block_entities.extend(
                 block
@@ -157,23 +176,49 @@ def extract(case):  # noqa: ANN001, ANN201, C901, PLR0912
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--fixed-root", help="one root from the fixed Moog selection")
     args = parser.parse_args()
     if args.output.exists() or args.output.is_symlink():
         raise ValueError("output must be absent; preserve previous attempts")
     if shutil.disk_usage(ROOT).free < 5 * 1024**3:
         raise ValueError("pilot free-space floor not met")
     begun = time.monotonic()
-    selected, denominator = select()
-    results = [extract(case) for case in selected]
+    selection_sha256 = None
+    if args.fixed_root:
+        selection_raw = read_bound(ROOT / "evidence/item-13/fixed-moog-selection.json")
+        plan = json.loads(selection_raw)
+        chosen = [r for r in plan["selected"] if r["root"] == args.fixed_root]
+        if len(chosen) != 1:
+            raise ValueError("root must identify exactly one preselected fixed instance")
+        candidate_raw = read_bound(
+            ROOT / "evidence/item-13/candidates.json", plan["input_sha256"]["candidates"]
+        )
+        selected = [
+            r
+            for r in json.loads(candidate_raw)["candidates"]
+            if r["id"] == chosen[0]["candidate_id"]
+        ]
+        if len(selected) != 1 or selected[0]["bounds"] != chosen[0]["bounds"]:
+            raise ValueError("selected instance or bounds disagree with candidate index")
+        denominator = chosen[0]["eligible_count"]
+        selection_sha256 = hashlib.sha256(selection_raw).hexdigest()
+        results = [extract(selected[0], chosen[0]["voxel_count"])]
+    else:
+        selected, denominator = select()
+        results = [extract(case) for case in selected]
     elapsed = time.monotonic() - begun
     result = {
-        "protocol": "item13-quality-v1-small-dungeon",
+        "protocol": "item13-fixed-blocks-v1"
+        if args.fixed_root
+        else "item13-quality-v1-small-dungeon",
         "protocol_sha256": hashlib.sha256(read_bound(PROTOCOL)).hexdigest(),
         "producer_sha256": hashlib.sha256(read_bound(Path(__file__))).hexdigest(),
         "eligible_baseline_occurrences": denominator,
         "cases": results,
         "human_metrics": "NOT MEASURED",
     }
+    if selection_sha256 is not None:
+        result["selection_sha256"] = selection_sha256
     raw = gzip.compress(
         (json.dumps(result, sort_keys=True, separators=(",", ":")) + "\n").encode(), mtime=0
     )
@@ -183,6 +228,7 @@ def main() -> None:
         json.dumps(
             {
                 "elapsed_seconds": elapsed,
+                "peak_rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                 "output_bytes": len(raw),
                 "sha256": hashlib.sha256(raw).hexdigest(),
                 "selected": [row["id"] for row in results],
@@ -190,7 +236,12 @@ def main() -> None:
             }
         )
     )
-    if elapsed > 600 or len(raw) > 1024**2:
+    time_cap, size_cap = (300, 10 * 1024**2) if args.fixed_root else (600, 1024**2)
+    if (
+        elapsed > time_cap
+        or len(raw) > size_cap
+        or resource.getrusage(resource.RUSAGE_SELF).ru_maxrss > 1536 * 1024
+    ):
         raise ValueError("pilot resource cap exceeded; retained result is rejected")
 
 

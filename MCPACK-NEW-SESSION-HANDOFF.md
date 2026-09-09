@@ -122,8 +122,13 @@ chooses nine Moog root alternatives in eight families, with 556,065 padded voxel
 The summary now resolves Moog version maps using the accepted Item 8 resolver.
 Five derived component-name rows changed; original raw bytes are unchanged.
 
-Next: declare block/model support and extraction costs for those selected layouts,
-and finish selection against other material variants and seed requirements.
+The [fixed-block dataset](evidence/item-13/fixed-blocks/README.md) now retains
+all nine selected layouts: 556,065 voxels, 87,559 compressed bytes, 60.887 seconds.
+The first house reproduced exactly and has an inspected slice sheet. Empty enemy
+assignments and the Dome's external-margin barrel are explicit raw limitations.
+
+Next: resolve collision/movement support, room connectivity and encounter models
+for those layouts; finish other family/variant/seed selection and measurements.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental
 Item 8/7 worlds for missing families and variants before declaring new generation.
 Record selected bounds, model support and full extraction costs before expansion.

@@ -588,3 +588,32 @@ alternative and all other absent designs remain required. Models and a block
 extraction budget must be declared before processing these samples. The initial
 selection failure and narrow versioned-component summary correction are preserved
 in the authoritative README; no world was reread to resolve that metadata defect.
+
+## Fixed-layout block preparation
+
+The existing point reader decodes all 4,096 palette indices on every lookup.
+The selected 556,065-voxel batch needs the same exact decoding once per section,
+not a second block format or a different geometry approximation. Refactor that
+existing reader to expose its section result, retain the point API, and check
+packed order and negative coordinates with the affected saved-content tests.
+Before world reads, benchmark 4,096 synthetic alternating-palette lookups against
+one section decode, requiring identical returned states. Budget 30 seconds and
+128 MiB memory for this code-path benchmark. It is not a game timing experiment.
+
+Protocol `item13-fixed-blocks-v1`: extract only the nine already selected fixed
+instances, using their exact envelope-plus-three bounds, saved block entities,
+start NBT and WORLD_SURFACE columns. These are raw saved-block observations, not
+room counts, traversal routes or combat estimates. The first extraction is
+`mns:medium_house`, ordinary r1 Nether start 29,27, bounds
+`[452,40,424,476,59,440]`: 8,500 voxels in `DIM-1/region/r.0.0.mca`.
+Require full chunks and every selected block section; preserve failure without
+silently substituting air. Verify the accepted world inventory before and after
+under the existing lock. No server or gameplay actor is involved in this read.
+
+Budget: five minutes and 10 MiB compressed output per selected instance, 1.5 GiB
+peak memory and a 5 GiB free-space floor. The complete nine-instance extraction
+budget is fifteen minutes and 90 MiB raw compressed output. Stop expansion if the
+first extraction exceeds its cap. Its measured cost will inform the next block
+reads; the synthetic section benchmark does not predict whole-world read cost.
+Room boundaries, collision/movement rules and encounter assumptions must be
+resolved before dependent quality scoring or timing models are run.

@@ -4,7 +4,9 @@
 # ruff: noqa: D103, EM101, TRY003, INP001, E501
 from __future__ import annotations
 
+import argparse
 import gzip
+import hashlib
 import html
 import json
 from pathlib import Path
@@ -40,6 +42,57 @@ def appearance(name):  # noqa: ANN001, ANN201, PLR0911
     if name.endswith(("stairs", "slab")):
         return "#6d8ca0", "h"
     return "#89908d", ""
+
+
+def render_slices(source, output) -> None:  # noqa: ANN001
+    raw = source.read_bytes()
+    doc = json.loads(gzip.decompress(raw))
+    if len(doc["cases"]) != 1:
+        raise ValueError("slice sheet requires exactly one retained case")
+    case = doc["cases"][0]
+    bounds = case["bounds"]
+    ys = list(range(case["envelope"][1], case["envelope"][4] + 1))
+    cell = 12
+    width = (bounds[3] - bounds[0] + 1) * cell + 30
+    height = (bounds[5] - bounds[2] + 1) * cell + 40
+    canvas_width = 4 * width + 20
+    canvas_height = ((len(ys) + 3) // 4) * height + 115
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{canvas_width}" height="{canvas_height}">',
+        '<rect width="100%" height="100%" fill="#f5f3ec"/>',
+        '<g font-family="DejaVu Sans, sans-serif">',
+        f'<text x="10" y="24" font-size="17">Saved slices: {html.escape(case["root"])}</text>',
+        '<text x="10" y="45" font-size="12">X right, Z down. White air; grey other blocks; h slab/stair; D door; T trapdoor; G gate; F fire. Not collision shapes.</text>',
+        f'<text x="10" y="64" font-size="11">Raw SHA-256: {hashlib.sha256(raw).hexdigest()}</text>',
+    ]
+    for panel, y in enumerate(ys):
+        px, py = 10 + (panel % 4) * width, 95 + (panel // 4) * height
+        parts.append(
+            f'<text x="{px}" y="{py - 8}" font-size="12">Y={y}; X={bounds[0]}..{bounds[3]}, Z={bounds[2]}..{bounds[5]}</text>'
+        )
+        for z in range(bounds[2], bounds[5] + 1):
+            for x in range(bounds[0], bounds[3] + 1):
+                state = state_at(case, x, y, z)
+                name = state["Name"]
+                fill, letter = appearance(name)
+                for suffix, color, marker in (
+                    ("trapdoor", "#a2c49d", "T"),
+                    ("_door", "#78b690", "D"),
+                    ("fence_gate", "#c9b682", "G"),
+                    (":fire", "#ff832e", "F"),
+                ):
+                    if name.endswith(suffix):
+                        fill, letter = color, marker
+                        break
+                sx, sy = px + (x - bounds[0]) * cell, py + (z - bounds[2]) * cell
+                title = html.escape(f"{x},{y},{z}: " + json.dumps(state, sort_keys=True))
+                parts.append(
+                    f'<rect x="{sx}" y="{sy}" width="{cell}" height="{cell}" fill="{fill}" stroke="#c6c9c7" stroke-width="0.3"><title>{title}</title></rect>'
+                )
+                if letter:
+                    parts.append(f'<text x="{sx + 2}" y="{sy + 10}" font-size="9">{letter}</text>')
+    parts.append("</g></svg>")
+    output.write_text("\n".join(parts) + "\n")
 
 
 def main() -> None:
@@ -110,4 +163,13 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path)
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args()
+    if args.input:
+        if args.output is None:
+            raise ValueError("slice rendering requires an output path")
+        render_slices(args.input, args.output)
+    else:
+        main()

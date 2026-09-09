@@ -101,7 +101,8 @@ accepted from this pilot. Their material-variant coverage remains required.
 From repository root, with existing accepted restores:
 
 ```sh
-uv run --no-sync python -m evidence.item-13.measure --output /tmp/item13-pilot-reproduction.json.gz
+git show 6ba360fa:evidence/item-13/measure.py > /tmp/item13-original-measure.py
+PYTHONPATH=. uv run --no-sync python /tmp/item13-original-measure.py --output /tmp/item13-pilot-reproduction.json.gz
 cmp evidence/item-13/pilot/observations.json.gz /tmp/item13-pilot-reproduction.json.gz
 uv run --no-sync python evidence/item-13/render_pilot.py
 uv run --no-sync python evidence/item-13/analyze_pilot.py
