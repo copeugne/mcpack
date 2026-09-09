@@ -539,1222 +539,490 @@ recognition and discovery rates remain NOT MEASURED; no human trials are require
 - [ ] Rank problems by severity.
 - [ ] Do not select final solutions yet.
 
-# PHASE III — REQUIREMENTS & SYSTEM DESIGN
-
-## 19. Define the Final Adventure Structure Taxonomy
-
-- [ ] Convert provisional structure classifications into final design categories.
-- [ ] Define Tier 0 — Ambient Landmark.
-  - [ ] Primarily supports visual exploration.
-  - [ ] Minimal or no combat.
-  - [ ] Short interaction time.
-  - [ ] Low reward significance.
-- [ ] Define Civilization.
-  - [ ] Villages.
-  - [ ] Settlements.
-  - [ ] Taverns.
-  - [ ] Trade hubs.
-  - [ ] Expedition staging points.
-- [ ] Define Tier 1 — Small Encounter.
-  - [ ] Approximately 5–15 minutes.
-  - [ ] Low-to-moderate combat pressure.
-  - [ ] Frequent enough to break travel monotony.
-- [ ] Define Tier 2 — Proper Dungeon.
-  - [ ] Approximately 20–45 minutes.
-  - [ ] Multiple rooms.
-  - [ ] Meaningful traversal.
-  - [ ] Multiple encounters.
-  - [ ] Meaningful reward.
-- [ ] Define Tier 3 — Major Expedition.
-  - [ ] Approximately 30–90+ minutes.
-  - [ ] High preparation requirements.
-  - [ ] Group-friendly.
-  - [ ] High logistical value.
-- [ ] Define Tier 4 — World Objective.
-  - [ ] Dimension progression.
-  - [ ] Server-scale objectives.
-  - [ ] Endgame expeditions.
-- [ ] Require every retained structure family to have one clear primary role.
-
-### Depends On
-- Item 18.
-
-
-## 20. Define the Transportation-Scale Model
-
-- [ ] Define expected exploration scale on foot.
-- [ ] Define expected exploration scale on horseback.
-- [ ] Define expected exploration scale by boat.
-- [ ] Define expected exploration scale by train.
-- [ ] Define expected exploration scale by aircraft.
-- [ ] Define approximate practical travel speeds for each.
-- [ ] Define acceptable travel duration to:
-  - [ ] Tier 0 content.
-  - [ ] Tier 1 content.
-  - [ ] Tier 2 content.
-  - [ ] Tier 3 content.
-  - [ ] Tier 4 objectives.
-- [ ] Preserve distinct transportation roles:
-  - [ ] Foot = local exploration.
-  - [ ] Horse/boat = local/regional movement.
-  - [ ] Train = persistent high-throughput regional logistics.
-  - [ ] Aircraft = flexible long-range expeditions.
-- [ ] Ensure aircraft do not make trains pointless.
-- [ ] Ensure trains do not replace exploration.
-- [ ] Use the resulting travel model when choosing structure spacing.
-
-### Depends On
-- Items 11–12 and 19.
-
-
-## 21. Define Target Adventure Cadence
-
-- [ ] Define target average time between visual discoveries.
-- [ ] Define target average time between actionable discoveries.
-- [ ] Define target average time between combat encounters.
-- [ ] Define target average time between Tier 1 encounters.
-- [ ] Define target average time between Tier 2 dungeons.
-- [ ] Define target average time between Tier 3 expeditions.
-- [ ] Define target rarity of Tier 4 objectives.
-- [ ] Define acceptable Adventure Activity Ratio.
-- [ ] Define acceptable dead-travel percentage.
-- [ ] Define cadence separately for:
-  - [ ] early game.
-  - [ ] mid game.
-  - [ ] late game.
-- [ ] Define cadence separately for:
-  - [ ] walking.
-  - [ ] horse/boat.
-  - [ ] train.
-  - [ ] aircraft.
-- [ ] Do not solve poor cadence by making giant structures common.
-
-### Depends On
-- Items 18–20.
-
-
-## 22. Define Dungeon Topology Requirements
-
-- [ ] Define minimum requirements for a structure to count as a proper dungeon.
-- [ ] Require meaningful interior traversal.
-- [ ] Define minimum useful room count.
-- [ ] Define acceptable empty-room percentage.
-- [ ] Define verticality expectations.
-- [ ] Define branching expectations.
-- [ ] Define dungeon-depth expectations.
-- [ ] Define encounter-spacing expectations.
-- [ ] Define rest/breathing-space expectations.
-- [ ] Define miniboss/finale placement expectations.
-- [ ] Define loot distribution throughout the dungeon.
-- [ ] Avoid concentrating all value in one easily reached chest.
-- [ ] Require larger dungeons to contain multiple gameplay phases.
-- [ ] Define how underground layouts counterbalance aircraft.
-- [ ] Preserve destructibility and engineering freedom.
-
-### Depends On
-- Items 13, 19, 21.
-
-
-## 23. Define Dungeon Objective Variety
-
-- [ ] Define allowed dungeon objectives.
-  - [ ] Reach a deep chamber.
-  - [ ] Clear a defended zone.
-  - [ ] Recover a specific object.
-  - [ ] Find a map or intelligence item.
-  - [ ] Defeat a commander.
-  - [ ] Search branching paths.
-  - [ ] Destroy hostile infrastructure.
-  - [ ] Retrieve multiple components where appropriate.
-- [ ] Avoid making every location:
-  - [ ] enter.
-  - [ ] kill.
-  - [ ] loot.
-  - [ ] exit.
-- [ ] Avoid excessive scripted quest behavior.
-- [ ] Preserve sandbox solutions.
-- [ ] Ensure objectives tolerate wall breaching and alternative routes where reasonable.
-- [ ] Prefer objectives distributed through the dungeon rather than single-room checks.
-
-### Depends On
-- Item 22.
-
-
-## 24. Define Dungeon Persistence and Repeatability Policy
-
-- [ ] Decide whether dungeons are fundamentally:
-  - [ ] one-time persistent world events.
-  - [ ] repeatable content.
-  - [ ] a mixture depending on tier.
-- [ ] Decide whether:
-  - [ ] destroyed walls remain destroyed.
-  - [ ] mined shortcuts remain.
-  - [ ] spawners remain destroyed.
-  - [ ] player-built bridges remain.
-  - [ ] breached entrances remain.
-- [ ] Decide how later players experience previously altered dungeons.
-- [ ] Distinguish loot freshness from physical dungeon freshness.
-- [ ] Determine whether Tier 1 encounters need repeatability.
-- [ ] Determine whether Tier 2 dungeons need repeatability.
-- [ ] Determine whether Tier 3 expeditions should remain permanently changed.
-- [ ] Define whether the world should visibly preserve expedition history.
-- [ ] Ensure Lootr or equivalent systems do not create the false assumption that physical content also resets.
-
-### Depends On
-- Items 16, 22–23.
-
-
-## 25. Define the Difficulty Model
-
-- [ ] Make encounter composition the primary difficulty lever.
-- [ ] Define difficulty using:
-  - [ ] enemy roles.
-  - [ ] enemy count.
-  - [ ] ranged pressure.
-  - [ ] armor/equipment.
-  - [ ] positioning.
-  - [ ] terrain.
-  - [ ] chokepoints.
-  - [ ] reinforcements.
-  - [ ] elites.
-- [ ] Use raw health increases conservatively.
-- [ ] Use raw damage increases conservatively.
-- [ ] Avoid extreme distance-based scaling.
-- [ ] Avoid late-game mobs becoming damage sponges.
-- [ ] Define difficulty expectations for:
-  - [ ] Tier 1.
-  - [ ] Tier 2.
-  - [ ] Tier 3.
-  - [ ] Tier 4.
-- [ ] Define expected difficulty for:
-  - [ ] solo players.
-  - [ ] duos.
-  - [ ] 3–4 player groups.
-- [ ] Ensure engineering can meaningfully reduce expedition difficulty.
-
-### Depends On
-- Items 14, 19, 22–24.
-
-
-## 26. Define Enemy Role and Encounter Archetypes
-
-- [ ] Define basic melee enemy role.
-- [ ] Define armored melee role.
-- [ ] Define ranged role.
-- [ ] Define fast/flanking role.
-- [ ] Define heavy role.
-- [ ] Define defensive role.
-- [ ] Define elite role.
-- [ ] Define commander role.
-- [ ] Define environmental-threat role.
-
-- [ ] Define themed encounter families:
-  - [ ] undead.
-  - [ ] illager.
-  - [ ] cave.
-  - [ ] spider.
-  - [ ] ocean.
-  - [ ] Nether.
-  - [ ] End.
-  - [ ] dimension-specific.
-
-- [ ] Define easy encounter compositions.
-- [ ] Define medium encounter compositions.
-- [ ] Define hard encounter compositions.
-- [ ] Define expedition encounter compositions.
-- [ ] Prefer tactical variety over simply adding more monster species.
-
-### Depends On
-- Item 25.
-
-
-## 27. Define Elite, Miniboss, and Boss Philosophy
-
-- [ ] Define what qualifies as an elite.
-- [ ] Define what qualifies as a miniboss.
-- [ ] Define what qualifies as a true boss.
-- [ ] Decide whether the pack actually needs dedicated boss mods.
-- [ ] Prefer faction/location-specific commanders where possible.
-- [ ] Avoid bosses that rely primarily on enormous HP pools.
-- [ ] Avoid boss progression becoming the pack's primary progression.
-- [ ] Ensure siege weapons and engineering remain relevant.
-- [ ] Define boss/miniboss reward rules.
-- [ ] Define maximum acceptable stat inflation.
-- [ ] Keep dedicated boss-mod selection deferred until ordinary encounters are tested.
-
-### Depends On
-- Items 25–26.
-
-
-## 28. Define the Loot Economy
-
-- [ ] Define reward categories:
-  - [ ] expedition supplies.
-  - [ ] ordinary materials.
-  - [ ] equipment.
-  - [ ] discovery/intelligence.
-  - [ ] engineering materials.
-  - [ ] engineering capabilities.
-  - [ ] cosmetics.
-  - [ ] trophies.
-  - [ ] collectibles.
-- [ ] Define loot tiers corresponding to structure tiers.
-- [ ] Define rarity bands.
-- [ ] Define economic value expectations.
-- [ ] Avoid bulk iron/copper/gold becoming primary late-game rewards.
-- [ ] Avoid excessive diamonds.
-- [ ] Avoid excessive enchanted books.
-- [ ] Ensure high-value rewards are at least one of:
-  - [ ] non-automatable.
-  - [ ] difficult to mass-produce.
-  - [ ] unique.
-  - [ ] prestige-oriented.
-  - [ ] horizontally useful.
-- [ ] Ensure foundational engineering remains normally craftable.
-- [ ] Avoid mandatory rare-RNG progression gates.
-
-### Depends On
-- Items 15, 19, 25–27.
-
-
-## 29. Define Reward Renewability and Automation Rules
-
-- [ ] Classify every planned valuable reward as:
-  - [ ] renewable.
-  - [ ] non-renewable.
-  - [ ] farmable.
-  - [ ] non-farmable.
-  - [ ] structure-limited.
-  - [ ] player-limited.
-- [ ] Identify rewards that could become mob-farm outputs.
-- [ ] Identify rewards that could be automated using Create.
-- [ ] Identify rewards that could be extracted with hoppers/pipes.
-- [ ] Identify rewards that could be mass-produced after one discovery.
-- [ ] Prevent one rare dungeon drop from unintentionally becoming an industrial resource at hundreds per hour.
-- [ ] Decide which automation interactions are desirable.
-- [ ] Decide which interactions destroy the intended adventure loop.
-- [ ] Prefer reward design changes over arbitrary automation bans.
-
-### Depends On
-- Item 28.
-
-
-## 30. Define Engineering ↔ Adventure Integration
-
-- [ ] Define how Create contributes to expedition preparation.
-- [ ] Define how Aeronautics contributes to expeditions.
-- [ ] Define how Steam 'n' Rails contributes.
-- [ ] Define how CC:Tweaked contributes.
-- [ ] Define how Create Big Cannons contributes.
-- [ ] Define how Diesel Generators contributes.
-- [ ] Define potential future engineering integrations.
-
-- [ ] Define suitable horizontal rewards:
-  - [ ] specialized ammunition.
-  - [ ] rare schematics.
-  - [ ] advanced sensors.
-  - [ ] navigation components.
-  - [ ] specialized machine parts.
-  - [ ] vehicle upgrades.
-  - [ ] vehicle cosmetics.
-  - [ ] specialized tools.
-  - [ ] engineering trophies.
-
-- [ ] Explicitly exclude from dungeon gating:
-  - [ ] Mechanical Press.
-  - [ ] Mechanical Mixer.
-  - [ ] basic bearings.
-  - [ ] basic trains.
-  - [ ] basic CC:Tweaked computers.
-  - [ ] foundational Create mechanisms.
-- [ ] Document which rewards are horizontal rather than strictly stronger.
-
-### Depends On
-- Items 28–29.
-
-
-## 31. Define Discovery and Navigation Progression
-
-- [ ] Define how players learn about nearby Tier 1 content.
-- [ ] Define how players discover Tier 2 dungeons.
-- [ ] Define how players discover Tier 3 expeditions.
-- [ ] Define how Tier 4 objectives are revealed.
-- [ ] Prefer:
-  - [ ] maps.
-  - [ ] clues.
-  - [ ] coordinates.
-  - [ ] cartographers.
-  - [ ] found documents.
-  - [ ] structure-to-structure leads.
-- [ ] Define possible chain:
-  - [ ] local discovery.
-  - [ ] clue.
-  - [ ] dungeon.
-  - [ ] major clue.
-  - [ ] expedition.
-- [ ] Avoid requiring `/locate`.
-- [ ] Avoid making GUI structure selectors the normal player experience.
-- [ ] Account for structure discoverability from Item 12.
-
-### Depends On
-- Items 12, 19–23, 28.
-
-
-## 32. Define Multiplayer Expedition and Loot Rules
-
-- [ ] Define intended solo viability.
-- [ ] Define duo viability.
-- [ ] Define 3–4 player behavior.
-- [ ] Define larger-group behavior.
-- [ ] Define group reward policy.
-- [ ] Define per-player loot policy.
-- [ ] Define shared-loot policy.
-- [ ] Define globally rare reward policy.
-- [ ] Prevent one dungeon from multiplying rare engineering rewards linearly with player count.
-- [ ] Ensure group play is not punished.
-- [ ] Avoid mandatory class roles.
-- [ ] Allow roles to emerge through:
-  - [ ] equipment.
-  - [ ] vehicle operation.
-  - [ ] logistics.
-  - [ ] CC:Tweaked.
-  - [ ] weapons.
-  - [ ] engineering.
-- [ ] Account for persistent dungeon modification from Item 24.
-
-### Depends On
-- Items 24, 28–31.
-
-
-## 33. Define Civilization and Settlement Roles
-
-- [ ] Determine intended role of villages and settlements.
-- [ ] Define potential functions:
-  - [ ] food resupply.
-  - [ ] trade.
-  - [ ] expedition maps.
-  - [ ] rumors/information.
-  - [ ] staging areas.
-  - [ ] transport hubs.
-- [ ] Determine whether multiple village-generation mods are necessary.
-- [ ] Separate worldgen decision from later NPC/gameplay integration.
-- [ ] Define expected civilization density.
-- [ ] Define safe-vs-hostile world rhythm.
-
-### Depends On
-- Items 9, 19, 21, 31.
-
-
-## 34. Define Dimension Roles
-
-- [ ] Decide whether Aether fits the final identity.
-- [ ] Decide whether Deep Aether fits.
-- [ ] Identify fantasy progression elements that conflict with the no-magic direction.
-- [ ] Define BetterEnd's role.
-- [ ] Define End progression.
-- [ ] Define whether dimensions are:
-  - [ ] optional expeditions.
-  - [ ] progression milestones.
-  - [ ] endgame objectives.
-- [ ] Avoid dimensions becoming disconnected secondary RPG campaigns.
-- [ ] Determine whether dimension decisions affect the loot and engineering economy.
-
-### Depends On
-- Items 1, 19, 28–30.
-
-
-## 35. Define Combat-Mod Boundaries
-
-- [ ] Audit:
-  - [ ] Better Combat.
-  - [ ] Simply Swords.
-  - [ ] Simply More.
-  - [ ] Archers.
-  - [ ] Rogues.
-  - [ ] Armory.
-  - [ ] Arsenal.
-- [ ] Identify supernatural weapon effects.
-- [ ] Identify magical-looking equipment.
-- [ ] Identify excessive attribute scaling.
-- [ ] Decide what aesthetic level is acceptable:
-  - [ ] grounded.
-  - [ ] fantastical but non-magical.
-  - [ ] hybrid.
-- [ ] Ensure weapon progression does not replace engineering progression.
-- [ ] Decide which combat mods are provisionally retained before final loot tables are built.
-
-### Depends On
-- Items 1, 25–30.
-
-
-## 36. Define Destructibility, Breaching, and Automation-Bypass Policy
-
-- [ ] Test/define acceptable:
-  - [ ] hand mining.
-  - [ ] drills.
-  - [ ] explosives.
-  - [ ] Create contraptions.
-  - [ ] Create Big Cannons.
-  - [ ] roof access.
-  - [ ] side-wall breaching.
-  - [ ] tunnel bypasses.
-  - [ ] automated chest extraction.
-  - [ ] remote peripherals.
-  - [ ] hopper extraction.
-  - [ ] portable storage exploitation.
-- [ ] Separate:
-  - [ ] clever engineering solution.
-  - [ ] accidental total content bypass.
-- [ ] Prefer architectural resilience to artificial restrictions.
-- [ ] Use:
-  - [ ] dungeon depth.
-  - [ ] distributed objectives.
-  - [ ] distributed loot.
-  - [ ] multiple encounters.
-- [ ] Avoid universal unbreakable blocks.
-
-### Depends On
-- Items 22–24, 29–30.
-
-
-## 37. Define Expedition Preparation, Failure, and Recovery
-
-- [ ] Define preparation requirements:
-  - [ ] food.
-  - [ ] ammunition.
-  - [ ] tools.
-  - [ ] repair materials.
-  - [ ] storage.
-  - [ ] navigation.
-  - [ ] fuel/power where applicable.
-  - [ ] portable equipment.
-- [ ] Define what happens when an expedition retreats.
-- [ ] Define what happens when players die.
-- [ ] Define what happens when an aircraft crashes.
-- [ ] Define what happens when ammunition runs out.
-- [ ] Define whether partially cleared dungeons remain partially cleared.
-- [ ] Define whether players can return later.
-- [ ] Define grave-recovery expectations.
-- [ ] Avoid unrecoverable death spirals.
-- [ ] Make failure meaningful without making exploration irrational.
-
-### Depends On
-- Items 24–25, 30, 32, 36.
-
-
-# PHASE IV — FEASIBILITY GATES & CONTENT-STACK REDUCTION
-
-## 38. Perform Early Candidate-Mod Feasibility Screening
-
-- [ ] Verify actual 1.21.1 NeoForge builds for:
-  - [ ] Dungeon Crawl.
-  - [ ] Lootr.
-  - [ ] In Control!.
-  - [ ] Improved Mobs.
-  - [ ] Enhanced AI.
-  - [ ] Zombie Awareness.
-  - [ ] Mob Champions.
-  - [ ] Guard Villagers.
-- [ ] Verify dependencies.
-- [ ] Verify server/client classification.
-- [ ] Verify launch compatibility.
-- [ ] Verify configuration capabilities.
-- [ ] Verify whether required mechanics are exposed.
-- [ ] For In Control!, verify exactly which conditions can be used reliably.
-- [ ] Specifically verify structure-aware or structure-adjacent spawning capabilities.
-- [ ] Distinguish desired encounter logic from technically achievable encounter logic.
-- [ ] Reject candidates that cannot solve a documented problem.
-
-### Depends On
-- Items 18–37.
-
-
-## 39. Run Controlled Structure-Redundancy Experiments
-
-- [ ] Establish full-stack control world.
-- [ ] Generate identical seed/radius variants with candidate structure families removed individually.
-- [ ] Test:
-  - [ ] Moog's Voyager Structures.
-  - [ ] Moog's Structures.
-  - [ ] Moog's Soaring Structures.
-  - [ ] Explorify.
-  - [ ] Explorations.
-  - [ ] Repurposed Structures.
-  - [ ] AdoraBuild.
-  - [ ] Better Village.
-  - [ ] other overlaps identified in Item 18.
-- [ ] Compare:
-  - [ ] visual diversity.
-  - [ ] actionable-location density.
-  - [ ] repetition.
-  - [ ] structure-family uniqueness.
-  - [ ] worldgen cost.
-  - [ ] overlap.
-  - [ ] adventure value.
-- [ ] Run equivalent tests for overlapping village generators.
-- [ ] Require every retained structure family to justify itself.
-
-### Depends On
-- Items 8–18, 33, 38.
-
-
-## 40. Freeze the Provisional Content and Worldgen Stack
-
-- [ ] Decide which existing structure mods remain.
-- [ ] Decide which structure mods are removed.
-- [ ] Decide which village-generation mods remain.
-- [ ] Decide which dimension mods remain.
-- [ ] Decide which combat-content mods remain provisionally.
-- [ ] Resolve version-incompatible mods.
-- [ ] Record reasons for each removal.
-- [ ] Record reasons for each retained overlapping mod.
-- [ ] Freeze the provisional stack before worldgen tuning.
-- [ ] Do not treat this as final v1 freeze; later evidence may still justify removal.
-
-### Depends On
-- Items 34–35, 38–39.
-
-
-# PHASE V — ADD THE MISSING DUNGEON LAYER BEFORE SPACING TUNING
-
-## 41. Integrate and Evaluate the Proposed Underground Dungeon Layer
-
-- [ ] Add Dungeon Crawl to the controlled test branch.
-- [ ] Verify server startup.
-- [ ] Verify generation with:
-  - [ ] Tectonic.
-  - [ ] Terralith.
-  - [ ] BOP.
-  - [ ] Regions Unexplored.
-  - [ ] current structure stack.
-- [ ] Test terrain integration.
-- [ ] Test entrance discoverability.
-- [ ] Test actual dungeon depth.
-- [ ] Test layout repetition.
-- [ ] Test completion duration.
-- [ ] Test enemy population.
-- [ ] Test loot.
-- [ ] Test destructibility.
-- [ ] Test aircraft relevance.
-- [ ] Test whether underground topology genuinely addresses surface bypass.
-- [ ] Measure generation performance.
-- [ ] Measure density before custom spacing.
-- [ ] Accept Dungeon Crawl only if it fills the documented Tier 2/3 topology gap.
-- [ ] Reject it if it merely adds more generic structure volume.
-
-### Depends On
-- Items 22–24, 38–40.
-
-
-## 42. Re-Measure the Combined Provisional Worldgen Stack
-
-- [ ] Regenerate representative seeds with:
-  - [ ] pruned existing stack.
-  - [ ] accepted new dungeon layer.
-- [ ] Re-measure:
-  - [ ] structures per 1,000 chunks.
-  - [ ] actionable locations.
-  - [ ] Tier 1 encounters.
-  - [ ] Tier 2 dungeons.
-  - [ ] Tier 3 expeditions.
-  - [ ] villages.
-  - [ ] repetition.
-  - [ ] discoverability.
-  - [ ] Adventure Activity Ratio.
-- [ ] Compare to baseline.
-- [ ] Identify remaining dead zones.
-- [ ] Identify newly excessive density.
-- [ ] Use these measurements as the sole basis for spacing tuning.
-
-### Depends On
-- Items 40–41.
-
-
-# PHASE VI — WORLDGEN DISTRIBUTION TUNING
-
-## 43. Iteratively Tune Sparse Structures and Structure Essentials
-
-- [ ] Tune Tier 0 spacing.
-- [ ] Tune Tier 1 spacing.
-- [ ] Tune Tier 2 spacing.
-- [ ] Tune Tier 3 spacing.
-- [ ] Tune village spacing separately.
-- [ ] Keep megastructures rare.
-- [ ] Increase small actionable content where required.
-- [ ] Reduce excessive clustering.
-- [ ] Prevent giant structures from appearing too close together.
-- [ ] Configure Structure Essentials overlap controls.
-- [ ] Configure biome-placement safeguards.
-- [ ] Configure structure collision behavior.
-- [ ] Generate samples after each meaningful change.
-- [ ] Re-measure density.
-- [ ] Re-measure discoverability.
-- [ ] Re-measure Activity Ratio.
-- [ ] Iterate:
-  - [ ] configure.
-  - [ ] generate.
-  - [ ] measure.
-  - [ ] inspect.
-  - [ ] adjust.
-- [ ] Stop tuning when target cadence from Item 21 is met within acceptable variance.
-
-### Depends On
-- Items 21, 40–42.
-
-
-# PHASE VII — BUILD ENCOUNTERS BEFORE ENHANCING AI
-
-## 44. Implement Encounter Orchestration and Test Composition Alone
-
-- [ ] Add/configure In Control! if it passed Item 38.
-- [ ] Implement only technically reliable rules.
-- [ ] Build encounter rules for:
-  - [ ] undead.
-  - [ ] illagers.
-  - [ ] caves.
-  - [ ] spiders.
-  - [ ] ocean.
-  - [ ] Nether.
-  - [ ] End.
-- [ ] Configure spawn caps.
-- [ ] Configure density.
-- [ ] Configure ranged/melee composition where achievable.
-- [ ] Configure elites only minimally at this stage.
-- [ ] Prevent runaway spawning.
-- [ ] Prevent easy infinite farms.
-- [ ] Test encounter composition using existing mob AI first.
-- [ ] Compare:
-  - [ ] baseline mobs.
-  - [ ] baseline mobs + better encounter composition.
-- [ ] Determine how much of the combat problem is solved without AI modification.
-
-### Depends On
-- Items 25–27, 38, 43.
-
-
-## 45. Evaluate AI and Elite Layers Incrementally
-
-- [ ] Establish Composition-Only control:
-  - [ ] existing AI.
-  - [ ] encounter orchestration enabled.
-
-- [ ] Test Improved Mobs separately.
-  - [ ] equipment.
-  - [ ] armor.
-  - [ ] health.
-  - [ ] damage.
-  - [ ] difficulty scaling.
-  - [ ] griefing.
-  - [ ] MSPT.
-
-- [ ] Test Enhanced AI separately.
-  - [ ] ranged behavior.
-  - [ ] zombie mining.
-  - [ ] creeper breaching.
-  - [ ] dungeon behavior.
-  - [ ] base harassment.
-  - [ ] engineering-build damage.
-  - [ ] MSPT.
-
-- [ ] Test Zombie Awareness only if a remaining perception/aggro problem exists.
-  - [ ] sound.
-  - [ ] light.
-  - [ ] tracking.
-  - [ ] encounter escalation.
-  - [ ] base annoyance.
-  - [ ] MSPT.
-
-- [ ] Compare:
-  - [ ] composition only.
-  - [ ] composition + Improved Mobs.
-  - [ ] composition + Enhanced AI.
-  - [ ] any justified combination.
-
-- [ ] Select the minimum AI stack that materially improves gameplay.
-- [ ] Reject redundant AI systems.
-
-- [ ] Test elite requirements after normal encounters are working.
-- [ ] Evaluate Mob Champions only if necessary.
-- [ ] Disable/constrain RPG-style legendary loot.
-- [ ] Introduce commanders/minibosses only where they improve encounter pacing.
-
-- [ ] Re-evaluate the need for dedicated boss mods.
-- [ ] Do not add a boss ecosystem unless a documented remaining gap requires it.
-
-### Depends On
-- Item 44.
-
-
-# PHASE VIII — MULTIPLAYER LOOT FOUNDATION BEFORE EXACT LOOT BALANCING
-
-## 46. Implement Multiplayer Container and Persistence Rules
-
-- [ ] Add Lootr if it passed Item 38.
-- [ ] Verify:
-  - [ ] YUNG containers.
-  - [ ] WDA containers.
-  - [ ] IDAS containers.
-  - [ ] Dungeon Crawl containers.
-  - [ ] vanilla structures.
-  - [ ] modded containers.
-- [ ] Identify unsupported containers.
-- [ ] Decide which containers should be instanced.
-- [ ] Decide which rewards remain shared.
-- [ ] Test late-player access.
-- [ ] Test multiple players opening the same dungeon loot.
-- [ ] Measure economic multiplication.
-- [ ] Test interaction with physically destroyed dungeons.
-- [ ] Verify Item 24 persistence policy still works.
-- [ ] Establish final multiplayer-loot semantics before assigning rare rewards.
-
-### Depends On
-- Items 24, 32, 41, 45.
-
-
-# PHASE IX — FREEZE ENGINEERING INPUTS BEFORE EXACT REWARD IMPLEMENTATION
-
-## 47. Freeze the Adventure-Relevant Engineering and Combat Stack
-
-- [ ] Resolve outstanding engineering additions before exact engineering rewards are assigned.
-- [ ] Decide final inclusion/exclusion of candidate engineering mods.
-- [ ] Confirm final Create ecosystem relevant to adventure.
-- [ ] Confirm final CC:Tweaked/peripheral ecosystem.
-- [ ] Confirm final Aeronautics ecosystem.
-- [ ] Confirm final train/logistics ecosystem.
-- [ ] Confirm final combat ecosystem from Item 35.
-- [ ] Confirm final dimension stack.
-- [ ] Confirm final village stack.
-- [ ] Update candidate reward inventory based on the actual retained mods.
-- [ ] Ensure no soon-to-be-removed item is used as a progression reward.
-
-### Depends On
-- Items 34–35, 40, 45–46.
-
-
-# PHASE X — BUILD THE ACTUAL PROGRESSION SYSTEM
-
-## 48. Implement Loot, Discovery, Civilization, and Engineering Integration
-
-### 48A. Implement Exact Loot Tables
-
-- [ ] Convert Item 28 reward classes into actual item IDs.
-- [ ] Define exact quantities.
-- [ ] Define exact probabilities.
-- [ ] Define exact structure-tier placement.
-- [ ] Remove excessive generic loot.
-- [ ] Remove duplicate Loot Integrations injections.
-- [ ] Preserve useful expedition supplies.
-- [ ] Add rare horizontal rewards.
-- [ ] Add trophies.
-- [ ] Add collectibles.
-- [ ] Add engineering-related rewards.
-- [ ] Ensure basic engineering remains ungated.
-
-### 48B. Implement Renewability Rules
-
-- [ ] Apply classifications from Item 29.
-- [ ] Verify valuable rewards cannot accidentally become trivial mob farms.
-- [ ] Verify structure rewards cannot be mass-extracted without intended interaction unless explicitly accepted.
-- [ ] Test hopper/automation behavior.
-- [ ] Test Create extraction behavior.
-- [ ] Test CC:Tweaked/peripheral interaction where applicable.
-
-### 48C. Implement Discovery Progression
-
-- [ ] Add maps where feasible.
-- [ ] Add structure leads.
-- [ ] Add coordinate clues.
-- [ ] Integrate cartographer/settlement discovery where useful.
-- [ ] Ensure underground content is realistically discoverable.
-- [ ] Avoid requiring admin commands.
-
-### 48D. Integrate Civilization
-
-- [ ] Make retained settlements useful for:
-  - [ ] food.
-  - [ ] trade.
-  - [ ] maps.
-  - [ ] information.
-  - [ ] staging.
-- [ ] Evaluate Guard Villagers only if civilization lacks defensibility.
-- [ ] Test MCA interaction if retained.
-- [ ] Avoid excessive NPC counts.
-
-### 48E. Integrate Engineering and Logistics
-
-- [ ] Create expedition uses for CC:Tweaked.
-- [ ] Create expedition uses for aircraft.
-- [ ] Create expedition uses for trains.
-- [ ] Create expedition uses for factories.
-- [ ] Create expedition uses for Create Big Cannons.
-- [ ] Integrate Farmer's Delight provisioning.
-- [ ] Test cargo pressure.
-- [ ] Test portable storage.
-- [ ] Preserve meaningful train-vs-aircraft differentiation.
-
-### 48F. Implement Death and Failure Behavior
-
-- [ ] Test You're in Grave Danger in:
-  - [ ] small dungeons.
-  - [ ] deep dungeons.
-  - [ ] major structures.
-- [ ] Test grave accessibility.
-- [ ] Test retreat and return.
-- [ ] Test vehicle-loss scenarios.
-- [ ] Test partial dungeon clears.
-- [ ] Confirm failure is costly but recoverable.
-
-### Depends On
-- Items 28–37, 46–47.
-
-
-# PHASE XI — SYSTEM PERFORMANCE HARDENING
-
-## 49. Validate Performance of the Final Candidate System
-
-- [ ] Re-run idle MSPT.
-- [ ] Re-run worldgen MSPT.
-- [ ] Re-run dungeon-combat MSPT.
-- [ ] Re-run entity tick profiling.
-- [ ] Re-run pathfinding profiling.
-- [ ] Re-run memory profiling.
-- [ ] Re-run GC profiling.
-
-- [ ] Test:
-  - [ ] one explorer.
-  - [ ] multiple explorers together.
-  - [ ] multiple explorers in different directions.
-  - [ ] loaded dungeon + loaded village.
-  - [ ] multiple active dungeon groups.
-
-- [ ] Test high-speed aircraft crossing fresh chunks.
-- [ ] Test several aircraft exploring independently.
-- [ ] Measure chunk-generation backlog.
-- [ ] Measure server responsiveness.
-- [ ] Determine sustainable travel speeds.
-
-- [ ] Validate:
-  - [ ] C2ME.
-  - [ ] ServerCore.
-  - [ ] Structure Layout Optimizer.
-  - [ ] Fast Async World Save.
-  - [ ] Chunky.
-  - [ ] Simple Backups.
-
-- [ ] Determine pregeneration strategy.
-- [ ] Determine spawn-region pregeneration radius.
-- [ ] Determine whether a world border is useful.
-- [ ] Avoid pregenerating unreasonable aircraft-scale world areas.
-
-- [ ] Test persistent-world growth.
-- [ ] Measure:
-  - [ ] region-file growth.
-  - [ ] save time.
-  - [ ] backup time.
-  - [ ] backup size.
-- [ ] Perform another real restore test.
-
-### Depends On
-- Items 43–48.
-
-
-# PHASE XII — FULL GAMEPLAY VALIDATION
-
-## 50. Run Early-, Mid-, Late-, and Mature-Server Validation
-
-### 50A. Fresh-World / Early-Game Test
-
-- [ ] Start from fresh spawn without admin knowledge.
-- [ ] Test first-hour pacing.
-- [ ] Test first structures.
-- [ ] Test first small encounters.
-- [ ] Test dungeon discoverability.
-- [ ] Test early combat.
-- [ ] Ensure major Tier 3 content is not routinely adjacent to spawn.
-- [ ] Ensure players are not forced into high-tier encounters immediately.
-- [ ] Measure early Adventure Activity Ratio.
-
-### 50B. Mid-Game Test
-
-- [ ] Establish basic Create infrastructure.
-- [ ] Establish improved equipment.
-- [ ] Establish first train network.
-- [ ] Establish initial aircraft.
-- [ ] Test regional discovery.
-- [ ] Test Tier 2 dungeon cadence.
-- [ ] Test preparation requirements.
-- [ ] Test map/clue progression.
-- [ ] Test return logistics.
-- [ ] Verify engineering materially improves expeditions.
-
-### 50C. Late-Game Test
-
-- [ ] Establish advanced aircraft.
-- [ ] Establish high-throughput factories.
-- [ ] Establish advanced weapons.
-- [ ] Establish mature CC:Tweaked infrastructure.
-- [ ] Test Tier 3 expeditions.
-- [ ] Test aircraft approach.
-- [ ] Test roof entry.
-- [ ] Test cannon breaching.
-- [ ] Test tunnel bypass.
-- [ ] Test mobile-base behavior.
-- [ ] Test logistics.
-- [ ] Verify underground content remains meaningful.
-- [ ] Verify loot remains relevant after automation.
-
-### 50D. Mature-Server Test
-
-- [ ] Simulate a server months into progression.
-- [ ] Assume:
-  - [ ] known coordinates are shared.
-  - [ ] aircraft are common.
-  - [ ] rail networks exist.
-  - [ ] factories provide abundant resources.
-  - [ ] nearby structures have been visited.
-- [ ] Test late joiners.
-- [ ] Test Lootr effectiveness.
-- [ ] Test physically altered old dungeons.
-- [ ] Test whether distant expeditions remain worthwhile.
-- [ ] Test whether infrastructure compresses adventure too far.
-- [ ] Test whether rewards still matter.
-
-### 50E. Exploit and Emergent-Engineering Audit
-
-- [ ] Test automated loot extraction.
-- [ ] Test spawner farms.
-- [ ] Test elite farms.
-- [ ] Test rare-drop farms.
-- [ ] Test quarrying structures.
-- [ ] Test moving valuable dungeon blocks.
-- [ ] Test cannon bypasses.
-- [ ] Test Create drill bypasses.
-- [ ] Test hopper extraction.
-- [ ] Test CC:Tweaked automation.
-- [ ] Classify findings:
-  - [ ] desirable emergent engineering.
-  - [ ] harmless cheese.
-  - [ ] economy-breaking exploit.
-  - [ ] adventure-destroying exploit.
-- [ ] Fix only the latter categories.
-
-### 50F. Final Redundancy Audit
-
-- [ ] Re-evaluate every retained structure mod.
-- [ ] Re-evaluate every AI mod.
-- [ ] Re-evaluate every difficulty mod.
-- [ ] Re-evaluate every loot integration.
-- [ ] Re-evaluate every village mod.
-- [ ] Remove systems whose contribution is no longer distinct.
-- [ ] Remove systems whose performance cost exceeds gameplay value.
-
-### 50G. Regression Test
-
-- [ ] Repeat representative baseline measurements.
-- [ ] Verify targeted improvements actually occurred.
-- [ ] Confirm no major regression in:
-  - [ ] structure diversity.
-  - [ ] exploration pacing.
-  - [ ] worldgen.
-  - [ ] server performance.
-  - [ ] combat.
-  - [ ] loot economy.
-  - [ ] multiplayer fairness.
-  - [ ] engineering progression.
-
-### Depends On
-- Items 1–49.
-
-
-# PHASE XIII — ADVENTURE V1 RELEASE GATE
-
-## 51. Validate Definition of Done and Freeze Adventure v1
-
-### Adventure Identity
-
-- [ ] Engineering remains the primary capability-progression system.
-- [ ] Adventure gives engineering practical purpose.
-- [ ] RPG elements remain subordinate.
-- [ ] No spell/magic progression has re-entered unintentionally.
-- [ ] No generic level-grind system is required.
-- [ ] No legendary-loot treadmill dominates progression.
-
-### Exploration
-
-- [ ] Travel contains sufficiently frequent meaningful discoveries.
-- [ ] Ambient structures improve world richness without overwhelming it.
-- [ ] Small encounters adequately break up travel.
-- [ ] Proper dungeons are neither excessively rare nor commonplace.
-- [ ] Major expeditions remain memorable.
-- [ ] Content repetition is within defined limits.
-- [ ] Adventure Activity Ratio meets target ranges.
-
-### Dungeon Quality
-
-- [ ] Tier 2 dungeons provide meaningful traversal.
-- [ ] Tier 3 expeditions provide meaningful preparation and logistics.
-- [ ] Underground content provides a natural counterbalance to aircraft.
-- [ ] Dungeons are not merely large decorated shells.
-- [ ] Objective variety is sufficient.
-- [ ] Repeat dungeon layouts do not become immediately stale.
-
-### Encounter Quality
-
-- [ ] Enemy compositions differ meaningfully by context.
-- [ ] Difficulty comes mainly from encounters rather than inflated HP.
-- [ ] Selected AI systems provide measurable value.
-- [ ] No redundant AI overhaul remains.
-- [ ] Elite encounters are meaningful.
-- [ ] Bosses exist only if they genuinely add value.
-
-### Engineering Freedom
-
-- [ ] Mining remains useful.
-- [ ] Breaching remains useful.
-- [ ] Cannons remain useful.
-- [ ] Vehicles remain useful.
-- [ ] CC:Tweaked remains useful.
-- [ ] Clever engineering solutions are allowed.
-- [ ] Engineering cannot trivially delete the entire adventure loop.
-
-### Loot and Economy
-
-- [ ] Dungeon rewards remain valuable after factories exist.
-- [ ] Basic engineering progression is not dungeon-gated.
-- [ ] Rare rewards cannot be trivially industrialized unless intentionally designed.
-- [ ] Loot inflation is controlled.
-- [ ] Salvage economy is acceptable.
-- [ ] Trophy/prestige rewards provide meaningful multiplayer value.
-- [ ] Horizontal rewards meaningfully expand player options.
-
-### Multiplayer
-
-- [ ] Late joiners have viable adventure content.
-- [ ] Loot depletion is adequately addressed.
-- [ ] Physical dungeon persistence follows an intentional policy.
-- [ ] Group play is viable.
-- [ ] Solo play remains reasonably viable where intended.
-- [ ] Per-player loot does not cause unacceptable economic multiplication.
-
-### Transportation
-
-- [ ] Walking retains an early-game role.
-- [ ] Horses/boats retain local/regional utility.
-- [ ] Trains retain high-capacity infrastructure value.
-- [ ] Aircraft retain flexible long-range expedition value.
-- [ ] Aircraft do not render trains irrelevant.
-- [ ] Aircraft do not render all dungeons irrelevant.
-
-### Civilization
-
-- [ ] Settlements provide a clear gameplay purpose.
-- [ ] Redundant village generators have been removed.
-- [ ] NPC density remains acceptable.
-- [ ] Settlements contribute to expedition logistics or discovery.
-
-### Persistent Server
-
-- [ ] Fresh-server progression works.
-- [ ] Mid-game progression works.
-- [ ] Late-game progression works.
-- [ ] Mature-server progression remains viable.
-- [ ] Known structure coordinates do not completely invalidate adventure.
-- [ ] World size remains operationally manageable.
-- [ ] Backups complete successfully.
-- [ ] Restore procedure has been verified.
-
-### Performance
-
-- [ ] Idle MSPT is within target.
-- [ ] Combat MSPT is within target.
-- [ ] Worldgen MSPT is within target.
-- [ ] High-speed aircraft exploration is sustainable.
-- [ ] Expected concurrency is sustainable.
-- [ ] Peak concurrency is understood.
-- [ ] Memory behavior is acceptable.
-- [ ] No candidate mod creates disproportionate tick cost.
-
-### Documentation
-
-- [ ] Record final mod list.
-- [ ] Record exact versions.
-- [ ] Record removed mods and rationale.
-- [ ] Record all relevant configs.
-- [ ] Record Sparse Structures settings.
-- [ ] Record Structure Essentials settings.
-- [ ] Record encounter rules.
-- [ ] Record AI settings.
-- [ ] Record difficulty settings.
-- [ ] Record loot tables.
-- [ ] Record reward matrix.
-- [ ] Record structure matrix.
-- [ ] Record discovery system.
-- [ ] Record known exploits intentionally permitted.
-- [ ] Record known limitations.
-- [ ] Record benchmark results.
-- [ ] Record tested player counts.
-- [ ] Record backup/restore procedure.
-
-### Final Freeze
-
-- [ ] Tag configuration as `Adventure-v1`.
-- [ ] Archive the exact server package/configuration.
-- [ ] Preserve the corresponding test results.
-- [ ] Do not add further adventure mods without identifying a specific measured deficiency.
-- [ ] Require future changes to repeat the relevant subset of this validation process.
-
----
-
-# FINAL DEPENDENCY SPINE
-
-1. Design contract
-2. Baseline freeze
-3. Compatibility audit
-4. Test environment
-5. Measurement methodology
-6. Config audit
-7. Worldgen audit
-8. Structure inventory
-9. Initial classification
-10. Density measurement
-11. Pacing/repetition measurement
-12. Discoverability measurement
-13. Dungeon-quality measurement
-14. Combat measurement
-15. Loot/salvage measurement
-16. Multiplayer persistence measurement
-17. Performance baseline
-18. Root-cause report
-19. Final tier model
-20. Transportation-scale model
-21. Target cadence
-22. Dungeon topology
-23. Dungeon objectives
-24. Persistence/repeatability
-25. Difficulty
-26. Encounter archetypes
-27. Elite/boss philosophy
-28. Loot economy
-29. Renewability/automation
-30. Engineering integration
-31. Discovery
-32. Multiplayer rules
-33. Civilization
-34. Dimensions
-35. Combat boundaries
-36. Destructibility/bypass
-37. Preparation/failure
-38. Candidate feasibility
-39. Structure pruning experiments
-40. Provisional content freeze
-41. New dungeon integration
-42. Re-measure combined worldgen
-43. Density/overlap tuning
-44. Encounter orchestration
-45. AI/elite evaluation
-46. Multiplayer loot foundation
-47. Engineering/combat stack freeze
-48. Exact progression implementation
-49. Performance hardening
-50. Full lifecycle validation
-51. Adventure v1 freeze
+# POST-BASELINE DELIVERY: SEVEN WORK PACKAGES
+
+The user authorized this consolidation on 2026-09-10. Items 1 through 18 above
+remain unchanged. Execute the following packages only after Item 18 is COMPLETE;
+editing this plan does not start Item 19 or authorize skipping the baseline.
+Legacy numbers 19 through 51 remain requirement IDs and evidence references,
+not 33 separate administrative tasks. The
+[amendment and source mapping](evidence/item-19/plan-consolidation.md) document
+provenance, retained obligations and verification.
+
+## Execution and acceptance rules
+
+- Work packages A through G are the delivery units, in that order. Within each,
+  follow the numbered requirements and their retained dependencies below. A
+  successful launch never substitutes for a gameplay, compatibility or performance
+  gate. Do not install a downstream candidate before its prerequisite decision.
+- Use one authoritative report per package, linking existing evidence and affected
+  configuration/code. Record decisions, rationale, assumptions, uncertainty,
+  failures and dispositions there as they become established. Existing item evidence
+  remains authoritative; link it instead of copying or repeating it. Use evidence
+  directories under the package's first legacy item number for new shared evidence.
+- Define the smallest complete outcome and validation surface for the current
+  package. Design work produces decisions and acceptance targets, not premature
+  implementation or new measurement systems. Ratify material product choices with
+  the user together in a concrete proposal; do not invent taste or target values.
+- Each recommendation must connect a documented baseline problem to a desired
+  outcome, feasible mechanic, tested difference and tradeoff. Named mods below are
+  candidates, not guaranteed additions. Retain the smallest stack that solves the
+  measured problems. Preserve earlier compatibility exclusions unless explicitly
+  reopened through their affected gates.
+- Share samples, runs and reports where their declared identity and method satisfy
+  multiple requirements. Re-measure only affected claims after a change; do not
+  repeat baseline audits, create a protocol/validator per checkbox, or investigate
+  detail that cannot change an acceptance decision. Quantitative claims still need
+  measurement or supported models, with observations and assumptions distinguished.
+- Deliver coherent implementation/evidence milestones and narrow fixes. One package
+  may need multiple reviewable commits or PRs; a package is not permission for an
+  omnibus change. Do not require a separate PR, report or completion-record commit
+  for every legacy number. Required regression, review/fix, completed clean Codex
+  thumbs-up, merge and verified main delivery gates remain in force under AGENTS.md.
+- A package is COMPLETE only when every listed requirement and internal gate passes,
+  qualifying evidence is durably linked, failures have dispositions and downstream
+  assumptions are updated. Mark constituent IDs complete from that same evidence;
+  consolidation does not waive any original substantive requirement. UNKNOWN and
+  blocked inputs do not become passed by grouping them.
+
+## Package A. Decide the adventure system (19-37)
+
+Input: completed Item 18 and the preserved baseline/design contract.
+Deliverable: one ratified design report with target values, policy decisions,
+source evidence and candidate acceptance criteria. No mod installation or tuning.
+
+### 19. Define the Final Adventure Structure Taxonomy
+
+Assign every retained family one primary role: Tier 0 ambient landmark (visual,
+short interaction, little/no combat, low rewards); civilization (villages,
+settlements, taverns, trade and expedition staging); Tier 1 small encounter
+(approximately 5-15 minutes, low/moderate pressure, breaks travel monotony);
+Tier 2 proper dungeon (20-45 minutes, multiple rooms/encounters, meaningful
+traversal/reward); Tier 3 major expedition (30-90+ minutes, preparation,
+group-friendly logistics); Tier 4 world objective (dimension progression,
+server-scale/endgame expeditions). These are design targets, not baseline timings.
+
+### 20. Define the Transportation-Scale Model
+
+Set practical speeds, exploration scale and acceptable travel durations to each
+tier for foot, horse, boat, train and aircraft. Preserve foot for local exploration,
+horse/boat for local/regional travel, trains for persistent high-throughput regional
+logistics and aircraft for flexible long-range expeditions. Aircraft must not make
+trains pointless; trains must not replace exploration. Use this model for spacing.
+
+### 21. Define Target Adventure Cadence
+
+Set average intervals for visual/actionable discoveries, combat, Tier 1/2/3 content
+and Tier 4 rarity; target Adventure Activity Ratio and dead-travel percentage.
+Specify early/mid/late game and each transport mode separately. Do not solve poor
+cadence by making giant structures common.
+
+### 22. Define Dungeon Topology Requirements
+
+Set proper-dungeon minimums: useful rooms, meaningful interior traversal, empty-room
+percentage, verticality, branching, depth, encounter spacing and breathing space.
+Define miniboss/finale placement and distributed loot; avoid one easily reached
+chest holding all value. Large dungeons need multiple gameplay phases. Underground
+layouts must counterbalance aircraft while preserving destructibility and engineering.
+
+### 23. Define Dungeon Objective Variety
+
+Allow deep-chamber access, defended-zone clearance, object/intelligence recovery,
+commander defeat, branching searches, hostile-infrastructure destruction and
+multi-component retrieval where appropriate. Avoid making every visit enter/kill/
+loot/exit, excessive scripted quests and single-room checks. Distribute objectives
+and support reasonable breaching, alternative routes and sandbox solutions.
+
+### 24. Define Dungeon Persistence and Repeatability Policy
+
+Decide one-time/repeatable behavior by tier and whether destroyed walls/spawners,
+mined shortcuts, bridges and breached entrances persist. Define later-player
+experience, Tier 1/2 repeatability, permanent Tier 3 changes and visible expedition
+history. Separate loot freshness from physical/encounter freshness; Lootr does not
+imply physical resets.
+
+### 25. Define the Difficulty Model
+
+Use composition first: roles, numbers, ranged pressure, equipment/armor, positioning,
+terrain, chokepoints, reinforcements and elites. Set tier-specific and solo/duo/3-4
+player expectations. Limit raw health/damage increases and extreme distance scaling;
+avoid late-game damage sponges. Engineering must meaningfully reduce difficulty.
+
+### 26. Define Enemy Role and Encounter Archetypes
+
+Define basic/armored melee, ranged, fast/flanking, heavy, defensive, elite, commander
+and environmental-threat roles. Build easy/medium/hard/expedition compositions for
+undead, illager, cave, spider, ocean, Nether, End and dimension-specific contexts.
+Prefer tactical variety over merely adding species.
+
+### 27. Define Elite, Miniboss, and Boss Philosophy
+
+Define elites/minibosses/true bosses, reward rules and maximum stat inflation.
+Prefer faction/location commanders; avoid enormous HP pools and boss progression
+replacing engineering. Keep siege/engineering useful. Determine whether dedicated
+boss mods are needed, deferring selection until ordinary encounters are tested.
+
+### 28. Define the Loot Economy
+
+Define tier placement, rarity and value for supplies, ordinary materials, equipment,
+intelligence, engineering materials/capabilities, cosmetics, trophies and collectibles.
+Avoid late-game bulk iron/copper/gold as primary rewards and excessive diamonds/books.
+High-value rewards must be non-automatable, hard to mass-produce, unique, prestigious
+or horizontally useful. Foundational engineering stays normally craftable without
+mandatory rare-RNG gates.
+
+### 29. Define Reward Renewability and Automation Rules
+
+Classify every planned valuable reward as renewable/non-renewable, farmable/non-farmable,
+structure-limited/player-limited as applicable. Assess mob farms, Create, hoppers/pipes
+and mass production after one discovery. Decide desirable automation versus damage
+to the adventure loop; prevent unintended industrial-scale rare drops. Prefer reward
+redesign over arbitrary automation bans.
+
+### 30. Define Engineering and Adventure Integration
+
+Define expedition roles for Create, Aeronautics, Steam 'n' Rails, CC:Tweaked, Create
+Big Cannons, Diesel Generators and potential future integrations. Evaluate specialized
+ammunition, schematics, sensors, navigation components, machine parts, vehicle upgrades/
+cosmetics, tools and trophies as horizontal rewards; explain why they expand options.
+Exclude presses, mixers, basic bearings/trains/computers and foundational Create
+mechanisms from dungeon gating. Named ecosystems remain subject to compatibility.
+
+### 31. Define Discovery and Navigation Progression
+
+Define discovery for every tier using maps, clues, coordinates, cartographers,
+documents and structure-to-structure leads. Support local discovery -> clue -> dungeon
+-> major clue -> expedition. Use Item 12 evidence; avoid requiring /locate or making
+GUI structure selectors the normal player experience.
+
+### 32. Define Multiplayer Expedition and Loot Rules
+
+Define solo, duo, 3-4 player and larger-group viability/behavior; group, personal,
+shared and globally rare reward policies. Avoid linear multiplication of rare
+engineering rewards with player count without punishing cooperation. No mandatory
+classes: roles emerge through equipment, vehicles, logistics, computers, weapons
+and engineering. Account for persistent dungeon modification.
+
+### 33. Define Civilization and Settlement Roles
+
+Set civilization density and safe/hostile rhythm. Define villages/settlements as
+food resupply, trade, maps/rumors, staging and transport hubs. Determine whether
+multiple village generators are necessary; separate worldgen decisions from later
+NPC/gameplay integration.
+
+### 34. Define Dimension Roles
+
+Decide whether Aether/Deep Aether fit the identity, identify fantasy progression
+conflicts with the no-magic direction, and define BetterEnd and End progression.
+Classify dimensions as optional expeditions, milestones or endgame objectives,
+not disconnected RPG campaigns. Record loot/engineering economy consequences.
+
+### 35. Define Combat-Mod Boundaries
+
+Audit Better Combat, Simply Swords, Simply More, Archers, Rogues, Armory and Arsenal
+against accepted exclusions and available evidence. Identify supernatural effects,
+magical equipment and excessive scaling. Ratify grounded/fantastical non-magical/
+hybrid aesthetics within the design contract. Decide provisional retention before
+loot implementation; weapons must not displace engineering progression. Listing a
+previously rejected mod is not authorization to re-enable it.
+
+### 36. Define Destructibility, Breaching, and Automation-Bypass Policy
+
+Test/define acceptable hand mining, drills, explosives, contraptions, cannons, roof/
+side/tunnel access, chest/hopper extraction, remote peripherals and portable storage.
+Distinguish earned engineering from accidental total content bypass. Prefer depth,
+distributed objectives/loot and multiple encounters over universal unbreakable blocks.
+
+### 37. Define Expedition Preparation, Failure, and Recovery
+
+Set food, ammunition, tools, repairs, storage, navigation, fuel/power and portable
+equipment requirements. Define retreat, death, aircraft crash, ammunition exhaustion,
+partial-clear persistence, return and grave recovery. Failure must be meaningful and
+recoverable without death spirals or making exploration irrational.
+
+Gate: decisions and targets for all 19-37 are ratified, mutually consistent, supported
+by the baseline and sufficient to accept/reject candidates. Reuse one decision table;
+do not turn these topics into nineteen separate studies or implementation projects.
+
+## Package B. Select a feasible provisional stack (38-40)
+
+Input: Package A. Deliverable: candidate/retention decisions with controlled comparison
+evidence and a versioned provisional manifest, including rejection reasons.
+
+### 38. Perform Early Candidate-Mod Feasibility Screening
+
+Verify actual Minecraft 1.21.1 NeoForge builds, dependencies, server/client side,
+launch compatibility, configuration and required mechanics for Dungeon Crawl, Lootr,
+In Control!, Improved Mobs, Enhanced AI, Zombie Awareness, Mob Champions and Guard
+Villagers. Verify reliable In Control! conditions, especially structure-aware/adjacent
+spawning. Separate desired rules from available mechanics. Reject candidates that
+cannot solve a documented problem; unsupported builds fail before integration.
+
+### 39. Run Controlled Structure-Redundancy Experiments
+
+Use a full-stack control and identical seed/radius variants removing candidates
+individually: Moog's Voyager/Structures/Soaring, Explorify, Explorations, Repurposed
+Structures, AdoraBuild, Better Village and other Item 18 overlaps. Test overlapping
+village generators equivalently. Compare visual diversity, actionable density,
+repetition, uniqueness, worldgen cost, overlap and adventure value. Every retained
+family must justify itself. Reuse a comparison run across these outputs.
+
+### 40. Freeze the Provisional Content and Worldgen Stack
+
+Decide retained/removed structure, village, dimension and provisional combat-content
+mods; resolve incompatible versions. Explain removals and retained overlaps. Freeze
+the manifest before worldgen tuning. This is provisional, not the v1 freeze; later
+evidence may justify removal.
+
+Gate: 38 feasibility passes for each proposed candidate; 39 comparisons support 40's
+choices. No startup-only acceptance or selection based solely on more content.
+
+## Package C. Fill the dungeon gap and tune distribution (41-43)
+
+Input: Package B and the topology/persistence/cadence decisions. Deliverable: accepted
+worldgen stack and configuration, with before/after measurements against Item 21.
+
+### 41. Integrate and Evaluate the Proposed Underground Dungeon Layer
+
+Add Dungeon Crawl to a controlled test branch only after feasibility passes. Check
+startup and generation with Tectonic, Terralith, BOP, Regions Unexplored and the
+retained structure stack. Test terrain integration, entrance discovery, playable
+depth, layout repetition, completion duration, enemies, loot, destructibility,
+aircraft relevance and surface-bypass resistance; measure generation cost and density
+before custom spacing. Accept only if it fills the documented Tier 2/3 topology gap;
+reject generic added volume. Preserve a rejection and resolve the gap before proceeding.
+
+### 42. Re-Measure the Combined Provisional Worldgen Stack
+
+Generate representative seeds with the pruned stack and accepted dungeon layer.
+Compare baseline structure/actionable/Tier 1/2/3/village density per 1,000 chunks,
+repetition, discoverability and Adventure Activity Ratio. Identify remaining dead
+zones and excess density. These combined-stack results are the sole basis for tuning.
+
+### 43. Iteratively Tune Sparse Structures and Structure Essentials
+
+Tune Tier 0/1/2/3 and village spacing separately: keep megastructures rare, add small
+actionable opportunities where needed, reduce clustering and giant neighbors. Configure
+overlap, biome-placement and structure-collision safeguards. After meaningful changes,
+generate, measure density/discoverability/Activity Ratio, inspect and adjust. Stop when
+Item 21 cadence meets its defined targets within acceptable variance.
+
+Gate: accepted dungeon layer -> combined measurements -> distribution tuning, in that
+order. Demonstrate the target improvement without concealing overlap or performance
+failures. Do not tune spacing around content that has yet to be accepted.
+
+## Package D. Build and evaluate encounters (44-45)
+
+Input: Package C and difficulty/role/boss decisions. Deliverable: tested encounter
+rules and the minimum justified AI/elite stack, with configuration and comparisons.
+
+### 44. Implement Encounter Orchestration and Test Composition Alone
+
+Add/configure In Control! only if feasible; use reliable rules for undead, illager,
+cave, spider, ocean, Nether and End encounters. Set caps, density and achievable
+ranged/melee composition, with minimal elites initially. Prevent runaway spawning
+and easy infinite farms. Compare baseline against composition changes using existing
+AI first; establish how much this alone solves before adding AI systems.
+
+### 45. Evaluate AI and Elite Layers Incrementally
+
+Keep the composition-only control. Test Improved Mobs separately for equipment,
+armor, health/damage, scaling, griefing and MSPT; test Enhanced AI separately for
+ranged behavior, zombie mining, creeper breaching, dungeon behavior, base harassment,
+engineering damage and MSPT. Test Zombie Awareness only for a remaining perception/
+aggro gap, including sound/light/tracking, escalation, base annoyance and MSPT.
+Compare individual layers and only justified combinations; select the minimum stack
+with material gameplay benefit and reject redundancy. After ordinary encounters
+work, evaluate Mob Champions only if needed, constrain RPG legendary loot, and add
+commanders/minibosses only for pacing. Revisit boss mods only for a documented gap.
+
+Gate: composition-only result precedes AI comparisons; ordinary encounters precede
+elites/bosses. Selected layers must demonstrate value and acceptable shared-server cost.
+
+## Package E. Implement rewards and expedition systems (46-48)
+
+Input: Package D and the economy, persistence and engineering policies.
+Deliverable: frozen item-providing stack and tested gameplay implementation.
+
+### 46. Implement Multiplayer Container and Persistence Rules
+
+Add Lootr only if feasible. Check YUNG, WDA, IDAS, Dungeon Crawl, vanilla and modded
+containers; record unsupported cases. Decide personal versus shared rewards. Test
+late arrivals, concurrent dungeon looting, economic multiplication and physically
+destroyed dungeons. Verify Item 24 policy. Freeze multiplayer-loot semantics before
+assigning rare rewards.
+
+### 47. Freeze the Adventure-Relevant Engineering and Combat Stack
+
+Resolve engineering additions and inclusion/exclusion. Confirm the actual retained
+Create, CC:Tweaked/peripheral, Aeronautics, train/logistics, combat, dimension and
+village ecosystems. Update reward candidates from this manifest; do not assign
+progression rewards to soon-to-be-removed items. This gate precedes exact item IDs.
+
+### 48. Implement Loot, Discovery, Civilization, and Engineering Integration
+
+Implement the following coherent increments in the existing paths, each with its
+affected regression check before dependent work. They share the package report,
+not one mixed implementation commit or six separate administrative projects.
+
+- **48A, loot:** translate Item 28 classes to exact item IDs, quantities, probabilities
+  and tier placement. Remove excess generic loot and duplicate Loot Integrations
+  injections; retain supplies and add horizontal engineering rewards, trophies and
+  collectibles while leaving foundational engineering ungated.
+- **48B, renewability:** enforce Item 29 classifications; test mob farms, mass extraction,
+  hoppers, Create and applicable CC:Tweaked/peripherals. Unintended trivialization
+  fails; explicitly accepted automation remains permitted.
+- **48C, discovery:** implement feasible maps, leads, coordinates and settlement/
+  cartographer clues. Underground content must be discoverable without admin commands.
+- **48D, civilization:** implement food/trade/maps/information/staging functions.
+  Evaluate Guard Villagers only if defense is lacking; test MCA if retained and
+  constrain NPC counts.
+- **48E, engineering/logistics:** give computers, aircraft, trains, factories and
+  cannons expedition uses; integrate Farmer's Delight provisioning. Test cargo and
+  portable storage while preserving train/aircraft differentiation.
+- **48F, recovery:** test You're in Grave Danger in small/deep/major dungeons,
+  grave accessibility, retreat/return, vehicle loss and partial clears. Failure must
+  remain costly but recoverable.
+
+Gate: container semantics -> final providers -> exact implementation. Every 48A-F
+increment has working evidence and affected regression results, not merely designs.
+
+## Package F. Validate performance and the complete lifecycle (49-50)
+
+Input: Package E. Deliverable: one candidate validation report joining performance,
+gameplay, persistence, exploit dispositions and baseline regression evidence.
+
+### 49. Validate Performance of the Final Candidate System
+
+Re-run idle/worldgen/combat MSPT, entity/pathfinding, memory and GC profiling. Test
+one explorer, groups together/apart, dungeon plus village, and multiple dungeon groups.
+Test high-speed aircraft and several independent aircraft; measure chunk backlog,
+responsiveness and sustainable travel speeds. Validate C2ME, ServerCore, Structure
+Layout Optimizer, Fast Async World Save, Chunky and Simple Backups where retained.
+Set pregeneration strategy/spawn radius and whether a border helps; avoid unreasonable
+aircraft-scale pregeneration. Test persistent region-file growth, save/backup time,
+backup size and a real restore.
+
+### 50. Run Early-, Mid-, Late-, and Mature-Server Validation
+
+Use one planned scenario matrix with explicit actors and observed/model boundaries;
+this consolidation does not authorize replacing the required gameplay tests with
+source inspection. Cover all of the following:
+
+- **50A, fresh/early:** fresh spawn without admin knowledge, first-hour pacing,
+  structures/small encounters, discovery, combat and early Activity Ratio. Major
+  Tier 3 content must not routinely neighbor spawn or force immediate high-tier combat.
+- **50B, mid:** basic Create, improved equipment, first rail network/aircraft; regional
+  discovery, Tier 2 cadence, preparation, map/clue progression and return logistics.
+  Engineering must materially improve expeditions.
+- **50C, late:** advanced aircraft/weapons, high-throughput factories and mature
+  computers; Tier 3, aircraft/roof entry, cannon/tunnel bypass, mobile bases and
+  logistics. Underground content and rewards must remain meaningful after automation.
+- **50D, mature:** simulate months of progression with shared coordinates, common
+  aircraft, established rails, abundant factories and visited structures. Test late
+  joiners, Lootr, altered dungeons, distant expeditions, adventure compression by
+  infrastructure and continued reward value.
+- **50E, engineering/exploits:** test automated loot, spawner/elite/rare-drop farms,
+  quarrying, moving valuable blocks, cannons/drills, hoppers and computers. Classify
+  desirable engineering, harmless cheese, economy-breaking and adventure-destroying
+  exploits. Fix the latter two, preserving earned sandbox solutions.
+- **50F, redundancy:** re-evaluate every retained structure, AI, difficulty and village
+  mod and every loot integration. Remove non-distinct contributions and systems whose
+  performance costs exceed gameplay value.
+- **50G, regression:** repeat representative baseline measurements and demonstrate
+  targeted improvements without major regressions in diversity, pacing, worldgen,
+  performance, combat, economy, multiplayer fairness or engineering progression.
+
+Gate: 49 performance passes before 50 full validation; material fixes repeat affected
+scenarios. Every lifecycle and regression domain passes its targets, with failures
+resolved and raw evidence retained before release consideration.
+
+## Package G. Accept and freeze Adventure v1 (51)
+
+Input: Package F and all prior requirements. Deliverable: accepted release record,
+exact versioned server/configuration archive, preserved tests and Adventure-v1 tag.
+
+### 51. Validate Definition of Done and Freeze Adventure v1
+
+Verify from the accepted evidence, without repeating unchanged tests:
+
+- **Identity:** engineering is primary; adventure gives it purpose; RPG elements are
+  subordinate. No unintended magic/spells, mandatory level grind or dominant
+  legendary-loot treadmill.
+- **Exploration/dungeons:** meaningful discoveries and small encounters break travel;
+  ambient content enriches without overwhelming; proper dungeons are neither too rare
+  nor common; major expeditions remain memorable. Repetition and Activity Ratio meet
+  targets. Tier 2 traversal, Tier 3 preparation/logistics, underground aircraft balance,
+  objective variety and replay variation pass; large shells do not count as quality.
+- **Encounters:** context-specific compositions drive difficulty, not inflated HP.
+  AI adds measurable value without redundant overhauls; elites are meaningful and
+  bosses exist only when they add value.
+- **Engineering:** mining, breaching, cannons, vehicles and computers remain useful;
+  clever solutions are allowed without trivially deleting the entire adventure loop.
+- **Economy:** rewards remain useful after factories; foundational engineering is
+  ungated; rare-reward industrialization is intentional; inflation and salvage are
+  acceptable; trophies/prestige and horizontal rewards offer multiplayer value/options.
+- **Multiplayer:** late joiners have content; loot depletion and physical persistence
+  follow policy; group and intended solo play are viable; personal loot does not
+  multiply the economy unacceptably.
+- **Transport/civilization:** foot, horse/boat, trains and aircraft retain their defined
+  roles; aircraft erase neither trains nor dungeons. Settlements serve logistics/
+  discovery, village redundancy is removed and NPC density remains acceptable.
+- **Persistent operations:** fresh/mid/late/mature progression works despite shared
+  coordinates. World size is manageable, backups succeed and restores are verified.
+- **Performance:** idle/combat/worldgen MSPT, fast-aircraft exploration, normal
+  concurrency and memory meet targets; peak concurrency is understood; no mod creates
+  disproportionate tick cost.
+- **Documentation:** record exact mod versions/removals and reasons; configs including
+  Sparse Structures/Structure Essentials; encounter/AI/difficulty rules; loot tables,
+  reward/structure matrices, discovery, intentionally permitted exploits, limitations,
+  benchmarks/player counts and backup/restore procedure.
+
+Gate: all definition-of-done domains pass; tag configuration Adventure-v1, archive the
+exact server package/configuration and preserve matching tests. Add no further
+adventure mods without a measured deficiency; future changes repeat the relevant
+validation subset. Required clean review, merge and verified main delivery still
+precede declaring release complete.
+
+## Retained dependency order
+
+Items 1-18 retain their existing order and requirements. The deterministic continuation
+is A -> B -> C -> D -> E -> F -> G. Within packages, retain these original dependencies;
+a range includes every numbered requirement in it. This is an execution map, not
+another set of completion tasks.
+
+| Requirement | Depends on |
+| --- | --- |
+| 19 | 18 |
+| 20 | 11-12, 19 |
+| 21 | 18-20 |
+| 22 | 13, 19, 21 |
+| 23 | 22 |
+| 24 | 16, 22-23 |
+| 25 | 14, 19, 22-24 |
+| 26 | 25 |
+| 27 | 25-26 |
+| 28 | 15, 19, 25-27 |
+| 29 | 28 |
+| 30 | 28-29 |
+| 31 | 12, 19-23, 28 |
+| 32 | 24, 28-31 |
+| 33 | 9, 19, 21, 31 |
+| 34 | 1, 19, 28-30 |
+| 35 | 1, 25-30 |
+| 36 | 22-24, 29-30 |
+| 37 | 24-25, 30, 32, 36 |
+| 38 | 18-37 |
+| 39 | 8-18, 33, 38 |
+| 40 | 34-35, 38-39 |
+| 41 | 22-24, 38-40 |
+| 42 | 40-41 |
+| 43 | 21, 40-42 |
+| 44 | 25-27, 38, 43 |
+| 45 | 44 |
+| 46 | 24, 32, 41, 45 |
+| 47 | 34-35, 40, 45-46 |
+| 48 | 28-37, 46-47 |
+| 49 | 43-48 |
+| 50 | 1-49 |
+| 51 | All prior requirements and the definition of done above |
