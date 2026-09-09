@@ -168,8 +168,10 @@ completed at 89270e5a: 8,500 cells, 39 unions, no unsupported queries, 211.427
 seconds with clean lifecycle/configuration. Core outputs are retained. The
 source-supported right-door model and south-vine circuit now pass twenty swept
 segments. Three storage barrel rays pass under the declared model; 32.25 blocks
-give 17.5 nominal modeled seconds. North-vine connectivity/graph scoring remain.
-Next: validate that layout and assess the other selected fixed layouts,
+give 17.5 nominal modeled seconds. The north route also passes (12 segments),
+27 blocks and 11.666667 nominal seconds. Both house variants now have local
+modeled assessments; graph/depth, hazards, finale and replay are integrated.
+Next: assess the other selected fixed layouts,
 reusing the first-house source/model support; finish other family/variant/seed
 selection and measurements. First-house broader raw-capture custody is pending.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental

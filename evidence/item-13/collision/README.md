@@ -548,3 +548,37 @@ additional modeled-state field and second-layout support do not rewrite them.
 Manual floor/vine support, route arithmetic and three barrel rays are integrated
 in the [second-house assessment](../fixed-blocks/mns-medium_house_2-report.md#validated-south-vine-circuit-and-storage-access).
 The north-vine alternative remains pending before final graph and depth scoring.
+
+
+## Second-house north-vine predeclaration
+
+The remaining potential connection is the north vine at (14,110). Keep the
+same input, right-door substitution, actor, capabilities, poses and exclusions.
+Proposed outbound points: (19.5,34,115.5), (19.5,34,112.5),
+(15.5,34,112.5), (15.5,34,110.5), (14.5,34,110.5),
+(14.5,36.5,110.5), (14.5,36.5,111.5). Reverse them for return.
+The lower route is upright, the vine climb upright and the upper segment
+crouched. No trapdoor transition occurs on this connection. Use the existing
+complete-sweep checker with a second-house north-vine waypoint choice; do not
+alter either earlier route or repeat collision capture. Manual floor/vine
+support is required in addition to the sweeps. Same 60-second/100-MiB/1-MiB
+processing budget, input checks and rejection rules. If accepted, compare both
+validated connection lengths to the same storage station before depth scoring.
+
+
+North result: [house2-north-route.json](house2-north-route.json) passes twelve
+swept segments and reproduces byte for byte. New lower-floor support and the
+continuous vine were inspected directly in the retained raw blocks. Both earlier
+routes' segment arrays remain unchanged under the current checker; four focused
+tests, lint, formatting and types pass. An initial draft before the branch-count
+lint correction is preserved under evidence/raw/item13/north-route-draft/.
+Use the final producer for exact output reproduction:
+
+```sh
+uv run python -m evidence.item-13.collision.house_route --second-house --north-vine --crouch-balcony /tmp/item13-house2-north-route.json
+```
+
+The [second-house report](../fixed-blocks/mns-medium_house_2-report.md#north-connection-graph-and-depth)
+now integrates both links, their graph sensitivity, scoped shortest distance,
+traversal alternatives, reward access, finale and replay assessments. These
+complete the local modeled assessment, not Item13 custody or final delivery.

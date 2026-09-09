@@ -1,7 +1,7 @@
 # Medium House 2: quality assessment
 
-Status: IN PROGRESS. Source and saved-layout findings are integrated below;
-playable connections, room counts and traversal are not yet accepted.
+Status: local modeled/inspection assessment recorded. Raw-capture custody and
+Item 13 delivery remain IN PROGRESS; no human gameplay is claimed.
 
 Sample: full-mountainous-r2-baseline|minecraft:the_nether|mns:medium_house_2|1|7.
 [Saved blocks](mns-medium_house_2.json.gz), SHA-256
@@ -119,7 +119,7 @@ nominal derivation: 20/4+6/1.2+5/1+1.25/0.5. These are sensitivity scenarios,
 not confidence intervals, observed travel or full clears. They exclude opening
 the door, pose-change latency, menus, looting, combat and exterior/roof access.
 The prefix to the storage station is 16.125 blocks on this declared route;
-a shortest-path claim awaits the other proposed vine connection.
+the north alternative is assessed separately below.
 
 At the endpoint (14.5,36.5,111.5), the upright box
 [14.2,36.5,111.2,14.8,38.3,111.8] clears all captured AABBs. The actor can
@@ -152,19 +152,110 @@ and acquired loot remain NOT MEASURED. The roof barrel remains a breach case.
 
 The lower furnished living/work area and raised west storage ledge support the
 same one-open-plan-room versus two-activity-space sensitivity as the first
-house. One inter-space connection is now verified. The north vine is still
-unresolved, so final edge/cycle counts must not be inferred from this circuit.
-Both candidate spaces have facilities/reward nodes; no room-count denominator
-or finale assessment is finalized before the remaining connection inspection.
+house. The south circuit verifies one inter-space connection. The following north-route
+check resolves the second link before finalizing the graph; neither connection
+is inferred from room or structure-piece counts.
 
-## Next required measurement
+## North connection, graph and depth
 
-Validate the north-vine alternative and finalize room boundaries and graph counts.
-The south circuit, west-ledge support and ordinary storage access are resolved
-under the declared model above. Reuse
-existing source and collision machinery only where its input/state assumptions
-apply. Declare the actor, route and costs before dependent processing. Then
-record room/branch/depth counts, traversal model, hazards/chokepoints, dead/empty
-space denominator, finale and replay assessment. Preserve source versus runtime
-and modeled versus observed distinctions. This sample does not finish the
-family or Item 13, and no Item 14 experiment has started.
+The [north circuit](../collision/house2-north-route.json) passes twelve complete
+swept segments with the same modeled door opening. Its additional lower-floor
+cells (15,33,110/111) and (14,33,110) are full polished blackstone bricks.
+The floor button at (15,34,110) has an empty captured collision shape. The
+continuous vine column (14,110), Y34..37, has empty collision but source-supported
+climbability; it permits the declared climb to feet 36.5 and transfer to the
+same storage station at (14.5,36.5,111.5). This is the second validated link.
+
+R1 is the furnished lower interior X13..19,Z110..114 at floor 34. R2 is the
+raised west storage ledge X14,Z111..113, bounded by its elevation change,
+west storage blocks and open east edge. Under this activity-space definition:
+
+| Metric | Two-space interpretation | One-open-plan-room sensitivity |
+| --- | --- | --- |
+| Reachable rooms / components | 2 / 1 | 1 / 1 |
+| Inter-room links | 2, north and south vines | 0 after collapsing internal links |
+| Degree-at-least-three internal room vertices | 0 | 0 |
+| Independent room-graph cycles | 1 (two distinct parallel links) | 0 after collapse |
+| Deepest room / storage room depth | 1 edge | 0 edges |
+| Empty rooms / dead rooms | 0/2 and 0/2 | 0/1 and 0/1 |
+
+The entrance is not counted as another room vertex. R1 offers two alternative
+vine choices even though its internal room-graph degree is two. The physical
+movement loop remains present under either room-partition interpretation;
+collapsing an open-plan room must not imply that the second vine disappears.
+R1 has an anvil/work function and conditional bed-use hazard; R2 has three
+accessible reward-table nodes, so neither is empty or dead. The one-block-high
+roof cavity is excluded from playable-room denominators, not erased from content.
+
+Shortest entry-to-storage distance **among the validated centerline links** is
+13.5 blocks north versus 16.125 south. North reaches its vine in ten horizontal
+blocks, meeting |19.5-14.5|+|115.5-110.5|=10, then climbs 2.5 and travels 1 on
+the ledge. This is not a global sub-block shortest route or the first possible
+interaction ray; both values target the identical declared storage station.
+Finale distance is N/A because no authored finale exists. Three of four saved
+reward-table nodes are accessible in R2 (graph depth 1, or 0 under collapse);
+one is in the excluded roof cavity. The 3/4 fraction is nodes, not loot value.
+Burial context remains the full-footprint 82-block heightmap offset already
+recorded, with an immediate air break above the roof-barrel cover.
+
+The north closed circuit is 27 blocks: 20 upright horizontal, 2 crouched and 5
+vine vertical, with no trapdoor step. Feet span, accumulated ascent and descent
+are each 2.5 blocks. Its nominal modeled budget is 20/4+2/1.2+5/1=11.666667
+seconds; faster 20/5+2/1.5+5/2=7.833333 and slower 20/3+2/0.9+5/0.5=18.888889.
+The preserved south circuit remains 32.25 blocks and 17.5 nominal seconds. These
+are alternative complete surveys to the same storage station, not repeated
+player trials. Opening, menus, pose latency, combat and external approach remain
+excluded. No timing model becomes a measured human result by choosing the shorter
+route. Empty spawner assignments supply zero resolvable ordinary-spawner attack
+workload; natural enemies and actual combat remain NOT MEASURED.
+
+## Connection dimensions, hazards, finale and replay
+
+With only the declared right leaf open, the entry gap at Z115.8125..116 is
+X19..19.8125, width 0.8125. The stair at (19,36,115) begins at Y36 over its
+eastern half, giving two blocks minimum headroom above floor 34. These dimensions
+reuse the retained AABB derivation, not a nominal one-block doorway assumption.
+
+The storage ledge has a one-block support strip X14..15 and an open east drop
+of 2.5 blocks to the lower floor. At its slab positions, full beams at Y39 give
+2.5 blocks headroom. Over the central lower trapdoor, the west half of the top
+stair starts at Y39, giving 2.8125 minimum headroom from floor 36.1875. Crouching
+is the declared model pose, not a demonstrated necessity. Each vine supplies a
+one-cell (1 by 1 block) climb-support domain with open room-side access, not an
+enclosed one-block shaft; a finite wall-to-wall width is inapplicable on the
+open sides. At both upper vine positions full Y39 blocks give 2.5 headroom.
+Both vertical connections are independently available, so neither is the sole
+inter-room bottleneck. Live enemy exploitation is untested and belongs to Item 14.
+
+Meaningful mechanisms evidenced here are optional Nether bed-use explosion and
+the ledge's displacement/drop exposure. The former requires bed interaction;
+the latter can be avoided by staying on the supported strip. Damage and enemy
+behavior were not observed. The unassigned spawners do not establish encounter
+pressure. No damaging circuit is evidenced by the buttons/pressure plate alone.
+
+Finale: NONE. Objective clarity, distinctive terminal challenge, terminal reward
+linkage and final-room route integration are ABSENT in the inspected fixed house:
+the rewards are ordinary storage and there is no separately identified endpoint
+mechanism. External reward bypass is CONDITIONAL: the previously measured
+three-block roof cover can be removed given roof access, skipping R1/R2 and both
+vine routes for the roof barrel. That barrel is not promoted to a finale by its
+height. The two ordinary vine approaches are route alternatives, not a reward
+reset or proof that any potential natural enemies can be bypassed safely.
+
+Expected replay value is a supported assessment: this fixed variant has a small
+route choice via two vines, but no deep branch sequence or distinct finale.
+A repeat instance may change terrain overlap and loot-table rolls; the two
+empty spawner assignments do not supply enemy-type variety. Persistent revisits
+do not restore removed blocks or establish renewable loot. No enjoyment or
+actual player replay outcome is invented. Relative to its layered roof and
+stacked contents, playable depth is shallow: one open-plan room or two activity
+spaces. It is a modest house, not a giant dungeon based on its envelope alone.
+
+## Remaining delivery work
+
+Both fixed Medium House alternatives now have local modeled/inspection quality
+assessments. Preserve their different entry states, links, enemy assignments and
+conditional roof access. Full runtime actor equivalence, actual interactions,
+generated/acquired loot and human times remain outside the observed metrics.
+Broader raw-capture custody, all other required families/material variants and
+the final review/merge/main delivery gate remain pending. Item 14 is UNSTARTED.

@@ -81,5 +81,6 @@ a broad unrelated rewrite. Final delivery must retain an explicit disposition.
 
 The [first-house assessment](mns-medium-house-report.md) now records its local
 modeled quality and depth. The [second-house assessment](mns-medium_house_2-report.md)
-integrates distinct closed-door geometry, west storage, roof cover and reused
-empty-spawner dispositions; playable topology and access remain pending there.
+now records both validated vine links, modeled door opening, storage access,
+graph/depth sensitivity, timing and quality assessments. Both house variants
+retain full-runtime/human-observation limitations and pending raw-capture custody.

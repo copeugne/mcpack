@@ -46,9 +46,22 @@ SECOND_OUTBOUND = [
 ]
 
 
+SECOND_NORTH_OUTBOUND = [
+    [19.5, 34.0, 115.5],
+    [19.5, 34.0, 112.5],
+    [15.5, 34.0, 112.5],
+    [15.5, 34.0, 110.5],
+    [14.5, 34.0, 110.5],
+    [14.5, 36.5, 110.5],
+    [14.5, 36.5, 111.5],
+]
+
+
 def verify(  # noqa: C901 - same bounded verifier for two current layouts.
-    *, crouch_balcony: bool = False, second_house: bool = False
+    *, crouch_balcony: bool = False, second_house: bool = False, north_vine: bool = False
 ) -> dict[str, object]:
+    if north_vine and not second_house:
+        raise ValueError("North-vine alternative belongs only to the second house")
     collision = Path(__file__).with_name(
         "house2-r1-collision.json.gz" if second_house else "r1-collision.json.gz"
     )
@@ -88,6 +101,7 @@ def verify(  # noqa: C901 - same bounded verifier for two current layouts.
             shapes["local_aabbs"].append([[0.8125, 0, 0, 1, 1, 1]])
     boxes = expand_shapes(shapes, case["bounds"])
     outbound = SECOND_OUTBOUND if second_house else OUTBOUND
+    outbound = SECOND_NORTH_OUTBOUND if north_vine else outbound
     route = outbound + list(reversed(outbound[:-1]))
     segments = []
     for a, b in pairwise(route):
@@ -212,13 +226,18 @@ if __name__ == "__main__":
     mode.add_argument("--crouch-balcony", action="store_true")
     mode.add_argument("--measure", action="store_true")
     parser.add_argument("--second-house", action="store_true")
+    parser.add_argument("--north-vine", action="store_true")
     args = parser.parse_args()
-    if args.measure and args.second_house:
+    if args.measure and (args.second_house or args.north_vine):
         parser.error("--measure retains the historical first-house r2 calculation only")
     result = (
         measure_saved_route()
         if args.measure
-        else verify(crouch_balcony=args.crouch_balcony, second_house=args.second_house)
+        else verify(
+            crouch_balcony=args.crouch_balcony,
+            second_house=args.second_house,
+            north_vine=args.north_vine,
+        )
     )
     with args.output.open("x") as stream:
         _ = stream.write(json.dumps(result, indent=2) + "\n")

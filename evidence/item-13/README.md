@@ -49,8 +49,9 @@ unsupported center ascent with slab-edge transitions and a regression check.
 Mapped-source context support is recorded; a full runtime actor trial remains
 NOT MEASURED. Scoped shortest station distances (14.5 and 18.125 blocks),
 room-graph depth and burial context are now integrated. The local modeled
-assessment is recorded; the second house variant, broader family sampling, raw
-capture custody and final delivery remain outstanding.
+assessment is recorded. The [second-house assessment](fixed-blocks/mns-medium_house_2-report.md)
+now records both vine links and all local quality dimensions under the model.
+Broader family sampling, raw-capture custody and final delivery remain outstanding.
 
 ## Requirement map
 
