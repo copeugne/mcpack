@@ -83,9 +83,25 @@ metric gives 127-45=82 blocks above envelope top, not 82 solid mining blocks.
 The roof-barrel column's immediate air break is established above. Full room
 and route depth remain pending playable topology.
 
+## Runtime shape coverage and declared opening capability
+
+The [second-house collision capture](../collision/README.md#second-house-saved-view-collision-predeclaration)
+now resolves all 8,500 saved cells into 39 AABB unions with no unsupported queries.
+The fresh frozen runtime passed its configuration checks, matched flush and clean
+shutdown in 211.427 seconds. Its input remains the exact closed-door saved layout.
+This is shape coverage, not completed actor movement or room connectivity.
+
+The [door source derivation](../model-source/README.md#second-house-ordinary-door-opening-model)
+supports ordinary hand opening. The next route model may open only the right
+leaf's two halves at (19,34/35,115), substituting the source-supported open AABB
+while preserving the closed runtime capture. The left leaf stays closed. The
+actor and default step/vine capabilities reuse the first-house declarations;
+actual door interaction and its latency are not measured. This resolves the
+material capability choice without inventing a saved-open state.
+
 ## Next required measurement
 
-Validate the door-opening state, lower-floor access, two proposed vine links,
+Validate the declared open-state route, lower-floor access, two proposed vine links,
 west-ledge support/headroom and ordinary barrel interaction positions. Reuse
 existing source and collision machinery only where its input/state assumptions
 apply. Declare the actor, route and costs before dependent processing. Then

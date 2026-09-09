@@ -488,3 +488,22 @@ The retained projection and capture record will bind the input and producer.
 The original full logs/configuration remain preserved under raw custody, with
 publication using the same explicit console bind-endpoint redaction. Broader
 raw-capture durability remains an existing required follow-up.
+
+
+Second-house result: [house2-r1-collision.json.gz](house2-r1-collision.json.gz)
+retains all 8,500 cells, 127 palette states and 39 local AABB unions. Unsupported
+queries=0 and dynamic-shape flags=0. Source revision
+89270e5ad550e9487fde9ba7fad1d3389c00fccf; original projection SHA-256
+abf226b25481338229c5e15074de548be576171ea6e9709057704cdfbf58f0df.
+The [capture record](house2-r1-capture.json.gz) confirms readiness, matched flush,
+clean exit code 0, no process-group kill, and 228 configuration files with the
+same four permitted runtime comment normalizations. Elapsed time 211.427 seconds;
+instance 650 MiB and raw capture 6.4 MiB, within the declared ceilings.
+
+The [retention manifest](house2-r1-retention.json) binds 43,396 compressed bytes
+of projection, capture, console and build/attach output. Hash and size checks
+passed for every retained file. Console publication redacts only the bind
+endpoint; original raw logs remain preserved. The full raw-capture custody
+follow-up is still open. Both right-door halves retain the closed local AABB
+[0,0,0.8125,1,1,1]; the probe did not open either door or simulate an actor.
+Zero unsupported shapes is geometric coverage, not completed topology or gameplay.

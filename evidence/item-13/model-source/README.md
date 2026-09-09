@@ -209,3 +209,34 @@ vine/tag derivation, this supports the explicitly default, unmodified-capability
 kinematic route. R3's 0.3125 step/drop transitions occur at slab contact/loss
 boundaries; the checker rejects the earlier unsupported center ascent. This
 supports modeled movement only, not literal tick trajectories or measured speeds.
+
+
+## Second-house ordinary door-opening model
+
+Reuse the same hash-verified mapped server JAR and pinned javap inspection method
+above. Blocks initializer 33393..33442 constructs CRIMSON_DOOR with DoorBlock
+and BlockSetType.CRIMSON. BlockSetType initializer 427..469 passes true as its
+first boolean; constructor 9..11 assigns it to canOpenByHand. DoorBlock.useWithoutItem
+0..33 permits hand opening for that type and cycles OPEN before setBlock.
+DoorBlock.updateShape 50..84 copies the opposite half's state while preserving
+its own HALF. These paths support a paired-half opening model, not an actual
+player interaction or proof of arbitrary runtime-event behavior.
+
+For the second house, predeclare opening only the right-hand leaf at
+(19,34/35,115) for ordinary entry. Retain the left leaf closed. This is an explicit
+modeled state change; the accepted runtime collision capture remains closed.
+DoorBlock.getShape chooses by FACING, OPEN and HINGE, independent of door material.
+DoorBlock$1 maps NORTH to switch case3; getShape 176..201 chooses WEST_AABB for
+north-facing, open, right-hinged state. Its local box is
+[0.8125,0,0,1,1,1], also independently present in the first house's identically
+oriented saved-open door capture. The two second-house closed boxes are
+[0,0,0.8125,1,1,1]. A later geometric route may substitute precisely those two
+boxes while retaining the original capture and recording the substitution.
+Do not label the modeled open state runtime-observed or replace the raw input.
+
+The route actor retains the first-house equipment, full navigation knowledge,
+0.6 width, 1.8 upright height, optional 1.5 crouch, default 0.6 step capability
+and source-supported vines. Opening/interaction latency is excluded from the
+kinematic movement budget and must remain explicit; it is not assumed to take
+zero real time. The route itself and support checks remain to be declared before
+measurement. No mining, flight or jumps are implicit in this door capability.
