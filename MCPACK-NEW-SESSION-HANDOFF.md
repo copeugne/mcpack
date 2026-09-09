@@ -140,7 +140,9 @@ upright standing pass retains 352 positions from 1,411 supported candidates,
 reproduced exactly. Crouching at source-supported height 1.5 adds six positions
 (358 total), none in central upper reward bands, also reproduced exactly. Next
 validate connections, reward interaction positions and room delineation;
-clearance positions are not rooms.
+clearance positions are not rooms. The first swept route is rejected: a hanging
+soul lantern blocks the upright balcony crossing. Lower-floor and vine segments
+are clear. Preserve r1-route.json and test a crouched balcony crossing next.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

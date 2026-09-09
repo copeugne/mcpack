@@ -17,6 +17,21 @@ def overlaps(a: list[float], b: list[float]) -> bool:
     return all(a[i] < b[i + 3] and b[i] < a[i + 3] for i in range(3))
 
 
+def expand_shapes(shapes, b) -> list[list[float]]:  # noqa: ANN001
+    """Translate the retained local unions for both clearance and route checks."""
+    nx, nz = b[3] - b[0] + 1, b[5] - b[2] + 1
+    cells = shapes["shape_indices_yzx"]
+    boxes: list[list[float]] = []
+    for i, index in enumerate(cells):
+        if not 0 <= index < len(shapes["local_aabbs"]):
+            raise ValueError("Invalid collision shape index")
+        xyz = [b[0] + i % nx, b[1] + i // (nx * nz), b[2] + i // nx % nz]
+        boxes.extend(
+            [box[j] + xyz[j % 3] for j in range(6)] for box in shapes["local_aabbs"][index]
+        )
+    return boxes
+
+
 def calculate(actor_height: float = 1.8) -> dict[str, object]:  # noqa: C901 - one bounded geometric pass.
     if actor_height not in (1.8, 1.5):
         raise ValueError("Only predeclared upright or crouched dimensions are supported")
@@ -31,18 +46,9 @@ def calculate(actor_height: float = 1.8) -> dict[str, object]:  # noqa: C901 - o
     e = case["envelope"]
     if b != shapes["bounds"] or shapes["unsupported"]:
         raise ValueError("Unsupported or mismatched collision coverage")
-    nx, nz = b[3] - b[0] + 1, b[5] - b[2] + 1
-    cells = shapes["shape_indices_yzx"]
-    if len(cells) != len(case["blocks_yzx"]):
+    if len(shapes["shape_indices_yzx"]) != len(case["blocks_yzx"]):
         raise ValueError("Missing collision cells")
-    world_boxes: list[list[float]] = []
-    for i, index in enumerate(cells):
-        if not 0 <= index < len(shapes["local_aabbs"]):
-            raise ValueError("Invalid collision shape index")
-        xyz = [b[0] + i % nx, b[1] + i // (nx * nz), b[2] + i // nx % nz]
-        world_boxes.extend(
-            [box[j] + xyz[j % 3] for j in range(6)] for box in shapes["local_aabbs"][index]
-        )
+    world_boxes = expand_shapes(shapes, b)
     accepted: list[list[float]] = []
     candidates = 0
     for z in range(e[2], e[5] + 1):

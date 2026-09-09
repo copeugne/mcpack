@@ -186,3 +186,52 @@ and type/lint checks pass. Reproduce using the command above with `--height 1.5`
 For exact original upright output reproduction, use the producer at commit
 `40bc9f43`; the later optional height parameter changes its producer hash but
 preserves the default calculation. Do not overwrite the historical upright result.
+
+## Predeclared local route verification
+
+The next geometric check uses the upright actor and the saved-open right-hand
+door. Start/end is its center at 467.5,45,435.5, excluding external approach.
+Follow the lower floor west to the twisting vines at 461.5,45,431.5, climb to
+47.5, and transfer east onto the storage balcony. Traverse its two slab spans
+and the central trapdoor, with a 0.3125 descent/ascent, to 466.5,47.5,431.5.
+Return by the same connection. Coordinates are retained by the route producer.
+
+Check the complete swept actor box of each cardinal or vertical segment against
+all captured AABBs, not just its endpoints. Floor support and vine contact are
+separately inspected at the recorded blocks; collision freedom alone is not a
+movement rule. The model permits continuous vine climbing and 0.3125-block steps,
+without block changes, jumping, flight, combat or container interaction. It has
+full layout knowledge. No actor-context equivalence or realized gameplay is
+inferred. Use the same 60-second/100-MiB/1-MiB processing budget as clearance.
+A collision or missing support rejects the proposed connection before scoring.
+
+
+First route attempt: [r1-route.json](r1-route.json) is REJECTED for upright
+crossing. Eight of sixteen swept segments intersect the soul lantern at
+464,49,431, whose local world AABB is
+[464.3125,49.0625,431.3125,464.6875,49.5,431.6875]. The lower doorway/floor
+segments and vertical vine segment are clear. The proposed raising maneuver at
+the central trapdoor also intersects the lantern. No successful complete route
+or room graph is inferred from this failure. The next attempt will crouch before
+crossing this known obstruction, using the already declared 1.5-high profile.
+
+Floor/source inspection: the lower six-block strip at Z432 has full solid support
+at Y44. The west vine column at 461,431 contains twisting_vines_plant at Y45-46
+and twisting_vines at Y47. The balcony has bottom slabs at X462-463 and465-466,
+Y47,Z431, with the central trapdoor top at47.1875. These are authored floor and
+vine transitions, not structure-piece counts. The mapped Player/LivingEntity
+source and vanilla climbable tag support a conditional vine-climbing model.
+The hash-verified vanilla extra JAR SHA-256 is
+24a5d2d162cfad2a1a574c4d552e99dc6c6303a49d1e68b43a7b638f3b0930fd;
+its data/minecraft/tags/block/climbable.json includes both twisting-vine IDs.
+Direct inspection of that tag path in the hash-verified 136 retained candidates
+found ten additive declarations and no replacement: BetterEnd, Biomes O' Plenty,
+Farmer's Delight, Quark, YUNG's Cave Biomes, Chipped, Create, Deep Aether,
+Regions Unexplored and Supplementaries. This packaged-source check is not a new
+runtime tag measurement. LivingEntity.onClimbable offsets19-38 test CLIMBABLE.
+
+Exact raw producer/helper hashes are retained. This rejected iteration has two
+style findings (successive-pair iteration and a now-unnecessary complexity
+suppression), to be corrected with the next producer version while preserving
+this one for exact reproduction. Focused types pass; the shared AABB expansion
+preserves every default upright clearance value apart from producer identity.
