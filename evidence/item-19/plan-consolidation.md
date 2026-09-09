@@ -25,7 +25,8 @@ history; this document does not claim future delivery before it occurs.
 
 [SPECS.md](../../SPECS.md#post-baseline-delivery-seven-work-packages) replaces the
 33 later administrative items with seven delivery packages. Legacy numbers remain
-stable requirement IDs. The ledger uses those seven packages for future status.
+stable requirement IDs. The ledger links package execution while retaining its
+legacy status ranges; those rows do not require separate delivery workflows.
 Items 1-18, their evidence requirements and their current branch-specific amendments
 are outside this change. Existing ledger governance and whole-pack audit obligations
 are not waived by the shorter adventure plan.
@@ -159,3 +160,9 @@ change to Items 1-18 requires its own provenance rather than rewriting this hist
 preservation claim. The ongoing Item 13 branch must incorporate the reviewed plan
 through a normal merge when appropriate, preserving its separate methodology change;
 no checkout, reset or cherry-pick into active work is part of this amendment.
+
+A read-only prospective merge found that replacing the future ledger rows adjacent
+to Item 13 would conflict with its ongoing status amendment. The ledger edit was
+narrowed to the governing-plan explanation and the already-atomized Item 48 note.
+The seven delivery packages remain authoritative in SPECS.md. This avoids coupling
+the plan amendment to an unrelated Item 13 status resolution.
