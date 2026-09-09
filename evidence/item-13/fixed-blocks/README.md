@@ -77,3 +77,9 @@ checks for the extractor, renderer, benchmark and changed test file pass. Direct
 strict checking of the preexisting untyped density tool also reported 560 errors
 and 13 warnings; this is not presented as a clean global type gate or repaired by
 a broad unrelated rewrite. Final delivery must retain an explicit disposition.
+
+
+The [first-house assessment](mns-medium-house-report.md) now records its local
+modeled quality and depth. The [second-house assessment](mns-medium_house_2-report.md)
+integrates distinct closed-door geometry, west storage, roof cover and reused
+empty-spawner dispositions; playable topology and access remain pending there.

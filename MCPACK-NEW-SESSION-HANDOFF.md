@@ -161,7 +161,10 @@ The identical two Medium House 2 payloads reuse that disposition. Core projectio
 capture and redacted console are retained; broader raw custody remains pending.
 No spawning, actor or repeated collision pass occurred.
 
-Next: assess the second Medium House layout and the other selected fixed layouts,
+The [second-house report](evidence/item-13/fixed-blocks/mns-medium_house_2-report.md)
+now integrates saved layout/source facts and an inspected slice sheet. Both doors
+are closed; west-ledge/vine access requires its own model.
+Next: validate that layout and assess the other selected fixed layouts,
 reusing the first-house source/model support; finish other family/variant/seed
 selection and measurements. First-house broader raw-capture custody is pending.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental
