@@ -1,7 +1,8 @@
 # Nether Tower: quality assessment
 
 Status: IN PROGRESS. Source/saved enemy and reward inputs are integrated.
-Playable topology, complete task timing and quality synthesis remain required.
+Conditional access and complete-task timing are integrated below. Room/quality
+synthesis and family repetitions remain required.
 
 Sample: full-ocean-heavy-r1-baseline|minecraft:the_nether|mns:nether_tower|14|16.
 Reuse the retained [saved blocks](mns-nether_tower.json.gz), SHA-256
@@ -225,3 +226,105 @@ Reproduce geometry from the same hash-bound extraction: query (223,Y54..77,256),
 (224,Y74..76,256), Z256 at X221..223 and X221 at Z256..260, including floor Y54
 and body Y55/56. The exact two solid breaks and continuous remaining column are
 recorded above; this derivation requires no new world or runtime experiment.
+
+## Complete conditional task timing
+
+Predeclare the local objective: start at (216.5,55,260.5), perform the documented
+breach, transfer all sixteen barrel inventories and the elevated chest inventory,
+and return alive to the starting station. One fully informed adult starts at full
+health/food with unenchanted iron armor/sword, diamond pickaxe of sufficient
+durability and nineteen scaffolds. Retain all previously specified removals,
+placement order, face-access conditions and return path. No extra construction,
+mining, flight, teleportation, assistance, pre-applied effects or healing is allowed.
+Construction remains in place. Ignore incidental mined-block drops; material
+procurement, discovery and travel to the entry are outside this local objective.
+
+Stipulate no pre-existing or naturally spawned mobs and no entity blockers.
+There are no authored sources to activate in this template. Thus this scenario's
+combat component is zero, not an observation that a real visit is enemy-free.
+Any encounter invalidates this zero-combat scenario; no generic combat estimate
+is silently substituted. Survival and successful transfers remain conditions.
+All rolled results must fit the actor's available inventory after equipment and
+remaining materials, including before each emptied barrel is removed. Capacity
+failure censors acquisition rather than implying all seventeen containers fit.
+
+Use the accepted A/B/C provisional allowances. Upright movement rates are 5/4/3
+blocks/s; vertical climb and controlled descent rates are 1.5/1/0.75 blocks/s,
+as explicitly modeled for the Large House. The circuit has 27.4 horizontal and
+38 vertical blocks, including the 1.4-block scaffold placement adjustment. No
+extra movement is hidden in mining or inventory allowances.
+
+Predeclare nine stationary decision allowances: initial orientation, breach,
+cache station A, cache B, cache C/D, vertical approach, overhead-removal sequence,
+upper chest and return. These include reorientation and pose changes. Hold the
+pickaxe during the lower-cache container interactions, allowing immediate mining
+after each required transfer. Five selections equip the initial pickaxe, scaffold
+for the first seven blocks, pickaxe for overhead removals, scaffold for twelve
+extensions, then an empty hand for the elevated chest. No sword selection is
+charged in the zero-encounter scenario.
+
+Charge nine mined-target interactions (two entry blocks, four emptied barrels,
+one lantern and two overhead blocks), nineteen scaffold placement interactions,
+and 17*29 container interactions (open, scan/shift-click all 27 slots, close).
+This totals 521 aiming/input allowances. A slot operation is charged whether or
+not that slot contains an item; it is a provisional GUI allowance, not an observed
+inventory. Add seventeen acquisition-confirmation allowances and one final
+verification allowance. Mining work is additional to its targeting allowance;
+container transfers are not also charged as ground-item pickup.
+
+Use the same pinned nominal mining rule as the earlier reports: whole ticks are
+ceil(hardness*30/speed) under correct-tool or no-tool-required conditions. The
+mapped `Blocks` initializer registers barrel hardness 2.5 (31196..31199), soul
+lantern 3.5 (31718..31721), red nether bricks 2 (25172..25176) and polished
+blackstone 2 (34454..34458). Obsidian and crying obsidian use hardness 50. The
+pinned pickaxe tag includes the five stone/lantern types, but not barrels. The
+barrel does not require a particular tool for drops, so the pickaxe's default
+speed 1 and divisor 30 apply. All breaking uses supported stances, no effects,
+no submerged penalty and the stipulated 20 TPS, not measured runtime speed.
+
+| Breaking group | Count | Hardness / speed | Ticks each | Total seconds |
+| --- | ---: | --- | ---: | ---: |
+| Obsidian and crying-obsidian entry | 2 | 50 / 8 | 188 | 18.8 |
+| Transferred empty barrels | 4 | 2.5 / 1 | 75 | 15 |
+| Soul lantern | 1 | 3.5 / 8 | 14 | 0.7 |
+| Red-nether-brick and polished-blackstone overhead blocks | 2 | 2 / 8 | 8 | 0.8 |
+
+Uninterrupted breaking totals 706 ticks, or 35.3 seconds. With u horizontal rate,
+h vertical rate and the accepted decision n, interaction a, selection s,
+acquisition k and verification v allowances, complete successful-scenario time is
+
+T = 27.4/u + 38/h + 35.3 + 9*n + 521*a + 5*s + 17*k + v.
+
+| Complete conditional task | A | B | C |
+| --- | ---: | ---: | ---: |
+| Seconds | 221.1 | 390.2 | 710.6 |
+
+Report approximately 221/390/711 seconds with profile and zero-encounter condition
+visible. The large share of inventory time follows the specified all-container
+objective and provisional per-slot allowance; it is not measured play or evidence
+of a typical player's efficiency. No required phase is silently omitted.
+
+Censor completion on failed transfer/capacity, unmodeled entity encounter,
+invalid chest access, death/healing, support or placement failure, changed block/
+fluid conditions, input/mining interruption beyond allowances or departure from
+20 TPS. No censoring event or elapsed human time has been observed. This complete
+conditional estimate does not establish generated/acquired loot, realized combat,
+room quality or family-level completion.
+
+Reproduce both source-derived work and complete-task arithmetic:
+
+```sh
+uv run python - <<'TOWER_TASK'
+import math
+rows = [(2,50,8),(4,2.5,1),(1,3.5,8),(2,2,8)]
+ticks = sum(count*math.ceil(hardness*30/speed) for count,hardness,speed in rows)
+assert ticks == 706
+assert 9+19+17*29 == 521
+profiles = [('A',5,1.5,.5,.25,.25,1,2),
+            ('B',4,1,1,.5,.5,2,4),
+            ('C',3,.75,1.5,1,1,4,8)]
+for name,u,h,n,a,s,k,v in profiles:
+    total = 27.4/u+38/h+ticks/20+9*n+521*a+5*s+17*k+v
+    print(name,total)
+TOWER_TASK
+```
