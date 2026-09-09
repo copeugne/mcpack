@@ -505,3 +505,82 @@ print('external start to spawner-center distances',
       [math.dist(start,p) for p in [(368.5,34.5,79.5),(367.5,34.5,80.5)]])
 print('north circuit nominal/faster/slower seconds', [12/v for v in (4,5,3)])
 ```
+
+## Original mixed case: rejected transfer and western access
+
+The supplemental circuit is not valid evidence of original-case connectivity.
+Rotate its local coordinates through the original placement transform: the
+X369,Z75..78 supplemental strip becomes original X283..286,Z95. Every one
+of those four original cells contains full nether bricks at Y66 and Y67,
+where the proposed actor would stand. The transformed reward station at
+(283.5,66,97.5) is also solid at both body levels. This rejects that route
+transfer, not the retained sample. The original source-defined trapdoor cache
+at(283,66,99) survives, but its western cover at(282,66,99) now has a full
+nether-brick block above, unlike the supplemental open side. Do not infer
+generation order or attribute every obstructing brick from this comparison.
+
+Predeclare a smaller original-case alternative, using the same actor, reach
+and source-shape rules: upright feet(279.5,66,99.5), outside the envelope's
+western boundary X280, walk to(281.3,66,99.5), then crouch. From eye
+(281.3,67.27,99.5), aim toward(283.5,66.1,99.5). Toggle the saved west-facing
+open crimson trapdoor at(282,66,99) closed, then inspect the debris on the
+same line. Return to the start. Only that toggle is permitted; no cover
+mining, jumping or flight. This is one reward-face objective, not both rewards
+or a dungeon clear. Reject any obstructed ray or unsupported route cell;
+interaction, pose-transition, combat, mining and acquired loot remain unmeasured.
+
+This local alternative passes the retained-block/source checks. X279..281,Z99
+has full warped nylium at Y65 and air at Y66/67; the upright continuous sweep
+therefore has support and clearance. Warped and crimson nylium use the same
+NyliumBlock shape behavior. The west-facing open panel occupies local
+X13/16..1 across its cell, while its closed bottom plate ends at Y66.1875.
+The crouched ray enters the cover cell at X282,Y66.897727, below the full
+brick above at Y67. Its first panel contact is at X282.8125,Y66.465625.
+After the toggle, the same ray reaches the debris west face at X283,Y66.365909,
+above the folded plate. The target-point distance is 2.491766 blocks, below
+the stipulated three-block reach. The untouched lid above the debris is also
+above this line. No cover block must be mined for this local face access.
+
+The closed walking route is 3.6 horizontal blocks with zero vertical travel:
+0.9 movement-only seconds nominal, 0.72 faster, 1.2 slower. This validates
+an external alternative to the blocked transferred station, not a connection
+to the other reward. Both saved spawners remain within 16 blocks of this
+western start, so it is not an enemy-activation bypass. The fortress-attributed
+lava column at X284,Z95 does not intersect this local sweep; effects of future
+flow, spawning or other world changes are outside this static model. Original
+whole-sample topology remains unresolved rather than inherited from the supplement.
+
+Reproduce the original saved facts and arithmetic independently:
+
+```sh
+uv run python - <<'ORIGINAL_CHECK'
+import gzip, hashlib, importlib, json, math
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-circle_nether_brick.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'c5f115f0c9ecdcda67addcd30d7aae81377315ff78d169821d5ea9ba7ed46dce'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for x,z in [(x,95) for x in range(283,287)]+[(283,97)]:
+    for y in (66,67):
+        assert state(case,x,y,z)['Name'] == 'minecraft:nether_bricks'
+for x in range(279,282):
+    assert state(case,x,65,99)['Name'] == 'minecraft:warped_nylium'
+    for y in (66,67):
+        assert state(case,x,y,99)['Name'] == 'minecraft:air'
+panel = state(case,282,66,99)
+assert panel['Name'] == 'minecraft:crimson_trapdoor'
+assert panel['Properties'] == dict(facing='west',half='bottom',open='true',powered='false',waterlogged='false')
+assert state(case,282,67,99)['Name'] == 'minecraft:nether_bricks'
+assert state(case,283,66,99)['Name'] == 'minecraft:ancient_debris'
+eye, aim = (281.3,67.27,99.5), (283.5,66.1,99.5)
+ys = [eye[1]+(aim[1]-eye[1])*(x-eye[0])/(aim[0]-eye[0])
+      for x in (282,282.8125,283)]
+assert 66 < ys[0] < 67 and 66.1875 < ys[2] < ys[1] < 67
+assert math.dist(eye,aim) < 3
+assert all(math.dist((279.5,66,99.5),p) < 16
+           for p in [(287.5,67.5,96.5),(288.5,67.5,97.5)])
+print('cover/panel/debris ray Y', ys)
+print('target-point distance', math.dist(eye,aim))
+print('nominal/faster/slower movement seconds', [3.6/v for v in (4,5,3)])
+ORIGINAL_CHECK
+```
