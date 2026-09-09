@@ -117,7 +117,13 @@ envelopes are full. Ten have non-full chunks, with exact interior versus margin
 limitations in the README. Every observed root/dimension has a full-envelope
 alternative. The batch took 664.286 seconds and retained 1,827,307 compressed bytes.
 
-Next: select samples against material variants and distinct-seed requirements.
+The [first fixed-layout selection](evidence/item-13/fixed-moog-selection.json)
+chooses nine Moog root alternatives in eight families, with 556,065 padded voxels.
+The summary now resolves Moog version maps using the accepted Item 8 resolver.
+Five derived component-name rows changed; original raw bytes are unchanged.
+
+Next: declare block/model support and extraction costs for those selected layouts,
+and finish selection against other material variants and seed requirements.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental
 Item 8/7 worlds for missing families and variants before declaring new generation.
 Record selected bounds, model support and full extraction costs before expansion.

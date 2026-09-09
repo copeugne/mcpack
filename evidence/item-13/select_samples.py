@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -136,11 +137,77 @@ def enumerate_candidates():  # noqa: C901, PLR0912
     }
 
 
+def select_fixed_moog():
+    roots = {
+        "mns:circle_nether_brick",
+        "mns:giant_skull",
+        "mns:large_house_1",
+        "mns:medium_house",
+        "mns:medium_house_2",
+        "mns:nether_tower",
+        "mns:warped_dome",
+        "mss:desert_pyramid",
+        "mss:small_tower",
+    }
+    inputs = {
+        "candidates": ROOT / "evidence/item-13/candidates.json",
+        "assemblies": ROOT / "evidence/item-13/start-inspection/summary.json",
+        "pool_traces": ROOT / "evidence/item-8/sources/pool-traces-content.json.gz",
+    }
+    raw = {key: read_bound(path) for key, path in inputs.items()}
+    candidates = {r["id"]: r for r in json.loads(raw["candidates"])["candidates"]}
+    groups = json.loads(raw["assemblies"])["family_root_dimension_candidates"]
+    traces = json.loads(gzip.decompress(raw["pool_traces"]))["structures"]
+    selected = []
+    for root in sorted(roots):
+        expected = set(traces[root]["templates"])
+        if not expected:
+            raise ValueError("fixed-layout root lacks declared template components")
+        options = [c for key, cs in groups.items() if key.split("|")[1] == root for c in cs]
+        eligible = [
+            c
+            for c in options
+            if c["start_status"] == "SAVED"
+            and not c["incomplete_chunks"]
+            and expected <= set(c["named_components"])
+        ]
+        if not eligible:
+            raise ValueError("fixed-layout template coverage requires another saved instance")
+        chosen = min(
+            eligible, key=lambda c: (hashlib.sha256(c["id"].encode()).hexdigest(), c["id"])
+        )
+        case = candidates[chosen["id"]]
+        selected.append(
+            {
+                "candidate_id": chosen["id"],
+                "family_id": case["family_id"],
+                "root": root,
+                "dimension": case["dimension"],
+                "bounds": case["bounds"],
+                "voxel_count": case["voxel_count"],
+                "required_templates": sorted(expected),
+                "candidate_count": len(options),
+                "eligible_count": len(eligible),
+            }
+        )
+    return {
+        "scope": "Nine fixed root alternatives selected; quality measurements pending",
+        "input_sha256": {key: hashlib.sha256(value).hexdigest() for key, value in raw.items()},
+        "selected": selected,
+        "summary": {
+            "samples": len(selected),
+            "families": len({c["family_id"] for c in selected}),
+            "voxels_before_block_extraction": sum(c["voxel_count"] for c in selected),
+        },
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--fixed-moog", action="store_true")
     args = parser.parse_args()
-    result = enumerate_candidates()
+    result = select_fixed_moog() if args.fixed_moog else enumerate_candidates()
     raw = (json.dumps(result, indent=2, sort_keys=True) + "\n").encode()
     if len(raw) > 10 * 1024 * 1024:
         raise ValueError("candidate output exceeds predeclared budget")

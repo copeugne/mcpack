@@ -551,3 +551,40 @@ samples may be reused. No other quality result follows from a scope table.
 Source-only inapplicability is established here only for the explicitly ineligible
 Nilotic root and inactive source branches; missing generated evidence elsewhere
 must still be resolved under the original Item 13 requirements.
+
+## First fixed-layout instance selection declaration
+
+For the seven observed fixed MNS roots (`circle_nether_brick`, `giant_skull`,
+`large_house_1`, `medium_house`, `medium_house_2`, `nether_tower`, `warped_dome`)
+and the two observed fixed MSS roots (`desert_pyramid`, `small_tower`), select one
+saved baseline instance each. These are nine root alternatives in eight families,
+not the complete Moog population. Require a saved start, a full padded chunk
+envelope and every template listed for that root in the accepted pool trace.
+Rank eligible IDs by SHA-256 of the full candidate ID, then lexical ID. Do not
+prefer an appealing score, a small envelope or a particular seed. Preserve all
+other candidates and known incomplete cases in the assembly index.
+
+This step selects instances only. Room graphs, block section coverage, processors,
+movement support and encounter models remain required before scoring. Whole-layout
+source scope comes from the Moog section above, not a template-count heuristic.
+Selection reads only the small bound metadata files; budget one minute, 512 MiB
+memory and 1 MiB output. No world or block read is needed.
+
+The [fixed-layout selection](fixed-moog-selection.json) now records all nine exact
+candidate IDs, dimension, padded bounds, declared components, eligibility counts
+and deterministic selection. It reproduces byte for byte with:
+
+```sh
+uv run python -m evidence.item-13.select_samples --fixed-moog --output /tmp/item13-fixed-moog-reproduction.json
+cmp evidence/item-13/fixed-moog-selection.json /tmp/item13-fixed-moog-reproduction.json
+```
+
+Selection took 0.162 seconds and 82,184 KiB peak RSS. Output is 4,883 bytes,
+SHA-256 `1fa54ed1163eff5119515d0545579d60af800719582ccfab5216af754d0e39f6`.
+The nine padded volumes total 556,065 voxels, including 219,834 for Desert Pyramid.
+This is an extraction cost input, not mechanical size or playable topology. The
+nine samples cover these declared alternatives only; Circle Ruin's blackstone
+alternative and all other absent designs remain required. Models and a block
+extraction budget must be declared before processing these samples. The initial
+selection failure and narrow versioned-component summary correction are preserved
+in the authoritative README; no world was reread to resolve that metadata defect.
