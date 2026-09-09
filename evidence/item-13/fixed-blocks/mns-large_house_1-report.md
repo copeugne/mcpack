@@ -361,3 +361,70 @@ crying-obsidian cap removal, and four ladders to reach the main-level landing.
 Those costs are distinct from the northern cache's single stair removal and the
 main partition's two-plank breach. Full activation history and total task timing
 are still pending; do not assume one spawn batch per source during construction.
+
+## Main-level route, six barrels and three spawners
+
+The shaft landing at (76.5,44,60.5) connects along X76 to Z37 at the same feet
+height. This is 23 horizontal blocks. All supports at Y43 are full nether-brick,
+crimson-plank or reinforced-deepslate blocks. Y44/45 are air apart from two floor
+buttons at Z53/57 and the already declared two-plank partition at Z50. Pinned
+`Blocks.woodenButton` sets no collision, so walking through those button cells
+does not require stepping or interaction. The Z50 breach can be performed from
+its southern station with the same upper-then-lower removal order; the earlier
+northern-to-southern geometry remains valid in reverse. The native Z42 opening
+is crossed at X76. Do not count the breach as a native passage.
+
+This establishes a route through the three main-level spaces, with one native
+inter-space passage and one conditional breach link. It avoids the side furniture,
+the shaft opening and the lava column at (77,44,62). No live fluid-spread or
+ignition behavior is observed. Continued clearance is a timing-scenario condition;
+changed fluids/obstructions must censor the route rather than be silently ignored.
+
+Both blaze spawners are reachable from (76.5,44,56.5). With eye Y45.62, target
+(76,45.5,56.5), the east face of (75,45,56), and (79,45.5,56.5), the west face
+of (79,45,56). The intervening X76..78 cells at Y45 are air. The longer ray is
+about 2.50 blocks, within the three-block limit. No cage cover needs removal
+for these rays. This is access evidence, not proof of a zero-enemy rush: their
+saved initial delays and the time spent on lower construction must enter timing.
+
+The southern three barrels use stations already on the main line:
+
+| Barrel | Station at feet Y44 | Target face/obstacle disposition |
+| --- | --- | --- |
+| (74,44,51), houses | (76.5,51.5) X/Z | East face at (75,44.9,51.5); ray passes over the unlit campfire at (75,44,51) |
+| (74,45,51), treasure | (76.5,51.5) | East face at (75,45.5,51.5), above that campfire |
+| (74,44,52), uncommon | (76.5,52.5) | East face at (75,44.9,52.5), above the wall sign at (75,44,52) |
+
+`CampfireBlock.SHAPE` is 7/16 block high and the saved campfire has lit=false.
+`WallSignBlock` outlines end at 12.5/16 block height. The rays stay above those
+outlines and reach the barrel faces within three blocks; neither object needs
+removal. This does not imply that campfires are harmless when lit or that signs
+can be ignored by interaction rays at every height.
+
+For the northern cluster, branch three blocks east at Z39 from X76.5 to X79.5,
+remaining at feet Y44. All three intermediate cells have full floors and Y44/45
+air. From (79.5,44,39.5), reach all three barrels at (80,44,40), (80,44,41) and
+(80,45,41). Aim at their west faces X80, using Y44.9 for the lower pair and Y45.5
+for the upper barrel, at each barrel's Z center. All distances are under three
+blocks. The closed top trapdoor at (79,45,40) occupies Y45.8125..46, above the
+entire ray. The wall sign at (79,44,41) ends at Y44.78125, below these rays.
+No passage beneath that trapdoor or through the sign is required for the actor;
+returning to the main line adds three blocks.
+
+The piglin-brute spawner at (75,47,37) has a closed, east-facing top warped
+trapdoor directly below at (75,46,37). From main-line station (76.5,44,37.5),
+first toggle that trapdoor open, then target the spawner underside at
+(75.5,47,37.5). The closed plate blocks the original ray and must not be omitted
+from the interaction count. Pinned `TrapDoorBlock.getShape` moves its east-facing
+open plate to local X0..3/16. The target ray stays east of that plate, reaches
+the spawner in about 1.70 blocks, and crosses air above the standing station.
+The warped trapdoor uses the already established hand-openable wood behavior.
+This costs one declared interaction, not a cover-mining action.
+
+Source derivations use the mapped JAR identity already recorded above: inspect
+`Blocks.woodenButton`, `CampfireBlock`, `WallSignBlock` and `TrapDoorBlock` with
+`javap -c -p`. All positions and properties are from the same hash-bound saved
+sample. This batch adds six barrel and three spawner access dispositions. Together
+with the lower caches, 14 of 16 barrel positions and 5 of 7 spawner positions now
+have explicit station/route evidence. The two roof barrels and roof piglin/brute
+sources, exterior connection between lower entrances, and full timing still remain.
