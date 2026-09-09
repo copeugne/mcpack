@@ -93,7 +93,9 @@ northern external approach and one-area quality assessment. The original mixed
 case records a detour and explicit one-area/two-sector room sensitivity. Both
 local assessments retain their model limits; the blackstone root remains required.
 
-The [Warped Dome intake](mns-warped_dome-report.md) records its source/saved
-resource correspondence and inspected slice sheet. It has no accepted timing
-or topology result. Further layout expansion is paused for the complete-objective
-timing-method reassessment required by the latest user steering.
+The [Warped Dome assessment](mns-warped_dome-report.md) records one ground room,
+external reward access and a complete conditional 16/27/45-second resource task.
+The [accepted timing method](../timing-scenario-proposal.md) resolves the earlier
+methodology pause; full coverage and layout-specific budgets remain required.
+The [Giant Skull assessment](mns-giant_skull-report.md) now integrates source/saved
+content and inspected slices. Its playable boundaries and task budget remain open.
