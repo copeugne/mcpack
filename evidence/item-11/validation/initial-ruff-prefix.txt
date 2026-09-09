@@ -1,0 +1,20 @@
+RUF100 [*] Unused `noqa` directive (unused: `E501`)
+   --> evidence/item-11/summarize.py:447:121
+    |
+445 | …     for row in route["summaries"]:
+446 | …         cells = [
+447 | …             f"{row['modes'][mode]['prefix_covered_blocks']}/{row['modes'][mode]['prefix_denominator_blocks']}"  # noqa: E501 - gene…
+    |                                                                                                                   ^^^^^^^^^^^^
+448 | …             for mode in SPEEDS
+449 | …         ]
+    |
+help: Remove unused `noqa` directive
+    |
+446 |                 cells = [
+    -                     f"{row['modes'][mode]['prefix_covered_blocks']}/{row['modes'][mode]['prefix_denominator_blocks']}"  # noqa: E501 - generated Markdown cell
+447 +                     f"{row['modes'][mode]['prefix_covered_blocks']}/{row['modes'][mode]['prefix_denominator_blocks']}"
+448 |                     for mode in SPEEDS
+    |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

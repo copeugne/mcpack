@@ -115,3 +115,14 @@ def test_report_includes_retained_feasible_and_failed_costs() -> None:
         "48; 6.00; 10.25; [0.00, 90.00] | [0.00, 17.00] | 90.00 | 46 | 0.00 | "
         "46; 6.50; 20.50; [0.00, 144.00] |" in report
     )
+
+    assert "## Reachable-prefix geometric opportunity coverage" in report
+    assert "| south-east | 64 | 768 | all_locations | 0/0 | 0/0 | 56/446 |" in report
+    coverage = report.split("## Reachable-prefix geometric opportunity coverage", 1)[1]
+    assert (
+        sum(
+            line.startswith("| ") and line.split(" | ")[1].isdigit()
+            for line in coverage.splitlines()
+        )
+        == 5760
+    )

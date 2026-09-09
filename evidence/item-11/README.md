@@ -184,7 +184,7 @@ It uses the same accepted raw restores with independent inventory verification.
 | Modeled costs and uncertainty | Central/range speed assumptions, null infeasible completed costs, prefix and unconstrained costs, radius sensitivity and descriptive dispersion. PASS. |
 | Measurement boundaries | Placement, ray geometry, accessibility and all NOT MEASURED human quantities remain distinct. PASS. |
 | Reproducibility and custody | Complete before/after world inventories, preserved raw archives, competing lock regression, deterministic full report and clean-code representative reproduction. PASS. |
-| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-statistics.txt), including complete statistics, failure reasons, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-statistics.txt), [formatting](validation/final-format-statistics.txt) and [BasedPyright](validation/final-types-statistics.txt) pass. |
+| Validation | Full applicable gate: [600 tests passed](validation/final-tests-v2.txt). After the final report fixes, [all 22 affected tests pass](validation/final-tests-prefix.txt), including reachable coverage, complete statistics, report reproduction and provenance rejection. Final [Ruff](validation/final-ruff-prefix.txt), [formatting](validation/final-format-prefix.txt) and [BasedPyright](validation/final-types-prefix.txt) pass. |
 | Final review and main delivery | PENDING through PR37. No completion claim before a clean final review, merge and fetched-main verification. |
 
 Reproduce the final applicable checks with:
@@ -395,3 +395,23 @@ checks the known village zero/censoring row and ordinary control T1 gap/repeat
 medians, IQRs and ranges. Final lint, formatting and types pass. All sixteen source
 result files and producer logs are unchanged from `17ccd330`; no world analysis
 was repeated. Local exit gate PASS, with fresh clean review/main delivery pending.
+
+The completed review of `9b83183c` identified
+[missing reachable-prefix coverage reporting](https://github.com/copeugne/mcpack/pull/37#discussion_r3963575258).
+The finding is valid: the numerator and denominator were retained but not
+integrated. The existing report now emits every world/route/radius/window/category
+row with all three modes' prefix-covered and prefix-denominator blocks. There
+are 5,760 rows and 17,280 mode cells. `0/0` is explicitly an undefined ratio.
+The retained ocean-heavy r1 baseline south-east boat example shows 56/446 prefix
+coverage, distinct from its full-route 136/768 geometric coverage.
+
+The [retained-report regression fails before integration](validation/prefix-report-before.txt).
+No new measurements, source processing, schema or framework is needed. The same
+report now totals 1,821,556 bytes, within the existing 1-GiB budget. Its generated
+expansion is again isolated under the existing repository rule. All source
+results and producer logs remain unchanged from `17ccd330`.
+
+Final reachable-coverage validation: [22 affected tests pass in 30.37 seconds](validation/final-tests-prefix.txt),
+including full row counts, the retained prefix example and exact report reproduction.
+Final lint, formatting and types pass. Fresh clean review and verified main
+delivery remain required.

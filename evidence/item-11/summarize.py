@@ -139,7 +139,13 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                 del model["failures"], model["cumulative_cost_distance"]
             for row in route["summaries"]:
                 if (row["radius"], row["window"], row["category"]) != (64, 768, "all_locations"):
-                    del row["modes"]
+                    row["modes"] = {
+                        mode: {
+                            key: values[key]
+                            for key in ("prefix_covered_blocks", "prefix_denominator_blocks")
+                        }
+                        for mode, values in row["modes"].items()
+                    }
                 for population in ("adjacent", "geometric_visible"):
                     for key in ("events", "gaps", "repeats"):
                         del row[population][key]
@@ -416,6 +422,34 @@ def build(directory: Path) -> str:  # noqa: C901, PLR0912, PLR0915 - one fixed r
                     lines.append(
                         f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {population} | {stats['count']} | {stats['unique_families']} | {distribution_text(stats['gap_distribution'])} | [{boundaries}] | {stats['maximum_empty_interval']:.2f} | {stats['repeat_count']} | {first} | {distribution_text(stats['repeat_interval_distribution'])} |"  # noqa: E501 - generated Markdown row
                     )
+        lines.append("")
+    lines += [
+        "## Reachable-prefix geometric opportunity coverage",
+        "",
+        "All 5,760 world/route/radius/window/category rows, each with three transport modes.",
+        "Each mode cell is covered blocks / reachable-prefix blocks. Only sampled eight-block",
+        "segments wholly within the prefix contribute to its geometric coverage numerator.",
+        "0/0 means no modeled reachable distance; its coverage ratio is undefined, not zero percent.",  # noqa: E501 - report prose
+        "An infeasible full route may still have a nonempty prefix. These modeled reachable",
+        "opportunities are separate from full-route geometry and are not observed interactions.",
+        "",
+    ]
+    for name, world in worlds.items():
+        lines += [
+            f"### {name.removeprefix('full-')} reachable coverage",
+            "",
+            "| Route | Radius | Window | Category | Walking coverage | Horse coverage | Boat coverage |",  # noqa: E501 - generated Markdown row
+            "| --- | ---: | ---: | --- | --- | --- | --- |",
+        ]
+        for label, route in world["routes"].items():
+            for row in route["summaries"]:
+                cells = [
+                    f"{row['modes'][mode]['prefix_covered_blocks']}/{row['modes'][mode]['prefix_denominator_blocks']}"
+                    for mode in SPEEDS
+                ]
+                lines.append(
+                    f"| {label} | {row['radius']} | {row['window']} | {row['category']} | {' | '.join(cells)} |"  # noqa: E501 - generated Markdown row
+                )
         lines.append("")
     return "\n".join(lines) + "\n"
 
