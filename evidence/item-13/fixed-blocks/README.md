@@ -92,3 +92,8 @@ workload. The supplemental sample now has a connected reward inspection circuit,
 northern external approach and one-area quality assessment. The original mixed
 case records a detour and explicit one-area/two-sector room sensitivity. Both
 local assessments retain their model limits; the blackstone root remains required.
+
+The [Warped Dome intake](mns-warped_dome-report.md) records its source/saved
+resource correspondence and inspected slice sheet. It has no accepted timing
+or topology result. Further layout expansion is paused for the complete-objective
+timing-method reassessment required by the latest user steering.
