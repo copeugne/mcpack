@@ -53,6 +53,46 @@ or a final room. Reaching it by breaching/crawling is a separate capability case
 Walkable roof surfaces and surrounding natural vegetation are not automatically
 additional authored activity spaces.
 
+## Connection dimensions from retained collision shapes
+
+These are local geometric dimensions in the saved state, not observed crowd
+throughput or enemy pathfinding. Derivation uses the local AABB unions in
+[r1-collision.json.gz](../collision/r1-collision.json.gz), translated by each
+block position using the YZX indexing and bounds in the linked saved blocks.
+Faces may touch; positive-volume overlap is obstructed. No new runtime or
+changed door state is assumed.
+
+At the entrance plane Z435.8125..436 and height Y45..47, the closed left door
+occupies X466..467 and the saved-open right door occupies X467.8125..468.
+The remaining opening is X467..467.8125: **0.8125 blocks wide**. A 0.6-wide
+actor has center interval X467.3..467.5125, width 0.2125. The accepted center
+X467.5 lies inside that interval. At X467.5..467.8125, the top stair starts
+at Y47, giving **2 blocks minimum headroom** over the usable opening from
+floor Y45. The left half of that stair starts at Y47.5; reporting 2.5 blocks
+for the whole opening would overlook its lower right half. This is a local
+saved-state entrance chokepoint; opening the other door changes the geometry.
+
+The west vine is not an enclosed ladder shaft with one universal width. At
+Z431.5 and Y45.25, the west wall ends at X461 and the bed begins at X462,
+leaving **1 block lateral clearance** across the lower access. At the same
+Z and Y47.25, the west wall and balcony slab again bound X461..462. The
+accepted vertical sweep stays at X461.5,Z431.5 with its 0.6-wide body inside
+that interval. South of the vine the lower room is open, so this measurement
+must not be relabeled a one-by-one enclosed passage or a global maximum actor
+size. Climb support and movement remain separately conditional as stated above.
+
+Across the balcony, the slab/trapdoor floor occupies Z431..432: a **1-block
+support strip**, with an open drop on its south side rather than a second
+wall. At the lantern's central projection X464.3125..464.6875,
+Z431.3125..431.6875, its lowest collision face is Y49.0625. Headroom is
+**1.5625 blocks** from adjacent slab height 47.5 and **1.875 blocks** from
+central trapdoor height 47.1875. The accepted crouched sweep clears both;
+the rejected upright centerline overlaps the lantern while transitioning
+across the slab/trapdoor edge. These dimensions explain that local restriction
+without asserting that every possible upright route is blocked. The open edge
+and height change are movement constraints, not measured fall damage or combat
+chokepoint effectiveness.
+
 ## Contents, rewards and current quality implications
 
 Four saved spawners are present: one explicit piglin assignment on the balcony
@@ -209,7 +249,7 @@ of this assessment still requires the unresolved access and movement checks belo
 ## Concrete unresolved work
 
 Finish actor-context and movement support validation, shortest entry-to-objective
-route/terrain-cover measurement and precise connection widths. Balcony
+route/terrain-cover measurement. Local connection dimensions are resolved above; balcony
 container access is resolved under the declared source/geometry model; live
 opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
 disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.

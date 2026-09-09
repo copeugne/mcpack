@@ -149,7 +149,8 @@ The report now includes the 36.25-block local circuit and 20.83-second nominal
 modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
 spaces, finale and replay assessments. These are not observed gameplay. Next
 resolve actor-context and remaining movement validation;
-shortest objective distance/terrain cover and exact connection widths remain open.
+shortest objective distance/terrain cover remain open. The report now derives
+local doorway clearance, vine access and balcony support/headroom from saved AABBs.
 Balcony chest/barrel access is now source/geometry-supported under the declared
 unlocked, no-entity-blocker model. Exact rays and lid/sign rules are in the report;
 no container was opened and no loot generated or acquired.
