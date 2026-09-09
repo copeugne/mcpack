@@ -115,3 +115,7 @@ The [Nether Tower assessment](mns-nether_tower-report.md) resolves seventeen sou
 saved reward assignments and zero explicit spawner/resident-entity sources.
 Its conditional access, complete task timing and two-room quality assessment
 are integrated. Family repetitions and broader coverage remain pending.
+
+The [Desert Pyramid intake](mss-desert_pyramid-report.md) resolves three active
+components, eleven source spawners and four loot-bearing chest blocks forming
+three container arrangements. Topology and full quality measurement are next.
