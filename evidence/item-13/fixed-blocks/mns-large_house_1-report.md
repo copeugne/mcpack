@@ -229,3 +229,77 @@ hold position, place either ladder, maintain reach or complete the upper transfe
 censors this engineering route. No mining, ladder placement or movement has been
 performed in an accepted world. Its actor/resources and costs remain separate
 from the original capped-shaft observation.
+
+## Northern lower cache: entrance, spawner and all five barrels
+
+A native ground approach reaches the lower northern cache. At feet Y33, follow
+(85.5,36.5) to (78.5,36.5), then (78.5,34.5), then (76.5,34.5), where each pair
+is X/Z. This is eleven horizontal blocks. Every traversed cell has full basalt-
+family support at Y32. Feet/head cells Y33/34 are air except (77,34), whose two
+crimson fence gates are already open, west-facing and in_wall=true. Pinned
+`FenceGateBlock.getCollisionShape` returns Shapes.empty when OPEN is true, so
+these gates do not require an interaction or obstruct the centered adult route.
+No new gate state or world mutation is assumed.
+
+At (76.5,33,34.5), the two houses-table barrels (75,33,34) and (75,34,34) are
+adjacent targets. Aim at their east faces below/above Y34 respectively, keeping
+the ray in the open X76 cell until it reaches the chosen barrel. Both are within
+three blocks. From the same standing station, aim at the north face of spawner
+(76,33,35), e.g. (76.5,33.9,35). The ray reaches it below the decorative skull at
+Y34; the skull does not require a separate removal for this target. This resolves
+face access, not successful mining before its zero-delay spawn attempts.
+
+Crouch to 1.5-block height and move one block north to (76.5,33,33.5). The cell
+has air at Y33, full floor at Y32, and a top nether-brick slab at Y34. Its underside
+is Y34.5, admitting the crouched actor while excluding the 1.8-high upright actor.
+The uncommon-table barrel at (75,33,33) is directly reachable from this station.
+
+Two further barrels are screened by a top crimson stair at (76,33,32). Declare
+one permitted stair removal from the crouched station; target its upper southern
+face, accessible below the Y34.5 ceiling. Once removed, the empty-table barrel
+(76,33,31) and treasure-table barrel (75,33,32) have clear rays through that newly
+cleared cell. With eye (76.5,34.27,33.5), aim at (76.5,33.1,32) for the first and
+(76,33.1,32.5) for the second. The segments enter the cleared cell below Y34,
+thus avoiding its remaining bottom slab at (76,34,32), and remain within three
+blocks. Neither requires the actor to occupy that lower-clearance cell. Barrel
+interaction does not require a chest-style free lid space. Loot transfer and GUI
+costs remain separate from these face-access measurements.
+
+This establishes access to all five source-matched northern lower barrels with
+one stair breach, eleven upright approach blocks and one crouched branch block
+(each counted again on return if the task uses this entrance). It also establishes
+access to the local wither-skeleton spawner. It does not connect this cache to
+an upper floor or establish generated/acquired loot. The storage alcove's low
+ceiling and cover are retained mechanical constraints, not discarded decoration.
+
+Direct reproduction uses the existing `state_at` on the hash-bound saved sample:
+
+```sh
+uv run python - <<'NORTH_CACHE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-large_house_1.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == '7ee67bdf2bc014bff8c08c4fb981018ff27dbea9483da430ee882618aeb361d1'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+route = [(x,36) for x in range(85,77,-1)] + [(78,35),(78,34),(77,34),(76,34)]
+assert len(route)-1 == 11
+for x,z in route:
+    assert state(case,x,32,z)['Name'] in {
+        'minecraft:basalt','minecraft:smooth_basalt','minecraft:polished_basalt'}
+    for y in (33,34):
+        block = state(case,x,y,z)
+        if (x,z)==(77,34):
+            assert block['Name']=='minecraft:crimson_fence_gate'
+            assert block['Properties']['open']=='true'
+        else:
+            assert block['Name']=='minecraft:air'
+assert state(case,76,33,33)['Name']=='minecraft:air'
+assert state(case,76,34,33)['Properties']['type']=='top'
+assert state(case,76,33,32)=={'Name':'minecraft:crimson_stairs',
+    'Properties':{'facing':'north','half':'top','shape':'straight','waterlogged':'false'}}
+assert state(case,76,34,32)=={'Name':'minecraft:crimson_slab',
+    'Properties':{'type':'bottom','waterlogged':'false'}}
+print('Eleven-block native approach, crouched alcove and one declared stair breach.')
+NORTH_CACHE
+```
