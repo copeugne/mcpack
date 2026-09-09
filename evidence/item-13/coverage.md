@@ -238,3 +238,69 @@ baseline is essential here. Complete saved chunks showing the frozen Haunted Man
 connector rejection can support a quality result about that truncated building.
 Partially generated distant chunks cannot. Neither warrants repairing the frozen
 configuration or replacing the failed sample with a more attractive one.
+
+## Moog variant scope
+
+This section covers all included `mes`, `mns`, `mss` and `mvs` families, using the
+accepted inventory's per-family grouping, exact root definitions, template content
+and connector derivations. Reuse [Moog generator source](../item-8/sources/moog-generator-code/README.md)
+and [arena processor source](../item-8/sources/moog-arena-processors/README.md),
+not template totals as room topology. Registry IDs below are explicit because
+several families combine materially different roots.
+
+| Family | Required roots/design alternatives | Dimension | Required distinction |
+| --- | --- | --- | --- |
+| mes:enderkeep_courtyard | mes:enderkeep_courtyard | End | Single courtyard layout |
+| mes:enderwatch_tower | mes:enderwatch_tower | End | Single tower layout, vertical access rather than envelope height |
+| mes:mega_ship | mes:mega_ship, mes:mega_ship_basic, mes:mega_ship_crashed, mes:mega_ship_crashed_2, mes:mega_ship_crashed_deepslate, mes:mega_ship_deepslate, mes:mega_ship_deepslate_2, mes:mega_ship_deepslate_3 | End | Eight finite hull/middle/end assemblies with different side/upper attachments; three wreck roots versus five airborne roots, with distinct terrain and content |
+| mes:monolith | mes:monolith, templates monolith_1, monolith_2, monolith_3 | End | Three independent whole-template alternatives, each required despite equal horizontal envelopes |
+| mes:mystical_archway | mes:mystical_archway | End | Single archway layout retained as a shallow-form comparison |
+| mes:phantom_citadel | mes:phantom_citadel | End | Single authored citadel layout |
+| mes:starlight_voyager | mes:starlight_voyager | End | Single ship layout; reuse the identified full Item 7 candidate before new generation |
+| mns:arena | mns:small_arena, mns:large_arena | Nether | Separate bounded-court layouts, different vertical galleries, encounters and rewards |
+| mns:circle_ruin | mns:circle_blackstone, mns:circle_nether_brick | Nether | Layout, spawner and loot differences, not a purely cosmetic material pair |
+| mns:dragon_arena | mns:dragon_arena | Nether | Fixed sculptural dragon/platform assembly with ordinary/trial spawners and vaults; not a claim of a live dragon boss |
+| mns:giant_skull | mns:giant_skull | Nether | One articulated head/jaw layout with reward and spawner source |
+| mns:large_house_1 | mns:large_house_1 | Nether | One long hall/tower design, using the selected 1.21.1 template |
+| mns:medium_house | mns:medium_house, mns:medium_house_2 | Nether | Two gabled layouts and different spawner payloads; empty entity objects must not become invented default mobs |
+| mns:mega_fortress | mns:mega_fortress | Nether | Procedural corridor/stair/room network, including boundary-exempt pools and the version-selected start |
+| mns:nether_tower | mns:nether_tower | Nether | One multilevel furnished tower, with accessible floors validated individually |
+| mns:warped_dome | mns:warped_dome | Nether | One empty-source dome retained for shallow-form/usable-space assessment |
+| mss:arena | mss:arena | Overworld | Numbered assembly with trial/vault mechanisms. The 1_21_9 template paths are inactive on frozen 1.21.1, not omitted live variants |
+| mss:castle_ruin | mss:castle_ruin | Overworld | One broad low island ruin with encounter/reward content |
+| mss:castle_tower | mss:castle_tower | Overworld | Tower plus corresponding top, one connected site |
+| mss:desert_pyramid | mss:desert_pyramid | Overworld | Base, side and top are one pyramid assembly |
+| mss:jungle | mss:jungle | Overworld | Finite main/east/south/upper site, not interchangeable forest-island decoration |
+| mss:large_tower | mss:large_tower | Overworld | Full base/lower/side/top complex and its real access links |
+| mss:leaf_hollow | mss:leaf_hollow | Overworld | Main mound and projecting sides, with inhabited interior |
+| mss:mangrove | mss:mangrove | Overworld | Deep tapered island plus upper piece; interior and fall/external approach assessed separately |
+| mss:muddy_water_hole | mss:muddy_water_hole | Overworld | Bowl-like main/side/upper encounter site |
+| mss:mushroom | mss:mushroom | Overworld | One low multi-lobed furnished encounter island |
+| mss:red_sand | mss:red_sand | Overworld | Main and projecting side, with distinct terrace access |
+| mss:small_deepslate_house | mss:small_deepslate_house | Overworld | One gabled dwelling/island with pillager/spawner source |
+| mss:small_tower | mss:small_tower | Overworld | One vertically fragmented ruin composition; separated fragments do not automatically form reachable floors |
+| mss:taiga | mss:taiga | Overworld | Main conifer island and upper component |
+| mss:volcano | mss:volcano | Overworld | Main crater and five attached side pieces, with actual attachment/route continuity |
+| mvs:castle_ruins | mvs:castle_ruins | Overworld | One linked masonry ruin without authored enemies/spawners |
+| mvs:cathedral | mvs:cathedral | Overworld | Procedural building/lower/corridor network; excluded cathedral_start/corridor_8 templates stay inactive and wrong-namespace loot references remain unchanged |
+| mvs:large_warped_tower | mvs:large_warped_tower | Overworld | Base/side turret plus finial; warped material does not make this a Nether root; unresolved empty spawner payloads stay explicit |
+| mvs:mine_with_campsite | mvs:mine_with_campsite | Overworld | Fixed upper/lower site and villager alternatives, distinct from the procedural mineshaft |
+| mvs:mineshaft | mvs:mineshaft | Overworld | Procedural entrance/corridor/intersection/stair network, including boundary-exempt corridor_overflow |
+| mvs:ocean_tower | mvs:ocean_tower | Overworld | One cylindrical aquatic tower; direct drowned/guardian entities versus physical spawners |
+| mvs:small_pillager_tower | mvs:small_pillager_tower | Overworld | One open vertical platform tower; route links must be validated |
+| mvs:tiered_tower | mvs:jungle_tower, mvs:red_tower | Overworld | Jungle base/bottom/top versus red body/top; different encounters, loot and terrain constraints |
+
+Denominators: 39 families, 50 roots, 52 named root/whole-template alternatives.
+The extra two are Monolith's three layouts under one root. Each dimension is
+retained separately: End for MES, Nether for MNS and Overworld for MSS/MVS.
+None of the Soaring island roots is reassigned to the Aether based on appearance.
+The eight Mega Ship roots have finite connector-derived assemblies, so repeating
+middle pieces is not assumed from the word modular.
+
+The proposed architectural minimum is one complete generated example per named
+alternative, except two distinct-seed examples for each of Mega Fortress,
+Cathedral and MVS Mineshaft. This gives 55 proposed examples before any necessary
+unrepresented component/mechanism or terrain supplement. Sample IDs, extraction
+bounds, actor/model support and resource totals are still pending. Saved-block
+coverage and the actual outcome of versioned/conditional processors must be
+checked before asserting a room graph or encounter potential for a sample.

@@ -109,7 +109,8 @@ into 38 root alternatives. Its proposed 40-case minimum has not been selected,
 budgeted or run. WDA/Seven Seas adds 40 families and 43 root/dimension
 combinations, including whole-layout and component alternatives. IDAS adds 24
 families with 38 named main-layout/dimension alternatives and explicit frozen
-connector failures. Continue the full matrix before expensive expansion.
+connector failures. Moog adds 39 families and 50 roots, retaining 52 named
+root/whole-template alternatives. Continue the full matrix before expansion.
 
 Next: finish the complete material-variant and sample/repetition matrix, using the
 representative's measured cost only for comparable compact cases. Quantify larger
