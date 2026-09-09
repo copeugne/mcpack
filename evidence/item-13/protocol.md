@@ -6,6 +6,9 @@ The user-approved method boundary is recorded in [README.md](README.md).
 
 ## Complete-objective timing correction
 
+Current proposed resolution: [complete Circle scenario and worked example](timing-scenario-proposal.md).
+It is pending user approval, not an accepted protocol change or permission to scale.
+
 The latest user-authorized steering requires a complete dungeon objective before
 timing acceptance. Earlier route calculations remain movement components, even
 when labeled conditional traversal or accompanied by a separate combat workload.

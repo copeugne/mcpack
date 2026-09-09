@@ -180,7 +180,7 @@ connect by a checked detour. Latest steering pauses layout expansion for
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction).
 Circle's complete-objective budget is UNRESOLVED; movement-only times do not pass.
 Nominal mining is 13.8s; pickup eligibility and a conditional spawn deadline are
-supported. Pending user decision: can an explicitly unresolved total close timing?
+supported. [Complete scenario proposal](evidence/item-13/timing-scenario-proposal.md) awaits methodology approval; do not scale.
 Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and

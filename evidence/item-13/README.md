@@ -10,17 +10,13 @@ are unsupported. Earlier local/representative PASS language does not pass this
 revised gate. Preserve prior raw evidence and solve this representative before
 scaling; do not repeat block investigations that cannot change a required cost.
 
-Acceptance decision pending: the representative now has supported movement,
-uninterrupted mining, pickup-eligibility and conditional spawn-schedule inputs.
-It has no defensible finite estimate for navigation/input overhead, successful
-combat interruptions or acquisition completion. These are not missing block
-inventory facts. The latest steering explicitly permits recording an unresolved
-total, but does not explicitly say whether that limitation can close Item 13's
-timing requirement. Until clarified, do not mark that requirement passed or
-launch a new actor/calibration method merely to obtain a number. The concrete
-choice is an accepted unresolved-total disposition versus additional evidence
-that supports a complete elapsed-time estimate. Existing components and all
-other coverage obligations remain intact either way.
+The latest user-authorized steering requests a concrete conditional model rather
+than permission to leave totals unresolved. The [worked scenario proposal](timing-scenario-proposal.md)
+now accounts for the complete Circle task using source-derived work and explicitly
+uncalibrated analyst allowances. Its approximately 47/64/93-second worked cases
+are PROPOSED, NOT ACCEPTED. Approval of that concrete methodology is pending;
+do not scale it or claim a timing pass. Existing evidence and coverage obligations
+remain intact. The earlier unresolved-total acceptance question is superseded.
 
 ## Authorized method and delivery boundary
 
