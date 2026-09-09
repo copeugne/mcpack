@@ -183,3 +183,58 @@ No WDA/Seven Seas quality score, source-to-room conversion or new experiment is
 accepted by this scope table. Concrete existing sample IDs, whole-envelope block
 availability, component membership, actor models and resource costs remain the
 next required selection work.
+
+## IDAS variant scope
+
+All 24 included IDAS families remain in scope. Ordinary root names equal their
+family names in the `idas:` namespace, with two exceptions: Ancient Portal has
+roots `ancient_portal/ancient_portal` and `ancient_portal/nether_ancient_portal`;
+Sunken Ship has `sunken_ship/sunken_ship` and `sunken_ship/sunken_ship_coral`.
+There are 26 roots. Use the exact accepted inventory grouping rationale and
+per-root definitions, plus the bound pool traces and family-specific
+`evidence/item-8/sources/idas-*-assessment/README.md` where linked. No optional mod
+or inactive compatibility pool is re-enabled to make a sample more complete.
+
+| Family | Material design alternatives | Dimension | Coverage and failure treatment |
+| --- | --- | --- | --- |
+| abandoned_lighthouse | One narrow capped tower | Overworld | One generated arrangement; vertical access and reused guild loot do not make it a guild building |
+| abandonedhouse | `abandonedhouse`, `abandonedhouse2` | Overworld | Both roofed arrangements, with different zombie/villager/spider sources and loot; preserve the second template's missing-ID entity |
+| ancient_mines | One entrance/room/hall assembly | Overworld | Validate the connected chain and hall network; missing `ancient_mines_entrance2` branch stays absent if rejected, rather than inventing a second entrance |
+| ancient_portal | Overworld pair, Nether pair | Overworld, Nether | Each two-piece portal in its own dimension; different land-search/underground placement, spawn overrides and loot remain material |
+| apothecary_abode | One paired abode | Overworld | Both connected sections; illusioner/pillager residents and spawners, not a presumed peaceful house |
+| brickhouse | One house/path/windmill assembly | Overworld | Terrain-matching path and processor-specific windmill; a detached house alone does not establish site access |
+| castle | `castle1`, `castle2`, `castle3` with matching foundations | Overworld | All three main designs. First two also have procedural plains-village extensions; include their reachable normal/zombie settlement branches in selection. Third has no village connector |
+| collectors_museum | One main/lower museum assembly | Overworld | Both vertically joined components, internal content and final access; enormous template envelope is not room count |
+| desert_pyramid | One procedural entrance/hall/room system | Overworld | At least two distinct-seed assemblies, plus unrepresented material room/goal mechanisms. Missing villager pool and source loot defects remain dispositions |
+| farmhouse | Ordinary with path, abandoned without path | Overworld | Both alternatives. Civilian residents versus zombie-villager spawners, different path attachment and furnishings cannot be averaged away |
+| frozen_crypt | One entrance/crypt pair | Overworld | Both sections; optional troll declaration does not create a retained-runtime enemy |
+| haunted_manor | Packaged default manor only | Overworld | Frozen namespace mismatch rejects the intended piece-2/4 attachment. Measure the actually saved result and retain detached source content separately; inactive Ice and Fire compatibility templates are excluded by the verified loader condition |
+| labyrinth | One entrance/floor/tomb chain | Overworld | Fixed numbered components and floor-specific processor behavior; inactive Ice and Fire compatibility branch is excluded, legacy loot references remain unchanged |
+| necromancers_spire | One four-component spire | Nether | Over-lava placement at absolute Y31, branching attachments and conditional wraith override; optional soul-vulture declaration remains source-only potential unless supported by the frozen runtime |
+| nexus | Default, blue, prismarine, red, sculk, white | Overworld | All six single-template arrangements. Shared shape does not merge barrel-position, height or sculk differences; raw pig spawner NBT and ineffective declared loot assignment need their existing processor dispositions |
+| pillager_fortress | One eight-component fortress | Overworld | Connected numbered sections, authored illagers/ravagers and spawners; optional entities remain separate |
+| ruined_church | One gabled hall/tower ruin | Overworld | One arrangement, no source spawner or authored entity; assess quiet/dead rooms without inventing an encounter |
+| ruined_fort | One narrow broken fort | Overworld | One arrangement, distinct from church and inhabited castle variants |
+| ruins_of_the_deep | One entrance/tunnel/two-ruin chain | Overworld | All four connected stages; quiet tunnel may have necessary access purpose and is not automatically a dead room |
+| sunken_ship | `sunken_ship`, `sunken_ship2`, `sunken_ship_coral` | Overworld | All three hull alternatives across two roots. Spawner-randomizing versus empty processor and coral/shark references are material even with equal envelopes |
+| tinkers_citadel | One main building with three attachments | Overworld | Branching site and elevated vault attachment, distinct from the serial workshop; source machinery is not proven operable |
+| tinkers_workshop | One entrance plus seven workshop sections | Overworld | Complete descending serial route and final-vault access; keep per-stage spawner/reward content |
+| windswept_shrine | One three-section shrine with corresponding bottoms | Overworld | Six pieces are a connected assembly, not six design alternatives; measure actual section access |
+| wizard_tower | Purple, red, yellow paired towers | Overworld | Each main/bottom pair. Purple/yellow source spawners differ from spawner-free red; bottom zoglin and processor effects remain explicit |
+
+This identifies 38 named main-layout/dimension alternatives within the 24 families,
+counting a connected fixed assembly once. This number excludes procedural extension
+outcomes and component permutations; it is not the final sample denominator. Castle1
+and Castle2 each need two distinct-seed site samples for their village extensions;
+all three main layouts remain required. A missing normal/zombie or other material
+extension mechanism requires an explicit remaining coverage disposition, not a
+claim that two random samples necessarily cover it. For other fixed layouts, one
+complete saved example per listed alternative is the initial architectural minimum.
+Desert Pyramid has the procedural minimum above. The actual selected examples and
+resource total must be recorded before processing.
+
+The distinction between incomplete raw geometry and a completely observed broken
+baseline is essential here. Complete saved chunks showing the frozen Haunted Manor
+connector rejection can support a quality result about that truncated building.
+Partially generated distant chunks cannot. Neither warrants repairing the frozen
+configuration or replacing the failed sample with a more attractive one.

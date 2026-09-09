@@ -107,8 +107,9 @@ The README integrates variant scope for the three included non-registry families
 [Material coverage](evidence/item-13/coverage.md) also resolves 25 Adorabuild families
 into 38 root alternatives. Its proposed 40-case minimum has not been selected,
 budgeted or run. WDA/Seven Seas adds 40 families and 43 root/dimension
-combinations, including whole-layout and component alternatives. Continue the full
-matrix before expensive expansion.
+combinations, including whole-layout and component alternatives. IDAS adds 24
+families with 38 named main-layout/dimension alternatives and explicit frozen
+connector failures. Continue the full matrix before expensive expansion.
 
 Next: finish the complete material-variant and sample/repetition matrix, using the
 representative's measured cost only for comparable compact cases. Quantify larger
