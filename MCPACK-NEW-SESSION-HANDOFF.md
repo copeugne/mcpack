@@ -172,8 +172,9 @@ give 17.5 nominal modeled seconds. The north route also passes (12 segments),
 27 blocks and 11.666667 nominal seconds. Both house variants now have local
 modeled assessments; graph/depth, hazards, finale and replay are integrated.
 The [Circle report](evidence/item-13/fixed-blocks/mns-circle_nether_brick-report.md)
-now records two authored debris rewards, absent source fire, saved lava and the
-mixed spawner model. Next: validate its topology and assess the other fixed layouts,
+now attributes the saved lava to an overlapping fortress template. The original
+case is preserved; a predeclared non-overlapping candidate was extracted in6.644s
+(8464 voxels). Next: inspect that supplement and assess the other fixed layouts,
 reusing the first-house source/model support; finish other family/variant/seed
 selection and measurements. First-house broader raw-capture custody is pending.
 Thirty-two observed groups currently have one seed role only. Reuse supplemental

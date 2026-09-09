@@ -177,6 +177,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--fixed-root", help="one root from the fixed Moog selection")
+    parser.add_argument(
+        "--selection",
+        type=Path,
+        default=ROOT / "evidence/item-13/fixed-moog-selection.json",
+        help="predeclared fixed-layout selection using the existing format",
+    )
     args = parser.parse_args()
     if args.output.exists() or args.output.is_symlink():
         raise ValueError("output must be absent; preserve previous attempts")
@@ -185,7 +191,7 @@ def main() -> None:
     begun = time.monotonic()
     selection_sha256 = None
     if args.fixed_root:
-        selection_raw = read_bound(ROOT / "evidence/item-13/fixed-moog-selection.json")
+        selection_raw = read_bound(args.selection)
         plan = json.loads(selection_raw)
         chosen = [r for r in plan["selected"] if r["root"] == args.fixed_root]
         if len(chosen) != 1:

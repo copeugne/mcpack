@@ -93,3 +93,69 @@ saved environmental hazards and the missing source fire rather than rebuilding
 the intended layout. Reuse the existing fixed-layout blocks and collision tools;
 do not repeat inventory/classification, source collection or world generation.
 Item 14 remains UNSTARTED.
+
+
+## Established fortress overlap and supplemental sample
+
+The existing [ordinary-r2 saved-start record](../start-inspection/full-ordinary-r2-baseline.json.gz)
+contains betterfortresses:fortress at chunk(19,8), envelope[188,6,17,370,112,240].
+Three individual saved pieces intersect this Circle envelope, so the finding
+is not based only on the fortress's overall bounding box:
+
+| Fortress template | Saved bounds |
+| --- | --- |
+| bridge/bridge_end | [282,70,104,286,80,107] |
+| bridge/blaze_stairs | [281,69,99,287,78,103] |
+| blaze/blaze_0 | [280,69,91,288,84,98] |
+
+More strongly, immutable template data/betterfortresses/structure/blaze/blaze_0.nbt
+in YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar, resource SHA-256
+e55231fa73c8d12f875936e97636d7aea99632cae0fbe5f5bd5203c388f0136c,
+has source-level lava at local(3,Y1..6,4) and magma at(3,7,4). Its saved
+COUNTERCLOCKWISE_90 origin(280,69,98) maps these exactly to the six saved
+lava blocks (284,Y70..75,95) and magma cap(284,76,95). This supports fortress
+attribution for that column. It does not establish generation order or assign
+every surrounding brick to a particular processor. The earlier source-vs-saved
+hazard distinction now has a concrete neighboring structure explanation.
+
+The original selected sample remains a real mixed baseline case. Its neighboring
+fortress must not be counted as Circle rooms or the Circle's authored lava trap.
+To separate fixed-layout quality from this overlap, one additional retained-world
+sample is required. This is a demonstrated attribution problem, not a reason to
+replace an unfavorable sample or perform another generation survey.
+
+The existing candidate index has six Circle starts. Both ordinary r1/r2 starts
+intersect the recorded fortress envelope; both mountainous r1/r2 and both
+biome-diverse r1/r2 starts have no other recorded structure-envelope intersection.
+All six already have complete saved chunks in the assembly records. Filter only
+on those recorded overlap/full-chunk criteria, then use the original SHA-256
+candidate-ID ordering. The first of four eligible alternatives is
+full-mountainous-r1-baseline|minecraft:the_nether|mns:circle_nether_brick|23|5.
+Absence of an intersecting envelope is not proof against all terrain interference;
+the supplemental blocks still require inspection.
+
+The [supplement selection](../circle-supplement-selection.json) reuses the existing
+fixed-selection format and input hashes. It adds one 8464-voxel extraction, not
+new worlds. Reuse measure.py with a selection-path argument rather than duplicate
+its extractor. Hash-verify the complete accepted restore before/after under the
+existing POSIX world lock. Budget: 300 seconds, 10 MiB output and 1.5 GiB peak RSS,
+with at least 5 GiB free space; comparable first-house extraction took 6.336 seconds.
+Preserve failures and both samples. Planned command (new output):
+
+```sh
+uv run python -m evidence.item-13.measure --fixed-root mns:circle_nether_brick --selection evidence/item-13/circle-supplement-selection.json --output evidence/item-13/fixed-blocks/mns-circle-supplement.json.gz
+```
+
+
+Supplement result: [mns-circle-supplement.json.gz](mns-circle-supplement.json.gz)
+retains 8464 voxels and 53 palette states under the declared candidate/selection.
+The [execution record](mns-circle-supplement-execution.txt) reports 6.644 seconds,
+46,184 KiB peak RSS and 4257 compressed bytes, all within budget. SHA-256
+3310bbc00d4e28a8d924168ca96e236628f0b581590227ac90cd1f36fc4b8f45.
+Complete accepted-world inventories passed before/after the read under the
+existing POSIX lock; full chunks/sections and original saved start were verified.
+Selection and producer hashes match the current committed inputs. No server
+was started and no source world changed. The supplemental palette includes lava
+and soul fire, so absence of another recorded structure intersection must not
+be misrepresented as hazard-free terrain. Exact positions/topology remain to
+be inspected. The original mixed case and all earlier source findings remain.
