@@ -17,7 +17,9 @@ def overlaps(a: list[float], b: list[float]) -> bool:
     return all(a[i] < b[i + 3] and b[i] < a[i + 3] for i in range(3))
 
 
-def calculate() -> dict[str, object]:  # noqa: C901 - one bounded geometric pass.
+def calculate(actor_height: float = 1.8) -> dict[str, object]:  # noqa: C901 - one bounded geometric pass.
+    if actor_height not in (1.8, 1.5):
+        raise ValueError("Only predeclared upright or crouched dimensions are supported")
     source = ROOT / "evidence/item-13/collision/r1-collision.json.gz"
     raw = source.read_bytes()
     shapes = json.loads(gzip.decompress(raw))
@@ -62,7 +64,7 @@ def calculate() -> dict[str, object]:  # noqa: C901 - one bounded geometric pass
                 }
             )
             for y in heights:
-                actor = [cx - 0.3, y, cz - 0.3, cx + 0.3, y + 1.8, cz + 0.3]
+                actor = [cx - 0.3, y, cz - 0.3, cx + 0.3, y + actor_height, cz + 0.3]
                 if any(actor[j] < b[j] or actor[j + 3] > b[j + 3] + 1 for j in range(3)):
                     raise ValueError("Actor clearance extends outside retained bounds")
                 candidates += 1
@@ -73,7 +75,7 @@ def calculate() -> dict[str, object]:  # noqa: C901 - one bounded geometric pass
         "producer_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "envelope": e,
         "actor_width": 0.6,
-        "actor_height": 1.8,
+        "actor_height": actor_height,
         "candidate_positions": candidates,
         "standing_positions": sorted(accepted, key=lambda v: (v[1], v[2], v[0])),
         "meaning": "Static empty-context clearance only; reachability and rooms NOT MEASURED",
@@ -83,7 +85,8 @@ def calculate() -> dict[str, object]:  # noqa: C901 - one bounded geometric pass
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--height", type=float, choices=(1.8, 1.5), default=1.8)
     args = parser.parse_args()
-    result = calculate()
+    result = calculate(args.height)
     with args.output.open("x") as stream:
         _ = stream.write(json.dumps(result, indent=2) + "\n")

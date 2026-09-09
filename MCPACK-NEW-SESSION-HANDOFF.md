@@ -137,8 +137,10 @@ capture result and redacted console are retained; broader raw capture custody
 remains pending. The three-argument collision call bypasses the state cache, so
 non-dynamic flags alone do not prove actor-context independence. The derived
 upright standing pass retains 352 positions from 1,411 supported candidates,
-reproduced exactly. Next check crouching at source-supported height 1.5, then
-validate connections and room delineation; positions are not rooms.
+reproduced exactly. Crouching at source-supported height 1.5 adds six positions
+(358 total), none in central upper reward bands, also reproduced exactly. Next
+validate connections, reward interaction positions and room delineation;
+clearance positions are not rooms.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.

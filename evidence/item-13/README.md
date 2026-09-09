@@ -33,7 +33,8 @@ in 206.424 seconds with clean shutdown and frozen configuration verification.
 The output is empty-context geometry; actor clearance and playable connectivity
 remain unresolved. The derived upright standing pass retains 352 clearance
 positions from 1,411 supported candidates; those are not rooms or reachable
-positions. Broader raw capture custody is still pending.
+positions. Crouching adds six positions (358 total), without resolving central
+upper reward access. Broader raw capture custody is still pending.
 
 ## Requirement map
 

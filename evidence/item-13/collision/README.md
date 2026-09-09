@@ -165,3 +165,24 @@ trigger context. The upper reward bands need crouching and connection checks.
 Existing Player source in `../model-source/captured/world.entity.player.Player.txt.gz`,
 static initializer offsets 136-143, supplies the 0.6 by 1.5 crouching dimensions
 for that next declared sensitivity pass. No crouched result is claimed here.
+
+
+Crouching sensitivity predeclaration: repeat the identical saved-state geometry
+at height 1.5, width 0.6, using the Player source dimensions cited above. Keep
+all columns, support rules, bounds, door states and failure rules unchanged.
+Compare accepted positions with the retained upright result; report additions
+without treating crouching clearance as a climbing or navigation connection.
+The same 60-second/100-MiB/1-MiB ceiling applies. No new runtime experiment occurs.
+
+
+Crouching result: [r1-crouching.json](r1-crouching.json) accepts 358 of the same
+1,411 candidates. All 352 upright positions remain accepted. The six additions
+are 458.5,54.5,431.5; 459.5,48.5,431.5; 459.5,48.5,433.5;
+469.5,48.5,431.5; 469.5,48.5,433.5; and 471.5,48,428.5. None adds standing
+clearance in the central upper reward bands. This is not proof that rewards
+cannot be reached by interaction, crawling, climbing, mining or external access.
+A second execution reproduced this output byte for byte; focused collision tests
+and type/lint checks pass. Reproduce using the command above with `--height 1.5`.
+For exact original upright output reproduction, use the producer at commit
+`40bc9f43`; the later optional height parameter changes its producer hash but
+preserves the default calculation. Do not overwrite the historical upright result.
