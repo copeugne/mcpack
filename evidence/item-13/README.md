@@ -31,7 +31,9 @@ The [saved-view collision pilot](collision/README.md) now records all 8,500 firs
 cells as 42 AABB unions, with no unsupported queries. Its fresh runtime completed
 in 206.424 seconds with clean shutdown and frozen configuration verification.
 The output is empty-context geometry; actor clearance and playable connectivity
-remain unresolved. Broader raw capture custody is still pending.
+remain unresolved. The derived upright standing pass retains 352 clearance
+positions from 1,411 supported candidates; those are not rooms or reachable
+positions. Broader raw capture custody is still pending.
 
 ## Requirement map
 

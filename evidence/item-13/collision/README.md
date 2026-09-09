@@ -119,3 +119,49 @@ mapped server JAR and quoted class name
 This is source inspection, not evidence that every retained override is context
 independent. The 42 unions support the declared empty-context geometric view;
 actor clearance, interaction changes and playable topology remain unresolved.
+
+## Predeclared standing-clearance pass
+
+For the first house only, compute static standing positions at each X/Z block
+center inside the original structure envelope. Candidate feet heights are the
+upper faces of retained collision AABBs directly beneath that center. Require
+positive-height support and a collision-free 0.6-wide, 1.8-high upright box.
+Touching a face is allowed; positive overlap is collision. Use the captured
+empty-context shapes exactly, including neighboring padding where a box crosses
+a cell boundary. Doors, gates and trapdoors retain their saved states. No opening,
+mining, jump, step, climbing, fluid travel or enemy interaction is modeled in this
+pass. It establishes static clearance, not reachability or room membership.
+Actor-context equivalence remains conditional as described above.
+
+Denominator is every envelope column and every supported candidate height within
+the envelope's Y range. Output each accepted center and feet height plus counts
+by height. Unsupported collision cells would reject this pass rather than appear
+passable. Restrict queries to the retained bounds. Budget: 60 seconds, 100 MiB RSS,
+1 MiB output, no runtime or world reads. This directly addresses the missing
+occupiable-space geometry before graph links are inferred. Do not count these
+positions, disconnected air regions or height bands as rooms.
+
+Standing pass result: [r1-standing.json](r1-standing.json) retains 352 accepted
+positions out of 1,411 distinct supported candidate positions across the 209
+original-envelope columns. It took 0.039 seconds, 43,652 KiB peak RSS and 18,101
+output bytes. A second execution reproduced the output byte for byte. Focused
+face-touching and positive-overlap checks pass, including floor and ceiling
+boundaries. Use `uv run python -m pytest evidence/item-13/collision/test_clearance.py`
+from repository root; the initial bare pytest invocation lacked the repository
+on its import path and failed collection before any test ran.
+
+Reproduce with an absent output path:
+
+```sh
+uv run python -m evidence.item-13.collision.clearance /tmp/item13-standing-new.json
+```
+
+Direct block inspection validates a lower-floor strip from center 461.5,45,432.5
+through 466.5,45,432.5. Its six floor blocks at Y44 are deepslate bricks, polished
+blackstone bricks or stripped warped hyphae. Y45 contains air, wall signs and
+buttons; Y46 is air. This supports the local clearance result, not entry-to-exit
+connectivity. Buttons are not assumed harmless working mechanisms without their
+trigger context. The upper reward bands need crouching and connection checks.
+Existing Player source in `../model-source/captured/world.entity.player.Player.txt.gz`,
+static initializer offsets 136-143, supplies the 0.6 by 1.5 crouching dimensions
+for that next declared sensitivity pass. No crouched result is claimed here.

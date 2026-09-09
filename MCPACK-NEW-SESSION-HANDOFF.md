@@ -135,7 +135,10 @@ queries. Runtime/configuration identity, correlated flush and clean exit passed
 in 206.424 seconds. It measures empty-context shapes, not actors. Projection,
 capture result and redacted console are retained; broader raw capture custody
 remains pending. The three-argument collision call bypasses the state cache, so
-non-dynamic flags alone do not prove actor-context independence.
+non-dynamic flags alone do not prove actor-context independence. The derived
+upright standing pass retains 352 positions from 1,411 supported candidates,
+reproduced exactly. Next check crouching at source-supported height 1.5, then
+validate connections and room delineation; positions are not rooms.
 
 Next: resolve collision/movement support, room connectivity and encounter models
 for those layouts; finish other family/variant/seed selection and measurements.
