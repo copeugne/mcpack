@@ -240,3 +240,36 @@ and source-supported vines. Opening/interaction latency is excluded from the
 kinematic movement budget and must remain explicit; it is not assumed to take
 zero real time. The route itself and support checks remain to be declared before
 measurement. No mining, flight or jumps are implicit in this door capability.
+
+
+## Nether Brick Circle mixed ordinary-spawner model
+
+Predeclare one attempt wave for each saved spawner: successful piglins p=0..4
+and successful piglin brutes b=0..4 independently. Retain the existing iron-sword,
+13-tick full-cycle workload, full navigation knowledge and stipulated ordinary
+unarmored targets without effects, incoming damage or reinforcements. Use the
+same 100% and 50% contact-duty scenarios. These 25 composition scenarios are
+conditional counts, not generated encounters or repeated player trials. Both
+saved initial Delay fields are 0; that does not prove successful instantaneous
+spawning or remove activation, collision, difficulty and scheduling conditions.
+
+Direct pinned javap inspection of the existing mapped server JAR at SHA-256
+26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71,
+class net.minecraft.world.entity.monster.piglin.PiglinBrute, createAttributes
+0..9 assigns maximum health 50. Reproduce with the existing javap command above,
+substituting that class. The previously captured Piglin source assigns 16.
+Thus the declared nominal model needs ceil(50/6)=9 hits per brute and 3 per
+piglin; attack-cycle seconds are (3*p+9*b)*13/20. At full contact this is
+1.95*p+5.85*b, ranging 0..31.2; at 50% duty it is 3.9*p+11.7*b, ranging 0..62.4.
+The ranges enumerate the declared successful-count choices only. Real enemies,
+gear, aggro, damage, repeated waves and complete combat time remain unmeasured.
+
+The Circle's embedded ancient debris is a material reward opportunity, not a
+container table. Vanilla extra JAR tags needs_diamond_tool.json (SHA-256
+fce3d4bef99721711ffb1bcdd72812c82e55e90d02417fa3065c260c0f96b833)
+and incorrect_for_iron_tool.json (SHA-256
+61c0fa3215f263a2bd4a01d504e03e3d83613f9f09a76d060136b37941abc78e)
+respectively include ancient_debris and reference needs_diamond_tool. This
+packaged-source restriction means the existing iron-pick profile must not be
+credited with acquiring these blocks. Extraction requires a separately supported
+harvesting capability; no block was mined and no reward was acquired here.

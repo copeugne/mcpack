@@ -84,3 +84,8 @@ modeled quality and depth. The [second-house assessment](mns-medium_house_2-repo
 now records both validated vine links, modeled door opening, storage access,
 graph/depth sensitivity, timing and quality assessments. Both house variants
 retain full-runtime/human-observation limitations and pending raw-capture custody.
+
+
+The [Nether Brick Circle assessment](mns-circle_nether_brick-report.md) records
+its authored debris rewards, saved/source hazard differences and mixed spawner
+workload. Its open-ruin topology and traversal remain pending.
