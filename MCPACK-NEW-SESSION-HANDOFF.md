@@ -182,12 +182,12 @@ Circle's complete-objective budget is UNRESOLVED; movement-only times do not pas
 Nominal mining is 13.8s; pickup eligibility and a conditional spawn deadline are
 supported. Pending user decision: can an explicitly unresolved total close timing?
 Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
+First collision raw [local archive/restore](evidence/item-13/collision/r1-custody/README.md) passes; external delivery pending.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
 claiming an arena generation gap. All 192 included families remain required.
 
-The pilot protocol and producer bytes are hash-bound to its observations. Preserve
-that historical version when extending measurement logic or the full protocol.
+Preserve the pilot's hash-bound historical protocol and producer when extending it.
 Missing generated chunks censor topology; a fully saved building truncated by a
 known frozen connector defect is a valid baseline result with the defect retained.
 Do not repair frozen content or count absent intended pieces as rooms. Reuse
