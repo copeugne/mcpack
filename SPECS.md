@@ -926,8 +926,9 @@ source inspection. Cover all of the following:
   quarrying, moving valuable blocks, cannons/drills, hoppers and computers. Classify
   desirable engineering, harmless cheese, economy-breaking and adventure-destroying
   exploits. Fix the latter two, preserving earned sandbox solutions.
-- **50F, redundancy:** re-evaluate structures, AI, difficulty, loot integrations and
-  village mods. Remove non-distinct contributions and costs exceeding gameplay value.
+- **50F, redundancy:** re-evaluate every retained structure, AI, difficulty and village
+  mod and every loot integration. Remove non-distinct contributions and systems whose
+  performance costs exceed gameplay value.
 - **50G, regression:** repeat representative baseline measurements and demonstrate
   targeted improvements without major regressions in diversity, pacing, worldgen,
   performance, combat, economy, multiplayer fairness or engineering progression.

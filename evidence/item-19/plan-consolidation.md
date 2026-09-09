@@ -113,7 +113,7 @@ Direct comparison confirms the entire prefix before Phase III, including Items 1
 is byte-identical to the source commit. Prefix SHA-256: c39f508db24ccecb1961ffe526790aa2ee6e586f46eac3053d8b4014851fe0ac.
 All 33 legacy headings occur exactly once in the replacement, and all 32 explicit
 original dependency sets (19-50) match. Item 51 retains the all-prior-work release
-gate. The post-baseline specification goes from 1220 to 487 lines, including
+gate. The post-baseline specification goes from 1220 to 488 lines, including
 the execution rules and dependency map. These counts prove structure/preservation
 boundaries, not semantic completeness by themselves.
 
