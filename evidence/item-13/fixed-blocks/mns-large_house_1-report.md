@@ -428,3 +428,79 @@ sample. This batch adds six barrel and three spawner access dispositions. Togeth
 with the lower caches, 14 of 16 barrel positions and 5 of 7 spawner positions now
 have explicit station/route evidence. The two roof barrels and roof piglin/brute
 sources, exterior connection between lower entrances, and full timing still remain.
+
+## Roof cache: separate scaffold access
+
+The short upper vine at (80,59) is not accepted as an unmodified roof connection.
+Its Y48 trapdoor is immediately south of a lava source at (80,48,58). Removing
+or changing that barrier without a fluid disposition would not be a harmless
+climbing shortcut. The roof route below leaves that trapdoor and both nearby
+source-lava positions unchanged. It still requires continued-clearance conditions;
+no live fluid stability or successful ascent is claimed.
+
+Predeclare a separate engineering branch from the main landing. Walk at feet Y44
+from (76.5,60.5) via (76.5,59.5), (78.5,59.5) to (78.5,60.5), in X/Z notation.
+This four-block approach has full support and clear body cells. It avoids stepping
+across the open shaft center at (77,43,60). Carry seven scaffolding blocks in
+addition to the four lower-route ladders and existing tools. Place the scaffold
+base at (78,44,61) from that adjacent station, supported by full nether bricks
+at Y43. The column Y44..49 is initially air.
+
+Build the first four scaffolds at Y44..47, climb to their top at feet Y48 and
+stand without descending. Upright head height is Y49.8, below the roof block
+at Y50. From this supported stance, remove the top warped stair at (78,50,61).
+Then extend the tower with three further scaffolds at Y48..50 and climb to feet
+Y51. This order supplies a supported mining stance, rather than assuming that
+mining while hanging has ordinary ground speed. Tool/placement/pose actions and
+all seven placed blocks must enter the eventual budget.
+
+Clear the following four additional roof blocks from the tower and ensuing bay,
+without removing the retained floors at Y50:
+
+| Block | Saved state | Order/access |
+| --- | --- | --- |
+| (78,52,62) | east-facing top warped stair | Mine from the scaffold-top station before its lower neighbor |
+| (78,51,62) | east-facing bottom warped stair | Mine after the upper stair, then step into this cleared bay at feet Y51 |
+| (77,52,62) | vertical warped stem | Mine from the bay's east side |
+| (77,51,62) | vertical warped stem | Mine after its upper neighbor, then step west into the cleared central bay |
+
+Together with (78,50,61), this is five explicit roof-cover removals, not a free
+roof entrance. All target faces are within three blocks of the successive stations.
+The bay floors (78,50,62) and (77,50,62) are full warped stems; the ceilings begin
+at Y53, above the 1.8-high actor standing at Y51. The newly cleared bays are
+therefore supported standing spaces, not merely ray-reachable cavities.
+
+Pinned `ScaffoldingBlock.getDistance` returns zero over a sturdy floor and inherits
+the below scaffold's distance, so this vertical tower remains distance zero.
+`getCollisionShape` supplies STABLE_SHAPE to an actor above it who is not descending,
+and empty collision inside the distance-zero column. The existing climbable tag
+includes scaffolding. These source rules support the declared climb and grounded
+intermediate stance; use `javap -c -p` on ScaffoldingBlock in the already pinned
+mapped JAR to reproduce them. No scaffold was placed in a saved world.
+
+From (78.5,51,62.5), access the right barrel (78,51,63) on its north face at
+Y51.9. After clearing the two central stems, stand at (77.5,51,62.5):
+
+- The piglin spawner (77,51,63) is directly south, reachable on its north face
+  at Y51.9. Disable it before using the cleared cell for the left-barrel ray.
+- The brute spawner (76,52,63) is reachable on its east face (77,52.5,63.5),
+  through the air above the piglin spawner. The ceiling starts at Y53.
+- Once the piglin spawner is removed, the left barrel (76,51,63) is reachable
+  on its east face (77,51.9,63.5). The ray passes through the now-cleared piglin
+  cell below the brute block. It does not require mining either barrel.
+
+All these short rays are within three blocks of eye Y52.62. The construction
+branch consists of four horizontal approach blocks, one into the tower, seven
+vertical climb blocks, one into the first bay and one west into the central bay.
+Return reverses that path, using controlled scaffold descent. The roof branch
+therefore adds fourteen horizontal and fourteen vertical blocks for the declared
+out-and-back path, separately from placement, breaking, target interaction and
+combat. Placement failure, loss of support, changed fluid/obstacle state or an
+unsuccessful transfer censors this conditional branch.
+
+All sixteen barrel and seven spawner positions now have explicit access
+conditions. This does not complete the full task model: the exterior connection
+between the lower entrances, combined path/event schedule, source work, encounter
+activation history and final room/quality synthesis remain required. The original
+closed pillar, capped shaft, sealed partition and roof casing are preserved as
+baseline constraints; the construction routes do not relabel them as native links.
