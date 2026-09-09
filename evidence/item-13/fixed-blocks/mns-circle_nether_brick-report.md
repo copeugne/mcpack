@@ -584,3 +584,94 @@ print('target-point distance', math.dist(eye,aim))
 print('nominal/faster/slower movement seconds', [3.6/v for v in (4,5,3)])
 ORIGINAL_CHECK
 ```
+
+## Predeclared original-case connection search
+
+Before assuming the obstruction requires breaching, reuse analyze_pilot.paths
+to search a conservative flat subset of the existing padded block dataset.
+Actor feet remain Y66, upright width 0.6 and height 1.8. Admit only full warped
+nylium at Y65 with air, warped roots or nether sprouts at both body levels.
+The latter two have explicit noCollission registrations in mapped Blocks
+at offsets 32177 and 32229 respectively.
+All other states are excluded, including partial blocks and magma. Search
+cardinal cell centers within the retained X/Z bounds, from(281,66,99) to
+(289,66,95), with the existing deterministic neighbor order. No block changes,
+flight, jumps or terrain beyond the dataset are allowed. A missing path means
+this conservative subset failed, not proof that the real world is disconnected.
+Any returned path must have its complete cells retained and source-supported;
+its shortest length applies only to this declared subset. Budget: one second
+of CPU-scale processing and no new world/runtime/storage capture. Use existing
+walking rates only after a connection is found; interaction and combat remain
+excluded. This is new local topology processing, not repeated exploration or
+discoverability measurement.
+
+Result: 327 cells meet that predicate; 313 are reachable from the start and
+the destination is among them. The deterministic path is 28 horizontal blocks,
+with compressed X/Z waypoints (281,99), (278,99), (278,91), (279,91),
+(279,90), (284,90), (284,92), (287,92), (287,95), (289,95).
+Add 0.5 to both coordinates for feet-center positions; Y remains 66.
+Each straight segment's intervening cells belongs to the admitted set, so
+the 0.6-wide body's continuous sweep fits, including the corner cells. The
+path avoids the saved lava column rather than assuming that every route must
+cross it. It leaves the Circle envelope locally to skirt the saved obstruction;
+that excursion is not an additional Circle room or an authored corridor.
+The return makes 56 blocks: nominal 14 seconds, faster 11.2, slower 18.666667,
+all movement-only. Fourteen other admitted cells outside the start component
+are not fourteen rooms, and excluded partial-block cells are not proven walls.
+
+Second reward-face predeclaration: from the path endpoint(289.5,66,95.5),
+move 0.2 blocks to(289.5,66,95.7), crouch with eye height 1.27, and aim at
+(289.5,66.1,93.5). Remove only the nether-gold-ore cover at(289,66,94)
+in the model, leaving the bottom slab above and all other ore unchanged.
+The same line then inspects the debris at(289,66,93). Use the established
+source-supported iron-pick cover-removal capability without claiming debris
+harvesting or mining time. This is a local geometric access model, not a
+new runtime experiment. An obstructed line fails the check.
+
+Result: the local check passes. The endpoint/shifted station has air at both
+body levels over full warped nylium. The ray enters the cover at Z95,
+Y66.897727, below the slab at Y67; after cover removal it reaches the debris
+face at Z94,Y66.365909. Target-point distance 2.491766 is within the stipulated
+three-block reach. Thus both original reward faces have access models linked
+by the validated detour, despite the rejected rotated circuit. With the 0.2
+station adjustment at each end (west X281.3 rather than 281.5; east Z95.7
+rather than 95.5), the reward-station connection is 28.4 blocks one way.
+Adding the 1.8-block western external approach and returning along the same
+route gives 60.4 horizontal blocks, zero vertical travel: movement-only
+15.1 seconds nominal, 12.08 faster, 20.133333 slower. Pose changes, one toggle,
+one cover removal, combat and acquisition remain excluded rather than silently
+treated as instantaneous gameplay. This resolves a two-reward inspection route,
+not every reachable pocket or the adjoining fortress's playable topology.
+
+Reproduce with the existing path implementation and retained original input:
+
+```sh
+PYTHONPATH=evidence/item-13 uv run python - <<'CONNECTION_CHECK'
+import gzip, hashlib, json, math
+from pathlib import Path
+from analyze_pilot import paths, state_at
+raw = Path('evidence/item-13/fixed-blocks/mns-circle_nether_brick.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'c5f115f0c9ecdcda67addcd30d7aae81377315ff78d169821d5ea9ba7ed46dce'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+b = case['bounds']
+clear = {'minecraft:air','minecraft:warped_roots','minecraft:nether_sprouts'}
+cells = {(x,66,z) for x in range(b[0],b[3]+1) for z in range(b[2],b[5]+1)
+         if state_at(case,x,65,z)['Name']=='minecraft:warped_nylium'
+         and all(state_at(case,x,y,z)['Name'] in clear for y in (66,67))}
+found = paths(cells,(281,66,99))
+route = found[(289,66,95)]
+assert len(cells)==327 and len(found)==313 and len(route)-1==28
+assert state_at(case,289,66,95)['Name']=='minecraft:air'
+assert state_at(case,289,67,95)['Name']=='minecraft:air'
+assert state_at(case,289,66,94)['Name']=='minecraft:nether_gold_ore'
+slab = state_at(case,289,67,94)
+assert slab['Name']=='minecraft:nether_brick_slab' and slab['Properties']['type']=='bottom'
+assert state_at(case,289,66,93)['Name']=='minecraft:ancient_debris'
+eye, aim = (289.5,67.27,95.7),(289.5,66.1,93.5)
+ys = [eye[1]+(aim[1]-eye[1])*(z-eye[2])/(aim[2]-eye[2]) for z in (95,94)]
+assert all(66<y<67 for y in ys) and math.dist(eye,aim)<3
+print('complete cell route',route)
+print('cover/debris face ray Y',ys)
+print('external circuit movement seconds',[60.4/v for v in (4,5,3)])
+CONNECTION_CHECK
+```
