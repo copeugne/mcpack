@@ -1,10 +1,37 @@
 # Item 12 structure discoverability
 
-Status: IN PROGRESS, local gate reopened for the PR39 top-boundary finding; [PR39](https://github.com/copeugne/mcpack/pull/39)
-is open for required Codex review and main delivery. Item 13 is not started.
-Authority: SPECS.md Item 12 and the separately user-authorized
-[inspection/automated protocol](protocol.md), `item12-discoverability-v2`.
-Human recognition and discovery rates remain NOT MEASURED.
+Status: IN PROGRESS, corrected v2 local gate PASS. [PR39](https://github.com/copeugne/mcpack/pull/39)
+requires a fresh completed clean review, merge and verified main delivery.
+Item 13 is not started.
+
+The user separately authorized inspection and automated assessment on 2026-09-09.
+The [protocol](protocol.md), `item12-discoverability-v2`, defines the assessment
+scope, sampling, viewpoints, denominators, failures and uncertainty. Human
+recognition, discovery rates and actual player dependence on commands remain
+NOT MEASURED. Do not silently extend the Items 10/11 amendment to these claims.
+
+## Current result and local gate
+
+**PASS under the authorized assessment scope.** The [report](report.md) contains
+all sixteen accepted worlds, 464 selected family/world cases and 94 observed
+canonical families. The other 354 accepted families retain Item 8 source
+assessments but have no case in this finite Overworld viewpoint frame. No zero
+visibility or all-dimension visibility conclusion is inferred for them.
+
+The report keeps complete family occurrence counts per 4,096 chunks independent
+from ray outcomes, low/high viewpoints and biome-grouped contrasts. Its family
+appendix joins those values to existing architectural cues. The
+[assessments](assessments.md) distinguish external entrance components, conditional
+stairs/shafts, internal cues and caches without a separate entrance, and record
+conditional /locate risks. A packaged [trial-map survival lead](navigation-source/README.md)
+prevents equating buried trial chambers with mandatory admin commands.
+
+This evaluates entrance visibility and importance through source-supported forms
+and sampled placement context. It does not measure exact doorway coordinates,
+cave connectivity, player recognition or runtime map acquisition. Envelope targets
+are geometric proxies. The high and low observers also differ in azimuth and may
+stand on structures, water or vegetation; they are not a causal elevation test or
+a walkability result. These limits accompany downstream use.
 
 ## Requirement map and delivered evidence
 
@@ -46,94 +73,109 @@ Reuse [Item 10 custody and density](../item-10/README.md),
 Item 7's visual fidelity review covers heightmap diagrams, not textured player
 views or recognition. It cannot close the missing Item 12 perceptual claims.
 
-## Current batch
+## Validation and resources
 
-The v1 local gate was rejected by PR39 finding 3968701864. Corrected v2 results,
-affected validation, fresh clean review, merge and verified delivery remain.
-Item 13 is unstarted.
+The full applicable pre-review gate passed [610 tests in 450.28 seconds](validation/full-gate.txt)
+for Items 7/10/11/12 readers and relevant evidence paths. After the narrow boundary
+fix, all [eight affected tests pass in 15.41 seconds](validation/v2-final-tests.txt),
+including exact report reproduction and evidence-identity rejection. Final
+[lint](validation/v2-final-lint.txt), [formatting](validation/v2-final-format.txt)
+and [types](validation/v2-final-types.txt) pass. Unchanged upstream gates are not
+repeated solely for reassurance.
 
-## Reproduce input availability
+A clean tracked export of correction commit `51268726f397a1fde0ecd286121a406af78583d1`,
+with a separate [locked environment](validation/clean-v2-sync.txt), reproduces the
+biome-diverse r1 baseline result byte for byte in
+[44.758 seconds](validation/clean-v2-reproduction.txt), SHA-256
+`23aafd85335bb8ede94567fc2e240c1b6d2ff3df530ff9767a2444cc515afdea`.
+It consumes existing hash-verified restores through explicit `--raw-root`.
+This is clean-code reproducibility, not fresh generation or a server benchmark.
 
-Executed from the repository root with the existing locked environment. This is
-an inspection through existing custody primitives, not another validator framework.
-The default raw paths are restored using each linked Item 10 world's commands.
+[Version 2 resource totals](validation/v2-resource-totals.txt): 787.711 summed
+producer seconds, range 37.674 to 72.587, and 814,577 compressed result bytes.
+The current report is 129,282 bytes. These fit the predeclared 160-minute and
+1-GiB ceilings. Exact derivation: over the sixteen accepted names, sum each result's
+byte size and its matching producer log's `real` minutes*60+seconds; sum `len(cases)`
+and count unique `family_id`. Timings include operational contention and are not
+server-performance measurements. The initial availability check verified
+6,806,284,224 world bytes and 1,784,216,273 census bytes in 11.099 seconds.
 
-```sh
-uv run --no-sync python - <<'PY'
-import json, time, shutil
-from tools.analyze_route_opportunities import ROOT, accepted_inputs, read_bound, verify_world
-from tools.manage_item4_environment import _world_backup_lock
-from mcpack_evidence.item7_archive_models import ArchiveManifest
-start = time.monotonic()
-total = census_bytes = 0
-for name, identity in sorted(accepted_inputs().items()):
-    custody = ROOT / 'evidence/raw/item10' / f'{name}-custody'
-    manifest = ArchiveManifest.model_validate_json(read_bound(
-        ROOT / 'evidence/item-10' / name / 'archive-manifest.json'))
-    entry = next(r for r in manifest.files if r.relative_path == 'world-backup.json')
-    backup = json.loads(read_bound(custody / 'restored-local/world-backup.json', entry.sha256))
-    assert backup['archive_sha256'] == next(
-        r.sha256 for r in manifest.files if r.relative_path == 'world.tar.gz')
-    world = custody / 'restored-world/world'
-    with _world_backup_lock(world):
-        verify_world(world, backup['world_files'])
-    raw = read_bound(ROOT / 'evidence/raw/item10' / f'{name}-analysis/all-strata.json',
-                     identity['input_sha256'])
-    size = sum(r['size_bytes'] for r in backup['world_files'])
-    total += size
-    census_bytes += len(raw)
-    print(name, 'PASS', len(backup['world_files']), size, len(raw), identity['input_sha256'])
-print(json.dumps(dict(world_bytes=total, census_bytes=census_bytes,
-                     elapsed_seconds=time.monotonic()-start,
-                     free_bytes=shutil.disk_usage(ROOT).free)))
-PY
-```
+The initial ordinary representative was completed end to end before expansion,
+including fourteen family assessments, report, focused tests and 28 technical
+panels. Its rejected v1 results remain at `aa9f700f`; its original clean-code
+reproduction and initial failure logs remain under validation/. The corrected
+representative used biome-diverse r1 baseline, an actual boundary counterexample.
+The protocol's ships/elevated-settlement description refers to the original
+ordinary representative, not this correction case.
 
-## Representative completed before expansion
+Manual inspection of the [ordinary sections](ordinary-sections.svg) and relevant
+[mountainous panels](mountainous-sections.svg) is recorded in assessments.md.
+The [v2 diagram comparison](validation/v2-diagram-comparison.txt) proves that both
+galleries are unchanged except their result-hash labels, so prior visual QA still
+applies. These are heightmap diagrams, never player screenshots. The first SVG
+and import/type/lint failures remain in validation/. Initial ImageMagick rendering
+omitted strokes; CairoSVG 2.9.0 rendered them, and explicit fill-opacity corrected
+an inconsistent eight-digit color. Browser local-file policy blocked browser
+inspection; local rasterization required no browser action. None of these
+attempts changed a world or supplied fabricated visual evidence.
 
-Ordinary r1 baseline is complete as a bounded fourteen-family increment:
-[raw observations](results/full-ordinary-r1-baseline.json.gz),
-[numerical report](report.md), [architectural assessments](assessments.md) and
-[technical sections](ordinary-sections.svg). The [producer log](validation/full/full-ordinary-r1-baseline.txt)
-records 37.150 seconds and 19,960 compressed bytes. A simple sixteen-world
-extrapolation is 594.4 seconds and 319,360 bytes; family counts and world content
-vary, so retain the larger predeclared 160-minute/1-GiB ceilings. This is an
-operational projection, not a benchmark or guarantee. No expansion has occurred
-at this checkpoint.
+## Review finding and preserved rejected evidence
 
-The report preserves 14 selected cases, eight observer cells per geometric case,
-separate WS/NL rays, all three UNKNOWN-extremum cases, and full occurrence counts.
-The six [focused checks](validation/representative-six-tests.txt) pass, including
-selection order, obstruction/UNKNOWN, same-eye contrast, retained report values,
-diagram reproduction and rejection of changed/misbound evidence.
-[Types](validation/representative-final-types.txt) and
-[lint](validation/representative-lint.txt) pass. Initial import/type errors are
-retained in validation/initial-* and representative-types.txt; the package marker
-and explicit type narrowing corrected them before accepted collection. No world
-processing attempt failed or source evidence changed.
+The completed review of `aa9f700f` raised
+[finding 3968701864](https://github.com/copeugne/mcpack/pull/39#discussion_r3968701864).
+It is valid: 364 v1 endpoint-equality rays across 19 families self-occluded when
+`ray_y=target_y=height+1`. The [regression fails before](validation/top-boundary-before.txt)
+and [passes after](validation/top-boundary-after.txt) the strict-boundary fix.
+Protocol v2 was predeclared before corrected collection; all source worlds,
+sampling, viewpoints and targets remain fixed.
 
-Manual inspection of all 28 panels found the surface ships, buried selected
-objects, minimal temple envelope, elevated settlement and edge gaps consistent
-with the retained coordinates and heights. The panels explicitly disclose their
-heightmap-only scope; they cannot reveal a cave entrance or rendered silhouette.
-The first SVG is retained in [validation](validation/ordinary-sections-first.svg).
-ImageMagick's initial rasterization omitted stroke paths; it was rejected for
-visual inspection. CairoSVG rendered the paths, and an explicit fill-opacity
-replaced the inconsistently supported eight-digit fill color. Final SVG inspection
-shows readable identity/axes, retained gaps and transparent envelopes. This is
-artifact visual QA, not player testing. Browser local-file policy blocked the
-browser inspection; local rasterization required no browser action.
+The corrected pilot takes 37.977 seconds and 40,549 bytes. Its
+[comparison](validation/top-boundary-pilot.txt) changes 36 rays to CLEAR and leaves
+all non-ray data identical. The [full comparison](validation/top-boundary-matrix.txt)
+finds 366 changed ray records: 364 OCCLUDED to CLEAR, and two OCCLUDED records
+whose first-blocker diagnostic changes while a later blocker still occludes.
+This is why all rays were recomputed rather than blindly clearing old failures.
+For every world, remove `protocol`, `inputs.protocol_sha256`,
+`inputs.producer_sha256` and each `cases[].observation.views[].rays` from v1 and v2;
+the remaining decoded documents are identical. Counts, source identities,
+selection, heights, target geometry and profile observations did not change.
+The cited numerical examples in assessments.md remain correct under v2.
 
-Executed reproduction commands (choose absent output paths):
+Version 1 producer, protocol, raw results, reports, diagrams and rejected local
+PASS claims remain at pushed commit
+[`aa9f700f`](https://github.com/copeugne/mcpack/tree/aa9f700feb20f9221427e7000721495bee83e889/evidence/item-12).
+Correction commit `51268726` preserves the narrow fix, regression and corrected
+counterexample; the full v2 matrix supersedes the mixed interim checkpoint.
+Raw failed-test whitespace is preserved. No new schema, validator framework,
+archive revision or controlled world experiment was added.
+
+Item 11 retains its separately declared conservative height-field metric; v2
+uses a different boundary definition without relabeling or recalculating Item 11.
+No source-world, placement or frozen-identity conflict was found. The completed
+audit, classification and route matrix were not repeated. Item 10's
+[heap-failed attempt](../item-10/full-ocean-heavy-r2-without-sparse/README.md) and
+[incomplete-save attempt](../item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
+remain excluded and preserved. The accepted third attempt is unchanged. No v2
+world-analysis attempt failed or substituted a location.
+
+## Reproduction
+
+Use `uv sync --locked`. Restore the accepted inputs using the linked Item 10
+per-world instructions. Defaults are `evidence/raw/item10/NAME-custody/restored-world/world`,
+adjacent `restored-local/world-backup.json`, and `NAME-analysis/all-strata.json`.
+The producer validates archive binding, census identity and the complete world
+inventory under the existing Java-compatible POSIX lock before and after reading.
+No source world is booted. Choose absent output paths; never overwrite old evidence.
+
+Executed commands, with fresh scratch paths substituted for retained outputs:
 
 ```sh
 uv run --no-sync python -m tools.analyze_discoverability \
-  --name full-ordinary-r1-baseline --output /tmp/item12-representative.json.gz
+  --name full-biome-diverse-r1-baseline \
+  --output /tmp/item12-v2-representative.json.gz
 PYTHONPATH=. uv run --no-sync python evidence/item-12/summarize.py \
-  --results evidence/item-12/results --representative --output /tmp/item12-report.md
-uv run --no-sync python evidence/item-12/render.py \
-  --result evidence/item-12/results/full-ordinary-r1-baseline.json.gz \
-  --output /tmp/item12-sections.svg
+  --results evidence/item-12/results --output /tmp/item12-v2-report.md
+cmp evidence/item-12/report.md /tmp/item12-v2-report.md
 uv run --no-sync pytest -q tests/item12
 uv run --no-sync ruff check tools/analyze_discoverability.py tests/item12 \
   evidence/item-12/render.py evidence/item-12/summarize.py
@@ -141,122 +183,19 @@ uv run --no-sync basedpyright tools/analyze_discoverability.py tests/item12 \
   evidence/item-12/render.py evidence/item-12/summarize.py
 ```
 
-For visual inspection only, the SVG was rasterized with the isolated pinned
-CairoSVG 2.9.0 package via `uv run --with cairosvg==2.9.0 python`, calling
-`cairosvg.svg2png(url='evidence/item-12/ordinary-sections.svg', write_to=...)`.
-The deterministic SVG is committed; no project dependency or client installation
-is required for numerical reproduction.
+For the full matrix, obtain the sixteen names from the existing `accepted_inputs()`
+and invoke that same analyzer once per name, retaining each timed producer log.
+V2 was executed sequentially into `evidence/raw/item12/v2/NAME.json.gz` and `.txt`,
+then promoted to results/ and validation/full/ only after successful comparison.
+The producer source is committed, and each output binds its exact source and
+protocol digests. Reproduction must use another absent output directory.
 
-## Clean reproduction and expansion method
+The [renderer](render.py) takes `--result` and `--output` for either gallery.
+For visual QA the SVG was rasterized through the isolated command
+`uv run --with cairosvg==2.9.0 python`, calling `cairosvg.svg2png` on the SVG.
+No project dependency, graphical Minecraft client or server installation is
+required. The initial availability inspection command is preserved in the
+[predeclaration milestone](https://github.com/copeugne/mcpack/blob/a93a42f3/evidence/item-12/README.md#reproduce-input-availability).
 
-A clean tracked export of `bbad023d` with a separate locked environment reproduced
-the ordinary raw result byte for byte in 41.701 seconds, SHA-256
-`3500ea443906cae3d7b26de8ee2eaec0e9a74b845a998c2b907d4794c6e4baac`.
-[Environment installation](validation/clean-sync.txt) and
-[producer output](validation/clean-reproduction.txt) are retained. The clean code
-consumed the existing hash-verified accepted restores through explicit `--raw-root`;
-it does not claim fresh world generation, a new restore or a clean-machine benchmark.
-
-The remaining-world collection uses the same unchanged producer and protocol:
-
-```sh
-uv run --no-sync python - <<'PY' > /tmp/item12-remaining.txt
-from tools.analyze_route_opportunities import accepted_inputs
-print('\n'.join(n for n in sorted(accepted_inputs()) if n != 'full-ordinary-r1-baseline'))
-PY
-while IFS= read -r name; do
-  { time uv run --no-sync python -m tools.analyze_discoverability --name "$name" \
-      --output "evidence/item-12/results/$name.json.gz"; } \
-    > "evidence/item-12/validation/full/$name.txt" 2>&1 || exit 1
-done < /tmp/item12-remaining.txt
-```
-
-For reproduction, use an absent output directory and retain new logs separately;
-the producer refuses to overwrite accepted results. The original representative
-and report are preserved in the milestone commit. No route matrix, world generation,
-classification, preservation or configuration audit was repeated for these outputs.
-
-## Historical v1 local exit gate, rejected by PR39
-
-**The initial local PASS below was superseded by finding 3968701864.** All ten requirement rows above have delivered evidence and
-explicit inference limits. The complete [report](report.md) covers sixteen worlds,
-464 selected family/world cases and 94 distinct canonical families. The remaining
-354 accepted families have source assessments but no case in this finite viewpoint
-frame; no zero discoverability or all-dimension visibility claim is inferred.
-The ordinary result bytes and producer are unchanged from the representative
-milestone; the other fifteen outputs use the same source and protocol identities. The [assessments](assessments.md) integrate source-supported entrance
-mechanisms, importance cues, silhouettes and conditional command-dependence risks.
-These assess entrances; they do not measure exact opening coordinates, cave
-connectivity, human recognition or actual player reliance on commands.
-
-All sixteen collections succeeded without changing selection or configuration.
-Item 10's [heap-failed ocean attempt](../item-10/full-ocean-heavy-r2-without-sparse/README.md)
-and [incomplete-save attempt](../item-10/full-ocean-heavy-r2-without-sparse-attempt2/README.md)
-remain excluded, preserved evidence. The accepted third attempt remains the only
-r2 ocean control input. Missing viewpoints and occlusion are retained outcomes,
-not producer failures or reasons to substitute locations.
-
-[Resource totals](validation/resource-totals.txt): 815,332 compressed result bytes;
-1,037.807 total producer seconds, range 37.150 to 192.525 seconds. The report is
-129,273 bytes. This fits the 160-minute and 1-GiB ceilings. Concurrent source
-inspection, clean reproduction and tests affect wall times; these are operational
-costs, not server-performance measurements. Exact totals are reproduced by summing
-result sizes and the `real` line of each named producer log over the accepted
-sixteen-name index, with family/case counts from those same results.
-
-[Full applicable gate](validation/full-gate.txt): **610 tests pass in 450.28 seconds**
-for `tests/item7 tests/item10 tests/item11 tests/item12`. The final report integration
-adds a focused complete-matrix reproduction check; all [seven final Item 12 tests](validation/final-tests.txt)
-pass in 19.14 seconds. Final [lint](validation/final-lint.txt),
-[formatting](validation/final-format.txt), and [types](validation/final-types.txt)
-pass. No unchanged full gate is repeated solely for reassurance. The source-world
-representative reproduces from the clean tracked export as recorded above.
-
-The final generated report is rebuilt with the same script, omitting
-`--representative`:
-
-```sh
-PYTHONPATH=. uv run --no-sync python evidence/item-12/summarize.py \
-  --results evidence/item-12/results --output /tmp/item12-full-report.md
-cmp evidence/item-12/report.md /tmp/item12-full-report.md
-```
-
-The mountainous gallery uses the same renderer with
-`--result evidence/item-12/results/full-mountainous-r1-baseline.json.gz`.
-Its inspected terrain and vegetation panels and numerical comparisons are recorded
-in assessments.md. No graphical client, new world, operational server, config
-change or new archive revision was needed. This completion scope must accompany
-future Item 13/20/21/31 use; do not promote it to observed human discovery or use
-an envelope ray as proof of a visible entrance.
-
-## PR39 top-boundary correction
-
-[Finding 3968701864](https://github.com/copeugne/mcpack/pull/39#discussion_r3968701864)
-is valid. Direct inspection confirms 364 retained WS/NL rays across 19 families
-with `status=OCCLUDED`, `ray_y=target_y` and `ray_y=height+1`. They self-occlude at
-the target's top boundary. The [focused regression](validation/top-boundary-before.txt)
-fails before correction. Version 1, all results, reports and initial acceptance
-claims remain preserved at pushed reviewed commit `aa9f700f`.
-
-Protocol v2 predeclares the narrow correction: obstruct only strictly below the
-top boundary, including for endpoint samples. Preserve later obstruction, UNKNOWNs,
-world identities, family selection, viewpoints and target definitions. Existing
-world readers and producer paths suffice; no new schema, archive or framework.
-Biomes and family counts are not remeasured. Fresh read-only analysis is required
-because v1 retained only the first blocker, so an interior equality may conceal
-later ray samples. Do not relabel every formerly occluded ray as clear.
-
-Item 11 keeps its separately declared conservative height-field metric and raw
-values. Item 12 v2 deliberately uses a different boundary definition; it does not
-retroactively change that earlier contract or turn its proxies into physical
-visibility. No placement, source-world or frozen-identity conflict was found.
-The completed upstream audit and routes are not repeated.
-
-The corrected biome-diverse r1 baseline representative completes in 37.977 seconds
-and 40,549 bytes. Its [comparison](validation/top-boundary-pilot.txt) retains all
-36 changed rays; each becomes CLEAR. Removing ray outcomes and the changed
-protocol/producer identity fields makes the old and corrected documents identical.
-All [four geometry tests](validation/top-boundary-after.txt) pass. The v2 result
-for this world is promoted; the other fifteen v1 results remain pending correction,
-so the complete report gate intentionally remains open. No sampling or source
-assessment is repeated. The existing 160-minute/1-GiB ceiling still applies.
+Final completed clean Codex review, merge and verified main delivery remain
+required. Do not declare Item 12 COMPLETE or start Item 13 at this local gate.
