@@ -826,7 +826,7 @@ prevents successful completion; an unsupported duration is UNRESOLVED, not zero.
 | Inspection movement | 26-block circuit, 22 upright/4 crouched; 8.833333 nominal seconds, 7.066667 faster, 11.777778 slower | Reusable movement component only. Pickup, spawner-mining positions and pursuit may add motion; complete movement cost UNKNOWN. |
 | Navigation and decisions | Complete target/route knowledge is stipulated | Search for locations is excluded by scenario. Execution, aiming, tool changes and decision latency UNKNOWN; no invented player constant. |
 | Interactions/acquisition | One trapdoor toggle and both reward faces geometrically supported | Input latency, drop creation/pickup and inventory acquisition not measured or modeled to completion. UNKNOWN. |
-| Mining | Required blocks: two spawners, one ore cover, two debris; diamond capability declared | Five block-breaking operations, not five instantaneous actions. Supported hardness/tool-speed/tick and interruption model still required. UNKNOWN duration. |
+| Mining | Required blocks: two spawners, one ore cover, two debris; diamond capability declared | Nominal uninterrupted source work is 13.8 seconds, derived below. Input cadence, interruptions and full elapsed mining cost remain UNKNOWN. |
 | Combat | Prior source health/damage model for successful piglin/brute counts | Existing 0..4 per source grid is one-wave sensitivity, not a bound on enemies produced before disablement. Spawn timing/success, pursuit and interruption remain UNKNOWN for this objective. |
 | Waiting/recovery | Saved delays and conditional workload inputs retained | No supported encounter-clear verification, injury/recovery or idle schedule. UNKNOWN where required. |
 
@@ -843,3 +843,62 @@ schedule, followed by acquisition and any added movement. Investigate blocks
 again only if they affect one of those required costs. Do not expand to another
 layout or claim a timing pass while these components remain unresolved. Human
 times, realized encounters and actual acquired loot remain NOT MEASURED.
+
+## V2 mining component: uninterrupted source model
+
+Predeclare the mining component with the v2 diamond-pick actor grounded, dry,
+continuously targeting each required block, without effects, enchantments or
+mining-efficiency bonuses. Stipulate block-break-speed multiplier 1 and 20 game
+ticks per second. These are nominal source-model inputs, not a runtime attribute
+measurement. Reserve whole mining ticks using ceil(1/progress_per_tick) per
+block. Do not include targeting, tool switching, post-break input delays,
+combat interruptions or pickup in this component. Those remain separate costs;
+the component cannot establish total objective duration.
+
+Pinned mapped source derivation (same JAR identity and javap procedure as the
+existing [model-source notes](../model-source/README.md)):
+
+- Blocks initializer 7062..7065 registers spawner hardness 5;
+  2167..2173 registers nether gold ore hardness 3; 34097..34103 registers
+  ancient debris hardness 30. Blast resistance is the other strength parameter
+  and must not be substituted for mining hardness.
+- Tiers initializer 88..111 constructs DIAMOND with speed 8. PickaxeItem's
+  constructor supplies MINEABLE_WITH_PICKAXE; DiggerItem uses
+  Tier.createToolProperties, whose offsets 14..20 add minesAndDrops at tier speed.
+- The pinned extra JAR's data/minecraft/tags/block/mineable/pickaxe.json,
+  SHA-256 e31b952f7df00a46e2e442e601b1139e87085314364e9137381c71e66f55700f,
+  lists all three blocks. incorrect_for_diamond_tool.json is empty, SHA-256
+  b83114c23eeec820ce7eca52011f13013fb6c64002254be7aebe1e4b36244d48.
+  These support the nominal correct-tool branch; they are not a new merged
+  runtime-tag observation.
+- BlockBehaviour.getDestroyProgress offsets 20..49 divides player destroy speed
+  by hardness and then 30 for the correct tool (100 otherwise). The retained
+  Player.getDestroySpeed derives tool speed, efficiency, effects, break-speed
+  attribute, submerged penalty and airborne penalty. The declared grounded,
+  dry, unmodified scenario therefore uses progress=8/(hardness*30).
+
+Reproduce the predeclared whole-tick calculation:
+
+```sh
+uv run python - <<'MINING_CHECK'
+import math
+rows = [('spawner',2,5),('ore cover',1,3),('ancient debris',2,30)]
+total = 0
+for name,count,hardness in rows:
+    ticks = math.ceil(1/(8/(hardness*30)))
+    total += count*ticks
+    print(name,'count',count,'ticks per block',ticks,'seconds per block',ticks/20)
+assert total==276
+print('uninterrupted mining component seconds',total/20)
+MINING_CHECK
+```
+
+Result: 19 ticks(0.95 seconds) per spawner, 12 ticks(0.6 seconds) for the ore
+cover, 113 ticks(5.65 seconds) per debris block. The five required block breaks
+reserve 276 ticks, 13.8 seconds of uninterrupted source-modeled mining work.
+This resolves the nominal work term, not all elapsed mining-phase costs.
+It excludes mod/event changes, packet/input cadence, interrupted progress,
+delays between blocks and server tick-rate variation. No finite bound on those
+omissions is asserted. In particular, the spawners remain active while being
+approached and mined; this work term does not resolve enemy count or schedule.
+The complete-objective time remains UNRESOLVED, and layout expansion stays paused.

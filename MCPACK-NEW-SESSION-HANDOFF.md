@@ -179,9 +179,9 @@ approach are integrated. The original rejects that circuit; both reward faces no
 connect by a checked detour. Latest steering pauses layout expansion for
 [protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction).
 Circle's complete-objective budget is UNRESOLVED; movement-only times do not pass.
-Next: resolve mining, interactions, encounter schedule and acquisition on that sample.
-Thirty-two observed groups currently have one seed role only. Reuse supplemental
-Item 8/7 worlds for missing families and variants before declaring new generation.
+Nominal uninterrupted mining is 13.8s. Next: resolve input/interaction costs,
+encounter schedule and acquisition on that sample; total time remains unresolved.
+Thirty-two groups have one seed role. Reuse Item 8/7 worlds before new generation.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
 claiming an arena generation gap. All 192 included families remain required.
