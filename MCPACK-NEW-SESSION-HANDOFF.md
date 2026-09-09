@@ -75,9 +75,29 @@ custody. Reuse [Item 8's 448-family inventory](evidence/item-8/inventory.json) a
 exception and retained-stack nondeterminism limits remain as recorded. Do not
 tune, regenerate or repeat completed audits, classification or route processing.
 
-## Continuation boundary
+## Item 13 active work
 
-No measurement or implementation work remains for Item 12. If the completion-record
-PR is still pending, finish only its required clean review, merge and fetched-main
-verification. Once delivered, wait for a new user instruction. Item 13 is not
-authorized and has not started. Preserve the current work and protected artifacts.
+The user authorized Item 13 on 2026-09-09, superseding the previous wait instruction,
+and separately approved modeled/inspection scope. Human times and realized
+encounters remain NOT MEASURED. Item 14 remains UNSTARTED.
+
+Startup fetched main `3a086467fcd25fffd3b39ed3112d5cb49a0a7bdf`, verified merged
+PR40 and clean identical contents, then created `codex/item13-dungeon-quality`
+from main. No preserved artifact or previous branch was modified.
+
+Authoritative current work: [Item 13 README](evidence/item-13/README.md),
+[unfinished predeclaration](evidence/item-13/protocol.md), and
+[complete inclusion/exclusion intake](evidence/item-13/intake.json).
+The intake verifies all sixteen accepted restored worlds and census hashes and
+joins existing occurrences across every dimension. It includes 192 canonical
+families with 357 registry roots; 119 included families have no Item 10 occurrence.
+This is not proof that Item 7/8 have no usable evidence. No quality measurement,
+new world experiment or scoring has run. Do not infer completion from intake.
+
+Next: resolve material variants and consult existing Item 7/8 world references
+before declaring genuine geometry gaps. Complete sample/repetition choices,
+actor/model inputs and runtime/storage bounds in the existing protocol. Then finish
+one representative end to end before expansion. Do not invent a combat constant,
+use pieces as rooms, or accept incomplete topology. Reuse original custody and
+record established results in the authoritative Item 13 report. Commit/push coherent
+verified milestones and complete the required clean PR review/merge/main delivery.

@@ -3,7 +3,7 @@
 **Ledger version:** 0.20
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 12 COMPLETE through clean-reviewed PR39 and verified main `33e11923`, under the separately authorized inspection/automated scope. Item 11 and the Items 2 through 10 audit remain COMPLETE through PR37 and PR36. Item 13 remains unstarted and is not authorized. Authoritative closure: evidence/item-12/README.md#verified-delivery.
+**Current execution gate:** Item 13 IN PROGRESS, explicitly authorized on 2026-09-09 with a separate modeled/inspection methodology decision. Item 12 remains COMPLETE through PR39, with its completion record delivered through PR40 at verified main `3a086467`. Item 14 is UNSTARTED. Authoritative active evidence: evidence/item-13/README.md.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -511,7 +511,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
 | 12 | Structure discoverability | `COMPLETE` | Sixteen accepted worlds, 464 cases and 94 observed families under separately authorized inspection/automated scope. Clean reviewed head `4fc7e605` merged through PR39; fetched main `33e11923` verified. Closure and limitations: `evidence/item-12/README.md#verified-delivery`. |
-| 13-18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
+| 13 | Baseline dungeon quality | `IN PROGRESS` | User-authorized modeled/inspection scope. Input availability and 448-family inclusion/exclusion intake recorded; sampling/model predeclaration and measurement remain. See evidence/item-13/README.md. |
+| 14-18 | Remaining baseline forensics | `UNSTARTED` | Item 14 must not start during Item 13. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
 | 48 | Progression implementation | `UNSTARTED` | Must first be atomized into independent gates. |
@@ -522,8 +523,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Preserve accepted Items 2 through 12 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
-2. Item 12 is COMPLETE through PR39. Deliver this completion record through its required review/merge workflow if still pending; no measurement work remains.
-3. Wait for a new user instruction before Item 13. Do not repeat completed collection, audits, classification, preservation or route processing.
+1. Preserve accepted Items 2 through 12 evidence, failures, recovery refs and protected artifacts. Reuse the delivered cross-item audit and Item 7 exception.
+2. Complete Item 13 under its separately authorized modeled/inspection scope. Finish material-variant sampling, explicit models and resource bounds, then one end-to-end representative before expansion. Evidence and definition of done: `evidence/item-13/README.md`.
+3. Complete required reviewed delivery and verified main merge before Item 13 COMPLETE. Item 14 remains UNSTARTED.
 
 No later item will be marked complete out of order or from inference.
