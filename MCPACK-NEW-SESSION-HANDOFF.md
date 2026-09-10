@@ -81,8 +81,7 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed synthesis: `faf8133b`; v3 amendment: `e2e15b1f`.
-Ocean input/custody is delivered at `4a19f01e`; broader v3 synthesis is delivered.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed candidate: `acbcb89c`; v3 amendment: `e2e15b1f`.
 Verify current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -160,7 +159,8 @@ Coverage names20 direct families and gives the other172 bounded source-only gaps
 with supported design associations and affected recommendations withheld.
 Local v3 gate PASS:1819 tests in1168.54s; changed-code static checks and
 legacy limitations are in the [final gate](evidence/item-13/README.md#final-local-gate-and-delivery).
-Current batch: open PR, complete clean Codex review/thumbs-up, merge and verify main.
+PR42 cycle1 found stale ledger sampling instructions; narrow doc fix prepared.
+Current batch: push fix, request fresh Codex review/thumbs-up, merge and verify main.
 Assess traversal/combat burden qualitatively where exact timing lacks support.
 Keep strict compatibility, safety, integrity, honest evidence and delivery checks.
 Optional precision and speculative refinements are non-blocking review suggestions.

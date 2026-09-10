@@ -141,6 +141,14 @@ Final checks on the `faf8133b` synthesis and its definition-of-done clarificatio
   listed as published, not drafts, at final preparation. No world, configuration,
   raw observation or original manifest was changed or regenerated for closure.
 
+PR42 review cycle1 completed at2026-09-10 19:50:22 UTC on `acbcb89c` with
+[one valid finding](https://github.com/copeugne/mcpack/pull/42#discussion_r3982905945):
+the ledger's Item13 row and next step still directed exhaustive material sampling.
+Disposition: corrected its active gate, row and continuation step to v3 reviewed
+delivery; no measurement or code changed. Focused validation inspected those three
+locations against the current specification/report and ran `git diff --check`.
+The1819-test result remains applicable. A fresh completed clean review is required.
+
 Reproduce the focused static gate from the repository root:
 
 ```sh
