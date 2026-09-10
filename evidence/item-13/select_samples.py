@@ -137,18 +137,25 @@ def enumerate_candidates():  # noqa: C901, PLR0912
     }
 
 
-def select_fixed_moog():
-    roots = {
-        "mns:circle_nether_brick",
-        "mns:giant_skull",
-        "mns:large_house_1",
-        "mns:medium_house",
-        "mns:medium_house_2",
-        "mns:nether_tower",
-        "mns:warped_dome",
-        "mss:desert_pyramid",
-        "mss:small_tower",
-    }
+def select_fixed_layouts(
+    roots: set[str] | None = None,
+    scope: str = "Nine fixed root alternatives selected; quality measurements pending",
+):
+    roots = (
+        roots
+        if roots is not None
+        else {
+            "mns:circle_nether_brick",
+            "mns:giant_skull",
+            "mns:large_house_1",
+            "mns:medium_house",
+            "mns:medium_house_2",
+            "mns:nether_tower",
+            "mns:warped_dome",
+            "mss:desert_pyramid",
+            "mss:small_tower",
+        }
+    )
     inputs = {
         "candidates": ROOT / "evidence/item-13/candidates.json",
         "assemblies": ROOT / "evidence/item-13/start-inspection/summary.json",
@@ -191,7 +198,7 @@ def select_fixed_moog():
             }
         )
     return {
-        "scope": "Nine fixed root alternatives selected; quality measurements pending",
+        "scope": scope,
         "input_sha256": {key: hashlib.sha256(value).hexdigest() for key, value in raw.items()},
         "selected": selected,
         "summary": {
@@ -205,9 +212,23 @@ def select_fixed_moog():
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--fixed-moog", action="store_true")
+    fixed = parser.add_mutually_exclusive_group()
+    fixed.add_argument("--fixed-moog", action="store_true")
+    fixed.add_argument("--fixed-adorabuild", action="store_true")
     args = parser.parse_args()
-    result = select_fixed_moog() if args.fixed_moog else enumerate_candidates()
+    if args.fixed_adorabuild:
+        roots = {
+            "adorabuild_structures:blackstone_temple_small_1",
+            "adorabuild_structures:crimson_house_medium_2",
+            "adorabuild_structures:end_ship_small_1",
+            "adorabuild_structures:nether_fortress_medium_1",
+            "adorabuild_structures:nether_temple_medium_1",
+        }
+        result = select_fixed_layouts(
+            roots, "Five fixed Adorabuild root alternatives selected; quality measurements pending"
+        )
+    else:
+        result = select_fixed_layouts() if args.fixed_moog else enumerate_candidates()
     raw = (json.dumps(result, indent=2, sort_keys=True) + "\n").encode()
     if len(raw) > 10 * 1024 * 1024:
         raise ValueError("candidate output exceeds predeclared budget")

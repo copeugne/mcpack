@@ -617,3 +617,62 @@ first extraction exceeds its cap. Its measured cost will inform the next block
 reads; the synthetic section benchmark does not predict whole-world read cost.
 Room boundaries, collision/movement rules and encounter assumptions must be
 resolved before dependent quality scoring or timing models are run.
+
+## Next fixed-layout batch: five observed Adorabuild roots
+
+The nine initial fixed-layout cases, supplemental Circle and compact pilot now
+have complete local conditional task budgets. Their family/material repetitions
+remain open. The next missing coverage is the five previously scoped fixed
+Adorabuild designs with complete baseline starts: blackstone_temple_small_1,
+crimson_house_medium_2, end_ship_small_1, nether_fortress_medium_1 and
+nether_temple_medium_1. They are five separate included canonical families, in
+the dimensions already recorded above. Procedural basalt chambers and large
+Nether fortress require their separate assembly/repetition treatment.
+
+Reuse the exact first-fixed selection rule: saved start, no incomplete padded
+chunks, and all declared template components; SHA-256 candidate-ID ranking with
+lexical tie break. Do not select by observed quality. Each of these five roots
+has one template in the accepted pool trace. Reuse the same selector function
+and output format with this explicit root list, preserving the earlier Moog
+selection's reproduction. This small extension prevents duplicating selection
+logic and is required to select the next already-scoped designs.
+
+Selection budget is one minute, 512 MiB RSS and 1 MiB output. It reads bound
+metadata only. Inspect the selected voxel totals before block extraction. Reuse
+the existing five-minute/10-MiB per-case extraction limit, 1.5-GiB RSS cap and
+5-GiB free-space floor, with full accepted-inventory checks before/after each
+read. Complete blackstone temple, the first root in lexical order, through raw
+blocks, playable topology, complete task model and quality synthesis before
+expanding to the other four. No new worlds or configuration tuning is authorized
+by this selection; inadequate saved evidence remains a specific gap.
+
+The [five-root selection](fixed-adorabuild-selection.json) is now recorded:
+3,407 bytes, SHA-256 d8d539784fc106ae22027498fa54e33bd5e586894f27a648bc0a8211a5a6b028.
+A direct selector reproduction was byte-identical in 0.598 seconds at 81,236 KiB
+peak RSS. All five required roots occur exactly once. The original nine-root
+Moog output also remains byte-identical. Focused Ruff and basedpyright pass.
+The initial check invocation used unavailable `pyright` and `/usr/bin/time`;
+use the configured `basedpyright` and Python time/resource values instead.
+Those tooling failures did not launch a world read or alter any raw evidence.
+
+Selected padded volumes are 2,366, 3,780, 3,344, 3,375 and 5,415 voxels in the
+listed root order, totaling 18,280. They require three accepted baseline worlds
+(ocean-heavy r2, ordinary r1, mountainous r1). These are extraction cost counts,
+not rooms. Retain the conservative total extraction cap of 25 minutes and 50 MiB
+compressed output, with the per-case caps above. The first 2,366-voxel case is
+full-ocean-heavy-r2-baseline|minecraft:the_nether|adorabuild_structures:blackstone_temple_small_1|29|-8,
+bounds [461,28,-131,473,41,-119]. Its two eligible candidates stay in the index;
+selection does not erase the unselected occurrence or prove population variation.
+
+Reproduction and first bounded extraction, each with an absent output path:
+
+```sh
+uv run python -m evidence.item-13.select_samples --fixed-adorabuild --output /tmp/item13-adorabuild-selection.json
+cmp evidence/item-13/fixed-adorabuild-selection.json /tmp/item13-adorabuild-selection.json
+uv run python -m evidence.item-13.measure --fixed-root adorabuild_structures:blackstone_temple_small_1 --selection evidence/item-13/fixed-adorabuild-selection.json --output /tmp/item13-blackstone-temple.json.gz
+```
+
+The existing extractor enforces full inventory verification and retained input
+identity. Complete this representative's topology, source distinctions, task
+budget and quality synthesis before expanding this five-root batch. No later
+item is started by this work.
