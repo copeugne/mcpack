@@ -676,3 +676,11 @@ The existing extractor enforces full inventory verification and retained input
 identity. Complete this representative's topology, source distinctions, task
 budget and quality synthesis before expanding this five-root batch. No later
 item is started by this work.
+
+The [Crimson hall assessment](fixed-blocks/adorabuild-crimson_house_medium_2-report.md)
+now supplies the declared one complete fixed occurrence for this single-root
+Nether family, including geometry, all source residents, chest access, complete
+conditional timing and quality synthesis. Its local sampling minimum is satisfied;
+no unrequested extra repetition is inferred from generic batch reminders. The
+blackstone-temple central material alternatives remain a separate explicit gap.
+Other selected families and whole-item validation/review/delivery remain open.

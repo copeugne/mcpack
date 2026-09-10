@@ -189,9 +189,11 @@ map their locations to the exact saved nodes above (local coordinates u,v,w):
   processor `adorabuild_structures:randomize_gold_block`.
 
 All four saved components have rigid projection. Those source sizes and transforms
-are attribution inputs, never room counts. Next complete the Crimson hall's
-playable layout, resident model, chest access and complete-task/quality assessment,
-then the End ship, wart house and Nether temple. Preserve their individual
+are attribution inputs, never room counts. The Crimson hall's
+playable layout, resident model, chest access and complete-task/quality assessment
+is now [recorded](adorabuild-crimson_house_medium_2-report.md), with conditional
+39/62/104-second four-resident tasks. Its fixed-family sample minimum is satisfied.
+Continue the End ship, wart house and Nether temple. Preserve their individual
 processor, dimension and enemy-mechanism differences.
 
 Reproduce the four raw extractions with the existing implementation into a new
