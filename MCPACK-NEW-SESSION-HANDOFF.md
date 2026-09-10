@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `80ffc568`.
-The following wasteland whole-case result is prepared on this branch; verify
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `5cd1a048`.
+The following soul whole-case result is prepared on this branch; verify
 its current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -153,24 +153,24 @@ and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recov
 These replace the previous narrow next-step sequence, not the specification gates.
 
 Coverage now records20 represented families,16 satisfying local scope, four
-partial and172 with no local report. Remaining floor:525 case completions
-(4 compact,245 fixed,276 modular). Among the172,24 have baseline inputs,17 more
+partial and172 with no local report. Remaining floor:524 case completions
+(4 compact,244 fixed,276 modular). Among the172,24 have baseline inputs,17 more
 Item8 references, one the Item7 pair,130 no full indexed candidate. Match existing
 supplemental raw before experiments. Desert Mimic is locally complete and pushed.
 
 The [Nether group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md)
 preserves its90-minute overrun, failed routes and later delivery interruption.
-Basalt, crimson, warped and wasteland have complete local quality/model results.
-Warped requires3 upper-access blocks and retains its double/trapped chests.
-Wasteland retains fortress-overlap access and the neutral-source task; both
-preserve actual mechanism differences. Soul retains raw; ocean/taiga need samples.
+All five selected Nether variants have complete local quality/model results.
+Warped retains construction/double/trapped chests; wasteland retains fortress
+overlap. Soul retains fractional floors, sand slowdown and the skeleton task.
+Ocean/taiga still need exact sample matching and full assessments.
 No server or extraction process is active. Do not repeat the five accepted reads.
 
-Next: predeclare a bounded whole-case assessment for one remaining saved Nether
-variant, using its exact source/material gaps. No new navigation machinery was
-justified for the completed crimson integration. Reuse the current checks and
-models, preserve each remaining material difference and do not silently extend
-failed budgets. Effort/ETA remains UNKNOWN; phase clocks and gaps are in the report.
+Next: match ocean/taiga against existing supplemental raw and prior Item8/Item7
+references before any new experiment. Do not repeat completed Nether reads or
+assessments. Name exact missing sample/terrain claims, then predeclare the smallest
+bounded experiment if existing inputs cannot supply them. No new navigation
+framework is justified by this checkpoint. Effort/ETA remains UNKNOWN.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet

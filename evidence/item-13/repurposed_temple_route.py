@@ -8,17 +8,19 @@ import gzip
 import hashlib
 import importlib
 import json
+import math
 import sys
 from itertools import pairwise
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("variant", choices=["basalt", "crimson", "warped", "wasteland"])
+parser.add_argument("variant", choices=["basalt", "crimson", "warped", "wasteland", "soul"])
 args = parser.parse_args()
 raw = (
     Path(__file__).parent / f"fixed-blocks/repurposed-temple-{args.variant}.json.gz"
 ).read_bytes()
 hashes = {
+    "soul": "6b8e3be9810c21dc65ee687e986a396d0241520b9e3e454b8d7e41bf4a158604",
     "wasteland": "2a5c34da94b8e21898b2b2f7975869ace309805d0425c7b48be23de8b4f7e100",
     "warped": "6b3785afcc1214c93ed4221d917f751336cb3ebe3f247c27261d136ac570e71f",
     "basalt": "a6884f33bf59e7a2a6be7e01df478ee5339b47ca7c258d5bf85400b78c1c8341",
@@ -33,7 +35,7 @@ removed = set()
 rays = {}
 _, verify = geometry.path_checks(c, removed, set(), set())
 ray = geometry.ray_check(c, removed, rays)
-route = [(399, 61, 318)]
+route: list[tuple[int, float, int]] = [(399, 61, 318)]
 # Full middle/upper survey, then source closet, then lower trap/reward branch.
 # Mining targets are actual saved cells; no native failure is relabeled a route.
 operations = [
@@ -195,6 +197,28 @@ if args.variant == "crimson":
             (143, 65, 62),
         ]
     ]
+if args.variant == "soul":
+    route = [(399, 59.875, 318)]
+    operations = [(kind, (t[0], t[1] - 1, t[2])) for kind, t in operations if kind != "bridge"]
+    extra = {
+        ("go", (396, 56, 324)): [("mine", (396, 57, 324))],
+        ("mine", (396, 56, 321)): [("mine", (396, 57, 321))],
+        ("go", (396, 56, 319)): [("mine", (396, 57, 320)), ("mine", (396, 57, 319))],
+        ("go", (397, 56, 319)): [("mine", (397, 57, 319))],
+        ("mine", (403, 57, 316)): [
+            ("mine", (402, 57, 317)),
+            ("go", (402, 56, 317)),
+            ("go", (402, 56, 316)),
+        ],
+    }
+    augmented = []
+    for op in operations:
+        augmented.extend(extra.pop(op, []))
+        augmented.append(op)
+        if op == ("open", (403, 56, 316)):
+            augmented.append(("go", (402, 56, 317)))
+    assert not extra, extra
+    operations = augmented
 if args.variant == "wasteland":
     route = [(256, 33, 338)]
     detour = operations.index(("go", (402, 64, 317)))
@@ -330,10 +354,16 @@ for kind, target in operations:
         h = abs(a[0] - target[0]) + abs(a[2] - target[2])
         assert h > 0
         assert (a[0] == target[0]) != (a[2] == target[2])
-        assert a[1] == target[1] or (h == 1 and abs(a[1] - target[1]) == 1)
+        nominal_y = math.ceil(a[1]) if args.variant == "soul" else a[1]
+        assert nominal_y == target[1] or (h == 1 and abs(nominal_y - target[1]) == 1)
         dx = (target[0] > a[0]) - (target[0] < a[0])
         dz = (target[2] > a[2]) - (target[2] < a[2])
         segment = [a] + [(a[0] + i * dx, target[1], a[2] + i * dz) for i in range(1, h + 1)]
+        if args.variant == "soul":
+            segment[1:] = [
+                (x, y - 0.125 if at(c, x, y - 1, z)["Name"] == "minecraft:soul_sand" else y, z)
+                for x, y, z in segment[1:]
+            ]
         verify(segment, crouch_up=True)
         route.extend(segment[1:])
     elif kind in {"bridge", "place"}:
@@ -384,7 +414,9 @@ for kind, target in operations:
         }:
             facing = state["Properties"]["facing"]
             assert facing in (
-                {"north", "east", "west"} if args.variant == "wasteland" else {"south"}
+                {"north", "east", "west", "south"}
+                if args.variant in {"wasteland", "soul"}
+                else {"south"}
             )
             assert state["Properties"]["face"] == "wall"
             offset = {
@@ -445,6 +477,103 @@ if args.variant in {"basalt", "crimson"}:
     native_verify(second_stair, crouch_up=True)
     native_verify(list(reversed(second_stair)), crouch_up=True)
     print("separate upper eastern stair passes", second_stair)
+
+if args.variant == "soul":
+    velocity = 0.41999998688697815
+    peak = 0
+    while velocity > 0:
+        peak += velocity
+        velocity = (velocity - 0.08) * 0.9800000190734863
+    assert peak > 1.125
+    steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]
+    turns = sum(a != b for a, b in pairwise(steps))
+    slow = [a[1] % 1 == 0.875 or b[1] % 1 == 0.875 for a, b in pairwise(route)]
+    work = {
+        "lever": 15,
+        "soul_soil": 15,
+        "gray_terracotta": 5,
+        "warped_chest": 10,
+        "spawner": 19,
+        "sticky_piston": 6,
+        "dispenser": 14,
+        "tripwire": 0,
+    }
+    ticks = sum(work[state["Name"].split(":", 1)[1]] for _, state in mining)
+    assert (len(steps), len(mining), len(opened), ticks) == (114, 17, 2, 204)
+    print(
+        "soul complete inputs",
+        {
+            "turns": turns,
+            "decisions": turns + 8,
+            "slow_edges": sum(slow),
+            "mining_ticks": ticks,
+            "jump_peak": peak,
+        },
+    )
+    for label, u, j, n, a, s, k, v, duty in [
+        ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2, 1),
+        ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4, 0.75),
+        ("C", 3, 0.25, 1.5, 1, 1, 4, 8, 0.5),
+    ]:
+        movement = sum(
+            max(1 / (u * (0.4 if sand else 1) * (0.3 if d[1] > 0.6 else 1)), abs(d[1]) / j)
+            for d, sand in zip(steps, slow, strict=True)
+        ) + 4 / (0.4 * u)
+        noncombat = movement + ticks / 20 + (turns + 8) * n + 19 * a + 7 * s + 3 * k + v
+        print(
+            label,
+            "movement",
+            movement,
+            "noncombat",
+            noncombat,
+            "combat",
+            15.6 / duty,
+            "complete",
+            noncombat + 15.6 / duty,
+        )
+    eastern = [
+        (402, 60, 320),
+        (401, 60, 320),
+        (401, 61, 321),
+        (401, 62, 322),
+        (401, 63, 323),
+        (402, 63, 323),
+    ]
+    eastern = [
+        (x, y - 0.125 if at(original, x, y - 1, z)["Name"] == "minecraft:soul_sand" else y, z)
+        for x, y, z in eastern
+    ]
+    native = geometry.path_checks(original, set(), set(), set())[1]
+    native(eastern, crouch_up=True)
+    native(list(reversed(eastern)), crouch_up=True)
+    print("soul second upper flight passes", eastern)
+    ext_removed = set()
+    ext = [(406, 60.875, 321)]
+    cast = geometry.ray_check(original, ext_removed, {})
+    target = (405, 60, 321)
+    assert at(original, *target)["Name"] == "minecraft:soul_soil"
+    cast((406.5, 62.495, 321.5), (405.5, 60.999, 321.5), target)
+    ext_removed.add(target)
+    ext.append((405, 59.875, 321))
+    for x, ys in [(404, (60,)), (403, (61, 60))]:
+        for y in ys:
+            target = (x, y, 321)
+            assert at(original, *target)["Name"] == "minecraft:soul_soil"
+            cast((ext[-1][0] + 0.5, ext[-1][1] + 1.62, 321.5), (x + 0.999, y + 0.5, 321.5), target)
+            ext_removed.add(target)
+        ext.append((x, 59.875, 321))
+    ext.append((402, 59.875, 321))
+    geometry.path_checks(original, ext_removed, set(), set())[1](ext)
+    print("soul external side entry", ext, "removals", len(ext_removed))
+    for point in [(399, 60, 318), (399, 59.875, 319)]:
+        try:
+            native([point])
+        except AssertionError:
+            print("PASS invalid fractional/full support rejected", point)
+        else:
+            message = "Invalid soul support accepted"
+            raise AssertionError(message)
+    sys.exit(0)
 
 if args.variant == "wasteland":
     steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]

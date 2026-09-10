@@ -4,9 +4,10 @@ Status: IN PROGRESS. Five selected fixed alternatives of
 `repurposed_structures:temple`. Ocean and taiga remain required separately.
 Human timing, realized encounters and acquired loot remain NOT MEASURED.
 Current local results: basalt, [crimson](#crimson-complete-local-quality-result),
-[warped](#warped-complete-local-quality-result) and
-[wasteland](#wasteland-complete-local-quality-result) are integrated; soul and
-ocean/taiga remain incomplete.
+[warped](#warped-complete-local-quality-result),
+[wasteland](#wasteland-complete-local-quality-result) and
+[soul](#soul-complete-local-quality-result) are integrated. Ocean/taiga remain
+incomplete; all five selected Nether alternatives now satisfy local scope.
 
 ## Bounded group declaration
 
@@ -919,3 +920,201 @@ comparison wrapper supplied the wrong script argv; the corrected wrapper used
 the repository script path and all three comparisons passed. No raw observation
 was affected. Use the preceding validation commands with wasteland added to the
 variant loop. Four of seven local alternatives now pass; soul,ocean,taiga remain.
+
+## Soul bounded whole-case declaration
+
+At2026-09-10 18:16:07 UTC, declare45 minutes for the retained soul case's whole
+quality/task assessment, then15 minutes for focused validation/delivery. The
+existing raw hash passes; no new extraction, server or raw storage is required.
+The exact missing input is continuous route support on mixed soul-soil/soul-sand
+floors, not absent world evidence. Reuse the
+[wart-house source model](adorabuild-nether_fortress_medium_1-report.md#reproduction-and-focused-checks)
+and [fortress collision derivation](adorabuild-nether-fortress-report.md).
+Soul sand has14/16 collision height and.4 speed factor; it cannot be treated as
+a full-height dry floor. Extend the current helper narrowly for that actual
+fractional support and shape, rather than adding a navigation framework.
+
+Use the group actor with no Soul Speed or other effects, start/end at
+(399,59.875,318), survey upper and middle floors, suppress the skeleton source,
+resolve six stipulated ordinary adult skeletons, collect3 chest contents and
+return. Six nearby skeletons maintain the source cap until it is disabled; failed
+suppression, extra entities, missed retrieval or survival censor completion.
+Health20/armor0 skeletons and the existing six-damage,13-tick sword model require
+4 cycles each,15.6s total active combat, with contact-duty sensitivities1/.75/.5.
+These are stipulated workloads, not observed enemy counts or equipped populations.
+
+For movement, resolve each actual supported station before calculating costs.
+Charge a whole edge at.4u whenever either endpoint is soul sand, following the
+existing conservative boundary treatment; other edges useu. Couple vertical
+motion through max(1/effective_u,abs(deltaY)/j) per horizontal edge. This charges
+actual eighth-block floor changes without inventing measured speeds. Any rise
+above the existing validated jump envelope remains unresolved until source-bound.
+Normal source/task work, equipment, navigation, pickup and interactions still
+require full accounting before a total can pass.
+
+Wasteland's fetched delivery5cd1a048 matched upstream with a clean tree at
+18:14:46 UTC,82s after its18:13:24 integration boundary, within the15-minute cap.
+
+Soul geometry now passes114H with8.5 up/8.5 down, including actual eighth-block
+floor changes. Retained rejected legs include head soil at(397,57,319) and the
+upward redstone outline at(403,57,317). The accepted lane removes the actual
+head obstruction and approaches the final cache from(402,56,316), keeping that
+upward wire out of the ray. There are17 removals and2 opens, no placement.
+
+The largest1.125 rise starts from sand below a full terracotta step. Pinned
+Attributes defaults bind jump strength0.41999998688697815 and gravity.08;
+LivingEntity.getJumpPower/jumpFromGround and its ordinary travel drag
+0.9800000190734863 give a source-recurrence peak1.2522033402537238. Soul sand
+changes speedFactor(.4), not jumpFactor. This supports the declared1.125 rise
+with the checked body/sweep envelope; it is not a recorded jump. The helper
+retains full-height support rejection for soul sand and accepts14/16 standing
+only over a retained actual sand block. Integer-route limits remain unchanged.
+
+Before time arithmetic, mining is204 ticks:4 levers*15,6 soul-soil blocks*15
+(no shovel in the declared inventory),gray terracotta5,wood chest10,source19,
+piston6,dispenser14;2 sheared wires0. Seven selections:pick,axe,pick,sword,pick,
+shears,pick. Use19 interaction starts,3 acquisition allowances and4H pickup
+charged conservatively at.4u. Navigation counts actual direction changes plus
+initial orientation and7 phase decisions (upper survey,descent,closet,combat,
+mechanism lane,dual-wire cache,return). No fractional or combat term is omitted.
+
+Pre-acceptance movement check: crouched rises above.6 must retain the existing
+sneaking factor too. Attributes.SNEAKING_SPEED is.3 (initializer702). Refine the
+declared conservative edge speed to u*(.4 on either sand endpoint)*(.3 on an
+upward jump above.6), with the same max againstabs(deltaY)/j. The jump allowance
+includes the local stance transition, as in the prior stepped tasks. Ordinary
+.125 floor steps remain upright. This is a source-based refinement within the
+approved modeled scope, not a new runtime timing method. The initial126.25s A
+total omitted that combined slowdown on the sand-launched rise and is rejected;
+retain it only as a superseded calculation, not the accepted soul result.
+
+## Soul complete local quality result
+
+Accepted complete A/B/C models are126.791667/201/313.566667s. Movement including
+pickup is55.991667/80/125.666667s; noncombat totals111.191667/180.2/282.366667s,
+combat15.6/20.8/31.2s. The114H circuit has66 edges conservatively charged for
+sand at either endpoint,8.5 up/8.5 down,59 direction changes and67 navigation
+allowances. Fractional slope changes contribute to that direction count; it is
+a declared input allowance, not measured cognitive effort. The17 removals,
+2 opens,7 equipment selections and3 acquisition events include the entire
+source/reward task and return. Human timing, actual encounters and loot remain
+NOT MEASURED. No new block, equipment upgrade or frozen configuration change
+is used to avoid this variant's sand behavior.
+
+| Room | Activity envelope and actual supported floor levels | Empty/dead disposition |
+| --- | --- | --- |
+| H, middle hall | X397..402,Z317..322;feet59.875 or60 on the perimeter | Quiet required connector; empty, not dead |
+| U, upper hall | X396..403,Z315..325;feet62.875 or63 on the checked perimeter | Open floor/fall exposure and paired stepped links; not empty/dead |
+| L, lower control hall | X395..404,Z320..326;feet55.875 or56 on checked cells | Lever/piston mechanism, narrowed lane and source-closet approach; not empty/dead |
+| T, northern trap/cache | X395..403,Z314..319;feet55.875 or56 on checked cells | Two tripwire lines, three cache-area dispensers and one chest; not empty/dead |
+| D, source closet | X402..404,Z321..324;checked centerlineX403,feet56 after work | Skeleton source and two ordinary chests; not empty/dead |
+
+Room envelopes are not every occupiable cell. Sand/soil cells and central holes
+are resolved individually by the checker. Two separate upper stepped links pass
+and connect across the upper perimeter. The graph H-U twice,H-L,L-T,L-D has
+5 rooms,5 edges, one connected component, one cycle, physical junctionsH/L and
+terminalsT/D. The second flight runs from(402,59.875,320) via(401,60,320),
+(401,61,321),(401,62,322),(401,63,323) to(402,62.875,323). These are actual
+terracotta steps and fractional landings, not structure-piece counts. Merging
+the ambiguous L/T partition gives4 rooms,4 edges, one cycle and junctionH.
+Empty/dead fractions are1/5 and0/5, or1/4 and0/4 merged. Sand slowdown alone is
+not counted as a damaging hazard that automatically makes H nonempty.
+
+Graph depth from H is1 to U/L and2 to T/D. H-to-upper landing is6H with net
+height gain3.125. H-to-lower anchor(399,56,325) is7H with net descent3.875.
+The declared route gives7H from that anchor to source station(403,56,322),
+and18H to final cache station(402,56,316), so the scoped route-network distances
+from H are14H and25H respectively. These are route distances, not a new flat-grid
+shortest-path claim across fractional floors. The floor span55.875..63 is7.125
+blocks; the larger8.5 ascent/descent totals include repeated eighth-block changes.
+All180 saved WORLD_SURFACE columns are127, not a measured solid cover thickness
+or a validated surface approach. The structure envelope remains14 layers.
+
+Meaningful hazards are the two parallel attached tripwire lines (X399 and401,
+Z315..317 atY56), narrowed mechanism lane, open upper edges and four west-facing
+dispensers. Three surround the northern cache; one is at(399,57,320). All four
+reference dispensers/temples/soul, which permits2..3 rolls of long-slowness
+tipped arrows (5..9 per chosen entry) or fire charges (1..3). Literal weights30/20
+are source selection weights, not realized trigger rates or damage. Saved
+triggered=false and unrolled payloads do not prove harmlessness. The task shears
+the two crossed wire cells and removes the overhead cache dispenser; other
+source hazards remain. The zero-power upward wire at(403,57,317) is avoided,
+not incorrectly passed through as an empty ray cell. Soul-sand slowdown can
+increase exposure within the hypothetical skeleton fight, but no actual enemy
+pathfinding, ranged-hit rate or combat use of the one-block lanes is measured.
+
+Enemy source potential is one skeleton type, with the saved Delay/SpawnCount/cap
+and single matching potential recorded above. Six ordinary adults are the task
+population, not a generated enemy count. Twenty-four13-tick sword cycles give
+15.6s active work; failures of the population, equipment or survival assumptions
+censor the modeled task. No natural biome spawn count or realized diversity is
+invented. The retained actor's tools do not include a shovel, so the soil breach
+uses its default speed and the corresponding15-tick cost per soil block.
+
+Three ordinary Quark warped-wood chests use chests/temples/soul, all unrolled.
+D contains2/3 assignments and T1/3, all at graph depth2; no upper reward is
+assigned. The source pool includes bone resources, equipment and rare scrap,
+plus its trim/lucky references. These are potential contents, not acquired
+quantities or economy values. The southern D chest is destroyed before source
+suppression; its conditional pickup and no-player loot-unpacking distinction
+remain explicit rather than relabeled normal chest opening.
+
+Authored finale: NONE. D candidate attributes: objective clarity ABSENT,
+distinctive source challenge PRESENT, reward linkage PRESENT, route integration
+CONDITIONAL on the breach, external exposure CONDITIONAL. Its source/chests
+are behind mineable soil/terracotta and a piston; no objective trigger or special
+terminal boss is authored. The native control mechanism is bypassed by the
+measured mining task, with all soil/lever/chest/source costs retained.
+
+External access uses actual bank height: the copied lower outside position is
+solid netherrack. The accepted local start is(406,60.875,321) on soul sand. Mine
+soil(405,60,321) through its top face, step down to(405,59.875,321), remove
+soil(404,60,321) and both(403,61,321),(403,60,321), then reach
+(402,59.875,321) inside H. All four removal rays and the4H/1down supported path
+pass. This is a side-wall entry, not direct chest access or a proven route from
+the Nether surface. It uses four default-speed soil removals and preserves the
+actual sand support. Unseen lower approaches are not inferred safe or impossible.
+
+Expected replay: fixed layout with processed soil/sand, terrain and source/loot
+variation. This selected case adds meaningful movement friction and paired trap
+lines, compared with the other Nether alternatives, without establishing any
+player preference or variant frequency. Same-site revisits retain17 removals,
+including the source, one chest and one dispenser; surviving loot containers do
+not rebuild soil walls or reset that physical task. All authored rewards and
+combat lie below the multilevel facade; upper fall exposure and the stepped loop
+provide some purpose but limited objective distribution across height. This is
+a supported shallow-objective assessment, not an envelope-volume score.
+
+All five selected Nether variants now satisfy local case scope. The separate
+ocean/taiga alternatives still need sample matching and complete assessments
+before the seven-root family can close. No whole Item13 completion is claimed.
+
+Reproduce the corrected case and inspected categorical plan:
+
+```sh
+uv run python -m evidence.item-13.repurposed_temple_route soul
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/repurposed-temple-soul.json.gz --output /tmp/item13-soul-review.svg --layers 56 57 60 61 63 64
+convert /tmp/item13-soul-review.svg /tmp/item13-soul-review.png
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar net.minecraft.world.entity.LivingEntity net.minecraft.world.entity.ai.attributes.Attributes net.minecraft.world.level.block.Blocks net.minecraft.world.level.block.SoulSandBlock
+```
+
+The existing artifact identities and source/drop derivations apply. The helper
+also rejects two direct negative cases: invented integer-height standing on
+soul sand and fractional14/16 standing on terracotta. These checks enforce the
+newly used support boundary; they do not broaden the measurement framework.
+
+Soul analysis/integration and plan inspection ended18:26:56 UTC,649 seconds
+after declaration, within45 minutes. This includes the fractional-support
+implementation, source recurrence, rejected geometry/model terms, complete
+quality integration and exterior example. Final affected validation/delivery
+retain the15-minute bound. No new runtime or extraction occurred.
+
+Focused validation passes: the soul whole-task command and two support-negative
+cases, lint/format/types on the changed script/helper, scope arithmetic, current
+report/index links and whitespace. All eight prior command results are byte-
+identical to5cd1a048: the four existing temple/Desert Mimic consumers plus
+Repurposed basalt,crimson,warped,wasteland. The narrow helper change therefore
+adds required soul-sand support without changing accepted earlier measurements.
+Use the earlier validation commands with soul included in the variant loop.
+The existing helper's statement-count exemption is local to its explicit shape/
+support branches; no generalized geometry abstraction was added to satisfy lint.

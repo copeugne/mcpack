@@ -10,7 +10,7 @@ at = importlib.import_module("evidence.item-13.render_pilot").state_at
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
 
 
-def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs=()):  # noqa: C901
+def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs=()):  # noqa: C901, PLR0915
     """Bind the existing checks to one raw case and explicit hypothetical state."""
 
     def clear(box) -> None:
@@ -43,6 +43,8 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                     ):
                         continue
                     height = 1.5 if n.endswith(("_wall", "_fence")) else 1
+                    if n == "minecraft:soul_sand":
+                        height = 14 / 16
                     if (x, y, z) in bottom_slabs:
                         assert n == "minecraft:deepslate_brick_slab"
                         assert state["Properties"] == {"type": "bottom", "waterlogged": "true"}
@@ -56,7 +58,11 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
     def verify_path(points, *, crouch_up=False) -> None:
         """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
         for x, y, z in points:
-            if y % 1 == 0.5:
+            if y % 1 == 0.875:
+                support = (x, math.floor(y), z)
+                assert support not in removed, ("removed fractional support", support)
+                assert at(c, *support)["Name"] == "minecraft:soul_sand", support
+            elif y % 1 == 0.5:
                 support = (x, math.floor(y), z)
                 assert support in bottom_slabs, ("undeclared fractional support", (x, y, z))
                 assert support not in removed, ("removed fractional support", support)
@@ -142,7 +148,8 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                 assert abs(a[1] - b[1]) == 1
             else:
                 assert horizontal_step == 1
-            assert abs(a[1] - b[1]) <= 1
+            limit = 1.125 if any(p[1] % 1 == 0.875 for p in (a, b)) else 1
+            assert abs(a[1] - b[1]) <= limit
             high = max(a[1], b[1]) + (0.3 if b[1] > a[1] and horizontal_step else 0)
             height = 1.5 if crouch_up and b[1] > a[1] else 1.8
             clear(
