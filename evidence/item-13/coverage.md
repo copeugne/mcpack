@@ -7,8 +7,8 @@ and [SPECS Item 13](../../SPECS.md#13-measure-baseline-dungeon-quality).
 Representative gameplay-design assessment supersedes exhaustive per-family sample,
 material repetition and exact complete-task timing requirements. Existing evidence
 and failures remain valid at their stated scope; historical gap counts below are
-not the current mandatory workload. Next reconcile this existing record to direct
-samples, justified representative mappings and material evidence gaps. Preserve
+not the current mandatory workload. The v3 disposition below reconciles direct samples, source-supported design
+associations and material evidence gaps. Preserve
 unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
 Item 14 is UNSTARTED. Final review and verified delivery remain required.
 
@@ -22,19 +22,49 @@ coverage does not mean every variant, terrain interaction or realized encounter
 was observed. Repurposed Temple additionally retains the ocean forced saved input;
 taiga remains source-only as [disposed](fixed-blocks/repurposed-nether-temples-report.md#taiga-prelaunch-failure-and-v3-disposition).
 
-Every other included family in the existing tables below currently has an explicit
-GAP disposition for transfer of local gameplay-quality conclusions. This is an
-exact set difference from the20 named families, not an exclusion, absence claim or
-queue of172 experiments. Their existing Item8 source assessments and Item10/12
-world/context evidence remain available for integration. Until that integration,
-withhold claims that their playable topology, encounters, finales or replay are
-equivalent to the direct examples. No source-only family inherits another family's
-room counts, routes, timings or observed-enemy claims. The [v3 synthesis](README.md#v3-synthesis-from-inspected-designs)
-currently supports short chambers, sculptural landmarks, layered caches, traps,
-material-dependent temples and modular fortress findings at the cited scopes.
-Broader design mapping and consequential differences remain IN PROGRESS.
+Every other included family has a SOURCE-ONLY GAP disposition for generated
+playable topology, access, room-content allocation and realized gameplay. This is
+the exact set difference between the192 included IDs in `intake.json` and the20
+DIRECT IDs below:172 families. Their own source attributes and the material
+variants in the existing section tables remain the evidence basis. A gap means
+that family-level access, balance, finale-success and enjoyable-replay endorsement
+is withheld. It is not an exclusion, a claim that raw worlds are absent, or a queue
+of172 experiments. These explicit limits satisfy v3 coverage without pretending
+that every family is equivalent to an inspected example.
 
-## Previous scope and retained results
+The [consequential-design synthesis](README.md#v3-consequential-design-differences)
+integrates the following supported associations. These are source design mappings,
+not transfer of numerical topology or observed gameplay. Families can have more
+than one design role; no count is summed across these overlapping associations.
+Unlisted source-only families retain the exact GAP disposition above and their
+family-specific source/material row below. No provider-wide quality endorsement
+is made for them.
+
+| Design association | Exact source scope and rationale | Transfer limit |
+| --- | --- | --- |
+| Boss objective | Aether bronze/silver/gold and Deep Aether brass rows in [Aether/YUNG](#aether-and-yung-generator-scopes); Better End Island dragon-arena [non-registry row](#non-registry-recovery-rows). Dedicated boss/lifecycle and reward intent, with distinct triggers, traps and assembly. | Boss activation, combat, reward access and live finale quality are gaps; no compact-spawner model transfer. |
+| Trial/vault progression | `minecraft:trial_chambers`, `dungeons_arise:infested_temple`, `dungeons_arise:kisegi_sanctuary`, `mns:dragon_arena`, using their vanilla/WDA/Moog rows and own source payloads. Trial/vault mechanisms support association; differing layouts and normal/ominous states remain separate. | No guaranteed waves, payout, cooldown or accessible terminal room. |
+| Naval/airborne approach | WDA ship and Heavenly vessel rows, all five Seven Seas rows, MES Mega Ship/Starlight Voyager, IDAS Sunken Ship and Supplementaries Galleon in their named source sections. Hull/deck, altitude or underwater placement and content establish approach roles. | No uniform hostility or access equivalence; wreck/airborne, unarmed/armed and rejected-attachment distinctions remain material. |
+| Extended route exploration | YUNG dungeon/mine/stronghold/fortress rows; IDAS Ancient Mines, Labyrinth, Tinkers Workshop/Citadel; Repurposed mine/stronghold/bastion; WDA Foundry; separate Integrated Stronghold. Their room/corridor, mine or staged assembly is the basis. | Direct Underground Temple/Adorabuild graphs illustrate design risks only. No inherited branching, depth, dead-room rate or portal reachability. |
+| Trap/puzzle/reward | Better Desert/Jungle Temple, IDAS Desert Pyramid/Nexus and direct Desert Mimic/Repurposed Temple. Mechanism-specific source records, not similar names, establish this role. | Preserve inactive optional enemies, ineffective loot processing and unverified puzzle/entrance behavior. |
+| Environmental/archaeological | Vanilla Ancient City/Ocean Ruin, Better Ocean Monument and Repurposed city/monument/temple variants. Sculk, aquatic placement, archaeology and dimension-specific inputs establish differences. | No inferred Warden, guardian or pufferfish encounters, safe swimming or vanilla-to-Repurposed mechanism transfer. |
+| Towers/settlements/compounds | IDAS Farmhouse/Wizard Tower/Castle, Terralith tower/complex, CTOV and Towns and Towers outposts, Integrated Village and Repurposed village/mansion/outpost rows. Source residences, facilities, vertical assemblies and resident/source differences support these roles. | No blanket hostile classification or measured floor access; normal/zombie, peaceful/hostile, elevated/submerged, ineligible Nilotic and rejected attachments remain explicit. |
+| Large arena/compound intent | WDA Coliseum/Shiraz Palace, MNS Arena and direct Giant Skull, using their own source rows/local report. Arena sources versus layered palace payloads versus a ground-objective sculpture distinguish purpose. | Only the direct Skull sample establishes its playable shallow-form result. Dimensions do not establish a palace's room count, depth or sustained combat. |
+
+All256 excluded IDs retain the intake's individual rationale and ambiguity. No
+family is excluded because it was absent from Item12's Overworld frame. All
+included dimensions and material distinctions remain visible in the tables below;
+v3 changes required sampling precision, not the population. Existing frozen
+missing references and malformed/ineffective content block the affected mechanism
+recommendation until resolved under its owning later gate. This assessment neither
+repairs the baseline nor dismisses those defects as optional precision.
+
+## Historical v1/v2 scope and retained results
+
+The section tables below retain source facts, exact variants and provenance. Their
+"required sample", "remaining case floor" and "no source-only complete" wording
+is SUPERSEDED by v3 and is not a current workload or completion rule. Use the v3
+dispositions above and the current README requirement map for acceptance.
 
 
 Status: IN PROGRESS. The complete inclusion/exclusion population is [intake.json](intake.json).

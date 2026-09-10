@@ -7,8 +7,8 @@ and [SPECS Item 13](../../SPECS.md#13-measure-baseline-dungeon-quality).
 Representative gameplay-design assessment supersedes exhaustive per-family sample,
 material repetition and exact complete-task timing requirements. Existing evidence
 and failures remain valid at their stated scope; historical gap counts below are
-not the current mandatory workload. Next reconcile this existing record to direct
-samples, justified representative mappings and material evidence gaps. Preserve
+not the current mandatory workload. The current coverage record reconciles direct samples, source-supported
+design assessments and material evidence gaps. Preserve
 unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
 Item 14 is UNSTARTED. Final review and verified delivery remain required.
 
@@ -17,8 +17,8 @@ Item 14 is UNSTARTED. Final review and verified delivery remain required.
 These are decision-relevant findings from retained source and generated geometry,
 not observed enjoyment or measured player sessions. No mod removal or tuning is
 performed. Detailed models remain available at their original conditional scope;
-they are not calibrated playtime predictions. Full-population design synthesis is
-still IN PROGRESS, so these findings do not endorse every included family.
+they are not calibrated playtime predictions. The coverage dispositions below limit transfer across the full population;
+these findings do not endorse every included family.
 
 | Inspected design and evidence | Expedition-quality finding | Practical implication and limit |
 | --- | --- | --- |
@@ -48,11 +48,60 @@ fabricated outcomes or a new Item13 mandatory timing program.
 
 The v3 scope means no additional taiga placement, exact ocean swim budget or wet
 shaft controller rerun is currently justified by a recommendation in this table.
-Their limitations remain explicit. The consequential differences in other design groups
-must be reconciled before item closure; the
-[coverage record](coverage.md#v3-coverage-disposition) identifies the current boundary.
+Their limitations remain explicit. The following source synthesis addresses consequential differences; the
+[coverage record](coverage.md#v3-coverage-disposition) defines the transfer boundary.
+
+## V3 consequential design differences
+
+The following assessments reuse the canonical [Item 8 inventory](../item-8/inventory.json),
+its family-owned `grouping_decision` attributes and cited source captures, as indexed
+by the [coverage sections](coverage.md#v3-coverage-disposition). They establish
+mechanisms and design intent, not generated playable graphs. They supplement the
+six generated-layout comparisons above. No room count, clear time, enemy total,
+reward yield or access guarantee transfers from a representative to another family.
+
+| Distinct design and source basis | Supported quality assessment | Consequential limit and recommendation boundary |
+| --- | --- | --- |
+| Dedicated boss objectives: [Aether and Deep Aether](coverage.md#aether-and-yung-generator-scopes), plus the [central-End lifecycle](#non-registry-variants-and-reference-correction) | Bronze combines rooms/tunnels with Slider intent; Silver has multi-floor temple architecture, trapped-floor Valkyrie and Queen sources; Gold combines island/tunnel/cave and Sun Spirit intent. Brass has quadrant room alternatives and an EOTS controller with segment-spawning code. These differ from ordinary spawner suppression and offer an authored terminal objective. The dragon arena is a lifecycle site, not a room-network dungeon. | Boss presence and dedicated reward-table intent support a potential finale, not successful activation, fair combat or acquired reward. Mimic/trap interactions and conditional reward assignment remain material. Do not endorse difficulty, boss-gate reliability, repeatable rewards or mandatory engineering progression through these sites without relevant gameplay evidence. Fantasy bosses need a specific expedition role; their inclusion in the baseline is not a decision to retain them. |
+| Trial and vault objectives: [Vanilla Trial Chambers](coverage.md#vanilla-generator-scopes), WDA Infested Temple/Kisegi and Moog Dragon Arena | Trial spawners and keyed vaults provide explicit encounter/reward mechanisms beyond ordinary chest-and-spawner rooms. Normal versus ominous state and floor-specific content can change pressure without changing shell size. Kisegi's staged vertical architecture differs from Trial Chambers' corridor/room assembly. The Moog dragon sculpture does not establish a live dragon boss. | Authored trial/vault alternatives are not observed waves, unlocked vaults or a measured replay loop. Missing explicit ominous spawn lists retain the conditional lifecycle interpretation recorded in Item 8; no unconditional copying of normal populations. Withhold balance, cooldown, multiplayer payout and finale-success claims. Distinguish a repeatable mechanism from replenishment of all physical dungeon content. |
+| Naval and airborne expeditions: [WDA/Seven Seas](coverage.md#wda-and-seven-seas-variant-scope), [Moog ships](coverage.md#moog-variant-scope), [Galleon](coverage.md#smaller-temple-tower-and-settlement-scopes), [IDAS Sunken Ship](coverage.md#idas-variant-scope) | Hulls and decks create a different approach/extraction problem from underground corridors. WDA Heavenly vessels are placed at absolute Y200 in Overworld/End contexts; MES Mega Ship separates airborne and crashed roots. Ceryneian Hind and Typhon have no selected authored enemies, whereas illager/pirate ships have direct or spawner payloads, sometimes mounted/passenger compositions. A hull is not uniformly a combat dungeon. | Height, ocean floor placement and partial wrecks can dominate traversal burden and expose rewards from outside. Boarding, swimming, flight and breaching are plausible capability roles, not validated approach routes for source-only sites. Rejected Galleon back02 and missing Small Yacht spawner/Mechanical Nest attachments prevent endorsement of complete assembly/content. No claim that the nested payloads become successful or enjoyable encounters. The direct small Adorabuild End Ship remains its own local example. |
+| Extended underground exploration: [YUNG](coverage.md#aether-and-yung-generator-scopes), [IDAS](coverage.md#idas-variant-scope), [Repurposed](coverage.md#repurposed-structures-variant-scope) and [Underground Temple](fixed-blocks/explorations-underground-temple-report.md) | Room/corridor, branching mine and staged workshop designs can create search, return and logistics work distinct from a compact cache. The first inspected Underground Temple supports an extended graph; the second retains incomplete wet access. IDAS Tinkers Workshop is serial with a final vault, while Citadel has branching attachments; these are different progression intents. Stronghold portal objectives differ from incidental mine rewards. | Source assembly establishes intent only. Do not infer every branch is walkable, assign dead-room percentages from pieces, or infer functioning engineering machinery from decoration. Missing Ancient Mines entrance, Better Stronghold spiral stairs and Foundry corridor references prevent complete-route endorsements. Separate active stronghold generators; no Eye-of-Ender outcome is established here. More corridors alone are not evidence of greater quality. |
+| Puzzle, trap and reward sites: [YUNG temple mechanisms](coverage.md#aether-and-yung-generator-scopes), [IDAS Nexus](coverage.md#idas-variant-scope), and direct Desert Mimic/Repurposed temples | Puzzle/parkour/throne intent can diversify objectives beyond repeated source breaking. Direct Mimic geometry establishes traps and reward-before-terminal choices. Nexus material variants retain sculk, barrel-placement and processor differences rather than a cosmetic equivalence. | The source-only puzzle solutions and natural entrances are not validated. Ineffective loot assignment and missing IDAS Desert Pyramid references limit reward/complete-route claims. Do not infer a final room from height, name or dedicated table alone. Engineering bypasses remain acceptable candidates; whether their effort is proportionate to rewards requires later balance/playtesting. |
+| Environmental and archaeological sites: [Vanilla](coverage.md#vanilla-generator-scopes), [Repurposed](coverage.md#repurposed-structures-variant-scope) and retained ocean temple blocks | Water traversal, archaeology and sculk change exposure and interaction requirements. Ocean Temple saved input has water, ordinary container-table and brushable archaeology assignments; it has no ordinary spawner. Vanilla Ocean Ruins distinguish warm/cold and small/large cluster states. Ancient City sculk is an environmental mechanism, not an observed Warden encounter. | Forced ocean placement bypasses natural spacing/biome selection and cannot establish normal approach. Underwater traversal burden is qualitatively distinct; exact swim costs, realized pufferfish/guardians/Warden, generated loot and safe extraction remain unmeasured. Do not transfer vanilla city mechanisms to Repurposed dimension variants without their source support. Withhold claims that submerged sites are safely accessible or balanced for unprepared players. |
+| Towers, compounds and settlements: [IDAS](coverage.md#idas-variant-scope), [smaller scopes](coverage.md#smaller-temple-tower-and-settlement-scopes), [Repurposed](coverage.md#repurposed-structures-variant-scope) | Direct towers show that apparent height and reward density need not imply many meaningful rooms. Source settlements add paths, residences, facilities and normal/zombie branches. IDAS Farmhouse distinguishes civilians from zombie-villager sources; Wizard Tower's red form is spawner-free while other colors differ. Integrated Village includes elevated, coastal and submerged designs, not one uniform walking approach. | Civilians, decorative entities, empty spawner data and natural overrides are not authored hostile encounter counts. Quiet necessary connectors/facilities are not automatically dead rooms. Missing CTOV/Haunted Manor attachments and Nilotic's empty eligible-biome set retain exact upstream dispositions. No blanket endorsement of all outposts, settlement variants or tower floor access follows from a representative. |
+| Large authored compounds and arenas: [WDA](coverage.md#wda-and-seven-seas-variant-scope) and [Moog](coverage.md#moog-variant-scope) | WDA Coliseum's arena/spawner design and entity-drop reward intent differ from Shiraz Palace's layered palace with varied mounted/equipped payloads, and from the inspected Giant Skull's shallow ground objective. This establishes distinct content intent despite all being visually prominent. | Palace dimensions or component totals cannot establish deep playable topology or disprove mechanical shallowness. Long spawner intervals, passenger/equipment payloads and wide shells could affect pressure, but no live encounter or whole-palace dead-room denominator is available. Withhold claims that these large sites deliver sustained or cooperative combat. |
+
+These differences support a baseline recommendation about **roles**, not a provider
+ranking: preserve consideration of short optional stops, authored trap/puzzle
+objectives, extended exploration and capability-dependent approaches. Evaluate
+rewards against extraction and setup effort before selecting frequency or gating.
+Boss arenas, trial systems and elaborate fantasy compounds need a justified role
+in the grounded engineering pack; attractive architecture alone is insufficient.
+No foundational engineering capability should depend on the unverified reward
+or boss mechanisms described here.
+
+Established problems include the local shallow-form and obstructed-route results
+above and the exact frozen missing-component/processor defects in the source
+records. Missing references do not themselves prove crashes or that an entire
+family is unplayable. They do prevent an endorsement of the affected intended
+assembly, reward assignment or access path. This baseline makes no such endorsement
+and performs no repair or configuration change. Before a later selection relies
+on an affected mechanism, resolve that specific defect and verify the affected
+behavior. Existing compatibility and downstream safety gates remain binding.
+
+Supported assessments are the role differentiation, fixed-layout repetition risk,
+and risk that generated traversal volume outgrows purposeful content. Questions
+for playtesting are cooperative pressure, navigation clarity, trap readability,
+reward satisfaction, earned bypass cost and repeated-visit enjoyment. None is
+reported as an observed player outcome. The remaining source-only access and
+encounter gaps explicitly prevent family-level balance/access recommendations;
+there is no consequential current recommendation that requires another world or
+runtime experiment to complete this baseline assessment.
 
 ## Previous scope and retained results
+
+The old timing, sample-count and continuation obligations in historical sections
+are superseded by v3. Use the current requirement map for acceptance.
 
 
 Status: IN PROGRESS. Item 14 is UNSTARTED.
@@ -70,7 +119,7 @@ The methodology gate is resolved. Apply the recovery checkpoint below before
 further sample processing. Existing complete-task corrections remain accepted;
 all human gameplay and realized-outcome limits remain unchanged.
 
-## Current recovery checkpoint, 2026-09-10
+## Historical v2 recovery checkpoint, 2026-09-10
 
 The user requested a completion-workflow reset after excessive fine-grained
 iteration. The [protocol stopping rules](protocol.md#completion-workflow-clarification-2026-09-10)
@@ -179,36 +228,24 @@ roof thickness and optional parkour remain explicit limits.
 
 ## Requirement map
 
-The [reconciled family table](coverage.md#reconciled-local-results-2026-09-10)
-links every current local result to its authoritative report and latest correction.
-"20 represented families" below means local sample evidence, not completed family
-coverage. For partial families, only their completed sample/task scopes are reused.
-Every requirement still needs the remaining samples in the coverage record and
-shared validation/review/main delivery. This is the current map; earlier historical
-"pending" text does not invalidate later integrated corrections.
+This is the effective v3 map. Detailed prior case floors and exact-task obligations
+below are historical. The current result is the direct and source synthesis above,
+with [coverage dispositions](coverage.md#v3-coverage-disposition). Final validation
+and reviewed delivery remain separate gates; no completion is inferred from this map.
 
-| Requirement | Established local evidence | Integration or missing work remaining |
-| --- | --- | --- |
-| Every significant family | All 448 intake decisions; 192 included/357 roots. Local scope satisfied for 16 families; four partial | 172 lack local reports; all row-level material gaps and case floors are in coverage. Final selection is incomplete |
-| Room count | Coordinate-bounded activity spaces in all 20 represented families, with reported partition sensitivities | Second temple whole-assembly allocation; the 172 unassessed families. No template/piece conversion |
-| Branching | Validated graphs/local links in the 20 reports; first temple 61-node graph and fixed-layout contrasts | Second temple joined graph and the 172 unassessed families; local tower graphs cannot simply be summed |
-| Vertical progression | Connected floor changes and explicit modeled construction in the 20 local results | Second temple complete sequence, including unresolved wet link; remaining scoped cases |
-| Dungeon depth | Graph/route distances and separately labeled terrain context in local reports | Second temple integrated depth and remaining scoped cases. Surface differences never become solid roof thickness |
-| Traversal time | Complete conditional objective budgets in the 20 represented families, superseding their earlier movement-only totals | Second temple total and all remaining cases. Source work, provisional allowances and censored states stay distinct |
-| Combat time | Pinned source work and explicit scenario populations; completed corrections include natural overrides and repeated-source schedules | Second temple whole-source schedule and remaining cases, including special bosses/trials. No generic seconds-per-enemy fallback |
-| Enemy count | Authored resident/source counts and conditional populations in local results | Second temple whole-task allocation and remaining cases; realized enemies remain NOT MEASURED |
-| Enemy diversity | Exact current source types, empty-source lookup and conditional alternatives retained locally | Remaining scoped families/mechanisms; no invented default mobs or civilian/object inflation |
-| Meaningful hazards | Route-relevant lava, falls, wet exposure, webs, source pressure and supported trigger distinctions | Second temple whole-route integration and remaining cases. Failed wet runtime does not prove impossibility |
-| Chokepoints | Actual narrow doors, stairs, shafts and alternatives in local reports | Second temple graph integration and remaining cases; live AI exploitation stays outside this scope |
-| Dead/empty rooms | Explicit local room denominators and source/facility/content allocations | Second temple global denominator and remaining cases. Quiet connectors are not automatically dead rooms |
-| Loot distribution | Per-room/depth assignments and material rewards in local reports, with ineffective assignments retained | Four second-temple reward accesses plus full allocation, and remaining cases. Generated/acquired loot remains NOT MEASURED |
-| Final-room quality | Supported absence or candidate attributes in local reports, including first temple and large/shallow forms | Second temple synthesis and remaining cases; no highest-room or highest-volume substitute |
-| Bypass opportunities | Concrete local breach, construction and reward-first routes, with capability/cost limits | Second temple integration and remaining cases; exhaustive breach search is not required |
-| External-access vulnerabilities | Saved boundary/water/terrain exposure and supported local access examples | Second temple synthesis and remaining cases. Unseen surface/cave routes remain unsupported, not safe |
-| Expected replay value | Source variation versus same-site persistence assessments in local reports | Second temple comparative synthesis and remaining cases; expected replay remains an assessment, not a player outcome |
-| Visually large but shallow | Local external-form/topology comparisons, including Dome, Skull and staged towers | Second temple whole-form assessment and remaining cases; envelope volume alone supplies no conclusion |
+| Current requirement | Evidence and disposition |
+| --- | --- |
+| Significant-family inventory and coverage | [Intake](intake.json) retains all448 decisions,192 inclusions/256 exclusions and357 included roots. Coverage assigns every inclusion DIRECT or a bounded source-only GAP, with supported design associations and no numerical transfer. |
+| Representative distinct designs | Six inspected comparisons plus eight consequential source-design comparisons above cover compact stops, traps, layered caches, modular exploration, bosses, trials, ships, environmental objectives and settlements. Variants changing enemies, rewards, access or mechanism are explicit. |
+| Rooms, branching, vertical progression and depth | The20 locally represented families' linked reports retain coordinate-bounded spaces, graph/distance and elevation evidence. First Underground Temple and paired Adorabuild fortress demonstrate extended topology; Skull/Dome and compact examples establish contrasts. Source-only architecture is intent, not room counts. Second temple wet-route graph/task remains unresolved and is not required for the first-assembly finding. |
+| Traversal burden and combat pressure | Retained complete conditional models have their original actor, objective, source population and provisional allowances. Qualitative synthesis distinguishes compact traversal, traps, repeated corridors, water, altitude and special encounters. Boss/trial/ship runtime burden is not converted to invented seconds. |
+| Enemy abundance/diversity, hazards and chokepoints | Local source/room allocations and validated narrow/lava/wet/constructed links supply direct evidence. Source synthesis distinguishes boss/trial/ordinary spawner, resident, neutral, civilian, natural override and passenger inputs. Realized enemies, attacks and encounter success remain NOT MEASURED. |
+| Empty/dead rooms, loot distribution and finale | Local declared room partitions supply denominators, including fortress and Mimic contrasts. Container/brushable/table assignments and boss/reward intent remain potential. Quiet facilities/connectors are not automatically dead; source-only sites receive no invented empty-room rate. Candidate finale and supported absence are distinguished from observed boss clear/reward acquisition. |
+| Bypass/external access, replay, large/shallow | Local breach/construction and shallow-form findings above; source-only water/air/terrain exposure remains a limited risk assessment. Same-site persistence and fixed-layout repetition do not establish enjoyable replay. Unverified safe access, multiplayer payout or complex encounter claims are withheld. |
+| Practical mod coherence and consequential risks | Role-based implications and playtest questions above. Known missing components/processors prevent affected assembly/reward recommendations; no crash or whole-family failure is inferred from a missing reference. No mod selection, tuning, mandatory engineering loot gate or Item14 is performed. |
+| Integrity, reproduction and delivery | Reuse pinned identities, accepted restores, retained raw/manifests/commands and preserved failures. Final applicable checks, clean Codex review/thumbs-up, merge and fetched-main verification remain required before COMPLETE. |
 
-## Remaining effort and next bounded work
+## Historical v2 remaining effort and next bounded work
 
 The [scope annotations](coverage.md#recovery-input-and-effort-accounting) give
 minimum remaining assessment units: compact 4, fixed 244, modular 276. Final counts
