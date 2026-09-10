@@ -305,3 +305,169 @@ The main-ladder/upper-chest branch consequently contributes eight horizontal and
 no global minimum-construction claim is made. No construction or traversal was
 performed in the accepted world, and any unsupported placement, fall, unexpected
 block update or inaccessible target censors the conditional task.
+
+## Witch mechanics and complete-task predeclaration
+
+The pinned witch resistance tag contains magic, indirect_magic, sonic_boom and
+thorns, not ordinary player melee. `Witch.getDamageAfterMagicAbsorb` multiplies
+tagged damage by 0.15 and separately nullifies self-attributed damage. Do not
+apply that resistance to the declared iron sword. The default ordinary witch
+has 26 health and no added armor in `createAttributes`. With the existing six
+points per fully recharged ordinary iron-sword hit, five attacks cost 3.25 seconds
+of active work only **if no successful healing changes the damage requirement**.
+
+`Potions.HEALING` supplies the base instant-heal effect; the pinned
+`HealOrHarmMobEffect.applyEffectTick` calls heal(4 << amplifier) for an ordinary
+non-inverted recipient. Each base heal can restore up to four points, capped by
+missing health. For an externally specified effective healed amount E, ordinary
+attack work is bounded by `0.65*ceil((26+E)/6)` if there are no other damage/armor
+changes. This is not a complete combat estimate: the healing schedule and pursuit
+must also be feasible. There is no finite lifetime-healing or encounter-time cap
+established merely by the saved source. Do not infer a healing probability or
+fixed number of drinks from the earlier conditional 0.05 branch.
+
+For non-Raider targets, the inspected ranged selection starts with harming;
+slowness is selected at horizontal aim-distance at least eight without existing
+slowness, otherwise poison can be selected at health at least eight without poison,
+otherwise weakness can be selected within horizontal aim-distance three without
+weakness and with a random draw below 0.25. Aim-distance includes the target X/Z
+velocity terms. These are ordered source conditions, not observed throws, hits
+or player status. Drinking suspends ranged attacks. Preserve these
+mechanics as encounter-quality inputs rather than treating the witch as an
+ordinary passive health pool.
+
+Reproduce with the existing mapped JAR and `javap -c -p` command, substituting
+`net.minecraft.world.item.alchemy.Potions` and
+`net.minecraft.world.effect.HealOrHarmMobEffect`; the resistance tag is
+`data/minecraft/tags/damage_type/witch_resistant_to.json` in the retained extra
+JAR. No new runtime experiment or gameplay observation was performed.
+
+Use the approved complete-task method for this worked scenario. Begin/end at
+(428.5,144,310.5), disable both sources, transfer both 27-slot chests, defeat the
+modeled population and return alive. One fully informed adult begins with full
+health/food, iron armor/sword, diamond pickaxe, fourteen scaffolds and thirteen
+cobblestone, sufficient durability and conditional free inventory capacity. Use
+20 TPS. Only the documented cover, grass, leaves, wall and source removals and
+connector construction are permitted. No flight, teleportation, assistance,
+extra construction, criticals, sweeps, player healing or status effects. Discovery,
+travel to the local entry and resource procurement are outside the local task.
+Ignore incidental mining/creature drops and leave construction in place.
+
+At start, stipulate no pre-existing mobs and exclude natural spawning; retain
+both saved Delay 0 inputs. Neither source is reset between phases. Clear the
+witch population after the lower removals and before leaving that island; clear
+the wither-skeleton population after completing the connector and before the
+upper ladder/chest visit. Each combat-duty allowance includes pursuit and return
+to its own starting station. No successful witch healing, other successful mob
+healing, player debuff or unmodeled damage modifier occurs in the worked case.
+Any such event invalidates this particular timing case; do not silently retain
+its hit counts. Survival and target reachability are conditions, not predictions.
+The later graph/hazard assessment must still retain witch potion capability.
+
+| Sequential phase | Upright / crouched / vertical blocks | Removals / placements | GUI operations | Decisions | Selections | Acquisition checks |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| 1. Lower source/cover, witch clear, chest, return | 4 / 0 / 0, plus witch combat duty | 2 / 0 | 29 | 6 | 3 | 1 |
+| 2. Construct connector and reach middle ladder station | 3.6 / 15.4 / 14 | 9 / 27 | 0 | 10 | 9 | 0 |
+| 3. Middle clear, upper chest and return | 8 / 0 / 22, plus wither-skeleton combat duty | 0 / 0 | 29 | 5 | 2 | 1 |
+| 4. Return across connector and descend | 1.6 / 15.4 / 14 | 0 / 0 | 0 | 4 | 0 | 0 |
+| Total | 17.2 / 30.8 / 50 | 11 / 27 | 58 | 25 | 14 | 2 |
+
+Phase 1 selects pickaxe, sword, then empty hand. Phase 2 selects pickaxe for
+grass, scaffold, cobblestone for the first ten bridge cells, pickaxe for first
+leaf/body removal, cobblestone for that replacement, pickaxe for the second leaf
+floor, cobblestone for its replacement, pickaxe for walls/source, then cobblestone
+for the source-floor replacement. Phase 3 selects sword then empty hand; the
+source was already removed in phase 2 and is not mined or approached twice.
+
+The first 0.6 horizontal blocks leaving scaffolding on the outbound crossing and
+the final 0.6 returning to it are upright; the rest of each sixteen-block crossing
+uses crouch speed. Two placement-station approach blocks, the two middle-station
+exit/entry blocks, lower visit and upper visit complete the horizontal accounting.
+Vertical rates are the accepted 1.5/1/0.75 blocks/s A/B/C assumptions. Decisions
+are provisional allowances covering each phase's orientation, pose, source,
+construction, combat and return transitions, not observed navigation performance.
+
+There are 96 interaction allowances: eleven removals, 27 placements and two times
+29 open/scan-or-shift-click/close operations. Add two acquisition confirmations
+and one final verification allowance. All rolled contents must fit after equipment
+and remaining materials. Any failed transfer, placement, pursuit, survival,
+unsupported route, additional recovery/wait or action beyond the declared budgets
+censors completion. Active mining, stationary decisions, selections, movement,
+container operations and combat duty are separate costs. No extra pursuit length
+or attack-switch constant is added on top of duty.
+
+## Complete conditional timing result
+
+Nominal breaking work uses the existing grounded diamond-pick model. Pinned
+`Blocks` supplies hardness 5 for spawners, 2 for cobblestone/mossy cobblestone,
+1.5 for andesite, and 0.2 for leaves; short grass is `instabreak`. The stone/source
+blocks use pickaxe speed 8, leaves default speed 1. The grass removal retains its
+interaction allowance but adds no sustained breaking duration. Exact targets were
+listed in the access/connector sections; no additional mining is assumed.
+
+| Removal group | Count | Nominal ticks each | Combined seconds |
+| --- | ---: | ---: | ---: |
+| Spawners | 2 | 19 | 1.90 |
+| Cobblestone, including lower cover | 2 | 8 | 0.80 |
+| Mossy cobblestone | 1 | 8 | 0.40 |
+| Andesite | 2 | 6 | 0.60 |
+| Oak leaves | 3 | 6 | 0.90 |
+| Short grass | 1 | 0 sustained | 0 |
+| Total | 11 | 92 combined | 4.60 |
+
+Predeclare two successful ordinary witches and two successful ordinary
+wither skeletons for the worked example, without extra equipment/passengers,
+reinforcements, healing or damage modifiers. The two witches require 6.5 seconds
+of active attack work in phase 1, the two wither skeletons 5.2 in phase 3. Divide
+by the accepted combat duties and include pursuit/return in that allowance.
+These populations are scenario inputs, not observed spawn counts or probabilities.
+
+The saved sources can repeat while work proceeds. As in the preceding layouts,
+bound active ticks by ceil(20*D), using elapsed time through each removal phase,
+then bound successful ordinary entities by `4*(1+floor(ceil(20*D)/200))` for their
+saved Delay 0. This overcounts inactive periods and time after removal within a
+phase. Include the worked witch combat before the later source's phase end.
+The resulting envelope is specific to this worked schedule; changing healing,
+counts, pursuit or delays requires recalculation. It is not a jointly attainable
+population prediction or a lifetime cap.
+
+| Conditional result | A | B | C |
+| --- | ---: | ---: | ---: |
+| Noncombat components and final verification, seconds | 105.907 | 172.567 | 274.722 |
+| Witch and wither-skeleton combat duty combined, seconds | 11.700 | 15.600 | 23.400 |
+| Complete worked task, seconds | 117.607 | 188.167 | 298.122 |
+| Witch source successful-entity envelope | 12 | 16 | 28 |
+| Wither-skeleton source successful-entity envelope | 28 | 40 | 68 |
+
+Report approximately **118/188/298 seconds** only for the stated successful
+no-healing/no-debuff case. The zero-entity scenario is represented by the
+noncombat row, not an empirical minimum or proof that the scenario usually
+occurs. There is no observed human traversal or combat duration, realized enemy
+population, rolled inventory or acquired loot. The source-supported healing and
+potion hazards remain material despite their exclusion from this worked case.
+
+Reproduce the component totals and schedule-dependent envelopes:
+
+```sh
+uv run python - <<'SMALL_TOWER_TIMING'
+import math
+work=[(2,5,8),(2,2,8),(1,2,8),(2,1.5,8),(3,.2,1)]
+assert sum(n*math.ceil(h*30/s) for n,h,s in work)==92
+# Upright, crouch, vertical, breaking seconds, decisions, interactions, selections, acquisition.
+rows=[(4,0,0,1.35,6,31,3,1),(3.6,15.4,14,3.25,10,36,9,0),
+      (8,0,22,0,5,29,2,1),(1.6,15.4,14,0,4,0,0,0)]
+for index,expected in [(0,17.2),(1,30.8),(2,50),(3,4.6),(4,25),(5,96),(6,14),(7,2)]:
+    assert math.isclose(sum(row[index] for row in rows),expected)
+profiles=[('A',5,1.5,1.5,.5,.25,.25,1,2,1),
+          ('B',4,1.2,1,1,.5,.5,2,4,.75),
+          ('C',3,.9,.75,1.5,1,1,4,8,.5)]
+for name,u,c,v,d,i,s,a,verify,duty in profiles:
+    phases=[U/u+C/c+V/v+B+D*d+I*i+S*s+A*a for U,C,V,B,D,I,S,A in rows]
+    witch_end=phases[0]+6.5/duty
+    skeleton_end=witch_end+phases[1]
+    bounds=[4*(1+math.ceil(20*t)//200) for t in (witch_end,skeleton_end)]
+    baseline=sum(phases)+verify
+    print(name,'noncombat',round(baseline,6),'complete',round(baseline+11.7/duty,6),
+          'worked-schedule source envelopes',bounds)
+SMALL_TOWER_TIMING
+```
