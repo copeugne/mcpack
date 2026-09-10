@@ -3473,3 +3473,71 @@ three totals with `uv run python -m evidence.item-13.temple_ordinary_route`.
 Focused Ruff, formatting and type checks pass. This resolves the chamber's local
 conditional access/task integration; the second assembly and Item13 remain
 IN PROGRESS.
+
+## Second assembly reward alcoves: declared local tasks
+
+Extend the existing saved-route checks to the north chamber alcove and the south
+branch off the western hall junction. Start respectively at(208.5,32,363.5) and
+(200.5,32,384.5), visit the assigned chest, conditionally acquire its contents and
+return alive to the same station. Reuse the actor, layout knowledge and A/B/C
+allowances. These local tasks occur after the chamber encounter is cleared; no
+pre-existing or natural enemies enter their scope. Unexpected combat, fluid arrival,
+failed opening/transfer or lost support censors the stated case. No mining, new
+placement, campfire lighting or removed-block pickup is permitted or required.
+
+Budget actual supported out-and-back movement, one navigation event per direction
+change plus initial orientation, target selection and exit choice, one chest
+interaction, one empty-hand selection, one acquisition and final verification.
+Determine lengths and totals from the explicit paths below. Treat these as local
+conditional noncombat tasks, not a guarantee of peaceful first entry or a complete
+assembly time. Their start points deliberately exclude prior hall/chamber travel.
+
+## Second assembly reward alcoves: integrated result and material difference
+
+Both local tasks pass the existing post-chamber floor and interaction checks:
+
+| Local space | Supported center route | Reward | Out-and-back | A/B/C complete conditional seconds |
+| --- | --- | --- | ---: | --- |
+| North chamber alcove | X208,feet32,Z363..355 | (210,32,355) | 16H,0V | 8.7 / 15 / 25.33 |
+| Western junction south alcove | (200,32,384) west to X196, south to Z391 | (194,32,391) | 22H,0V | 10.9 / 18.5 / 30.33 |
+
+The north route has four navigation events under the declaration; the bent
+western route has six. For either, `T=H/u+N*n+a+s+k+v`. Combat is zero only in the
+stipulated post-clear, no-additional-enemy case. Saved/realized human time, chest
+opening and acquired loot remain NOT MEASURED.
+
+Both chest assignments are unrolled `dead_end` tables, with no Items or Lock.
+Their above blocks are straight top-half stone-brick stairs, waterlogged true,
+facing east above the north chest and west above the western chest. Reuse the
+first assembly's exact ChestBlock/legacy-stair conductor derivation: a non-full
+straight stair does not block this source opening predicate. Waterlogging does
+not turn that collision shape into a full conducting cube. Both rays use the
+actual chest side inset and pass; no lid removal or extra mining is charged.
+Entity blockers and actual transfer remain conditions, not inferred observations.
+
+The north alcove lies within X206..210,Z353..358 and the western one within
+X194..198,Z388..393, each with its validated floor at feet32. Each is one bounded
+reward activity space under the primary partition, or part of its approach under
+the stricter corridor/alcove merge. For this two-space partition neither is empty
+or dead (0/2 each), because each has an accessible assigned reward. This does not
+count template labels as rooms or imply the whole assembly has only two rooms.
+No distinctive terminal encounter, higher-tier reward or final-objective marker
+is established in either alcove; expected revisit value is limited to whatever
+unmeasured repeat loot access remains, rather than a claimed player outcome.
+
+A material saved-state difference is now resolved across the entire second
+sample: all nine campfire block entities map to `lit=false,waterlogged=true`
+blocks, including(207,32,355) and(197,32,391) beside these two alcoves. Therefore
+there are zero lit campfires among nine saved campfires in this assembly.
+Pinned `CampfireBlock.entityInside` offsets0..41 gates campfire damage on LIT,
+so these states do not supply the first assembly's lit contact-fire mechanism.
+The route avoids their blocks. Do not count nine raw campfire entities as nine
+active hazards or automatically usable burning cooking stations. Future lighting,
+fluid changes and runtime damage remain unmeasured. This difference reinforces
+why the two retained material states are separate samples rather than duplicates.
+
+Reproduce the source inspection with pinned `javap -c -p` on CampfireBlock and
+all geometry, nine-state checks and arithmetic with
+`uv run python -m evidence.item-13.temple_ordinary_route`. Focused lint, formatting
+and type checks pass. This increment resolves two local rewards and the saved
+campfire-state denominator, not remaining temple routes or Item13 completion.

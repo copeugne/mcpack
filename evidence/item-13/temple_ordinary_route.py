@@ -337,3 +337,58 @@ for label, u, n, a, s, k, v, d in (
         "conditional complete local task",
         noncombat + combat_work / d,
     )
+
+alcove_paths = (
+    ("north", [(208, 32, z) for z in range(363, 354, -1)], (210, 32, 355), "east"),
+    (
+        "west-south",
+        [(x, 32, 384) for x in range(200, 195, -1)] + [(196, 32, z) for z in range(385, 392)],
+        (194, 32, 391),
+        "west",
+    ),
+)
+for name, path, target, stair_facing in alcove_paths:
+    work_verify(path)
+    work_verify(list(reversed(path)))
+    assert at(case, *target)["Name"] == "minecraft:chest"
+    assert at(case, target[0], 33, target[2]) == {
+        "Name": "minecraft:stone_brick_stairs",
+        "Properties": {
+            "facing": stair_facing,
+            "half": "top",
+            "shape": "straight",
+            "waterlogged": "true",
+        },
+    }
+    station = path[-1]
+    face_x = target[0] + (0.0625 if station[0] < target[0] else 0.9375)
+    work_ray((station[0] + 0.5, 33.62, station[2] + 0.5), (face_x, 32.5, target[2] + 0.5), target)
+    loot = entities_by_position[target]
+    assert loot["LootTable"] == "explorations:chests/underground_temple/dead_end"
+    assert "Items" not in loot
+    assert "Lock" not in loot
+    circuit = path + list(reversed(path))[1:]
+    movement = len(circuit) - 1
+    headings = [(b[0] - a[0], b[2] - a[2]) for a, b in pairwise(circuit)]
+    decisions = sum(a != b for a, b in pairwise(headings)) + 3
+    print("PASS alcove", name, movement, "H", decisions, "navigation events; stair lid non-full")
+    for label, u, n, a, s, k, v in (
+        ("A", 5, 0.5, 0.25, 0.25, 1, 2),
+        ("B", 4, 1, 0.5, 0.5, 2, 4),
+        ("C", 3, 1.5, 1, 1, 4, 8),
+    ):
+        print(
+            name,
+            label,
+            "conditional local task seconds",
+            movement / u + decisions * n + a + s + k + v,
+        )
+
+campfires = [p for p, e in entities_by_position.items() if e["id"] == "minecraft:campfire"]
+assert len(campfires) == 9
+for position in campfires:
+    state = at(case, *position)
+    assert state["Name"] == "minecraft:campfire"
+    assert state["Properties"]["lit"] == "false"
+    assert state["Properties"]["waterlogged"] == "true"
+print("PASS all nine saved campfires waterlogged and unlit; zero lit campfires in this sample")
