@@ -57,7 +57,7 @@ def render_slices(source, output, *, layers: list[int] | None = None) -> None:  
             raise ValueError("selected layers must be unique heights within the saved envelope")
         ys = layers
     cell = 12
-    width = (bounds[3] - bounds[0] + 1) * cell + 30
+    width = max(330, (bounds[3] - bounds[0] + 1) * cell + 30)
     height = (bounds[5] - bounds[2] + 1) * cell + 40
     canvas_width = 4 * width + 20
     header_height = 115 if layers is None else 130

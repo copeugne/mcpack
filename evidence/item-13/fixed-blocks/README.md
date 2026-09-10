@@ -210,3 +210,8 @@ done
 No extra reader or evidence format was added. For upcoming local layout views,
 reuse the renderer and ImageMagick conversion with a 30-second/2-MiB combined
 SVG/PNG per-case cap, followed by exact partial-block checks where needed.
+
+The [End ship assessment](adorabuild-end_ship_small_1-report.md) completes the
+selected fixed case with one open deck, both reward targets and a conditional
+shulker model. The authored resident overlaps a stair, so its settled position
+is not inferred. The rejected label-overlap image and corrected view are retained.
