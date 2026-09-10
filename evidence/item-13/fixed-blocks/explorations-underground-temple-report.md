@@ -3661,3 +3661,69 @@ Reproduce both closed-door failures, open paths, removal/placement rays, column
 support and retained trap states with
 `uv run python -m evidence.item-13.temple_ordinary_route`. Focused Ruff, formatting
 and type checks pass. The active handoff preserves the remaining lower-floor work.
+
+## Western tower pair: middle reward and lower connection declaration
+
+At each Z367/384, start from the verified lower adjacent stance(181,28,Z+1).
+Expose a passage through the two masonry panel cells(185,Y28..29,Z), using the
+pickaxe from X184. Retain the existing condition that the piston circuit does
+not change during this modeled passage. Reach(190,28,Z-1) via X189,Z then X189,Z-1,
+avoiding the central trapdoor floor at X190,Z, and access the chest at(190,28,Z-2).
+This is a breach of the saved panel, not proof of a native gate solution.
+
+For the next connection, remove floor(189,27,Z-1) from the chest station, descend
+four blocks to(189,24,Z-1), step east to(190,24,Z-1), and build four scaffolds
+Y24..27 at X189,Z-1 on the full stone-brick floorY23. Return through this column.
+No web removal is needed within this alternative column. Keep both initial falls,
+source water/actuation uncertainty, required survival and placement conditions;
+no healing, swimming, trap activation or live pickup is assumed. Validate each
+saved case separately and integrate counts as full-tower components, not totals.
+
+## Western tower pair: middle rewards and lower connections integrated
+
+Both middle centerline passages are rejected while their masonry panel remains.
+From the supported X184,feet28 station, ordered rays reach both(185,28,Z) and
+(185,29,Z). In the northern tower these are stone/chiseled stone bricks; in the
+southern they are mossy/cracked stone bricks. All use the already established
+masonry hardness model, six dry grounded pick ticks each. This costs two explicit
+removals per tower rather than assuming a piece connection is traversable.
+
+Six sticky pistons per tower are saved extended at X185,Y28..30,Z-3/Z+3, facing
+south/north respectively. The accepted breached route is conditional on this
+circuit state remaining unchanged. It is not a runtime test of piston timing,
+redstone correctness or natural gate operation. Removing the panel demonstrates
+a possible earned shortcut under the source/geometry model, not an indestructible
+route or a guaranteed permanently open passage after later circuit updates.
+
+The checked middle route runs from(181,28,Z+1) north to Z, east to X189, north to
+Z-1, then east to X190. It returns over the same supported cells, totaling22
+horizontal blocks with no vertical change. Both middle chest assignments at
+(190,28,365) and(190,28,382) have air above, no saved Items or Lock, and the existing
+`quest_tower` table. Their south inset-face rays pass from(190.5,28,Z-0.5).
+These add two conditionally accessible assignments; generated contents and actual
+opening/transfer remain NOT MEASURED. All three reward assignments in each of
+these towers now have local access evidence, but the full tower task remains open.
+
+From that middle station, floor-removal rays reach(189,27,Z-1). Both cells are
+stone bricks. The alternative column has airY24..26 and full stone-brick support
+atY23, avoiding the webbed neighboring descent column. The lower east station at
+(190,24,Z-1), initial floor placement and repeated base side-clicks pass. Four
+supported scaffold cellsY24..27 supply the modeled return, and the middle reward
+route is checked again after the floor removal with this declared support.
+The extra connection contributes four horizontal and eight vertical return-route
+blocks, one six-tick masonry removal and four scaffold placements per tower.
+Its initial four-block fall is retained separately from the later scaffold climb;
+the same nominal one-damage/unknown-live-damage distinction applies.
+
+Across the two successive constructed drops, these towers now have connected
+modeled feet elevations32,28 and24. That is eight blocks of vertical progression
+under the stated remedies, not a room count or full dungeon-depth result. The
+lower exits, hazards and onward routes still need validation. Each descent keeps
+fluid stability, survival and successful construction as explicit conditions;
+no world or raw evidence was changed. Do not sum these local return circuits as
+an optimized whole-temple clear or omit their interactions when integrating time.
+
+Reproduce both panel failures, source-state checks, middle chest rays, post-removal
+support and second shaft with `uv run python -m evidence.item-13.temple_ordinary_route`.
+Focused Ruff, formatting and type checks pass. The original tower failures and
+trapdoor/tripwire observations remain preserved above.

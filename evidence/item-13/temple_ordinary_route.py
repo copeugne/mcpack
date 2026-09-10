@@ -564,3 +564,81 @@ for center_z in (367, 384):
         "12H/8V return, one masonry removal, four scaffolds, two inner button operations; "
         "closed trapdoor/tripwire untouched, initial four-block fall retained",
     )
+
+for center_z in (367, 384):
+    middle_removed = set()
+    middle_feet = set()
+    middle_clear, middle_verify = importlib.import_module(
+        "evidence.item-13.temple_geometry"
+    ).path_checks(case, middle_removed, set(), middle_feet)
+    middle_rays = {}
+    middle_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+        case, middle_removed, middle_rays
+    )
+    panel_approach = [(181, 28, center_z + 1)] + [(x, 28, center_z) for x in range(181, 185)]
+    middle_verify(panel_approach)
+    blocked = None
+    try:
+        middle_verify([(184, 28, center_z), (185, 28, center_z)])
+    except AssertionError as error:
+        blocked = error.args[0]
+    assert blocked is not None
+    assert blocked[1] == (185, 28, center_z)
+    for y in (28, 29):
+        panel = (185, y, center_z)
+        assert at(case, *panel)["Name"] in {
+            "minecraft:stone_bricks",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:cracked_stone_bricks",
+            "minecraft:chiseled_stone_bricks",
+        }
+        middle_ray((184.5, 29.62, center_z + 0.5), (185.001, y + 0.5, center_z + 0.5), panel)
+        middle_removed.add(panel)
+    middle_path = (
+        panel_approach
+        + [(x, 28, center_z) for x in range(185, 190)]
+        + [(189, 28, center_z - 1), (190, 28, center_z - 1)]
+    )
+    middle_verify(middle_path)
+    middle_verify(list(reversed(middle_path)))
+    chest = (190, 28, center_z - 2)
+    assert at(case, *chest)["Name"] == "minecraft:chest"
+    assert at(case, 190, 29, center_z - 2)["Name"] == "minecraft:air"
+    middle_eye = (190.5, 29.62, center_z - 0.5)
+    middle_ray(middle_eye, (190.5, 28.5, center_z - 1.0625), chest)
+    saved = entities_by_position[chest]
+    assert saved["LootTable"] == "explorations:chests/underground_temple/quest_tower"
+    assert "Items" not in saved
+    assert "Lock" not in saved
+    for y in (28, 29, 30):
+        for z, facing in ((center_z - 3, "south"), (center_z + 3, "north")):
+            assert at(case, 185, y, z) == {
+                "Name": "minecraft:sticky_piston",
+                "Properties": {"extended": "true", "facing": facing},
+            }
+    floor = (189, 27, center_z - 1)
+    assert at(case, *floor)["Name"] == "minecraft:stone_bricks"
+    middle_ray(middle_eye, (189.5, 27.999, center_z - 0.5), floor)
+    middle_removed.add(floor)
+    assert at(case, 189, 23, center_z - 1)["Name"] == "minecraft:stone_bricks"
+    assert all(at(case, 189, y, center_z - 1)["Name"] == "minecraft:air" for y in range(24, 27))
+    middle_clear([189.2, 24, center_z - 0.8, 189.8, 29.8, center_z - 0.2])
+    lower = [(189, 24, center_z - 1), (190, 24, center_z - 1)]
+    middle_verify(lower)
+    middle_verify(list(reversed(lower)))
+    lower_eye = (190.5, 25.62, center_z - 0.5)
+    middle_ray(lower_eye, (189.5, 23.999, center_z - 0.5), (189, 23, center_z - 1))
+    middle_ray(lower_eye, (190, 24.95, center_z - 0.5), (189, 24, center_z - 1))
+    middle_feet.update((189, y, center_z - 1) for y in range(24, 29))
+    column = [(189, y, center_z - 1) for y in range(24, 29)]
+    middle_verify(column)
+    middle_verify(list(reversed(column)))
+    middle_verify(middle_path)
+    middle_verify(list(reversed(middle_path)))
+    assert 2 * (len(middle_path) - 1) == 22
+    print(
+        "PASS western tower middle reward",
+        center_z,
+        "22H return, two panel removals, one chest; next shaft four scaffolds/one floor removal, "
+        "4H/8V return and four-block initial fall",
+    )
