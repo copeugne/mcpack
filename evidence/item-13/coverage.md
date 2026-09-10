@@ -1,5 +1,20 @@
 # Item 13 material variants and sample coverage
 
+## Current authority: experience-focused v3
+
+User-authorized amendment, 2026-09-10: follow [protocol v3](protocol.md#effective-acceptance-scope)
+and [SPECS Item 13](../../SPECS.md#13-measure-baseline-dungeon-quality).
+Representative gameplay-design assessment supersedes exhaustive per-family sample,
+material repetition and exact complete-task timing requirements. Existing evidence
+and failures remain valid at their stated scope; historical gap counts below are
+not the current mandatory workload. Next reconcile this existing record to direct
+samples, justified representative mappings and material evidence gaps. Preserve
+unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
+Item 14 is UNSTARTED. Final review and verified delivery remain required.
+
+## Previous scope and retained results
+
+
 Status: IN PROGRESS. The complete inclusion/exclusion population is [intake.json](intake.json).
 The recovery summary below reconciles existing local results with the original
 material scope. A scoped design is not yet a measured design. Full sampling and

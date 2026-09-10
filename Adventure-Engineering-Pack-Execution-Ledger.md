@@ -4,6 +4,7 @@
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
 **Current execution gate:** Item 13 IN PROGRESS, explicitly authorized on 2026-09-09 with a separate modeled/inspection methodology decision. Item 12 remains COMPLETE through PR39, with its completion record delivered through PR40 at verified main `3a086467`. Item 14 is UNSTARTED. Authoritative active evidence: evidence/item-13/README.md.
+**Item 13 scope decision (2026-09-10):** User authorized representative, experience-focused assessment and proportionate review. SPECS Item 13 and evidence/item-13/protocol.md v3 supersede exhaustive family/material/repetition sampling and mandatory exact complete-task timing. Historical workload estimates and table wording must be read under this amendment. Evidence honesty, material-risk checks and final reviewed delivery remain required; Item 14 is UNSTARTED.
 **Release state:** Not eligible for implementation or release
 
 ---

@@ -393,30 +393,48 @@ recognition and discovery rates remain NOT MEASURED; no human trials are require
 
 ## 13. Measure Baseline Dungeon Quality
 
-Apply the separately user-authorized [Item 13 source, geometry and modeled
-assessment protocol](evidence/item-13/protocol.md). Validate playable topology;
-model traversal and combat under explicitly declared assumptions. Human times,
-realized encounters and player outcomes remain NOT MEASURED. This authorization
-is separate from the Items 10/11 amendment and Item 12 inspection scope.
+User-authorized experience-focused amendment, 2026-09-10. The goal is sufficient
+evidence to choose coherent mods and identify consequential gameplay problems.
+This replaces exhaustive per-family/material/repetition measurement and mandatory
+complete-objective timing with representative design assessment. Apply
+[evidence/item-13/protocol.md](evidence/item-13/protocol.md), version v3.
 
-- [ ] Sample every significant dungeon family.
-- [ ] Record room count.
-- [ ] Record branching.
-- [ ] Record vertical progression.
-- [ ] Record dungeon depth.
-- [ ] Record traversal time.
-- [ ] Record combat time.
-- [ ] Record enemy count.
-- [ ] Record enemy diversity.
-- [ ] Record meaningful hazards.
-- [ ] Record chokepoints.
-- [ ] Record dead/empty rooms.
-- [ ] Record loot distribution.
-- [ ] Record final-room quality.
-- [ ] Record bypass opportunities.
-- [ ] Record external-access vulnerabilities.
-- [ ] Determine expected replay value.
-- [ ] Identify structures that are visually large but mechanically shallow.
+- [ ] Reuse the full significant-family inventory as a coverage index. Group families
+  by supported gameplay design and identify material differences that could change
+  a mod-selection or quality conclusion. Give every included family a direct sample,
+  a justified representative mapping, or an explicit evidence-gap disposition.
+- [ ] Assess representative distinct designs using existing generated evidence first.
+  Supplement only when a consequential conclusion cannot be supported without it.
+  Do not require a generated sample for every family, root or cosmetic variant.
+- [ ] Describe playable room scale, branching, vertical progression and depth using
+  inspected layouts. Exact counts are required only when they support the decision;
+  pieces and bounding volume must not be mislabeled as playable topology.
+- [ ] Assess traversal burden and combat pressure. Reuse valid timing models where
+  available; otherwise use supported qualitative assessments with explicit limits.
+  Exact seconds, complete action budgets and per-container routes are not required.
+- [ ] Assess authored enemy abundance/diversity, meaningful hazards, chokepoints,
+  empty/dead spaces, reward distribution and final-room quality.
+- [ ] Identify obvious bypass/external-access problems, likely repetition/replay
+  strengths and limitations, and visually large but mechanically shallow designs.
+- [ ] Summarize the practical implications for mod coherence and expedition quality,
+  separating established problems, supported assessments and questions for playtesting.
+  This baseline item does not itself authorize mod removal, tuning or Item 14.
+
+Source inspection, geometry, models, runtime observations and human observations
+remain distinct. Human times, realized encounters, acquired loot and enjoyment
+remain NOT MEASURED unless actually observed. Existing failures and raw evidence
+remain preserved. Unknowns are acceptable with a bounded disposition and must limit
+the conclusion; investigate further when they could materially reverse a decision
+or conceal a significant compatibility, safety or gameplay problem.
+
+### Exit gate
+
+Representative gameplay designs and consequential differences are assessed; all
+included families have a transparent coverage disposition; conclusions are supported
+at their stated scope; material unresolved risks are resolved or explicitly prevent
+the affected recommendation. Optional precision does not block completion. Required
+focused validation, durable evidence, completed clean Codex review with thumbs-up,
+merge and verified main delivery remain mandatory.
 
 ### Depends On
 - Items 9–12.

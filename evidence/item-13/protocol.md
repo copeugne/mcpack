@@ -1,8 +1,51 @@
 # Item 13 protocol
 
-Version: item13-quality-v2, PREDECLARATION IN PROGRESS. No scoring or runtime
-experiment is authorized by an unfinished sampling/model section below.
-The user-approved method boundary is recorded in [README.md](README.md).
+Version: item13-quality-v3. User-authorized experience-focused amendment,
+2026-09-10. The current authority is [SPECS Item 13](../../SPECS.md#13-measure-baseline-dungeon-quality).
+
+## Effective acceptance scope
+
+The user requested less granular review and assessment to achieve a coherent,
+enjoyable modpack. Representative gameplay-design coverage now replaces mandatory
+individual sampling of every family/material/repetition and exact complete-task
+models. Retain the 192-family inventory as an index, not 192 bespoke investigations.
+Use the existing coverage record to map every included family to a direct sample,
+a supported representative design, or an explicit gap and its effect on conclusions.
+Shared names or dimensions alone do not prove representative equivalence.
+
+Describe topology, traversal burden, combat pressure, authored enemies, hazards,
+chokepoints, dead spaces, reward/finale quality, bypass exposure and expected replay
+at the precision needed to support practical conclusions. Reuse exact results
+already established. Where numeric timing lacks adequate inputs, give a supported
+qualitative burden/pressure assessment, not invented seconds. A source-only assessment
+must disclose unverified generated access or terrain effects. No claim of enjoyment
+or realized gameplay follows from inspection. Questions about fun belong in the
+playtest recommendations, not another mandatory modeling framework.
+
+Start by synthesizing existing reports and grouping the remaining coverage by
+material gameplay design. Further inspection or an experiment requires a named
+uncertainty that could materially change a conclusion or hide a significant problem.
+Do not continue an old experiment merely because it was predeclared. Preserve its
+raw evidence and failed attempts; record why further work is or is not needed now.
+A known safety or compatibility risk cannot be dismissed as optional precision.
+
+Room and mechanism definitions below remain useful when those measurements are
+reported. Their former exhaustive counting, exact route-validation and complete
+phase-accounting obligations do not apply to qualitative v3 assessments. Detailed
+models retained from v1/v2 keep their original assumptions, limitations and hashes.
+Do not relabel incomplete or failed models as successful; they may remain unresolved
+without blocking v3 when no material conclusion relies on them.
+
+Use existing evidence paths and checks. Frozen identities, fresh verified restores
+for new experiments, evidence honesty/custody and final reviewed delivery remain
+required. Review blocks on consequential defects and current acceptance gaps;
+optional detail and speculative refinements are non-blocking. Item 14 is UNSTARTED.
+
+## Historical v1/v2 declarations and evidence
+
+The sections below preserve prior methods and experiment provenance. Where they
+require exhaustive coverage, exact complete-objective timing or further processing,
+v3 above supersedes those obligations. They are not a queue of mandatory experiments.
 
 ## Complete-objective timing correction
 

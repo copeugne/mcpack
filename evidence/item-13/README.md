@@ -1,5 +1,20 @@
 # Item 13 baseline dungeon quality
 
+## Current authority: experience-focused v3
+
+User-authorized amendment, 2026-09-10: follow [protocol v3](protocol.md#effective-acceptance-scope)
+and [SPECS Item 13](../../SPECS.md#13-measure-baseline-dungeon-quality).
+Representative gameplay-design assessment supersedes exhaustive per-family sample,
+material repetition and exact complete-task timing requirements. Existing evidence
+and failures remain valid at their stated scope; historical gap counts below are
+not the current mandatory workload. Next reconcile this existing record to direct
+samples, justified representative mappings and material evidence gaps. Preserve
+unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
+Item 14 is UNSTARTED. Final review and verified delivery remain required.
+
+## Previous scope and retained results
+
+
 Status: IN PROGRESS. Item 14 is UNSTARTED.
 
 Current gate: complete-objective conditional timing methodology ACCEPTED by the

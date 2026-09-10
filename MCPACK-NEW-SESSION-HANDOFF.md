@@ -145,37 +145,32 @@ conditional splitting workloads and explicit incidental cave evidence. Both
 complete local tasks give37..45/63..73/101..116s across approved profiles. Do not
 repeat these reads or models. Actual gameplay remains NOT MEASURED.
 
-## Current priority: completion-workflow recovery
+## Current priority: experience-focused v3 assessment
 
-User explicitly requested this workflow reset on 2026-09-10. Apply the
-[protocol stopping rules](evidence/item-13/protocol.md#completion-workflow-clarification-2026-09-10)
-and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recovery-checkpoint-2026-09-10).
-These replace the previous narrow next-step sequence, not the specification gates.
+User changed acceptance on 2026-09-10: prioritize a coherent, enjoyable modpack
+through representative gameplay-design assessment and proportionate review.
+Read [SPECS Item 13](SPECS.md#13-measure-baseline-dungeon-quality) and
+[protocol v3](evidence/item-13/protocol.md#effective-acceptance-scope).
+These supersede exhaustive individual family/material/repetition sampling and
+mandatory exact complete-task timing. Earlier case-count floors are historical,
+not the remaining required workload. Item 14 remains UNSTARTED.
 
-Coverage now records20 represented families,16 satisfying local scope, four
-partial and172 with no local report. Remaining floor:524 case completions
-(4 compact,244 fixed,276 modular). Among the172,24 have baseline inputs,17 more
-Item8 references, one the Item7 pair,130 no full indexed candidate. Match existing
-supplemental raw before experiments. Desert Mimic is locally complete and pushed.
+Next synthesize accepted reports, map all included families in the existing
+coverage record to direct evidence, supported representative designs or explicit
+gaps, and investigate only gaps that could materially change conclusions.
+Assess traversal/combat burden qualitatively where exact timing lacks support.
+Keep strict compatibility, safety, integrity, honest evidence and delivery checks.
+Optional precision and speculative refinements are non-blocking review suggestions.
 
-The [Nether group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md)
-preserves its90-minute overrun, failed routes and later delivery interruption.
-All five selected Nether variants have complete local quality/model results.
-Warped retains construction/double/trapped chests; wasteland retains fortress
-overlap. Soul retains fractional floors, sand slowdown and the skeleton task.
-Ocean input is acquired; taiga placement and both complete assessments remain.
-No server or extraction process is active. Do not repeat the five accepted reads.
-
-Next: use the [ocean/taiga reconciliation](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-and-taiga-input-reconciliation).
-Ocean has two omit-Sparse control starts; neither root has a baseline or earlier
-indexed candidate. Do not repeat this matching. The [two-root declaration](evidence/item-13/protocol.md#ocean-and-taiga-forced-diagnostic-declaration-2026-09-10)
-and probe select ocean ordinary(48,128), taiga mountainous(8,-392). Ocean r1 passed;
-use its [saved input/custody](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-forced-placement-and-saved-input). Run taiga once after delivery; retain wet-model gaps.
-
-Do not resume per-corridor temple expansion by default. Batch verified equivalent
-cases with material differences retained. Before deeper checks, name the unmet
-acceptance claim and why existing evidence cannot satisfy it. No new tracker,
-generic validator or duplicate evidence record; no acceptance reduction.
+Preserve completed Nether and ocean diagnostic evidence in the
+[existing group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md).
+Main-thread checkpoint: taiga r1 failed before materialization/server launch
+because ControlRequest enforces ordinary-only pilot use. No experiment is running;
+taiga r2 has NOT run. Preserve the prelaunch failure with the narrow control fix.
+Do not launch the previously queued taiga or temple work merely to satisfy v2.
+First establish whether it resolves a material gap under v3. Preserve current
+uncommitted runtime/control fixes; assess their reproduced defects separately
+from whether another dungeon experiment is necessary.
 
 ## Underground Temple recovery context
 
@@ -194,7 +189,8 @@ The scaffold alternative has solid geometry evidence; wet motion remains
 unresolved. Do not rerun or tune the controller. The [recovery disposition](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md#completion-workflow-recovery-disposition-2026-09-10)
 keeps the proposed shaft-using task UNRESOLVED: neither native nor scaffold
 evidence supplies the wet cost. Do not remove its component coverage after failure.
-Local results do not close whole-family coverage.
+This unresolved model remains preserved; under v3 it blocks only conclusions
+that depend materially on that wet route.
 
 Item13 remains IN PROGRESS; Item14 remains UNSTARTED. Required clean Codex review,
 thumbs-up, merge and fetched-main delivery verification remain mandatory.
