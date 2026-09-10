@@ -161,6 +161,9 @@ Four solid passage barriers and blocked eastern centerline boundaries invalidate
 an assumed open loop. The first representative now has a five-room local assessment, supported side routes,
 source/geometry-confirmed trap and corrected pickup support-chain removals. Its
 complete two-blaze scenario is87/139/221s, with separate8/8/12 source ceilings.
-Next extract and assess the declared larger ordinary r2 case, then resolve remaining
-central material outcomes from existing evidence before any minimal experiment.
+The ordinary r2 case now also passes extraction/view (55,614 cells,16,360 compressed
+bytes,5.527101s): two blaze sources,two traps,three authored debris rewards and
+seven empty-chamber components. Next validate its routes and complete its task/quality
+assessment. Both baseline centers are debris; six existing accepted omit-Sparse
+control occurrences are the next material-evidence check before any new experiment.
 Do not generate new survey worlds or treat15 pieces as rooms.

@@ -509,3 +509,70 @@ Inspected classes are `net.minecraft.world.level.block.ChainBlock`,
 `TripWireBlock`, `TripWireHookBlock`, `TntBlock` in that block package, and
 `net.minecraft.world.entity.player.Player`. Their method names/offsets above are
 precise artifact derivations; no source behavior is labeled a human observation.
+
+
+## Second predeclared assembly
+
+The representative now passes its local assessment, so the second55,614-cell
+assembly may use the already declared120-second/20-MiB/5-GiB limits. Reuse the
+same extractor, source identity gates and evidence format. No new server or
+generation is needed. Exact command, pending before execution:
+
+```sh
+timeout 120 uv run python - <<'PY'
+import gzip, hashlib, importlib, json, resource, shutil, time
+from pathlib import Path
+from tools.analyze_route_opportunities import read_bound
+m = importlib.import_module('evidence.item-13.measure')
+selection_hash = 'eaa4ba0ea4db159f926e85f6367fffd0209bc4be8617fedbaafe7f6ed8157ca3'
+plan = json.loads(read_bound(Path('evidence/item-13/basalt-chambers-selection.json'), selection_hash))
+chosen = plan['selected'][1]
+rows = json.loads(read_bound(Path('evidence/item-13/candidates.json'), plan['input_sha256']['candidates']))['candidates']
+case, = [r for r in rows if r['id'] == chosen['candidate_id']]
+assert case['bounds'] == chosen['bounds'] and case['voxel_count'] == 55614
+output = Path('evidence/item-13/fixed-blocks/basalt-chambers-ordinary-r2.json.gz')
+assert not output.exists() and not output.is_symlink()
+assert shutil.disk_usage('.').free >= 5 * 1024**3
+started = time.monotonic()
+result = {'selection_sha256': selection_hash, 'cases': [m.extract(case, voxel_budget=55614)]}
+result['elapsed_seconds'] = round(time.monotonic() - started, 6)
+result['peak_rss_kib'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+raw = gzip.compress((json.dumps(result, sort_keys=True, separators=(',', ':')) + '\n').encode(), mtime=0)
+assert len(raw) <= 20 * 1024**2
+with output.open('xb') as stream:
+    stream.write(raw)
+print(len(raw), hashlib.sha256(raw).hexdigest(), result['elapsed_seconds'], result['peak_rss_kib'])
+PY
+```
+
+Second input extraction passes in5.527101 seconds,48,280 KiB peak RSS,55,614
+cells and16,360 compressed bytes. SHA-256
+f77a6dc8a1d956d0d6c0c45b5efe80e6554709b50a2152da601b2265394ed803.
+[Raw ordinary r2](basalt-chambers-ordinary-r2.json.gz) and its inspected
+[seven-layer sheet](basalt-chambers-ordinary-r2-slices.png) are retained. SVG is
+6,971,499 bytes; PNG93,900 bytes, below the20-MiB view allocation. Commands:
+
+```sh
+timeout 120 uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/basalt-chambers-ordinary-r2.json.gz --output evidence/item-13/fixed-blocks/basalt-chambers-ordinary-r2-slices.svg
+timeout 120 convert -background white evidence/item-13/fixed-blocks/basalt-chambers-ordinary-r2-slices.svg evidence/item-13/fixed-blocks/basalt-chambers-ordinary-r2-slices.png
+```
+
+Its28 saved components are one center, seven empty chambers, two trap chambers,
+two spawner chambers, seven passage_1, four passage_2 and five dummy_side. These
+are verified component roles; playable room count/graph still require the second
+case's concrete support and connector checks. The same source templates permit
+reuse of shape/mechanism facts, but not copying the first route or timings.
+
+The only two saved block entities are Delay0 blaze spawners at(143,15,-141) and
+(157,15,-99), with the same source parameters. The processed central reward at
+(157,15,-141) is ancient debris; trap rewards at(157,15,-155) and(143,15,-155)
+are also debris. There are136 saved TNT blocks. No container entity is present.
+These are authored/source and saved-block facts, not realized encounters or loot.
+
+The accepted intake also records six omit-Sparse control occurrences and no
+Item 7/8 prior candidates for this family. Both baseline centers are now known to
+retain debris. Before declaring missing netherite/lodestone evidence or creating
+any new experiment, inspect the exact existing control centers. Such control
+material outcomes must retain their altered density-arm identity and cannot be
+counted as extra untouched-baseline samples or natural-frequency measurements.
+No control extraction or new material experiment has yet been run for this family.

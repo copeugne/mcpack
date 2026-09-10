@@ -235,3 +235,8 @@ pass; the first case now has five validated chamber spaces, a conditional breach
 graph, supported source/reward access, trap bypass and complete87/139/221-second
 two-blaze task. Failed centerline/pickup assumptions remain preserved. Second-case
 assessment and material coverage remain.
+
+The ordinary r2 Basalt Chambers input and seven-layer view now pass as well. Its
+source/saved roles differ from the first case and are integrated in the same
+report. Second-case topology/task work and control-center material inspection
+remain; no new generation has run.
