@@ -215,3 +215,8 @@ The [End ship assessment](adorabuild-end_ship_small_1-report.md) completes the
 selected fixed case with one open deck, both reward targets and a conditional
 shulker model. The authored resident overlaps a stair, so its settled position
 is not inferred. The rejected label-overlap image and corrected view are retained.
+
+The [wart-house assessment](adorabuild-nether_fortress_medium_1-report.md)
+completes the selected fixed case: two usable levels, a46-plant age0 field and
+three upper chests. Its conditional task visits the field and empties the three
+chests; crop harvesting remains an explicitly separate optional activity.
