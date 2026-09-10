@@ -1,8 +1,8 @@
 # Basalt Chambers: two-assembly quality assessment
 
 Status: IN PROGRESS. This report is the authoritative local family deliverable.
-The first representative now has a complete local modeled assessment. The second
-assembly, material coverage and final delivery remain pending. Item 14 is UNSTARTED.
+Both selected assemblies now have local modeled assessments. Central material
+coverage and final delivery remain pending. Item 14 is UNSTARTED.
 Apply the approved Item 13 definitions and modeled/inspection boundary.
 
 ## Existing evidence and predeclared sample
@@ -279,84 +279,16 @@ conservatively excluded, not mislabeled full collision shapes. It checks all108
 horizontal transitions, landing support, jump head clearance and five conservative
 interaction-ray bounding boxes. Both support-chain identities are checked. The
 initial invocation from a /tmp script could not import the repository namespace;
-the repository-root stdin invocation below succeeds without environment changes.
+the repository-root module invocation below succeeds without environment changes.
 
 ```sh
-uv run python - <<'PY'
-import gzip, hashlib, importlib, json, math
-from itertools import pairwise
-from pathlib import Path
-r = Path('evidence/item-13/fixed-blocks/basalt-chambers-biome-diverse-r2.json.gz').read_bytes()
-assert hashlib.sha256(r).hexdigest() == 'c51074175f8e721caad92936f701a8d8259f940804378931ef7cbd36dddaf2c0'
-c = json.loads(gzip.decompress(r))['cases'][0]
-at = importlib.import_module('evidence.item-13.render_pilot').state_at
-overlap = importlib.import_module('evidence.item-13.collision.clearance').overlaps
-removed = {(x,y,z) for x,z in ((4,-500),(10,-492),(4,-486)) for y in (14,15)}
-assert all(at(c,*p)['Name'] == 'minecraft:polished_basalt' for p in removed)
-full = {'polished_basalt','smooth_basalt','basalt','blackstone','netherrack',
-        'crying_obsidian','ancient_debris','spawner','tnt','nether_gold_ore','nether_quartz_ore'}
-def shape(x,y,z):
-    if (x,y,z) in removed: return None
-    state=at(c,x,y,z); name=state['Name'].split(':')[1]
-    if name=='air':return None
-    if name=='chain':
-        a=[6.5/16]*3+[9.5/16]*3; axis='xyz'.index(state['Properties']['axis'])
-        a[axis]=0; a[axis+3]=1
-    elif name in full or name in {'lava','tripwire','tripwire_hook'}:
-        a=[0,0,0,1,1,1]  # fluids/triggers excluded conservatively, not collision claims
-    else: raise ValueError(name)
-    return [a[i]+(x,y,z)[i%3] for i in range(6)]
-def clear(box):
-    for x in range(math.floor(box[0]),math.ceil(box[3])):
-        for y in range(math.floor(box[1]),math.ceil(box[4])):
-            for z in range(math.floor(box[2]),math.ceil(box[5])):
-                b=shape(x,y,z)
-                assert b is None or not overlap(box,b), (box,(x,y,z),at(c,x,y,z))
-def point(x,z):
-    floor=shape(x,13,z)
-    if floor is not None and floor[4]==14: y=14
-    else:
-        floor=shape(x,12,z)
-        assert floor is not None
-        y=floor[4]
-    assert at(c,x,math.floor(y-1e-8),z)['Name'].split(':')[1] in full | {'chain'}
-    assert floor[0] <= x+.5 <= floor[3] and floor[2] <= z+.5 <= floor[5]
-    p=(x+.5,y,z+.5); clear([p[0]-.3,y,p[2]-.3,p[0]+.3,y+1.8,p[2]+.3])
-    return p
-ab=[(-1,-500),(9,-500),(9,-497),(10,-497),(10,-487)]
-east=[(10,-487),(13,-487),(13,-486),(23,-486)]
-west=[(10,-487),(9,-487),(9,-486),(-1,-486)]
-a_pick=[(-1,-500),(-1,-499),(-2,-499),(-1,-499),(-1,-500)]
-c_pick=[(-1,-486),(-1,-485),(-2,-485),(-1,-485),(-1,-486)]
-waypoints=a_pick+ab[1:]+east[1:]+list(reversed(east))[1:]+west[1:]+c_pick[1:]+list(reversed(west))[1:]+list(reversed(ab))[1:]
-columns=[waypoints[0]]
-for a,b in pairwise(waypoints):
-    assert (a[0]==b[0]) != (a[1]==b[1])
-    dx=(b[0]>a[0])-(b[0]<a[0]); dz=(b[1]>a[1])-(b[1]<a[1])
-    columns += [(a[0]+i*dx,a[1]+i*dz) for i in range(1,abs(b[0]-a[0])+abs(b[1]-a[1])+1)]
-points=[point(*p) for p in columns]
-vertical=0
-for a,b in pairwise(points):
-    high=max(a[1],b[1]); low=min(a[1],b[1]); vertical+=high-low
-    assert high-low<=1
-    # One-block rises require a jump. Reserve0.3 head clearance above the upper support.
-    apex=high+.3 if b[1]-a[1]>.6 else high
-    clear([min(a[0],b[0])-.3,apex,min(a[2],b[2])-.3,max(a[0],b[0])+.3,apex+1.8,max(a[2],b[2])+.3])
-    for p in (a,b):clear([p[0]-.3,p[1],p[2]-.3,p[0]+.3,apex+1.8,p[2]+.3])
-print(json.dumps({'horizontal_blocks':len(columns)-1,'support_elevation_travel':vertical,'feet_span':[min(p[1] for p in points),max(p[1] for p in points)],'barrier_removals':sorted(removed)},indent=2))
-
-for eye,target in (([-.5,14.62,-499.5],[-2,15.25,-498.5]),
-                   ([-.5,14.62,-485.5],[-2,15.25,-484.5]),
-                   ([23.5,14.62,-485.5],[25,15.25,-484.5]),
-                   ([-.5,14.62,-499.5],[-2.40625,14.5,-498.5]),
-                   ([-.5,14.62,-485.5],[-2.40625,14.5,-484.5])):
-    assert math.dist(eye,target)<4.5
-    clear([min(eye[i],target[i]) for i in range(3)]+[max(eye[i],target[i]) for i in range(3)])
-for z in (-499,-485):
-    assert at(c,-3,14,z)=={'Name':'minecraft:chain','Properties':{'axis':'y','waterlogged':'false'}}
-print('Five conservative interaction-ray bounds clear; both removable support chains match')
-PY
+uv run python -m evidence.item-13.basalt_routes first
 ```
+
+The accepted inline implementation is now shared with the second case in
+[basalt_routes.py](../basalt_routes.py). Its first-case route, shapes and five
+ray bounds retain the same results. The original inline form remains in Git.
+
 
 
 ## First-case topology, quality and complete conditional timing
@@ -576,3 +508,233 @@ any new experiment, inspect the exact existing control centers. Such control
 material outcomes must retain their altered density-arm identity and cannot be
 counted as extra untouched-baseline samples or natural-frequency measurements.
 No control extraction or new material experiment has yet been run for this family.
+
+### Second-case task declaration and trap approach
+
+Reuse the first actor and conditional equipment/state limits, adding ordinary
+shears for four deliberate wire cuts. Begin/end at(159.5,13,-139.5) in the central
+reward chamber. Objectives are its three authored debris rewards, both disabled
+blaze sources, cleared stipulated enemies, inspection of all12 chamber-shaped
+spaces and return verification. External excavation remains excluded/UNKNOWN.
+The no-flight/no-placement task permits eight side-lane basalt removals, three
+resource-support chains, three debris blocks, two spawners and four sheared strings.
+No TNT harvesting or intentional detonation is included.
+
+Visit the nearby west source first, before reward pickup or branch exploration;
+then its northern trap and the western empty branches. Return to the center for
+its reward and northern trap, then follow the southern chain to the second source
+before inspecting its empty side branch and returning. The exact itinerary will
+be retained in the shared route check. Do not copy first-case distances/timing.
+
+Four side-lane barriers require Y14/15 removals at X/Z(156,-148),(142,-148),
+(128,-148),(156,-120). Both traps have south-side attached strings at Z-153,
+Y13 and14. Cut X142 for the western trap and X156 for the eastern trap. Stand
+at the respective X+0.5,Y14,Z-151.5, outside the wire cell, cut upper then lower
+with shears, and only then enter. Source TripWireBlock.playerWillDestroy offsets
+18..52 sets DISARMED=true when ordinary shears are held. The source hook
+calculation excludes disarmed strings. A pickaxe cut is not an interchangeable
+safe action. This is source-supported disarming, not a runtime success claim.
+
+The attached string selection box is[0,1/16,0,1,2.5/16,1] (TripWireBlock static
+initializer59..74). Aim inside that thin box at Y14.1 then13.1,Z-152.5. The lower
+ray must clear the corridor floor, with the upper string already removed. A
+conservative rectangular ray bound includes that floor even when the actual
+oblique ray clears it; use the existing first-case shape check with an exact
+segment/box intersection for these four current targets. Do not loosen collision
+or assume a cube is the string's selection shape.
+
+After each cut, route from the clear entry column(X,-153) through(X,-154),
+(X+1,-154),(X+2,-154),(X+3,-154) to the east perimeter reward station. This crosses
+one-block floor recesses and a low chain, so explicitly verify supportY11..13,
+clearance, transitions and the unaffected remaining wire cells. Reuse the common
+first-case check, extending its lower support lookup for this demonstrated need.
+Remove the Y14 vertical chain below each resource before harvest, as required by
+the first-case pickup correction. The same conditional settling/acquisition rules
+apply. No source shape or successful raw measurement is regenerated.
+
+Worked enemies: two ordinary blazes per source. At the west source, use supported
+east-perimeter positions(145.5,13,-138.5),(145.5,13,-141.5), from actor station
+(145.5,13,-139.5). At the southern source, use north-perimeter positions
+(155.5,13,-100.5),(159.5,13,-100.5), from actor(156.5,13,-100.5).
+Kill near then far; stationary/reachable targets, no healing/fire/pursuit delay,
+no extra enemies and uninterrupted pre-disable travel are conditions, not AI claims.
+
+Each source's conservative active-to-disable budget is15 horizontal blocks,
+2 vertical blocks,six decision allowances,one interaction and0.95s mining. It
+includes the entire first move that can cross into range. Both sources are
+removed before their combat phase. Keep per-source spawn ceilings separate from
+the stipulated two-enemy workloads. The raw worlds are never modified by this model.
+
+Predeclared task accounting:20 block interactions (eight basalt,three support
+chains,three debris,two spawners,four strings),nine selections,three acquisitions
+and one terminal verification. Ordinary mining work uses the already supported
+five-tick basalt,19-tick chain/spawner and113-tick debris inputs. Strings have
+instant-break source behavior, charged as interactions. Decisions are one initial
+orientation,12 first-room assessments,20 action aims,three pickup checks,two
+post-combat inspections,one per heading change/reversal in the explicit itinerary,
+and one per stipulated enemy target. Thus38+heading_changes+N decisions. These
+remain provisional modeled allowances, not observed inputs. Dead-room assessment
+uses the resource/source objective, not the circular proposition that every room
+must be useful merely because the measurement task surveys it.
+
+Second-case route failure and revised predeclaration: the first execution rejected
+standing column(156,-154). Its Y11 support is lava, not solid basalt. Both eastern
+trap recesses(156,-154),(158,-154) have saved lava atY10/11 and airY12/13; the
+western equivalents have solid basaltY10/11. The no-placement scenario above is
+FAILED and retained. The four ordered shear rays passed before that failure.
+
+Revise only this task: carry two full basalt building blocks. After cutting the
+eastern strings, from entry(156.5,13,-152.5), place a support at(156,12,-154)
+against the west face of the horizontal chain(157,12,-154), aiming at
+(157.40625,12.5,-153.5). Move onto that support and place(158,12,-154) against
+west face of the full perimeter block(159,12,-154), aiming at(159,12.5,-153.5).
+Validate both rays before accepting the modified route. Both blocks occupy saved
+air above lava, not replacements of fluid. This is conditional construction, not
+observed fluid behavior. Charge two additional placement interactions, two aim
+allowances and two selections (blocks then pickaxe), with the same route columns.
+Revised accounting is22 interactions,11 selections,40+heading_changes+N decisions;
+mining remains23.7 seconds. An interrupted or invalid placement censors this task.
+
+### Second-case accepted geometry and quality
+
+The revised construction scenario passes. Reproduce both cases using the shared
+[route check](../basalt_routes.py), which reuses the first case's shape and sweep
+implementation and the existing state_at/overlaps functions:
+
+```sh
+uv run python -m evidence.item-13.basalt_routes first
+uv run python -m evidence.item-13.basalt_routes second
+```
+
+Both raw inputs are SHA-256 checked before decoding. The second check verifies
+four upper-then-lower shear rays, two ordered placement rays against the declared
+chain/perimeter faces,332 horizontal transitions, supportY11..13, jump clearance,
+eight source/resource/support-chain interaction bounds and four stipulated melee
+stations. It conservatively excludes all remaining wire, hook and fluid cells.
+These are GEOMETRIC MEASUREMENTS of a declared modified state, not a simulated
+player, trap activation or observed building result. No world file is modified.
+
+Twelve rooms are delineated by actual5x5 internal activity footprints bounded by
+7x7 shells, not by all28 assembly pieces. Each center below denotes inclusive
+inner X/Z bounds center plus/minus2. Supported perimeters are at feet13;
+corridors rise to14, while recess/chain floors vary as checked. There is no
+stacked second level. Corridors and five solid dummy branches add no rooms.
+
+| Room | Center X/Z | Content | Task graph neighbors | Depth from A |
+| --- | --- | --- | --- | ---: |
+| A |157,-141| Central debris |B,C,I|0|
+| B |143,-141| Blaze source |A,D,E|1|
+| C |157,-155| Debris, wired TNT trap, lava recesses |A|1|
+| D |143,-155| Debris, wired TNT trap |B|2|
+| E |129,-141| Empty western hub |B,F,G,H|2|
+| F |115,-141| Empty terminal |E|3|
+| G |129,-155| Empty terminal |E|3|
+| H |129,-127| Empty terminal |E|3|
+| I |157,-127| Empty connecting room |A,J|1|
+| J |157,-113| Empty lower hub |I,K,L|2|
+| K |157,-99| Blaze source |J|3|
+| L |143,-113| Empty terminal |J|3|
+
+Native connections omit A/C,B/D,E/G,I/J because their passage midplanes are
+solid. Native graph:12 nodes,7 edges,5 components,one branching junction E and
+zero cycles. The eight declared side-lane basalt removals connect all12 rooms
+with11 edges,four branching junctions A/B/E/J,seven ends C/D/F/G/H/K/L and zero
+cycles. Breaching and trap disarming/construction are explicit access conditions,
+not claims that these routes are natively safe. One-block side lanes beside
+central chain/obsidian obstructions are geometric chokepoints; live enemy behavior
+at those connections remains NOT MEASURED and outside this Item 13 inspection.
+
+Shortest station distances within the union of checked route transitions are:
+A reward0,B source16,C reward20,D reward36,K source46 horizontal blocks. The
+furthest checked empty stations F/G are48. These are scoped to this validated
+network, not claims of global optimality under arbitrary mining or flight.
+Graph depth is at most3 edges. Full return circuit332 includes three4-block
+pickup detours and the deliberate empty-branch inspections. Total support-level
+travel is54.4375, with27.21875 ascent and descent each; floor span12..14.
+This is support elevation, not airborne jump-arc distance.
+
+Saved WORLD_SURFACE is127 at all12 centers,109 above the authored center capY18.
+Direct center coverY19..21 is basalt/blackstone at11 centers, but lava at C.
+This is not109 blocks of continuous solid cover and does not establish a walkable
+Nether-roof entrance. Derive these facts directly from surface_xzy and state_at
+at the table's centers, without another restore or survey.
+
+Meaningful hazards are two attached wired explosive approaches plus C's lava
+recess exposure. The first case's pinned hook/neighbor/TNT source chain applies:
+backing blocks(140,13,-153),(154,13,-153) are saved polished basalt immediately
+above TNT at the same X/Z,Y12. Both rooms retain68 TNT each,136 total. Cutting
+upper/lower strings with ordinary shears explicitly disarms the chosen lane;
+remaining wires stay excluded. The source string has default zero destroyTime:
+Blocks initializer14520..14548 constructs Properties.of(), noCollission and
+pushReaction without a strength assignment; Properties' constructor leaves that
+float at zero. Thus no mining-duration term is added, but input/aim costs remain.
+Do not misdescribe this as a literal instabreak initializer call. The two bridge
+blocks prevent the chosen actor's support from descending into C's lava. No
+explosion, fluid update, live disarming success or damage event was observed.
+
+Empty rooms are7/12 (E,F,G,H,I,J,L). Dead rooms under the resource/source objective
+are5/12 (E,F,G,H,L): E only connects three empty leaves. I/J provide necessary
+access to source K and are not dead. A terminal-only interpretation gives four
+dead leaves, explicitly excluding E; this sensitivity does not change emptiness.
+
+Authored rewards are three debris nodes at A/C/D, at graph depths0/1/2. Both
+saved sources B/K have explicit blaze potential,one hostile type,Delay0 and the
+same source payload as the first case. Authored residents are absent; realized
+counts/diversity remain NOT MEASURED. No container loot is authored or saved.
+Blaze-rod and TNT salvage potential retain the first case's source/support limits
+and are excluded from this three-debris task. Acquired loot is NOT MEASURED.
+
+Finale NONE: terminal source K has no unique placed reward or scripted terminal
+mechanism. Objective clarity is CONDITIONAL on seeing resources/sources,
+distinctive terminal challenge ABSENT, terminal reward linkage ABSENT, route
+integration CONDITIONAL on the breached main branch, and external bypass exposure
+UNKNOWN beyond the retained local shell. Removing K's local wall from an excavated
+gallery could skip A/I/J; gallery access and excavation effort are UNKNOWN.
+No arbitrary route protection prevents such an engineering solution. C's lava
+cover makes direct roof breaching hazardous rather than a free demonstrated entry.
+
+Replay assessment: the two naturally generated assemblies differ materially in
+room/branch count, source/trap/reward distribution, empty tails and lava exposure.
+That supports expected generated-layout variation, not observed player replay
+value. Persistent revisits retain removed sources/rewards and breached barriers;
+no automatic physical dungeon reset is established. The56x63 envelope contains
+12 compact rooms and no deeper floor progression. Its long horizontal branching
+and seven empty rooms support a shallow-content concern, but no surface-view
+measurement establishes it as a visually large landmark. Do not replace this
+assessment with volume or piece counts.
+
+### Second-case complete conditional task result
+
+The revised formula with N stipulated blazes is:
+
+`332/u + 54.4375/j + 23.7 + (117+N)*decision + 22*input + 11*selection + 3*acquisition + verification + 2.6*N/duty`
+
+The117 decisions are40 declared non-heading allowances plus77 actual heading
+changes/reversals. Mining474 ticks at20TPS is23.7 seconds. The22 interactions
+include two bridge placements and four instant string cuts. Pickup settling and
+support-chain removals use the first case's approved conditional assumptions.
+
+| Profile | No-enemy task | Four stipulated blazes | Active combat for four |
+| --- | ---: | ---: | ---: |
+| A |216.2875s|228.6875s|10.4s|
+| B |359.075s|376.941667s|10.4s|
+| C |580.616667s|607.416667s|10.4s|
+
+Each source has a conservative pre-disable clock9.2/15.2/23.95 seconds under the
+separately declared15-block activation budget. Delay0 and a minimum ten-second
+successful-batch interval give potential ceilings4/8/12 per source, ignoring
+restrictive spawn failures/caps. They are neither predicted populations nor the
+stipulated two per source. Additional enemies or interruption before disablement
+censor the fixed task. Melee station support/clear height-14 lines are checked;
+stationary reachable targets and duty allowances remain explicit scenario inputs.
+
+The first-case check still returns108 horizontal blocks and17.625 support-level
+travel, with unchanged five interaction bounds. Both local sample assessments
+now pass under their respective scenarios. This does not close central material
+coverage or the full Item 13 family/review/delivery gates. Next inspect the six
+existing omit-Sparse centers for netherite/lodestone before any new experiment.
+
+Focused verification for this increment: both geometry commands pass, ruff check
+and formatting pass, basedpyright reports zero errors/warnings, and git diff
+--check passes. The no-placement lava failure is preserved above. No additional
+world processing or runtime capture was required for this local result.

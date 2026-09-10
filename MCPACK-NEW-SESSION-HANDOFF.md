@@ -163,7 +163,9 @@ source/geometry-confirmed trap and corrected pickup support-chain removals. Its
 complete two-blaze scenario is87/139/221s, with separate8/8/12 source ceilings.
 The ordinary r2 case now also passes extraction/view (55,614 cells,16,360 compressed
 bytes,5.527101s): two blaze sources,two traps,three authored debris rewards and
-seven empty-chamber components. Next validate its routes and complete its task/quality
-assessment. Both baseline centers are debris; six existing accepted omit-Sparse
+seven empty rooms. Its revised two-block bridge task passes332 horizontal blocks,
+54.4375 support-level travel and a229/377/607s four-blaze conditional task. The
+rejected no-placement route is preserved: eastern recesses have lava support.
+Both baseline centers are debris; six existing accepted omit-Sparse
 control occurrences are the next material-evidence check before any new experiment.
 Do not generate new survey worlds or treat15 pieces as rooms.
