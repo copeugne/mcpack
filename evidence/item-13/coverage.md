@@ -9,8 +9,8 @@ material repetition and exact complete-task timing requirements. Existing eviden
 and failures remain valid at their stated scope; historical gap counts below are
 not the current mandatory workload. The v3 disposition below reconciles direct samples, source-supported design
 associations and material evidence gaps. Preserve
-unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
-Item 14 is UNSTARTED. Final review and verified delivery remain required.
+unknowns and do not claim unsupported gameplay outcomes. Item 13 is COMPLETE through [verified PR42 delivery](README.md#verified-delivery).
+Item 14 is UNSTARTED. Historical statuses below retain their original scope.
 
 ## V3 coverage disposition
 

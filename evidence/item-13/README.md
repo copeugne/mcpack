@@ -9,8 +9,8 @@ material repetition and exact complete-task timing requirements. Existing eviden
 and failures remain valid at their stated scope; historical gap counts below are
 not the current mandatory workload. The current coverage record reconciles direct samples, source-supported
 design assessments and material evidence gaps. Preserve
-unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
-Item 14 is UNSTARTED. Final review and verified delivery remain required.
+unknowns and do not claim unsupported gameplay outcomes. Item 13 is COMPLETE through reviewed PR42 and verified main delivery below.
+Item 14 is UNSTARTED.
 
 ## V3 synthesis from inspected designs
 
@@ -105,9 +105,8 @@ identity retained by the existing intake, source and restore records. The
 representative-design acceptance criteria have supported results in the requirement
 map. Every included family has an explicit coverage disposition. Unresolved
 source-only access/encounter questions and defective mechanisms prevent the affected
-recommendations; none is reported as successful gameplay. Item13 remains IN PROGRESS
-until reviewed main delivery is verified. The local v3 exit gate PASSES at the
-stated scope; the delivery gate remains pending. Item14 is UNSTARTED.
+recommendations; none is reported as successful gameplay. The local v3 exit gate
+and PR42 delivery gate PASS, as verified below. Item13 is COMPLETE; Item14 is UNSTARTED.
 
 Final checks on the `faf8133b` synthesis and its definition-of-done clarification:
 
@@ -147,7 +146,8 @@ the ledger's Item13 row and next step still directed exhaustive material samplin
 Disposition: corrected its active gate, row and continuation step to v3 reviewed
 delivery; no measurement or code changed. Focused validation inspected those three
 locations against the current specification/report and ran `git diff --check`.
-The1819-test result remains applicable. A fresh completed clean review is required.
+The1819-test result remains applicable. The required fresh review completed clean,
+as recorded in verified delivery below.
 
 Reproduce the focused static gate from the repository root:
 
@@ -164,6 +164,36 @@ The changed-file comparison above is a pre-merge command; after delivery use the
 recorded base `cbe1eef0dc57eec82812458cd3832a4fca182d88` and the accepted PR head.
 Historical runtime/route reproduction commands remain in their own evidence
 reports. Do not rerun expensive experiments merely to reproduce this synthesis.
+
+## Verified delivery
+
+Item13 COMPLETE under protocol `item13-quality-v3`. The accepted head
+`04f5c678cdb56861a91a3e8edf4935b1eb343b78` was reviewed in
+[PR42](https://github.com/copeugne/mcpack/pull/42). Cycle2 completed at
+2026-09-10 20:02:26 UTC and posted the
+[clean result](https://github.com/copeugne/mcpack/pull/42#issuecomment-5624685952).
+The Codex bot returned a `+1` reaction on the PR at20:02:29 UTC. Inspection of
+review, inline and discussion comments found no new findings; the sole cycle1
+ledger finding is fixed and its thread resolved. No commits superseded that review.
+
+PR42 merged at2026-09-10 20:03:48 UTC. Fetched `origin/main` was verified at
+`81dd4c3feaa4befc93650072c4e2ff78e83060e4`, containing the exact accepted head.
+Item13 evidence, implementation, tests, AGENTS and active handoff are byte-identical
+to the reviewed candidate. The initial whole-tree equality check correctly found
+three differences: SPECS, ledger and `evidence/item-19/plan-consolidation.md` retain
+already-delivered PR41 planning changes. Direct comparison verifies that the
+Items1-18 specification prefix equals the reviewed candidate, the later-plan suffix
+and Item19 artifact equal pre-merge main `cbe1eef0`, and the ledger differences
+are only its governing-plan explanation and Item48 package note. No upstream or
+Item13 behavior changed during merge; no regression rerun is justified by those
+preserved documentation differences.
+
+This completion record is authored on `codex/item13-completion-record`, starting
+from that verified main. Its later PR delivery is separate from the exact PR42
+acceptance above. Historical IN PROGRESS, missing-case and timing-gate text below
+records earlier states and is superseded by current v3 acceptance and this closure.
+Do not resume failed wet/taiga trials or the exhaustive case queue. Item14 remains
+UNSTARTED and requires a new user instruction.
 
 ## Previous scope and retained results
 
@@ -297,8 +327,8 @@ roof thickness and optional parkour remain explicit limits.
 
 This is the effective v3 map. Detailed prior case floors and exact-task obligations
 below are historical. The current result is the direct and source synthesis above,
-with [coverage dispositions](coverage.md#v3-coverage-disposition). Final validation
-and reviewed delivery remain separate gates; no completion is inferred from this map.
+with [coverage dispositions](coverage.md#v3-coverage-disposition). Validation and reviewed delivery are separately verified in the closure above;
+completion is not inferred from this map alone.
 
 | Current requirement | Evidence and disposition |
 | --- | --- |
@@ -310,7 +340,7 @@ and reviewed delivery remain separate gates; no completion is inferred from this
 | Empty/dead rooms, loot distribution and finale | Local declared room partitions supply denominators, including fortress and Mimic contrasts. Container/brushable/table assignments and boss/reward intent remain potential. Quiet facilities/connectors are not automatically dead; source-only sites receive no invented empty-room rate. Candidate finale and supported absence are distinguished from observed boss clear/reward acquisition. |
 | Bypass/external access, replay, large/shallow | Local breach/construction and shallow-form findings above; source-only water/air/terrain exposure remains a limited risk assessment. Same-site persistence and fixed-layout repetition do not establish enjoyable replay. Unverified safe access, multiplayer payout or complex encounter claims are withheld. |
 | Practical mod coherence and consequential risks | Role-based implications and playtest questions above. Known missing components/processors prevent affected assembly/reward recommendations; no crash or whole-family failure is inferred from a missing reference. No mod selection, tuning, mandatory engineering loot gate or Item14 is performed. |
-| Integrity, reproduction and delivery | Reuse pinned identities, accepted restores, retained raw/manifests/commands and preserved failures. Final applicable checks, clean Codex review/thumbs-up, merge and fetched-main verification remain required before COMPLETE. |
+| Integrity, reproduction and delivery | Reuse pinned identities, accepted restores, retained raw/manifests/commands and preserved failures. Final applicable checks, clean Codex review/thumbs-up, merge and fetched-main verification PASS; see verified delivery. |
 
 ## Historical v2 remaining effort and next bounded work
 
