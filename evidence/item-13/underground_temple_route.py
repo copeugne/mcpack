@@ -1844,3 +1844,92 @@ print(
     work_descent,
     "descent; all 112 removal targets have a visited ray station",
 )
+
+initial_fall_columns = (
+    (-277, 0, 33, 39),
+    (-300, 6, 33, 39),
+    (-299, 28, 33, 39),
+    (-288, -38, 35, 39),
+    (-287, -30, 31, 35),
+    (-288, -38, 27, 31),
+    (-288, 20, 39, 43),
+)
+for x, z, base, top in initial_fall_columns:
+    descent = [(x, y, z) for y in range(top, base - 1, -1)]
+    matches = [
+        i
+        for i in range(len(work_route) - len(descent) + 1)
+        if work_route[i : i + len(descent)] == descent
+    ]
+    assert len(matches) == 1, (descent, matches)
+fall_ticks_by_height = {}
+for height in (4, 6):
+    velocity = 0.0
+    distance = 0.0
+    ticks = 0
+    while distance < height:
+        distance -= velocity
+        ticks += 1
+        velocity = (velocity - 0.08) * 0.9800000190734863
+    fall_ticks_by_height[height] = ticks
+fall_vertical = sum(top - base for _, _, base, top in initial_fall_columns)
+fall_ticks = sum(fall_ticks_by_height[top - base] for _, _, base, top in initial_fall_columns)
+step_vectors = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(work_route)]
+direction_changes = sum(a != b for a, b in pairwise(step_vectors))
+combat_groups = 6
+decisions = direction_changes + 1 + 2 * combat_groups
+button_operations = 2 * sum(
+    at(c, *position)["Properties"]["half"] == "lower" for position in opened_doors
+)
+mining_operations = len(removed)
+placement_operations = len(scaffold_blocks)
+acquisitions = len(reward_positions)
+interaction_operations = mining_operations + placement_operations + button_operations + acquisitions
+tool_selections = (
+    mining_operations + len(scaffold_columns) + combat_groups + button_operations + acquisitions
+)
+print(
+    "P6 action counts:",
+    direction_changes,
+    "direction changes;",
+    decisions,
+    "decisions;",
+    interaction_operations,
+    "interaction inputs;",
+    tool_selections,
+    "tool selections;",
+    acquisitions,
+    "acquisitions",
+)
+print("Nominal initial fall ticks:", fall_ticks_by_height, "total", fall_ticks)
+for label, u, j, n, a, s, k, v, duty in (
+    ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2, 1),
+    ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4, 0.75),
+    ("C", 3, 0.25, 1.5, 1, 1, 4, 8, 0.5),
+):
+    movement = (
+        (work_horizontal - 6) / u
+        + 6 / 3
+        + (work_ascent + work_descent - fall_vertical) / j
+        + fall_ticks / 20
+    )
+    noncombat = (
+        movement
+        + active_mining_ticks / 20
+        + decisions * n
+        + interaction_operations * a
+        + tool_selections * s
+        + acquisitions * k
+        + v
+    )
+    combat = 2028 / 20 / duty
+    print(
+        "P6 complete conditional seconds",
+        label,
+        "noncombat",
+        noncombat,
+        "combat",
+        combat,
+        "total",
+        noncombat + combat,
+    )

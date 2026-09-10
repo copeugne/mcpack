@@ -2175,3 +2175,159 @@ still must assign actions at the appropriate first visit, preserve removal and
 placement prerequisites, distinguish initial falls from subsequent climbs, and
 include tool/input, acquisition, P6 combat and verification costs. These access
 distances alone are not a complete construction or expedition time.
+
+## Complete first-assembly task declaration, P6
+
+Start at(-288,37,-3) with the saved construction obstacles present and no
+scaffolds placed. Follow the declared work route, execute all112 removals and44
+placements as their stations are first reached, disable all nine sources, defeat
+the54 stipulated P6 enemies in the six declared combat phases, acquire one
+available stack from each of the31 chest/barrel nodes, and return alive to the
+same station with those acquisitions. Discovery, surface approach and extraction
+to an external base are outside this local task. It does not claim complete
+emptying of every container or acquisition of the two central gold blocks.
+
+Actor: one adult player, initially full health/food, fresh unenchanted iron armor
+and sword, fresh diamond pick,44 carried scaffolds, an empty-hand selection and
+31 inventory slots reserved for reward stacks. Full layout and target knowledge;
+no flight, teleportation, critical/sweep attacks, extra construction, external
+help, effects or deliberate healing/restocking. Do not credit regeneration as
+a modeled survival benefit. Sufficient food/capability to maintain the selected
+movement profile and survival throughout remain success conditions, not outputs.
+
+At each container, take its first eligible nonempty stack into one reserved slot
+and confirm it. Use the approved acquisition allowance k=1/2/4 seconds per node
+as a conditional GUI/transfer budget, including selection and confirmation; this
+is not measured Lootr behavior or a guaranteed inventory operation. If a node is
+empty, unavailable to this actor, fails to open after the specified remedy or
+cannot transfer within that allowance, censor successful completion. Do not
+invent an acquired item from its table reference. One stack per node requires
+at most31 reward slots; two tools and a remaining scaffold stack fit alongside
+them within36 slots. Armor uses its separate equipment slots.
+
+Preserve local construction prerequisites: mine blocking webs/rubble before
+advancing; open each button door only after its input/selection pause; remove
+each shaft cover before its first descent; place the complete return column
+from the validated lower stance before leaving; clear the middle piston panel
+before proceeding; build each library column before its elevated lid remedy;
+and remove each dungeon floor before descending into its source hole. The
+dungeon source order is north/east/south/west, using the now verified forward
+western approach. Clear each source's P6 combat group immediately after disabling
+it; the four chamber sources form one group after the fourth disablement.
+Container acquisition occurs at its first accessible visited station, which may
+precede that chamber's group combat. No safety during GUI use is assumed.
+
+The post-construction geometry establishes the work path and station access.
+Applying its local action proofs in this order is the conditional execution
+schedule, not a live replay. Any prerequisite, body clearance or interaction
+failure during that execution invalidates the successful estimate. This includes
+entity obstruction or a sculk response that adds an encounter, changes the path
+or interrupts work beyond the declared allowances. No sculk block is silenced
+or removed to manufacture this condition; actual warning/Warden response remains
+NOT MEASURED.
+
+Use the approved A/B/C upright speeds u=5/4/3, vertical transition allowances
+j=1/.5/.25 blocks/s, decision pauses n=.5/1/1.5 seconds, interaction allowances
+a=.25/.5/1, hotbar selections s=.25/.5/1, acquisitions k=1/2/4, verification
+v=2/4/8 and combat duty d=1/.75/.5. These remain analyst sensitivity cases.
+Make the following counting rules explicit before deriving the total:
+
+- Charge one stationary navigation/pose pause at each change in the work route's
+  three-component step vector, plus one initial orientation and two phase-boundary
+  pauses per combat group. This includes landing/column direction changes.
+  Pauses occur before a door button is pressed or after the actor clears its
+  threshold, never inside its timed transfer. The fixed route has no direction
+  change inside those straight transfers.
+  For a first fall, move the entry-direction pause to the last supported ledge
+  before stepping into the shaft; the model does not pause while standing on air.
+- Deliberately select the required hotbar slot before each mined block, even
+  when it was already selected; before each of ten column-building sequences;
+  before each of six combat phases; and before each button or container action.
+  This explicit input protocol avoids an unstated zero-cost tool-switch policy.
+- Charge one aiming/input allowance for each removal, each placed scaffold,
+  each of12 button operations and each of31 container openings. Mining begins
+  after that allowance. The mining allowance does not include breaking ticks;
+  the container-opening allowance does not include stack transfer.
+- Charge each of31 acquisition allowances once, and one final verification.
+  Combat pursuit, attack target switching and return from pursuit are charged
+  only through duty, not again as route distance or per-enemy targeting inputs.
+
+Seven first descents are falls, not scaffold travel: three six-block entrance
+shafts, three four-block tower shafts and the four-block southern overhead
+shaft. Remove those34 vertical blocks from the j term. For these falls only,
+use zero initial vertical velocity as the conservative tick-phase convention,
+with a permitted departure velocity between one ordinary gravity/drag update
+(-.0784000015258789 blocks/tick) and zero. Require ordinary gravity, no jump, fluids,
+climbable blocks, effects or midair obstruction, and the verified full landing
+support. Model each tick as movement at current velocity followed by
+`vy = (vy - .08) * .9800000190734863`, stopping on the landing collision.
+This includes the first zero-velocity tick; horizontal entry is separately
+budgeted. Landing decisions are already counted in n. An initial velocity outside
+that interval, different gravity or different collision state invalidates this
+nominal fall budget. Downward velocity within the interval can land sooner; the
+zero-velocity calculation is the charged phase convention, not a predicted exact
+landing time.
+
+The same pinned `LivingEntity.travel` obtains gravity, moves through
+`handleRelativeFrictionAndCalculateMovement`, subtracts gravity and then applies
+the quoted vertical drag for an ordinary non-flying actor. `getDefaultGravity`
+reads `Attributes.GRAVITY`, whose default is .08. These are source-derived
+nominal ticks, not timed server/player observations. Reproduce with the pinned
+`javap -c -p` command and classes `net.minecraft.world.entity.LivingEntity` and
+`net.minecraft.world.entity.ai.attributes.Attributes`.
+
+The executable finds373 step-vector changes, giving386 decision events after
+initial orientation and the twelve combat-boundary pauses. The fixed action
+protocol gives199 aiming/input events (112 removals,44 placements,12 buttons,
+31 container openings) and171 explicit hotbar selections (112 mining, ten column
+sequences, six combat phases,12 buttons and31 container actions). The acquisition
+allowance also covers closing each GUI before route movement resumes. No input
+pause is charged inside an already-started button transfer.
+
+The nominal fall recurrence gives11 ticks for four blocks and14 for six blocks,
+including its initial zero-velocity tick. Seven matched first descents therefore
+contribute86 ticks/4.3 seconds. The remaining134 vertical blocks use j. The six
+vine-limited horizontal transfer blocks use three blocks/s in all profiles.
+The complete conditional time in seconds is:
+
+`T = 1428/u + 6/3 + 134/j + 4.3 + 47.55 + 386n + 199a + 171s + 31k + v + 101.4/d`.
+
+| Phase, seconds | A | B | C |
+| --- | ---: | ---: | ---: |
+| Movement, including nominal initial falls | 425.90 | 631.30 | 1018.30 |
+| Active mining | 47.55 | 47.55 | 47.55 |
+| Navigation/phase decisions | 193.00 | 386.00 | 579.00 |
+| Targeting/interaction inputs | 49.75 | 99.50 | 199.00 |
+| Explicit hotbar selections | 42.75 | 85.50 | 171.00 |
+| Conditional acquisition | 31.00 | 62.00 | 124.00 |
+| Final verification | 2.00 | 4.00 | 8.00 |
+| Noncombat subtotal | 791.95 | 1315.85 | 2146.85 |
+| P6 combat | 101.40 | 135.20 | 202.80 |
+| Complete conditional task | 893.35 | 1451.05 | 2349.65 |
+
+Report approximately893/1451/2350 seconds, or14.9/24.2/39.2 minutes, preserving
+profile and P6 conditions. These are not percentiles, confidence limits, observed
+human times, expected first-clear times or guaranteed bounds. Their deliberate
+inspection returns, per-operation selections and conditional acquisition objective
+are part of this particular task, not claimed optimal play.
+
+The fresh-tool assumption has a nominal durability check. The43 web removals
+consume86 sword durability and the156 nominal hits consume156, totaling242 of
+the iron tier's250 uses. This leaves only eight nominal uses. The62 pick-mined
+blocks consume62 of the diamond tier's1561 uses. Other declared removals use
+the empty hand. `SwordItem.createToolProperties` sets damage per mined block to
+two, `SwordItem.postHurtEnemy` charges one, `Tier.createToolProperties` sets one
+per pick-mined block, and `Item.mineBlock` applies that component on nonzero-
+hardness blocks. `Tiers` supplies the250/1561 capacities. Reproduce with the
+same pinned `javap -c -p` command and classes `net.minecraft.world.item.SwordItem`,
+`net.minecraft.world.item.Item`, `net.minecraft.world.item.Tier` and
+`net.minecraft.world.item.Tiers`. Extra durability loss or insufficient remaining
+durability invalidates the no-restocking case; no actual tool wear is measured.
+
+Reproduce movement, action counts, matched falls and the complete table with
+`uv run python -m evidence.item-13.underground_temple_route`. Source/P6 nominal
+attack arithmetic remains reproduced in the preceding section. The complete
+timing case now accounts for every declared phase, while preserving the distinction
+between source-derived work, geometry, provisional allowances and unobserved
+runtime success. Family/variant coverage and the remaining quality assessments
+are still required before this family or Item13 can be complete.

@@ -173,27 +173,27 @@ The report now delineates25 activity spaces with coordinate footprints and
 partition sensitivity (source corridors, alcoves and tower transit floor).
 All31 reward nodes, nine spawners and nine lit campfires allocate exactly once.
 The primary potential-content definition gives0/25 empty/dead rooms; this is not
-observed occupancy or player engagement. Complete traversal still requires
-coordinate/phase integration. Do not replace it with fixture counts.
+observed occupancy or player engagement. The full route and conditional task
+model now provide separate movement and phase accounting.
 
 The contracted inspected graph now has61 nodes/60 edges, one component and no
 inter-room cycles under the declared remedies. It has21 decision nodes; deepest
 rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
-by graph depth is integrated. Complete coordinate/phase traversal is still pending.
+by graph depth is integrated. Complete conditional timing is now recorded.
 The support check now rejects a mined floor; its direct negative case passes.
 The post-construction circuit covers all25 rooms and31 reward stations. Adding
 three initial shaft-placement detours and the southern source-floor approach
 now gives1,434H/84 ascent/84 descent. All112 removal targets have visited ray
 stations; forward western source access passes against restored local obstacles.
-Construction action order, initial falls, inputs and acquisition still need
-complete timing integration. No actual gameplay or acquisition is measured.
+The complete P6 task now budgets893/1451/2350s across A/B/C, with explicit
+actions, initial falls,31 conditional acquisitions and failure rules. No actual
+gameplay or acquisition is measured.
 
 P6 defines54 stipulated occupied-source enemies with exact-class suppression;
 nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
-Next integrate construction/actions, P6 and sculk conditions into complete timing,
-then finish hazards, finale, bypasses/replay and the other three reads. No runtime
-process is active. The four-layer PNG is retained; SVG is ignored raw.
-
+Next finish hazards, finale, bypasses/replay and the other three reads. P6 sculk
+response is explicitly censored, not observed absent. No runtime process is active.
+The four-layer PNG is retained; SVG is ignored raw.
 Courtyard andcentral-End gaps require checking other retained raw before experiments.
 
 Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and
