@@ -835,3 +835,88 @@ assert slabs=={(111,182,461),(111,182,454),(120,182,456),
 print('Surface legs verified:',totals,'plus prior 10-block western link; six slab inserts.')
 PYRAMID_SURFACE
 ```
+
+## Remaining-height inspection predeclaration
+
+The connected objective routes do not yet justify a whole-envelope room/depth
+claim. Inspect the retained lower/upper bands before synthesis, reusing the raw
+extraction and selected-layer renderer. Predeclare representative layers Y134,
+149,159,168,185,189,193,196 to show lower mass/shaft context and upper silhouette.
+Budget one conversion at 180 seconds and 24 MiB combined SVG/PNG; no full-sheet
+retry, fresh world or runtime experiment. Exact block queries across the remaining
+bands complement these representative views rather than treating eight slices
+as exhaustive visual coverage.
+
+Initial direct shaft inspection establishes water at (121,Y160..181,451), with
+stone at (121,159,451). The three adjacent columns (120,451), (120,452), (121,452)
+are stone through Y160..177. The shaft is not an open bottom exit. Below Y159,
+air reappears outside the lower solid mass, separated from this water column by
+the stone cap. This is a saved-fluid/geometric finding; swimming, breathing,
+water-flow traversal and actual player outcomes remain unmeasured. No extra
+chamber or traversal depth is assigned merely from this narrow water column.
+
+The [height-context sheet](mss-desert_pyramid-height-context.png) completed with
+clean exit in 3.54 seconds (user 3.55, system 0.07). SVG size is 4,549,846 bytes;
+PNG is 83,941 bytes at 2972x1506, combined 4,633,787 bytes. It passes the declared
+runtime/storage budget. The agent inspected the rendered sheet: labels are clear,
+the lower samples show irregular solid support mass, and the upper samples show
+a tapering solid cap plus the smaller canopy above the surface chest/water area.
+The final six envelope layers Y191..196 contain only air. Their inclusion in the
+assembly envelope is not six extra floors or extra playable height.
+
+At Y185 the only horizontally enclosed air cells are X120..121,Z451..452. They
+have air below at Y183/184 and spruce slabs above at Y186. They belong to the
+already identified surface canopy, not another standing floor. Y186..196 have
+no horizontally enclosed air cells. In the lower Y134..168 band, every air
+component touches that band's boundary under six-neighbor connectivity. A
+horizontal-only scan found small apparent pockets in fifteen layers, but none
+is fully enclosed in three dimensions within this band. Connectivity here is a
+voxel observation, not an actor route: narrow holes, the band boundary and open
+terrain are not automatically playable rooms. Together with the exact source
+positions and selected views, this supports treating the large lower silhouette
+as support/terrain context and the upper cap as visual height, rather than
+substituting the 63-layer envelope for dungeon depth. The capped water shaft
+remains a separate optional fluid cavity, not a measured swimming route.
+
+Reproduce the selected view with the earlier renderer command, using
+`--layers 134 149 159 168 185 189 193 196`, and the same bounded conversion.
+Reproduce the remaining-band air/connectivity check:
+
+```sh
+uv run python - <<'PYRAMID_BANDS'
+import collections, gzip, hashlib, importlib, json
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+remaining={(x,y,z) for x in range(99,152) for y in range(134,169)
+           for z in range(440,488) if s(c,x,y,z)['Name']=='minecraft:air'}
+while remaining:
+    start=min(remaining); remaining.remove(start)
+    queue=collections.deque([start]); edge=False
+    while queue:
+        x,y,z=queue.popleft()
+        edge |= x in (99,151) or y in (134,168) or z in (440,487)
+        for q in ((x+1,y,z),(x-1,y,z),(x,y+1,z),(x,y-1,z),(x,y,z+1),(x,y,z-1)):
+            if q in remaining:
+                remaining.remove(q); queue.append(q)
+    assert edge
+for y in range(185,197):
+    air={(x,z) for x in range(99,152) for z in range(440,488)
+         if s(c,x,y,z)['Name']=='minecraft:air'}
+    seen={q for q in air if q[0] in (99,151) or q[1] in (440,487)}
+    queue=collections.deque(seen)
+    while queue:
+        x,z=queue.popleft()
+        for q in ((x+1,z),(x-1,z),(x,z+1),(x,z-1)):
+            if q in air and q not in seen:
+                seen.add(q); queue.append(q)
+    assert air-seen==({(120,451),(120,452),(121,451),(121,452)} if y==185 else set())
+    if y>=191:
+        assert len(air)==53*48
+assert s(c,121,159,451)['Name']=='minecraft:stone'
+assert all(s(c,121,y,451)['Name']=='minecraft:water' for y in range(160,182))
+print('Remaining-band geometric conditions verified; no actor traversal inferred.')
+PYRAMID_BANDS
+```
