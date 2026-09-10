@@ -220,3 +220,88 @@ for x,y,z in ((427,144,312),(414,169,310)):
 print('Lower pocket and main ladder/upper-chest local conditions pass.')
 SMALL_TOWER_ACCESS
 ```
+
+## Inter-island connector: declared construction and checked geometry
+
+The direct line between the lower station and middle source is not a native
+level walkway. At Z310,Y157, X418..427 are air. X416..417 are oak-leaf support,
+with another leaf at (417,158,310). The middle landing is blocked at X414..415,
+Y158/159. Do not infer connectivity from the shared component envelope or count
+the leaves as a durable constructed bridge. This rejects that direct walk,
+without claiming that every possible native/parkour route has been exhausted.
+
+Predeclare a 14-scaffold tower and 13-cobblestone connector after completing the
+lower pocket. Remove short grass at (428,144,309), then stand at
+(428.5,144,309.5), on grass at Y143. Place the first scaffold at (428,144,310) on
+its full grass support; the placement ray to the floor top is unobstructed and
+within reach, with the actor outside the target cell. Extend upward through Y157
+using thirteen further scaffold side-clicks. All fourteen cells are saved air,
+as are Y158/159 above. Reuse the pinned scaffolding extension and distance-zero
+support rules already established for the Nether Tower. Do not substitute
+horizontal scaffold extension beyond its supported distance limit.
+
+Enter the column and climb from feet Y144 to Y158. The first bridge placement
+requires a specific distinction from ordinary crouched edge building: crouching
+on scaffolding can descend through it. Use an upright first edge station at
+(427.9,158,310.5), retaining 0.2 blocks of overlap with the scaffold top. Aim at
+(428,157.95,310.5), its exposed west upper-rim face, to place cobblestone at
+(427,157,310). The ray is about 1.673 blocks from upright eye Y159.62 and reaches
+the rim from outside its west face. The actor's feet are above the placed block,
+and the new cobblestone then supports the transition to ordinary crouched
+building. This is a stipulated precise stationary placement, not observed play.
+
+Extend west to X418 with nine more cobblestone blocks at Y157,Z310. Every target
+cell and both body cells above it are air. Use the previously established
+crouched edge-placement geometry on the new full blocks. From the supported
+X418 station, remove the leaf at (417,158,310), then replace the leaf floor at
+(417,157,310) with cobblestone before entering it. Replace (416,157,310) similarly
+from X417. Thus neither leaf floor is retained as required support.
+
+From X416 at feet Y158, remove the two east-facing wall blocks at
+(415,158,310) and (415,159,310), retaining the stone floor Y157. From the cleared
+X415 station remove (414,158,310) and (414,159,310), again retaining its stone
+floor. Their near vertical faces are within reach. From X414, disable the wither-skeleton
+source at (413,157,310) using its exposed top, then fill that floor cell with the
+thirteenth cobblestone. This prevents source removal from leaving a hole in the
+connector. Reach (412.5,158,310.5), then move south one block to the already
+verified main-ladder station (412.5,158,311.5).
+
+The exact nine removals for this connector, including its source objective, are:
+
+| Position | Saved block |
+| --- | --- |
+| (428,144,309) | short grass |
+| (417,158,310) | oak leaves |
+| (417,157,310) | oak leaves |
+| (416,157,310) | oak leaves |
+| (415,158,310) | cobblestone |
+| (415,159,310) | mossy cobblestone |
+| (414,158,310) | andesite |
+| (414,159,310) | andesite |
+| (413,157,310) | wither-skeleton spawner |
+
+After those specified changes, every centerline column X412..428 at Z310 has
+clear body cells Y158/159. The retained floor cells are grass at X412 and stone
+at X414/415; new cobblestone occupies X413, X416..427, and the scaffold top supplies
+X428. This continuous source-shape model joins the islands with fourteen blocks
+of vertical rise and sixteen horizontal blocks across their gap/landing line.
+It also connects to the main ladder through the checked one-block south exit.
+
+Outbound movement from the lower station includes two horizontal blocks to visit
+the scaffold-placement station and enter the column, fourteen vertical blocks,
+then seventeen horizontal blocks to the main ladder station. The reverse journey
+uses seventeen horizontal and fourteen vertical blocks, ending at the original
+lower coordinates inside the retained distance-zero scaffold column. Hence the
+connector out-and-back is 36 horizontal and 28 vertical blocks. The first
+0.6-horizontal-block edge adjustment is already within the crossing distance;
+it must be timed upright rather than as crouching on the scaffold. Later bridge
+movement uses the appropriate declared crouch allowance. Precise allocation and
+all mining/placement costs remain for the complete timing table.
+
+The middle source is now removed as part of connector construction. Do not also
+charge the earlier two-horizontal-block source detour in the full objective.
+The main-ladder/upper-chest branch consequently contributes eight horizontal and
+22 ladder blocks after arrival. This route costs more than local access alone;
+no global minimum-construction claim is made. No construction or traversal was
+performed in the accepted world, and any unsupported placement, fall, unexpected
+block update or inaccessible target censors the conditional task.
