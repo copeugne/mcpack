@@ -238,3 +238,8 @@ two-block bridge. Central debris/lodestone/netherite outcomes are supported by
 baseline/control cubes and the single missing-material diagnostic, with
 [verified raw custody](../basalt-variant/custody/README.md). These are local family
 results under the modeled/inspection scope, not full Item13 completion.
+
+The [modular Nether fortress](adorabuild-nether-fortress-report.md) now has a
+predeclared two-seed sample and its first accepted block extraction/view. Its
+lava-filled large tower, three chest assignments and slab/bridge candidates are
+integrated; playable topology and complete task accounting remain IN PROGRESS.

@@ -177,3 +177,10 @@ pass:244 members,503-file downloaded world and identical2,197-cell verification.
 No runtime remains active. Continue the remaining family/variant coverage from
 the existing inventory and accepted starts; do not repeat this completed diagnostic.
 Do not generate new survey worlds or treat15 pieces as rooms.
+
+Next family: [modular Nether fortress](evidence/item-13/fixed-blocks/adorabuild-nether-fortress-report.md).
+Two selected existing seed roles collectively cover all eight templates. Ordinary
+r2 is extracted/viewed:32,364 cells,6,992 bytes,4.984122s,three saved chest tables.
+The large tower authors lava, not a23-block playable interior; slab climbs and
+bridge connections need actor validation. Complete this representative task and
+quality assessment before extracting the selected biome-diverse r1 assembly.
