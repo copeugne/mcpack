@@ -173,8 +173,14 @@ The report now delineates25 activity spaces with coordinate footprints and
 partition sensitivity (source corridors, alcoves and tower transit floor).
 All31 reward nodes, nine spawners and nine lit campfires allocate exactly once.
 The primary potential-content definition gives0/25 empty/dead rooms; this is not
-observed occupancy or player engagement. The joined room graph, depth and
-complete task still require integration. Do not replace them with fixture counts.
+observed occupancy or player engagement. Complete traversal still requires
+coordinate/phase integration. Do not replace it with fixture counts.
+
+The contracted inspected graph now has61 nodes/60 edges, one component and no
+inter-room cycles under the declared remedies. It has21 decision nodes; deepest
+rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
+by graph depth is integrated. Complete coordinate/phase traversal is still pending.
+The support check now rejects a mined floor; its direct negative case passes.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

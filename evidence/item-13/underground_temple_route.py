@@ -61,6 +61,7 @@ def clear(box):
 def verify_path(points, *, crouch_up=False):
     """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
     for x, y, z in points:
+        assert (x, y - 1, z) not in removed, ("removed support", (x, y, z))
         s = at(c, x, y - 1, z)
         n = s["Name"]
         assert n in {
@@ -1229,6 +1230,12 @@ for position, name in {
     (-244, 32, 28): "creatingspace:nickel_ore",
     (-252, 31, 13): "minecraft:air",
     (-252, 32, 13): "minecraft:sculk_vein",
+    (-300, 33, 25): "minecraft:sculk",
+    (-300, 33, 24): "minecraft:stone",
+    (-295, 27, -18): "minecraft:stone",
+    (-317, 33, 24): "minecraft:stone",
+    (-317, 33, 32): "minecraft:stone",
+    (-321, 33, 28): "minecraft:stone",
 }.items():
     assert at(c, *position)["Name"] == name
 campfire = at(c, -245, 33, 29)
@@ -1286,3 +1293,86 @@ for entity in c["block_entities"]:
         assert state["Properties"]["waterlogged"] == "false"
 for room, counts in room_entities.items():
     print("Activity footprint", room, dict(counts))
+
+# Contract locally inspected transitions. This does not replace the remaining
+# complete coordinate-route/phase integration or a runtime traversal observation.
+graph_children = {
+    "R01": ("J01", "J02", "J03", "R02"),
+    "J01": ("R03", "R17"),
+    "R03": ("R04",),
+    "R04": ("J07",),
+    "J07": ("R05", "T07"),
+    "R05": ("J08",),
+    "J08": ("R06", "J09", "J10"),
+    "J09": ("R07", "J11", "T08"),
+    "J11": ("T09", "T10"),
+    "J10": ("R08", "R24", "R25"),
+    "J02": ("T01", "J04"),
+    "J04": ("R13", "T02", "T03"),
+    "R13": ("J05",),
+    "J05": ("R14", "R23"),
+    "J03": ("R12", "R18", "R21"),
+    "R12": ("J06",),
+    "J06": ("R11", "T04", "J19"),
+    "J19": ("T05", "T06"),
+    "R02": ("J12", "J16", "J17"),
+    "J12": ("R09", "J13"),
+    "J13": ("R10", "J14"),
+    "J14": ("R19", "T11", "J15"),
+    "J15": ("T12", "T13"),
+    "J16": ("R22", "T14"),
+    "J17": ("R15", "R16"),
+    "R15": ("J18",),
+    "J18": ("T15", "T16", "T17"),
+    "R16": ("R20",),
+}
+graph_edges = [(parent, child) for parent, children in graph_children.items() for child in children]
+graph_nodes = {node for edge in graph_edges for node in edge}
+assert {node for node in graph_nodes if node.startswith("R")} == set(room_bounds)
+adjacency = {node: set() for node in graph_nodes}
+for parent, child in graph_edges:
+    assert child not in adjacency[parent], (parent, child)
+    adjacency[parent].add(child)
+    adjacency[child].add(parent)
+depth = {"R01": 0}
+frontier = ["R01"]
+while frontier:
+    following = []
+    for node in frontier:
+        for neighbor in sorted(adjacency[node] - depth.keys()):
+            depth[neighbor] = depth[node] + 1
+            following.append(neighbor)
+    frontier = following
+assert depth.keys() == graph_nodes
+print(
+    "Contracted inspected graph:",
+    len(graph_nodes),
+    "nodes;",
+    len(graph_edges),
+    "edges; one component;",
+    len(graph_edges) - len(graph_nodes) + 1,
+    "independent cycles",
+)
+print("Decision nodes:", sorted(n for n in graph_nodes if len(adjacency[n]) >= 3))
+print("Leaf nodes:", sorted(n for n in graph_nodes if len(adjacency[n]) == 1))
+print("Entry R01 edge depths:", json.dumps(dict(sorted(depth.items()))))
+reward_depths = Counter()
+source_depths = Counter()
+for room, counts in room_entities.items():
+    reward_depths[depth[room]] += counts["minecraft:chest"] + counts["minecraft:barrel"]
+    source_depths[depth[room]] += counts["minecraft:mob_spawner"]
+print("Reward assignments by contracted edge depth:", dict(sorted(reward_depths.items())))
+print("Saved sources by contracted edge depth:", dict(sorted(source_depths.items())))
+
+# Direct regression for the raw-support/hypothetical-removal boundary.
+verify_path([(-288, 37, -3)])
+removed.add((-288, 36, -3))
+support_rejection = None
+try:
+    verify_path([(-288, 37, -3)])
+except AssertionError as failure:
+    support_rejection = failure.args
+finally:
+    removed.remove((-288, 36, -3))
+assert support_rejection == (("removed support", (-288, 37, -3)),)
+print("PASS hypothetical removed support is rejected; original scenario restored")

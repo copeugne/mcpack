@@ -1703,3 +1703,113 @@ This partition and allocation are ready for graph integration. Whole-assembly
 reachability, graph depth, complete route length and timing still depend on the
 joined objective and its source/environment conditions; the table does not
 substitute for that required complete-route validation.
+
+## Contracted first-assembly graph
+
+Contract the inspected paths between activity spaces, genuine decision openings
+and terminal inspection boundaries. R01 is the graph entry reference, not a
+verified surface entrance. This graph includes the declared mining/scaffold
+remedies and timed-door assumptions. It is not the untouched native graph.
+The explicit adjacency list is `graph_children` in the existing executable;
+edges are undirected for geometry and retain their construction prerequisites.
+This derivation uses the room partition above and actual local routes, not
+template connectivity. It does not yet prove one complete coordinate/phase route.
+
+Junction reference points and their incident branches are:
+
+| Node | Reference feet coordinate | Incident nodes |
+| --- | --- | --- |
+| J01 | (-288,39,-23) | R01, R03, R17 |
+| J02 | (-300,39,0) | R01, J04, T01 |
+| J03 | (-276,33,0) | R01, R12, R18, R21 |
+| J04 | (-300,33,7) | J02, R13, T02, T03 |
+| J05 | (-317,33,7) | R13, R14, R23 |
+| J06 | (-248,33,0) | R12, R11, T04, J19 |
+| J07 | (-288,31,-34) | R04, R05, T07 |
+| J08 | (-288,27,-22) | R05, R06, J09, J10 |
+| J09 | (-295,27,-22) | J08, R07, J11, T08 |
+| J10 | (-288,27,-14) | J08, R08, R24, R25 |
+| J11 | (-295,27,-29) | J09, T09, T10 |
+| J12 | (-275,39,28) | R02, R09, J13 |
+| J13 | (-270,39,28) | J12, R10, J14 |
+| J14 | (-252,33,28) | J13, R19, T11, J15 |
+| J15 | (-252,33,35) | J14, T12, T13 |
+| J16 | (-288,39,40) | R02, R22, T14 |
+| J17 | (-300,33,28) | R02, R15, R16 |
+| J18 | (-317,33,28) | R15, T15, T16, T17 |
+| J19 | (-241,33,0) | J06, T05, T06 |
+
+Other room-to-room links are R01/R02 through the overhead remedy, R03/R04
+through the first tower shaft, and R16/R20 through the southern source corridor
+exit. A small pocket inside a junction is not an additional graph arm: the west
+sides of J11/J15 and south side of J19 stop within the junction interior instead
+of passing through an opening. J17's north side is locally blocked by sculk at
+(-300,33,25), with stone at Z24; no extra onward link is assigned.
+
+| Endpoint | Inspected reference feet coordinate | Boundary disposition |
+| --- | --- | --- |
+| T01 | (-300,39,-16) | Upper western lava begins at Z-17 |
+| T02 | (-300,33,11) | Western lower southern lava begins at Z12 |
+| T03 | (-300,27,-8) | Western lower northern lava begins at Z-9 |
+| T04 | (-248,33,-5) | Previously inspected blind shaft and rim |
+| T05 | (-241,33,-3) | Stone cap at Z-4 |
+| T06 | (-238,33,0) | Stone cap at X-237 |
+| T07 | (-261,25,-34) | Inspected shaft rim; continuation below Y21 unresolved |
+| T08 | (-295,27,-19) | Stone at Z-18 |
+| T09 | (-295,27,-32) | Stone at Z-33 |
+| T10 | (-292,27,-29) | Masonry at X-291 |
+| T11 | (-252,33,14) | Exposed ledge; next vein is not a supporting floor |
+| T12 | (-252,33,38) | Calcite at Z39 |
+| T13 | (-249,33,35) | Calcite at X-248 |
+| T14 | (-283,39,40) | Southern upper lava begins at X-282 |
+| T15 | (-317,33,25) | Stone at Z24 |
+| T16 | (-317,33,31) | Stone at Z32 |
+| T17 | (-320,33,28) | Stone at X-321 |
+
+The executable derives61 nodes (25 rooms,19 junctions,17 boundary endpoints),
+60 edges and one connected component. Its cycle rank is0. There are21 decision
+nodes of degree at least three: all19 listed junctions plus the two main halls.
+There are33 graph leaves:16 terminal activity rooms and17 boundary endpoints.
+Those33 leaves are not33 empty rooms or33 proven sealed dead ends. In particular,
+lava approaches and exposed/below-boundary endpoints remain censored graph
+boundaries. Internal hall rings and library aisle loops remain internal geometry
+and do not add an inter-room cycle under this contraction.
+
+Shortest graph distances from R01 reach the deepest activity spaces R07,R08,R24
+and R25 at eight edges. The deepest nodes are T09/T10 at nine edges. These values
+depend on the declared contraction and engineering remedies; they are not
+Minecraft generation depth, room count traversed, route-block distance or terrain
+cover. No authored finale has been inferred from the deepest node.
+
+| Shortest contracted edge depth from R01 | Chest/barrel assignments | Saved spawners |
+| --- | ---: | ---: |
+| 0 | 4 | 0 |
+| 1 | 4 | 0 |
+| 2 | 3 | 1 |
+| 3 | 3 | 3 |
+| 4 | 2 | 0 |
+| 5 | 1 | 1 |
+| 6 | 0 | 0 |
+| 7 | 6 | 0 |
+| 8 | 8 | 4 |
+| Total | 31 | 9 |
+
+The fixture allocation and breadth-first graph distances produce this table
+directly. It locates potential rewards and source workload; neither distribution
+is generated loot or realized combat. It also shows that assigning every reward
+to one supposed final room would contradict the saved layout.
+
+During integration, strengthen the existing support check to reject a declared
+standing cell when its supporting cell is in the hypothetical removal set.
+Reading only the original block at that location would incorrectly permit a
+later route to stand over a mined floor. All existing local route checks pass
+with this stricter phase boundary. The raw blocks remain unchanged. The full
+coordinate/phase route must still account for supported transitions, temporary
+columns, door deadlines and task order before these contracted results become
+an accepted complete traversal measurement.
+
+The direct support regression first accepts(-288,37,-3), temporarily marks its
+Y36 support removed, requires the precise removed-support rejection, and restores
+the hypothetical set. It passes along with all local routes, fixture allocation,
+graph derivations, Ruff formatting/lint and type checks. No server experiment,
+actual removal or runtime timing is implied.
