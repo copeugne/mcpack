@@ -31,7 +31,7 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                             )
                             assert not overlap(box, plate)
                         continue
-                    if n in {"minecraft:air", "minecraft:vine"} or (
+                    if n in {"minecraft:air", "minecraft:cave_air", "minecraft:vine"} or (
                         n == "minecraft:sculk_vein"
                         and state["Properties"]["waterlogged"] == "false"
                     ):
@@ -76,6 +76,14 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                     "minecraft:stone",
                     "minecraft:cobblestone",
                     "minecraft:calcite",
+                    "minecraft:sandstone",
+                    "minecraft:orange_terracotta",
+                    "minecraft:blue_terracotta",
+                    "minecraft:cut_sandstone",
+                    "minecraft:chiseled_sandstone",
+                    "minecraft:smooth_sandstone",
+                    "minecraft:sandstone_stairs",
+                    "minecraft:smooth_sandstone_stairs",
                 }, ((x, y, z), s)
                 if n == "minecraft:gravel":
                     assert at(c, x, y - 2, z)["Name"] in {

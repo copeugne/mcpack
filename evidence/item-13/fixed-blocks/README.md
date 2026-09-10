@@ -4,6 +4,8 @@ Status: selected local assessments and complete-task corrections are integrated.
 Current family/material coverage is reconciled in [coverage](../coverage.md#reconciled-local-results-2026-09-10).
 The extraction-stage pending statements below are historical, not instructions to
 repeat completed work. The second Underground Temple assembly remains incomplete.
+The [Desert Mimic complete local case](towns-and-towers-desert-mimic-report.md)
+adds the bounded recovery analysis, including its phase clock and conditional task.
 Protocol: `item13-fixed-blocks-v1`, declared in [coverage](../coverage.md).
 The raw `protocol_sha256` binds the unchanged shared definitions in
 [protocol.md](../protocol.md); the fixed-block declaration is preserved by this

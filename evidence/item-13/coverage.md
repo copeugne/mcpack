@@ -7,10 +7,11 @@ expensive expansion still require exact case selection and resource bounds.
 
 ## Reconciled local results, 2026-09-10
 
-This recovery pass integrates existing reports only. It does not rerun worlds,
-geometry, source classification or accepted models. The 192-family population
+The initial recovery pass integrated existing reports without rerunning worlds,
+geometry, source classification or accepted models. The bounded Desert Mimic
+whole-case follow-up adds the local result linked below. The 192-family population
 and all root/material scope descriptions below remain binding. The following
-18 families have at least one complete local sample assessment. Fifteen satisfy
+19 families have at least one complete local sample assessment. Sixteen satisfy
 their declared local sampling scope; three remain partial. This is not a whole-item
 exit gate or a claim of reviewed main delivery.
 
@@ -34,6 +35,7 @@ exit gate or a claim of reviewed main delivery.
 | adorabuild_structures:nether_fortress | [Two distinct-seed assemblies and eight components](fixed-blocks/adorabuild-nether-fortress-report.md#second-complete-conditional-model-and-local-gate), full local tasks and quality | None within declared scope; native failures remain baseline results |
 | explorations:slime_cave | [Both processed height states](fixed-blocks/explorations-slime-cave-report.md#negative-case-result-and-material-comparison), complete local tasks with [corrected breaking cost](fixed-blocks/explorations-slime-cave-report.md#narrow-correction-spawner-breaking-cost) | None within declared scope; source-supported mixed-height processing is not a third template |
 | explorations:underground_temple | [First full assembly, scoped hall and failure](fixed-blocks/explorations-underground-temple-report.md); all four tower tasks and bedroom in second assembly | Second full graph/circuit/task, remaining four reward accesses and fifth source, room/content allocation and quality synthesis; wet-shaft link unresolved. All selected raw blocks already exist |
+| towns_and_towers:desert_mimic | [Complete fixed case](fixed-blocks/towns-and-towers-desert-mimic-report.md#integrated-topology-task-and-quality-result), six-room partition, constructed return, source/reward work and external breach | None within the declared single fixed three-component design; human timing and realized encounters remain unmeasured |
 
 The Moog scope declares one complete occurrence per fixed alternative, with two
 only for the three named procedural families. Generic later reminders about
@@ -78,12 +80,12 @@ The recovery columns below are planning/accounting annotations, not quality scor
   central-End raw and feature-specific evidence before declaring an experiment.
   Partial candidates and omit-Sparse controls remain separate contextual evidence.
 
-Among the 174 families with no local report, 26 have B-positive inputs, 17 more
+Among the 173 families with no local report, 25 have B-positive inputs, 17 more
 have P-positive inputs, and Starlight Voyager has the already verified Item 7
 pair. The other 130 lack a full start-based candidate in those three indexes.
 The latter includes the central-End lifecycle case with raw evidence awaiting
 integration. Therefore 130 is neither a count of necessary experiments nor proof
-that existing evidence is exhausted. Material coverage within the 44 input-ready
+that existing evidence is exhausted. Material coverage within the 43 input-ready
 families also remains incomplete. No new broad generation is authorized here.
 
 The row case floors use the declared single/two-occurrence rules, explicit root
@@ -99,9 +101,9 @@ satisfied by random examples. Scope rows remain the acceptance authority.
 | Cost class | Families in scope | Families with local scope remaining | Minimum case completions remaining |
 | --- | ---: | ---: | ---: |
 | Compact | 2 | 1 | 4 |
-| Fixed | 126 | 114 | 250 |
+| Fixed | 126 | 113 | 249 |
 | Modular | 64 | 62 | 276 |
-| Total | 192 | 177 | 530 |
+| Total | 192 | 176 | 529 |
 
 These are remaining assessment units, not new extraction counts, independent-world
 counts or an end-to-end ETA. [Effort measurement and unresolved costs](README.md#remaining-effort-and-next-bounded-work)
@@ -579,7 +581,7 @@ whole-template alternatives remain within one root and need separate coverage.
 | integrated_stronghold:stronghold | Same root | Overworld | Procedural fountain-rooted dining/library/prison/portal system. Both this and Better Strongholds remain separate active custom types; no Eye-of-Ender outcome is inferred | Modular; 2; B0, P0. No local result. |
 | integrated_villages:village | Twelve roots listed below | Overworld | Each architectural/placement design, including elevated airship, coastal, submerged and Quark-dependent content. Two distinct-seed sites per procedural design; empty-data Mossy Mounds spawner is not a default enemy | Modular; 24; B2, P0. No local result. |
 | supplementaries:galleon | Same root; main plus hull/room/orlop/sail alternatives listed below | Overworld | Complete internal ship and spawn-box mechanisms, distinct from ordinary spawners; incompatible back02 connector remains a frozen rejection | Modular; 2; B0, P0. No local result. |
-| towns_and_towers:desert_mimic | towns_and_towers:mimic_desert | Overworld | Fixed-height three-component mimic assembly; the name is not an enemy mechanism | Fixed; 1; B2, P0. No local result. |
+| towns_and_towers:desert_mimic | towns_and_towers:mimic_desert | Overworld | Fixed-height three-component mimic assembly; the name is not an enemy mechanism | Fixed; 0; B2, P0. Local scope satisfied; see the reconciled report. |
 | towns_and_towers:ocean_outpost | towns_and_towers:pillager_outpost_ocean | Overworld | Ship/outpost at fixed Y58 with natural pillager override and actual aquatic access | Fixed; 1; B0, P0. No local result. |
 | towns_and_towers:outpost_fort | Nine roots listed below | Overworld | All enclosure-oriented layouts and their encounter/reward fixtures | Fixed; 9; B0, P0. No local result. |
 | towns_and_towers:outpost_tower | Sixteen roots listed below | Overworld except ineligible Nilotic | All fifteen naturally eligible layouts. Nilotic has an empty resolved biome set, so it has a source-supported natural-sampling inapplicability disposition, not a missing generated sample | Fixed; 15; B0, P0. No local result. |
@@ -895,7 +897,7 @@ for label in ('Compact','Fixed','Modular'):
     print(label,len(values),sum(n>0 for n in values),sum(values))
 local_section=t.split('## Reconciled local results, 2026-09-10',1)[1].split('## Recovery input and effort accounting',1)[0]
 local=set(re.findall(r'^\| ([a-z_]+:[a-z0-9_/]+) \|',local_section,re.M))
-assert len(local)==18
+assert len(local)==19
 families={f['family_id']:f for f in json.loads((p/'intake.json').read_text())['families'] if f['included']}
 summary=json.loads((p/'start-inspection/summary.json').read_text())['family_root_dimension_candidates']
 full={r['id'] for group in summary.values() for r in group if r['start_status']=='SAVED' and not r['incomplete_chunks']}

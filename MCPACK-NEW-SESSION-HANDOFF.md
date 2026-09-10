@@ -81,9 +81,9 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest substantive pushed
-milestone is `16a70458`. Recovery documentation is a separate milestone; verify
-its current head against upstream.
+Current branch: `codex/item13-dungeon-quality`. Pushed recovery: `29a4fa6b`.
+The following Desert Mimic milestone is prepared on this branch; verify its
+current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -152,20 +152,21 @@ User explicitly requested this workflow reset on 2026-09-10. Apply the
 and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recovery-checkpoint-2026-09-10).
 These replace the previous narrow next-step sequence, not the specification gates.
 
-Recovery reconciliation is integrated in the existing coverage rows and requirement
-map:18 families have complete local sample evidence,15 satisfy declared local scope,
-three remain partial,174 lack local reports. The scope-derived remaining floor is
-530 case completions (4 compact,250 fixed,276 modular), not an experiment count.
-Among the174,26 have full baseline candidates,17 more adequate Item8 references,
-one the verified Item7 pair, and130 no full start-based candidate in these indexes.
-Central-End and other supplemental evidence still need exact gap matching.
+Recovery reconciliation is integrated in coverage and the requirement map:
+19 families have complete local sample evidence,16 satisfy local scope, three
+remain partial,173 lack local reports. Remaining floor:529 case completions
+(4 compact,249 fixed,276 modular), not an experiment count. Among the173,25 have
+full baseline inputs,17 more adequate Item8 references, one the Item7 pair,
+and130 no full indexed candidate. Match supplemental raw before new experiments.
 
-The bounded report/coverage reconciliation took654 seconds wall elapsed; it does
-not measure new case analysis. [Remaining effort](evidence/item-13/README.md#remaining-effort-and-next-bounded-work)
-records unknown unit, experiment, model, validation and review costs. No reliable
-completion ETA is established. Next: select and cap one unassessed fixed case
-with full saved inputs, then complete its whole local assessment and focused
-checks with phase clocks. Use this to price analysis, not just extraction.
+The [Desert Mimic whole-case report](evidence/item-13/fixed-blocks/towns-and-towers-desert-mimic-report.md)
+completes the required bounded fixed follow-up: six-room partition, constructed
+return, full conditional task, source/reward work, hazards and external breach.
+Selection/read120s; analysis/integration2,060s, total36m20s within45min. Its final
+checks and delivery clock are in the report. One complex case is not a uniform
+unit estimate; [remaining effort](evidence/item-13/README.md#remaining-effort-and-next-bounded-work)
+keeps total ETA UNKNOWN. Next: bound a coherent input-ready fixed group sharing
+existing mechanisms, preserving material differences. Do not restart this case.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet
