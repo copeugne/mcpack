@@ -684,3 +684,11 @@ conditional timing and quality synthesis. Its local sampling minimum is satisfie
 no unrequested extra repetition is inferred from generic batch reminders. The
 blackstone-temple central material alternatives remain a separate explicit gap.
 Other selected families and whole-item validation/review/delivery remain open.
+
+The five selected Adorabuild local assessments are now retained in
+[fixed-blocks](fixed-blocks/README.md). Crimson hall, End ship and wart house
+satisfy their one-occurrence fixed-layout minimum locally. Both temples are
+assessed only for their selected gold outcome. The next concrete coverage gap
+is their debris/lodestone processor outcomes; inspect existing candidates and
+source material behavior before proposing additional generation. Whole Item 13
+coverage, acceptance and reviewed main delivery remain IN PROGRESS.

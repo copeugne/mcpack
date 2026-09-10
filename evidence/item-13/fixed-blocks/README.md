@@ -220,3 +220,8 @@ The [wart-house assessment](adorabuild-nether_fortress_medium_1-report.md)
 completes the selected fixed case: two usable levels, a46-plant age0 field and
 three upper chests. Its conditional task visits the field and empties the three
 chests; crop harvesting remains an explicitly separate optional activity.
+
+The [Nether-temple gold assessment](adorabuild-nether_temple_medium_1-report.md)
+completes the fifth selected Adorabuild case. Its49-cell authored lava basin
+requires a declared catcher/ramp for the conditional gold task. Both temples
+still need explicit debris/lodestone outcome coverage before family closure.
