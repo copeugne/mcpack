@@ -18,7 +18,9 @@ Both Circle cases now have complete conditional budgets; the original overlap
 requires a repeated-batch source model. Medium House 2 now has a complete
 four-barrel task budget of 64/116/207 seconds. Medium House 1 has a complete
 three-container 68/119/202-second budget with pre-delay source disablement.
-The compact pilot still needs complete budgets. All 192 included families and final review/delivery remain required.
+The compact pilot now has complete local budgets (ocean 89/170/322 seconds;
+mountainous 71/134/252 seconds for two stipulated enemies). Every included
+family, material/repetition coverage and final review/delivery remain required.
 
 ## Authorized method and delivery boundary
 

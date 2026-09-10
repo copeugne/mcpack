@@ -1,8 +1,8 @@
 # Small-dungeon representative
 
-Status: historical representative inspection/model analysis PASS under v1;
-complete-objective timing is NOT PASSED under protocol v2. Existing survey and
-combat components remain valid within their original scope. This is two samples
+Status: local inspection/model analysis and complete conditional task timing
+recorded under protocol v2. Historical survey and combat components remain valid
+within their original scope. This is two samples
 of one of 192 included families, not Item 13 completion.
 It validates the compact-chamber measurement path before larger designs. The full
 material-variant sampling matrix remains unfinished.
@@ -125,3 +125,117 @@ change evidence. Memory measurement uses Python's existing resource module inste
 A [second extraction](reproduction.txt) reproduced the exact compressed bytes in
 54.701 seconds. Peak process RSS was 714,504 KiB, below the declared 2-GiB budget.
 This is a reproduction check of new logic, not a new world or independent sample.
+
+## Complete conditional tasks under protocol v2
+
+This section supersedes the earlier timing gap for these two local tasks. It
+reuses the immutable observations, coding and 22-block routes without regenerating
+worlds or reprocessing routes. Direct inspection resolves the missing container
+opening check: all eleven chests are saved single, non-waterlogged chests with
+cave air immediately above; all fourteen containers have no Lock or Items field.
+The three other containers are barrels. The earlier target-center rays enter
+inside the ordinary chest shape, so the inset chest face does not introduce an
+unexamined neighboring block. With no blocking entities, the existing pinned
+chest/barrel use rules support opening at the retained stations. This is conditional
+source/geometry access, not generated contents or observed transfer.
+
+Predeclare each complete objective from its existing staged interior boundary:
+ocean (428.5,21,-1.5), mountainous (84.5,42,2.5). Disable the central source,
+defeat its stipulated successful hostiles, transfer available contents from every
+listed container, and return alive to that same station. These boundaries use
+integer route cells plus 0.5 in X/Z, without adding 0.5 to feet Y. Outside cave
+travel, discovering the structure and preparing ingress remain excluded from
+this local objective. In particular, the ocean dry starting state presupposes
+controlled ingress; this model does not price excavation, drainage or establish
+a dry wall breach. The original water/cave-edge access limitations remain.
+
+Use the accepted adult, full-health/food, unenchanted iron armor/sword and diamond
+pickaxe actor, fully informed, dry and grounded, with sufficient durability and
+inventory capacity, 20 TPS, no effects, critical/sweep attacks, healing, building
+or assistance. Stipulate no initial or natural enemies, preserving source Delay20,
+SpawnCount4 and MinSpawnDelay200. Take the recorded source-first path, mine the
+source from its checked station, clear combat and return to that station, then
+follow the existing sorted-container route and return path. Combat duty includes
+pursuit/return and is not charged again as survey movement. Inventory overflow,
+new water flow into the route or any excluded encounter invalidates completion.
+
+The source approach is three upright blocks in either case. With speed u,
+decision n, interaction a and selection s, ocean disablement is
+3/u+0.95+3n+a+s, charging orientation, the approach turn and source ordering.
+Mountainous uses 2n because its straight prefix has no turn. The source break
+is the pinned diamond-pick 19-tick calculation. A/B/C give ocean
+3.55/5.70/8.45 seconds and mountainous 3.05/4.70/6.95 seconds. These are all
+strictly below (20+200)/20=11 seconds. At most one successful batch of up to four
+is possible under this countdown schedule. Failed spawn attempts remain possible;
+zero to four successful ordinary unarmored entities is the conditional population
+grid, not an observed count. If disablement misses that deadline, censor this grid
+instead of carrying its four-enemy ceiling into a later schedule.
+
+| Complete-task component | Ocean | Mountainous |
+| --- | ---: | ---: |
+| Upright travel blocks | 22 | 22 |
+| Decisions | 19 | 18 |
+| Target/menu interactions | 233 | 175 |
+| Tool selections | 2 | 2 |
+| Acquisition confirmations | 8 | 6 |
+| Source breaking seconds | 0.95 | 0.95 |
+| Active combat work per stipulated enemy | 2.6 seconds, skeleton | 1.95 seconds, spider |
+
+Decision counts are actual centerline direction changes (7 ocean, 8 mountainous),
+plus initial orientation, source ordering, combat transition, one planning event
+per container, and final return choice. A 180-degree reversal counts as a direction
+change. Menu inputs are 29 per container (open, 27 conditional transfer attempts,
+close), plus one source-mining target. Pickaxe then sword are the two selections;
+no later resource mining requires another selection. Inventory confirmation is
+separate from the menu-input allowance. One final verification allowance is added.
+All counts use the accepted A/B/C event allowances, with no new timing constants.
+
+| Conditional seconds | A | B | C |
+| --- | ---: | ---: | ---: |
+| Ocean noncombat task | 83.600000 | 162.950000 | 311.783333 |
+| Ocean, two successful skeletons | 88.800000 | 169.883333 | 322.183333 |
+| Mountainous noncombat task | 66.600000 | 128.950000 | 244.283333 |
+| Mountainous, two successful spiders | 70.500000 | 134.150000 | 252.083333 |
+
+Keep the composition visible. For other counts m=0..4, add 2.6m/duty or
+1.95m/duty to the relevant noncombat task. These sensitivity results are not
+probability intervals, typical human clears, guaranteed survival or global dungeon
+arrival-to-extraction times. Censor on death, failed access/transfer, overflow,
+water ingress, extra enemies/equipment, required healing, missed source deadline
+or interaction/mining/tick conditions outside the model. No physical trial or
+human observation occurred. All local quality dimensions now have their explicit
+modeled/inspection dispositions; remaining shell/theme variants and family-wide
+coverage are still required. Historical results.json retains its v1 survey and
+unbounded general active-source-clear fields; those are not this conditional v2 task.
+
+Reproduce these new direct checks and arithmetic with retained inputs:
+
+```sh
+uv run python - <<'PILOT_COMPLETE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/pilot/observations.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == '15860fb3692153b2bc6ac96cc0611655d498a7a976cfa5b953f424942712686e'
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for case in json.loads(gzip.decompress(raw))['cases']:
+    for b in case['block_entities']:
+        if b['id'] not in ('minecraft:chest','minecraft:barrel'):
+            continue
+        assert 'Lock' not in b and 'Items' not in b
+        if b['id'] == 'minecraft:chest':
+            x,y,z = b['x'],b['y'],b['z']
+            assert state(case,x,y,z)['Properties']['type'] == 'single'
+            assert state(case,x,y+1,z)['Name'] == 'minecraft:cave_air'
+profiles = [('A',5,.5,.25,.25,1,2,1),
+            ('B',4,1,.5,.5,2,4,.75),
+            ('C',3,1.5,1,1,4,8,.5)]
+for name,u,n,a,s,k,verify,duty in profiles:
+    for case,containers,decisions,prefix,attack in [
+            ('ocean',8,19,3,2.6),('mountainous',6,18,2,1.95)]:
+        disable = 3/u+.95+prefix*n+a+s
+        assert disable < 11
+        base = 22/u+.95+decisions*n+(29*containers+1)*a+2*s+containers*k+verify
+        print(name,case,'disable',disable,'noncombat',base,
+              'two successful enemies',base+2*attack/duty)
+PILOT_COMPLETE
+```
