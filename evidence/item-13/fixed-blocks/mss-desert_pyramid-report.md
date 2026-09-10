@@ -691,3 +691,41 @@ sources are the surface positions (110,181,464), (132,181,481) and (133,182,461)
 Their access and the surface links still need integration before claiming a
 complete circuit. This accounting does not mark the Pyramid sample or Item 13
 complete, and does not replace family repetitions or broader material coverage.
+
+## Surface source access and western entrance link
+
+The three remaining surface sources have exposed top faces. Each has a dry,
+full-block-supported adjacent station with air in both body cells and above the
+source. At each station use upright eye height 1.62 above feet and target the
+source top center. Each ray is 1.903786 blocks and does not cross another block:
+
+| Source | Station (X,feet Y,Z) | Top-face target |
+| --- | --- | --- |
+| Zombie (110,181,464) | (111.5,182,464.5) | (110.5,182,464.5) |
+| Husk (132,181,481) | (131.5,182,481.5) | (132.5,182,481.5) |
+| Husk (133,182,461) | (132.5,183,461.5) | (133.5,183,461.5) |
+
+The station floors are sandstone (111,181,464), sand (131,181,481), and sandstone
+(132,182,461), respectively. The ray volume occupies only the station and source
+columns above those floors. Removal leaves station support intact. These direct
+saved-block derivations complete local conditional access for eleven of eleven
+sources, but do not yet provide a single connected full-task route.
+
+A first western entrance-link check failed: the direct route along X111 at feet
+Y182 crosses air at (111,181,466), with actual sandstone support one block lower.
+The original eight-block level-walk candidate is rejected. No traversal occurred.
+Instead use this ten-block detour, all at feet Y182, with column coordinates
+converted to centers by adding 0.5:
+
+```text
+(114,469) -> (111,469) -> (111,467) -> (112,467)
+-> (112,465) -> (111,465) -> (111,464)
+```
+
+Direct queries of every traversed column confirm full sand/sandstone support at
+Y181 and air at Y182/183. The detour avoids both the depression at (111,466) and
+the two-high sandstone wall at (112,468). It needs no block changes, jumps or
+vertical transitions. Reversing it adds ten more horizontal blocks if the full
+objective returns to the same stair entrance. The eastern source stations and
+upper chest station still require surface links. Do not count local interaction
+coverage as complete traversal, timing or family sampling.
