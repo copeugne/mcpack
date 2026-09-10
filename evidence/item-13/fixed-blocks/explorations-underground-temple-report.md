@@ -3319,3 +3319,40 @@ for label, speed in [('dry grounded',8), ('submerged grounded',1.6),
     print(label, ticks, 2*ticks/20)
 MINING
 ```
+
+## Second assembly: upper shaft connection and exposed southern gap
+
+The same existing route check now connects the shaft's upper landing to the main
+hall's north threshold using saved solid support and adult clearance in both
+directions. From(194,26,343), move south to Z344, east to X196, then south to Z357.
+Feet remain26 through Z348 and rise one per block at Z349..354, reaching32. Continue
+south at X196 to Z367, east to X205, south to Z370, east to X208 and south to the
+already inspected hall threshold(208,32,376). This is47 horizontal and six ascending
+blocks one way, or94 horizontal and12 vertical blocks for a return. No mining,
+placement, fractional-floor exception or wet cell is used on this saved route.
+It is one verified route, not a shortest-path claim. The wet shaft below its upper
+landing remains separate and unresolved as recorded above.
+
+This integration prevents an incorrect graph edge inferred from nearby pieces.
+A proposed straight southern link at X196,feet32 from Z374 toward Z384 fails first
+at Z378: its supporting cell(196,31,378) is source water. All twelve inspected
+centerline cells X196,Y31..34,Z378..380 are source water. Immediately north,
+X196,Z377 has a full masonry floorY31 and airY32..34. Immediately south, X196,Z381
+has stone bricksY32/34 and chiseled stone bricksY33. Thus this centerline is a
+three-block external water gap followed by a solid wall, not a dry corridor
+between the nearby three-way pieces. The negative check retains the exact failed
+support state; the accepted route instead uses the chamber connection.
+
+The open air-to-water boundary at Z377/378 is direct saved-block evidence of an
+external fluid-access vulnerability on this northern branch. It supports a
+potential flooding/immersion concern and a possible external approach requiring
+wet movement; it does not establish realized flooding, safe swimming, a complete
+external entry route or a breach-free connection through the southern wall.
+Do not infer the cause from a missing template name or piece adjacency alone.
+The positive clearance statement is about saved geometry. Post-load fluid
+stability is not measured by these static checks and remains explicit uncertainty.
+
+Reproduce with `uv run python -m evidence.item-13.temple_ordinary_route`.
+All existing hall/chamber checks, the shaft construction checks and both added
+positive/negative connections pass; focused Ruff and type checks pass. No new raw
+read, experiment or geometry machinery is required for this integration.

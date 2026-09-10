@@ -82,7 +82,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `f3b24b97`; verify subsequent assessment commits against upstream.
+checkpoint is `353ce967`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -194,7 +194,7 @@ Second assembly: hall/chamber floor routes and eight chest rays pass. Shaft has1
 Wet-step r1 passed in20 native steps; raw custody/download restore verified.
 Continuous38-target r2 failed at outer ledge after18 landings; raw/download restore retained.
 Do not rerun/tune the controller. A two-removal/18-scaffold alternative passes solid geometry;
-wet movement/breathing remains unresolved. Other second-assembly route/quality work remains.
-Courtyard/central-End gaps: check retained raw first.
+Wet movement/breathing unresolved; upper landing to hall passes47H/6V.
+South apparent link has external water gap and a wall; second-assembly work remains.
 
 Item13 needs full coverage, clean Codex review/thumbs-up, merge and main verification; Item14 UNSTARTED.

@@ -166,3 +166,47 @@ print(
     "PASS shaft construction solid geometry: two removals, 18 scaffold placements in 5/8/5 stages; "
     "6.8 horizontal and 36 vertical blocks including two placement offsets; fluid motion unresolved"
 )
+
+shaft_upper_link = (
+    [(194, 26, z) for z in range(343, 345)]
+    + [(x, 26, 344) for x in range(195, 197)]
+    + [(196, max(26, min(32, z - 322)), z) for z in range(345, 358)]
+)
+shaft_chamber_link = (
+    [(196, 32, z) for z in range(357, 368)]
+    + [(x, 32, 367) for x in range(197, 206)]
+    + [(205, 32, z) for z in range(368, 371)]
+    + [(x, 32, 370) for x in range(206, 209)]
+    + [(208, 32, z) for z in range(371, 377)]
+)
+upper_access = shaft_upper_link + shaft_chamber_link[1:]
+verify(upper_access)
+verify(list(reversed(upper_access)))
+assert len(upper_access) - 1 == 47
+print("PASS shaft upper landing to hall north threshold: 47 horizontal, six ascent blocks")
+false_south_link = [(196, 32, z) for z in range(374, 385)]
+south_rejection = None
+try:
+    verify(false_south_link)
+except AssertionError as error:
+    south_rejection = error.args[0]
+else:
+    message = "water-filled inter-piece gap was accepted as a supported dry connection"
+    raise AssertionError(message)
+assert south_rejection == (
+    (196, 32, 378),
+    {"Name": "minecraft:water", "Properties": {"level": "0"}},
+)
+print("REJECT false south dry connection: water support at (196,31,378)")
+for z in range(378, 381):
+    for y in range(31, 35):
+        assert at(case, 196, y, z) == {
+            "Name": "minecraft:water",
+            "Properties": {"level": "0"},
+        }
+assert all(at(case, 196, y, 377)["Name"] == "minecraft:air" for y in range(32, 35))
+assert [at(case, 196, y, 381)["Name"] for y in range(32, 35)] == [
+    "minecraft:stone_bricks",
+    "minecraft:chiseled_stone_bricks",
+    "minecraft:stone_bricks",
+]
