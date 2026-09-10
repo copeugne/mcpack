@@ -82,8 +82,11 @@ a broad unrelated rewrite. Final delivery must retain an explicit disposition.
 The [first-house assessment](mns-medium-house-report.md) now records its local
 modeled quality and depth. The [second-house assessment](mns-medium_house_2-report.md)
 now records both validated vine links, modeled door opening, storage access,
-graph/depth sensitivity, timing and quality assessments. Both house variants
-retain full-runtime/human-observation limitations and pending raw-capture custody.
+graph/depth sensitivity and quality assessments. Its complete four-barrel model
+adds a checked three-scaffold branch beneath the roof barrel and gives conditional
+64/116/207-second totals. Both variants retain human-observation limitations;
+all three existing raw captures now have delivered custody. First-house complete
+timing and family repetitions remain pending.
 
 
 The [Nether Brick Circle assessment](mns-circle_nether_brick-report.md) records

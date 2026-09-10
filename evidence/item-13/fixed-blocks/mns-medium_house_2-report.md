@@ -1,7 +1,8 @@
 # Medium House 2: quality assessment
 
-Status: local modeled/inspection assessment recorded. Raw-capture custody and
-Item 13 delivery remain IN PROGRESS; no human gameplay is claimed.
+Status: local modeled/inspection assessment and complete conditional timing
+recorded. Raw-capture custody is delivered through the linked collision records.
+Family repetitions and Item 13 delivery remain IN PROGRESS; no human gameplay is claimed.
 
 Sample: full-mountainous-r2-baseline|minecraft:the_nether|mns:medium_house_2|1|7.
 [Saved blocks](mns-medium_house_2.json.gz), SHA-256
@@ -257,5 +258,116 @@ Both fixed Medium House alternatives now have local modeled/inspection quality
 assessments. Preserve their different entry states, links, enemy assignments and
 conditional roof access. Full runtime actor equivalence, actual interactions,
 generated/acquired loot and human times remain outside the observed metrics.
-Broader raw-capture custody, all other required families/material variants and
-the final review/merge/main delivery gate remain pending. Item 14 is UNSTARTED.
+Raw-capture custody now passes through the linked collision records. Required
+family/material repetitions and the final review/merge/main delivery gate remain
+pending. Item 14 is UNSTARTED. The complete local timing correction follows.
+
+## Complete four-barrel task and lower roof access
+
+This section completes the local conditional timing model. The previous north
+and south times remain movement-only components. Reuse the accepted A/B/C
+allowances, existing collision capture and checked north circuit. No new world,
+extraction or runtime experiment is needed. Direct block inspection is bounded
+by this one roof-access gap, using the retained 8,500-cell input.
+
+Predeclare a three-scaffold branch from the north circuit's lower horizontal
+segment. Stop at (17.5,34,112.5). Remove the floor crimson button at (16,34,112),
+then place scaffolding at (16,Y34..36,112) on the full polished-blackstone-brick
+floor at Y33. The upper two cells are air. Click the base side near its top
+rail to extend upward twice, reusing the pinned ScaffoldingBlockItem side-click
+rule recorded in the [Nether Tower assessment](mns-nether_tower-report.md#elevated-chest-explicit-scaffold-connection).
+Do not substitute top clicks, which request horizontal extension. All three
+blocks have distance zero through the supported column. From the adjacent
+station, the button center/top and base side are within three-block reach
+through otherwise empty body cells. Mine the button without activating it.
+
+Enter the column by walking one block west; climb three blocks to feet
+(16.5,37,112.5), standing upright on its top. The complete body is below Y38.8;
+saved Y37 and Y38 are air. Mine the stripped crimson stem at (16,39,112) from
+below. Its bottom is 0.38 above eye Y38.62. The barrel at (16,40,112) then has
+an unobstructed bottom-face ray of length 1.38 through the removed stem cell.
+Use the existing unlocked barrel interaction model, which has no chest-lid test.
+There is no need to remove the three upper cover blocks or stand inside the
+one-block-high roof cavity. The earlier external-roof breach remains an
+alternative conditional on reaching the roof; it is not the executed model here.
+
+Descend the same three scaffold blocks and return one block east to resume the
+north circuit. Keep the scaffold and breach in place. Crossing the base at feet
+Y34 while continuing the lower circuit uses the established scaffold interior
+climb/clearance model, not a full solid cube. It does not remove either vine link.
+The branch adds two horizontal and six vertical blocks, three placements and
+two removals. It adds a reward-interaction station within the existing lower
+room, not a third authored room or proof of a roof walking surface.
+
+The full task starts and ends at the existing local entry (19.5,34,115.5):
+open the declared right door leaf, inspect and transfer available contents from
+all four barrels, and return alive. Use one adult with full health/food,
+unenchanted iron armor/sword, diamond pickaxe and three scaffolds, no effects,
+flight, healing, additional construction or assistance, full layout knowledge
+and 20 TPS. Navigation from outside this local station is excluded explicitly.
+Generated items must fit the available inventory; overflow censors this task
+instead of inventing unlimited carrying capacity. The worked scenario contains
+no natural or other external enemies. Both unresolved-type spawners remain
+unchanged; the retained runtime lookup supplies zero resolvable ordinary-spawner
+workload, not two enemies to defeat or two mandatory block removals. No realized
+encounter or generated inventory is claimed.
+
+Take the roof branch on the outbound north circuit, then complete its existing
+three-barrel ledge visit and return. The approved vertical sensitivity rates
+1.5/1/0.75 replace the older movement-only vine rates for this complete task;
+these are conditional inputs, not calibrated climb observations.
+
+| Cost component | Complete task accounting |
+| --- | --- |
+| Travel | 22 upright horizontal, 2 crouched horizontal, 11 vertical (5 vine plus 6 scaffold) blocks |
+| Decisions | 20: initial door/orientation (1), three lower-floor turns each way (6), vine entry/exit at each end each way (4), ledge stand/crouch choices (2), final entry return choice (1), scaffold construction, entry/climb, mining stop, transfer, descent and route resumption (6) |
+| Interactions | 122: four 27-slot menus at 29 operations each (open, 27 conditional transfer attempts, close), one door opening, two removals and three placements |
+| Selections | 3: initial pickaxe, scaffold, pickaxe for the overhead stem |
+| Acquisition | Four accepted inventory-confirmation allowances, one after each barrel; menu inputs are counted separately |
+| Mining | 15 button ticks plus 60 stem ticks = 75 ticks / 3.75 seconds |
+| Combat | Zero for the explicitly encounter-free scenario; external mobs invalidate it |
+| Completion | One accepted verification allowance; all four transfers and live return required |
+
+Mining uses pinned Blocks.woodenButton strength 0.5 and netherStem strength 2,
+called by the crimson-button and stripped-crimson-stem registrations. Neither
+requires a correct tool for drops and neither is in the pinned pickaxe mining
+tag, so the declared diamond pick has speed 1 for these blocks. Grounded, dry,
+unmodified work is ceil(hardness*30)/20 seconds, not diamond speed 8. Source
+identity and javap reproduction reuse the [model-source notes](../model-source/README.md).
+The pickaxe-tag SHA is e31b952f7df00a46e2e442e601b1139e87085314364e9137381c71e66f55700f.
+
+Complete A/B/C conditional totals are **64.066667 / 116.416667 / 206.972222
+seconds**, approximately **64/116/207 seconds**. The long menu budget is explicit;
+zero modeled combat does not imply an instantaneous loot clear. Censor on failed
+placement or support, obstructed access, interaction/mining delay beyond the
+allowances, inventory overflow, death, required healing, unexpected enemies or
+changed tick conditions. No success probability or actual player time is inferred.
+Four of four saved barrel arrangements now have conditional access. Rewards remain
+three on the west ledge and one in the nonplayable roof cavity; this model does
+not relocate the fourth reward into a newly invented room. Family repetitions,
+other material layouts and Item 13 review/delivery remain pending.
+
+Reproduce the newly inspected cells and complete arithmetic:
+
+```sh
+uv run python - <<'HOUSE2_COMPLETE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-medium_house_2.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'c1fa53cbbae3cc48f56a48baacdfd80746bd937662a57db35d49f98b698447a6'
+c = json.loads(gzip.decompress(raw))['cases'][0]
+s = importlib.import_module('evidence.item-13.render_pilot').state_at
+expected = {33:'polished_blackstone_bricks',34:'crimson_button',
+            35:'air',36:'air',37:'air',38:'air',39:'stripped_crimson_stem',40:'barrel'}
+for y,name in expected.items():
+    assert s(c,16,y,112)['Name'] == 'minecraft:'+name
+for y in (34,35):
+    assert s(c,17,y,112)['Name'] == 'minecraft:air'
+profiles = [('A',5,1.5,1.5,.5,.25,.25,1,2),
+            ('B',4,1.2,1,1,.5,.5,2,4),
+            ('C',3,.9,.75,1.5,1,1,4,8)]
+for name,u,c,v,n,a,s,k,verify in profiles:
+    total = 22/u+2/c+11/v+3.75+20*n+122*a+3*s+4*k+verify
+    print(name, 'complete encounter-free task seconds', total)
+HOUSE2_COMPLETE
+```

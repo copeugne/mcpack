@@ -15,8 +15,9 @@ The representative methodology gate is resolved. Resume material-variant coverag
 and quality assessment using this accounting method; adapt objectives, source work,
 phase counts and failure conditions to each layout before calculating results.
 Both Circle cases now have complete conditional budgets; the original overlap
-requires a repeated-batch source model. Medium Houses and the compact pilot still
-need complete budgets. All 192 included families and final review/delivery remain required.
+requires a repeated-batch source model. Medium House 2 now has a complete
+four-barrel task budget of 64/116/207 seconds. Medium House 1 and the compact
+pilot still need complete budgets. All 192 included families and final review/delivery remain required.
 
 ## Authorized method and delivery boundary
 
