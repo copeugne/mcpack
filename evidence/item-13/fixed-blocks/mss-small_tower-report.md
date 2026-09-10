@@ -1,7 +1,8 @@
 # Small Tower: quality assessment
 
-Status: IN PROGRESS. Source/saved inputs are integrated; playable topology,
-complete timing, quality synthesis and family repetitions remain required.
+Status: local modeled/inspection assessment recorded. Source inputs, checked
+connections, complete conditional timing and quality synthesis are integrated.
+Family repetitions, broader coverage and Item 13 delivery remain IN PROGRESS.
 Items 14 through 18 remain UNSTARTED pending their predecessor gates.
 
 Sample: full-ocean-heavy-r2-baseline|minecraft:overworld|mss:small_tower|26|20.
@@ -471,3 +472,127 @@ for name,u,c,v,d,i,s,a,verify,duty in profiles:
           'worked-schedule source envelopes',bounds)
 SMALL_TOWER_TIMING
 ```
+
+## Remaining spaces and local quality synthesis
+
+The isolated south-facing ladder at (411,163,313) has air immediately below at
+Y162 and above at Y164. It supplies no verified standing-floor connection to the
+main ladder, whose surrounding shaft blocks remain solid at that height. The
+west-facing pair at (410,Y169..170,312) has air below at Y168, a full wall backing
+at X411, and a top spruce slab at (410,171,312). That slab occupies Y171.5..172
+and blocks a straight upright continuation through the top. The upper-room
+side at (411,169,312) is stone. These fragments therefore do not add verified
+native room connections. This is not proof that arbitrary scaffold placement,
+mining or parkour could never reach them. No source or loot-bearing entity is
+assigned to an additional floor there.
+
+The full slice overview and exact states show support mass, narrow tower shaft,
+roof ornament and separate island surfaces, not a room at each height. The
+following delineation uses the predeclared room/activity-space definition:
+
+| Node | Delimitation and functional evidence | Source / chest arrangements |
+| --- | --- | --- |
+| L: lower ruin pocket | Broken wall/arch around X427..428,Z311..314; feet Y144; checked entry reaches the one-cell reward station at (428.5,144,312.5) | 1 witch / 1 rare chest |
+| M: middle tower room | Interior X412..413,Z310..312, feet Y158, bounded by tower walls with west opening and ladder; pots occupy part of the floor | 1 wither skeleton / 0 |
+| U: upper reward room | Interior X412..414,Z310..312, feet Y169, wall ring with openings and upper cap | 0 / 1 houses_rare chest |
+
+Count **three activity rooms**, or **two tower rooms** if the exposed lower ruin
+pocket is excluded by a strict covered-interior convention. Keep that sensitivity
+explicit. Nearby open island terrain, the engineered scaffold column/bridge,
+ornamental ladder fragments and roof surfaces are not extra delineated rooms.
+The main shaft is a connection, not eleven stacked rooms. The lower pocket's
+other decorative corner is not counted as another room merely because a chest
+and pot constrain its floor access.
+
+The verified native inter-room graph has only M-U, with L separate: three nodes,
+one edge, two components. L's declared entry additionally needs its source and
+cover removed. The engineering graph adds L-M through the scaffold/bridge/wall
+strategy: three nodes, two edges, one component. Both graphs have zero verified
+cycles and zero degree-three branching junctions. The completed engineering graph
+is a chain; L and U are its terminal activity nodes. Unlike the Pyramid bridge,
+this connector preserves the verified main ladder after construction.
+
+After construction, entry-to-M is seventeen horizontal blocks and fourteen of
+rise; the extra two outbound placement-station blocks are construction work,
+not shortest-route depth in the completed graph. From M to the upper chest
+station is four horizontal plus eleven ladder blocks. Thus U has graph depth two
+from L and a declared connector depth of 21 horizontal plus 25 rise. These are
+shortest paths within the verified connector graph, not global optima with
+arbitrary flight, mining or jumping. The native M-U floor span is eleven; the
+engineering objective's total feet span is 25 (Y144..169), with 25 ascent and
+25 descent. The 48-layer component height is not playable depth.
+
+Local cover also differs from that envelope. At the lower reward station's
+column (428,312), all saved cells Y144..179 are air and WORLD_SURFACE is Y143:
+this pocket has no overhead cover on that ray. At the middle source-interaction
+column (412,310), air Y158..160 precedes a cap beginning at Y161. It contains
+mixed full blocks, a wall at Y164 and a top slab at Y167 through Y168; do not
+report all eight layers as eight full solid blocks. At the upper chest-interaction
+column (413,310), Y169..172 are air, Y173..175 are full blocks and Y176 is a wall.
+Saved WORLD_SURFACE there is Y176. That is three full cap blocks plus partial wall
+geometry, not seven blocks of burial. These are authored island/tower cover
+observations, not mainland underground depth.
+
+The lower breach is one block wide with two blocks of headroom after both
+removals. The main ladder has a one-cell shaft and a three-sixteenths attachment
+plate, leaving 0.8125 blocks across its clear centered cross-section; the 0.6-wide
+actor fits. The engineered bridge is one block wide and unrailed. These concrete
+constraints support fall/exposure and bottleneck assessments, but not claims
+about live enemy funneling or multiplayer traffic performance.
+
+Meaningful encounter hazards are the witch's supported healing/ranged-potion
+mechanisms and the wither skeleton's supported successful-hit effect. They remain
+baseline capabilities even though the worked timing case excludes successful
+healing/debuffs. Narrow elevated climbing/building creates a supported fall
+exposure if the actor leaves its validated path; no fall, damage or survival
+probability was measured. Grass and decorative pots are not counted as damage
+hazards. No functioning TNT, redstone or dispenser trap is established from this
+sample. Do not manufacture encounter diversity from those decorative blocks.
+
+There are two explicitly assigned enemy types in two sources and no source
+residents. The worked example's two of each is an input, not an observation.
+Empty and dead counts are **0/3 activity rooms**, or **0/2 tower rooms**: L has
+source/reward, M has source and required vertical access, U has reward. The
+inaccessible or unverified ornamental fragments are outside this denominator;
+they are not invented empty playable rooms.
+
+No explicit authored terminal combat event or completion trigger was found in
+the inspected source inputs. U is a terminal reward candidate, not a boss room:
+
+| Final-room dimension | Supported disposition |
+| --- | --- |
+| Objective clarity | CONDITIONAL: the upper chest is a visible reward target after ascent, but no explicit completion objective is authored |
+| Distinctive terminal challenge | ABSENT as an encounter: no source/resident is assigned to U; the eleven-block climb is access work |
+| Reward linkage | PRESENT as potential: one houses_rare chest is assigned to U; it is not proven more valuable than L's rare chest |
+| Route integration | PRESENT under the checked main-ladder model, once M is reached |
+| External/bypass vulnerability | UNKNOWN for an alternative upper raid route; no flight/roof shortcut was validated |
+
+Loot distribution is one of two arrangements in L and one in U, none in M.
+The four unfilled pots supply no stored inventory in this sample. Table rolls,
+item value, actual opening and acquisition remain distinct and unmeasured.
+
+One concrete partial-objective bypass is supported: take the four-block lower
+out-and-back after its source/cover removals and leave with the lower chest's
+conditional transfer. That skips the middle source, upper room and all 27
+connector placements. It does not claim the full all-source/all-chest objective
+is complete or that the witch encounter is harmless. Conversely, no minimal-cost
+external approach to U is established merely by its altitude or exposed wall
+openings. The expensive connector is one valid earned-engineering option, not
+proof that the pack forbids other approaches or that its material count is optimal.
+
+Expected replay variation comes from source/table alternatives, spawn success and
+surrounding generated context rather than demonstrated new core rooms: the active
+rigid, empty-processor template fixes the source layout. The completed model
+removes both spawners and retains scaffolding, bridge and breaches. It supplies
+no self-resetting physical encounter on a revisit. Actual persistence, per-player
+reward behavior and replenishment remain for their later specified audits. No
+player enjoyment, replay frequency or repeat-world distribution is invented.
+
+Flag **limited spatial progression relative to the tall fragmented silhouette**:
+three small activity spaces, no verified branching/cycles and one long ladder
+connection occupy much less playable content than the full template height
+suggests. Vertical access and construction remain mechanically meaningful; the
+structure is not called effortless. Complete conditional timing is 118/188/298
+seconds for the explicit no-healing/no-debuff worked case. This local synthesis
+integrates all descriptive quality dimensions, while family repetitions, material
+coverage and Item 13 review/delivery gates remain open.

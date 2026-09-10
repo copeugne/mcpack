@@ -121,6 +121,6 @@ source interactions, three container arrangements, complete conditional timing
 and a staged graph for two indoor rooms plus one outdoor activity area.
 Family repetitions and broader coverage remain pending.
 
-The [Small Tower intake](mss-small_tower-report.md) now matches its single active
-template to two sources and two chests. Its bounded full slice view passes;
-route validation and witch-aware timing remain pending.
+The [Small Tower assessment](mss-small_tower-report.md) integrates both sources
+and chests, its constructed island connector, main ladder, complete conditional
+timing and three-space quality synthesis. Family repetitions remain pending.
