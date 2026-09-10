@@ -1,0 +1,452 @@
+# Medium House 1: quality assessment
+
+Status: local modeled/inspection assessment and complete conditional task timing
+recorded for this selected fixed Nether layout. Raw-capture custody is delivered.
+Family coverage and Item 13 delivery remain IN PROGRESS.
+
+Sample: `full-ordinary-r1-baseline|minecraft:the_nether|mns:medium_house|29|27`.
+[Saved blocks](mns-medium-house.json.gz), [selection](../fixed-moog-selection.json),
+[collision capture and limitations](../collision/README.md),
+[standing](../collision/r1-standing.json) and
+[crouching](../collision/r1-crouching.json) bind the accepted world and runtime.
+No new dungeon world was generated for this sample. The collision probe used the
+saved view in a fresh runtime. Human traversal, combat and acquired loot remain
+NOT MEASURED.
+
+## Activity spaces and connections
+
+The declared actor is upright 0.6 by 1.8, crouching to 1.5 on the balcony. It knows
+the layout, uses the saved-open right-hand entrance and west twisting vines,
+and makes no block changes. Source-supported climbing, default step height and static collision are model
+assumptions; this is not an observed player trial. The
+[mapped-source context derivation](../model-source/README.md#first-house-route-context-and-movement-support)
+supports the intersected block types without claiming a live actor equivalence test.
+
+Two activity spaces are identifiable under the protocol's floor-change rule:
+
+- R1: lower living/work space, approximately X461..467,Z430..434, floor top Y45.
+  Three two-block beds occupy the north edge; an anvil and other fixtures occupy
+  the southwest edge. Beds and decorations subdivide movement, not separate rooms.
+- R2: narrow raised storage balcony along Z431, X462..466, with stored contents
+  immediately north at Z430. Slab floor top 47.5 falls to 47.1875 at the central
+  closed trapdoor. This floor change and storage function distinguish R2. Because
+  it overlooks R1 without a full dividing wall, report a room-count sensitivity
+  of one open-plan room versus two activity spaces, not an invented exact count
+  insensitive to the definition.
+
+The [corrected crouched route](../collision/r3-route.json) is collision-free over all eighteen
+complete swept segments, starting/ending at 467.5,45,435.5. The west vine column
+at 461,431 is continuous at Y45..47 and supplies the vertical link to the balcony.
+The earlier [upright attempt](../collision/r1-route.json) is rejected: the soul
+lantern at 464,49,431 obstructs that crossing. Static standing endpoints alone
+would not have validated the motion. Crouching clears the lantern without removal.
+
+The east vine at 467,431 is enclosed at lower level by a wall north, solid blocks
+east, and overlapping brimwood leaves west/south at Y46. It is not a second
+unmodified lower-room entrance. In the declared model the R1-R2 graph has one
+verified connection, zero degree-three junctions and zero independent cycles.
+Breaking the leaf block at 467,46,432 is a concrete conditional second connection
+from the lower room; its lower block is air and its floor is solid. This is a
+one-block modification scenario, not an observed mining time or a forbidden bypass.
+
+The cavity at Y51,Z432 contains spawners at X462 and466 and a barrel at 464.
+Its two intervening air cells at X463 and465 have full roof blocks at Y52, leaving
+one block of headroom. It does not qualify as an upright/crouched activity room
+or a final room. Reaching it by breaching/crawling is a separate capability case.
+Walkable roof surfaces and surrounding natural vegetation are not automatically
+additional authored activity spaces.
+
+## Connection dimensions from retained collision shapes
+
+These are local geometric dimensions in the saved state, not observed crowd
+throughput or enemy pathfinding. Derivation uses the local AABB unions in
+[r1-collision.json.gz](../collision/r1-collision.json.gz), translated by each
+block position using the YZX indexing and bounds in the linked saved blocks.
+Faces may touch; positive-volume overlap is obstructed. No new runtime or
+changed door state is assumed.
+
+At the entrance plane Z435.8125..436 and height Y45..47, the closed left door
+occupies X466..467 and the saved-open right door occupies X467.8125..468.
+The remaining opening is X467..467.8125: **0.8125 blocks wide**. A 0.6-wide
+actor has center interval X467.3..467.5125, width 0.2125. The accepted center
+X467.5 lies inside that interval. At X467.5..467.8125, the top stair starts
+at Y47, giving **2 blocks minimum headroom** over the usable opening from
+floor Y45. The left half of that stair starts at Y47.5; reporting 2.5 blocks
+for the whole opening would overlook its lower right half. This is a local
+saved-state entrance chokepoint; opening the other door changes the geometry.
+
+The west vine is not an enclosed ladder shaft with one universal width. At
+Z431.5 and Y45.25, the west wall ends at X461 and the bed begins at X462,
+leaving **1 block lateral clearance** across the lower access. At the same
+Z and Y47.25, the west wall and balcony slab again bound X461..462. The
+accepted vertical sweep stays at X461.5,Z431.5 with its 0.6-wide body inside
+that interval. South of the vine the lower room is open, so this measurement
+must not be relabeled a one-by-one enclosed passage or a global maximum actor
+size. Climb support and movement remain separately conditional as stated above.
+
+Across the balcony, the slab/trapdoor floor occupies Z431..432: a **1-block
+support strip**, with an open drop on its south side rather than a second
+wall. At the lantern's central projection X464.3125..464.6875,
+Z431.3125..431.6875, its lowest collision face is Y49.0625. Headroom is
+**1.5625 blocks** from adjacent slab height 47.5 and **1.875 blocks** from
+central trapdoor height 47.1875. The accepted crouched sweep clears both;
+the rejected upright centerline overlaps the lantern while transitioning
+across the slab/trapdoor edge. These dimensions explain that local restriction
+without asserting that every possible upright route is blocked. The open edge
+and height change are movement constraints, not measured fall damage or combat
+chokepoint effectiveness.
+
+## Contents, rewards and current quality implications
+
+Four saved spawners are present: one explicit piglin assignment on the balcony
+at 465,48,430 and three empty entity assignments, each with empty SpawnPotentials.
+These are four authored block locations, one resolvable enemy type and three
+assignments with no resolvable type, not four realized encounters. The
+[frozen-runtime lookup](../collision/README.md#saved-spawner-lookup-result) confirms
+that all three empty payloads decode without acquiring a default entity. Their
+empty potential lists supply no fallback; the inspected server path returns
+before creation. Preserve them as baseline missing assignments, without repair.
+Spawn counts, delay and other NBT are retained in the raw dataset. Do not invent default
+pigs, guaranteed spawning, a live enemy population or a combat duration.
+
+There are three saved reward-table nodes, with no generated item inventory shown:
+
+| Position | Location | Table potential |
+| --- | --- | --- |
+| 463,49,430 | Balcony storage | mns:chests/uncommon |
+| 466,48,430 | Balcony storage | mns:chests/houses |
+| 464,51,432 | One-block-high roof cavity | mns:chests/empty |
+
+The reused [Item 8 packaged catalog](../../item-8/sources/packaged-json-redacted.json.gz),
+archive MoogsNetherStructures-1.21-3.0.0-alpha.2.jar, contains the three exact
+`data/mns/loot_table/chests/` paths. The table named empty is not empty: its pool
+has 2..4 rolls, an empty entry of weight 8 and nine item entries with total weight31,
+including nether wart, gold nuggets and blaze powder. The houses/uncommon tables
+have separate pools for supplies and rarer materials/equipment, including ancient
+debris or netherite scrap. These are packaged opportunities, not generated or
+acquired rewards; conditions, stack counts, injections and access must be retained
+in any later quantitative loot model. Filename semantics are not reward evidence.
+
+The two campfires at 467,48,430 and465,49,430 are saved unlit. Do not count them as
+active fire damage. Bed use in this Nether dimension, spawner activation and other
+possible interactions still require their specific mechanism assessment before
+hazard scoring. The hanging lantern is a measured clearance restriction, not a
+damage hazard or evidence about enemy pathfinding. Those combat tests remain Item 14.
+
+The form contains a populated lower space and a narrow elevated storage ledge,
+plus a roof cavity that lacks standing headroom. It must not be scored as several
+full dungeon floors merely from the stacked spawner/container heights. Whether
+it meets the final large-but-shallow assessment remains tied to the complete
+access, hazard, reward and traversal analysis.
+
+## Container access under the declared model
+
+The [source and ray derivation](../model-source/README.md#first-house-container-access-declared-inspection)
+resolves access to both balcony containers from positions on the accepted circuit.
+At feet 463.5,47.5,431.5, standing eye height 49.12 gives a 1.06977-block aim
+line to the chest through air. At feet 466.5,47.5,431.5, the 0.57706-block
+barrel aim line passes above the wall sign's selection shape. Both standing
+positions occur in the retained upright clearance set; the actor may stand at
+these stops and crouch again before the centerline lantern crossing. These extra
+interaction/pose actions are not included in the earlier traversal-time budget.
+
+The top stair above the chest is not a full collision cube and does not block
+opening under the inspected source predicate. The barrel has no corresponding
+lid-headroom test. Raw containers have no Lock field. Under the explicitly
+unlocked, no-entity-blocker model, both are accessible for ordinary interaction.
+This is source-supported modeled access, not an observed menu opening, generated
+loot or acquired item. The roof barrel remains a separate breach/access scenario.
+Both source use paths call PiglinAi.angerNearbyPiglins; live aggro was not tested.
+
+## Route length and conditional traversal time
+
+The corrected r3 circuit measures 36.25 blocks: 20 horizontal blocks upright, 10 crouched, 5 on
+vines, and 1.25 of explicit trapdoor height adjustments. Feet-height span is 2.5
+blocks; accumulated ascent and descent are each 3.125. The nominal rate scenario
+produces 20.83 seconds; the illustrative faster/slower scenarios produce 14.42
+and 32.78 seconds. All rates, equipment, exclusions and failure rules were declared
+in the [route protocol](../collision/README.md#predeclared-route-time-model).
+
+The earlier r2 route and its [timing calculation](../collision/r2-route-model.json)
+remain preserved but are superseded for movement support: r2 raised the actor
+from the middle of the trapdoor without an adjacent riser. R3 places the drop
+at X464.3 and the step at X464.7, with the reverse sequence on return. The
+checker now rejects a balcony height transition without an adjacent support
+face or above the declared 0.6 step limit. The additional 0.4-block lower
+horizontal segment replaces equal upper travel, so all distance totals remain
+unchanged. Reproduction of r3 is byte-identical. Direct nominal derivation is
+20/4 + 10/1.2 + 5/1 + 1.25/0.5 = 20.833333 seconds; substitute the declared
+faster/slower rates for the other two values. No revised empirical speed is implied.
+
+These values are conditional kinematic budgets, not observed gameplay, confidence
+intervals, shortest paths or full clears. They exclude combat, activation waits,
+interaction/looting time, approach and the roof cavity. The one-versus-two room
+sensitivity implies graph depth zero or one for the balcony; station distances
+and burial context are derived separately below. Sub-block
+routes around the lantern were not exhaustively searched: the rejected upright
+centerline does not prove that every possible upright crossing fails or that
+crouching is mandatory. The accepted crouched circuit is one verified option.
+
+## Depth and burial context
+
+Depth uses the already-declared entry (467.5,45,435.5), west-vine centerline,
+cardinal motion and two balcony interaction stations. No new target is chosen
+by searching for a favorable distance. These are shortest distances on the
+validated centerline connection model, not a global optimum over arbitrary
+sub-block positions, jumps, mining or every possible three-block interaction
+ray. A shortest path to an authored finale is N/A because finale is NONE.
+
+The chest inspection station (463.5,47.5,431.5) is **14.5 route blocks** from
+entry: 10 lower-floor blocks, 2.5 climbing and 2 along the balcony. The lower
+segment achieves the Manhattan lower bound |467.5-461.5|+|435.5-431.5|=10;
+the declared sole unmodified vertical link then requires the 2.5 climb and
+2 eastward blocks. The station lies on the first balcony segment of r3.
+The east barrel station (466.5,47.5,431.5) is **18.125 route blocks** from
+entry: 10+2.5+5+0.3125+0.3125, including the supported trapdoor drop/step.
+The r3 graph is a chain with no alternate link, so these prefixes are its
+shortest entry-to-station paths. A successful local container interaction is
+supported separately; the metric is travel to the declared station, not the
+minimum distance at which any possible actor could first click a container.
+
+For two activity spaces, reachable graph nodes=2, inter-room edges=1,
+components=1, deepest room depth=1 and both balcony reward nodes have depth1.
+For the one-open-plan-room sensitivity these become 1,0,1,0 and depth0.
+The roof-cavity barrel is outside that playable graph and has no unmodified
+upright/crouched route distance in this model. It is not assigned zero distance.
+R1 has zero reward-table nodes, R2 has two, and the inaccessible cavity has one:
+2/3 saved reward nodes are on the modeled ordinary-interaction route. This
+fraction describes table nodes, not item value or acquired loot. There is no
+finale reward concentration because no finale is identified.
+
+For burial context, reuse the pilot's saved WORLD_SURFACE minus envelope-top
+metric across the complete footprint, keeping it separate from solid cover.
+The saved surface_xzy has 209 columns (19*11), all at Y127; envelope top is
+Y56. Therefore the height difference is **71 blocks at all 209 columns**.
+The decoder records the highest occupied block coordinate (unpacked heightmap
+value + dimension minimum Y - 1), not the top face of that block. This is the
+Nether upper surface context; it must not imply 71 blocks of material to mine,
+a local surface approach or a roof thickness.
+
+Local contiguous natural overburden immediately above the inspected authored
+roof is **0 blocks** at these three representative columns: R1 center
+(464,433), balcony chest station (463,431), and roof-barrel column (464,432).
+The first two have authored roof blocks through Y52 followed by air Y53..59;
+the last has its authored bottom trapdoor at Y54 followed by air Y55..59.
+Thus each retained column already contains an air break above the roof. This
+zero is scoped to those three columns, not the whole footprint. The material
+and thickness of the remote Nether ceiling are not sampled by the retained
+Y40..59 block window; they are not needed to interpret the heightmap offset
+or these local roof exposures. Authored roof cover and conditional roof access
+remain the distinct bypass facts recorded below.
+
+Derivation uses the linked saved blocks and r3 route directly: the extraction
+index is ((y-minY)*sizeZ+z-minZ)*sizeX+x-minX; surface_xzy rows are [x,z,y].
+No world generation, re-extraction, route search or additional runtime is needed.
+The explicit coordinates, arithmetic and immutable input references reproduce
+these small measurements without another processor or evidence schema.
+
+## Encounter component and interaction hazards
+
+The captured [Piglin source](../model-source/captured/world.entity.monster.piglin.Piglin.txt.gz)
+assigns 16 maximum health. Under the predeclared ordinary adult, no-armor scenario,
+the reused 6-damage iron-sword model takes three 13-tick cycles per piglin. At 20
+ticks/second that is 1.95 seconds of reserved attack cycles per successful enemy.
+
+| Successful enemies in the one-wave scenario | 100% contact seconds | 50% contact seconds |
+| ---: | ---: | ---: |
+| 0 | 0 | 0 |
+| 1 | 1.95 | 3.90 |
+| 2 | 3.90 | 7.80 |
+| 3 | 5.85 | 11.70 |
+| 4 | 7.80 | 15.60 |
+
+Derivation for n=0..4: n*ceil(16/6)*13/20; double for the stipulated 50% duty
+scenario. This is the explicit piglin-spawner component only. Equipment, attack
+conditions and exclusions are in the [model declaration](../model-source/README.md#first-house-piglin-component-and-bed-mechanism).
+The saved 733-tick delay corresponds to 36.65 seconds at an ideal 20 ticks/second
+once its countdown conditions hold. Do not automatically add it to walking or
+attack time, since clocks can overlap. The three empty assignments have no
+resolvable enemy potential, so this model now covers the sample's resolvable ordinary-spawner source for one stipulated
+wave. Natural population and repeated waves remain outside its scope. Full-clear
+time has no finite bound from this model; actual enemies, encounters and combat
+times remain NOT MEASURED.
+
+BedBlock's captured source and the packaged Nether bed_works=false setting identify
+optional bed interaction in R1 as a conditional explosion hazard. Walking past
+beds is not its trigger. Source power 5 and fire-enabled behavior are not measured
+blast reach, damage or proof that modded interception is absent. No explosion was
+run. Avoiding bed use avoids this particular source trigger. The two unlit saved
+campfires are not counted as active fire damage. Spawner pressure remains
+conditional on valid activation and successful spawning, not block count alone.
+
+## Empty spaces, finale, bypass and replay assessment
+
+Neither delineated activity space is empty or dead under the protocol: R1 has
+an anvil/work function and R2 has two reward-table nodes. Counts are 0/2, or 0/1
+when treating both as one open-plan room. The inaccessible roof cavity is excluded
+from both numerator and denominator; this does not erase its saved contents.
+
+No distinct authored terminal objective or final activity room is evidenced in
+this fixed house. Finale: NONE. Objective clarity and a separate terminal
+challenge are absent from the inspected design; balcony rewards are ordinary
+storage opportunities. The high barrel does not become a finale by elevation.
+Its route integration is absent from the unmodified upright/crouched circuit,
+and its roof exposure is conditional on an earned access/breaching capability.
+
+A concrete roof-access scenario has three blocks directly above the barrel at
+464,51,432: stripped crimson hyphae at Y52, crimson planks at Y53 and a closed
+crimson trapdoor at Y54; Y55..56 are air. Given access to that roof location,
+removing those three covering blocks exposes the barrel from above, bypassing
+the lower room and balcony. This is a geometric three-block cover measurement,
+not a tested mining duration, safe approach or acquired-loot result. Supplying
+roof access remains a real prerequisite. It is an earned modification scenario,
+not a reason to ban breaching. The one-leaf east-vine opening is another explicit
+local modification with the same distinction between source geometry and runtime.
+
+Expected replay value is an assessment: this fixed layout offers little new
+route structure on another instance of the same variant, while terrain overlap,
+loot-table rolls and potential spawn outcomes can change expedition details.
+The second family variant remains separately required. Revisiting this persistent
+instance does not by itself restore its physical layout or rewards; no reset or
+replenishment was demonstrated. A surviving spawner's repeat-attempt potential
+is not a dungeon reset. No player enjoyment or actual replay behavior was measured.
+
+The modest house is mechanically shallow in graph depth under the declared model:
+one open-plan space or two connected activity spaces, with no separate finale.
+Its layered roof and stacked content positions overstate playable-floor count.
+It is not categorized as a giant dungeon from its envelope alone. The assessment
+uses the declared model and the scoped depth measurements above.
+
+## Remaining coverage, custody and delivery
+
+The corrected step/drop sequence, scoped station depths and mapped-source
+context treatment support the declared kinematic model. Full runtime
+actor-context equivalence remains NOT MEASURED.
+Local connection dimensions are resolved above; balcony
+container access is resolved under the declared source/geometry model; live
+opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
+disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.
+Roof approach and mining time remain conditional/unmeasured. Preserve the room
+sensitivity and modeled-versus-observed boundaries. This report does not claim
+complete family sampling or review/merge delivery. Raw-capture custody and
+the separate Medium House 2 local assessment are now recorded in their linked
+evidence; its two empty-spawner dispositions remain unchanged.
+
+## Complete three-container task with source-first schedule
+
+This correction completes local conditional timing, preserving the earlier
+movement-only circuit and combat-potential grid as separate components. Use the
+same accepted actor and A/B/C allowances as the other complete tasks, with a
+diamond pickaxe and three scaffolds. Start/end at (467.5,45,435.5), full health
+and food, unenchanted iron armor/sword, no effects, external help, healing, flight
+or other construction, fully known layout and 20 TPS. The objective is to disable
+the one resolvable source, transfer available contents from all three containers,
+and return alive. Available inventory must accommodate those contents; otherwise
+censor. Empty assignments remain untouched. Neither source potential nor menu
+access is relabeled as an observed enemy or acquired loot.
+
+Stipulate no pre-existing or natural enemies and preserve the actual piglin
+source Delay 733. Take the existing r3 route without looting first. At
+(465.5,47.5,431.5), after the outbound trapdoor step, stand on the bottom slab.
+Air at Y48/49 gives upright clearance away from the central lantern. Aim from
+eye (465.5,49.12,431.5) at source center (465.5,48.5,430.5). At its south face
+Z431 the ray is Y48.81, below the unlit campfire at Y49, crossing only preceding
+air. Remove the source with the supported grounded diamond-pick model. Then
+crouch to continue to the eastern barrel, stand for transfer, crouch to return,
+and stand at the western chest for its checked transfer before descending.
+The source stop lies on the existing route and adds no horizontal travel.
+
+Source disablement includes ten lower upright blocks, four balcony crouched
+blocks, 2.5 vine blocks and 0.625 trapdoor step/drop blocks, plus 0.95 seconds
+of source breaking, ten decisions, one targeting and one initial tool selection.
+The ten decisions are initial orientation, two lower turns, lower/upper vine
+transitions, balcony crouch choice, drop and step transitions, then source stance
+and target ordering. Use accepted A/B/C vine speeds 1.5/1/0.75, and retain the
+predeclared explicit step/drop speeds 1/0.5/0.25 from the collision protocol.
+D=10/u+4/c+2.5/v+0.625/j+0.95+10n+a+s gives **13.408333 / 21.533333 /
+31.561111 seconds**. All are below 733/20=36.65 seconds, even if activation
+countdown runs throughout. No successful source batch occurs under this model's
+saved-delay, empty-initial-state conditions. Combat work is therefore zero for
+this complete task, not an invented two-piglin encounter. A later arrival or
+initial entities invalidates that conclusion. The earlier conditional 1.95 seconds
+per ordinary piglin remains the source workload assessment, not an added term
+when no modeled entity exists.
+
+On the lower return segment, stop at (464.5,45,433.5) to reach the roof barrel
+from below. Remove the south-facing warped wall sign at (464,45,432), without
+using it. Its face is reachable through lower-room air. Place three scaffolds
+at (464,Y45..47,432) on the full stripped-warped-hyphae floor Y44, extending
+upward by base side clicks as in the checked second-house branch. Saved Y46..49
+in that column are air. Walk north one block into the column, climb three to
+feet (464.5,48,432.5), and stand upright with head below Y49.8. The neighboring
+lantern at Z433 lies outside this centered 0.6-wide body.
+
+Mine the stripped crimson stem at (464,50,432) from below: its underside is
+0.38 above eye Y49.62. The roof barrel's bottom at Y51 is then 1.38 above that
+eye through the emptied stem cell. Its saved facing west does not prevent barrel
+use from below, and the existing no-Lock/no-lid-test rule applies. Transfer,
+descend, and walk south one block to resume the return circuit. Keep the scaffold
+and breach. This branch adds two horizontal/six vertical blocks, three placements
+and two removals. It does not create another authored room or require the prior
+three-block top-down roof breach. All three reward nodes now have conditional
+access; their original room/cavity assignments remain unchanged.
+
+| Full-task cost | Accounting |
+| --- | --- |
+| Travel | 22 upright horizontal, 10 crouched horizontal, 11 vine/scaffold vertical and 1.25 step/drop blocks |
+| Decisions | 28: initial orientation (1), lower turns each way (4), vine entry/exit each way (4), initial balcony crouch (1), drop/step each way (4), source stance/order (2), source-to-east-barrel and return poses (3), west chest stand/resume (2), final return (1), roof construction, entry/climb, mining stop, transfer, descent and resumption (6) |
+| Interactions | 93: three 27-slot containers at 29 operations each, three block removals and three placements; saved-open entry needs no opening input |
+| Selections | 3: initial pickaxe, scaffolding, pickaxe for roof stem; no sword selection without combat |
+| Acquisition | Three inventory-confirmation allowances; menu inputs charged separately |
+| Mining | Source 19 ticks, wall sign 30 ticks and stem 60 ticks, total 109 ticks / 5.45 seconds |
+| Combat | Zero under the strict pre-delay disablement and no-initial/external-entities conditions |
+| Completion | One accepted final verification allowance |
+
+The pinned Blocks initializer gives warped_wall_sign strength 1, and netherStem
+strength 2. Neither requires a correct tool or is a pickaxe-speed target, so
+those two removals use speed 1, while the spawner uses diamond speed 8. The
+existing source/model reproduction establishes the same whole-tick work formula.
+Menus include opening, 27 conditional transfer attempts and closing; pickup of
+decorative block drops is not a required reward objective and is not credited.
+
+Complete conditional A/B/C totals are **68.100000 / 118.783333 / 201.561111
+seconds**, approximately **68/119/202 seconds**. These are stipulated task
+budgets, not measured or typical human clears. Censor if source disablement does
+not precede the retained delay, any unmodeled enemy intervenes, survival or
+inventory capacity fails, or placement, support, mining, interaction or timing
+conditions exceed the declared assumptions. No physical experiment was run.
+The former two-container ordinary route becomes a three-container constructed
+route, while native graph depth, room sensitivity, hazards and finale NONE remain.
+Family/material repetitions and Item 13 review/merge delivery are still pending.
+
+Reproduce the new source/roof facts and arithmetic without a new extractor:
+
+```sh
+uv run python - <<'HOUSE1_COMPLETE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-medium-house.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for y in (48,49):
+    assert state(case,465,y,431)['Name'] == 'minecraft:air'
+assert state(case,465,47,431)['Properties']['type'] == 'bottom'
+assert state(case,465,48,430)['Name'] == 'minecraft:spawner'
+expected = {44:'stripped_warped_hyphae',45:'warped_wall_sign',46:'air',
+            47:'air',48:'air',49:'air',50:'stripped_crimson_stem',51:'barrel'}
+for y,name in expected.items():
+    assert state(case,464,y,432)['Name'] == 'minecraft:'+name
+source = next(b for b in case['block_entities'] if
+              (b['x'],b['y'],b['z']) == (465,48,430))
+assert source['Delay'] == 733
+profiles = [('A',5,1.5,1.5,1,.5,.25,.25,1,2),
+            ('B',4,1.2,1,.5,1,.5,.5,2,4),
+            ('C',3,.9,.75,.25,1.5,1,1,4,8)]
+for name,u,c,v,j,n,a,s,k,verify in profiles:
+    disable = 10/u+4/c+2.5/v+.625/j+.95+10*n+a+s
+    assert disable < source['Delay']/20
+    total = 22/u+10/c+11/v+1.25/j+5.45+28*n+93*a+3*s+3*k+verify
+    print(name, 'disable before first batch', disable, 'complete task', total)
+HOUSE1_COMPLETE
+```

@@ -1,0 +1,947 @@
+# Large House 1: quality assessment
+
+Status: local conditional assessment recorded. Saved/source inputs, access
+routes, complete-task timing and room/quality synthesis are integrated. Family
+repetitions and broader coverage remain required. Human gameplay is NOT MEASURED.
+
+Sample: full-biome-diverse-r2-baseline|minecraft:the_nether|mns:large_house_1|5|3.
+The retained [saved blocks](mns-large_house_1.json.gz), SHA-256
+7ee67bdf2bc014bff8c08c4fb981018ff27dbea9483da430ee882618aeb361d1,
+contain 72,981 voxels. Envelope [70,32,25,90,76,71], padded bounds
+[67,29,22,93,79,74]. Existing extraction records retain complete block coverage,
+world/archive identity and before/after inventory verification. Reuse these bytes;
+no new world generation, extraction or runtime experiment is needed for intake.
+
+## Active source and positional correspondence
+
+The saved rigid versioned component selects `mns:houses/large_house_1` on frozen
+Minecraft 1.21.1 through its `1.21-1.21.4` map entry. Its origin is (90,32,25),
+rotation CLOCKWISE_90 and processors empty. Source local (u,v,w) maps to
+(90-w,32+v,25+u). Later-version templates are not the active source.
+
+Retained MNS JAR SHA-256:
+05024f18690436fff2fbc088f880a95cc30f23bacfe6e8058f6b02106032a990.
+Resource `data/mns/structure/houses/large_house_1.nbt`, SHA-256
+66adecc037fc69b38d88ffbf89fa2c0b8fd5d14852f8ea3bf1ce25a952222c4c,
+has dimensions 47x45x21 and no entity entries. These dimensions identify the
+layout; they do not count rooms or vertical progression.
+
+All seven source spawners and sixteen source barrels map to the matching saved
+block entity at the transformed coordinate. Spawner SpawnData, SpawnPotentials,
+Delay, SpawnCount, Min/MaxSpawnDelay, MaxNearbyEntities, RequiredPlayerRange and
+SpawnRange match exactly. Barrel LootTable assignments match; saved loot seeds
+are not interpreted as generated contents.
+
+| Spawner position | Explicit source type | Saved initial Delay, ticks |
+| --- | --- | ---: |
+| (76,33,35) | wither skeleton | 0 |
+| (78,35,62) | wither skeleton | 0 |
+| (79,45,56) | blaze | 32 |
+| (75,45,56) | blaze | 79 |
+| (75,47,37) | piglin brute | 173 |
+| (77,51,63) | piglin | 237 |
+| (76,52,63) | piglin brute | 497 |
+
+All use SpawnCount 4, SpawnRange 4, RequiredPlayerRange 16,
+MaxNearbyEntities 6, MinSpawnDelay 200, MaxSpawnDelay 800 and empty potential lists.
+This establishes seven authored sources, four hostile types and zero source-
+resident entities. It does not establish 28 enemies, simultaneous activation,
+realized encounters or a lifetime population ceiling. Spawner activation must
+follow the eventual route and each saved delay before combat timing is scored.
+
+| Loot table | Source/saved barrel positions | Count |
+| --- | --- | ---: |
+| `mns:chests/houses` | (75,33,34), (75,34,34), (80,44,40), (74,44,51) | 4 |
+| `mns:chests/uncommon` | (75,33,33), (80,45,41), (74,44,52) | 3 |
+| `mns:chests/treasure` | (75,33,32), (77,35,62), (76,35,62), (76,36,62), (74,45,51) | 5 |
+| `mns:chests/empty` | (76,33,31), (80,44,41), (78,51,63), (76,51,63) | 4 |
+
+Table names are not outcomes. In particular, `empty` is a real table with one
+2..4-roll pool combining an empty alternative and small item alternatives such
+as wart, gold nuggets, bones and string. Its four barrels must not be classified
+as guaranteed empty or used to label rooms dead. All sixteen retain reward potential;
+access and generated/acquired inventories are not measured by this correspondence.
+
+Source table hashes in the same retained JAR:
+
+- `data/mns/loot_table/chests/houses.json`: 7da643c38cccfd46819634bd09dafa5429f0d47b55c8dc6acc18907e1477bbbf.
+- `data/mns/loot_table/chests/uncommon.json`: f6729e4590d9ed6968f8e3e0be82b9fd826aa90561671379d484a508efb76b6f.
+- `data/mns/loot_table/chests/treasure.json`: 49a977507ae1da435df3ef9ff05ce0157dfa2940c33033eba37d06a6faf76d42.
+- `data/mns/loot_table/chests/empty.json`: ee2b49fc5828c50a45e3650280b166fd7738a1a2374488b621c1b6443e2d8d01.
+
+The treasure table's first pool has three rolls among weighted netherite,
+debris/scrap, diamond equipment/material and enchanted-apple alternatives. It also
+has material and template pools. This supplies potential payoff evidence, not a
+rolled inventory or a proof that the highest barrel is the finale. Houses and
+uncommon tables likewise contain weighted equipment/material alternatives.
+
+All 987 saved WORLD_SURFACE columns are Y127. The 51-block difference above the
+envelope top is heightmap context, not 51 solid blocks of burial or playable depth.
+
+## Original bounded inspection predeclaration
+
+Inspect the retained slices and source layout to delineate actual rooms and links,
+then validate one complete entrance-to-objective route before timing. Prioritize
+the transitions connecting the Y33..36, Y44..47 and Y51..52 object groups; those
+height groups are targets for inspection, not presumed floors. Resolve barrel
+access, hazards and activation distances before declaring encounter populations.
+Use the accepted complete-task accounting method and existing collision tools.
+
+Direct block/source checks use the existing 72,981-voxel sample: budget one minute,
+512 MiB and under 1 MiB textual results. If a full slice image is needed, allow
+one bounded render up to 180 seconds and 20 MiB of temporary image/SVG output;
+record a timeout instead of repeatedly rerunning it. Preserve raw input unchanged.
+No new server or world materialization is part of this step. Item 14 is UNSTARTED.
+
+## Authored vine columns and blocked axial exits
+
+The active template has exactly three X/Z columns of twisting vines. The mapped
+saved columns retain the following geometry:
+
+| Column | Vine blocks | Immediate upper geometry | Current conclusion |
+| --- | --- | --- | --- |
+| (77,60) | Y35..40 plant, Y41 tip | Full crying obsidian at Y42, air Y43..45 | The axial ascent is capped. Seven vine blocks alone do not prove access to the upper floor. A side transfer or explicit breach must be resolved. |
+| (80,59) | Y44..46 plant, Y47 tip | Open south-facing bottom-half crimson trapdoor Y48, east-facing top nether-brick stair Y49, warped planks Y50, wart block Y51 | The vine does not establish an unobstructed vertical shaft or roof connection. Exact side-exit geometry remains required. |
+| (74,55) | One tip at Y44 | Wall-mounted crimson button at Y45, then air | This single plant is not evidence of a floor-to-floor route. |
+
+At (77,60), full polished-blackstone bricks at Y33/34 support the vine base.
+At (80,59), the base floor is nether bricks at Y43. The third base is crimson
+planks at (74,43,55). Source positions establish authorship; saved block properties
+above establish present obstructions. Do not count these three columns as three
+playable links or infer a total vertical progression from their combined length.
+
+These are direct inspections of the retained sample and active source named above:
+filter source palette names for `twisting_vines`/`twisting_vines_plant`, transform
+positions with (90-w,32+v,25+u), and read the adjacent saved cells using the existing
+`render_pilot.state_at`. No runtime movement has been observed.
+
+The initial render wrapper attempted `/usr/bin/time`, which is absent and returned
+127 before starting the renderer. The same predeclared render was then started
+with Bash's built-in `time -p` and the original 180-second timeout. This is a
+wrapper failure, not a failed world sample or evidence regeneration. No tool was
+installed to repair it.
+
+## Saved main-level partitions
+
+The bounded render completed successfully in 102.29 seconds (Bash time: user 86.89,
+system 15.17). SVG plus PNG output totaled 12,109,694 bytes, within the 20 MiB
+allowance. A live process snapshot showed 119,500 KiB RSS; this is not a measured
+peak. The [retained slice image](mns-large_house_1-slices.png) is the 296,087-byte
+PNG; the 11,813,607-byte SVG need not be duplicated in Git. The agent inspected
+all Y32..76 slices and detailed Y32..39 and Y44..51 crops. These are saved block
+categories, not collision shapes or a rendered human gameplay observation.
+
+Reproduce with existing tooling:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/mns-large_house_1.json.gz --output /tmp/item13-large-house-slices.svg
+time -p timeout 180 convert -background white /tmp/item13-large-house-slices.svg /tmp/item13-large-house-slices.png
+convert /tmp/item13-large-house-slices.png -crop 1436x1370+0+2100 +repage /tmp/item13-large-house-upper.png
+convert /tmp/item13-large-house-slices.png -crop 1436x1370+0+60 +repage /tmp/item13-large-house-lower.png
+```
+
+The main-level interior is visibly partitioned near Z42 and Z50, between the
+northern furnished space, middle furnished space and southern blaze space.
+This is a room-boundary observation, not yet the complete building room count.
+Exact saved cells resolve an actual link at the first partition: actor feet
+(75.5,44,41.5) to (75.5,44,43.5), crossing Z42, traverse two horizontal blocks
+with air at Y44/45 and full crimson-plank support at Y43. The 0.6-wide,
+1.8-high adult fits without changing pose, mining, opening a door or traversing
+a partial block. X76 also has air at Y44/45 through the partition, so the opening
+has a two-block-wide clear span at that height. Stair decoration at Y46 does not
+intrude into this actor's 1.8-block-high swept box.
+
+The Z50 partition differs. Every X73..81 cell at Y44 and Y45 is a full nether-brick
+or crimson-plank block. It is not an open doorway at the main walking height.
+A direct passage there requires a breach or a separately established alternative;
+no link is accepted merely because the rooms share a floor elevation. Upper
+partial shapes and exterior access have not been relabeled as a proven bypass.
+
+The long lower vine shaft also cannot supply an axial main-level link: all four
+cardinal neighbors of (77,60) at Y40..42 are full polished-blackstone bricks,
+while crying obsidian caps its center at Y42. At Y43 the four neighbors are
+reinforced deepslate and the center is air. This supports a capped-shaft finding,
+not an unobstructed climb from the lower treasure cluster into the blaze space.
+Potential lower side exits or permitted breaching still need explicit routes.
+
+These findings resolve one real inter-space connection and two concrete obstacles.
+The outstanding requirement is a complete access graph covering lower reward
+clusters, the three main spaces, upper reward positions and any other playable
+activity space. Do not infer that graph from spawner heights or the tall tower.
+
+## Conditional connections with explicit construction costs
+
+The sealed main-level partition has a simple breach at X76, Z50: remove crimson
+planks at Y45 and Y44, in that order. The station (76.5,44,49.5) and destination
+(76.5,44,51.5) both have air at Y44/45 over full floors. The breach cell retains
+its full nether-brick floor at Y43. A centered adult can then traverse the two-
+block horizontal segment with no step, jump or partial-block contact. From the
+starting eye at Y45.62, both target centers are within three blocks, and removing
+the upper block clears the lower targeting ray. This is a conditional two-block
+breach edge, not an existing open door or an alteration to the accepted world.
+The timber breaking work and two interaction events must enter the full task budget.
+
+The lower shaft requires both a breach and a climbing extension. Declare this
+specific engineering alternative before using it in topology/timing: carry two
+ladders and the unenchanted diamond pickaxe; enter the vine from the supported
+station (77.5,35,61.5), climb within (77,60), remove the crying-obsidian cap at
+(77,42,60), attach two south-facing ladders at (77,43,60) and (77,42,60), then
+climb out onto (76.5,44,60.5). The upper ladder is placed first so the lower ladder
+cannot intercept its placement ray. This adds two placed blocks and removes one
+cap; it does not repair the frozen sample or claim a native open connection.
+
+The source/saved geometry supports that declared construction:
+
+- The approach at (77,35,61) has air at Y35/36 over full polished-blackstone bricks
+  at Y34. Its upper stair begins at Y37, above the 1.8-high actor's clearance.
+- The seven vine cells Y35..41 are climbable and have no blocking collision.
+  The centered actor fits the one-block shaft between its walls.
+- From a stipulated stationary crouched climbing position at feet Y40.1, eye
+  Y41.37, the cap underside at Y42 is within reach. After removal, the south
+  faces of supports (77,43,59) and (77,42,59) are also within three blocks:
+  aim at (77.5,43.5,60) and (77.5,42.5,60), respectively.
+- Those supports are full reinforced deepslate at Y43 and polished-blackstone
+  bricks at Y42. No support removal is required. The cleared/air center cells
+  accept the two ladder placements. South-facing ladder collision occupies the
+  northern 3/16 of each cell; a centered 0.6-wide actor occupies Z60.2..60.8 and
+  fits without entering that plate.
+- The completed climbable column extends through Y43. Its west landing has full
+  reinforced-deepslate support at (76,43,60) and air at Y44/45. Standard top-of-ladder
+  transfer therefore reaches the main-level floor at Y44. The connection has nine
+  blocks of rise between its declared feet levels, plus one horizontal approach
+  block and one horizontal exit block. This is geometric/model evidence, not an
+  observed successful climb or timing result.
+
+Source support: pinned `LadderBlock.canSurvive` checks the sturdy face of the
+neighbor opposite FACING; its south-facing shape is the northern three-sixteenths
+plate. The pinned `data/minecraft/tags/block/climbable.json` includes ladder,
+twisting vines and twisting-vines plant. These are the same mapped Minecraft
+identity and basic climbing rules already used in the house-route work. Inspect
+`net.minecraft.world.level.block.LadderBlock` with the pinned `javap -c -p` and the
+climbable tag in the retained extra JAR to reproduce the source derivation.
+The tag SHA-256 is d0e3e76d7457f3f3f3d7219fe218c7746e4b2e7626d5c388fcf193089069e365.
+Mapped JAR SHA-256 is 26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71;
+extra JAR SHA-256 is 24a5d2d162cfad2a1a574c4d552e99dc6c6303a49d1e68b43a7b638f3b0930fd.
+
+Do not use ground-mining time for the cap while the actor hangs on the vine.
+The eventual budget must include the declared off-ground mining state, stationary
+holding/placement allowances, two ladder placements and tool changes. Failure to
+hold position, place either ladder, maintain reach or complete the upper transfer
+censors this engineering route. No mining, ladder placement or movement has been
+performed in an accepted world. Its actor/resources and costs remain separate
+from the original capped-shaft observation.
+
+## Northern lower cache: entrance, spawner and all five barrels
+
+A native ground approach reaches the lower northern cache. At feet Y33, follow
+(85.5,36.5) to (78.5,36.5), then (78.5,34.5), then (76.5,34.5), where each pair
+is X/Z. This is eleven horizontal blocks. Every traversed cell has full basalt-
+family support at Y32. Feet/head cells Y33/34 are air except (77,34), whose two
+crimson fence gates are already open, west-facing and in_wall=true. Pinned
+`FenceGateBlock.getCollisionShape` returns Shapes.empty when OPEN is true, so
+these gates do not require an interaction or obstruct the centered adult route.
+No new gate state or world mutation is assumed.
+
+At (76.5,33,34.5), the two houses-table barrels (75,33,34) and (75,34,34) are
+adjacent targets. Aim at their east faces below/above Y34 respectively, keeping
+the ray in the open X76 cell until it reaches the chosen barrel. Both are within
+three blocks. From the same standing station, aim at the north face of spawner
+(76,33,35), e.g. (76.5,33.9,35). The ray reaches it below the decorative skull at
+Y34; the skull does not require a separate removal for this target. This resolves
+face access, not successful mining before its zero-delay spawn attempts.
+
+Crouch to 1.5-block height and move one block north to (76.5,33,33.5). The cell
+has air at Y33, full floor at Y32, and a top nether-brick slab at Y34. Its underside
+is Y34.5, admitting the crouched actor while excluding the 1.8-high upright actor.
+The uncommon-table barrel at (75,33,33) is directly reachable from this station.
+
+Two further barrels are screened by a top crimson stair at (76,33,32). Declare
+one permitted stair removal from the crouched station; target its upper southern
+face, accessible below the Y34.5 ceiling. Once removed, the empty-table barrel
+(76,33,31) and treasure-table barrel (75,33,32) have clear rays through that newly
+cleared cell. With eye (76.5,34.27,33.5), aim at (76.5,33.1,32) for the first and
+(76,33.1,32.5) for the second. The segments enter the cleared cell below Y34,
+thus avoiding its remaining bottom slab at (76,34,32), and remain within three
+blocks. Neither requires the actor to occupy that lower-clearance cell. Barrel
+interaction does not require a chest-style free lid space. Loot transfer and GUI
+costs remain separate from these face-access measurements.
+
+This establishes access to all five source-matched northern lower barrels with
+one stair breach, eleven upright approach blocks and one crouched branch block
+(each counted again on return if the task uses this entrance). It also establishes
+access to the local wither-skeleton spawner. It does not connect this cache to
+an upper floor or establish generated/acquired loot. The storage alcove's low
+ceiling and cover are retained mechanical constraints, not discarded decoration.
+
+Direct reproduction uses the existing `state_at` on the hash-bound saved sample:
+
+```sh
+uv run python - <<'NORTH_CACHE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-large_house_1.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == '7ee67bdf2bc014bff8c08c4fb981018ff27dbea9483da430ee882618aeb361d1'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+route = [(x,36) for x in range(85,77,-1)] + [(78,35),(78,34),(77,34),(76,34)]
+assert len(route)-1 == 11
+for x,z in route:
+    assert state(case,x,32,z)['Name'] in {
+        'minecraft:basalt','minecraft:smooth_basalt','minecraft:polished_basalt'}
+    for y in (33,34):
+        block = state(case,x,y,z)
+        if (x,z)==(77,34):
+            assert block['Name']=='minecraft:crimson_fence_gate'
+            assert block['Properties']['open']=='true'
+        else:
+            assert block['Name']=='minecraft:air'
+assert state(case,76,33,33)['Name']=='minecraft:air'
+assert state(case,76,34,33)['Properties']['type']=='top'
+assert state(case,76,33,32)=={'Name':'minecraft:crimson_stairs',
+    'Properties':{'facing':'north','half':'top','shape':'straight','waterlogged':'false'}}
+assert state(case,76,34,32)=={'Name':'minecraft:crimson_slab',
+    'Properties':{'type':'bottom','waterlogged':'false'}}
+print('Eleven-block native approach, crouched alcove and one declared stair breach.')
+NORTH_CACHE
+```
+
+## Southern lower cache: conditional pillar entrance
+
+The southern cache has a three-cell-wide inner alcove at X76..78, Z61, feet Y35.
+All three cells have air at Y35/36 over full support at Y34. Its ceiling starts
+at Y37, above the 1.8-high adult. The three treasure barrels at (76,35,62),
+(77,35,62) and (76,36,62), plus the wither-skeleton spawner at (78,35,62), face
+this alcove. Direct native entry is not inferred from these empty interior cells.
+The eastern pillar skin blocks a walk-in approach.
+
+Declare a specific engineering entry from (82.5,33,61.5), supported by warped
+nylium at Y32. This alternative uses the existing diamond pick and two additional
+ladders, separate from the two ladders already declared for the higher cap route.
+No claim is made that this is the globally cheapest breach or an authored entrance.
+Remove the following eight blocks, retaining the floor at Y32:
+
+| X,Y,Z | Saved block | Role in the declared opening |
+| --- | --- | --- |
+| 81,34,61 | crimson fence | Upper obstruction of first tunnel cell |
+| 81,33,61 | bottom deepslate-brick stair, south-facing | Lower obstruction of first tunnel cell |
+| 80,34,61 | deepslate bricks | Upper obstruction of second tunnel cell |
+| 80,33,61 | polished-blackstone bricks | Lower obstruction of second tunnel cell |
+| 79,34,61 | polished-blackstone bricks | Upper obstruction of third tunnel cell |
+| 79,33,61 | polished-blackstone bricks | Lower obstruction of third tunnel cell |
+| 79,35,61 | polished-blackstone bricks | Ceiling removed after entering the third cell |
+| 79,36,61 | polished-blackstone bricks | Further head clearance for the two-block ascent |
+
+For each horizontal cell, remove the upper then lower obstruction from the previous
+standing cell, then advance. After entering X79 at feet Y33, mine its ceiling
+upward at Y35 then Y36; do not aim through the still-solid ceiling at X80. The
+three tunnel floors (X79..81,Y32,Z61) are full polished-blackstone bricks. Target
+faces are within the three-block interaction limit at each step. Mining durations,
+input allowances and tool selection must be charged later; this is not free access.
+
+Place south-facing ladders at (79,34,61) then (79,33,61), supported by the full
+polished-blackstone bricks immediately north at (79,34,60) and (79,33,60).
+The existing ladder-source derivation applies: their northern 3/16 plates leave
+clearance for the centered adult. Climb from feet Y33 to Y35, then transfer west
+to (78.5,35,61.5), whose full Y34 floor and Y35/36 air were verified. Continue
+west through the alcove to (77.5,35,61.5) for the already declared vine route.
+This entry has three horizontal approach blocks, two vertical climb blocks and
+one horizontal transfer to the alcove; movement within the alcove is additional.
+
+From each matching X76/77/78 station at feet Y35, aim south at Z62 to access the
+barrels/spawner. Lower targets can be hit on their north faces at Y35.9, below
+any block stacked at Y36. The upper barrel at (76,36,62) is reached on its north
+face at Y36.5. Eye Y36.62 and the short half-block face distance keep each ray
+below the Y37 ceiling and within reach. Barrel opening has no chest-lid clearance
+condition. This resolves three more barrel targets and the second lower spawner;
+no inventory or realized encounter has been observed.
+
+Failure to create the exact opening, attach the ladders or transfer to the alcove
+censors this conditional route. The unmodified pillar remains recorded as closed.
+The total declared lower engineering chain now needs eight pillar removals, one
+crying-obsidian cap removal, and four ladders to reach the main-level landing.
+Those costs are distinct from the northern cache's single stair removal and the
+main partition's two-plank breach. Full activation history and total task timing
+are still pending; do not assume one spawn batch per source during construction.
+
+## Main-level route, six barrels and three spawners
+
+The shaft landing at (76.5,44,60.5) connects along X76 to Z37 at the same feet
+height. This is 23 horizontal blocks. All supports at Y43 are full nether-brick,
+crimson-plank or reinforced-deepslate blocks. Y44/45 are air apart from two floor
+buttons at Z53/57 and the already declared two-plank partition at Z50. Pinned
+`Blocks.woodenButton` sets no collision, so walking through those button cells
+does not require stepping or interaction. The Z50 breach can be performed from
+its southern station with the same upper-then-lower removal order; the earlier
+northern-to-southern geometry remains valid in reverse. The native Z42 opening
+is crossed at X76. Do not count the breach as a native passage.
+
+This establishes a route through the three main-level spaces, with one native
+inter-space passage and one conditional breach link. It avoids the side furniture,
+the shaft opening and the lava column at (77,44,62). No live fluid-spread or
+ignition behavior is observed. Continued clearance is a timing-scenario condition;
+changed fluids/obstructions must censor the route rather than be silently ignored.
+
+Both blaze spawners are reachable from (76.5,44,56.5). With eye Y45.62, target
+(76,45.5,56.5), the east face of (75,45,56), and (79,45.5,56.5), the west face
+of (79,45,56). The intervening X76..78 cells at Y45 are air. The longer ray is
+about 2.50 blocks, within the three-block limit. No cage cover needs removal
+for these rays. This is access evidence, not proof of a zero-enemy rush: their
+saved initial delays and the time spent on lower construction must enter timing.
+
+The southern three barrels use stations already on the main line:
+
+| Barrel | Station at feet Y44 | Target face/obstacle disposition |
+| --- | --- | --- |
+| (74,44,51), houses | (76.5,51.5) X/Z | East face at (75,44.9,51.5); ray passes over the unlit campfire at (75,44,51) |
+| (74,45,51), treasure | (76.5,51.5) | East face at (75,45.5,51.5), above that campfire |
+| (74,44,52), uncommon | (76.5,52.5) | East face at (75,44.9,52.5), above the wall sign at (75,44,52) |
+
+`CampfireBlock.SHAPE` is 7/16 block high and the saved campfire has lit=false.
+`WallSignBlock` outlines end at 12.5/16 block height. The rays stay above those
+outlines and reach the barrel faces within three blocks; neither object needs
+removal. This does not imply that campfires are harmless when lit or that signs
+can be ignored by interaction rays at every height.
+
+For the northern cluster, branch three blocks east at Z39 from X76.5 to X79.5,
+remaining at feet Y44. All three intermediate cells have full floors and Y44/45
+air. From (79.5,44,39.5), reach all three barrels at (80,44,40), (80,44,41) and
+(80,45,41). Aim at their west faces X80, using Y44.9 for the lower pair and Y45.5
+for the upper barrel, at each barrel's Z center. All distances are under three
+blocks. The closed top trapdoor at (79,45,40) occupies Y45.8125..46, above the
+entire ray. The wall sign at (79,44,41) ends at Y44.78125, below these rays.
+No passage beneath that trapdoor or through the sign is required for the actor;
+returning to the main line adds three blocks.
+
+The piglin-brute spawner at (75,47,37) has a closed, east-facing top warped
+trapdoor directly below at (75,46,37). From main-line station (76.5,44,37.5),
+first toggle that trapdoor open, then target the spawner underside at
+(75.5,47,37.5). The closed plate blocks the original ray and must not be omitted
+from the interaction count. Pinned `TrapDoorBlock.getShape` moves its east-facing
+open plate to local X0..3/16. The target ray stays east of that plate, reaches
+the spawner in about 1.70 blocks, and crosses air above the standing station.
+The warped trapdoor uses the already established hand-openable wood behavior.
+This costs one declared interaction, not a cover-mining action.
+
+Source derivations use the mapped JAR identity already recorded above: inspect
+`Blocks.woodenButton`, `CampfireBlock`, `WallSignBlock` and `TrapDoorBlock` with
+`javap -c -p`. All positions and properties are from the same hash-bound saved
+sample. This batch adds six barrel and three spawner access dispositions. Together
+with the lower caches, 14 of 16 barrel positions and 5 of 7 spawner positions now
+have explicit station/route evidence. The two roof barrels and roof piglin/brute
+sources, exterior connection between lower entrances, and full timing still remain.
+
+## Roof cache: separate scaffold access
+
+The short upper vine at (80,59) is not accepted as an unmodified roof connection.
+Its Y48 trapdoor is immediately south of a lava source at (80,48,58). Removing
+or changing that barrier without a fluid disposition would not be a harmless
+climbing shortcut. The roof route below leaves that trapdoor and both nearby
+source-lava positions unchanged. It still requires continued-clearance conditions;
+no live fluid stability or successful ascent is claimed.
+
+Predeclare a separate engineering branch from the main landing. Walk at feet Y44
+from (76.5,60.5) via (76.5,59.5), (78.5,59.5) to (78.5,60.5), in X/Z notation.
+This four-block approach has full support and clear body cells. It avoids stepping
+across the open shaft center at (77,43,60). Carry seven scaffolding blocks in
+addition to the four lower-route ladders and existing tools. Place the scaffold
+base at (78,44,61) from that adjacent station, supported by full nether bricks
+at Y43. The column Y44..49 is initially air.
+
+Build the first four scaffolds at Y44..47, climb to their top at feet Y48 and
+stand without descending. Upright head height is Y49.8, below the roof block
+at Y50. From this supported stance, remove the top warped stair at (78,50,61).
+Then extend the tower with three further scaffolds at Y48..50 and climb to feet
+Y51. This order supplies a supported mining stance, rather than assuming that
+mining while hanging has ordinary ground speed. Tool/placement/pose actions and
+all seven placed blocks must enter the eventual budget.
+
+Clear the following four additional roof blocks from the tower and ensuing bay,
+without removing the retained floors at Y50:
+
+| Block | Saved state | Order/access |
+| --- | --- | --- |
+| (78,52,62) | east-facing top warped stair | Mine from the scaffold-top station before its lower neighbor |
+| (78,51,62) | east-facing bottom warped stair | Mine after the upper stair, then step into this cleared bay at feet Y51 |
+| (77,52,62) | vertical warped stem | Mine from the bay's east side |
+| (77,51,62) | vertical warped stem | Mine after its upper neighbor, then step west into the cleared central bay |
+
+Together with (78,50,61), this is five explicit roof-cover removals, not a free
+roof entrance. All target faces are within three blocks of the successive stations.
+The bay floors (78,50,62) and (77,50,62) are full warped stems; the ceilings begin
+at Y53, above the 1.8-high actor standing at Y51. The newly cleared bays are
+therefore supported standing spaces, not merely ray-reachable cavities.
+
+Pinned `ScaffoldingBlock.getDistance` returns zero over a sturdy floor and inherits
+the below scaffold's distance, so this vertical tower remains distance zero.
+`getCollisionShape` supplies STABLE_SHAPE to an actor above it who is not descending,
+and empty collision inside the distance-zero column. The existing climbable tag
+includes scaffolding. These source rules support the declared climb and grounded
+intermediate stance; use `javap -c -p` on ScaffoldingBlock in the already pinned
+mapped JAR to reproduce them. No scaffold was placed in a saved world.
+
+From (78.5,51,62.5), access the right barrel (78,51,63) on its north face at
+Y51.9. After clearing the two central stems, stand at (77.5,51,62.5):
+
+- The piglin spawner (77,51,63) is directly south, reachable on its north face
+  at Y51.9. Disable it before using the cleared cell for the left-barrel ray.
+- The brute spawner (76,52,63) is reachable on its east face (77,52.5,63.5),
+  through the air above the piglin spawner. The ceiling starts at Y53.
+- Once the piglin spawner is removed, the left barrel (76,51,63) is reachable
+  on its east face (77,51.9,63.5). The ray passes through the now-cleared piglin
+  cell below the brute block. It does not require mining either barrel.
+
+All these short rays are within three blocks of eye Y52.62. The construction
+branch consists of four horizontal approach blocks, one into the tower, seven
+vertical climb blocks, one into the first bay and one west into the central bay.
+Return reverses that path, using controlled scaffold descent. The roof branch
+therefore adds fourteen horizontal and fourteen vertical blocks for the declared
+out-and-back path, separately from placement, breaking, target interaction and
+combat. Placement failure, loss of support, changed fluid/obstacle state or an
+unsuccessful transfer censors this conditional branch.
+
+All sixteen barrel and seven spawner positions now have explicit access
+conditions. This does not complete the full task model: the exterior connection
+between the lower entrances, combined path/event schedule, source work, encounter
+activation history and final room/quality synthesis remain required. The original
+closed pillar, capped shaft, sealed partition and roof casing are preserved as
+baseline constraints; the construction routes do not relabel them as native links.
+
+## Exterior connection and bridge requirement
+
+The saved lower entrances do not justify a flat unmodified connection. The direct
+middle ground contains air over lava; the east-side route below requires nineteen
+new floor blocks. This is a conditional engineering connection, not a native
+corridor or a claim that no other route exists. Carry nineteen cobblestone blocks
+in addition to the four ladders and seven scaffolds. No bridge was built in the
+accepted world.
+
+At feet Y33, use these X/Z waypoints from the northern entry to the southern one:
+(85.5,36.5), (86.5,36.5), (86.5,37.5), (88.5,37.5), (88.5,38.5),
+(88.5,58.5), (88.5,59.5), (82.5,59.5), (82.5,61.5).
+The first five horizontal blocks have full basalt-family support at Y32 and air
+at Y33/34. The last nine have full warped-nylium support and air at Y33/34.
+Between them, cells (88,32,Z39..57) are cave air over source lava at Y31, with air
+at Y33/34. Place one cobblestone in each of those nineteen cells, progressively
+from the northern bank. The route avoids the obsidian obstruction at X85..87,
+Z50..52 without mining it.
+
+For placement, crouch and face back toward the last supported block. At each
+south edge, a center 0.2 blocks beyond that edge retains 0.1 blocks of overlap
+for the 0.6-wide body. From eye Y34.27, target that block's south face at Y32.9;
+the short ray is outside the old block until the face and within three blocks.
+The new block occupies Y32, below the actor's feet. After successful placement,
+advance to the next edge and repeat. This explicitly requires the declared
+controlled crouching/placement behavior; failure to maintain support, missed
+placement, entity displacement or changed fluids censors the scenario. The
+nineteen placements and pose/tool selections require their own action budgets.
+The bridge has no rails and runs directly above lava, so support geometry does
+not make it a safe observed traverse.
+
+Count the entire twenty-block bank-to-bank segment as crouched movement, including
+its entry/exit offsets. The remaining fourteen blocks are upright movement.
+Returning over the completed bridge follows the same cautious path without
+repeating construction. The exterior round trip therefore contributes 28 upright
+and 40 crouched horizontal blocks plus nineteen placements. The bridge remains
+in place at the end; material recovery is outside this declared objective.
+
+Reproduce these floor/body facts from the same hash-bound extraction using
+`render_pilot.state_at`: query Y32..34 at X88, Z38..58; the five approach blocks
+follow the waypoint line, and the southern supported run follows Z59, X82..88,
+then X82, Z59..61. The nineteen middle floor values are `cave_air`, the endpoint
+floor values are `basalt` and `warped_nylium`, and every queried body value is
+`air`. Lava beneath the bridge is retained as a hazard, not replaced in raw data.
+This resolves the last connection needed to combine the local access branches;
+source timings, activation windows and the complete task assessment still remain.
+
+## Uninterrupted breaking component for the declared route
+
+Use the approved unenchanted diamond pickaxe throughout these removals, with no
+mining effects or modified break-speed attributes. This avoids silently adding
+an axe to the declared equipment. It is deliberately not an optimal loadout.
+The shaft cap is mined while holding position on the vine, off the ground; all
+other listed targets use the supported stations described above. The scaffold
+roof-cap stance must actually be standing on its top for the grounded assumption.
+
+The existing [Circle mining derivation](mns-circle_nether_brick-report.md#complete-objective-timing-demonstration-v2)
+provides the nominal progress rule. In the same pinned mapped JAR, `Blocks`
+registers crimson/warped planks, crimson fence and `netherStem` with hardness 2;
+`legacyStair` copies its parent properties. Polished-blackstone bricks explicitly
+use hardness 1.5 (initializer 34483..34489), despite their parent's hardness 2.
+Deepslate bricks copy cobbled deepslate, hardness 3.5 (39667..39673), and their
+stairs copy those properties. Crying obsidian uses hardness 50 (34146..34152).
+The pinned pickaxe tag includes the stone targets and spawners, but none of the
+listed wood targets. Wood does not require a particular tool for drops, so the
+30 divisor still applies, with default tool speed 1 instead of effective speed 8.
+`Player.hasCorrectToolForDrops` explicitly accepts blocks without that requirement;
+`getDestroySpeed` offsets 164..176 divides by five when not on the ground.
+These are source-supported nominal rules, not a new runtime-tag or timing test.
+
+| Targets | Count | Hardness | Effective speed | Whole ticks per block | Subtotal seconds |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| North crimson stair, south crimson fence, two main planks, three roof stairs and two roof stems | 9 | 2 | 1 | 60 | 27 |
+| South polished-blackstone bricks | 5 | 1.5 | 8 | 6 | 1.5 |
+| South deepslate brick and stair | 2 | 3.5 | 8 | 14 | 1.4 |
+| Shaft crying-obsidian cap, off ground | 1 | 50 | 8/5 | 938 | 46.9 |
+| All seven spawners | 7 | 5 | 8 | 19 | 6.65 |
+
+The route requires seventeen cover removals and seven spawner removals, totaling
+1,669 nominal game ticks or 83.45 seconds at the declared 20 TPS. This is only
+uninterrupted breaking work. It excludes and must not replace targeting, tool
+selection, movement, thirty placements (19 bridge, 4 ladder, 7 scaffold), the
+main trapdoor interaction, all container acquisition, navigation, combat and
+completion verification. It is not the dungeon's traversal or completion time.
+A different tool, grounded cap strategy or interrupted mining is a different
+schedule and cannot silently reuse this component.
+
+In particular, the 46.9-second cap operation alone exceeds four minimum ten-second
+spawner reset intervals. Its station is within sixteen blocks of the two main
+blaze sources. A single initial wave per source is therefore not a justified
+population bound for this route. Successful spawns, local entity caps, delays and
+activation time must remain distinct in the eventual encounter model.
+
+Reproduce the arithmetic with the pinned source constants:
+
+```sh
+uv run python - <<'LARGE_HOUSE_BREAKING'
+import math
+rows = [('wood',9,2,1), ('blackstone bricks',5,1.5,8),
+        ('deepslate',2,3.5,8), ('hanging cap',1,50,8/5),
+        ('spawners',7,5,8)]
+total = 0
+for name,count,hardness,speed in rows:
+    ticks = math.ceil(hardness*30/speed)
+    total += count*ticks
+    print(name, count, ticks, count*ticks/20)
+assert total == 1669
+print('breaking only, seconds', total/20)
+LARGE_HOUSE_BREAKING
+```
+
+## Complete-task scenario and accounting predeclaration
+
+Apply the separately accepted timing method to this local objective: begin at
+(85.5,33,36.5), disable all seven spawners, transfer the contents of all sixteen
+barrels, defeat the modeled spawned population, and return alive to that station.
+Use one fully informed adult, full health/food, unenchanted iron armor/sword and
+diamond pickaxe with sufficient durability, 19 cobblestone, 4 ladders and 7
+scaffolds. No additional construction, cover removal, flight, teleportation,
+assistance, pre-applied effects, critical hits, sweeps or healing is allowed. Ignore incidental
+mining/creature drops. Construction is left in place. Pre-entry discovery, material
+procurement and travel are outside the local objective.
+
+At task start stipulate no pre-existing entities, no natural spawning and the
+seven saved initial delays. This is a scenario reset, not an observation of the
+accepted world's entity history. All subsequent spawn opportunities remain active
+until each source is removed. Do not reset their delays between branches. The
+actor postpones voluntary combat until every source is disabled and all barrels
+are visited, then starts and ends the combat phase at the main landing. Surviving
+this uninterrupted work is a condition, not a prediction. Contact duty includes
+pursuit to any remaining spawned targets and return to that landing; failure to
+complete that pursuit within the duty allowance censors the scenario.
+
+All generated container results must fit the actor's available inventory as each
+transfer occurs, after accounting for equipment/materials. This is a conditional
+capacity requirement, not a claim that sixteen rolled inventories fit by default.
+A full inventory, rejected transfer or unmodeled container interaction censors
+completion. A fixed scan/shift-click of all 27 slots, plus open and close, costs
+29 interaction allowances per barrel, irrespective of how many slots are occupied.
+Add one acquisition-confirmation allowance per barrel. This follows the existing
+Skull accounting and does not label potential loot as generated or acquired loot.
+
+Use the accepted A/B/C upright/crouch speeds and decision, interaction, selection,
+acquisition, verification and combat-duty allowances. Predeclare vertical climb
+and controlled descent rates of 1.5/1/0.75 blocks/s for A/B/C respectively, across
+vines, ladders and scaffolding. These are analyst-selected conditional rates, not
+measured movement or a claim of equal in-game maximum speeds. Stationary placement,
+mining and decisions are excluded from movement time. Decision allowances include
+all pose transitions and orientation changes in their respective phase.
+
+| Sequential phase | Upright/crouch/vertical blocks | Breaking seconds | Decisions | Interactions | Selections | Acquisition checks |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1. North cache and return to initial station | 22/2/0 | 3.95 | 3 | 147 | 2 | 5 |
+| 2. Build east bridge, reach south entry | 14/20/0 | 0 | 3 | 19 | 1 | 0 |
+| 3. South cache and shaft, reach main landing | 9/0/11 | 53.75 | 5 | 101 | 6 | 3 |
+| 4. Main corridor out/back including east barrel branch | 52/0/0 | 8.85 | 6 | 180 | 5 | 6 |
+| 5. Roof branch out/back to main landing | 14/0/14 | 16.9 | 4 | 72 | 7 | 2 |
+| 6. Encounter clear, returning to main landing | Included in combat duty only | 0 | 1 | 0 | 1 | 0 |
+| 7. Descend and cross bridge back to initial station | 21/20/11 | 0 | 3 | 0 | 0 | 0 |
+| Total | 132/42/36 | 83.45 | 25 | 519 | 22 | 16 |
+
+Phase 1 uses pickaxe then empty hand, with orientation/cache/return decisions.
+Phase 2 selects bridge blocks, with route/bridge/south-entry decisions. Phase 3
+selects pickaxe for the pillar, ladders, pickaxe for its spawner, empty hand for
+three barrels, pickaxe for the shaft cap, then ladders. Its decisions cover tunnel,
+cache, shaft, cap and main entry. Visit the three south barrels from X78.5 to X76.5,
+then return to X77.5 for the shaft, accounting for the asymmetric lower path.
+
+Phase 4 disables the two blazes before southern barrels, breaches the partition,
+visits northern barrels, toggles the brute trapdoor and disables that source,
+then returns. Five selections alternate pickaxe/empty hand/pickaxe/empty hand/
+pickaxe. Six decisions cover blazes, southern barrels, partition, northern barrels,
+brute and return. Phase 5 selects scaffold/pickaxe/scaffold/pickaxe/empty hand/
+pickaxe/empty hand in the documented construction and right-barrel/source/left-
+barrel sequence. Four decisions cover tower, first bay, sources and return.
+Phase 6 selects sword and confirms encounter state. Phase 7 decisions cover
+lower descent, bridge and final entry, followed by one final verification budget.
+
+Interaction totals include 24 mined targets, 30 placements, one trapdoor toggle
+and 16*29 container operations: 519. Each includes its own aiming/input allowance;
+breaking duration is charged separately. The circuit distances are the sum of
+previously established branches, not straight-line distances through obstacles.
+No attack switching or pursuit distance is charged a second time outside duty.
+There is no deliberate spawn wait; the actual time spent working advances delays.
+
+## Repeated-source envelope and conditional task results
+
+Track each source only until its removal phase: north skeleton in phase 1,
+south skeleton in phase 3, both blazes and main brute in phase 4, roof piglin and
+brute in phase 5. At the initial station only the north source is within its
+sixteen-block radius. The other sources may activate as the route approaches;
+activation does not require line of sight. Exact tickwise player movement and
+spawn successes are NOT MEASURED.
+
+Use a deliberately conservative activation envelope rather than inventing that
+history. For each source i, its actual active ticks A_i cannot exceed
+ceil(20*D_i), where D_i is elapsed noncombat time through the end of its removal
+phase. This bounds the actual route even where the player is outside radius,
+the source is removed early in a phase, or there are failed attempts. Retain its
+saved initial delay L_i. Bound cumulative successful ordinary entities by zero
+if ceil(20*D_i)<L_i; otherwise use
+4*(1+floor((ceil(20*D_i)-L_i)/200)). This intentionally overcounts boundary ticks
+and inactive periods. It is a workload envelope, not a probable or jointly
+attainable population, and is not an assertion of continuous activation.
+
+Pinned `BaseSpawner.serverTick` returns when no player is near, decrements a
+positive delay and returns, loops through at most SpawnCount attempts at zero,
+and invokes `delay` after successful addition. `delay` chooses at least the saved
+MinSpawnDelay 200 before further success. Failed attempts or the local cap can
+reduce successes; MaxNearbyEntities 6 is not a cumulative lifetime cap. The source
+paths are `serverTick` offsets 0..69 and 671..741, and `delay` 0..48. This derivation
+reuses saved fields without altering them or assuming a single initial wave.
+
+| Source in original position-table order | Removal phase | A count ceiling | B count ceiling | C count ceiling |
+| --- | ---: | ---: | ---: | ---: |
+| North wither skeleton | 1 | 24 | 40 | 76 |
+| South wither skeleton | 3 | 72 | 108 | 176 |
+| East blaze | 4 | 100 | 160 | 272 |
+| West blaze | 4 | 100 | 160 | 272 |
+| Main piglin brute | 4 | 96 | 156 | 272 |
+| Roof piglin | 5 | 116 | 188 | 324 |
+| Roof piglin brute | 5 | 112 | 184 | 316 |
+
+These intentionally loose ceilings show why a four-per-source lifetime claim
+would fail. They do not predict hundreds of mobs. In particular, nearby caps,
+failed placement and source inactivity are not resolved into invented frequencies.
+Use actual total successful counts as explicit scenario inputs within this
+conservative envelope, retaining the count for each source independently.
+
+For combat, ordinary unarmored blazes inherit health 20 and armor 0:
+`Blaze.createAttributes` starts with `Monster.createMonsterAttributes` and only
+adds attack damage, movement speed and follow range. Reuse the existing default
+health and iron-sword derivation in the model-source notes. Each blaze therefore
+costs ceil(20/6)*13/20 = 2.6 nominal attack seconds, as does each wither skeleton.
+Piglin and brute work remains 1.95 and 5.85 seconds respectively. Let w,z,p,b be
+total surviving modeled wither skeletons, blazes, piglins and brutes requiring
+combat. Stipulate no despawns, environmental deaths, extra equipment, passengers,
+reinforcements or modified attributes in the worked scenario. Active attack work
+is W=2.6*(w+z)+1.95*p+5.85*b; combat budget is W/d. Flight, wither and fire pressure
+are not thereby neutralized: survival and successful contact remain conditions.
+
+The complete conditional task formula is
+
+T = 132/u + 42/c + 36/h + 83.45 + 25*n + 519*a + 22*s + 16*k + v + W/d.
+
+Here h is the predeclared vertical rate and the other symbols use the accepted
+A/B/C definitions. No required task phase is silently omitted from this formula.
+
+| Conditional result, seconds | A | B | C |
+| --- | ---: | ---: | ---: |
+| Noncombat task budget | 327.6 | 519.0 | 872.6 |
+| Worked scenario: two successful entities per source in total | 375.7 | 583.1 | 968.8 |
+
+The worked composition is w=4,z=4,p=2,b=4, giving W=48.1 seconds. These are total
+successful counts over all source opportunities, not two creatures guaranteed
+per wave or a claimed baseline population. Report approximately 376/583/969
+seconds, keeping profile and composition visible. This is not an expected clear
+time, success probability, confidence interval or measured play. Counts above
+those in the worked example increase W explicitly; the source ceilings constrain
+the specified schedule but do not turn its extreme count combinations into
+feasible successful clears.
+
+Censor completion on death, required healing, interrupted construction/mining
+beyond allowances, failed support/placement/transfer, insufficient inventory,
+changed fluid/obstacle state, source survival beyond its removal phase, unmodeled
+population modifiers, combat pursuit outside duty, or departure from 20 TPS.
+Actual censoring time is NOT MEASURED. Human times, realized encounters and
+acquired loot remain NOT MEASURED. This establishes a complete conditional task
+model for this one saved layout; room/quality synthesis and family repetitions
+remain required before broader completion.
+
+Reproduce phase arithmetic and source ceilings:
+
+```sh
+uv run python - <<'LARGE_HOUSE_TASK'
+import math
+profiles = [('A',5,1.5,1.5,.5,.25,.25,1,2,1),
+            ('B',4,1.2,1,1,.5,.5,2,4,.75),
+            ('C',3,.9,.75,1.5,1,1,4,8,.5)]
+phases = [(22,2,0,3.95,3,147,2,5), (14,20,0,0,3,19,1,0),
+          (9,0,11,53.75,5,101,6,3), (52,0,0,8.85,6,180,5,6),
+          (14,0,14,16.9,4,72,7,2), (0,0,0,0,1,0,1,0),
+          (21,20,11,0,3,0,0,0)]
+work = 2.6*(4+4)+1.95*2+5.85*4
+assert math.isclose(work,48.1)
+for name,u,c,h,n,a,s,k,v,d in profiles:
+    times = [x/u+y/c+z/h+breaks+nd*n+na*a+ns*s+nk*k
+             for x,y,z,breaks,nd,na,ns,nk in phases]
+    ends = [sum(times[:i+1]) for i in range(7)]
+    ceilings = []
+    for phase,delay in [(0,0),(2,0),(3,32),(3,79),(3,173),(4,237),(4,497)]:
+        ticks = math.ceil(20*ends[phase])
+        ceilings.append(0 if ticks<delay else 4*(1+(ticks-delay)//200))
+    base = sum(times)+v
+    direct = 132/u+42/c+36/h+83.45+25*n+519*a+22*s+16*k+v
+    assert math.isclose(base,direct)
+    print(name, 'phase ends', ends[:5], 'count ceilings', ceilings,
+          'noncombat', base, 'two per source', base+work/d)
+LARGE_HOUSE_TASK
+```
+
+## Integrated topology and quality assessment
+
+Apply the protocol's activity-space definition to the saved layout and the declared
+actor/removals. Delineate five authored spaces below. Bounds identify their walls,
+fixtures and activity area; they do not assert that every cell in each rectangle
+is walkable. The exact occupied stations and links remain those inspected above.
+Do not count the exterior banks, bridge, narrow vine shaft, solid roof mass or
+unreached decorative cavities as additional rooms.
+
+| Node | Authored space and coordinate boundary | Access disposition | Barrels / spawners |
+| --- | --- | --- | --- |
+| N | North lower cache, fixture/alcove band X75..77, Z31..35, feet Y33 | Open-gate approach; crouching and one stair removal expose all rewards | 5 / 1 |
+| S | South lower cache, alcove X76..78, Z61..62, feet Y35 | Existing standing alcove reached through the declared pillar breach and ladders | 3 / 1 |
+| B | Southern main hall, interior band X74..80, Z51..63, feet Y44 | Capped lower shaft requires the declared cap removal and ladder extension | 3 / 2 |
+| M | Middle main room, interior band X74..80, Z43..49, feet Y44 | Two-plank breach from B; native opening to F | 0 / 0 |
+| F | Northern main room, interior band X74..80, Z31..41, feet Y44 | Native opening from M; inspected objective stations at Z37..41 | 3 / 1 |
+
+The roof's two barrels/two sources form a sixth objective group R at X76..78,
+Z62..63, feet Y51. The standing bays at (78,51..52,62) and (77,51..52,62) are
+created by cover removal; this is an engineered workspace, not a sixth authored
+playable room. Report five authored activity spaces plus one created workspace,
+not six native rooms. The five-room count includes pre-existing spaces whose
+access is conditional on engineering, and does not claim five rooms reachable
+from the initial entry without modification. It also does not imply that every
+possible block-breaking capability has been enumerated.
+
+For the five delineated rooms, the established native inter-room edge is M-F.
+That graph has five nodes, one edge and four components. Only N is reached by the
+declared initial approach without the subsequent constructed links. The complete
+engineering route adds N-S (exterior bridge and pillar entry), S-B (shaft breach/
+extension), and B-M (partition breach): five nodes, four edges, one component,
+zero independent cycles and zero degree-three room junctions. Its terminal room
+nodes are N and F. Including the created roof workspace adds B-R, yielding one
+degree-three activity junction at B and terminal objective groups N/F/R. This
+separates room branching from a roof-resource detour. Neither graph establishes
+that no alternative route could be built elsewhere.
+
+Native M-F opening: two clear blocks in width, at least two in height at the
+validated X75/76 passage. Engineered B-M opening: one block wide and two high.
+The south tunnel, ladder/vine shaft and scaffold column are each one cell wide;
+the northern cache also requires the documented 1.5-high crouched passage.
+The bridge is one block wide without rails. These are geometric constraints;
+no live enemy doorway exploitation or pathfinding result is claimed.
+
+The objective route progresses from feet Y33 through Y35 and Y44 to Y51, then
+reverses. Accessible objective-floor span is 18 blocks, with 18 blocks of ascent
+and 18 of descent in the full circuit. The 45-block template height is not this
+progression. In the declared five-room graph, deepest room F is four edges from
+N; R is three edges from N when included as an objective node. Under the fixed
+validated connectors, entry-to-station movement depths are 12 blocks to the north
+cache's crouched station, 42 to the southern cache's west station, 52 to B's
+landing, 63 to M at (76.5,44,49.5), 76 to F's east-barrel station and 66 to R's
+central bay. These are shortest paths within the declared connector set, not
+global minima over unspecified new breaches. For example, B is 34 exterior
+blocks plus 7 lower horizontal and 11 vertical blocks; F adds 21 corridor and
+3 east-branch blocks. R adds 7 horizontal and 7 vertical blocks to B. The full
+210-block task circuit revisits branches and is distinct from these depths.
+Terrain burial remains UNKNOWN: the saved Y127 heightmap does not establish
+solid cover thickness above any room.
+
+### Empty space, hazards and reward distribution
+
+All N/S/B/F rooms have authored encounter and barrel potential. M has no barrel
+or spawner and is a quiet connector under the sixteen-barrel objective, so the
+objective-only empty-room sensitivity is 1/5. It is not dead: it connects B to F.
+M also contains a lava cauldron at (80,44,43) and a decorated pot at (80,44,49).
+An optional supported approach at feet Y44 along Z44, X76..79 has air at Y44/45;
+the cauldron's upper east rim can be targeted from (79.5,44,44.5) above the adjacent
+top slab. A bucket is outside the timed loadout. Including that accessible lava
+facility under the protocol definition yields an empty-room count of 0/5. Dead
+rooms are 0/5 under either interpretation. The roof workspace has source/reward potential and is not empty,
+but is outside the five-room denominator.
+
+Both saved decorated-pot payloads, at (80,44,49) and (80,44,51), contain only id,
+position and keepPacked; neither has item contents or a LootTable. They are not
+additional authored reward nodes in this sample. Their raw records are retained
+in the same extraction, not inferred from a pot's appearance.
+
+Meaningful conditional hazards are the exterior lava beneath the required bridge,
+fall/displacement exposure on that unrailed one-cell link, the lower shaft and
+roof construction, and lava columns beside the southern hall. Saved lava includes
+(75/79,Y44..48,54/58) and (77,Y44..48,62); the validated X76.5 corridor avoids
+those occupied cells. Source changes, flowing lava or displacement invalidate
+continued-clearance assumptions. Two blaze sources create source-supported fire/
+ranged-pressure potential; wither skeletons and brutes add distinct hostile
+potential. No successful projectile, wither application, trap trigger or damage
+was observed. The campfire at (75,44,51) is unlit, so it is not scored as an active
+fire hazard. No working redstone trap is claimed from decoration alone.
+
+The sixteen-barrel distribution is N5/S3/B3/M0/F3/R2. Treasure-table potential is
+concentrated in N (one), S (three) and B (one); the highest workspace has two
+`empty`-table barrels, whose nonempty alternatives are documented above. Neither
+height nor the final visitation order proves superior reward. Actual rolled
+contents and acquisition remain NOT MEASURED.
+
+### Finale, bypass and replay assessment
+
+Authored finale: NONE established. No unique terminal objective behavior is
+present in the inspected template/source assignments. The main brute and roof
+brute are ordinary spawner sources; the last modeled target is an analyst-selected
+route endpoint. Final-room quality therefore records objective clarity ABSENT,
+distinctive terminal challenge ABSENT, terminal reward linkage ABSENT, route
+integration CONDITIONAL (engineering connects separate groups), and external
+bypass exposure PRESENT for the lower cache. These judgments do not erase the
+multiple distributed encounters/rewards or claim that a player cannot enjoy them.
+
+A concrete partial-objective bypass is the north cache: the initial 12-block
+one-way route, one stair removal and one source disablement expose five of sixteen
+barrels, including treasure-table potential, without crossing the lava bridge,
+ascending, visiting main rooms or opening the roof. Its source pressure and
+mining/interaction effort remain. This is direct external access to a substantial
+reward group, not evidence that the entire house can be cleared cheaply. The
+full route's pillar, shaft and roof breaches demonstrate paid engineering access;
+unmodeled aircraft, bombardment or arbitrary side tunnels remain UNKNOWN.
+
+Expected replay value is assessed as limited authored-layout novelty with
+conditional encounter/reward variation. This active fixed template has no piece
+assembly branch or random processor in its saved component; repeated generation
+can vary surrounding terrain, orientation, obstruction and loot/spawn results,
+which are not sampled distributions here. The same persistent site retains the
+player's bridge, breaches and removed spawners under the declared objective;
+per-player loot mechanics do not restore that physical topology. No respawning
+or re-sealing mechanism is established by this template inspection. Repeat
+visit enjoyment and player outcomes remain NOT MEASURED.
+
+Large-but-shallow assessment: the tall exterior overstates native route depth.
+The saved authored rooms provide one established unmodified inter-room edge,
+while the complete objective requires a bridge and multiple breaches/climbing
+extensions. The roof is casing around rewards, not a demonstrated series of
+playable tower floors. Nevertheless five activity spaces, seven hostile sources,
+sixteen barrel nodes and concrete engineering obstacles prevent labeling the
+whole sample an empty facade. Its supported weakness is disconnected native
+progression and no clear finale, rather than absence of all mechanical content.
+
+This completes this sample's local assessment under the accepted conditional
+scope, including its source/geometry limits. It does not complete this family's
+repetitions, other material variants or Item 13's 192-family coverage and delivery
+gates. No new world or runtime experiment was performed for this synthesis.

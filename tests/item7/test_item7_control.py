@@ -49,6 +49,41 @@ def test_control_preflight_materializes_exact_136_without_chunky(
     assert "level-seed=42" in request.runtime.target.joinpath("server.properties").read_text()
 
 
+def test_retained_preparation_uses_mountainous_seed_without_chunky(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime = runtime_request(tmp_path, monkeypatch, role="mountainous")
+    receipt = run_item7_control.prepare_retained_runtime(runtime)
+    assert receipt.seed == "6671238423019257953"
+    assert len(tuple(runtime.target.joinpath("mods").glob("*.jar"))) == 136
+    assert (
+        "level-seed=6671238423019257953" in runtime.target.joinpath("server.properties").read_text()
+    )
+    runtime.target.joinpath("config/resourceful-config-web.json").write_text(
+        FROZEN.joinpath("config/resourceful-config-web.json")
+        .read_text()
+        .replace("<redacted-generated-secret>", "secret-value")
+    )
+    runtime.target.joinpath("world/serverconfig").mkdir(parents=True)
+    runtime.target.joinpath("world/serverconfig/readme.txt").write_bytes(
+        FROZEN.joinpath("world-serverconfig/readme.txt").read_bytes()
+    )
+    assert item7_control.capture_retained_configuration(runtime).base_file_count == 228
+
+
+def test_retained_preparation_rejects_wrong_materialized_seed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime = runtime_request(tmp_path, monkeypatch, role="mountainous")
+    monkeypatch.setattr(
+        run_item7_control,
+        "_materialize",
+        lambda run: run_item7_control._Materialization(seed="42"),
+    )
+    with pytest.raises(item7_control.ControlError, match="materialized seed differs"):
+        run_item7_control.prepare_retained_runtime(runtime)
+
+
 def test_control_preflight_rejects_nonordinary_role(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

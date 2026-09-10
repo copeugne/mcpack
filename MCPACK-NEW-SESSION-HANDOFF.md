@@ -1,7 +1,6 @@
 # mcpack current handoff
 
-Updated: 2026-09-09. This is the single active continuation checkpoint.
-
+Updated: 2026-09-10. This is the single active continuation checkpoint.
 ## Authority and preservation
 
 Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md) and the
@@ -12,7 +11,6 @@ GitHub `copeugne/mcpack` and fetched `origin/main` are delivery authority.
 
 Preserve `.codegraph`, `.omo/`, `mcpack-reconstructed-28(1).bundle`, ignored raw
 worlds/censuses, backups, caches and existing evidence. Do not stage or delete them.
-The ignored historical handoff under `docs/history/` is not startup instructions.
 The prior `codex/item9-delivery-record` remains pushed at `3f758cb2`, with an
 unmerged historical-reference rename. Preserve that reference. Git preserves
 routine prior handoffs; consult them only for a specific historical question.
@@ -75,9 +73,127 @@ custody. Reuse [Item 8's 448-family inventory](evidence/item-8/inventory.json) a
 exception and retained-stack nondeterminism limits remain as recorded. Do not
 tune, regenerate or repeat completed audits, classification or route processing.
 
-## Continuation boundary
+## Item 13 active work
+Item 13 IN PROGRESS; Item 14 UNSTARTED. User authorized starting Item 13 and its
+separate modeled/inspection scope. Human times, realized encounters, generated or
+acquired loot and player outcomes remain NOT MEASURED. The approved
+[complete conditional scenario](evidence/item-13/timing-scenario-proposal.md)
+accounts for complete objective work rather than movement alone. No Item 13
+completion or final PR gate has been claimed.
 
-No measurement or implementation work remains for Item 12. If the completion-record
-PR is still pending, finish only its required clean review, merge and fetched-main
-verification. Once delivered, wait for a new user instruction. Item 13 is not
-authorized and has not started. Preserve the current work and protected artifacts.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed candidate: `acbcb89c`; v3 amendment: `e2e15b1f`.
+Verify current head against upstream before continuing.
+Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
+`cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
+older Item 12 branch or repeat history consolidation.
+
+Authoritative status and requirements: [Item 13 README](evidence/item-13/README.md),
+[protocol](evidence/item-13/protocol.md), [coverage](evidence/item-13/coverage.md),
+[intake](evidence/item-13/intake.json). Population: 192 included canonical
+families, 256 exclusions, 357 registry roots. All dimensions and material variants
+remain in scope. Existing inventory/classification/audits are inputs, not work to
+repeat. The [candidate index](evidence/item-13/candidates.json) contains266 starts
+across44 families/59 roots; [assembly inspection](evidence/item-13/start-inspection/summary.json)
+retains256 full padded envelopes and ten limited cases with alternatives.
+Named pieces, templates and clearance positions are not rooms.
+
+Local quality assessments and raw blocks are linked from the
+[fixed-block record](evidence/item-13/fixed-blocks/README.md) and
+[compact pilot](evidence/item-13/pilot/report.md). Reuse their rejected routes,
+collision/support checks, source derivations, conditional complete-task models,
+uncertainty and family-specific sampling limits. All nine selected Moog layouts
+and five selected Adorabuild layouts have local assessments. This does not mean
+all family/material/repetition coverage is complete.
+
+The three earlier collision/spawner captures have verified
+[external raw custody](evidence/item-13/collision/README.md). Do not repeat them.
+Their outputs measure empty-context shapes or source payload resolution, not
+observed gameplay. Existing full-task corrections are integrated in the reports.
+
+## Completed local diagnostics
+
+The [temple diagnostic](evidence/item-13/temple-variants/README.md) covers four
+missing debris/lodestone cells. Earlier failed attempts remain preserved; r5
+passed with15,562 live/restored cells equal. Its material models and
+[external custody](evidence/item-13/temple-variants/custody/README.md) are integrated.
+Do not repeat it. Forced Y160 placement supports material outcomes, not natural
+access or encounters.
+
+The [Basalt assessment](evidence/item-13/fixed-blocks/basalt-chambers-report.md)
+covers two distinct-seed assemblies, all seven components and central material
+outcomes. Preserve the rejected no-placement route: the second sample requires
+a two-block bridge over lava recesses. The [netherite diagnostic](evidence/item-13/basalt-variant/README.md)
+and its [external custody](evidence/item-13/basalt-variant/custody/README.md)
+pass with2,197 live/restored cells equal. No runtime remains active.
+
+## Completed local modular Nether fortress assessment
+
+The [fortress assessment](evidence/item-13/fixed-blocks/adorabuild-nether-fortress-report.md)
+and [selection](evidence/item-13/nether-fortress-selection.json) retain two existing
+seed roles collectively covering all eight components. Both local assessments
+include validated routes, conditional two-blaze tasks and ground-window bypasses.
+Reuse their retained native-route failures, wart removals and conditional slot
+jumps. Exact geometry, costs and assumptions remain in the linked report;
+human movement, realized enemies and acquired loot remain NOT MEASURED.
+
+## Completed local Slime Cave assessment
+
+The [Slime Cave report](evidence/item-13/fixed-blocks/explorations-slime-cave-report.md)
+covers both saved material states with validated routes, source suppression,
+conditional splitting workloads and explicit incidental cave evidence. Both
+complete local tasks give37..45/63..73/101..116s across approved profiles. Do not
+repeat these reads or models. Actual gameplay remains NOT MEASURED.
+
+## Current priority: experience-focused v3 assessment
+
+User changed acceptance on 2026-09-10: prioritize a coherent, enjoyable modpack
+through representative gameplay-design assessment and proportionate review.
+Read [SPECS Item 13](SPECS.md#13-measure-baseline-dungeon-quality) and
+[protocol v3](evidence/item-13/protocol.md#effective-acceptance-scope).
+These supersede exhaustive individual family/material/repetition sampling and
+mandatory exact complete-task timing. Earlier case-count floors are historical,
+not the remaining required workload. Item 14 remains UNSTARTED.
+
+The [v3 synthesis](evidence/item-13/README.md#v3-consequential-design-differences) now integrates six inspected and eight source-design comparisons.
+Coverage names20 direct families and gives the other172 bounded source-only gaps,
+with supported design associations and affected recommendations withheld.
+Local v3 gate PASS:1819 tests in1168.54s; changed-code static checks and
+legacy limitations are in the [final gate](evidence/item-13/README.md#final-local-gate-and-delivery).
+PR42 cycle1 found stale ledger sampling instructions; narrow doc fix prepared.
+Current batch: push fix, request fresh Codex review/thumbs-up, merge and verify main.
+Assess traversal/combat burden qualitatively where exact timing lacks support.
+Keep strict compatibility, safety, integrity, honest evidence and delivery checks.
+Optional precision and speculative refinements are non-blocking review suggestions.
+
+Preserve completed Nether and ocean diagnostic evidence in the
+[existing group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md).
+Main-thread checkpoint: taiga r1 failed before materialization/server launch
+because ControlRequest enforces ordinary-only pilot use. No experiment is running;
+taiga r2 has NOT run. Failure and narrow control fix are delivered in`04f25fbc`.
+Do not launch the previously queued taiga or temple work merely to satisfy v2.
+No current recommendation requires taiga runtime or exact wet timing. Preserve
+their source/access limits. The control fix passed12 focused tests, lint and types;
+its ordinary-only control restriction remains intact.
+
+## Underground Temple recovery context
+
+Reuse the [report](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md),
+[selection](evidence/item-13/underground-temple-selection.json), raw observations
+and existing route implementations. The first assembly has an integrated graph,
+complete conditional task and quality assessment. The second has all four tower
+and bedroom local tasks integrated, with31/35 chest/barrel access assignments.
+Four remaining targets already have raw observations; see the report's final
+bedroom section for exact coordinates. Full second-assembly route/graph/task and
+quality integration remain unresolved. The scoped hall and missing-template
+failure are already recorded. Do not regenerate these observations.
+
+Preserve the continuous wet-shaft trial failure and its downloaded restore.
+The scaffold alternative has solid geometry evidence; wet motion remains
+unresolved. Do not rerun or tune the controller. The [recovery disposition](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md#completion-workflow-recovery-disposition-2026-09-10)
+keeps the proposed shaft-using task UNRESOLVED: neither native nor scaffold
+evidence supplies the wet cost. Do not remove its component coverage after failure.
+This unresolved model remains preserved; under v3 it blocks only conclusions
+that depend materially on that wet route.
+
+Item13 remains IN PROGRESS; Item14 remains UNSTARTED. Required clean Codex review,
+thumbs-up, merge and fetched-main delivery verification remain mandatory.

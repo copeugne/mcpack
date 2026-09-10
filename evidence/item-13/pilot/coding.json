@@ -1,0 +1,52 @@
+{
+  "method": "Agent inspection of exact saved block plans and centre sections; not human gameplay observations",
+  "source": "observations.json.gz",
+  "source_sha256": "15860fb3692153b2bc6ac96cc0611655d498a7a976cfa5b953f424942712686e",
+  "route_assumptions": {
+    "movement": "Cardinal flat standing cells. Feet and head must both be saved air/cave_air; support must be full cobblestone or mossy cobblestone. Other states are excluded from the route, not asserted universally impassable.",
+    "interaction": "Within 3 blocks of target centre from eye at feet+1.62, with the ray crossing only saved air/cave_air before its target block. This conservative geometric visit does not prove a chest can be opened or loot acquired.",
+    "target_order": "Spawner first, then containers sorted by x,y,z. Use shortest cardinal path to a permitted interaction cell, with x,z lexicographic ties, then return to entry.",
+    "primary_speed_blocks_per_second": 4,
+    "sensitivity_speed_blocks_per_second": [3, 5],
+    "combat": "Naked adult, single-target, noncritical, one-wave model from ../model-source/README.md; active-attack and 50% contact-duty scenarios are conditional workloads.",
+    "ingress": "Timing begins at a staged interior boundary cell. Outside cave approach, excavation and any drainage are excluded and unmeasured. Ocean dry-state route is conditional on maintaining dry access after breaching."
+  },
+  "cases": [
+    {
+      "world": "full-ocean-heavy-r1-baseline",
+      "entry": [428, 21, -2],
+      "entry_basis": "West interior edge, after a hypothetical two-block-tall breach at x427,y21..22,z-2. No authored doorway is present. Adjacent external water makes a dry approach conditional; no alteration was made to the saved world.",
+      "room_count": 1,
+      "rooms": [{"id": "R1", "floor_y": 20, "interior_xz": [428, -3, 436, 3], "basis": "Continuous unpartitioned chamber with flat full-block floor, central spawner and perimeter contents. Corner props do not divide it into rooms; ceiling chains/stairs add decoration, not vertical progression."}],
+      "room_edges": [],
+      "branch_junctions": 0,
+      "independent_room_cycles": 0,
+      "entry_to_deepest_room_edges": 0,
+      "required_vertical_progression_blocks": 0,
+      "empty_rooms": 0,
+      "dead_rooms": 0,
+      "internal_authored_chokepoints": 0,
+      "finale": "NONE: no distinct terminal room or separate authored objective; central spawner and perimeter rewards share R1.",
+      "hazards": "One conditional spawner encounter source. No lava, damaging floor or trap circuit observed inside R1. Water outside the west wall creates a conditional flooding/approach hazard if breached.",
+      "bypass": "Perimeter loot can be approached through side walls without traversing past the central spawner. Water and terrain cover preserve entry effort. No automatic safety, chest opening or spawner deactivation is inferred."
+    },
+    {
+      "world": "full-mountainous-r1-baseline",
+      "entry": [84, 42, 2],
+      "entry_basis": "Southeast interior edge adjacent to the existing air opening at x84,y42..43,z3. It connects to the local rim, not a verified safe route through the whole cave.",
+      "room_count": 1,
+      "rooms": [{"id": "R1", "floor_y": 41, "interior_xz": [76, -2, 84, 2], "basis": "One continuous flat chamber, central spawner and perimeter containers/furnishings, with a natural southeast opening. Shelves and hanging props do not create a second reachable floor or separate room."}],
+      "room_edges": [],
+      "branch_junctions": 0,
+      "independent_room_cycles": 0,
+      "entry_to_deepest_room_edges": 0,
+      "required_vertical_progression_blocks": 0,
+      "empty_rooms": 0,
+      "dead_rooms": 0,
+      "internal_authored_chokepoints": 0,
+      "finale": "NONE: central spawner and distributed wall containers occupy the same room; no terminal-room escalation.",
+      "hazards": "One conditional spider-spawner source; water outside the west wall and the southeast cave-edge drop are conditional approach hazards. Sculk/veins outside the floor do not establish a shrieker, sensor or Warden encounter.",
+      "bypass": "The southeast opening avoids a wall breach and reaches wall containers before the central spawner. Falling or cave traversal outside the sampled envelope remains unresolved."
+    }
+  ]
+}

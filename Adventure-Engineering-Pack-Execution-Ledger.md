@@ -1,9 +1,10 @@
 # Adventure & Engineering Pack — Execution and Evidence Ledger
 
-**Ledger version:** 0.20
+**Ledger version:** 0.21
 **Created:** 2026-09-01
 **Governing source:** User-supplied `Adventure / Dungeon / Exploration System — Dependency-Ordered Implementation Plan — Revised` (Items 1–51)
-**Current execution gate:** Item 12 COMPLETE through clean-reviewed PR39 and verified main `33e11923`, under the separately authorized inspection/automated scope. Item 11 and the Items 2 through 10 audit remain COMPLETE through PR37 and PR36. Item 13 remains unstarted and is not authorized. Authoritative closure: evidence/item-12/README.md#verified-delivery.
+**Current execution gate:** Item 13 IN PROGRESS. Local representative assessment under protocol v3 PASSES; PR42 review/fix, completed clean thumbs-up, merge and fetched-main verification remain. Item 12 remains COMPLETE through PR39/PR40. Item 14 is UNSTARTED. Authoritative evidence and validation: evidence/item-13/README.md.
+**Item 13 scope decision (2026-09-10):** User authorized representative, experience-focused assessment and proportionate review. SPECS Item 13 and evidence/item-13/protocol.md v3 supersede exhaustive family/material/repetition sampling and mandatory exact complete-task timing. Historical workload estimates and table wording must be read under this amendment. Evidence honesty, material-risk checks and final reviewed delivery remain required; Item 14 is UNSTARTED.
 **Release state:** Not eligible for implementation or release
 
 ---
@@ -513,7 +514,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 10 | Baseline structure/encounter-site density | `COMPLETE` | Sixteen complete worlds and eight pairs, full comparisons and preserved failures; clean PR35 review and main delivery verified at d507573e. Evidence: evidence/item-10/README.md. Cross-item audit COMPLETE through clean reviewed PR36 at `5ec24115`. |
 | 11 | Automated route opportunities/repetition | `COMPLETE` | Complete sixteen-world route matrix, retained failures and final report; clean reviewed head `14a9b278` merged through PR37 and fetched main verified at `c4281c65`. Evidence: `evidence/item-11/README.md#verified-delivery`. |
 | 12 | Structure discoverability | `COMPLETE` | Sixteen accepted worlds, 464 cases and 94 observed families under separately authorized inspection/automated scope. Clean reviewed head `4fc7e605` merged through PR39; fetched main `33e11923` verified. Closure and limitations: `evidence/item-12/README.md#verified-delivery`. |
-| 13-18 | Remaining baseline forensics | `UNSTARTED` | Item 13 is not authorized. |
+| 13 | Baseline dungeon quality | `IN PROGRESS` | User-authorized representative v3 assessment: local gate PASS, full 448-family intake, 192 included families with direct or bounded-gap dispositions, inspected/source design synthesis and 1819 passing tests. PR42 clean review/thumbs-up and verified main delivery remain. No exhaustive sampling queue. See evidence/item-13/README.md#final-local-gate-and-delivery. |
+| 14-18 | Remaining baseline forensics | `UNSTARTED` | Item 14 must not start during Item 13. |
 | 19–37 | Requirements/system design | `UNSTARTED` | Depend on verified baseline report; Item 1 variables also affect them. |
 | 38–47 | Feasibility and stack construction | `UNSTARTED` | Depend on requirements and actual mod artifacts. |
 | 48 | Progression implementation | `UNSTARTED` | Package E retains 48A-F implementation increments with affected regression; see SPECS.md. |
@@ -524,8 +526,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Preserve accepted Items 2 through 12 evidence, rejected attempts, recovery refs and protected artifacts. The Item 7 review exception remains as recorded in section 5.7.
-2. Item 12 is COMPLETE through PR39. Deliver this completion record through its required review/merge workflow if still pending; no measurement work remains.
-3. Wait for a new user instruction before Item 13. Do not repeat completed collection, audits, classification, preservation or route processing.
+1. Preserve accepted Items 2 through 12 evidence, failures, recovery refs and protected artifacts. Reuse the delivered cross-item audit and Item 7 exception.
+2. Deliver Item 13 under current protocol v3. The representative assessment and local gate pass; complete the PR42 review/fix loop, obtain a completed clean review with thumbs-up, merge and verify fetched main. Do not resume superseded per-family/material sampling or exact-time experiments. Evidence and dispositions: `evidence/item-13/README.md#final-local-gate-and-delivery`.
+3. Complete required reviewed delivery and verified main merge before Item 13 COMPLETE. Item 14 remains UNSTARTED.
 
 No later item will be marked complete out of order or from inference.

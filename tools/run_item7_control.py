@@ -11,7 +11,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
-from typing import TYPE_CHECKING, ClassVar, Literal
+from typing import TYPE_CHECKING, ClassVar, Literal, cast
 
 from pydantic import BaseModel, ConfigDict
 
@@ -51,7 +51,7 @@ class ControlPreflightReceipt(BaseModel):
 
     model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True)
     schema_version: Literal["item7-control-preflight-v1"] = "item7-control-preflight-v1"
-    seed: Literal["42"]
+    seed: str
     java_version: str
     candidate_count: Literal[136]
     runtime_sha256: str
@@ -63,7 +63,7 @@ class ControlPreflightReceipt(BaseModel):
 
 class _Materialization(BaseModel):
     model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore")
-    seed: Literal["42"]
+    seed: str
 
 
 class _Arguments(BaseModel):
@@ -97,7 +97,11 @@ class ControlRunReceipt(BaseModel):
 
 def prepare_control(request: ControlRequest) -> ControlPreflightReceipt:
     """Materialize the exact retained set and apply the frozen configuration."""
-    run = request.runtime
+    return prepare_retained_runtime(request.runtime)
+
+
+def prepare_retained_runtime(run: WorldgenRequest) -> ControlPreflightReceipt:
+    """Prepare the frozen retained set without instrumentation for a declared seed."""
     if run.target.exists() or run.target.is_symlink():
         raise ControlError("preflight", f"target must be absent: {run.target}")
     try:
@@ -111,6 +115,14 @@ def prepare_control(request: ControlRequest) -> ControlPreflightReceipt:
         _, java_version = validate_java_runtime(run.java_home)
         validate(run.frozen_config, run.frozen_manifest, run.config_audit)
         seed = _materialize(run).seed
+        seed_rows = cast(
+            "dict[str, list[dict[str, str | int]]]", json.loads(run.seed_suite.read_bytes())
+        )
+        expected_seed = next(
+            str(row["seed"]) for row in seed_rows["seeds"] if row["role"] == run.role
+        )
+        if seed != expected_seed:
+            raise ControlError("preflight", "materialized seed differs from declared role")  # noqa: TRY301
         _apply_frozen(run, seed)
         hashes = _hash_mods(run.target / "mods", retained)
     except ControlError as error:
