@@ -1330,3 +1330,39 @@ The declared implementation interval18:39:51 through verified producer delivery
 18:44:56 UTC was305 seconds, within45 minutes. This excludes earlier input
 reconciliation. Runtime and extraction costs above are not whole-case quality
 assessment effort; no completion ETA is inferred from them. Taiga remains unrun.
+
+## Taiga prelaunch failure and v3 disposition
+
+Attempt`evidence/raw/item13/taiga-temple-r1` was invoked on2026-09-10 at18:59:45
+UTC from`4a19f01e1acd565cfa52ca3a0dac303b37cb1376` with the predeclared taiga
+command. It exited1 during ControlRequest construction: `control supports the
+ordinary seed only in pilot mode`. The output directory exists but is empty;
+`instances/item13-taiga-temple-r1` was not created. No Java process, world copy,
+placement, save or runtime observation occurred. The request constructor preceded
+the old try/finally boundary, so no capture.json was written. This paragraph
+retains the observed tool failure; it is not a fabricated runtime log.
+
+The narrow fix reuses the existing retained-only preparation and configuration
+checks through two shared functions, while ControlRequest still rejects every
+nonordinary control experiment. The materialization receipt accepts the declared
+seed and checks it against the hash-verified seed suite/role. No Chunky is added.
+Request construction now occurs inside the capture failure boundary. Existing
+ordinary-control tests and a mountainous136-candidate/configuration test pass;
+a wrong materialized seed is rejected. The first new test used a redacted fixture
+where the capture expects an unsanitized generated test value; correcting that
+fixture preserved the production sanitization rule. Twelve focused tests, Ruff,
+formatting and Basedpyright pass. A hypothetical fresh retry would use r2 paths;
+it has NOT run and is not queued under v3.
+
+Under the user-authorized v3 scope, taiga's lack of a generated sample blocks
+claims about its actual access, terrain integration, realized encounters and
+player enjoyment. It does not block the supported source distinction: no authored
+hostile mob/spawner, minecart rather than a mob, dispenser/reward potential and a
+single fixed template. Treat it as a source-supported trap/reward ruin candidate,
+not evidence of a reliably challenging combat dungeon. No removal or tuning
+recommendation depends on an exact taiga route or time. Consequently the extra
+placement is not presently necessary; preserve the gap and use the existing
+five Nether temple assessments for their own demonstrated mechanics. Do not infer
+that taiga shares their playable topology. The ocean wet timing and second
+Underground Temple shaft model likewise remain unresolved models, not mandatory
+new experiments where the v3 conclusions do not depend on their exact costs.

@@ -53,8 +53,9 @@ if __name__ == "__main__":
         destination_directory.mkdir(exist_ok=True)
     overworld = cast("str | None", args.overworld_temple)
     if overworld is not None:
-        raw_directory = ROOT / f"evidence/raw/item13/{overworld}-temple-r1"
-        prefix = f"{overworld}-r1-"
+        attempt = 2 if overworld == "taiga" else 1
+        raw_directory = ROOT / f"evidence/raw/item13/{overworld}-temple-r{attempt}"
+        prefix = f"{overworld}-r{attempt}-"
         projection = "temple-variants.json"
         destination_directory = DESTINATION.parent / "temple-variants"
     manifest: dict[str, object] = {}

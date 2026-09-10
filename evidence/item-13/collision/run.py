@@ -13,11 +13,11 @@ from pathlib import Path
 
 from tools.analyze_route_opportunities import read_bound, verify_world
 from tools.manage_item4_environment import _world_backup_lock
-from tools.run_item7_control import prepare_control
+from tools.run_item7_control import prepare_retained_runtime
 from tools.run_item8_registry import check_ports
 
 from mcpack_evidence.item7_archive_models import ArchiveManifest
-from mcpack_evidence.item7_control import ControlRequest, capture_control_configuration
+from mcpack_evidence.item7_control import capture_retained_configuration
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
 from mcpack_evidence.item7_selections import PILOT_SELECTIONS
 from mcpack_evidence.item8_registry import run_registry_lifecycle
@@ -143,8 +143,8 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
         "input_sha256": input_hash,
         "rejection_reason": "capture did not finish",
     }
-    request = ControlRequest(
-        runtime=WorldgenRequest(
+    try:
+        request = WorldgenRequest(
             pristine=ROOT / "instances/pristine-baseline-v0",
             artifact_manifest=ROOT / "evidence/item-3/artifact-acquisition-manifest.json",
             retained_manifest=ROOT / "evidence/item-3/runtime/retained-server-candidates.txt",
@@ -159,11 +159,8 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             captured_config=output / "configuration",
             selections=PILOT_SELECTIONS,
             timeout_seconds=600,
-        ),
-        settle_seconds=0,
-    )
-    try:
-        report["preflight"] = json.loads(prepare_control(request).model_dump_json())
+        )
+        report["preflight"] = json.loads(prepare_retained_runtime(request).model_dump_json())
         if temple_variants or shaft_motion:
             report["source_world"] = copy_temple_source(
                 target,
@@ -172,7 +169,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
                 else "full-ordinary-r1-baseline",
             )
         check_ports(target / "server.properties")
-        java, _ = validate_java_runtime(request.runtime.java_home)
+        java, _ = validate_java_runtime(request.java_home)
         classes = output / "classes"
         classes.mkdir()
         probe = output / "probe.jar"
@@ -243,7 +240,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
         if not lifecycle.clean_stop:
             raise ValueError(lifecycle.rejection_reason or "Unclean collision capture")
         report["configuration"] = json.loads(
-            capture_control_configuration(request).model_dump_json()
+            capture_retained_configuration(request).model_dump_json()
         )
         report[
             "projection_sha256"

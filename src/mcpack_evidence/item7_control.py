@@ -222,7 +222,11 @@ def _pipes(process: subprocess.Popen[str], log: IO[str]) -> tuple[IO[str], IO[st
 def capture_control_configuration(  # noqa: D103
     request: ControlRequest,
 ) -> ConfigCaptureReceipt:
-    run = request.runtime
+    return capture_retained_configuration(request.runtime)
+
+
+def capture_retained_configuration(run: WorldgenRequest) -> ConfigCaptureReceipt:
+    """Verify frozen configuration for a retained-only declared-seed instance."""
     if any(path.is_file() for path in run.target.glob("config/chunky/**/*")):
         raise ControlError("capture", "Chunky configuration is forbidden in the control")
     try:
