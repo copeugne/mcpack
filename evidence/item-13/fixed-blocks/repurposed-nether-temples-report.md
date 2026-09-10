@@ -1118,3 +1118,81 @@ adds required soul-sand support without changing accepted earlier measurements.
 Use the earlier validation commands with soul included in the variant loop.
 The existing helper's statement-count exemption is local to its explicit shape/
 support branches; no generalized geometry abstraction was added to satisfy lint.
+
+## Ocean and taiga input reconciliation
+
+Inspected2026-09-10 after the five Nether local results. The exact remaining
+roots are `repurposed_structures:temple_ocean` and
+`repurposed_structures:temple_taiga`, both Overworld. Neither is excluded through
+absence or the taiga template's lack of authored hostile mobs. Each still needs
+one complete fixed-layout sample and all applicable quality/model fields.
+
+The accepted sixteen Item10 census inputs contain exactly two ocean starts:
+`full-ordinary-r1-without-sparse` and `full-ordinary-r2-without-sparse`, both
+Overworld chunk(3,8), envelope[41,-3,122,55,10,133], biome`minecraft:deep_ocean`.
+Their `all-strata.json` SHA-256 values, verified through `read_bound`, are
+`84181564564b2c5bb5f804852214e6d1105df901a238ef51775dabdd6a5618a4` and
+`6cf7be9e778b6dc94b76afee86857fd93e9034e9891fa3a25ccf9ca37b5d6225`.
+Neither is a retained-baseline sample. Matching coordinates/envelopes do not
+establish identical blocks or independent layouts. There is no taiga start in
+these accepted censuses and no ocean start in their baseline arms.
+
+The accepted Item8 inventory's temple `world_observations.observation_indexes`
+are30,115,224,329,442,515,619,713. Direct inspection of those entries in
+`evidence/item-8/sources/world-bounds.json.gz` (SHA-256
+`fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b`)
+finds only Nether basalt/crimson/wasteland starts from the Item7 pair. None of
+its792 observation records names either missing root. The existing Item13 intake
+also retains an empty `prior_world_candidates` array for this family, from its
+hash-bound Item8 supplemental chunk-stream inspection. Reuse that result; do not
+rerun all captures. The non-registry/lifecycle evidence identified in the
+[common input disposition](../README.md#non-registry-variants-and-reference-correction)
+concerns other generators and supplies neither of these registered temple starts.
+This is absence in the named retained evidence frames, not global non-generation.
+
+The [existing source assessment](../../item-8/sources/repurposed-temple-assessment/README.md)
+already resolves one template per root, no ordinary spawners, ocean pufferfish
+contact potential, taiga minecart rather than a mob, and their distinct processors
+and loot-table potential. Ocean surface processing can add suspicious gravel;
+taiga only omits structure-void positions. Do not investigate those facts again.
+Source does not supply saved room connectivity, fluid states, processed archaeology
+positions or local terrain access. These exact claims require additional baseline
+placement evidence before a full model/quality result. No whole-case timing is
+accepted for either root yet, and a Nether dry-walking model cannot silently cover
+an underwater case.
+
+Smallest next experiment design: one placement of each root on fresh hash-verified
+baseline materialization, using existing runtime/lifecycle/custody machinery.
+Prefer the registered structure placement path so terrain-height and processor
+behavior are retained. Before implementation or launch, finish the exact seed,
+coordinates, placement semantics, padded read bounds and runtime/storage budget
+in the existing protocol. This paragraph identifies the experiment need, not a
+completed execution predeclaration. Forced placement cannot establish natural
+frequency or representative approach terrain. No broad survey, configuration
+change, control substitution or repeated Nether extraction is justified.
+
+Reproduce the exact Item10 lookup without opening or mutating worlds:
+
+```sh
+uv run python - <<'OCEAN_TAIGA'
+import json
+from pathlib import Path
+from tools.analyze_route_opportunities import accepted_inputs, read_bound
+roots={'repurposed_structures:temple_ocean','repurposed_structures:temple_taiga'}
+for name, identity in sorted(accepted_inputs().items()):
+    path=Path('evidence/raw/item10')/f'{name}-analysis/all-strata.json'
+    data=json.loads(read_bound(path,identity['input_sha256']))
+    for scope in data['strata'].values():
+        for occurrence in scope['occurrence_biomes']:
+            if occurrence['registry_id'] in roots:
+                print(name,scope['dimension'],json.dumps(occurrence))
+OCEAN_TAIGA
+```
+
+An initial interactive lookup mistakenly treated `read_bound` bytes as decoded
+JSON and failed with TypeError before any result. The corrected command above
+completed, yielding only the two stated control starts. No raw evidence was edited.
+The preceding soul delivery completed18:29:05 UTC,129 seconds after its recorded
+analysis end, within its15-minute delivery cap. Input reconciliation is separate
+from whole-case assessment effort and cannot predict the cost of the two missing
+cases. No server, extraction or controlled experiment ran in this reconciliation.

@@ -81,9 +81,9 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `5cd1a048`.
-The following soul whole-case result is prepared on this branch; verify
-its current head against upstream before continuing.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `7e168c01`.
+Soul is delivered; the following input reconciliation is prepared on this branch.
+Verify current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -163,14 +163,14 @@ preserves its90-minute overrun, failed routes and later delivery interruption.
 All five selected Nether variants have complete local quality/model results.
 Warped retains construction/double/trapped chests; wasteland retains fortress
 overlap. Soul retains fractional floors, sand slowdown and the skeleton task.
-Ocean/taiga still need exact sample matching and full assessments.
+Ocean/taiga input matching is resolved below; new samples and assessments remain.
 No server or extraction process is active. Do not repeat the five accepted reads.
 
-Next: match ocean/taiga against existing supplemental raw and prior Item8/Item7
-references before any new experiment. Do not repeat completed Nether reads or
-assessments. Name exact missing sample/terrain claims, then predeclare the smallest
-bounded experiment if existing inputs cannot supply them. No new navigation
-framework is justified by this checkpoint. Effort/ETA remains UNKNOWN.
+Next: use the [ocean/taiga reconciliation](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-and-taiga-input-reconciliation).
+Ocean has two omit-Sparse control starts; neither root has a baseline or earlier
+indexed candidate. Do not repeat this matching. Finish exact two-root placement
+conditions and resource bounds before the smallest fresh diagnostic. Retain water/
+terrain/model gaps. No new navigation framework is justified. ETA remains UNKNOWN.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet
