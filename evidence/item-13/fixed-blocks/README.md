@@ -116,6 +116,7 @@ saved reward assignments and zero explicit spawner/resident-entity sources.
 Its conditional access, complete task timing and two-room quality assessment
 are integrated. Family repetitions and broader coverage remain pending.
 
-The [Desert Pyramid intake](mss-desert_pyramid-report.md) resolves three active
-components, eleven source spawners and four loot-bearing chest blocks forming
-three container arrangements. Topology and full quality measurement are next.
+The [Desert Pyramid assessment](mss-desert_pyramid-report.md) integrates all eleven
+source interactions, three container arrangements, complete conditional timing
+and a staged graph for two indoor rooms plus one outdoor activity area.
+Family repetitions and broader coverage remain pending.

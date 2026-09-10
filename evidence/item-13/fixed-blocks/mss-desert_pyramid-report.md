@@ -1,8 +1,9 @@
 # Desert Pyramid: quality assessment
 
-Status: IN PROGRESS. Active component assembly and source/saved encounter and
-reward inputs are integrated. Playable topology, full timing and quality synthesis
-remain required. Item 14 stays UNSTARTED.
+Status: local modeled/inspection assessment recorded. Source inputs, staged
+topology, complete conditional timing and quality synthesis are integrated.
+Family repetitions, broader coverage and Item 13 delivery remain IN PROGRESS.
+Items 14 through 18 remain UNSTARTED pending their predecessor gates.
 
 Sample: full-biome-diverse-r2-baseline|minecraft:overworld|mss:desert_pyramid|8|29.
 Reuse [saved blocks](mss-desert_pyramid.json.gz), SHA-256
@@ -1103,3 +1104,137 @@ for name,u,c,v,d,i,s,a,verify,duty in profiles:
           'entity envelope',sum(bounds))
 PYRAMID_TIMING
 ```
+
+## Local topology and quality synthesis
+
+This synthesis applies to this hash-bound sample under the declared actor and
+allowed changes. It does not close family sampling or Item 13. Source inspection,
+saved geometry and conditional models are the evidence classes; no human or
+realized-encounter result is claimed.
+
+| Activity node | Delimitation | Sources / reward arrangements | Assessment |
+| --- | --- | --- | --- |
+| S: island-top activity area | Connected surface circuit at feet Y182..183 around the solid cap and canopy, bounded by the authored island edge | 3 / 1 double chest | One delimited outdoor activity area; surface relief needs six half-step inserts in the walking model |
+| L: lower chamber | Interior X123..126,Z453..461, principal floor Y171 and feet Y172; ceiling begins at Y179 | 2 / 0 | One hazard/encounter space with spike obstacles, not a room per source or spike |
+| R: rare-chest room | Interior activity band X113..117,Z445..452, floor Y176 and feet Y177, central plinth X114..116,Z448..449 | 3 / 2 single chests | One room with a central obstacle and recessed sources, not separate rooms for its two rewards |
+
+Room count is **two indoor rooms**, or **three activity rooms** when the bounded
+outdoor area is included. This is the explicit sensitivity denominator. Corridors,
+stairs, the bridge and the ladder are connections, not extra rooms. Three further
+sources occupy those connections: two along the entrance/stair corridor and one
+in the northern corridor. Source accounting is therefore 3+2+3+3=11. The canopy's
+upper air, narrow capped water shaft, solid cap, lower support mass and air-only
+assembly padding are not additional delineated activity rooms.
+
+Use J for the non-room connector at (125.5,177,462.5). The verified native graph
+has edges S-J and J-L; R is not connected by a verified native walk in this model.
+Here native describes the underground links; the complete S circuit separately
+uses the six declared surface slabs.
+That is four nodes including J, two edges and two components. It is not a proof
+that all other parkour, swimming or excavation alternatives fail. After completing
+L and constructing the bridge, verified edges are S-J and J-R. The former top
+ladder transfer is changed, so do not retain J-L as a simultaneously verified
+edge. The same four nodes again have two verified edges/two components. The
+ordered objective visits all three activity areas across these two states.
+
+The union over construction states has three edges and one potential degree-three
+junction J, but neither accepted state has a verified three-way branch or cycle.
+R and L are terminal activity branches in that union. Report zero verified cycles
+and zero simultaneous degree-three junctions, with one construction-dependent
+choice between visiting L first and bypassing it for R. This preserves the
+mechanical consequence of replacing the ladder rather than presenting an
+incorrect static tree. The routes support the local task, not an exhaustive
+search over unrestricted engineering possibilities.
+
+Depth in these declared graphs is two edges from S to L before construction,
+and two from S to R afterward. The entry-to-L east landing is 20 horizontal
+blocks plus ten blocks of descent (five stair, five ladder). Entry-to-R's eastern
+station is 39 horizontal blocks plus five stair descent, using the bridge.
+These are connector-route depths, excluding the surface objective loop and
+within-room tours; they are not global shortest paths under arbitrary mining,
+flight or jumping. Within the declared connector graph each destination has a
+single verified path. Overall visited feet span Y172..183, eleven blocks, while
+the complete task ascends thirteen and descends thirteen. The capped water
+column extending to Y160 is separate fluid geometry, not measured playable depth.
+
+Cover is distinct again. At L's east landing (126,461), the contiguous solid cap
+is Y179..183: five blocks of smooth sandstone/sandstone. Saved WORLD_SURFACE at
+that column is Y183. At the two rare-chest interaction columns (115,446) and
+(115,451), the cap is sandstone Y180 and sand Y181: two solid blocks, with saved
+WORLD_SURFACE Y181. These direct coordinate queries describe local authored
+island cover, not an assertion that the structure lies underground beneath the
+surrounding mainland. Surface-minus-feet differences are eleven and four blocks,
+respectively; they must not be substituted for solid-cover thickness.
+
+Concrete constrained links include the one-cell-wide ladder throat, the
+one-block-wide constructed bridge and the southern corridor's fence pinch at
+Z466. At that pinch the west full wall ends at X124 and the fence post begins
+at X125.375, leaving 1.375 blocks of lateral space in the centered cross-section.
+The bridge and principal corridors have two air blocks above their route floors;
+the bridge uses crouching during placement and crossing. These are geometric
+constraints. Enemy funneling, pathfinding performance and combat effectiveness
+remain unobserved and belong to the later combat work where required.
+
+Meaningful hazard evidence is strongest for a fall onto the lower chamber's
+upward tips, with its pinned amplified fall-damage mechanism. The ladder and
+spike-avoiding lower route address that exposure; building/crossing an unrailed
+bridge leaves consequences for a misstep outside the stipulated successful path.
+The surface circuit avoids cactus and water cells. Merely counting surface cactus
+or nearby water does not establish contact/drowning on this route. No TNT,
+pressure-plate or dispenser trap is established. Husk hunger is a supported
+successful-hit mechanism, not an observed debuff or quantified food cost here.
+
+Neither indoor room is empty or dead: L has two sources and the spike mechanism;
+R has three sources and two rewards. S also has sources and a reward. Empty and
+dead counts are both **0/2 indoor**, or **0/3 including the outdoor area**. Quiet
+corridor sections provide necessary connections and are not counted as dead rooms.
+No empirical claim of enemy occupancy is required for this authored-potential
+classification.
+
+There is **no explicit authored terminal encounter or completion trigger** in the
+inspected assembly/source inputs. R is a terminal reward candidate, not an
+invented boss/finale. Its final-room rubric is:
+
+| Dimension | Disposition and evidence |
+| --- | --- |
+| Objective clarity | CONDITIONAL: two rare-table chests signal reward, but no explicit completion objective is authored |
+| Distinctive final challenge | ABSENT in inspected sources: three ordinary zombie/husk sources, without a separate terminal mechanism |
+| Reward linkage | PRESENT as source potential: both rare-table arrangements are in R; the general-table double chest is outside |
+| Route integration | CONDITIONAL: connected by the declared bridge strategy; native upper-gap traversal is not established |
+| External/bypass exposure | PRESENT for the surface reward; lower encounter can be skipped by the bridge strategy while reaching R |
+
+Reward distribution is two of three arrangements in R and one in S, none in L.
+The four loot-bearing block entities retain their separate two-rare/two-general
+assignments. This is neither a value ratio nor proof of particular rolled items.
+No generated or acquired inventory has been observed.
+
+Two concrete bypasses are supported. From the entry, the ten-block west link and
+20-block chest link reach the surface double chest with two slab placements,
+without entering either indoor room or disabling any of the eight underground
+sources. The western surface source still creates potential exposure. Separately,
+from J the top-ladder removal and nine-block bridge reach R while skipping L and
+its two sources. The latter route preserves their potential threat and changes
+access; it is a reward bypass, not a completed all-source objective. No unseen
+roof breach, flight shortcut or universal exterior vulnerability is inferred.
+These low-material strategies are baseline sandbox options, not grounds for
+arbitrary route protection.
+
+Expected replay value is a supported assessment of inputs. The three active rigid
+components and their empty processors provide a fixed core layout; the retained
+case supplies no evidence of new rooms on a revisit. Loot-table alternatives,
+spawn success, mob attributes and surrounding terrain can vary across generated
+instances, but their distributions and player response are not measured here.
+In the declared clear, eleven sources are removed and construction is left in
+place. The model therefore supplies no self-resetting physical encounter for a
+revisit. Per-player reward behavior, persistence across actual sessions and
+replenishment remain for their specified later audits. No enjoyment or replay-rate
+prediction is claimed.
+
+Flag this sample as **visually large relative to its shallow spatial progression**:
+two indoor activity rooms, a surface area and two alternative terminal branches
+sit within a much larger support mass/cap/envelope. That does not make its task
+trivial: eleven sources, repeated-spawn uncertainty, bridge work, six step inserts
+and a fall hazard remain material. The complete conditional example is
+205/312/494 seconds for its stipulated population, not measured human duration.
+This local result satisfies the report's descriptive quality dimensions while
+family repetitions, material coverage and Item 13 delivery gates remain open.
