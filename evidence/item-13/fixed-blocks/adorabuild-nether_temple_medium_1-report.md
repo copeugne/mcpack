@@ -201,3 +201,46 @@ for name,u,crouch,step,n,a,sel,k,v in [
     print(name,13.6/u+2.4/crouch+3/step+1.55+9*n+7*a+5*sel+k+v)
 NETHER_TEMPLE
 ```
+
+
+## Correction: structure-level monster potential and declared combat case
+
+The initial no-enemy task remains a conditional harvest scenario. Empty template
+entities and no spawner blocks do not mean no authored monster potential:
+`data/adorabuild_structures/worldgen/structure/nether_temple_medium_1.json`,
+SHA-256db77b537d34db93259c458acc533ec14943a2126939f8738537fd54c7700aaab,
+has the same five-entry piece-bounded override listed in the
+[wart-house correction](adorabuild-nether_fortress_medium_1-report.md#correction-structure-level-monster-potential-and-declared-combat-case).
+Potential diversity is five override types, zero placed-template types. Weights
+and pack parameters do not establish a realized population. This integration
+corrects the omitted structure-level source; it does not alter frozen evidence.
+
+Predeclare a two-blaze complete-task sensitivity: ordinary health20/armor0,
+no additional enemies or effects, initially at (310.5,34,489.5) and
+(310.5,34,491.5) on the clear western rim. Clear from the entry phase before
+construction, return to the starting step, then perform the whole declared
+catcher/ramp harvest. Add one initial iron-sword selection and one combat-phase
+decision. Both positions have full rim support and clear body cells; their
+occurrence there is stipulated, not observed natural placement. The source-backed
+pair attack work is5.2 seconds from the linked derivation, divided by duty.
+Defense/pursuit/return is charged within duty; additional ranged equipment or
+healing is not silently added. Censor extra spawns, inaccessible airborne enemies,
+failed return, lava contact, lingering fire, death, or any existing harvest failure.
+This does not establish a finite bound for ongoing natural spawning.
+
+The additional declared case gives **25.32/42.383333/71.15 seconds** for A/B/C.
+It is a conditional two-blaze workload, not a measured or typical clear.
+
+```sh
+uv run python - <<'OVERRIDE_CASE'
+import gzip, importlib, json
+from pathlib import Path
+c = json.loads(gzip.decompress(Path('evidence/item-13/fixed-blocks/adorabuild-nether_temple_medium_1.json.gz').read_bytes()))['cases'][0]
+s = importlib.import_module('evidence.item-13.render_pilot').state_at
+for x,y,z in [(310, 34, 489), (310, 34, 491)]:
+    assert s(c,x,y-1,z)['Name'] == 'minecraft:nether_bricks'
+    assert s(c,x,y,z)['Name'] == s(c,x,y+1,z)['Name'] == 'minecraft:air'
+for name,base,n,sel,duty in zip('ABC',(19.37,33.95,58.25),(.5,1,1.5),(.25,.5,1),(1,.75,.5),strict=True):
+    print(name,base+5.2/duty+n+sel)
+OVERRIDE_CASE
+```

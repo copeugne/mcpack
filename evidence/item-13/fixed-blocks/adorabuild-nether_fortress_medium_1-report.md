@@ -114,8 +114,9 @@ blocks. The declared hub circuit takes nine to the south chest as well; that
 extra hub detour is not labeled shortest depth. The stair and breach each constrain a .6-wide adult to a one-cell
 corridor; live use as a combat funnel is NOT MEASURED.
 
-Authored enemy count/type count and spawner count are0/0/0. No source encounter
-composition or working damage trap is established. Soul sand is a supported
+Placed template residents and spawner blocks are0/0. The structure-level monster
+override supplies five potential types, detailed below; it must not be erased
+by the empty template entity list. No working damage trap is established. Soul sand is a supported
 movement-pressure mechanism on the lower visit, not an invented damaging floor.
 The intrusive warped-wart block at (158,34,-143) reduces part of R1's headroom;
 the column at (159,36..38,-138) blocks part of R2. Neither intersects the declared
@@ -146,8 +147,8 @@ The full declared task includes R1 to retain the building's usable lower level.
 
 Expected layout replay variation is limited to this fixed two-level plan;
 loot rolls, crops and surrounding vegetation vary. The one-block movement
-bottleneck and ascent are real progression, but no authored hostile layer is
-present. The building is not nine floors or a deep dungeon because its enclosing
+bottleneck and ascent are real progression. The source-defined monster override
+adds conditional encounter pressure, although realized spawning remains unmeasured. The building is not nine floors or a deep dungeon because its enclosing
 walls/roof are tall. It is a shallow two-room agricultural/loot site, rather than
 an assumed vanilla-Fortress encounter. Crop renewal and persistent revisit
 behavior are not timed here; no player enjoyment or actual return outcome is
@@ -186,4 +187,65 @@ for name,u,step,n,a,sel,k,v in [
         ('A',5,1,.5,.25,.25,1,2),('B',4,.5,1,.5,.5,2,4),('C',3,.25,1.5,1,1,4,8)]:
     print(name,28/u+2/(.4*u)+6.25/step+.8+12*n+89*a+sel+3*k+v)
 WART_HOUSE
+```
+
+
+## Correction: structure-level monster potential and declared combat case
+
+The earlier no-enemy task is retained as an explicitly conditional scenario.
+Its initial source synthesis omitted a material fact already recorded by Item 9:
+`data/adorabuild_structures/worldgen/structure/nether_fortress_medium_1.json`,
+SHA-256441646d1a6e583170a2598cb1a4c20d94bb959da32bcd2100f3d76457d2c330a,
+defines a piece-bounded monster spawn override in the pinned Adorabuild jar.
+Template residents, spawner blocks and natural-spawn override entries are three
+separate mechanisms. This correction supersedes the initial zero-type inference.
+
+| Potential type | Source weight | Source min..max count |
+| --- | ---: | ---: |
+| Blaze | 10 | 2..3 |
+| Zombified piglin | 5 | 4..4 |
+| Wither skeleton | 8 | 5..5 |
+| Skeleton | 2 | 5..5 |
+| Magma cube | 3 | 4..4 |
+
+These are five alternatives, not a simultaneous enemy census. The values do
+not establish realized spawning, population, successful packs, encounter frequency
+or independent spawn probability. Biome/world spawning conditions still matter.
+Enemy diversity potential is five structure-override types, zero template types.
+
+Predeclare one additional complete-task sensitivity case using two ordinary blazes,
+the minimum count of the highest-weight override entry, not a claim that it is
+the most frequent realized encounter. Stipulate health20, armor0, no effects or
+extra enemies, at clear upper-floor positions (156.5,36,-139.5) and
+(157.5,36,-141.5). After ascending, clear them during the upper hub phase, then
+perform all three transfers and return. Reuse the prior actor with an unenchanted
+iron sword added; charge one additional sword selection and one combat-phase
+decision. Contact duty includes defense, pursuit and return to the hub. Censor
+unreachable airborne targets, extra spawning, necessary healing, death, persistent
+fire/hazard effects, or inability to finish and return within duty assumptions.
+No natural spawning or actual encounter was performed to manufacture this pair.
+
+Pinned Blaze.createAttributes uses Monster defaults without replacing maximum
+health or armor; the existing captured Attributes derivation gives default health20.
+The six-damage, thirteen-tick model therefore needs four hits,2.6 active seconds
+per ordinary blaze. BlazeAttackGoal has melee and SmallFireball attack paths;
+flying/projectile pressure is retained, not treated as stationary passive targets.
+The declared pair adds5.2/duty plus one decision and one selection to the prior
+complete task. The no-enemy task remains47/89/165 seconds, not generic combat time.
+
+The additional declared case gives **53.1/96.983333/177.7 seconds** for A/B/C.
+It is a conditional two-blaze workload, not a measured or typical clear.
+
+```sh
+uv run python - <<'OVERRIDE_CASE'
+import gzip, importlib, json
+from pathlib import Path
+c = json.loads(gzip.decompress(Path('evidence/item-13/fixed-blocks/adorabuild-nether_fortress_medium_1.json.gz').read_bytes()))['cases'][0]
+s = importlib.import_module('evidence.item-13.render_pilot').state_at
+for x,y,z in [(156, 36, -140), (157, 36, -142)]:
+    assert s(c,x,y-1,z)['Name'] == 'minecraft:nether_bricks'
+    assert s(c,x,y,z)['Name'] == s(c,x,y+1,z)['Name'] == 'minecraft:air'
+for name,base,n,sel,duty in zip('ABC',(47.15,88.55,164.8),(.5,1,1.5),(.25,.5,1),(1,.75,.5),strict=True):
+    print(name,base+5.2/duty+n+sel)
+OVERRIDE_CASE
 ```
