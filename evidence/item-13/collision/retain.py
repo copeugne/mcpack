@@ -20,7 +20,7 @@ if __name__ == "__main__":
     mode = parser.add_mutually_exclusive_group()
     _ = mode.add_argument("--spawner-lookup", action="store_true")
     _ = mode.add_argument("--second-house", action="store_true")
-    _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2, 3, 4))
+    _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2, 3, 4, 5))
     args = parser.parse_args()
     spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW

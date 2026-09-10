@@ -1,6 +1,6 @@
 # Four missing temple material outcomes
 
-Status: source-derived origins and bounded experiment declared. Three attempts
+Status: source-derived origins and bounded experiment declared. Four attempts
 are rejected; no completed placement or accepted saved result exists. Item 13 remains IN PROGRESS.
 
 ## Exact missing evidence and smallest experiment
@@ -213,7 +213,7 @@ preserves the projection, capture, console, attach failure and build output.
 Read-only inspection of the accepted source's hash-bound Nether regions
 r.0.-1.mca and r.0.0.mca confirms that all four first-case padded chunks
 (9,-1),(10,-1),(9,0),(10,0) already have full status. The source inventory check
-still gates every fresh copy. This is a synchronous loading failure, not evidence
+still gates every fresh copy. This locates the timeout in synchronous loading, not evidence
 that the accepted source lacks generated chunks or that a material mismatched.
 
 Pinned ServerChunkCache.getChunkFuture bytecode offsets17..52 call managedBlock
@@ -232,3 +232,41 @@ Fresh r4 command, not yet executed at this producer milestone:
 uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r4 instances/item13-temple-variants-r4
 uv run python -m evidence.item-13.collision.retain --temple-attempt 4
 ```
+
+
+## Rejected r4 and processed-command barrier for r5
+
+Producer190902b376050f1ee05f897808d17280f9f7e65c reached readiness and requested
+chunk futures, but the first case's shared30-second deadline expired before
+placement. Zero cases completed. Elapsed time132.632 seconds; no flush/clean stop;
+process-group cleanup returned-9. [Core retention](r4-retention.json) preserves
+this failure. A requested SIGQUIT diagnostic raced with cleanup and found no
+process; no thread dump was produced or claimed.
+
+The log places readiness at04:24:28, post-start permission/travel-map hooks
+at04:24:30, temporary test-level work at04:24:33 and04:24:48, then tick overload
+at04:24:51. Thus expensive startup continued inside the probe's deadline.
+This is evidence for separating post-start work from the diagnostic, not proof
+that startup alone caused every earlier timeout.
+
+For fresh r5, reuse the existing lifecycle with its small opt-in console barrier.
+After readiness, send a fresh random `say mcpack-probe-ready-...` marker and wait
+for its exact server response before attaching. The server must process this
+command after startup before any probe work starts. No fixed sleep, extra world
+generation, configuration change or deadline relaxation is introduced. Missing
+response is a lifecycle timeout/failure with cleanup, never implicit permission
+to attach. The default path for previous consumers remains unchanged. The
+barrier addresses this observed startup overlap; it is not a new review framework.
+
+Focused lifecycle/runner tests pass27 cases, including successful barrier-before-
+probe ordering and a missing response that never attaches and kills the process
+group. Lint, formatting and types are checked on affected files.
+
+```sh
+uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r5 instances/item13-temple-variants-r5
+uv run python -m evidence.item-13.collision.retain --temple-attempt 5
+```
+
+This r5 command is pending at its producer milestone. Keep the four earlier
+attempts and their original instances. If r5 fails, inspect that specific failure
+before proposing any further experiment; do not run an automatic retry series.

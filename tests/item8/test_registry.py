@@ -35,6 +35,7 @@ def fake_java(tmp_path: Path) -> Callable[[str], Path]:
                         text = f"New file created with {{registry}} registry's contents is at x"
                         print(text, flush=True)
                     elif command.startswith('say '):
+                        if mode == 'silent-barrier': time.sleep(30)
                         print('[Server] ' + command[4:], flush=True)
                     elif command == 'save-all flush':
                         print('Saving the game', flush=True)
@@ -208,3 +209,33 @@ def test_registry_preserves_namespaced_keys(tmp_path: Path) -> None:
 def test_registry_path_rejects_undeclared_input() -> None:
     with pytest.raises(ValueError, match="undeclared registry"):
         _ = item8_registry.registry_relative_path("../elsewhere")
+
+
+@pytest.mark.parametrize("mode", ["pass", "silent-barrier"])
+def test_probe_barrier_requires_processed_console_response(
+    tmp_path: Path, fake_java: Callable[[str], Path], monkeypatch: pytest.MonkeyPatch, mode: str
+) -> None:
+    log = tmp_path / "console.log"
+    seen: list[tuple[str, ...]] = []
+
+    def probe(command: tuple[str, ...], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        assert kwargs["timeout"] == 45
+        assert "[Server] mcpack-probe-ready-" in log.read_text()
+        assert "Saving the game" not in log.read_text()
+        seen.append(command)
+        return subprocess.CompletedProcess(command, 0)
+
+    monkeypatch.setattr(subprocess, "run", probe)
+    result = run_registry_lifecycle(
+        tmp_path,
+        fake_java(mode),
+        log,
+        1,
+        dimension_probe=tmp_path / "probe.jar",
+        registries=(),
+        probe_after_console_response=True,
+    )
+    assert len(seen) == (1 if mode == "pass" else 0)
+    assert result.clean_stop is (mode == "pass")
+    assert result.process_group_killed is (mode == "silent-barrier")
+    assert result.commands[0].startswith("say mcpack-probe-ready-")

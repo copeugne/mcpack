@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import queue
 import re
+import secrets
 import signal
 import subprocess
 import threading
@@ -57,6 +58,7 @@ class _Capture:
     registries: tuple[str, ...] = REGISTRIES
     probe_command: tuple[str, ...] = ()
     probe_log: Path | None = None
+    probe_barrier: str | None = None
     commands: list[str] = field(default_factory=list)
     completed: list[str] = field(default_factory=list)
     ready: bool = False
@@ -72,19 +74,14 @@ class _Capture:
         elif not self.ready:
             if "Done (" in line and '! For help, type "help"' in line:
                 self.ready = True
-                if self.probe_command:
-                    if self.probe_log is None:
-                        message = "dimension probe log is missing"
-                        raise OSError(message)
-                    with self.probe_log.open("x", encoding="utf-8") as probe_log:
-                        _ = subprocess.run(  # noqa: S603 - constructed from the pinned JVM and probe.
-                            self.probe_command,
-                            stdout=probe_log,
-                            stderr=subprocess.STDOUT,
-                            check=True,
-                            timeout=45,
-                        )
-                self._next(stdin)
+                if self.probe_barrier is not None:
+                    self.rejection = send_command(stdin, self.commands, f"say {self.probe_barrier}")
+                else:
+                    self._probe(stdin)
+        elif self.probe_barrier is not None:
+            if line.rstrip().endswith(f"[Server] {self.probe_barrier}"):
+                self.probe_barrier = None
+                self._probe(stdin)
         elif len(self.completed) < len(self.registries):
             registry = self.registries[len(self.completed)]
             if f"New file created with {registry} registry's contents is at " in line:
@@ -92,6 +89,21 @@ class _Capture:
                 self._next(stdin)
             elif "Failed to create new file" in line or "Unknown registry" in line:
                 self.rejection = f"registry command failed: {line.strip()}"
+
+    def _probe(self, stdin: IO[str]) -> None:
+        if self.probe_command:
+            if self.probe_log is None:
+                message = "dimension probe log is missing"
+                raise OSError(message)
+            with self.probe_log.open("x", encoding="utf-8") as probe_log:
+                _ = subprocess.run(  # noqa: S603 - constructed from the pinned JVM and probe.
+                    self.probe_command,
+                    stdout=probe_log,
+                    stderr=subprocess.STDOUT,
+                    check=True,
+                    timeout=45,
+                )
+        self._next(stdin)
 
     def _next(self, stdin: IO[str]) -> None:
         if len(self.completed) < len(self.registries):
@@ -115,6 +127,7 @@ def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913, PLR0915 - retain pr
     dimension_probe: Path | None = None,
     registries: tuple[str, ...] = REGISTRIES,
     probe_output_name: str = "dimension-biomes.json",
+    probe_after_console_response: bool = False,
 ) -> RegistryLifecycle:
     """Dump each registry after readiness, then correlate flush and require clean exit."""
     if timeout_seconds <= 0 or exit_timeout_seconds <= 0:
@@ -126,7 +139,12 @@ def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913, PLR0915 - retain pr
     if not re.fullmatch(r"[a-z0-9][a-z0-9_.-]*\.json", probe_output_name):
         message = "probe output must be a simple JSON basename"
         raise ValueError(message)
-    state = _Capture(registries=registries)
+    state = _Capture(
+        registries=registries,
+        probe_barrier=f"mcpack-probe-ready-{secrets.token_hex(16)}"
+        if probe_after_console_response
+        else None,
+    )
     killed = False
     deadline = time.monotonic() + timeout_seconds
     reader: threading.Thread | None = None

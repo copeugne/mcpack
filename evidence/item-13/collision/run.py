@@ -184,6 +184,7 @@ def run(  # noqa: C901, PLR0912, PLR0915 - keep one lifecycle/failure boundary f
             dimension_probe=probe,
             registries=(),
             probe_output_name=projection,
+            probe_after_console_response=temple_variants,
         )
         report["lifecycle"] = json.loads(lifecycle.model_dump_json())
         if not lifecycle.clean_stop:
