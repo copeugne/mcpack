@@ -359,3 +359,83 @@ The final affected checks pass: module execution,ruff formatting/lint and
 basedpyright with zero errors/warnings. No server or world modification was
 needed. The first assembly remains a partial local assessment; the accepted
 hall geometry and explicit lava rejection must be reused in the complete task.
+
+## Eastern shaft: connection declaration before validation
+
+The eastern hall doorway leads to the upper shaft at center(-276,0). Source
+children4 and9 are vertically adjacent, but a piece junction is not climbability.
+Saved blocks show a3 by3 opening X-277..-275,Z-1..1 throughY36..38 over a lower
+masonry floorY32. There are no ladder blocks in this local shaft. The upper ledge
+is at feetY39 and lower floor atY33, a six-block descent requiring an explicit
+return capability. The shaft is a connection, not a reward room merely because
+its source name contains dead_end.
+
+Predeclare a local connection demonstration using six carried scaffolds. Retain
+the previous adult geometry and add ordinary controlled descent and scaffolding
+climb. Start on the first hall's eastern threshold(-279.5,39,0.5), equivalently
+block-column(-280,39,0) with actor centered atX-279.5. Walk east to column-278,
+step east into column(-277,0), descend to feetY33, then step west to(-278,33,0).
+Place a scaffold base at(-277,33,0) on its full masonry floorY32. Five ordinary
+side clicks on the base's west top rail at(-277,33.95,0.5) extend the supported
+stack upward throughY38. Reuse the pinned side-click-UP and distance-zero stack
+rules from the [Nether Tower scaffold derivation](mns-nether_tower-report.md#elevated-chest-explicit-scaffold-connection).
+The adjacent lower stance is centered(-277.5,33,0.5), with eyeY34.62; the side
+click remains local rather than requiring direct reach to the new top block.
+Re-enter the scaffold column, climb to feetY39, step west onto the original
+ledge and return to the hall threshold. Construction remains in place.
+
+This is a conditional connection demonstration, not the whole clear. No extra
+mining,fluid modification,flight or pre-existing scaffold is assumed. Validate
+all floor/column/headroom cells before accepting this link. Failure to place,
+climb,land alive or avoid hostile displacement censors the demonstration. The
+nearby cave-spider source remains active potential; this isolated geometry does
+not suppress it or count zero combat in the future complete objective.
+
+Initial descent is not described as damage-free. Pinned LivingEntity.calculateFallDamage
+computes ceil((fallDistance-SAFE_FALL_DISTANCE)*surfaceMultiplier*FALL_DAMAGE_MULTIPLIER)
+for nonimmune types, and causeFallDamage passes positive damage to hurt. Pinned
+Attributes defaults are safe distance3 and multiplier1. A stipulated six-block
+fall distance on ordinary masonry therefore requests3 damage before any runtime
+hooks or subsequent damage handling. This is SOURCE INSPECTION and a conditional
+calculation, not a measured player health delta. The complete task must retain
+fall exposure and survival, rather than inventing free recovery or assuming live
+mods preserve that exact health change. Runtime fall distance and realized damage
+remain NOT MEASURED.
+
+The declared shaft geometry passes the existing family command. The upper
+approach from column(-280,39,0) to(-278,39,0) has two supported horizontal steps.
+The shaft column(-277,0) is clear throughY33..40, with full mossy stone bricks
+atY32; the lower adjacent working stance is also supported and clear. Both the
+initial floor-top placement ray and subsequent base side-click ray are within
+4.5 blocks with intervening air. The six hypothetical scaffold cellsY33..38 give
+a top atY39; the source-supported climb and return transfer fit the inspected
+column. This establishes a conditional constructed link, not runtime placement.
+The setup circuit has eight horizontal and twelve vertical blocks, six placements
+and retained initial fall exposure. These are components awaiting integration
+with navigation,interactions,combat and other task costs, not a completion time.
+
+The lower junction centered(-276,33,0) has three validated horizontal arms toward
+east,north andsouth, each three blocks long, plus connection to the landing/base
+station(-277,33,0). Both directions pass. Under the declared scaffold capability
+this junction connects back to H0, expanding its reachable floor span toY33..39.
+Further spawner/broken walkways remain to be validated; neither their names nor
+this shaft result proves their full traversability. No additional primary reward
+room or whole-dungeon branch/depth count is assigned to the shaft itself.
+
+Fall-source derivation uses the same pinned SRG archive as prior local models,
+SHA-25626ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71.
+Inspect LivingEntity.calculateFallDamage offsets15..45 and causeFallDamage34..43;
+Attributes initialization264..293 and625..653 records the two relevant defaults.
+Reproduce inspection without a server:
+
+```sh
+item13_srg=instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar
+sha256sum "$item13_srg"
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.entity.LivingEntity
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.entity.ai.attributes.Attributes
+```
+
+The extended module and affected lint,formatting and type checks pass. No raw
+world or configuration was modified and no new experiment was run. This resolves
+the first shaft connection only; the complete first-assembly objective and
+remaining material coverage still require the work recorded above.

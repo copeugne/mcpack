@@ -157,3 +157,47 @@ except AssertionError as exc:
 assert rejection is not None, "Native lava centerline unexpectedly passed dry clearance"
 assert rejection[0][1:] == ((-288, 39, 11), "minecraft:lava"), rejection
 print("REJECT native south centerline: lava at X-288,Y39,Z11..17; engineered link pending")
+
+# Declared eastern shaft: controlled initial drop, then six carried scaffolds.
+ledge = [(x, 39, 0) for x in range(-280, -277)]
+verify_path(ledge)
+verify_path(list(reversed(ledge)))
+assert at(c, -277, 32, 0)["Name"] == "minecraft:mossy_stone_bricks"
+assert all(at(c, -277, y, 0)["Name"] == "minecraft:air" for y in range(33, 41))
+assert not any(
+    at(c, x, y, z)["Name"] == "minecraft:ladder"
+    for x in range(-279, -272)
+    for y in range(32, 44)
+    for z in range(-3, 4)
+)
+# Horizontal transfer at the upper ledge, then a separate vertical shaft envelope.
+# There is deliberately no claimed raw standing support at the top of the hole.
+clear([-277.8, 39, 0.2, -276.2, 40.8, 0.8])
+clear([-276.8, 33, 0.2, -276.2, 40.8, 0.8])
+bottom = [(-277, 33, 0), (-278, 33, 0)]
+verify_path(bottom)
+verify_path(list(reversed(bottom)))
+eye = (-277.5, 34.62, 0.5)
+base_face = (-277, 33.95, 0.5)
+base_floor = (-276.5, 33, 0.5)
+for target in (base_floor, base_face):
+    assert math.dist(eye, target) < 4.5
+    for step in range(1000):
+        p = tuple(eye[i] + (target[i] - eye[i]) * step / 1000 for i in range(3))
+        assert at(c, *(math.floor(v) for v in p))["Name"] == "minecraft:air"
+# Six source-supported scaffold cells hypothetically occupy Y33..38, with top39.
+# Their source climb/standing rules are reused from the accepted tower derivation.
+scaffold_cells = [(-277, y, 0) for y in range(33, 39)]
+for dx, dz in ((1, 0), (0, 1), (0, -1)):
+    arm = [(-276 + dx * r, 33, dz * r) for r in range(4)]
+    verify_path(arm)
+    verify_path(list(reversed(arm)))
+verify_path([(-277, 33, 0), (-276, 33, 0)])
+horizontal = 2 * (len(ledge) - 1) + 2 * (len(bottom) - 1) + 2
+vertical = 2 * (ledge[-1][1] - bottom[0][1])
+print(
+    f"PASS conditional eastern shaft geometry: {len(scaffold_cells)} scaffolds, "
+    f"{horizontal} horizontal/{vertical} vertical blocks; "
+    "initial fall exposure retained, no runtime placement or damage observation"
+)
+print("PASS lower shaft junction three horizontal arms, Y33; vertical return is conditional")
