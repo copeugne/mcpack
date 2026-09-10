@@ -495,3 +495,100 @@ facts, not proof that aiming/mining rays ignore plant outline shapes.
 
 Focused module execution,formatting,lint and types pass with both rejected
 rubble attempts explicitly reproduced. Full branch access remains unresolved.
+
+## Explicit rubble breach declaration
+
+Retain the failed native routes. For a separate constructed-access case, predeclare
+a diamond pickaxe for masonry and bare hand for gravel/vine, sufficient durability,
+no effects,full health/food and the previously declared adult geometry. Remove
+only four center rubble blocks per branch: Y33 atZ7,8,9 andY34 atZ8 in the south;
+Y33 atZ-7,-8,-9 andY34 atZ-8 in the north. Work from the adjacent already-cleared
+center column atfeetY33, beginning atZ6 or-6. Mine the near Y33 block,advance one
+block,remove the upper then lower middle block,advance one block,andremove the
+far Y33 block. In the south, first remove the vine at(-276,34,7) after advancing
+toZ7 andbefore aiming at the middle upper block. It otherwise lies across that
+forward aiming ray. This is five manual removals south andfour north; additional
+natural vine detachment is not charged as manual work or required for collision.
+
+Use the source VineBlock outline unions for mining rays: active north/south,
+east/west andup faces are1/16-thick plates at the respective cell boundaries.
+VineBlock.getShape returns that cached union; a no-face state returns a full cube.
+This differs from empty collision. Other unremoved non-air ray cells remain
+conservatively opaque. Require a supported stance and a clear ray within4.5 blocks
+for every ordered removal. Retain the raw blocks unchanged and apply removals only
+to the explicitly modeled working set. Then validate both return routes atY33
+and the southern chest's lid/interaction ray. Debris drops are outside acquisition;
+no loot transfer,combat or total time is implied by this geometry.
+
+The ordered breach case passes for both branches. All nine manual targets have
+supported working stances and checked aiming rays. The resulting center routes
+run atfeetY33 from the lower junction toZ17 or-17 andback:34 horizontal blocks
+per branch,zero vertical travel. Both directions pass. No fabricated room
+connection is inferred from the earlier rejected one-block-rubble model.
+
+Active breaking work under the declared dry,grounded,no-effect tools and20 TPS
+is six ticks per masonry block,18 per bare-hand gravel andsix for the bare-hand
+vine. This follows the existing correct-tool progress rule(speed/hardness/30)
+with masonry hardness1.5 anddiamond speed8,gravel hardness0.6 andhand speed1,
+vine hardness0.2 andhand speed1. Pinned Blocks gravel strength is at1774..1777;
+vine strength at13381..13384; stone-brick material uses the stone legacy copy.
+Each branch has three masonry blocks andone gravel:36 active ticks(1.8s) north,
+plus one vine south:42 active ticks(2.1s). These are active breaking components,
+not complete traversal/combat times. The approved targeting/input allowances
+include initiation andinter-block delay; tool selections,decisions,inventory
+work andencounters still belong in the complete task. Reproduce single-precision
+progress accumulation rather than assuming mathematical rounding:
+
+```sh
+uv run python - <<'PY'
+import struct
+f=lambda value:struct.unpack('f',struct.pack('f',value))[0]
+for hardness,speed in ((1.5,8),(.6,1),(.2,1)):
+    progress=f(f(f(speed)/f(hardness))/f(30));total=0;ticks=0
+    while total<1:
+        ticks+=1;total=f(total+progress)
+    print(hardness,speed,ticks,ticks/20)
+PY
+```
+
+Southern terminal chest(-278,33,17) is single,east-facing andhas a dead_end table
+assignment. Its interaction ray from the validated endpoint passes. The first
+blanket air-above assertion failed because(-278,34,17) is a straight,top-half,
+west-facing stone-brick stair. Preserve that failed assertion; it was not proof
+that the chest was blocked. Pinned ChestBlock.isBlockedChestByBlock checks the
+above state's isRedstoneConductor predicate. Blocks.legacyStair uses
+Properties.ofLegacyCopy, retaining the constructor's default predicate, which
+Properties constructor bootstrap3 binds to lambda$new$4: isCollisionShapeFullBlock.
+The straight stair's top-half-plus-half-bottom shape is not a full cube. Thus this
+above block does not block opening under the source rule. No stair removal is
+required in this scenario. Entity blockers such as sitting cats remain excluded
+by the conditional task, not measured absent from a live trial. Generated items,
+opening/transfer success andacquired loot remain NOT MEASURED.
+
+The two terminal alcoves each have a lit,nonwaterlogged campfire at(-275,33,-17)
+and(-275,33,17), beside the checked center endpoint. These give an authored
+cooking/rest facility andoptional contact hazard; walking the declared centerline
+does not intersect their cells. The northern terminal is therefore not labeled
+empty/dead solely from the name dead_ends/normal or lack of a chest. The southern
+terminal also has the validated assigned chest. Final room-graph delineation
+must retain these activity roles and any corridor/alcove count sensitivity.
+Neither terminal is promoted to an authored finale merely for ending a branch.
+
+Source reproduction uses the pinned SRG identity and javap path already recorded:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.VineBlock
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.ChestBlock
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -v -p 'net.minecraft.world.level.block.state.BlockBehaviour$Properties'
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.StairBlock
+```
+
+VineBlock initializer78..167 defines the outline plates; calculateShape combines
+active faces andgetShape returns the cached union. ChestBlock's block-obstruction
+method0..17 supplies the predicate above. StairBlock.getShape0..32 selects the
+state-specific top/bottom array. This is source/geometry evidence, not an observed
+client opening or a tick-accurate mining trial.
+
+The extended module,formatting,lint andtype checks pass. Earlier native rubble
+failures remain required outputs. This resolves the two lower branches locally;
+the spawner corridor,other rooms andcomplete first-assembly task remain pending.

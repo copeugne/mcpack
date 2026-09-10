@@ -23,6 +23,7 @@ assert (
 c = json.loads(gzip.decompress(raw))["cases"][0]
 at = importlib.import_module("evidence.item-13.render_pilot").state_at
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
+removed = set()
 
 
 def clear(box):
@@ -32,6 +33,8 @@ def clear(box):
             for z in range(math.floor(box[2]), math.ceil(box[5])):
                 state = at(c, x, y, z)
                 n = state["Name"]
+                if (x, y, z) in removed:
+                    continue
                 if n in {"minecraft:air", "minecraft:vine"} or (
                     n == "minecraft:sculk_vein" and state["Properties"]["waterlogged"] == "false"
                 ):
@@ -223,3 +226,80 @@ for sign in (1, -1):
     assert rejection is not None, "Declared rubble route unexpectedly passed"
     assert rejection[0][1] == (-276, 34, sign * 8), rejection
     print("REJECT declared rubble branch", sign, rejection[0][1:])
+
+
+def check_ray(eye, end, target):
+    """Check the declared ray, retaining vine outline faces rather than collision."""
+    assert math.dist(eye, end) <= 4.5
+    for step in range(2001):
+        p = tuple(eye[i] + (end[i] - eye[i]) * step / 2000 for i in range(3))
+        cell = tuple(math.floor(v) for v in p)
+        if cell == target or cell in removed:
+            continue
+        s = at(c, *cell)
+        if s["Name"] == "minecraft:air":
+            continue
+        if s["Name"] == "minecraft:vine":
+            x, y, z = (p[i] - cell[i] for i in range(3))
+            faces = {k for k, v in s["Properties"].items() if v == "true"}
+            hit = {
+                "west": x <= 1 / 16,
+                "east": x >= 15 / 16,
+                "north": z <= 1 / 16,
+                "south": z >= 15 / 16,
+                "up": y >= 15 / 16,
+            }
+            assert faces, (cell, p, s)
+            assert not any(hit[f] for f in faces), (cell, p, s)
+            continue
+        raise AssertionError((cell, p, s))
+
+
+for sign in (1, -1):
+    verify_path([(-276, 33, sign * z) for z in range(7)])
+    actions = [(6, 33, 7), (7, 34, 8), (7, 33, 8), (8, 33, 9)]
+    if sign == 1:
+        actions.insert(1, (7, 34, 7))
+    for station_z, target_y, target_z in actions:
+        station = (-276, 33, sign * station_z)
+        verify_path([station])
+        target = (-276, target_y, sign * target_z)
+        name = at(c, *target)["Name"]
+        assert name in {
+            "minecraft:gravel",
+            "minecraft:vine",
+            "minecraft:stone_bricks",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:cracked_stone_bricks",
+        }
+        eye = (-275.5, 34.62, sign * station_z + 0.5)
+        face_z = target[2] if sign == 1 else target[2] + 1
+        if name == "minecraft:vine":
+            assert target == (-276, 34, 7)
+            end = (-275.5, 34.5, 7.95)
+        else:
+            end = (-275.5, target_y + 0.5, face_z)
+        check_ray(eye, end, target)
+        removed.add(target)
+    branch = [(-276, 33, sign * z) for z in range(18)]
+    verify_path(branch)
+    verify_path(list(reversed(branch)))
+    print(
+        "PASS breached rubble branch",
+        sign,
+        len(actions),
+        "ordered removals; 34 horizontal/0 vertical return blocks",
+    )
+
+chest = (-278, 33, 17)
+assert at(c, *chest)["Name"] == "minecraft:chest"
+assert at(c, -278, 34, 17) == {
+    "Name": "minecraft:stone_brick_stairs",
+    "Properties": {"facing": "west", "half": "top", "shape": "straight", "waterlogged": "false"},
+}
+# ChestBlock tests the above block's redstone-conductor predicate, not air.
+# The pinned legacy straight stair has a non-full collision shape and fails that predicate.
+check_ray((-275.5, 34.62, 17.5), (-277.0625, 33.5, 17.5), chest)
+print(
+    "PASS southern chest approach and source lid rule beneath straight stair; transfer not measured"
+)
