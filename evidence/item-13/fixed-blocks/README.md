@@ -91,7 +91,9 @@ its authored debris rewards, saved/source hazard differences and mixed spawner
 workload. The supplemental sample now has a connected reward inspection circuit,
 northern external approach and one-area quality assessment. The original mixed
 case records a detour and explicit one-area/two-sector room sensitivity. Both
-local assessments retain their model limits; the blackstone root remains required.
+local assessments now include complete conditional task budgets, retaining
+repeated-batch source ceilings for the original overlap. The blackstone root
+remains required.
 
 The [Warped Dome assessment](mns-warped_dome-report.md) records one ground room,
 external reward access and a complete conditional 16/27/45-second resource task.

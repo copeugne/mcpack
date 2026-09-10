@@ -6,8 +6,9 @@ approved by the user on 2026-09-10. Its two-piglin/two-brute task totals are
 47.3/63.9/93.4 seconds under profiles A/B/C; the declared full population/profile
 grid spans 31.7..124.6 seconds. These are conditional model results, not observed
 gameplay or guaranteed bounds. Prior movement results alone do not pass timing.
-The original overlapping case still needs its own complete budget. Historical v2
-unresolved sections below are superseded only for this supplemental scenario.
+The original overlap now has its own complete conditional 61/88/129-second
+budget for two piglins and two brutes, with repeated-batch source ceilings.
+Historical unresolved timing sections are superseded by these explicit scenarios.
 Item 13 coverage and delivery remain IN PROGRESS.
 This is one material layout of mns:circle_ruin;
 circle_blackstone remains separately required by the existing coverage record.
@@ -980,3 +981,128 @@ These findings reduce two missing components to explicit source constraints.
 They do not resolve navigation/input latency, survival, actual spawn success,
 post-break movement or inventory acquisition. Total completion time remains
 UNRESOLVED; no new layout, runtime actor or player observation was introduced.
+
+## Original overlap: complete conditional task budget
+
+This section supersedes the original case's movement-only timing limitation.
+It reuses its retained 60.4-block external circuit, both reward-face checks and
+pinned mining/combat sources. No extraction or runtime experiment is repeated.
+The supplemental single-batch deadline cannot be transferred: the longer detour
+allows repeated successful spawn batches before source disablement.
+
+Predeclare the complete objective from the original western start
+(279.5,66,99.5): disable both Circle spawners, defeat the stipulated hostiles,
+acquire both debris blocks, and return alive. The neighboring fortress is not
+part of the cleared objective. Use the accepted adult, full-health/food,
+unenchanted iron armor/sword and diamond-pick actor, with sufficient durability
+and inventory capacity, full navigation knowledge and 20 TPS. Permit the existing
+trapdoor toggle and one ore-cover removal only. No flight, construction, healing,
+critical/sweep attacks, external help or natural/fortress enemies are included.
+Successful intrusion by those excluded enemies censors this conditional task;
+the overlap is not asserted to be safe or encounter-isolated in actual play.
+
+Start with no pre-existing entities and the two saved Delay-0 sources active.
+This is a stipulated encounter state, not the accepted world's observed state.
+Take the checked western approach and detour to the eastern station before
+mining either reward. From upright feet (289.5,66,95.7), eye Y67.62, target the
+piglin center (287.5,67.5,96.5), then brute center (288.5,67.5,97.5).
+Distances are 2.157406 and 2.062620 blocks. Before their first target faces,
+the rays cross only Y67 air in X288..289,Z95..96. Both remain above Y67.5,
+including over the wall at (288,66,96), whose conservative maximum is Y67.5.
+The Y68 cover cannot obstruct these rays. The station already has verified
+upright clearance and full support. Thus source removal requires no new route
+or cover removal. It is source/geometry access, not an observed interaction.
+
+Mine both sources first, clear the modeled combat at the eastern station, then
+crouch for the existing eastern cover/debris ray and conditional pickup. Return
+along the checked detour, crouch at the western reward station, toggle its cover,
+mine/acquire that debris, then return to the start. Combat duty includes pursuit
+and return to the eastern station, without double-counted route movement.
+
+Retain the accepted provisional four upright pickup blocks per reward, eight
+additional blocks total. This is an explicit feasibility assumption, not a
+validated pickup sweep through the casings. Censor if a drop cannot be acquired
+within the path/time allowance, including obstruction by the retained lid or
+trapdoor. The 60.4-block inspection route plus eight pickup blocks gives 68.4
+upright blocks, zero moving crouch/vertical distance. Stationary crouching and
+standing transitions belong to the decision budgets below. No passive pause or
+unmodeled healing is silently added to a successful scenario.
+
+Use the accepted A/B/C rates and allowances with these layout-specific counts:
+
+| Component | Count / derivation |
+| --- | --- |
+| Navigation/decision events | 24: eight interior detour turns each way (16), plus initial orientation, departure from the first western station, source ordering, combat transition, eastern extraction/pose choice, eastern return/pose choice, western extraction/pose choice and final return/pose choice (8) |
+| Targeting/interaction events | 6: two source breaks, one ore-cover break, two debris breaks and one trapdoor toggle |
+| Tool selections | 3: initial pickaxe, sword after disablement, pickaxe after combat |
+| Acquisition events | 2, one per debris; include inventory confirmation and any remaining ten-tick pickup eligibility wait |
+| Mining work | 276 ticks / 13.8 seconds: two 19-tick sources, one 12-tick cover and two 113-tick debris, grounded dry diamond-pick model |
+| Verification | One accepted end-of-task allowance; survival and both held resources required |
+
+Before second disablement, charge the 30.2-block outbound path, both source breaks,
+eleven decisions (initial, western departure, eight turns and source ordering),
+two targeting events and one selection. With upright speed u, decision n,
+interaction a and selection s, D=30.2/u+1.9+11n+2a+s. All profiles exceed ten
+seconds. Accordingly **p,b in 0..4 is not this sample's population bound**.
+
+Let p and b instead denote total successful ordinary unarmored piglins and brutes
+produced before source disablement. Their source attack work remains
+1.95p+5.85b seconds. The worked case stipulates p=b=2; it is one conditional
+composition, not a likely count or a prediction from the spawner parameters.
+Retain source-mechanism ceilings for this worked schedule only: at most
+4*(1+floor(ceil(20D)/200)) per source, deliberately using second disablement for
+both sources. These overestimate the first source's active window and ignore
+failed attempts, cap checks and inaccessible spawn positions. They are not
+jointly attainable forecasts or universal lifetime bounds. More enemies change
+the combat term; interruption of the declared disable schedule invalidates these
+particular ceilings rather than preserving them as unconditional bounds.
+
+| Conditional result | A | B | C |
+| --- | ---: | ---: | ---: |
+| Second disablement, seconds | 14.190000 | 21.950000 | 31.466667 |
+| Conservative successful-entity ceiling per source for that schedule | 8 | 12 | 16 |
+| Noncombat complete-task budget, seconds | 45.730000 | 67.400000 | 97.600000 |
+| Worked p=b=2 combat budget, seconds | 15.600000 | 20.800000 | 31.200000 |
+| Worked complete objective, seconds | 61.330000 | 88.200000 | 128.800000 |
+
+Report approximately **61/88/129 seconds**, keeping the stipulated composition
+and all scenario conditions visible. These are not observed human times,
+percentiles, guaranteed bounds, first-discovery times or expected player outcomes.
+Censor on death, extra equipment/effects or excluded enemies, invalid source
+access, mining/input interruption beyond allowances, failed pickup within the
+assumed budget, required healing, or departure from the stipulated tick rate.
+No failure was observed because this is a conditional model, not a player trial.
+The fixed-source potential, mixed-site hazard attribution, room sensitivity and
+replay assessments above remain unchanged. Blackstone material coverage and
+family repetitions remain required before Item 13 completion.
+
+Reproduce the source-access facts and arithmetic from existing retained inputs:
+
+```sh
+uv run python - <<'ORIGINAL_TIMING'
+import gzip, hashlib, importlib, json, math
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-circle_nether_brick.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'c5f115f0c9ecdcda67addcd30d7aae81377315ff78d169821d5ea9ba7ed46dce'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for x in (288,289):
+    for z in (95,96):
+        assert state(case,x,67,z)['Name'] == 'minecraft:air'
+for x,z in ((287,96),(288,97)):
+    assert state(case,x,67,z)['Name'] == 'minecraft:spawner'
+eye = (289.5,67.62,95.7)
+print('source center distances', [math.dist(eye,p) for p in
+      [(287.5,67.5,96.5),(288.5,67.5,97.5)]])
+profiles = [('A',5,.5,.25,.25,1,2,1),
+            ('B',4,1,.5,.5,2,4,.75),
+            ('C',3,1.5,1,1,4,8,.5)]
+for name,u,n,a,s,k,v,duty in profiles:
+    disable = 30.2/u+1.9+11*n+2*a+s
+    base = 68.4/u+13.8+24*n+6*a+3*s+2*k+v
+    ceiling = 4*(1+math.floor(math.ceil(20*disable)/200))
+    assert disable > 10
+    print(name, 'disable', disable, 'per-source ceiling', ceiling,
+          'noncombat', base, 'p=b=2', base+15.6/duty)
+ORIGINAL_TIMING
+```

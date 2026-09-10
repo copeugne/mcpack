@@ -14,8 +14,9 @@ remain components and must receive a complete task budget before timing acceptan
 The representative methodology gate is resolved. Resume material-variant coverage
 and quality assessment using this accounting method; adapt objectives, source work,
 phase counts and failure conditions to each layout before calculating results.
-The original overlapping Circle and other inspected layouts still need their own
-complete budgets. All 192 included families and final review/delivery remain required.
+Both Circle cases now have complete conditional budgets; the original overlap
+requires a repeated-batch source model. Medium Houses and the compact pilot still
+need complete budgets. All 192 included families and final review/delivery remain required.
 
 ## Authorized method and delivery boundary
 
