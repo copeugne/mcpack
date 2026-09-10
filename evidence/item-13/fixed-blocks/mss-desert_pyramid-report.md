@@ -920,3 +920,186 @@ assert all(s(c,121,y,451)['Name']=='minecraft:water' for y in range(160,182))
 print('Remaining-band geometric conditions verified; no actor traversal inferred.')
 PYRAMID_BANDS
 ```
+
+## Complete-objective timing predeclaration
+
+Apply the separately approved v2 method to one fully informed adult starting and
+ending at (114.5,182,469.5): disable all eleven sources, transfer both rare chests
+and the surface double chest, defeat the modeled spawned population, and return
+alive. Use full initial health/food, unenchanted iron armor/sword, diamond pickaxe
+with sufficient durability, nine cobblestone blocks and six cobblestone slabs.
+Construction remains in place. Permit only the documented three decorative
+removals, top-ladder removal, source removals, bridge and surface slab inserts.
+Exclude discovery, travel to the local start and material procurement. No flight,
+teleportation, assistance, additional construction, effects, criticals, sweeps or
+healing. Incidental mining/creature drops are ignored. Inventory must accommodate
+all successful transfers after equipment and remaining supplies; otherwise censor
+completion rather than inventing what loot rolled or fit.
+
+Stipulate no pre-existing entities and no natural spawning at task start, with
+all eleven saved spawner delays retained. This is a conditional reset, not the
+accepted world's observed entity state. Sources remain active until removed;
+no branch reset or single-wave lifetime assumption is permitted. Clear the lower
+chamber after disabling its sources, before replacing the top ladder with bridge
+blocks. Clear remaining enemies after returning to the entry. Survival during
+work is a condition. Lower combat duty includes pursuit and return to its landing;
+final duty includes pursuit and return to the entry; if those targets cannot be
+cleared within the allowance, the scenario is censored. No actual survival or
+realized encounter claim follows from this model. Remaining enemies must remain
+reachable within the permitted circuit: a target stranded below the completed
+bridge censors the scenario. Assume 20 TPS throughout.
+
+Predeclare this phase order and its reconciled components. Horizontal stair and
+slab movement already includes its height changes; do not add a second vertical
+time term for those same steps. Only the ten ladder blocks receive the separate
+1.5/1/0.75 blocks/s A/B/C climbing/descent allowance reused from the accepted
+house scenarios. All other speeds and allowance values reuse the approved
+[timing proposal](../timing-scenario-proposal.md).
+
+| Sequential phase | Upright / crouched / ladder blocks | Mined / placed blocks | GUI operations | Decisions | Selections | Acquisition checks |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| 1. Surface circuit, three sources and double chest | 116 / 0 / 0 | 3 / 6 | 56 | 20 | 8 | 1 |
+| 2. Entrance stair and corridor to ladder top | 18 / 0 / 0 | 2 / 0 | 0 | 5 | 1 | 0 |
+| 3. Lower chamber, local clear, return to ladder top | 16 / 0 / 10, plus local combat duty | 5 / 0 | 0 | 7 | 2 | 0 |
+| 4. Bridge and north corridor, including recessed source | 11 / 10 / 0 | 2 / 9 | 0 | 5 | 2 | 0 |
+| 5. Rare-room circuit, three sources and two chests | 30 / 0 / 0 | 3 / 0 | 58 | 8 | 3 | 2 |
+| 6. Return to entry via bridge, corridor and stair | 29 / 10 / 0 | 0 / 0 | 0 | 5 | 0 | 0 |
+| 7. Encounter clear and return to entry | Included in combat duty | 0 / 0 | 0 | 1 | 1 | 0 |
+| Total | 220 / 20 / 10 | 15 / 15 | 114 | 51 | 17 | 3 |
+
+There are 144 targeting/interaction allowances: fifteen removals, fifteen
+placements, two times 29 operations for the 27-slot chests, and 56 for the
+54-slot double chest. Open/scan-or-shift-click-every-slot/close counts are charged
+regardless of occupied slots. Add one acquisition-confirmation allowance per
+container arrangement and one final task-verification allowance. These are
+conditional budgets, not measured menus or acquired contents. Mining durations
+are separate from their input/aiming allowance. Stationary decisions and equipment
+selection do not overlap movement; combat pursuit is charged only through duty.
+
+Surface selections are pickaxe, slabs, empty hand, slabs, pickaxe, slabs, pickaxe,
+slabs in route order. Phase 2 selects pickaxe. Phase 3 retains it for removals,
+selects sword for the lower clear, then pickaxe for the upcoming ladder removal.
+Phase 4 removes the ladder with that pickaxe, selects bridge blocks, then selects
+pickaxe for the northern source. Phase 5 retains pickaxe for the first source,
+then selects empty hand for the first chest, pickaxe for the other two sources,
+and empty hand for the last chest. Phase 7 selects sword.
+
+Decision counts are provisional known-layout budgets, not an inference of player
+navigation speed. Surface's twenty cover the four connecting routes, six step
+insertions, three source stops, chest approach/return and remaining orientations.
+A draft that postponed all combat until the final return was rejected during
+integration: replacing the top ladder can strand lower enemies. The accepted
+order clears that chamber first and includes its combat time in subsequent
+source windows. This is a corrected model ordering, not a failed player trial.
+
+The underground budgets cover their specified entrance, source, chamber, ladder,
+bridge, reward and return transitions, including crouch changes. They must cover
+all orientation/pose work within each phase; any additional required search,
+construction, input, pickup, pursuit, recovery or waiting beyond the stipulated
+allowances censors the scenario rather than becoming a hidden zero-cost phase.
+
+The underground horizontal subtotal is 124 blocks: eighteen to the ladder top,
+sixteen for the lower out-and-back, twenty-one to the rare-room entry, thirty
+around that room, then thirty-nine back to the original entry. Twenty of those
+blocks cross the bridge crouched. The overall physical elevation changes are
+13 blocks up and 13 down: surface three each, entrance stairs five each, and
+ladder five each. Only the latter ten blocks are separately timed. These totals
+remain route inputs until source-derived mining and repeated-source workloads
+are integrated; no complete-task time is claimed yet.
+
+## Mining component and complete conditional estimates
+
+Reuse the pinned breaking model `ceil(hardness*30/tool_speed)/20` for grounded,
+unaffected work. All mined targets are reached from full support; the top ladder
+is removed before crouched bridge construction. Pinned `Blocks` defines spawner
+hardness 5, ladder 0.4, skeleton skull 1, and the candle helper 0.1. The retained
+vanilla pickaxe tag contains spawner but not ladder, skeleton skull or light-gray
+candle. Thus the diamond pick uses speed 8 for the eleven spawners and default
+speed 1 for the other four targets; only spawners require the correct tool here.
+Reproduce properties with the same mapped `javap` identity: `Blocks` static offsets
+7037..7083, 8016..8056, 15439..15474, and its `candle` helper. This is nominal
+source-derived breaking work under the accepted model, not observed input timing.
+
+| Target | Count | Nominal ticks each | Combined seconds |
+| --- | ---: | ---: | ---: |
+| Spawner | 11 | 19 | 10.45 |
+| Top ladder | 1 | 12 | 0.60 |
+| Skeleton skull | 1 | 30 | 1.50 |
+| Candle blocks | 2 | 3 | 0.30 |
+| Total | 15 | 257 combined | 12.85 |
+
+No extra resource harvest, pot removal or slab breach is required by this route.
+The previously declared interaction allowances include initiation/aiming and
+inter-block input delay; those costs are not hidden inside the breaking seconds.
+
+For repeated-source uncertainty, use the same conservative activation envelope
+as the Large House report. Source removal phases are: three surface sources in
+phase 1; stair/corridor husks in phase 2; lower zombies in phase 3; recessed zombie
+with saved Delay 169 in phase 4; three rare-room sources in phase 5. All other
+initial delays are zero. For elapsed noncombat time D through the end of a
+source's removal phase, bound active ticks by ceil(20*D). If below saved delay L,
+the successful population bound is zero; otherwise use
+`4*(1+floor((ceil(20*D)-L)/200))`. This intentionally includes inactive periods
+and time after actual removal within a phase. It is neither a probable population
+nor a jointly attainable prediction. Local caps, failed spawn checks and distance
+can reduce realized populations; none was measured. Delays never reset between
+phases. The envelope below applies to the worked schedule, including its four-enemy
+lower clear before bridge construction. Recompute it if population, combat duty
+or phase schedule changes; it is not a universal bound across those changes.
+
+For the worked example stipulate two successful ordinary adult unarmored entities
+per source, no passengers, extra equipment/effects or reinforcements: ten zombies
+and twelve husks. Each has source-supported health 20 and intrinsic armor 2;
+four fully recharged iron-sword attacks cost 2.6 seconds of active work per entity.
+Total active attack work is 57.2 seconds: 10.4 for the four lower zombies in
+phase 3 and 46.8 for remaining targets in phase 7. Divide each by A/B/C contact
+duty, including pursuit, target switching and return to its stated station. This count is an input,
+not a claim about what any saved source actually spawned. Damage, hunger and
+survival outcomes are not predicted; unsuccessful survival/clearance is censored.
+
+| Conditional result, seconds unless noted | A | B | C |
+| --- | ---: | ---: | ---: |
+| Noncombat components and final verification | 147.600 | 236.017 | 379.239 |
+| Worked example combat phases combined | 57.200 | 76.267 | 114.400 |
+| Complete worked objective | 204.800 | 312.283 | 493.639 |
+| Worked-schedule successful-entity envelope, count | 432 | 672 | 1048 |
+
+Report approximately 205/312/494 seconds for the worked example, with all stated
+conditions. The zero-entity scenario is the noncombat row, not a guaranteed
+minimum for real play. The very loose successful-entity envelope shows why 44
+attempts cannot be treated as the dungeon's lifetime enemy count. It does not
+justify assuming the actor survives hundreds of enemies or presenting an observed
+upper completion time. Human traversal/combat time, realized enemies, rolled and
+acquired loot remain NOT MEASURED.
+
+Reproduce the complete accounting and phase-end envelopes:
+
+```sh
+uv run python - <<'PYRAMID_TIMING'
+import math
+# Upright, crouch, ladder, breaking seconds, decisions, interactions, selections, acquisition.
+rows=[(116,0,0,2.85,20,65,8,1),(18,0,0,1.9,5,2,1,0),
+      (16,0,10,3.7,7,5,2,0),(11,10,0,1.55,5,11,2,0),
+      (30,0,0,2.85,8,61,3,2),(29,10,0,0,5,0,0,0),(0,0,0,0,1,0,1,0)]
+assert [sum(r[i] for r in rows) for i in (0,1,2,4,5,6,7)]==[220,20,10,51,144,17,3]
+assert math.isclose(sum(r[3] for r in rows),12.85)
+profiles=[('A',5,1.5,1.5,.5,.25,.25,1,2,1),
+          ('B',4,1.2,1,1,.5,.5,2,4,.75),
+          ('C',3,.9,.75,1.5,1,1,4,8,.5)]
+for name,u,c,v,d,i,s,a,verify,duty in profiles:
+    phases=[U/u+C/c+V/v+b+D*d+I*i+S*s+A*a for U,C,V,b,D,I,S,A in rows]
+    elapsed=0; bounds=[]
+    for phase,cost in enumerate(phases):
+        elapsed+=cost
+        if phase==2:
+            elapsed+=10.4/duty  # Four lower zombies, before later source removals.
+        if phase<5:
+            delays=([0,0,0],[0,0],[0,0],[169],[0,0,0])[phase]
+            for delay in delays:
+                ticks=math.ceil(elapsed*20)
+                bounds.append(0 if ticks<delay else 4*(1+(ticks-delay)//200))
+    baseline=sum(phases)+verify
+    print(name,'noncombat',round(baseline,6),'worked',round(baseline+57.2/duty,6),
+          'entity envelope',sum(bounds))
+PYRAMID_TIMING
+```
