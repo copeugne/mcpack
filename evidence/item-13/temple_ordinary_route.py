@@ -1203,3 +1203,137 @@ print(
     "PASS fourth tower1785 rotated footprint states:1342 exact/443 masonry variants; "
     "all five fixture payloads agree except coordinates/packing/loot seeds"
 )
+
+bedroom_doors = set()
+_, bedroom_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, set(), bedroom_doors, set()
+)
+bedroom_rays = {}
+bedroom_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    case, set(), bedroom_rays
+)
+bedroom_approach = [(242, 32, z) for z in range(384, 393)]
+bedroom_verify(bedroom_approach)
+blocked = None
+try:
+    bedroom_verify([(242, 32, z) for z in (392, 393, 394)])
+except AssertionError as error:
+    blocked = error.args[0]
+assert blocked is not None
+assert blocked[1:] == ((242, 32, 393), "minecraft:iron_door")
+for z, x, facing, face_z in ((392, 241, "north", 392.9375), (394, 243, "south", 394.0625)):
+    target = (x, 33, z)
+    assert at(case, *target) == {
+        "Name": "minecraft:oak_button",
+        "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+    }
+    bedroom_ray((242.5, 33.62, z + 0.5), (x + 0.5, 33.5, face_z), target)
+for y, half in ((32, "lower"), (33, "upper")):
+    target = (242, y, 393)
+    assert at(case, *target) == {
+        "Name": "minecraft:iron_door",
+        "Properties": {
+            "facing": "south",
+            "half": half,
+            "hinge": "left",
+            "open": "false",
+            "powered": "false",
+        },
+    }
+    bedroom_doors.add(target)
+assert all(2 / u < 30 / 20 for u in (5, 4, 3))
+furnace_rejection = None
+try:
+    bedroom_verify([(x, 32, 395) for x in range(242, 238, -1)])
+except AssertionError as error:
+    furnace_rejection = error.args[0]
+assert furnace_rejection is not None
+assert furnace_rejection[1:] == ((239, 32, 395), "minecraft:blast_furnace")
+left = [(242, 32, 395), (241, 32, 395), (240, 32, 395), (240, 32, 396), (240, 32, 397)]
+right = [(242, 32, 395), (243, 32, 395), (244, 32, 395), (244, 32, 396), (244, 32, 397)]
+inside = [(242, 32, 394), *left, *left[-2::-1], *right[1:], *right[-2::-1], (242, 32, 394)]
+bedroom_route = [
+    *bedroom_approach,
+    (242, 32, 393),
+    *inside,
+    (242, 32, 393),
+    *bedroom_approach[::-1],
+]
+bedroom_verify(bedroom_route)
+for station, chest_x, barrel_xs in ((240, 239, (240, 241)), (244, 245, (243, 244))):
+    eye = (station + 0.5, 33.62, 397.5)
+    chest = (chest_x, 32, 397)
+    assert at(case, *chest)["Name"] == "minecraft:chest"
+    assert at(case, chest_x, 33, 397)["Name"] == "minecraft:air"
+    face = chest_x + (0.9375 if chest_x < station else 0.0625)
+    bedroom_ray(eye, (face, 32.5, 397.5), chest)
+    for x in barrel_xs:
+        barrel = (x, 35, 398)
+        assert at(case, *barrel)["Name"] == "minecraft:barrel"
+        bedroom_ray(eye, (x + 0.5, 35.5, 398), barrel)
+    bed_x = 241 if station == 240 else 243
+    assert at(case, bed_x, 32, 397)["Name"] == "minecraft:red_bed"
+    bedroom_ray(eye, (bed_x + (0.001 if station < bed_x else 0.999), 32.3, 397.5), (bed_x, 32, 397))
+assert at(case, 239, 32, 395)["Name"] == "minecraft:blast_furnace"
+bedroom_ray((240.5, 33.62, 395.5), (239.999, 32.5, 395.5), (239, 32, 395))
+bedroom_rewards = {
+    p
+    for p in bedroom_rays
+    if p in entities_by_position
+    and entities_by_position[p]["id"] in {"minecraft:chest", "minecraft:barrel"}
+}
+assert len(bedroom_rewards) == 6
+for p in bedroom_rewards:
+    e = entities_by_position[p]
+    suffix = "bedrooms" if e["id"] == "minecraft:chest" else "barrel"
+    assert e["LootTable"] == "explorations:chests/underground_temple/" + suffix
+    assert "Items" not in e
+    assert "Lock" not in e
+bedroom_h = len(bedroom_route) - 1
+assert bedroom_h == 38
+headings = [(b[0] - a[0], b[2] - a[2]) for a, b in pairwise(bedroom_route)]
+bedroom_decisions = sum(a != b for a, b in pairwise(headings)) + 1
+print(
+    "PASS bedroom complete route",
+    bedroom_h,
+    "H",
+    bedroom_decisions,
+    "decisions; six reward rays, two beds and furnace access; closed door/furnace path rejected",
+)
+for label, u, n, a, s, k, v in (
+    ("A", 5, 0.5, 0.25, 0.25, 1, 2),
+    ("B", 4, 1, 0.5, 0.5, 2, 4),
+    ("C", 3, 1.5, 1, 1, 4, 8),
+):
+    print(
+        "bedroom",
+        label,
+        "complete conditional task seconds",
+        38 / u + bedroom_decisions * n + 8 * a + 8 * s + 6 * k + v,
+    )
+
+covered_rewards = {(207, 30, 384), (208, 30, 383), (208, 30, 385), (209, 30, 384)}
+covered_rewards.update((source[0], 32, source[2]) for _, _, source in chamber_work)
+covered_rewards.update(target for _, _, target, _ in alcove_paths)
+for parts in tower_parts.values():
+    covered_rewards.update(
+        p
+        for p in parts["rays"]
+        if p in entities_by_position and entities_by_position[p]["id"] == "minecraft:chest"
+    )
+covered_rewards.update(
+    p
+    for p in third_rays
+    if p in entities_by_position and entities_by_position[p]["id"] == "minecraft:chest"
+)
+covered_rewards.update(fourth_rewards)
+covered_rewards.update(bedroom_rewards)
+all_rewards = {
+    p for p, e in entities_by_position.items() if e["id"] in {"minecraft:chest", "minecraft:barrel"}
+}
+assert covered_rewards <= all_rewards
+assert len(all_rewards) == 35
+assert len(covered_rewards) == 31
+remaining_rewards = all_rewards - covered_rewards
+assert remaining_rewards == {(195, 12, 418), (201, 12, 390), (211, 8, 363), (214, 8, 365)}
+print("Second-assembly reward access coverage31/35; remaining", sorted(remaining_rewards))

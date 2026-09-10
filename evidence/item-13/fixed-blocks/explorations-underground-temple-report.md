@@ -4102,3 +4102,86 @@ Oak-button conditions remain30 ticks. Prior wording is preserved in Git; no
 failed or accepted raw capture was rewritten. The complete ordinary route check
 reran successfully with the corrected deadline, and its output is byte-identical
 to the preceding accepted run. Focused lint and types pass.
+
+## Second assembly bedroom: local task declaration
+
+Begin and end at the eastern junction(242.5,32,384.5), traverse the bedroom's
+single oak-button iron door, conditionally acquire both chests and four barrels,
+and return alive. Reuse the full-health/equipment, known-layout, free-inventory
+and successful-transfer assumptions; no mining, construction, sleeping or
+furnace operation is required. This is a stipulated no-pre-existing/no-natural-
+enemy local task. Extra enemies, fluid arrival, failed actuation/acquisition or
+loss of support invalidates it. Keep the furnace-blocked path as a rejected
+candidate, not a permission to ignore that block.
+
+Use ordinary two-sided oak-button presses and their source30-tick pulse, with
+all aiming/turning before each two-block crossing. Budget the actual joined
+out-and-back circuit, direction changes plus initial orientation, two button
+inputs, six container inputs/acquisitions, eight explicit empty-hand selections
+(one for each interaction) and final verification. No combat, mining or recovery
+cost is silently included. Compute all A/B/C budgets after support/ray checks.
+
+## Second assembly bedroom: integrated task and quality result
+
+The closed door at(242,Y32..33,393) is rejected; it is south-facing and left-hinged.
+The outside oak button(241,33,392) faces north and the inside button(243,33,394)
+faces south. Both wall-mounted side rays pass from the respective X242 stations.
+Their30-tick window is1.5 seconds at20 TPS, distinct from the corrected stone-door
+window. The two-block crossing requires0.4/0.5/0.667 seconds under the accepted
+speeds, with targeting/orientation completed before pressing.
+
+The direct western aisle to(239,32,395) fails on a blast furnace. The accepted
+path stays at X240 on that side and X244 on the east side. From the door's inside
+station(242,32,394), it reaches(242,32,395), visits each side station at Z397 via
+Z395, and returns. Including the northern approach and exit gives38 horizontal
+blocks, no elevation change, eight direction changes and nine navigation events.
+No furnace removal, furniture collision exemption, scaffold or extra climb is
+required.
+
+Side rays from(240.5,32,397.5) and(244.5,32,397.5) reach chests(239,32,397) and
+(245,32,397) with clear lids, and barrels(240,35,398),(241,35,398),(243,35,398),
+(244,35,398) at their north faces. All six assignments are unrolled with no
+Items/Lock: chests use `bedrooms`, barrels use `barrel`. The same floor stations
+also support side access to the two red beds, while(240,32,395) supplies the
+blast-furnace face ray. Facility operation, sleep and inventory output are not
+measured or required by the task. Elevated barrels are accessible from the floor,
+not evidence of another occupied level.
+
+Complete conditional seconds are `T=38/u+9n+8a+8s+6k+v`: A/B/C give24.1/42.5/
+74.1667 seconds, approximately24/43/74. The model includes both button operations,
+all container inputs, explicit selections, acquisition budgets and verification.
+Combat is zero only in the stated no-enemy case. Fluid arrival, failed transfer,
+unexpected enemies or other declared invalidating conditions censor the case;
+these are not observed timings or a guaranteed peaceful loot route.
+
+The room is one connected furnishing/reward activity space within X239..245,
+Z394..398, with primary feetY32. Six rewards, two beds and the furnace give0/1
+empty and0/1 dead under the protocol's potential-content definition. The entry
+corridor/door is a connector, not an extra room. A local entry-to-room graph has
+two nodes/one edge, no branching and no cycle; all six reward assignments belong
+to room depth1. Both reward stations are15 horizontal route blocks from the
+junction on the checked tree. No vertical progression is required for their
+access, and bounding height must not replace that result.
+
+The door provides an access constraint and the furnace explains the rejected
+path, but no explicit enemy source or active damage mechanism was established
+inside this room. No distinctive terminal encounter or final objective is
+identified; it is a furnished resource room. Its high containers add visual
+height without requiring an upper traversal level. Expected revisit value is
+conditional loot entitlement and potential facility use, not a measured player
+outcome or a claim of physical room reset. The room's usable contents prevent
+calling it dead simply because its local combat scenario is empty.
+
+The existing executable now integrates reward-access coverage across all accepted
+local paths in this second assembly. It accounts for31 of35 chest/barrel
+assignments exactly once. Four remain without accepted access: lower chest
+(195,12,418), enchanting chest(201,12,390), and cell barrels(211,8,363) and
+(214,8,365). The raw observations already exist; the missing work is their route,
+interaction and task integration, not world generation. Coverage is container
+access, not acquired value, room coverage or a complete assembly gate.
+
+Reproduce the door/furnace failures, six reward rays, facility geometry, complete
+task arithmetic and exact remaining-target set with
+`uv run python -m evidence.item-13.temple_ordinary_route`. Focused lint, formatting
+and type checks pass. The stone-button correction was delivered separately at
+`d3848da1`; no timing totals changed in that correction.
