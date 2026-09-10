@@ -1015,3 +1015,58 @@ verify_path(list(reversed(western_terminal_route)))
 print(
     "PASS final terminal rewards: south 22H; west corridor/terminal 48H return, shaft conditional"
 )
+
+# Dry overhead hall bypass; keep the rejected native lava link above unchanged.
+hall_breach = []
+for y in (42, 43, 44):
+    target = (-288, y, 8)
+    assert at(c, *target)["Name"] in {
+        "minecraft:stone_bricks",
+        "minecraft:mossy_stone_bricks",
+        "minecraft:cracked_stone_bricks",
+    }
+    check_ray((-287.5, 40.62, 8.5), (-287.5, y, 8.5), target)
+    removed.add(target)
+    hall_breach.append(target)
+verify_path([(-288, 39, 7), (-288, 39, 8)])
+check_ray((-287.5, 40.62, 7.5), (-287.5, 39, 8.5), (-288, 38, 8))
+check_ray((-287.5, 40.62, 7.5), (-287.5, 39.95, 8), (-288, 39, 8))
+clear([-287.8, 39, 8.2, -287.2, 44.8, 8.8])
+for z in range(9, 21):
+    for y in (44, 43):
+        target = (-288, y, z)
+        assert at(c, *target)["Name"] in {"minecraft:stone", "minecraft:stone_bricks"}
+        check_ray((-287.5, 44.62, z - 0.5), (-287.5, y + 0.5, z), target)
+        removed.add(target)
+        hall_breach.append(target)
+    if z > 9:
+        verify_path([(-288, 43, z - 1), (-288, 43, z)])
+    else:
+        clear([-287.8, 43, 8.2, -287.2, 44.8, 9.8])
+target = (-288, 42, 20)
+assert at(c, *target)["Name"] == "minecraft:stone_bricks"
+check_ray((-287.5, 44.62, 19.5), (-287.5, 43, 20.5), target)
+removed.add(target)
+hall_breach.append(target)
+clear([-287.8, 39, 20.2, -287.2, 44.8, 20.8])
+clear([-287.8, 43, 19.2, -287.2, 44.8, 20.8])
+verify_path([(-288, 39, 20), (-288, 39, 21)])
+verify_path([(-288, 39, 21), (-288, 39, 20)])
+check_ray((-287.5, 40.62, 21.5), (-287.5, 39, 20.5), (-288, 38, 20))
+check_ray((-287.5, 40.62, 21.5), (-287.5, 39.95, 21), (-288, 39, 20))
+verify_path([(-288, 43, z) for z in range(9, 20)])
+verify_path([(-288, 43, z) for z in range(19, 8, -1)])
+assert len(hall_breach) == 28
+for x, y, z in hall_breach:
+    for dx, dy, dz in ((1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)):
+        state = at(c, x + dx, y + dy, z + dz)
+        assert state["Name"] not in {
+            "minecraft:water",
+            "minecraft:lava",
+            "minecraft:gravel",
+            "minecraft:sand",
+        }
+        assert state.get("Properties", {}).get("waterlogged", "false") == "false"
+print(
+    "PASS main-hall overhead link: 28 removals, eight scaffolds; native lava route still rejected"
+)

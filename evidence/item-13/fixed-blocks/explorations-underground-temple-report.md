@@ -1388,3 +1388,52 @@ combat workload or task duration. Both terminal reward alcoves are functional
 under the model, not empty rooms inferred from `dead_end` names. The first lint
 run requested splitting a compound lid assertion; that narrow presentation fix
 preserves the same checks. Final route, Ruff, formatting and type checks pass.
+
+## Main-hall overhead bypass declaration
+
+The original native lava centerline remains rejected. Side-tunnel candidates
+outside the corridor are not accepted alternatives: X-291 atfeet39 meets water
+atZ11..16 and lacks solid support atZ11..14; X-285 meets water throughout much
+ofZ9..19. These are retained inspection rejections, not dry passages or permission
+to ignore fluid updates. A dry overhead route is available for explicit testing.
+
+Predeclare a tunnel atX-288,feet43,Z8..20. The corridor's retained center roofY42
+provides full support forZ9..19. At the first hall thresholdZ8, remove the three
+vertical cellsY42,43,44 fromfeet39, bottom first. Place four scaffoldsY39..42
+from the adjacent hall stanceZ7, then climb tofeet43. From each preceding cleared
+cell mine the next cell'sY44 andY43 blocks, in that order, continuing throughZ20.
+Validate each ray and adult step before advancing. The remainingY42 roof must
+stay intact throughoutZ9..19, separating the tunnel from the lava below.
+
+AtZ19 mine the second hall threshold's floor cell(-288,42,20), descend four
+blocks tofeet39 atZ20, and step south toZ21. Build a second four-scaffold column
+atZ20 from that stance. Validate its placement rays, whole shaft and reverse
+climb. The first shaft is built before ascent; the second initial descent retains
+one requested fall-damage point before hooks. No flight, remote placement or
+free recovery is assumed. Returning uses both built columns.
+
+This plan uses eight scaffolds and28 removals: three cells in the first shaft,
+24 tunnel cells atY43/44,Z9..20, and the second shaft'sY42 floor. Check all six
+neighbors of the removed cells for water/lava before accepting a static dry
+model; retain unsupported fluid or falling-material behavior as a failure.
+No lava source is plugged, no frozen configuration is changed, and no live
+fluid behavior is claimed. The bypass must be costed as engineering work, not
+as the original twelve-block native hall connection.
+
+The declared overhead link passes all28 ordered removal rays, both scaffold
+placement rays per shaft, adult swept columns and bidirectional supported tunnel
+traversal. The immediate neighbor-state set is exactly air, stone, stone bricks,
+cracked/mossy stone bricks and deepslate brick wall, with no waterlogged states.
+The tunnel retains its masonry floor above the lava. This supports the declared
+dry construction model without claiming a runtime fluid experiment.
+
+The local build-and-return demonstration is28 horizontal blocks:24 for the
+out-and-back tunnel and four for the two adjacent placement stances. It has16
+vertical blocks across the two shaft ascents/descents and eight placements.
+The28 stone/masonry removals contribute168 active ticks (8.4s) with the diamond
+pick. Tool selection, aiming, placement, movement, encounter work and verification
+remain additional phases. The second shaft's initial four-block drop retains
+its stated exposure. This now connects the two halls under an explicit earned
+breach route; the native lava centerline and rejected wet side routes remain
+separate evidence. Route, Ruff, formatting and type checks pass. Raw blocks and
+the frozen configuration remain unchanged.
