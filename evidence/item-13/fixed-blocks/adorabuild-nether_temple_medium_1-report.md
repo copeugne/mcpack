@@ -314,3 +314,9 @@ not observed play or typical times. Combat-only work stays5.2 active seconds for
 two ordinary stipulated blazes; realized population/duration remains NOT MEASURED.
 Natural gold plus forced alternatives now cover the three material outcomes in
 saved blocks. External raw custody and full Item 13 review/delivery remain open.
+
+
+Diagnostic durability now VERIFIED through [external raw custody](../temple-variants/custody/README.md),
+including all five attempts, the successful world and a byte-identical comparison
+from a freshly downloaded restore. This resolves this material evidence's custody;
+full Item 13 coverage and final review/merge remain incomplete.

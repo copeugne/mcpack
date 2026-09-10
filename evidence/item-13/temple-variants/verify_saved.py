@@ -19,11 +19,9 @@ from mcpack_evidence.item7_anvil import RegionContext, decode_region_payloads
 from mcpack_evidence.item7_nbt import decode_compound_nbt
 
 
-def verify(world: Path) -> dict[str, Any]:  # noqa: C901, PLR0912
+def verify(world: Path, backup_path: Path) -> dict[str, Any]:  # noqa: C901, PLR0912
     backup_hash = "cf6d6b5fc690fbceab9941ad1b0bc4b4a74d192e4ae1597469e4b5a9039836d1"
-    backup = json.loads(
-        read_bound(ROOT / "evidence/raw/item13/temple-r5-custody/world-backup.json", backup_hash)
-    )
+    backup = json.loads(read_bound(backup_path, backup_hash))
     raw = gzip.decompress(read_bound(Path(__file__).with_name("r5-temple-variants.json.gz")))
     if (
         hashlib.sha256(raw).hexdigest()
@@ -104,5 +102,10 @@ def verify(world: Path) -> dict[str, Any]:  # noqa: C901, PLR0912
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("world", type=Path)
+    parser.add_argument(
+        "--backup",
+        type=Path,
+        default=ROOT / "evidence/raw/item13/temple-r5-custody/world-backup.json",
+    )
     args = parser.parse_args()
-    print(json.dumps(verify(args.world), indent=2))
+    print(json.dumps(verify(args.world, args.backup), indent=2))

@@ -761,5 +761,6 @@ processed template placements and15,562 unchanged stopped-world cells. This adds
 selected material evidence, not natural starts, seeds, observed encounters or
 density. The two temple reports now integrate mining/reward differences and
 conditional complete-task estimates. Their natural gold cases remain the access
-basis; external raw custody for the diagnostic is pending. Full Item 13 family
+basis; [external raw custody](temple-variants/custody/README.md) now verifies all
+attempts and the successful downloaded-world comparison. Full Item 13 family
 coverage and delivery remain IN PROGRESS.

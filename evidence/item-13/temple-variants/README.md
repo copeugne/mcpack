@@ -2,7 +2,7 @@
 
 Status: r5 completes all four placements and local saved-state verification.
 Four earlier attempts remain rejected. External custody and report integration
-are tracked below; Item 13 remains IN PROGRESS.
+now pass; Item 13 remains IN PROGRESS.
 
 ## Exact missing evidence and smallest experiment
 
@@ -184,8 +184,10 @@ than creating a second lifecycle framework.
 
 r2 was rejected before server launch: the materializer leaves world absent, and
 opening its destination POSIX lock raised FileNotFoundError. No probe or runtime
-observation occurred. Only [capture.json](r2-capture.json.gz) exists for this
-prelaunch rejection; missing console/projection files are not fabricated.
+observation occurred. Of the five core probe outputs, only [capture.json](r2-capture.json.gz) exists for
+this prelaunch rejection; missing console/projection files are not fabricated.
+The raw directory also retains copied latest.log/debug.log from the materialized
+instance. Those logs do not prove an r2 server launch.
 The narrow fix creates the new target world directory before locking/copying.
 No existing target is reused. r3 uses the same protocol/limits and fresh paths:
 
@@ -328,3 +330,10 @@ rules and the source-supported full-cube replacement shapes, the existing gold
 route can carry a conditional material substitution. The two reports below retain
 terrain/access from natural gold observations and never relabel forced Y160 stages
 as natural entry or realized encounters. External raw custody remains pending.
+
+
+[External raw custody](custody/README.md) now passes all280 archive members,
+local/download restores, the503-file nested downloaded-world restore and identical
+15,562-cell saved verification. The release tag resolves to the exact successful
+producer. The two authoritative temple reports integrate conditional material
+models; full Item 13 family/repetition coverage and final reviewed delivery remain.

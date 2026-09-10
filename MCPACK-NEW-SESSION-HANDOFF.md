@@ -136,18 +136,14 @@ now integrate reward/tool source and conditional material-specific complete task
 Forced Y160 placement is material evidence, not natural access or encounter evidence.
 Keep natural gold geometry as the conditional route basis.
 
-Next concrete work: publish redundant raw custody for this five-attempt diagnostic
-and successful stopped world using existing archive/restore tools. Staging inputs:
-`evidence/raw/item13/temple-variants-r1` through `-r5`, and successful world archive,
-backup receipt and local restore under `evidence/raw/item13/temple-r5-custody/`.
-World archive162,749,467 bytes, SHA-256
-`451c9de1804e859f8daf18cfb545a4879cd994cf677ef9e1a46cf1949a40a37c`.
-503 files exclude session.lock. Additional custody budget3 GiB, free floor5 GiB;
-measured free space before custody34.68 GB. Preserve failed instances locally.
-Archive manifests, durability/restore receipts and commands belong under Item 13.
-Do not archive candidate JARs, credentials or operational caches.
+[Diagnostic raw custody](evidence/item-13/temple-variants/custody/README.md) now
+passes external publication, local/download280-member restores,503-file nested
+world restore and byte-identical saved verification. Tag
+`item13-temple-variants-2f653748` resolves to the producer above. No runtime
+remains active. The local custody tree uses1.90 GB within its3-GiB allocation.
+The large manifest is coupled only to this diagnostic's durability outcome.
 
-Then continue remaining full-family, material and repetition coverage under the
+Next concrete work: continue remaining full-family, material and repetition coverage under the
 existing coverage plan, using accepted raw inputs before proposing any minimal
 new experiment. Check central-End raw evidence before claiming an arena gap.
 Do not tune frozen content. Complete required PR review/fix cycles with a completed

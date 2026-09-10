@@ -356,3 +356,9 @@ times and acquired items remain NOT MEASURED. Debris fire resistance does not
 justify removing pickup verification or assuming every drop is reachable. The
 three material cells now have generated block evidence (natural gold plus forced
 alternates); external custody and full Item 13 review/delivery remain open.
+
+
+Diagnostic durability now VERIFIED through [external raw custody](../temple-variants/custody/README.md),
+including all five attempts, the successful world and a byte-identical comparison
+from a freshly downloaded restore. This resolves this material evidence's custody;
+full Item 13 coverage and final review/merge remain incomplete.
