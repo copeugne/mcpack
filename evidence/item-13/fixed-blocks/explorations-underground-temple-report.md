@@ -1437,3 +1437,48 @@ its stated exposure. This now connects the two halls under an explicit earned
 breach route; the native lava centerline and rejected wet side routes remain
 separate evidence. Route, Ruff, formatting and type checks pass. Raw blocks and
 the frozen configuration remain unchanged.
+
+## Remaining three source branches declaration
+
+Resolve the cave-spider corridors north from(-317,33,7) toZ-7, west from
+(-300,33,28) toX-317, and south from(-300,33,28) toZ45. Each contains six webs
+and one source, but the two southern corridors reverse the first/last web-pair
+arrangement relative to the northern one. Use the exact saved coordinates in
+the checker. Before advancing each step remove the declared intersecting upper
+web, then lower web/source, from the preceding standing cell. PreserveDelay0
+and natural encounters as unresolved timing inputs; no positive grace period.
+
+Connect the southern lower junction with a six-scaffold shaft atX-299,Z28,
+baseY33, from the southern hall's western threshold(-296,39,28). Walk west to
+the ledgeX-298, descend atX-299, and step east to(-298,33,28). Remove the downward
+dry vein at(-299,33,28), place the base on its fullY32 floor and extend five times.
+Validate the full column, both placement rays, the return climb and the one-block
+west connection to(-300,33,28). Retain the six-block initial fall and three
+requested damage points before hooks. No nearby sculk block or water is removed.
+
+At the western endpoint(-317,33,28), inspect all four cardinal arms for three
+blocks and return. The north branch's endpoint at(-317,33,-7) meets calcite at
+(-317,34,-8), so a further upright centerline step is blocked; do not assert a
+fully sealed exterior. The southern endpointZ45 is a local terminal inspection,
+not proof that every adjacent cave approach is closed. Validate each declared
+path independently and confirm that the completed local source-access set covers
+all nine saved spawners, without claiming realized enemy removal.
+
+All three declared branches pass in both directions after their exact ordered
+removals. Return distances are28,34 and34 horizontal blocks respectively, with
+no elevation changes inside those corridors. Their18 webs and three sources
+contribute201 active mining ticks (10.05s). The southern shaft also passes,
+including its base-vein removal, placement rays and return: six scaffolds,
+ten horizontal blocks including approach/setup/junction steps, and12 vertical
+blocks. Its one hand vein adds six active ticks (0.3s), separate from all placement
+and movement phases. The six-block initial fall remains exposed.
+
+The western lower junction's four arms pass. The northern endpoint's calcite
+head obstruction is confirmed, preserving that local boundary. The executable
+coverage check compares source positions directly with all nine saved spawner
+block entities; each has a validated local removal route. This closes source
+access coverage for the first assembly, not observed spawning, encounter duration
+or one complete suppression schedule. The whole task must combine these routes,
+account for all existing source activation and natural-spawn conditions, and
+retain environmental and below-boundary uncertainty. Route, Ruff, formatting and
+types pass. No raw evidence or runtime was changed.

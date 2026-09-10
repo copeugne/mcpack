@@ -83,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `2f6054e4`; verify subsequent assessment commits against upstream.
+checkpoint is `65ce947c`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -127,24 +127,15 @@ a two-block bridge over lava recesses. The [netherite diagnostic](evidence/item-
 and its [external custody](evidence/item-13/basalt-variant/custody/README.md)
 pass with2,197 live/restored cells equal. No runtime remains active.
 
-## Current batch: modular Nether fortress
+## Completed local modular Nether fortress assessment
 
 The [fortress assessment](evidence/item-13/fixed-blocks/adorabuild-nether-fortress-report.md)
 and [selection](evidence/item-13/nether-fortress-selection.json) retain two existing
-seed roles collectively covering all eight components. Ordinary r2 now has its
-complete local assessment: five primary spaces, three separate platforms, two
-branch junctions, three assigned chest tables and a validated native return route.
-The118-block horizontal route includes20 crouched blocks and40 blocks of support
-height travel. Conditional two-blaze tasks are128/227/382 seconds across the
-approved profiles. Two independent ground-window accesses each need one stair
-removal. Human movement, realized enemies and acquired loot remain NOT MEASURED.
-
-The biome-diverse r1 case now also has a local assessment:14 primary spaces,
-six branch junctions,five chest assignments and a302-horizontal-block return task.
-Eleven ordered wart-block removals and four conditional slot jumps are explicit;
-the rejected native route is preserved. Two-blaze modeled totals are365/646/1086s.
-An independent one-stair ground-window bypass also passes. All eight components
-are covered collectively by the two assemblies. Neither model observes players.
+seed roles collectively covering all eight components. Both local assessments
+include validated routes, conditional two-blaze tasks and ground-window bypasses.
+Reuse their retained native-route failures, wart removals and conditional slot
+jumps. Exact geometry, costs and assumptions remain in the linked report;
+human movement, realized enemies and acquired loot remain NOT MEASURED.
 
 ## Completed local Slime Cave assessment
 
@@ -190,8 +181,9 @@ are capped by masonry. Scaffold/breach remedies andthe aisle circuit now pass;
 their costs/failure are retained. Both barred cells andtwo lower terminal rewards
 now pass;31/31 chest/barrel approaches are resolved locally. A dry overhead hall
 link passes with28 removals/eight scaffolds; wet side candidates are rejected.
+All nine saved sources now have local access/removal proofs, including southern shaft costs.
 
-Next finish remaining links andsource/sculk handling, then integrate complete timing,
+Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 

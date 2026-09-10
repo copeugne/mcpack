@@ -1070,3 +1070,87 @@ for x, y, z in hall_breach:
 print(
     "PASS main-hall overhead link: 28 removals, eight scaffolds; native lava route still rejected"
 )
+
+south_shaft_approach = [(x, 39, 28) for x in range(-296, -299, -1)]
+verify_path(south_shaft_approach)
+verify_path(list(reversed(south_shaft_approach)))
+clear([-298.8, 33, 28.2, -298.2, 40.8, 28.8])
+clear([-298.8, 39, 28.2, -297.2, 40.8, 28.8])
+verify_path([(-299, 33, 28), (-298, 33, 28)])
+verify_path([(-298, 33, 28), (-299, 33, 28)])
+vein = (-299, 33, 28)
+assert at(c, *vein)["Name"] == "minecraft:sculk_vein"
+assert at(c, *vein)["Properties"]["down"] == "true"
+check_ray((-297.5, 34.62, 28.5), (-298.5, 33.03125, 28.5), vein)
+removed.add(vein)
+assert at(c, -299, 32, 28)["Name"] == "minecraft:stone_bricks"
+check_ray((-297.5, 34.62, 28.5), (-298.5, 33, 28.5), (-299, 32, 28))
+check_ray((-297.5, 34.62, 28.5), (-298, 33.95, 28.5), (-299, 33, 28))
+verify_path([(-299, 33, 28), (-300, 33, 28)])
+last_source_branches = (
+    (
+        [(-317, 33, z) for z in range(7, -8, -1)],
+        {
+            (-317, 34, 1),
+            (-317, 34, -1),
+            (-317, 34, -2),
+            (-317, 33, -2),
+            (-317, 33, -3),
+            (-317, 34, -5),
+            (-317, 33, -5),
+        },
+    ),
+    (
+        [(x, 33, 28) for x in range(-300, -318, -1)],
+        {
+            (-305, 34, 28),
+            (-305, 33, 28),
+            (-307, 33, 28),
+            (-308, 34, 28),
+            (-308, 33, 28),
+            (-309, 34, 28),
+            (-311, 34, 28),
+        },
+    ),
+    (
+        [(-300, 33, z) for z in range(28, 46)],
+        {
+            (-300, 34, 33),
+            (-300, 33, 33),
+            (-300, 33, 35),
+            (-300, 34, 36),
+            (-300, 33, 36),
+            (-300, 34, 37),
+            (-300, 34, 39),
+        },
+    ),
+)
+for path, targets in last_source_branches:
+    handled = set()
+    for a, b in pairwise(path):
+        for y in (34, 33):
+            target = (b[0], y, b[2])
+            if target in targets:
+                assert at(c, *target)["Name"] in {"minecraft:cobweb", "minecraft:spawner"}
+                check_ray(
+                    (a[0] + 0.5, 34.62, a[2] + 0.5), (b[0] + 0.5, y + 0.5, b[2] + 0.5), target
+                )
+                removed.add(target)
+                handled.add(target)
+        verify_path([a, b])
+    assert handled == targets
+    verify_path(list(reversed(path)))
+    print("PASS source branch", path[0], path[-1], 2 * (len(path) - 1), "horizontal return")
+for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+    arm = [(-317 + dx * r, 33, 28 + dz * r) for r in range(4)]
+    verify_path(arm)
+    verify_path(list(reversed(arm)))
+assert at(c, -317, 34, -8)["Name"] == "minecraft:calcite"
+spawner_positions = {
+    (b["x"], b["y"], b["z"]) for b in c["block_entities"] if b["id"] == "minecraft:mob_spawner"
+}
+assert len(spawner_positions) == 9
+assert spawner_positions <= removed
+print(
+    "PASS all nine saved sources have local access/removal geometry; realized encounters unmeasured"
+)
