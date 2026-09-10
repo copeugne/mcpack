@@ -1343,3 +1343,48 @@ The two dispenser table assignments are separately retained trap ammunition
 potential, not ordinary chest acquisitions. Thus all33 table assignments remain
 accounted for without calling the partial whole-assembly route complete. Route,
 Ruff, formatting and types pass. No accepted world or raw extraction was changed.
+
+## Final terminal rewards and western source branch declaration
+
+Inspect the southern terminal from the second hall's south threshold(-288,39,36)
+alongX-288 toZ47, then inspect chest(-290,39,47) and return. Its top straight
+stair cap follows the established non-full lid rule. Validate the intervening
+three-way center(-288,39,40), with north, east and south arms of three blocks.
+The eastern lava branch remains distinct from this dry terminal route.
+
+For the western terminal, first connect the western upper junction(-300,39,0)
+south toZ5, then use a six-scaffold column at(-300,Z6), baseY33 on the retained
+fullY32 floor. Descend six blocks, step north to(-300,33,5), place and extend the
+base five times, and validate the column and upper ledge return. Retain the
+initial six-block fall and three requested damage points before hooks. From the
+base, reach the lower junction(-300,33,7) and follow its west corridor toX-317.
+
+Remove, in order, webs(-305,34,7),(-307,34,7),(-308,34,7), then the spawner
+(-308,33,7), then webs(-309,33,7),(-311,34,7),(-311,33,7). Work from the adjacent
+east standing cell before each advance. This is the same six-web/one-source
+mechanism as the earlier east corridor, but its actual saved positions and rays
+must pass independently. The saved cave-spider source hasDelay0; this plan does
+not promise disabling it before activation. Continue to(-324,33,7), inspect the
+terminal chest(-324,33,5) under its top straight stair, and return.
+
+No additional blocks are removed, no water or lava is crossed, and no realized
+enemy is assumed absent. The shaft, source-work and terminal pieces must compose
+under their declared geometry; complete encounter and task timing remain separate.
+
+Both terminal approaches and chest rays pass. The southern return is22 horizontal
+blocks, with the three native junction arms verified. The western corridor and
+terminal return is48 horizontal blocks from its lower junction. Its six ordered
+web removals and one cave-spider source removal all have verified rays; active
+mining is67 ticks (3.35s), excluding selections, movement and encounter work.
+The western shaft construction and return pass with six scaffold placements,
+16 horizontal blocks including its upper approach, setup stance and lower-junction
+connection, and12 vertical blocks. Its initial fall exposure remains explicit.
+
+All31 chest/barrel assignments now have local access proofs or declared remedies
+in this first assembly. The two dispenser assignments remain separate trap
+ammunition potential. This closes local reward-node access coverage only: it does
+not yet prove one complete route, all connector alternatives, source suppression,
+combat workload or task duration. Both terminal reward alcoves are functional
+under the model, not empty rooms inferred from `dead_end` names. The first lint
+run requested splitting a compound lid assertion; that narrow presentation fix
+preserves the same checks. Final route, Ruff, formatting and type checks pass.

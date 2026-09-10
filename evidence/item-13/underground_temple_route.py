@@ -961,3 +961,57 @@ for bed_x, station_x in ((-275, -276), (-271, -270)):
 assert at(c, -272, 39, 25)["Name"] == "minecraft:cauldron"
 check_ray((-271.5, 40.62, 24.5), (-271.5, 39.5, 25), (-272, 39, 25))
 print("PASS two barred cells: four bar removals, two barrels, two beds and empty cauldron")
+
+south_terminal = [(-288, 39, z) for z in range(36, 48)]
+verify_path(south_terminal)
+verify_path(list(reversed(south_terminal)))
+for dx, dz in ((0, -1), (1, 0), (0, 1)):
+    arm = [(-288 + dx * r, 39, 40 + dz * r) for r in range(4)]
+    verify_path(arm)
+    verify_path(list(reversed(arm)))
+for chest, eye in (
+    ((-290, 39, 47), (-287.5, 40.62, 47.5)),
+    ((-324, 33, 5), (-323.5, 34.62, 7.5)),
+):
+    x, y, z = chest
+    assert at(c, *chest)["Name"] == "minecraft:chest"
+    lid = at(c, x, y + 1, z)
+    assert lid["Name"] == "minecraft:stone_brick_stairs"
+    assert lid["Properties"]["half"] == "top"
+    assert lid["Properties"]["shape"] == "straight"
+    check_ray(eye, (x + 0.5, y + 0.5, z + 0.5), chest)
+upper_west = [(-300, 39, z) for z in range(6)]
+verify_path(upper_west)
+verify_path(list(reversed(upper_west)))
+clear([-299.8, 33, 6.2, -299.2, 40.8, 6.8])
+clear([-299.8, 39, 5.2, -299.2, 40.8, 6.8])
+verify_path([(-300, 33, 6), (-300, 33, 5)])
+verify_path([(-300, 33, 5), (-300, 33, 6)])
+assert at(c, -300, 32, 6)["Name"] == "minecraft:cracked_stone_bricks"
+check_ray((-299.5, 34.62, 5.5), (-299.5, 33, 6.5), (-300, 32, 6))
+check_ray((-299.5, 34.62, 5.5), (-299.5, 33.95, 6), (-300, 33, 6))
+verify_path([(-300, 33, 6), (-300, 33, 7)])
+western_actions = (
+    (-305, 34, "minecraft:cobweb"),
+    (-307, 34, "minecraft:cobweb"),
+    (-308, 34, "minecraft:cobweb"),
+    (-308, 33, "minecraft:spawner"),
+    (-309, 33, "minecraft:cobweb"),
+    (-311, 34, "minecraft:cobweb"),
+    (-311, 33, "minecraft:cobweb"),
+)
+previous_x = -300
+for x, y, expected in western_actions:
+    station_x = x + 1
+    verify_path([(xx, 33, 7) for xx in range(previous_x, station_x - 1, -1)])
+    target = (x, y, 7)
+    assert at(c, *target)["Name"] == expected
+    check_ray((station_x + 0.5, 34.62, 7.5), (x + 1, y + 0.5, 7.5), target)
+    removed.add(target)
+    previous_x = station_x
+western_terminal_route = [(x, 33, 7) for x in range(-300, -325, -1)]
+verify_path(western_terminal_route)
+verify_path(list(reversed(western_terminal_route)))
+print(
+    "PASS final terminal rewards: south 22H; west corridor/terminal 48H return, shaft conditional"
+)

@@ -83,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `bc09b3dc`; verify subsequent assessment commits against upstream.
+checkpoint is `89d86a55`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -188,9 +188,9 @@ connect39/35/31/27. Bedroom access andjunctions pass. Dungeon four-chest survey
 andburied-source exposure pass; library front route passes but both high chest lids
 are capped by masonry. Scaffold/breach remedies andthe aisle circuit now pass;
 their costs/failure are retained. Both barred cells andtwo lower terminal rewards
-now pass;29/31 chest/barrel approaches are resolved locally. Complete timing remains open.
+now pass;31/31 chest/barrel approaches are resolved locally. Complete timing remains open.
 
-Next finish two terminal rewards, remaining links, source/sculk handling, timing,
+Next finish remaining links, source/sculk handling, timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
