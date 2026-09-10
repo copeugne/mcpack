@@ -3989,3 +3989,98 @@ Reproduce the translated checks, comparison denominator and fixture agreement wi
 `uv run python -m evidence.item-13.temple_ordinary_route`. The command uses the
 same hash-bound raw extract; no extra world generation, native experiment or
 common geometry machinery was required. Focused lint, formatting and types pass.
+
+## Fourth rotated tower: complete local task declaration
+
+The fourth tower is rotated relative to the western case. Map block coordinates
+by `(x,y,z) -> (z-159,y,585-x)`. Continuous eye/target coordinates instead use
+`(x,y,z) -> (z-159,y,586-x)`, preserving the rotated unit-cell bounds and centers.
+Do not apply the block-origin mapping to rays. The tower occupies X205..211,
+Y19..35,Z393..407. Its actual entry task station is the main hall south threshold
+(208.5,32,392.5), not the unsupported mapped copy at Z389.
+
+Use the existing full-tower actor, equipment, construction, no-extra-enemy,
+fluid/circuit, survival and acquisition conditions. Clear the seven mapped
+obstructions, build the three mapped scaffold columns, acquire the three actual
+tower chests, inspect the bottom boundary(208,20,392), and follow the western
+Y24 corridor to the third tower's entry(197,24,400) before returning. Do not
+count an alcove reward: the copied alcove chest location is masonry here.
+Clipped hall approach and the longer corridor must be represented explicitly
+in the route and task arithmetic. This does not include clearing the third
+tower or reaching the surface. Preserve the incorrect-copy failures before
+accepting the revised route, fixtures and full task counts.
+
+## Fourth rotated tower: integrated local result
+
+The wrong copied start is retained as a negative case: at(208,32,389) the
+supporting cell is air. The copied alcove reward is also rejected explicitly:
+(201,24,398) is stone bricks and has no block entity. The corrected task starts
+at the actual hall threshold(208,32,392). It replaces the old seven-block alcove
+excursion with an eleven-block corridor excursion to(197,24,400), the third
+tower's already checked entry. That is a real inter-tower route at feet24, not
+another reward room or evidence that the third tower was cleared in this task.
+
+The corrected full circuit passes actual saved support/clearance with the mapped
+seven removals, eight door halves and three scaffold columns. All24 remaining
+action-ray groups pass using the continuous-coordinate rotation, and every action
+station is present on the route. Block and ray rotations differ by one along the
+reversed coordinate because a cell origin maps to the opposite corner; the code
+keeps this explicit instead of offsetting actual block evidence.
+
+The complete1,785-cell tower footprint contains1,342 exactly matching rotated
+states and443 masonry-name differences with otherwise identical rotated
+properties. Facing values, cardinal connection keys and horizontal axes are
+rotated explicitly. No other footprint difference is accepted. All five actual
+fixture payloads are accounted for and match except coordinates, keepPacked and
+LootTableSeed. The three actual chests are(206,32,401),(210,32,399),(206,28,395),
+with the expected unrolled `quest_tower` table, no Items/Lock and clear lids. The
+other two fixtures are dispensers. Different loot seeds are preserved; no
+inventory generation, dispenser firing or acquired contents are measured.
+
+The complete task has150 horizontal blocks,12 ascent/12 descent, seven removals,
+12 scaffold placements, eight button operations and three chest acquisitions.
+It retains79 navigation events, with30 interactions and21 explicit selections
+under the declared accounting. The three initial four-block falls and46 active
+mining ticks reuse the verified mechanism calculation. Therefore:
+
+`T = 150/u + 12/j + 1.65 + 2.3 + 79n + 30a + 21s + 3k + v`.
+
+A/B/C give103.2/179.95/291.45 seconds, approximately103/180/291. These are
+complete conditional local budgets, not observed times or success probabilities.
+Zero combat remains the explicit no-enemy scenario; the family natural-hostile
+potential is not erased. Existing fall, fluid, circuit-state, placement,
+acquisition and survival limitations remain load-bearing conditions.
+
+The primary partition has three activity rooms: upper reward floorU atY32,
+middle mechanism/reward floorM atY28, and bottom lava floorB atY20, all within
+X206..210,Z394..406 activity footprints. Rectangular bounds do not mean every
+cell is playable. The two-doorY24 floor remains a connector, or a fourth room
+under the stated floor-count alternative. There is no attached reward alcove in
+this case. None of the three primary rooms is empty/dead (0/3 each), sinceU/M
+have accessible assigned rewards andB has the checked lava-avoidance requirement.
+
+The local graph is `E-U-M-J`, with `J-C` and `J-B-X`: E is hall threshold,
+J theY24 junction, C the third-tower entry andX the bottom eastern boundary.
+Seven nodes/six edges form one component with one degree-three junction and no
+local cycle. This does not settle cycles in the full assembly beyond these
+boundaries. Room depths fromE areU1,M2,B4;X is depth5 andC depth4. Reward allocation
+is two at depth1 and one at depth2, with no bottom reward or explicit spawner.
+The checked edge lengths areE-U11H, U-M17H/4V, M-J8H/4V, J-C11H, J-B7H/4V and
+B-X21H. Entry to bottom boundary is64H/12V on this network; entry toC is47H/8V.
+These are local inspected-network distances, not globally optimized travel or
+terrain burial. Connected floor span is12 blocks.
+
+The same web, door, panel-breach, tripwire-avoidance and lava-zigzag mechanisms
+remain supported by actual rotated states. There is no new terminal objective
+or higher-tier bottom reward, and three rewards precede the bottom hazard.
+Whole-height mechanical shallowness is not established by this multi-level
+access sequence. Expected revisit behavior remains an assessment of changed
+physical obstacles and conditional loot entitlement, not a player outcome or a
+claim that the dungeon resets. The western corridor now has a demonstrated
+connection role rather than being mislabeled a dead-end reward space.
+
+Reproduce the retained failures, revised full circuit, rotation/state/fixture
+comparison and totals with `uv run python -m evidence.item-13.temple_ordinary_route`.
+Focused lint, formatting and types pass. All four tower local task models are
+now integrated; the second assembly's remaining routes, full quality result and
+wet-shaft issue are still open. No runtime or common geometry machinery was added.

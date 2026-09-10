@@ -1044,3 +1044,162 @@ actual_third_fixtures = {
     )
 }
 assert len(actual_third_fixtures) == third_fixture_count
+
+
+def fourth_tower_block(point):  # noqa: ANN001, ANN201
+    """Rotate this saved tower's block origins, including the cell-width offset."""
+    return (point[2] - 159, point[1], 585 - point[0])
+
+
+def fourth_tower_ray(point):  # noqa: ANN001, ANN201
+    """Rotate continuous coordinates rather than lower block corners."""
+    return (point[2] - 159, point[1], 586 - point[0])
+
+
+fourth_source = tower_parts[367]
+fourth_removed = {fourth_tower_block(p) for p in fourth_source["removed"]}
+fourth_doors = {fourth_tower_block(p) for p in fourth_source["doors"]}
+fourth_feet = {
+    fourth_tower_block((x, y, z))
+    for x, z, lo, hi in ((181, 367, 28, 32), (189, 366, 24, 28), (181, 367, 20, 24))
+    for y in range(lo, hi + 1)
+}
+_, fourth_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, fourth_removed, fourth_doors, fourth_feet
+)
+fourth_bad_start = None
+try:
+    fourth_verify([fourth_tower_block(p) for p in fourth_source["complete"]])
+except AssertionError as error:
+    fourth_bad_start = error.args[0]
+assert fourth_bad_start == ((208, 32, 389), {"Name": "minecraft:air"})
+false_reward = fourth_tower_block((187, 24, 360))
+assert at(case, *false_reward)["Name"] == "minecraft:stone_bricks"
+assert false_reward not in entities_by_position
+fourth_canonical = fourth_source["complete"][3:-3]
+old_excursion = fourth_source["alcove"] + fourth_source["alcove"][-2::-1]
+indices = [
+    i
+    for i in range(len(fourth_canonical) - len(old_excursion) + 1)
+    if fourth_canonical[i : i + len(old_excursion)] == old_excursion
+]
+assert len(indices) == 1
+corridor = [(185, 24, z) for z in range(367, 355, -1)]
+corridor += corridor[-2::-1]
+index = indices[0]
+fourth_canonical = (
+    fourth_canonical[:index] + corridor + fourth_canonical[index + len(old_excursion) :]
+)
+fourth_route = [fourth_tower_block(p) for p in fourth_canonical]
+assert fourth_route[0] == fourth_route[-1] == (208, 32, 392)
+assert (197, 24, 400) in fourth_route
+assert (208, 20, 392) in fourth_route
+fourth_verify(fourth_route)
+fourth_rays = {}
+fourth_check_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    case, fourth_removed, fourth_rays
+)
+fourth_rewards = set()
+for target, rays in fourth_source["rays"].items():
+    if target == (187, 24, 360):
+        continue
+    actual = fourth_tower_block(target)
+    for eye, end in rays:
+        fourth_check_ray(fourth_tower_ray(eye), fourth_tower_ray(end), actual)
+    if target in entities_by_position and entities_by_position[target]["id"] == "minecraft:chest":
+        assert at(case, *actual)["Name"] == "minecraft:chest"
+        assert at(case, actual[0], actual[1] + 1, actual[2])["Name"] == "minecraft:air"
+        loot = entities_by_position[actual]
+        assert loot["LootTable"] == entities_by_position[target]["LootTable"]
+        assert "Items" not in loot
+        assert "Lock" not in loot
+        fourth_rewards.add(actual)
+assert fourth_rewards == {(206, 32, 401), (210, 32, 399), (206, 28, 395)}
+for rays in fourth_rays.values():
+    assert any(
+        (int(eye[0]), round(eye[1] - 1.62, 6), int(eye[2])) in set(fourth_route) for eye, _ in rays
+    )
+rotation = {"east": "north", "north": "west", "west": "south", "south": "east"}
+for original in fourth_source["doors"]:
+    expected = at(case, *original)
+    expected = {"Name": expected["Name"], "Properties": dict(expected["Properties"])}
+    expected["Properties"]["facing"] = rotation[expected["Properties"]["facing"]]
+    assert at(case, *fourth_tower_block(original)) == expected
+for original in fourth_source["removed"]:
+    name = at(case, *fourth_tower_block(original))["Name"]
+    assert (
+        name == "minecraft:cobweb"
+        if at(case, *original)["Name"] == "minecraft:cobweb"
+        else name in material_groups[0]
+    )
+fourth_h = sum(abs(b[0] - a[0]) + abs(b[2] - a[2]) for a, b in pairwise(fourth_route))
+fourth_up = sum(max(0, b[1] - a[1]) for a, b in pairwise(fourth_route))
+fourth_down = sum(max(0, a[1] - b[1]) for a, b in pairwise(fourth_route))
+assert (fourth_h, fourth_up, fourth_down) == (150, 12, 12)
+fourth_vectors = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(fourth_route)]
+fourth_decisions = sum(a != b for a, b in pairwise(fourth_vectors)) + 1
+assert fourth_decisions == 79
+print(
+    "PASS fourth tower corrected route150H/12up/12down,24 action-ray groups,three rewards; "
+    "copied start and nonexistent alcove reward rejected"
+)
+for label, u, j, n, a, s, k, v in (
+    ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2),
+    ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4),
+    ("C", 3, 0.25, 1.5, 1, 1, 4, 8),
+):
+    total = 150 / u + 12 / j + 1.65 + 2.3 + 79 * n + 30 * a + 21 * s + 3 * k + v
+    print("fourth tower", label, "complete conditional task seconds", total)
+
+fourth_exact = 0
+fourth_material = 0
+for x in range(178, 193):
+    for y in range(19, 36):
+        for z in range(364, 371):
+            source_state = at(case, x, y, z)
+            expected = {"Name": source_state["Name"]}
+            if "Properties" in source_state:
+                props = {}
+                for key, value in source_state["Properties"].items():
+                    mapped_key = rotation.get(key, key)
+                    mapped_value = value
+                    if key == "facing":
+                        mapped_value = rotation.get(value, value)
+                    elif key == "axis":
+                        mapped_value = {"x": "z", "z": "x", "y": "y"}[value]
+                    props[mapped_key] = mapped_value
+                expected["Properties"] = props
+            actual = at(case, *fourth_tower_block((x, y, z)))
+            if expected == actual:
+                fourth_exact += 1
+            else:
+                assert expected.get("Properties") == actual.get("Properties")
+                assert any(
+                    expected["Name"] in group and actual["Name"] in group
+                    for group in material_groups
+                )
+                fourth_material += 1
+assert (fourth_exact, fourth_material) == (1342, 443)
+fourth_fixture_positions = set()
+for position, source_entity in entities_by_position.items():
+    x, y, z = position
+    if not (178 <= x <= 192 and 19 <= y <= 35 and 364 <= z <= 370):
+        continue
+    actual_position = fourth_tower_block(position)
+    actual_entity = entities_by_position[actual_position]
+    ignored_fields = {"x", "y", "z", "keepPacked", "LootTableSeed"}
+    assert {k: v for k, v in source_entity.items() if k not in ignored_fields} == {
+        k: v for k, v in actual_entity.items() if k not in ignored_fields
+    }
+    fourth_fixture_positions.add(actual_position)
+assert fourth_fixture_positions == {
+    p
+    for p in entities_by_position
+    if 205 <= p[0] <= 211 and 19 <= p[1] <= 35 and 393 <= p[2] <= 407
+}
+assert len(fourth_fixture_positions) == 5
+assert len(fourth_rays) == 24
+print(
+    "PASS fourth tower1785 rotated footprint states:1342 exact/443 masonry variants; "
+    "all five fixture payloads agree except coordinates/packing/loot seeds"
+)

@@ -82,7 +82,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `0ec63a51`; verify subsequent assessment commits against upstream.
+checkpoint is `6ae69375`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -195,6 +195,6 @@ Continuous38-target r2 failed at outer ledge after18 landings; raw/download rest
 Do not rerun/tune the controller. The18-scaffold alternative passes solid geometry; wet motion unresolved.
 South link has water gap/wall. Chamber task conditionally118/175/266s,90H, eight holes avoided.
 Western complete local tasks now148H/12up/12down,104/182/297s conditional; topology/quality integrated.
-Third tower translation passes actual route/rays and1935 cells/7 fixtures; same local task model.
-Next fourth rotated tower and onward assembly routes; wet shaft/full coverage unresolved.
+Fourth rotated tower now150H,103/180/291s conditional,3 rewards; actual corridor reaches third.
+All four local tower tasks integrated. Continue full assembly routes/quality and wet shaft.
 Item13 needs full coverage, clean Codex review/thumbs-up, merge and main verification; Item14 UNSTARTED.
