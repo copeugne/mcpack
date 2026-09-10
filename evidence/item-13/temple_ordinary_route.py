@@ -117,3 +117,52 @@ except AssertionError:
 else:
     message = "fractional support leaked into the default dry checker"
     raise AssertionError(message)
+
+# Alternative solid-clearance model, not a dry or runtime movement assertion.
+# Removed waterlogged slabs can release water; see the report's fluid limitation.
+shaft_removals = {(195, 15, 343), (195, 23, 343)}
+shaft_feet = {(195, y, 343) for y in range(8, 27)}
+shaft_clear, shaft_verify = importlib.import_module(
+    "evidence.item-13.temple_geometry"
+).path_checks(case, shaft_removals, set(), shaft_feet)
+assert at(case, 195, 7, 343)["Name"] == "minecraft:stone_bricks"
+for y in range(8, 29):
+    assert at(case, 195, y, 343)["Name"] == (
+        "minecraft:deepslate_brick_slab" if (195, y, 343) in shaft_removals else "minecraft:air"
+    )
+shaft_path = [(194, 8, 343), *[(195, y, 343) for y in range(8, 27)], (194, 26, 343)]
+shaft_verify(shaft_path)
+shaft_verify(list(reversed(shaft_path)))
+for retained_slab in shaft_removals:
+    _, reject_uncleared = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+        case, shaft_removals - {retained_slab}, set(), shaft_feet
+    )
+    try:
+        reject_uncleared(shaft_path)
+    except AssertionError:
+        print("PASS uncleared shaft obstruction rejected", retained_slab)
+    else:
+        message = "uncleared waterlogged slab was ignored by construction geometry"
+        raise AssertionError(message)
+
+shaft_rays = {}
+shaft_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    case, shaft_removals, shaft_rays
+)
+for feet_y, target_y in ((13, 15), (21, 23)):
+    # Stop the supported column below the overhead target, before extending it.
+    assert (195, target_y, 343) in shaft_removals
+    shaft_ray((195.5, feet_y + 1.62, 343.5), (195.5, target_y, 343.5), (195, target_y, 343))
+    # North offset permits an ordinary side click on the current top scaffold.
+    # Its 0.1 block overlap retains top support under the existing scaffold model.
+    shaft_clear([195.2, feet_y, 342.5, 195.8, feet_y + 1.8, 343.8])
+    shaft_ray(
+        (195.5, feet_y + 1.62, 342.8),
+        (195.5, feet_y - 0.05, 343),
+        (195, feet_y - 1, 343),
+    )
+shaft_ray((194.5, 9.62, 343.5), (195, 8.95, 343.5), (195, 8, 343))
+print(
+    "PASS shaft construction solid geometry: two removals, 18 scaffold placements in 5/8/5 stages; "
+    "6.8 horizontal and 36 vertical blocks including two placement offsets; fluid motion unresolved"
+)

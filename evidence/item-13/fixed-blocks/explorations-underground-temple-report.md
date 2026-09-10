@@ -3231,3 +3231,91 @@ Use the existing explicit construction model to inspect the smallest earned
 shaft-access remedy, including placement/removal and interaction costs, before
 considering any further fresh runtime experiment. Neither a static remedy nor the
 partial native trace establishes human traversal time or a realized encounter.
+
+## Second shaft construction alternative: solid geometry and costs
+
+The rejected native ledge crossing is not repeated. Inspection of the same
+hash-bound ordinary extract finds an alternative column at X195,Z343, with a full
+stone-brick floor at Y7. Y8..28 contains air except waterlogged bottom deepslate-
+brick slabs at Y15 and23. The upper western landing(194,26,343) has full stone-brick
+support at Y25 and air at Y26/27. This is an explicit earned construction option,
+not an invisible bypass or an assertion that the authored wet spiral is unusable.
+
+Use the existing scaffolding capability and carried diamond pickaxe. Begin at
+lower adjacent stance(194.5,8,343.5), build five supported scaffold cells Y8..12,
+and climb to feet13. Remove the slab at(195,15,343) from eye(195.5,14.62,343.5).
+Move north0.7 blocks to Z342.8 while retaining0.1 block of body overlap with the
+scaffold top. Click its north side near Y12.95 to extend the column eight times,
+through Y20. Return0.7 blocks south, climb to feet21, and remove(195,23,343) from
+eyeY22.62. Repeat the north side-click adjustment and add five cells Y21..25.
+Return to center, climb to feet26 and step west onto the supported upper landing.
+Return along the same constructed column to the initial adjacent lower stance.
+Leave the construction in place; no recovery or acquisition of removed slabs is
+required by this connection demonstration.
+
+The [existing route check](../temple_ordinary_route.py) now verifies the 18-block
+column, both horizontal transfers, both overhead removal rays, the base side-click
+ray and both elevated side-click rays/offset envelopes. It rejects the same route
+when either named slab remains. Reuse the pinned side-click-UP, distance-zero
+support and scaffold-top derivation from the [Nether Tower](mns-nether_tower-report.md#elevated-chest-explicit-scaffold-connection).
+The two elevated offsets add2.8 horizontal blocks. Including two one-block
+transfers in each direction, this local out-and-back has6.8 horizontal and36
+vertical blocks, 18 placement interactions and two removal interactions. It
+requires five equipment selections: scaffold, pickaxe, scaffold, pickaxe,
+scaffold. These are local work counts, not the complete dungeon task.
+
+**Fluid limitation remains material.** The solid-clearance model omits the removed
+slabs as collision obstacles, but it does not declare their cells dry or simulate
+released water. Pinned `ScaffoldingBlock.getStateForPlacement` offsets21..49 set
+WATERLOGGED from the destination fluid; `getFluidState` offsets0..23 returns source
+water when that property is true. Scaffolding is therefore not a demonstrated
+water seal. The surrounding saved water and the two broken waterlogged slabs can
+change immersion, support state, drift and breathing during construction. No
+post-edit fluid evolution has been measured. The source's water travel branch
+also differs from dry climbing: `LivingEntity.travel` offsets219..270 applies its
+climbable vertical value only with horizontal collision, then water drag. Do not
+silently reuse a dry scaffold speed or assert that these rays prove wet placement.
+
+Mining work is separately supported. `Blocks` copies deepslate-brick slab
+properties from deepslate bricks at39970..39989, and those from cobbled deepslate
+at39927..39952. Cobbled deepslate strength is3.5 at39667..39673. The existing diamond
+speed8 and correct-tool divisor30 apply without effects. `Player.getDestroySpeed`
+offsets140..163 multiply speed by SUBMERGED_MINING_SPEED when eyes are in water;
+`Attributes` sets its default0.2 at779..799. The additional airborne divisor5 is
+at165..176. Binary32 progress accumulation gives the following conditional work:
+
+| State held throughout both removals | Ticks per slab | Two-slab active work |
+| --- | ---: | ---: |
+| Grounded, eyes dry | 14 | 1.4 seconds |
+| Grounded, eyes submerged | 66 | 6.6 seconds |
+| Airborne, eyes submerged | 329 | 32.9 seconds |
+
+These are discrete held-state mechanism cases at20 TPS, not probabilities,
+observed mining times, bounds on interrupted work or a claim that breathing and
+support permit each case. Acquisition, targeting and equipment changes are not
+included in active breaking work. Movement, breathing/recovery and interruption
+costs must be resolved before this connection supplies a complete timing term.
+This is a compact solid-geometry alternative with explicit known costs, not an
+accepted completed shaft experiment or a completed second-assembly assessment.
+No new world, runtime framework or common geometry exception was introduced.
+
+Reproduce the direct source inspection using the pinned Java binary and SRG JAR
+identified earlier in this report; `javap -c -p` on `ScaffoldingBlock`, `Blocks`,
+`LivingEntity`, `Player` and `Attributes` gives the offsets above. Geometry:
+`uv run python -m evidence.item-13.temple_ordinary_route`. Mining arithmetic:
+
+```sh
+uv run python - <<'MINING'
+import struct
+for label, speed in [('dry grounded',8), ('submerged grounded',1.6),
+                     ('submerged airborne',.32)]:
+    f = lambda x: struct.unpack('f',struct.pack('f',x))[0]
+    progress = f(f(f(speed)/f(3.5))/f(30))
+    total = 0
+    ticks = 0
+    while total < 1:
+        total = f(total + progress)
+        ticks += 1
+    print(label, ticks, 2*ticks/20)
+MINING
+```
