@@ -3189,3 +3189,45 @@ Command, after committing the producer and with absent targets:
 ```sh
 uv run python -m evidence.item-13.collision.run --shaft-motion-full evidence/raw/item13/shaft-motion-r2 instances/item13-shaft-motion-r2
 ```
+
+## Continuous shaft r2 outcome: rejected and preserved
+
+The predeclared command ran from producer
+`2bdf8c7f3c0497033763a262a3731ce24ef18e82` on a fresh hash-verified ordinary r1
+materialization. All 1,664 input cells matched and the scoped entity count was zero.
+The [raw projection](../shaft-motion/r2-shaft-motion-full.json.gz) records 442 states
+(step0 through441), 18 reached landings out of38 planned, and the exact rejection:
+`No landing at target 18 within 120 native steps`.
+
+In this rejected attempt, the actor reached all17 wet slab centers without a reset,
+landing on the highest at step295, then the central post at step321. It failed on
+the first outer-ledge target, index18. The last position was
+(195.30000001192093,25.305512513420364,342.6527891949283), airborne, dry and crouching.
+During this target its X coordinate never went below195.30000001192093; the target
+center was194.5. These partial diagnostic observations do not pass the full-case
+acceptance gate. The return sequence was not attempted. No completed ascent/return
+time can be assigned, and multiplying the one-step pilot across this route would
+conceal the observed failure. Failure of this controller does not prove that no
+player route exists.
+
+The [capture](../shaft-motion/r2-capture.json.gz) records readiness but no correlated
+save-all flush or clean stop. The agent exception propagated through attach, and
+the existing lifecycle killed the complete process group, returning -9. Elapsed
+lifecycle time was222.478 seconds. No post-run configuration audit was reached.
+No matching Java process remained at the recovery check. Consequently this is a
+preserved rejected experiment, not an accepted runtime result or accepted world.
+The unchanged input world remains under its original custody.
+
+The [retention record](../shaft-motion/r2-retention.json) binds all five original
+and compressed projection/log files. [External custody](../shaft-motion/r2-custody/README.md)
+retains all11 available raw files, with verified local and downloaded restores.
+Reproduction of the committed projection uses
+`uv run python -m evidence.item-13.collision.retain --shaft-attempt 2` with absent
+output files. Raw output totaled5,581,901 bytes, within100 MiB.
+
+Disposition: preserve the native ledge failure and stop controller tuning. The
+second assembly still needs a complete supported route and conditional task.
+Use the existing explicit construction model to inspect the smallest earned
+shaft-access remedy, including placement/removal and interaction costs, before
+considering any further fresh runtime experiment. Neither a static remedy nor the
+partial native trace establishes human traversal time or a realized encounter.

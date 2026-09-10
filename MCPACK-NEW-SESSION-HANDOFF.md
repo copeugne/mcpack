@@ -83,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `fd5798ce`; verify subsequent assessment commits against upstream.
+checkpoint is `2bdf8c7f`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -193,8 +193,9 @@ P6 defines54 stipulated occupied-source enemies with exact-class suppression;
 nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
 Second assembly: hall/chamber floor routes and eight chest rays pass. Shaft has17 wet slabs.
 Wet-step r1 passed in20 native steps; raw custody/download restore verified. No server active.
-Continuous38-target ascent/return is predeclared; run --shaft-motion-full on fresh r2.
-Courtyard/central-End gaps: check retained raw first. No server is active.
+Continuous38-target r2 failed at outer ledge after18 landings; raw/download restore retained.
+Do not rerun or tune the controller. Inspect a costed construction remedy next.
+Courtyard/central-End gaps: check retained raw first.
 
-Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and
-fetched origin/main verification. Item14 remains UNSTARTED.
+Item13 needs full coverage, clean Codex review/thumbs-up, merge and main verification.
+Item14 remains UNSTARTED.

@@ -22,7 +22,7 @@ if __name__ == "__main__":
     _ = mode.add_argument("--second-house", action="store_true")
     _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2, 3, 4, 5))
     _ = mode.add_argument("--basalt-attempt", type=int, choices=(1,))
-    _ = mode.add_argument("--shaft-attempt", type=int, choices=(1,))
+    _ = mode.add_argument("--shaft-attempt", type=int, choices=(1, 2))
     args = parser.parse_args()
     spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW
@@ -43,10 +43,11 @@ if __name__ == "__main__":
         prefix = "r1-"
         projection = "temple-variants.json"
         destination_directory = DESTINATION.parent / "basalt-variant"
-    if cast("int | None", args.shaft_attempt) is not None:
-        raw_directory = ROOT / "evidence/raw/item13/shaft-motion-r1"
-        prefix = "r1-"
-        projection = "shaft-motion.json"
+    shaft_attempt = cast("int | None", args.shaft_attempt)
+    if shaft_attempt is not None:
+        raw_directory = ROOT / f"evidence/raw/item13/shaft-motion-r{shaft_attempt}"
+        prefix = f"r{shaft_attempt}-"
+        projection = "shaft-motion.json" if shaft_attempt == 1 else "shaft-motion-full.json"
         destination_directory = DESTINATION.parent / "shaft-motion"
         destination_directory.mkdir(exist_ok=True)
     manifest: dict[str, object] = {}
