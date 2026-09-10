@@ -757,3 +757,69 @@ scenario uses3 blocks/s for the whole three-block door transfer in all profiles,
 retaining its1.5-second button deadline. Acceleration/input disruption can still
 violate that stipulated rate andcensor the crossing; source inspection does not
 prove a human will maintain it. Carry this local rate into complete task timing.
+
+## Eastern junction north arm: blind shaft alcove declaration
+
+The north arm from(-248,33,0) reaches a bounded shaft alcove insideX-250..-246,
+Z-9..-5. Its outer floor isY32 masonry; the central3 by3 opening meets terrain
+aroundY31, not another authored shaft component. This differs materially from
+the earlier six-block eastern shaft with a generated lower assembly. Reuse source
+child59 andthe same saved blocks. No new depth is inferred from the component name.
+
+Predeclare a native inspection circuit from the junction to(-248,33,-5),west to
+X-250,north toZ-9,east toX-246,south toZ-5,andback west toX-248. Then inspect the
+central pit through(-248,32,-6),(-248,32,-7),(-248,32,-8),return to the rim and
+junction. Keep the adult geometry,no mining/placement andknown coordinates.
+The central-column support is full stone atY31; dry sculk-vein cells are handled
+by the already verified collision rule. Validate the rim,one-block pit descent
+andreturn ascent against actual headroom. Do not substitute the earlier scaffold
+solution or claim another six-block drop.
+
+The component's retained bounding volume has no block entities. The central
+lantern at(-248,35,-7) is illumination,not a storage objective. There is no saved
+container or authored spawner in this alcove. Empty/dead classification remains
+conditional on the complete encounter model: the root's piece-bounded natural
+illusioner/pillager/vindicator potential is not erased by absence of a block
+entity. The static lack of reward/facility is an established fact; no realized
+enemy absence is asserted.
+
+The declared circuit passes the saved-block support, adult clearance and swept
+transition checks in `uv run python -m evidence.item-13.underground_temple_route`.
+It comprises five blocks from the junction to the rim, a sixteen-block rim
+circuit, six horizontal blocks for the pit return, and five back to the junction:
+32 horizontal blocks and two blocks of vertical travel. Accessible feet elevation
+is32..33. No additional scaffold, removal or interaction is required by this
+geometric route. This is an optional terminal inspection space, not a demonstrated
+deeper connection or a finale. Its room-count sensitivity and conditional empty
+classification must be carried into the whole-assembly graph and scenario.
+
+The first focused lint invocation rejected a113-character output line; formatting
+corrected that presentation defect without changing the measured path or raw data.
+
+## Eastern terminal connector declaration
+
+Continue the same native inspection actor from(-248,33,0) east to(-241,33,0),
+then inspect the east arm throughX-238, the north arm throughZ-3 and the south
+recess throughZ2, returning along each arm and finally to the original junction.
+No excavation or fluid entry is permitted in this circuit. Child60's serialized
+three-way label does not establish three onward playable links: retained terrain
+at(-237,33,0) and(-241,33,-4) caps the east and north centerlines, while authored
+masonry at(-241,33,3) bounds the south recess. Validate occupied cells, support and
+all transitions with the existing adult checker. A capped centerline is a local
+native boundary, not proof against mining or against every external cave approach.
+
+The objective is inspection of these branch ends, not acquisition. Check block
+entities within child60's boundsX-244..-238,Y32..36,Z-3..3. As for the north shaft,
+absence of saved reward/source nodes would not establish realized enemy absence;
+retain the piece-bounded natural-spawn condition. Keep this connector distinct
+from primary activity rooms when integrating the room graph.
+
+The declared connector circuit passes in both directions: seven blocks to the
+connector center, three east, three north and two south, each returned, total30
+horizontal blocks and zero vertical travel. Its retained bounding volume has no
+block entities. The two local terrain caps and the south masonry boundary are
+confirmed at the declared coordinates. Do not count the serialized three-way
+element as a junction connecting three further rooms. Both terminal inspections
+reuse the existing hash-bound raw extraction and executable route checker; no
+world was launched, changed or regenerated. Focused Ruff, formatting and type
+checks pass after formatting the two added output/assertion expressions.

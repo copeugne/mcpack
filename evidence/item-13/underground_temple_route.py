@@ -67,6 +67,7 @@ def verify_path(points, *, crouch_up=False):
             "minecraft:stone_brick_stairs",
             "minecraft:mossy_stone_brick_stairs",
             "minecraft:gravel",
+            "minecraft:stone",
         }, ((x, y, z), s)
         if n == "minecraft:gravel":
             assert at(c, x, y - 2, z)["Name"] in {
@@ -389,3 +390,46 @@ assert at(c, -245, 33, 7)["Name"] == "minecraft:brewing_stand"
 check_ray((-250.5, 34.62, 7.5), (-250, 33.625, 7.5), (-250, 33, 7))
 check_ray((-247.5, 34.62, 6.5), (-244.5, 33.5, 7.5), (-245, 33, 7))
 print("PASS room facility interaction rays; recipes, enchanting power and outputs not measured")
+
+# Northern blind shaft: native rim and one-block terrain-backed pit, no scaffold.
+north_arm = [(-248, 33, -z) for z in range(6)]
+rim = (
+    [(-248 - dx, 33, -5) for dx in range(3)]
+    + [(-250, 33, -z) for z in range(6, 10)]
+    + [(x, 33, -9) for x in range(-249, -245)]
+    + [(-246, 33, z) for z in range(-8, -4)]
+    + [(x, 33, -5) for x in (-247, -248)]
+)
+pit = [(-248, 33, -5)] + [(-248, 32, -z) for z in range(6, 9)]
+for path in (north_arm, rim, pit):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+assert not any(
+    -251 <= b["x"] <= -245 and 32 <= b["y"] <= 37 and -10 <= b["z"] <= -4
+    for b in c["block_entities"]
+)
+assert at(c, -248, 35, -7)["Name"] == "minecraft:lantern"
+horizontal = 2 * (len(north_arm) - 1) + len(rim) - 1 + 2 * (len(pit) - 1)
+print(
+    "PASS northern blind-shaft inspection:",
+    horizontal,
+    "horizontal, 2 vertical; encounter occupancy unknown",
+)
+
+# Terminal connector has local terrain caps, not three onward room links.
+east_link = [(x, 33, 0) for x in range(-248, -240)]
+terminal_arms = (
+    [(x, 33, 0) for x in range(-241, -237)],
+    [(-241, 33, -z) for z in range(4)],
+    [(-241, 33, z) for z in range(3)],
+)
+for path in (east_link, *terminal_arms):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+for target in ((-237, 33, 0), (-241, 33, -4), (-241, 33, 3)):
+    assert at(c, *target)["Name"] in {"minecraft:stone", "minecraft:stone_bricks"}
+assert not any(
+    -244 <= b["x"] <= -238 and 32 <= b["y"] <= 36 and -3 <= b["z"] <= 3 for b in c["block_entities"]
+)
+horizontal = 2 * (len(east_link) - 1 + sum(len(arm) - 1 for arm in terminal_arms))
+print("PASS terminal connector inspection:", horizontal, "horizontal, 0 vertical; local caps")
