@@ -225,3 +225,11 @@ The [Nether-temple gold assessment](adorabuild-nether_temple_medium_1-report.md)
 completes the fifth selected Adorabuild case. Its49-cell authored lava basin
 requires a declared catcher/ramp for the conditional gold task. Both temples
 still need explicit debris/lodestone outcome coverage before family closure.
+
+
+## Basalt Chambers representative
+
+The [two-assembly assessment](basalt-chambers-report.md) predeclares existing
+biome-diverse/ordinary r2 cases. The first raw extraction and inspected block sheet
+pass; source/material facts and exact barriers are integrated. Playable topology,
+complete conditional timing, second-case assessment and material coverage remain.

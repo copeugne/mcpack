@@ -149,3 +149,15 @@ new experiment. Check central-End raw evidence before claiming an arena gap.
 Do not tune frozen content. Complete required PR review/fix cycles with a completed
 clean thumbs-up, merge and verify origin/main delivery before declaring Item 13
 COMPLETE. Item 14 remains UNSTARTED.
+
+
+Current next-family increment: [Basalt Chambers report](evidence/item-13/fixed-blocks/basalt-chambers-report.md)
+and [two-case selection](evidence/item-13/basalt-chambers-selection.json). Both
+existing distinct-seed assemblies have all seven components and full chunks.
+The smaller biome-diverse r2 case is extracted (25,584 cells,10,546 compressed
+bytes,10.14308s) and its seven-layer view inspected. One saved blaze source,
+central/trap debris and unconditional magma-to-TNT processing are integrated.
+Four solid passage barriers and blocked eastern centerline boundaries invalidate
+an assumed open loop. Next validate floor support/side routes and trap mechanism,
+then complete this representative's topology and full-task model before extracting
+the larger ordinary r2 case. Do not generate new worlds or treat15 pieces as rooms.
