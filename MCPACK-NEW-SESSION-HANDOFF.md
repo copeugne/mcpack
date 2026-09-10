@@ -158,6 +158,9 @@ The smaller biome-diverse r2 case is extracted (25,584 cells,10,546 compressed
 bytes,10.14308s) and its seven-layer view inspected. One saved blaze source,
 central/trap debris and unconditional magma-to-TNT processing are integrated.
 Four solid passage barriers and blocked eastern centerline boundaries invalidate
-an assumed open loop. Next validate floor support/side routes and trap mechanism,
-then complete this representative's topology and full-task model before extracting
-the larger ordinary r2 case. Do not generate new worlds or treat15 pieces as rooms.
+an assumed open loop. The first representative now has a five-room local assessment, supported side routes,
+source/geometry-confirmed trap and corrected pickup support-chain removals. Its
+complete two-blaze scenario is87/139/221s, with separate8/8/12 source ceilings.
+Next extract and assess the declared larger ordinary r2 case, then resolve remaining
+central material outcomes from existing evidence before any minimal experiment.
+Do not generate new survey worlds or treat15 pieces as rooms.

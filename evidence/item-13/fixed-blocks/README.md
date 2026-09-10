@@ -231,5 +231,7 @@ still need explicit debris/lodestone outcome coverage before family closure.
 
 The [two-assembly assessment](basalt-chambers-report.md) predeclares existing
 biome-diverse/ordinary r2 cases. The first raw extraction and inspected block sheet
-pass; source/material facts and exact barriers are integrated. Playable topology,
-complete conditional timing, second-case assessment and material coverage remain.
+pass; the first case now has five validated chamber spaces, a conditional breach
+graph, supported source/reward access, trap bypass and complete87/139/221-second
+two-blaze task. Failed centerline/pickup assumptions remain preserved. Second-case
+assessment and material coverage remain.
