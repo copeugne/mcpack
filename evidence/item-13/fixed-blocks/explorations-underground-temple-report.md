@@ -2573,3 +2573,145 @@ Focused Ruff formatting/lint, type checking and the route executable pass.
 This first representative now has integrated topology, scoped depth, vertical
 progression, complete conditional task time and quality assessment. Proceed to
 the remaining three predeclared reads; no family-wide completion is implied.
+
+## Remaining predeclared saved-block reads
+
+The first representative's end-to-end integration gate has passed. Execute the
+other three reads from the existing selection without changing their bounds.
+These are static reads from accepted restores, with complete inventory checks
+before and after each read under the existing POSIX record lock. They are not
+new controlled gameplay experiments. Keep the 180-second and 10-MiB per-read
+limits and 5-GiB free-space floor. Retain a completed output even if its resource
+limit fails; do not replace it with a passing retry. The original incomplete
+assembly remains incomplete when its bounded component is inspected.
+
+Run from the repository root with each output absent:
+
+```sh
+uv run python - <<'PY'
+import gzip, hashlib, importlib, json, resource, shutil, signal, time
+from pathlib import Path
+from tools.analyze_route_opportunities import read_bound
+sha = '6e8a56b7fc4f97e2c2e61f45d6cef286172c4cbba788d679536db477bc39ae78'
+plan = json.loads(read_bound(Path('evidence/item-13/underground-temple-selection.json'), sha))
+rows = json.loads(read_bound(Path('evidence/item-13/candidates.json'), plan['input_sha256']['candidates']))['candidates']
+extract = importlib.import_module('evidence.item-13.measure').extract
+
+def timeout(signum, frame):
+    raise TimeoutError('predeclared read exceeded 180 seconds; preserve prior outputs')
+
+signal.signal(signal.SIGALRM, timeout)
+for label, case in (('ordinary-r1', plan['selected'][1]), ('large-hall-down', plan['component']), ('missing-small-hall-down', plan['failure'])):
+    original, = [row for row in rows if row['id'] == case['id']]
+    if label == 'large-hall-down':
+        changed = {'bounds', 'envelope', 'voxel_count'}
+        assert all(case[key] == value for key, value in original.items() if key not in changed)
+        start = json.loads(gzip.decompress(read_bound(Path(case['start_record_path']), case['start_record_sha256'])))
+        selected, = [row for row in start['starts'] if row['id'] == case['id']]
+        piece, = [row for row in selected['start_nbt']['Children'] if row.get('pool_element', {}).get('location') == 'explorations:underground_temple/rooms/large_hall_down']
+        assert piece['BB'] == case['component_bb']
+    else:
+        assert case == original
+    output = Path(f'evidence/item-13/fixed-blocks/explorations-underground-temple-{label}.json.gz')
+    assert not output.exists() and not output.is_symlink()
+    assert shutil.disk_usage('.').free >= 5 * 1024**3
+    begun = time.monotonic()
+    signal.alarm(180)
+    try:
+        result = {'selection_sha256': sha, 'cases': [extract(case, voxel_budget=case['voxel_count'])]}
+        result['elapsed_seconds'] = round(time.monotonic() - begun, 6)
+        result['peak_rss_kib'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        raw = gzip.compress((json.dumps(result, sort_keys=True, separators=(',', ':')) + '\n').encode(), mtime=0)
+        with output.open('xb') as stream:
+            stream.write(raw)
+    finally:
+        signal.alarm(0)
+    print(label, len(raw), hashlib.sha256(raw).hexdigest(), result['elapsed_seconds'], result['peak_rss_kib'], flush=True)
+    assert result['elapsed_seconds'] <= 180 and len(raw) <= 10 * 1024**2
+PY
+```
+
+All three reads passed. Each extraction verified the accepted complete-world
+inventory before and after reading, required full chunks/sections, and stayed
+within the declared resource limits. Producer is `measure.py` at commit8465b5ba;
+no server was launched and no raw world was changed.
+
+| Read | Cells | Compressed bytes | Elapsed seconds | Process peak RSS KiB | SHA-256 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| [Second assembly, ordinary r1](explorations-underground-temple-ordinary-r1.json.gz) | 329208 | 45810 | 9.999266 | 77588 | faed7df352cdcfc1938fb4d49f4f84b2519ad4f1ee55044fa661ae55e6f81d5c |
+| [Scoped large_hall_down](explorations-underground-temple-large-hall-down.json.gz) | 33852 | 12771 | 8.725831 | 82892 | a62c45cb2dd69fce020e28b78faf438314ff7e5abb97ebda149ec29699a84c8a |
+| [Missing small_hall_down failure](explorations-underground-temple-missing-small-hall-down.json.gz) | 512 | 958 | 8.690210 | 82892 | c8fcd094bf43f7ca3785edc3d58289ef171e875dbd7252fa96915685007fde01 |
+
+Peak RSS is cumulative process high-water usage, not independent per-read memory.
+Raw metadata retains archive and world identities. All four planned captures are
+now available; this is capture completeness, not family assessment completeness.
+
+### Missing-template failure disposition
+
+The selected ocean-heavy r1 start has one serialized jigsaw child naming the
+missing `rooms/small_hall_down`, with no junctions and BB[-360,-33,231,-359,-32,232].
+Every one of the 512 padded cells is solid terrain: 508 deepslate, two Create
+deepslate zinc ore and two deepslate lapis ore. There are no block entities.
+The four envelope surface columns all have WORLD_SURFACE Y62. The saved start
+record therefore does not represent a playable tiny dungeon. Its selected local
+scope has zero authored playable rooms, sources, reward nodes or finale; it has
+no dungeon route to time. Mark traversal/combat task NOT APPLICABLE (failed
+placement), not a zero-second successful clear or a dead-room count over an
+invented room. It remains one inspected member of the six indexed failure cases,
+not a new estimate of their frequency or a reason to exclude the family.
+
+### Second assembly initial distinctions
+
+The ordinary r1 assembly contains 51 serialized pieces, including four tower
+components; this is not a room count. Its saved fixtures include 29 chests and
+six barrels (35 reward assignments), eight dispensers, five spawners, nine
+campfires and eight bed blocks. Sources are one cave spider and four separate
+witch/spider/skeleton/zombie sources. Tower rewards account for twelve chest
+assignments across its four towers. These are source/fixture counts, not realized
+enemies, generated loot or validated reward access. The first assembly's room
+graph and route cannot be copied merely because some templates repeat.
+
+The bounded large_hall_down read includes the original start anchor and portions
+of neighboring rooms. Its eleven chest/barrel fixtures all lie outside the
+component BB[-488,41,45,-472,55,61]; none may be attributed to that hall. The
+component itself has an air-filled masonry interior surrounded by saved water
+and aquatic plants, making fluid and external-access conditions material to its
+local assessment. Its parent assembly's incomplete western boundary is unchanged.
+
+Reproduce these direct saved-artifact counts with the immutable files above:
+
+```sh
+uv run python - <<'PY'
+import collections, gzip, json
+from pathlib import Path
+for label in ('ordinary-r1', 'large-hall-down', 'missing-small-hall-down'):
+    path = Path(f'evidence/item-13/fixed-blocks/explorations-underground-temple-{label}.json.gz')
+    case = json.loads(gzip.decompress(path.read_bytes()))['cases'][0]
+    print(label, 'pieces', len(case['start_nbt']['Children']))
+    print('fixtures', collections.Counter(row['id'] for row in case['block_entities']))
+    if label == 'missing-small-hall-down':
+        print(collections.Counter(case['palette'][i]['Name'] for i in case['blocks_yzx']))
+        print(case['start_nbt'], case['surface_xzy'])
+    if label == 'large-hall-down':
+        print('hall fixtures', [row for row in case['block_entities'] if -488 <= row['x'] <= -472 and 41 <= row['y'] <= 55 and 45 <= row['z'] <= 61])
+PY
+```
+
+The scoped hall's [four-layer saved view](explorations-underground-temple-large-hall-down.png)
+was rendered and visually inspected at Y42,43,44,49. The lower hall in the sheet
+is the selected component; the upper reward hall and intervening fixtures are
+anchor/neighbor context. It shows the central floor opening, surrounding stepped
+floor, cardinal transitions and upper decorative framework. This is a saved-block
+view, not proof of collision, stable fluid behavior or actor movement. Exact
+support, shaft depth, transitions and a complete local task remain to validate.
+The view must not borrow neighboring chests as the component's payoff.
+
+```sh
+uv run python evidence/item-13/render_pilot.py --input evidence/item-13/fixed-blocks/explorations-underground-temple-large-hall-down.json.gz --output evidence/raw/item13/underground-temple-large-hall-down.svg --layers 42 43 44 49
+timeout 120 convert -background white evidence/raw/item13/underground-temple-large-hall-down.svg evidence/item-13/fixed-blocks/explorations-underground-temple-large-hall-down.png
+```
+
+Rendering exited successfully within the declared cap. SVG1,627,862 bytes remains
+ignored, SHA-256178bcb00e27e1ac4de15ad54d5fee8dae667804f96cdbf1f0a8ac0e461ea9559.
+PNG98,611 bytes, SHA-256672bcbd0500dab92be746ac4bdaf224643fcd7f3c55e662d338fffbf91bf993f.
+Both remain below their declared size budgets.

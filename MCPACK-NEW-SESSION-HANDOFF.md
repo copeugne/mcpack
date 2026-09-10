@@ -83,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `75aa977f`; verify subsequent assessment commits against upstream.
+checkpoint is `8465b5ba`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -191,10 +191,10 @@ gameplay or acquisition is measured.
 
 P6 defines54 stipulated occupied-source enemies with exact-class suppression;
 nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
-Loot/finale, hazards, bypasses, replay and burial context are integrated in the
-temple report. Scoped room/reward depth is integrated; first representative complete.
-Next execute the other three predeclared reads. No runtime process is active.
-Courtyard andcentral-End gaps require checking other retained raw before experiments.
+First temple representative integrates timing, quality and scoped depth; complete locally.
+All four planned captures passed. Minimal missing-template case is solid terrain.
+Next validate the scoped hall and second assembly; their raw reads are retained.
+Courtyard/central-End gaps: check retained raw before experiments. No server is active.
 
 Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and
 fetched origin/main verification. Item14 remains UNSTARTED.
