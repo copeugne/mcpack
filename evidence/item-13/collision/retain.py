@@ -20,6 +20,7 @@ if __name__ == "__main__":
     mode = parser.add_mutually_exclusive_group()
     _ = mode.add_argument("--spawner-lookup", action="store_true")
     _ = mode.add_argument("--second-house", action="store_true")
+    _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2))
     args = parser.parse_args()
     spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW
@@ -28,6 +29,13 @@ if __name__ == "__main__":
         raw_directory = ROOT / "evidence/raw/item13/house2-collision-r1"
         prefix = "house2-r1-"
     projection = "spawners.json" if spawner_lookup else "collision.json"
+    temple_attempt = cast("int | None", args.temple_attempt)
+    destination_directory = DESTINATION
+    if temple_attempt is not None:
+        raw_directory = ROOT / f"evidence/raw/item13/temple-variants-r{temple_attempt}"
+        prefix = f"r{temple_attempt}-"
+        projection = "temple-variants.json"
+        destination_directory = DESTINATION.parent / "temple-variants"
     manifest: dict[str, object] = {}
     for name in (
         projection,
@@ -45,7 +53,7 @@ if __name__ == "__main__":
             if count != 1:
                 message = "Expected exactly one server bind endpoint"
                 raise ValueError(message)
-        destination = DESTINATION / (prefix + name.replace(".log", ".txt") + ".gz")
+        destination = destination_directory / (prefix + name.replace(".log", ".txt") + ".gz")
         compressed = gzip.compress(published, mtime=0)
         with destination.open("xb") as stream:
             _ = stream.write(compressed)
@@ -57,5 +65,5 @@ if __name__ == "__main__":
             "retained_size_bytes": len(compressed),
             "redaction": "bind endpoint only" if name == "console.log" else None,
         }
-    with (DESTINATION / (prefix + "retention.json")).open("x") as stream:
+    with (destination_directory / (prefix + "retention.json")).open("x") as stream:
         _ = stream.write(json.dumps(manifest, indent=2) + "\n")

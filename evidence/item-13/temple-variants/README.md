@@ -139,3 +139,43 @@ classpath, matching the existing probe builder. An initial compile inherited an
 invalid ambient classpath entry and was rejected by -Werror; specifying the
 output directory as classpath corrected that build invocation without changing
 source or suppressing warnings. No runtime experiment was attempted.
+
+
+## Rejected r1 and narrowly revised r2
+
+Producer ba86a2d33f758dc7a57fc0b7d847cb95967f2cff reached readiness, but the
+first case's30-second task timed out. No case completed; no successful placement
+or outcome is claimed. The lifecycle killed the entire process group (return-9),
+without a correlated save or clean stop, at163.28 seconds overall. The
+[r1 core retention](r1-retention.json), partial projection and redacted console
+preserve the failure. Full raw files and instance remain at their original paths.
+The available trace does not pinpoint the blocking operation; chunk preparation
+was included inside the per-case task. Do not infer a material mismatch.
+
+For r2, keep every origin, processor, template, actor exclusion and timeout.
+Replace avoidable new-world generation with a fresh byte-verified copy of accepted
+full-ordinary-r1-baseline. The source is the existing custody restored-world/world;
+verify its complete inventory before and after copying under the existing POSIX
+lock, and verify the destination against the same inventory before boot. Source
+archive/backup identities are bound in capture.json. A new prepared target's frozen
+server configuration must match the copied world inventory; fail on extra/drifted
+files. Ignore session.lock during copying, as required by world custody. This is
+fresh materialization for the new experiment, not reuse of the failed instance.
+Add phase logging to show chunk preparation, air check, placement and verification.
+No timeout relaxation or configuration tuning is introduced.
+
+The original2-GiB instance/20-MiB capture budgets and5-GiB free floor remain.
+The accepted world copy is existing data, not a regenerated survey. Execute with
+new paths after committing the revised producer:
+
+```sh
+uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r2 instances/item13-temple-variants-r2
+uv run python -m evidence.item-13.collision.retain --temple-attempt 2
+```
+
+r2 runtime execution is pending at this correction milestone. The retention
+extension uses the existing lossless/redacted format for either of the two named
+attempts. Its focused lint/type checks and the probe's pinned strict compilation
+pass. The launch function keeps one lifecycle/failure boundary; its existing
+complexity exception is extended to the narrowly added fixed probe branch rather
+than creating a second lifecycle framework.

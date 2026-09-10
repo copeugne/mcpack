@@ -11,9 +11,12 @@ import subprocess
 import time
 from pathlib import Path
 
+from tools.analyze_route_opportunities import read_bound, verify_world
+from tools.manage_item4_environment import _world_backup_lock
 from tools.run_item7_control import prepare_control
 from tools.run_item8_registry import check_ports
 
+from mcpack_evidence.item7_archive_models import ArchiveManifest
 from mcpack_evidence.item7_control import ControlRequest, capture_control_configuration
 from mcpack_evidence.item7_runtime import WorldgenRequest, sha256_file, validate_java_runtime
 from mcpack_evidence.item7_selections import PILOT_SELECTIONS
@@ -24,7 +27,38 @@ INPUT = ROOT / "evidence/item-13/fixed-blocks/mns-medium-house.json.gz"
 INPUT_HASH = "a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496"
 
 
-def run(  # noqa: C901 - preserve one experiment and its failure.
+def copy_temple_source(target: Path) -> dict[str, str]:
+    world_name = "full-ordinary-r1-baseline"
+    custody = ROOT / "evidence/raw/item10" / f"{world_name}-custody"
+    manifest_raw = read_bound(ROOT / "evidence/item-10" / world_name / "archive-manifest.json")
+    archive_manifest = ArchiveManifest.model_validate_json(manifest_raw)
+    entry = next(row for row in archive_manifest.files if row.relative_path == "world-backup.json")
+    backup = json.loads(read_bound(custody / "restored-local/world-backup.json", entry.sha256))
+    if backup["archive_sha256"] != next(
+        row.sha256 for row in archive_manifest.files if row.relative_path == "world.tar.gz"
+    ):
+        raise ValueError("Accepted source world archive identity mismatch")
+    source_world = custody / "restored-world/world"
+    with _world_backup_lock(source_world), _world_backup_lock(target / "world"):
+        verify_world(source_world, backup["world_files"])
+        shutil.copytree(
+            source_world,
+            target / "world",
+            dirs_exist_ok=True,
+            ignore=shutil.ignore_patterns("session.lock"),
+        )
+        verify_world(source_world, backup["world_files"])
+        verify_world(target / "world", backup["world_files"])
+    return {
+        "name": world_name,
+        "backup_sha256": entry.sha256,
+        "archive_manifest_sha256": sha256_file(
+            ROOT / "evidence/item-10" / world_name / "archive-manifest.json"
+        ),
+    }
+
+
+def run(  # noqa: C901, PLR0912, PLR0915 - keep one lifecycle/failure boundary for fixed probes.
     output: Path,
     target: Path,
     *,
@@ -86,6 +120,8 @@ def run(  # noqa: C901 - preserve one experiment and its failure.
     )
     try:
         report["preflight"] = json.loads(prepare_control(request).model_dump_json())
+        if temple_variants:
+            report["source_world"] = copy_temple_source(target)
         check_ports(target / "server.properties")
         java, _ = validate_java_runtime(request.runtime.java_home)
         classes = output / "classes"

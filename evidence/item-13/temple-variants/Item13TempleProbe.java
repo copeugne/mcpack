@@ -84,9 +84,11 @@ public final class Item13TempleProbe {
         int min = (Integer)levelType.getMethod("getMinBuildHeight").invoke(level);
         int max = (Integer)levelType.getMethod("getMaxBuildHeight").invoke(level);
         if (y0-3 < min || y0+height+2 >= max) throw new IllegalStateException("Out of build limits");
+        System.out.println("ITEM13_TEMPLE_PHASE chunks " + root + " " + origin);
         for (int cx = Math.floorDiv(x0-3,16); cx <= Math.floorDiv(x0+size+2,16); cx++)
             for (int cz = Math.floorDiv(z0-3,16); cz <= Math.floorDiv(z0+size+2,16); cz++)
                 levelType.getMethod("getChunk",int.class,int.class).invoke(level,cx,cz);
+        System.out.println("ITEM13_TEMPLE_PHASE clear-check " + root + " " + origin);
         Class<?> stateType = type(loader,"net.minecraft.world.level.block.state.BlockState");
         Method isAir = stateType.getMethod("isAir");
         for (int y = y0; y < y0+height; y++)
@@ -121,6 +123,7 @@ public final class Item13TempleProbe {
                 .invoke(settings,processor);
         Class<?> randomType = type(loader,"net.minecraft.util.RandomSource");
         Object random = randomType.getMethod("create",long.class).invoke(null,42L);
+        System.out.println("ITEM13_TEMPLE_PHASE place " + root + " " + origin);
         boolean placed = (Boolean)template.getClass().getMethod("placeInWorld",
             type(loader,"net.minecraft.world.level.ServerLevelAccessor"),posType,posType,settingsType,randomType,int.class)
             .invoke(template,level,pos,pos,settings,random,2);
@@ -163,6 +166,7 @@ public final class Item13TempleProbe {
         row.put("envelope",List.of(x0,y0,z0,x0+size-1,y0+height-1,z0+size-1));
         row.put("bounds",List.of(x0-3,y0-3,z0-3,x0+size+2,y0+height+2,z0+size+2));
         row.put("palette",palette); row.put("blocks_yzx",cells);
+        System.out.println("ITEM13_TEMPLE_PHASE verified " + root + " " + observed);
         row.put("elapsed_seconds",(System.nanoTime()-begun)/1_000_000_000.0);
         return row;
     }
