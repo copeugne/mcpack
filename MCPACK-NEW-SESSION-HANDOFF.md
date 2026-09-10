@@ -84,9 +84,9 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest runtime producer:
-`2f653748a6f46d48be14a9537677a0454bcd6f46`. Verify subsequent report/custody
-commits against current upstream. Fetched main at the latest checkpoint is
+Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
+checkpoint is `4f216b45`; verify subsequent assessment commits against upstream.
+Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
 
@@ -113,74 +113,39 @@ The three earlier collision/spawner captures have verified
 Their outputs measure empty-context shapes or source payload resolution, not
 observed gameplay. Existing full-task corrections are integrated in the reports.
 
-## Current batch: temple material outcomes
+## Completed local diagnostics
 
-The [temple diagnostic](evidence/item-13/temple-variants/README.md) exhausts all
-three natural baseline temple starts (gold) and covers four missing debris/lodestone
-cells by predeclared forced placements in a fresh verified accepted-world copy.
-r1/r3/r4 timed out before completed placement; r2 failed before launch. Core
-failures and all original raw paths/instances remain preserved. Do not retry them.
+The [temple diagnostic](evidence/item-13/temple-variants/README.md) covers four
+missing debris/lodestone cells. Earlier failed attempts remain preserved; r5
+passed with15,562 live/restored cells equal. Its material models and
+[external custody](evidence/item-13/temple-variants/custody/README.md) are integrated.
+Do not repeat it. Forced Y160 placement supports material outcomes, not natural
+access or encounters.
 
-r5 passed: four predicted materials,15,562 immediate readback cells, frozen
-identity/configuration, correlated flush and clean exit0 in140.95 seconds. A small
-opt-in processed-console barrier avoids attaching during post-start work; asynchronous
-chunk requests remain off-thread. Original600/120 lifecycle,45 attach and30 case
-limits are unchanged. Focused lifecycle/runner tests:27 passed; lint/types passed.
+The [Basalt assessment](evidence/item-13/fixed-blocks/basalt-chambers-report.md)
+covers two distinct-seed assemblies, all seven components and central material
+outcomes. Preserve the rejected no-placement route: the second sample requires
+a two-block bridge over lava recesses. The [netherite diagnostic](evidence/item-13/basalt-variant/README.md)
+and its [external custody](evidence/item-13/basalt-variant/custody/README.md)
+pass with2,197 live/restored cells equal. No runtime remains active.
 
-[Saved verification](evidence/item-13/temple-variants/r5-saved-verification.json)
-checks all15,562 cells against a fresh hash-verified stopped-world restore, with
-zero differences. Both material pairs differ at only one central cell. The
-[blackstone report](evidence/item-13/fixed-blocks/adorabuild-blackstone_temple-report.md)
-and [Nether temple report](evidence/item-13/fixed-blocks/adorabuild-nether_temple_medium_1-report.md)
-now integrate reward/tool source and conditional material-specific complete tasks.
-Forced Y160 placement is material evidence, not natural access or encounter evidence.
-Keep natural gold geometry as the conditional route basis.
+## Current batch: modular Nether fortress
 
-[Diagnostic raw custody](evidence/item-13/temple-variants/custody/README.md) now
-passes external publication, local/download280-member restores,503-file nested
-world restore and byte-identical saved verification. Tag
-`item13-temple-variants-2f653748` resolves to the producer above. No runtime
-remains active. The local custody tree uses1.90 GB within its3-GiB allocation.
-The large manifest is coupled only to this diagnostic's durability outcome.
+The [fortress assessment](evidence/item-13/fixed-blocks/adorabuild-nether-fortress-report.md)
+and [selection](evidence/item-13/nether-fortress-selection.json) retain two existing
+seed roles collectively covering all eight components. Ordinary r2 now has its
+complete local assessment: five primary spaces, three separate platforms, two
+branch junctions, three assigned chest tables and a validated native return route.
+The118-block horizontal route includes20 crouched blocks and40 blocks of support
+height travel. Conditional two-blaze tasks are128/227/382 seconds across the
+approved profiles. Two independent ground-window accesses each need one stair
+removal. Human movement, realized enemies and acquired loot remain NOT MEASURED.
 
-Next concrete work: continue remaining full-family, material and repetition coverage under the
-existing coverage plan, using accepted raw inputs before proposing any minimal
-new experiment. Check central-End raw evidence before claiming an arena gap.
-Do not tune frozen content. Complete required PR review/fix cycles with a completed
-clean thumbs-up, merge and verify origin/main delivery before declaring Item 13
-COMPLETE. Item 14 remains UNSTARTED.
-
-
-Current next-family increment: [Basalt Chambers report](evidence/item-13/fixed-blocks/basalt-chambers-report.md)
-and [two-case selection](evidence/item-13/basalt-chambers-selection.json). Both
-existing distinct-seed assemblies have all seven components and full chunks.
-The smaller biome-diverse r2 case is extracted (25,584 cells,10,546 compressed
-bytes,10.14308s) and its seven-layer view inspected. One saved blaze source,
-central/trap debris and unconditional magma-to-TNT processing are integrated.
-Four solid passage barriers and blocked eastern centerline boundaries invalidate
-an assumed open loop. The first representative now has a five-room local assessment, supported side routes,
-source/geometry-confirmed trap and corrected pickup support-chain removals. Its
-complete two-blaze scenario is87/139/221s, with separate8/8/12 source ceilings.
-The ordinary r2 case now also passes extraction/view (55,614 cells,16,360 compressed
-bytes,5.527101s): two blaze sources,two traps,three authored debris rewards and
-seven empty rooms. Its revised two-block bridge task passes332 horizontal blocks,
-54.4375 support-level travel and a229/377/607s four-blaze conditional task. The
-rejected no-placement route is preserved: eastern recesses have lava support.
-Both baseline centers are debris. All six accepted omit-Sparse centers now have
-hash-verified saved cubes: five debris and one lodestone. The271 authored-cell
-comparison differs only at the center; conditional lodestone costs are integrated.
-The [single-component netherite diagnostic](evidence/item-13/basalt-variant/README.md)
-passes r1 under producer19cd4a08:149.765s,clean flush/stop,frozen configuration,
-2,197 live/restored cells equal,271 authored cells differ only at the center.
-All central material models and [external custody](evidence/item-13/basalt-variant/custody/README.md)
-pass:244 members,503-file downloaded world and identical2,197-cell verification.
-No runtime remains active. Continue the remaining family/variant coverage from
-the existing inventory and accepted starts; do not repeat this completed diagnostic.
-Do not generate new survey worlds or treat15 pieces as rooms.
-
-Next family: [modular Nether fortress](evidence/item-13/fixed-blocks/adorabuild-nether-fortress-report.md).
-Two selected existing seed roles collectively cover all eight templates. Ordinary
-r2 is extracted/viewed:32,364 cells,6,992 bytes,4.984122s,three saved chest tables.
-The large tower authors lava, not a23-block playable interior; slab climbs and
-bridge connections need actor validation. Complete this representative task and
-quality assessment before extracting the selected biome-diverse r1 assembly.
+Next extract the preselected biome-diverse r1 assembly under the existing120-second,
+20-MiB and5-GiB-free limits. It covers stairs_1 and tower_medium_1 absent from the
+first sample. Inspect its blocks before declaring its own route and quality;
+do not copy first-case metrics. Then continue remaining family/variant coverage
+from existing raw inputs. Check central-End evidence before claiming an arena gap.
+Do not generate new survey worlds or tune frozen content. Item13 still requires
+full coverage, final review/fix cycles, completed clean Codex thumbs-up, merge and
+fetched origin/main verification. Item14 remains UNSTARTED.

@@ -187,3 +187,210 @@ Next resolve the declared actor/task, slab climbs, guarded cross/bridge links,
 chest interaction positions, room/landing/roof distinctions and complete modeled
 accounting on this representative before extracting the second assembly. No
 room count, traversal total or combat result is accepted from this extraction alone.
+
+## Representative task declaration before route calculation
+
+Actor: one adult player, iron armor/sword, dry grounded diamond pick available,
+full initial health/hunger, no buffs, flight, building or mining in this native-route
+scenario. The actor knows the layout, source context and three chest positions.
+Begin/end at the small_1 ground interior cell(-253.5,33,-119.5). Survey the five
+candidate indoor/open-sided tower floor spaces, inspect the medium tower's upper
+terrace, acquire the modeled contents of all three chests and verify the return.
+Chest contents must fit the available inventory; acquisition allowances include
+transfer/menu close. Generated or acquired items remain NOT MEASURED.
+
+Primary room boundary proposal: small_1 ground,small_2 ground,medium_2 ground,
+medium_2 middle open-sided chamber and medium_2 upper chamber. Each is delineated
+by actual floors/walls/ceilings, with the stair strip treated as a connector.
+Small-tower roofs and the medium upper terrace are separately tracked accessible
+platforms; including them as outdoor activity spaces gives a three-space counting
+sensitivity. The narrow lava cross is a connector, not a room. No cap or lava
+cavity is automatically an activity room. Validate these links before scoring.
+Shared natural spawn context does not give each otherwise empty floor a dedicated
+authored encounter; report content emptiness separately from that shared pressure.
+
+Use the three top-slab strips in their saved orientation. Five ascending flights
+of four one-block rises each are declared as crouched jumps (player height1.5,
+reusing the already accepted crouch capability). This gives clearance under each
+first-step ceiling while preserving the native one-block jump. Descents and all
+other movement are upright. Charge the actual crouched horizontal distance and
+all ten crouch enter/exit inputs; do not use upright speed for those flights.
+No speculative ceiling-clipped jump or flight capability is assumed.
+
+Visit small_2 chest first, then the medium lower chest, upper chest and terrace,
+then return. At the medium lower chest station(-262.5,33,-108.5), the worked
+encounter has two stationary ordinary blazes at(-263.5,33,-109.5) and
+(-264.5,33,-109.5), killed near then far before opening the chest. Check their
+support, melee reach and sight lines. The alternative N=0 scenario is separate.
+Reuse source-supported20-health/zero-armor,6-damage fully cooled sword attacks,
+13 ticks per cycle and four hits per blaze. The same approved duty sensitivities
+apply. No extra natural spawns, flight, pursuit, fire or healing interruptions
+occur in this conditional task; any such event censors it. Natural spawn timing
+and population bounds remain UNKNOWN, not a copied spawner clock.
+
+Use the existing A/B/C movement and analyst-allowance profiles. Declare one
+initial orientation,five first-space inspections,one terrace inspection,one lava
+cross inspection,three chest aims,three acquisition checks,one post-combat check,
+one alignment allowance per upward jump,one per horizontal heading change and
+one per enemy target. Thus15+upward_jumps+heading_changes+N decisions. Inputs are
+three chest opens plus ten crouch transitions; one sword selection,three container
+acquisitions and terminal verification. No mining or placement term is present
+because none is permitted by this route. Compute complete totals only after the
+actual support/sweep and interaction checks pass.
+
+External-access check declaration: inspect two local ground footholds independently,
+not an invented full outside-to-loot route. For the small_2 chest, stand above
+saved gravel(-251,31,-130) at feet32 and remove stair(-252,33,-130). For the
+medium lower chest, stand above soul_sand(-264,31,-107) at feet31.875 and remove
+stair(-264,33,-108). Both target stairs are saved top-half straight windows.
+Validate upright standing clearance and the chest interaction ray after exactly
+one removal per window. SoulSandBlock's pinned collision SHAPE is
+Block.box(0,0,0,16,14,16), static offsets11..26, so do not place this actor at an
+invented full-block soul-sand height. These are alternative local mining-enabled
+access checks; their removals are not part of the native task or its timing.
+
+## Representative playable topology and quality result
+
+The [route/interaction check](../fortress_route.py) passes on the hash-bound saved
+blocks. It reuses state_at and the existing overlap predicate. Route support is
+only full nether bricks or the source top-slab upper surface. Stairs used as trim,
+fluids and vegetation are conservatively excluded; wall/fence avoidance includes
+their1.5-block upward collision extent. Single-chest inset geometry and the
+previously accepted1.8 upright/1.5 crouched player dimensions are reused.
+All standing positions,118 horizontal transitions,20 crouched one-block rises,
+landing support, jump head clearance,three chest rays/lid spaces and the two
+stipulated melee positions pass. This is GEOMETRIC MEASUREMENT of a declared
+actor route, not observed player movement or enemy AI.
+
+```sh
+uv run python -m evidence.item-13.fortress_route
+```
+
+Five primary room/activity spaces are supported by actual floor/partition geometry:
+
+| Node | Space | Interior X/Z bounds | Main feet level | Dedicated content |
+| --- | --- | --- | ---: | --- |
+| A |small_1 ground chamber|-255..-253 / -121..-119|33|No dedicated reward/encounter; slab access|
+| B |small_2 ground chamber|-255..-253 / -131..-129|33|One chest|
+| C |medium_2 ground chamber|-265..-263 / -111..-109|33|One chest|
+| D |medium_2 open-sided middle chamber|-265..-263 / -111..-109|37|Connecting slab strip|
+| E |medium_2 upper chamber|-265..-263 / -111..-109|41|One chest|
+
+These bounds include internal slabs/chests; they do not assert nine unobstructed
+standing cells per room. Three roof/terrace platforms are tracked separately:
+small_1 and small_2 at feet37,medium_2 upper terrace at45. Treating all three as
+outdoor activity spaces gives eight spaces; the primary count is five because
+those roofs have no dedicated arena/objective and two serve the connecting route.
+The central lava cross is a constrained connector, not a sixth room. The large
+tower's lava interiors and its unlinked top cap are not rooms in this safe native
+network. No count comes from the twelve piece records or their uniform boxes.
+
+The topology needs an explicit connector junction R on the small_1 roof. Collapsing
+it into ground chamber A would incorrectly imply that B-to-D traffic enters A.
+R is not added to the primary room count. T below is the separately counted upper
+terrace. Edges represent validated stair/bridge connections:
+
+```mermaid
+graph LR
+  A["A: ground entry chamber"] --- R["R: roof connector junction"]
+  B["B: small chest chamber"] --- R
+  R --- D["D: middle chamber"]
+  C["C: lower chest chamber"] --- D
+  D --- E["E: upper chest chamber"]
+  E --- T["T: upper terrace, not primary room"]
+```
+
+All five primary rooms are reachable without mining/building. Including R/T,
+the typed graph has7 vertices,6 edges,one component,two degree-three junctions
+R/D,four ends A/B/C/T and zero cycles. Excluding terminal terrace T gives6 vertices
+and5 edges, still not six rooms. Graph depths from A are R1,B/D2,C/E3,T4.
+The terrain ground, graph edges and vertical rise remain separate measures.
+
+Shortest station distances within the union of checked transitions are18
+horizontal blocks to B's chest,32 to C's chest,32 to E's chest and35 to T.
+They are scoped network distances, not global optima under flight/mining or the
+complete objective circuit. The complete return circuit is118 horizontal blocks,
+20 of them crouched. Support-level travel is40:20 ascent and20 descent. Floors
+progress33,37,33,37,33,37,41,45 and back through41/37/33. The highest floor reached
+in this safe native network is45, a12-block span; the large tower's23-block
+bounding height does not represent23 blocks of traversable interior progression.
+The central top cap is not connected by a ladder/slab flight in this sample.
+
+Meaningful hazard is the authored lava column arrangement bordering the central
+one-block cross. The route avoids all fluid cells, but displacement off that
+cross exposes the actor to lava contact. Adjacent wall columns constrain alternate
+movement; this is supported hazard exposure, not an observed damage incident.
+Bridge centerlines and one-block slab strips are geometric chokepoints. Repeated
+one-block jumps, crouch changes and a12-block accessible height span create fall/
+movement exposure; live enemy exploitation, knockback and pathfinding are NOT
+MEASURED. The low-window exterior checks also demonstrate alternate access, so
+these connections are not absolute progression locks.
+
+There are no authored/saved spawners or authored residents in this sample. The
+five-type piece-bounded natural override remains potential common pressure.
+Realized enemy count/diversity, spawn intervals and any population ceiling are
+NOT MEASURED/UNKNOWN. Under the dedicated-content definition, A/D are empty2/5
+but dead0/5: both provide necessary connective/access purpose for this entry and
+reward route. Including the three platforms gives content-empty5/8 and dead1/8
+(the terminal medium terrace); shared natural spawning does not become a separate
+authored encounter in every otherwise empty space.
+
+Loot distribution is three saved single-chest table assignments: two at feet33,
+one at41, all the same nether_bridge identifier. Graph reward depths are2,3,3.
+The saved seeds do not reveal generated contents or establish equal value. No
+container is on the upper terrace or central high cap. Finale NONE: there is no
+supported scripted terminal encounter, unique terminal reward table or mandatory
+boss room. Objective clarity is CONDITIONAL on finding the chests, distinctive
+terminal challenge ABSENT, unique terminal reward linkage ABSENT, native route
+integration PRESENT for the three chest chambers and external exposure PRESENT
+at the two verified ground windows. Do not designate the tallest cap a finale.
+
+Both independent ground-window bypass checks pass: supported upright foothold,
+reachable outside face of the top stair before mining, then a clear chest ray
+and sufficient block-interaction reach after one stair removal. This permits B's
+chest access without its slab descent and C's chest access without the upper
+bridge/lava-cross route. It is a concrete local vulnerability costing one window
+block per chest, not a timed outside-to-completion run. Travel between those
+footholds, upper-window construction and unseen external cave approach are not
+measured here. The native main task includes no such removals.
+
+Expected replay assessment: pool alternatives support generated variation in
+stairs/tower heights and reward-bearing components, with the selected second
+assembly needed to validate the remaining arrangements. Natural spawn context
+can continue providing pressure after a visit; neither these table assignments
+nor per-player loot machinery demonstrate physical dungeon reset or renewed loot
+for the same player. No player enjoyment/revisit behavior is claimed. The tall
+central architectural feature has mostly lava mass and one useful crossing,
+with no playable interior reward progression. This is a source/geometry-supported
+large-but-mechanically-shallow feature assessment, not measured human landmark
+prominence. The surrounding family sample still has five spaces, three reward
+nodes and genuine native slab progression; it is not merely decorative volume.
+
+## Representative complete conditional timing
+
+The80+N decisions are15 declared inspection/interaction allowances,20 upward-jump
+alignments and45 horizontal heading changes, plus enemy targets. Inputs are13,
+selections1, acquisitions3 and terminal verification1. Mining/placement remains
+zero because the accepted main route needs neither. The complete formula is:
+
+`98/u + 20/crouch_speed + 40/j + (80+N)*decision + 13*input + selection + 3*acquisition + verification + 2.6*N/duty`
+
+| Profile | No-enemy task | Two stipulated blazes | Active combat for two |
+| --- | ---: | ---: | ---: |
+| A |121.433333s|127.633333s|5.2s|
+| B |218.166667s|227.100000s|5.2s|
+| C |368.888889s|382.288889s|5.2s|
+
+These are MODELED RESULTS using the approved provisional allowances, not observed
+human time, guaranteed completion bounds or calibrated difficulty scores. The
+world's actual enemies and inventories were not simulated or acquired. Unexpected
+spawns/flight, fire/healing, failed acquisition, lost footing, altered geometry or
+insufficient inventory invalidates this fixed scenario; no omitted failure cost
+is silently treated as zero. The natural-spawn source has no invented disablement
+phase or repeated-batch ceiling.
+
+Focused checks: the complete route/interaction command passes, ruff check and
+formatting pass, basedpyright reports zero errors/warnings and git diff --check
+passes. The ordinary representative now has a complete local assessment. Proceed
+to the selected biome-diverse r1 layout to cover stairs_1 and tower_medium_1 and
+validate its own route and quality; do not copy these first-case metrics.

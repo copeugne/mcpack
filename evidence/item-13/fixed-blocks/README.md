@@ -240,6 +240,7 @@ baseline/control cubes and the single missing-material diagnostic, with
 results under the modeled/inspection scope, not full Item13 completion.
 
 The [modular Nether fortress](adorabuild-nether-fortress-report.md) now has a
-predeclared two-seed sample and its first accepted block extraction/view. Its
-lava-filled large tower, three chest assignments and slab/bridge candidates are
-integrated; playable topology and complete task accounting remain IN PROGRESS.
+predeclared two-seed sample and a complete first local assessment: five primary
+spaces, validated slab/bridge topology, three chest assignments, conditional task
+models and two ground-window bypasses. The second selected assembly still needs
+its own assessment for the remaining component arrangements.
