@@ -68,6 +68,8 @@ def verify_path(points, *, crouch_up=False):
             "minecraft:mossy_stone_brick_stairs",
             "minecraft:gravel",
             "minecraft:stone",
+            "minecraft:cobblestone",
+            "minecraft:calcite",
         }, ((x, y, z), s)
         if n == "minecraft:gravel":
             assert at(c, x, y - 2, z)["Name"] in {
@@ -647,3 +649,42 @@ assert not any(
     for b in c["block_entities"]
 )
 print("PASS terminal rim: 16 horizontal blocks; pit continuation below raw Y21 unresolved")
+
+# Final tower descent and a dry zigzag beside the alternating lava tongues.
+target = (-288, 30, -38)
+assert at(c, *target)["Name"] == "minecraft:stone_bricks"
+check_ray((-287.5, 32.62, -36.5), (-287.5, 31, -37.5), target)
+removed.add(target)
+clear([-287.8, 27, -37.8, -287.2, 32.8, -37.2])
+clear([-287.8, 31, -37.8, -287.2, 32.8, -36.2])
+verify_path([(-288, 27, -38), (-288, 27, -37)])
+verify_path([(-288, 27, -37), (-288, 27, -38)])
+assert at(c, -288, 26, -38)["Name"] == "minecraft:cracked_stone_bricks"
+check_ray((-287.5, 28.62, -36.5), (-287.5, 27, -37.5), (-288, 26, -38))
+check_ray((-287.5, 28.62, -36.5), (-287.5, 27.95, -37), (-288, 27, -38))
+bottom_zigzag = [
+    (-288, 27, -37),
+    (-287, 27, -37),
+    (-286, 27, -37),
+    (-286, 27, -36),
+    (-286, 27, -35),
+    (-286, 27, -34),
+    (-287, 27, -34),
+    (-287, 27, -33),
+    (-288, 27, -33),
+    (-288, 27, -32),
+    (-289, 27, -32),
+    (-289, 27, -31),
+    (-290, 27, -31),
+    (-290, 27, -30),
+    (-290, 27, -29),
+    (-289, 27, -29),
+    (-289, 27, -28),
+    (-289, 27, -27),
+    (-288, 27, -27),
+    (-288, 27, -26),
+    (-288, 27, -25),
+]
+verify_path(bottom_zigzag)
+verify_path(list(reversed(bottom_zigzag)))
+print("PASS final tower descent: four scaffolds; dry lava zigzag 40 horizontal return blocks")

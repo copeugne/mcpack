@@ -1020,3 +1020,60 @@ descending branch and terminal rim pass the route command, Ruff, formatting and
 type checks. No new world extraction or runtime experiment was required. The
 whole-assembly graph must retain this optional terminal inspection and its
 unresolved below-boundary continuation separately from the supported stair depth.
+
+## Bottom tower connection and lava-channel declaration
+
+Use the already reached lower northern ledge(-288,31,-38). To retain the same
+explicit return construction, mine the masonry floor at(-288,30,-38) from the
+adjacent stance(-288,31,-37), then descend tofeet27 and step south toZ-37.
+Place four scaffolds in the cleared column on the full floorY26, using the
+existing base/side-click construction. Validate the entire column and both rays.
+This adds one masonry removal, four placements and a four-block initial drop;
+retain one requested damage point before hooks. The neighboring original hatch
+is preserved. This is an engineered connection, not a native climbable shaft.
+
+The bottom floor contains alternating lava tongues from the west and east.
+Predeclare a dry cardinal route from(-288,27,-37): east toX-286, south toZ-34,
+west toX-287, south toZ-33, west toX-288, south toZ-32, west toX-289, south toZ-31,
+west toX-290, south toZ-29, east toX-289, south toZ-27, east toX-288 and south
+toZ-25. Validate actual support, full adult clearance and every swept transition
+in both directions; no jumps, fluid displacement or unrecorded lava removal.
+Do not treat the source flow levels as air or ignore falling source columns.
+The endpoint is the neighboring bedroom threshold, not its completed assessment.
+
+The local scenario assumes the retained fluid state and no displacement into
+adjacent lava. Contact, a changed flow, obstruction or forced deviation censors
+it. If the declared dry route fails, retain that failure before any alternative.
+Any accepted path establishes geometric avoidance, not observed player safety,
+combat maneuverability or complete task time.
+
+The first route invocation stopped at(-286,27,-37) because its floor is full
+cobblestone, absent from the checker’s conservative support allowlist. This is
+a checker coverage limitation, not a lava crossing or unsupported floor. Add
+that ordinary full-block support explicitly and rerun the same declared route;
+do not change its coordinates or raw evidence to conceal the initial rejection.
+The next invocation similarly rejected full calcite at(-286,27,-35). Inspecting
+all declared route supports found only ordinary full masonry, cobblestone and
+calcite; add the latter explicitly. Both initial support omissions are retained
+here as rejected checker runs, not accepted topology measurements.
+
+The unchanged lava-channel route now passes support, adult occupancy and swept
+clearance in both directions. It is20 horizontal blocks from the bottom scaffold
+stance to the bedroom threshold,40 on return, with no elevation change. The final
+scaffold link separately adds four horizontal blocks and eight vertical blocks
+for its local return demonstration. Its removal and placement rays pass. No lava
+cell, source column, web or waterlogged shape was exempted to obtain this result.
+
+The declared tower route now connects feet elevations39,35,31 and27, a12-block
+floor span, and reaches all three saved tower chest assignments. Vertical return
+requires twelve scaffolds across three separately supported columns. The tower
+route also requires three floor removals, two piston-panel removals and two web
+removals, in addition to its button operations. These are coupled conditions of
+this inspected route, not a claim that every player must use this solution.
+The three four-block initial drops each retain the previously stated fall exposure;
+no free healing or actual health delta is inferred. The source trap and closed
+panel, lava avoidance and room-to-room return links can now be integrated into
+the whole-assembly graph and complete task. Native hatch operation and live
+circuit behavior remain unobserved. The bedroom beyond the endpoint still needs
+its own activity-space/reward assessment. Route, Ruff, formatting and type checks
+pass; no raw extraction or frozen world was changed.
