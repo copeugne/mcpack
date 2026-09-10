@@ -12,6 +12,28 @@ samples, justified representative mappings and material evidence gaps. Preserve
 unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
 Item 14 is UNSTARTED. Final review and verified delivery remain required.
 
+## V3 coverage disposition
+
+The inclusion/exclusion set remains exactly192 included and256 excluded canonical
+families. The20 families explicitly named in [reconciled local results](#reconciled-local-results-2026-09-10)
+have DIRECT generated-geometry/source assessments at their cited sample scope.
+Their old per-material completion labels do not impose v3 repetitions. Direct
+coverage does not mean every variant, terrain interaction or realized encounter
+was observed. Repurposed Temple additionally retains the ocean forced saved input;
+taiga remains source-only as [disposed](fixed-blocks/repurposed-nether-temples-report.md#taiga-prelaunch-failure-and-v3-disposition).
+
+Every other included family in the existing tables below currently has an explicit
+GAP disposition for transfer of local gameplay-quality conclusions. This is an
+exact set difference from the20 named families, not an exclusion, absence claim or
+queue of172 experiments. Their existing Item8 source assessments and Item10/12
+world/context evidence remain available for integration. Until that integration,
+withhold claims that their playable topology, encounters, finales or replay are
+equivalent to the direct examples. No source-only family inherits another family's
+room counts, routes, timings or observed-enemy claims. The [v3 synthesis](README.md#v3-synthesis-from-inspected-designs)
+currently supports short chambers, sculptural landmarks, layered caches, traps,
+material-dependent temples and modular fortress findings at the cited scopes.
+Broader design mapping and consequential differences remain IN PROGRESS.
+
 ## Previous scope and retained results
 
 

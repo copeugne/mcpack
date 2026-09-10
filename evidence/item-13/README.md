@@ -12,6 +12,46 @@ samples, justified representative mappings and material evidence gaps. Preserve
 unknowns and do not claim unsupported gameplay outcomes. Item 13 is IN PROGRESS;
 Item 14 is UNSTARTED. Final review and verified delivery remain required.
 
+## V3 synthesis from inspected designs
+
+These are decision-relevant findings from retained source and generated geometry,
+not observed enjoyment or measured player sessions. No mod removal or tuning is
+performed. Detailed models remain available at their original conditional scope;
+they are not calibrated playtime predictions. Full-population design synthesis is
+still IN PROGRESS, so these findings do not endorse every included family.
+
+| Inspected design and evidence | Expedition-quality finding | Practical implication and limit |
+| --- | --- | --- |
+| Compact source-and-cache chambers: [Small Dungeon](pilot/report.md) and [Slime Cave](fixed-blocks/explorations-slime-cave-report.md#first-room-quality-and-access-assessment) | One principal activity space and little inter-room branching. Source/reward co-location gives a clear local objective; slime splitting changes conditional combat work without adding route depth. No separate boss finale is established. | Useful candidate role: short incidental expedition stop. Adding more shell sizes does not by itself create a long dungeon. Source suppression and reward access can be separated; actual pressure and encounter success remain unmeasured. |
+| Sculptural encounter landmark: [Giant Skull](fixed-blocks/mns-giant_skull-report.md#activity-space-judgment-and-quality-synthesis) | A32-block-high sculpture supports one covered ground activity sector, no required upper objective progression and no separate terminal room. Lava materially diverts the checked route; one wither-skeleton source supplies conditional hostile potential. | Visually large but mechanically shallow is established for this sample. It can still serve as a recognizable hazardous landmark. Do not increase its frequency to stand in for deeper expeditions or count sculptural height as playable floors. |
+| Layered residential cache: [Medium House](fixed-blocks/mns-medium-house-report.md#empty-spaces-finale-bypass-and-replay-assessment) | One open-plan space or two connected activity spaces, zero branching and no distinct finale. Roof content is not automatically an accessible upper floor. Supported building/breaching opens an alternate reward route. | Treat building shape and reward placement separately from dungeon depth. Engineering access is a capability opportunity; this evidence does not justify arbitrary anti-breach protection. Generated approach and live source pressure remain conditional. |
+| Trap-focused progression: [Desert Mimic](fixed-blocks/towns-and-towers-desert-mimic-report.md#integrated-topology-task-and-quality-result) | The inspected design connects an upper hall, deep cache, trap alcove and terminal husk chamber. TNT, tripwire and lava/piston mechanisms differ materially from plain mob rooms. Optional upper niches contribute dead space under the declared partition; rewards occur before and at the terminal objective. | More differentiated expedition structure than a single cache. A supported constructed return and unopened trapped-chest removal demonstrate earned bypass choices. The exact modeled circuit is optional precision under v3; actual trap activation, damage and fun were not observed. |
+| Compact material-dependent temples: [Repurposed Nether variants](fixed-blocks/repurposed-nether-temples-report.md) | Similar compact multi-level purpose does not imply equal combat: magma cubes, zoglins and skeletons differ from non-hostile striders and unprovoked neutral piglins. Warped includes construction-dependent upper access and a trapped reward; wasteland overlaps another fortress. No universal distinct finale is demonstrated. | Do not label the whole family a uniformly hostile dungeon or transfer a single variant's balance to all others. Temple depth and trap/reward differences justify role variety; fixed layout reuse limits structural novelty. Ocean has saved underwater/archaeology evidence; taiga has only source-supported trap/reward potential and no generated access assessment. |
+| Modular fortress exploration: [two Adorabuild assemblies](fixed-blocks/adorabuild-nether-fortress-report.md#second-assembly-playable-topology-and-quality) | Actual branching, repeated vertical transitions and narrow lava-adjacent connectors are supported. The larger sample has14 primary rooms with9 dedicated-content-empty and5 task-scoped dead rooms, despite natural spawn potential. The inspected wart growth obstructs a route and chest lid. | Procedural assembly can add traversal and repeated spaces faster than meaningful objectives. Assess content placement and connector friction before treating size as expedition value. Natural spawn overrides are potential pressure, not evidence that empty rooms contain engaging encounters. |
+
+Across these designs, rewards, spawners and geometry are physically persistent.
+A per-player loot mechanism does not establish regeneration of cleared rooms or
+sources. Fixed templates can vary through terrain, reward rolls and enemy states,
+but no renewed navigation challenge or enjoyable replay is demonstrated merely by
+placing another copy. Repetition is therefore a design-risk assessment, not a
+measured player response. Prefer a differentiated mixture of short stops, trap
+objectives and genuinely extended exploration when later mod selection occurs;
+this table alone does not choose providers or establish target frequencies.
+
+Supported bypasses should be judged by capability, setup, risk and extraction
+cost. The observed geometry supports mining/building alternatives; it does not
+support blanket invulnerability or banning engineering. Player-operated trials
+should test whether expedition objectives remain worth attempting after those
+capabilities are available, whether cooperative encounters apply pressure, and
+whether rewards justify return logistics. These are playtest questions, not
+fabricated outcomes or a new Item13 mandatory timing program.
+
+The v3 scope means no additional taiga placement, exact ocean swim budget or wet
+shaft controller rerun is currently justified by a recommendation in this table.
+Their limitations remain explicit. The consequential differences in other design groups
+must be reconciled before item closure; the
+[coverage record](coverage.md#v3-coverage-disposition) identifies the current boundary.
+
 ## Previous scope and retained results
 
 

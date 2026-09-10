@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed producer: `c8892037`.
-Ocean placement, saved input and custody result are prepared on this branch.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed fix: `04f25fbc`; v3 amendment: `e2e15b1f`.
+Ocean input/custody is delivered at `4a19f01e`; v3 synthesis is prepared here.
 Verify current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -155,9 +155,9 @@ These supersede exhaustive individual family/material/repetition sampling and
 mandatory exact complete-task timing. Earlier case-count floors are historical,
 not the remaining required workload. Item 14 remains UNSTARTED.
 
-Next synthesize accepted reports, map all included families in the existing
-coverage record to direct evidence, supported representative designs or explicit
-gaps, and investigate only gaps that could materially change conclusions.
+The [v3 synthesis](evidence/item-13/README.md#v3-synthesis-from-inspected-designs) integrates six inspected design patterns.
+Coverage names20 direct families; other172 have explicit transfer gaps pending
+source-supported design mapping. Complete that synthesis, not172 experiments.
 Assess traversal/combat burden qualitatively where exact timing lacks support.
 Keep strict compatibility, safety, integrity, honest evidence and delivery checks.
 Optional precision and speculative refinements are non-blocking review suggestions.
@@ -166,11 +166,11 @@ Preserve completed Nether and ocean diagnostic evidence in the
 [existing group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md).
 Main-thread checkpoint: taiga r1 failed before materialization/server launch
 because ControlRequest enforces ordinary-only pilot use. No experiment is running;
-taiga r2 has NOT run. Preserve the prelaunch failure with the narrow control fix.
+taiga r2 has NOT run. Failure and narrow control fix are delivered in`04f25fbc`.
 Do not launch the previously queued taiga or temple work merely to satisfy v2.
-First establish whether it resolves a material gap under v3. Preserve current
-uncommitted runtime/control fixes; assess their reproduced defects separately
-from whether another dungeon experiment is necessary.
+No current recommendation requires taiga runtime or exact wet timing. Preserve
+their source/access limits. The control fix passed12 focused tests, lint and types;
+its ordinary-only control restriction remains intact.
 
 ## Underground Temple recovery context
 
