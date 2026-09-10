@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `8c5dd4f8`; verify subsequent assessment commits against upstream.
+checkpoint is `9259d8de`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -184,14 +184,14 @@ inspection circuits. Local caps are verified; enemy absence remains unmeasured.
 Tower upper rewards have a34H native-door circuit with one web removal. A source-
 supported hatch trap has a14H/8V alternate link: one floor removal,four scaffolds,
 four-block initial fall. Middle chest now has an18H two-block piston-panel breach;
-the next descent needs one floor removal,four scaffolds andanother four-block fall.
+The lower two-door route now passes; its eastern branch descends six blocks to a
+validated rim. Pit continuation below rawY21 is unresolved. Bottom hatch remains.
 
 Next finish the lower tower, remaining rooms, source/sculk handling, timing,
 hazards, finale, bypasses and replay. Then execute the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
-The courtyard family remains included but has no start in the
-current baseline index; inspect other existing raw sources before proposing an
+The courtyard remains included with no indexed start; inspect other raw sources before an
 additional experiment. Do not repeat these completed local reads/models solely
 for reassurance. Check central-End raw evidence before declaring an arena gap.
 

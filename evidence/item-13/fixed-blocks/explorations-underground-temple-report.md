@@ -975,3 +975,48 @@ more scaffolds and six active mining ticks are required. The original web-filled
 hatch is preserved as a separate route, not silently treated as air. The source
 fall exposure remains one requested point before hooks. Route execution, focused
 Ruff and types pass. These are geometric and modeled results, not gameplay trials.
+
+## Lower tower doors and eastern descending branch declaration
+
+From the lower scaffold landing(-287,31,-29), move north toZ-30 and remove
+the web at(-288,31,-30) from that adjacent stance. Move west into the cleared
+cell, then north alongX-288 through the two iron doors atZ-32 andZ-36 toZ-38.
+Use each door's stone buttons from the adjacent approach cells:Z-31/-33 and
+Z-35/-37, all atY33. Each transfer spans two horizontal blocks under the previously
+declared one-second deadline; orientation precedes activation. Validate both
+directions and the ordered web-removal ray. No additional webs or walls are
+implicitly removed. The bottom hatch remains a separate unresolved descent.
+
+From the intervening lower room center(-288,31,-34), inspect the eastern branch
+alongZ-34 throughX-261. Feet remain31 throughX-271, then follow the saved bottom
+stairs down one block per eastward cell tofeet26 atX-266, andfeet25 fromX-265
+throughX-261. Check support, ceiling clearance and reverse ascent with the existing
+adult sweep. Stop at the terminal shaft's western ledge; its pit is not automatically
+walkable. No mining or placement is permitted in this branch check. Dry sculk veins
+reuse their verified collision treatment; natural encounter and sculk activation
+are separate conditions, not zero-cost observed outcomes.
+
+Both declarations pass. The lower tower route totals20 horizontal blocks on
+return, with one web removal (eight active sword ticks) and four stone-button
+presses across two doors. The eastern branch to its terminal ledge totals54
+horizontal blocks and12 vertical blocks on return, with no added manipulation.
+This is a six-block reachable floor decrease, not a depth inferred from its
+component envelope. Source conditions and complete-objective costs remain separate.
+
+The terminal shaft has a masonry rim atfeet25 aroundX-261..-257,Z-36..-32.
+Predeclare a rim-only circuit from(-261,25,-34), north toZ-36, east toX-257,
+south toZ-32, west toX-261 and north back toZ-34. Do not descend into the pit.
+Unlike the earlier blind shaft, its western pit column(-260,Z-34) is air down
+through the retained lower boundaryY21, with no floor resolved below that bound.
+Other pit cells meet stone/sculk nearY23. Thus neither a uniform one-block pit
+nor an external exit can be asserted. Preserve the unresolved continuation below
+the extracted range and the surrounding sculk. Child44's bounds contain no block
+entities; this does not establish no natural encounter or no environmental hazard.
+
+The rim-only circuit passes in both directions:16 horizontal blocks with no
+elevation change or manipulation. The executable check also binds the open pit
+column and block-entity absence to the same raw extraction. The lower doors,
+descending branch and terminal rim pass the route command, Ruff, formatting and
+type checks. No new world extraction or runtime experiment was required. The
+whole-assembly graph must retain this optional terminal inspection and its
+unresolved below-boundary continuation separately from the supported stair depth.

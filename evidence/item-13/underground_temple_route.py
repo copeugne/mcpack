@@ -585,3 +585,65 @@ assert at(c, -287, 30, -30)["Name"] == "minecraft:stone_bricks"
 check_ray((-286.5, 32.62, -28.5), (-286.5, 31, -29.5), (-287, 30, -30))
 check_ray((-286.5, 32.62, -28.5), (-286.5, 31.95, -29), (-287, 31, -30))
 print("PASS next tower descent: one floor removal, four scaffolds; 4 horizontal/8 vertical return")
+
+# Lower tower has two separate timed doors and an eastern descending branch.
+verify_path([(-287, 31, -29), (-287, 31, -30)])
+target = (-288, 31, -30)
+assert at(c, *target)["Name"] == "minecraft:cobweb"
+check_ray((-286.5, 32.62, -29.5), (-287, 31.5, -29.5), target)
+removed.add(target)
+for door_z, door_facing, hinge in ((-32, "north", "right"), (-36, "south", "left")):
+    for z, facing, endpoint_z in (
+        (door_z + 1, "south", door_z + 1.1),
+        (door_z - 1, "north", door_z - 0.1),
+    ):
+        target = (-288, 33, z)
+        assert at(c, *target) == {
+            "Name": "minecraft:stone_button",
+            "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+        }
+        assert at(c, -288, 33, door_z)["Name"] in {
+            "minecraft:stone_bricks",
+            "minecraft:cracked_stone_bricks",
+        }
+        check_ray((-287.5, 32.62, z + 0.5), (-287.5, 33.5, endpoint_z), target)
+    for y, half in ((31, "lower"), (32, "upper")):
+        assert at(c, -288, y, door_z) == {
+            "Name": "minecraft:iron_door",
+            "Properties": {
+                "facing": door_facing,
+                "half": half,
+                "hinge": hinge,
+                "open": "false",
+                "powered": "false",
+            },
+        }
+        opened_doors.add((-288, y, door_z))
+lower_tower = [(-287, 31, -29), (-287, 31, -30)] + [(-288, 31, -z) for z in range(30, 39)]
+verify_path(lower_tower)
+verify_path(list(reversed(lower_tower)))
+print("PASS lower tower two-door route: 20 horizontal return blocks, one web removal")
+descending_branch = (
+    [(-288 + dx, 31, -34) for dx in range(18)]
+    + [(x, -x - 240, -34) for x in range(-270, -265)]
+    + [(x, 25, -34) for x in range(-265, -260)]
+)
+verify_path(descending_branch)
+verify_path(list(reversed(descending_branch)))
+print("PASS eastern lower branch to shaft ledge: 54 horizontal/12 vertical return blocks")
+
+terminal_rim = (
+    [(-261, 25, z) for z in range(-34, -37, -1)]
+    + [(x, 25, -36) for x in range(-260, -256)]
+    + [(-257, 25, z) for z in range(-35, -31)]
+    + [(x, 25, -32) for x in range(-258, -262, -1)]
+    + [(-261, 25, -33), (-261, 25, -34)]
+)
+verify_path(terminal_rim)
+verify_path(list(reversed(terminal_rim)))
+assert all(at(c, -260, y, -34)["Name"] == "minecraft:air" for y in range(21, 26))
+assert not any(
+    -262 <= b["x"] <= -256 and 24 <= b["y"] <= 29 and -37 <= b["z"] <= -31
+    for b in c["block_entities"]
+)
+print("PASS terminal rim: 16 horizontal blocks; pit continuation below raw Y21 unresolved")
