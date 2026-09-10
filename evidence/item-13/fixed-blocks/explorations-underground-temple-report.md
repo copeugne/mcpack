@@ -1948,3 +1948,61 @@ All ten bases and swept columns pass before their modeled feet positions are
 enabled. A direct negative case attempts to climb from(-288,31,-38) into the
 unbuilt Y32 gap and is rejected. Initial raw/local route checks still execute
 with no modeled scaffolds. No world or configuration was changed.
+
+## Complete post-construction movement circuit declaration
+
+Start and finish at R01's northern inner standing station(-288,37,-3). Perform
+one full inner hall ring, then visit the northern branch (terminal alcove and
+joined tower circuit), western branch (upper lava approach, entrance shaft and
+western lower excursion), and eastern branch (entrance shaft and eastern
+excursion), returning to the standing station after each. Follow the southern
+spoke and overhead hall link to R02's northern inner station(-288,37,25).
+Perform its ring, eastern cells and lower terminal branches, southern reward/lava
+approach and southwestern shaft/excursion, returning to that station after each.
+Return to the original R01 station through the overhead link.
+
+Reuse the already verified hall rings/spokes. Between a hall's northern station
+and another spoke's inner station, select the shorter of the two ring directions,
+using the stored forward order for ties. Join that inner station to its outer
+threshold with the reversed verified spoke. Full ring surveys and branch returns
+are intentional parts of this declared route, not claimed minimum movement.
+
+At the cells, perform each existing cell inspection out and back from the shared
+hall threshold. Then traverse the eastern stairs, inspect the northern ledge,
+eastern alcove and southern connector with its east/west stubs, and return.
+At the southern upper junction, inspect the eastern lava approach once while
+passing toward its terminal reward. Each entrance-shaft transfer includes the
+adjacent upper approach, one step into the explicit column, six vertical blocks
+and the exit step to the lower junction. The overhead transfer includes both
+four-block columns and its twelve-block tunnel.
+
+Require exact seams, one closed coordinate route and full occupancy/support
+validation with the declared post-construction state. Then calculate cardinal
+horizontal distance, absolute ascent/descent and visited floor span directly
+from consecutive coordinates. These remain post-construction movement results:
+initial excavation, placement, source access, door inputs, loot transfer, combat
+and final verification still need their explicit complete-task accounting.
+
+The complete post-construction circuit passes at1,426 horizontal blocks,
+84 blocks of ascent and84 of descent, starting and ending at(-288,37,-3).
+Its visited feet elevations span25..43. The highest point is the earned overhead
+bypass, not an authored upper room; the lowest is the inspected eastern lower
+shaft rim, not a verified continuation below the retained boundary. The18-block
+span is therefore specific to this circuit and its remedies.
+
+Coverage is checked against the existing room footprints and saved container
+set. The route enters all25 activity footprints. For each of the31 chest/barrel
+nodes it includes at least one exact standing station from an already validated
+interaction ray. The ray checks are retained by the existing checker and matched
+to the joined route; an arbitrary point inside a room is not enough to establish
+reward access. Each selected ray also avoids every cell occupied by the44 modeled
+scaffold blocks, so adding the scaffold columns does not silently occlude it.
+The original lid defects and their declared remedies remain part of the result.
+
+This closes continuous post-construction movement and reward-station coverage
+for the first assembly. It does not close the complete expedition model. In
+particular, the initial drops, construction approaches, source-removal stations,
+tool changes, button operations, acquisition assumptions, enemy population and
+combat/survival conditions must still be joined to this route or explicitly
+accounted for as additional phases. Actual traversal/combat times and acquired
+loot remain NOT MEASURED.

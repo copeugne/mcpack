@@ -181,11 +181,12 @@ inter-room cycles under the declared remedies. It has21 decision nodes; deepest
 rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
 by graph depth is integrated. Complete coordinate/phase traversal is still pending.
 The support check now rejects a mined floor; its direct negative case passes.
-Three continuous closed excursions pass: east212H/2V, west114H/12V and
-southwest86H/0V. The post-source-hole dungeon survey is42H/10V, not its original
-flat survey. The joined tower/lower circuit passes430H/58V, including the lower
-activity circuit222H/22V once. All ten declared scaffold columns are explicit;
-their unbuilt gap is rejected. Hall/entrance-shaft joins remain before full timing.
+The full post-construction circuit now passes1,426H/84 ascent/84 descent,
+starting and ending at(-288,37,-3), with feet25..43. It visits all25 activity
+footprints and verified ray stations for all31 reward nodes; those rays avoid
+all44 modeled scaffold cells. This includes the tower/lower and branch circuits.
+Construction approaches, source-removal stations, actions and encounter/survival
+conditions remain before the complete task-time model can pass.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

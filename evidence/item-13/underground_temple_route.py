@@ -27,6 +27,7 @@ overlap = importlib.import_module("evidence.item-13.collision.clearance").overla
 removed = set()
 opened_doors = set()
 modeled_scaffold_feet = set()
+reward_rays = {}
 
 
 def clear(box):
@@ -117,6 +118,8 @@ def verify_path(points, *, crouch_up=False):
             clear([x + 0.2, y, z + 0.2, x + 0.8, high + height, z + 0.8])
 
 
+hall_rings = {}
+hall_spokes = {}
 for center_z in (0, 28):
     for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
         radial = [
@@ -125,6 +128,7 @@ for center_z in (0, 28):
         ]
         verify_path(radial)
         verify_path(list(reversed(radial)))
+        hall_spokes[(center_z, dx, dz)] = radial
     ring = (
         [(-288 + x, 37, center_z - 3) for x in range(-3, 4)]
         + [(-285, 37, center_z + z) for z in range(-2, 4)]
@@ -132,6 +136,7 @@ for center_z in (0, 28):
         + [(-291, 37, center_z + z) for z in range(2, -4, -1)]
     )
     verify_path(ring)
+    hall_rings[center_z] = ring
     print("PASS hall", center_z, "four bidirectional spokes and connected 24-block floor circuit")
 
 north = [(-288, 39, z) for z in range(-8, -21, -1)]
@@ -175,6 +180,7 @@ for center_z in (0, 28):
             cell = tuple(math.floor(v) for v in p)
             if cell != target:
                 assert at(c, *cell)["Name"] == "minecraft:air", (cell, at(c, *cell))
+        reward_rays.setdefault(target, []).append((eye, end))
     assert at(c, -288, 37, center_z)["Name"] == "minecraft:gold_block"
 print("PASS eight hall chest approaches and clear lids; two saved central gold blocks")
 
@@ -279,6 +285,8 @@ def check_ray(eye, end, target):
             assert not any(hit[f] for f in faces), (cell, p, s)
             continue
         raise AssertionError((cell, p, s))
+    if at(c, *target)["Name"] in {"minecraft:chest", "minecraft:barrel"}:
+        reward_rays.setdefault(target, []).append((eye, end))
 
 
 for sign in (1, -1):
@@ -1460,6 +1468,7 @@ southwest_excursion_parts.extend(
         list(reversed(last_source_branches[2][0])),
     )
 )
+lower_excursions = {}
 for name, parts in (
     ("western lower J04", west_excursion_parts),
     ("southwestern lower J17", southwest_excursion_parts),
@@ -1470,6 +1479,7 @@ for name, parts in (
         joined.extend(part[1:])
     assert joined[0] == joined[-1]
     verify_path(joined)
+    lower_excursions[name] = joined
     print(
         "PASS joined excursion",
         name,
@@ -1609,3 +1619,167 @@ print(
     sum(abs(a[1] - b[1]) for a, b in pairwise(tower_circuit)),
     "vertical blocks; start/end J01",
 )
+
+
+def join_route_parts(parts):
+    """Join existing path coordinates without teleporting across part seams."""
+    joined = [parts[0][0]]
+    for part in parts:
+        assert joined[-1] == part[0], (joined[-1], part[0])
+        joined.extend(part[1:])
+    return joined
+
+
+hall_ports = {}
+anchored_rings = {}
+for center_z, ring in hall_rings.items():
+    anchor = (-288, 37, center_z - 3)
+    ring_open = ring[:-1]
+    offset = ring_open.index(anchor)
+    ring_open = ring_open[offset:] + ring_open[:offset]
+    anchored_rings[center_z] = [*ring_open, anchor]
+    for dx, dz in ((0, -1), (1, 0), (0, 1), (-1, 0)):
+        spoke = hall_spokes[(center_z, dx, dz)]
+        index = ring_open.index(spoke[-1])
+        inner = min((ring_open[: index + 1], [anchor, *reversed(ring_open[index:])]), key=len)
+        hall_ports[(center_z, dx, dz)] = join_route_parts((inner, list(reversed(spoke))))
+
+cell_circuit_parts = []
+for x, inside in cell_routes:
+    entry = [(xx, 39, 28) for xx in range(-280, x + 1)] + [(x, 39, z) for z in (27, 26, 25)]
+    cell_circuit_parts.extend((entry, inside, list(reversed(inside)), list(reversed(entry))))
+cell_stairs = native_connector_paths["cells east stair"]
+cell_circuit_parts.append(cell_stairs)
+for name in ("east junction north ledge", "east junction east approach"):
+    path = native_connector_paths[name]
+    cell_circuit_parts.extend((path, list(reversed(path))))
+southeast_terminal = native_connector_paths["east junction south terminal"]
+cell_circuit_parts.append(southeast_terminal[:8])
+for name in ("southeast connector east stub", "southeast connector west stub"):
+    path = native_connector_paths[name]
+    cell_circuit_parts.extend((path, list(reversed(path))))
+cell_circuit_parts.extend(
+    (southeast_terminal[7:], list(reversed(southeast_terminal)), list(reversed(cell_stairs)))
+)
+cell_circuit = join_route_parts(cell_circuit_parts)
+assert cell_circuit[0] == cell_circuit[-1] == (-280, 39, 28)
+
+north_hall_link = [(-288, 39, z) for z in range(-8, -24, -1)]
+east_shaft_link = join_route_parts(
+    (ledge, [(-278, 39, 0), *[(-277, y, 0) for y in range(39, 32, -1)], (-276, 33, 0)])
+)
+west_shaft_link = join_route_parts(
+    (upper_west, [(-300, 39, 5), *[(-300, y, 6) for y in range(39, 32, -1)], (-300, 33, 7)])
+)
+southwest_shaft_link = join_route_parts(
+    (
+        south_shaft_approach,
+        [(-298, 39, 28), *[(-299, y, 28) for y in range(39, 32, -1)], (-300, 33, 28)],
+    )
+)
+overhead_link = (
+    [(-288, y, 8) for y in range(39, 44)]
+    + [(-288, 43, z) for z in range(9, 21)]
+    + [(-288, y, 20) for y in range(42, 38, -1)]
+)
+between_halls = join_route_parts(
+    (hall_ports[(0, 0, 1)], overhead_link, list(reversed(hall_ports[(28, 0, -1)])))
+)
+whole_circuit_parts = [anchored_rings[0], hall_ports[(0, 0, -1)], north_hall_link]
+terminal = native_connector_paths["north junction terminal"]
+whole_circuit_parts.extend(
+    (
+        terminal,
+        list(reversed(terminal)),
+        tower_circuit,
+        list(reversed(north_hall_link)),
+        list(reversed(hall_ports[(0, 0, -1)])),
+        hall_ports[(0, -1, 0)],
+        west,
+    )
+)
+upper_lava = native_connector_paths["upper west lava approach"]
+whole_circuit_parts.extend(
+    (
+        upper_lava,
+        list(reversed(upper_lava)),
+        west_shaft_link,
+        lower_excursions["western lower J04"],
+        list(reversed(west_shaft_link)),
+        list(reversed(west)),
+        list(reversed(hall_ports[(0, -1, 0)])),
+        hall_ports[(0, 1, 0)],
+        east_shaft_link,
+        east_excursion,
+        list(reversed(east_shaft_link)),
+        list(reversed(hall_ports[(0, 1, 0)])),
+        between_halls,
+        anchored_rings[28],
+        hall_ports[(28, 1, 0)],
+        cell_circuit,
+        list(reversed(hall_ports[(28, 1, 0)])),
+        hall_ports[(28, 0, 1)],
+        south_terminal[:5],
+    )
+)
+south_lava = native_connector_paths["southern hall lava approach"]
+whole_circuit_parts.extend(
+    (
+        south_lava,
+        list(reversed(south_lava)),
+        south_terminal[4:],
+        list(reversed(south_terminal)),
+        list(reversed(hall_ports[(28, 0, 1)])),
+        hall_ports[(28, -1, 0)],
+        southwest_shaft_link,
+        lower_excursions["southwestern lower J17"],
+        list(reversed(southwest_shaft_link)),
+        list(reversed(hall_ports[(28, -1, 0)])),
+        list(reversed(between_halls)),
+    )
+)
+whole_circuit = join_route_parts(whole_circuit_parts)
+assert whole_circuit[0] == whole_circuit[-1] == (-288, 37, -3)
+verify_path(whole_circuit)
+whole_horizontal = sum(abs(a[0] - b[0]) + abs(a[2] - b[2]) for a, b in pairwise(whole_circuit))
+whole_ascent = sum(max(0, b[1] - a[1]) for a, b in pairwise(whole_circuit))
+whole_descent = sum(max(0, a[1] - b[1]) for a, b in pairwise(whole_circuit))
+print(
+    "PASS complete post-construction movement circuit:",
+    whole_horizontal,
+    "horizontal blocks;",
+    whole_ascent,
+    "ascent;",
+    whole_descent,
+    "descent; feet range",
+    min(p[1] for p in whole_circuit),
+    max(p[1] for p in whole_circuit),
+)
+visited = set(whole_circuit)
+visited_rooms = {
+    room
+    for room, bounds in room_bounds.items()
+    if any(all(bounds[i] <= point[i] <= bounds[i + 3] for i in range(3)) for point in visited)
+}
+assert visited_rooms == set(room_bounds)
+reward_positions = {
+    (entity["x"], entity["y"], entity["z"])
+    for entity in c["block_entities"]
+    if entity["id"] in {"minecraft:chest", "minecraft:barrel"}
+}
+assert reward_rays.keys() == reward_positions
+scaffold_blocks = {(x, y, z) for x, z, base, top in scaffold_columns for y in range(base, top)}
+for target, rays in reward_rays.items():
+    accepted = []
+    for eye, end in rays:
+        station = (math.floor(eye[0]), round(eye[1] - 1.62, 6), math.floor(eye[2]))
+        if station not in visited:
+            continue
+        ray_cells = {
+            tuple(math.floor(eye[i] + (end[i] - eye[i]) * step / 2000) for i in range(3))
+            for step in range(2001)
+        }
+        if ray_cells.isdisjoint(scaffold_blocks):
+            accepted.append(station)
+    assert accepted, ("no visited unobstructed reward station", target)
+print("PASS full movement circuit visits all 25 activity footprints and all 31 reward ray stations")
