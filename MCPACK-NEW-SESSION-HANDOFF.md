@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `f8545fdb`; verify subsequent assessment commits against upstream.
+checkpoint is `711efa8f`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -181,8 +181,9 @@ source activation can precede corridor entry. The enchanting room now has native
 button-door access,two web removals,chest/facility rays and26-block return route.
 The north blind shaft andeast terminal connector now have32H/2V and30H/0V native
 inspection circuits. Local caps are verified; enemy absence remains unmeasured.
-Tower upper rewards now have a34H native-door circuit with one web removal;
-lower tower links, third chest and tripwire/dispenser mechanism remain unresolved.
+Tower upper rewards have a34H native-door circuit with one web removal. A source-
+supported hatch trap has a14H/8V alternate link: one floor removal,four scaffolds,
+four-block initial fall. Middle chest anddeeper tower links remain unresolved.
 
 Next finish remaining first-assembly rooms and transitions, source and
 sculk handling, complete conditional objective timing, hazard/finale/bypass and

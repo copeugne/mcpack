@@ -870,3 +870,66 @@ constant-rate model do not prove successful human operation. One web contributes
 verification remain separate phases in the eventual complete objective budget.
 The route command, focused Ruff and type checks pass after formatting. The saved
 world and raw extraction are unchanged.
+
+## Tower hatch trap and alternate descent declaration
+
+The upper hatch at(-288,38,-39) is directly above attached, armed tripwire at
+(-288,35,-39). The three wire cells spanX-289..-287 between hooks atX-290 and
+X-286, bothY35,Z-39. Facing-inward dispensers are immediately above those hooks,
+atY36. Their saved `triggered=false` state and unrolled dispenser tables are not
+observed firing or damage. The packaged dispenser table has three rolls, each
+selecting ordinary arrows (9..27) or tipped arrows of slowness/weakness (5..15).
+This is ammunition potential, not generated contents.
+
+Pinned-source `TripWireBlock.entityInside` calls `checkPressed`, which queries
+entities intersecting the wire shape. `TripWireHookBlock.getSignal` emits15 when
+powered; a dispenser immediately above a hook can receive that neighbor signal.
+`DispenserBlock.neighborChanged` schedules its action four ticks after a new
+powered state. Thus the hatch landing intersects a supported projectile-trap
+trigger, conditional on source updates and resolved ammunition. Do not assign
+an observed hit count, potion effect or health loss. The saved wire's westmost
+connection flags differ from the middle wire, but all three cells and both hooks
+retain `attached=true`; activation is a source-supported potential, not an
+automated circuit test.
+
+Reproduce this inspection with the previously hash-bound SRG on the classpath:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar -c -p net.minecraft.world.level.block.TripWireHookBlock net.minecraft.world.level.block.TripWireBlock net.minecraft.world.level.block.DispenserBlock
+```
+
+For an explicit alternative, predeclare one masonry removal at(-288,38,-38)
+and four carried scaffolds. Reach(-288,39,-37) through the upper northern door
+at(-289,39,-36), using its two stone buttons and the same two-block timed crossing.
+Mine the declared floor block from this adjacent stance, descend four blocks to
+feetY35 atX-288,Z-38 and step south toZ-37. Place the scaffold base on the full
+floorY34 at(-288,35,-38), then extend it vertically three times using the existing
+side-click stacking rule. Climb back toY39 and exit south to the retained ledge.
+Validate the whole swept column and placement rays before accepting the link.
+
+This alternative avoids the tripwire'sZ-39 row without disarming it. It requires
+one masonry removal, four placements and a four-block initial drop, with one
+requested fall-damage point under the previously stated formula before hooks.
+Assume no knockback or other entity triggers during this local demonstration;
+violations censor the scenario. Do not treat the alternative as free, native
+ladder access or observed safe play. Raw blocks remain unchanged.
+
+The declared alternate link passes. The approach from the upper east-chest
+station to the southern hatch ledge is five horizontal blocks in each direction.
+Entering/leaving the descent column adds two, and stepping to/from the lower
+placement stance adds two:14 horizontal blocks and eight blocks of vertical
+travel for this local return demonstration. The entire adult swept column is
+clear after the single declared floor removal; it stays south of the armed wire.
+The base floor is full masonry, and the floor-removal, base-placement and repeated
+base-side-click rays pass. Four distance-zero scaffold segments span feet35..39
+under the previously verified construction rule. Both northern-door button rays,
+the two-block door crossing and its reverse pass under the same one-second
+deadline as the earlier stone-button door.
+
+This establishes a conditional connection from the upper room to the middle
+floor with an explicit trap bypass. It does not establish the middle-floor chest
+approach, deeper rooms or a complete objective budget. The masonry adds six active
+diamond-pick ticks (0.3 seconds); four placements, two button presses, tool
+selection and fall exposure must remain in the final scenario. The partial route
+command, focused Ruff and types pass. No runtime firing, fall, placement or player
+movement was observed.

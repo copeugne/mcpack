@@ -488,3 +488,60 @@ horizontal = 2 * sum(len(p) - 1 for p in (tower_approach, tower_crossing, tower_
 print(
     "PASS tower upper two-chest route:", horizontal, "horizontal, 0 vertical; lower tower pending"
 )
+
+# Northern tower door and engineered descent beside the armed hatch landing.
+for z, facing, endpoint_z in ((-35, "south", -34.9), (-37, "north", -36.1)):
+    target = (-289, 41, z)
+    assert at(c, *target) == {
+        "Name": "minecraft:stone_button",
+        "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+    }
+    assert at(c, -289, 41, -36)["Name"] == "minecraft:stone_bricks"
+    check_ray((-288.5, 40.62, z + 0.5), (-288.5, 41.5, endpoint_z), target)
+for y, half in ((39, "lower"), (40, "upper")):
+    assert at(c, -289, y, -36) == {
+        "Name": "minecraft:iron_door",
+        "Properties": {
+            "facing": "north",
+            "half": half,
+            "hinge": "right",
+            "open": "false",
+            "powered": "false",
+        },
+    }
+    opened_doors.add((-289, y, -36))
+hatch_approach = [
+    (-287, 39, -35),
+    (-288, 39, -35),
+    (-289, 39, -35),
+    (-289, 39, -36),
+    (-289, 39, -37),
+    (-288, 39, -37),
+]
+verify_path(hatch_approach)
+verify_path(list(reversed(hatch_approach)))
+floor_target = (-288, 38, -38)
+assert at(c, *floor_target)["Name"] == "minecraft:stone_bricks"
+check_ray((-287.5, 40.62, -36.5), (-287.5, 39, -37.5), floor_target)
+removed.add(floor_target)
+clear([-287.8, 35, -37.8, -287.2, 40.8, -37.2])
+clear([-287.8, 39, -37.8, -287.2, 40.8, -36.2])
+verify_path([(-288, 35, -38), (-288, 35, -37)])
+verify_path([(-288, 35, -37), (-288, 35, -38)])
+# Base placement ray from the southern lower stance to the retained floor.
+assert at(c, -288, 34, -38)["Name"] == "minecraft:stone_bricks"
+check_ray((-287.5, 36.62, -36.5), (-287.5, 35, -37.5), (-288, 34, -38))
+# Three side clicks on the same base extend the distance-zero scaffold upward.
+check_ray((-287.5, 36.62, -36.5), (-287.5, 35.95, -37), (-288, 35, -38))
+for x in (-289, -288, -287):
+    wire = at(c, x, 35, -39)
+    assert wire["Name"] == "minecraft:tripwire"
+    assert wire["Properties"]["attached"] == "true"
+    assert wire["Properties"]["disarmed"] == "false"
+for x, facing in ((-290, "east"), (-286, "west")):
+    assert at(c, x, 35, -39)["Name"] == "minecraft:tripwire_hook"
+    assert at(c, x, 36, -39) == {
+        "Name": "minecraft:dispenser",
+        "Properties": {"facing": facing, "triggered": "false"},
+    }
+print("PASS tower alternate descent: one floor removal, four scaffolds; 4-block fall retained")
