@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `8a26cb04`; verify subsequent assessment commits against upstream.
+checkpoint is `9449cca7`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -157,13 +157,19 @@ Its saved slime spawner, chest and six source marker requests are integrated.
 Source-derived size/splitting workloads distinguish authored sizes1/2/3 from
 normal finalization sizes1/2/4. They are not complete encounter-time results.
 
-Next declare/check the first dry local route, source-disable/repeated-batch model,
-room and access boundaries, full task and quality assessment. Water beneath part
-of the chamber and one elevated marker forbid assumed flat-floor encounters.
-Only after this representative is integrated, read the selected negative material
-case. No server/new generation is needed. The courtyard family remains included
-but has no start in the current baseline candidate index; inspect other existing
-raw sources before proposing an additional experiment for it.
+The first local assessment now passes: one room,16 horizontal blocks,four
+support-elevation travel and a complete six-size2-parent/descendant task of
+38..46/64..74/102..117s. Six nearby parents suppress source insertion only under
+an explicit alive/in-query condition until disablement; loss of it censors this
+model. Combat engagement/pursuit is conditional, not observed AI. The chest ray
+also passes before source removal, establishing a local loot bypass.
+
+Next read the already selected negative material case and assess its saved
+processing/terrain against this representative. No server/new generation is
+needed. Preserve the wet-floor/elevated-marker limits and unmeasured exterior
+excavation interval. The courtyard family remains included but has no start in
+the current baseline candidate index; inspect other existing raw sources before
+proposing an additional experiment for it.
 
 Then continue remaining family/variant coverage. Item13 still requires full
 coverage, final review/fix cycles, completed clean Codex thumbs-up, merge and

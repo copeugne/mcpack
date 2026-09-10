@@ -248,5 +248,6 @@ Item13 completion.
 
 The [Slime Cave report](explorations-slime-cave-report.md) starts the next local
 family assessment from its custom source and accepted saved inputs. The first
-material-state read and source workload are integrated; playable topology and
-complete task accounting remain pending before the second selected read.
+material-state assessment now includes the dry route, one-room topology, conditional
+six-parent/splitting task, source suppression condition and direct loot bypass.
+The second selected material state still needs its own saved assessment.

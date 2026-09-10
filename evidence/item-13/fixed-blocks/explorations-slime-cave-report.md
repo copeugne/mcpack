@@ -207,3 +207,186 @@ size2 scenario would entail18..30 total attacks including all children, not six
 attacks. Actual parents and descendants remain NOT MEASURED. Do not substitute
 this source table for actor access, complete traversal/combat accounting or the
 saved spawner's repeated-batch timing analysis.
+
+## First local task predeclaration
+
+Actor: one adult, full health/hunger, unenchanted iron armor/sword and diamond
+pickaxe, no effects, flight, swimming, building or healing; sufficient durability
+and free inventory space for the chest. Known local layout and target positions.
+Start/end at(70.5,2,-357.5), a dry station inside the cave's southern perimeter.
+This is a local clear/loot task after reaching the chamber, not a measured surface
+discovery or excavation route. No authored entrance or external approach is
+invented. Unknown external travel is excluded explicitly from this local timing.
+
+Go three blocks east, then step one block north/up to(73.5,3,-358.5), mine the
+spawner at(73,3,-360), and return to the start for combat. After clearing the
+stipulated parents/children, revisit the same raised station, acquire the chest
+contents and return/verify. The chest remains above the removed spawner in the
+geometric model; no extra support block is placed. Declare the actual ray/lid
+check before treating the chest as accessible. Avoid water and slime-block
+support on this route. No source marker position is relabeled a settled enemy.
+
+Worked encounter: six ordinary size2 slimes initially settled at columns/feet
+(71,2,-364),(77,2,-363),(69,2,-361),(70,2,-359),(77,2,-359),(75,3,-359),
+with X/Z centered in each cell. They must remain in the spawner's nearby-entity
+query volume, alive, until disablement. Check their supported geometry and the
+query volume. This is an explicit conditional initial state, not six observed
+entities or a claim that marker placement guarantees these positions. The nearby
+cap must suppress additional spawner insertions before the clear begins; if a
+parent leaves the volume or dies early, censor this fixed-six scenario rather
+than silently allowing another wave. Natural spawning is excluded.
+
+After disablement, all six parents and their children must engage sequentially
+at the dry target station(70.5,2,-358.5), with the actor at the start station one
+block south. Slime pursuit/settling into that station is conditional within the
+approved combat-duty allowance, not a validated AI route or guaranteed lure.
+Each parent produces2..4 size1 children in this scenario, all successfully created
+and defeated. Failed engagement, extra mobs, drowning/environmental kills, forced
+healing or work exceeding the stated allowances censors completion. No probability
+or actual player success is claimed. Validate a size2 target's body, floor and
+melee line at that station; smaller children fit within the same envelope.
+
+Use existing A/B/C movement/vertical and analyst allowances. Predeclare11 fixed
+decisions: initial orientation,source selection,disablement confirmation,combat
+transition,post-combat confirmation,room survey,raised-objective inspection,chest
+aim,acquisition check,return selection andterminal condition check. Add one per
+upward transition,actual horizontal heading change and each of the six parent
+target selections. Descendant switching/pursuit stays in combat duty, avoiding
+another per-child charge. Inputs: one mining initiation and one chest open.
+Selections: pick then sword. Acquisition: one container; terminal verification:
+one. Mining: source-derived1.9s for the spawner with the dry grounded diamond
+pick. Count all four legs, not just the first spawner approach. Any different
+entry, excavation or additional target work needs a separately declared task.
+
+## First geometric/model result
+
+[Reproduction](../slime_route.py) passes:16 horizontal blocks over four approach/
+return legs,4 support-elevation travel(two up/two down),two upward transitions
+and seven heading changes. The source/chest station is four horizontal blocks
+from the local start and one floor block higher. Route support is dry stone;
+no water, slime block, swimming, placement or external excavation is silently
+included. Upright support, step envelopes, initial size2 bodies, nearby-query
+intersection, both interaction rays/lid space and the fixed melee station pass.
+This is GEOMETRIC MEASUREMENT under the declared actor, not recorded gameplay.
+
+```sh
+uv run python -m evidence.item-13.slime_route
+```
+
+The initial whole-cell avoidance check rejected a size2 body against tall grass
+at(78,2,-364). This was a conservative collision proxy, not a solid obstruction.
+Pinned Blocks registration offsets19813 and4475 explicitly call noCollission for
+tall_grass and short_grass. The checker now ignores those plants only for physical
+clearance; interaction rays retain conservative plant avoidance. It does not
+silently treat every palette block as air. EntityType's slime registration
+(offsets4194..4200) gives0.52x0.52 base dimensions, and Slime.getDefaultDimensions
+scales by size, yielding the checked1.04x1.04 size2 bodies. The smaller children
+fit within that body envelope. No size3/4 settled-position claim is inferred.
+
+BaseSpawner.serverTick builds the unit source block AABB, inflates it by SpawnRange,
+queries the candidate entity class with NO_SPECTATORS, and compares its count to
+MaxNearbyEntities (offsets426..503). Here the query box is
+[69,-1,-364,78,8,-355]. All six stipulated slime bodies intersect it. At count6,
+the code resets the delay and returns without inserting that attempted mob.
+Thus the fixed-six task is conditional on retaining those six alive/nearby until
+source removal. It is not a universal population cap or a promise that all
+source-created slimes stay nearby. Leaving the box, environmental death, missing
+parents or additional natural spawning invalidates this particular model.
+
+The saved Delay20 permits an attempt after roughly one second of active ticking;
+MinSpawnDelay200 is ten seconds at20TPS. The modeled disablement costs are
+D=4/u +1/j +1.9 +4*decision +input +selection, giving6.2/9.9/15.233333s.
+The four decisions are initial orientation,source selection,first heading change
+and upward alignment. Profile C is beyond the earliest later attempt, so a
+single-wave deadline argument would be invalid. The explicit six-nearby condition,
+not an invented deadline or ignored spawner, suppresses successful additions
+throughout this modeled pre-combat phase. If it fails, use a newly declared
+multiwave task rather than retaining these totals.
+
+After removal, the six size2 parents plus2..4 size1 descendants each give18..30
+entities defeated and18..30 attacks,11.7..19.5s active work. Six parents are not
+six total encounters after splitting. All are one entity type; size/state diversity
+is distinct from species diversity. Slime.isTiny returns true at size1 and
+isDealsDamage requires a non-tiny slime and effective AI. The children therefore
+do not supply the parents' damage pressure, even though clearing them remains
+part of this stated objective. Actual spawning, pursuit, splitting success,
+damage, loot and combat duration remain NOT MEASURED.
+
+Complete noncombat task is16/u +4/j +1.9 +26*decision +2*input +2*selection
++acquisition +verification. The26 decisions are11 fixed,two upward alignments,
+seven headings and six parent target selections. Movement alone is7.2/12/21.333333s.
+Combat pursuit/return to the fixed station and descendant targeting remain only
+in the approved duty allowance. Chest transfer/menu close is in acquisition.
+There is no unpriced healing, excavation or extra wave in the successful task.
+
+| Profile | Noncombat complete budget | With six parents and all children | Active attack work |
+| --- | ---: | ---: | ---: |
+|A|26.100000s|37.800000..45.600000s|11.7..19.5s|
+|B|47.900000s|63.500000..73.900000s|11.7..19.5s|
+|C|78.233333s|101.633333..117.233333s|11.7..19.5s|
+
+These are MODELED RESULTS for the declared successful scenario, not calibrated
+clear times, survival probabilities or confidence intervals. The active-work
+range represents requested child count, not a measured run distribution. Initial
+marker sizes1/2/3 and spawner size mechanisms retain their separate source
+workloads above; this worked complete task specifies size2 instead of inventing
+an average size or assuming a large slime fits every marker location.
+
+## First room, quality and access assessment
+
+The inspected sections show one irregular cave activity space around the central
+source/chest, with low floor changes and an upper narrowing vault of air. The
+structure extent66..80 / -368..-354 is only its search envelope; it is not fifteen
+rooms or225 playable floor cells. The dry validated activity core and objective
+approach lie around70..73 / -359..-358 at feet2/3. Walls and the broad connected
+interior do not divide this into a corridor tree. The raised three-block stone
+objective area is a local pedestal, not a distinct enclosed chamber. Primary
+count: one room,one component,zero room edges,zero branch junctions,zero cycles.
+Counting that pedestal as a second activity zone yields two nodes/one transition,
+still zero branching. Room-graph objective depth is0(primary) or1(zone sensitivity);
+shortest checked station distance is four horizontal blocks. The validated floor
+span is one block, not the twelve-block template height.
+
+Empty/dead rooms are0/1: the space has a source-supported slime encounter and
+reward. There is one saved chest-table assignment above the one spawner. Its
+contents are not generated by this analysis. Finale is a compact central objective,
+not a separate terminal room or bespoke boss. Objective linkage/integration is
+PRESENT, conditional on finding the chamber; distinctive terminal enemy/challenge
+is ABSENT and unique terminal reward value is UNKNOWN. One assigned table does
+not demonstrate superior items, guaranteed progression or reset behavior.
+
+The active spawner and splitting parents supply conditional combat pressure;
+the hollow does not have source evidence of a trap sequence. Water beneath the
+northern/side floor creates optional wet movement/mining exposure, and slime-block
+surfaces are avoided by the dry task. No drowning, knockback, bounce damage or
+live chokepoint exploitation was observed. The raised objective approach is
+locally constrained by its pedestal, but the broad room is not an enforced
+one-door combat choke. No source-authored maze or gated vertical progression is
+supported by these blocks.
+
+A separate source/geometry check passes the chest ray before removing the spawner.
+Thus loot access does not require completing the modeled disable/kill objective;
+a player who tolerates the encounter can use the same local station. This is a
+concrete bypass opportunity, not measured player success. The shell uses ordinary
+mineable stone/moss materials, with no demonstrated protected gate. External
+excavation/roof breaching remains available in principle, but the unseen approach
+and total excavation cost are not invented. At the central columnY11..14 are
+saved solid stone, while WORLD_SURFACE is62. At the local start,Y9..14 are stone
+and WORLD_SURFACE is also62. These are verified local cover minima and heightmap
+context, not proof of a continuous solid column through the unextracted interval.
+There is no demonstrated natural exterior doorway or timed outside-to-loot route.
+
+Expected replay assessment: one selected template and rotations/stone replacement
+provide placement variation, while size/split state changes encounter composition.
+The first case does not establish a new-room progression loop. Removing the
+spawner permanently removes that local source in the modeled task; per-player
+loot machinery does not prove physical restoration or renewed same-player loot.
+Player enjoyment/revisit behavior is NOT MEASURED. Its tall hollow has one compact
+objective with one-block validated progression, supporting a mechanically shallow
+cave-form assessment. It is underground; no above-ground visual landmark or human
+visual prominence is claimed.
+
+The first material representative now has its local task and quality assessment.
+Focused route, interaction, body/query and arithmetic checks pass, with Ruff
+format/check and basedpyright clean. Proceed to the preselected negative case,
+preserving its actual saved terrain/materials instead of copying these metrics.
