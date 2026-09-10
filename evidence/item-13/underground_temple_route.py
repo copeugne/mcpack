@@ -252,7 +252,9 @@ def check_ray(eye, end, target):
         s = at(c, *cell)
         if s["Name"] == "minecraft:air":
             continue
-        if s["Name"] == "minecraft:vine":
+        if s["Name"] == "minecraft:vine" or (
+            s["Name"] == "minecraft:sculk_vein" and s["Properties"]["waterlogged"] == "false"
+        ):
             x, y, z = (p[i] - cell[i] for i in range(3))
             faces = {k for k, v in s["Properties"].items() if v == "true"}
             hit = {
@@ -261,6 +263,7 @@ def check_ray(eye, end, target):
                 "north": z <= 1 / 16,
                 "south": z >= 15 / 16,
                 "up": y >= 15 / 16,
+                "down": y <= 1 / 16,
             }
             assert faces, (cell, p, s)
             assert not any(hit[f] for f in faces), (cell, p, s)
@@ -769,3 +772,49 @@ for cx, cz in ((-288, -14), (-295, -22)):
         verify_path(arm)
         verify_path(list(reversed(arm)))
 print("PASS bedroom passage: 11-block south link, 7-block west link, two four-arm junctions")
+
+# Dungeon room native survey must run before its four source-exposure holes.
+dungeon_entry = [(-288, 27, z) for z in range(-14, -4)]
+dungeon_ring = (
+    [(x, 27, -5) for x in range(-288, -284)]
+    + [(-285, 27, z) for z in range(-4, 2)]
+    + [(x, 27, 1) for x in range(-286, -292, -1)]
+    + [(-291, 27, z) for z in range(0, -6, -1)]
+    + [(x, 27, -5) for x in range(-290, -287)]
+)
+for path in (dungeon_entry, dungeon_ring):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+dungeon_sources = (
+    ((-288, -5), (-288, -6), (-288, -4)),
+    ((-285, -2), (-285, -3), (-286, -2)),
+    ((-288, 1), (-288, 2), (-288, 0)),
+    ((-291, -2), (-291, -3), (-290, -2)),
+)
+for (x, z), _, (sx, sz) in dungeon_sources:
+    assert at(c, sx, 27, sz)["Name"] == "minecraft:chest"
+    assert at(c, sx, 28, sz)["Name"] == "minecraft:air"
+    check_ray((x + 0.5, 28.62, z + 0.5), (sx + 0.5, 27.5, sz + 0.5), (sx, 27, sz))
+print("PASS dungeon native survey: 42 horizontal return blocks, four chest approaches")
+for (x, z), (ax, az), (sx, sz) in dungeon_sources:
+    verify_path([(ax, 27, az), (x, 27, z)])
+    eye = (ax + 0.5, 28.62, az + 0.5)
+    if x in (-285, -291):
+        vein = (x, 27, z)
+        assert at(c, *vein)["Name"] == "minecraft:sculk_vein"
+        assert at(c, *vein)["Properties"]["down"] == "true"
+        check_ray(eye, (x + 0.5, 27.03125, z + 0.5), vein)
+        removed.add(vein)
+    floor = (x, 26, z)
+    assert at(c, *floor)["Name"] in {"minecraft:stone_bricks", "minecraft:cracked_stone_bricks"}
+    assert at(c, x, 25, z)["Name"] == "minecraft:stone"
+    check_ray(eye, (x + 0.5, 27, z + 0.5), floor)
+    removed.add(floor)
+    verify_path([(ax, 27, az), (x, 26, z)])
+    verify_path([(x, 26, z), (ax, 27, az)])
+    source = (sx, 26, sz)
+    assert at(c, *source)["Name"] == "minecraft:spawner"
+    end = ((x + sx) / 2 + 0.5, 26.5, (z + sz) / 2 + 0.5)
+    check_ray((x + 0.5, 27.62, z + 0.5), end, source)
+    removed.add(source)
+print("PASS four buried sources: four floor holes, two vein removals; encounters not measured")

@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `89302f24`; verify subsequent assessment commits against upstream.
+checkpoint is `b2ce0eae`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -186,14 +186,15 @@ supported hatch trap has a14H/8V alternate link: one floor removal,four scaffold
 four-block initial fall. Middle chest now has an18H two-block piston-panel breach;
 The lower two-door route now passes; its eastern branch descends six blocks to a
 validated rim; pit continuation below rawY21 is unresolved. Tower floor bands now
-connect39/35/31/27. Bedroom six-container access andtwo adjoining junctions pass.
+connect39/35/31/27. Bedroom access andjunctions pass. Dungeon four-chest survey
+andburied-source exposure pass; complete encounter timing remains unresolved.
 
-Next finish the dungeon room, library and remaining rooms, source/sculk handling, timing,
+Next finish the library and remaining rooms, source/sculk handling and timing,
 hazards, finale, bypasses and replay. Then execute the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
-The courtyard remains included with no indexed start; inspect other raw sources before an
-additional experiment. Do not repeat these completed local reads/models solely
+The courtyard remains included with no indexed start; inspect other raw before experiments.
+Do not repeat completed local reads/models solely
 for reassurance. Check central-End raw evidence before declaring an arena gap.
 
 Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and

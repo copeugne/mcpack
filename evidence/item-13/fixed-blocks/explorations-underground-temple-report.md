@@ -1133,3 +1133,67 @@ branches from template names. Room-graph edge counting must avoid double-countin
 the overlapping approach cells. Focused lint initially rejected a redundant
 literal-list concatenation; combining that list preserves the measured route.
 The final route, Ruff, formatting and type checks pass.
+
+## Dungeon room geometry and buried sources declaration
+
+Child45 is one connected, rounded activity chamber centered near(-288,27,-2).
+Four chest assignments sit directly above four spawners atfloorY26: witch north
+(-288,-4), spider east(-286,-2), zombie south(-288,0) and skeleton west(-290,-2).
+All haveDelay0 and the already recorded source parameters. The four chest/spawner
+pairs are not four rooms or four realized enemies. Loot access and source access
+must be distinguished: the floor conceals each source's side faces from an actor
+standing atfeet27, while its chest covers the top.
+
+Predeclare a native chest survey from(-288,27,-14) south to(-288,27,-5), then
+a24-block rectangular circuit aroundX-291..-285,Z-5..1 returning to that point
+and the entry. Inspect each chest from its adjacent outward station, respectively
+(-288,-5),(-285,-2),(-288,1),(-291,-2), allfeet27. Check chest lids and rays, full
+adult clearance and the complete ring before any source-exposure edits. Keep
+dry environmental sculk veins distinct from authored chamber content.
+
+For explicit source access after that native survey, predeclare four separate
+one-block floor holes at those outward stations. Their retainedY25 supports
+are full stone. At the east/west stations first remove the dry sculk vein atY27,
+then remove the masonry floorY26, descend tofeet26 and mine the adjacent spawner
+through its exposed side. Leave the chest intact. Return to an adjacent unchanged
+floor cell with a one-block ascent. Verify each ordered interaction ray and
+transition against its own hypothetical edits; no spawner may be treated as
+already removed during the native survey. This establishes access and source
+removal work, not successful pre-activation suppression or combat. Delay0 means
+no positive grace period may be asserted. Encounter conditions and active time
+remain required before a complete task total.
+
+The native42-horizontal-block chest survey passes. The first source-exposure
+run then stopped on the west station's adjacent dry sculk vein at(-291,27,-3):
+the ray checker treated that entire cell as opaque. This was a conservative
+outline limitation, not a failed floor or a demonstrated extra removal. Pinned
+`SculkVeinBlock` inherits `MultifaceBlock`; its cached outline combines active
+directional faces, each one sixteenth of a block thick. The downward face uses
+Y0..1/16, so the rejected ray'sY27.999593 point is above that face. Extend the
+existing vine-face treatment to dry sculk veins, adding the downward face and
+retaining rejection of unsupported/no-face states and waterlogged cells. Do not
+generalize other block shapes or relabel outline checks as runtime interactions.
+
+Reproduce with the bound SRG classpath and pinned `javap -c -p` command for
+`net.minecraft.world.level.block.MultifaceBlock` and
+`net.minecraft.world.level.block.SculkVeinBlock`. Inspect the constructor's shape
+cache, `getShape`, `calculateMultifaceShape`, and static face-box initializer.
+Keep the original failed invocation here; rerun the same ordered exposure plan.
+
+The unchanged exposure plan passes after resolving that outline. Four floor
+holes expose all four spawner side faces, with intact chest blocks and full stone
+support below the actor. Each local descent/ascent is one block, with no assumed
+fall damage or placement. The east/west target veins are explicitly removed;
+the intervening west-side vein stays in place and the accepted ray passes above
+its actual plate. No generic non-air exception was introduced.
+
+Active manipulation work is four masonry removals at six ticks each, four
+diamond-pick spawner removals at19 ticks each and two hand vein removals at six
+ticks each:112 ticks (5.6 seconds). The pinned `Blocks` initializer gives sculk
+vein hardness0.2 at offsets36526..36529; the existing mining model supplies the
+other values. This excludes selections, aiming, movement between exposure
+stations, encounter work and final verification, all still required for the
+complete objective budget. It does not imply suppressing any source before its
+first attempt. The chamber is nonempty because of its source and reward content;
+four distinct explicit source types are supported, realized enemy counts are not.
+Route execution, Ruff, formatting and type checks pass. Raw evidence is unchanged.
