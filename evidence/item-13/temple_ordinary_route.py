@@ -476,3 +476,91 @@ for center_z in (367, 384):
         2 * (len(upper_tower_path) - 1),
         "H return; one web, two button operations, two chest rays; lower floors pending",
     )
+
+for center_z in (367, 384):
+    inner_removed = set()
+    inner_doors = set()
+    inner_feet = set()
+    inner_clear, inner_verify = importlib.import_module(
+        "evidence.item-13.temple_geometry"
+    ).path_checks(case, inner_removed, inner_doors, inner_feet)
+    inner_rays = {}
+    inner_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+        case, inner_removed, inner_rays
+    )
+    crossing = [(x, 32, center_z + 1) for x in (184, 183, 182)]
+    closed_failure = None
+    try:
+        inner_verify(crossing)
+    except AssertionError as error:
+        closed_failure = error.args[0]
+    assert closed_failure is not None
+    assert closed_failure[1:] == ((183, 32, center_z + 1), "minecraft:iron_door")
+    for x, facing, face_x in ((184, "east", 184.0625), (182, "west", 182.9375)):
+        button = (x, 34, center_z + 1)
+        assert at(case, *button) == {
+            "Name": "minecraft:stone_button",
+            "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+        }
+        inner_ray((x + 0.5, 33.62, center_z + 1.5), (face_x, 34.5, center_z + 1.5), button)
+    for y, half in ((32, "lower"), (33, "upper")):
+        door = (183, y, center_z + 1)
+        assert at(case, *door) == {
+            "Name": "minecraft:iron_door",
+            "Properties": {
+                "facing": "west",
+                "half": half,
+                "hinge": "right",
+                "open": "false",
+                "powered": "false",
+            },
+        }
+        inner_doors.add(door)
+    room_link = [(x, 32, center_z + 1) for x in range(185, 180, -1)]
+    inner_verify(room_link)
+    inner_verify(list(reversed(room_link)))
+    floor = (181, 31, center_z)
+    assert at(case, *floor)["Name"] == "minecraft:stone_bricks"
+    inner_ray((181.5, 33.62, center_z + 1.5), (181.5, 31.999, center_z + 0.5), floor)
+    inner_removed.add(floor)
+    assert at(case, 181, 27, center_z)["Name"] in {
+        "minecraft:stone_bricks",
+        "minecraft:cracked_stone_bricks",
+    }
+    assert all(at(case, 181, y, center_z)["Name"] == "minecraft:air" for y in range(28, 31))
+    inner_clear([181.2, 28, center_z + 0.2, 181.8, 33.8, center_z + 0.8])
+    lower = [(181, 28, center_z), (181, 28, center_z + 1)]
+    inner_verify(lower)
+    inner_verify(list(reversed(lower)))
+    # Base and repeated ordinary side clicks, from the adjacent supported station.
+    lower_eye = (181.5, 29.62, center_z + 1.5)
+    inner_ray(lower_eye, (181.5, 27.999, center_z + 0.5), (181, 27, center_z))
+    inner_ray(lower_eye, (181.5, 28.95, center_z + 1), (181, 28, center_z))
+    inner_feet.update((181, y, center_z) for y in range(28, 33))
+    column = [(181, y, center_z) for y in range(28, 33)]
+    inner_verify(column)
+    inner_verify(list(reversed(column)))
+    inner_verify([(181, 32, center_z), (181, 32, center_z + 1)])
+    inner_verify([(181, 32, center_z + 1), (181, 32, center_z)])
+    trapdoor = at(case, 180, 31, center_z)
+    assert trapdoor == {
+        "Name": "minecraft:oak_trapdoor",
+        "Properties": {
+            "facing": "east",
+            "half": "top",
+            "open": "false",
+            "powered": "false",
+            "waterlogged": "true",
+        },
+    }
+    wire = at(case, 180, 28, center_z)
+    assert wire["Name"] == "minecraft:tripwire"
+    assert wire["Properties"]["attached"] == "true"
+    assert wire["Properties"]["disarmed"] == "false"
+    assert wire["Properties"]["powered"] == "false"
+    print(
+        "PASS western tower middle connection",
+        center_z,
+        "12H/8V return, one masonry removal, four scaffolds, two inner button operations; "
+        "closed trapdoor/tripwire untouched, initial four-block fall retained",
+    )

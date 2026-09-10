@@ -3604,3 +3604,60 @@ Reproduce the upper positive/negative routes, button/chest rays and counts with
 states are direct queries of the same hash-bound extraction. Focused Ruff,
 formatting and type checks pass. No new runtime or common geometry machinery was
 added; Item13 remains IN PROGRESS.
+
+## Western tower pair: middle-floor connection declaration
+
+For each center Z367/384, extend the known upper reward route from(185,32,Z+1)
+through the second ordinary timed door to(181,32,Z+1). Use its buttons from both
+sides. Instead of opening the waterlogged trapdoor over the tripwire, remove the
+single adjacent masonry floor(181,31,Z), make the controlled four-block descent
+to(181,28,Z), and step south to(181,28,Z+1). Place four carried scaffolds at
+X181,Z,Y28..31 on the saved masonry floorY27, using the established base-side-click
+extension rule. Return through this column and the inner door. Keep the trapdoor
+closed and all tripwire untouched. No runtime placement, trap firing or safe
+landing is implied. Fluid arrival, damage requiring recovery, hostile displacement
+or failed support/placement invalidates this successful connection case. Lower
+reward routes and complete tower timing remain separate required work.
+
+## Western tower pair: middle-floor connection result
+
+Both retained cases pass independently. The inner iron doors at(183,Y32..33,Z+1)
+are west-facing, right-hinged and saved closed. Each closed crossing is rejected;
+the ordinary source-open plate geometry passes. Exact inside/outside wall-button
+rays pass at X182/X184,Y34,Z+1. Use the same two-block/30-tick crossing condition
+as the outer gate and a separate return press. The supported room link from
+X185 to X181 at feet32,Z+1 is four horizontal blocks in each direction.
+
+From(181.5,32,Z+1.5), the removal ray reaches the top of stone brick(181,31,Z).
+Its declared removal leaves a full-height .6-wide column to feet28. All saved
+Y28..30 cells at X181,Z are air, with full masonry supportY27: cracked stone
+bricks in the northern tower, stone bricks in the southern. Both lower adjacent
+stations at(181,28,Z+1) have supported forward/return access. Floor-placement
+and repeated base-side-click rays pass from the adjacent lower station; the
+four distance-zero scaffolds occupy Y28..31. Their column and upper/lower transfers
+pass the existing clearance/support rules. No new scaffold or fluid shortcut was
+added to the shared checker.
+
+Per tower, this connection adds12 horizontal and eight vertical return-route
+blocks, one masonry removal, four scaffold placements and two inner-button
+operations. Six active dry grounded mining ticks apply to the masonry. Placement,
+button aiming, decisions and selections still require their full-tower accounting;
+these components are not a complete traversal time. The initial descent is a
+four-block fall, not a scaffold descent before the scaffold exists. The existing
+pinned nominal fall formula requests one damage for that stipulated distance on
+ordinary masonry; live fall distance, health change and survival are not measured.
+
+The route's column/body remains east of the original tripwire cell X180, with
+minimum bodyX181.2; it does not enter that cell's contact volume. The trapdoor
+remains closed and waterlogged, and the tripwire remains attached, armed and
+unpowered in the saved evidence. This validates a local geometric avoidance,
+not a runtime claim that the trap never fires or that neighboring water remains
+stable. Fluid arrival, lost support or an unsafe landing still invalidates the
+successful dry connection case. Neither input world nor raw block evidence was
+mutated. Lower reward circulation and the subsequent descent still need their
+own integration before a complete tower claim.
+
+Reproduce both closed-door failures, open paths, removal/placement rays, column
+support and retained trap states with
+`uv run python -m evidence.item-13.temple_ordinary_route`. Focused Ruff, formatting
+and type checks pass. The active handoff preserves the remaining lower-floor work.
