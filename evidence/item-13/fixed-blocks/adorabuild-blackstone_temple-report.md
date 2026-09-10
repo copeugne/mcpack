@@ -291,3 +291,22 @@ is two raw occurrences of one fixed material outcome, not additional variant
 coverage or proof of the processor's empirical probabilities. No duplicate full
 quality report or render is necessary to establish that exact missing outcome.
 The original r2 assessment remains the selected primary case.
+
+
+## Alternate-material source inputs for the declared placement diagnostic
+
+Pinned Blocks registers ancient debris with hardness30 and lodestone with
+hardness3.5; both require the correct tool for drops. Both are full block
+geometries in the packaged template replacement, not extra rooms. The captured
+Items initializer explicitly applies fireResistant to the ancient-debris
+BlockItem (offsets769..785); lodestone uses ordinary registerBlock at22841..22847.
+This supports a difference in item fire resistance, not a claim that a player
+can safely enter lava or that any drop has been acquired. The registered processor
+changes the central block, not the surrounding route. Actual processed and saved
+variant states must still pass the predeclared runtime check before integration.
+
+For the same declared grounded dry diamond pick, the nominal work rule is
+ceil(hardness*30/8) ticks. Preserve the existing complete task's movement, input,
+construction, combat and conditional acquisition accounting; substitute only
+central-block mining work when the saved replacement relationship is verified.
+Do not silently delete the Nether temple catcher just because debris resists fire.
