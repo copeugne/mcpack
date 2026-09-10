@@ -692,3 +692,62 @@ assessed only for their selected gold outcome. The next concrete coverage gap
 is their debris/lodestone processor outcomes; inspect existing candidates and
 source material behavior before proposing additional generation. Whole Item 13
 coverage, acceptance and reviewed main delivery remain IN PROGRESS.
+
+## Temple processor-outcome availability and bounded remaining read
+
+Existing Item 13 candidate/assembly records contain exactly two baseline
+blackstone-temple starts (ocean-heavy r1/r2 at29,-8) and one Nether-temple start
+(mountainous r1 at20,31). The selected r2 blackstone and sole Nether temple are
+already extracted and both have gold. The complete Item 8 world-bounds projection
+contains no start for either root, and both intake prior_world_candidates lists
+are empty. These are existing-evidence availability findings, not proof that a
+rare outcome cannot generate. Omit-Sparse worlds remain controls, not substitutes
+for the required frozen baseline. Do not repeat completed index processing.
+
+Before proposing any new generation, extract the one unmeasured baseline
+blackstone temple: full-ocean-heavy-r1-baseline|minecraft:the_nether|adorabuild_structures:blackstone_temple_small_1|29|-8.
+The saved assembly has the required named component and no incomplete padded
+chunks. This is the entire remaining baseline candidate set for these roots,
+selected independently of its still-unknown material outcome. Retain it even if
+it repeats gold. Reuse measure.py and its existing selection format, no new reader.
+Budget:2366 voxels,300 seconds,10 MiB output,1.5 GiB RSS,5 GiB free-space floor;
+prior same-sized extraction took6.158 seconds and2158 compressed bytes. The
+existing complete before/after inventory checks and POSIX lock remain mandatory.
+This read-only extraction is not a new runtime experiment and changes no world.
+
+Reproduce the supplementary selection from the already bound metadata:
+
+```sh
+uv run python - <<'TEMPLE_SELECTION'
+import hashlib, json
+from pathlib import Path
+p = Path('evidence/item-13')
+plan = json.loads((p/'fixed-adorabuild-selection.json').read_text())
+root = 'adorabuild_structures:blackstone_temple_small_1'
+row = next(r for r in plan['selected'] if r['root'] == root)
+raw = (p/'candidates.json').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == plan['input_sha256']['candidates']
+remaining = [r for r in json.loads(raw)['candidates'] if r['root'] == root and r['id'] != row['candidate_id']]
+assert len(remaining) == 1
+case = remaining[0]
+assert case['bounds'] == row['bounds'] and case['voxel_count'] == row['voxel_count']
+plan['selected'] = [{**row,'candidate_id':case['id']}]
+plan['scope'] = 'Entire remaining baseline temple candidate set; processor outcome unknown before extraction'
+# Summary belongs to the original five-root plan and must not survive narrowing.
+plan.pop('summary',None)
+Path('/tmp/item13-temple-remaining-selection.json').write_text(json.dumps(plan,indent=2,sort_keys=True)+'\n')
+TEMPLE_SELECTION
+cmp evidence/item-13/temple-remaining-selection.json /tmp/item13-temple-remaining-selection.json
+uv run python -m evidence.item-13.measure --fixed-root adorabuild_structures:blackstone_temple_small_1 --selection evidence/item-13/temple-remaining-selection.json --output /tmp/item13-blackstone-temple-r1.json.gz
+cmp evidence/item-13/fixed-blocks/adorabuild-blackstone_temple-r1.json.gz /tmp/item13-blackstone-temple-r1.json.gz
+```
+
+Result: the supplementary r1 raw extract is retained and also contains gold.
+Both blackstone-temple baseline candidates and the sole Nether-temple baseline
+candidate are now inspected for their central outcome. The exact remaining
+generated-evidence gap is four family/outcome cells: blackstone temple debris,
+blackstone temple lodestone, Nether temple debris and Nether temple lodestone.
+Source geometry and gold-case route evidence are available; the missing outcomes
+are not silently filled by changed blocks or controls. Define a minimal controlled
+placement/processor experiment under fresh verified materialization before any
+runtime work; no broad new density survey or frozen configuration edit is needed.

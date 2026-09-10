@@ -274,3 +274,20 @@ for name,u,n,a,selection,k,verify in [
           42/u+work_ticks/20+13*n+12*a+selection+9*k+verify)
 TEMPLE_TASK
 ```
+
+## Supplementary baseline material check
+
+The [predeclared remaining-candidate read](../coverage.md#temple-processor-outcome-availability-and-bounded-remaining-read)
+completed for ocean-heavy r1 at29,-8. Its [raw extract](adorabuild-blackstone_temple-r1.json.gz)
+has SHA-256fd836a1e3e4b7434dd47e19180273013b300e89e2941d7ce3e20a963ae68000b:
+2366 voxels,2030 compressed bytes,5.189525 seconds,45,604 KiB peak RSS. The
+[execution output](adorabuild-blackstone_temple-r1-execution.txt) is retained.
+The unchanged reader passed its full before/after world inventories under the
+existing POSIX lock. No server or world mutation occurred.
+
+Its central cell (467,35,-125) is also minecraft:gold_block. Thus both indexed
+baseline starts have gold; neither supplies generated debris or lodestone. This
+is two raw occurrences of one fixed material outcome, not additional variant
+coverage or proof of the processor's empirical probabilities. No duplicate full
+quality report or render is necessary to establish that exact missing outcome.
+The original r2 assessment remains the selected primary case.
