@@ -16,8 +16,9 @@ and quality assessment using this accounting method; adapt objectives, source wo
 phase counts and failure conditions to each layout before calculating results.
 Both Circle cases now have complete conditional budgets; the original overlap
 requires a repeated-batch source model. Medium House 2 now has a complete
-four-barrel task budget of 64/116/207 seconds. Medium House 1 and the compact
-pilot still need complete budgets. All 192 included families and final review/delivery remain required.
+four-barrel task budget of 64/116/207 seconds. Medium House 1 has a complete
+three-container 68/119/202-second budget with pre-delay source disablement.
+The compact pilot still needs complete budgets. All 192 included families and final review/delivery remain required.
 
 ## Authorized method and delivery boundary
 

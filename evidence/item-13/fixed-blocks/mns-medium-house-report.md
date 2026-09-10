@@ -1,8 +1,8 @@
-# Medium House 1: developing quality assessment
+# Medium House 1: quality assessment
 
-Status: local modeled/inspection assessment recorded for this selected fixed
-Nether layout. Family coverage, raw capture custody and Item 13 delivery remain
-IN PROGRESS. Evidence classes below are deliberately separate.
+Status: local modeled/inspection assessment and complete conditional task timing
+recorded for this selected fixed Nether layout. Raw-capture custody is delivered.
+Family coverage and Item 13 delivery remain IN PROGRESS.
 
 Sample: `full-ordinary-r1-baseline|minecraft:the_nether|mns:medium_house|29|27`.
 [Saved blocks](mns-medium-house.json.gz), [selection](../fixed-moog-selection.json),
@@ -328,6 +328,125 @@ opening and acquired loot remain NOT MEASURED. Empty-spawner decoding/type
 disposition is resolved; actual activation and encounters remain outside the authorized observed metrics.
 Roof approach and mining time remain conditional/unmeasured. Preserve the room
 sensitivity and modeled-versus-observed boundaries. This report does not claim
-complete family sampling, completed raw-capture custody or review/merge delivery.
-The Medium House 2 material layout still requires its own quality assessment;
-its two empty-spawner dispositions are already resolved and should be reused.
+complete family sampling or review/merge delivery. Raw-capture custody and
+the separate Medium House 2 local assessment are now recorded in their linked
+evidence; its two empty-spawner dispositions remain unchanged.
+
+## Complete three-container task with source-first schedule
+
+This correction completes local conditional timing, preserving the earlier
+movement-only circuit and combat-potential grid as separate components. Use the
+same accepted actor and A/B/C allowances as the other complete tasks, with a
+diamond pickaxe and three scaffolds. Start/end at (467.5,45,435.5), full health
+and food, unenchanted iron armor/sword, no effects, external help, healing, flight
+or other construction, fully known layout and 20 TPS. The objective is to disable
+the one resolvable source, transfer available contents from all three containers,
+and return alive. Available inventory must accommodate those contents; otherwise
+censor. Empty assignments remain untouched. Neither source potential nor menu
+access is relabeled as an observed enemy or acquired loot.
+
+Stipulate no pre-existing or natural enemies and preserve the actual piglin
+source Delay 733. Take the existing r3 route without looting first. At
+(465.5,47.5,431.5), after the outbound trapdoor step, stand on the bottom slab.
+Air at Y48/49 gives upright clearance away from the central lantern. Aim from
+eye (465.5,49.12,431.5) at source center (465.5,48.5,430.5). At its south face
+Z431 the ray is Y48.81, below the unlit campfire at Y49, crossing only preceding
+air. Remove the source with the supported grounded diamond-pick model. Then
+crouch to continue to the eastern barrel, stand for transfer, crouch to return,
+and stand at the western chest for its checked transfer before descending.
+The source stop lies on the existing route and adds no horizontal travel.
+
+Source disablement includes ten lower upright blocks, four balcony crouched
+blocks, 2.5 vine blocks and 0.625 trapdoor step/drop blocks, plus 0.95 seconds
+of source breaking, ten decisions, one targeting and one initial tool selection.
+The ten decisions are initial orientation, two lower turns, lower/upper vine
+transitions, balcony crouch choice, drop and step transitions, then source stance
+and target ordering. Use accepted A/B/C vine speeds 1.5/1/0.75, and retain the
+predeclared explicit step/drop speeds 1/0.5/0.25 from the collision protocol.
+D=10/u+4/c+2.5/v+0.625/j+0.95+10n+a+s gives **13.408333 / 21.533333 /
+31.561111 seconds**. All are below 733/20=36.65 seconds, even if activation
+countdown runs throughout. No successful source batch occurs under this model's
+saved-delay, empty-initial-state conditions. Combat work is therefore zero for
+this complete task, not an invented two-piglin encounter. A later arrival or
+initial entities invalidates that conclusion. The earlier conditional 1.95 seconds
+per ordinary piglin remains the source workload assessment, not an added term
+when no modeled entity exists.
+
+On the lower return segment, stop at (464.5,45,433.5) to reach the roof barrel
+from below. Remove the south-facing warped wall sign at (464,45,432), without
+using it. Its face is reachable through lower-room air. Place three scaffolds
+at (464,Y45..47,432) on the full stripped-warped-hyphae floor Y44, extending
+upward by base side clicks as in the checked second-house branch. Saved Y46..49
+in that column are air. Walk north one block into the column, climb three to
+feet (464.5,48,432.5), and stand upright with head below Y49.8. The neighboring
+lantern at Z433 lies outside this centered 0.6-wide body.
+
+Mine the stripped crimson stem at (464,50,432) from below: its underside is
+0.38 above eye Y49.62. The roof barrel's bottom at Y51 is then 1.38 above that
+eye through the emptied stem cell. Its saved facing west does not prevent barrel
+use from below, and the existing no-Lock/no-lid-test rule applies. Transfer,
+descend, and walk south one block to resume the return circuit. Keep the scaffold
+and breach. This branch adds two horizontal/six vertical blocks, three placements
+and two removals. It does not create another authored room or require the prior
+three-block top-down roof breach. All three reward nodes now have conditional
+access; their original room/cavity assignments remain unchanged.
+
+| Full-task cost | Accounting |
+| --- | --- |
+| Travel | 22 upright horizontal, 10 crouched horizontal, 11 vine/scaffold vertical and 1.25 step/drop blocks |
+| Decisions | 28: initial orientation (1), lower turns each way (4), vine entry/exit each way (4), initial balcony crouch (1), drop/step each way (4), source stance/order (2), source-to-east-barrel and return poses (3), west chest stand/resume (2), final return (1), roof construction, entry/climb, mining stop, transfer, descent and resumption (6) |
+| Interactions | 93: three 27-slot containers at 29 operations each, three block removals and three placements; saved-open entry needs no opening input |
+| Selections | 3: initial pickaxe, scaffolding, pickaxe for roof stem; no sword selection without combat |
+| Acquisition | Three inventory-confirmation allowances; menu inputs charged separately |
+| Mining | Source 19 ticks, wall sign 30 ticks and stem 60 ticks, total 109 ticks / 5.45 seconds |
+| Combat | Zero under the strict pre-delay disablement and no-initial/external-entities conditions |
+| Completion | One accepted final verification allowance |
+
+The pinned Blocks initializer gives warped_wall_sign strength 1, and netherStem
+strength 2. Neither requires a correct tool or is a pickaxe-speed target, so
+those two removals use speed 1, while the spawner uses diamond speed 8. The
+existing source/model reproduction establishes the same whole-tick work formula.
+Menus include opening, 27 conditional transfer attempts and closing; pickup of
+decorative block drops is not a required reward objective and is not credited.
+
+Complete conditional A/B/C totals are **68.100000 / 118.783333 / 201.561111
+seconds**, approximately **68/119/202 seconds**. These are stipulated task
+budgets, not measured or typical human clears. Censor if source disablement does
+not precede the retained delay, any unmodeled enemy intervenes, survival or
+inventory capacity fails, or placement, support, mining, interaction or timing
+conditions exceed the declared assumptions. No physical experiment was run.
+The former two-container ordinary route becomes a three-container constructed
+route, while native graph depth, room sensitivity, hazards and finale NONE remain.
+Family/material repetitions and Item 13 review/merge delivery are still pending.
+
+Reproduce the new source/roof facts and arithmetic without a new extractor:
+
+```sh
+uv run python - <<'HOUSE1_COMPLETE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+raw = Path('evidence/item-13/fixed-blocks/mns-medium-house.json.gz').read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+state = importlib.import_module('evidence.item-13.render_pilot').state_at
+for y in (48,49):
+    assert state(case,465,y,431)['Name'] == 'minecraft:air'
+assert state(case,465,47,431)['Properties']['type'] == 'bottom'
+assert state(case,465,48,430)['Name'] == 'minecraft:spawner'
+expected = {44:'stripped_warped_hyphae',45:'warped_wall_sign',46:'air',
+            47:'air',48:'air',49:'air',50:'stripped_crimson_stem',51:'barrel'}
+for y,name in expected.items():
+    assert state(case,464,y,432)['Name'] == 'minecraft:'+name
+source = next(b for b in case['block_entities'] if
+              (b['x'],b['y'],b['z']) == (465,48,430))
+assert source['Delay'] == 733
+profiles = [('A',5,1.5,1.5,1,.5,.25,.25,1,2),
+            ('B',4,1.2,1,.5,1,.5,.5,2,4),
+            ('C',3,.9,.75,.25,1.5,1,1,4,8)]
+for name,u,c,v,j,n,a,s,k,verify in profiles:
+    disable = 10/u+4/c+2.5/v+.625/j+.95+10*n+a+s
+    assert disable < source['Delay']/20
+    total = 22/u+10/c+11/v+1.25/j+5.45+28*n+93*a+3*s+3*k+verify
+    print(name, 'disable before first batch', disable, 'complete task', total)
+HOUSE1_COMPLETE
+```

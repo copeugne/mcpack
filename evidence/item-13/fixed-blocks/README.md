@@ -85,8 +85,9 @@ now records both validated vine links, modeled door opening, storage access,
 graph/depth sensitivity and quality assessments. Its complete four-barrel model
 adds a checked three-scaffold branch beneath the roof barrel and gives conditional
 64/116/207-second totals. Both variants retain human-observation limitations;
-all three existing raw captures now have delivered custody. First-house complete
-timing and family repetitions remain pending.
+all three existing raw captures now have delivered custody. The first-house
+three-container model gives 68/119/202 seconds with source disablement before its
+733-tick delay expires. Family repetitions remain pending.
 
 
 The [Nether Brick Circle assessment](mns-circle_nether_brick-report.md) records
