@@ -1229,3 +1229,67 @@ are bound explicitly in the same executable check. This resolves the library
 entrance and common front area, while preserving the obstructed reward disposition.
 Route, Ruff, formatting and type checks pass. No saved world or raw extraction
 was modified. The deeper aisle and reward work remains incomplete.
+
+## Library elevated reward remedy declaration
+
+Use two independent three-scaffold columns at(-302,Z-25) and(-305,Z-25),
+supported on their fullY26 floors. Reach each base from the common front area
+through the adjacent southern stance atZ-24. Clear the eastern base's web atY27
+with the iron sword and the western base's east-facing dry sculk vein atY27 by
+hand. Place the base and extend twice using the existing side-click rule. Climb
+tofeet30; the column has clearance throughY31.8 beneath the retainedY32 ceiling.
+Validate the complete climb column, placement rays and return descent.
+
+From each elevated station remove, in order, the adjacent upper stair atY31,
+the roof block directly above that stair atY32, and the chest's lid cap atY32.
+For the east chest these X coordinates are-301,-301,-300; for the west chest,
+-306,-306,-307, allZ-25. Aim at the stair's solid upper half, then the neighboring
+roof's underside and finally the exposed side of the lid cap. The intermediate
+roof removal is necessary to give a ray above the chest without targeting through
+it. Verify each ray before adding that hypothetical removal. Finally inspect the
+intact chest from the scaffold top and descend. No bookshelf or chest is destroyed.
+
+This remedy requires six scaffolds, six masonry removals, one web removal and
+one vein removal. It is an explicit engineering cost for the observed blocked
+state, not a correction to the frozen structure. No raw blocks are changed.
+Successful chest interaction and conditional GUI transfer remain distinct from
+actually generated or acquired items; complete scenario timing must include
+climbs, placements, selections, manipulation, acquisition and verification.
+
+Both remedies pass in their declared order. Each column supplies a three-block
+ascent and descent, for12 vertical blocks across the two local returns. Ground
+approaches from(-304,27,-22) are four blocks east-side and three west-side each
+way, plus two entry/exit blocks per column,18 horizontal blocks total. Active
+mining is50 ticks (2.5 seconds): six masonry blocks at six ticks each, one web
+at eight and one vein at six. Placement, movement, selection, acquisition and
+verification costs remain separate. The original capped state is preserved in
+checks preceding the hypothetical removals. The remedy is not a claim that the
+frozen layout offers ordinary unmodified chest access.
+
+Predeclare an aisle circuit from(-302,27,-25) north toZ-32, west toX-305, south
+toZ-25, south toZ-24, east toX-302 and north to the start. The east base web is
+already removed by the declared remedy. Seven additional webs intersect this
+route: east aisle(-302,28,-27),(-302,27,-31); rear(-303,27,-32); west aisle
+(-305,27,-31),(-305,28,-30),(-305,27,-30),(-305,27,-26). Remove them with the
+iron sword from the preceding standing cell before each advance, upper first
+where two share a cell. Verify each ray and the entire returned path. No bookshelf
+is removed to manufacture a loop. Additional active web work is56 ticks (2.8s).
+
+The first aisle run rejected the front return at(-304,27,-24), where the declared
+seven-web set omitted another intersecting web. Preserve that failure. Amend the
+same route to remove this eighth web from(-305,27,-24) before crossing east.
+The accepted additional web budget becomes64 ticks (3.2s), superseding the
+seven-web estimate above; this is an added real obstruction, not a shape exemption.
+
+The amended22-horizontal-block aisle circuit passes all eight ordered web rays
+and both traversal directions without removing shelves. The front and rear
+connections support one library activity room with an internal aisle loop; that
+loop is not automatically a separate cycle in the inter-room graph. Combined
+library manipulation is six masonry blocks, nine webs (including the eastern
+scaffold base) and one vein, plus six scaffold placements. Active mining totals
+114 ticks (5.7s); full task phases remain to be integrated without double-counting
+overlapping front/aisle approaches. The room is not empty/dead: shelves provide
+salvage and the two assigned rewards have explicit, costly access. No final-room
+role or observed replay enjoyment follows from those facts. Both original blocked
+lids and the rejected seven-web plan remain recorded. The route, Ruff, formatting
+and type checks pass; all raw evidence remains unchanged.

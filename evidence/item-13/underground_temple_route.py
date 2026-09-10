@@ -834,3 +834,75 @@ for x, lid in ((-307, "minecraft:stone_bricks"), (-300, "minecraft:mossy_stone_b
     assert at(c, x, 31, -25)["Name"] == "minecraft:chest"
     assert at(c, x, 32, -25)["Name"] == lid
 print("PASS library front circuit:", len(library_front) - 1, "horizontal; both chest lids blocked")
+
+# Explicit elevation and lid breach; original blocked-state checks precede these edits.
+for x, adjacent, chest_x in ((-302, -301, -300), (-305, -306, -307)):
+    approach = (
+        [(-304, 27, -22), (-303, 27, -22), (-302, 27, -22), (-302, 27, -23), (-302, 27, -24)]
+        if x == -302
+        else [(-304, 27, -22), (-304, 27, -23), (-305, 27, -23), (-305, 27, -24)]
+    )
+    verify_path(approach)
+    verify_path(list(reversed(approach)))
+    eye = (x + 0.5, 28.62, -23.5)
+    target = (x, 27, -25)
+    expected = "minecraft:cobweb" if x == -302 else "minecraft:sculk_vein"
+    assert at(c, *target)["Name"] == expected
+    endpoint = (x + 0.5, 27.5, -24.5) if x == -302 else (x + 0.96875, 27.5, -24.5)
+    check_ray(eye, endpoint, target)
+    removed.add(target)
+    assert at(c, x, 26, -25)["Name"] in {"minecraft:stone_bricks", "minecraft:cracked_stone_bricks"}
+    check_ray(eye, (x + 0.5, 27, -24.5), (x, 26, -25))
+    check_ray(eye, (x + 0.5, 27.95, -24), (x, 27, -25))
+    clear([x + 0.2, 27, -24.8, x + 0.8, 31.8, -24.2])
+    verify_path([(x, 27, -24), (x, 27, -25)])
+    verify_path([(x, 27, -25), (x, 27, -24)])
+    eye = (x + 0.5, 31.62, -24.5)
+    stair = (adjacent, 31, -25)
+    assert at(c, *stair)["Name"].endswith("stone_brick_stairs")
+    assert at(c, *stair)["Properties"]["half"] == "top"
+    check_ray(eye, (adjacent + 0.5, 31.75, -24.5), stair)
+    removed.add(stair)
+    roof = (adjacent, 32, -25)
+    assert at(c, *roof)["Name"] == "minecraft:stone_bricks"
+    check_ray(eye, (adjacent + 0.5, 32, -24.5), roof)
+    removed.add(roof)
+    lid = (chest_x, 32, -25)
+    face_x = chest_x if chest_x > x else chest_x + 1
+    check_ray(eye, (face_x, 32.5, -24.5), lid)
+    removed.add(lid)
+    chest = (chest_x, 31, -25)
+    face_x += 0.0625 if chest_x > x else -0.0625
+    check_ray(eye, (face_x, 31.5, -24.5), chest)
+print("PASS both library chest remedies: six scaffolds, six masonry, one web and one vein")
+
+library_aisles = (
+    [(-302, 27, z) for z in range(-25, -33, -1)]
+    + [(x, 27, -32) for x in range(-303, -306, -1)]
+    + [(-305, 27, z) for z in range(-31, -23)]
+    + [(x, 27, -24) for x in range(-304, -301)]
+    + [(-302, 27, -25)]
+)
+aisle_webs = {
+    (-302, 28, -27),
+    (-302, 27, -31),
+    (-303, 27, -32),
+    (-305, 27, -31),
+    (-305, 28, -30),
+    (-305, 27, -30),
+    (-305, 27, -26),
+    (-304, 27, -24),
+}
+handled = set()
+for a, b in pairwise(library_aisles):
+    for y in (28, 27):
+        target = (b[0], y, b[2])
+        if target in aisle_webs:
+            assert at(c, *target)["Name"] == "minecraft:cobweb"
+            check_ray((a[0] + 0.5, 28.62, a[2] + 0.5), (b[0] + 0.5, y + 0.5, b[2] + 0.5), target)
+            removed.add(target)
+            handled.add(target)
+    verify_path([a, b])
+assert handled == aisle_webs
+verify_path(list(reversed(library_aisles)))
+print("PASS library aisle circuit:", len(library_aisles) - 1, "horizontal; eight additional webs")

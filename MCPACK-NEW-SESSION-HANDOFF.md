@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `f1e7e3f6`; verify subsequent assessment commits against upstream.
+checkpoint is `962850f5`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -188,14 +188,14 @@ The lower two-door route now passes; its eastern branch descends six blocks to a
 validated rim; pit continuation below rawY21 is unresolved. Tower floor bands now
 connect39/35/31/27. Bedroom access andjunctions pass. Dungeon four-chest survey
 andburied-source exposure pass; library front route passes but both high chest lids
-are capped by masonry. Library aisles/retrieval and complete timing remain unresolved.
+are capped by masonry. Scaffold/breach remedies andthe aisle circuit now pass;
+their costs andfailed first aisle plan are retained. Complete timing remains unresolved.
 
-Next finish the library and remaining rooms, source/sculk handling and timing,
+Next finish remaining rooms, source/sculk handling and timing,
 hazards, finale, bypasses and replay. Then execute the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
-The courtyard remains included with no indexed start; inspect other raw before experiments.
-Do not repeat completed reads/models for reassurance. Check central-End raw before an arena gap.
+Courtyard andcentral-End gaps require checking other retained raw before experiments.
 
 Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and
 fetched origin/main verification. Item14 remains UNSTARTED.
