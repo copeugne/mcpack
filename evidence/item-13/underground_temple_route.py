@@ -1234,3 +1234,55 @@ for position, name in {
 campfire = at(c, -245, 33, 29)
 assert campfire["Name"] == "minecraft:campfire"
 assert campfire["Properties"]["lit"] == "true"
+
+# Activity/fixture footprints, not claims that every enclosed voxel is playable.
+# The report explains the room partition and its corridor/alcove sensitivity.
+room_bounds = {
+    "R01": (-295, 37, -7, -281, 41, 7),
+    "R02": (-295, 37, 21, -281, 41, 35),
+    "R03": (-290, 39, -35, -286, 41, -27),
+    "R04": (-290, 35, -40, -286, 37, -28),
+    "R05": (-290, 27, -40, -286, 29, -28),
+    "R06": (-285, 27, -25, -281, 30, -19),
+    "R07": (-307, 27, -32, -300, 31, -21),
+    "R08": (-295, 26, -9, -281, 34, 5),
+    "R09": (-278, 39, 22, -274, 40, 25),
+    "R10": (-272, 39, 22, -268, 40, 25),
+    "R11": (-252, 33, 5, -244, 37, 10),
+    "R12": (-272, 33, -1, -264, 35, 1),
+    "R13": (-312, 33, 6, -304, 35, 8),
+    "R14": (-318, 33, -7, -316, 35, 2),
+    "R15": (-312, 33, 27, -304, 35, 29),
+    "R16": (-301, 33, 32, -299, 35, 40),
+    "R17": (-296, 39, -24, -293, 41, -22),
+    "R18": (-277, 33, -18, -275, 35, -15),
+    "R19": (-247, 33, 27, -244, 35, 29),
+    "R20": (-301, 33, 43, -299, 35, 46),
+    "R21": (-278, 33, 15, -275, 35, 18),
+    "R22": (-290, 39, 45, -287, 41, 48),
+    "R23": (-325, 33, 5, -322, 35, 8),
+    "R24": (-296, 27, -16, -293, 29, -13),
+    "R25": (-283, 27, -15, -280, 29, -12),
+}
+room_entities = {room: Counter() for room in room_bounds}
+for entity in c["block_entities"]:
+    if entity["id"] not in {
+        "minecraft:chest",
+        "minecraft:barrel",
+        "minecraft:mob_spawner",
+        "minecraft:campfire",
+    }:
+        continue
+    rooms = [
+        room
+        for room, bounds in room_bounds.items()
+        if all(bounds[i] <= entity[axis] <= bounds[i + 3] for i, axis in enumerate("xyz"))
+    ]
+    assert len(rooms) == 1, (entity, rooms)
+    room_entities[rooms[0]][entity["id"]] += 1
+    if entity["id"] == "minecraft:campfire":
+        state = at(c, entity["x"], entity["y"], entity["z"])
+        assert state["Properties"]["lit"] == "true"
+        assert state["Properties"]["waterlogged"] == "false"
+for room, counts in room_entities.items():
+    print("Activity footprint", room, dict(counts))

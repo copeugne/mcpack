@@ -159,34 +159,22 @@ The first mountainous r2 read passed:322,905 cells,103,062 compressed bytes,
 31.442236s. Four saved slices were viewed. Nine explicit spawners coverfive enemy
 types; all haveDelay0. All33 temple loot assignments remain unrolled. Surrounding
 sculk is retained separately; none of22 hash-checked source palettes includes it.
-The [partial route check](evidence/item-13/underground_temple_route.py) now validates
-both hall floors/four spokes,eight chest approaches,northern corridor andtwo
-junctions. The first eastern shaft now has a conditional six-scaffold return and
-three lower arms; its six-block initial drop retains fall exposure. The lava
-centerline remains rejected. Failed native rubble routes are preserved; explicit
-nine-removal breaches now give both terminal return paths andsouthern chest access.
-The east corridor reaches its next junction after six webs/one source removal;
-source activation can precede corridor entry. The enchanting room now has native
-button-door access,two web removals,chest/facility rays and26-block return route.
-The north blind shaft andeast terminal connector now have32H/2V and30H/0V native
-inspection circuits. Local caps are verified; enemy absence remains unmeasured.
-Tower upper rewards have a34H native-door circuit with one web removal. A source-
-supported hatch trap has a14H/8V alternate link: one floor removal,four scaffolds,
-four-block initial fall. Middle chest now has an18H two-block piston-panel breach;
-The lower two-door route now passes; its eastern branch descends six blocks to a
-validated rim; pit continuation below rawY21 is unresolved. Tower floor bands now
-connect39/35/31/27. Bedroom access andjunctions pass. Dungeon four-chest survey
-andburied-source exposure pass; library front route passes but both high chest lids
-are capped by masonry. Scaffold/breach remedies andthe aisle circuit now pass;
-their costs/failure are retained. Both barred cells andtwo lower terminal rewards
-now pass;31/31 chest/barrel approaches are resolved locally. A dry overhead hall
-link passes with28 removals/eight scaffolds; wet side candidates are rejected.
-All nine saved sources now have local access/removal proofs, including southern shaft costs.
-The construction union is 112 unique removals, 951 active ticks at 20 TPS; 44 scaffold
-placements are declared. These subtotals exclude movement and encounters.
-Fourteen additional native excursions pass, including two six-block stair links.
-Lava/capped stubs and the eastern lower corridor's exposed ledge remain explicit
-graph boundaries; its eastern terminal's final ore-supported step is unvalidated.
+The [route check](evidence/item-13/underground_temple_route.py) validates local
+access to all31 chest/barrel assignments and all nine saved sources. It preserves
+native rubble/lava failures, blocked library lids, source holes, timed doors,
+three entrance shafts, three tower shafts and the earned overhead hall bypass.
+Their construction union is112 removals/951 active ticks, plus44 declared scaffold
+placements. These are conditional subtotals, not complete traversal/combat times.
+Fourteen additional native excursions include two six-block stair links. Capped
+stubs, lava boundaries, an exposed eastern ledge and one unvalidated ore-supported
+terminal step remain explicit limitations.
+
+The report now delineates25 activity spaces with coordinate footprints and
+partition sensitivity (source corridors, alcoves and tower transit floor).
+All31 reward nodes, nine spawners and nine lit campfires allocate exactly once.
+The primary potential-content definition gives0/25 empty/dead rooms; this is not
+observed occupancy or player engagement. The joined room graph, depth and
+complete task still require integration. Do not replace them with fixture counts.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

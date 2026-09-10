@@ -1609,3 +1609,97 @@ These results add two native six-block stair progressions and distinguish
 actual supported branches from lava continuations, capped stubs and an exposed
 ledge. No removal subtotal changes. Room-graph integration must retain the
 stated endpoints and must not connect across any of these unvalidated boundaries.
+
+## First assembly activity partition and reward/source allocation
+
+Apply the protocol's activity-space definition to the locally validated routes.
+The primary partition has 25 activity spaces listed below. Each is a delimited
+reward, furnishing, source or hazard area reached by a documented local route.
+This is an explicit interpretation of playable space, not a count of the 61
+serialized pieces. The `room_bounds` coordinates in the existing route executable
+bound each activity/fixture footprint, including its associated elevated or
+buried fixtures. They are not assertions that every voxel in a rectangular box
+is playable. Actual standing cells, obstacles and transitions remain defined by
+the route proofs above.
+
+| Room | Activity space | Main feet Y | Chest/barrel assignments | Saved sources | Other distinguishing content |
+| --- | --- | ---: | ---: | ---: | --- |
+| R01 | Northern main hall | 37..39 | 4 | 0 | Central gold block, four connected spokes |
+| R02 | Southern main hall | 37..39 | 4 | 0 | Central gold block, four connected spokes |
+| R03 | Tower upper reward floor | 39 | 2 | 0 | Button-controlled approach and northern exit |
+| R04 | Tower middle activity floor | 35 | 1 | 0 | Tripwire/dispenser zone and piston panel |
+| R05 | Tower bottom hazard floor | 27 | 0 | 0 | Lava channels with validated dry zigzag |
+| R06 | Bedroom | 27 | 6 | 0 | Two beds and furnace |
+| R07 | Library | 27, temporary columns to 30 | 2 | 0 | Shared front/rear aisles; blocked native lids |
+| R08 | Rounded dungeon chamber | 27, source holes 26 | 4 | 4 | Four different saved source types |
+| R09 | Western barred cell | 39 | 1 | 0 | Bed; explicit bar breach |
+| R10 | Eastern barred cell | 39 | 1 | 0 | Bed and empty cauldron; explicit bar breach |
+| R11 | Enchanting room | 33 | 1 | 0 | Enchanting and brewing fixtures |
+| R12 | Eastern source corridor | 33 | 0 | 1 | Delimited web/source obstacle zone |
+| R13 | Western source corridor | 33 | 0 | 1 | Delimited web/source obstacle zone |
+| R14 | Northwestern source corridor | 33 | 0 | 1 | Delimited web/source obstacle zone |
+| R15 | Southwestern west source corridor | 33 | 0 | 1 | Delimited web/source obstacle zone |
+| R16 | Southwestern south source corridor | 33 | 0 | 1 | Delimited web/source obstacle zone |
+| R17 | Northern upper terminal alcove | 39 | 0 | 0 | Lit campfire |
+| R18 | Eastern lower north terminal alcove | 33 | 0 | 0 | Lit campfire; rubble access remedy |
+| R19 | Far eastern lower terminal alcove | 33 | 0 | 0 | Lit campfire; final ore-supported step unvalidated |
+| R20 | Southwestern south terminal alcove | 33 | 0 | 0 | Lit campfire |
+| R21 | Eastern lower south reward alcove | 33 | 1 | 0 | Lit campfire; rubble access remedy |
+| R22 | Southern upper reward alcove | 39 | 1 | 0 | Lit campfire |
+| R23 | Western lower reward alcove | 33 | 1 | 0 | Lit campfire |
+| R24 | Lower western reward alcove | 27 | 1 | 0 | Lit campfire |
+| R25 | Lower eastern reward alcove | 27 | 1 | 0 | Lit campfire |
+
+The executable allocates each of the 31 saved chest/barrel assignments, nine
+spawners and nine campfires to exactly one declared footprint. Allocation passes;
+no fixture is omitted or counted twice. R08 contains the witch, spider, zombie
+and skeleton sources. Each of R12..R16 contains one cave-spider source. Thus six
+activity spaces contain saved spawners, with five source entity types across the
+assembly. This says nothing about realized enemy numbers or diversity. The two
+dispenser table assignments are trap inputs and stay outside the 31 ordinary
+reward-node denominator. All 33 table assignments remain unrolled.
+
+Partition sensitivity is explicit. Five source zones R12..R16 are corridor-shaped
+but host bounded web/source obstacles, so the primary definition counts them as
+activity spaces. Treating them only as connections gives 20 rooms. The nine small
+terminal alcoves R17..R25 are delimited end activities rather than through
+corridors; treating all nine as connection endpoints instead gives 16 rooms, or 11
+when both alternative conventions are applied. These are definitional alternatives,
+not statistical uncertainty or evidence that any content disappears. The library
+aisles, each bed, each chest and each spawner are not separate rooms. The tower's
+Y31 two-door transit floor is retained as a connector between floors and the
+eastern stair branch; counting that floor as another room would add one to any
+of these conventions. No single-room count should be compared with another
+family without preserving the same partition rules.
+
+Under the primary partition, no room meets the protocol's empty/dead definition
+on supported potential content: R01..R04, R06..R11, R21..R25 have reward assignments
+with local access; R05 has a required lava-avoidance route; R12..R16 have explicit
+sources/web obstacles; R17..R20 have reachable terminal campfire areas. This is
+0/25 empty and 0/25 dead under this content definition, not an assertion that
+every visit produces encounters, useful loot or meaningful player engagement.
+Quiet capped connectors are recorded separately and have not been hidden by
+calling every serialized intersection a room. The complete graph must still
+include their terminal routes and access purpose.
+
+For the campfire classification, the same pinned server SRG artifact used above
+contains `CampfireBlock.entityInside(BlockState,Level,BlockPos,Entity)`. Its
+bytecode checks `LIT`, requires a `LivingEntity`, then calls `Entity.hurt` using
+`DamageSources.campfire()` and the block's `fireDamage`. Reproduce inspection:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap \
+  -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar \
+  -c -p net.minecraft.world.level.block.CampfireBlock
+```
+
+The executable confirms all nine saved campfires are lit and not waterlogged.
+This establishes an avoidable contact-hazard mechanism at the listed alcoves;
+it does not establish actual damage, cooking output or combat displacement.
+The declared paths avoid contact. The zero empty/dead count must be read with
+that modest content threshold and the retained natural-encounter uncertainty.
+
+This partition and allocation are ready for graph integration. Whole-assembly
+reachability, graph depth, complete route length and timing still depend on the
+joined objective and its source/environment conditions; the table does not
+substitute for that required complete-route validation.
