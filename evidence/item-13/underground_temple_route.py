@@ -545,3 +545,43 @@ for x, facing in ((-290, "east"), (-286, "west")):
         "Properties": {"facing": facing, "triggered": "false"},
     }
 print("PASS tower alternate descent: one floor removal, four scaffolds; 4-block fall retained")
+
+# Middle piston-panel breach under the declared unchanged circuit condition.
+verify_path([(-288, 35, z) for z in range(-37, -34)])
+for y in (35, 36):
+    target = (-288, y, -34)
+    assert at(c, *target)["Name"] in {
+        "minecraft:cracked_stone_bricks",
+        "minecraft:chiseled_stone_bricks",
+    }
+    check_ray((-287.5, 36.62, -34.5), (-287.5, y + 0.5, -34), target)
+    removed.add(target)
+middle_route = [(-288, 35, z) for z in range(-37, -29)] + [
+    (-287, 35, -30),
+    (-287, 35, -29),
+]
+verify_path(middle_route)
+verify_path(list(reversed(middle_route)))
+assert at(c, -286, 35, -29)["Name"] == "minecraft:chest"
+assert at(c, -286, 36, -29)["Name"] == "minecraft:air"
+check_ray((-286.5, 36.62, -28.5), (-285.9375, 35.5, -28.5), (-286, 35, -29))
+for y in (35, 36, 37):
+    for x, facing in ((-291, "east"), (-285, "west")):
+        assert at(c, x, y, -34) == {
+            "Name": "minecraft:sticky_piston",
+            "Properties": {"extended": "true", "facing": facing},
+        }
+print("PASS middle chest: 18 horizontal return blocks; two-block panel breach conditional")
+
+target = (-287, 34, -30)
+assert at(c, *target)["Name"] == "minecraft:cracked_stone_bricks"
+check_ray((-286.5, 36.62, -28.5), (-286.5, 35, -29.5), target)
+removed.add(target)
+clear([-286.8, 31, -29.8, -286.2, 36.8, -29.2])
+clear([-286.8, 35, -29.8, -286.2, 36.8, -28.2])
+verify_path([(-287, 31, -30), (-287, 31, -29)])
+verify_path([(-287, 31, -29), (-287, 31, -30)])
+assert at(c, -287, 30, -30)["Name"] == "minecraft:stone_bricks"
+check_ray((-286.5, 32.62, -28.5), (-286.5, 31, -29.5), (-287, 30, -30))
+check_ray((-286.5, 32.62, -28.5), (-286.5, 31.95, -29), (-287, 31, -30))
+print("PASS next tower descent: one floor removal, four scaffolds; 4 horizontal/8 vertical return")

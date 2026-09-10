@@ -933,3 +933,45 @@ diamond-pick ticks (0.3 seconds); four placements, two button presses, tool
 selection and fall exposure must remain in the final scenario. The partial route
 command, focused Ruff and types pass. No runtime firing, fall, placement or player
 movement was observed.
+
+## Middle reward and next floor connection declaration
+
+The middle floor is divided atZ-34 by a three-high, three-wide masonry panel
+between extended sticky pistons atX-291 andX-285. Piston heads occupyX-290/-286;
+the centerX-288 remains solid atY35..37. Treat this as a native closed barrier,
+not an air corridor. Its powered circuit and the hatch tripwire are retained.
+
+Predeclare a controlled breach with unchanged circuit state and no entity
+triggering the wire. From the lower scaffold stance(-288,35,-37), advance toZ-35
+and remove the center panel cells(-288,35,-34), then(-288,36,-34), using the
+diamond pick. Proceed south toZ-30, east toX-287 and south toZ-29. Inspect the
+chest at(-286,35,-29) from that station and return by the same path. Check the
+ordered mining rays, route sweeps, chest ray and lid. This skips the native
+barrier mechanism with two masonry removals; any circuit transition or renewed
+obstruction censors this stipulated static scenario. The two removals contribute
+twelve active mining ticks (0.6 seconds), not a complete breach time.
+
+For the next floor, use a separate four-scaffold connection atX-287,Z-30.
+From the middle chest station, mine the floor(-287,34,-30), descend to feet31,
+and step south to(-287,31,-29). Place the scaffold base at(-287,31,-30) on the
+fullY30 floor, extend it three times by side clicks, then climb to feet35 and
+exit south. This avoids the web-filled original hatch columnX-288,Z-29. Validate
+the swept column and placement rays. Retain the four-block drop and one requested
+fall-damage point before hooks. No webs are silently removed. This demonstrates
+the return connection only; lower-floor room and final descent assessment remain.
+
+Both declared portions pass. The middle reward route is nine horizontal blocks
+each way (18 return), with no elevation change. Both ordered panel-removal rays,
+the chest ray and clear lid pass. All six boundary piston states are explicitly
+checked as extended. This resolves approach to the third saved `quest_tower`
+chest assignment, without asserting generated or acquired loot or operation of
+the intended piston puzzle. The three tower rewards now all have supported
+approaches under the stated native-door and breach conditions.
+
+The next descent has four horizontal blocks and eight vertical blocks for its
+local return circuit. The full adult column clears after the one floor removal;
+the lower southern stance, full base support and both placement rays pass. Four
+more scaffolds and six active mining ticks are required. The original web-filled
+hatch is preserved as a separate route, not silently treated as air. The source
+fall exposure remains one requested point before hooks. Route execution, focused
+Ruff and types pass. These are geometric and modeled results, not gameplay trials.
