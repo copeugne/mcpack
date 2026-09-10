@@ -57,7 +57,11 @@ public final class Item13ShaftMotionProbe {
                 status.getField("FULL").get(null),true));
         }
         CompletableFuture.allOf(pending.toArray(new CompletableFuture<?>[0])).get(30,TimeUnit.SECONDS);
-        FutureTask<Map<String,Object>> trial = new FutureTask<>(() -> motion(level,Path.of(output).resolveSibling("input.json.gz")));
+        String mode=Path.of(output).getFileName().toString();
+        if (!mode.equals("shaft-motion.json") && !mode.equals("shaft-motion-full.json"))
+            throw new IllegalArgumentException("Unknown shaft case");
+        boolean full=mode.equals("shaft-motion-full.json");
+        FutureTask<Map<String,Object>> trial = new FutureTask<>(() -> motion(level,Path.of(output).resolveSibling("input.json.gz"),full));
         call(server,"execute",new Class<?>[]{Runnable.class},trial);
         Map<String,Object> result = trial.get(30,TimeUnit.SECONDS);
         Object gson = type("com.google.gson.Gson").getConstructor().newInstance();
@@ -66,11 +70,25 @@ public final class Item13ShaftMotionProbe {
         if (result.get("rejection_reason") != null)
             throw new IllegalStateException("Motion pilot rejected; retained result describes failure");
     }
-    private static Map<String,Object> motion(Object level, Path input) throws Exception {
+    private static Map<String,Object> motion(Object level, Path input, boolean full) throws Exception {
         Map<String,Object> result = new LinkedHashMap<>();
         List<Map<String,Object>> rows = new ArrayList<>();
         result.put("method","Native manually stepped FakePlayer baseTick/aiStep; stationary world during query");
         result.put("steps",rows);
+        result.put("case",full?"continuous-shaft-return":"one-rising-step");
+        List<List<Double>> targets=new ArrayList<>();
+        if (full) {
+            int[][] perimeter={{195,342},{195,341},{196,341},{197,341},{197,342},{197,343},{196,343},{195,343}};
+            for (int i=0;i<17;i++) targets.add(List.of(perimeter[i%8][0]+.5,8.5+i,perimeter[i%8][1]+.5));
+            targets.add(List.of(196.5,25.5,342.5));
+            targets.add(List.of(194.5,26.,342.5));
+            targets.add(List.of(196.5,25.5,342.5));
+            for (int i=16;i>=0;i--) targets.add(List.of(perimeter[i%8][0]+.5,8.5+i,perimeter[i%8][1]+.5));
+            targets.add(List.of(195.5,8.,343.5));
+        } else targets.add(List.of(195.5,9.5,341.5));
+        result.put("targets",targets);
+        List<Map<String,Object>> landings=new ArrayList<>();
+        result.put("landings",landings);
         result.put("rejection_reason","pilot incomplete");
         Object actor = null;
         try {
@@ -96,7 +114,7 @@ public final class Item13ShaftMotionProbe {
             actor = type("net.neoforged.neoforge.common.util.FakePlayer")
                 .getConstructor(type("net.minecraft.server.level.ServerLevel"),type("com.mojang.authlib.GameProfile"))
                 .newInstance(level,profile);
-            call(actor,"setPos",new Class<?>[]{double.class,double.class,double.class},195.5,8.5,342.5);
+            call(actor,"setPos",new Class<?>[]{double.class,double.class,double.class},195.5,full?8.:8.5,full?343.5:342.5);
             call(actor,"setDeltaMovement",new Class<?>[]{double.class,double.class,double.class},0.0,0.0,0.0);
             call(actor,"setOnGround",new Class<?>[]{boolean.class},true);
             if (Math.abs(number(actor,"getBbWidth")-.6)>1e-6 || Math.abs(number(actor,"getBbHeight")-1.8)>1e-6)
@@ -123,7 +141,7 @@ public final class Item13ShaftMotionProbe {
             Class<?> blockPos = type("net.minecraft.core.BlockPos");
             List<String> initial = new ArrayList<>();
             result.put("initial_states_xyz",initial);
-            for (int x=194;x<=198;x++) for (int y=7;y<=13;y++) for (int z=340;z<=344;z++) {
+            for (int x=full?193:194;x<=(full?200:198);x++) for (int y=full?6:7;y<=(full?31:13);y++) for (int z=full?339:340;z<=(full?346:344);z++) {
                 Object p = blockPos.getConstructor(int.class,int.class,int.class).newInstance(x,y,z);
                 Object state = call(level,"getBlockState",new Class<?>[]{blockPos},p);
                 Map<String,Object> actual = new LinkedHashMap<>();
@@ -141,32 +159,50 @@ public final class Item13ShaftMotionProbe {
             }
             Class<?> boxType=type("net.minecraft.world.phys.AABB");
             Object box=boxType.getConstructor(double.class,double.class,double.class,double.class,double.class,double.class)
-                .newInstance(193.,7.,339.,200.,14.,346.);
+                .newInstance(193.,full?6.:7.,339.,200.,full?31.:14.,346.);
             List<?> entities=(List<?>)call(level,"getEntities",new Class<?>[]{type("net.minecraft.world.entity.Entity"),boxType},null,box);
             result.put("nearby_entities",entities.size());
             if (!entities.isEmpty()) throw new IllegalStateException("Other entities occupy pilot scope");
-            for (int tick=0;tick<=120;tick++) {
+            int targetIndex=0, targetStart=0;
+            for (int tick=0;tick<=120*targets.size();tick++) {
+                List<Double> target=targets.get(targetIndex);
                 Map<String,Object> row = new LinkedHashMap<>();
-                row.put("step",tick); row.put("position",position(actor));
+                row.put("step",tick); row.put("target_index",targetIndex); row.put("position",position(actor));
                 row.put("on_ground",get(actor,"onGround")); row.put("in_water",get(actor,"isInWater"));
+                row.put("pose",get(actor,"getPose").toString()); row.put("height",number(actor,"getBbHeight"));
                 Object velocity = get(actor,"getDeltaMovement");
                 row.put("velocity",List.of(velocity.getClass().getField("x").getDouble(velocity),
                     velocity.getClass().getField("y").getDouble(velocity),velocity.getClass().getField("z").getDouble(velocity)));
                 rows.add(row);
-                double dx=195.5-number(actor,"getX"),dz=341.5-number(actor,"getZ");
-                if (tick>0 && Math.hypot(dx,dz)<=.15 && Math.abs(number(actor,"getY")-9.5)<1e-5
+                double dx=target.get(0)-number(actor,"getX"),dz=target.get(2)-number(actor,"getZ");
+                if (tick>targetStart && Math.hypot(dx,dz)<=.15 && Math.abs(number(actor,"getY")-target.get(1))<1e-5
                         && Boolean.TRUE.equals(get(actor,"onGround"))) {
-                    result.put("rejection_reason",null); break;
+                    landings.add(Map.of("target_index",targetIndex,"step",tick,"position",position(actor)));
+                    targetIndex++;
+                    if (targetIndex==targets.size()) { result.put("rejection_reason",null); break; }
+                    targetStart=tick;
+                    target=targets.get(targetIndex);
+                    dx=target.get(0)-number(actor,"getX"); dz=target.get(2)-number(actor,"getZ");
                 }
-                if (tick==120) throw new IllegalStateException("No target landing within 120 native steps");
-                if (number(actor,"getY")<7.5 || Math.hypot(dx,dz)>3)
-                    throw new IllegalStateException("Actor left the predeclared local scope");
+                if (tick-targetStart>=120) throw new IllegalStateException("No landing at target "+targetIndex+" within 120 native steps");
+                if (number(actor,"getY")<7.5 || (full && number(actor,"getY")>27.5) || Math.hypot(dx,dz)>3)
+                    throw new IllegalStateException("Actor left the predeclared local scope at target "+targetIndex);
+                if (full) {
+                    boolean crouch=targetIndex>=17 && targetIndex<=20;
+                    call(actor,"setShiftKeyDown",new Class<?>[]{boolean.class},crouch);
+                    Class<?> pose=type("net.minecraft.world.entity.Pose");
+                    call(actor,"setPose",new Class<?>[]{pose},pose.getField(crouch?"CROUCHING":"STANDING").get(null));
+                    if (Math.abs(number(actor,"getBbHeight")-(crouch?1.5:1.8))>1e-6)
+                        throw new IllegalStateException("Unexpected pose height");
+                    if (!Boolean.TRUE.equals(call(level,"noCollision",new Class<?>[]{type("net.minecraft.world.entity.Entity")},actor)))
+                        throw new IllegalStateException("Pose collides at target "+targetIndex);
+                }
                 call(actor,"baseTick",new Class<?>[0]);
                 call(actor,"setYRot",new Class<?>[]{float.class},(float)Math.toDegrees(Math.atan2(-dx,dz)));
                 call(actor,"setXRot",new Class<?>[]{float.class},0f);
                 type("net.minecraft.world.entity.LivingEntity").getField("xxa").setFloat(actor,0f);
-                type("net.minecraft.world.entity.LivingEntity").getField("zza").setFloat(actor,Math.hypot(dx,dz)>.05?1f:0f);
-                call(actor,"setJumping",new Class<?>[]{boolean.class},number(actor,"getY")<9.4);
+                type("net.minecraft.world.entity.LivingEntity").getField("zza").setFloat(actor,Math.hypot(dx,dz)>.05?(full && targetIndex>=17 && targetIndex<=20?.3f:1f):0f);
+                call(actor,"setJumping",new Class<?>[]{boolean.class},number(actor,"getY")<target.get(1)-.1 || (full && targetIndex==19));
                 call(actor,"aiStep",new Class<?>[0]);
             }
         } catch (Exception failure) {

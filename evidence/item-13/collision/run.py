@@ -68,7 +68,12 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     temple_variants: bool = False,
     basalt_variant: bool = False,
     shaft_motion: bool = False,
+    shaft_motion_full: bool = False,
 ) -> None:
+    if shaft_motion_full:
+        if shaft_motion:
+            raise ValueError("Select one shaft case")
+        shaft_motion = True
     if shaft_motion and (basalt_variant or temple_variants or spawner_lookup or second_house):
         raise ValueError("Shaft motion cannot be mixed with another probe")
     if basalt_variant:
@@ -197,7 +202,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             else ("spawners.json" if spawner_lookup else "collision.json")
         )
         if shaft_motion:
-            projection = "shaft-motion.json"
+            projection = "shaft-motion-full.json" if shaft_motion_full else "shaft-motion.json"
         lifecycle = run_registry_lifecycle(
             target,
             java,
@@ -242,6 +247,7 @@ if __name__ == "__main__":
     mode.add_argument("--temple-variants", action="store_true")
     mode.add_argument("--basalt-variant", action="store_true")
     mode.add_argument("--shaft-motion", action="store_true")
+    mode.add_argument("--shaft-motion-full", action="store_true")
     args = parser.parse_args()
     run(
         args.output.absolute(),
@@ -251,4 +257,5 @@ if __name__ == "__main__":
         temple_variants=args.temple_variants,
         basalt_variant=args.basalt_variant,
         shaft_motion=args.shaft_motion,
+        shaft_motion_full=args.shaft_motion_full,
     )

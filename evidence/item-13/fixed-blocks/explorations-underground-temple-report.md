@@ -3134,3 +3134,58 @@ and shaft access under a predeclared expanded case. Any additional runtime
 experiment must use another fresh hash-verified materialization. Do not reuse
 this stopped instance, extrapolate20 steps across every link without evidence,
 or call a partial slab route a complete dungeon expedition.
+
+## Continuous native shaft case, predeclared before expansion
+
+The one-step pilot is accepted and durably delivered. Extend the same probe to
+one continuous ascent and return, with a new fresh verified materialization.
+No actor reset, teleport, block edit or velocity correction is allowed between
+waypoints. This addresses the remaining16-slab sequence and the actual upper
+and lower access requirements; it does not claim the parent dungeon complete.
+
+Start at center(195.5,8,343.5), supported by saved stone brick Y7. Visit the17 slab
+centers in ascending Y8.5..24.5 order, then central post center(196.5,25.5,342.5),
+then western outer ledge center(194.5,26,342.5). Return via the post, all17 slab
+centers in reverse order, and the initial bottom stance. This is38 target
+landings. Saved top post is a mossy stone-brick wall with UP true and no arms;
+its native collision, not a full-cube approximation, determines the landing.
+The block at(196,28,342) is a hanging waterlogged lantern, not a solid ceiling
+cube. Native collision will decide the upper crossing.
+
+Permit the ordinary crouching capability only for the upper post/ledge excursion,
+from the first post target through the return onto the highest slab. Apply
+shift state and the native CROUCHING pose; require height1.5. Restore STANDING
+height1.8 for the next lower slab. Reject a pose if its resulting bounding box
+collides with the world. No size other than these ordinary player poses is allowed.
+Each change is retained in the trace; it is a controlled pose input, not an
+unrecorded collision override. Use forward input .3 while crouching, rather than
+full-speed input through a shorter body. The pilot's dimensions remain the initial state.
+
+Reuse the target-aware yaw, forward/stop and upward jump controller. For the
+west-ledge-to-post return only, hold jump while crossing the two-block horizontal
+gap even though the target is .5 lower. Other descending transitions do not
+request jumps. Success at each target uses the pilot's on-ground,1e-5 vertical
+and .15 horizontal tolerances. Preserve momentum between targets. Stop on the
+first target that cannot be reached within120 native steps, on departure below
+Y7.5 or above Y27.5, or more than three horizontal blocks from the active target.
+Retain all completed targets and the first failure; do not reset and continue.
+
+Compare all1,664 loaded cells X193..200,Y6..31,Z339..346 with the same committed
+ordinary extract before movement. Require zero other entities in the corresponding
+scope. All cells lie in accepted full chunk(12,21). Preserve the same stationary-
+world/native-step limitation, actor attributes, no effects/flight/sprinting and
+no combat or inventory claim. Do not extrapolate the first pilot's20 steps.
+
+Budget: one fresh world/runtime, one continuous case,38 targets with at most120
+native steps each (4,560 total),30-second server-thread query and the existing
+600-second lifecycle/30-second chunk-loading bounds. Reuse2-GiB instance,
+100-MiB raw-output and5-GiB free-space limits. The observed first launch used
+1.104 GB and155.903 seconds, supporting these bounds without assuming a result.
+The full case must finish clean save/stop and configuration verification, and
+retain failures and raw custody before acceptance.
+
+Command, after committing the producer and with absent targets:
+
+```sh
+uv run python -m evidence.item-13.collision.run --shaft-motion-full evidence/raw/item13/shaft-motion-r2 instances/item13-shaft-motion-r2
+```
