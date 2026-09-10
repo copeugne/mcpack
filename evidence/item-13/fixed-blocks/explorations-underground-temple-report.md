@@ -3356,3 +3356,120 @@ Reproduce with `uv run python -m evidence.item-13.temple_ordinary_route`.
 All existing hall/chamber checks, the shaft construction checks and both added
 positive/negative connections pass; focused Ruff and type checks pass. No new raw
 read, experiment or geometry machinery is required for this integration.
+
+## Second chamber: task declaration before timing integration
+
+Use the established actor/equipment and complete-task accounting to clear only
+the four-source chamber, beginning and ending at the main hall north threshold
+(208.5,32,376.5). Traverse its outer floor circuit, expose and disable all four
+sources from intact adjacent floor stations, defeat the stipulated occupants,
+conditionally acquire all four chest contents, and return alive. Keep full layout
+knowledge. Do not mine chests, step into source holes, restore floors, swim, heal,
+use effects or collect the removed floor/spawner blocks. Any fluid arrival at the
+actor, loss of supported footing, extra enemies or failed acquisition censors
+this dry chamber case. This is a local task, not the complete temple clear.
+
+Predeclare a six-per-source exact-class suppression case as in the first temple's
+P6: six ordinary witches, six spiders, six skeletons and six zombies. Each source
+must continue to see at least six members of its matching class within its own
+nearby-entity query until disabled; keep them alive until all four sources are
+removed. These are stipulated initial conditions, not a placement or success
+probability. Natural spawning, extra waves, equipment, passengers, potion/status
+changes and healing are excluded. A composition or suppression failure invalidates
+the case. Do not describe four saved Delay0 sources as exactly24 realized enemies.
+
+Use two visits to the same supported outer circuit: first to remove four adjacent
+floor blocks and four spawners, then, after combat, to acquire the four rewards.
+Combat contact-duty includes pursuit and return to the circuit start. Geometry
+must verify each source and chest ray and every post-removal floor station.
+Acquisition remains conditional on the existing per-container allowance, inventory
+capacity and successful menu transfer. No pickup route is inferred from ray reach.
+Navigation cost is one event at each circuit direction change, plus initial
+orientation, four source selections, combat transition, four reward selections
+and the exit choice. Actual mining, eight removal aims, four chest interactions,
+three equipment selections (pickaxe, sword, empty hand), four acquisition events
+and final verification are separate. Use the accepted A/B/C allowances and duty
+fractions. Determine the resulting route/event counts in the existing script;
+do not omit the second circuit or call movement alone complete-task timing.
+
+## Second chamber: integrated local result
+
+The declared post-removal route passes. Its32-block outer ring has corners
+(204,32,363),(212,32,363),(212,32,371),(204,32,371), starting at(208,32,371).
+Four one-block side excursions and returns make each work circuit40 horizontal
+blocks. The five-block hall approach, two circuits and five-block exit total90
+horizontal blocks with no vertical movement. The source exposure sequence is:
+
+| Source type | Intact feet station | Removed adjacent floor | Source below chest |
+| --- | --- | --- | --- |
+| Skeleton | (207,32,370) | (208,31,370) | (208,31,369) |
+| Witch | (205,32,366) | (205,31,367) | (206,31,367) |
+| Spider | (207,32,364) | (208,31,364) | (208,31,365) |
+| Zombie | (211,32,366) | (211,31,367) | (210,31,367) |
+
+Each source is inspected from eyeY33.62 through its own adjacent floor opening;
+no descent into an opening is required. The same intact station supplies the chest
+ray after source removal. All four lids have air directly above, all four saved
+containers have the `dungeon` loot table and no Items or Lock. This is conditional
+opening/transfer access, not rolled or acquired loot. Water is saved immediately
+below each removed adjacent floor at Y30. Eight holes remain after four floor and
+four source removals; the route avoids them. Negative checks reject standing over
+all four removed exposure floors. Hostile displacement into a hole remains a
+meaningful conditional hazard, not an observed fall or combat exploit.
+
+All four bound source payloads have Delay0, SpawnCount4, MaxNearbyEntities6,
+SpawnRange4, RequiredPlayerRange16, delay range200..800 and empty SpawnPotentials,
+with the four explicit types above. Their potential is four source nodes and four
+authored enemy types. The stipulated workload is24 enemies under the exact-class
+suppression conditions, not an estimate of the saved world's realized population.
+
+Reuse the first temple's pinned nominal weapon/health calculations: per unmodified
+enemy, witch five hits, spider three, skeleton four and zombie four (including
+ordinary zombie armor). Six of each gives96 hits. At13 ticks per full nominal
+sword interval this is1,248 ticks or62.4 active seconds; duty1/.75/.5 gives62.4/83.2/
+124.8 seconds. Witch healing or potion/status changes invalidate this simplified
+case rather than silently increasing its health budget. No survival probability
+or realized combat time is asserted.
+
+Four masonry exposures use six active mining ticks each and four spawners use19
+each with the existing grounded dry diamond-pick model:100 ticks, five seconds.
+The complete route has34 direction changes; adding the11 predeclared task choices
+gives45 navigation events. Complete conditional local seconds are:
+
+`T = 90/u + 5 + 45n + 12a + 3s + 4k + v + 62.4/d`.
+
+| Approved sensitivity profile | Noncombat budget | Combat budget | Complete local task |
+| --- | ---: | ---: | ---: |
+| A | 55.25 s | 62.4 s | 117.65 s |
+| B | 92 s | 83.2 s | 175.2 s |
+| C | 141.5 s | 124.8 s | 266.3 s |
+
+Approximately118/175/266 seconds are conditional modeled chamber tasks, not
+observed timings, typical clears, calibrated skill bands or guaranteed bounds.
+They include both source and reward circuits and all declared actions. The entire
+temple timing must integrate this work with its other routes and encounters;
+do not simply add overlapping local surveys or call this a whole-family result.
+
+The verified ring and four work stations occupy one continuous activity space,
+not four rooms for four sources. The inspected activity core X204..212,Z363..371
+contains all four source/reward pairs within this chamber's enclosing architecture.
+It has no demonstrated additional occupied floor; source holes do not become
+rooms or vertical progression. Under the protocol's potential-content definition,
+this local space is neither empty nor dead (0/1 each). These are content-assessment
+denominators, not player occupancy or engagement statistics.
+
+The chamber concentrates four hostile mechanisms with four rewards, but no
+explicit authored final-objective marker was identified. Its `dungeon` table is
+already proved byte-identical to `large_room` in the first assembly's source
+assessment, so it does not establish a higher reward tier than the hall. The
+source/loot pairing is a supported challenge/reward arrangement; unique finale
+quality and player satisfaction are not inferred. Expected revisit contribution
+is conditional: source removal and the eight holes persist as physical changes;
+personal loot access alone does not reset them or reproduce this first-clear
+scenario. No observed replay outcome is claimed.
+
+Reproduce the route, source/loot identities, failure guards, event counts and all
+three totals with `uv run python -m evidence.item-13.temple_ordinary_route`.
+Focused Ruff, formatting and type checks pass. This resolves the chamber's local
+conditional access/task integration; the second assembly and Item13 remain
+IN PROGRESS.

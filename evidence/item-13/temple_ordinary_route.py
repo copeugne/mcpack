@@ -6,6 +6,7 @@ import gzip
 import hashlib
 import importlib
 import json
+from itertools import pairwise
 from pathlib import Path
 
 raw = (
@@ -122,9 +123,9 @@ else:
 # Removed waterlogged slabs can release water; see the report's fluid limitation.
 shaft_removals = {(195, 15, 343), (195, 23, 343)}
 shaft_feet = {(195, y, 343) for y in range(8, 27)}
-shaft_clear, shaft_verify = importlib.import_module(
-    "evidence.item-13.temple_geometry"
-).path_checks(case, shaft_removals, set(), shaft_feet)
+shaft_clear, shaft_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, shaft_removals, set(), shaft_feet
+)
 assert at(case, 195, 7, 343)["Name"] == "minecraft:stone_bricks"
 for y in range(8, 29):
     assert at(case, 195, y, 343)["Name"] == (
@@ -210,3 +211,129 @@ assert [at(case, 196, y, 381)["Name"] for y in range(32, 35)] == [
     "minecraft:chiseled_stone_bricks",
     "minecraft:stone_bricks",
 ]
+
+# Supported post-removal chamber circuit, with source and reward work at side stations.
+chamber_work = (
+    ((207, 32, 370), (208, 31, 370), (208, 31, 369)),
+    ((205, 32, 366), (205, 31, 367), (206, 31, 367)),
+    ((207, 32, 364), (208, 31, 364), (208, 31, 365)),
+    ((211, 32, 366), (211, 31, 367), (210, 31, 367)),
+)
+chamber_removed = set()
+work_rays = {}
+work_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    case, chamber_removed, work_rays
+)
+_, work_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, chamber_removed, set(), set()
+)
+for station, floor, source in chamber_work:
+    work_verify([station])
+    eye = (station[0] + 0.5, 33.62, station[2] + 0.5)
+    assert at(case, *floor)["Name"] in {
+        "minecraft:stone_bricks",
+        "minecraft:mossy_stone_bricks",
+        "minecraft:cracked_stone_bricks",
+    }
+    assert at(case, floor[0], 30, floor[2])["Name"] == "minecraft:water"
+    work_ray(eye, (floor[0] + 0.5, 31.999, floor[2] + 0.5), floor)
+    chamber_removed.add(floor)
+    assert at(case, *source)["Name"] == "minecraft:spawner"
+    work_ray(
+        eye,
+        (
+            (floor[0] + source[0]) / 2 + 0.5 + (source[0] - floor[0]) * 0.001,
+            31.5,
+            (floor[2] + source[2]) / 2 + 0.5 + (source[2] - floor[2]) * 0.001,
+        ),
+        source,
+    )
+    chamber_removed.add(source)
+    chest = (source[0], 32, source[2])
+    assert at(case, *chest)["Name"] == "minecraft:chest"
+    assert at(case, chest[0], 33, chest[2])["Name"] == "minecraft:air"
+    work_ray(eye, (chest[0] + 0.5, 32.5, chest[2] + 0.5), chest)
+
+outer_ring = (
+    [(x, 32, 371) for x in range(208, 203, -1)]
+    + [(204, 32, z) for z in range(370, 362, -1)]
+    + [(x, 32, 363) for x in range(205, 213)]
+    + [(212, 32, z) for z in range(364, 372)]
+    + [(x, 32, 371) for x in range(211, 207, -1)]
+)
+detours = dict(
+    zip(
+        ((207, 32, 371), (204, 32, 366), (207, 32, 363), (212, 32, 366)),
+        (station for station, _, _ in chamber_work),
+        strict=True,
+    )
+)
+work_circuit = []
+for point in outer_ring:
+    work_circuit.append(point)
+    if point in detours:
+        work_circuit.extend((detours[point], point))
+assert len(work_circuit) - 1 == 40
+work_verify(work_circuit)
+work_verify(list(reversed(work_circuit)))
+work_approach = [(208, 32, z) for z in range(376, 370, -1)]
+complete_chamber = (
+    work_approach + work_circuit[1:] + work_circuit[1:] + list(reversed(work_approach))[1:]
+)
+work_verify(complete_chamber)
+assert len(complete_chamber) - 1 == 90
+assert set(detours.values()) <= set(complete_chamber)
+assert len(work_rays) == 12
+for _, floor, _ in chamber_work:
+    try:
+        work_verify([(floor[0], 32, floor[2])])
+    except AssertionError:
+        continue
+    message = "chamber circuit allowed standing on a removed exposure floor"
+    raise AssertionError(message)
+print("PASS four supported source/loot stations; eight removals; 90H complete local task route")
+
+entities_by_position = {(e["x"], e["y"], e["z"]): e for e in case["block_entities"]}
+for (_, _, source), enemy in zip(
+    chamber_work, ("skeleton", "witch", "spider", "zombie"), strict=True
+):
+    saved = entities_by_position[source]
+    assert saved["id"] == "minecraft:mob_spawner"
+    assert saved["SpawnData"] == {"entity": {"id": "minecraft:" + enemy}}
+    assert saved["SpawnPotentials"] == []
+    for key, value in {
+        "Delay": 0,
+        "MaxNearbyEntities": 6,
+        "MinSpawnDelay": 200,
+        "MaxSpawnDelay": 800,
+        "RequiredPlayerRange": 16,
+        "SpawnCount": 4,
+        "SpawnRange": 4,
+    }.items():
+        assert saved[key] == value
+    saved_chest = entities_by_position[(source[0], 32, source[2])]
+    assert saved_chest["LootTable"] == "explorations:chests/underground_temple/dungeon"
+    assert "Items" not in saved_chest
+    assert "Lock" not in saved_chest
+
+directions = [(b[0] - a[0], b[2] - a[2]) for a, b in pairwise(complete_chamber)]
+turns = sum(a != b for a, b in pairwise(directions))
+nav_events = turns + 11
+print("Chamber direction changes", turns, "navigation events including task choices", nav_events)
+combat_work = 6 * (5 + 3 + 4 + 4) * 13 / 20
+assert combat_work == 62.4
+for label, u, n, a, s, k, v, d in (
+    ("A", 5, 0.5, 0.25, 0.25, 1, 2, 1),
+    ("B", 4, 1, 0.5, 0.5, 2, 4, 0.75),
+    ("C", 3, 1.5, 1, 1, 4, 8, 0.5),
+):
+    noncombat = 90 / u + 5 + nav_events * n + 12 * a + 3 * s + 4 * k + v
+    print(
+        label,
+        "chamber noncombat",
+        noncombat,
+        "combat",
+        combat_work / d,
+        "conditional complete local task",
+        noncombat + combat_work / d,
+    )
