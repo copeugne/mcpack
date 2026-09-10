@@ -245,3 +245,8 @@ The five-/fourteen-space results retain native obstructions, conditional slot
 crossings, validated clearing/interaction sequences, complete task estimates and
 independent ground-window bypasses. This is a local family result, not full
 Item13 completion.
+
+The [Slime Cave report](explorations-slime-cave-report.md) starts the next local
+family assessment from its custom source and accepted saved inputs. The first
+material-state read and source workload are integrated; playable topology and
+complete task accounting remain pending before the second selected read.

@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `589da300`; verify subsequent assessment commits against upstream.
+checkpoint is `8a26cb04`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -148,9 +148,23 @@ the rejected native route is preserved. Two-blaze modeled totals are365/646/1086
 An independent one-stair ground-window bypass also passes. All eight components
 are covered collectively by the two assemblies. Neither model observes players.
 
-Next continue the remaining family/variant coverage from the existing intake and
-accepted starts. Reuse this completed local family result; do not repeat its raw
-reads. Check central-End evidence before claiming an arena gap. Do not generate
-new survey worlds or tune frozen content. Item13 still requires full coverage,
-final review/fix cycles, completed clean Codex thumbs-up, merge and fetched
-origin/main verification. Item14 remains UNSTARTED.
+## Current next family: Slime Cave
+
+The [Slime Cave report](evidence/item-13/fixed-blocks/explorations-slime-cave-report.md)
+reuses its custom generator/processor source and selects two saved material states.
+The nonnegative first case passes extraction/view:7,938 cells,3,357 bytes,10.371408s.
+Its saved slime spawner, chest and six source marker requests are integrated.
+Source-derived size/splitting workloads distinguish authored sizes1/2/3 from
+normal finalization sizes1/2/4. They are not complete encounter-time results.
+
+Next declare/check the first dry local route, source-disable/repeated-batch model,
+room and access boundaries, full task and quality assessment. Water beneath part
+of the chamber and one elevated marker forbid assumed flat-floor encounters.
+Only after this representative is integrated, read the selected negative material
+case. No server/new generation is needed. The courtyard family remains included
+but has no start in the current baseline candidate index; inspect other existing
+raw sources before proposing an additional experiment for it.
+
+Then continue remaining family/variant coverage. Item13 still requires full
+coverage, final review/fix cycles, completed clean Codex thumbs-up, merge and
+fetched origin/main verification. Item14 remains UNSTARTED.
