@@ -738,3 +738,182 @@ Focused verification for this increment: both geometry commands pass, ruff check
 and formatting pass, basedpyright reports zero errors/warnings, and git diff
 --check passes. The no-placement lava failure is preserved above. No additional
 world processing or runtime capture was required for this local result.
+
+## Existing control material check predeclaration
+
+The hash-bound accepted census identifies six omit-Sparse occurrences in four
+worlds: mountainous r1(-5,31), mountainous r2(31,29), ocean-heavy r2 accepted
+attempt3(8,-12),(12,7), ordinary r2(-4,11),(9,22). Inspect every one, retaining
+this control identity. Select the unique ancient_debris central component from
+each actual start, then read its7x7x7 saved cube (2,058 cells total). This checks
+central material outcomes only; do not count these as baseline quality samples.
+Use the existing archive binding, full restored inventory checks and POSIX lock,
+Anvil/NBT decoder and saved_block_section. Budget120 seconds total,2 MiB retained
+JSON and5 GiB free floor; no server, generation or mutable world operation.
+Missing center/component/chunk/section, unexpected dimensions, identity mismatch
+or overrun fails the read. Preserve outcomes even if none supplies a missing
+netherite/lodestone variant. Full control dungeon routes are outside this read.
+
+Reproduction command (run from repository root with the output absent):
+
+```sh
+timeout 120 uv run python - <<'PY'
+import hashlib, json, shutil, time
+from pathlib import Path
+from tools.analyze_route_opportunities import ROOT, accepted_inputs, read_bound, verify_world
+from tools.analyze_structure_density import saved_block_section
+from tools.manage_item4_environment import _world_backup_lock
+from mcpack_evidence.item7_anvil import RegionContext, decode_region_payloads
+from mcpack_evidence.item7_archive_models import ArchiveManifest
+from mcpack_evidence.item7_nbt import decode_compound_nbt
+
+output=Path('evidence/item-13/fixed-blocks/basalt-control-centers.json')
+assert not output.exists() and shutil.disk_usage(ROOT).free >= 5*1024**3
+begun=time.monotonic(); result=[]
+family='adorabuild_structures:basalt_chambers'
+root='adorabuild_structures:basalt_chambers_large_1'
+for name,identity in sorted(accepted_inputs().items()):
+    if name.endswith('-baseline'):continue
+    census=read_bound(ROOT/'evidence/raw/item10'/f'{name}-analysis/all-strata.json',identity['input_sha256'])
+    rows=[r for r in json.loads(census)['strata']['nether']['classification']['occurrences'] if r['family_id']==family]
+    if not rows:continue
+    custody=ROOT/'evidence/raw/item10'/f'{name}-custody'
+    world=custody/'restored-world/world'
+    mr=read_bound(ROOT/'evidence/item-10'/name/'archive-manifest.json')
+    manifest=ArchiveManifest.model_validate_json(mr)
+    entry=next(r for r in manifest.files if r.relative_path=='world-backup.json')
+    backup=json.loads(read_bound(custody/'restored-local/world-backup.json',entry.sha256))
+    assert backup['archive_sha256']==next(r.sha256 for r in manifest.files if r.relative_path=='world.tar.gz')
+    with _world_backup_lock(world):
+        verify_world(world,backup['world_files'])
+        chunks={}; payload_hashes={}; loaded=set()
+        def chunk_at(cx,cz):
+            region=(cx//32,cz//32)
+            if region not in loaded:
+                relative=f'DIM-1/region/r.{region[0]}.{region[1]}.mca'
+                for record,payload in decode_region_payloads(world/relative,RegionContext('minecraft:the_nether',relative,0,256)):
+                    key=(record.chunk_x,record.chunk_z)
+                    assert key not in chunks
+                    chunks[key]=(record.full,decode_compound_nbt(payload))
+                    payload_hashes[key]=hashlib.sha256(payload).hexdigest()
+                loaded.add(region)
+            assert (cx,cz) in chunks and chunks[(cx,cz)][0], ('missing/full',name,cx,cz)
+            return chunks[(cx,cz)][1]
+        for row in sorted(rows,key=lambda r:(r['chunk_x'],r['chunk_z'])):
+            cx,cz=row['chunk_x'],row['chunk_z']; assert row['registry_id']==root
+            start=chunk_at(cx,cz)['structures']['starts'][root]
+            assert (start['id'],start['ChunkX'],start['ChunkZ'])==(root,cx,cz)
+            central=[p for p in start['Children'] if p.get('pool_element',{}).get('location')==family+'/ancient_debris']
+            assert len(central)==1
+            piece=central[0]; bb=piece['BB']
+            assert [bb[i+3]-bb[i]+1 for i in range(3)]==[7,7,7]
+            center=[bb[i]+3 for i in range(3)]; sections={}; states=[]; used={(cx,cz)}
+            for y in range(bb[1],bb[4]+1):
+                for z in range(bb[2],bb[5]+1):
+                    for x in range(bb[0],bb[3]+1):
+                        key=(x//16,y//16,z//16);used.add((key[0],key[2]))
+                        if key not in sections:
+                            sections[key]=saved_block_section(chunk_at(key[0],key[2]),key[1])
+                        section=sections[key];assert section is not None
+                        palette,indices=section
+                        index=indices[x%16+16*(z%16)+256*(y%16)]
+                        assert 0<=index<len(palette)
+                        states.append(palette[index])
+            result.append({'world':name,'arm':'omit-Sparse','dimension':'minecraft:the_nether',
+                'root':root,'chunk_x':cx,'chunk_z':cz,'census_sha256':identity['input_sha256'],
+                'archive_manifest_sha256':hashlib.sha256(mr).hexdigest(),'world_backup_sha256':entry.sha256,
+                'start_nbt':start,'bounds':bb,'center':center,'states_yzx':states,
+                'center_state':states[171],'chunk_payload_sha256':[[x,z,payload_hashes[(x,z)]] for x,z in sorted(used)]})
+        verify_world(world,backup['world_files'])
+assert len(result)==6 and sum(len(r['states_yzx']) for r in result)==2058
+assert time.monotonic()-begun < 120
+raw=(json.dumps({'scope':'saved control central components only; not baseline quality repetitions','cases':result},indent=2,sort_keys=True)+'\n').encode()
+assert len(raw)<=2*1024**2
+output.write_bytes(raw)
+print(json.dumps({'sha256':hashlib.sha256(raw).hexdigest(),'size_bytes':len(raw),'seconds':time.monotonic()-begun,'outcomes':[[r['world'],r['chunk_x'],r['chunk_z'],r['center_state']] for r in result]},indent=2))
+PY
+```
+
+Control read PASS:77.763812 seconds,6 complete central cubes and2,058 saved cells.
+All four complete world inventories match before/after under their locks. The
+retained [lossless raw control record](basalt-control-centers.json.gz) is13,531
+bytes, SHA-256 `67bb09edb0b1ba27dad55cd3ee5412281611ae342b3adc364ac0af61ec445c1b`.
+Decompressed JSON is415,265 bytes, SHA-256
+`5bd7563e101196265ce93675b21a3879405eae6d28c2968bb93627caed909404`.
+It retains full start NBT, center cubes, exact arm/world/dimension, archive/backup/
+census hashes and every contributing chunk payload hash. All declared caps pass.
+The temporary uncompressed original remains under ignored evidence/raw/item13/.
+The lossless compression step after the command above is:
+
+```sh
+uv run python - <<'PY'
+import gzip, hashlib
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/basalt-control-centers.json')
+raw=p.read_bytes()
+assert hashlib.sha256(raw).hexdigest()=='5bd7563e101196265ce93675b21a3879405eae6d28c2968bb93627caed909404'
+packed=gzip.compress(raw,mtime=0)
+assert hashlib.sha256(packed).hexdigest()=='67bb09edb0b1ba27dad55cd3ee5412281611ae342b3adc364ac0af61ec445c1b'
+p.with_suffix('.json.gz').write_bytes(packed)
+PY
+```
+
+| Control world suffix | Start chunk | Center X/Y/Z | Saved outcome |
+| --- | --- | --- | --- |
+| mountainous-r1-without-sparse | -5,31 | -77,15,499 | ancient debris |
+| mountainous-r2-without-sparse |31,29|499,15,467|lodestone|
+| ocean-heavy-r2-without-sparse-attempt3 |8,-12|131,15,-189|ancient debris|
+| ocean-heavy-r2-without-sparse-attempt3 |12,7|189,15,115|ancient debris|
+| ordinary-r2-without-sparse |-4,11|-61,15,173|ancient debris|
+| ordinary-r2-without-sparse |9,22|141,15,355|ancient debris|
+
+Each world name has the full- prefix in the raw record. These six material
+observations are control data, not new baseline quality cases or probability
+estimates. Lodestone is now supported by a saved generated occurrence. Netherite
+block remains the exact missing central outcome after all eight existing
+baseline/control occurrences and the existing empty Item 7/8 candidate list.
+No new diagnostic has been run for that gap.
+
+The two mountainous centers both have NONE rotation. Their surrounding terrain
+cells differ, including lava, so treating the entire343-cell cubes as identical
+would be wrong. On the271 source-authored non-jigsaw/non-structure_void cells,
+they differ only at local(3,3,3): debris versus lodestone. Reproduce this direct
+comparison against the already hash-bound central template:
+
+```sh
+uv run python - <<'PY'
+import gzip, hashlib, json, zipfile
+from pathlib import Path
+from mcpack_evidence.item7_nbt import decode_compound_nbt
+p=Path('evidence/item-13/fixed-blocks/basalt-control-centers.json.gz')
+raw=gzip.decompress(p.read_bytes())
+assert hashlib.sha256(raw).hexdigest()=='5bd7563e101196265ce93675b21a3879405eae6d28c2968bb93627caed909404'
+a,b=json.loads(raw)['cases'][:2]
+with zipfile.ZipFile('downloads/item3/candidates/adorabuild-structures-2.11.0-neoforge-1.21.3.jar') as z:
+    source=z.read('data/adorabuild_structures/structure/basalt_chambers/ancient_debris.nbt')
+assert hashlib.sha256(source).hexdigest()=='dcbb6c62c035ed12459c2e182a9dccfa7e20e87298a320f72ff9a0cbdfb1a639'
+n=decode_compound_nbt(gzip.decompress(source))
+mask=[r for r in n['blocks'] if n['palette'][r['state']]['Name'] not in {'minecraft:structure_void','minecraft:jigsaw'}]
+diffs=[]
+for r in mask:
+    x,y,z=r['pos'];i=x+z*7+y*49
+    if a['states_yzx'][i]!=b['states_yzx'][i]:diffs.append(r['pos'])
+assert len(mask)==271 and diffs==[[3,3,3]]
+print('271 authored cells compared; only the central material differs')
+PY
+```
+
+Lodestone quality/model integration: source-supported full-block replacement
+changes central reward identity and correct-tool mining cost, not the authored
+room graph or central support-chain pickup constraint. Reuse the
+[temple material source](adorabuild-nether_temple_medium_1-report.md#alternate-material-source-inputs-for-the-declared-placement-diagnostic):
+hardness3.5, pickaxe tag, single self-drop potential and ordinary non-fire-resistant
+item. The same dry grounded diamond-pick scenario requires14 ticks0.70s instead
+of debris113 ticks5.65s. Conditional baseline-layout totals therefore decrease
+by4.95s: first-case two-blaze82.125/133.883333/216.10s; second-case four-blaze
+223.7375/371.991667/602.466667s. All route, disarming, construction, support-chain,
+acquisition and enemy conditions remain. These are modeled center substitutions
+supported by saved material evidence, not measured timings of either control
+world's full assembly. Do not infer that the control lava setting has the same
+external access or route cost. Lodestone does not create a finale, reset or new
+hostile type. Its lack of item fire resistance keeps pickup loss a censoring case.

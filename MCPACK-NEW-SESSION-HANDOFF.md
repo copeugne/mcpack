@@ -166,6 +166,9 @@ bytes,5.527101s): two blaze sources,two traps,three authored debris rewards and
 seven empty rooms. Its revised two-block bridge task passes332 horizontal blocks,
 54.4375 support-level travel and a229/377/607s four-blaze conditional task. The
 rejected no-placement route is preserved: eastern recesses have lava support.
-Both baseline centers are debris; six existing accepted omit-Sparse
-control occurrences are the next material-evidence check before any new experiment.
+Both baseline centers are debris. All six accepted omit-Sparse centers now have
+hash-verified saved cubes: five debris and one lodestone. The271 authored-cell
+comparison differs only at the center; conditional lodestone costs are integrated.
+Netherite block is the sole missing central outcome. Predeclare the smallest
+single-component diagnostic using the existing temple capture path before running it.
 Do not generate new survey worlds or treat15 pieces as rooms.
