@@ -98,6 +98,65 @@ encounter gaps explicitly prevent family-level balance/access recommendations;
 there is no consequential current recommendation that requires another world or
 runtime experiment to complete this baseline assessment.
 
+## Final local gate and delivery
+
+Candidate assessment uses `item13-quality-v3`, with frozen runtime/configuration
+identity retained by the existing intake, source and restore records. The
+representative-design acceptance criteria have supported results in the requirement
+map. Every included family has an explicit coverage disposition. Unresolved
+source-only access/encounter questions and defective mechanisms prevent the affected
+recommendations; none is reported as successful gameplay. Item13 remains IN PROGRESS
+until reviewed main delivery is verified. The local v3 exit gate PASSES at the
+stated scope; the delivery gate remains pending. Item14 is UNSTARTED.
+
+Final checks on the `faf8133b` synthesis and its definition-of-done clarification:
+
+- Full applicable test gate: **1819 passed in1168.54s (19m28s)**. The command
+  below includes the complete repository suite and all three Item13 test files.
+  No test failures or skipped tests were reported.
+
+- Direct result/reference inspection passes: new relative file links resolve;
+  the192 included IDs partition into20 distinct DIRECT IDs and172 bounded gaps;
+  all448 intake decisions and256 exclusions remain unchanged. The intake SHA-256
+  remains `1f2f117214c1daa9d20a48f08e855405be63db86ee192e4b20f242869be46873`;
+  the136-candidate manifest retains its frozen `78e5bdc0...` identity.
+- All33 Python files changed against fetched main pass Ruff lint and formatting.
+  All Item13 Python plus the changed control, registry and tests pass basedpyright
+  with zero errors/warnings/notes, excluding the legacy density analyzer discussed
+  below. No formatter mutation was performed.
+- Broad optional checks preserve pre-existing findings: two unchanged historical
+  exploration tools produce10 lint diagnostics; broad Python formatting finds125
+  unchanged files; default type checking finds20 errors/five warnings in unchanged
+  world-manifest/typed-comparison files. These are not a claim that the repository
+  has a globally clean static gate.
+- Strict typing of the legacy density analyzer gives560 errors/13 warnings both
+  at fetched main and the candidate. Comparing rule/message multisets shows the
+  extracted palette loop replaces one unknown `len` argument diagnostic with one
+  unknown `entry` variable diagnostic; other messages agree. This is the existing
+  dynamically typed decoder boundary, not a claimed clean strict-type result.
+  Its concrete section-extraction behavior has dedicated saved-block regression
+  coverage. Rewriting the whole analyzer is outside this item.
+- Existing local/downloaded raw restore receipts and diagnostic failures remain
+  linked in their original reports. The eight Item13 diagnostic releases were
+  listed as published, not drafts, at final preparation. No world, configuration,
+  raw observation or original manifest was changed or regenerated for closure.
+
+Reproduce the focused static gate from the repository root:
+
+```sh
+git diff --name-only origin/main...HEAD -- '*.py' > /tmp/item13-changed-python.txt
+xargs -d '\n' uv run ruff check < /tmp/item13-changed-python.txt
+xargs -d '\n' uv run ruff format --check --output-format concise < /tmp/item13-changed-python.txt
+uv run basedpyright evidence/item-13 src/mcpack_evidence/item7_control.py src/mcpack_evidence/item8_registry.py tests/item10/test_saved_content.py tests/item7/test_item7_control.py tests/item8/test_registry.py tools/run_item7_control.py
+uv run python -m pytest -q tests evidence/item-13/test_pilot.py evidence/item-13/start-inspection/test_summary.py evidence/item-13/collision/test_clearance.py
+git diff --check
+```
+
+The changed-file comparison above is a pre-merge command; after delivery use the
+recorded base `cbe1eef0dc57eec82812458cd3832a4fca182d88` and the accepted PR head.
+Historical runtime/route reproduction commands remain in their own evidence
+reports. Do not rerun expensive experiments merely to reproduce this synthesis.
+
 ## Previous scope and retained results
 
 The old timing, sample-count and continuation obligations in historical sections
@@ -365,21 +424,21 @@ sampling. Source evidence, rather than observed frequency, controls inclusion.
 
 ## Smallest complete deliverable and definition of done
 
-One protocol, one complete family/variant coverage record, one sample-level raw
-observation set and its deterministic reproduction logic, and one authoritative
-report with per-family judgments. Reuse existing raw custody and tooling. Add new
-world custody only for an actual additional experiment, with an immutable archive,
-manifest, durable delivery and tested restore through the existing path.
+The effective v3 deliverable is this report and requirement map, the existing
+protocol and complete inclusion/coverage index, and the retained observations,
+source references, reproduction logic and custody records linked from them.
+No new measurement framework or additional experiment is needed for the scoped
+baseline conclusions above.
 
-Done requires every included family and material variant to have an adequate
-sample or a resolved, evidence-supported inapplicability disposition. Every
-requirement above must have a result under the authorized method; unknowns are
-retained and cannot conceal missing required work. Validate playable topology on
-the representative before scaling, retain failures and conditional conclusions,
-record model identities/inputs, and provide explicit uncertainty. Run affected
-checks, the full applicable final gate and a manual result-surface review. Push
-coherent milestones, obtain a completed clean Codex PR review with thumbs-up,
-resolve findings, merge and verify fetched main before COMPLETE. No Item 14 work.
+Done requires representative designs and consequential differences to be assessed,
+every inclusion to have a transparent direct/mapping/gap disposition, and material
+unknowns to prevent the affected recommendation. The smallest validation surface
+is the applicable test suite, changed-code lint/format/types, direct result and
+reference inspection, plus reuse of the existing hash-bound custody and reproduction
+checks. Historical failed/incomplete models remain failed/incomplete, not silently
+accepted. Completion additionally requires a completed clean Codex review and
+thumbs-up on the final candidate, merge and verified fetched-main delivery. Item14
+remains UNSTARTED.
 
 ## Reproduction
 

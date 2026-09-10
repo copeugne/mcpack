@@ -399,24 +399,24 @@ This replaces exhaustive per-family/material/repetition measurement and mandator
 complete-objective timing with representative design assessment. Apply
 [evidence/item-13/protocol.md](evidence/item-13/protocol.md), version v3.
 
-- [ ] Reuse the full significant-family inventory as a coverage index. Group families
+- [x] Reuse the full significant-family inventory as a coverage index. Group families
   by supported gameplay design and identify material differences that could change
   a mod-selection or quality conclusion. Give every included family a direct sample,
   a justified representative mapping, or an explicit evidence-gap disposition.
-- [ ] Assess representative distinct designs using existing generated evidence first.
+- [x] Assess representative distinct designs using existing generated evidence first.
   Supplement only when a consequential conclusion cannot be supported without it.
   Do not require a generated sample for every family, root or cosmetic variant.
-- [ ] Describe playable room scale, branching, vertical progression and depth using
+- [x] Describe playable room scale, branching, vertical progression and depth using
   inspected layouts. Exact counts are required only when they support the decision;
   pieces and bounding volume must not be mislabeled as playable topology.
-- [ ] Assess traversal burden and combat pressure. Reuse valid timing models where
+- [x] Assess traversal burden and combat pressure. Reuse valid timing models where
   available; otherwise use supported qualitative assessments with explicit limits.
   Exact seconds, complete action budgets and per-container routes are not required.
-- [ ] Assess authored enemy abundance/diversity, meaningful hazards, chokepoints,
+- [x] Assess authored enemy abundance/diversity, meaningful hazards, chokepoints,
   empty/dead spaces, reward distribution and final-room quality.
-- [ ] Identify obvious bypass/external-access problems, likely repetition/replay
+- [x] Identify obvious bypass/external-access problems, likely repetition/replay
   strengths and limitations, and visually large but mechanically shallow designs.
-- [ ] Summarize the practical implications for mod coherence and expedition quality,
+- [x] Summarize the practical implications for mod coherence and expedition quality,
   separating established problems, supported assessments and questions for playtesting.
   This baseline item does not itself authorize mod removal, tuning or Item 14.
 
