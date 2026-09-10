@@ -569,3 +569,89 @@ for x,z in route | {(125,462)}:
 print('Nine-cell unsupported crossing and northern floor/body conditions verified.')
 PYRAMID_BRIDGE
 ```
+
+## Rare-chest room: native circuit and three recessed sources
+
+From the northern corridor endpoint (117.5,177,449.5), the following circuit
+returns to that endpoint after visiting both rare chests and three recessed
+spawners. All listed coordinates are block-column (X,Z); add 0.5 for the actor
+center and use feet Y177 throughout:
+
+```text
+(117,449) -> (117,447) -> (116,447) -> (116,445)
+-> (116,446) -> (115,446) -> (115,447) -> (113,447)
+-> (113,449) -> (113,451) -> (114,451) -> (114,452)
+-> (114,451) -> (115,451) -> (114,451) -> (113,451)
+-> (113,447) -> (117,447) -> (117,449)
+```
+
+Its eighteen axis-aligned legs total 30 horizontal blocks. Every intersected
+column has a full-height sand/sandstone floor at Y176 and air at Y177/178.
+The 0.6-wide, 1.8-high actor fits the centered route and its corners. It bypasses
+the central plinth and decorative pots without breaking or stepping onto them.
+This is one activity space with a central obstacle, not a room for each chest,
+each source niche or each turn. It has two rare-loot chest arrangements and three
+authored enemy sources (two husks, one zombie); none is an observed encounter.
+
+Both single chests have air above and no saved Lock field. Under the existing
+unlocked/no-blocking-entity scenario, use the following interaction rays from
+upright eye Y178.62:
+
+| Station (X,feet Y,Z) | Aim point | Action |
+| --- | --- | --- |
+| (115.5,177,446.5) | (115.5,177.5,445.9375) | Open north rare chest's south face |
+| (115.5,177,451.5) | (115.5,177.5,452.0625) | Open south rare chest's north face |
+| (116.5,177,445.5) | (116.5,178.1,444) | Reach husk source at (116,178,443) |
+| (113.5,177,449.5) | (112,178.1,449.5) | Reach zombie source at (111,178,449) |
+| (114.5,177,452.5) | (114.5,178.9,454) | Reach husk source at (114,178,454) |
+
+Chest rays are approximately 1.253 blocks. The northern and western source rays
+are approximately 1.588 blocks; the southern source ray is approximately 1.526
+blocks. All satisfy the three-block modeled reach. The northern/western recesses
+have top sandstone slabs at (116,178,444) and (112,178,449), respectively. At the
+near boundary of each slab cell the ray is Y178.446667, descending to Y178.1 at
+the source face, entirely below the slab's Y178.5 lower surface. The southern
+recess has a bottom slab at (114,178,453): its ray enters at Y178.713333 and rises
+to Y178.9, entirely above that slab's Y178.5 top. Surrounding floor and ceiling
+therefore do not block these specific rays. No slab removal is needed. Removing
+the recessed sources also leaves the route's floor untouched.
+
+Two 27-slot GUI operations, three source removals and their associated selection,
+acquisition, verification and encounter phases remain costs for the complete
+objective budget. This access result does not establish generated/acquired loot,
+realized spawning or a human completion time.
+
+Reproduce the route, lid conditions and recessed slab states:
+
+```sh
+uv run python - <<'PYRAMID_RARE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+points=[(117,449),(117,447),(116,447),(116,445),(116,446),
+        (115,446),(115,447),(113,447),(113,449),(113,451),
+        (114,451),(114,452),(114,451),(115,451),(114,451),
+        (113,451),(113,447),(117,447),(117,449)]
+length=0
+for (x,z),(xx,zz) in zip(points,points[1:]):
+    assert x==xx or z==zz
+    length+=abs(x-xx)+abs(z-zz)
+    for bx in range(min(x,xx),max(x,xx)+1):
+        for bz in range(min(z,zz),max(z,zz)+1):
+            assert s(c,bx,176,bz)['Name'] in ('minecraft:sandstone','minecraft:smooth_sandstone','minecraft:sand')
+            assert all(s(c,bx,y,bz)['Name']=='minecraft:air' for y in (177,178))
+assert length==30
+for x,z,kind in ((116,444,'top'),(112,449,'top'),(114,453,'bottom')):
+    assert s(c,x,178,z)=={'Name':'minecraft:sandstone_slab','Properties':{'type':kind,'waterlogged':'false'}}
+for x,z in ((116,443),(111,449),(114,454)):
+    assert s(c,x,178,z)['Name']=='minecraft:spawner'
+for z in (445,452):
+    assert s(c,115,178,z)['Name']=='minecraft:air'
+    be=next(b for b in c['block_entities'] if (b.get('x'),b.get('y'),b.get('z'))==(115,177,z))
+    assert be['LootTable']=='mss:rare' and 'Lock' not in be
+print('Thirty-block rare-room circuit, chest lids and recessed source states pass.')
+PYRAMID_RARE
+```
