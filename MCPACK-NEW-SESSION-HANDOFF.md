@@ -81,8 +81,9 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `d3848da1`; verify subsequent assessment commits against upstream.
+Current branch: `codex/item13-dungeon-quality`. Latest substantive pushed
+milestone is `16a70458`. Recovery documentation is a separate milestone; verify
+its current head against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -144,57 +145,51 @@ conditional splitting workloads and explicit incidental cave evidence. Both
 complete local tasks give37..45/63..73/101..116s across approved profiles. Do not
 repeat these reads or models. Actual gameplay remains NOT MEASURED.
 
-## Current batch: Underground Temple
+## Current priority: completion-workflow recovery
 
-The [report](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md)
-and [selection](evidence/item-13/underground-temple-selection.json) predeclare two
-complete assemblies,one existing scoped large_hall_down component andone minimal
-missing-template failure. All24 existing starts are accounted for:16 fully bounded
-assemblies,six minimal missing-template cases andtwo incomplete-edge assemblies.
-The component gap is already present in full chunks of a partial case. No new
-world generation is needed. Missing source templates remain preserved failures.
+User explicitly requested this workflow reset on 2026-09-10. Apply the
+[protocol stopping rules](evidence/item-13/protocol.md#completion-workflow-clarification-2026-09-10)
+and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recovery-checkpoint-2026-09-10).
+These replace the previous narrow next-step sequence, not the specification gates.
 
-The first mountainous r2 read passed:322,905 cells,103,062 compressed bytes,
-31.442236s. Four saved slices were viewed. Nine explicit spawners coverfive enemy
-types; all haveDelay0. All33 temple loot assignments remain unrolled. Surrounding
-sculk is retained separately; none of22 hash-checked source palettes includes it.
-The [route check](evidence/item-13/underground_temple_route.py) validates local
-access to all31 chest/barrel assignments and all nine saved sources. It preserves
-native rubble/lava failures, blocked library lids, source holes, timed doors,
-three entrance shafts, three tower shafts and the earned overhead hall bypass.
-Their construction union is112 removals/951 active ticks, plus44 declared scaffold
-placements. These are conditional subtotals, not complete traversal/combat times.
-Fourteen additional native excursions include two six-block stair links. Capped
-stubs, lava boundaries, an exposed eastern ledge and one unvalidated ore-supported
-terminal step remain explicit limitations.
+Recovery reconciliation is integrated in the existing coverage rows and requirement
+map:18 families have complete local sample evidence,15 satisfy declared local scope,
+three remain partial,174 lack local reports. The scope-derived remaining floor is
+530 case completions (4 compact,250 fixed,276 modular), not an experiment count.
+Among the174,26 have full baseline candidates,17 more adequate Item8 references,
+one the verified Item7 pair, and130 no full start-based candidate in these indexes.
+Central-End and other supplemental evidence still need exact gap matching.
 
-The report now delineates25 activity spaces with coordinate footprints and
-partition sensitivity (source corridors, alcoves and tower transit floor).
-All31 reward nodes, nine spawners and nine lit campfires allocate exactly once.
-The primary potential-content definition gives0/25 empty/dead rooms; this is not
-observed occupancy or player engagement. The full route and conditional task
-model now provide separate movement and phase accounting.
+The bounded report/coverage reconciliation took654 seconds wall elapsed; it does
+not measure new case analysis. [Remaining effort](evidence/item-13/README.md#remaining-effort-and-next-bounded-work)
+records unknown unit, experiment, model, validation and review costs. No reliable
+completion ETA is established. Next: select and cap one unassessed fixed case
+with full saved inputs, then complete its whole local assessment and focused
+checks with phase clocks. Use this to price analysis, not just extraction.
 
-The contracted inspected graph now has61 nodes/60 edges, one component and no
-inter-room cycles under the declared remedies. It has21 decision nodes; deepest
-rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
-by graph depth is integrated. Complete conditional timing is now recorded.
-The support check now rejects a mined floor; its direct negative case passes.
-The post-construction circuit covers all25 rooms and31 reward stations. Adding
-three initial shaft-placement detours and the southern source-floor approach
-now gives1,434H/84 ascent/84 descent. All112 removal targets have visited ray
-stations; forward western source access passes against restored local obstacles.
-The complete P6 task now budgets893/1451/2350s across A/B/C, with explicit
-actions, initial falls,31 conditional acquisitions and failure rules. No actual
-gameplay or acquisition is measured.
+Do not resume per-corridor temple expansion by default. Batch verified equivalent
+cases with material differences retained. Before deeper checks, name the unmet
+acceptance claim and why existing evidence cannot satisfy it. No new tracker,
+generic validator or duplicate evidence record; no acceptance reduction.
 
-P6 defines54 stipulated occupied-source enemies with exact-class suppression;
-nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
-Second assembly: chamber and two reward alcoves integrated; all nine campfires unlit/waterlogged.
-Continuous38-target r2 failed at outer ledge after18 landings; raw/download restore retained.
-Do not rerun/tune the controller. The18-scaffold alternative passes solid geometry; wet motion unresolved.
-South link has water gap/wall. Chamber task conditionally118/175/266s,90H, eight holes avoided.
-Fourth rotated tower now150H,103/180/291s conditional,3 rewards; actual corridor reaches third.
-All four tower tasks and bedroom integrated. Bedroom24/43/74s conditional; reward access31/35.
-Remaining two lower chests/two cell barrels are named in report/script; full routes/wet shaft pending.
-Item13 needs full coverage, clean Codex review/thumbs-up, merge and main verification; Item14 UNSTARTED.
+## Underground Temple recovery context
+
+Reuse the [report](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md),
+[selection](evidence/item-13/underground-temple-selection.json), raw observations
+and existing route implementations. The first assembly has an integrated graph,
+complete conditional task and quality assessment. The second has all four tower
+and bedroom local tasks integrated, with31/35 chest/barrel access assignments.
+Four remaining targets already have raw observations; see the report's final
+bedroom section for exact coordinates. Full second-assembly route/graph/task and
+quality integration remain unresolved. The scoped hall and missing-template
+failure are already recorded. Do not regenerate these observations.
+
+Preserve the continuous wet-shaft trial failure and its downloaded restore.
+The scaffold alternative has solid geometry evidence; wet motion remains
+unresolved. Do not rerun or tune the controller. The [recovery disposition](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md#completion-workflow-recovery-disposition-2026-09-10)
+keeps the proposed shaft-using task UNRESOLVED: neither native nor scaffold
+evidence supplies the wet cost. Do not remove its component coverage after failure.
+Local results do not close whole-family coverage.
+
+Item13 remains IN PROGRESS; Item14 remains UNSTARTED. Required clean Codex review,
+thumbs-up, merge and fetched-main delivery verification remain mandatory.

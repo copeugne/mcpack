@@ -3,6 +3,29 @@
 Status: IN PROGRESS. Local Item13 family assessment. Human times, realized
 encounters and acquired loot remain NOT MEASURED under the approved scope.
 
+## Completion-workflow recovery disposition, 2026-09-10
+
+The first assembly's joined P6 task, room graph and quality result are integrated;
+the scoped hall and missing-template failure are also resolved within their bounds.
+The second assembly has31/35 reward accesses and complete local tower/bedroom
+models, but no complete assembly graph or task total. All selected raw evidence
+already exists. Reconcile these coupled results before any per-corridor expansion;
+current population accounting is in [coverage](../coverage.md#reconciled-local-results-2026-09-10).
+
+The wet shaft blocks acceptance of the currently proposed shaft-using complete
+route: the native ascent/return failed, and the scaffold alternative establishes
+solid geometry but not wet movement, breathing or full task cost. Neither is an
+accepted timed graph edge. The approved dry/scaffold allowances do not supply
+that missing wet term. Keep the second-assembly total UNRESOLVED, not a sum with
+zero shaft cost. This does not invalidate already supported dry local tasks.
+The family requires all22 component roles and two full assembly assessments, so
+this link cannot simply be deleted from coverage or renamed optional after failure.
+Before deeper work, integrate the existing graph to identify the required access
+and the smallest supported remedy; any alternative must preserve the declared
+objective and account for its work. No further controller tuning or runtime trial
+is authorized by this recovery disposition. All failed traces/custody remain at
+their existing references below.
+
 ## Existing evidence, failures and smallest complete coverage
 
 Family/root explorations:underground_temple, Overworld. Reuse the accepted

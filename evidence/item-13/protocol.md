@@ -47,6 +47,63 @@ No new framework, world generation or repeated block audit is justified merely
 to restate known inputs. Historical unresolved sections preserve the investigation
 that preceded the accepted scenario and do not override its current acceptance.
 
+## Completion workflow clarification, 2026-09-10
+
+User-authorized workflow recovery. This clarifies execution of v2; it does not
+change measurement definitions, sampling obligations, approved scenario assumptions
+or historical protocol hashes. Item 14 remains UNSTARTED.
+
+Before further sample processing, consolidate the existing evidence in the
+[requirement map](README.md#requirement-map) and [coverage record](coverage.md).
+For each remaining family/material case, distinguish an established result,
+available evidence needing integration, missing evidence, and validation/delivery
+remaining. Link existing family reports instead of copying their investigation
+history. A blank summary is not a reason to repeat an accepted measurement.
+
+The sufficient evidence boundary for each requirement group is:
+
+| Requirement group | Sufficient proof under the existing definitions | Stop condition |
+| --- | --- | --- |
+| Family/material coverage | Existing inclusion set, explicit root/material mapping, declared samples/repetitions and disposition of every gap | Required cases are accounted for; do not enumerate arbitrary procedural permutations |
+| Rooms, branches, vertical progression and depth | Coordinate-bounded activity spaces, block-validated connectors, a complete declared route and the derived graph/elevation/distance measures | Required topology is supported; extra corridor detail needs a named unresolved graph or access claim |
+| Traversal and combat | Complete objective with approved phase accounting, source inputs, actor/resources, encounter conditions, sensitivity and censoring | Every required phase is accounted for; do not calibrate assumed allowances through invented gameplay or unrequested runtime trials |
+| Enemy count/diversity, hazards and chokepoints | Saved/source mechanisms attributed to the sampled rooms and routes, with actual geometry where relevant | Potential and conditional effects are supported; realized encounters and live AI behavior remain outside this scope |
+| Empty/dead rooms, loot and finale | Room-content allocation with denominators, potential reward distribution and supported finale attributes or absence | Required allocations and assessments are resolved; no per-container essay or bespoke prose validator is needed |
+| Bypass, external access, replay and large/shallow form | Concrete supported route/capability examples, architecture/topology contrast and source variation/persistence assessment | Required conclusions and limits are supported; do not exhaustively search every possible breach or engineering solution |
+
+Reuse verified geometry and task accounting across equivalent components in one
+coherent batch. Establish equivalence from the relevant actual block states,
+connectivity, mechanisms and objective inputs, including transformed coordinates
+where needed. Record differences that affect the claim. Reuse does not eliminate
+required family samples, material variants or independent repetitions. Shared
+names, pieces or bounding sizes alone never establish equivalence.
+
+Before a bespoke check, name the unresolved required claim, why existing evidence
+cannot resolve it, and the smallest check that will do so in the existing report.
+Do not add another declaration/result section merely for each doorway or reward.
+Integrate coupled route, graph, attribution and task results as one reviewable
+outcome. Preserve prior failures and raw observations through their existing links.
+An unresolved required route cannot be hidden by calling it optional or by changing
+the objective after seeing its failure.
+
+The next expansion estimate must include analyst/integration effort, focused
+validation and final delivery, separately from extractor runtime and storage.
+Use completed compact, fixed-layout and modular work as distinct cost classes;
+record timing provenance and uncertainty. Commit timestamps alone do not measure
+active effort. Where active effort was not recorded, report UNKNOWN and measure
+one bounded integration batch using existing evidence before extrapolating.
+Compute remaining effort from remaining cases in each class and their justified
+cost ranges, plus explicitly identified missing-evidence experiments and review.
+Do not use fast voxel reads as a prediction of end-to-end completion time.
+
+An overrun or successive batches that add detail without closing required claims
+stops expansion for reassessment. Identify the responsible requirement or method
+choice and revise the execution plan within the approved scope. If meeting a time
+constraint would require changing acceptance, present the exact change for a user
+decision before dependent work. A time budget never silently waives evidence.
+Once the local exit gate passes, run the applicable final checks and proceed to
+the required PR review/fix/clean thumbs-up/merge/main-verification gates.
+
 ## Population and significance
 
 A significant dungeon family is an accepted canonical family with a provisional

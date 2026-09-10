@@ -11,16 +11,51 @@ explicit assumptions, with failure/censoring conditions. These are not human
 observations, typical times or guaranteed bounds. Earlier movement-only results
 remain components and must receive a complete task budget before timing acceptance.
 
-The representative methodology gate is resolved. Resume material-variant coverage
-and quality assessment using this accounting method; adapt objectives, source work,
-phase counts and failure conditions to each layout before calculating results.
-Both Circle cases now have complete conditional budgets; the original overlap
-requires a repeated-batch source model. Medium House 2 now has a complete
-four-barrel task budget of 64/116/207 seconds. Medium House 1 has a complete
-three-container 68/119/202-second budget with pre-delay source disablement.
-The compact pilot now has complete local budgets (ocean 89/170/322 seconds;
-mountainous 71/134/252 seconds for two stipulated enemies). Every included
-family, material/repetition coverage and final review/delivery remain required.
+The methodology gate is resolved. Apply the recovery checkpoint below before
+further sample processing. Existing complete-task corrections remain accepted;
+all human gameplay and realized-outcome limits remain unchanged.
+
+## Current recovery checkpoint, 2026-09-10
+
+The user requested a completion-workflow reset after excessive fine-grained
+iteration. The [protocol stopping rules](protocol.md#completion-workflow-clarification-2026-09-10)
+replace the old per-corridor next steps without changing acceptance. Item 14 remains
+UNSTARTED. Historical predeclarations below are not instructions to repeat work.
+
+Reconciliation is now integrated in the [192-family coverage record](coverage.md#reconciled-local-results-2026-09-10)
+and requirement map below. Existing reports support at least one complete local
+sample in 18 families. Fifteen satisfy their declared local sampling scope;
+Small Dungeon, Circle Ruin and Underground Temple retain exact gaps. The other 174
+families have no local quality report. These are local evidence states, not item
+completion percentages or substitutes for final checks and reviewed delivery.
+
+Available evidence needing integration: 26 of the 174 have full baseline start
+candidates,17 more have adequate Item8 references, and Starlight Voyager has its
+verified Item7 pair. These 44 input-ready families still need sample/material
+selection and actual quality assessment. The other 130 have no full start-based
+candidate in those indexes, but partial/control and non-registry raw evidence
+must be consulted before experiments are declared. Central-End lifecycle evidence
+is a specific unintegrated input, not absent evidence.
+
+The second Underground Temple's selected raw blocks are all retained. Four tower
+tasks, bedroom and 31/35 reward accesses are integrated locally. Its whole graph,
+remaining reward/source accesses, room allocation, quality synthesis and complete
+task remain unresolved. The [wet-shaft disposition](fixed-blocks/explorations-underground-temple-report.md#completion-workflow-recovery-disposition-2026-09-10)
+blocks accepting the proposed shaft-using task; neither the failed native trial
+nor dry scaffold geometry supplies a wet timing term. Do not tune the controller,
+sum incomplete terms or silently remove this component from required coverage.
+
+The existing scope implies at least 530 remaining case completions, divided into
+4 compact, 250 fixed and 276 modular. This is a conservative assessment floor,
+not 530 new experiments or a finished selection matrix. Missing component outcomes
+can increase it. [Effort accounting](#remaining-effort-and-next-bounded-work)
+keeps unknown analysis, experiment and delivery costs explicit; no reliable ETA
+is established from extractor speed or commit timestamps.
+
+Validation/delivery remaining: affected checks for new integrated results, the
+full local exit gate and applicable checks, result-surface review, completed clean
+Codex review with thumbs-up, merge and fetched-main verification. None has been
+waived by this recovery checkpoint.
 
 ## Authorized method and delivery boundary
 
@@ -72,7 +107,8 @@ NOT MEASURED. Scoped shortest station distances (14.5 and 18.125 blocks),
 room-graph depth and burial context are now integrated. The local modeled
 assessment is recorded. The [second-house assessment](fixed-blocks/mns-medium_house_2-report.md)
 now records both vine links and all local quality dimensions under the model.
-Broader family sampling, complete-objective timing and final delivery remain outstanding.
+Both fixed alternatives now satisfy the declared local sampling minimum with
+complete-task corrections. Whole-item sampling and final delivery remain outstanding.
 
 The [Warped Dome assessment](fixed-blocks/mns-warped_dome-report.md) now records
 one ground room, external resource access and a complete conditional survey/harvest
@@ -88,26 +124,90 @@ roof thickness and optional parkour remain explicit limits.
 
 ## Requirement map
 
-| Requirement | Existing evidence available | Concrete missing measurement or assessment |
+The [reconciled family table](coverage.md#reconciled-local-results-2026-09-10)
+links every current local result to its authoritative report and latest correction.
+"18 represented families" below means local sample evidence, not completed family
+coverage. For partial families, only their completed sample/task scopes are reused.
+Every requirement still needs the remaining samples in the coverage record and
+shared validation/review/main delivery. This is the current map; earlier historical
+"pending" text does not invalidate later integrated corrections.
+
+| Requirement | Established local evidence | Integration or missing work remaining |
 | --- | --- | --- |
-| Every significant family | Item 8's 448 canonical families, Item 9 roles/flags/ambiguities | Complete [intake](intake.json) includes 192, excludes 256; [material coverage](coverage.md) accounts for all 192 families and 357 roots; exact sample/component coverage remains pending, including non-Overworld content |
-| Room count | Packaged templates, custom generator source and accepted saved worlds | Delineate playable spaces and validate room boundaries against blocks and connections |
-| Branching | Pool links and piece envelopes | Actual room/connector graph, junctions, dead ends and loops; pool branches are not playable branches |
-| Vertical progression | Source vertical designs and Item 12 placement context | Reachable floor changes and their traversal order |
-| Dungeon depth | Source placement offsets and saved envelopes | Entry-to-objective graph depth, route distance and burial depth, separately |
-| Traversal time | Item 5 duration categories, Item 11 transport assumptions | Route-based modeled time with explicit actor, terrain, navigation and uncertainty; human time NOT MEASURED |
-| Combat time | Authored entities, spawners and generator logic | Explicit encounter-workload and combat model with supported inputs; no fabricated realized encounter duration |
-| Enemy count | Source entity/spawner potential | Per-sample authored residents, spawner parameters and conditional populations, separately; realized enemies NOT MEASURED |
-| Enemy diversity | Exact source IDs and ambiguity | Distinct hostile types and conditional alternatives per sample, excluding objects/civilians |
-| Meaningful hazards | Template palettes/markers and generator code | Function and route relevance of actual hazard mechanisms, distinguished from mere ingredients |
-| Chokepoints | Source doors, corridors and stairs | Narrow playable connections and alternate paths; no claim about live AI behavior |
-| Dead/empty rooms | Source furnishings, loot and encounter ingredients | Room-level content/objective/connectivity coding with explicit denominator |
-| Loot distribution | Source tables/markers, known ineffective assignments | Container/other reward positions by room/depth; potential versus generated contents versus acquired items kept separate |
-| Final-room quality | Source boss/objective/reward architecture | Explicit finale identification or absence, access, payoff and bypass assessment |
-| Bypass opportunities | Source geometry, block materials, Item 12 access limits | Alternative route, capability and avoided objectives/rooms; no ban or tuning |
-| External-access vulnerabilities | Source exterior/roof/underground architecture | Boundary-to-reward/goal access and bypass costs on sampled geometry |
-| Expected replay value | Source layout alternatives, Item 11 repetition limits | Supported assessment of layout/objective/encounter variation and persistence limitations, not player enjoyment |
-| Visually large but shallow | All Item 9 S/O flags and Item 12 architecture | Compare external form with validated internal topology/content, never volume alone |
+| Every significant family | All 448 intake decisions; 192 included/357 roots. Local scope satisfied for 15 families; three partial | 174 lack local reports; all row-level material gaps and case floors are in coverage. Final selection is incomplete |
+| Room count | Coordinate-bounded activity spaces in all 18 represented families, with reported partition sensitivities | Second temple whole-assembly allocation; the 174 unassessed families. No template/piece conversion |
+| Branching | Validated graphs/local links in the 18 reports; first temple 61-node graph and fixed-layout contrasts | Second temple joined graph and the 174 unassessed families; local tower graphs cannot simply be summed |
+| Vertical progression | Connected floor changes and explicit modeled construction in the 18 local results | Second temple complete sequence, including unresolved wet link; remaining scoped cases |
+| Dungeon depth | Graph/route distances and separately labeled terrain context in local reports | Second temple integrated depth and remaining scoped cases. Surface differences never become solid roof thickness |
+| Traversal time | Complete conditional objective budgets in the 18 represented families, superseding their earlier movement-only totals | Second temple total and all remaining cases. Source work, provisional allowances and censored states stay distinct |
+| Combat time | Pinned source work and explicit scenario populations; completed corrections include natural overrides and repeated-source schedules | Second temple whole-source schedule and remaining cases, including special bosses/trials. No generic seconds-per-enemy fallback |
+| Enemy count | Authored resident/source counts and conditional populations in local results | Second temple whole-task allocation and remaining cases; realized enemies remain NOT MEASURED |
+| Enemy diversity | Exact current source types, empty-source lookup and conditional alternatives retained locally | Remaining scoped families/mechanisms; no invented default mobs or civilian/object inflation |
+| Meaningful hazards | Route-relevant lava, falls, wet exposure, webs, source pressure and supported trigger distinctions | Second temple whole-route integration and remaining cases. Failed wet runtime does not prove impossibility |
+| Chokepoints | Actual narrow doors, stairs, shafts and alternatives in local reports | Second temple graph integration and remaining cases; live AI exploitation stays outside this scope |
+| Dead/empty rooms | Explicit local room denominators and source/facility/content allocations | Second temple global denominator and remaining cases. Quiet connectors are not automatically dead rooms |
+| Loot distribution | Per-room/depth assignments and material rewards in local reports, with ineffective assignments retained | Four second-temple reward accesses plus full allocation, and remaining cases. Generated/acquired loot remains NOT MEASURED |
+| Final-room quality | Supported absence or candidate attributes in local reports, including first temple and large/shallow forms | Second temple synthesis and remaining cases; no highest-room or highest-volume substitute |
+| Bypass opportunities | Concrete local breach, construction and reward-first routes, with capability/cost limits | Second temple integration and remaining cases; exhaustive breach search is not required |
+| External-access vulnerabilities | Saved boundary/water/terrain exposure and supported local access examples | Second temple synthesis and remaining cases. Unseen surface/cave routes remain unsupported, not safe |
+| Expected replay value | Source variation versus same-site persistence assessments in local reports | Second temple comparative synthesis and remaining cases; expected replay remains an assessment, not a player outcome |
+| Visually large but shallow | Local external-form/topology comparisons, including Dome, Skull and staged towers | Second temple whole-form assessment and remaining cases; envelope volume alone supplies no conclusion |
+
+## Remaining effort and next bounded work
+
+The [scope annotations](coverage.md#recovery-input-and-effort-accounting) give
+minimum remaining assessment units: compact 4, fixed 250, modular 276. Final counts
+are `Nc >= 4`, `Nf >= 250`, `Nm >= 276`, because uncovered material/components can
+require extra cases. A unit means a complete scoped case assessment or completion
+of an already partial one. It does not mean a new world or one uniformly costly
+operation. Reuse verified equivalent cases with their actual differences retained.
+
+| Work component | Current cost evidence | Remaining estimate |
+| --- | --- | --- |
+| Integrating already completed reports | Recovery batch, 2026-09-10 13:08:30 to 13:19:24 UTC: 654 seconds wall elapsed through the first successful coverage arithmetic check; 19 reports reconciled into 18 family entries and the requirement map | This reconciliation is integrated. It is one batch, not a calibrated per-case rate |
+| New compact analysis/integration | Two pilot cases and two Slime states completed, but active analyst elapsed was not recorded separately | Unit cost `Ac` UNKNOWN; at least 4 further case assessments, plus uncovered mechanism work |
+| New fixed analysis/integration | Nine initial Moog reads took 60.887 seconds; that excludes topology, modeling, report integration and corrections | Unit cost `Af` UNKNOWN; at least 250 further case assessments |
+| New modular analysis/integration | Completed Basalt/fortress pairs and first temple show required graph/task work, but no reliable active-effort clock | Unit cost `Am` UNKNOWN; at least 276 completions, including the partial second temple |
+| Missing-evidence experiments and custody | Existing exact material diagnostics retained; 130 families lack a full start-based candidate, but supplemental/raw matching is not exhausted | Experiment count, runtime and storage UNKNOWN until exact missing root/material/placement cases are selected |
+| New movement/boss/trial model inputs | Existing source models reusable only where their conditions apply; wet shaft remains unresolved | Additional cost `M` UNKNOWN; no generic combat or dry-movement substitute |
+| Affected and final checks, surface review | Existing family checks retained; this documentation reconciliation needs arithmetic, links and diff checks only | Remaining item validation cost `V` UNKNOWN until final changed surface is known |
+| Codex review/fixes and main delivery | No Item 13 final PR gate reached | Review latency/fix cost `R` UNKNOWN; clean completed thumbs-up, merge and fetched-main verification remain required |
+
+Clock provenance for 654 seconds is the two explicit UTC tool readings during
+this recovery batch, not commit dates or historical guesswork. The interval
+includes reading, reasoning, edits and tool calls. It is agent wall elapsed, not
+measured human labor. It excludes later documentation validation, committing and
+pushing. There is only one observation and it prices integration of existing
+results, so extrapolating it to new block/graph/model analysis would be invalid.
+The historical active costs remain UNKNOWN rather than reconstructed from Git.
+
+The honest planning expression is
+`E = Nc*Ac + Nf*Af + Nm*Am + X + M + V + R`, where `X` includes necessary
+experiment/restore/custody effort. Neither the unit costs nor the final case counts
+are established well enough for a numerical total or calendar deadline. The
+530-case floor establishes the work scale; the minute-scale extractor timings do
+not establish feasibility within a week. No acceptance requirement is waived.
+
+Next bounded work: use one unassessed fixed case with already full saved inputs
+and the existing selection/extraction path, complete its whole local report and
+focused checks as one batch, and record separate clocks for selection/read,
+analysis/integration and validation. Select its exact identity and cap before
+processing. This supplies a new-analysis cost observation; it must not become a
+per-door investigation or a forecast for custom bosses/modular networks. Then
+price remaining compact/modular work with bounded observations or keep those
+terms UNKNOWN. Before any experiment, match the exact remaining alternative to
+Items 7/8/10 and non-registry evidence and predeclare the smallest missing case,
+runtime and storage. Do not resume the temple corridor sequence by default.
+
+Recovery validation: the first draft arithmetic reader rejected the Starlight
+Voyager row's semicolon annotation; its narrow delimiter/identifier correction
+now reproduces all 192 rows and the class/input totals. No world, game model,
+measurement implementation or frozen identity changed. Existing empirical checks
+are not rerun solely for this documentation integration. All42 added relative
+links/anchors resolve, and the whitespace diff check passes. Staged scope review
+caught an omitted second Jungle Tree House anchor in the initial case floor;
+restoring that declared alternative gives the final530 floor. All189 original
+registered scope rows remain verbatim before their added recovery column.
 
 ## Input availability and remaining coverage
 

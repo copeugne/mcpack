@@ -1,7 +1,9 @@
 # Selected fixed-layout saved blocks
 
-Status: raw block coverage complete for these nine selected instances only.
-Playable topology, traversal/combat models and quality assessments remain pending.
+Status: selected local assessments and complete-task corrections are integrated.
+Current family/material coverage is reconciled in [coverage](../coverage.md#reconciled-local-results-2026-09-10).
+The extraction-stage pending statements below are historical, not instructions to
+repeat completed work. The second Underground Temple assembly remains incomplete.
 Protocol: `item13-fixed-blocks-v1`, declared in [coverage](../coverage.md).
 The raw `protocol_sha256` binds the unchanged shared definitions in
 [protocol.md](../protocol.md); the fixed-block declaration is preserved by this
@@ -257,5 +259,8 @@ The [Underground Temple report](explorations-underground-temple-report.md) now
 retains complete24-start failure accounting and the first accepted block read.
 Two complete assemblies plus an existing scoped component cover its22 available
 templates; two missing references remain failures. The first sample records nine
-explicit spawners,33 unrolled loot assignments and surrounding sculk. Its playable
-topology and complete conditional task remain pending before further extraction.
+explicit spawners,33 unrolled loot assignments and surrounding sculk. Its first-assembly playable topology, full conditional task and quality assessment
+are now integrated. The second has31/35 reward accesses and all four tower plus
+bedroom local tasks; its full graph/task and wet-shaft disposition remain open.
+The scoped hall and missing-template raw reads are also complete. Do not extract
+them again because the earlier extraction-stage summary was stale.

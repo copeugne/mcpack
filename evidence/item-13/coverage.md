@@ -1,9 +1,111 @@
 # Item 13 material variants and sample coverage
 
 Status: IN PROGRESS. The complete inclusion/exclusion population is [intake.json](intake.json).
-This record resolves material variants within that population before selecting and
-processing their samples. A scoped design is not yet a measured design. No full
-sampling matrix or expensive expansion is authorized by this unfinished record.
+The recovery summary below reconciles existing local results with the original
+material scope. A scoped design is not yet a measured design. Full sampling and
+expensive expansion still require exact case selection and resource bounds.
+
+## Reconciled local results, 2026-09-10
+
+This recovery pass integrates existing reports only. It does not rerun worlds,
+geometry, source classification or accepted models. The 192-family population
+and all root/material scope descriptions below remain binding. The following
+18 families have at least one complete local sample assessment. Fifteen satisfy
+their declared local sampling scope; three remain partial. This is not a whole-item
+exit gate or a claim of reviewed main delivery.
+
+| Family | Established result and authoritative evidence | Required local work still unresolved |
+| --- | --- | --- |
+| betterdungeons:small_dungeon | [Two complete compact tasks](pilot/report.md#complete-conditional-tasks-under-protocol-v2), 9x7 skeleton and 9x5 spider | Other four shell sizes, zombie theme and material loot-pile coverage; choose cases jointly, not an invented 18-cell factorial |
+| mns:circle_ruin | [Both Nether-brick cases](fixed-blocks/mns-circle_nether_brick-report.md#original-overlap-complete-conditional-task-budget), including the overlap and complete-objective correction | Blackstone root, with its own layout/source differences |
+| mns:giant_skull | [Complete local task and quality](fixed-blocks/mns-giant_skull-report.md#activity-space-judgment-and-quality-synthesis) | None within the declared single-layout minimum; retained roof/optional-parkour limits are not proven routes |
+| mns:large_house_1 | [Five spaces and engineered access](fixed-blocks/mns-large_house_1-report.md#integrated-topology-and-quality-assessment), complete task and repeated-source envelope | None within the declared single-layout minimum |
+| mns:medium_house | [First layout](fixed-blocks/mns-medium-house-report.md#complete-three-container-task-with-source-first-schedule) and [second layout](fixed-blocks/mns-medium_house_2-report.md#complete-four-barrel-task-and-lower-roof-access); both complete tasks, actual geometry and empty-source disposition | None within the two declared fixed alternatives |
+| mns:nether_tower | [Seventeen rewards, two rooms and complete task](fixed-blocks/mns-nether_tower-report.md#integrated-topology-and-quality-assessment) | None within the declared single-layout minimum |
+| mns:warped_dome | [Ground resource task and shallow-form assessment](fixed-blocks/mns-warped_dome-report.md#resource-task-result-and-quality-synthesis) | None within the declared single-layout minimum |
+| mss:desert_pyramid | [Complete task and staged quality assessment](fixed-blocks/mss-desert_pyramid-report.md#local-topology-and-quality-synthesis) | None within the declared fixed connected assembly |
+| mss:small_tower | [Constructed connector, complete task and quality](fixed-blocks/mss-small_tower-report.md#remaining-spaces-and-local-quality-synthesis) | None within the declared fixed connected assembly |
+| adorabuild_structures:blackstone_temple | [Natural gold cases and processed alternatives](fixed-blocks/adorabuild-blackstone_temple-report.md#verified-alternate-materials-and-conditional-task-impact), complete resource task and quality | None within declared layout/material scope; forced materials do not establish natural frequency |
+| adorabuild_structures:crimson_hall | [One complete fixed case](fixed-blocks/adorabuild-crimson_house_medium_2-report.md) | None within declared scope |
+| adorabuild_structures:end_ship | [One complete fixed case](fixed-blocks/adorabuild-end_ship_small_1-report.md), conditional shulker treatment | None within declared scope; settled resident position remains unobserved |
+| adorabuild_structures:nether_fortress_wart_house | [One complete fixed case](fixed-blocks/adorabuild-nether_fortress_medium_1-report.md#correction-structure-level-monster-potential-and-declared-combat-case), including corrected natural-source model | None within declared scope; optional farming is separate from chest task |
+| adorabuild_structures:nether_temple | [Gold task and processed alternatives](fixed-blocks/adorabuild-nether_temple_medium_1-report.md#verified-alternate-materials-and-conditional-task-impact), lava retrieval and corrected natural-source model | None within declared layout/material scope |
+| adorabuild_structures:basalt_chambers | [Two distinct-seed assemblies, seven components and material outcomes](fixed-blocks/basalt-chambers-report.md#central-material-coverage-resolved-locally), including delivered diagnostic custody | None within declared scope; missing pool and rejected no-bridge route retained |
+| adorabuild_structures:nether_fortress | [Two distinct-seed assemblies and eight components](fixed-blocks/adorabuild-nether-fortress-report.md#second-complete-conditional-model-and-local-gate), full local tasks and quality | None within declared scope; native failures remain baseline results |
+| explorations:slime_cave | [Both processed height states](fixed-blocks/explorations-slime-cave-report.md#negative-case-result-and-material-comparison), complete local tasks with [corrected breaking cost](fixed-blocks/explorations-slime-cave-report.md#narrow-correction-spawner-breaking-cost) | None within declared scope; source-supported mixed-height processing is not a third template |
+| explorations:underground_temple | [First full assembly, scoped hall and failure](fixed-blocks/explorations-underground-temple-report.md); all four tower tasks and bedroom in second assembly | Second full graph/circuit/task, remaining four reward accesses and fifth source, room/content allocation and quality synthesis; wet-shaft link unresolved. All selected raw blocks already exist |
+
+The Moog scope declares one complete occurrence per fixed alternative, with two
+only for the three named procedural families. Generic later reminders about
+"family repetitions" do not introduce an additional repetition requirement for
+the seven satisfied fixed families above. Their source/terrain limitations remain
+as reported. Circle's second Nether-brick case does not replace the blackstone
+alternative. No completed fixed task needs to be recalculated to settle this
+sampling interpretation. All local results still require the shared final
+validation/review/delivery gate.
+
+For every family not in the table above, all alternatives in its existing scope
+row still need a local quality assessment. This includes cases with available
+saved inputs. None is source-only complete, excluded for absence, or silently
+assigned the compact task model. For partial families, subtract only the exact
+alternatives above; all other scoped roots, dimensions, components and mechanisms
+remain required. This rule and the row-level recovery columns account for all
+192 families without a separate tracker.
+
+## Recovery input and effort accounting
+
+The recovery columns below are planning/accounting annotations, not quality scores:
+
+- Compact: the two bounded custom chamber families already represented by the
+  compact and Slime Cave work. Fixed: finite declared layouts/assemblies.
+  Modular: procedural, component-selecting or custom lifecycle assemblies needing
+  assembly integration. These are cost classes, not room counts or equal-cost claims.
+  Bosses, fluids and trial/vault states can require distinct model work in any class.
+- Remaining case floor: minimum unassessed complete occurrences/designs supported
+  by the existing scope, minus completed local cases. It is a lower bound, not a
+  selected sampling matrix. Partial second-temple work counts as one remaining
+  completion, not a new read. Supplemental component outcomes may raise the floor.
+  One case can satisfy several jointly represented component alternatives.
+- B: full padded baseline start candidates from the existing assembly summary.
+  P: prior Item 8 references whose intake adequacy is `candidate for block inspection`.
+  These are input-reference counts, not independent repetitions or validated
+  material coverage. Exact root/dimension/ID mappings remain in [intake](intake.json),
+  [candidates](candidates.json) and [assembly summary](start-inspection/summary.json).
+  A B/P-positive row has saved evidence available for selection and block analysis;
+  its unrepresented alternatives still need a specific gap disposition.
+- B0/P0 means no full candidate in those indexes, not no existing evidence anywhere.
+  Reuse the recorded [Item 7 dispositions](README.md#common-item-7-coverage-disposition),
+  central-End raw and feature-specific evidence before declaring an experiment.
+  Partial candidates and omit-Sparse controls remain separate contextual evidence.
+
+Among the 174 families with no local report, 26 have B-positive inputs, 17 more
+have P-positive inputs, and Starlight Voyager has the already verified Item 7
+pair. The other 130 lack a full start-based candidate in those three indexes.
+The latter includes the central-End lifecycle case with raw evidence awaiting
+integration. Therefore 130 is neither a count of necessary experiments nor proof
+that existing evidence is exhausted. Material coverage within the 44 input-ready
+families also remains incomplete. No new broad generation is authorized here.
+
+The row case floors use the declared single/two-occurrence rules, explicit root
+and named-layout alternatives, and these necessary distinctions: six compact
+shells; seven Bathhouse tops; five Mushroom House tops; five Brass boss forms;
+three Kisegi top alternatives; five IDAS Castle occurrences (2+2+1); four minimum
+ocean-ruin temperature/size combinations; eight occurrences for each four-start
+Bastion family; 21 Repurposed wreck alternatives; eleven distinct CTOV definitions;
+fifteen eligible Towns and Towers tower designs. The Heavenly ships retain both
+dimensions; Jungle Tree House retains both placement anchors. Component coverage beyond these floors is unresolved, not assumed
+satisfied by random examples. Scope rows remain the acceptance authority.
+
+| Cost class | Families in scope | Families with local scope remaining | Minimum case completions remaining |
+| --- | ---: | ---: | ---: |
+| Compact | 2 | 1 | 4 |
+| Fixed | 126 | 114 | 250 |
+| Modular | 64 | 62 | 276 |
+| Total | 192 | 177 | 530 |
+
+These are remaining assessment units, not new extraction counts, independent-world
+counts or an end-to-end ETA. [Effort measurement and unresolved costs](README.md#remaining-effort-and-next-bounded-work)
+separate integration, missing evidence, model work, validation and delivery.
 
 ## Adorabuild variant scope
 
@@ -20,33 +122,33 @@ The latter has SHA-256 `703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b
 Dimension scope is the per-root evidence already retained in the intake.
 These are direct inspections of accepted sources, not another classification audit.
 
-| Family | Material roots | Dimension | Sampling distinction that must be preserved |
-| --- | --- | --- | --- |
-| ancient_palace | ancient_palace_1 | End | Multilevel columned building, upper window band and ladder |
-| ancient_palace_hall | ancient_palace_2 | End | Broad stepped-roof hall and ladder, separate from the first palace |
-| basalt_chambers | basalt_chambers_large_1 | Nether | Modular network; empty, debris, blaze and tripwire/magma component roles. Missing `minecraft:basalt_chambers/chambers` pool can truncate assembly and must remain a measured limitation |
-| blackstone_bastion | blackstone_bastion_medium_1, blackstone_bastion_medium_2, blackstone_bastion_small_1 | Nether | Square, elongated and stepped layouts, piglin/brute and chest/trapped-chest differences |
-| blackstone_bastion_towers | blackstone_bastion_medium_3 | Nether | Central and surrounding towers, distinct vertical compound |
-| blackstone_temple | blackstone_temple_small_1 | Nether | Open-sided gold-bearing shrine; retain as a shallow-form comparison |
-| buried_sand_castle | sand_castle_small_1, sand_underground_castle_1 | Overworld | Different buried depth/layout and lava versus TNT/pressure-plate ingredients; inspect actual mechanism connectivity |
-| crimson_hall | crimson_house_medium_2 | Nether | Broad fenced hall with hoglin/brute source content |
-| crimson_tower_house | crimson_house_medium_1 | Nether | Stacked form, lever/lamp and different access |
-| dark_oak_mansion | dark_oak_mansion_medium_1 | Overworld | Broad furnished illager residence and ladder |
-| end_house | end_house_medium_2, end_house_small_1, end_house_small_2 | End | Entrance/roof layouts differ; first two author shulkers, third does not |
-| end_raised_house | end_house_medium_1, end_house_medium_3 | End | Raised rooms; roof opening, windows, ladder and ender-chest differences |
-| end_ship | end_ship_small_1 | End | Compact deck/frame and authored shulker; effective access must be measured |
-| end_temple | end_temple_large_1, end_temple_small_1 | End | Larger layout additionally authors end crystal and different contents |
-| mountain_mine | mountain_mine_1, mountain_mine_2 | Overworld | Ladder/timber versus rail/minecart access; equal envelopes do not establish equivalent traversal |
-| nether_fortress | nether_fortress_large_1 | Nether | Modular towers/stairs/bridges, alternative tower heights and reward-bearing components |
-| nether_fortress_courtyard | nether_fortress_large_2 | Nether | Low enclosed courtyard and authored fortress enemies |
-| nether_fortress_wart_house | nether_fortress_medium_1 | Nether | Roofed crop-bearing building; natural override differs from authored entities |
-| nether_temple | nether_temple_medium_1 | Nether | Tiered shrine, lava/fire/gold and fortress spawn override |
-| ocean_bubble | ocean_bubble_1 | Overworld | Bounded underwater sculk installation; no inferred Warden encounter |
-| ocean_temple | ocean_temple_medium_1, ocean_temple_medium_2 | Overworld | Raised roof versus projecting entrance, underwater guardian-spawn context |
-| prison | prison_large_1, prison_small_1 | Overworld | Different footprint, guards/captives and additional large-design residents |
-| red_sand_temple | red_sand_temple_medium_1 | Overworld | Low open-window hall without authored encounter/reward nodes, retained as shallow-form comparison |
-| sand_pyramid | sand_pyramid_1 | Overworld | Trapped-chest/piston/lava ingredients require actual topology and trigger assessment |
-| watercraft | dark_oak_ship_1, mangrove_ship_1, oak_ship_1, spruce_ship_1 | Overworld | Deck arrangements differ; illager, civilian and stray alternatives all remain in scope |
+| Family | Material roots | Dimension | Sampling distinction that must be preserved | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| ancient_palace | ancient_palace_1 | End | Multilevel columned building, upper window band and ladder | Fixed; 1; B0, P0. No local result. |
+| ancient_palace_hall | ancient_palace_2 | End | Broad stepped-roof hall and ladder, separate from the first palace | Fixed; 1; B0, P0. No local result. |
+| basalt_chambers | basalt_chambers_large_1 | Nether | Modular network; empty, debris, blaze and tripwire/magma component roles. Missing `minecraft:basalt_chambers/chambers` pool can truncate assembly and must remain a measured limitation | Modular; 0; B2, P0. Local scope satisfied. |
+| blackstone_bastion | blackstone_bastion_medium_1, blackstone_bastion_medium_2, blackstone_bastion_small_1 | Nether | Square, elongated and stepped layouts, piglin/brute and chest/trapped-chest differences | Fixed; 3; B0, P0. No local result. |
+| blackstone_bastion_towers | blackstone_bastion_medium_3 | Nether | Central and surrounding towers, distinct vertical compound | Fixed; 1; B0, P0. No local result. |
+| blackstone_temple | blackstone_temple_small_1 | Nether | Open-sided gold-bearing shrine; retain as a shallow-form comparison | Fixed; 0; B2, P0. Local scope satisfied. |
+| buried_sand_castle | sand_castle_small_1, sand_underground_castle_1 | Overworld | Different buried depth/layout and lava versus TNT/pressure-plate ingredients; inspect actual mechanism connectivity | Fixed; 2; B0, P0. No local result. |
+| crimson_hall | crimson_house_medium_2 | Nether | Broad fenced hall with hoglin/brute source content | Fixed; 0; B1, P0. Local scope satisfied. |
+| crimson_tower_house | crimson_house_medium_1 | Nether | Stacked form, lever/lamp and different access | Fixed; 1; B0, P0. No local result. |
+| dark_oak_mansion | dark_oak_mansion_medium_1 | Overworld | Broad furnished illager residence and ladder | Fixed; 1; B0, P0. No local result. |
+| end_house | end_house_medium_2, end_house_small_1, end_house_small_2 | End | Entrance/roof layouts differ; first two author shulkers, third does not | Fixed; 3; B0, P0. No local result. |
+| end_raised_house | end_house_medium_1, end_house_medium_3 | End | Raised rooms; roof opening, windows, ladder and ender-chest differences | Fixed; 2; B0, P0. No local result. |
+| end_ship | end_ship_small_1 | End | Compact deck/frame and authored shulker; effective access must be measured | Fixed; 0; B2, P0. Local scope satisfied. |
+| end_temple | end_temple_large_1, end_temple_small_1 | End | Larger layout additionally authors end crystal and different contents | Fixed; 2; B0, P0. No local result. |
+| mountain_mine | mountain_mine_1, mountain_mine_2 | Overworld | Ladder/timber versus rail/minecart access; equal envelopes do not establish equivalent traversal | Fixed; 2; B0, P0. No local result. |
+| nether_fortress | nether_fortress_large_1 | Nether | Modular towers/stairs/bridges, alternative tower heights and reward-bearing components | Modular; 0; B4, P0. Local scope satisfied. |
+| nether_fortress_courtyard | nether_fortress_large_2 | Nether | Low enclosed courtyard and authored fortress enemies | Fixed; 1; B0, P0. No local result. |
+| nether_fortress_wart_house | nether_fortress_medium_1 | Nether | Roofed crop-bearing building; natural override differs from authored entities | Fixed; 0; B1, P0. Local scope satisfied. |
+| nether_temple | nether_temple_medium_1 | Nether | Tiered shrine, lava/fire/gold and fortress spawn override | Fixed; 0; B1, P0. Local scope satisfied. |
+| ocean_bubble | ocean_bubble_1 | Overworld | Bounded underwater sculk installation; no inferred Warden encounter | Fixed; 1; B0, P0. No local result. |
+| ocean_temple | ocean_temple_medium_1, ocean_temple_medium_2 | Overworld | Raised roof versus projecting entrance, underwater guardian-spawn context | Fixed; 2; B0, P0. No local result. |
+| prison | prison_large_1, prison_small_1 | Overworld | Different footprint, guards/captives and additional large-design residents | Fixed; 2; B0, P0. No local result. |
+| red_sand_temple | red_sand_temple_medium_1 | Overworld | Low open-window hall without authored encounter/reward nodes, retained as shallow-form comparison | Fixed; 1; B0, P0. No local result. |
+| sand_pyramid | sand_pyramid_1 | Overworld | Trapped-chest/piston/lava ingredients require actual topology and trigger assessment | Fixed; 1; B0, P0. No local result. |
+| watercraft | dark_oak_ship_1, mangrove_ship_1, oak_ship_1, spruce_ship_1 | Overworld | Deck arrangements differ; illager, civilian and stray alternatives all remain in scope | Fixed; 4; B0, P0. No local result. |
 
 Denominators: 25 canonical families and 38 registry-root alternatives. The accepted
 pool traces select one template for each of 36 roots. The two exceptions are basalt
@@ -120,43 +222,43 @@ component membership is inspected; no full processing budget is asserted yet.
 
 All unqualified family names in the next table use `dungeons_arise:`.
 
-| Family/root | Dimension | Required architectural variant coverage | Material conditions to preserve |
-| --- | --- | --- | --- |
-| abandoned_temple | Overworld | Procedural temple assembly | Authored illusioner/skeletons versus conditional stray override; buried and exposed portions |
-| aviary | End | Fixed three-layer assembly | Five different spawner alternatives, crystal content and external vertical access |
-| bandit_towers | Overworld | Procedural tower/bridge assembly | Rocket/passenger and different spawner payloads; actual bridge continuity |
-| bandit_village | Overworld | Procedural village assembly | Hoglin/passenger and rocket mechanisms; missing `bandit_village_deco_3` remains a failed source reference |
-| bathhouse | Overworld | Component coverage: six bases, four middles, seven tops | Source height combinations differ; curse dispenser/cloud and three spawner alternatives are not interchangeable decoration |
-| ceryneian_hind | Overworld | Fixed three-section ship | Surface-relative -16 placement, reward-bearing hull without authored enemy source in its selected templates |
-| coliseum | Overworld | Fixed four-quadrant arena | Phantom/skeleton spawner has its own long interval/count; entity-drop reward differs from container loot |
-| foundry | Overworld | Procedural underground assembly | Missing `underworld/foundry/foundry_corridor_gears` pool; retain resulting omissions and machinery access |
-| giant_mushroom | Overworld | Two separate assemblies: red and twins | Matching connector names keep these layouts separate; one sample of either does not cover the other |
-| greenwood_pub | Overworld | Procedural pub/lower-room assembly | Surface-relative -18 placement and buried lower access |
-| heavenly_challenger | Overworld, End | Fixed six-section ship in each dimension | Absolute Y200, mounted/flying enemy sources and access over distinct terrain/void context |
-| heavenly_conqueror | Overworld, End | Fixed four-quadrant ship in each dimension | Absolute Y200 and four spawner alternatives; no inferred ground entrance |
-| heavenly_rider | Overworld, End | Fixed two-layer ship in each dimension | Absolute Y200, mounted/flying sources including a distinct 2400/4800-tick interval |
-| illager_campsite | Overworld | Procedural terrain-following camp | Street/tent continuity, direct illager residents and zombie-villager decoration source; no physical spawner substitution |
-| illager_corsair | Overworld | Fixed two-section ship | Starting from either half translates the same authored assembly; evoker/pillager residents and vindicator spawner remain separate |
-| illager_fort | Overworld | Fixed enclosing assembly plus all nine internal room alternatives | Room alternatives and four saved-entity alternatives; equal room envelopes do not establish equal contents |
-| illager_galley | Overworld | Fixed two-section ship | Half-start translation is not a new design; direct pillager and vindicator spawner, with retained arrow/equipment differences |
-| illager_windmill | Overworld | Fixed two-section core plus procedural terrain-matching fields | Core access and attached field continuity must be assessed together; one isolated core is incomplete site coverage |
-| infested_temple | Overworld | Fixed main assembly plus five level and ten room alternatives | Five trial-spawner and three vault alternatives; final objectives and trial/vault state stay explicit |
-| jungle_tree_house | Overworld | Two anchor alternatives: main-start and roots-start | Same connected source shape, different surface-relative placement because vertical start piece changes; direct husk/skeleton residents |
-| keep_kayra | Overworld | Fixed main assembly | Connector-specific high/middle/low spawners, incompatible horizontal connector, fixed harmful-potion inventory and decorative/passive residents |
-| kisegi_sanctuary | Overworld | Fixed main/lower/middle/final top sections plus three `top_room_0` alternatives | Twelve trial-spawner and four vault alternatives; selected top-room variant must be identified |
-| lighthouse | Overworld | Fixed two-section tower | Vertical access and reward distribution without invented authored enemies |
-| mechanical_nest | Overworld | Procedural elevated assembly | Missing decoration pool, bridge terminator 6 and spawner 6 references; preserve actual access gaps |
-| mining_complex | Overworld | Procedural mining assembly | Fixed low anchor with tall architecture/blimp components; underground flag does not establish total burial |
-| mushroom_house | Overworld | Component coverage: four bottoms and five tops joined to roots | Shared connector envelope does not establish equal interior contents or routes |
-| mushroom_mines | Overworld | Fixed eight-section assembly | Two authored layers and conditional encounter/reward attachment content |
-| mushroom_village | Overworld | Fixed central house plus procedural perimeter houses | All reachable small-house alternatives; collisions/failed attachments affect actual branches |
-| plague_asylum | Overworld | Procedural underground assembly | Six different spawner alternatives, including fangs; ordinary block spawner does not imply an evoker mob |
-| scorched_mines | Overworld | Procedural surface-anchored mine | Buried route continuity and three distinct enemy payloads |
-| shiraz_palace | Overworld | Fixed three-layer assembly | Fourteen reachable spawner alternatives and their passenger/equipment differences |
-| small_blimp | Overworld | Fixed ladder and two hull sections | No matching connector supports an invented repeating ladder; three spawner payloads and fixed dispenser contents require separate treatment |
-| thornborn_towers | Overworld | Procedural towers/hanging architecture | Missing hanging-bridge terminator; flying/mounted and other spawner alternatives |
-| typhon | Overworld | Fixed three-section ship | Ocean-floor-relative -4 placement and waterlogging differ materially from Hind; no authored enemy source in selected templates |
-| undead_pirate_ship | Overworld | Fixed two-section ship | Direct skeletons and nested skeleton/carrier/passenger spawners; carrier types do not replace hostile passenger counts |
+| Family/root | Dimension | Required architectural variant coverage | Material conditions to preserve | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| abandoned_temple | Overworld | Procedural temple assembly | Authored illusioner/skeletons versus conditional stray override; buried and exposed portions | Modular; 2; B2, P0. No local result. |
+| aviary | End | Fixed three-layer assembly | Five different spawner alternatives, crystal content and external vertical access | Fixed; 1; B1, P0. No local result. |
+| bandit_towers | Overworld | Procedural tower/bridge assembly | Rocket/passenger and different spawner payloads; actual bridge continuity | Modular; 2; B0, P0. No local result. |
+| bandit_village | Overworld | Procedural village assembly | Hoglin/passenger and rocket mechanisms; missing `bandit_village_deco_3` remains a failed source reference | Modular; 2; B0, P1. No local result. |
+| bathhouse | Overworld | Component coverage: six bases, four middles, seven tops | Source height combinations differ; curse dispenser/cloud and three spawner alternatives are not interchangeable decoration | Modular; 7; B0, P0. No local result. |
+| ceryneian_hind | Overworld | Fixed three-section ship | Surface-relative -16 placement, reward-bearing hull without authored enemy source in its selected templates | Fixed; 1; B0, P0. No local result. |
+| coliseum | Overworld | Fixed four-quadrant arena | Phantom/skeleton spawner has its own long interval/count; entity-drop reward differs from container loot | Fixed; 1; B0, P0. No local result. |
+| foundry | Overworld | Procedural underground assembly | Missing `underworld/foundry/foundry_corridor_gears` pool; retain resulting omissions and machinery access | Modular; 2; B0, P0. No local result. |
+| giant_mushroom | Overworld | Two separate assemblies: red and twins | Matching connector names keep these layouts separate; one sample of either does not cover the other | Fixed; 2; B0, P0. No local result. |
+| greenwood_pub | Overworld | Procedural pub/lower-room assembly | Surface-relative -18 placement and buried lower access | Modular; 2; B0, P1. No local result. |
+| heavenly_challenger | Overworld, End | Fixed six-section ship in each dimension | Absolute Y200, mounted/flying enemy sources and access over distinct terrain/void context | Fixed; 2; B0, P0. No local result. |
+| heavenly_conqueror | Overworld, End | Fixed four-quadrant ship in each dimension | Absolute Y200 and four spawner alternatives; no inferred ground entrance | Fixed; 2; B0, P0. No local result. |
+| heavenly_rider | Overworld, End | Fixed two-layer ship in each dimension | Absolute Y200, mounted/flying sources including a distinct 2400/4800-tick interval | Fixed; 2; B0, P0. No local result. |
+| illager_campsite | Overworld | Procedural terrain-following camp | Street/tent continuity, direct illager residents and zombie-villager decoration source; no physical spawner substitution | Modular; 2; B0, P0. No local result. |
+| illager_corsair | Overworld | Fixed two-section ship | Starting from either half translates the same authored assembly; evoker/pillager residents and vindicator spawner remain separate | Fixed; 1; B0, P0. No local result. |
+| illager_fort | Overworld | Fixed enclosing assembly plus all nine internal room alternatives | Room alternatives and four saved-entity alternatives; equal room envelopes do not establish equal contents | Modular; 1; B0, P0. No local result. |
+| illager_galley | Overworld | Fixed two-section ship | Half-start translation is not a new design; direct pillager and vindicator spawner, with retained arrow/equipment differences | Fixed; 1; B4, P0. No local result. |
+| illager_windmill | Overworld | Fixed two-section core plus procedural terrain-matching fields | Core access and attached field continuity must be assessed together; one isolated core is incomplete site coverage | Modular; 2; B0, P0. No local result. |
+| infested_temple | Overworld | Fixed main assembly plus five level and ten room alternatives | Five trial-spawner and three vault alternatives; final objectives and trial/vault state stay explicit | Modular; 1; B0, P0. No local result. |
+| jungle_tree_house | Overworld | Two anchor alternatives: main-start and roots-start | Same connected source shape, different surface-relative placement because vertical start piece changes; direct husk/skeleton residents | Fixed; 2; B0, P1. No local result. |
+| keep_kayra | Overworld | Fixed main assembly | Connector-specific high/middle/low spawners, incompatible horizontal connector, fixed harmful-potion inventory and decorative/passive residents | Fixed; 1; B0, P0. No local result. |
+| kisegi_sanctuary | Overworld | Fixed main/lower/middle/final top sections plus three `top_room_0` alternatives | Twelve trial-spawner and four vault alternatives; selected top-room variant must be identified | Modular; 3; B0, P0. No local result. |
+| lighthouse | Overworld | Fixed two-section tower | Vertical access and reward distribution without invented authored enemies | Fixed; 1; B0, P0. No local result. |
+| mechanical_nest | Overworld | Procedural elevated assembly | Missing decoration pool, bridge terminator 6 and spawner 6 references; preserve actual access gaps | Modular; 2; B0, P0. No local result. |
+| mining_complex | Overworld | Procedural mining assembly | Fixed low anchor with tall architecture/blimp components; underground flag does not establish total burial | Modular; 2; B0, P0. No local result. |
+| mushroom_house | Overworld | Component coverage: four bottoms and five tops joined to roots | Shared connector envelope does not establish equal interior contents or routes | Modular; 5; B0, P0. No local result. |
+| mushroom_mines | Overworld | Fixed eight-section assembly | Two authored layers and conditional encounter/reward attachment content | Fixed; 1; B0, P0. No local result. |
+| mushroom_village | Overworld | Fixed central house plus procedural perimeter houses | All reachable small-house alternatives; collisions/failed attachments affect actual branches | Modular; 2; B0, P0. No local result. |
+| plague_asylum | Overworld | Procedural underground assembly | Six different spawner alternatives, including fangs; ordinary block spawner does not imply an evoker mob | Modular; 2; B0, P0. No local result. |
+| scorched_mines | Overworld | Procedural surface-anchored mine | Buried route continuity and three distinct enemy payloads | Modular; 2; B0, P0. No local result. |
+| shiraz_palace | Overworld | Fixed three-layer assembly | Fourteen reachable spawner alternatives and their passenger/equipment differences | Fixed; 1; B0, P0. No local result. |
+| small_blimp | Overworld | Fixed ladder and two hull sections | No matching connector supports an invented repeating ladder; three spawner payloads and fixed dispenser contents require separate treatment | Fixed; 1; B0, P0. No local result. |
+| thornborn_towers | Overworld | Procedural towers/hanging architecture | Missing hanging-bridge terminator; flying/mounted and other spawner alternatives | Modular; 2; B0, P0. No local result. |
+| typhon | Overworld | Fixed three-section ship | Ocean-floor-relative -4 placement and waterlogging differ materially from Hind; no authored enemy source in selected templates | Fixed; 1; B0, P0. No local result. |
+| undead_pirate_ship | Overworld | Fixed two-section ship | Direct skeletons and nested skeleton/carrier/passenger spawners; carrier types do not replace hostile passenger counts | Fixed; 1; B0, P0. No local result. |
 
 The five Seven Seas rows use `dungeons_arise_seven_seas:`. Each has one main hull
 with subordinate spawner components, all in the Overworld. One generated hull per
@@ -164,13 +266,13 @@ root is the architectural minimum; its complete room/connector graph remains to 
 validated. The selected spawner alternatives and all nested NBT remain required
 source inputs, not five universal enemy-per-room assumptions.
 
-| Family/root | Main hull template | Material content distinction |
-| --- | --- | --- |
-| corsair_corvette | corsair_corvette/corsair_corvette_0 | Skeleton and silverfish source types |
-| pirate_junk | pirate_junk/pirate_junk_0 | Illusioner, pillager and vindicator source types |
-| small_yacht | small_yacht/small_yacht_0 | Pillager/vindicator source types; missing `small_yacht_spawner_3` template remains an unresolved authored alternative |
-| unicorn_galleon | unicorn_galleon/unicorn_galleon_0 | Bat, skeleton and zombie source types; bats are not automatically hostile enemies |
-| victory_frigate | victory_frigate/victory_frigate_0 | Bat, hoglin, illager, skeleton and zombie source types; retain nested riders and attributes rather than count base IDs alone |
+| Family/root | Main hull template | Material content distinction | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- |
+| corsair_corvette | corsair_corvette/corsair_corvette_0 | Skeleton and silverfish source types | Fixed; 1; B2, P0. No local result. |
+| pirate_junk | pirate_junk/pirate_junk_0 | Illusioner, pillager and vindicator source types | Fixed; 1; B0, P0. No local result. |
+| small_yacht | small_yacht/small_yacht_0 | Pillager/vindicator source types; missing `small_yacht_spawner_3` template remains an unresolved authored alternative | Fixed; 1; B0, P0. No local result. |
+| unicorn_galleon | unicorn_galleon/unicorn_galleon_0 | Bat, skeleton and zombie source types; bats are not automatically hostile enemies | Fixed; 1; B2, P0. No local result. |
+| victory_frigate | victory_frigate/victory_frigate_0 | Bat, hoglin, illager, skeleton and zombie source types; retain nested riders and attributes rather than count base IDs alone | Fixed; 1; B0, P0. No local result. |
 
 Dimension denominator: 40 canonical families, 40 roots and 43 root/dimension
 combinations. The three extra combinations are the Heavenly designs in the End.
@@ -195,32 +297,32 @@ per-root definitions, plus the bound pool traces and family-specific
 `evidence/item-8/sources/idas-*-assessment/README.md` where linked. No optional mod
 or inactive compatibility pool is re-enabled to make a sample more complete.
 
-| Family | Material design alternatives | Dimension | Coverage and failure treatment |
-| --- | --- | --- | --- |
-| abandoned_lighthouse | One narrow capped tower | Overworld | One generated arrangement; vertical access and reused guild loot do not make it a guild building |
-| abandonedhouse | `abandonedhouse`, `abandonedhouse2` | Overworld | Both roofed arrangements, with different zombie/villager/spider sources and loot; preserve the second template's missing-ID entity |
-| ancient_mines | One entrance/room/hall assembly | Overworld | Validate the connected chain and hall network; missing `ancient_mines_entrance2` branch stays absent if rejected, rather than inventing a second entrance |
-| ancient_portal | Overworld pair, Nether pair | Overworld, Nether | Each two-piece portal in its own dimension; different land-search/underground placement, spawn overrides and loot remain material |
-| apothecary_abode | One paired abode | Overworld | Both connected sections; illusioner/pillager residents and spawners, not a presumed peaceful house |
-| brickhouse | One house/path/windmill assembly | Overworld | Terrain-matching path and processor-specific windmill; a detached house alone does not establish site access |
-| castle | `castle1`, `castle2`, `castle3` with matching foundations | Overworld | All three main designs. First two also have procedural plains-village extensions; include their reachable normal/zombie settlement branches in selection. Third has no village connector |
-| collectors_museum | One main/lower museum assembly | Overworld | Both vertically joined components, internal content and final access; enormous template envelope is not room count |
-| desert_pyramid | One procedural entrance/hall/room system | Overworld | At least two distinct-seed assemblies, plus unrepresented material room/goal mechanisms. Missing villager pool and source loot defects remain dispositions |
-| farmhouse | Ordinary with path, abandoned without path | Overworld | Both alternatives. Civilian residents versus zombie-villager spawners, different path attachment and furnishings cannot be averaged away |
-| frozen_crypt | One entrance/crypt pair | Overworld | Both sections; optional troll declaration does not create a retained-runtime enemy |
-| haunted_manor | Packaged default manor only | Overworld | Frozen namespace mismatch rejects the intended piece-2/4 attachment. Measure the actually saved result and retain detached source content separately; inactive Ice and Fire compatibility templates are excluded by the verified loader condition |
-| labyrinth | One entrance/floor/tomb chain | Overworld | Fixed numbered components and floor-specific processor behavior; inactive Ice and Fire compatibility branch is excluded, legacy loot references remain unchanged |
-| necromancers_spire | One four-component spire | Nether | Over-lava placement at absolute Y31, branching attachments and conditional wraith override; optional soul-vulture declaration remains source-only potential unless supported by the frozen runtime |
-| nexus | Default, blue, prismarine, red, sculk, white | Overworld | All six single-template arrangements. Shared shape does not merge barrel-position, height or sculk differences; raw pig spawner NBT and ineffective declared loot assignment need their existing processor dispositions |
-| pillager_fortress | One eight-component fortress | Overworld | Connected numbered sections, authored illagers/ravagers and spawners; optional entities remain separate |
-| ruined_church | One gabled hall/tower ruin | Overworld | One arrangement, no source spawner or authored entity; assess quiet/dead rooms without inventing an encounter |
-| ruined_fort | One narrow broken fort | Overworld | One arrangement, distinct from church and inhabited castle variants |
-| ruins_of_the_deep | One entrance/tunnel/two-ruin chain | Overworld | All four connected stages; quiet tunnel may have necessary access purpose and is not automatically a dead room |
-| sunken_ship | `sunken_ship`, `sunken_ship2`, `sunken_ship_coral` | Overworld | All three hull alternatives across two roots. Spawner-randomizing versus empty processor and coral/shark references are material even with equal envelopes |
-| tinkers_citadel | One main building with three attachments | Overworld | Branching site and elevated vault attachment, distinct from the serial workshop; source machinery is not proven operable |
-| tinkers_workshop | One entrance plus seven workshop sections | Overworld | Complete descending serial route and final-vault access; keep per-stage spawner/reward content |
-| windswept_shrine | One three-section shrine with corresponding bottoms | Overworld | Six pieces are a connected assembly, not six design alternatives; measure actual section access |
-| wizard_tower | Purple, red, yellow paired towers | Overworld | Each main/bottom pair. Purple/yellow source spawners differ from spawner-free red; bottom zoglin and processor effects remain explicit |
+| Family | Material design alternatives | Dimension | Coverage and failure treatment | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| abandoned_lighthouse | One narrow capped tower | Overworld | One generated arrangement; vertical access and reused guild loot do not make it a guild building | Fixed; 1; B0, P0. No local result. |
+| abandonedhouse | `abandonedhouse`, `abandonedhouse2` | Overworld | Both roofed arrangements, with different zombie/villager/spider sources and loot; preserve the second template's missing-ID entity | Fixed; 2; B0, P0. No local result. |
+| ancient_mines | One entrance/room/hall assembly | Overworld | Validate the connected chain and hall network; missing `ancient_mines_entrance2` branch stays absent if rejected, rather than inventing a second entrance | Modular; 1; B0, P0. No local result. |
+| ancient_portal | Overworld pair, Nether pair | Overworld, Nether | Each two-piece portal in its own dimension; different land-search/underground placement, spawn overrides and loot remain material | Fixed; 2; B10, P0. No local result. |
+| apothecary_abode | One paired abode | Overworld | Both connected sections; illusioner/pillager residents and spawners, not a presumed peaceful house | Fixed; 1; B0, P0. No local result. |
+| brickhouse | One house/path/windmill assembly | Overworld | Terrain-matching path and processor-specific windmill; a detached house alone does not establish site access | Modular; 1; B0, P0. No local result. |
+| castle | `castle1`, `castle2`, `castle3` with matching foundations | Overworld | All three main designs. First two also have procedural plains-village extensions; include their reachable normal/zombie settlement branches in selection. Third has no village connector | Modular; 5; B0, P0. No local result. |
+| collectors_museum | One main/lower museum assembly | Overworld | Both vertically joined components, internal content and final access; enormous template envelope is not room count | Fixed; 1; B0, P0. No local result. |
+| desert_pyramid | One procedural entrance/hall/room system | Overworld | At least two distinct-seed assemblies, plus unrepresented material room/goal mechanisms. Missing villager pool and source loot defects remain dispositions | Modular; 2; B0, P0. No local result. |
+| farmhouse | Ordinary with path, abandoned without path | Overworld | Both alternatives. Civilian residents versus zombie-villager spawners, different path attachment and furnishings cannot be averaged away | Fixed; 2; B0, P0. No local result. |
+| frozen_crypt | One entrance/crypt pair | Overworld | Both sections; optional troll declaration does not create a retained-runtime enemy | Fixed; 1; B0, P0. No local result. |
+| haunted_manor | Packaged default manor only | Overworld | Frozen namespace mismatch rejects the intended piece-2/4 attachment. Measure the actually saved result and retain detached source content separately; inactive Ice and Fire compatibility templates are excluded by the verified loader condition | Fixed; 1; B0, P0. No local result. |
+| labyrinth | One entrance/floor/tomb chain | Overworld | Fixed numbered components and floor-specific processor behavior; inactive Ice and Fire compatibility branch is excluded, legacy loot references remain unchanged | Fixed; 1; B0, P0. No local result. |
+| necromancers_spire | One four-component spire | Nether | Over-lava placement at absolute Y31, branching attachments and conditional wraith override; optional soul-vulture declaration remains source-only potential unless supported by the frozen runtime | Fixed; 1; B0, P0. No local result. |
+| nexus | Default, blue, prismarine, red, sculk, white | Overworld | All six single-template arrangements. Shared shape does not merge barrel-position, height or sculk differences; raw pig spawner NBT and ineffective declared loot assignment need their existing processor dispositions | Fixed; 6; B0, P0. No local result. |
+| pillager_fortress | One eight-component fortress | Overworld | Connected numbered sections, authored illagers/ravagers and spawners; optional entities remain separate | Fixed; 1; B0, P0. No local result. |
+| ruined_church | One gabled hall/tower ruin | Overworld | One arrangement, no source spawner or authored entity; assess quiet/dead rooms without inventing an encounter | Fixed; 1; B0, P0. No local result. |
+| ruined_fort | One narrow broken fort | Overworld | One arrangement, distinct from church and inhabited castle variants | Fixed; 1; B0, P0. No local result. |
+| ruins_of_the_deep | One entrance/tunnel/two-ruin chain | Overworld | All four connected stages; quiet tunnel may have necessary access purpose and is not automatically a dead room | Fixed; 1; B0, P0. No local result. |
+| sunken_ship | `sunken_ship`, `sunken_ship2`, `sunken_ship_coral` | Overworld | All three hull alternatives across two roots. Spawner-randomizing versus empty processor and coral/shark references are material even with equal envelopes | Fixed; 3; B4, P0. No local result. |
+| tinkers_citadel | One main building with three attachments | Overworld | Branching site and elevated vault attachment, distinct from the serial workshop; source machinery is not proven operable | Fixed; 1; B0, P0. No local result. |
+| tinkers_workshop | One entrance plus seven workshop sections | Overworld | Complete descending serial route and final-vault access; keep per-stage spawner/reward content | Fixed; 1; B0, P0. No local result. |
+| windswept_shrine | One three-section shrine with corresponding bottoms | Overworld | Six pieces are a connected assembly, not six design alternatives; measure actual section access | Fixed; 1; B0, P0. No local result. |
+| wizard_tower | Purple, red, yellow paired towers | Overworld | Each main/bottom pair. Purple/yellow source spawners differ from spawner-free red; bottom zoglin and processor effects remain explicit | Fixed; 3; B0, P0. No local result. |
 
 This identifies 38 named main-layout/dimension alternatives within the 24 families,
 counting a connected fixed assembly once. This number excludes procedural extension
@@ -248,47 +350,47 @@ and [arena processor source](../item-8/sources/moog-arena-processors/README.md),
 not template totals as room topology. Registry IDs below are explicit because
 several families combine materially different roots.
 
-| Family | Required roots/design alternatives | Dimension | Required distinction |
-| --- | --- | --- | --- |
-| mes:enderkeep_courtyard | mes:enderkeep_courtyard | End | Single courtyard layout |
-| mes:enderwatch_tower | mes:enderwatch_tower | End | Single tower layout, vertical access rather than envelope height |
-| mes:mega_ship | mes:mega_ship, mes:mega_ship_basic, mes:mega_ship_crashed, mes:mega_ship_crashed_2, mes:mega_ship_crashed_deepslate, mes:mega_ship_deepslate, mes:mega_ship_deepslate_2, mes:mega_ship_deepslate_3 | End | Eight finite hull/middle/end assemblies with different side/upper attachments; three wreck roots versus five airborne roots, with distinct terrain and content |
-| mes:monolith | mes:monolith, templates monolith_1, monolith_2, monolith_3 | End | Three independent whole-template alternatives, each required despite equal horizontal envelopes |
-| mes:mystical_archway | mes:mystical_archway | End | Single archway layout retained as a shallow-form comparison |
-| mes:phantom_citadel | mes:phantom_citadel | End | Single authored citadel layout |
-| mes:starlight_voyager | mes:starlight_voyager | End | Single ship layout; reuse the identified full Item 7 candidate before new generation |
-| mns:arena | mns:small_arena, mns:large_arena | Nether | Separate bounded-court layouts, different vertical galleries, encounters and rewards |
-| mns:circle_ruin | mns:circle_blackstone, mns:circle_nether_brick | Nether | Layout, spawner and loot differences, not a purely cosmetic material pair |
-| mns:dragon_arena | mns:dragon_arena | Nether | Fixed sculptural dragon/platform assembly with ordinary/trial spawners and vaults; not a claim of a live dragon boss |
-| mns:giant_skull | mns:giant_skull | Nether | One articulated head/jaw layout with reward and spawner source |
-| mns:large_house_1 | mns:large_house_1 | Nether | One long hall/tower design, using the selected 1.21.1 template |
-| mns:medium_house | mns:medium_house, mns:medium_house_2 | Nether | Two gabled layouts and different spawner payloads; empty entity objects must not become invented default mobs |
-| mns:mega_fortress | mns:mega_fortress | Nether | Procedural corridor/stair/room network, including boundary-exempt pools and the version-selected start |
-| mns:nether_tower | mns:nether_tower | Nether | One multilevel furnished tower, with accessible floors validated individually |
-| mns:warped_dome | mns:warped_dome | Nether | One empty-source dome retained for shallow-form/usable-space assessment |
-| mss:arena | mss:arena | Overworld | Numbered assembly with trial/vault mechanisms. The 1_21_9 template paths are inactive on frozen 1.21.1, not omitted live variants |
-| mss:castle_ruin | mss:castle_ruin | Overworld | One broad low island ruin with encounter/reward content |
-| mss:castle_tower | mss:castle_tower | Overworld | Tower plus corresponding top, one connected site |
-| mss:desert_pyramid | mss:desert_pyramid | Overworld | Base, side and top are one pyramid assembly |
-| mss:jungle | mss:jungle | Overworld | Finite main/east/south/upper site, not interchangeable forest-island decoration |
-| mss:large_tower | mss:large_tower | Overworld | Full base/lower/side/top complex and its real access links |
-| mss:leaf_hollow | mss:leaf_hollow | Overworld | Main mound and projecting sides, with inhabited interior |
-| mss:mangrove | mss:mangrove | Overworld | Deep tapered island plus upper piece; interior and fall/external approach assessed separately |
-| mss:muddy_water_hole | mss:muddy_water_hole | Overworld | Bowl-like main/side/upper encounter site |
-| mss:mushroom | mss:mushroom | Overworld | One low multi-lobed furnished encounter island |
-| mss:red_sand | mss:red_sand | Overworld | Main and projecting side, with distinct terrace access |
-| mss:small_deepslate_house | mss:small_deepslate_house | Overworld | One gabled dwelling/island with pillager/spawner source |
-| mss:small_tower | mss:small_tower | Overworld | One vertically fragmented ruin composition; separated fragments do not automatically form reachable floors |
-| mss:taiga | mss:taiga | Overworld | Main conifer island and upper component |
-| mss:volcano | mss:volcano | Overworld | Main crater and five attached side pieces, with actual attachment/route continuity |
-| mvs:castle_ruins | mvs:castle_ruins | Overworld | One linked masonry ruin without authored enemies/spawners |
-| mvs:cathedral | mvs:cathedral | Overworld | Procedural building/lower/corridor network; excluded cathedral_start/corridor_8 templates stay inactive and wrong-namespace loot references remain unchanged |
-| mvs:large_warped_tower | mvs:large_warped_tower | Overworld | Base/side turret plus finial; warped material does not make this a Nether root; unresolved empty spawner payloads stay explicit |
-| mvs:mine_with_campsite | mvs:mine_with_campsite | Overworld | Fixed upper/lower site and villager alternatives, distinct from the procedural mineshaft |
-| mvs:mineshaft | mvs:mineshaft | Overworld | Procedural entrance/corridor/intersection/stair network, including boundary-exempt corridor_overflow |
-| mvs:ocean_tower | mvs:ocean_tower | Overworld | One cylindrical aquatic tower; direct drowned/guardian entities versus physical spawners |
-| mvs:small_pillager_tower | mvs:small_pillager_tower | Overworld | One open vertical platform tower; route links must be validated |
-| mvs:tiered_tower | mvs:jungle_tower, mvs:red_tower | Overworld | Jungle base/bottom/top versus red body/top; different encounters, loot and terrain constraints |
+| Family | Required roots/design alternatives | Dimension | Required distinction | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| mes:enderkeep_courtyard | mes:enderkeep_courtyard | End | Single courtyard layout | Fixed; 1; B0, P0. No local result. |
+| mes:enderwatch_tower | mes:enderwatch_tower | End | Single tower layout, vertical access rather than envelope height | Fixed; 1; B0, P0. No local result. |
+| mes:mega_ship | mes:mega_ship, mes:mega_ship_basic, mes:mega_ship_crashed, mes:mega_ship_crashed_2, mes:mega_ship_crashed_deepslate, mes:mega_ship_deepslate, mes:mega_ship_deepslate_2, mes:mega_ship_deepslate_3 | End | Eight finite hull/middle/end assemblies with different side/upper attachments; three wreck roots versus five airborne roots, with distinct terrain and content | Fixed; 8; B0, P0. No local result. |
+| mes:monolith | mes:monolith, templates monolith_1, monolith_2, monolith_3 | End | Three independent whole-template alternatives, each required despite equal horizontal envelopes | Fixed; 3; B0, P0. No local result. |
+| mes:mystical_archway | mes:mystical_archway | End | Single archway layout retained as a shallow-form comparison | Fixed; 1; B0, P0. No local result. |
+| mes:phantom_citadel | mes:phantom_citadel | End | Single authored citadel layout | Fixed; 1; B0, P0. No local result. |
+| mes:starlight_voyager | mes:starlight_voyager | End | Single ship layout; reuse the identified full Item 7 candidate before new generation | Fixed; 1; B0, P0; Item 7 pair. No local result. |
+| mns:arena | mns:small_arena, mns:large_arena | Nether | Separate bounded-court layouts, different vertical galleries, encounters and rewards | Fixed; 2; B0, P0. No local result. |
+| mns:circle_ruin | mns:circle_blackstone, mns:circle_nether_brick | Nether | Layout, spawner and loot differences, not a purely cosmetic material pair | Fixed; 1; B6, P0. Partial local result. |
+| mns:dragon_arena | mns:dragon_arena | Nether | Fixed sculptural dragon/platform assembly with ordinary/trial spawners and vaults; not a claim of a live dragon boss | Fixed; 1; B0, P0. No local result. |
+| mns:giant_skull | mns:giant_skull | Nether | One articulated head/jaw layout with reward and spawner source | Fixed; 0; B1, P0. Local scope satisfied. |
+| mns:large_house_1 | mns:large_house_1 | Nether | One long hall/tower design, using the selected 1.21.1 template | Fixed; 0; B3, P0. Local scope satisfied. |
+| mns:medium_house | mns:medium_house, mns:medium_house_2 | Nether | Two gabled layouts and different spawner payloads; empty entity objects must not become invented default mobs | Fixed; 0; B16, P0. Local scope satisfied. |
+| mns:mega_fortress | mns:mega_fortress | Nether | Procedural corridor/stair/room network, including boundary-exempt pools and the version-selected start | Modular; 2; B2, P0. No local result. |
+| mns:nether_tower | mns:nether_tower | Nether | One multilevel furnished tower, with accessible floors validated individually | Fixed; 0; B2, P0. Local scope satisfied. |
+| mns:warped_dome | mns:warped_dome | Nether | One empty-source dome retained for shallow-form/usable-space assessment | Fixed; 0; B3, P0. Local scope satisfied. |
+| mss:arena | mss:arena | Overworld | Numbered assembly with trial/vault mechanisms. The 1_21_9 template paths are inactive on frozen 1.21.1, not omitted live variants | Fixed; 1; B0, P0. No local result. |
+| mss:castle_ruin | mss:castle_ruin | Overworld | One broad low island ruin with encounter/reward content | Fixed; 1; B0, P0. No local result. |
+| mss:castle_tower | mss:castle_tower | Overworld | Tower plus corresponding top, one connected site | Fixed; 1; B0, P0. No local result. |
+| mss:desert_pyramid | mss:desert_pyramid | Overworld | Base, side and top are one pyramid assembly | Fixed; 0; B2, P0. Local scope satisfied. |
+| mss:jungle | mss:jungle | Overworld | Finite main/east/south/upper site, not interchangeable forest-island decoration | Fixed; 1; B0, P0. No local result. |
+| mss:large_tower | mss:large_tower | Overworld | Full base/lower/side/top complex and its real access links | Fixed; 1; B0, P0. No local result. |
+| mss:leaf_hollow | mss:leaf_hollow | Overworld | Main mound and projecting sides, with inhabited interior | Fixed; 1; B0, P0. No local result. |
+| mss:mangrove | mss:mangrove | Overworld | Deep tapered island plus upper piece; interior and fall/external approach assessed separately | Fixed; 1; B0, P0. No local result. |
+| mss:muddy_water_hole | mss:muddy_water_hole | Overworld | Bowl-like main/side/upper encounter site | Fixed; 1; B0, P0. No local result. |
+| mss:mushroom | mss:mushroom | Overworld | One low multi-lobed furnished encounter island | Fixed; 1; B0, P0. No local result. |
+| mss:red_sand | mss:red_sand | Overworld | Main and projecting side, with distinct terrace access | Fixed; 1; B0, P0. No local result. |
+| mss:small_deepslate_house | mss:small_deepslate_house | Overworld | One gabled dwelling/island with pillager/spawner source | Fixed; 1; B0, P0. No local result. |
+| mss:small_tower | mss:small_tower | Overworld | One vertically fragmented ruin composition; separated fragments do not automatically form reachable floors | Fixed; 0; B2, P1. Local scope satisfied. |
+| mss:taiga | mss:taiga | Overworld | Main conifer island and upper component | Fixed; 1; B0, P0. No local result. |
+| mss:volcano | mss:volcano | Overworld | Main crater and five attached side pieces, with actual attachment/route continuity | Fixed; 1; B0, P0. No local result. |
+| mvs:castle_ruins | mvs:castle_ruins | Overworld | One linked masonry ruin without authored enemies/spawners | Fixed; 1; B0, P0. No local result. |
+| mvs:cathedral | mvs:cathedral | Overworld | Procedural building/lower/corridor network; excluded cathedral_start/corridor_8 templates stay inactive and wrong-namespace loot references remain unchanged | Modular; 2; B0, P1. No local result. |
+| mvs:large_warped_tower | mvs:large_warped_tower | Overworld | Base/side turret plus finial; warped material does not make this a Nether root; unresolved empty spawner payloads stay explicit | Fixed; 1; B0, P0. No local result. |
+| mvs:mine_with_campsite | mvs:mine_with_campsite | Overworld | Fixed upper/lower site and villager alternatives, distinct from the procedural mineshaft | Fixed; 1; B0, P0. No local result. |
+| mvs:mineshaft | mvs:mineshaft | Overworld | Procedural entrance/corridor/intersection/stair network, including boundary-exempt corridor_overflow | Modular; 2; B0, P1. No local result. |
+| mvs:ocean_tower | mvs:ocean_tower | Overworld | One cylindrical aquatic tower; direct drowned/guardian entities versus physical spawners | Fixed; 1; B0, P0. No local result. |
+| mvs:small_pillager_tower | mvs:small_pillager_tower | Overworld | One open vertical platform tower; route links must be validated | Fixed; 1; B0, P0. No local result. |
+| mvs:tiered_tower | mvs:jungle_tower, mvs:red_tower | Overworld | Jungle base/bottom/top versus red body/top; different encounters, loot and terrain constraints | Fixed; 2; B0, P0. No local result. |
 
 Denominators: 39 families, 50 roots, 52 named root/whole-template alternatives.
 The extra two are Monolith's three layouts under one root. Each dimension is
@@ -315,21 +417,21 @@ biome intersection, not a failed experiment. The source is each family's
 trace and linked `repurposed-*-assessment` record in Item 8. The complete roots
 and dimensions are also preserved in the intake.
 
-| Family | Overworld suffixes | Nether suffixes | End suffixes |
-| --- | --- | --- | --- |
-| ancient_city | ocean | nether | end |
-| bastion | underground | | |
-| city | overworld | nether | |
-| fortress | jungle | | |
-| mansion | birch, desert, jungle, mangrove, oak, savanna, snowy, taiga | | |
-| mineshaft | birch, dark_forest, desert, icy, jungle, ocean, savanna, stone, swamp, taiga | basalt, crimson, nether, soul, warped | end |
-| monument | desert, icy, jungle | nether | |
-| outpost | badlands, birch, desert, giant_tree_taiga, icy, jungle, mangrove, oak, ocean, savanna, snowy, taiga | basalt, crimson, nether_brick, soul, warped | end |
-| pyramid | badlands, dark_forest, flower_forest, giant_tree_taiga, icy, jungle, mushroom, ocean, snowy | nether | end |
-| shipwreck | | crimson, nether_bricks, warped | end |
-| stronghold | | nether | end |
-| temple | ocean, taiga | nether_basalt, nether_crimson, nether_soul, nether_warped, nether_wasteland | |
-| village | badlands, bamboo, birch, cherry, dark_forest, giant_taiga, jungle, mountains, mushroom, oak, ocean, swamp | crimson, warped | |
+| Family | Overworld suffixes | Nether suffixes | End suffixes | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| ancient_city | ocean | nether | end | Modular; 6; B0, P0. No local result. |
+| bastion | underground | | | Modular; 8; B0, P1. No local result. |
+| city | overworld | nether | | Modular; 4; B0, P1. No local result. |
+| fortress | jungle | | | Modular; 2; B0, P0. No local result. |
+| mansion | birch, desert, jungle, mangrove, oak, savanna, snowy, taiga | | | Modular; 16; B0, P1. No local result. |
+| mineshaft | birch, dark_forest, desert, icy, jungle, ocean, savanna, stone, swamp, taiga | basalt, crimson, nether, soul, warped | end | Modular; 32; B30, P0. No local result. |
+| monument | desert, icy, jungle | nether | | Modular; 8; B0, P1. No local result. |
+| outpost | badlands, birch, desert, giant_tree_taiga, icy, jungle, mangrove, oak, ocean, savanna, snowy, taiga | basalt, crimson, nether_brick, soul, warped | end | Fixed; 18; B2, P1. No local result. |
+| pyramid | badlands, dark_forest, flower_forest, giant_tree_taiga, icy, jungle, mushroom, ocean, snowy | nether | end | Fixed; 11; B6, P0. No local result. |
+| shipwreck | | crimson, nether_bricks, warped | end | Fixed; 21; B6, P0. No local result. |
+| stronghold | | nether | end | Modular; 4; B0, P0. No local result. |
+| temple | ocean, taiga | nether_basalt, nether_crimson, nether_soul, nether_warped, nether_wasteland | | Fixed; 7; B8, P0. No local result. |
+| village | badlands, bamboo, birch, cherry, dark_forest, giant_taiga, jungle, mountains, mushroom, oak, ocean, swamp | crimson, warped | | Modular; 28; B0, P0. No local result. |
 
 Root coverage alone is insufficient. Preserve these architectural and mechanical
 alternatives within each applicable root:
@@ -378,22 +480,22 @@ required attributes, including generator code and packaged alternatives bound by
 that family's evidence. All source pools/templates remain component evidence until
 saved blocks establish playable connections.
 
-| Family | Dimension | Required design/component scope |
-| --- | --- | --- |
-| aether:bronze_dungeon | Aether | Procedural room/tunnel network with Slider goal, chest/mimic alternatives and conditional surface ruins. At least two distinct-seed layouts; ordinary melee timing is not a supported Slider model |
-| aether:silver_dungeon | Aether | Fixed multi-floor temple architecture with internal floor/wall/door/stair/chest alternatives, trapped-floor Valkyries and Queen goal. Retain chest/mimic selection. Unselected test_door is not a required live variant |
-| aether:gold_dungeon | Aether | Island/boss-room/tunnel/cave assembly and Sun Spirit goal. Cave carving and goal access must be validated; a generic sword workload cannot replace its encounter mechanics |
-| deep_aether:brass_dungeon | Aether | Four rotated lower/upper quadrants, five room designs and corresponding boss forms, with one selected boss quadrant. Require each material room/boss form as component coverage; cloud bedding is terrain/support evidence |
-| betterdeserttemples:desert_temple | Overworld | Procedural entrance, puzzle, parkour, throne and room alternatives. At least two distinct-seed layouts plus unrepresented material puzzle/goal mechanisms; conditional Pharaoh behavior and processor-selected enemies need their own inputs |
-| betterdungeons:skeleton_dungeon | Overworld | Procedural skeleton dungeon with its room/connector alternatives, authored spawner placement and reward distributions. At least two distinct-seed layouts, not a graph made from jigsaw choices |
-| betterdungeons:small_dungeon | Overworld | Six shell sizes and three skeleton/spider/zombie themes. The two-case pilot covers only the 9x7 skeleton and 9x5 spider samples. Remaining shell/theme and material loot-pile differences must be resolved before family coverage passes |
-| betterdungeons:spider_dungeon | Overworld | Custom big/small tunnels, nests and egg rooms. At least two distinct-seed layouts with every material space/encounter role covered; no fabricated start pool |
-| betterdungeons:zombie_dungeon | Overworld | Procedural rooted zombie assembly and natural override, with internal room/reward alternatives. At least two distinct-seed layouts and separate saved spawner versus natural population claims |
-| betterfortresses:fortress | Nether | Keep, bridge, hall, room and blaze-platform assemblies. At least two distinct-seed layouts; depth/altitude/Create-dependent alternatives remain conditional inputs and missing halls/hall_4 stays a frozen source defect |
-| betterjungletemples:jungle_temple | Overworld | Alternative start shells, entrance/stairs/rooms and material puzzle mechanisms. At least two distinct-seed layouts plus uncovered shell/mechanism alternatives; inactive crocodile data is not a required generated enemy |
-| bettermineshafts:mineshaft | Overworld | Thirteen material/support/decoration configurations of the custom branching generator. Two distinct-seed layouts per root, with configuration-specific environment and spawner inputs preserved |
-| betteroceanmonuments:ocean_monument | Overworld | Room/shrine/main-section assembly and variable supports; at least two distinct-seed layouts. Water traversal, guardian source distinctions and actual external bypass routes need separate model treatment |
-| betterstrongholds:stronghold | Overworld | Room/stair/passage system, portal goal and source spawner-removal/reward transformations. At least two distinct-seed layouts; missing spiral_stairs reference is not repaired. Retain the separate Integrated Stronghold family |
+| Family | Dimension | Required design/component scope | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- |
+| aether:bronze_dungeon | Aether | Procedural room/tunnel network with Slider goal, chest/mimic alternatives and conditional surface ruins. At least two distinct-seed layouts; ordinary melee timing is not a supported Slider model | Modular; 2; B18, P0. No local result. |
+| aether:silver_dungeon | Aether | Fixed multi-floor temple architecture with internal floor/wall/door/stair/chest alternatives, trapped-floor Valkyries and Queen goal. Retain chest/mimic selection. Unselected test_door is not a required live variant | Fixed; 1; B8, P0. No local result. |
+| aether:gold_dungeon | Aether | Island/boss-room/tunnel/cave assembly and Sun Spirit goal. Cave carving and goal access must be validated; a generic sword workload cannot replace its encounter mechanics | Modular; 1; B0, P0. No local result. |
+| deep_aether:brass_dungeon | Aether | Four rotated lower/upper quadrants, five room designs and corresponding boss forms, with one selected boss quadrant. Require each material room/boss form as component coverage; cloud bedding is terrain/support evidence | Modular; 5; B0, P0. No local result. |
+| betterdeserttemples:desert_temple | Overworld | Procedural entrance, puzzle, parkour, throne and room alternatives. At least two distinct-seed layouts plus unrepresented material puzzle/goal mechanisms; conditional Pharaoh behavior and processor-selected enemies need their own inputs | Modular; 2; B0, P1. No local result. |
+| betterdungeons:skeleton_dungeon | Overworld | Procedural skeleton dungeon with its room/connector alternatives, authored spawner placement and reward distributions. At least two distinct-seed layouts, not a graph made from jigsaw choices | Modular; 2; B2, P0. No local result. |
+| betterdungeons:small_dungeon | Overworld | Six shell sizes and three skeleton/spider/zombie themes. The two-case pilot covers only the 9x7 skeleton and 9x5 spider samples. Remaining shell/theme and material loot-pile differences must be resolved before family coverage passes | Compact; 4; B6, P1. Partial local result. |
+| betterdungeons:spider_dungeon | Overworld | Custom big/small tunnels, nests and egg rooms. At least two distinct-seed layouts with every material space/encounter role covered; no fabricated start pool | Modular; 2; B0, P1. No local result. |
+| betterdungeons:zombie_dungeon | Overworld | Procedural rooted zombie assembly and natural override, with internal room/reward alternatives. At least two distinct-seed layouts and separate saved spawner versus natural population claims | Modular; 2; B0, P0. No local result. |
+| betterfortresses:fortress | Nether | Keep, bridge, hall, room and blaze-platform assemblies. At least two distinct-seed layouts; depth/altitude/Create-dependent alternatives remain conditional inputs and missing halls/hall_4 stays a frozen source defect | Modular; 2; B6, P0. No local result. |
+| betterjungletemples:jungle_temple | Overworld | Alternative start shells, entrance/stairs/rooms and material puzzle mechanisms. At least two distinct-seed layouts plus uncovered shell/mechanism alternatives; inactive crocodile data is not a required generated enemy | Modular; 2; B0, P1. No local result. |
+| bettermineshafts:mineshaft | Overworld | Thirteen material/support/decoration configurations of the custom branching generator. Two distinct-seed layouts per root, with configuration-specific environment and spawner inputs preserved | Modular; 26; B0, P0. No local result. |
+| betteroceanmonuments:ocean_monument | Overworld | Room/shrine/main-section assembly and variable supports; at least two distinct-seed layouts. Water traversal, guardian source distinctions and actual external bypass routes need separate model treatment | Modular; 2; B2, P0. No local result. |
+| betterstrongholds:stronghold | Overworld | Room/stair/passage system, portal goal and source spawner-removal/reward transformations. At least two distinct-seed layouts; missing spiral_stairs reference is not repaired. Retain the separate Integrated Stronghold family | Modular; 2; B0, P0. No local result. |
 
 Better Mineshafts roots are `bettermineshafts:mineshaft_` plus each of:
 `acacia`, `desert`, `dripstone`, `ice`, `jungle`, `lush`, `mesa`, `mushroom`,
@@ -413,15 +515,15 @@ The seven included families retain their Minecraft namespace. Existing retained-
 replacements, aliases, processors and rejected optional content come from Item 8,
 not a newly generated vanilla-only reference world.
 
-| Family | Root(s) and dimension | Required design/component scope |
-| --- | --- | --- |
-| minecraft:ancient_city | minecraft:ancient_city, Overworld | Procedural city with center and room/wall alternatives; at least two distinct-seed layouts. Sculk ingredients are not observed Warden encounters; preserve missing wall-stairs source reference |
-| minecraft:bastion_remnant | minecraft:bastion_remnant, Nether | Bridge, housing/units, hoglin-stable and treasure starting designs, with two distinct-seed assemblies per starting design. Components and mob rolls remain within those designs |
-| minecraft:end_city | minecraft:end_city, End | Procedural tower/bridge layouts both with and without the optional ship. At least two distinct-seed layouts with both outcomes represented; unreferenced tower_floor stays unselected |
-| minecraft:mansion | minecraft:mansion, Overworld | Procedural custom mansion room layouts and all material retained-mod replacement/goal room classes. At least two distinct-seed layouts; source template counts do not determine rooms |
-| minecraft:ocean_ruin | minecraft:ocean_ruin_cold, minecraft:ocean_ruin_warm, Overworld | Both temperatures, small/large layouts and clustered/isolated outcomes where the generator permits them. Cold material layers are one ruin. Each selected fragment/layout and archaeology/reward difference remains in coverage |
-| minecraft:pillager_outpost | minecraft:pillager_outpost, Overworld | Complete tower plus site attachments, including material cage/inhabitant alternatives. One detached tower does not cover the camp. Preserve natural overrides separately |
-| minecraft:trial_chambers | minecraft:trial_chambers, Overworld | Procedural chamber/connector/goal graph, ordinary/ominous trial and vault source states, and every retained alias-selected enemy mechanism, including Regions Unexplored ashen contribution. At least two distinct-seed layouts; alias index coupling is not independent enemy sampling |
+| Family | Root(s) and dimension | Required design/component scope | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- |
+| minecraft:ancient_city | minecraft:ancient_city, Overworld | Procedural city with center and room/wall alternatives; at least two distinct-seed layouts. Sculk ingredients are not observed Warden encounters; preserve missing wall-stairs source reference | Modular; 2; B2, P0. No local result. |
+| minecraft:bastion_remnant | minecraft:bastion_remnant, Nether | Bridge, housing/units, hoglin-stable and treasure starting designs, with two distinct-seed assemblies per starting design. Components and mob rolls remain within those designs | Modular; 8; B9, P0. No local result. |
+| minecraft:end_city | minecraft:end_city, End | Procedural tower/bridge layouts both with and without the optional ship. At least two distinct-seed layouts with both outcomes represented; unreferenced tower_floor stays unselected | Modular; 2; B3, P0. No local result. |
+| minecraft:mansion | minecraft:mansion, Overworld | Procedural custom mansion room layouts and all material retained-mod replacement/goal room classes. At least two distinct-seed layouts; source template counts do not determine rooms | Modular; 2; B0, P1. No local result. |
+| minecraft:ocean_ruin | minecraft:ocean_ruin_cold, minecraft:ocean_ruin_warm, Overworld | Both temperatures, small/large layouts and clustered/isolated outcomes where the generator permits them. Cold material layers are one ruin. Each selected fragment/layout and archaeology/reward difference remains in coverage | Modular; 4; B14, P1. No local result. |
+| minecraft:pillager_outpost | minecraft:pillager_outpost, Overworld | Complete tower plus site attachments, including material cage/inhabitant alternatives. One detached tower does not cover the camp. Preserve natural overrides separately | Fixed; 1; B0, P1. No local result. |
+| minecraft:trial_chambers | minecraft:trial_chambers, Overworld | Procedural chamber/connector/goal graph, ordinary/ominous trial and vault source states, and every retained alias-selected enemy mechanism, including Regions Unexplored ashen contribution. At least two distinct-seed layouts; alias index coupling is not independent enemy sampling | Modular; 2; B2, P0. No local result. |
 
 Vanilla family denominator is seven, with eight roots because ocean ruins have
 two. Concrete chamber configurations and source-selected templates are the exact
@@ -439,48 +541,48 @@ flat air-only route. Fixed designs initially need one complete saved example per
 listed alternative; procedural designs need two distinct-seed examples plus the
 unrepresented material component/goal cases. Neither minimum guarantees coverage.
 
-| Family | Root/design alternatives | Dimension | Material scope |
-| --- | --- | --- | --- |
-| explorations:jungle_temple | Same root; temple plus outside-stair and chest alternatives | Overworld | Connected assembly and every material stair/reward placement alternative |
-| explorations:slime_cave | Same root; one selected cave template | Overworld | Rotations and below-zero stone replacement are placement/processing states of this cave, not additional families; retain Slime encounter source |
-| explorations:underground_temple | Same root | Overworld | Procedural rooms, walkways, shafts, intersections and terminal spaces |
-| explorify:badlands_pyramid | Same root; one whole-building template | Overworld | Fixed pyramid geometry and actual hazard/reward connectivity |
-| explorify:black_spiral | Same root | Nether | Procedural spiral tower/bridge/dungeon-feature assembly, retaining natural and authored mob distinctions |
-| explorify:mausoleum | Same root; two whole-building alternatives | Overworld | Both layouts, not one representative chosen for better contents |
-| explorify:ruins | Same root | Overworld | Procedural settlement with square, house, monument, path and treasure components |
-| explorify:watchtower | explorify:watchtower/plains, explorify:watchtower/savanna, explorify:watchtower/taiga | Overworld | Three layouts with variant-owned village loot; equal dimensions alone do not remove a variant |
-| illagerinvasion:illager_fort | Same root; one building plus entity components | Overworld | Fort architecture, inquisitor/provoker/vindicator components and separate natural override |
-| illagerinvasion:illusioner_tower | Same root; three starting tower templates | Overworld | All furnishing/mob-connector alternatives despite shared dimensions |
-| illagerinvasion:labyrinth | Same root | Overworld | Procedural tower/hall/room network, distinct from the self-contained towers |
+| Family | Root/design alternatives | Dimension | Material scope | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| explorations:jungle_temple | Same root; temple plus outside-stair and chest alternatives | Overworld | Connected assembly and every material stair/reward placement alternative | Modular; 1; B0, P0. No local result. |
+| explorations:slime_cave | Same root; one selected cave template | Overworld | Rotations and below-zero stone replacement are placement/processing states of this cave, not additional families; retain Slime encounter source | Compact; 0; B30, P1. Local scope satisfied. |
+| explorations:underground_temple | Same root | Overworld | Procedural rooms, walkways, shafts, intersections and terminal spaces | Modular; 1; B22, P1. Partial local result. |
+| explorify:badlands_pyramid | Same root; one whole-building template | Overworld | Fixed pyramid geometry and actual hazard/reward connectivity | Fixed; 1; B0, P0. No local result. |
+| explorify:black_spiral | Same root | Nether | Procedural spiral tower/bridge/dungeon-feature assembly, retaining natural and authored mob distinctions | Modular; 2; B1, P0. No local result. |
+| explorify:mausoleum | Same root; two whole-building alternatives | Overworld | Both layouts, not one representative chosen for better contents | Fixed; 2; B0, P0. No local result. |
+| explorify:ruins | Same root | Overworld | Procedural settlement with square, house, monument, path and treasure components | Modular; 2; B0, P1. No local result. |
+| explorify:watchtower | explorify:watchtower/plains, explorify:watchtower/savanna, explorify:watchtower/taiga | Overworld | Three layouts with variant-owned village loot; equal dimensions alone do not remove a variant | Fixed; 3; B0, P0. No local result. |
+| illagerinvasion:illager_fort | Same root; one building plus entity components | Overworld | Fort architecture, inquisitor/provoker/vindicator components and separate natural override | Fixed; 1; B0, P0. No local result. |
+| illagerinvasion:illusioner_tower | Same root; three starting tower templates | Overworld | All furnishing/mob-connector alternatives despite shared dimensions | Fixed; 3; B0, P0. No local result. |
+| illagerinvasion:labyrinth | Same root | Overworld | Procedural tower/hall/room network, distinct from the self-contained towers | Modular; 2; B0, P0. No local result. |
 
 This table has 11 families and 13 roots. Source enemy IDs, modded special attacks
 and conversion-dependent payloads need supported model treatment before any combat
 calculation; the ordinary skeleton pilot is not a fallback.
 
-| Family | Root/design alternatives | Dimension | Material scope |
-| --- | --- | --- | --- |
-| terralith:desert_outpost | Same root; one open compound | Overworld | Usable activity space, archaeological and facility/reward content |
-| terralith:mage_complex | Same root | Overworld | Procedural tower/house/barracks/road site, including material building alternatives |
-| terralith:mage_tower | terralith:mage_tower, terralith:mage_tower_autumn, terralith:mage_tower_spring, terralith:mage_tower_summer, terralith:mage_tower_winter | Overworld | All five root variants, preserving fixed seasonal heights and winter stray source |
-| terralith:spire | Same root | Overworld | Four vertical layers and two base halves are a connected assembly with lower encounters/loot and a furnished top |
-| terralith:underground/frosted_dungeon | Same root; one chamber template | Overworld | Stray spawner and dedicated reward source; validate actual burial/access |
-| terralith:underground/mining_outpost | Same root; small and large templates | Overworld | Both framed shelter arrangements with barrel/furnace facilities |
-| terralith:underground/old_refinery | Same root; one elongated installation | Overworld | Layered interior access and facilities; no inferred functioning refinery machinery |
-| terralith:underground/sunken_tower | Same root; one ruined vertical tower | Overworld | Actual floor connections and exposure; the name does not prove water coverage |
+| Family | Root/design alternatives | Dimension | Material scope | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| terralith:desert_outpost | Same root; one open compound | Overworld | Usable activity space, archaeological and facility/reward content | Fixed; 1; B0, P0. No local result. |
+| terralith:mage_complex | Same root | Overworld | Procedural tower/house/barracks/road site, including material building alternatives | Modular; 2; B0, P0. No local result. |
+| terralith:mage_tower | terralith:mage_tower, terralith:mage_tower_autumn, terralith:mage_tower_spring, terralith:mage_tower_summer, terralith:mage_tower_winter | Overworld | All five root variants, preserving fixed seasonal heights and winter stray source | Fixed; 5; B0, P0. No local result. |
+| terralith:spire | Same root | Overworld | Four vertical layers and two base halves are a connected assembly with lower encounters/loot and a furnished top | Fixed; 1; B0, P0. No local result. |
+| terralith:underground/frosted_dungeon | Same root; one chamber template | Overworld | Stray spawner and dedicated reward source; validate actual burial/access | Fixed; 1; B0, P0. No local result. |
+| terralith:underground/mining_outpost | Same root; small and large templates | Overworld | Both framed shelter arrangements with barrel/furnace facilities | Fixed; 2; B0, P0. No local result. |
+| terralith:underground/old_refinery | Same root; one elongated installation | Overworld | Layered interior access and facilities; no inferred functioning refinery machinery | Fixed; 1; B0, P1. No local result. |
+| terralith:underground/sunken_tower | Same root; one ruined vertical tower | Overworld | Actual floor connections and exposure; the name does not prove water coverage | Fixed; 1; B0, P0. No local result. |
 
 Terralith denominator: eight families and twelve roots. The two Mining Outpost
 whole-template alternatives remain within one root and need separate coverage.
 
-| Family | Root/design alternatives | Dimension | Material scope |
-| --- | --- | --- | --- |
-| ctov:pillager_outpost | Twelve roots listed below, eleven distinct definitions | Overworld | Full tower/camp/cage layouts. Badlands/mesa are a verified definition/pool duplicate. Missing Savage & Ravage target and variant-specific cage/target/tower references stay frozen defects |
-| integrated_stronghold:stronghold | Same root | Overworld | Procedural fountain-rooted dining/library/prison/portal system. Both this and Better Strongholds remain separate active custom types; no Eye-of-Ender outcome is inferred |
-| integrated_villages:village | Twelve roots listed below | Overworld | Each architectural/placement design, including elevated airship, coastal, submerged and Quark-dependent content. Two distinct-seed sites per procedural design; empty-data Mossy Mounds spawner is not a default enemy |
-| supplementaries:galleon | Same root; main plus hull/room/orlop/sail alternatives listed below | Overworld | Complete internal ship and spawn-box mechanisms, distinct from ordinary spawners; incompatible back02 connector remains a frozen rejection |
-| towns_and_towers:desert_mimic | towns_and_towers:mimic_desert | Overworld | Fixed-height three-component mimic assembly; the name is not an enemy mechanism |
-| towns_and_towers:ocean_outpost | towns_and_towers:pillager_outpost_ocean | Overworld | Ship/outpost at fixed Y58 with natural pillager override and actual aquatic access |
-| towns_and_towers:outpost_fort | Nine roots listed below | Overworld | All enclosure-oriented layouts and their encounter/reward fixtures |
-| towns_and_towers:outpost_tower | Sixteen roots listed below | Overworld except ineligible Nilotic | All fifteen naturally eligible layouts. Nilotic has an empty resolved biome set, so it has a source-supported natural-sampling inapplicability disposition, not a missing generated sample |
+| Family | Root/design alternatives | Dimension | Material scope | Recovery: class; remaining case floor; saved inputs |
+| --- | --- | --- | --- | --- |
+| ctov:pillager_outpost | Twelve roots listed below, eleven distinct definitions | Overworld | Full tower/camp/cage layouts. Badlands/mesa are a verified definition/pool duplicate. Missing Savage & Ravage target and variant-specific cage/target/tower references stay frozen defects | Fixed; 11; B0, P1. No local result. |
+| integrated_stronghold:stronghold | Same root | Overworld | Procedural fountain-rooted dining/library/prison/portal system. Both this and Better Strongholds remain separate active custom types; no Eye-of-Ender outcome is inferred | Modular; 2; B0, P0. No local result. |
+| integrated_villages:village | Twelve roots listed below | Overworld | Each architectural/placement design, including elevated airship, coastal, submerged and Quark-dependent content. Two distinct-seed sites per procedural design; empty-data Mossy Mounds spawner is not a default enemy | Modular; 24; B2, P0. No local result. |
+| supplementaries:galleon | Same root; main plus hull/room/orlop/sail alternatives listed below | Overworld | Complete internal ship and spawn-box mechanisms, distinct from ordinary spawners; incompatible back02 connector remains a frozen rejection | Modular; 2; B0, P0. No local result. |
+| towns_and_towers:desert_mimic | towns_and_towers:mimic_desert | Overworld | Fixed-height three-component mimic assembly; the name is not an enemy mechanism | Fixed; 1; B2, P0. No local result. |
+| towns_and_towers:ocean_outpost | towns_and_towers:pillager_outpost_ocean | Overworld | Ship/outpost at fixed Y58 with natural pillager override and actual aquatic access | Fixed; 1; B0, P0. No local result. |
+| towns_and_towers:outpost_fort | Nine roots listed below | Overworld | All enclosure-oriented layouts and their encounter/reward fixtures | Fixed; 9; B0, P0. No local result. |
+| towns_and_towers:outpost_tower | Sixteen roots listed below | Overworld except ineligible Nilotic | All fifteen naturally eligible layouts. Nilotic has an empty resolved biome set, so it has a source-supported natural-sampling inapplicability disposition, not a missing generated sample | Fixed; 15; B0, P0. No local result. |
 
 CTOV roots are `ctov:pillager_outpost_` plus `badlands`, `beach`, `dark_forest`,
 `desert`, `jungle`, `mesa`, `mountain`, `plains`, `savanna`, `snowy`, `swamp`,
@@ -764,3 +866,46 @@ conditional complete-task estimates. Their natural gold cases remain the access
 basis; [external raw custody](temple-variants/custody/README.md) now verifies all
 attempts and the successful downloaded-world comparison. Full Item 13 family
 coverage and delivery remain IN PROGRESS.
+
+## Non-registry recovery rows
+
+Scope and material distinctions remain in the [existing feature/lifecycle table](README.md#non-registry-variants-and-reference-correction).
+
+| Family | Recovery: class; remaining case floor; saved inputs |
+| --- | --- |
+| betterend:shadow_forest_mansion | Fixed; 1; B0, P0. No exact saved candidate identified; no local result. |
+| betterendisland:dragon_arena | Modular; 2; B0, P0. Central-End raw available, lifecycle state unintegrated; no local result. |
+| yungsextras:swamp_church | Fixed; 1; B0, P0. No exact saved candidate identified; no local result. |
+
+Reproduce the recovery arithmetic from these explicit scope annotations and the
+existing immutable input indexes. This reads metadata only; it is not a new audit
+or world extraction. The annotated case floors are source judgments explained
+above, not inferred from B/P counts.
+
+```sh
+uv run python - <<'RECOVERY'
+import json,re
+from pathlib import Path
+p=Path('evidence/item-13')
+t=(p/'coverage.md').read_text()
+rows=re.findall(r'\| (Compact|Fixed|Modular); (\d+); B\d+, P\d+[.;]',t)
+assert len(rows)==192
+for label in ('Compact','Fixed','Modular'):
+    values=[int(n) for kind,n in rows if kind==label]
+    print(label,len(values),sum(n>0 for n in values),sum(values))
+local_section=t.split('## Reconciled local results, 2026-09-10',1)[1].split('## Recovery input and effort accounting',1)[0]
+local=set(re.findall(r'^\| ([a-z_]+:[a-z0-9_/]+) \|',local_section,re.M))
+assert len(local)==18
+families={f['family_id']:f for f in json.loads((p/'intake.json').read_text())['families'] if f['included']}
+summary=json.loads((p/'start-inspection/summary.json').read_text())['family_root_dimension_candidates']
+full={r['id'] for group in summary.values() for r in group if r['start_status']=='SAVED' and not r['incomplete_chunks']}
+b={r['family_id'] for r in json.loads((p/'candidates.json').read_text())['candidates'] if r['id'] in full}
+prior={k for k,f in families.items() if any(r['adequacy']=='candidate for block inspection' for r in f['prior_world_candidates'])}
+remaining=set(families)-local
+print('No local report',len(remaining))
+print('Baseline available',len(remaining & b))
+print('Prior only',len((remaining-b) & prior))
+print('Item 7 only',len((remaining-b-prior) & {'mes:starlight_voyager'}))
+print('No full indexed candidate',len(remaining-b-prior-{'mes:starlight_voyager'}))
+RECOVERY
+```
