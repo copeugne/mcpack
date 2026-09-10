@@ -45,9 +45,9 @@ blocks accepting the proposed shaft-using task; neither the failed native trial
 nor dry scaffold geometry supplies a wet timing term. Do not tune the controller,
 sum incomplete terms or silently remove this component from required coverage.
 
-The existing scope implies at least 528 remaining case completions, divided into
-4 compact, 248 fixed and 276 modular. This is a conservative assessment floor,
-not 528 new experiments or a finished selection matrix. Missing component outcomes
+The existing scope implies at least 527 remaining case completions, divided into
+4 compact, 247 fixed and 276 modular. This is a conservative assessment floor,
+not 527 new experiments or a finished selection matrix. Missing component outcomes
 can increase it. [Effort accounting](#remaining-effort-and-next-bounded-work)
 keeps unknown analysis, experiment and delivery costs explicit; no reliable ETA
 is established from extractor speed or commit timestamps.
@@ -156,8 +156,8 @@ shared validation/review/main delivery. This is the current map; earlier histori
 ## Remaining effort and next bounded work
 
 The [scope annotations](coverage.md#recovery-input-and-effort-accounting) give
-minimum remaining assessment units: compact 4, fixed 248, modular 276. Final counts
-are `Nc >= 4`, `Nf >= 248`, `Nm >= 276`, because uncovered material/components can
+minimum remaining assessment units: compact 4, fixed 247, modular 276. Final counts
+are `Nc >= 4`, `Nf >= 247`, `Nm >= 276`, because uncovered material/components can
 require extra cases. A unit means a complete scoped case assessment or completion
 of an already partial one. It does not mean a new world or one uniformly costly
 operation. Reuse verified equivalent cases with their actual differences retained.
@@ -166,7 +166,7 @@ operation. Reuse verified equivalent cases with their actual differences retaine
 | --- | --- | --- |
 | Integrating already completed reports | Recovery batch, 2026-09-10 13:08:30 to 13:19:24 UTC: 654 seconds wall elapsed through the first successful coverage arithmetic check; 19 reports reconciled into 18 family entries and the requirement map | This reconciliation is integrated. It is one batch, not a calibrated per-case rate |
 | New compact analysis/integration | Two pilot cases and two Slime states completed, but active analyst elapsed was not recorded separately | Unit cost `Ac` UNKNOWN; at least 4 further case assessments, plus uncovered mechanism work |
-| New fixed analysis/integration | Desert Mimic:2,180s through one full result. [Nether group](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry):150s selection/read and5,505s analysis for one full plus one partial result; cap exceeded | General unit cost `Af` UNKNOWN from these differing incomplete/complete batches; at least248 further case assessments |
+| New fixed analysis/integration | Desert Mimic:2,180s through one full result. [Nether group](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry):150s selection/read and5,505s analysis for one full plus one partial result; cap exceeded. Crimson then required592s bounded integration to close its existing route/model/quality result | General unit cost `Af` UNKNOWN from these differing incomplete/complete batches; at least247 further case assessments |
 | New modular analysis/integration | Completed Basalt/fortress pairs and first temple show required graph/task work, but no reliable active-effort clock | Unit cost `Am` UNKNOWN; at least 276 completions, including the partial second temple |
 | Missing-evidence experiments and custody | Existing exact material diagnostics retained; 130 families lack a full start-based candidate, but supplemental/raw matching is not exhausted | Experiment count, runtime and storage UNKNOWN until exact missing root/material/placement cases are selected |
 | New movement/boss/trial model inputs | Existing source models reusable only where their conditions apply; wet shaft remains unresolved | Additional cost `M` UNKNOWN; no generic combat or dry-movement substitute |
@@ -185,22 +185,24 @@ The honest planning expression is
 `E = Nc*Ac + Nf*Af + Nm*Am + X + M + V + R`, where `X` includes necessary
 experiment/restore/custody effort. Neither the unit costs nor the final case counts
 are established well enough for a numerical total or calendar deadline. The
-528-case floor establishes the work scale; the minute-scale extractor timings do
+527-case floor establishes the work scale; the minute-scale extractor timings do
 not establish feasibility within a week. No acceptance requirement is waived.
 
 The [Desert Mimic](fixed-blocks/towns-and-towers-desert-mimic-report.md) complete
-follow-up is delivered. The next [five-Nether-temple group](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry)
-overran its90-minute analysis cap by105 seconds and expansion stopped. It retains
-one complete basalt result, one checked crimson route with model/quality pending,
-and all five raw reads. Analysis/integration took5,505s; this is not five completed
-cases or a calibrated fixed-family average. Total ETA remains UNKNOWN.
+follow-up is delivered. The [Nether group's overrun](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry)
+retains its90-minute failure and5,505s analysis interval. Reassessment found that
+new navigation machinery would not resolve its mechanism/interaction obligations;
+crimson already had a complete checked route. The separately bounded
+[crimson integration](fixed-blocks/repurposed-nether-temples-report.md#crimson-complete-local-quality-result)
+now completes that local case and corrects the paired upper-stair graph in both
+variants. This is two satisfied roots of seven, not whole-family completion.
 
-Next: reassess the repeated manual connector/obstacle work against existing
-path-finding and clearance tools before another case. Identify the smallest
-required change, if any, without a new generalized framework or new raw reads.
-Then bound the unfinished group work anew; do not automatically extend its cap.
-The exact remaining claims are in its report. Compact/modular unit costs and
-missing-evidence experiment costs remain UNKNOWN; full acceptance is unchanged.
+Next: predeclare a bounded whole-case assessment for a retained remaining Nether
+variant after inspecting its exact outstanding claims. Reuse these source models,
+geometry and variant differences; no new bulk reads or generalized path framework.
+The soul, warped and wasteland blocks are already available. Ocean/taiga remain
+separate sample gaps. Total ETA and compact/modular unit costs remain UNKNOWN;
+the failed group budget was not silently extended and full acceptance is unchanged.
 
 Recovery validation: the first draft arithmetic reader rejected the Starlight
 Voyager row's semicolon annotation; its narrow delimiter/identifier correction

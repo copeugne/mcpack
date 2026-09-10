@@ -3,6 +3,8 @@
 Status: IN PROGRESS. Five selected fixed alternatives of
 `repurposed_structures:temple`. Ocean and taiga remain required separately.
 Human timing, realized encounters and acquired loot remain NOT MEASURED.
+Current local results: basalt and [crimson](#crimson-complete-local-quality-result)
+are integrated; three selected Nether variants and ocean/taiga remain incomplete.
 
 ## Bounded group declaration
 
@@ -116,7 +118,7 @@ lower usable floor and the template's horizontal orientation. Survey both upper
 and middle activity areas, reach the lower hall and both reward branches, disable
 the authored source, collect all temple chest contents, and return. The warped
 upper double chest is one opening/transfer location with two saved loot assignments.
-Three other variants have three singles; warped also has two lower ordinary
+Four other variants have three singles; warped also has two lower ordinary
 singles and one trapped single. Bypassing mechanisms by measured breaching is
 permitted; source counts and native failures remain baseline observations.
 The staged interior boundary excludes finding or excavating to the site.
@@ -229,11 +231,12 @@ Primary activity partition (corridors/stairs are links, not additional rooms):
 | D, source closet | X402..404,Z321..324; checked centerline X403,feet57 after declared work | Magma source and two loot chests behind closed masonry/piston mechanism |
 
 Bounds are activity envelopes, not claims that every interior cell is occupiable.
-Primary graph H-U,H-L,L-T,L-D has5 rooms,4 edges, one component, one degree-three
-junction(L), no inter-room cycle and three terminals(U,T,D). H is the staged entry.
+Primary graph has two separate H-U stair links plus H-L,L-T,L-D:5 rooms,5 edges,
+one component, two physical degree-three junctions(H,L), one inter-room cycle
+and two terminals(T,D). H is the staged entry.
 Depths:U/L=1,T/D=2. The lower trap/control split is ambiguous because its narrow
-western passage joins both activities. Merging L/T gives4 rooms,3 edges, a chain
-U-H-LT-D with no degree-three junction; loot/source allocation is unchanged.
+western passage joins both activities. Merging L/T gives4 rooms,4 edges, the same upper-stair cycle and one physical
+degree-three junction(H); loot/source allocation is unchanged.
 Neither piece count nor empty voxel count produced these partitions.
 
 Empty/dead rooms:0/5 primary and0/4 merged, because every delimited space retains
@@ -305,7 +308,7 @@ Large/shallow assessment: the three-level facade and perimeter upper room do not
 supply three levels of objectives. All reward/source work is in the lower two
 branches. The upper level's lava/fall exposure gives it mechanical content, so it
 is not simply counted as empty volume. Low objective distribution across height
-and one primary junction are supported weaknesses; a whole-family verdict must
+and concentration below the upper-stair loop are supported weaknesses; a whole-family verdict must
 retain all seven variants, including the warped upper reward difference.
 
 ## Group overrun and retained crimson geometry
@@ -369,9 +372,9 @@ uv run ruff format --check evidence/item-13/repurposed_temple_route.py evidence/
 uv run basedpyright evidence/item-13/repurposed_temple_route.py evidence/item-13/temple_geometry.py
 ```
 
-The crimson command deliberately ends with `RuntimeError` after printing successful
-geometry counts, because complete-model/quality integration is still pending.
-This is an explicit partial result, not a passing complete-case command.
+At commit3fef7579, the crimson command deliberately ended with `RuntimeError`
+after printing successful geometry counts. That historical partial result is
+superseded by the completed integration below; current crimson execution passes.
 
 Basalt terrain context: all180 saved WORLD_SURFACE columns areY127, the Nether
 roof context,70 above lower feet57. This is not70 blocks of solid cover or a
@@ -402,3 +405,152 @@ wall-clock delivery cap was exceeded during this interrupted checkpoint. Do not
 count that interval as measured active analysis or claim the delivery budget passed.
 Preserve the verified staged result and finish its durable delivery before further
 case processing; no new measurements are justified by the interruption.
+
+## Recovery decision and crimson integration declaration
+
+On2026-09-10 17:35:56 UTC, after verified delivery of3fef7579, reassessment
+compared analyze_pilot.paths (flat four-neighbor BFS), temple_geometry.path_checks
+(body/support/sweep validation), and the existing Basalt/fortress route-adjacency
+queries. None automatically resolves mining, partial target outlines, trap states
+or room judgment. A new three-dimensional path finder would not supply those
+missing claims. Crimson's required route already passes. Decision: add no
+navigation machinery and do not repeat its route investigation or raw reads.
+Finish the existing result's missing model and quality integration first.
+
+This is a new bounded integration batch, not an extension of the failed five-case
+analysis cap:25 minutes through18:00:56 UTC, then10 minutes for focused checks and
+delivery. Scope is crimson's existing126H route, source bindings, graph/room
+allocation, conditional task and one supported external-access disposition.
+No soul/warped/wasteland processing in this batch. All source and geometry inputs
+are retained. Only an exact missing external example may need a small query against
+the saved blocks; no server or new extraction. Expected new raw storage is zero.
+
+Before arithmetic, use the already declared actor/population and A/B/C allowances.
+Crimson work: four stems and two hyphae at8 ticks each with diamond axe; one wart
+block at30 ticks with that axe (default speed1, no hoe in the actor's equipment);
+two levers at15 ticks each (hardness.5, no effective axe/pick tag); four wooden
+plates at2 ticks each; wood chest10; source19; sticky piston6; dispenser14.
+The remaining four vine segments, two tripwires and one zero-power wire are
+instant-breaking. Total165 active ticks (8.25s). Pinned Blocks offsets9731..9734
+and25127..25129 bind lever/wart hardness. The extra JAR's expanded axe/pick/hoe
+tags distinguish effective wood tools from the declared default-speed wart work.
+Quark wood-chest properties/tags and other source inputs are already bound above.
+
+There are24 mining starts,2 opens, no placements,3 acquisition events and4H of
+conditional destroyed-chest pickup. Eight selections: axe; pick for source;
+sword; pick for piston; shears for first vine; axe for plates/stems; shears for
+northern wires/vines; pick for dispenser. Navigation is actual direction changes
+plus initial orientation and six phase choices (upper survey, source closet,
+plate field, north-stem breach, vine/cache approach, return). Fourteen coupled
+vertical steps replace their ordinary horizontal cost at max(1/u,1/j). Six adult
+zoglins give27.3s active combat, divided by the existing contact-duty sensitivities.
+No omitted phase is assumed zero; actual player timing and realized encounters
+remain NOT MEASURED.
+
+## Crimson complete local quality result
+
+The declared integration now covers every local requirement for this selected
+crimson template. The complete task is113.25/182.65/292.516667s for A/B/C.
+Movement including conditional pickup is37.2/57/94.666667s; noncombat totals
+85.95/146.25/237.916667s. Combat contributes27.3/36.4/54.6s. Counts:126H,
+7 up/7 down,47 direction changes,54 navigation allowances,24 removals,2 opens,
+8 equipment selections and3 chest-acquisition events. These remain conditional
+MODELED RESULTS, not observed player times or guaranteed bounds.
+
+| Room | Activity envelope/usable floor | Content and empty/dead disposition |
+| --- | --- | --- |
+| H, middle hall | X141..146,Z61..66,feet65; actual openings exclude stem/floor obstructions | Quiet connection to both other floors. Empty, not dead |
+| U, upper hall | X140..147,Z59..69,feet68 on the checked southern/western/eastern arms | Roof overgrowth limits northern crossing; central fall opening remains a hazard. Not empty/dead |
+| L, lower control hall | X139..148,Z64..70,feet61 on actual supported cells | Lever wall and wooden-plate/dispenser field; links to both lower branches. Not empty/dead |
+| T, northern trap/cache | X139..147,Z58..63,feet61 on checked cells | Tripwire, dispenser and one chest. Not empty/dead |
+| D, source closet | X146..148,Z65..68; checked centerlineX147,feet61 after work | Zoglin source and two chests behind wood/piston. Not empty/dead |
+
+Activity envelopes are not fully occupiable rectangles. The five-room primary
+partition has two H-U stair links and H-L,L-T,L-D:5 edges, one component, two
+physical junctions(H,L), one upper-stair cycle and terminalsT/D. The ambiguous
+L/T merge gives4 rooms,4 edges, one cycle and junctionH. Empty/dead denominators
+are1/5 and0/5 primary,1/4 and0/4 merged. H is a necessary quiet connecting space;
+ordinary mineable stem obstruction alone is not called a damage hazard.
+
+The two upper flights occupy different openings and connect across the upper
+southern floor. The previously recorded basalt graph had contracted them into
+one link, incorrectly losing that cycle. Both actual eastern flights now pass
+forward/reverse native checks, from(402,61,320) through(401,62,321),(401,63,322)
+to(402,64,323) for basalt, and the translated crimson path through(145,66,65),
+(145,67,66) to(146,68,67). The current basalt graph above is corrected explicitly;
+its room count, objective circuit, task times and loot/source counts are unchanged.
+This narrow correction preserves physical alternatives instead of inflating room
+count or starting another route investigation.
+
+Depth from staged H:U/L=1,T/D=2. The checked connector network gives H-U6H/3V,
+H-L9H/4V using the east lower stair. The existing flat-grid query confirms L-D7H
+and L-T16H on the post-work lower floor. Declared-network reward distances are
+therefore16H/4V to D and25H/4V to T, not a global minimum over new excavations.
+Floor span61..68 is7 blocks, separate from the14-layer envelope. All180 saved
+WORLD_SURFACE columns are127, representing the Nether roof, not66 blocks of
+solid cover above the lower floor or a surface approach.
+
+Meaningful hazards: the lower wooden plates and attached tripwire feed actual
+saved dispenser circuits. The packaged `loot_table/dispensers/temples/crimson.json`
+selects strong-harming tipped arrows (1..2 rolls,5..14 arrows per selected entry);
+that is source payload potential, not a realized inventory or hit rate. All four
+saved dispenser assignments remain unrolled. The chosen route removes four
+plates, two wire cells and the dispenser blocking the northern lid; other triggers
+remain hazards. No frozen mechanism is tuned or declared harmless. The upper
+opening above(144,64,64) permits a four-block drop from feet68 to the supported
+lower stair, unlike ordinary safe level circulation. This is source/geometric
+hazard potential, not an observed fall or combat event. There is no lava/TNT in
+the saved crimson palette. The two-block-wide stair and one-block-wide lower
+clearances constrain movement; this does not establish live enemy pathfinding.
+
+All3 chest assignments use the crimson table:2/3 in D and1/3 in T, all depth2.
+Source potential includes ordinary resources/equipment and a rare scrap entry;
+no generated item, value or acquisition probability was measured. One hostile
+source type is authored, with six adults stipulated only for the complete task.
+Other ages or natural spawning are not sampled encounter outcomes. Source failure,
+additional arrivals, failed suppression, trap activation, unsuccessful pickup or
+survival retain the declared censoring conditions.
+
+Authored finale: NONE. For the terminal D candidate, objective clarity ABSENT
+(no unique goal/trigger), distinctive source challenge PRESENT (zoglin source),
+reward linkage PRESENT (two containers), route integration CONDITIONAL on the
+validated access work, external exposure PRESENT by the direct breach below.
+No numerical enjoyment or boss-quality score is manufactured.
+
+External bypass: from supported(150,61,64), mine the head/foot pairs atX149,148,147,
+Z64 and walk to(147,61,64). Remove the unextended piston at(147,62,65), then open
+the chest at(147,61,65). All seven rays, the3H path and final chest ray pass against
+the original saved case. The six wall blocks are five crimson hyphae and one wart
+block; the initially assumed all-hyphae wall was corrected before acceptance.
+This skips H,U,L,T and the plate field to reach D's reward, but does not suppress
+the source or prove combat avoidance. With the declared tools its scoped active
+breaking work is76 ticks, plus movement/interaction/collection effort; this is
+not a second complete task-time claim. The ordinary closet breach also bypasses
+the lever/piston control sequence while preserving its wood/piston breaking cost.
+
+Expected replay: a fixed template with processor/terrain-dependent obstruction
+and source/loot outcomes, not a measured distribution of alternative dungeons.
+Same-site revisits retain removed source/chest, wood, controls and dispenser;
+per-container variation does not reconstruct rooms or reset mechanisms. This
+supports limited authored same-site renewal, without inventing player preference.
+The multilevel form distributes all rewards and authored combat to the lower
+branches; upper circulation and its fall opening add limited mechanical purpose.
+This supports shallow objective distribution across height, while the paired
+stairs provide a genuine loop. It does not establish the entire seven-variant
+family as visually large/shallow; warped's upper chest difference remains material.
+
+Crimson integration and manual slice inspection ended17:45:48 UTC,592 seconds
+from the new declaration, within its25-minute cap. This includes source binding,
+model/quality integration, the external query and paired-stair correction, not a
+new whole-world analysis. The six-layer categorical plan was inspected with:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/repurposed-temple-crimson.json.gz --output /tmp/item13-crimson-review.svg --layers 61 62 65 66 68 69
+convert /tmp/item13-crimson-review.svg /tmp/item13-crimson-review.png
+```
+
+The plan supports the recorded northern obstruction and activity-floor comparison;
+it is not a human gameplay observation. Both current variant commands, lint,
+format and types pass. Final candidate scope/link/diff checks and delivery follow
+under the separately declared10-minute bound. The original five-case overrun is
+not erased or repriced as this smaller integration interval.

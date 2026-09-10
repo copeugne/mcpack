@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed case: `790aeccf`.
-The following partial Nether-group milestone is prepared on this branch; verify
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `3fef7579`.
+The following crimson integration is prepared on this branch; verify
 its current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -153,23 +153,24 @@ and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recov
 These replace the previous narrow next-step sequence, not the specification gates.
 
 Coverage now records20 represented families,16 satisfying local scope, four
-partial and172 with no local report. Remaining floor:528 case completions
-(4 compact,248 fixed,276 modular). Among the172,24 have baseline inputs,17 more
+partial and172 with no local report. Remaining floor:527 case completions
+(4 compact,247 fixed,276 modular). Among the172,24 have baseline inputs,17 more
 Item8 references, one the Item7 pair,130 no full indexed candidate. Match existing
 supplemental raw before experiments. Desert Mimic is locally complete and pushed.
 
-The [five-Nether-temple group](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry)
-exceeded its90-minute analysis cap by105s at16:03:43 UTC; expansion stopped.
-Basalt has a full quality/model result. Crimson's126H route passes, but its command
-explicitly raises pending-model/quality status. Soul, warped and wasteland have
-verified raw inputs only; ocean/taiga remain required outside this group. No server
-or extraction process is active. Preserve all five reads and rejected routes.
+The [Nether group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md)
+preserves its90-minute overrun, failed routes and later delivery interruption.
+Basalt and crimson now have complete local quality/model results; the paired upper
+stair flights correctly retain one inter-room cycle in both. Crimson integration
+reused its existing checked route after a separate bounded reassessment. Soul,
+warped and wasteland retain raw inputs only; ocean/taiga remain required separately.
+No server or extraction process is active. Do not repeat the five accepted reads.
 
-Next: reassess repeated manual connector/obstacle work using existing path-finding
-and clearance tools before another case. Name the exact missing operation and
-smallest justified change, then bound unfinished work anew. Do not automatically
-extend the failed cap or add a generalized framework. Remaining effort/ETA stays
-UNKNOWN; phase clocks and exact gaps are in the group report and Item13 README.
+Next: predeclare a bounded whole-case assessment for one remaining saved Nether
+variant, using its exact source/material gaps. No new navigation machinery was
+justified for the completed crimson integration. Reuse the current checks and
+models, preserve each remaining material difference and do not silently extend
+failed budgets. Effort/ETA remains UNKNOWN; phase clocks and gaps are in the report.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet

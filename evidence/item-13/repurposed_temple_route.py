@@ -267,11 +267,115 @@ print("mining", mining)
 print("opened", opened)
 print("rays", sum(len(v) for v in rays.values()))
 
-if args.variant != "basalt":
-    pending_message = (
-        "Crimson geometry checked; complete model and quality integration still pending"
+offset_x, offset_y = (0, 0) if args.variant == "basalt" else (-256, 4)
+second_stair = [
+    (x + offset_x, y + offset_y, z + offset_x)
+    for x, y, z in [
+        (402, 61, 320),
+        (401, 61, 320),
+        (401, 62, 321),
+        (401, 63, 322),
+        (401, 64, 323),
+        (402, 64, 323),
+    ]
+]
+_, native_verify = geometry.path_checks(original, set(), set(), set())
+native_verify(second_stair, crouch_up=True)
+native_verify(list(reversed(second_stair)), crouch_up=True)
+print("separate upper eastern stair passes", second_stair)
+
+if args.variant == "crimson":
+    steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]
+    turns = sum(a != b for a, b in pairwise(steps))
+    vertical = sum(abs(d[1]) for d in steps)
+    assert len(steps) == 126
+    assert vertical == 14
+    work = {
+        "crimson_stem": 8,
+        "stripped_crimson_hyphae": 8,
+        "crimson_hyphae": 8,
+        "nether_wart_block": 30,
+        "lever": 15,
+        "crimson_pressure_plate": 2,
+        "crimson_chest": 10,
+        "spawner": 19,
+        "sticky_piston": 6,
+        "dispenser": 14,
+        "weeping_vines": 0,
+        "weeping_vines_plant": 0,
+        "tripwire": 0,
+        "redstone_wire": 0,
+    }
+    ticks = sum(work[state["Name"].split(":", 1)[1]] for _, state in mining)
+    assert ticks == 165
+    assert len(mining) == 24
+    assert len(opened) == 2
+    print(
+        "crimson complete inputs", {"turns": turns, "decisions": turns + 7, "mining_ticks": ticks}
     )
-    raise RuntimeError(pending_message)
+    for label, u, j, n, a, s, k, v, duty in [
+        ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2, 1),
+        ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4, 0.75),
+        ("C", 3, 0.25, 1.5, 1, 1, 4, 8, 0.5),
+    ]:
+        movement = (len(steps) - vertical + 4) / u + vertical * max(1 / u, 1 / j)
+        noncombat = movement + ticks / 20 + (turns + 7) * n + 26 * a + 8 * s + 3 * k + v
+        print(
+            label,
+            "movement",
+            movement,
+            "noncombat",
+            noncombat,
+            "combat",
+            27.3 / duty,
+            "complete",
+            noncombat + 27.3 / duty,
+        )
+    # Direct eastern breach reaches a closet chest without the hall/plate route.
+    bypass_removed = set()
+    bypass = [(150, 61, 64)]
+    for x in (149, 148, 147):
+        for y in (62, 61):
+            target = (x, y, 64)
+            print("crimson exterior removal", target, at(original, *target))
+            assert at(original, *target)["Name"] in {
+                "minecraft:crimson_hyphae",
+                "minecraft:nether_wart_block",
+            }
+            geometry.ray_check(original, bypass_removed, {})(
+                (x + 1.5, 62.62, 64.5), (x + 0.999, y + 0.5, 64.5), target
+            )
+            bypass_removed.add(target)
+        bypass.append((x, 61, 64))
+    target = (147, 62, 65)
+    assert at(original, *target)["Name"] == "minecraft:sticky_piston"
+    geometry.ray_check(original, bypass_removed, {})(
+        (147.5, 62.62, 64.5), (147.5, 62.5, 65.001), target
+    )
+    bypass_removed.add(target)
+    geometry.path_checks(original, bypass_removed, set(), set())[1](bypass)
+    geometry.ray_check(original, bypass_removed, {})(
+        (147.5, 62.62, 64.5), (147.5, 61.5, 65.5), (147, 61, 65)
+    )
+    print(
+        "crimson exterior bypass",
+        bypass,
+        "seven removals; direct chest access, not combat avoidance",
+    )
+    sys.path.insert(0, str(Path(__file__).parent))
+    paths = importlib.import_module("analyze_pilot").paths
+    cells = set()
+    for x in range(138, 150):
+        for z in range(57, 72):
+            try:
+                verify([(x, 61, z)])
+            except AssertionError:
+                continue
+            cells.add((x, 61, z))
+    lower = paths(cells, (143, 61, 69))
+    for target in [(147, 61, 66), (145, 61, 61)]:
+        print("crimson lower depth", target, len(lower[target]) - 1)
+    sys.exit(0)
 
 # Supported external side-wall entry; this is not the whole objective's second time.
 external_removed = {(403, 61, 321), (403, 62, 321)}
