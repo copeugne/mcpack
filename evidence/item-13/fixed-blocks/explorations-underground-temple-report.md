@@ -3541,3 +3541,66 @@ all geometry, nine-state checks and arithmetic with
 `uv run python -m evidence.item-13.temple_ordinary_route`. Focused lint, formatting
 and type checks pass. This increment resolves two local rewards and the saved
 campfire-state denominator, not remaining temple routes or Item13 completion.
+
+## Western tower pair: upper reward access declaration
+
+Inspect each retained tower at center Z367 and384 independently. Reuse the
+existing upright actor, sword web removal, ordinary stone-button door operation
+and source/geometry rules. From(196,32,Z), advance west to X192, shift north one
+block, remove the web at(189,32,Z-1) from X190, and reach the outer button station
+(188,32,Z-1). Operate its button, cross the iron door to X186 within its pulse,
+and inspect the two upper chests via X185,Z-1..Z+1. Operate the inside button for
+the return and follow the same route back. Exclude fluid arrival, hostile
+interference, failed actuation/transfer and loss of support from this successful
+component model. Do not remove other webs, bypass doors or silently inspect the
+lower floors. Preserve the rejected straight centerline and the closed-door case.
+This is the upper segment of two pending complete tower tasks, not two whole
+assessments or a new independent timing protocol.
+
+## Western tower pair: upper reward segment result
+
+Both Z367 andZ384 cases independently pass the same coordinate-relative checks;
+no result was accepted from template equality alone. Each direct centerline fails
+at(191,32,Z), a saved cobweb. The accepted approach instead reaches X192, shifts
+north to Z-1 and removes only(189,32,Z-1), from supported(190,32,Z-1). All other
+webs remain. This is eight active sword-mining ticks per tower under the existing
+dry grounded model, not time spent traversing webbing or an observed slowdown.
+
+Each closed gate at(187,Y32..33,Z-1) is separately rejected. Both halves are
+west-facing, left-hinged iron doors. The outer stone button is(188,34,Z-1),
+east-facing, and the inner button(186,34,Z-1), west-facing; both are wall mounted
+and saved unpowered. Exact side-face rays pass from the supported adjacent
+stations. The source-open plate clearance permits the two-block crossing in
+both directions. Reuse the established30-tick stone-button pulse: two blocks at
+5/4/3 blocks per second require0.4/0.5/0.667 seconds, below1.5 seconds. Complete
+aiming and orientation before pressing; do not put a post-click pause into this
+window. Each return requires its own button operation. Actuation, uninterrupted
+crossing and absence of hostile displacement remain modeled conditions.
+
+Inside, X185,Z-1..Z+1 connects both chest stations. The four newly accessed
+assignments are(184,32,365),(186,32,369),(184,32,382),(186,32,386). All have air
+above, no saved Items or Lock, and the `quest_tower` table already inspected in
+the first assembly. Their inset side rays pass. No new generated or acquired loot
+is measured, and equal table IDs are not equal rolled contents.
+
+Each upper return segment is28 horizontal blocks with zero elevation change,
+one web removal, two button operations and two conditional chest accesses. These
+are components for the full tower/assembly task, not a complete tower timing.
+The upper reward activity space lies between the X183 and187 dividing walls,
+with connected X185 floor and both rewards; the webbed entrance provides access
+pressure rather than a separate spawner encounter. Do not infer overall tower
+depth, finale quality or shallow height from this upper segment alone.
+
+Direct inspection also identifies the next unresolved access boundary in each
+western section: top-half waterlogged oak trapdoor(180,31,Z), saved closed and
+facing east. Beneath it, feetY28 meets attached, armed, unpowered tripwire at
+(180,28,Z), with masonry supportY27. This is a four-block drop target if opened,
+not a validated descent or a confirmed live trap firing. Lower reward access,
+trap mechanism, water effects and return ascent remain to be integrated before
+the tower task is complete. The original accepted world is unchanged.
+
+Reproduce the upper positive/negative routes, button/chest rays and counts with
+`uv run python -m evidence.item-13.temple_ordinary_route`. The trapdoor/tripwire
+states are direct queries of the same hash-bound extraction. Focused Ruff,
+formatting and type checks pass. No new runtime or common geometry machinery was
+added; Item13 remains IN PROGRESS.

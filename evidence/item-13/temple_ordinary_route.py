@@ -392,3 +392,87 @@ for position in campfires:
     assert state["Properties"]["lit"] == "false"
     assert state["Properties"]["waterlogged"] == "true"
 print("PASS all nine saved campfires waterlogged and unlit; zero lit campfires in this sample")
+
+for center_z in (367, 384):
+    straight_failure = None
+    try:
+        verify([(x, 32, center_z) for x in range(196, 179, -1)])
+    except AssertionError as error:
+        straight_failure = error.args[0]
+    assert straight_failure is not None
+    assert straight_failure[1:] == ((191, 32, center_z), "minecraft:cobweb")
+    tower_removed = set()
+    tower_doors = set()
+    _, tower_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+        case, tower_removed, tower_doors, set()
+    )
+    tower_rays = {}
+    tower_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+        case, tower_removed, tower_rays
+    )
+    approach = [(x, 32, center_z) for x in range(196, 191, -1)] + [
+        (x, 32, center_z - 1) for x in range(192, 189, -1)
+    ]
+    tower_verify(approach)
+    web = (189, 32, center_z - 1)
+    assert at(case, *web)["Name"] == "minecraft:cobweb"
+    tower_ray((190.5, 33.62, center_z - 0.5), (189.9375, 32.5, center_z - 0.5), web)
+    tower_removed.add(web)
+    approach += [(189, 32, center_z - 1), (188, 32, center_z - 1)]
+    crossing = [(x, 32, center_z - 1) for x in (188, 187, 186)]
+    closed_failure = None
+    try:
+        tower_verify(crossing)
+    except AssertionError as error:
+        closed_failure = error.args[0]
+    assert closed_failure is not None
+    assert closed_failure[1:] == ((187, 32, center_z - 1), "minecraft:iron_door")
+    for x, facing, end_x in ((188, "east", 188.0625), (186, "west", 186.9375)):
+        button = (x, 34, center_z - 1)
+        assert at(case, *button) == {
+            "Name": "minecraft:stone_button",
+            "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+        }
+        tower_ray((x + 0.5, 33.62, center_z - 0.5), (end_x, 34.5, center_z - 0.5), button)
+    for y, half in ((32, "lower"), (33, "upper")):
+        door = (187, y, center_z - 1)
+        assert at(case, *door) == {
+            "Name": "minecraft:iron_door",
+            "Properties": {
+                "facing": "west",
+                "half": half,
+                "hinge": "left",
+                "open": "false",
+                "powered": "false",
+            },
+        }
+        tower_doors.add(door)
+    inner = [
+        (186, 32, center_z - 1),
+        (185, 32, center_z - 1),
+        (185, 32, center_z),
+        (185, 32, center_z + 1),
+    ]
+    for target, station, end_x in (
+        ((184, 32, center_z - 2), inner[1], 184.9375),
+        ((186, 32, center_z + 2), inner[-1], 186.0625),
+    ):
+        assert at(case, *target)["Name"] == "minecraft:chest"
+        assert at(case, target[0], 33, target[2])["Name"] == "minecraft:air"
+        tower_ray(
+            (station[0] + 0.5, 33.62, station[2] + 0.5), (end_x, 32.5, target[2] + 0.5), target
+        )
+        loot = entities_by_position[target]
+        assert loot["LootTable"] == "explorations:chests/underground_temple/quest_tower"
+        assert "Items" not in loot
+        assert "Lock" not in loot
+    upper_tower_path = approach + crossing[1:] + inner[1:]
+    tower_verify(upper_tower_path)
+    tower_verify(list(reversed(upper_tower_path)))
+    assert all(2 / u < 30 / 20 for u in (5, 4, 3))
+    print(
+        "PASS western tower upper segment",
+        center_z,
+        2 * (len(upper_tower_path) - 1),
+        "H return; one web, two button operations, two chest rays; lower floors pending",
+    )
