@@ -1,6 +1,7 @@
 # Explorations Slime Cave
 
-Status: IN PROGRESS. Authoritative local Item13 assessment, under the separately
+Status: local two-material-state assessment complete; Item13 remains IN PROGRESS.
+This assessment uses the separately
 approved inspection/modeled scope. Human times, realized enemies and acquired
 loot remain NOT MEASURED.
 
@@ -390,3 +391,155 @@ The first material representative now has its local task and quality assessment.
 Focused route, interaction, body/query and arithmetic checks pass, with Ruff
 format/check and basedpyright clean. Proceed to the preselected negative case,
 preserving its actual saved terrain/materials instead of copying these metrics.
+
+## Negative material-state read
+
+The first representative passes its local assessment. Execute the second already
+selected case under the same120-second,2-MiB,5-GiB-free and identity boundaries.
+
+```sh
+timeout 120 uv run python - <<'PY'
+import gzip,hashlib,importlib,json,resource,shutil,time
+from pathlib import Path
+from tools.analyze_route_opportunities import read_bound
+sha='dbda68b7d859b391b14df532ca99cafebebf73ead808eded3cb7b65e8c561000'
+plan=json.loads(read_bound(Path('evidence/item-13/slime-cave-selection.json'),sha))
+selected=plan['selected'][1]
+rows=json.loads(read_bound(Path('evidence/item-13/candidates.json'),plan['input_sha256']['candidates']))['candidates']
+case,=[r for r in rows if r['id']==selected['id']]
+assert case['bounds']==selected['bounds'] and case['voxel_count']==7938
+output=Path('evidence/item-13/fixed-blocks/explorations-slime-cave-negative.json.gz')
+assert not output.exists() and not output.is_symlink() and shutil.disk_usage('.').free>=5*1024**3
+started=time.monotonic()
+result={'selection_sha256':sha,'cases':[importlib.import_module('evidence.item-13.measure').extract(case,voxel_budget=7938)]}
+result['elapsed_seconds']=round(time.monotonic()-started,6)
+result['peak_rss_kib']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+raw=gzip.compress((json.dumps(result,sort_keys=True,separators=(',',':'))+'\n').encode(),mtime=0)
+assert len(raw)<=2*1024**2
+with output.open('xb') as stream:stream.write(raw)
+print(len(raw),hashlib.sha256(raw).hexdigest(),result['elapsed_seconds'],result['peak_rss_kib'])
+PY
+```
+
+Negative read PASS:7,938 cells,3,394 compressed bytes,28.778387 seconds,
+48,656 KiB peak RSS. [Raw blocks](explorations-slime-cave-negative.json.gz)
+SHA-256 `f8856e2278ea08228569af7757ee8f12849cd1a38010e8f9f04c19212034f3bb`.
+Saved origin(0,-38,-400),rotationNONE,one cave piece; source at(8,-35,-393)
+and chest at(8,-34,-393). The spawner retains the same Delay/count/range/custom
+light settings, and the chest retains the same table with its own saved seed.
+The full12-layer [view](explorations-slime-cave-negative-slices.png) was inspected:
+water remains below part of the floor, and saved exterior air interrupts some
+side/upper boundary geometry. Do not assume identical surrounding cover.
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/explorations-slime-cave-negative.json.gz --output evidence/raw/item13/slime-cave-negative.svg
+timeout 120 convert -background white evidence/raw/item13/slime-cave-negative.svg evidence/item-13/fixed-blocks/explorations-slime-cave-negative-slices.png
+```
+
+Predeclare the same local task in the corresponding template coordinates, then
+validate it against these saved blocks. From first-case block coordinates(x,y,z),
+the negative-case mapping is(z+368,y-38,-320-x). For continuous points it is
+(z+368,y-38,-319-x), accounting for rotated cell centers/boundaries. The local
+start becomes(10.5,-36,-389.5), objective station(9.5,-35,-392.5). Keep the same
+actor, six-size2 conditional encounter, removal objective, four legs, targeting,
+acquisition and censoring rules. Check actual deepslate/tuff support rather than
+assuming it from the processor's name. Counts/times may be carried over only if
+the transformed support, sweeps, source/query and interaction checks pass.
+
+## Negative-case result and material comparison
+
+The transformed route, initial size2 bodies/query, spawner/chest access and melee
+station pass on the hash-bound negative saved input. Reproduce with:
+
+```sh
+uv run python -m evidence.item-13.slime_route --negative
+uv run python -m evidence.item-13.slime_route
+```
+
+The first support whitelist rejected the transformed parent station because its
+floor at(7,-37,-389) is gravel, not the predicted stone/deepslate pair. Direct
+saved inspection shows deepslate immediately beneath atY-38 and again atY-39.
+Accept that supported full gravel surface explicitly; do not replace the saved
+gravel with assumed processor output. The checker requires stone/deepslate beneath
+any admitted gravel support. This is a corrected over-restrictive support test,
+not an erased physical obstruction or a claim that every saved cell follows only
+the template processor. No block was changed in the actual world.
+
+The validated local task retains16 horizontal blocks,four elevation travel,two
+upward transitions and seven headings. Start feet-36,raised station-35. The
+nearby query is[4,-39,-397,13,-30,-388]. Both the source payload and conditional
+six-parent population contract remain identical. No new mining of the harder
+shell is required by this local task, so source-disable costs and the complete
+conditional model reproduce the first totals exactly:38..46/64..74/102..117s
+rounded across A/B/C. This is a measured equality of the declared route/model
+inputs, not a claim that all blocks, loot or real encounters are equal.
+
+One authored chamber,zero primary branching and zero empty/dead rooms remain
+supported. The raised objective is again one local pedestal within that space,
+with the same two-zone counting sensitivity and four-block station distance.
+Depth0(primary)/1(zone sensitivity) and one-block floor span are local task
+metrics. The low/high marker placement and the narrowing upper hollow do not
+supply a second authored objective floor. The negative sample retains the same
+single authored chest over the spawner, source hostility, conditional finale
+linkage and direct-chest-access bypass. Spawner removal is not a loot-open gate.
+These are family-owned content counts; adjacent contributions are retained below.
+
+The surrounding geometry differs materially. At(14,-392) and(15,-392), saved
+cellsY-38..-32 are air, then tuff begins atY-31. This documents an opening toward
+external cave space near the east boundary. It does not prove a supported walk
+across that opening or a safe drop: no floor is present at those cited levels.
+The central source column has tuffY-27..-24 and WORLD_SURFACE94; at the start
+column(10,-390), tuff beginsY-29 and WORLD_SURFACE is62. Retain these local solid
+cover minima and heightmap context separately from unknown continuous overburden.
+Neither result supplies a surface-to-chest mining total or observed discovery.
+
+The retained volume also contains four treasure=true,waterlogged=false
+Supplementaries urn blocks at(-3,-30,-390),(-1,-29,-394),(-3,-29,-393),
+(2,-28,-391). The first three lie in padding outside the authored template
+footprint; the fourth is within its envelope near the upper western edge.
+The Slime Cave template does not author urns. Report this adjacent generated
+reward potential instead of declaring the whole retained volume contains only
+one reward. None is a new Slime Cave chest or proof of a second authored room.
+Their collection is outside the explicitly declared source/chest clear task;
+no route, acquired contents or complete surrounding-cave clear is claimed.
+
+Pinned supplementaries-neoforge-1.21.1-3.6.8.jar SHA-256
+0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d,
+UrnBlock.newBlockEntity offsets0..27 returns null for treasure=true. Thus their
+absence from saved block_entities is consistent with source, not proof of an
+empty reward. Its blocks/urn loot table, SHA-256
+7ebcd614eebf70ab6c2473638152b3296ef521ab6091968b7bdc0f788bdd5e52,
+includes a treasure-state-conditioned reference to
+supplementaries:loot/urn_loot/urn_loot. This is loot potential; no items were rolled
+or acquired. Source command:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -c -p -classpath downloads/item3/candidates/supplementaries-neoforge-1.21.1-3.6.8.jar net.mehvahdjukaar.supplementaries.common.block.blocks.UrnBlock > /tmp/item13-urn.javap
+```
+
+Biomes O' Plenty hanging-cobweb/webbing states also occur in the retained surrounding
+and upper cave. The checked local task does not traverse them. No slowdown,
+entanglement or player outcome is inferred solely from the block names. Water,
+slime-block surfaces and the external drop retain their route exclusions. The
+source-supported slime/spawner pressure and clearly available direct loot bypass
+remain the assessment's supported mechanics.
+
+The paired result supports one fixed cave objective with different placement,
+processing and surrounding content. Expected replay remains a source-supported
+assessment of encounter size/splitting and placement variation, not guaranteed
+reset or enjoyment. Both cases are mechanically shallow in their family-owned
+room/vertical progression despite the taller hollow. Incidental urns and external
+caves do not justify erasing those limits or claiming the entire surrounding cave
+has been measured. The two material states are covered locally; mixed-Y0 processing
+is explained by the accepted per-cell source and is not another authored layout.
+
+Local family assessment complete under the declared modeled/inspection scope.
+Both saved inputs and views, source mechanics, local topology/depth, complete
+conditional tasks, enemy distinctions, hazards/chokepoint limits, loot/finale,
+bypasses, external exposure and replay/shallow-form findings are retained. Full
+Item13 population coverage and review/merge gates remain IN PROGRESS.
+
+Focused final checks: both route modes pass; the original nonnegative output is
+byte-identical to pushed af8ba7f4 after adding negative-case support. Ruff format/
+check, basedpyright and git diff --check pass. No runtime, frozen configuration
+change, repeated survey generation or Item14 work was performed.

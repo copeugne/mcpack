@@ -2,6 +2,7 @@
 
 # pyright: standard
 # ruff: noqa: INP001, S101, ANN001, ANN201, D103, T201, PLR2004, PT018
+import argparse
 import gzip
 import hashlib
 import importlib
@@ -10,15 +11,31 @@ import math
 from itertools import pairwise
 from pathlib import Path
 
-raw = (
-    Path(__file__).parent / "fixed-blocks/explorations-slime-cave-nonnegative.json.gz"
-).read_bytes()
-assert (
-    hashlib.sha256(raw).hexdigest()
-    == "90f69949a5240ddb05c98fd9035d2ea7a456e9d23116377ab7abd5c0a066fef9"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument(
+    "--negative", action="store_true", help="Check the selected below-zero material state"
 )
+args = parser.parse_args()
+filename = "negative" if args.negative else "nonnegative"
+raw = (
+    Path(__file__).parent / f"fixed-blocks/explorations-slime-cave-{filename}.json.gz"
+).read_bytes()
+expected = (
+    "f8856e2278ea08228569af7757ee8f12849cd1a38010e8f9f04c19212034f3bb"
+    if args.negative
+    else "90f69949a5240ddb05c98fd9035d2ea7a456e9d23116377ab7abd5c0a066fef9"
+)
+assert hashlib.sha256(raw).hexdigest() == expected
 c = json.loads(gzip.decompress(raw))["cases"][0]
-at = importlib.import_module("evidence.item-13.render_pilot").state_at
+state_at = importlib.import_module("evidence.item-13.render_pilot").state_at
+
+
+def at(case, x, y, z):
+    if args.negative:
+        return state_at(case, z + 368, y - 38, -320 - x)
+    return state_at(case, x, y, z)
+
+
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
 removed = set()
 
@@ -52,7 +69,12 @@ def support(p, width=0.6, height=1.8):
         "minecraft:stone",
         "minecraft:mossy_cobblestone",
         "minecraft:moss_block",
-    }
+        "minecraft:deepslate",
+        "minecraft:tuff",
+        "minecraft:gravel",
+    }, (p, at(c, x, y - 1, z))
+    if at(c, x, y - 1, z)["Name"] == "minecraft:gravel":
+        assert at(c, x, y - 2, z)["Name"] in {"minecraft:stone", "minecraft:deepslate"}
     clear(
         [
             x + 0.5 - width / 2,
@@ -94,7 +116,7 @@ for p in parents:
     )
 
 spawner = next(r for r in c["block_entities"] if r["id"] == "minecraft:mob_spawner")
-assert [spawner[k] for k in ("x", "y", "z")] == [73, 3, -360]
+assert [spawner[k] for k in ("x", "y", "z")] == ([8, -35, -393] if args.negative else [73, 3, -360])
 assert spawner["MaxNearbyEntities"] == 6 and spawner["SpawnRange"] == 4
 assert spawner["SpawnData"]["entity"] == {"id": "minecraft:slime"}
 eye = [73.5, 4.62, -358.5]

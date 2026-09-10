@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `9449cca7`; verify subsequent assessment commits against upstream.
+checkpoint is `af8ba7f4`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -164,13 +164,19 @@ an explicit alive/in-query condition until disablement; loss of it censors this
 model. Combat engagement/pursuit is conditional, not observed AI. The chest ray
 also passes before source removal, establishing a local loot bypass.
 
-Next read the already selected negative material case and assess its saved
-processing/terrain against this representative. No server/new generation is
-needed. Preserve the wet-floor/elevated-marker limits and unmeasured exterior
-excavation interval. The courtyard family remains included but has no start in
-the current baseline candidate index; inspect other existing raw sources before
-proposing an additional experiment for it.
+The negative sample now also passes:7,938 cells,3,394 bytes,28.778387s. Its
+transformed route/query/interaction model reproduces the first task metrics;
+a gravel-supported parent position is explicitly verified over deepslate. Local
+family assessment is complete. Incidental treasure urns, surrounding webbing and
+an unsupported external cave opening are retained separately, with no invented
+surrounding-cave clear or generated loot. Both source inputs remain preserved.
 
-Then continue remaining family/variant coverage. Item13 still requires full
+Next continue remaining family/variant coverage from the existing population and
+accepted starts. The courtyard family remains included but has no start in the
+current baseline index; inspect other existing raw sources before proposing an
+additional experiment. Do not repeat these completed local reads/models solely
+for reassurance. Check central-End raw evidence before declaring an arena gap.
+
+Item13 still requires full
 coverage, final review/fix cycles, completed clean Codex thumbs-up, merge and
 fetched origin/main verification. Item14 remains UNSTARTED.

@@ -246,8 +246,8 @@ crossings, validated clearing/interaction sequences, complete task estimates and
 independent ground-window bypasses. This is a local family result, not full
 Item13 completion.
 
-The [Slime Cave report](explorations-slime-cave-report.md) starts the next local
-family assessment from its custom source and accepted saved inputs. The first
-material-state assessment now includes the dry route, one-room topology, conditional
-six-parent/splitting task, source suppression condition and direct loot bypass.
-The second selected material state still needs its own saved assessment.
+The [Slime Cave report](explorations-slime-cave-report.md) covers both selected
+material states of its custom layout. It retains the one-room dry route,
+conditional six-parent/splitting task, source suppression condition and direct
+loot bypass, with saved surrounding openings/urns separate from authored content.
+Both local models pass; full Item13 coverage/delivery remains outstanding.
