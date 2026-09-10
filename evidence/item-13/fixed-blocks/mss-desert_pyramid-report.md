@@ -729,3 +729,109 @@ vertical transitions. Reversing it adds ten more horizontal blocks if the full
 objective returns to the same stair entrance. The eastern source stations and
 upper chest station still require surface links. Do not count local interaction
 coverage as complete traversal, timing or family sampling.
+
+## Complete surface circuit with six declared half-step inserts
+
+The surface circuit joins the western source, upper chest, eastern source,
+southeastern source and original stair entrance. Use the previously checked
+10-block western link first. The four subsequent paths below are ordered
+(X,feet Y,Z) column coordinates; add 0.5 to X/Z. Expand same-height legs along
+their single horizontal axis. Each height-changing pair is horizontally adjacent.
+
+```text
+West source to upper chest, 20 horizontal blocks:
+(111,182,464), (111,182,461), (111,183,460), (111,183,455),
+(111,182,454), (111,182,453), (112,182,453), (112,182,452), (119,182,452)
+
+Upper chest to eastern source, 28 horizontal blocks:
+(119,182,452), (116,182,452), (116,182,456), (120,182,456),
+(121,183,456), (126,183,456), (126,183,457), (130,183,457),
+(130,183,458), (131,183,458), (131,183,459), (132,183,459), (132,183,461)
+
+Eastern to southeastern source, 21 horizontal blocks:
+(132,183,461), (132,183,462), (131,183,462), (131,183,478),
+(131,182,479), (131,182,481)
+
+Southeastern source to stair entrance, 37 horizontal blocks:
+(131,182,481), (130,182,481), (130,182,480), (128,182,480),
+(127,183,480), (124,183,480), (124,183,481), (121,183,481),
+(120,182,481), (116,182,481), (116,182,480), (114,182,480),
+(114,182,479), (112,182,479), (112,182,473), (111,182,473),
+(111,182,469), (114,182,469)
+```
+
+Every raw route column has full sand/sandstone/stone support and air at feet and
+head. Six transitions change raw floor elevation by one block, exceeding the
+0.6 step limit. Predeclare six cobblestone bottom slabs in the lower route cells:
+(111,182,461), (111,182,454), (120,182,456), (131,182,479), (128,182,480),
+and (120,182,481). These are air before construction, supported by full floors;
+all have a third air cell overhead. A bottom slab raises their standing surface
+by 0.5, turning each transition into two half-block support changes. The actor's
+raised 1.8-high body remains clear. The actual slab-center feet levels replace
+the raw lower feet levels in the path above; do not traverse those cells at the
+unmodified heights after placement.
+
+Place each slab on the exposed top face of its supporting floor before entering
+that cell. For ascents, the preceding same-level station is respectively
+(111.5,182,462.5), (119.5,182,456.5), and (129.5,182,480.5). For descents, place
+from the higher adjacent station: (111.5,183,455.5), (131.5,183,478.5), and
+(121.5,183,481.5). Aim at the lower cell's floor top center. Upright-eye rays
+are 1.904 blocks from a same-level station and 2.804 blocks from a higher one,
+both within reach. For a high-to-low ray, it crosses the high floor's boundary
+0.31 blocks above that floor, so the high support does not occlude it. Each target
+cell is air, the floor is full, and the actor is outside the cell being filled.
+Top-face placement creates a bottom slab. Reuse the pinned vanilla slab model;
+this is conditional construction, not an observed placement or acquired resource.
+
+Including the initial western link, the complete surface circuit totals 116
+horizontal blocks, three blocks of ascent and three of descent, with six slab
+placements and no mining beyond the three source removals. These are route and
+construction inputs, not a finished timing result. Its feet span Y182..183; the
+inserted half-level stations are Y182.5. The route avoids water, tree trunks,
+leaves, cactus and sandstone-wall cells rather than treating them as air. It
+connects all three surface sources and the double chest to the same stair
+entrance used by the underground objective. The earlier direct western route
+failure remains rejected; the accepted ten-block detour is included here.
+
+Direct verification below checks the coordinate derivation against the retained
+raw extraction. It does not use a general pathfinder as evidence of playability:
+
+```sh
+uv run python - <<'PYRAMID_SURFACE'
+import gzip, hashlib, importlib, json
+from pathlib import Path
+p=Path('evidence/item-13/fixed-blocks/mss-desert_pyramid.json.gz')
+assert hashlib.sha256(p.read_bytes()).hexdigest()=='7dfc8e4d500459ad0839137e3939e9ee19df3a6b3cf1c7ae709b2711f8eb43a4'
+c=json.loads(gzip.decompress(p.read_bytes()))['cases'][0]
+s=importlib.import_module('evidence.item-13.render_pilot').state_at
+paths=[
+[(111,182,464),(111,182,461),(111,183,460),(111,183,455),(111,182,454),(111,182,453),(112,182,453),(112,182,452),(119,182,452)],
+[(119,182,452),(116,182,452),(116,182,456),(120,182,456),(121,183,456),(126,183,456),(126,183,457),(130,183,457),(130,183,458),(131,183,458),(131,183,459),(132,183,459),(132,183,461)],
+[(132,183,461),(132,183,462),(131,183,462),(131,183,478),(131,182,479),(131,182,481)],
+[(131,182,481),(130,182,481),(130,182,480),(128,182,480),(127,183,480),(124,183,480),(124,183,481),(121,183,481),(120,182,481),(116,182,481),(116,182,480),(114,182,480),(114,182,479),(112,182,479),(112,182,473),(111,182,473),(111,182,469),(114,182,469)]]
+full={'minecraft:sand','minecraft:sandstone','minecraft:smooth_sandstone','minecraft:stone'}
+slabs=set(); totals=[]
+for path in paths:
+    length=0
+    for a,b in zip(path,path[1:]):
+        x,y,z=a; xx,yy,zz=b
+        assert x==xx or z==zz
+        distance=abs(x-xx)+abs(z-zz); length+=distance
+        if y!=yy:
+            assert distance==1 and abs(y-yy)==1
+            lower=min((a,b),key=lambda q:q[1]); slabs.add(lower)
+            assert s(c,lower[0],lower[1]+2,lower[2])['Name']=='minecraft:air'
+            cells=[a,b]
+        else:
+            cells=[(bx,y,bz) for bx in range(min(x,xx),max(x,xx)+1)
+                   for bz in range(min(z,zz),max(z,zz)+1)]
+        for bx,by,bz in cells:
+            assert s(c,bx,by-1,bz)['Name'] in full, (bx,by,bz)
+            assert all(s(c,bx,k,bz)['Name']=='minecraft:air' for k in (by,by+1)),(bx,by,bz)
+    totals.append(length)
+assert totals==[20,28,21,37]
+assert slabs=={(111,182,461),(111,182,454),(120,182,456),
+               (131,182,479),(128,182,480),(120,182,481)}
+print('Surface legs verified:',totals,'plus prior 10-block western link; six slab inserts.')
+PYRAMID_SURFACE
+```

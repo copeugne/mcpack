@@ -1,6 +1,6 @@
 # mcpack current handoff
 
-Updated: 2026-09-09. This is the single active continuation checkpoint.
+Updated: 2026-09-10. This is the single active continuation checkpoint.
 
 ## Authority and preservation
 
@@ -183,7 +183,7 @@ with explicit provisional budgets and censoring. Resume layout coverage under
 original Circle and other layouts still need their own complete task budgets.
 [Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): 16/16 barrels and 7/7 spawners have conditional access evidence; exterior link requires 19 bridge blocks; full conditional model gives 376/583/969s for two successful entities per source; local five-room quality assessment recorded; family repetitions and broader coverage pending.
 [Nether Tower](evidence/item-13/fixed-blocks/mns-nether_tower-report.md): 17 source/saved rewards matched, no explicit enemy sources; all 17 rewards have conditional access, including a 19-scaffold chest route; complete conditional timing is 221/390/711s with no encounters; local two-room quality assessment recorded; repetitions and broader coverage remain.
-[Desert Pyramid](evidence/item-13/fixed-blocks/mss-desert_pyramid-report.md): source/assembly intake complete (11 spawners, 4 chest blocks/3 arrangements); husk source input resolved; full-sheet render timed out (124 at 180s). Corrected Y169..184 sectional view passes. Native entrance stair now has a checked 10-horizontal/5-vertical link plus six-block buried corridor. Five-block lower ladder and dry northwest double-chest access now pass local source/geometry checks. Lower two-source route passes with three declared decorative removals; 17 upward tips have source-supported fall-hazard disposition. Upper crossing is unsupported; nine-block bridge plus top-ladder removal now declared and checked through the northern reward corridor. Thirty-block rare-room circuit now reaches both rare chests and three recessed sources through existing slab gaps. All eleven sources now have local interaction access. Ten-block western surface link passes after rejecting a floor-depression route. Complete eastern/chest surface links, remaining levels and full synthesis next.
+[Desert Pyramid](evidence/item-13/fixed-blocks/mss-desert_pyramid-report.md): source/assembly intake complete (11 spawners, 4 chest blocks/3 arrangements); husk source input resolved; full-sheet render timed out (124 at 180s). Corrected Y169..184 sectional view passes. Native entrance stair now has a checked 10-horizontal/5-vertical link plus six-block buried corridor. Five-block lower ladder and dry northwest double-chest access now pass local source/geometry checks. Lower two-source route passes with three declared decorative removals; 17 upward tips have source-supported fall-hazard disposition. Upper crossing is unsupported; nine-block bridge plus top-ladder removal now declared and checked through the northern reward corridor. Thirty-block rare-room circuit now reaches both rare chests and three recessed sources through existing slab gaps. All eleven sources now have local interaction access. Ten-block western surface link passes after rejecting a floor-depression route. Complete surface circuit now connects all surface objectives in 116 horizontal blocks with six declared slab inserts (3 up/3 down). Resolve remaining levels and assemble full timing/topology synthesis next.
 All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
 Do not repeat the scope pass or baseline start inspection. Named components and
 full chunks are not playable topology. Check central-End raw evidence before
@@ -196,7 +196,5 @@ Do not repair frozen content or count absent intended pieces as rooms. Reuse
 original custody, commit/push verified milestones and finish the required clean
 PR review/merge/main delivery. Item 14 stays UNSTARTED.
 
-Scope check: retain concise coverage references in the existing intake rather than
-copying every prior start into another evidence set. The original streams remain
-authoritative. Latest local intake checks pass lint, formatting and types; no
-full Item 13 exit gate has been claimed.
+Scope check: reuse intake references and original streams; do not duplicate starts.
+No full Item 13 exit gate has been claimed. See authoritative reports for checks.
