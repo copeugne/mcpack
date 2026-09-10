@@ -25,7 +25,12 @@ INPUT_HASH = "a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496"
 
 
 def run(  # noqa: C901 - preserve one experiment and its failure.
-    output: Path, target: Path, *, spawner_lookup: bool = False, second_house: bool = False
+    output: Path,
+    target: Path,
+    *,
+    spawner_lookup: bool = False,
+    second_house: bool = False,
+    temple_variants: bool = False,
 ) -> None:
     input_file = (
         ROOT / "evidence/item-13/fixed-blocks/mns-medium_house_2.json.gz" if second_house else INPUT
@@ -35,11 +40,15 @@ def run(  # noqa: C901 - preserve one experiment and its failure.
         if second_house
         else INPUT_HASH
     )
+    temple_source = Path(__file__).parent.parent / "temple-variants"
+    if temple_variants:
+        input_file = temple_source / "selection.json"
+        input_hash = "f512640a6ef1dbca85937aabdf3268b801e16023d5ed8cba940bb05187d3fb53"
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
     if sha256_file(input_file) != input_hash:
-        raise ValueError("Saved house input hash mismatch")
+        raise ValueError("Probe input hash mismatch")
     if shutil.disk_usage(ROOT).free < 5 * 1024**3:
         raise ValueError("Probe requires at least 5 GiB free")
     dirty = subprocess.check_output(
@@ -84,9 +93,15 @@ def run(  # noqa: C901 - preserve one experiment and its failure.
         probe = output / "probe.jar"
         sources = [
             ROOT / "tools/Item8DimensionProbe.java",
-            Path(__file__).with_name("Item13CollisionProbe.java"),
+            temple_source / "Item13TempleProbe.java"
+            if temple_variants
+            else Path(__file__).with_name("Item13CollisionProbe.java"),
         ]
-        manifest = Path(__file__).with_name("manifest.mf")
+        manifest = (
+            temple_source / "manifest.mf"
+            if temple_variants
+            else Path(__file__).with_name("manifest.mf")
+        )
         with (output / "build.log").open("x") as log:
             for command in (
                 [
@@ -116,8 +131,14 @@ def run(  # noqa: C901 - preserve one experiment and its failure.
                     command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=45
                 )
         report["probe_sha256"] = sha256_file(probe)
-        shutil.copyfile(input_file, output / "input.json.gz")
-        projection = "spawners.json" if spawner_lookup else "collision.json"
+        shutil.copyfile(
+            input_file, output / ("selection.json" if temple_variants else "input.json.gz")
+        )
+        projection = (
+            "temple-variants.json"
+            if temple_variants
+            else ("spawners.json" if spawner_lookup else "collision.json")
+        )
         lifecycle = run_registry_lifecycle(
             target,
             java,
@@ -133,9 +154,11 @@ def run(  # noqa: C901 - preserve one experiment and its failure.
         report["configuration"] = json.loads(
             capture_control_configuration(request).model_dump_json()
         )
-        report["spawners_sha256" if spawner_lookup else "collision_sha256"] = sha256_file(
-            output / projection
-        )
+        report[
+            "projection_sha256"
+            if temple_variants
+            else ("spawners_sha256" if spawner_lookup else "collision_sha256")
+        ] = sha256_file(output / projection)
         report["rejection_reason"] = None
     except Exception as error:
         report["rejection_reason"] = str(error)
@@ -156,10 +179,12 @@ if __name__ == "__main__":
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--spawner-lookup", action="store_true")
     mode.add_argument("--second-house", action="store_true")
+    mode.add_argument("--temple-variants", action="store_true")
     args = parser.parse_args()
     run(
         args.output.absolute(),
         args.target.absolute(),
         spawner_lookup=args.spawner_lookup,
         second_house=args.second_house,
+        temple_variants=args.temple_variants,
     )

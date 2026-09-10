@@ -119,8 +119,20 @@ downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/java evidence/item-13/temp
 cmp evidence/item-13/temple-variants/selection.json /tmp/item13-temple-origins.json
 ```
 
-The runtime command will be recorded after the specific mode is implemented;
-it is not falsely listed as an executed or validated workflow here.
+The specific placement mode is implemented and passes focused Python lint/type
+checks plus pinned javac -Xlint:all -Werror. Runtime execution is still pending
+at this implementation milestone. The existing attach subprocess has a45-second
+total timeout, in addition to each case's30-second task limit. No timeout or
+watchdog setting is relaxed. Execute once with new paths:
+
+```sh
+uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r1 instances/item13-temple-variants-r1
+```
+
+The probe writes the attempted case and partial successful rows on an exception;
+the existing launcher retains rejection, console and configuration/lifecycle
+records. Stopped-world custody and material-report integration follow successful
+execution. A compiled implementation is not evidence that placement works.
 
 The selector also compiles with -Xlint:all -Werror using an explicit temporary
 classpath, matching the existing probe builder. An initial compile inherited an
