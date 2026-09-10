@@ -24,6 +24,7 @@ c = json.loads(gzip.decompress(raw))["cases"][0]
 at = importlib.import_module("evidence.item-13.render_pilot").state_at
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
 removed = set()
+opened_doors = set()
 
 
 def clear(box):
@@ -34,6 +35,10 @@ def clear(box):
                 state = at(c, x, y, z)
                 n = state["Name"]
                 if (x, y, z) in removed:
+                    continue
+                if (x, y, z) in opened_doors:
+                    for left, right in ((0, 3 / 16), (13 / 16, 1)):
+                        assert not overlap(box, [x + left, y, z, x + right, y + 1, z + 1])
                     continue
                 if n in {"minecraft:air", "minecraft:vine"} or (
                     n == "minecraft:sculk_vein" and state["Properties"]["waterlogged"] == "false"
@@ -327,3 +332,60 @@ east = [(x, 33, 0) for x in range(-276, -247)]
 verify_path(east)
 verify_path(list(reversed(east)))
 print("PASS eastern corridor to junction: six webs/one source removed, 56 horizontal return blocks")
+
+# Native button-operated entrance. Each crossing is conditional on its own press.
+verify_path([(-248, 33, z) for z in range(4)])
+for y, half in ((33, "lower"), (34, "upper")):
+    assert at(c, -248, y, 5) == {
+        "Name": "minecraft:iron_door",
+        "Properties": {
+            "facing": "south",
+            "half": half,
+            "hinge": "right",
+            "open": "false",
+            "powered": "false",
+        },
+    }
+for target, facing, support, eye, end in (
+    ((-249, 34, 4), "north", (-249, 34, 5), (-247.5, 34.62, 3.5), (-248.5, 34.5, 4.9)),
+    ((-248, 35, 6), "south", (-248, 35, 5), (-247.5, 34.62, 6.5), (-247.5, 35.5, 6.1)),
+):
+    assert at(c, *target) == {
+        "Name": "minecraft:oak_button",
+        "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+    }
+    assert at(c, *support)["Name"] == "minecraft:stone_bricks"
+    check_ray(eye, end, target)
+opened_doors.update({(-248, 33, 5), (-248, 34, 5)})
+crossing = [(-248, 33, z) for z in range(3, 7)]
+verify_path(crossing)
+verify_path(list(reversed(crossing)))
+# The entrance contains vine: use a declared 3-block/s transfer for every profile.
+assert all(3 / min(speed, 3) < 30 / 20 for speed in (5, 4, 3))
+for station, target in (((-248, 33, 6), (-249, 33, 6)), ((-251, 33, 9), (-252, 33, 9))):
+    if target[0] == -252:
+        verify_path([(-248 - dx, 33, 6) for dx in range(4)])
+        verify_path([(-251, 33, z) for z in range(6, 10)])
+    verify_path([station])
+    assert at(c, *target)["Name"] == "minecraft:cobweb"
+    check_ray(
+        (station[0] + 0.5, 34.62, station[2] + 0.5), (target[0] + 1, 33.5, target[2] + 0.5), target
+    )
+    removed.add(target)
+room_route = (
+    [(-248 - dx, 33, 6) for dx in range(4)]
+    + [(-251, 33, z) for z in range(7, 10)]
+    + [(-252, 33, 9)]
+)
+verify_path(room_route)
+verify_path(list(reversed(room_route)))
+assert at(c, -252, 33, 10)["Name"] == "minecraft:chest"
+assert at(c, -252, 34, 10)["Name"] == "minecraft:cobweb"
+# Source noCollission makes the above web non-full and nonconducting for the chest rule.
+check_ray((-251.5, 34.62, 9.5), (-251.5, 33.5, 10.0625), (-252, 33, 10))
+print("PASS enchanting room: two timed door presses, two web removals, chest access beneath web")
+assert at(c, -250, 33, 7)["Name"] == "minecraft:enchanting_table"
+assert at(c, -245, 33, 7)["Name"] == "minecraft:brewing_stand"
+check_ray((-250.5, 34.62, 7.5), (-250, 33.625, 7.5), (-250, 33, 7))
+check_ray((-247.5, 34.62, 6.5), (-244.5, 33.5, 7.5), (-245, 33, 7))
+print("PASS room facility interaction rays; recipes, enchanting power and outputs not measured")

@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `8e9525a4`; verify subsequent assessment commits against upstream.
+checkpoint is `3bad880c`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -177,7 +177,8 @@ three lower arms; its six-block initial drop retains fall exposure. The lava
 centerline remains rejected. Failed native rubble routes are preserved; explicit
 nine-removal breaches now give both terminal return paths andsouthern chest access.
 The east corridor reaches its next junction after six webs/one source removal;
-source activation can precede corridor entry. Full encounter modeling remains.
+source activation can precede corridor entry. The enchanting room now has native
+button-door access,two web removals,chest/facility rays and26-block return route.
 
 Next finish remaining first-assembly rooms and transitions, source and
 sculk handling, complete conditional objective timing, hazard/finale/bypass and

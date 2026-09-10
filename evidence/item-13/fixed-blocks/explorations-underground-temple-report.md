@@ -658,3 +658,102 @@ uv run python -m evidence.item-13.underground_temple_route
 Affected module execution,formatting,lint andtypes pass. This batch adds one
 validated connection andits source/hazard disposition, not a complete temple
 encounter model. No server,world mutation or repeated extraction was needed.
+
+## Enchanting room: native door and reward-route declaration
+
+The eastern junction's south arm leads to a closed iron door at(-248,Y33..34,5),
+facing south,hinge right. An exterior north-facing oak button is at(-249,34,4),
+attached to full stone bricks(-249,34,5) beside the upper door. An interior
+south-facing button is at(-248,35,6),attached to full stone bricks(-248,35,5)
+above that upper door. These are explicit power connections,not a presumption
+that any button in a palette opens a door.
+
+Predeclare ordinary button use rather than door removal. The known-layout adult
+approaches at(-248,33,3),aims at the exterior button's north plate at
+(-248.5,34.5,4.9),then crosses to(-248,33,6). Plan orientation before pressing;
+make no other interaction between activation andcrossing. On return,press the
+interior button from(-248,33,6),aiming at(-247.5,35.5,6.1),andcross back toZ3.
+Pinned woodenButton constructs a30-tick button. At20 TPS the1.5-second window
+exceeds a declared three-block transfer at3 blocks/s(1s) in every profile.
+The entrance contains vine; do not apply the higher open-floor profile speeds
+through this transfer. This is a conditional rate, not an observed crossing.
+Failure to cross before closure,hostile displacement or interrupted input censors
+this native-door scenario; no free retries or permanent-open state are assumed.
+
+Validate both rays andthe opened-door sweep. For this north/south-facing door,
+conservatively exclude both possible side plates of thickness3/16; a centered
+0.6-wide actor fits between them. This modeled opening does not alter raw state.
+ButtonBlock.press schedules release andupdates neighbours; its powered signal
+anddirect signal reach15. DoorBlock's neighbour check considers both halves and
+updates OPEN/POWERED. The two full supporting masonry blocks transmit the signal
+to the upper door. Successful live button operation remains NOT MEASURED.
+
+From the inside threshold,clear web(-249,33,6) with the sword from(-248,33,6),
+walk west toX-251 alongZ6,then south toZ9. Clear web(-252,33,9) from(-251,33,9),
+step west to(-252,33,9),andinspect chest(-252,33,10). Return by the same path and
+button sequence. These two web removals add16 active ticks(0.8s); button inputs,
+alignment andinventory work require their separate full-task allowances. Check
+the chest ray andabove-block rule without assuming air. Enchanting/brewing
+facilities are assessed separately from acquired loot or performed recipes.
+
+The enchanting-room case passes the family module. Both button rays meet the
+source plate bounds; their full supporting blocks andexact closed-door halves
+match the declaration. The conditional opened-door sweep passes in both
+directions. The3/16 side-plate exclusion leaves a0.625-block middle channel for
+the0.6-wide actor. This narrow,button-timed connection is a chokepoint under the
+declared scenario, not proof of live enemy exploitation. Successful passage
+still depends on alignment andthe explicit activation window.
+
+After the two ordered web removals, the inside-threshold-to-chest route is seven
+horizontal blocks each way. Including the six blocks from the eastern junction
+to the inside threshold gives26 horizontal return blocks andzero vertical
+travel for this branch. Both button events andthe two web targets remain required
+full-task inputs. No door is mined andno permanent-open state is assumed between
+visits. The raw door remains closed in the retained evidence.
+
+Delineate E as one primary room: the irregular activity interior within
+X-252..-244,Z6..10,aboveY32 masonry,entered through the single door atZ5. The
+coordinate rectangle bounds the space; furniture andwalls within it are not all
+playable cells. The checked route connects the entry to its western reward corner,
+andfacility rays establish access from that connected floor. Shelves andfurnishings
+are not separate rooms. E has one unrolled enchanting loot-table assignment in
+chest(-252,33,10),an enchanting table(-250,33,7) andbrewing stand(-245,33,7).
+It is neither empty nor dead under the declared definitions. It is not identified
+as an authored finale merely because the chest lies behind a door.
+
+The chest has a cobweb immediately above. Reuse the pinned ChestBlock
+redstone-conductor test: cobweb's noCollission registration makes its collision
+shape non-full,so this block does not block opening under that rule. The chest
+ray from(-252,33,9) passes below the overhead web andmeets the inset north face.
+Entity blockers remain excluded conditionally. Enchanting-table access is from
+(-251,33,7); brewing-stand access is from the inside threshold(-248,33,6).
+Their rays pass without additional movement or removals. Enchantment power,
+required materials,performed recipes,generated rewards andactual menu/transfer
+success remain NOT MEASURED. These are supported facility opportunities.
+
+Source commands,using the same pinned SRG path andidentity already recorded:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.ButtonBlock
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.DoorBlock
+```
+
+Blocks.woodenButton offset5 sets30 ticks. ButtonBlock.press0..35 sets powered,
+updates neighbours andschedules release; getDirectSignal0..29 provides15 in the
+connected direction while powered. Its initializer109..152 defines the
+north/south button plates. DoorBlock.neighborChanged checks power atboth halves;
+its opened north/south-facing states select the east/west3/16 plates. These
+source mechanisms support the declared static/timed model, not a runtime test.
+
+The extended module,formatting,lint andtypes pass. The next work remains other
+junction arms,rooms andsource lifecycles before whole-assembly counts orcomplete
+conditional timing. This branch does not authorize expansion to new world reads.
+
+
+The initial open-floor crossing proposal(0.6/0.75/1s) is superseded above because
+the entrance contains vine. Pinned LivingEntity.handleOnClimbable offsets15..42
+clamps horizontal components toapproximately0.15 blocks/tick. The corrected
+scenario uses3 blocks/s for the whole three-block door transfer in all profiles,
+retaining its1.5-second button deadline. Acceleration/input disruption can still
+violate that stipulated rate andcensor the crossing; source inspection does not
+prove a human will maintain it. Carry this local rate into complete task timing.
