@@ -27,7 +27,7 @@ overlap = importlib.import_module("evidence.item-13.collision.clearance").overla
 removed = set()
 opened_doors = set()
 modeled_scaffold_feet = set()
-reward_rays = {}
+interaction_rays = {}
 
 
 def clear(box):
@@ -180,7 +180,7 @@ for center_z in (0, 28):
             cell = tuple(math.floor(v) for v in p)
             if cell != target:
                 assert at(c, *cell)["Name"] == "minecraft:air", (cell, at(c, *cell))
-        reward_rays.setdefault(target, []).append((eye, end))
+        interaction_rays.setdefault(target, []).append((eye, end))
     assert at(c, -288, 37, center_z)["Name"] == "minecraft:gold_block"
 print("PASS eight hall chest approaches and clear lids; two saved central gold blocks")
 
@@ -285,8 +285,7 @@ def check_ray(eye, end, target):
             assert not any(hit[f] for f in faces), (cell, p, s)
             continue
         raise AssertionError((cell, p, s))
-    if at(c, *target)["Name"] in {"minecraft:chest", "minecraft:barrel"}:
-        reward_rays.setdefault(target, []).append((eye, end))
+    interaction_rays.setdefault(target, []).append((eye, end))
 
 
 for sign in (1, -1):
@@ -1767,6 +1766,9 @@ reward_positions = {
     for entity in c["block_entities"]
     if entity["id"] in {"minecraft:chest", "minecraft:barrel"}
 }
+reward_rays = {
+    target: rays for target, rays in interaction_rays.items() if target in reward_positions
+}
 assert reward_rays.keys() == reward_positions
 scaffold_blocks = {(x, y, z) for x, z, base, top in scaffold_columns for y in range(base, top)}
 for target, rays in reward_rays.items():
@@ -1783,3 +1785,62 @@ for target, rays in reward_rays.items():
             accepted.append(station)
     assert accepted, ("no visited unobstructed reward station", target)
 print("PASS full movement circuit visits all 25 activity footprints and all 31 reward ray stations")
+
+# Validate forward western source access before removing its local obstructions.
+before_western_access = removed.copy()
+try:
+    removed.difference_update({(-291, 27, -2), (-291, 26, -2), (-290, 26, -2)})
+    verify_path([(-291, 27, -1)])
+    eye = (-290.5, 28.62, -0.5)
+    check_ray(eye, (-290.5, 27.03125, -1.5), (-291, 27, -2))
+    removed.add((-291, 27, -2))
+    check_ray(eye, (-290.5, 27, -1.5), (-291, 26, -2))
+    removed.add((-291, 26, -2))
+    verify_path([(-291, 27, -1), (-291, 26, -2)])
+    check_ray((-290.5, 27.62, -1.5), (-290, 26.5, -1.5), (-290, 26, -2))
+finally:
+    removed.clear()
+    removed.update(before_western_access)
+
+shaft_placement_detours = {
+    (-277, 33, 0): (-278, 33, 0),
+    (-300, 33, 6): (-300, 33, 5),
+    (-299, 33, 28): (-298, 33, 28),
+}
+inserted_placement_detours = set()
+southern_floor_detours = 0
+work_route = [whole_circuit[0]]
+for a, b in pairwise(whole_circuit):
+    if a == (-287, 27, 1) and b == (-288, 26, 1):
+        work_route.extend(((-287, 27, 2), (-288, 27, 2)))
+        southern_floor_detours += 1
+    work_route.append(b)
+    if b in shaft_placement_detours and b not in inserted_placement_detours:
+        work_route.extend((shaft_placement_detours[b], b))
+        inserted_placement_detours.add(b)
+assert inserted_placement_detours == shaft_placement_detours.keys()
+assert southern_floor_detours == 1
+assert work_route[0] == work_route[-1] == whole_circuit[0]
+verify_path(work_route)
+work_visited = set(work_route)
+assert visited <= work_visited
+assert all(station in work_visited for station in shaft_placement_detours.values())
+for target in removed:
+    assert target in interaction_rays, ("missing construction ray", target)
+    stations = {
+        (math.floor(eye[0]), round(eye[1] - 1.62, 6), math.floor(eye[2]))
+        for eye, _ in interaction_rays[target]
+    }
+    assert stations & work_visited, ("missing construction station", target, stations)
+work_horizontal = sum(abs(a[0] - b[0]) + abs(a[2] - b[2]) for a, b in pairwise(work_route))
+work_ascent = sum(max(0, b[1] - a[1]) for a, b in pairwise(work_route))
+work_descent = sum(max(0, a[1] - b[1]) for a, b in pairwise(work_route))
+print(
+    "PASS route with construction stations:",
+    work_horizontal,
+    "horizontal blocks;",
+    work_ascent,
+    "ascent;",
+    work_descent,
+    "descent; all 112 removal targets have a visited ray station",
+)

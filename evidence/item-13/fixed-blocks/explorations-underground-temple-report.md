@@ -2124,3 +2124,54 @@ PY
 This resolves a bounded encounter input and nominal combat work for subsequent
 complete-task integration. The actual saved-world population, suppression
 success, natural encounters, survival and combat duration remain NOT MEASURED.
+
+## Construction-station integration declaration
+
+Retain all successful interaction rays from the existing checker, extending its
+reward-ray retention to the construction targets rather than adding a separate
+measurement path. All112 hypothetical removals already have a recorded ray.
+Comparison with the full movement circuit finds two unvisited mining stations:
+(-298,33,28) for the southern entrance vein and(-288,27,2) for the dungeon's
+southern source floor. The three entrance shafts also require their adjacent
+lower placement stances, rather than a direct exit to the next junction.
+
+On the first descent of each entrance shaft, step from its base to the declared
+placement stance and back before continuing: eastern(-278,33,0), western
+(-300,33,5), and southwestern(-298,33,28). These are three two-block horizontal
+detours. The southwest stance also supplies the missing vein-removal access.
+Do not repeat these placement detours on the return trip.
+
+In the dungeon's forward ring, replace the direct step from(-287,27,1) into
+the southern hole with(-287,27,2),(-288,27,2), then the hole at(-288,26,1).
+This reaches the existing floor-mining station before descending and adds two
+horizontal blocks. The northern and eastern holes already have their declared
+mining approaches in forward order. For the western hole, the earlier proof
+mined from the north, which the forward circuit reaches only after the hole.
+Validate an alternative from the southern station(-291,27,-1): first remove
+the down-facing vein at(-291,27,-2), then its floor atY26, then descend and use
+the already verified source ray. Test these rays with those western targets
+restored to their original raw state in the hypothetical removal model. Preserve
+any failure; do not rely on a ray through an already removed target obstruction.
+
+The forward western-source alternative passes with its vein, floor and source
+restored in the hypothetical obstruction set before the ordered checks. The
+southern vein/floor rays, descent and existing source ray are valid; no extra
+block removal or northern detour is needed. The original hypothetical state is
+restored afterward, and the original northern approach remains retained evidence.
+
+The construction-access route passes at1,434 horizontal blocks,84 ascent and84
+descent. Its eight extra horizontal blocks are exactly the three two-block shaft
+placement detours and the two extra southern-floor approach steps. Each shaft
+detour is inserted only on its first descent. The southern approach occurs once,
+before entering that hole in the forward circuit. All original movement points
+and therefore all25 room/reward-access coverage remain present.
+
+The executable verifies that every one of the112 removal targets has a recorded
+ray whose standing station occurs on this route, and that all three declared
+entrance placement stances occur. The original local construction checks retain
+their raw-obstruction order; this new coverage check does not relabel a ray
+through cleared space as an original-state action. The complete timing schedule
+still must assign actions at the appropriate first visit, preserve removal and
+placement prerequisites, distinguish initial falls from subsequent climbs, and
+include tool/input, acquisition, P6 combat and verification costs. These access
+distances alone are not a complete construction or expedition time.

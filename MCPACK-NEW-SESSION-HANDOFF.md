@@ -181,12 +181,12 @@ inter-room cycles under the declared remedies. It has21 decision nodes; deepest
 rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
 by graph depth is integrated. Complete coordinate/phase traversal is still pending.
 The support check now rejects a mined floor; its direct negative case passes.
-The full post-construction circuit now passes1,426H/84 ascent/84 descent,
-starting and ending at(-288,37,-3), with feet25..43. It visits all25 activity
-footprints and verified ray stations for all31 reward nodes; those rays avoid
-all44 modeled scaffold cells. This includes the tower/lower and branch circuits.
-Construction approaches, source-removal stations, actions and encounter/survival
-conditions remain before the complete task-time model can pass.
+The post-construction circuit covers all25 rooms and31 reward stations. Adding
+three initial shaft-placement detours and the southern source-floor approach
+now gives1,434H/84 ascent/84 descent. All112 removal targets have visited ray
+stations; forward western source access passes against restored local obstacles.
+Construction action order, initial falls, inputs and acquisition still need
+complete timing integration. No actual gameplay or acquisition is measured.
 
 P6 defines54 stipulated occupied-source enemies with exact-class suppression;
 nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
