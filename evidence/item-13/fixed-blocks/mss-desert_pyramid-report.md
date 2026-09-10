@@ -655,3 +655,39 @@ for z in (445,452):
 print('Thirty-block rare-room circuit, chest lids and recessed source states pass.')
 PYRAMID_RARE
 ```
+
+## Remaining stair and corridor sources
+
+Three more sources are accessible directly from already checked route stations,
+with no added movement or breach. Reuse the same saved extraction and source
+collision assumptions. The following are direct block/ray derivations, not live
+interaction observations:
+
+| Station (X,feet Y,Z) | Eye Y | Target face point | Source |
+| --- | ---: | --- | --- |
+| (118.5,180,469.5) | 181.62 | (118.5,180.5,468) | Husk at (118,180,467) |
+| (124.5,177,465.5) | 178.62 | (126,177.5,465.5) | Husk at (126,177,465) |
+| (125.5,177,450.5) | 178.62 | (127,178.9,450.5) | Zombie at (127,178,450) |
+
+The first two rays are 1.872004 blocks. Their intervening cells, respectively
+(118,Y180/181,468) and (125,Y177/178,465), are air. The source faces are reached
+below the full blocks over those sources. The third ray is 1.525910 blocks,
+passing over the bottom sandstone slab at (126,178,450): it enters that cell at
+Y178.713333 and reaches the source at Y178.9, above the slab top Y178.5 and below
+the Y179 ceiling. The standing stations have full support and two air body cells.
+No adjacent fence lies on these centerline rays. These actions remove no route
+support; their mining/selection and encounter costs still belong in full timing.
+
+A first direct assertion incorrectly required all three floors to be ordinary
+sandstone and failed. Exact inspection shows the third floor, (125,176,450), is
+smooth sandstone. The corrected full-block assertion passes; no raw evidence or
+route geometry changed. The other floors are sandstone at (118,179,469) and
+(124,176,465). This was a checking error, not a failed traversal observation.
+
+Local access coverage is now eight of eleven authored sources: two in the lower
+chamber, three around the rare-chest room, and these three stair/corridor sources.
+All three chest arrangements have local conditional access. The remaining three
+sources are the surface positions (110,181,464), (132,181,481) and (133,182,461).
+Their access and the surface links still need integration before claiming a
+complete circuit. This accounting does not mark the Pyramid sample or Item 13
+complete, and does not replace family repetitions or broader material coverage.
