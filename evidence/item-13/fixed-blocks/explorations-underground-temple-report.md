@@ -3929,3 +3929,63 @@ not the second full assembly or family coverage. Reproduce both joined circuits,
 action/visit checks, fall arithmetic and totals with
 `uv run python -m evidence.item-13.temple_ordinary_route`. Focused lint, formatting
 and types pass. No runtime or shared geometry machinery was added.
+
+## Third west-facing tower: verified reuse with retained differences
+
+The third tower occupies[179,11,397,193,27,403], with its attached alcove within
+[184,15,391,188,19,396]. It has the same orientation as the assessed northern
+western tower. The observed coordinate translation is(+1,-8,+33). This is reuse
+of a checked local method against another actual saved case, not an inference
+from the template name or a replacement for the fourth tower's different rotation.
+
+An initial broader-box comparison included neighboring structures and found real
+differences, including water versus walls and adjacent furnishing. Broad layout
+equivalence was therefore rejected. The accepted scope compares only the tower
+and its attached alcove, and separately reruns the entire translated route and
+all25 target-ray groups against the original ordinary extract. No normalized
+world or synthetic raw observation is stored or substituted.
+
+Across the1,935 footprint cells,1,486 states match exactly. Another448 differ
+only among the declared stone-brick masonry/stair/wall names, with identical
+state properties. One further cell differs: northern(184,24,358) is source water,
+while translated(185,16,391) is seagrass. That difference is retained rather than
+normalized away. Actual clearance/ray checks pass without a seagrass exception;
+it does not intersect the accepted route. This does not prove identical future
+fluid behavior. All seven scoped fixture payloads match after excluding only
+coordinates, keepPacked and LootTableSeed. The actual target fixture count is
+also seven, rejecting an omitted extra fixture. Distinct loot seeds remain in
+the raw evidence and are not evidence of equal generated contents.
+
+The transferred removal targets are checked as the same web or permitted masonry
+classes, and every door state matches exactly. All original action rays and the
+complete route are evaluated at their real translated coordinates, under the
+same explicitly hypothetical removals/open doors/scaffold support. The route
+starts/ends at(197,24,400), reaches the bottom boundary(194,12,400), and accesses
+chests(185,24,398),(187,24,402),(191,20,398),(188,16,393). All four have their
+expected table assignments and no saved Items/Lock. Broader neighboring routes
+are not accepted from this translation.
+
+Thus this third local task retains148H,12 ascent/12 descent, seven removals,
+12 scaffolds, eight button operations and four conditional acquisitions. Rigid
+translation preserves the79 navigation events,31 interactions,22 selections and
+three nominal11-tick initial falls; independently checked target states preserve
+the46 active mining ticks. Its complete conditional A/B/C budgets are likewise
+104.3/182.45/296.7833 seconds under the exact same no-extra-enemy, stable-circuit,
+no-fluid-arrival, successful-construction/transfer and survival conditions. This
+is a modeled case, not observed gameplay, a guaranteed completion time or proof
+of unchanged surrounding exposure.
+
+The same local activity partition/graph applies to the verified footprint:
+four primary rooms (3..5 under the stated alternatives), one branching junction,
+no cycle,0/4 empty/dead, room depth4 and boundary depth5 on that graph. Feet now
+span24..12. Reward allocation and the bottom hazard without a unique terminal
+reward remain the same; seven fixture checks include the dispenser/campfire
+payloads, so no additional enemy mechanism is silently assigned. Physical
+breaching, construction and loot-entitlement limits on replay remain explicit.
+This establishes this third scoped tower/alcove assessment. Terrain burial,
+external approach and the surrounding full assembly are separate requirements.
+
+Reproduce the translated checks, comparison denominator and fixture agreement with
+`uv run python -m evidence.item-13.temple_ordinary_route`. The command uses the
+same hash-bound raw extract; no extra world generation, native experiment or
+common geometry machinery was required. Focused lint, formatting and types pass.

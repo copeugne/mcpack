@@ -924,3 +924,123 @@ for center_z, parts in tower_parts.items():
             total,
             "combat zero by scenario",
         )
+
+
+# Third west-facing tower: reuse the existing route, but query actual translated cells.
+def third_tower_point(point):  # noqa: ANN001, ANN201
+    """Apply this one retained tower's observed (+1,-8,+33) translation."""
+    return (point[0] + 1, point[1] - 8, point[2] + 33)
+
+
+third_source = tower_parts[367]
+third_removed = {third_tower_point(p) for p in third_source["removed"]}
+third_doors = {third_tower_point(p) for p in third_source["doors"]}
+third_feet = {
+    third_tower_point((x, y, z))
+    for x, z, base, top in ((181, 367, 28, 32), (189, 366, 24, 28), (181, 367, 20, 24))
+    for y in range(base, top + 1)
+}
+_, third_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, third_removed, third_doors, third_feet
+)
+third_route = [third_tower_point(p) for p in third_source["complete"]]
+third_verify(third_route)
+third_rays = {}
+third_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    case, third_removed, third_rays
+)
+for target, rays in third_source["rays"].items():
+    actual = third_tower_point(target)
+    for eye, end in rays:
+        third_ray(third_tower_point(eye), third_tower_point(end), actual)
+    if target in entities_by_position:
+        source_entity = entities_by_position[target]
+        actual_entity = entities_by_position[actual]
+        assert actual_entity["id"] == source_entity["id"]
+        if "LootTable" in source_entity:
+            assert actual_entity["LootTable"] == source_entity["LootTable"]
+            assert "Items" not in actual_entity
+            assert "Lock" not in actual_entity
+for p in third_source["doors"]:
+    assert at(case, *third_tower_point(p)) == at(case, *p)
+for p in third_source["removed"]:
+    name = at(case, *third_tower_point(p))["Name"]
+    if at(case, *p)["Name"] == "minecraft:cobweb":
+        assert name == "minecraft:cobweb"
+    else:
+        assert name in {
+            "minecraft:stone_bricks",
+            "minecraft:cracked_stone_bricks",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:chiseled_stone_bricks",
+        }
+material_groups = (
+    {
+        "minecraft:stone_bricks",
+        "minecraft:cracked_stone_bricks",
+        "minecraft:mossy_stone_bricks",
+        "minecraft:chiseled_stone_bricks",
+    },
+    {"minecraft:stone_brick_stairs", "minecraft:mossy_stone_brick_stairs"},
+    {"minecraft:stone_brick_wall", "minecraft:mossy_stone_brick_wall"},
+)
+compared = 0
+material_changes = 0
+other_changes = []
+for lo_x, lo_y, lo_z, hi_x, hi_y, hi_z in (
+    (178, 19, 364, 192, 35, 370),
+    (183, 23, 358, 187, 27, 363),
+):
+    for x in range(lo_x, hi_x + 1):
+        for y in range(lo_y, hi_y + 1):
+            for z in range(lo_z, hi_z + 1):
+                a = at(case, x, y, z)
+                b = at(case, *third_tower_point((x, y, z)))
+                compared += 1
+                if a == b:
+                    continue
+                if a.get("Properties") == b.get("Properties") and any(
+                    a["Name"] in group and b["Name"] in group for group in material_groups
+                ):
+                    material_changes += 1
+                else:
+                    other_changes.append(((x, y, z), a, b))
+assert compared == 1935
+assert material_changes == 448
+assert other_changes == [
+    (
+        (184, 24, 358),
+        {"Name": "minecraft:water", "Properties": {"level": "0"}},
+        {"Name": "minecraft:seagrass"},
+    )
+]
+assert len(third_rays) == 25
+print(
+    "PASS third western tower: translated148H/12up/12down circuit and25 ray groups; "
+    "1935 footprint cells,448 masonry changes and one retained seagrass difference"
+)
+third_fixture_count = 0
+for position, source_entity in entities_by_position.items():
+    x, y, z = position
+    if not (
+        (178 <= x <= 192 and 19 <= y <= 35 and 364 <= z <= 370)
+        or (183 <= x <= 187 and 23 <= y <= 27 and 358 <= z <= 363)
+    ):
+        continue
+    actual_entity = entities_by_position[third_tower_point(position)]
+    ignored_fields = {"x", "y", "z", "keepPacked", "LootTableSeed"}
+    assert {k: v for k, v in source_entity.items() if k not in ignored_fields} == {
+        k: v for k, v in actual_entity.items() if k not in ignored_fields
+    }
+    third_fixture_count += 1
+assert third_fixture_count == 7
+print("PASS third tower seven fixture payloads match except coordinates/packing/loot seeds")
+actual_third_fixtures = {
+    p
+    for p in entities_by_position
+    if (
+        (179 <= p[0] <= 193 and 11 <= p[1] <= 27 and 397 <= p[2] <= 403)
+        or (184 <= p[0] <= 188 and 15 <= p[1] <= 19 and 391 <= p[2] <= 396)
+    )
+}
+assert len(actual_third_fixtures) == third_fixture_count
