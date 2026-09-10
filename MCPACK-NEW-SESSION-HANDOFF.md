@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `eeca3bce`; verify subsequent assessment commits against upstream.
+checkpoint is `8e9525a4`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -176,14 +176,15 @@ junctions. The first eastern shaft now has a conditional six-scaffold return and
 three lower arms; its six-block initial drop retains fall exposure. The lava
 centerline remains rejected. Failed native rubble routes are preserved; explicit
 nine-removal breaches now give both terminal return paths andsouthern chest access.
+The east corridor reaches its next junction after six webs/one source removal;
+source activation can precede corridor entry. Full encounter modeling remains.
 
 Next finish remaining first-assembly rooms and transitions, source and
 sculk handling, complete conditional objective timing, hazard/finale/bypass and
 replay assessments. Only then execute the other three predeclared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
-Next continue remaining family/variant coverage from the existing population and
-accepted starts. The courtyard family remains included but has no start in the
+The courtyard family remains included but has no start in the
 current baseline index; inspect other existing raw sources before proposing an
 additional experiment. Do not repeat these completed local reads/models solely
 for reassurance. Check central-End raw evidence before declaring an arena gap.

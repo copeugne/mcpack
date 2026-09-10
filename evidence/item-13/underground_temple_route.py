@@ -303,3 +303,27 @@ check_ray((-275.5, 34.62, 17.5), (-277.0625, 33.5, 17.5), chest)
 print(
     "PASS southern chest approach and source lid rule beneath straight stair; transfer not measured"
 )
+
+# Seven ordered removals through the eastern source corridor, after branch checks.
+verify_path([(x, 33, 0) for x in range(-276, -271)])
+source_actions = [
+    (-272, -271, 34, "minecraft:cobweb"),
+    (-270, -269, 34, "minecraft:cobweb"),
+    (-269, -268, 34, "minecraft:cobweb"),
+    (-269, -268, 33, "minecraft:spawner"),
+    (-268, -267, 33, "minecraft:cobweb"),
+    (-266, -265, 34, "minecraft:cobweb"),
+    (-266, -265, 33, "minecraft:cobweb"),
+]
+last_station = -272
+for station_x, target_x, y, expected_name in source_actions:
+    verify_path([(x, 33, 0) for x in range(last_station, station_x + 1)])
+    target = (target_x, y, 0)
+    assert at(c, *target)["Name"] == expected_name
+    check_ray((station_x + 0.5, 34.62, 0.5), (target_x, y + 0.5, 0.5), target)
+    removed.add(target)
+    last_station = station_x
+east = [(x, 33, 0) for x in range(-276, -247)]
+verify_path(east)
+verify_path(list(reversed(east)))
+print("PASS eastern corridor to junction: six webs/one source removed, 56 horizontal return blocks")

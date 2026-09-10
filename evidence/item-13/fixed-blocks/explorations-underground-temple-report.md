@@ -592,3 +592,69 @@ client opening or a tick-accurate mining trial.
 The extended module,formatting,lint andtype checks pass. Earlier native rubble
 failures remain required outputs. This resolves the two lower branches locally;
 the spawner corridor,other rooms andcomplete first-assembly task remain pending.
+
+## Eastern spawner corridor: ordered clearance declaration
+
+Continue from the lower junction(-276,33,0),using the declared grounded adult,
+iron sword anddiamond pickaxe,with no effects or mining interruptions. Keep feetY33
+andZ0 through the eastern corridor to the next junction atX-248. Predeclare six
+cobweb removals with the sword: (-271,34,0),(-269,34,0),(-268,34,0),(-267,33,0),
+(-265,34,0),(-265,33,0). Mine the spawner(-268,33,0) with the pick immediately
+after the third web, before entering its column. Work from the adjacent cleared
+western column,with the two X-265 webs worked fromX-266. Validate each stance,
+aiming ray andthe resulting forward/return passage before accepting this link.
+Other cobwebs remain; no collision exemption for webbing is introduced.
+
+Pinned SwordItem.createToolProperties supplies a minesAndDrops rule with speed15
+for cobwebs(offsets4..12); Blocks registers cobweb hardness4 at4435..4438.
+The nominal correct-tool work is eight ticks per web. Spawner work is19 ticks,
+reusing the accepted hardness5/diamond-speed8 derivation. The discovered Slime
+Cave1.9-second mismatch has been narrowly corrected in its own report/script;
+do not propagate it here. These seven removals total67 active ticks,3.35 seconds
+at20 TPS. Targeting,input delay,tool changes,movement andencounters still need
+their separate complete-task accounting. String/experience collection is not
+part of this corridor-clearance component.
+
+The saved source has Delay0 andthe previously recorded cave-spider assignment.
+It may attempt spawning before the actor reaches its mining stance. This ordered
+geometry does not establish zero spawned enemies or one-wave completion. Preserve
+that source lifecycle in the later complete encounter model. Any displacement,
+mining interruption or additional blockage is outside this ideal clearance check.
+
+The corridor clearance passes: all seven ordered targets have supported,clear
+stances andunobstructed rays; intervening advances are checked before each action.
+After those declared removals, the Y33 centerline fromX-276 toX-248 is clear in
+both directions,28 horizontal blocks each way(56 return total),with no vertical
+travel. The next junction is reached; its other arms andthe enchanting room are
+not yet accepted by this centerline check. There is no reward room or loot
+container inside this connection merely because it contains a source.
+
+Webs are a meaningful source-supported movement hazard,not solid collision.
+Pinned WebBlock.entityInside0..70 passes(0.25,approximately0.05,0.25) to
+Entity.makeStuckInBlock for the declared no-effect actor; WEAVING changes that
+vector andis excluded here. The six removed webs intersect the declared body
+path. Remaining overhead/side webs do not intersect its upright envelope; jumping,
+combat displacement or a wider actor would require another check. The source and
+webs create potential exposure pressure while clearing, not a measured difficulty
+rating or observed AI chokepoint exploit.
+
+The source center(-267.5,33.5,0.5) is already within its16-block activation range
+of the lower-junction actor center(-275.5,33,0.5),distance sqrt(64.25),about8.02.
+It is also within range of the first hall's eastern threshold(-279.5,39,0.5),
+distance sqrt(174.25),about13.20. If ticking with an alive actor, activation can
+therefore precede entry into this corridor. Do not start the later encounter clock
+only at the first web. Zero-delay source state andthis earlier exposure rule out
+a claim of guaranteed spawn-free access based solely on the0.95-second mining
+work. Actual spawning,targets killed andcombat time remain NOT MEASURED.
+
+Reproduce the source-specific web/tool mechanisms alongside the existing module:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.item.SwordItem
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.WebBlock
+uv run python -m evidence.item-13.underground_temple_route
+```
+
+Affected module execution,formatting,lint andtypes pass. This batch adds one
+validated connection andits source/hazard disposition, not a complete temple
+encounter model. No server,world mutation or repeated extraction was needed.
