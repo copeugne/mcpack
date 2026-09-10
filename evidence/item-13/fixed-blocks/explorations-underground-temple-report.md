@@ -3571,8 +3571,8 @@ west-facing, left-hinged iron doors. The outer stone button is(188,34,Z-1),
 east-facing, and the inner button(186,34,Z-1), west-facing; both are wall mounted
 and saved unpowered. Exact side-face rays pass from the supported adjacent
 stations. The source-open plate clearance permits the two-block crossing in
-both directions. Reuse the established30-tick stone-button pulse: two blocks at
-5/4/3 blocks per second require0.4/0.5/0.667 seconds, below1.5 seconds. Complete
+both directions. Reuse the established20-tick stone-button pulse: two blocks at
+5/4/3 blocks per second require0.4/0.5/0.667 seconds, below1 second. Complete
 aiming and orientation before pressing; do not put a post-click pause into this
 window. Each return requires its own button operation. Actuation, uninterrupted
 crossing and absence of hostile displacement remain modeled conditions.
@@ -3624,7 +3624,7 @@ reward routes and complete tower timing remain separate required work.
 Both retained cases pass independently. The inner iron doors at(183,Y32..33,Z+1)
 are west-facing, right-hinged and saved closed. Each closed crossing is rejected;
 the ordinary source-open plate geometry passes. Exact inside/outside wall-button
-rays pass at X182/X184,Y34,Z+1. Use the same two-block/30-tick crossing condition
+rays pass at X182/X184,Y34,Z+1. Use the same two-block/20-tick crossing condition
 as the outer gate and a separate return press. The supported room link from
 X185 to X181 at feet32,Z+1 is four horizontal blocks in each direction.
 
@@ -3754,7 +3754,7 @@ Both lower levels pass independently after one declared sword removal at
 (189,24,Z). All four lower gates are saved closed and each closed crossing fails.
 The X187 gates face west with right hinges; X183 gates face east with left hinges.
 Both halves are checked. Buttons at X188/186 and184/182,Y26,Z have supported side
-rays, with separate presses for each crossing and the existing30-tick condition.
+rays, with separate presses for each crossing and the existing20-tick condition.
 The full lower traverse from(190,24,Z-1) to(181,24,Z) returns over20 horizontal
 blocks with no vertical change, one eight-tick web removal and four button
 operations per tower. No blanket door or cobweb collision exception was used.
@@ -4084,3 +4084,21 @@ comparison and totals with `uv run python -m evidence.item-13.temple_ordinary_ro
 Focused lint, formatting and types pass. All four tower local task models are
 now integrated; the second assembly's remaining routes, full quality result and
 wet-shaft issue are still open. No runtime or common geometry machinery was added.
+
+
+## Correction: second-assembly stone-button deadline
+
+The recent second-assembly tower sections incorrectly reused the wooden button's
+30-tick duration. Pinned `Blocks.stoneButton` passes20 at bytecode offset7, while
+`Blocks.woodenButton` passes30 at offset5. The first assembly's source discussion
+already distinguished these values correctly. The second-assembly predicate and
+three affected tower descriptions now use20 ticks (one second at20 TPS).
+
+All declared two-block crossings still pass at0.4/0.5/0.667 seconds, with smaller
+margins of0.6/0.5/0.333 seconds. No waiting term, route, operation count, mining
+cost, actual raw observation or full-task total changes. This correction applies
+to all reused stone-door tower cases, including the translated and rotated ones.
+Oak-button conditions remain30 ticks. Prior wording is preserved in Git; no
+failed or accepted raw capture was rewritten. The complete ordinary route check
+reran successfully with the corrected deadline, and its output is byte-identical
+to the preceding accepted run. Focused lint and types pass.

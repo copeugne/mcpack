@@ -471,7 +471,7 @@ for center_z in (367, 384):
     upper_tower_path = approach + crossing[1:] + inner[1:]
     tower_verify(upper_tower_path)
     tower_verify(list(reversed(upper_tower_path)))
-    assert all(2 / u < 30 / 20 for u in (5, 4, 3))
+    assert all(2 / u < 20 / 20 for u in (5, 4, 3))
     tower_parts[center_z]["upper"] = upper_tower_path
     tower_parts[center_z]["removed"].update(tower_removed)
     tower_parts[center_z]["doors"].update(tower_doors)
