@@ -2715,3 +2715,131 @@ Rendering exited successfully within the declared cap. SVG1,627,862 bytes remain
 ignored, SHA-256178bcb00e27e1ac4de15ad54d5fee8dae667804f96cdbf1f0a8ac0e461ea9559.
 PNG98,611 bytes, SHA-256672bcbd0500dab92be746ac4bdaf224643fcd7f3c55e662d338fffbf91bf993f.
 Both remain below their declared size budgets.
+
+## Scoped hall native topology declaration
+
+Use the same adult .6-by-1.8 geometry, conservative stair ascent envelope and
+no-mining/no-swimming assumptions as the first hall check. Bind the existing
+clearance/support functions to this raw case with empty removal, door and
+scaffold sets. The functions are moved unchanged into `temple_geometry.py` for
+their two current consumers; this prevents rerunning or importing the first
+assembly's experiment state merely to check a second raw case. No new collision
+rules or generalized room inference are introduced.
+
+The intended local objective is a dry survey from the northern threshold
+(-480,44,45), visiting the inner floor ring, all four thresholds and a supported
+central-opening rim, then returning to the northern threshold. Use the first
+hall's four radial floor profiles translated to center(-480,53), low feet Y42
+and threshold feet Y44. The 24-block ring at radius three avoids the central
+opening; the rim station is(-480,42,51). Validate all links in both directions.
+No rewards are assumed, no source is disabled, and the shaft is not entered.
+This is the scoped component objective, not a substitute for whole-assembly timing.
+Reject the central standing cell(-480,42,53) because its floor is air. Preserve
+that failure rather than supplying an invisible floor or an undeclared scaffold.
+
+The native local survey passes: 66 horizontal blocks, eight ascent and eight
+descent, returning to the northern threshold. All four spokes, both directions
+of the inner ring, and the rim approach pass the unchanged checker. The central
+unsupported standing cell is rejected as declared. This is one continuous hall
+activity space with an internal two-block floor span, not four rooms or fourteen
+blocks of playable progression inferred from its shell height.
+
+The opening contains a narrow central wall post and staggered slabs below it,
+not a uniformly open three-by-three fall shaft. Exact saved cells at(-479,Y,52)
+and(-479,Y,53) are air for Y38..41; stepping into those columns would leave the
+validated supported floor and can descend below the captured minimum. The post
+at(-480,40,53) is a waterlogged stone-brick wall, while(-480,40,52) is a waterlogged
+bottom slab. Do not model either as a whole solid floor, claim a uniform fall
+height, or infer a safe spiral descent from its template name. Start NBT identifies
+an attached `shafts/large` component spanning Y23..40, but playable travel below
+Y38 is outside this scoped capture. The second complete assembly includes that
+shaft template and remains the planned complete-case opportunity to assess it.
+
+### Scoped hall complete survey model
+
+Predeclare the local actor at(-480,44,45), upright, fully informed of the fixed
+route and opening, with ordinary walking/one-block jumping, no swimming, flight,
+mining, placement or combat. Use fresh ordinary armor, full initial health/food,
+no effects or assistance; equipment does not change the declared movement model.
+Start on the first navigation decision; end after returning to the start and
+verifying all four thresholds and the central rim were visited. No item transfer
+is part of this fixture-free survey. This local component task complements the
+complete assembly tasks; it does not time the incomplete parent dungeon.
+
+Condition the case on no realized enemies, incoming attacks, fluid intrusion,
+forced movement or changed geometry during the survey. This is a zero-enemy
+scenario input, not an observation that the family natural override cannot spawn.
+A departure from those conditions, missed threshold, fall into the opening,
+required recovery or failure to return alive censors the complete task. No
+success probability or expected player completion time is estimated.
+
+Use the approved A/B/C movement and decision allowances: horizontal speed u=5/4/3,
+vertical speed j=1/.5/.25, per-decision n=.5/1/1.5 seconds, final verification
+v=2/4/8. Count one initial decision plus each three-component step-vector change.
+There are no button, mining, acquisition or attack phases in this declared task.
+Thus complete conditional seconds are `66/u + 16/j + N*n + v`, with N determined
+from the validated survey, not an invented observation. Compute and report all
+three profiles, keeping their assumptions and censoring rules attached.
+
+The route gives N=49 decisions. Complete conditional survey times are55.7/101.5/
+167.5 seconds (approximately56/102/168). Combat workload is zero only under the
+declared zero-enemy scenario; realized enemy count, combat time and human traversal
+remain NOT MEASURED. The hall has no saved spawner or resident block-entity source,
+but the family's natural hostile override still applies as separate potential.
+
+Scoped route depth uses the validated ring/spokes, not the full survey return.
+From the northern threshold, the inner ring is five horizontal and two downward
+blocks away (seven route blocks); the rim adds one horizontal block (eight).
+Either east or west threshold requires those five inward blocks, six ring blocks
+and five outward blocks, with two descent and two ascent: 20 route blocks. The
+southern threshold uses twelve ring blocks instead: 26 route blocks. These are
+shortest distances on that ring/spoke network; untested shortcuts across the
+floor are excluded. A contracted local graph has one hall node and four threshold
+nodes, four edges, and no inter-room cycle. From the north threshold the hall is
+one edge away and each other threshold two. The ring is internal circulation,
+not a second room or an additional inter-room branch. The central shaft is an
+unresolved connection beyond this dry survey, not a fifth validated onward route.
+
+The three cells just outside the north/east/west thresholds have stone-brick
+support at Y43 and air at Y44..45. Immediately south,(-480,Y,62) is source water
+at Y43..45. This is a concrete unsealed wet exposure at the southern doorway,
+not proof of an underwater route to the surface or to loot. Moving through it
+requires a swimming/breathing and fluid-state case outside the dry actor model.
+No arbitrary indestructibility or route restriction is proposed. Without a live
+fluid trial, the saved air interior must not be described as guaranteed stable
+when neighboring water updates. Fluid arrival invalidates the dry survey case.
+
+There is one scoped activity space. Under the protocol's supported hazard/content
+definition it is not empty or dead (0/1 for each): it connects the thresholds and
+contains the central unsupported descent boundary. This is a connective/hazard
+role, not a hidden reward. If central hazard ingredients are excluded until a
+runtime fall/flow trial, there are no reward, facility or realized-encounter
+contents to substitute; its connective purpose still prevents calling it a
+useless dead room. No authored finale exists in this component: objective clarity,
+distinctive terminal challenge and reward linkage are ABSENT; route integration
+is PRESENT through the floor/thresholds; external exposure is PRESENT at the wet
+south door, while a useful external bypass remains UNKNOWN.
+
+Expected local replay contribution is limited to navigation and the attached
+shaft's role in a larger generated layout. This unchanged fixture-free floor has
+no supported new reward objective on revisit, and no observed player replay
+outcome is inferred. Its tall upper framework adds no demonstrated upper floor
+progression to the two-block stepped floor. It is locally mechanically sparse
+relative to its shell, but its connective purpose is explicit and the downstream
+shaft cannot be dismissed as shallow from this partial capture. Do not generalize
+this scoped result to the incomplete parent or to every temple assembly.
+
+Reproduce the local geometry, negative case, exposure and timing with
+`uv run python -m evidence.item-13.temple_hall_down`. The original assembly route
+output remains byte-identical after moving its geometry functions; its complete
+regression passes. Initial focused lint reported only wrapper complexity,
+annotations and style issues; these were corrected without changing geometry.
+The local interpretation remains conditional and bounded as described above.
+
+Burial context is separate from playable depth. All289 hall-footprint
+WORLD_SURFACE columns are Y62, seven blocks above the component top Y55 and
+20 above its low feet Y42. This is saved surface-height separation, primarily
+water context here, not seven blocks of solid protective roof or a measured
+swimming distance. The local executable reproduces that footprint check.
+The scoped hall assessment is now integrated; the second complete assembly and
+its full shaft geometry remain the next unmet family coverage requirements.

@@ -1,0 +1,103 @@
+"""Existing temple clearance rules shared by retained assembly/component checks."""
+
+# pyright: standard
+# ruff: noqa: INP001, S101, ANN001, ANN201
+import importlib
+import math
+from itertools import pairwise
+
+at = importlib.import_module("evidence.item-13.render_pilot").state_at
+overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
+
+
+def path_checks(c, removed, opened_doors, modeled_scaffold_feet):  # noqa: C901
+    """Bind the existing checks to one raw case and explicit hypothetical state."""
+
+    def clear(box) -> None:
+        """Avoid non-air cells except source-verified dry plants with no collision."""
+        for x in range(math.floor(box[0]), math.ceil(box[3])):
+            for y in range(math.floor(box[1]) - 1, math.ceil(box[4])):
+                for z in range(math.floor(box[2]), math.ceil(box[5])):
+                    state = at(c, x, y, z)
+                    n = state["Name"]
+                    if (x, y, z) in removed:
+                        continue
+                    if (x, y, z) in opened_doors:
+                        for left, right in ((0, 3 / 16), (13 / 16, 1)):
+                            plate = (
+                                [x + left, y, z, x + right, y + 1, z + 1]
+                                if state["Properties"]["facing"] in {"north", "south"}
+                                else [x, y, z + left, x + 1, y + 1, z + right]
+                            )
+                            assert not overlap(box, plate)
+                        continue
+                    if n in {"minecraft:air", "minecraft:vine"} or (
+                        n == "minecraft:sculk_vein"
+                        and state["Properties"]["waterlogged"] == "false"
+                    ):
+                        continue
+                    height = 1.5 if n.endswith(("_wall", "_fence")) else 1
+                    assert not overlap(box, [x, y, z, x + 1, y + height, z + 1]), (
+                        box,
+                        (x, y, z),
+                        n,
+                    )
+
+    def verify_path(points, *, crouch_up=False) -> None:
+        """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
+        for x, y, z in points:
+            if (x, y, z) not in modeled_scaffold_feet:
+                assert (x, y - 1, z) not in removed, ("removed support", (x, y, z))
+                s = at(c, x, y - 1, z)
+                n = s["Name"]
+                assert n in {
+                    "minecraft:stone_bricks",
+                    "minecraft:cracked_stone_bricks",
+                    "minecraft:mossy_stone_bricks",
+                    "minecraft:chiseled_stone_bricks",
+                    "minecraft:deepslate_bricks",
+                    "minecraft:cracked_deepslate_bricks",
+                    "minecraft:stone_brick_stairs",
+                    "minecraft:mossy_stone_brick_stairs",
+                    "minecraft:gravel",
+                    "minecraft:stone",
+                    "minecraft:cobblestone",
+                    "minecraft:calcite",
+                }, ((x, y, z), s)
+                if n == "minecraft:gravel":
+                    assert at(c, x, y - 2, z)["Name"] in {
+                        "minecraft:stone_bricks",
+                        "minecraft:mossy_stone_bricks",
+                        "minecraft:cracked_stone_bricks",
+                    }
+                if n.endswith("_stairs"):
+                    assert s["Properties"]["half"] == "bottom"
+                    assert s["Properties"]["shape"] == "straight"
+                    # A centered .6-wide actor overlaps the upper supporting half.
+                    # The conservative full-cell obstacle remains below its feet.
+            clear([x + 0.2, y, z + 0.2, x + 0.8, y + 1.8, z + 0.8])
+        for a, b in pairwise(points):
+            horizontal_step = abs(a[0] - b[0]) + abs(a[2] - b[2])
+            if horizontal_step == 0:
+                assert a in modeled_scaffold_feet
+                assert b in modeled_scaffold_feet
+                assert abs(a[1] - b[1]) == 1
+            else:
+                assert horizontal_step == 1
+            assert abs(a[1] - b[1]) <= 1
+            high = max(a[1], b[1]) + (0.3 if b[1] > a[1] and horizontal_step else 0)
+            height = 1.5 if crouch_up and b[1] > a[1] else 1.8
+            clear(
+                [
+                    min(a[0], b[0]) + 0.2,
+                    high,
+                    min(a[2], b[2]) + 0.2,
+                    max(a[0], b[0]) + 0.8,
+                    high + height,
+                    max(a[2], b[2]) + 0.8,
+                ]
+            )
+            for x, y, z in (a, b):
+                clear([x + 0.2, y, z + 0.2, x + 0.8, high + height, z + 0.8])
+
+    return clear, verify_path
