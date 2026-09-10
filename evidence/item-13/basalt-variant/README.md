@@ -84,3 +84,59 @@ Focused prelaunch lifecycle gate:23 tests pass in3.18 seconds, including the
 processed-console barrier and failure/clean-stop behavior. No lifecycle code was
 changed for this mode. Retain final producer identity in the capture before
 relying on runtime output.
+
+## r1 runtime result
+
+Producer `19cd4a08ba0f5ea9044f42d492118c0d3dad4dfe` is pushed. The
+[capture](r1-capture.json.gz) passes readiness, processed-console barrier,
+correlated flush, clean exit0 and frozen identity/configuration in149.765 seconds.
+The [projection](r1-temple-variants.json.gz) has one successful placement with
+netherite at(227,163,3) and all2,197 padded cells; placement/readback took1.202879s.
+Uncompressed projection SHA-256 is
+`2dc771f684e577cd1a288a958768dd887be03354b79dfc29c04d9a1c889a47b2`.
+No retry was needed. The [retention record](r1-retention.json) binds all five core
+raw files and the explicit console bind-endpoint redaction; full originals remain
+under evidence/raw/item13/basalt-variant-r1/. No runtime remains active.
+
+Instance size is1,103,556,604 bytes across1103 files; raw capture is5,836,998 bytes
+across240 files. Both declared limits pass. The stopped backup/restore and full
+saved-cell comparison remain required before accepting the material/model gap.
+
+```sh
+uv run python -m evidence.item-13.collision.retain --basalt-attempt 1
+uv run python -m tools.manage_item4_environment backup --world instances/item13-basalt-variant-r1/world --archive evidence/raw/item13/basalt-r1-custody/world.tar.gz --receipt evidence/raw/item13/basalt-r1-custody/world-backup.json
+```
+
+## Saved material verification
+
+The stopped world archive is162,747,723 bytes, SHA-256
+`d44157af4f6893e325170defb60c2fe33a8737b922e44b3216d09c2d9f553269`.
+Its503-file inventory excludes session.lock. Backup receipt SHA-256 is
+`d0a091ad4a80eed1d5745d9918ecab70dc4aa3d4645c751dc2c975319c3199f2`.
+The [fresh restore](r1-world-restore.json) and
+[saved comparison](r1-saved-verification.json) pass all2,197 cells with zero
+differences and the expected central netherite block. The existing
+[reader](../temple-variants/verify_saved.py) now has a specific --basalt mode with
+these exact hashes and centerY163; its unchanged temple default still reproduces
+all15,562 prior cells and the accepted result byte for byte.
+
+```sh
+uv run python -m tools.manage_item4_environment restore --archive evidence/raw/item13/basalt-r1-custody/world.tar.gz --sha256 d44157af4f6893e325170defb60c2fe33a8737b922e44b3216d09c2d9f553269 --target evidence/raw/item13/basalt-r1-custody/restored-world > evidence/raw/item13/basalt-r1-custody/world-restore.json
+timeout 120 uv run python -m evidence.item-13.temple-variants.verify_saved --basalt evidence/raw/item13/basalt-r1-custody/restored-world/world > evidence/item-13/basalt-variant/r1-saved-verification.json
+```
+
+On the same271-cell authored mask used by the family report, the retained
+mountainous r1 NONE-rotation debris center and the forced NONE-rotation component
+differ only at local(3,3,3), now netherite_block. Decode the control at
+index x+7*z+49*y and this padded projection at x+3+13*(z+3)+169*(y+3), for each
+source block excluding structure_void/jigsaw. All270 other authored states match.
+This comparison is supported by the exact template, control JSON and projection
+hashes recorded in the family report and above. Terrain/structure_void and jigsaw
+cells are deliberately excluded from this authored-material equivalence claim.
+Saved verification establishes that the entire forced projection persisted too.
+
+The [family report](../fixed-blocks/basalt-chambers-report.md) integrates the
+source-supported mining/drop differences and complete conditional model totals.
+Retainer/reader lint and types pass. Runtime, stopped-block verification and local
+model integration pass; external raw custody remains required and is not implied
+by these local checks. No full Item13 completion or final review is claimed.

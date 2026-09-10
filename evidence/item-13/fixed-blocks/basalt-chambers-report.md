@@ -1,8 +1,8 @@
 # Basalt Chambers: two-assembly quality assessment
 
 Status: IN PROGRESS. This report is the authoritative local family deliverable.
-Both selected assemblies now have local modeled assessments. Central material
-coverage and final delivery remain pending. Item 14 is UNSTARTED.
+Both selected assemblies and all central material outcomes now have local
+modeled assessments. Diagnostic custody and final delivery remain pending. Item 14 is UNSTARTED.
 Apply the approved Item 13 definitions and modeled/inspection boundary.
 
 ## Existing evidence and predeclared sample
@@ -917,3 +917,53 @@ supported by saved material evidence, not measured timings of either control
 world's full assembly. Do not infer that the control lava setting has the same
 external access or route cost. Lodestone does not create a finale, reset or new
 hostile type. Its lack of item fire resistance keeps pickup loss a censoring case.
+
+Netherite source inputs, before diagnostic acceptance: pinned Blocks initializer
+34035..34075 registers a full ordinary Block, requiresCorrectToolForDrops,
+hardness50 and resistance1200. Pinned Items initializer914..933 gives its BlockItem
+fireResistant properties. The existing pickaxe and needs_diamond_tool tags both
+contain netherite_block (hashes e31b952f7df00a46e2e442e601b1139e87085314364e9137381c71e66f55700f
+and fce3d4bef99721711ffb1bcdd72812c82e55e90d02417fa3065c260c0f96b833).
+The declared diamond pick therefore meets the tool tier. Nominal dry grounded
+mining is ceil(50*30/8)=188 ticks9.40s. These are SOURCE INSPECTION inputs;
+saved netherite material acceptance and complete model integration still depend
+on the [one-component diagnostic](../basalt-variant/README.md).
+
+Pinned extra.jar `data/minecraft/loot_table/blocks/netherite_block.json`, SHA-256
+`4f810334641b04d676026e8e4e08d020326de5fc7db155d78746c2f7a7304bfa`, contains one
+single-item netherite_block pool with survives_explosion. This is a self-drop
+potential, not generated/acquired loot or permission to assume a pickup succeeds.
+Retain support-chain removal and conditional acquisition even for fire-resistant
+items. No new room, hostile type or finale follows from the central material.
+
+## Central material coverage resolved locally
+
+The [netherite diagnostic](../basalt-variant/README.md#saved-material-verification)
+now passes predicted live placement, frozen lifecycle and a fresh hash-verified
+stopped-world comparison of all2,197 padded cells, with zero differences. Its271
+source-authored cells match the NONE-rotation natural debris control except for
+the central netherite block. It remains a forced material diagnostic, not a third
+natural assembly sample or natural-frequency evidence.
+
+The complete family sample set therefore contains both predeclared distinct-seed
+baseline assemblies, all seven authored component types, natural/control debris
+and lodestone centers, and the exact missing netherite processor outcome. Trap
+magma replacement is unconditional TNT; no unsupported random magma alternative
+is left outstanding. The missing pool reference remains a frozen source defect,
+not an omitted experiment or permission to repair the configuration.
+
+For the same conditional baseline-layout task with a central netherite reward,
+replace only central mining5.65s by9.40s, a3.75s increase. Other debris rewards,
+source removal, support-chain pickup preparation, decision/input costs, C's bridge
+and trap shearing remain. First-case two-blaze totals become90.825/142.583333/
+224.80s; second-case four-blaze totals become232.4375/380.691667/611.166667s.
+These are explicitly modeled substitutions supported by saved material equivalence,
+not observed gameplay or the time to navigate the forced Y160 component. The
+central reward changes identity and tool work but does not add a room, branch,
+vertical floor, hostile type or authored finale. Persistent replay and external
+excavation limitations remain as assessed above.
+
+Local sampling, topology, complete conditional tasks and all central material
+outcomes are now integrated for this family. External diagnostic raw custody and
+full Item13 family/repetition coverage, final review/fix/thumbs-up, merge and main
+delivery remain. Do not mistake this local family result for Item13 COMPLETE.

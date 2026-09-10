@@ -21,6 +21,7 @@ if __name__ == "__main__":
     _ = mode.add_argument("--spawner-lookup", action="store_true")
     _ = mode.add_argument("--second-house", action="store_true")
     _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2, 3, 4, 5))
+    _ = mode.add_argument("--basalt-attempt", type=int, choices=(1,))
     args = parser.parse_args()
     spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW
@@ -36,6 +37,11 @@ if __name__ == "__main__":
         prefix = f"r{temple_attempt}-"
         projection = "temple-variants.json"
         destination_directory = DESTINATION.parent / "temple-variants"
+    if cast("int | None", args.basalt_attempt) is not None:
+        raw_directory = ROOT / "evidence/raw/item13/basalt-variant-r1"
+        prefix = "r1-"
+        projection = "temple-variants.json"
+        destination_directory = DESTINATION.parent / "basalt-variant"
     manifest: dict[str, object] = {}
     for name in (
         projection,

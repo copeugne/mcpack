@@ -1,4 +1,4 @@
-"""Compare the four declared r5 placements with a hash-verified stopped restore."""
+"""Compare declared temple or Basalt placements with a hash-verified stopped restore."""
 
 # pyright: standard
 # ruff: noqa: D103, EM101, EM102, TRY003, INP001, T201
@@ -19,15 +19,25 @@ from mcpack_evidence.item7_anvil import RegionContext, decode_region_payloads
 from mcpack_evidence.item7_nbt import decode_compound_nbt
 
 
-def verify(world: Path, backup_path: Path) -> dict[str, Any]:  # noqa: C901, PLR0912
-    backup_hash = "cf6d6b5fc690fbceab9941ad1b0bc4b4a74d192e4ae1597469e4b5a9039836d1"
+def verify(world: Path, backup_path: Path, *, basalt: bool = False) -> dict[str, Any]:  # noqa: C901, PLR0912
+    backup_hash = (
+        "d0a091ad4a80eed1d5745d9918ecab70dc4aa3d4645c751dc2c975319c3199f2"
+        if basalt
+        else "cf6d6b5fc690fbceab9941ad1b0bc4b4a74d192e4ae1597469e4b5a9039836d1"
+    )
     backup = json.loads(read_bound(backup_path, backup_hash))
-    raw = gzip.decompress(read_bound(Path(__file__).with_name("r5-temple-variants.json.gz")))
-    if (
-        hashlib.sha256(raw).hexdigest()
-        != "b3e1a088879bf6fd02039c2768e3d40912abfb18012fe11d199038629a326093"
+    projection = (
+        Path(__file__).parent.parent / "basalt-variant/r1-temple-variants.json.gz"
+        if basalt
+        else Path(__file__).with_name("r5-temple-variants.json.gz")
+    )
+    raw = gzip.decompress(read_bound(projection))
+    if hashlib.sha256(raw).hexdigest() != (
+        "2dc771f684e577cd1a288a958768dd887be03354b79dfc29c04d9a1c889a47b2"
+        if basalt
+        else "b3e1a088879bf6fd02039c2768e3d40912abfb18012fe11d199038629a326093"
     ):
-        raise ValueError("r5 projection identity mismatch")
+        raise ValueError("Declared projection identity mismatch")
     cases = json.loads(raw)["cases"]
     needed = {
         (x, z)
@@ -66,7 +76,7 @@ def verify(world: Path, backup_path: Path) -> dict[str, Any]:  # noqa: C901, PLR
             index = 0
             center = [
                 (case["envelope"][0] + case["envelope"][3]) // 2,
-                164,
+                163 if basalt else 164,
                 (case["envelope"][2] + case["envelope"][5]) // 2,
             ]
             for y in range(bounds[1], bounds[4] + 1):
@@ -102,10 +112,15 @@ def verify(world: Path, backup_path: Path) -> dict[str, Any]:  # noqa: C901, PLR
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("world", type=Path)
+    parser.add_argument("--basalt", action="store_true")
     parser.add_argument(
         "--backup",
         type=Path,
-        default=ROOT / "evidence/raw/item13/temple-r5-custody/world-backup.json",
     )
     args = parser.parse_args()
-    print(json.dumps(verify(args.world, args.backup), indent=2))
+    backup_path = args.backup or ROOT / (
+        "evidence/raw/item13/basalt-r1-custody/world-backup.json"
+        if args.basalt
+        else "evidence/raw/item13/temple-r5-custody/world-backup.json"
+    )
+    print(json.dumps(verify(args.world, backup_path, basalt=args.basalt), indent=2))

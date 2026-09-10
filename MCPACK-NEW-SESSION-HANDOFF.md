@@ -169,9 +169,10 @@ rejected no-placement route is preserved: eastern recesses have lava support.
 Both baseline centers are debris. All six accepted omit-Sparse centers now have
 hash-verified saved cubes: five debris and one lodestone. The271 authored-cell
 comparison differs only at the center; conditional lodestone costs are integrated.
-Netherite block is the sole missing central outcome. The
-[single-component diagnostic](evidence/item-13/basalt-variant/README.md) is now
-predeclared: origin224,160,0,2,197 padded cells, existing capture/restore path.
-Producer selection matches all eight centers. Verify its subsequent execution
-state before launching; each attempt requires fresh unique instance/output paths.
+The [single-component netherite diagnostic](evidence/item-13/basalt-variant/README.md)
+passes r1 under producer19cd4a08:149.765s,clean flush/stop,frozen configuration,
+2,197 live/restored cells equal,271 authored cells differ only at the center.
+All central material models are integrated. No runtime remains active. Finish
+external raw custody from evidence/raw/item13/basalt-r1-custody using the existing
+archive/release/download/restore path before closing this local family increment.
 Do not generate new survey worlds or treat15 pieces as rooms.
