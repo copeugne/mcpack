@@ -120,3 +120,7 @@ The [Desert Pyramid assessment](mss-desert_pyramid-report.md) integrates all ele
 source interactions, three container arrangements, complete conditional timing
 and a staged graph for two indoor rooms plus one outdoor activity area.
 Family repetitions and broader coverage remain pending.
+
+The [Small Tower intake](mss-small_tower-report.md) now matches its single active
+template to two sources and two chests. Its bounded full slice view passes;
+route validation and witch-aware timing remain pending.
