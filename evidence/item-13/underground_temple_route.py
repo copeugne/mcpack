@@ -10,6 +10,7 @@ import hashlib
 import importlib
 import json
 import math
+from collections import Counter
 from itertools import pairwise
 from pathlib import Path
 
@@ -1153,4 +1154,36 @@ assert len(spawner_positions) == 9
 assert spawner_positions <= removed
 print(
     "PASS all nine saved sources have local access/removal geometry; realized encounters unmeasured"
+)
+
+# Count the union, not the sum of overlapping local demonstrations. Active mining
+# alone excludes aiming, tool changes, placement, movement and encounters.
+removal_counts = Counter(at(c, *position)["Name"] for position in removed)
+active_ticks_by_block = {
+    "minecraft:chiseled_stone_bricks": 6,
+    "minecraft:cobweb": 8,
+    "minecraft:cracked_stone_bricks": 6,
+    "minecraft:gravel": 18,
+    "minecraft:iron_bars": 19,
+    "minecraft:mossy_stone_brick_stairs": 6,
+    "minecraft:mossy_stone_bricks": 6,
+    "minecraft:sculk_vein": 6,
+    "minecraft:spawner": 19,
+    "minecraft:stone": 6,
+    "minecraft:stone_brick_stairs": 6,
+    "minecraft:stone_bricks": 6,
+    "minecraft:vine": 6,
+}
+active_mining_ticks = sum(
+    count * active_ticks_by_block[name] for name, count in removal_counts.items()
+)
+print("Unique hypothetical removals:", json.dumps(dict(sorted(removal_counts.items()))))
+print(
+    "Construction subtotal:",
+    len(removed),
+    "unique removals;",
+    active_mining_ticks,
+    "active mining ticks;",
+    active_mining_ticks / 20,
+    "conditional seconds at 20 TPS",
 )

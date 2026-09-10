@@ -182,6 +182,8 @@ their costs/failure are retained. Both barred cells andtwo lower terminal reward
 now pass;31/31 chest/barrel approaches are resolved locally. A dry overhead hall
 link passes with28 removals/eight scaffolds; wet side candidates are rejected.
 All nine saved sources now have local access/removal proofs, including southern shaft costs.
+The construction union is 112 unique removals, 951 active ticks at 20 TPS; 44 scaffold
+placements are declared. These subtotals exclude movement and encounters.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

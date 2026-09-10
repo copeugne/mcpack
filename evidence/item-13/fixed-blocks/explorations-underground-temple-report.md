@@ -1482,3 +1482,54 @@ or one complete suppression schedule. The whole task must combine these routes,
 account for all existing source activation and natural-spawn conditions, and
 retain environmental and below-boundary uncertainty. Route, Ruff, formatting and
 types pass. No raw evidence or runtime was changed.
+
+## First assembly construction union
+
+The executable now derives the union of all locally validated hypothetical
+removals from their saved block coordinates. This avoids adding the same work
+again when a later route reuses a previously cleared cell. Reproduce with
+`uv run python -m evidence.item-13.underground_temple_route`. It reports 112 unique
+cells, grouped below using the source-supported tool assumptions already declared
+above. This is construction work for the selected remedies, not a minimal-edit
+solution or a complete dungeon time.
+
+| Removed material | Unique cells | Tool | Active ticks per cell | Subtotal ticks |
+| --- | ---: | --- | ---: | ---: |
+| Stone, stone bricks and their declared masonry/stair variants | 49 | Diamond pick | 6 | 294 |
+| Cobweb | 43 | Iron sword | 8 | 344 |
+| Gravel | 2 | Hand | 18 | 36 |
+| Iron bars | 4 | Diamond pick | 19 | 76 |
+| Dry sculk vein | 4 | Hand | 6 | 24 |
+| Spawner | 9 | Diamond pick | 19 | 171 |
+| Vine | 1 | Hand | 6 | 6 |
+| Total | 112 | As above | Variable | 951 |
+
+The masonry group contains 22 stone, 16 stone bricks, five cracked stone bricks,
+three mossy stone bricks, one chiseled stone brick, one stone-brick stair and one
+mossy stone-brick stair. The union contributes 47.55 conditional seconds of active
+mining at 20 TPS. Profile-dependent aiming, selection, placement, navigation,
+acquisition, encounter work and verification remain additional phases. This
+subtotal must not be reported as traversal time or as observed block breaking.
+
+The declared local remedies require 44 scaffold placements before any reuse:
+18 across the three six-block entrance shafts, 12 across the three four-block
+tower shafts, six for the two library columns, and eight for the overhead hall
+link. These counts are direct sums of disjoint declared columns. Their routes
+remain conditional on sufficient carried scaffolds and the stated placement
+rules. Do not assume recovery or deduct materials merely because a column might
+later be dismantled.
+
+The three initial six-block drops each request three damage points, and the
+three initial tower drops plus the southern overhead drop each request one,
+under the previously cited fall formula. Their nominal sum is 13 requested
+points before hooks and other damage. This is neither an observed health loss
+nor a survival guarantee. A complete objective must account for survival through
+encounters and environmental hazards without silently adding healing.
+
+This consolidation resolves construction quantity and active-mining overlap.
+It does not resolve overlapping local movement, final tool-switch order, source
+suppression timing, natural-spawn exposure or the environmental sculk response.
+All nine sources have Delay0, so the short single-batch grace assumption used in
+some earlier family tasks cannot be transferred to this assembly. No complete
+traversal/combat duration is accepted until those dependent conditions and one
+joined objective are explicit.
