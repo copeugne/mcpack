@@ -1,12 +1,13 @@
 """Validate declared Underground Temple links against the first retained assembly.
 
-This is partial topology evidence, not a complete dungeon route or timing model.
+Geometry and conditional task accounting are scoped to the retained first assembly.
 """
 
 # pyright: standard
 # ruff: noqa: INP001, S101, ANN001, ANN201, T201, PLR2004
 import gzip
 import hashlib
+import heapq
 import importlib
 import json
 import math
@@ -1771,6 +1772,7 @@ reward_rays = {
 }
 assert reward_rays.keys() == reward_positions
 scaffold_blocks = {(x, y, z) for x, z, base, top in scaffold_columns for y in range(base, top)}
+reward_stations = {}
 for target, rays in reward_rays.items():
     accepted = []
     for eye, end in rays:
@@ -1784,6 +1786,7 @@ for target, rays in reward_rays.items():
         if ray_cells.isdisjoint(scaffold_blocks):
             accepted.append(station)
     assert accepted, ("no visited unobstructed reward station", target)
+    reward_stations[target] = set(accepted)
 print("PASS full movement circuit visits all 25 activity footprints and all 31 reward ray stations")
 
 # Validate forward western source access before removing its local obstructions.
@@ -1933,3 +1936,33 @@ for label, u, j, n, a, s, k, v, duty in (
         "total",
         noncombat + combat,
     )
+
+
+# Scoped shortest depth on checked transitions, after the declared remedies.
+route_edges = {point: {} for point in work_visited}
+for a, b in pairwise(work_route):
+    weight = sum(abs(a[i] - b[i]) for i in range(3))
+    if a != b:
+        route_edges[a][b] = weight
+station_depth = {work_route[0]: 0}
+queue = [(0, work_route[0])]
+while queue:
+    cost, point = heapq.heappop(queue)
+    if cost != station_depth[point]:
+        continue
+    for neighbor, weight in route_edges[point].items():
+        candidate = cost + weight
+        if candidate < station_depth.get(neighbor, math.inf):
+            station_depth[neighbor] = candidate
+            heapq.heappush(queue, (candidate, neighbor))
+assert station_depth.keys() == work_visited
+for room, bounds in room_bounds.items():
+    room_depth = min(
+        distance
+        for point, distance in station_depth.items()
+        if all(bounds[i] <= point[i] <= bounds[i + 3] for i in range(3))
+    )
+    print("Scoped shortest room-footprint blocks", room, room_depth)
+for target, stations in sorted(reward_stations.items()):
+    print("Scoped shortest reward-station blocks", target, min(station_depth[p] for p in stations))
+print("Scoped deepest checked station", max(station_depth.values()))

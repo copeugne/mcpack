@@ -2331,3 +2331,245 @@ timing case now accounts for every declared phase, while preserving the distinct
 between source-derived work, geometry, provisional allowances and unobserved
 runtime success. Family/variant coverage and the remaining quality assessments
 are still required before this family or Item13 can be complete.
+
+## First assembly loot, finale and replay assessment
+
+SOURCE INSPECTION uses the retained Explorations archive SHA-256
+420d0373711877a5e1a86b7f9b4f54848f3debb2f116c2509a5cc4eb496c979e.
+The paths below are relative to
+`data/explorations/loot_table/chests/underground_temple/` in that archive.
+`large_room.json` and `dungeon.json` are byte-identical, both SHA-256
+fe6a768ad8f3a3d3fedea2bac03605e8e7194161c4d41a843607f77e7e519540.
+Their first pool has two to four weighted draws including metals, gems, mob
+materials, horse equipment, enchanted-book potential, apples and an empty entry;
+the second has four draws of bone, gunpowder, flesh or string. The four-source
+chamber therefore has no distinct base reward table from the eight main-hall
+chests. This is a comparison of potential, not generated item equality.
+
+`quest_tower.json`, SHA-256
+777e3a82ffc5996c8dcc0d47f384d3d560aedda52a6672f25d7dfbd92e5d5186,
+has different potential: diamond count zero to five, flesh, an equal-weight
+book-or-golden-apple draw, and gold ingots. Its book options are protection,
+sharpness, looting and mending. The final golden-apple pool sets its count with
+binomial n=0, p=.1, so that particular bonus contributes zero; preserve this
+source defect. It does not negate the separate apple alternative or establish
+that a diamond or enchanted book will be obtained. No loot roll is performed.
+
+Reproduce these direct source comparisons without a new measurement tool:
+
+```sh
+uv run python - <<'PY'
+import hashlib
+import zipfile
+from pathlib import Path
+p = Path('downloads/item3/candidates/explorations-neoforge-1.21.1-1.6.2.jar')
+assert hashlib.sha256(p.read_bytes()).hexdigest() == '420d0373711877a5e1a86b7f9b4f54848f3debb2f116c2509a5cc4eb496c979e'
+with zipfile.ZipFile(p) as archive:
+    for name in ('large_room', 'dungeon', 'quest_tower'):
+        raw = archive.read(f'data/explorations/loot_table/chests/underground_temple/{name}.json')
+        print(name, hashlib.sha256(raw).hexdigest(), raw.decode())
+PY
+```
+
+Authored finale: NONE identified in this assembly's inspected source and layout.
+The tower is a transit setpiece leading onward into the lower network. Its two
+upper chests and one middle chest precede the bottom lava route, which has no
+reward node. The deeper R08 chamber has four hostile source types but the same
+base loot table as the main halls. Neither the name `quest_tower` nor maximum
+graph depth establishes a terminal objective. The following assessment addresses
+the strongest candidate, the tower, without promoting it to a finale:
+
+| Final-room quality dimension | Disposition | Supported reason |
+| --- | --- | --- |
+| Objective clarity | ABSENT | No terminal goal or completion trigger identified; the network continues below |
+| Distinctive challenge | PRESENT | Three floor descents, tripwire/dispenser zone, piston panel and lava route differ from the repeated source corridors |
+| Reward linkage | CONDITIONAL | Three assigned chests have access routes, but all precede completion of the bottom hazard sequence; contents remain unrolled |
+| Route integration | PRESENT | Tower connects R01 through J01 to the lower bedroom/library/chamber network |
+| External bypass exposure | UNKNOWN | No validated surface-to-tower or cave-to-tower route; local boundary exposures do not establish one |
+
+Concrete internal shortcuts remain compatible with earned sandbox freedom.
+The two upper tower chests have the validated 34-horizontal-block return from
+J01, with one web removal and a button door, before any lower descent. R08's
+four chest stations have a native 42-horizontal-block survey before its source
+floor excavation. Thus chest access itself is not gated by destroying those
+four sources. Neither shortcut proves combat avoidance: active sources and the
+natural override remain possible, and the R08 sources can be within activation
+range while a player is in the main hall above. Do not call the hall safe merely
+because its own room allocation has no spawners.
+
+The declared overhead hall connection costs 28 removals and eight scaffolds;
+the alternate first tower drop costs its floor removal and four scaffolds and
+avoids the inspected tripwire line. The two-block middle panel breach, six-block
+library masonry remedy with six scaffolds, and four-bar cell breaches are further
+specific access remedies. These costs are already included in the complete task,
+not additional rewards or free bypasses. The T11 exposed ledge and T07 continuation
+below the retained Y21 boundary remain unresolved external-access opportunities,
+not proven entrances, exits or safe escape routes.
+
+Meaningful hazards are supported at different evidence levels: lava contact is
+avoided by the validated dry paths; seven initial drops require the declared fall
+conditions; webs impose measured removal work; nine lit campfires have a source-
+verified contact mechanism but are avoided; the tower tripwire has an inspected
+trigger/input chain but no observed firing trial. Sources create conditional
+encounter pressure, not nine measured encounters. Environmental sculk response
+remains an explicit P6 censoring condition. Narrow button doors are measured
+chokepoints: the conservative two-sided plate exclusion leaves a .625-block
+channel for the .6-wide actor, with two-block door height and timed transfers.
+This proves a constrained connection, not live enemy exploitation or an absence
+of additional mining alternatives.
+
+Expected replay value is an assessment of inputs. The selected jigsaw component
+and assembly variation supports different generated layouts, with repeated
+source corridors, branching and distributed rewards. It does not establish
+player enjoyment or quantify the probability of a good assembly. The six minimal
+starts among 24 indexed starts remain the finite-frame failure observation,
+representing three seed/location pairs repeated twice; the missing start-pool
+weight is not an observed failure probability. The second complete assembly and
+remaining component read are still needed for the declared material comparison.
+
+Revisiting this same persistent dungeon after the modeled task has different
+inputs: nine sources have been destroyed, 43 webs removed, access breaches made
+and 44 scaffolds placed. Those changes simplify later movement and remove those
+particular source mechanisms. A per-player reward system would not by itself
+restore physical geometry or spawners. Natural spawning, trap resources and
+unmeasured environmental responses prevent a claim that future visits are empty.
+Actual loot availability on revisit and player replay behavior are NOT MEASURED.
+
+Large-but-shallow disposition for the whole assembly: NOT ESTABLISHED. Its 25
+primary spaces (11 to 26 under the documented partition alternatives), connected
+floor progressions, six source areas and distributed rewards supply actual
+mechanical content beyond architectural volume. Local thin-content features
+are supported: four terminal alcoves have only campfires under the potential-
+content definition; five corridors repeat the cave-spider/web motif; and each
+large hall has one connected floor/spoke system rather than extra progressions
+proportional to its height. The zero empty/dead count uses a permissive potential
+threshold and must not be presented as uniformly substantial activity.
+
+## First assembly burial context
+
+The already retained raw extract includes all 8,633 footprint columns of saved
+WORLD_SURFACE. The existing Item7 decoder converts values to top non-air block
+Y with `value + min_y - 1`; these are not first-air coordinates. Surface Y spans
+175 to 273. Relative to the assembly envelope top Y50, the vertical separation
+is 125 to 223 blocks. At the declared entry stance (-288,37,-3), surface Y220 is
+183 blocks above the feet. These are heightmap separations, not a count of solid
+roof blocks or a validated mining path: caves, foliage and overhangs can intervene.
+The local exposed T11 ledge at(-252,33,14) lies below surface Y243, and T07 at
+(-261,25,-34) below Y206. Neither is demonstrated open to the sky.
+
+Reproduce from the existing hash-verified extract, without another world read:
+
+```sh
+uv run python - <<'PY'
+import gzip
+import hashlib
+import json
+from pathlib import Path
+p = Path('evidence/item-13/fixed-blocks/explorations-underground-temple-mountainous-r2.json.gz')
+raw = p.read_bytes()
+assert hashlib.sha256(raw).hexdigest() == 'e86316d3e1fd412a6507533b0f3ac603e3948cb5585d6d95a917fe5168164085'
+case = json.loads(gzip.decompress(raw))['cases'][0]
+surface = {(x, z): y for x, z, y in case['surface_xzy']}
+print(len(surface), min(surface.values()), max(surface.values()))
+print('surface minus envelope top', min(surface.values()) - 50, max(surface.values()) - 50)
+for x, y, z in ((-288, 37, -3), (-252, 33, 14), (-261, 25, -34)):
+    print((x, y, z), surface[x, z], surface[x, z] - y)
+PY
+```
+
+This integrates the first assembly's supported quality conclusions. The following
+scoped distance derivation resolves its remaining route-block depth measurement.
+Family and Item13 status remain IN PROGRESS.
+
+### Declared scoped route-distance derivation
+
+Use the already validated work-route cells and only consecutive route transitions
+as the coordinate network. Keep transitions directed as actually checked; do not
+invent an edge between adjacent but untested cells. Cost each transition by its
+horizontal plus absolute vertical block displacement. From the declared entry
+(-288,37,-3), compute shortest weighted distances to each room's visited footprint
+and to each reward's accepted, scaffold-unobstructed interaction stations. Report
+all 25 rooms and all 31 rewards. This directly supplies the missing route-block
+depth dimension without treating the 1,602-block work circuit as shortest depth.
+It is a post-remedy network metric, not an optimal first-clear itinerary, global
+shortest path through all geometry, construction cost or surface-to-entry route.
+Door activation conditions remain required but input times are outside distance.
+Runtime budget is the existing small route proof plus one finite shortest-path
+pass; no world materialization, generation or new raw capture is required.
+
+The scoped pass reaches every checked station. The deepest checked station is
+149 route blocks from entry. Room-footprint distances range from zero to 112;
+reward-station distances range from zero to 143. Zero means an interaction
+station at the declared starting point, not zero acquisition work. Directed
+survey segments can make these distances longer than a reversed or alternative
+route not present in this network; do not present them as global geometric minima.
+The complete task still requires its separately reported construction and timing.
+
+| Room footprint | Shortest scoped blocks |
+| --- | ---: |
+| R01 | 0 |
+| R02 | 40 |
+| R03 | 26 |
+| R04 | 47 |
+| R05 | 73 |
+| R06 | 102 |
+| R07 | 111 |
+| R08 | 112 |
+| R09 | 67 |
+| R10 | 72 |
+| R11 | 56 |
+| R12 | 27 |
+| R13 | 34 |
+| R14 | 52 |
+| R15 | 73 |
+| R16 | 73 |
+| R17 | 27 |
+| R18 | 38 |
+| R19 | 98 |
+| R20 | 84 |
+| R21 | 38 |
+| R22 | 74 |
+| R23 | 52 |
+| R24 | 112 |
+| R25 | 112 |
+
+| Reward block (X,Y,Z) | Shortest scoped station blocks |
+| --- | ---: |
+| (-324, 33, 5) | 54 |
+| (-307, 31, -25) | 122 |
+| (-300, 31, -25) | 119 |
+| (-295, 27, -16) | 114 |
+| (-290, 27, -2) | 143 |
+| (-290, 39, -33) | 35 |
+| (-290, 39, 47) | 76 |
+| (-289, 37, 0) | 6 |
+| (-289, 37, 28) | 52 |
+| (-288, 27, -4) | 117 |
+| (-288, 27, 0) | 135 |
+| (-288, 37, -1) | 0 |
+| (-288, 37, 1) | 12 |
+| (-288, 37, 27) | 46 |
+| (-288, 37, 29) | 58 |
+| (-287, 37, 0) | 6 |
+| (-287, 37, 28) | 52 |
+| (-286, 27, -2) | 125 |
+| (-286, 35, -29) | 59 |
+| (-286, 39, -35) | 39 |
+| (-282, 27, -25) | 106 |
+| (-282, 27, -19) | 106 |
+| (-281, 27, -12) | 114 |
+| (-281, 30, -24) | 106 |
+| (-281, 30, -23) | 106 |
+| (-281, 30, -21) | 106 |
+| (-281, 30, -20) | 106 |
+| (-278, 33, 17) | 40 |
+| (-274, 39, 25) | 67 |
+| (-272, 39, 22) | 76 |
+| (-252, 33, 10) | 64 |
+
+Reproduce both tables with `uv run python -m evidence.item-13.underground_temple_route`.
+The existing raw hash, full route and ray checks execute before this derivation.
+Focused Ruff formatting/lint, type checking and the route executable pass.
+This first representative now has integrated topology, scoped depth, vertical
+progression, complete conditional task time and quality assessment. Proceed to
+the remaining three predeclared reads; no family-wide completion is implied.
