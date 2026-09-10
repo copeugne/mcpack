@@ -239,8 +239,9 @@ baseline/control cubes and the single missing-material diagnostic, with
 [verified raw custody](../basalt-variant/custody/README.md). These are local family
 results under the modeled/inspection scope, not full Item13 completion.
 
-The [modular Nether fortress](adorabuild-nether-fortress-report.md) now has a
-predeclared two-seed sample and a complete first local assessment: five primary
-spaces, validated slab/bridge topology, three chest assignments, conditional task
-models and two ground-window bypasses. The second selected assembly still needs
-its own assessment for the remaining component arrangements.
+The [modular Nether fortress](adorabuild-nether-fortress-report.md) has both
+predeclared seed samples assessed, collectively covering all eight components.
+The five-/fourteen-space results retain native obstructions, conditional slot
+crossings, validated clearing/interaction sequences, complete task estimates and
+independent ground-window bypasses. This is a local family result, not full
+Item13 completion.

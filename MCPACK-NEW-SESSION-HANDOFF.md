@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `bb7f1e51`; verify subsequent assessment commits against upstream.
+checkpoint is `589da300`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -141,13 +141,16 @@ height travel. Conditional two-blaze tasks are128/227/382 seconds across the
 approved profiles. Two independent ground-window accesses each need one stair
 removal. Human movement, realized enemies and acquired loot remain NOT MEASURED.
 
-The preselected biome-diverse r1 extraction/view now passes:54,694 cells,10,479
-compressed bytes,10.061025s. It has five chest assignments and the remaining
-stairs_1/medium_1 components. Saved wart blocks obstruct a slab landing and one
-chest lid; actual stairs need exact support checks. Next declare its own task and
-resolve these recorded obstructions before scoring. Do not repeat the read or
-copy first-case metrics. Then continue remaining family/variant coverage
-from existing raw inputs. Check central-End evidence before claiming an arena gap.
-Do not generate new survey worlds or tune frozen content. Item13 still requires
-full coverage, final review/fix cycles, completed clean Codex thumbs-up, merge and
-fetched origin/main verification. Item14 remains UNSTARTED.
+The biome-diverse r1 case now also has a local assessment:14 primary spaces,
+six branch junctions,five chest assignments and a302-horizontal-block return task.
+Eleven ordered wart-block removals and four conditional slot jumps are explicit;
+the rejected native route is preserved. Two-blaze modeled totals are365/646/1086s.
+An independent one-stair ground-window bypass also passes. All eight components
+are covered collectively by the two assemblies. Neither model observes players.
+
+Next continue the remaining family/variant coverage from the existing intake and
+accepted starts. Reuse this completed local family result; do not repeat its raw
+reads. Check central-End evidence before claiming an arena gap. Do not generate
+new survey worlds or tune frozen content. Item13 still requires full coverage,
+final review/fix cycles, completed clean Codex thumbs-up, merge and fetched
+origin/main verification. Item14 remains UNSTARTED.
