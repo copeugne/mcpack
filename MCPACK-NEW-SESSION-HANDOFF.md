@@ -181,6 +181,9 @@ inter-room cycles under the declared remedies. It has21 decision nodes; deepest
 rooms are eight edges from R01, and terminal nodes nine. Source/reward allocation
 by graph depth is integrated. Complete coordinate/phase traversal is still pending.
 The support check now rejects a mined floor; its direct negative case passes.
+Three continuous closed excursions pass: east212H/2V, west114H/12V and
+southwest86H/0V. The post-source-hole dungeon survey is42H/10V, not its original
+flat survey. Tower/lower rooms and hall/shaft joins remain before full timing.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

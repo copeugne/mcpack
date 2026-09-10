@@ -1376,3 +1376,97 @@ finally:
     removed.remove((-288, 36, -3))
 assert support_rejection == (("removed support", (-288, 37, -3)),)
 print("PASS hypothetical removed support is rejected; original scenario restored")
+
+east_excursion = [(-276, 33, 0)]
+east_excursion_parts = []
+for sign in (-1, 1):
+    branch = [(-276, 33, sign * z) for z in range(18)]
+    east_excursion_parts.extend((branch, list(reversed(branch))))
+enchanting_visit = [(-248, 33, z) for z in range(7)] + room_route[1:]
+east_excursion_parts.extend(
+    (
+        east,
+        enchanting_visit,
+        list(reversed(enchanting_visit)),
+        north_arm,
+        rim,
+        pit,
+        list(reversed(pit)),
+        list(reversed(north_arm)),
+        east_link,
+    )
+)
+for arm in terminal_arms:
+    east_excursion_parts.extend((arm, list(reversed(arm))))
+east_excursion_parts.extend((list(reversed(east_link)), list(reversed(east))))
+for part in east_excursion_parts:
+    assert east_excursion[-1] == part[0], (east_excursion[-1], part[0])
+    east_excursion.extend(part[1:])
+assert east_excursion[-1] == east_excursion[0]
+verify_path(east_excursion)
+print(
+    "PASS joined eastern excursion:",
+    len(east_excursion) - 1,
+    "horizontal blocks;",
+    sum(abs(a[1] - b[1]) for a, b in pairwise(east_excursion)),
+    "vertical blocks; start/end J03",
+)
+
+hole_plan_positions = {position for position, _, _ in dungeon_sources}
+post_mining_entry, post_mining_ring = (
+    [(x, 26 if (x, z) in hole_plan_positions else y, z) for x, y, z in path]
+    for path in (dungeon_entry, dungeon_ring)
+)
+post_mining_dungeon = (
+    post_mining_entry + post_mining_ring[1:] + list(reversed(post_mining_entry))[1:]
+)
+assert post_mining_dungeon[0] == post_mining_dungeon[-1] == (-288, 27, -14)
+verify_path(post_mining_dungeon)
+verify_path(list(reversed(post_mining_dungeon)))
+print(
+    "PASS post-mining dungeon survey:",
+    len(post_mining_dungeon) - 1,
+    "horizontal blocks;",
+    sum(abs(a[1] - b[1]) for a, b in pairwise(post_mining_dungeon)),
+    "vertical blocks; no hole refill",
+)
+
+west_excursion_parts = [
+    western_terminal_route[:18],
+    last_source_branches[0][0],
+    list(reversed(last_source_branches[0][0])),
+    western_terminal_route[17:],
+    list(reversed(western_terminal_route)),
+]
+for name in ("lower west south lava approach", "lower west north stair"):
+    path = native_connector_paths[name]
+    west_excursion_parts.extend((path, list(reversed(path))))
+southwest_excursion_parts = [last_source_branches[1][0]]
+for dx, dz in ((0, -1), (0, 1), (-1, 0)):
+    arm = [(-317 + dx * r, 33, 28 + dz * r) for r in range(4)]
+    southwest_excursion_parts.extend((arm, list(reversed(arm))))
+southwest_excursion_parts.extend(
+    (
+        list(reversed(last_source_branches[1][0])),
+        last_source_branches[2][0],
+        list(reversed(last_source_branches[2][0])),
+    )
+)
+for name, parts in (
+    ("western lower J04", west_excursion_parts),
+    ("southwestern lower J17", southwest_excursion_parts),
+):
+    joined = [parts[0][0]]
+    for part in parts:
+        assert joined[-1] == part[0], (joined[-1], part[0])
+        joined.extend(part[1:])
+    assert joined[0] == joined[-1]
+    verify_path(joined)
+    print(
+        "PASS joined excursion",
+        name,
+        len(joined) - 1,
+        "horizontal blocks;",
+        sum(abs(a[1] - b[1]) for a, b in pairwise(joined)),
+        "vertical blocks",
+    )

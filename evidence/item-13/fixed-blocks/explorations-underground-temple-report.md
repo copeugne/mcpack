@@ -1813,3 +1813,72 @@ Y36 support removed, requires the precise removed-support rejection, and restore
 the hypothetical set. It passes along with all local routes, fixture allocation,
 graph derivations, Ruff formatting/lint and type checks. No server experiment,
 actual removal or runtime timing is implied.
+
+## Joined eastern excursion and post-mining dungeon route declaration
+
+Begin the eastern excursion at J03(-276,33,0), after its entrance-shaft phase.
+Visit the northern rubble alcove and return, then the southern reward alcove
+and return. Follow the eastern source corridor to J06. Visit the enchanting
+room and its reward station and return to J06, retaining two separate timed
+button presses and the vine-limited transfer. Next traverse the blind-shaft
+approach, one full rim circuit, the one-block pit out and back, and return to
+J06. Finally inspect the eastern connector and each of its three local arms
+out and back, then return along the source corridor to J03. The short southern
+pocket remains an inspection detour, not a new graph link.
+
+Concatenate the existing coordinate lists with exact shared endpoints, dropping
+only the duplicate endpoint at each seam. Validate the entire resulting route
+against the final hypothetical removals and door state. This is a closed
+movement excursion whose construction/interaction phases remain additional;
+it does not assume that the remedies were free or present in the saved world.
+No selected local segment may begin by teleporting from another segment's end.
+
+For the dungeon chamber, first retain the original pre-mining flat survey.
+After all four source holes have been excavated, that same flat route is invalid
+because its supporting cells at(-288,26,-5),(-285,26,-2),(-288,26,1) and
+(-291,26,-2) have been removed. Predeclare the post-mining alternative: at exactly
+those four plan coordinates use feet26 on the already verified full Y25 stone,
+with feet27 elsewhere. Recheck both directions of the entry and closed ring,
+including every one-block descent and ascent. No hole is invisibly refilled and
+no additional block is removed. Preserve any failed clearance before alternatives.
+
+Also join the two western lower excursions using existing paths. From J04,
+follow the western source corridor to J05, inspect the northern source branch
+and return to J05, visit the western reward alcove, and return to J04. Inspect
+the southern lava approach and the northern descending stair/lava approach,
+returning to J04 after each. From J17, follow the western source corridor to
+J18, inspect its north/south/west capped arms and return along the corridor to
+J17. Then inspect the southern source corridor and terminal alcove and return.
+The J18 eastern arm is already traversed on arrival/departure; do not add it
+again as a separate excursion. Neither circuit crosses its rejected lava bounds.
+
+The joined routes pass with exact seam equality and identical start/end points:
+
+| Closed excursion | Horizontal blocks | Vertical blocks | Start/end |
+| --- | ---: | ---: | --- |
+| Eastern rooms, source, blind shaft and terminal inspections | 212 | 2 | J03(-276,33,0) |
+| Western lower source branches, reward and lava approaches | 114 | 12 | J04(-300,33,7) |
+| Southwestern source branches, terminal and capped arms | 86 | 0 | J17(-300,33,28) |
+| Dungeon survey after four source holes | 42 | 10 | J10(-288,27,-14) |
+
+Horizontal distance counts each cardinal step once; a stair step also contributes
+its vertical displacement. Repeated returns are intentional movements in the
+declared excursion. Only duplicated seam coordinates are removed. The eastern
+excursion includes six horizontal blocks of vine-limited door transfer in total;
+the previously fixed three-block/s transfer and two oak-button deadlines remain
+part of that phase. This route does not assert a blind operator or human time.
+
+The dungeon's post-mining horizontal length remains42, but its vertical movement
+is ten blocks rather than the original flat survey's zero. Every passage through
+an excavated station descends to full stone and climbs out; the northern station
+is also crossed by the entry/return path. This demonstrates why source-access
+construction cannot be treated as leaving the original movement geometry intact.
+No extra mining or filling was used to make the post-mining route pass.
+
+These are integrated subcircuits of the complete objective. Their common-hall
+approaches, shaft construction and travel, tower/lower-room circuit, acquisition,
+source suppression, combat and verification are still required. Do not sum these
+four rows and label the result a complete dungeon task. The post-mining dungeon
+survey also must not automatically be charged in addition to a pre-mining survey;
+the final declared task order determines which survey and source-access movements
+are actually performed.
