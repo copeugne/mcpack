@@ -301,3 +301,87 @@ worlds or runtime launches are needed. Source capture is separate and already
 bounded by the exact listed classes. Record actual time/output size. Stop and
 retain an overrun or incomplete sample. Do not extrapolate a full-run budget from
 this compact chamber to large procedural dungeons without their own size counts.
+
+## Ocean and taiga forced diagnostic declaration, 2026-09-10
+
+The [input reconciliation](fixed-blocks/repurposed-nether-temples-report.md#ocean-and-taiga-input-reconciliation)
+identifies the exact saved-geometry gap. Run one ocean and one taiga placement,
+sequentially on separate fresh hash-verified materializations. Frozen136 runtime,
+Temurin, NeoForge and untouched Item6 configuration remain mandatory. Copy each
+complete accepted source world through the existing POSIX-locked inventory check,
+verify both source and copy, and never boot the preserved source.
+
+| Root suffix | Accepted source | Seed | Placement X,Z |
+| --- | --- | --- | --- |
+| temple_ocean | full-ordinary-r1-baseline | 42 | 48,128 |
+| temple_taiga | full-mountainous-r1-baseline | 6671238423019257953 | 8,-392 |
+
+Selections: [ocean](temple-variants/ocean-selection.json) and
+[taiga](temple-variants/taiga-selection.json). Ocean reuses the control start chunk
+as a location only. Taiga selects the minimum SHA-256 of
+`world|repurposed_structures:temple_taiga|anchor_x|anchor_z` among the five eligible
+biome anchors in mountainous-r1 baseline occurrence_biomes. Winner:
+`1d1ed7498b885528d102391683f14dcaf802dc83e05940bdc768ccc403128fe2`,
+recorded biome`biomesoplenty:redwood_forest`. This anchor is at Y-33, not a measured
+surface biome; terrain height and actual placement context must be retained.
+No post-outcome coordinate substitution or repeated attempt search is permitted.
+
+Use the registered Structure.generate and StructureStart.placeInChunk operations
+used by pinned PlaceCommand.placeStructure, retaining world seed, generator,
+random state, template manager and actual terrain. The command's always-true biome
+predicate bypasses biome eligibility and natural spacing, including Sparse. Y0
+is only a command-position placeholder; the root determines terrain height.
+Do not relabel this as natural generation. Record the single generated start NBT
+and envelope before placing that same start once per intersecting chunk. Preserve
+incidental terrain/structure overlap and all processor randomness. Do not clear
+terrain, force palette outcomes or claim independent repeated layouts.
+
+The existing template-only probe cannot invoke this root's height/assembly logic.
+Add only this two-root branch to its existing lifecycle; reuse its attachment,
+materialization, frozen-config and failure handling. Before placement require a
+valid start and envelope no larger than32 blocks per axis, lying within the3x3
+chunk region centered on the selected chunk. Preload those nine already-covered
+chunks. A mismatch is a retained failure, not grounds to expand the query.
+After clean flush/stop, use a hash-verified backup/restore and the existing saved
+block decoder to retain the envelope plus3 on each side, its block entities and
+surface heights. Maximum54,872 cells per case (38 cubed); no immediate-versus-saved
+block equality is claimed by this placement-only capture. Saved state is the
+quality input; start NBT records the forced assembly rather than a saved natural
+start registry entry. Local water/archaeology and terrain access remain unmeasured
+until that saved extraction is integrated.
+
+Runtime limit600 seconds per instance,120-second explicit clean-exit allowance,
+30-second probe work, no shared-port concurrency. Existing runtime materialization
+is about1.1GB per instance; accepted source worlds are428,092,106 and436,845,509
+bytes. Allocate8GiB combined including captures, archives and tested restores,
+with5GiB free-space floor (27,783,442,432 bytes available at declaration). New
+compressed block output cap10MiB total. Stop before another run if space or time
+limits fail. Preserve every failure; do not tune or regenerate accepted evidence.
+Implementation/source integration cap45 minutes starting18:39:51 UTC. Each later
+whole-case quality/model batch receives its own recorded analysis/delivery clock;
+this capture does not predict that cost. No player, equipment, combat or timed
+traversal experiment is part of the diagnostic. Human/realized outcomes remain
+NOT MEASURED. Predeclare any fluid movement treatment before dependent timing.
+
+Producer validation: Ruff, formatting and Basedpyright pass. Pinned javac with
+`-classpath /tmp/item13-overworld-probe-compile -Xlint:all -Werror` compiles the
+existing attachment entrypoint plus Item13TempleProbe. An initial ad hoc compile
+without explicit classpath failed on an inherited host classpath warning; the
+producer already supplies an explicit classes directory and needed no correction.
+The generation sequence is directly inspectable with pinned javap:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar net.minecraft.server.commands.PlaceCommand
+```
+
+Inspect `placeStructure`, `lambda$placeStructure$17` and
+`lambda$placeStructure$18`: generation, true biome predicate and per-chunk clipping.
+The JAR identity is the existing pinned SRG SHA-256
+`26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71`.
+Runtime execution remains unverified until the capture/lifecycle results exist.
+Planned commands, not yet executed at producer preparation:
+
+```sh
+uv run python -m evidence.item-13.collision.run evidence/raw/item13/ocean-temple-r1 instances/item13-ocean-temple-r1 --overworld-temple ocean
+uv run python -m evidence.item-13.collision.run evidence/raw/item13/taiga-temple-r1 instances/item13-taiga-temple-r1 --overworld-temple taiga
+```

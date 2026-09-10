@@ -37,15 +37,19 @@ public final class Item13TempleProbe {
         Map<?,?> plan = (Map<?,?>) gsonType.getMethod("fromJson",String.class,Class.class)
             .invoke(gson,selection,Object.class);
         List<?> selected = (List<?>) plan.get("selected");
+        boolean overworld = selected.size() == 1
+            && ((Map<?,?>)selected.get(0)).containsKey("structure");
         boolean basalt = selected.size() == 1
             && BASALT.equals(((Map<?,?>)selected.get(0)).get("template"));
-        if (!basalt && selected.size() != 4)
+        if (!overworld && !basalt && selected.size() != 4)
             throw new IllegalArgumentException("Four temple cases or one Basalt case required");
         if (!basalt && selected.stream().anyMatch(e -> BASALT.equals(((Map<?,?>)e).get("template"))))
             throw new IllegalArgumentException("Basalt cannot be mixed into the temple suite");
         List<Map<String,Object>> cases = new ArrayList<>();
         Map<String,Object> result = new LinkedHashMap<>();
-        result.put("method","Forced template placement with registered processor; not natural starts or gameplay");
+        result.put("method",overworld
+            ? "Forced registered-structure placement; bypasses natural spacing/biome selection; not gameplay"
+            : "Forced template placement with registered processor; not natural starts or gameplay");
         result.put("cases",cases);
         result.put("rejection_reason","Incomplete placement experiment");
         try {
@@ -56,10 +60,12 @@ public final class Item13TempleProbe {
                 List<CompletableFuture<?>> pending = chunks(server,loader,(Map<?,?>)entry);
                 CompletableFuture.allOf(pending.toArray(new CompletableFuture<?>[0]))
                     .get(Math.max(1,deadline-System.nanoTime()),TimeUnit.NANOSECONDS);
-                FutureTask<Map<String,Object>> query = new FutureTask<>(() -> place(server,loader,(Map<?,?>)entry,gson));
+                FutureTask<Map<String,Object>> query = new FutureTask<>(() -> overworld
+                    ? placeStructure(server,loader,(Map<?,?>)entry,destination)
+                    : place(server,loader,(Map<?,?>)entry,gson));
                 server.getClass().getMethod("execute",Runnable.class).invoke(server,query);
                 cases.add(query.get(Math.max(1,deadline-System.nanoTime()),TimeUnit.NANOSECONDS));
-                // Only a successful, read-back-verified case permits the next placement.
+                // Only a successful case permits the next declared placement.
             }
             result.put("rejection_reason",null);
         } catch (Exception error) {
@@ -75,14 +81,22 @@ public final class Item13TempleProbe {
             Map<?,?> input) throws Exception {
         Class<?> key = type(loader,"net.minecraft.resources.ResourceKey");
         Class<?> levelType = type(loader,"net.minecraft.world.level.Level");
+        boolean overworld = input.containsKey("structure");
         Object level = server.getClass().getMethod("getLevel",key)
-            .invoke(server,levelType.getField("NETHER").get(null));
-        if (level == null) throw new IllegalStateException("Nether missing");
+            .invoke(server,levelType.getField(overworld ? "OVERWORLD" : "NETHER").get(null));
+        if (level == null) throw new IllegalStateException("Selected dimension missing");
         Object source = level.getClass().getMethod("getChunkSource").invoke(level);
         Class<?> status = type(loader,"net.minecraft.world.level.chunk.status.ChunkStatus");
         Method request = source.getClass().getMethod("getChunkFuture",int.class,int.class,status,boolean.class);
         List<?> origin = (List<?>)input.get("origin");
         int x = ((Number)origin.get(0)).intValue(), z = ((Number)origin.get(2)).intValue();
+        if (overworld) {
+            List<CompletableFuture<?>> pending = new ArrayList<>();
+            for (int cx = Math.floorDiv(x,16)-1; cx <= Math.floorDiv(x,16)+1; cx++)
+                for (int cz = Math.floorDiv(z,16)-1; cz <= Math.floorDiv(z,16)+1; cz++)
+                    pending.add((CompletableFuture<?>)request.invoke(source,cx,cz,status.getField("FULL").get(null),true));
+            return pending;
+        }
         int size = switch ((String)input.get("template")) {
             case "adorabuild_structures:blackstone_temple_small_1" -> 7;
             case BASALT -> 7;
@@ -208,4 +222,100 @@ public final class Item13TempleProbe {
         row.put("elapsed_seconds",(System.nanoTime()-begun)/1_000_000_000.0);
         return row;
     }
+    /** Same generation/placement sequence as PlaceCommand, retaining the actual start. */
+    private static Map<String,Object> placeStructure(Object server, ClassLoader loader,
+            Map<?,?> input, Path destination) throws Exception {
+        String root = (String)input.get("structure");
+        if (!List.of("repurposed_structures:temple_ocean", "repurposed_structures:temple_taiga").contains(root))
+            throw new IllegalArgumentException("Undeclared structure");
+        List<?> origin = (List<?>)input.get("origin");
+        int x = ((Number)origin.get(0)).intValue(), z = ((Number)origin.get(2)).intValue();
+        boolean ocean = root.endsWith("_ocean");
+        if (x != (ocean ? 48 : 8) || z != (ocean ? 128 : -392)
+                || ((Number)origin.get(1)).intValue() != 0)
+            throw new IllegalArgumentException("Undeclared origin");
+        Class<?> levelType = type(loader,"net.minecraft.world.level.Level");
+        Class<?> serverLevel = type(loader,"net.minecraft.server.level.ServerLevel");
+        Class<?> keyType = type(loader,"net.minecraft.resources.ResourceKey");
+        Object level = server.getClass().getMethod("getLevel",keyType)
+            .invoke(server,levelType.getField("OVERWORLD").get(null));
+        if (level == null) throw new IllegalStateException("Overworld missing");
+        long seed = (Long)serverLevel.getMethod("getSeed").invoke(level);
+        if (seed != (ocean ? 42L : 6671238423019257953L))
+            throw new IllegalStateException("Wrong source seed");
+        Object access = server.getClass().getMethod("registryAccess").invoke(server);
+        Class<?> accessType = type(loader,"net.minecraft.core.RegistryAccess");
+        Object registryKey = type(loader,"net.minecraft.core.registries.Registries").getField("STRUCTURE").get(null);
+        Object registry = accessType.getMethod("registryOrThrow",keyType).invoke(access,registryKey);
+        Class<?> idType = type(loader,"net.minecraft.resources.ResourceLocation");
+        Object id = idType.getMethod("parse",String.class).invoke(null,root);
+        Object structure = type(loader,"net.minecraft.core.Registry").getMethod("get",idType).invoke(registry,id);
+        if (structure == null) throw new IllegalStateException("Missing registered structure");
+        Object source = serverLevel.getMethod("getChunkSource").invoke(level);
+        Object generator = source.getClass().getMethod("getGenerator").invoke(source);
+        Class<?> generatorType = type(loader,"net.minecraft.world.level.chunk.ChunkGenerator");
+        Object biomes = generatorType.getMethod("getBiomeSource").invoke(generator);
+        Object randomState = source.getClass().getMethod("randomState").invoke(source);
+        Object manager = serverLevel.getMethod("getStructureManager").invoke(level);
+        Class<?> chunkType = type(loader,"net.minecraft.world.level.ChunkPos");
+        int cx = Math.floorDiv(x,16), cz = Math.floorDiv(z,16);
+        Object chunk = chunkType.getConstructor(int.class,int.class).newInstance(cx,cz);
+        Class<?> structureType = type(loader,"net.minecraft.world.level.levelgen.structure.Structure");
+        Object start = structureType.getMethod("generate",accessType,generatorType,
+            type(loader,"net.minecraft.world.level.biome.BiomeSource"),
+            type(loader,"net.minecraft.world.level.levelgen.RandomState"),
+            type(loader,"net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager"),
+            long.class,chunkType,int.class,type(loader,"net.minecraft.world.level.LevelHeightAccessor"),
+            java.util.function.Predicate.class).invoke(structure,access,generator,biomes,randomState,
+                manager,seed,chunk,0,level,(java.util.function.Predicate<Object>)(ignored -> true));
+        Class<?> startType = type(loader,"net.minecraft.world.level.levelgen.structure.StructureStart");
+        if (!(Boolean)startType.getMethod("isValid").invoke(start))
+            throw new IllegalStateException("Forced start is invalid");
+        Object box = startType.getMethod("getBoundingBox").invoke(start);
+        Class<?> boxType = type(loader,"net.minecraft.world.level.levelgen.structure.BoundingBox");
+        List<Integer> bounds = new ArrayList<>();
+        for (String name : List.of("minX","minY","minZ","maxX","maxY","maxZ"))
+            bounds.add((Integer)boxType.getMethod(name).invoke(box));
+        for (int axis=0; axis<3; axis++)
+            if (bounds.get(axis+3)-bounds.get(axis)+1 > 32)
+                throw new IllegalStateException("Envelope exceeds declared size: "+bounds);
+        if (bounds.get(0)-3 < (cx-1)*16 || bounds.get(3)+3 > (cx+2)*16-1
+                || bounds.get(2)-3 < (cz-1)*16 || bounds.get(5)+3 > (cz+2)*16-1)
+            throw new IllegalStateException("Padded envelope escapes declared chunk window: "+bounds);
+        int min = (Integer)levelType.getMethod("getMinBuildHeight").invoke(level);
+        int max = (Integer)levelType.getMethod("getMaxBuildHeight").invoke(level);
+        if (bounds.get(1)-3 < min || bounds.get(4)+3 >= max)
+            throw new IllegalStateException("Padded envelope escapes build height");
+        Class<?> contextType = type(loader,"net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext");
+        Object context = contextType.getMethod("fromLevel",serverLevel).invoke(null,level);
+        Object tag = startType.getMethod("createTag",contextType,chunkType).invoke(start,context,chunk);
+        Path startPath = destination.resolveSibling("forced-start.nbt");
+        try (var out = new java.io.DataOutputStream(Files.newOutputStream(startPath,StandardOpenOption.CREATE_NEW))) {
+            type(loader,"net.minecraft.nbt.NbtIo").getMethod("write",type(loader,"net.minecraft.nbt.CompoundTag"),java.io.DataOutput.class)
+                .invoke(null,tag,out);
+        }
+        Object structureManager = serverLevel.getMethod("structureManager").invoke(level);
+        Object random = levelType.getMethod("getRandom").invoke(level);
+        Method place = startType.getMethod("placeInChunk",type(loader,"net.minecraft.world.level.WorldGenLevel"),
+            type(loader,"net.minecraft.world.level.StructureManager"),generatorType,
+            type(loader,"net.minecraft.util.RandomSource"),boxType,chunkType);
+        int placed = 0;
+        for (int px=Math.floorDiv(bounds.get(0),16); px<=Math.floorDiv(bounds.get(3),16); px++)
+            for (int pz=Math.floorDiv(bounds.get(2),16); pz<=Math.floorDiv(bounds.get(5),16); pz++) {
+                Object targetChunk = chunkType.getConstructor(int.class,int.class).newInstance(px,pz);
+                Object clip = boxType.getConstructor(int.class,int.class,int.class,int.class,int.class,int.class)
+                    .newInstance(px*16,min,pz*16,px*16+15,max,pz*16+15);
+                place.invoke(start,level,structureManager,generator,random,clip,targetChunk);
+                placed++;
+            }
+        Map<String,Object> result = new LinkedHashMap<>();
+        result.put("root",root); result.put("dimension","minecraft:overworld");
+        result.put("seed",Long.toString(seed)); result.put("origin",origin);
+        result.put("envelope",bounds); result.put("start_nbt","forced-start.nbt");
+        result.put("placed_chunks",placed);
+        result.put("method","Registered root forced at selected chunk; natural spacing/biome predicate bypassed");
+        System.out.println("ITEM13_TEMPLE_PHASE placed-root "+root+" "+bounds);
+        return result;
+    }
+
 }

@@ -27,8 +27,9 @@ INPUT = ROOT / "evidence/item-13/fixed-blocks/mns-medium-house.json.gz"
 INPUT_HASH = "a61dc454a22b0058d765da277fbd6c7e450dc597f1ff8b42da66b288247e7496"
 
 
-def copy_temple_source(target: Path) -> dict[str, str]:
-    world_name = "full-ordinary-r1-baseline"
+def copy_temple_source(
+    target: Path, world_name: str = "full-ordinary-r1-baseline"
+) -> dict[str, str]:
     custody = ROOT / "evidence/raw/item10" / f"{world_name}-custody"
     manifest_raw = read_bound(ROOT / "evidence/item-10" / world_name / "archive-manifest.json")
     archive_manifest = ArchiveManifest.model_validate_json(manifest_raw)
@@ -69,7 +70,21 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     basalt_variant: bool = False,
     shaft_motion: bool = False,
     shaft_motion_full: bool = False,
+    overworld_temple: str | None = None,
 ) -> None:
+    if overworld_temple is not None:
+        if overworld_temple not in {"ocean", "taiga"} or any(
+            (
+                shaft_motion,
+                shaft_motion_full,
+                basalt_variant,
+                temple_variants,
+                spawner_lookup,
+                second_house,
+            )
+        ):
+            raise ValueError("Select exactly one declared Overworld temple probe")
+        temple_variants = True
     if shaft_motion_full:
         if shaft_motion:
             raise ValueError("Select one shaft case")
@@ -101,6 +116,12 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             / "evidence/item-13/fixed-blocks/explorations-underground-temple-ordinary-r1.json.gz"
         )
         input_hash = "faed7df352cdcfc1938fb4d49f4f84b2519ad4f1ee55044fa661ae55e6f81d5c"
+    if overworld_temple is not None:
+        input_file = temple_source / f"{overworld_temple}-selection.json"
+        input_hash = {
+            "ocean": "5874cf1669ed54daf9a323f3f2dac3272a93a1ee9f65e0b8084ea4e53000f31f",
+            "taiga": "1403a001f66198994379084139b36334cf76cba59906c25b7fdf269ea13f60bd",
+        }[overworld_temple]
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
@@ -132,7 +153,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             frozen_manifest=ROOT / "evidence/item-6/generated-config-manifest.json",
             config_audit=ROOT / "evidence/item-6/config-audit.json",
             java_home=ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1",
-            role="ordinary",
+            role="mountainous" if overworld_temple == "taiga" else "ordinary",
             target=target,
             log_path=output / "console.log",
             captured_config=output / "configuration",
@@ -144,7 +165,12 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     try:
         report["preflight"] = json.loads(prepare_control(request).model_dump_json())
         if temple_variants or shaft_motion:
-            report["source_world"] = copy_temple_source(target)
+            report["source_world"] = copy_temple_source(
+                target,
+                "full-mountainous-r1-baseline"
+                if overworld_temple == "taiga"
+                else "full-ordinary-r1-baseline",
+            )
         check_ports(target / "server.properties")
         java, _ = validate_java_runtime(request.runtime.java_home)
         classes = output / "classes"
@@ -248,6 +274,7 @@ if __name__ == "__main__":
     mode.add_argument("--basalt-variant", action="store_true")
     mode.add_argument("--shaft-motion", action="store_true")
     mode.add_argument("--shaft-motion-full", action="store_true")
+    mode.add_argument("--overworld-temple", choices=("ocean", "taiga"))
     args = parser.parse_args()
     run(
         args.output.absolute(),
@@ -258,4 +285,5 @@ if __name__ == "__main__":
         basalt_variant=args.basalt_variant,
         shaft_motion=args.shaft_motion,
         shaft_motion_full=args.shaft_motion_full,
+        overworld_temple=args.overworld_temple,
     )

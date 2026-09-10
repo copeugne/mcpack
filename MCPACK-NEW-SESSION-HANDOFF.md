@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `7e168c01`.
-Soul is delivered; the following input reconciliation is prepared on this branch.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `3c234f30`.
+Ocean/taiga producer and bounded declaration are prepared on this branch.
 Verify current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -168,9 +168,9 @@ No server or extraction process is active. Do not repeat the five accepted reads
 
 Next: use the [ocean/taiga reconciliation](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-and-taiga-input-reconciliation).
 Ocean has two omit-Sparse control starts; neither root has a baseline or earlier
-indexed candidate. Do not repeat this matching. Finish exact two-root placement
-conditions and resource bounds before the smallest fresh diagnostic. Retain water/
-terrain/model gaps. No new navigation framework is justified. ETA remains UNKNOWN.
+indexed candidate. Do not repeat this matching. The [two-root declaration](evidence/item-13/protocol.md#ocean-and-taiga-forced-diagnostic-declaration-2026-09-10)
+and existing probe now select ocean ordinary(48,128), taiga mountainous(8,-392).
+Commit producer, run ocean first, retain failures and saved-state gaps. ETA UNKNOWN.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet
