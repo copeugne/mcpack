@@ -70,7 +70,7 @@ def select():  # noqa: ANN201
     return chosen, len(candidates)
 
 
-def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PLR0915
+def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201
     name = case["world"]
     custody = ROOT / "evidence/raw/item10" / f"{name}-custody"
     world = custody / "restored-world/world"
@@ -82,6 +82,15 @@ def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PL
         r.sha256 for r in manifest.files if r.relative_path == "world.tar.gz"
     ):
         raise ValueError("nested world archive identity mismatch")
+    return {
+        **extract_saved(case, world, backup, voxel_budget),
+        "world_backup_sha256": entry.sha256,
+        "archive_manifest_sha256": hashlib.sha256(manifest_raw).hexdigest(),
+    }
+
+
+def extract_saved(case, world, backup, voxel_budget, start=None):  # noqa: ANN001, ANN201, C901, PLR0912
+    """Read verified saved cells for natural starts or a supplied forced start."""
     envelope = case["envelope"]
     bounds = [v - 3 if i < 3 else v + 3 for i, v in enumerate(envelope)]
     volume = (bounds[3] - bounds[0] + 1) * (bounds[4] - bounds[1] + 1) * (bounds[5] - bounds[2] + 1)
@@ -100,7 +109,7 @@ def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PL
     }
     chunks = {}
     heights = {}
-    start = None
+    natural_start = start is None
     with _world_backup_lock(world):
         verify_world(world, backup["world_files"])
         for rx, rz in sorted({(x // 32, z // 32) for x, z in needed}):
@@ -117,7 +126,7 @@ def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PL
                 chunks[key] = chunk
                 maps = {r.name: r.values for r in record.heightmaps}
                 heights[key] = maps["WORLD_SURFACE"]
-                if key == (case["chunk_x"], case["chunk_z"]):
+                if natural_start and key == (case["chunk_x"], case["chunk_z"]):
                     start = chunk["structures"]["starts"][case["root"]]
         if set(chunks) != needed or start is None:
             raise ValueError("incomplete pilot geometry")
@@ -161,8 +170,6 @@ def extract(case, voxel_budget=3757):  # noqa: ANN001, ANN201, C901, PLR0912, PL
     indexes = {state: i for i, state in enumerate(palette)}
     return {
         **case,
-        "world_backup_sha256": entry.sha256,
-        "archive_manifest_sha256": hashlib.sha256(manifest_raw).hexdigest(),
         "bounds": bounds,
         "voxel_count": volume,
         "palette": [json.loads(state) for state in palette],

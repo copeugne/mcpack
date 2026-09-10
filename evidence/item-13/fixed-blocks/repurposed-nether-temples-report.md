@@ -1196,3 +1196,137 @@ The preceding soul delivery completed18:29:05 UTC,129 seconds after its recorded
 analysis end, within its15-minute delivery cap. Input reconciliation is separate
 from whole-case assessment effort and cannot predict the cost of the two missing
 cases. No server, extraction or controlled experiment ran in this reconciliation.
+
+## Ocean forced placement and saved input
+
+Producer`c88920370c96a35d5a9fff881f10e5a7f780fd0a` ran the declared ocean command
+on2026-09-10. [Capture](../temple-variants/ocean-r1-capture.json.gz) records238.869s,
+readiness, correlated flush, clean exit0, no process-group kill and no rejection.
+[Projection](../temple-variants/ocean-r1-temple-variants.json.gz) records one forced
+root, seed42, chunk(3,8), envelope[41,-3,122,55,10,133], four placement chunks.
+The [start NBT](../temple-variants/ocean-r1-forced-start.nbt.gz) names one
+`repurposed_structures:temples/ocean` piece, COUNTERCLOCKWISE_90, the registered
+ocean_randomizer processor and origin(41,-3,133). This matches the contextual
+control envelope, not necessarily its blocks, loot or entities. No natural start
+occurrence or observed player result is claimed.
+
+The [retention manifest](../temple-variants/ocean-r1-retention.json) binds the six
+raw/canonical outputs and explicit console bind-endpoint redaction. Full originals
+remain in`evidence/raw/item13/ocean-temple-r1/`. The stopped world backup has504
+files,162,713,156 compressed bytes, SHA-256
+`277f2fc2fdd3b59ef16c31e9bfdc48bcf3b9ad736870b2f861d03596c26de5d5`.
+Its inventory receipt hash is
+`295779131dbf52e4e329e2221a5acc3aae2b90f0b3a26757f6e7b4119f76c412`.
+The [fresh restore](../temple-variants/ocean-r1-world-restore.json) verifies that
+archive. No server remains active. External custody is recorded below; complete
+local assessment remains required. Do not repeat placement to reproduce this input.
+
+The saved decoder was factored directly from existing measure.extract so both
+natural cases and this forced start use identical block/height/entity decoding,
+full chunk/section requirements, POSIX lock and before/after inventory checks.
+This avoids copying the existing extraction loop. The caller binds the forced
+start and backup hashes; supplied NBT is not misrepresented as a natural start.
+Execute the following once to retain all7,560 padded cells. Output must be absent.
+
+```sh
+uv run python - <<'OCEAN_SAVED'
+import gzip,hashlib,importlib,json,time
+from pathlib import Path
+from tools.analyze_route_opportunities import read_bound
+from mcpack_evidence.item7_nbt import decode_compound_nbt
+measure=importlib.import_module('evidence.item-13.measure')
+backup_hash='295779131dbf52e4e329e2221a5acc3aae2b90f0b3a26757f6e7b4119f76c412'
+backup=json.loads(read_bound(Path('evidence/raw/item13/ocean-r1-custody/world-backup.json'),backup_hash))
+assert backup['archive_sha256']=='277f2fc2fdd3b59ef16c31e9bfdc48bcf3b9ad736870b2f861d03596c26de5d5'
+raw=gzip.decompress(read_bound(Path('evidence/item-13/temple-variants/ocean-r1-forced-start.nbt.gz'),'778b62edbb3ab869f7a1349e892dcee9813f0f8bba5bd894b797c5f6d9deba22'))
+assert hashlib.sha256(raw).hexdigest()=='be51010ec29f1b8a8152549c179a42750be7df2f1119a42f091784effeaf7cdc'
+start=decode_compound_nbt(raw)
+assert start['id']=='repurposed_structures:temple_ocean' and (start['ChunkX'],start['ChunkZ'])==(3,8)
+assert len(start['Children'])==1 and start['Children'][0]['BB']==[41,-3,122,55,10,133]
+case={'root':start['id'],'dimension':'minecraft:overworld','world':'item13-ocean-temple-r1-forced','chunk_x':3,'chunk_z':8,'envelope':[41,-3,122,55,10,133],'evidence_class':'forced registered structure, not natural occurrence','world_backup_sha256':backup_hash}
+begun=time.monotonic()
+row=measure.extract_saved(case,Path('evidence/raw/item13/ocean-r1-custody/restored-world/world'),backup,7560,start)
+output=Path('evidence/item-13/fixed-blocks/repurposed-temple-ocean.json.gz')
+data=gzip.compress((json.dumps({'cases':[row],'human_metrics':'NOT MEASURED'},sort_keys=True,separators=(',',':'))+'\n').encode(),mtime=0)
+with output.open('xb') as stream: stream.write(data)
+print(json.dumps({'seconds':time.monotonic()-begun,'cells':row['voxel_count'],'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'block_entities':len(row['block_entities'])}))
+OCEAN_SAVED
+```
+
+Saved extraction completed in52.151142s:7,560 cells,3,703 compressed bytes,
+SHA-256`ac7606a8f05f567ec5b91e1e534b380a892082eb001a18772ba7fdffeb513efb`.
+All required chunks/sections and before/after world inventories pass. The prior
+natural pilot comparison against producerc8892037 remains identical for3,315
+cells. The helper change, retention option and Python types/lint pass; unused
+complexity suppressions exposed by moving the existing loop were removed.
+
+The saved case contains13 block entities: three ordinary Quark prismarine chests
+at(44,-2,123),(49,-2,124),(51,-2,124), all with the ocean chest table, and ten
+brushable blocks with`repurposed_structures:archaeology/temple_ocean`. Their exact
+coordinates/NBT are in the [saved projection](repurposed-temple-ocean.json.gz).
+These are unresolved table assignments, not generated/acquired contents. No
+ordinary spawner is present. Entity-region contents were not extracted, so the
+source pufferfish potential remains separate from realized saved/runtime entities.
+There are4,420 water-block cells in the padded7,560-cell observation and no air
+palette entry; additional waterlogged blocks are not included in that water-block
+count. WORLD_SURFACE is62 at all180 envelope columns, not a measured approach.
+This confirms a material underwater treatment is required before route/timing
+acceptance. Room allocation, routes, full task, hazards, finale, bypass and replay
+assessment remain UNRESOLVED. Raw acquisition alone does not close this variant.
+
+## Ocean diagnostic custody
+
+Archive`item13-ocean-temple-c8892037.tar.gz` contains245 files,
+168,673,660 uncompressed bytes and162,422,078 compressed bytes, SHA-256
+`230a7c0ffd719ad43708fc6a570fc803dfc5610d0c5eec27be7c90049affb864`.
+The [manifest](../temple-variants/ocean-r1-archive-manifest.json) binds the complete
+241-file capture plus world archive, backup inventory, world restore receipt and
+saved projection. [Local restore](../temple-variants/ocean-r1-local-restore.json),
+[downloaded member restore](../temple-variants/ocean-r1-download-restore.json) and
+[downloaded world restore](../temple-variants/ocean-r1-download-world-restore.json)
+retain their exact integrity results. The [published release](https://github.com/copeugne/mcpack/releases/tag/item13-ocean-temple-c8892037)
+and [release metadata](../temple-variants/ocean-r1-release.json) bind both assets;
+the fetched immutable tag resolves to producerc88920370c96a35d5a9fff881f10e5a7f780fd0a.
+Local custody uses1,850,163,834 bytes before the downloaded-block comparison;
+the instance uses1,103,588,376 bytes, within the combined8GiB declaration.
+
+Executed staging copied the complete `evidence/raw/item13/ocean-temple-r1/`
+to `evidence/raw/item13/ocean-r1-custody/publish/r1/`, then unchanged
+`world.tar.gz`, `world-backup.json`,
+`evidence/item-13/temple-variants/ocean-r1-world-restore.json` as`world-restore.json`
+and `evidence/item-13/fixed-blocks/repurposed-temple-ocean.json.gz` as
+`saved-blocks.json.gz` into publish. The245-file set has no symlinks. This is direct
+copying of immutable inputs, not a new transformation. A line-bounded scan found
+no nonempty credential assignments in capture text/configuration. The initial
+scan used newline-matching whitespace and falsely matched an empty property;
+correcting that scan preserved the raw bytes and found no nonempty assignment.
+
+Executed custody commands (use absent target paths for reproduction):
+
+```sh
+uv run python -m evidence.item-13.collision.retain --overworld-temple ocean
+uv run python -m tools.manage_item4_environment backup --world instances/item13-ocean-temple-r1/world --archive evidence/raw/item13/ocean-r1-custody/world.tar.gz --receipt evidence/raw/item13/ocean-r1-custody/world-backup.json
+uv run python -m tools.manage_item4_environment restore --archive evidence/raw/item13/ocean-r1-custody/world.tar.gz --sha256 277f2fc2fdd3b59ef16c31e9bfdc48bcf3b9ad736870b2f861d03596c26de5d5 --target evidence/raw/item13/ocean-r1-custody/restored-world
+uv run python -m tools.archive_item7_evidence create --root evidence/raw/item13/ocean-r1-custody/publish --archive evidence/raw/item13/ocean-r1-custody/item13-ocean-temple-c8892037.tar.gz --manifest evidence/item-13/temple-variants/ocean-r1-archive-manifest.json --revision c88920370c96a35d5a9fff881f10e5a7f780fd0a
+uv run python -m tools.archive_item7_evidence restore --archive evidence/raw/item13/ocean-r1-custody/item13-ocean-temple-c8892037.tar.gz --manifest evidence/item-13/temple-variants/ocean-r1-archive-manifest.json --target evidence/raw/item13/ocean-r1-custody/restored-local --receipt evidence/item-13/temple-variants/ocean-r1-local-restore.json
+gh release download item13-ocean-temple-c8892037 --repo copeugne/mcpack --dir evidence/raw/item13/ocean-r1-custody/downloaded
+cmp evidence/item-13/temple-variants/ocean-r1-archive-manifest.json evidence/raw/item13/ocean-r1-custody/downloaded/ocean-r1-archive-manifest.json
+uv run python -m tools.archive_item7_evidence restore --archive evidence/raw/item13/ocean-r1-custody/downloaded/item13-ocean-temple-c8892037.tar.gz --manifest evidence/item-13/temple-variants/ocean-r1-archive-manifest.json --target evidence/raw/item13/ocean-r1-custody/restored-download --receipt evidence/item-13/temple-variants/ocean-r1-download-restore.json
+uv run python -m tools.manage_item4_environment restore --archive evidence/raw/item13/ocean-r1-custody/restored-download/world.tar.gz --sha256 277f2fc2fdd3b59ef16c31e9bfdc48bcf3b9ad736870b2f861d03596c26de5d5 --target evidence/raw/item13/ocean-r1-custody/downloaded-world
+git fetch origin tag item13-ocean-temple-c8892037
+git rev-parse item13-ocean-temple-c8892037
+```
+
+Downloaded-world verification reuses the OCEAN_SAVED command above with backup
+path`ocean-r1-custody/restored-download/world-backup.json`, world path
+`ocean-r1-custody/downloaded-world/world` and absent output
+`evidence/raw/item13/ocean-r1-custody/downloaded-blocks.json.gz`. All declared
+hashes/start/root/bounds checks stay unchanged. Compare that output byte for byte
+with`evidence/item-13/fixed-blocks/repurposed-temple-ocean.json.gz`.
+
+The downloaded projection reproduced byte for byte in35.468794s, all7,560 cells
+and13 block entities equal, with the accepted compressed SHA-256 unchanged.
+The declared implementation interval18:39:51 through verified producer delivery
+18:44:56 UTC was305 seconds, within45 minutes. This excludes earlier input
+reconciliation. Runtime and extraction costs above are not whole-case quality
+assessment effort; no completion ETA is inferred from them. Taiga remains unrun.

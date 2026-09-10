@@ -23,6 +23,7 @@ if __name__ == "__main__":
     _ = mode.add_argument("--temple-attempt", type=int, choices=(1, 2, 3, 4, 5))
     _ = mode.add_argument("--basalt-attempt", type=int, choices=(1,))
     _ = mode.add_argument("--shaft-attempt", type=int, choices=(1, 2))
+    _ = mode.add_argument("--overworld-temple", choices=("ocean", "taiga"))
     args = parser.parse_args()
     spawner_lookup = cast("bool", args.spawner_lookup)
     raw_directory = ROOT / "evidence/raw/item13/spawner-lookup-r1" if spawner_lookup else RAW
@@ -50,6 +51,12 @@ if __name__ == "__main__":
         projection = "shaft-motion.json" if shaft_attempt == 1 else "shaft-motion-full.json"
         destination_directory = DESTINATION.parent / "shaft-motion"
         destination_directory.mkdir(exist_ok=True)
+    overworld = cast("str | None", args.overworld_temple)
+    if overworld is not None:
+        raw_directory = ROOT / f"evidence/raw/item13/{overworld}-temple-r1"
+        prefix = f"{overworld}-r1-"
+        projection = "temple-variants.json"
+        destination_directory = DESTINATION.parent / "temple-variants"
     manifest: dict[str, object] = {}
     for name in (
         projection,
@@ -57,6 +64,7 @@ if __name__ == "__main__":
         "console.log",
         "dimension-probe.log",
         "build.log",
+        *(("forced-start.nbt",) if overworld is not None else ()),
     ):
         raw = (raw_directory / name).read_bytes()
         published = raw

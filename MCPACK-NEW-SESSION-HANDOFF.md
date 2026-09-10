@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `3c234f30`.
-Ocean/taiga producer and bounded declaration are prepared on this branch.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed producer: `c8892037`.
+Ocean placement, saved input and custody result are prepared on this branch.
 Verify current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -163,14 +163,14 @@ preserves its90-minute overrun, failed routes and later delivery interruption.
 All five selected Nether variants have complete local quality/model results.
 Warped retains construction/double/trapped chests; wasteland retains fortress
 overlap. Soul retains fractional floors, sand slowdown and the skeleton task.
-Ocean/taiga input matching is resolved below; new samples and assessments remain.
+Ocean input is acquired; taiga placement and both complete assessments remain.
 No server or extraction process is active. Do not repeat the five accepted reads.
 
 Next: use the [ocean/taiga reconciliation](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-and-taiga-input-reconciliation).
 Ocean has two omit-Sparse control starts; neither root has a baseline or earlier
 indexed candidate. Do not repeat this matching. The [two-root declaration](evidence/item-13/protocol.md#ocean-and-taiga-forced-diagnostic-declaration-2026-09-10)
-and existing probe now select ocean ordinary(48,128), taiga mountainous(8,-392).
-Commit producer, run ocean first, retain failures and saved-state gaps. ETA UNKNOWN.
+and probe select ocean ordinary(48,128), taiga mountainous(8,-392). Ocean r1 passed;
+use its [saved input/custody](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#ocean-forced-placement-and-saved-input). Run taiga once after delivery; retain wet-model gaps.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet
