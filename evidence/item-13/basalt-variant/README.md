@@ -1,6 +1,7 @@
 # Missing Basalt central netherite outcome
 
-Status: PREDECLARED, not yet a runtime result. Item 13 only.
+Status: runtime, saved comparison, model integration and external custody VERIFIED.
+The predeclaration below is retained. Item 13 only.
 
 The [family report](../fixed-blocks/basalt-chambers-report.md) exhausts two
 untouched-baseline assemblies and all six accepted omit-Sparse central components.
@@ -140,3 +141,8 @@ source-supported mining/drop differences and complete conditional model totals.
 Retainer/reader lint and types pass. Runtime, stopped-block verification and local
 model integration pass; external raw custody remains required and is not implied
 by these local checks. No full Item13 completion or final review is claimed.
+
+[External raw custody](custody/README.md) now passes all244 local/download members,
+the503-file downloaded world restore and byte-identical2,197-cell comparison.
+The fetched release tag resolves to the exact producer. Diagnostic durability is
+verified; full Item13 coverage and final review/merge remain outstanding.

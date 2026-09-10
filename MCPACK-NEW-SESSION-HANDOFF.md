@@ -172,7 +172,8 @@ comparison differs only at the center; conditional lodestone costs are integrate
 The [single-component netherite diagnostic](evidence/item-13/basalt-variant/README.md)
 passes r1 under producer19cd4a08:149.765s,clean flush/stop,frozen configuration,
 2,197 live/restored cells equal,271 authored cells differ only at the center.
-All central material models are integrated. No runtime remains active. Finish
-external raw custody from evidence/raw/item13/basalt-r1-custody using the existing
-archive/release/download/restore path before closing this local family increment.
+All central material models and [external custody](evidence/item-13/basalt-variant/custody/README.md)
+pass:244 members,503-file downloaded world and identical2,197-cell verification.
+No runtime remains active. Continue the remaining family/variant coverage from
+the existing inventory and accepted starts; do not repeat this completed diagnostic.
 Do not generate new survey worlds or treat15 pieces as rooms.

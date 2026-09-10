@@ -2,7 +2,8 @@
 
 Status: IN PROGRESS. This report is the authoritative local family deliverable.
 Both selected assemblies and all central material outcomes now have local
-modeled assessments. Diagnostic custody and final delivery remain pending. Item 14 is UNSTARTED.
+modeled assessments and verified diagnostic custody. Full Item13 coverage and
+final delivery remain pending. Item 14 is UNSTARTED.
 Apply the approved Item 13 definitions and modeled/inspection boundary.
 
 ## Existing evidence and predeclared sample
@@ -967,3 +968,8 @@ Local sampling, topology, complete conditional tasks and all central material
 outcomes are now integrated for this family. External diagnostic raw custody and
 full Item13 family/repetition coverage, final review/fix/thumbs-up, merge and main
 delivery remain. Do not mistake this local family result for Item13 COMPLETE.
+
+[Diagnostic custody](../basalt-variant/custody/README.md) now passes immutable
+publication, all244 local/download members,503-file downloaded world restore
+and identical2,197-cell verification. This resolves the remaining local-family
+durability dependency. The full Item13 exit/review/main-delivery gate stays open.

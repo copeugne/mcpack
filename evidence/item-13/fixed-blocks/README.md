@@ -223,20 +223,18 @@ chests; crop harvesting remains an explicitly separate optional activity.
 
 The [Nether-temple gold assessment](adorabuild-nether_temple_medium_1-report.md)
 completes the fifth selected Adorabuild case. Its49-cell authored lava basin
-requires a declared catcher/ramp for the conditional gold task. Both temples
-still need explicit debris/lodestone outcome coverage before family closure.
+requires a declared catcher/ramp for the conditional gold task. Both temples now have saved debris/lodestone diagnostics and verified
+[external custody](../temple-variants/custody/README.md); their reports integrate
+the conditional material models.
 
 
-## Basalt Chambers representative
+## Basalt Chambers two-assembly result
 
-The [two-assembly assessment](basalt-chambers-report.md) predeclares existing
-biome-diverse/ordinary r2 cases. The first raw extraction and inspected block sheet
-pass; the first case now has five validated chamber spaces, a conditional breach
-graph, supported source/reward access, trap bypass and complete87/139/221-second
-two-blaze task. Failed centerline/pickup assumptions remain preserved. Second-case
-assessment and material coverage remain.
-
-The ordinary r2 Basalt Chambers input and seven-layer view now pass as well. Its
-source/saved roles differ from the first case and are integrated in the same
-report. Second-case topology/task work and control-center material inspection
-remain; no new generation has run.
+The [assessment](basalt-chambers-report.md) integrates both predeclared baseline
+assemblies: five and12 rooms, validated breached graphs, complete conditional
+tasks, source mechanisms, trap handling, loot/dead-room/finale/replay assessment
+and retained failures. The second case's lava recesses require the declared
+two-block bridge. Central debris/lodestone/netherite outcomes are supported by
+baseline/control cubes and the single missing-material diagnostic, with
+[verified raw custody](../basalt-variant/custody/README.md). These are local family
+results under the modeled/inspection scope, not full Item13 completion.
