@@ -3075,3 +3075,62 @@ classpath entry; it ran no experiment. The existing runner already supplies an
 explicit classpath, so no host environment change was required. Python runner
 formatting, lint and type checks pass. Runtime acceptance remains unproven until
 the actual trace, lifecycle and configuration checks have completed.
+
+## Native wet-step pilot result
+
+AUTOMATED RUNTIME OBSERVATION under the predeclared manually stepped method:
+one attempted transition, one successful target landing. The actor reached
+(195.5,9.5,341.51765179554803), on ground and in water, at native step20. The
+horizontal target error is about.017652 blocks, inside the .15 criterion.
+There are21 retained states including initialization. This resolves the tested
+lateral wet transition; it does not establish the other15 rising links, descent,
+upper/lower access, ordinary world-tick behavior or an observed gameplay time.
+
+The trace shows feet Y8.92 after step1,9.496979981 after step3 and a peak near
+9.74064758 at step5. Wet contact reappears at step6 while the actor moves toward
+the higher slab, and persists through landing. This confirms why the earlier
+isolated vertical recurrence could not determine lateral landing behavior.
+The result is20 native physics steps, not an asserted one-second player task:
+the loop omitted independent world ticks, connected-client input and normal
+full player tick processing. No combat, health, loot or replay outcome was tested.
+
+The175-cell loaded-state comparison passed. Dimensions were approximately
+.600000024 by1.799999952, within the declared tolerance. Effective movement
+speed .10000000149, jump .41999998688697815, gravity .08, water efficiency0 and
+step height .6 matched the pilot. No other entity occupied the checked scope.
+These are pilot conditions, not a baseline dungeon enemy census. The actor was
+unregistered, its ephemeral identity was not retained, and cleanup completed.
+
+[Native trace](../shaft-motion/r1-shaft-motion.json.gz):1,670 compressed bytes,
+SHA-25630843845c50d094a45e55249437b19a756f55528e01cc3e6d0077440a6b4ac29.
+[Capture/lifecycle](../shaft-motion/r1-capture.json.gz) records launch revision
+d11e4a535d628575d985d648d1c0c186b8d3b7bb and probe JAR SHA-256
+28d61e20f856d36f267fb14a6a9828d4e462b950031d931530e318c2a6113b60.
+The projection's uncompressed SHA-256 is
+88239cebba7a2034ac38642efd4d4c4d90599cd677780e06f73a1800fe7c9978.
+Gson omits null fields in the native projection; successful acceptance is also
+proved by the final state's declared predicate and the capture's null rejection
+reason, not by assuming a missing field implies success.
+
+Preflight verified136 retained candidates, runtime4062d6179218916c703269f113663b1e078adebbf6d43a691e692d972e07ac50,
+and frozen configuration2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f.
+The ordinary accepted source archive/backup identities are bound in the capture.
+Readiness, correlated save-all flush, clean stop and exit0 passed; the process
+group was not killed. All228 configuration files passed with only the existing
+four permitted comment-only normalizations. Total lifecycle elapsed155.903 seconds.
+The experimental instance used1,103,541,505 bytes and raw output5,883,695 bytes,
+inside the declared2-GiB/100-MiB budgets. No server remains active.
+
+The existing retention tool now accepts this capture mode:
+`uv run python -m evidence.item-13.collision.retain --shaft-attempt 1`.
+Its [retention record](../shaft-motion/r1-retention.json) binds all five original
+and compressed projection/log files, with only the existing console bind-address
+redaction. [Raw custody](../shaft-motion/custody/README.md) retains all240 files
+and verifies local and externally downloaded restores against the exact launch
+tag. This completes this pilot's evidence delivery, not the family or Item13 gate.
+
+Next use the successful representative to resolve the remaining wet transitions
+and shaft access under a predeclared expanded case. Any additional runtime
+experiment must use another fresh hash-verified materialization. Do not reuse
+this stopped instance, extrapolate20 steps across every link without evidence,
+or call a partial slab route a complete dungeon expedition.
