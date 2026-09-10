@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `af8ba7f4`; verify subsequent assessment commits against upstream.
+checkpoint is `e21f53b6`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -148,28 +148,34 @@ the rejected native route is preserved. Two-blaze modeled totals are365/646/1086
 An independent one-stair ground-window bypass also passes. All eight components
 are covered collectively by the two assemblies. Neither model observes players.
 
-## Current next family: Slime Cave
+## Completed local Slime Cave assessment
 
 The [Slime Cave report](evidence/item-13/fixed-blocks/explorations-slime-cave-report.md)
-reuses its custom generator/processor source and selects two saved material states.
-The nonnegative first case passes extraction/view:7,938 cells,3,357 bytes,10.371408s.
-Its saved slime spawner, chest and six source marker requests are integrated.
-Source-derived size/splitting workloads distinguish authored sizes1/2/3 from
-normal finalization sizes1/2/4. They are not complete encounter-time results.
+covers both saved material states with validated routes, source suppression,
+conditional splitting workloads and explicit incidental cave evidence. Both
+complete local tasks give38..46/64..74/102..117s across approved profiles. Do not
+repeat these reads or models. Actual gameplay remains NOT MEASURED.
 
-The first local assessment now passes: one room,16 horizontal blocks,four
-support-elevation travel and a complete six-size2-parent/descendant task of
-38..46/64..74/102..117s. Six nearby parents suppress source insertion only under
-an explicit alive/in-query condition until disablement; loss of it censors this
-model. Combat engagement/pursuit is conditional, not observed AI. The chest ray
-also passes before source removal, establishing a local loot bypass.
+## Current batch: Underground Temple
 
-The negative sample now also passes:7,938 cells,3,394 bytes,28.778387s. Its
-transformed route/query/interaction model reproduces the first task metrics;
-a gravel-supported parent position is explicitly verified over deepslate. Local
-family assessment is complete. Incidental treasure urns, surrounding webbing and
-an unsupported external cave opening are retained separately, with no invented
-surrounding-cave clear or generated loot. Both source inputs remain preserved.
+The [report](evidence/item-13/fixed-blocks/explorations-underground-temple-report.md)
+and [selection](evidence/item-13/underground-temple-selection.json) predeclare two
+complete assemblies,one existing scoped large_hall_down component andone minimal
+missing-template failure. All24 existing starts are accounted for:16 fully bounded
+assemblies,six minimal missing-template cases andtwo incomplete-edge assemblies.
+The component gap is already present in full chunks of a partial case. No new
+world generation is needed. Missing source templates remain preserved failures.
+
+The first mountainous r2 read passed:322,905 cells,103,062 compressed bytes,
+31.442236s. Four saved slices were viewed. Nine explicit spawners coverfive enemy
+types; all haveDelay0. All33 temple loot assignments remain unrolled. Surrounding
+sculk is retained separately; none of22 hash-checked source palettes includes it.
+These facts are integrated in the report, not accepted topology or gameplay.
+
+Next finish the first assembly end to end: room/transition validation, source and
+sculk handling, complete conditional objective timing, hazard/finale/bypass and
+replay assessments. Only then execute the other three predeclared reads. No
+runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
 Next continue remaining family/variant coverage from the existing population and
 accepted starts. The courtyard family remains included but has no start in the

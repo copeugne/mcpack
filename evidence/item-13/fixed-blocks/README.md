@@ -251,3 +251,11 @@ material states of its custom layout. It retains the one-room dry route,
 conditional six-parent/splitting task, source suppression condition and direct
 loot bypass, with saved surrounding openings/urns separate from authored content.
 Both local models pass; full Item13 coverage/delivery remains outstanding.
+
+
+The [Underground Temple report](explorations-underground-temple-report.md) now
+retains complete24-start failure accounting and the first accepted block read.
+Two complete assemblies plus an existing scoped component cover its22 available
+templates; two missing references remain failures. The first sample records nine
+explicit spawners,33 unrolled loot assignments and surrounding sculk. Its playable
+topology and complete conditional task remain pending before further extraction.
