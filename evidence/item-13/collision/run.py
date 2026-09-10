@@ -59,14 +59,19 @@ def copy_temple_source(target: Path) -> dict[str, str]:
     }
 
 
-def run(  # noqa: C901, PLR0912, PLR0915 - keep one lifecycle/failure boundary for fixed probes.
+def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for fixed probes.
     output: Path,
     target: Path,
     *,
     spawner_lookup: bool = False,
     second_house: bool = False,
     temple_variants: bool = False,
+    basalt_variant: bool = False,
 ) -> None:
+    if basalt_variant:
+        if temple_variants or spawner_lookup or second_house:
+            raise ValueError("Basalt mode cannot be mixed with another probe")
+        temple_variants = True  # Reuse the existing material-placement lifecycle.
     input_file = (
         ROOT / "evidence/item-13/fixed-blocks/mns-medium_house_2.json.gz" if second_house else INPUT
     )
@@ -79,6 +84,9 @@ def run(  # noqa: C901, PLR0912, PLR0915 - keep one lifecycle/failure boundary f
     if temple_variants:
         input_file = temple_source / "selection.json"
         input_hash = "f512640a6ef1dbca85937aabdf3268b801e16023d5ed8cba940bb05187d3fb53"
+    if basalt_variant:
+        input_file = temple_source.parent / "basalt-variant/selection.json"
+        input_hash = "d05f481ee6b03efc5fc869da634a210e68b20d26f8dd6b63e07c689848e81e2f"
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
@@ -218,6 +226,7 @@ if __name__ == "__main__":
     mode.add_argument("--spawner-lookup", action="store_true")
     mode.add_argument("--second-house", action="store_true")
     mode.add_argument("--temple-variants", action="store_true")
+    mode.add_argument("--basalt-variant", action="store_true")
     args = parser.parse_args()
     run(
         args.output.absolute(),
@@ -225,4 +234,5 @@ if __name__ == "__main__":
         spawner_lookup=args.spawner_lookup,
         second_house=args.second_house,
         temple_variants=args.temple_variants,
+        basalt_variant=args.basalt_variant,
     )

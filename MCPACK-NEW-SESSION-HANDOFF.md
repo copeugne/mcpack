@@ -169,6 +169,9 @@ rejected no-placement route is preserved: eastern recesses have lava support.
 Both baseline centers are debris. All six accepted omit-Sparse centers now have
 hash-verified saved cubes: five debris and one lodestone. The271 authored-cell
 comparison differs only at the center; conditional lodestone costs are integrated.
-Netherite block is the sole missing central outcome. Predeclare the smallest
-single-component diagnostic using the existing temple capture path before running it.
+Netherite block is the sole missing central outcome. The
+[single-component diagnostic](evidence/item-13/basalt-variant/README.md) is now
+predeclared: origin224,160,0,2,197 padded cells, existing capture/restore path.
+Producer selection matches all eight centers. Verify its subsequent execution
+state before launching; each attempt requires fresh unique instance/output paths.
 Do not generate new survey worlds or treat15 pieces as rooms.

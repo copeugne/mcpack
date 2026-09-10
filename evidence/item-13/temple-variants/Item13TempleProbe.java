@@ -12,8 +12,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
-/** Four declared forced placements, with first-case validation before expansion. */
+/** Declared temple placements or one Basalt central-material placement. */
 public final class Item13TempleProbe {
+    private static final String BASALT = "adorabuild_structures:basalt_chambers/ancient_debris";
     private static Class<?> type(ClassLoader loader, String name) throws Exception {
         return Class.forName(name, true, loader);
     }
@@ -36,7 +37,12 @@ public final class Item13TempleProbe {
         Map<?,?> plan = (Map<?,?>) gsonType.getMethod("fromJson",String.class,Class.class)
             .invoke(gson,selection,Object.class);
         List<?> selected = (List<?>) plan.get("selected");
-        if (selected.size() != 4) throw new IllegalArgumentException("Exactly four cases required");
+        boolean basalt = selected.size() == 1
+            && BASALT.equals(((Map<?,?>)selected.get(0)).get("template"));
+        if (!basalt && selected.size() != 4)
+            throw new IllegalArgumentException("Four temple cases or one Basalt case required");
+        if (!basalt && selected.stream().anyMatch(e -> BASALT.equals(((Map<?,?>)e).get("template"))))
+            throw new IllegalArgumentException("Basalt cannot be mixed into the temple suite");
         List<Map<String,Object>> cases = new ArrayList<>();
         Map<String,Object> result = new LinkedHashMap<>();
         result.put("method","Forced template placement with registered processor; not natural starts or gameplay");
@@ -79,6 +85,7 @@ public final class Item13TempleProbe {
         int x = ((Number)origin.get(0)).intValue(), z = ((Number)origin.get(2)).intValue();
         int size = switch ((String)input.get("template")) {
             case "adorabuild_structures:blackstone_temple_small_1" -> 7;
+            case BASALT -> 7;
             case "adorabuild_structures:nether_temple_medium_1" -> 13;
             default -> throw new IllegalArgumentException("Unexpected template");
         };
@@ -96,10 +103,14 @@ public final class Item13TempleProbe {
         String root = (String) input.get("template");
         int size = switch (root) {
             case "adorabuild_structures:blackstone_temple_small_1" -> 7;
+            case BASALT -> 7;
             case "adorabuild_structures:nether_temple_medium_1" -> 13;
             default -> throw new IllegalArgumentException("Unexpected template");
         };
-        int height = size == 7 ? 8 : 9;
+        boolean basalt = root.equals(BASALT);
+        int height = basalt ? 7 : (size == 7 ? 8 : 9);
+        String processorId = basalt ? "adorabuild_structures:randomize_ancient_debris"
+            : "adorabuild_structures:randomize_gold_block";
         List<?> origin = (List<?>)input.get("origin");
         int x0 = ((Number)origin.get(0)).intValue(), y0 = ((Number)origin.get(1)).intValue();
         int z0 = ((Number)origin.get(2)).intValue();
@@ -141,7 +152,7 @@ public final class Item13TempleProbe {
         Object registry = type(loader,"net.minecraft.core.RegistryAccess").getMethod("registryOrThrow",keyType)
             .invoke(access,processorKey);
         Object processorList = type(loader,"net.minecraft.core.Registry").getMethod("get",idType)
-            .invoke(registry,parseId.invoke(null,"adorabuild_structures:randomize_gold_block"));
+            .invoke(registry,parseId.invoke(null,processorId));
         if (processorList == null) throw new IllegalStateException("Processor list missing");
         Class<?> settingsType = type(loader,"net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings");
         Object settings = settingsType.getConstructor().newInstance();
@@ -156,7 +167,7 @@ public final class Item13TempleProbe {
             .invoke(template,level,pos,pos,settings,random,2);
         if (!placed) throw new IllegalStateException("Template placement returned false");
         Object central = posType.getConstructor(int.class,int.class,int.class)
-            .newInstance(x0+size/2,y0+4,z0+size/2);
+            .newInstance(x0+size/2,y0+(basalt ? 3 : 4),z0+size/2);
         String expected = (String)input.get("expected_central_material");
         Object centralState = blockAt.invoke(level,central);
         Object block = stateType.getMethod("getBlock").invoke(centralState);
@@ -188,7 +199,7 @@ public final class Item13TempleProbe {
         Map<String,Object> row = new LinkedHashMap<>();
         row.put("root",root); row.put("dimension","minecraft:the_nether");
         row.put("origin",origin); row.put("rotation","NONE"); row.put("mirror","NONE");
-        row.put("processor","adorabuild_structures:randomize_gold_block"); row.put("flags",2);
+        row.put("processor",processorId); row.put("flags",2);
         row.put("placement_return",placed); row.put("observed_central_material",observed);
         row.put("envelope",List.of(x0,y0,z0,x0+size-1,y0+height-1,z0+size-1));
         row.put("bounds",List.of(x0-3,y0-3,z0-3,x0+size+2,y0+height+2,z0+size+2));
