@@ -132,6 +132,7 @@ and chests, its constructed island connector, main ladder, complete conditional
 timing and three-space quality synthesis. Family repetitions remain pending.
 
 The next [Adorabuild blackstone temple](adorabuild-blackstone_temple-report.md)
-now has verified raw blocks and exact source/processor attribution for all nine
-material rewards. Complete its playable topology and full task before expanding
-the five-root Adorabuild batch.
+now integrates all nine material nodes, a checked breach route and a complete
+conditional 33/56/94-second harvest. One shrine activity site supplies no room
+sequence or required vertical progression; central processor-outcome coverage
+remains open. Continue the other four selected Adorabuild cases.
