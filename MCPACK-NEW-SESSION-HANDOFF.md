@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `e21f53b6`; verify subsequent assessment commits against upstream.
+checkpoint is `f246c7c4`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -170,9 +170,12 @@ The first mountainous r2 read passed:322,905 cells,103,062 compressed bytes,
 31.442236s. Four saved slices were viewed. Nine explicit spawners coverfive enemy
 types; all haveDelay0. All33 temple loot assignments remain unrolled. Surrounding
 sculk is retained separately; none of22 hash-checked source palettes includes it.
-These facts are integrated in the report, not accepted topology or gameplay.
+The [partial route check](evidence/item-13/underground_temple_route.py) now validates
+both hall floors/four spokes,eight chest approaches,northern corridor andtwo
+junctions. The native south centerline fails on saved lava; no engineered crossing
+or full-assembly topology/timing is accepted yet.
 
-Next finish the first assembly end to end: room/transition validation, source and
+Next finish remaining first-assembly rooms and transitions, source and
 sculk handling, complete conditional objective timing, hazard/finale/bypass and
 replay assessments. Only then execute the other three predeclared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.

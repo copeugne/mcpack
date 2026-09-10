@@ -264,3 +264,98 @@ unrolled assignments matched the report. The staged whitespace check passed.
 An initial documentation-edit command failed at heredoc parsing before applying
 any edit; the corrected patch succeeded. No raw extraction or runtime failed in
 this batch. Broader Item13 quality and delivery gates remain outstanding.
+
+## First assembly: validated hall topology and native obstruction
+
+This increment resolves two activity spaces and their immediate native links.
+It does not yet give the whole-assembly room count or complete timing scenario.
+The actor for these static checks is an upright adult,0.6 blocks wide and1.8 high,
+with known coordinates and ordinary walking/one-block ascent capability. No
+mining,placement,flight,swimming or hostile displacement is included. Stair links
+use a conservative jump envelope0.3 above the higher endpoint, following the
+existing local route-check convention. These are geometric feasibility checks,
+not observed movement or a claim of safe combat traversal.
+
+The existing clearance overlap predicate and saved-block decoder are reused by
+[the family route check](../underground_temple_route.py). New executable logic is
+limited to the required layout-specific paths and their support/clearance checks;
+the existing family scripts bind different raw layouts and cannot validate these
+coordinates. Every non-air cell is conservatively avoided as a full cell, with
+wall/fence upward extension. Supporting straight bottom stairs are explicitly
+checked: the centered actor overlaps their upper half. Waterlogged support remains
+below the actor's feet. No unknown partial block is silently treated as air.
+
+| Space | Delimitation and connected floor | Validated doors | Reward/facility role |
+| --- | --- | --- | --- |
+| H0 | First curved hall inside X-296..-280,Z-8..8; central playable floor Y37, door thresholds Y39 | North(-288,39,-8),south(-288,39,8),west(-296,39,0),east(-280,39,0) | Four large_room chests around central gold block(-288,37,0) |
+| H1 | Second curved hall inside X-296..-280,Z20..36; central playable floor Y37, door thresholds Y39 | North(-288,39,20),south(-288,39,36),west(-296,39,28),east(-280,39,28) | Four large_room chests around central gold block(-288,37,28) |
+
+These are two primary rooms, not eight chest rooms or eight stair rooms. Each
+has four validated five-horizontal-block radial connections from its threshold
+to a common central floor circuit, with two blocks of floor elevation change.
+A24-horizontal-block circuit around the central rewards connects all four spokes.
+Both directions pass support,standing and swept-clearance checks. The two-block
+floor span is internal progression, not graph depth or the14-block envelope elevation span.
+The bounding rectangles locate the rooms; they do not claim every enclosed block
+is playable. Full geometry remains in the raw file and explicit paths.
+
+Eight radial chest approaches have unobstructed sampled interaction rays shorter
+than4.5 blocks and clear lids. This proves access to assigned containers from the
+validated floor, not acquired loot or a completed item-transfer phase. The source
+large_hall template contains one gold block at local[8,1,8], matching each saved
+central gold block after its retained rotation/translation. These are authored
+physical rewards separate from the eight unrolled table assignments. Mining and
+pickup are not yet included in a complete task. Neither H0 nor H1 is empty or dead
+under the room definitions, since each has this supported reward role. Their
+status as an authored finale is not inferred from those rewards.
+
+The northern corridor center X-288,Y39,Z-8..-20 passes in both directions:
+12 horizontal blocks. Within its component Z-19..-9, the three interior columns
+X-289..-287 are air atY39..40 over masonryY38, with a ceiling atY42. A wall torch
+at(-287,41,-14) occupies the upper layer; the2-block guaranteed empty height is
+sufficient for the declared upright actor. Ten iron-bar
+blocks are at the side walls X-290/-286,Y40,Z-18/-16/-14/-12/-10. They do not form
+a centerline gate. The name iron_bars therefore does not establish an obstructed
+route. The corridor narrows the hall to a three-block-wide passage;
+full-assembly alternate-route availability remains pending.
+
+The northern junction centered(-288,39,-23) has three checked native arms toward
+north,south andwest. The western junction centered(-300,39,0) has three toward
+east,north andsouth. The first hall's west threshold connects to that junction
+with four horizontal blocks. These are established local connection choices;
+they are not yet accepted whole-assembly branching totals, since remaining shaft,
+quest-tower and longer-loop connectivity still need validation.
+
+The direct southern corridor is a meaningful supported lava obstruction. Its
+center X-288,Y39 has lava atZ11..17. AtZ12..16 every interior column X-289..-287
+contains lava atY39, so a straight walking-level dry crossing cannot use a side
+column. Source lava is saved at(-289,42,13) and(-287,42,15), with falling columns
+throughY41 and40. This is a route-intersecting mechanism, not an inference from
+a template name or isolated palette entry. Preserve the native centerline as
+REJECTED for the declared dry walking actor. A raised crossing, source plugging
+or a longer alternate path needs its own placement/access/fluid and cost checks;
+none is accepted merely because adjacent air appears on the slice sheet. No
+whole-family impossibility, unavoidable damage or live fluid response is claimed.
+
+Reproduce the accepted partial links and explicit native obstruction:
+
+```sh
+uv run python -m evidence.item-13.underground_temple_route
+```
+
+The command passes both hall spoke/circuit checks,northern corridor,two junction
+arm sets,western hall link andeight chest approaches, then reports the rejected
+native lava centerline. An initial direct-file invocation failed to import the
+repository namespace; the module invocation above is the reproducible command.
+This was a command invocation failure, not rejected saved geometry. A broader
+all-air assertion atY39..41 later failed on the wall torch at(-287,41,-14); the
+corrected two-block empty-height claim above passes without ignoring that block.
+The original centerline route remained valid. The full
+assembly still requires the remaining playable rooms,source handling,complete
+conditional task,bypasses and quality assessment before further declared reads.
+
+
+The final affected checks pass: module execution,ruff formatting/lint and
+basedpyright with zero errors/warnings. No server or world modification was
+needed. The first assembly remains a partial local assessment; the accepted
+hall geometry and explicit lava rejection must be reused in the complete task.
