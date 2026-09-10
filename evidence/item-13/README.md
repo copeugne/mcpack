@@ -24,14 +24,14 @@ UNSTARTED. Historical predeclarations below are not instructions to repeat work.
 
 Reconciliation is now integrated in the [192-family coverage record](coverage.md#reconciled-local-results-2026-09-10)
 and requirement map below. Existing reports support at least one complete local
-sample in 19 families. Sixteen satisfy their declared local sampling scope;
-Small Dungeon, Circle Ruin and Underground Temple retain exact gaps. The other 173
+sample in 20 families. Sixteen satisfy their declared local sampling scope;
+Small Dungeon, Circle Ruin, Underground Temple and Repurposed Temple retain exact gaps. The other 172
 families have no local quality report. These are local evidence states, not item
 completion percentages or substitutes for final checks and reviewed delivery.
 
-Available evidence needing integration: 25 of the 173 have full baseline start
+Available evidence needing integration: 24 of the 172 have full baseline start
 candidates,17 more have adequate Item8 references, and Starlight Voyager has its
-verified Item7 pair. These 43 input-ready families still need sample/material
+verified Item7 pair. These 42 input-ready families still need sample/material
 selection and actual quality assessment. The other 130 have no full start-based
 candidate in those indexes, but partial/control and non-registry raw evidence
 must be consulted before experiments are declared. Central-End lifecycle evidence
@@ -45,9 +45,9 @@ blocks accepting the proposed shaft-using task; neither the failed native trial
 nor dry scaffold geometry supplies a wet timing term. Do not tune the controller,
 sum incomplete terms or silently remove this component from required coverage.
 
-The existing scope implies at least 529 remaining case completions, divided into
-4 compact, 249 fixed and 276 modular. This is a conservative assessment floor,
-not 529 new experiments or a finished selection matrix. Missing component outcomes
+The existing scope implies at least 528 remaining case completions, divided into
+4 compact, 248 fixed and 276 modular. This is a conservative assessment floor,
+not 528 new experiments or a finished selection matrix. Missing component outcomes
 can increase it. [Effort accounting](#remaining-effort-and-next-bounded-work)
 keeps unknown analysis, experiment and delivery costs explicit; no reliable ETA
 is established from extractor speed or commit timestamps.
@@ -126,7 +126,7 @@ roof thickness and optional parkour remain explicit limits.
 
 The [reconciled family table](coverage.md#reconciled-local-results-2026-09-10)
 links every current local result to its authoritative report and latest correction.
-"19 represented families" below means local sample evidence, not completed family
+"20 represented families" below means local sample evidence, not completed family
 coverage. For partial families, only their completed sample/task scopes are reused.
 Every requirement still needs the remaining samples in the coverage record and
 shared validation/review/main delivery. This is the current map; earlier historical
@@ -134,12 +134,12 @@ shared validation/review/main delivery. This is the current map; earlier histori
 
 | Requirement | Established local evidence | Integration or missing work remaining |
 | --- | --- | --- |
-| Every significant family | All 448 intake decisions; 192 included/357 roots. Local scope satisfied for 16 families; three partial | 173 lack local reports; all row-level material gaps and case floors are in coverage. Final selection is incomplete |
-| Room count | Coordinate-bounded activity spaces in all 19 represented families, with reported partition sensitivities | Second temple whole-assembly allocation; the 173 unassessed families. No template/piece conversion |
-| Branching | Validated graphs/local links in the 19 reports; first temple 61-node graph and fixed-layout contrasts | Second temple joined graph and the 173 unassessed families; local tower graphs cannot simply be summed |
-| Vertical progression | Connected floor changes and explicit modeled construction in the 19 local results | Second temple complete sequence, including unresolved wet link; remaining scoped cases |
+| Every significant family | All 448 intake decisions; 192 included/357 roots. Local scope satisfied for 16 families; four partial | 172 lack local reports; all row-level material gaps and case floors are in coverage. Final selection is incomplete |
+| Room count | Coordinate-bounded activity spaces in all 20 represented families, with reported partition sensitivities | Second temple whole-assembly allocation; the 172 unassessed families. No template/piece conversion |
+| Branching | Validated graphs/local links in the 20 reports; first temple 61-node graph and fixed-layout contrasts | Second temple joined graph and the 172 unassessed families; local tower graphs cannot simply be summed |
+| Vertical progression | Connected floor changes and explicit modeled construction in the 20 local results | Second temple complete sequence, including unresolved wet link; remaining scoped cases |
 | Dungeon depth | Graph/route distances and separately labeled terrain context in local reports | Second temple integrated depth and remaining scoped cases. Surface differences never become solid roof thickness |
-| Traversal time | Complete conditional objective budgets in the 19 represented families, superseding their earlier movement-only totals | Second temple total and all remaining cases. Source work, provisional allowances and censored states stay distinct |
+| Traversal time | Complete conditional objective budgets in the 20 represented families, superseding their earlier movement-only totals | Second temple total and all remaining cases. Source work, provisional allowances and censored states stay distinct |
 | Combat time | Pinned source work and explicit scenario populations; completed corrections include natural overrides and repeated-source schedules | Second temple whole-source schedule and remaining cases, including special bosses/trials. No generic seconds-per-enemy fallback |
 | Enemy count | Authored resident/source counts and conditional populations in local results | Second temple whole-task allocation and remaining cases; realized enemies remain NOT MEASURED |
 | Enemy diversity | Exact current source types, empty-source lookup and conditional alternatives retained locally | Remaining scoped families/mechanisms; no invented default mobs or civilian/object inflation |
@@ -156,8 +156,8 @@ shared validation/review/main delivery. This is the current map; earlier histori
 ## Remaining effort and next bounded work
 
 The [scope annotations](coverage.md#recovery-input-and-effort-accounting) give
-minimum remaining assessment units: compact 4, fixed 249, modular 276. Final counts
-are `Nc >= 4`, `Nf >= 249`, `Nm >= 276`, because uncovered material/components can
+minimum remaining assessment units: compact 4, fixed 248, modular 276. Final counts
+are `Nc >= 4`, `Nf >= 248`, `Nm >= 276`, because uncovered material/components can
 require extra cases. A unit means a complete scoped case assessment or completion
 of an already partial one. It does not mean a new world or one uniformly costly
 operation. Reuse verified equivalent cases with their actual differences retained.
@@ -166,7 +166,7 @@ operation. Reuse verified equivalent cases with their actual differences retaine
 | --- | --- | --- |
 | Integrating already completed reports | Recovery batch, 2026-09-10 13:08:30 to 13:19:24 UTC: 654 seconds wall elapsed through the first successful coverage arithmetic check; 19 reports reconciled into 18 family entries and the requirement map | This reconciliation is integrated. It is one batch, not a calibrated per-case rate |
 | New compact analysis/integration | Two pilot cases and two Slime states completed, but active analyst elapsed was not recorded separately | Unit cost `Ac` UNKNOWN; at least 4 further case assessments, plus uncovered mechanism work |
-| New fixed analysis/integration | Desert Mimic whole-case batch supplies one phase-clock observation in its [report](fixed-blocks/towns-and-towers-desert-mimic-report.md#phase-clock-and-local-disposition); read phase120s, analysis and validation separately recorded | General unit cost `Af` UNKNOWN from one complex fixed case; at least249 further case assessments |
+| New fixed analysis/integration | Desert Mimic:2,180s through one full result. [Nether group](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry):150s selection/read and5,505s analysis for one full plus one partial result; cap exceeded | General unit cost `Af` UNKNOWN from these differing incomplete/complete batches; at least248 further case assessments |
 | New modular analysis/integration | Completed Basalt/fortress pairs and first temple show required graph/task work, but no reliable active-effort clock | Unit cost `Am` UNKNOWN; at least 276 completions, including the partial second temple |
 | Missing-evidence experiments and custody | Existing exact material diagnostics retained; 130 families lack a full start-based candidate, but supplemental/raw matching is not exhausted | Experiment count, runtime and storage UNKNOWN until exact missing root/material/placement cases are selected |
 | New movement/boss/trial model inputs | Existing source models reusable only where their conditions apply; wet shaft remains unresolved | Additional cost `M` UNKNOWN; no generic combat or dry-movement substitute |
@@ -185,19 +185,22 @@ The honest planning expression is
 `E = Nc*Ac + Nf*Af + Nm*Am + X + M + V + R`, where `X` includes necessary
 experiment/restore/custody effort. Neither the unit costs nor the final case counts
 are established well enough for a numerical total or calendar deadline. The
-529-case floor establishes the work scale; the minute-scale extractor timings do
+528-case floor establishes the work scale; the minute-scale extractor timings do
 not establish feasibility within a week. No acceptance requirement is waived.
 
-The first bounded fixed case, [Desert Mimic](fixed-blocks/towns-and-towers-desert-mimic-report.md),
-now has its complete local assessment and focused checks. It required constructed
-vertical access and trap handling; one case does not establish a representative
-fixed-family average. Its phase clock includes analysis and integration, not just
-extraction. Next, select a coherent group of input-ready fixed alternatives sharing
-an existing mechanism and bound the whole group before processing. Reuse verified
-equivalence while retaining material differences; do not reproduce the temple's
-per-corridor expansion. Compact/modular unit costs stay UNKNOWN until bounded
-observations exist. Before experiments, match exact alternatives against retained
-Items7/8/10 and non-registry evidence, then declare only the smallest missing case.
+The [Desert Mimic](fixed-blocks/towns-and-towers-desert-mimic-report.md) complete
+follow-up is delivered. The next [five-Nether-temple group](fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry)
+overran its90-minute analysis cap by105 seconds and expansion stopped. It retains
+one complete basalt result, one checked crimson route with model/quality pending,
+and all five raw reads. Analysis/integration took5,505s; this is not five completed
+cases or a calibrated fixed-family average. Total ETA remains UNKNOWN.
+
+Next: reassess the repeated manual connector/obstacle work against existing
+path-finding and clearance tools before another case. Identify the smallest
+required change, if any, without a new generalized framework or new raw reads.
+Then bound the unfinished group work anew; do not automatically extend its cap.
+The exact remaining claims are in its report. Compact/modular unit costs and
+missing-evidence experiment costs remain UNKNOWN; full acceptance is unchanged.
 
 Recovery validation: the first draft arithmetic reader rejected the Starlight
 Voyager row's semicolon annotation; its narrow delimiter/identifier correction

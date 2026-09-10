@@ -81,9 +81,9 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Pushed recovery: `29a4fa6b`.
-The following Desert Mimic milestone is prepared on this branch; verify its
-current head against upstream before continuing.
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed case: `790aeccf`.
+The following partial Nether-group milestone is prepared on this branch; verify
+its current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -152,21 +152,24 @@ User explicitly requested this workflow reset on 2026-09-10. Apply the
 and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recovery-checkpoint-2026-09-10).
 These replace the previous narrow next-step sequence, not the specification gates.
 
-Recovery reconciliation is integrated in coverage and the requirement map:
-19 families have complete local sample evidence,16 satisfy local scope, three
-remain partial,173 lack local reports. Remaining floor:529 case completions
-(4 compact,249 fixed,276 modular), not an experiment count. Among the173,25 have
-full baseline inputs,17 more adequate Item8 references, one the Item7 pair,
-and130 no full indexed candidate. Match supplemental raw before new experiments.
+Coverage now records20 represented families,16 satisfying local scope, four
+partial and172 with no local report. Remaining floor:528 case completions
+(4 compact,248 fixed,276 modular). Among the172,24 have baseline inputs,17 more
+Item8 references, one the Item7 pair,130 no full indexed candidate. Match existing
+supplemental raw before experiments. Desert Mimic is locally complete and pushed.
 
-The [Desert Mimic whole-case report](evidence/item-13/fixed-blocks/towns-and-towers-desert-mimic-report.md)
-completes the required bounded fixed follow-up: six-room partition, constructed
-return, full conditional task, source/reward work, hazards and external breach.
-Selection/read120s; analysis/integration2,060s, total36m20s within45min. Its final
-checks and delivery clock are in the report. One complex case is not a uniform
-unit estimate; [remaining effort](evidence/item-13/README.md#remaining-effort-and-next-bounded-work)
-keeps total ETA UNKNOWN. Next: bound a coherent input-ready fixed group sharing
-existing mechanisms, preserving material differences. Do not restart this case.
+The [five-Nether-temple group](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md#group-overrun-and-retained-crimson-geometry)
+exceeded its90-minute analysis cap by105s at16:03:43 UTC; expansion stopped.
+Basalt has a full quality/model result. Crimson's126H route passes, but its command
+explicitly raises pending-model/quality status. Soul, warped and wasteland have
+verified raw inputs only; ocean/taiga remain required outside this group. No server
+or extraction process is active. Preserve all five reads and rejected routes.
+
+Next: reassess repeated manual connector/obstacle work using existing path-finding
+and clearance tools before another case. Name the exact missing operation and
+smallest justified change, then bound unfinished work anew. Do not automatically
+extend the failed cap or add a generalized framework. Remaining effort/ETA stays
+UNKNOWN; phase clocks and exact gaps are in the group report and Item13 README.
 
 Do not resume per-corridor temple expansion by default. Batch verified equivalent
 cases with material differences retained. Before deeper checks, name the unmet

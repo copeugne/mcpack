@@ -31,7 +31,13 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                             )
                             assert not overlap(box, plate)
                         continue
-                    if n in {"minecraft:air", "minecraft:cave_air", "minecraft:vine"} or (
+                    if n in {
+                        "minecraft:air",
+                        "minecraft:cave_air",
+                        "minecraft:vine",
+                        "minecraft:redstone_wire",
+                        "minecraft:crimson_roots",
+                    } or (
                         n == "minecraft:sculk_vein"
                         and state["Properties"]["waterlogged"] == "false"
                     ):
@@ -84,6 +90,36 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                     "minecraft:smooth_sandstone",
                     "minecraft:sandstone_stairs",
                     "minecraft:smooth_sandstone_stairs",
+                    "minecraft:blackstone",
+                    "minecraft:cracked_polished_blackstone_bricks",
+                    "minecraft:blackstone_stairs",
+                    "minecraft:nether_brick_stairs",
+                    "minecraft:nether_bricks",
+                    "minecraft:cracked_nether_bricks",
+                    "minecraft:red_nether_bricks",
+                    "minecraft:netherrack",
+                    "minecraft:crimson_planks",
+                    "minecraft:crimson_hyphae",
+                    "minecraft:crimson_stem",
+                    "minecraft:stripped_crimson_hyphae",
+                    "minecraft:stripped_crimson_stem",
+                    "minecraft:crimson_nylium",
+                    "minecraft:crimson_stairs",
+                    "minecraft:warped_hyphae",
+                    "minecraft:warped_stem",
+                    "minecraft:stripped_warped_hyphae",
+                    "minecraft:stripped_warped_stem",
+                    "minecraft:warped_nylium",
+                    "minecraft:warped_stairs",
+                    "minecraft:soul_soil",
+                    "minecraft:gray_terracotta",
+                    "minecraft:black_terracotta",
+                    "minecraft:basalt",
+                    "minecraft:obsidian",
+                    "minecraft:gilded_blackstone",
+                    "minecraft:coal_block",
+                    "minecraft:nether_wart_block",
+                    "minecraft:warped_wart_block",
                 }, ((x, y, z), s)
                 if n == "minecraft:gravel":
                     assert at(c, x, y - 2, z)["Name"] in {
@@ -136,7 +172,13 @@ def ray_check(c, removed, interaction_rays):
             if cell == target or cell in removed:
                 continue
             s = at(c, *cell)
-            if s["Name"] == "minecraft:air":
+            # Block-outline interaction rays use Fluid.NONE; lava has empty outline.
+            # This does not change body clearance or allow fluid traversal.
+            if s["Name"] in {"minecraft:air", "minecraft:cave_air", "minecraft:lava"}:
+                continue
+            if s["Name"] == "minecraft:redstone_wire" and "up" not in s["Properties"].values():
+                # Floor-only wire outline is at most one sixteenth high.
+                assert p[1] - cell[1] > 1 / 16, (cell, p, s)
                 continue
             if s["Name"] == "minecraft:vine" or (
                 s["Name"] == "minecraft:sculk_vein" and s["Properties"]["waterlogged"] == "false"

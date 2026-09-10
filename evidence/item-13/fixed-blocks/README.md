@@ -6,6 +6,8 @@ The extraction-stage pending statements below are historical, not instructions t
 repeat completed work. The second Underground Temple assembly remains incomplete.
 The [Desert Mimic complete local case](towns-and-towers-desert-mimic-report.md)
 adds the bounded recovery analysis, including its phase clock and conditional task.
+The [Repurposed Nether group](repurposed-nether-temples-report.md) retains basalt
+quality, partial crimson geometry and its analysis-overrun disposition.
 Protocol: `item13-fixed-blocks-v1`, declared in [coverage](../coverage.md).
 The raw `protocol_sha256` binds the unchanged shared definitions in
 [protocol.md](../protocol.md); the fixed-block declaration is preserved by this
