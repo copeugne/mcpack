@@ -136,3 +136,75 @@ now integrates all nine material nodes, a checked breach route and a complete
 conditional 33/56/94-second harvest. One shrine activity site supplies no room
 sequence or required vertical progression; central processor-outcome coverage
 remains open. Continue the other four selected Adorabuild cases.
+
+## Remaining four selected Adorabuild inputs
+
+After the blackstone-temple local assessment, the other four preselected reads
+passed: 15,914 voxels, 10,069 compressed bytes, 19.344913 seconds total and
+182,852 KiB maximum process RSS. Each verified the full accepted world inventory
+before/after under the existing lock and matched its predeclared selection hash.
+No server, world regeneration or configuration change occurred. There was no
+failed extraction in this batch. These are saved blocks and source inputs,
+not four completed quality assessments or realized enemy observations.
+
+| Case/raw input | Bytes | Seconds | Source-resident potential | Saved block entities |
+| --- | ---: | ---: | --- | --- |
+| [Crimson hall](adorabuild-crimson_house_medium_2.json.gz) | 2,964 | 4.980163 | Two adult hoglins, Health40 each; two piglin brutes, Health50 each | One bastion_treasure chest at (-308,34,-420) |
+| [End ship](adorabuild-end_ship_small_1.json.gz) | 1,799 | 3.431474 | One shulker, Health30, Peek30, AttachFace0 | One end_city_treasure chest at (8082,58,8125); one skull at (8082,59,8116) |
+| [Wart house](adorabuild-nether_fortress_medium_1.json.gz) | 2,508 | 5.286360 | No template residents | Three nether_bridge chests at (156,36,-143), (156,36,-137), (159,36,-140) |
+| [Nether temple](adorabuild-nether_temple_medium_1.json.gz) | 2,798 | 5.646916 | No template residents | None; placed material rewards still require inspection |
+
+Each raw file's same-basename `-execution.txt` retains its exact SHA-256, selected
+ID, voxel count and memory. The complete selection remains
+[fixed-adorabuild-selection.json](../fixed-adorabuild-selection.json).
+All saved chests above have LootTable fields but no Lock or Items field. No
+ordinary spawner block entity is present. The extractor does not capture realized
+entity populations; do not convert the template residents into a saved mob census.
+The End skull is an object, not another enemy.
+
+Source jar identity reuses the pinned Adorabuild artifact in the
+[blackstone-temple report](adorabuild-blackstone_temple-report.md#source-and-saved-content).
+The resources below are under `data/adorabuild_structures/structure/`:
+
+| Template filename | Exact resource SHA-256 | Source size |
+| --- | --- | --- |
+| crimson_house_medium_2.nbt | 10119ab54d33c6b1f772f3a7f8861c0cdcbdf08d967de9ad65be83ca51bdf120 | 15x6x9 |
+| end_ship_small_1.nbt | 99f845b28ec4ed9148fd376d08c931533d8d4faf337fb0cd3eb28c0e7b157caa | 13x10x5 |
+| nether_fortress_medium_1.nbt | d85dd98a02113b6b7ddcb8fb34730057a32ba5b3f7114cac0c1743e4753c8793 | 9x9x9 |
+| nether_temple_medium_1.nbt | a801a45ea22c6cabe0f70bf667b2bdd28217cc8fd816f9ee53bf8ac28d2a04e8 | 13x9x13 |
+
+Directly decode each gzip NBT resource with the existing decoder. Count
+`entities[].nbt.id` for the source-resident column, preserving source health,
+empty equipment and the distinction from loaded attributes. Source entities use
+historical attribute-key spellings; a modeled combat profile must use the pinned
+1.21.1 entity rules rather than assuming every old NBT attribute was applied.
+Inspect `blocks[].nbt` for the source containers; the following saved transforms
+map their locations to the exact saved nodes above (local coordinates u,v,w):
+
+- Crimson hall: (-304-w,31+v,-432+u), CLOCKWISE_90;
+  processor `adorabuild_structures:replace_glass_with_air`.
+- End ship: (8080+w,56+v,8128-u), COUNTERCLOCKWISE_90; empty processor.
+- Wart house: (160-w,31+v,-144+u), CLOCKWISE_90; empty processor.
+- Nether temple: (320-u,31+v,496-w), CLOCKWISE_180;
+  processor `adorabuild_structures:randomize_gold_block`.
+
+All four saved components have rigid projection. Those source sizes and transforms
+are attribution inputs, never room counts. Next complete the Crimson hall's
+playable layout, resident model, chest access and complete-task/quality assessment,
+then the End ship, wart house and Nether temple. Preserve their individual
+processor, dimension and enemy-mechanism differences.
+
+Reproduce the four raw extractions with the existing implementation into a new
+directory; the extractor rejects existing output files:
+
+```sh
+set -euo pipefail
+mkdir /tmp/item13-adorabuild-reproduction
+for root in crimson_house_medium_2 end_ship_small_1 nether_fortress_medium_1 nether_temple_medium_1; do
+  uv run python -m evidence.item-13.measure --fixed-root "adorabuild_structures:$root" --selection evidence/item-13/fixed-adorabuild-selection.json --output "/tmp/item13-adorabuild-reproduction/$root.json.gz"
+done
+```
+
+No extra reader or evidence format was added. For upcoming local layout views,
+reuse the renderer and ImageMagick conversion with a 30-second/2-MiB combined
+SVG/PNG per-case cap, followed by exact partial-block checks where needed.
