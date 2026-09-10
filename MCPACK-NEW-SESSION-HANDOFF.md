@@ -81,8 +81,8 @@ acquired loot and player outcomes remain NOT MEASURED. The approved
 accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
-Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `3fef7579`.
-The following crimson integration is prepared on this branch; verify
+Current branch: `codex/item13-dungeon-quality`. Latest verified pushed milestone: `68483571`.
+The following warped whole-case result is prepared on this branch; verify
 its current head against upstream before continuing.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
@@ -153,17 +153,17 @@ and [authoritative recovery checkpoint](evidence/item-13/README.md#current-recov
 These replace the previous narrow next-step sequence, not the specification gates.
 
 Coverage now records20 represented families,16 satisfying local scope, four
-partial and172 with no local report. Remaining floor:527 case completions
-(4 compact,247 fixed,276 modular). Among the172,24 have baseline inputs,17 more
+partial and172 with no local report. Remaining floor:526 case completions
+(4 compact,246 fixed,276 modular). Among the172,24 have baseline inputs,17 more
 Item8 references, one the Item7 pair,130 no full indexed candidate. Match existing
 supplemental raw before experiments. Desert Mimic is locally complete and pushed.
 
 The [Nether group report](evidence/item-13/fixed-blocks/repurposed-nether-temples-report.md)
 preserves its90-minute overrun, failed routes and later delivery interruption.
-Basalt and crimson now have complete local quality/model results; the paired upper
-stair flights correctly retain one inter-room cycle in both. Crimson integration
-reused its existing checked route after a separate bounded reassessment. Soul,
-warped and wasteland retain raw inputs only; ocean/taiga remain required separately.
+Basalt, crimson and warped have complete local quality/model results. Warped
+requires3 construction blocks for its upper link and retains its double chest,
+trapped chest and non-hostile source. Its graph is distinct from the paired-stair
+cycle in basalt/crimson. Soul/wasteland retain raw only; ocean/taiga need samples.
 No server or extraction process is active. Do not repeat the five accepted reads.
 
 Next: predeclare a bounded whole-case assessment for one remaining saved Nether

@@ -81,6 +81,7 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs
                     "minecraft:gravel",
                     "minecraft:stone",
                     "minecraft:cobblestone",
+                    "minecraft:dispenser",
                     "minecraft:calcite",
                     "minecraft:sandstone",
                     "minecraft:orange_terracotta",

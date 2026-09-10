@@ -13,12 +13,13 @@ from itertools import pairwise
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("variant", choices=["basalt", "crimson"])
+parser.add_argument("variant", choices=["basalt", "crimson", "warped"])
 args = parser.parse_args()
 raw = (
     Path(__file__).parent / f"fixed-blocks/repurposed-temple-{args.variant}.json.gz"
 ).read_bytes()
 hashes = {
+    "warped": "6b3785afcc1214c93ed4221d917f751336cb3ebe3f247c27261d136ac570e71f",
     "basalt": "a6884f33bf59e7a2a6be7e01df478ee5339b47ca7c258d5bf85400b78c1c8341",
     "crimson": "4d7415d4c2bfefd2ffc5d588d78d09481f5342c02d1765dd9dd7155c7d085724",
 }
@@ -193,6 +194,95 @@ if args.variant == "crimson":
             (143, 65, 62),
         ]
     ]
+if args.variant == "warped":
+    route = [(143, 65, 62)]
+    operations = [
+        ("go", (144, 65, 62)),
+        ("go", (144, 65, 63)),
+        ("go", (146, 65, 63)),
+        ("go", (146, 65, 64)),
+        ("go", (145, 65, 64)),
+        ("place", (145, 65, 65)),
+        ("go", (145, 66, 65)),
+        ("place", (145, 65, 66)),
+        ("place", (145, 66, 66)),
+        ("go", (145, 67, 66)),
+        ("go", (145, 68, 67)),
+        ("go", (146, 68, 67)),
+        ("go", (146, 68, 61)),
+        ("go", (146, 68, 60)),
+        ("go", (143, 68, 60)),
+        ("mine", (143, 69, 62)),
+        ("mine", (144, 69, 62)),
+        ("open", (143, 68, 62)),
+        ("go", (141, 68, 60)),
+        ("go", (141, 68, 66)),
+        ("go", (141, 68, 60)),
+        ("go", (146, 68, 60)),
+        ("go", (146, 68, 67)),
+        ("go", (145, 68, 67)),
+        ("go", (145, 67, 66)),
+        ("go", (145, 66, 65)),
+        ("go", (145, 65, 64)),
+        ("go", (146, 65, 64)),
+        ("go", (146, 65, 60)),
+        ("go", (141, 65, 60)),
+        ("go", (141, 65, 64)),
+        ("go", (142, 65, 64)),
+        ("go", (142, 65, 63)),
+        ("go", (144, 65, 63)),
+        ("go", (144, 64, 64)),
+        ("go", (144, 63, 65)),
+        ("go", (144, 62, 66)),
+        ("go", (144, 61, 67)),
+        ("go", (144, 61, 69)),
+        ("mine", (146, 62, 69)),
+        ("mine", (147, 62, 69)),
+        ("mine", (147, 61, 69)),
+        ("go", (147, 61, 69)),
+        ("mine", (147, 62, 68)),
+        ("mine", (147, 61, 68)),
+        ("go", (147, 61, 68)),
+        ("mine", (147, 61, 67)),
+        ("go", (147, 61, 67)),
+        ("mine", (147, 61, 66)),
+        ("go", (147, 61, 66)),
+        ("mine", (147, 62, 65)),
+        ("open", (147, 61, 65)),
+        ("go", (147, 61, 69)),
+        ("go", (144, 61, 69)),
+        ("mine", (143, 62, 69)),
+        ("mine", (143, 61, 69)),
+        ("go", (140, 61, 69)),
+        ("mine", (140, 61, 68)),
+        ("go", (140, 61, 67)),
+        ("mine", (140, 61, 66)),
+        ("go", (140, 61, 65)),
+        ("mine", (140, 61, 64)),
+        ("go", (140, 61, 63)),
+        ("mine", (140, 61, 62)),
+        ("go", (140, 61, 61)),
+        ("go", (144, 61, 61)),
+        ("mine", (145, 61, 61)),
+        ("go", (145, 61, 61)),
+        ("mine", (145, 61, 60)),
+        ("mine", (146, 62, 60)),
+        ("mine", (146, 61, 60)),
+        ("go", (146, 61, 61)),
+        ("go", (146, 61, 60)),
+        ("mine", (147, 61, 60)),
+        ("go", (146, 61, 61)),
+        ("go", (140, 61, 61)),
+        ("go", (140, 61, 69)),
+        ("go", (144, 61, 69)),
+        ("go", (144, 61, 67)),
+        ("go", (144, 62, 66)),
+        ("go", (144, 63, 65)),
+        ("go", (144, 64, 64)),
+        ("go", (144, 65, 63)),
+        ("go", (144, 65, 62)),
+        ("go", (143, 65, 62)),
+    ]
 mining = []
 opened = []
 verify(route)
@@ -208,13 +298,29 @@ for kind, target in operations:
         segment = [a] + [(a[0] + i * dx, target[1], a[2] + i * dz) for i in range(1, h + 1)]
         verify(segment, crouch_up=True)
         route.extend(segment[1:])
-    elif kind == "bridge":
-        assert at(c, *target)["Name"] == "minecraft:lava"
-        anchor = (target[0], target[1], target[2] - 1)
-        assert at(c, *anchor)["Name"] == "minecraft:blackstone"
+    elif kind in {"bridge", "place"}:
+        if kind == "bridge":
+            assert at(c, *target)["Name"] == "minecraft:lava"
+            anchor = (target[0], target[1], target[2] - 1)
+            assert at(c, *anchor)["Name"] == "minecraft:blackstone"
+            end = (anchor[0] + 0.5, anchor[1] + 0.5, anchor[2] + 0.999)
+        else:
+            assert args.variant == "warped"
+            assert at(c, *target)["Name"] == "minecraft:air"
+            if target == (145, 65, 66):
+                anchor = (145, 65, 65)
+                assert at(c, *anchor)["Name"] == "minecraft:cobblestone"
+                end = (145.5, 65.5, 65.999)
+            else:
+                anchor = (target[0], target[1] - 1, target[2])
+                assert at(c, *anchor)["Name"] in {
+                    "minecraft:warped_nylium",
+                    "minecraft:cobblestone",
+                }
+                end = (anchor[0] + 0.5, anchor[1] + 0.999, anchor[2] + 0.5)
         ray(
             (route[-1][0] + 0.5, route[-1][1] + 1.62, route[-1][2] + 0.5),
-            (anchor[0] + 0.5, anchor[1] + 0.5, anchor[2] + 0.999),
+            end,
             anchor,
         )
         b = c["bounds"]
@@ -233,12 +339,20 @@ for kind, target in operations:
             end = (target[0] + 0.5, target[1] + 0.1, target[2] + 0.5)
         if state["Name"] == "minecraft:redstone_wire" or state["Name"].endswith("_pressure_plate"):
             end = (target[0] + 0.5, target[1] + 0.03, target[2] + 0.5)
-        if state["Name"] in {"minecraft:lever", "minecraft:polished_blackstone_button"}:
+        if state["Name"] in {
+            "minecraft:lever",
+            "minecraft:polished_blackstone_button",
+            "minecraft:warped_button",
+        }:
             assert state["Properties"]["facing"] == "south"
             assert state["Properties"]["face"] == "wall"
             end = (target[0] + 0.5, target[1] + 0.5, target[2] + 0.1)
-        if args.variant == "crimson" and target == (146, 61, 60):
+        if args.variant in {"crimson", "warped"} and target == (146, 61, 60):
             end = (146.3, 61.5, 60.5)
+        if args.variant == "warped" and kind == "open" and target == (143, 68, 62):
+            end = (143.5, 68.8, 62.5)
+        if args.variant == "warped" and kind == "mine" and target == (147, 61, 60):
+            end = (147.07, 61.5, 60.5)
         ray(eye, end, target)
         if kind == "mine":
             assert target not in removed, (kind, target)
@@ -279,10 +393,60 @@ second_stair = [
         (402, 64, 323),
     ]
 ]
-_, native_verify = geometry.path_checks(original, set(), set(), set())
-native_verify(second_stair, crouch_up=True)
-native_verify(list(reversed(second_stair)), crouch_up=True)
-print("separate upper eastern stair passes", second_stair)
+if args.variant != "warped":
+    _, native_verify = geometry.path_checks(original, set(), set(), set())
+    native_verify(second_stair, crouch_up=True)
+    native_verify(list(reversed(second_stair)), crouch_up=True)
+    print("separate upper eastern stair passes", second_stair)
+
+if args.variant == "warped":
+    for x in (142, 145):
+        assert at(original, x, 65, 65)["Name"] == "minecraft:air"
+        assert at(original, x, 66, 66)["Name"] == "minecraft:air"
+    steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]
+    turns = sum(a != b for a, b in pairwise(steps))
+    vertical = sum(abs(d[1]) for d in steps)
+    work = {
+        "warped_slab": 8,
+        "warped_button": 2,
+        "warped_roots": 0,
+        "stripped_warped_hyphae": 8,
+        "warped_hyphae": 8,
+        "warped_stem": 8,
+        "warped_chest": 10,
+        "trapped_warped_chest": 10,
+        "spawner": 19,
+        "sticky_piston": 6,
+        "warped_pressure_plate": 2,
+        "tripwire": 0,
+        "twisting_vines": 0,
+        "twisting_vines_plant": 0,
+    }
+    ticks = sum(work[state["Name"].split(":", 1)[1]] for _, state in mining)
+    assert (len(steps), vertical, len(mining), len(opened), ticks) == (132, 14, 21, 2, 105)
+    assert at(original, 143, 68, 62)["Properties"] == {
+        "facing": "north",
+        "type": "left",
+        "waterlogged": "false",
+    }
+    assert at(original, 144, 68, 62)["Properties"] == {
+        "facing": "north",
+        "type": "right",
+        "waterlogged": "false",
+    }
+    assert at(c, 144, 69, 62)["Name"] == "minecraft:warped_slab"
+    assert (143, 69, 62) in removed
+    assert (144, 69, 62) in removed
+    print("warped complete inputs", {"turns": turns, "decisions": turns + 8, "mining_ticks": ticks})
+    for label, u, j, n, a, s, k, v in [
+        ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2),
+        ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4),
+        ("C", 3, 0.25, 1.5, 1, 1, 4, 8),
+    ]:
+        movement = (len(steps) - vertical + 8) / u + vertical * max(1 / u, 1 / j)
+        total = movement + ticks / 20 + (turns + 8) * n + 26 * a + 6 * s + 4 * k + v
+        print(label, "movement", movement, "noncombat and complete", total, "required combat", 0)
+
 
 if args.variant == "crimson":
     steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]
@@ -331,16 +495,19 @@ if args.variant == "crimson":
             "complete",
             noncombat + 27.3 / duty,
         )
+if args.variant in {"crimson", "warped"}:
     # Direct eastern breach reaches a closet chest without the hall/plate route.
     bypass_removed = set()
     bypass = [(150, 61, 64)]
     for x in (149, 148, 147):
         for y in (62, 61):
             target = (x, y, 64)
-            print("crimson exterior removal", target, at(original, *target))
+            print(args.variant + " exterior removal", target, at(original, *target))
             assert at(original, *target)["Name"] in {
-                "minecraft:crimson_hyphae",
-                "minecraft:nether_wart_block",
+                f"minecraft:{args.variant}_hyphae",
+                "minecraft:nether_wart_block"
+                if args.variant == "crimson"
+                else "minecraft:warped_wart_block",
             }
             geometry.ray_check(original, bypass_removed, {})(
                 (x + 1.5, 62.62, 64.5), (x + 0.999, y + 0.5, 64.5), target
@@ -358,7 +525,7 @@ if args.variant == "crimson":
         (147.5, 62.62, 64.5), (147.5, 61.5, 65.5), (147, 61, 65)
     )
     print(
-        "crimson exterior bypass",
+        args.variant + " exterior bypass",
         bypass,
         "seven removals; direct chest access, not combat avoidance",
     )
@@ -374,7 +541,7 @@ if args.variant == "crimson":
             cells.add((x, 61, z))
     lower = paths(cells, (143, 61, 69))
     for target in [(147, 61, 66), (145, 61, 61)]:
-        print("crimson lower depth", target, len(lower[target]) - 1)
+        print(args.variant + " lower depth", target, len(lower[target]) - 1)
     sys.exit(0)
 
 # Supported external side-wall entry; this is not the whole objective's second time.

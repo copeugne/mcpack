@@ -3,8 +3,9 @@
 Status: IN PROGRESS. Five selected fixed alternatives of
 `repurposed_structures:temple`. Ocean and taiga remain required separately.
 Human timing, realized encounters and acquired loot remain NOT MEASURED.
-Current local results: basalt and [crimson](#crimson-complete-local-quality-result)
-are integrated; three selected Nether variants and ocean/taiga remain incomplete.
+Current local results: basalt, [crimson](#crimson-complete-local-quality-result)
+and [warped](#warped-complete-local-quality-result) are integrated; soul, wasteland
+and ocean/taiga remain incomplete.
 
 ## Bounded group declaration
 
@@ -554,3 +555,204 @@ it is not a human gameplay observation. Both current variant commands, lint,
 format and types pass. Final candidate scope/link/diff checks and delivery follow
 under the separately declared10-minute bound. The original five-case overrun is
 not erased or repriced as this smaller integration interval.
+
+## Warped bounded whole-case declaration
+
+At2026-09-10 17:53:16 UTC, declare45 minutes for the retained warped case's
+complete analysis/integration, then15 minutes for affected validation/delivery.
+The preliminary raw inspection confirms the existing source differences: an upper
+double chest, a lower trapped chest beside TNT, a strider source, warped pressure
+plates and floor dispensers. These prevent blindly copying crimson's task. Reuse
+the existing ordered operation checker with an explicit warped operation list;
+no new navigation framework, raw extraction or runtime. New raw storage is zero.
+The required result is one complete local room/graph, objective task, source/loot
+allocation and quality/bypass assessment in this comparative report. If unresolved
+geometry or mechanism remains at the deadline, retain the partial result and
+reassess; do not silently extend the cap.
+
+Actor, A/B/C profiles and complete objective remain the group declaration above.
+Use staged middle-hall start/end(143,65,62), survey both other floors, suppress
+the source and collect all four logical containers (five loot assignments).
+The strider is non-hostile; the scenario imposes no attack task and requires a
+clear route, with no natural hostiles or body obstruction. This is zero required
+modeled combat, not zero observed entities. Source suppression and looting still
+cost time. Destroying the trapped chest rather than opening it is permitted
+engineering; source verification of that distinction is required before acceptance.
+Conditional pickup adds4H per destroyed container; every movement, removal,
+interaction, equipment selection and acquisition remains counted. Unknown material
+cost or trap behavior prevents a complete total, rather than silently receiving0.
+
+Crimson's previous validation/delivery finished with fetched head68483571 equal
+to upstream and a clean tree at17:51:58 UTC,370s after its17:45:48 integration
+boundary, within the declared10-minute final bound.
+
+Warped geometry now passes132H,7 up/7 down with21 removals,3 placements and2
+openings. The copied native upper ascent failed at(145,66,65), with air instead
+of support. Both would-be stair runs lack intermediate steps; three cobblestone
+blocks at(145,65,65),(145,65,66),(145,66,66) construct the eastern link using
+verified top/side anchor rays. No repair is claimed for the western flight.
+The upper lid slabs are deliberately removed in this circuit; their removal is
+not asserted necessary for every possible chest-opening method. Initial center
+rays hit the conservative front slab/dispenser obstruction; upper chest and
+trapped-chest targets now use actual visible box faces. The floor dispenser was
+initially rejected as unlisted support; its inherited full-cube shape supports the
+accepted dry standing position. The second tripwire is also sheared before its
+vine crossing. Raw attached=true/false differences are preserved.
+
+Before full arithmetic, active mining is105 ticks:2 wood slabs*8,2 wood buttons*2,
+4 stem/hyphae blocks*8,2 wood chests*10,source19,piston6,4 wood plates*2;
+roots,2 wires and2 twisting-vine cells break instantly. The six equipment selections
+are blocks,axe,pickaxe,axe,shears,axe. There are26 interaction starts,4 acquisition
+allowances and8H conditional pickup for2 destroyed chests. Count direction changes
+plus initial orientation and7 phase choices: stair construction,upper reward,
+middle survey,source closet,plate lane,northern cache,return. Use14 coupled
+vertical steps and0 required combat; no new speed or inventory calibration.
+
+## Warped complete local quality result
+
+The selected warped occurrence now has a complete local conditional result.
+Task A/B/C totals are81.45/138.75/228.25s, including movement39.2/59.5/98s and
+active mining5.25s. Required modeled combat is0 in the declared clear-route,
+non-hostile-source scenario. This neither counts realized striders nor measures
+actual combat/traversal. The132H circuit includes7 up/7 down,38 direction changes
+and46 navigation allowances. Its21 removals,3 placements,2 opens,6 equipment
+selections and4 acquisition allowances remain explicit. Two destroyed chests add
+8H conditional pickup; failed retrieval, unexpected entities, trap activation,
+failed construction or survival censor the complete result.
+
+Quark VariantTrappedChestBlock extends ChestBlock, retaining its removal/drop
+chain, and getSignal clamps ChestBlockEntity.getOpenCount to0..15. Destruction
+of the unopened chest therefore does not supply its opening signal. The existing
+[Desert Mimic source derivation](towns-and-towers-desert-mimic-report.md#saved-inputs-and-complete-task-declaration)
+binds destruction to potential loot-table unpacking without player context, not
+observed contents. The adjacent TNT at(148,61,60) has unstable=false and remains
+a baseline opening hazard. No runtime trigger or explosion is claimed.
+
+Pinned source/material checks: Blocks.warped_slab uses hardness2 (offset32905),
+warped_button uses woodenButton (offset33384), and warped_roots is instabreak
+(offset32180). Expanded vanilla axe tags contain slabs, buttons, plates, stems
+and hyphae; the Quark axe tag includes ordinary and trapped warped chests. Both
+use the already bound wood-chest properties. DispenserBlock and BaseEntityBlock
+have no shape override; BlockBehaviour.getShape returns Shapes.block and its
+collision method uses that shape with collision enabled. Blocks' dispenser
+registration retains collision (offsets3884..3908). Thus actual dispenser tops
+are full support, without treating their contents or behavior as measured.
+These are exact artifact inspections under the earlier bound SRG/Quark identities.
+
+| Room | Activity envelope/usable floor | Content and empty/dead disposition |
+| --- | --- | --- |
+| H, middle hall | X141..146,Z60..66,feet65 on the surveyed perimeter | Quiet connecting space and interrupted upper stair locations. Empty, not dead |
+| U, upper reward hall | X140..147,Z59..69,feet68 on checked northern, western and eastern arms | Upper double chest; southern growth interrupts the other landing. Not empty/dead |
+| L, lower control hall | X139..148,Z64..70,feet61 on supported cells | Button/piston controls and pressure-plate lane, source-closet access. Not empty/dead |
+| T, northern trap/cache | X139..147,Z58..63,feet61 on checked cells | Tripwire, trapped chest, neighboring TNT and dispenser. Not empty/dead |
+| D, source closet | X146..148,Z65..68; centerlineX147,feet61 after declared work | Non-hostile strider source and two ordinary chests. Not empty/dead |
+
+These are activity envelopes, not five rectangular walkable boxes. The engineered
+objective graph has H-U,H-L,L-T,L-D:5 rooms,4 edges, one component, one degree-three
+junction(L), no inter-room cycle and terminalsU/T/D. The H-U edge depends on the
+three construction blocks; it is not a native stair measurement. The western
+upper flight also lacks intermediate supports and has an obstructed landing.
+No second H-U edge is accepted from its surviving top stair. This is a measured
+local interruption, not proof that every untested external approach is impossible.
+Merging the ambiguous L/T activity boundary gives4 rooms,3 edges, no cycle and
+no degree-three junction. Empty/dead fractions are1/5 and0/5, or1/4 and0/4 merged.
+
+Declared graph depth from H is1 for U/L,2 for T/D. Actual constructed H-to-upper
+landing route is9H/3V; the upper chest interaction is a further11H along the
+chosen perimeter. H-L is9H/4V to(143,61,69) after its stem removal. Existing
+flat-floor BFS gives L-D7H to(147,61,66),L-T16H to(145,61,61); corresponding
+network distances are16H/4V and25H/4V from H. These are scoped route/network
+distances, not global shortest paths under arbitrary excavation. Floors61..68
+give7 blocks of progression, separate from the14-layer structure envelope.
+
+Meaningful hazards include8 saved wooden pressure plates,4 upward floor dispensers
+and2 other dispenser assignments, the northern tripwire and adjacent chest/TNT.
+The declared lane removes its4 plates; the other4 retain their baseline potential.
+Both literal warped and wasteland dispenser tables specify strong-harming tipped
+arrows,1..2 rolls with5..14 arrows per selected entry. The five wasteland
+references are preserved. No generated payload or effective shot count is inferred.
+Tripwire attachment differs between neighboring saved cells; this is retained
+mechanism uncertainty, not proof of an intact firing chain. The task shears both
+crossed cells. Missing upper supports and open floor edges expose falling risk;
+construction resolves the selected access, not every hazard in the envelope.
+Narrow lower lanes and closet impose one-block clearance, but no enemy pathfinding
+or observed chokepoint combat is claimed. No lava is used by this modeled route.
+
+Reward distribution has two denominators: five saved assignments versus four
+logical containers. U carries2/5 assignments in1/4 containers (a north-facing
+left/right pair atX143/144,Y68,Z62); D carries2/5 in2/4, T carries1/5 in1/4.
+Four ordinary assignments use chests/temples/warped, including potential gold,
+resources, equipment and rare scrap; the trapped first pool instead contains
+fungus,quartz,nuggets and wart blocks. Both include their additional trim/lucky
+references. All remain unrolled. Different source pools support a reward-quality
+difference, not measured item value, acquired output or probabilities.
+
+Authored hostile enemy count/diversity: zero authored hostile source types; one
+authored strider source type. Realized entities, natural hostiles and encounters
+remain NOT MEASURED. Authored finale: NONE. D remains a terminal candidate with
+objective clarity ABSENT, distinctive hostile challenge ABSENT, reward linkage
+PRESENT, integration CONDITIONAL on the breach, external exposure PRESENT. U
+provides an additional reward goal and vertical engineering task, so D is not
+an exclusive reward climax. No invented player-quality score follows from this.
+
+External vulnerability: the same checked eastern example starts at(150,61,64),
+removes six original wall blocks atX149,148,147,Y61/62,Z64, then the unextended
+piston at(147,62,65), reaching the ordinary chest at(147,61,65) in3H. The wall is
+five warped hyphae and one warped wart block, not copied crimson material. All
+seven rays and the supported path pass. This bypasses the hall, upper construction
+and plate lane to one reward; it does not complete the four-container objective
+or establish actual safety. Scoped active breaking is76 ticks with declared
+axe/pick tools. The trapped chest's destruction also bypasses its opening trigger,
+while the source-closet breach bypasses the native button/piston puzzle.
+
+Expected replay assessment: the fixed template supports processor/terrain and
+source/loot variation, not measured player replay choices. This case's broken
+stairs, upper chest and non-hostile source materially differ from basalt/crimson.
+Same-site revisits retain3 new supports and21 removals, including the source and
+two chests; surviving containers do not reconstruct that work. No player outcome
+or random-layout rate is invented. The three-level form has rewards on both
+upper and lower levels, so it is not mechanically equivalent to crimson's wholly
+lower reward distribution. Nevertheless the quiet middle hall, short branch
+depths and absence of authored hostile combat support limited objective variety.
+The family-wide large/shallow verdict remains open until all seven variants pass.
+
+Reproduce the current case and inspected categorical plan:
+
+```sh
+uv run python -m evidence.item-13.repurposed_temple_route warped
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/repurposed-temple-warped.json.gz --output /tmp/item13-warped-review.svg --layers 61 62 65 66 68 69
+convert /tmp/item13-warped-review.svg /tmp/item13-warped-review.png
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar net.minecraft.world.level.block.Blocks net.minecraft.world.level.block.DispenserBlock net.minecraft.world.level.block.BaseEntityBlock net.minecraft.world.level.block.state.BlockBehaviour
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/Quark-4.1-480.jar org.violetmoon.quark.content.building.block.VariantTrappedChestBlock
+```
+
+The plan inspection is source/geometric analysis, not a human play observation.
+
+Warped analysis/integration and slice inspection ended18:02:41 UTC,565 seconds
+after declaration, within the45-minute cap. This includes the explicit failed
+native ascent, construction, source binding, task/quality integration and external
+example. No new raw extraction or runtime was used. Final affected validation
+and delivery now have the separately declared15-minute bound.
+
+Focused validation passes for the warped complete command, lint, formatting and
+types on the changed route and shared helper, coverage arithmetic and current
+report/index links. All six prior consumers/results are byte-identical to68483571:
+large_hall_down, second ordinary temple, first underground temple, Desert Mimic,
+Repurposed basalt and crimson. The shared change only admits actual full-cube
+dispenser support; no prior route or model changed. Reproduce the current checks:
+
+```sh
+uv run ruff check evidence/item-13/repurposed_temple_route.py evidence/item-13/temple_geometry.py
+uv run ruff format --check evidence/item-13/repurposed_temple_route.py evidence/item-13/temple_geometry.py
+uv run basedpyright evidence/item-13/repurposed_temple_route.py evidence/item-13/temple_geometry.py
+for check in temple_hall_down temple_ordinary_route underground_temple_route desert_mimic_route; do
+  uv run python -m "evidence.item-13.$check"
+done
+for variant in basalt crimson warped; do
+  uv run python -m evidence.item-13.repurposed_temple_route "$variant"
+done
+```
+
+Three of seven Repurposed Temple alternatives now satisfy local scope. Soul and
+wasteland have retained raw but need full assessments; ocean/taiga still require
+exact sample matching. No Item13 exit gate or Item14 start is claimed.

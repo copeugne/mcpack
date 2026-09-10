@@ -36,7 +36,7 @@ exit gate or a claim of reviewed main delivery.
 | explorations:slime_cave | [Both processed height states](fixed-blocks/explorations-slime-cave-report.md#negative-case-result-and-material-comparison), complete local tasks with [corrected breaking cost](fixed-blocks/explorations-slime-cave-report.md#narrow-correction-spawner-breaking-cost) | None within declared scope; source-supported mixed-height processing is not a third template |
 | explorations:underground_temple | [First full assembly, scoped hall and failure](fixed-blocks/explorations-underground-temple-report.md); all four tower tasks and bedroom in second assembly | Second full graph/circuit/task, remaining four reward accesses and fifth source, room/content allocation and quality synthesis; wet-shaft link unresolved. All selected raw blocks already exist |
 | towns_and_towers:desert_mimic | [Complete fixed case](fixed-blocks/towns-and-towers-desert-mimic-report.md#integrated-topology-task-and-quality-result), six-room partition, constructed return, source/reward work and external breach | None within the declared single fixed three-component design; human timing and realized encounters remain unmeasured |
-| repurposed_structures:temple | [Basalt assessment](fixed-blocks/repurposed-nether-temples-report.md#basalt-local-quality-result) with magma-size cases and [crimson complete result](fixed-blocks/repurposed-nether-temples-report.md#crimson-complete-local-quality-result), including paired-stair topology | Soul, warped, wasteland assessments using retained raw; ocean and taiga samples. The original group overrun remains preserved |
+| repurposed_structures:temple | [Basalt assessment](fixed-blocks/repurposed-nether-temples-report.md#basalt-local-quality-result) with magma-size cases and [crimson complete result](fixed-blocks/repurposed-nether-temples-report.md#crimson-complete-local-quality-result), including paired-stair topology; [warped complete result](fixed-blocks/repurposed-nether-temples-report.md#warped-complete-local-quality-result) retains construction and trapped loot | Soul and wasteland assessments using retained raw; ocean and taiga samples. The original group overrun remains preserved |
 
 The Moog scope declares one complete occurrence per fixed alternative, with two
 only for the three named procedural families. Generic later reminders about
@@ -102,9 +102,9 @@ satisfied by random examples. Scope rows remain the acceptance authority.
 | Cost class | Families in scope | Families with local scope remaining | Minimum case completions remaining |
 | --- | ---: | ---: | ---: |
 | Compact | 2 | 1 | 4 |
-| Fixed | 126 | 113 | 247 |
+| Fixed | 126 | 113 | 246 |
 | Modular | 64 | 62 | 276 |
-| Total | 192 | 176 | 527 |
+| Total | 192 | 176 | 526 |
 
 These are remaining assessment units, not new extraction counts, independent-world
 counts or an end-to-end ETA. [Effort measurement and unresolved costs](README.md#remaining-effort-and-next-bounded-work)
@@ -433,7 +433,7 @@ and dimensions are also preserved in the intake.
 | pyramid | badlands, dark_forest, flower_forest, giant_tree_taiga, icy, jungle, mushroom, ocean, snowy | nether | end | Fixed; 11; B6, P0. No local result. |
 | shipwreck | | crimson, nether_bricks, warped | end | Fixed; 21; B6, P0. No local result. |
 | stronghold | | nether | end | Modular; 4; B0, P0. No local result. |
-| temple | ocean, taiga | nether_basalt, nether_crimson, nether_soul, nether_warped, nether_wasteland | | Fixed; 5; B8, P0. Partial local result; basalt and crimson satisfied. |
+| temple | ocean, taiga | nether_basalt, nether_crimson, nether_soul, nether_warped, nether_wasteland | | Fixed; 4; B8, P0. Partial local result; basalt, crimson and warped satisfied. |
 | village | badlands, bamboo, birch, cherry, dark_forest, giant_taiga, jungle, mountains, mushroom, oak, ocean, swamp | crimson, warped | | Modular; 28; B0, P0. No local result. |
 
 Root coverage alone is insufficient. Preserve these architectural and mechanical
