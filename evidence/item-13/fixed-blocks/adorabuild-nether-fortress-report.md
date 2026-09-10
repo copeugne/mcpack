@@ -394,3 +394,82 @@ formatting pass, basedpyright reports zero errors/warnings and git diff --check
 passes. The ordinary representative now has a complete local assessment. Proceed
 to the selected biome-diverse r1 layout to cover stairs_1 and tower_medium_1 and
 validate its own route and quality; do not copy these first-case metrics.
+
+## Second selected assembly extraction
+
+The first representative local assessment above passes. Execute the already
+selected biome-diverse r1 case with the same resource and identity boundaries.
+This read supplies its distinct stairs_1/tower_medium_1 arrangements, not an
+independent resampling of the first case.
+
+```sh
+timeout 120 uv run python - <<'PY'
+import gzip,hashlib,importlib,json,resource,shutil,time
+from pathlib import Path
+from tools.analyze_route_opportunities import read_bound
+m=importlib.import_module('evidence.item-13.measure')
+sha='b5719edf1aa40b47a57aac05cd99fd1a94562f55757f864ac8b31919b51b7142'
+plan=json.loads(read_bound(Path('evidence/item-13/nether-fortress-selection.json'),sha))
+selected=plan['selected'][1]
+rows=json.loads(read_bound(Path('evidence/item-13/candidates.json'),plan['input_sha256']['candidates']))['candidates']
+case,=[r for r in rows if r['id']==selected['id']]
+assert case['bounds']==selected['bounds'] and case['voxel_count']==54694
+output=Path('evidence/item-13/fixed-blocks/adorabuild-nether-fortress-biome-diverse-r1.json.gz')
+assert not output.exists() and not output.is_symlink() and shutil.disk_usage('.').free>=5*1024**3
+started=time.monotonic()
+result={'selection_sha256':sha,'cases':[m.extract(case,voxel_budget=54694)]}
+result['elapsed_seconds']=round(time.monotonic()-started,6)
+result['peak_rss_kib']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+raw=gzip.compress((json.dumps(result,sort_keys=True,separators=(',',':'))+'\n').encode(),mtime=0)
+assert len(raw)<=20*1024**2
+with output.open('xb') as stream:stream.write(raw)
+print(len(raw),hashlib.sha256(raw).hexdigest(),result['elapsed_seconds'],result['peak_rss_kib'])
+PY
+```
+
+Second extraction PASS:54,694 cells,10,479 compressed bytes,10.061025 seconds,
+50,164 KiB peak RSS. [Saved blocks](adorabuild-nether-fortress-biome-diverse-r1.json.gz)
+SHA-256 `099575deb8e07624b33c4e8e98a5f4d8d9848eb90c8ac19cbfc7f717e15adef8`.
+The extractor verified the complete accepted restored-world inventory before and
+after under the existing lock. No server ran or accepted world was altered.
+The full23-layer [view](adorabuild-nether-fortress-biome-diverse-r1-slices.png)
+was inspected. Its149,448-byte PNG is retained; the7,926,527-byte reproducible
+SVG remains a local intermediate. Commands:
+
+```sh
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/adorabuild-nether-fortress-biome-diverse-r1.json.gz --output evidence/raw/item13/fortress-render/biome-diverse-r1-slices.svg
+timeout 120 convert -background white evidence/raw/item13/fortress-render/biome-diverse-r1-slices.svg evidence/item-13/fixed-blocks/adorabuild-nether-fortress-biome-diverse-r1-slices.png
+```
+
+The19 saved pieces comprise one large tower,two small_1 towers,one medium_2,
+three medium_1,seven bridges,four dummy bridges and one stairs_1. This is not a
+room count. Source component names, BBs and rotations remain in start_nbt.Children
+of the retained extract. Large tower center(-2,398); small centers(-2,408) and
+(-2,418); medium_2 center(8,408); medium_1 centers(18,408),(8,418),(-2,428);
+stairs center(-12,408). All piece bounds spanY31..53.
+
+Five saved single chest assignments use minecraft:chests/nether_bridge:
+(-1,41,428),(8,33,407),(8,41,407),(8,41,417),(18,41,407).
+Their block entities retain LootTableSeed and no Items. There are no saved
+spawners in the extraction. This is table potential, not generated loot or
+realized enemy evidence. The root's previously inspected natural override applies.
+
+Exact state_at inspection of the retained cells identifies a material obstruction
+that forbids blindly copying first-case native movement: in the medium_1 tower
+at(8,418), nether_wart_block occupies(8,37,418),(8,38,418),(8,39,418),
+(9,40,419) and(9,41,419), among neighboring cells. The first three obstruct the
+middle center and the last two obstruct the upper slab landing. The saved top
+slabs remain at(7,37,419),(8,38,419),(9,39,419). These establish interference
+with the obvious strip, not proof that every alternative route is impossible.
+The medium_2 chest at(8,41,407) also has nether_wart_block immediately above at
+(8,42,407), requiring a lid/interaction disposition before acquisition is modeled.
+Do not silently erase these generated blocks or call their traversal time zero.
+
+The stairs_1 connector uses three rows of actual stairs atY33/34/35 and contains
+lava behind theY34 stair row. It requires exact stair-shape/support inspection;
+the first-case checker conservatively excludes stair blocks and cannot validate
+this climb unchanged. The other medium_1 interiors retain their saved slab
+flights and must be checked in their own orientation. Next predeclare the second
+actor/task and any necessary narrow removals, then validate its topology, complete
+conditional accounting and quality. No second-case room/timing total is accepted
+yet. Reuse the retained block extraction rather than repeating this read.
