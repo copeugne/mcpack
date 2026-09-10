@@ -10,7 +10,7 @@ at = importlib.import_module("evidence.item-13.render_pilot").state_at
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
 
 
-def path_checks(c, removed, opened_doors, modeled_scaffold_feet):  # noqa: C901
+def path_checks(c, removed, opened_doors, modeled_scaffold_feet, *, bottom_slabs=()):  # noqa: C901
     """Bind the existing checks to one raw case and explicit hypothetical state."""
 
     def clear(box) -> None:
@@ -37,6 +37,10 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet):  # noqa: C901
                     ):
                         continue
                     height = 1.5 if n.endswith(("_wall", "_fence")) else 1
+                    if (x, y, z) in bottom_slabs:
+                        assert n == "minecraft:deepslate_brick_slab"
+                        assert state["Properties"] == {"type": "bottom", "waterlogged": "true"}
+                        height = 0.5
                     assert not overlap(box, [x, y, z, x + 1, y + height, z + 1]), (
                         box,
                         (x, y, z),
@@ -46,7 +50,16 @@ def path_checks(c, removed, opened_doors, modeled_scaffold_feet):  # noqa: C901
     def verify_path(points, *, crouch_up=False) -> None:
         """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
         for x, y, z in points:
-            if (x, y, z) not in modeled_scaffold_feet:
+            if y % 1 == 0.5:
+                support = (x, math.floor(y), z)
+                assert support in bottom_slabs, ("undeclared fractional support", (x, y, z))
+                assert support not in removed, ("removed fractional support", support)
+                assert at(c, *support) == {
+                    "Name": "minecraft:deepslate_brick_slab",
+                    "Properties": {"type": "bottom", "waterlogged": "true"},
+                }
+            elif (x, y, z) not in modeled_scaffold_feet:
+                assert y % 1 == 0, ("unsupported standing height", y)
                 assert (x, y - 1, z) not in removed, ("removed support", (x, y, z))
                 s = at(c, x, y - 1, z)
                 n = s["Name"]

@@ -100,3 +100,20 @@ verify(chamber_survey)
 assert len(chamber_survey) - 1 == 36
 assert len(rays) == 8
 print("PASS eight chest rays; native chamber survey 36 horizontal blocks, zero vertical")
+
+
+_, slab_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+    case, set(), set(), set(), bottom_slabs=set(slabs)
+)
+slab_stations = [(x, y + 0.5, z) for x, y, z in slabs]
+slab_verify(slab_stations)
+slab_verify(list(reversed(slab_stations)))
+print("PASS wet slab geometry: 17 stations, 16 horizontal and 16 vertical blocks each way")
+
+try:
+    verify([slab_stations[0]])
+except AssertionError:
+    print("PASS fractional support remains rejected without explicit slab declaration")
+else:
+    message = "fractional support leaked into the default dry checker"
+    raise AssertionError(message)

@@ -2931,3 +2931,74 @@ byte-identical after sharing its ray function and its full check passes. Only
 existing rules were moved; a lint directive for their existing4.5-block reach
 constant was retained. This milestone advances the second assembly but does not
 close its full topology, gameplay-quality model or family coverage gate.
+
+### Predeclared wet-slab collision check
+
+Resolve the shaft's fractional support geometry separately from movement timing.
+Reuse the shared checker with an explicit set containing only its17 already
+verified waterlogged bottom slabs. For those cells only, use the pinned half-block
+collision box and support at Y+.5. Keep fluid contact separate from collision;
+this option does not declare the slabs dry. Other unrecognized slab cells still
+fail. Validate the17 centered support stations in their ascending order and its
+reverse, with the existing conservative one-block transition envelope. Report
+16 horizontal and16 vertical transitions only if those checks pass; do not
+include the unvalidated upper/lower access connections or infer a whole-shaft
+traversal time. The existing dry integer-height rejection must still pass.
+
+The explicit fractional-support check passes for all17 stations in both
+orders:16 horizontal and16 vertical blocks from lowest to highest station.
+The checks preserve center-post clearance and the conservative higher-endpoint
+jump envelope. The default dry checker still rejects fractional slab standing,
+and the original integer-height rejection remains. This proves collision and
+support geometry under the stated shapes, not a timed player traversal or stable
+fluid field. No slab or other saved block was changed.
+
+Pinned `Entity.getFluidJumpThreshold` returns .4 for the declared adult eye
+height. `LivingEntity.aiStep` permits `jumpFromGround` when grounded and water
+contact is at or below that threshold, subject to its jump delay. The previously
+derived nominal7/18-block contact is below .4. This distinguishes the saved
+ankle-depth state from an automatically assumed deep-swimming jump. The default
+`Attributes.JUMP_STRENGTH` is .41999998688697815; the jump-power method also
+applies block jump factor and jump effects, which must remain their nominal
+values for any derived case. These facts do not prove that contact remains
+shallow during a lateral transfer toward the next, higher waterlogged slab.
+
+For an isolated vertical launch over its original slab, declare no sprint,
+effects, incoming velocity, lateral movement, horizontal collision, fluid push
+or source change; jump factor one and gravity .08. The first move uses nominal
+jump velocity. While in water, the inspected `travel` branch multiplies vertical
+velocity by .800000011920929 and `getFluidFallingAdjustedMovement` subtracts
+gravity/16 for this upward, non-sprinting case. Once above that slab's8/9 water
+height, ordinary vertical drag is .9800000190734863 after subtracting gravity.
+The following direct derivation only tests available vertical rise, not an
+entire jump trajectory between slabs, and is not a traversal-time result:
+
+```sh
+uv run python - <<'PY'
+y = 0.0
+velocity = .41999998688697815
+for tick in range(1, 10):
+    wet = y < 8/9 - .5
+    y += velocity
+    print(tick, round(y, 9), wet)
+    velocity = (velocity * .800000011920929 - .08/16
+                if wet else (velocity - .08) * .9800000190734863)
+PY
+```
+
+This restricted recurrence rises above one block at tick4 and peaks at about
+1.241635 blocks at tick6. It is insufficient to validate lateral transfer:
+water in the next slab's cell can be encountered before landing and alter the
+recurrence. Preserve that boundary instead of declaring a complete wet jump
+from a one-dimensional calculation. Reproduce the supporting source with the
+same pinned `javap -c -p` command for `net.minecraft.world.entity.Entity`,
+`net.minecraft.world.entity.LivingEntity` and
+`net.minecraft.world.entity.ai.attributes.Attributes`.
+
+The top slab supports feet Y24.5. The outer ledge above the shaft has feet Y26,
+a1.5-block difference, so a direct ordinary one-block step is not established.
+The central wall post and the upper opening may supply another route, but that
+route has not yet been validated. Bottom access, upper access and lateral wet
+transitions are the precise remaining claims before whole-shaft timing. The
+full generated block evidence is available; this is a modeling/access gap,
+not missing-world evidence or permission to regenerate the accepted world.
