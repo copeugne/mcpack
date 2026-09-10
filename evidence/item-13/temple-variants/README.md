@@ -1,7 +1,8 @@
 # Four missing temple material outcomes
 
-Status: source-derived origins and bounded experiment declared. Four attempts
-are rejected; no completed placement or accepted saved result exists. Item 13 remains IN PROGRESS.
+Status: r5 completes all four placements and local saved-state verification.
+Four earlier attempts remain rejected. External custody and report integration
+are tracked below; Item 13 remains IN PROGRESS.
 
 ## Exact missing evidence and smallest experiment
 
@@ -270,3 +271,60 @@ uv run python -m evidence.item-13.collision.retain --temple-attempt 5
 This r5 command is pending at its producer milestone. Keep the four earlier
 attempts and their original instances. If r5 fails, inspect that specific failure
 before proposing any further experiment; do not run an automatic retry series.
+
+
+## r5 runtime result and saved-state acceptance work
+
+Producer2f653748a6f46d48be14a9537677a0454bcd6f46 completes all four placements
+with their expected materials, matched flush, clean exit0 and frozen configuration.
+The [r5 core retention](r5-retention.json) binds the raw projection to SHA-256
+b3e1a088879bf6fd02039c2768e3d40912abfb18012fe11d199038629a326093.
+Total runtime140.95 seconds. Per-case placement/readback times (excluding chunk
+preparation) are1.195317692,0.385737464,1.122853491,0.551276356 seconds in selection
+order. These are probe costs, not gameplay times. The attempted SIGQUIT diagnostic
+found the server already exited; it had no effect and produced no thread dump.
+
+Measured instance storage is1,103,609,840 bytes across1103 files; raw capture is
+5,888,474 bytes across240 files. The stopped world is428,261,145 bytes across504
+files including session.lock. The2-GiB instance and20-MiB capture budgets pass.
+For custody/readback allocate3 GiB additional storage and120 seconds per local
+archive, restore or saved-block read, with5 GiB free floor. Current free space
+is34,682,707,968 bytes. Reuse the existing stopped-world backup/restore and archive
+publication tools, excluding session.lock. Verify a fresh restored copy's complete
+inventory before/after reading the four padded volumes (15,562 cells).
+Compare every saved block with immediate readback and preserve any changed blocks;
+require the four central outcomes and inspect changes before material acceptance.
+The natural gold cases remain terrain/access evidence. Forced Y160 cases are
+processor/material diagnostics and do not establish new natural starts or encounters.
+
+
+The [saved comparison](r5-saved-verification.json) passes all15,562 cells with
+zero differences from immediate readback and all four expected central blocks.
+The [local world restore](r5-world-restore.json) binds503 files to world archive
+SHA-256451c9de1804e859f8daf18cfb545a4879cd994cf677ef9e1a46cf1949a40a37c
+(162,749,467 bytes), excluding session.lock. The complete backup receipt hash is
+cf6d6b5fc690fbceab9941ad1b0bc4b4a74d192e4ae1597469e4b5a9039836d1.
+[verify_saved.py](verify_saved.py) reuses existing inventory, POSIX lock, region/NBT
+and block-section readers. The ordinary extractor requires a natural structure
+start and cannot represent these deliberately unregistered placements; this small
+reader instead compares the four immutable probe volumes with the verified restore.
+It does not invent starts or count templates as rooms.
+
+Executed commands:
+
+```sh
+uv run python -m tools.manage_item4_environment backup --world instances/item13-temple-variants-r5/world --archive evidence/raw/item13/temple-r5-custody/world.tar.gz --receipt evidence/raw/item13/temple-r5-custody/world-backup.json
+uv run python -m tools.manage_item4_environment restore --archive evidence/raw/item13/temple-r5-custody/world.tar.gz --sha256 451c9de1804e859f8daf18cfb545a4879cd994cf677ef9e1a46cf1949a40a37c --target evidence/raw/item13/temple-r5-custody/restored-world > evidence/raw/item13/temple-r5-custody/world-restore.json
+timeout 120 uv run python -m evidence.item-13.temple-variants.verify_saved evidence/raw/item13/temple-r5-custody/restored-world/world > evidence/raw/item13/temple-r5-custody/saved-verification.json
+cmp evidence/item-13/temple-variants/r5-saved-verification.json evidence/raw/item13/temple-r5-custody/saved-verification.json
+```
+
+Within each family, align the two forced padded arrays by relative coordinate and
+compare palette-decoded blocks. Exactly one cell differs: central index1267 in
+the2366-cell blackstone volume, index2707 in the5415-cell Nether volume. Every
+other block state is equal. Saved verification makes this relationship valid for
+the stopped copies too. Combined with the registered processor's only gold-target
+rules and the source-supported full-cube replacement shapes, the existing gold
+route can carry a conditional material substitution. The two reports below retain
+terrain/access from natural gold observations and never relabel forced Y160 stages
+as natural entry or realized encounters. External raw custody remains pending.

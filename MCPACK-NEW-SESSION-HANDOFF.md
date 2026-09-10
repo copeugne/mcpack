@@ -77,124 +77,79 @@ tune, regenerate or repeat completed audits, classification or route processing.
 
 ## Item 13 active work
 
-The user authorized Item 13 on 2026-09-09, superseding the previous wait instruction,
-and separately approved modeled/inspection scope. Human times and realized
-encounters remain NOT MEASURED. The latest user objective extends work sequentially
-through Item 18. Start each next item only after its predecessor completes all
-required delivery/review gates. Items 14 through 18 remain UNSTARTED.
+Item 13 IN PROGRESS; Item 14 UNSTARTED. User authorized starting Item 13 and its
+separate modeled/inspection scope. Human times, realized encounters, generated or
+acquired loot and player outcomes remain NOT MEASURED. The approved
+[complete conditional scenario](evidence/item-13/timing-scenario-proposal.md)
+accounts for complete objective work rather than movement alone. No Item 13
+completion or final PR gate has been claimed.
 
-Startup fetched main `3a086467fcd25fffd3b39ed3112d5cb49a0a7bdf`, verified merged
-PR40 and clean identical contents, then created `codex/item13-dungeon-quality`
-from main. No preserved artifact or previous branch was modified.
+Current branch: `codex/item13-dungeon-quality`. Latest runtime producer:
+`2f653748a6f46d48be14a9537677a0454bcd6f46`. Verify subsequent report/custody
+commits against current upstream. Fetched main at the latest checkpoint is
+`cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
+older Item 12 branch or repeat history consolidation.
 
-Authoritative current work: [Item 13 README](evidence/item-13/README.md),
-[unfinished predeclaration](evidence/item-13/protocol.md), and
-[complete inclusion/exclusion intake](evidence/item-13/intake.json).
-The intake verifies all sixteen accepted restored worlds and census hashes and
-joins existing occurrences across every dimension. It includes 192 canonical
-families with 357 registry roots; 119 included families have no Item 10 occurrence.
-Item 8 separate captures add starts for 49 of those 119 families, with full saved
-envelope coverage for 13. The common Item 7 index adds complete-envelope
-candidates for Starlight Voyager, leaving 105 without such a candidate in the
-start-based references. The existing central-End raw world is also available for
-non-registry arena inspection. Exact dispositions and limitations are in the README.
-The intake is not proof of playable topology. The first [representative report](evidence/item-13/pilot/report.md) now validates two small
-dungeon chambers and covers all quality dimensions under conditional models.
-No additional dungeon-generation survey has run. A fresh runtime collision probe now supplies empty-context shapes from saved house blocks. Do not infer full
-quality coverage from either pilot.
+Authoritative status and requirements: [Item 13 README](evidence/item-13/README.md),
+[protocol](evidence/item-13/protocol.md), [coverage](evidence/item-13/coverage.md),
+[intake](evidence/item-13/intake.json). Population: 192 included canonical
+families, 256 exclusions, 357 registry roots. All dimensions and material variants
+remain in scope. Existing inventory/classification/audits are inputs, not work to
+repeat. The [candidate index](evidence/item-13/candidates.json) contains266 starts
+across44 families/59 roots; [assembly inspection](evidence/item-13/start-inspection/summary.json)
+retains256 full padded envelopes and ten limited cases with alternatives.
+Named pieces, templates and clearance positions are not rooms.
 
-Pushed measurement milestone: `6ba360fa` on `codex/item13-dungeon-quality`.
-Later scope milestones follow it; verify the current branch/upstream before work.
-The [material coverage](evidence/item-13/coverage.md) now accounts for all 192
-included families and all 357 registry roots, including whole-layout, component,
-anchor and dimension differences. The 256 exclusions stay in the intake.
-CTOV badlands/mesa share a verified definition; Nilotic has no resolved eligible
-biomes. These source dispositions avoid unnecessary duplicate/forced samples.
+Local quality assessments and raw blocks are linked from the
+[fixed-block record](evidence/item-13/fixed-blocks/README.md) and
+[compact pilot](evidence/item-13/pilot/report.md). Reuse their rejected routes,
+collision/support checks, source derivations, conditional complete-task models,
+uncertainty and family-specific sampling limits. All nine selected Moog layouts
+and five selected Adorabuild layouts have local assessments. This does not mean
+all family/material/repetition coverage is complete.
 
-The [baseline candidate index](evidence/item-13/candidates.json) identifies 266
-starts across 44 included families and 59 observed roots. The completed
-[assembly index](evidence/item-13/start-inspection/summary.json) now retains their
-component membership and saved chunk coverage. All starts are present; 256 padded
-envelopes are full. Ten have non-full chunks, with exact interior versus margin
-limitations in the README. Every observed root/dimension has a full-envelope
-alternative. The batch took 664.286 seconds and retained 1,827,307 compressed bytes.
+The three earlier collision/spawner captures have verified
+[external raw custody](evidence/item-13/collision/README.md). Do not repeat them.
+Their outputs measure empty-context shapes or source payload resolution, not
+observed gameplay. Existing full-task corrections are integrated in the reports.
 
-The [first fixed-layout selection](evidence/item-13/fixed-moog-selection.json)
-chooses nine Moog root alternatives in eight families, with 556,065 padded voxels.
-The summary now resolves Moog version maps using the accepted Item 8 resolver.
-Five derived component-name rows changed; original raw bytes are unchanged.
+## Current batch: temple material outcomes
 
-The [fixed-block dataset](evidence/item-13/fixed-blocks/README.md) now retains
-all nine selected layouts: 556,065 voxels, 87,559 compressed bytes, 60.887 seconds.
-The first house reproduced exactly and has an inspected slice sheet. Empty enemy
-assignments and the Dome's external-margin barrel are explicit raw limitations.
+The [temple diagnostic](evidence/item-13/temple-variants/README.md) exhausts all
+three natural baseline temple starts (gold) and covers four missing debris/lodestone
+cells by predeclared forced placements in a fresh verified accepted-world copy.
+r1/r3/r4 timed out before completed placement; r2 failed before launch. Core
+failures and all original raw paths/instances remain preserved. Do not retry them.
 
-The [collision pilot](evidence/item-13/collision/README.md) completed at producer
-`73208407`: 8,500 cells, 151 palette states, 42 AABB unions, zero unsupported
-queries. Runtime/configuration identity, correlated flush and clean exit passed
-in 206.424 seconds. It measures empty-context shapes, not actors. Projection,
-capture result and redacted console are retained; broader raw capture custody
-remains pending. The three-argument collision call bypasses the state cache, so
-non-dynamic flags alone do not prove actor-context independence. The derived
-upright standing pass retains 352 positions from 1,411 supported candidates,
-reproduced exactly. Crouching at source-supported height 1.5 adds six positions
-(358 total), none in central upper reward bands, also reproduced exactly.
-Clearance positions are not rooms. The first upright route fails at a hanging
-lantern; r2 passes collision but fails later movement support inspection. The developing
-[house assessment](evidence/item-13/fixed-blocks/mns-medium-house-report.md) integrates
-activity spaces, source support, blocked east-vine access and reward tables.
-The report now includes the 36.25-block local circuit and 20.83-second nominal
-modeled budget, bounded piglin workload, conditional bed hazard, empty/dead
-spaces, finale and replay assessments. These are not observed gameplay. A later support check rejects r2's center
-ascent; r3 uses slab-edge transitions and passes eighteen swept segments plus
-step-support checks. Source context support is integrated; full actor runtime
-equivalence remains unmeasured. Station depths (14.5/18.125 blocks), room depth
-and burial context are integrated; the local model assessment is recorded. It derives
-local doorway clearance, vine access and balcony support/headroom from saved AABBs.
-Balcony chest/barrel access is now source/geometry-supported under the declared
-unlocked, no-entity-blocker model. Exact rays and lid/sign rules are in the report;
-no container was opened and no loot generated or acquired.
-A [predeclared spawner lookup](evidence/item-13/collision/README.md#predeclared-saved-spawner-lookup-experiment)
-completed at 48089961 in 229.279 seconds with clean lifecycle and frozen identity.
-The piglin resolves; three empty assignments do not resolve to any entity type.
-The identical two Medium House 2 payloads reuse that disposition. Core projection,
-capture and redacted console are retained; broader raw custody remains pending.
-No spawning, actor or repeated collision pass occurred.
+r5 passed: four predicted materials,15,562 immediate readback cells, frozen
+identity/configuration, correlated flush and clean exit0 in140.95 seconds. A small
+opt-in processed-console barrier avoids attaching during post-start work; asynchronous
+chunk requests remain off-thread. Original600/120 lifecycle,45 attach and30 case
+limits are unchanged. Focused lifecycle/runner tests:27 passed; lint/types passed.
 
-The [second-house report](evidence/item-13/fixed-blocks/mns-medium_house_2-report.md)
-now integrates saved layout/source facts and an inspected slice sheet. Both doors
-are closed; west-ledge/vine access requires its own model. The collision protocol
-completed at 89270e5a: 8,500 cells, 39 unions, no unsupported queries, 211.427
-seconds with clean lifecycle/configuration. Core outputs are retained. The
-source-supported right-door model and south-vine circuit now pass twenty swept
-segments. Three storage barrel rays pass under the declared model; 32.25 blocks
-give 17.5 nominal modeled seconds. The north route also passes (12 segments),
-27 blocks and 11.666667 nominal seconds. Both house variants now have local
-modeled assessments; graph/depth, hazards, finale and replay are integrated.
-The [Circle report](evidence/item-13/fixed-blocks/mns-circle_nether_brick-report.md)
-now attributes the saved lava to an overlapping fortress template. The original
-case is preserved; a predeclared non-overlapping candidate was extracted in 6.644s
-(8464 voxels). Its one-area assessment, 26-block circuit and northern external
-approach are integrated. The original rejects that circuit; both reward faces now
-connect by a checked detour. The user approved the [complete conditional scenario](evidence/item-13/timing-scenario-proposal.md) on 2026-09-10.
-Supplemental Circle task estimates are 47/64/93s for two piglins and two brutes,
-with explicit provisional budgets and censoring. Resume layout coverage under
-[protocol v2](evidence/item-13/protocol.md#complete-objective-timing-correction);
-Original Circle now has a complete conditional 61/88/129-second budget with repeated-batch source ceilings. Medium House 2 now has a complete four-barrel 64/116/207-second budget with three-scaffold lower roof access. Medium House 1 now has a three-container 68/119/202-second budget with pre-delay source disablement. The compact pilot now has complete conditional budgets: ocean 89/170/322s and mountainous 71/134/252s for two stipulated enemies. Continue the five-root [Adorabuild selection](evidence/item-13/coverage.md#next-fixed-layout-batch-five-observed-adorabuild-roots). The [blackstone temple](evidence/item-13/fixed-blocks/adorabuild-blackstone_temple-report.md) gold case now has a complete local assessment and 33/56/94-second conditional harvest. All four remaining [Adorabuild raw inputs](evidence/item-13/fixed-blocks/README.md#remaining-four-selected-adorabuild-inputs) now pass extraction and source intake. Crimson hall now has its local fixed-family assessment and 39/62/104-second task model. The [End ship](evidence/item-13/fixed-blocks/adorabuild-end_ship_small_1-report.md) now has a local one-deck assessment and conditional shulker task (26..33 / 45..54 / 79..93 seconds). Authored shulker/stair overlap is explicit; settled population is NOT MEASURED. The [wart house](evidence/item-13/fixed-blocks/adorabuild-nether_fortress_medium_1-report.md) now has a two-room assessment and a 47/89/165-second conditional visit-and-three-chest task. The [Nether temple gold case](evidence/item-13/fixed-blocks/adorabuild-nether_temple_medium_1-report.md) now has a supported staged catcher/ramp and 19/34/58-second conditional task. All five selected Adorabuild cases have local assessments. The wart-house and Nether-temple source summaries were corrected to include their five-type monster overrides. Conditional two-blaze tasks are 53/97/178 and 25/42/71 seconds respectively; original no-enemy timings retain that limitation. The remaining blackstone r1 candidate was read under the declared budget and also has gold. All three baseline temple starts are now checked; the four debris/lodestone family/outcome cells remain missing. The [four-placement diagnostic](evidence/item-13/temple-variants/README.md) is now bounded and source-derived origins reproduce. The placement branch is implemented. r1 timed out on its first case with zero completed placements and process-group cleanup; core failure evidence is retained. r2 will use a fresh hash-verified copy of accepted ordinary r1, unchanged limits and explicit phase logs. r2 failed before launch because its destination world directory was absent; the narrow directory-creation fix is ready. r3 passed the source copy and readiness but timed out during synchronous chunk loading, with zero placements. Its core failure evidence is retained. The narrow r4 correction requests chunk futures off-thread before server-thread placement; unchanged deadlines apply. r4 also timed out before placement, with post-start server work consuming much of its deadline. Retained core evidence links that overlap. r5 adds an opt-in processed-console-command barrier before attaching, with the same limits. Run the fresh r5 command, then complete saved-state/custody integration. Full family/material/repetition coverage remains.
-[Dome](evidence/item-13/fixed-blocks/mns-warped_dome-report.md)/[Skull](evidence/item-13/fixed-blocks/mns-giant_skull-report.md) local assessments recorded. [Large House](evidence/item-13/fixed-blocks/mns-large_house_1-report.md): 16/16 barrels and 7/7 spawners have conditional access evidence; exterior link requires 19 bridge blocks; full conditional model gives 376/583/969s for two successful entities per source; local five-room quality assessment recorded; family repetitions and broader coverage pending.
-[Nether Tower](evidence/item-13/fixed-blocks/mns-nether_tower-report.md): 17 source/saved rewards matched, no explicit enemy sources; all 17 rewards have conditional access, including a 19-scaffold chest route; complete conditional timing is 221/390/711s with no encounters; local two-room quality assessment recorded; repetitions and broader coverage remain.
-[Desert Pyramid](evidence/item-13/fixed-blocks/mss-desert_pyramid-report.md): source/assembly intake complete (11 spawners, 4 chest blocks/3 arrangements); husk source input resolved; full-sheet render timed out (124 at 180s). Corrected Y169..184 sectional view passes. Native entrance stair now has a checked 10-horizontal/5-vertical link plus six-block buried corridor. Five-block lower ladder and dry northwest double-chest access now pass local source/geometry checks. Lower two-source route passes with three declared decorative removals; 17 upward tips have source-supported fall-hazard disposition. Upper crossing is unsupported; nine-block bridge plus top-ladder removal now declared and checked through the northern reward corridor. Thirty-block rare-room circuit now reaches both rare chests and three recessed sources through existing slab gaps. All eleven sources now have local interaction access. Ten-block western surface link passes after rejecting a floor-depression route. Complete surface circuit now connects all surface objectives in 116 horizontal blocks with six declared slab inserts (3 up/3 down). Remaining-height view/checks now pass: lower mass, upper cap/canopy and capped fluid shaft are separate from route depth. Full-task phases now predeclared: 220 upright/20 crouched/10 ladder blocks, 15 removals/15 placements, three container arrangements. Complete conditional timing is 205/312/494s for two ordinary entities per source; lower combat precedes bridge construction; worked-schedule source envelope retained. Local staged topology/quality synthesis recorded: two indoor rooms plus one outdoor area; construction changes lower access. Continue remaining fixed-layout/repetition coverage. [Small Tower](evidence/item-13/fixed-blocks/mss-small_tower-report.md) source intake and full slice view pass; lower pocket passes after one cover removal; main eleven-block ladder and both chest/source interactions pass. Inter-island connector geometry now checked with 14 scaffold, 13 cobblestone and nine removals including the middle source. Complete conditional timing now 118/188/298s for two ordinary entities per source, with explicit no-healing/no-debuff conditions. Local three-space graph/quality synthesis recorded; unused ladder fragments are not counted as rooms. Continue repetitions/material coverage and remaining full-task corrections.
-All three capture [raw custody records](evidence/item-13/collision/README.md) pass local/download restores and external delivery.
-Do not repeat the scope pass or baseline start inspection. Named components and
-full chunks are not playable topology. Check central-End raw evidence before
-claiming an arena generation gap. All 192 included families remain required.
+[Saved verification](evidence/item-13/temple-variants/r5-saved-verification.json)
+checks all15,562 cells against a fresh hash-verified stopped-world restore, with
+zero differences. Both material pairs differ at only one central cell. The
+[blackstone report](evidence/item-13/fixed-blocks/adorabuild-blackstone_temple-report.md)
+and [Nether temple report](evidence/item-13/fixed-blocks/adorabuild-nether_temple_medium_1-report.md)
+now integrate reward/tool source and conditional material-specific complete tasks.
+Forced Y160 placement is material evidence, not natural access or encounter evidence.
+Keep natural gold geometry as the conditional route basis.
 
-Preserve the pilot's hash-bound historical protocol and producer when extending it.
-Missing generated chunks censor topology; a fully saved building truncated by a
-known frozen connector defect is a valid baseline result with the defect retained.
-Do not repair frozen content or count absent intended pieces as rooms. Reuse
-original custody, commit/push verified milestones and finish the required clean
-PR review/merge/main delivery. Item 14 stays UNSTARTED.
+Next concrete work: publish redundant raw custody for this five-attempt diagnostic
+and successful stopped world using existing archive/restore tools. Staging inputs:
+`evidence/raw/item13/temple-variants-r1` through `-r5`, and successful world archive,
+backup receipt and local restore under `evidence/raw/item13/temple-r5-custody/`.
+World archive162,749,467 bytes, SHA-256
+`451c9de1804e859f8daf18cfb545a4879cd994cf677ef9e1a46cf1949a40a37c`.
+503 files exclude session.lock. Additional custody budget3 GiB, free floor5 GiB;
+measured free space before custody34.68 GB. Preserve failed instances locally.
+Archive manifests, durability/restore receipts and commands belong under Item 13.
+Do not archive candidate JARs, credentials or operational caches.
 
-Scope check: reuse intake references and original streams; do not duplicate starts.
-No full Item 13 exit gate has been claimed. See authoritative reports for checks.
+Then continue remaining full-family, material and repetition coverage under the
+existing coverage plan, using accepted raw inputs before proposing any minimal
+new experiment. Check central-End raw evidence before claiming an arena gap.
+Do not tune frozen content. Complete required PR review/fix cycles with a completed
+clean thumbs-up, merge and verify origin/main delivery before declaring Item 13
+COMPLETE. Item 14 remains UNSTARTED.

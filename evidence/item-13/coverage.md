@@ -751,3 +751,15 @@ Source geometry and gold-case route evidence are available; the missing outcomes
 are not silently filled by changed blocks or controls. Define a minimal controlled
 placement/processor experiment under fresh verified materialization before any
 runtime work; no broad new density survey or frozen configuration edit is needed.
+
+
+## Temple material diagnostic integration
+
+The [r5 diagnostic and saved verification](temple-variants/README.md#r5-runtime-result-and-saved-state-acceptance-work)
+now covers the four missing debris/lodestone family/material cells with actual
+processed template placements and15,562 unchanged stopped-world cells. This adds
+selected material evidence, not natural starts, seeds, observed encounters or
+density. The two temple reports now integrate mining/reward differences and
+conditional complete-task estimates. Their natural gold cases remain the access
+basis; external raw custody for the diagnostic is pending. Full Item 13 family
+coverage and delivery remain IN PROGRESS.

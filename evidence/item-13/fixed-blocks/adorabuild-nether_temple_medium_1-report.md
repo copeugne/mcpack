@@ -263,3 +263,54 @@ ceil(hardness*30/8) ticks. Preserve the existing complete task's movement, input
 construction, combat and conditional acquisition accounting; substitute only
 central-block mining work when the saved replacement relationship is verified.
 Do not silently delete the Nether temple catcher just because debris resists fire.
+
+
+Alternate-material reward source: pinned extra.jar entries
+`data/minecraft/loot_table/blocks/ancient_debris.json` (SHA-256
+14125055edd8b94e7819540ff2f5d063395f451d2f7883bf79ece79894cd546d)
+and `data/minecraft/loot_table/blocks/lodestone.json` (SHA-256
+01e1d62a248233d99c8b6361cea15b77ab998cd04692076b31a93a18390e13fe)
+each contain one single-item pool with survives_explosion and no other pool
+condition. These are self-drop potentials, not generated or acquired items.
+The existing pickaxe tag (e31b952f7df00a46e2e442e601b1139e87085314364e9137381c71e66f55700f)
+contains both blocks. The needs_diamond_tool tag (fce3d4bef99721711ffb1bcdd72812c82e55e90d02417fa3065c260c0f96b833)
+contains ancient debris; the declared diamond pickaxe satisfies it. Reproduce by
+reading these exact ZIP entries from the already pinned extra.jar. No loot was
+rolled, harvested or acquired. Generated variant coverage still depends on the
+[controlled diagnostic](../temple-variants/README.md).
+
+
+## Verified alternate materials and conditional task impact
+
+The [four-placement diagnostic](../temple-variants/README.md#r5-runtime-result-and-saved-state-acceptance-work)
+now verifies debris and lodestone in actual stopped-world blocks. After translation,
+only their central block differs; the other5414 padded states agree. These are
+forced Y160 material diagnostics. Natural gold remains the terrain/access source,
+and the natural structure's five-type spawn override is source potential, absent
+from these unregistered placements. Do not interpret the diagnostic as a spawn test.
+
+All three central materials are source-supported full cubes. The existing staged
+catcher/ramp, headroom checks, clearances, one-area topology, depth, lava hazard,
+external access, empty/dead denominator and absent final room carry into the
+conditional material substitution. Keep the catcher even for fire-resistant debris:
+resistance to burning does not prove a reachable drop. No generated/acquired loot
+or human route is claimed. Replay variation is a central reward/material change,
+with no new demonstrated branch, room or encounter.
+
+Replace only central mining: debris113 ticks5.65s or lodestone14 ticks0.70s,
+versus gold12 ticks0.60s at declared pickaxe speed8. Add5.05s or0.10s to the
+existing complete objective model; keep every construction, movement, decision,
+input, acquisition, combat-duty and censoring assumption unchanged.
+
+| Material and conditional encounter | A seconds | B seconds | C seconds |
+| --- | ---: | ---: | ---: |
+| Debris, no enemy | 24.42 | 39.00 | 63.30 |
+| Lodestone, no enemy | 19.47 | 34.05 | 58.35 |
+| Debris, two stipulated blazes | 30.37 | 47.433333 | 76.20 |
+| Lodestone, two stipulated blazes | 25.42 | 42.483333 | 71.25 |
+
+These are arithmetic scenario estimates using the earlier stated base precision,
+not observed play or typical times. Combat-only work stays5.2 active seconds for
+two ordinary stipulated blazes; realized population/duration remains NOT MEASURED.
+Natural gold plus forced alternatives now cover the three material outcomes in
+saved blocks. External raw custody and full Item 13 review/delivery remain open.
