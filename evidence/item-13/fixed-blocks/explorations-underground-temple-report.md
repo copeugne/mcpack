@@ -439,3 +439,59 @@ The extended module and affected lint,formatting and type checks pass. No raw
 world or configuration was modified and no new experiment was run. This resolves
 the first shaft connection only; the complete first-assembly objective and
 remaining material coverage still require the work recorded above.
+
+## Lower north/south branches: declaration
+
+Next validate the two rubble passages from the eastern lower junction to their
+terminal alcoves. Keep the known-layout adult and no-mining/no-placement scope
+for these native branches. Use X-276; the southern route runs Z0..17 with feetY34
+atZ7..9 andY33 elsewhere. The northern route runs Z0..-17 with feetY34 atZ-7..-9
+andY33 elsewhere. Predeclare crouching for one-block upward transitions where
+needed; retain an upright-only failure rather than silently accepting headroom.
+The connected rubble elevations are not additional rooms.
+
+Pinned Blocks registration uses noCollission for vine at offset13375 and
+sculk_vein at36523. Permit the known vine and nonwaterlogged sculk-vein cells in
+collision checks; retain waterlogged variants as excluded fluid cells. This fixes
+a concrete overconservative representation of encountered plants, without treating
+cobwebs,fluids or unknown states as empty. Source climbability is not measured
+climbing speed. Gravel supports must have full masonry immediately below; no
+unsupported falling-block platform is accepted. Validate endpoint chest access
+and distinguish the northern campfire alcove from an empty/dead room.
+
+The proposed native center routes are REJECTED. The southern standing-volume
+check intersects cracked stone bricks at(-276,34,8); the northern check intersects
+stone bricks at(-276,34,-8). Both sites have a second solid layer above the
+assumed Y33 rubble support, so feetY34 is not a valid stance. Crouching cannot
+resolve a block intersecting the actor's feet. This failure occurs before any
+accepted ascent/return sweep. The17-block route lengths are proposals,
+not accepted traversal measurements. Do not assign the terminal alcoves to the
+reachable-room denominator from these failed paths.
+
+The source-verified plant collision correction remains valid independently of
+that failure. It supersedes the earlier literal all-non-air avoidance rule only
+for vine and dry sculk vein. Solid blocks,waterlogged vein and cobwebs retain
+conservative exclusion. No template or saved world is modified. The route
+command now requires both exact standing obstructions to be reproduced and
+reports them as REJECTED while preserving the previously accepted hall/shaft
+checks. This is a retained failed local attempt, not a complete branch model.
+
+Next resolve an actual detour or predeclared breach through these passages,
+including interaction access and costs. Do not silently raise the proposed feet
+position: ceiling clearance and the opposite-direction return need validation.
+The nearby spawner corridor and enchanting room also remain unresolved. Reuse
+these raw cells; no additional world extraction is needed.
+
+Reproduce the narrow plant-source inspection using the same hash-bound SRG path
+from the previous section and the pinned javap executable:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -classpath "$item13_srg" -c -p net.minecraft.world.level.block.Blocks
+```
+
+Blocks offsets13356..13384 identify vine and its noCollission call; offsets
+36504..36529 identify sculk_vein and its noCollission call. These are collision
+facts, not proof that aiming/mining rays ignore plant outline shapes.
+
+Focused module execution,formatting,lint and types pass with both rejected
+rubble attempts explicitly reproduced. Full branch access remains unresolved.

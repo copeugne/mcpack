@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `8eae28f3`; verify subsequent assessment commits against upstream.
+checkpoint is `e2e14f94`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -174,7 +174,8 @@ The [partial route check](evidence/item-13/underground_temple_route.py) now vali
 both hall floors/four spokes,eight chest approaches,northern corridor andtwo
 junctions. The first eastern shaft now has a conditional six-scaffold return and
 three lower arms; its six-block initial drop retains fall exposure. The lava
-centerline remains rejected. Full-assembly topology/timing is still pending.
+centerline remains rejected. Both proposed lower rubble center routes now reject
+at solid blocks(-276,34,+/-8); resolve detour/breach before accepting their alcoves.
 
 Next finish remaining first-assembly rooms and transitions, source and
 sculk handling, complete conditional objective timing, hazard/finale/bypass and

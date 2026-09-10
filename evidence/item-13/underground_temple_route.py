@@ -26,12 +26,15 @@ overlap = importlib.import_module("evidence.item-13.collision.clearance").overla
 
 
 def clear(box):
-    """Avoid every non-air cell conservatively, including water and decorations."""
+    """Avoid non-air cells except source-verified dry plants with no collision."""
     for x in range(math.floor(box[0]), math.ceil(box[3])):
         for y in range(math.floor(box[1]) - 1, math.ceil(box[4])):
             for z in range(math.floor(box[2]), math.ceil(box[5])):
-                n = at(c, x, y, z)["Name"]
-                if n == "minecraft:air":
+                state = at(c, x, y, z)
+                n = state["Name"]
+                if n in {"minecraft:air", "minecraft:vine"} or (
+                    n == "minecraft:sculk_vein" and state["Properties"]["waterlogged"] == "false"
+                ):
                     continue
                 height = 1.5 if n.endswith(("_wall", "_fence")) else 1
                 assert not overlap(box, [x, y, z, x + 1, y + height, z + 1]), (
@@ -41,7 +44,7 @@ def clear(box):
                 )
 
 
-def verify_path(points):
+def verify_path(points, *, crouch_up=False):
     """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
     for x, y, z in points:
         s = at(c, x, y - 1, z)
@@ -55,7 +58,14 @@ def verify_path(points):
             "minecraft:cracked_deepslate_bricks",
             "minecraft:stone_brick_stairs",
             "minecraft:mossy_stone_brick_stairs",
+            "minecraft:gravel",
         }, ((x, y, z), s)
+        if n == "minecraft:gravel":
+            assert at(c, x, y - 2, z)["Name"] in {
+                "minecraft:stone_bricks",
+                "minecraft:mossy_stone_bricks",
+                "minecraft:cracked_stone_bricks",
+            }
         if n.endswith("_stairs"):
             assert s["Properties"]["half"] == "bottom"
             assert s["Properties"]["shape"] == "straight"
@@ -66,18 +76,19 @@ def verify_path(points):
         assert abs(a[0] - b[0]) + abs(a[2] - b[2]) == 1
         assert abs(a[1] - b[1]) <= 1
         high = max(a[1], b[1]) + (0.3 if b[1] > a[1] else 0)
+        height = 1.5 if crouch_up and b[1] > a[1] else 1.8
         clear(
             [
                 min(a[0], b[0]) + 0.2,
                 high,
                 min(a[2], b[2]) + 0.2,
                 max(a[0], b[0]) + 0.8,
-                high + 1.8,
+                high + height,
                 max(a[2], b[2]) + 0.8,
             ]
         )
         for x, y, z in (a, b):
-            clear([x + 0.2, y, z + 0.2, x + 0.8, high + 1.8, z + 0.8])
+            clear([x + 0.2, y, z + 0.2, x + 0.8, high + height, z + 0.8])
 
 
 for center_z in (0, 28):
@@ -201,3 +212,14 @@ print(
     "initial fall exposure retained, no runtime placement or damage observation"
 )
 print("PASS lower shaft junction three horizontal arms, Y33; vertical return is conditional")
+
+for sign in (1, -1):
+    branch = [(-276, 34 if 7 <= z <= 9 else 33, sign * z) for z in range(18)]
+    rejection = None
+    try:
+        verify_path(branch, crouch_up=True)
+    except AssertionError as exc:
+        rejection = exc.args
+    assert rejection is not None, "Declared rubble route unexpectedly passed"
+    assert rejection[0][1] == (-276, 34, sign * 8), rejection
+    print("REJECT declared rubble branch", sign, rejection[0][1:])
