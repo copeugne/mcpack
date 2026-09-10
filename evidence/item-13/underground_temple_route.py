@@ -906,3 +906,58 @@ for a, b in pairwise(library_aisles):
 assert handled == aisle_webs
 verify_path(list(reversed(library_aisles)))
 print("PASS library aisle circuit:", len(library_aisles) - 1, "horizontal; eight additional webs")
+
+for x, chest_z in ((-295, -16), (-281, -12)):
+    step = 1 if x > -288 else -1
+    path = [(xx, 27, -14) for xx in range(-288, x + step, step)]
+    verify_path(path)
+    verify_path(list(reversed(path)))
+    chest = (x, 27, chest_z)
+    assert at(c, *chest)["Name"] == "minecraft:chest"
+    lid = at(c, x, 28, chest_z)
+    assert lid["Name"] == "minecraft:stone_brick_stairs"
+    assert lid["Properties"]["half"] == "top"
+    assert lid["Properties"]["shape"] == "straight"
+    check_ray((x + 0.5, 28.62, -13.5), (x + 0.5, 27.5, chest_z + 0.5), chest)
+print("PASS two lower terminal rewards: 28 horizontal total, non-full stair lids")
+
+cell_routes = (
+    (-275, [(-275, 39, 25), (-276, 39, 25), (-276, 39, 24), (-276, 39, 23)]),
+    (
+        -270,
+        [
+            (-270, 39, 25),
+            (-270, 39, 24),
+            (-270, 39, 23),
+            (-270, 39, 24),
+            (-271, 39, 24),
+            (-272, 39, 24),
+            (-272, 39, 23),
+        ],
+    ),
+)
+for x, inside in cell_routes:
+    approach = [(xx, 39, 28) for xx in range(-280, x + 1)] + [(x, 39, 27)]
+    verify_path(approach)
+    for y in (40, 39):
+        target = (x, y, 26)
+        assert at(c, *target)["Name"] == "minecraft:iron_bars"
+        check_ray((x + 0.5, 40.62, 27.5), (x + 0.5, y + 0.5, 26.5), target)
+        removed.add(target)
+    entrance = [(x, 39, z) for z in (27, 26, 25)]
+    for path in (approach, entrance, inside):
+        verify_path(path)
+        verify_path(list(reversed(path)))
+for target, eye, end in (
+    ((-274, 39, 25), (-274.5, 40.62, 25.5), (-274, 39.5, 25.5)),
+    ((-272, 39, 22), (-271.5, 40.62, 23.5), (-271.5, 39.5, 23)),
+):
+    assert at(c, *target)["Name"] == "minecraft:barrel"
+    check_ray(eye, end, target)
+for bed_x, station_x in ((-275, -276), (-271, -270)):
+    assert at(c, bed_x, 39, 23)["Name"] == "minecraft:gray_bed"
+    edge = bed_x if station_x < bed_x else bed_x + 1
+    check_ray((station_x + 0.5, 40.62, 23.5), (edge, 39.3, 23.5), (bed_x, 39, 23))
+assert at(c, -272, 39, 25)["Name"] == "minecraft:cauldron"
+check_ray((-271.5, 40.62, 24.5), (-271.5, 39.5, 25), (-272, 39, 25))
+print("PASS two barred cells: four bar removals, two barrels, two beds and empty cauldron")

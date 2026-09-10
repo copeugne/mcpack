@@ -1293,3 +1293,53 @@ salvage and the two assigned rewards have explicit, costly access. No final-room
 role or observed replay enjoyment follows from those facts. Both original blocked
 lids and the rejected seven-web plan remain recorded. The route, Ruff, formatting
 and type checks pass; all raw evidence remains unchanged.
+
+## Lower terminal rewards and barred cells declaration
+
+From the lower junction(-288,27,-14), inspect the west terminal chest
+(-295,27,-16) from(-295,27,-14), then the east chest(-281,27,-12) from
+(-281,27,-14), returning to the junction after each. Both assigned `dead_end`
+tables remain unrolled. Both lids have straight top stairs above, not full
+collision cubes; apply the previously verified chest-lid rule and check the
+actual rays. These functional reward alcoves are not empty/dead merely because
+their templates use that name. Do not infer a sealed exterior from their labels.
+
+The southern hall's cell component has two separately bounded activity spaces
+behind iron bars atZ26, separated by the wallX-273. The west interior contains
+a bed and barrel; the east interior contains a bed, barrel and empty cauldron.
+The shared passageZ27..29 is a connector. The two-block-high barred openings are
+closed native boundaries, not doors that can be assumed open.
+
+Predeclare entry from the southern hall threshold(-280,39,28) along the passage.
+For the west cell remove bars at(-275,40,26), then(-275,39,26) from(-275,39,27).
+Enter at(-275,39,25), inspect the barrel(-274,39,25), then the bed from
+(-276,39,23), usingX-276 betweenZ25 and23. Return to the passage. For the east
+cell remove bars at(-270,40,26), then(-270,39,26) from(-270,39,27). Enter at
+(-270,39,25), inspect the bed from(-270,39,23), then cross throughZ24 toX-272
+and inspect its barrel at(-272,39,22) fromZ23, and cauldron atZ25 fromZ24.
+Return through the breach and to the hall threshold. Validate ordered mining
+rays, adult sweeps, all reward/facility rays and floor support. No other bars,
+beds or furnishings are removed. Integration with the main hall route remains
+conditional on resolving the intervening whole-assembly links.
+
+Both lower terminal approaches pass:14 horizontal return blocks each,28 total,
+with no manipulation. Their straight stair caps are not blocked full-cube lids.
+Both cells also pass all ordered bar-removal, barrel, bed and cauldron rays and
+bidirectional adult transitions. The west return is22 horizontal blocks and the
+east return38, both atfeet39. These separately returned local circuits total60;
+the whole task may share the passage but must declare its actual ordering before
+using a different total. Neither room is empty/dead under the stated access model.
+
+Pinned `Blocks` offsets12944..12950 give iron bars hardness5. With the declared
+diamond pick, each removal uses19 active ticks, four totaling76 ticks (3.8s).
+Selection, aiming, movement and acquisition remain additional task phases. Native
+cell entry stays blocked; the inspected model earns access through mining.
+No water, cauldron output, slept night or realized enemy population is inferred.
+
+Current reward-access accounting:29 of31 chest/barrel nodes now have local
+validated approaches or explicit remedies. The two remaining nodes are the
+southern upper terminal chest(-290,39,47) and western terminal chest(-324,33,5).
+The two dispenser table assignments are separately retained trap ammunition
+potential, not ordinary chest acquisitions. Thus all33 table assignments remain
+accounted for without calling the partial whole-assembly route complete. Route,
+Ruff, formatting and types pass. No accepted world or raw extraction was changed.

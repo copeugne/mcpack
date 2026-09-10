@@ -1,7 +1,6 @@
 # mcpack current handoff
 
 Updated: 2026-09-10. This is the single active continuation checkpoint.
-
 ## Authority and preservation
 
 Read [AGENTS.md](AGENTS.md), [SPECS.md](SPECS.md) and the
@@ -76,7 +75,6 @@ exception and retained-stack nondeterminism limits remain as recorded. Do not
 tune, regenerate or repeat completed audits, classification or route processing.
 
 ## Item 13 active work
-
 Item 13 IN PROGRESS; Item 14 UNSTARTED. User authorized starting Item 13 and its
 separate modeled/inspection scope. Human times, realized encounters, generated or
 acquired loot and player outcomes remain NOT MEASURED. The approved
@@ -85,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `962850f5`; verify subsequent assessment commits against upstream.
+checkpoint is `bc09b3dc`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -189,10 +187,11 @@ validated rim; pit continuation below rawY21 is unresolved. Tower floor bands no
 connect39/35/31/27. Bedroom access andjunctions pass. Dungeon four-chest survey
 andburied-source exposure pass; library front route passes but both high chest lids
 are capped by masonry. Scaffold/breach remedies andthe aisle circuit now pass;
-their costs andfailed first aisle plan are retained. Complete timing remains unresolved.
+their costs/failure are retained. Both barred cells andtwo lower terminal rewards
+now pass;29/31 chest/barrel approaches are resolved locally. Complete timing remains open.
 
-Next finish remaining rooms, source/sculk handling and timing,
-hazards, finale, bypasses and replay. Then execute the other three declared reads. No
+Next finish two terminal rewards, remaining links, source/sculk handling, timing,
+hazards, finale, bypasses and replay; then the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 
 Courtyard andcentral-End gaps require checking other retained raw before experiments.
