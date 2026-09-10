@@ -82,7 +82,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `8e41e22b`; verify subsequent assessment commits against upstream.
+checkpoint is `c8c4e3a3`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -194,7 +194,7 @@ Second assembly: chamber and two reward alcoves integrated; all nine campfires u
 Continuous38-target r2 failed at outer ledge after18 landings; raw/download restore retained.
 Do not rerun/tune the controller. The18-scaffold alternative passes solid geometry; wet motion unresolved.
 South link has water gap/wall. Chamber task conditionally118/175/266s,90H, eight holes avoided.
-Western tower upper segments pass28H each/four chest rays; middle access adds12H/8V, one removal/four scaffolds each.
 Middle rewards now pass22H/two-panel-removal routes; next shaft adds4H/8V/four scaffolds each.
-All three rewards per western tower have local access; lower exits/full tasks still pending.
+Western lower doors/attached rewards and42H bottom zigzag now pass; all four elevations connected.
+Next join complete tower tasks, including181,24,Z toZ+1 work link; onward assembly routes pending.
 Item13 needs full coverage, clean Codex review/thumbs-up, merge and main verification; Item14 UNSTARTED.

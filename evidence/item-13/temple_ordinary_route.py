@@ -642,3 +642,158 @@ for center_z in (367, 384):
         "22H return, two panel removals, one chest; next shaft four scaffolds/one floor removal, "
         "4H/8V return and four-block initial fall",
     )
+
+for center_z in (367, 384):
+    lower_removed = set()
+    lower_doors = set()
+    _, lower_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+        case, lower_removed, lower_doors, set()
+    )
+    lower_rays = {}
+    lower_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+        case, lower_removed, lower_rays
+    )
+    lower_approach = [(190, 24, center_z - 1), (189, 24, center_z - 1)]
+    lower_verify(lower_approach)
+    web = (189, 24, center_z)
+    assert at(case, *web)["Name"] == "minecraft:cobweb"
+    lower_ray((189.5, 25.62, center_z - 0.5), (189.5, 24.5, center_z + 0.001), web)
+    lower_removed.add(web)
+    for door_x, facing, hinge in ((187, "west", "right"), (183, "east", "left")):
+        crossing = [(x, 24, center_z) for x in (door_x + 1, door_x, door_x - 1)]
+        rejected = None
+        try:
+            lower_verify(crossing)
+        except AssertionError as error:
+            rejected = error.args[0]
+        assert rejected is not None
+        assert rejected[1:] == ((door_x, 24, center_z), "minecraft:iron_door")
+        for side in (1, -1):
+            x = door_x + side
+            button = (x, 26, center_z)
+            assert at(case, *button) == {
+                "Name": "minecraft:stone_button",
+                "Properties": {
+                    "face": "wall",
+                    "facing": "east" if side == 1 else "west",
+                    "powered": "false",
+                },
+            }
+            face_x = x + (0.0625 if side == 1 else 0.9375)
+            lower_ray((x + 0.5, 25.62, center_z + 0.5), (face_x, 26.5, center_z + 0.5), button)
+        for y, half in ((24, "lower"), (25, "upper")):
+            door = (door_x, y, center_z)
+            assert at(case, *door) == {
+                "Name": "minecraft:iron_door",
+                "Properties": {
+                    "facing": facing,
+                    "half": half,
+                    "hinge": hinge,
+                    "open": "false",
+                    "powered": "false",
+                },
+            }
+            lower_doors.add(door)
+    lower_crossing = lower_approach + [(x, 24, center_z) for x in range(189, 180, -1)]
+    lower_verify(lower_crossing)
+    lower_verify(list(reversed(lower_crossing)))
+    attached_alcove = [(185, 24, z) for z in range(center_z, center_z - 8, -1)]
+    lower_verify(attached_alcove)
+    lower_verify(list(reversed(attached_alcove)))
+    target = (187, 24, center_z - 7)
+    assert at(case, *target)["Name"] == "minecraft:chest"
+    assert at(case, 187, 25, center_z - 7) == {
+        "Name": "minecraft:stone_brick_stairs",
+        "Properties": {"facing": "east", "half": "top", "shape": "straight", "waterlogged": "true"},
+    }
+    lower_ray((185.5, 25.62, center_z - 6.5), (187.0625, 24.5, center_z - 6.5), target)
+    saved = entities_by_position[target]
+    assert saved["LootTable"] == "explorations:chests/underground_temple/dead_end"
+    assert "Items" not in saved
+    assert "Lock" not in saved
+    assert 2 * (len(lower_crossing) - 1) == 20
+    assert 2 * (len(attached_alcove) - 1) == 14
+    for x in (183, 184, 185, 188, 189, 190):
+        assert at(case, x, 20, center_z)["Name"] == "minecraft:lava"
+    print(
+        "PASS lower tower doors/alcove",
+        center_z,
+        "20H lower return plus14H reward excursion; one web, four button operations, one chest; "
+        "six central bottom lava cells retained, bottom route pending",
+    )
+
+for center_z in (367, 384):
+    bottom_removed = set()
+    bottom_feet = set()
+    bottom_clear, bottom_verify = importlib.import_module(
+        "evidence.item-13.temple_geometry"
+    ).path_checks(case, bottom_removed, set(), bottom_feet)
+    bottom_rays = {}
+    bottom_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+        case, bottom_removed, bottom_rays
+    )
+    floor = (181, 23, center_z)
+    assert at(case, *floor)["Name"] in {"minecraft:stone_bricks", "minecraft:cracked_stone_bricks"}
+    bottom_verify([(181, 24, center_z + 1)])
+    bottom_ray((181.5, 25.62, center_z + 1.5), (181.5, 23.999, center_z + 0.5), floor)
+    bottom_removed.add(floor)
+    assert at(case, 181, 19, center_z)["Name"] in {
+        "minecraft:stone_bricks",
+        "minecraft:cracked_stone_bricks",
+    }
+    assert all(at(case, 181, y, center_z)["Name"] == "minecraft:air" for y in range(20, 23))
+    bottom_clear([181.2, 20, center_z + 0.2, 181.8, 25.8, center_z + 0.8])
+    bottom_verify([(181, 20, center_z), (181, 20, center_z + 1)])
+    eye = (181.5, 21.62, center_z + 1.5)
+    bottom_ray(eye, (181.5, 19.999, center_z + 0.5), (181, 19, center_z))
+    bottom_ray(eye, (181.5, 20.95, center_z + 1), (181, 20, center_z))
+    bottom_feet.update((181, y, center_z) for y in range(20, 25))
+    shaft = [(181, y, center_z) for y in range(20, 25)]
+    bottom_verify(shaft)
+    bottom_verify(list(reversed(shaft)))
+    bottom_verify([(181, 24, center_z), (181, 24, center_z + 1)])
+    bottom_verify([(181, 24, center_z + 1), (181, 24, center_z)])
+    bottom_verify([(181, 20, center_z + 1), (181, 20, center_z)])
+    bottom_zigzag = [
+        (x, 20, center_z + dz)
+        for x, dz in (
+            (181, 1),
+            (181, 0),
+            (181, -1),
+            (182, -1),
+            (182, -2),
+            (183, -2),
+            (184, -2),
+            (185, -2),
+            (185, -1),
+            (186, -1),
+            (186, 0),
+            (187, 0),
+            (187, 1),
+            (188, 1),
+            (188, 2),
+            (189, 2),
+            (190, 2),
+            (190, 1),
+            (191, 1),
+            (191, 0),
+            (192, 0),
+            (193, 0),
+        )
+    ]
+    bottom_verify(bottom_zigzag)
+    bottom_verify(list(reversed(bottom_zigzag)))
+    center_failure = None
+    try:
+        bottom_verify([(x, 20, center_z) for x in range(181, 194)])
+    except AssertionError as error:
+        center_failure = error.args[0]
+    assert center_failure is not None
+    assert center_failure[1:] == ((183, 20, center_z), "minecraft:lava")
+    assert 2 * (len(bottom_zigzag) - 1) == 42
+    print(
+        "PASS bottom zigzag",
+        center_z,
+        "42H return, center lava rejected; "
+        "third shaft four scaffolds/one removal, 4H/8V return, initial fall retained",
+    )

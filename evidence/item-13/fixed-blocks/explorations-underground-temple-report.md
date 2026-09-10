@@ -3727,3 +3727,75 @@ Reproduce both panel failures, source-state checks, middle chest rays, post-remo
 support and second shaft with `uv run python -m evidence.item-13.temple_ordinary_route`.
 Focused Ruff, formatting and type checks pass. The original tower failures and
 trapdoor/tripwire observations remain preserved above.
+
+## Western tower pair: lower doors and attached alcoves declaration
+
+From each verified(190,24,Z-1) lower landing, remove the web(189,24,Z) using the
+sword from(189,24,Z-1). Cross the two ordinary timed doors at X187 and183,Z at
+feet24 using their buttons on both sides, and inspect the west landing at X181.
+From the intervening X185 junction, follow the north passage seven blocks to
+Z-7 and conditionally access its chest at(187,24,Z-7), then return. Reuse all
+existing dry-support, door-pulse, no-extra-encounter and acquisition conditions.
+Do not include the bottom lava floor as a validated route or assume its water
+context removes the lava. These are full-tower/assembly components, not complete
+standalone task timing claims.
+
+For the final tower drop, predeclare the existing adjacent-column remedy at
+X181,Z: remove floorY23 from(181,24,Z+1), descend to feet20, step south, and build
+four scaffoldsY20..23 on full masonryY19. Retain the same fall/fluid/placement
+conditions. Inspect the bottom floor by the explicitly recorded north-then-south
+zigzag around its lava bands, ending at the eastern boundary(193,20,Z), then
+return. Do not mine/fill lava or use the centerline as a dry shortcut. Boundary
+arrival is not proof of the onward attached corridor.
+
+## Western tower pair: lower exits, alcoves and bottom route integrated
+
+Both lower levels pass independently after one declared sword removal at
+(189,24,Z). All four lower gates are saved closed and each closed crossing fails.
+The X187 gates face west with right hinges; X183 gates face east with left hinges.
+Both halves are checked. Buttons at X188/186 and184/182,Y26,Z have supported side
+rays, with separate presses for each crossing and the existing30-tick condition.
+The full lower traverse from(190,24,Z-1) to(181,24,Z) returns over20 horizontal
+blocks with no vertical change, one eight-tick web removal and four button
+operations per tower. No blanket door or cobweb collision exception was used.
+
+Each intervening X185 junction also connects north seven blocks to a reward
+alcove, giving14 horizontal return blocks. Chests(187,24,360) and(187,24,377)
+have unrolled `dead_end` assignments and no Items/Lock. Exact side rays pass.
+Their straight top-half, east-facing, waterlogged stair lids reuse the established
+non-full conductor rule; no lid removal is required. These are two additional
+assigned rewards outside the three-node tower chest set. The already verified
+unlit waterlogged campfires at(184,24,360/377) do not add active fire hazards.
+
+For each final drop, the removal of(181,23,Z), supported floorY19, clear Y20..22
+column, adjacent landing and four scaffold placementsY20..23 pass the existing
+checks. It contributes another four horizontal/eight vertical return-route blocks,
+one masonry removal and four scaffolds. The initial four-block fall and unknown
+live fluid/damage behavior remain explicit. All three constructed drops therefore
+connect feet32,28,24 and20 under the declared remedies. This is12 blocks of
+connected floor span, not the full structure envelope height or a room count.
+
+The bottom route is a supported cardinal zigzag. Relative to Z, its successive
+(X,Z-offset) stations are:
+`(181,1),(181,0),(181,-1),(182,-1),(182,-2),(183,-2),(184,-2),(185,-2),
+(185,-1),(186,-1),(186,0),(187,0),(187,1),(188,1),(188,2),(189,2),
+(190,2),(190,1),(191,1),(191,0),(192,0),(193,0)`.
+All have feet20 and clear adult body/sweeps in both saved cases. This is21
+horizontal blocks one way,42 return, with no lava removal, bridge or jump added.
+The straight centerline fails at(183,20,Z), lava. Six central lava cells per tower
+remain at X183..185 and188..190; lava columns/pockets also border the zigzag.
+Thus the bottom floor presents an avoidance requirement with little lateral
+margin, not an inferred damage encounter. The walkable route's existence does
+not guarantee resistance to knockback or fluid/terrain changes. The X193 endpoint
+only establishes boundary arrival; onward attached routes remain separate work.
+
+The final full-tower task must join these segments, include their initial
+construction positioning and count all actions without treating local return
+circuits as independent whole clears. Do not omit the one-block link between
+lower traverse endpoint(181,24,Z) and final-drop work station(181,24,Z+1).
+Timing, room/graph contraction and quality integration remain pending; all raw
+failures and conditional source assumptions are preserved.
+
+Reproduce these gates, reward rays, final columns and lava rejection with
+`uv run python -m evidence.item-13.temple_ordinary_route`. Focused Ruff, formatting
+and type checks pass. No new runtime or shared geometry machinery was introduced.
