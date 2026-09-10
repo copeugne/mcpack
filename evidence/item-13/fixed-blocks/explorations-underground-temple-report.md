@@ -1077,3 +1077,59 @@ the whole-assembly graph and complete task. Native hatch operation and live
 circuit behavior remain unobserved. The bedroom beyond the endpoint still needs
 its own activity-space/reward assessment. Route, Ruff, formatting and type checks
 pass; no raw extraction or frozen world was changed.
+
+## Bedroom activity space and reward-access declaration
+
+The bedroom has one shared interior activity space east of the wallX-286,
+withinX-285..-281,Z-25..-19, with a common aisle atX-284. Two beds do not make
+two rooms: their sleeping bays have no separating doorway or full partition.
+The western north-south passageX-289..-287 remains a connector, not a second
+bedroom. Its west opening atZ-22 and south continuation remain graph links to
+validate. The room contains two chest assignments (`bedrooms`), four high barrel
+assignments (`barrel`) and an empty blast furnace. Bed halves are two physical
+beds, not four facilities. No room spawner is present; natural hostile potential
+and the nearby environmental catalyst remain separate from realized encounters.
+
+Predeclare native button-door access from(-288,27,-25) south toZ-22, east to
+X-287, then across the east-facing doorX-286 toX-285. The outer oak button is
+(-287,28,-21), facing west; the inner button(-285,28,-23) faces east. Use the
+same two-block timed transfer, below the1.5-second oak-button deadline, with no
+intervening action. This door needs the rotated open collision plates alongZ,
+unlike the earlier north/south-facing doors. Resolve that explicit orientation
+in the existing checker rather than treating an east-facing open door as air.
+
+Inside, walk toX-284 atZ-22. Inspect the northern pair of barrels and chest from
+(-283,27,-24), reached through(-284,27,-24). Return to the aisle and inspect the
+southern pair and chest from(-283,27,-20). Visit the furnace from(-284,27,-20).
+Use the aisle for both bed interaction stations atZ-23/-21, then return through
+the door to the original threshold. Check all six container rays, chest lids,
+adult route clearance and facility rays. Do not stand inside beds or use their
+fractional top as an assumed floor. High barrels may be used through an exposed
+side; their downward facing does not require reaching through the slab beneath.
+No mining, placement, smelting, sleep outcome or generated loot is assumed.
+
+The bedroom survey passes all six container rays, both bed rays and the furnace
+ray. Both chest lids are clear; barrels are reached through exposed side faces
+above their underside slabs. The connected interior circuit is14 horizontal
+blocks, plus eight for the approach return and four for the door return:26 total,
+zero vertical travel and no removals or placements. Two oak-button presses remain
+explicit in the complete task budget. The room is not empty/dead under the
+protocol because it has supported rewards and facilities. No authored finale is
+established by a bedroom label or chest count. The six unrolled assignments are
+reward potential, and the empty furnace establishes no smelted output.
+
+Predeclare continuation of the western passage from(-288,27,-25) south to
+(-288,27,-14), and its west branch from(-288,27,-22) to(-295,27,-22). At both
+junction centers inspect each cardinal arm for three blocks and return. Use
+unchanged adult clearance, no manipulation and the existing dry-plant rule.
+These native transitions must pass independently of their serialized four-way
+labels before entering the room graph. Further activity rooms beyond the arms
+remain separate assessments.
+
+Both passage links and all four three-block arms at each junction pass in both
+directions. The south link is11 horizontal blocks one way; the west link is seven.
+Both remain atfeet27. These are two validated branching locations, not inferred
+branches from template names. Room-graph edge counting must avoid double-counting
+the overlapping approach cells. Focused lint initially rejected a redundant
+literal-list concatenation; combining that list preserves the measured route.
+The final route, Ruff, formatting and type checks pass.

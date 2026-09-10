@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `0bdc3758`; verify subsequent assessment commits against upstream.
+checkpoint is `89302f24`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -186,9 +186,9 @@ supported hatch trap has a14H/8V alternate link: one floor removal,four scaffold
 four-block initial fall. Middle chest now has an18H two-block piston-panel breach;
 The lower two-door route now passes; its eastern branch descends six blocks to a
 validated rim; pit continuation below rawY21 is unresolved. Tower floor bands now
-connect39/35/31/27; the dry bottom lava route reaches the bedroom. See route costs.
+connect39/35/31/27. Bedroom six-container access andtwo adjoining junctions pass.
 
-Next finish the bedroom and remaining rooms, source/sculk handling, timing,
+Next finish the dungeon room, library and remaining rooms, source/sculk handling, timing,
 hazards, finale, bypasses and replay. Then execute the other three declared reads. No
 runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
 

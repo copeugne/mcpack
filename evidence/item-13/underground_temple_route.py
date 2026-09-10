@@ -38,7 +38,12 @@ def clear(box):
                     continue
                 if (x, y, z) in opened_doors:
                     for left, right in ((0, 3 / 16), (13 / 16, 1)):
-                        assert not overlap(box, [x + left, y, z, x + right, y + 1, z + 1])
+                        plate = (
+                            [x + left, y, z, x + right, y + 1, z + 1]
+                            if state["Properties"]["facing"] in {"north", "south"}
+                            else [x, y, z + left, x + 1, y + 1, z + right]
+                        )
+                        assert not overlap(box, plate)
                     continue
                 if n in {"minecraft:air", "minecraft:vine"} or (
                     n == "minecraft:sculk_vein" and state["Properties"]["waterlogged"] == "false"
@@ -688,3 +693,79 @@ bottom_zigzag = [
 verify_path(bottom_zigzag)
 verify_path(list(reversed(bottom_zigzag)))
 print("PASS final tower descent: four scaffolds; dry lava zigzag 40 horizontal return blocks")
+
+# Bedroom: rotate the conservative door plates and retain both bed bays as one room.
+bedroom_approach = [(-288, 27, z) for z in range(-25, -21)] + [(-287, 27, -22)]
+verify_path(bedroom_approach)
+for target, facing, support, eye, end in (
+    ((-287, 28, -21), "west", (-286, 28, -21), (-286.5, 28.62, -21.5), (-286.9, 28.5, -20.5)),
+    ((-285, 28, -23), "east", (-286, 28, -23), (-284.5, 28.62, -21.5), (-284.1, 28.5, -22.5)),
+):
+    assert at(c, *target) == {
+        "Name": "minecraft:oak_button",
+        "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+    }
+    assert at(c, *support)["Name"] == "minecraft:stone_bricks"
+    check_ray(eye, end, target)
+for y, half in ((27, "lower"), (28, "upper")):
+    assert at(c, -286, y, -22) == {
+        "Name": "minecraft:iron_door",
+        "Properties": {
+            "facing": "east",
+            "half": half,
+            "hinge": "left",
+            "open": "false",
+            "powered": "false",
+        },
+    }
+    opened_doors.add((-286, y, -22))
+bedroom_crossing = [(x, 27, -22) for x in range(-287, -284)]
+bedroom_aisle = [
+    (-285, 27, -22),
+    (-284, 27, -22),
+    (-284, 27, -23),
+    (-284, 27, -24),
+    (-283, 27, -24),
+    (-284, 27, -24),
+    (-284, 27, -23),
+    (-284, 27, -22),
+    (-284, 27, -21),
+    (-284, 27, -20),
+    (-283, 27, -20),
+    (-284, 27, -20),
+    (-284, 27, -21),
+    (-284, 27, -22),
+    (-285, 27, -22),
+]
+for path in (bedroom_approach, bedroom_crossing, bedroom_aisle):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+for station_z, chest_z, barrel_zs in ((-24, -25, (-24, -23)), (-20, -19, (-21, -20))):
+    eye = (-282.5, 28.62, station_z + 0.5)
+    chest = (-282, 27, chest_z)
+    assert at(c, *chest)["Name"] == "minecraft:chest"
+    assert at(c, -282, 28, chest_z)["Name"] == "minecraft:air"
+    end_z = chest_z + (0.9375 if chest_z < station_z else 0.0625)
+    check_ray(eye, (-281.5, 27.5, end_z), chest)
+    for z in barrel_zs:
+        assert at(c, -281, 30, z)["Name"] == "minecraft:barrel"
+        check_ray(eye, (-281, 30.5, z + 0.5), (-281, 30, z))
+for z in (-23, -21):
+    assert at(c, -283, 27, z)["Name"] == "minecraft:red_bed"
+    check_ray((-283.5, 28.62, z + 0.5), (-283, 27.3, z + 0.5), (-283, 27, z))
+assert at(c, -284, 27, -19)["Name"] == "minecraft:blast_furnace"
+check_ray((-283.5, 28.62, -19.5), (-283.5, 27.5, -19), (-284, 27, -19))
+print("PASS bedroom: one room, two chests/four barrels, two beds/furnace interaction rays")
+assert all(2 / speed < 30 / 20 for speed in (5, 4, 3))
+for path in (
+    [(-288, 27, z) for z in range(-25, -13)],
+    [(x, 27, -22) for x in range(-288, -296, -1)],
+):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+for cx, cz in ((-288, -14), (-295, -22)):
+    for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        arm = [(cx + dx * r, 27, cz + dz * r) for r in range(4)]
+        verify_path(arm)
+        verify_path(list(reversed(arm)))
+print("PASS bedroom passage: 11-block south link, 7-block west link, two four-arm junctions")
