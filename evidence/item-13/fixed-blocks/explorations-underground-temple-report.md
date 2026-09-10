@@ -823,3 +823,50 @@ element as a junction connecting three further rooms. Both terminal inspections
 reuse the existing hash-bound raw extraction and executable route checker; no
 world was launched, changed or regenerated. Focused Ruff, formatting and type
 checks pass after formatting the two added output/assertion expressions.
+
+## Quest tower upper-floor declaration
+
+Inspect child10 using the retained block extraction. Its four stacked floor
+bands are not automatically four accessible rooms. The top level has an entrance
+vestibule, a two-chest compartment behind an iron door, and a northern hatch
+compartment behind another iron door. Lower levels contain a further chest,
+tripwire/dispenser ingredients, iron doors, hatches and lava. Resolve those links
+and the trap before assigning full tower topology or timing.
+
+For the upper approach, use the existing adult actor and iron sword. From the
+northern junction(-288,39,-23), walk north toZ-27, east toX-287, then north toZ-29.
+Remove the single web at(-287,39,-30) from that stance, then advance toZ-31.
+Activate the south-facing stone button at(-287,41,-31), cross the north-facing
+iron door atZ-32 and stop atZ-33. Orient before activation; the two-block crossing
+uses the declared profile movement rate with no intervening action. Repeat from
+the north-facing button at(-287,41,-33) on return. Verify both button rays and
+their attachment above the door. Retain closure or interruption as censoring.
+
+Inside, visit(-289,39,-33) for the west chest at(-290,39,-33), then walk north
+toZ-34, east toX-287, north toZ-35 for the east chest at(-286,39,-35). Return
+along that path and through the door to the original junction. Check chest lids,
+actual inset-face interaction rays and adult route clearance. This route resolves
+only the upper rewards; it neither clears the lower tower nor bypasses their
+required assessment. One web costs eight active sword ticks under the existing
+source model. Full objective time remains unresolved until the tower and remaining
+assembly are integrated.
+
+The upper two-chest circuit passes: nine horizontal blocks to the door approach,
+two across it, six between the declared reward stations, all returned, giving34
+horizontal blocks and zero vertical travel. Both chest lids have air above them
+and their inset-face rays pass. The web removal ray and both button rays also
+pass. These are two of the three saved `quest_tower` table assignments, still
+unrolled, with no acquired items asserted. This supports an upper reward room
+separate from its entrance vestibule; it does not establish a terminal finale.
+
+The pinned server `Blocks.stoneButton()` bytecode passes20 ticks to `ButtonBlock`
+at offsets7..27, unlike the earlier oak button's30 ticks. Reuse the bound SRG
+archive and `javap -c -p net.minecraft.world.level.block.Blocks` command above.
+The two-block crossing costs0.4/0.5/0.666667 seconds under profiles A/B/C, each
+below its one-second source deadline. No aim or inventory action is permitted
+after pressing until clear of the doorway. The source mechanism and conditional
+constant-rate model do not prove successful human operation. One web contributes
+0.4 seconds of active mining; decisions, selection, presses, acquisition and
+verification remain separate phases in the eventual complete objective budget.
+The route command, focused Ruff and type checks pass after formatting. The saved
+world and raw extraction are unchanged.

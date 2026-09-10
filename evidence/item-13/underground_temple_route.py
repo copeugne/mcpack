@@ -433,3 +433,58 @@ assert not any(
 )
 horizontal = 2 * (len(east_link) - 1 + sum(len(arm) - 1 for arm in terminal_arms))
 print("PASS terminal connector inspection:", horizontal, "horizontal, 0 vertical; local caps")
+
+# Quest tower upper rewards: one web and a timed button-operated iron door.
+tower_approach = [(-288, 39, -z) for z in range(23, 28)] + [(-287, 39, -z) for z in range(27, 30)]
+verify_path(tower_approach)
+target = (-287, 39, -30)
+assert at(c, *target)["Name"] == "minecraft:cobweb"
+check_ray((-286.5, 40.62, -28.5), (-286.5, 39.5, -29), target)
+removed.add(target)
+tower_approach += [(-287, 39, -30), (-287, 39, -31)]
+verify_path(tower_approach)
+for z, facing, endpoint_z in ((-31, "south", -30.9), (-33, "north", -32.1)):
+    target = (-287, 41, z)
+    assert at(c, *target) == {
+        "Name": "minecraft:stone_button",
+        "Properties": {"face": "wall", "facing": facing, "powered": "false"},
+    }
+    assert at(c, -287, 41, -32)["Name"] == "minecraft:stone_bricks"
+    check_ray((-286.5, 40.62, z + 0.5), (-286.5, 41.5, endpoint_z), target)
+for y, half in ((39, "lower"), (40, "upper")):
+    assert at(c, -287, y, -32) == {
+        "Name": "minecraft:iron_door",
+        "Properties": {
+            "facing": "north",
+            "half": half,
+            "hinge": "left",
+            "open": "false",
+            "powered": "false",
+        },
+    }
+    opened_doors.add((-287, y, -32))
+tower_crossing = [(-287, 39, -z) for z in range(31, 34)]
+assert all(2 / speed < 20 / 20 for speed in (5, 4, 3))
+tower_rewards = [
+    (-287, 39, -33),
+    (-288, 39, -33),
+    (-289, 39, -33),
+    (-289, 39, -34),
+    (-288, 39, -34),
+    (-287, 39, -34),
+    (-287, 39, -35),
+]
+for path in (tower_approach, tower_crossing, tower_rewards):
+    verify_path(path)
+    verify_path(list(reversed(path)))
+for chest, eye, end in (
+    ((-290, 39, -33), (-288.5, 40.62, -32.5), (-289.0625, 39.5, -32.5)),
+    ((-286, 39, -35), (-286.5, 40.62, -34.5), (-285.9375, 39.5, -34.5)),
+):
+    assert at(c, *chest)["Name"] == "minecraft:chest"
+    assert at(c, chest[0], chest[1] + 1, chest[2])["Name"] == "minecraft:air"
+    check_ray(eye, end, chest)
+horizontal = 2 * sum(len(p) - 1 for p in (tower_approach, tower_crossing, tower_rewards))
+print(
+    "PASS tower upper two-chest route:", horizontal, "horizontal, 0 vertical; lower tower pending"
+)
