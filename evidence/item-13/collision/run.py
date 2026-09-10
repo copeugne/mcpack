@@ -39,6 +39,7 @@ def copy_temple_source(target: Path) -> dict[str, str]:
     ):
         raise ValueError("Accepted source world archive identity mismatch")
     source_world = custody / "restored-world/world"
+    (target / "world").mkdir(exist_ok=True)
     with _world_backup_lock(source_world), _world_backup_lock(target / "world"):
         verify_world(source_world, backup["world_files"])
         shutil.copytree(

@@ -179,3 +179,23 @@ attempts. Its focused lint/type checks and the probe's pinned strict compilation
 pass. The launch function keeps one lifecycle/failure boundary; its existing
 complexity exception is extended to the narrowly added fixed probe branch rather
 than creating a second lifecycle framework.
+
+
+r2 was rejected before server launch: the materializer leaves world absent, and
+opening its destination POSIX lock raised FileNotFoundError. No probe or runtime
+observation occurred. Only [capture.json](r2-capture.json.gz) exists for this
+prelaunch rejection; missing console/projection files are not fabricated.
+The narrow fix creates the new target world directory before locking/copying.
+No existing target is reused. r3 uses the same protocol/limits and fresh paths:
+
+```sh
+uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r3 instances/item13-temple-variants-r3
+uv run python -m evidence.item-13.collision.retain --temple-attempt 3
+```
+
+The accepted source inventory has503 files totaling428,092,106 bytes. This fits
+the2-GiB instance allocation with the existing runtime. Source and destination
+inventory checks remain mandatory. The r2 capture is losslessly retained with
+`gzip.compress(raw,mtime=0)`; its original SHA-256/size are recorded below.
+
+Original r2 capture: SHA-256 305e39811cd20544ec775c0ad089e3e396e124cf6594c098b4c9569768b795a2, 982 bytes.
