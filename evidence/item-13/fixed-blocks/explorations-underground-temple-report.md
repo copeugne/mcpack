@@ -1197,3 +1197,35 @@ complete objective budget. It does not imply suppressing any source before its
 first attempt. The chamber is nonempty because of its source and reward content;
 four distinct explicit source types are supported, realized enemy counts are not.
 Route execution, Ruff, formatting and type checks pass. Raw evidence is unchanged.
+
+## Library room and obstructed rewards
+
+Child49 is a library interior withinX-307..-300,Z-32..-21. The middle bookshelf
+bank splits two aisles but leaves common front and rear connections; do not count
+shelf rows as separate rooms. The front activity area opens east throughZ-22 to
+the previously validated junction. No saved library spawner is present. Two
+unrolled `library` chest assignments occur at(-307,31,-25) and(-300,31,-25),
+above bookshelf stacks. Their lids are capped respectively by full stone bricks
+and mossy stone bricks atY32. Under the already verified `ChestBlock` rule these
+are blocked openings, not usable loot nodes merely because table assignments exist.
+
+This establishes a concrete reward-access defect. Elevation, adjacent upper
+stairs, ceiling clearance and retained webs must be accounted for before any
+breaching/retrieval scenario is accepted. Do not silently count inspection of
+the chests as acquisition or assign a zero-cost remedy. Existing geometric/source
+evidence is sufficient to establish the blocked lids; no server trial is needed
+to restate that rule. The raw assignments remain preserved and unrolled.
+
+Predeclare a front-area native inspection from(-295,27,-22) west toX-304,
+then north toZ-23, west toX-306, south toZ-21, east toX-300 and north toZ-22,
+returning east to the junction. Keep the adult route and dry-plant treatment;
+avoid the web at(-305,27,-22) by usingZ-23 on the westward segment. This validates
+the entrance/common area only. The deeper bookshelf aisles and an explicit
+reward-access solution remain necessary before the library assessment closes.
+
+The declared front circuit passes in both directions:26 horizontal blocks,
+zero elevation change and no removals or placements. Both full-block lid caps
+are bound explicitly in the same executable check. This resolves the library
+entrance and common front area, while preserving the obstructed reward disposition.
+Route, Ruff, formatting and type checks pass. No saved world or raw extraction
+was modified. The deeper aisle and reward work remains incomplete.

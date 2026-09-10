@@ -818,3 +818,19 @@ for (x, z), (ax, az), (sx, sz) in dungeon_sources:
     check_ray((x + 0.5, 27.62, z + 0.5), end, source)
     removed.add(source)
 print("PASS four buried sources: four floor holes, two vein removals; encounters not measured")
+
+# Library entrance survey, with blocked elevated chest lids retained as a defect.
+library_front = (
+    [(x, 27, -22) for x in range(-295, -305, -1)]
+    + [(-304, 27, -23), (-305, 27, -23), (-306, 27, -23)]
+    + [(-306, 27, -22), (-306, 27, -21)]
+    + [(x, 27, -21) for x in range(-305, -299)]
+    + [(-300, 27, -22)]
+    + [(x, 27, -22) for x in range(-299, -294)]
+)
+verify_path(library_front)
+verify_path(list(reversed(library_front)))
+for x, lid in ((-307, "minecraft:stone_bricks"), (-300, "minecraft:mossy_stone_bricks")):
+    assert at(c, x, 31, -25)["Name"] == "minecraft:chest"
+    assert at(c, x, 32, -25)["Name"] == lid
+print("PASS library front circuit:", len(library_front) - 1, "horizontal; both chest lids blocked")
