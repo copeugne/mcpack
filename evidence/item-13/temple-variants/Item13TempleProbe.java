@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
@@ -44,9 +45,14 @@ public final class Item13TempleProbe {
         try {
             for (Object entry : selected) {
                 result.put("attempted_case",entry);
+                long deadline = System.nanoTime()+TimeUnit.SECONDS.toNanos(30);
+                // Off-thread getChunkFuture queues preparation without main-thread managedBlock.
+                List<CompletableFuture<?>> pending = chunks(server,loader,(Map<?,?>)entry);
+                CompletableFuture.allOf(pending.toArray(new CompletableFuture<?>[0]))
+                    .get(Math.max(1,deadline-System.nanoTime()),TimeUnit.NANOSECONDS);
                 FutureTask<Map<String,Object>> query = new FutureTask<>(() -> place(server,loader,(Map<?,?>)entry,gson));
                 server.getClass().getMethod("execute",Runnable.class).invoke(server,query);
-                cases.add(query.get(30,TimeUnit.SECONDS));
+                cases.add(query.get(Math.max(1,deadline-System.nanoTime()),TimeUnit.NANOSECONDS));
                 // Only a successful, read-back-verified case permits the next placement.
             }
             result.put("rejection_reason",null);
@@ -57,6 +63,31 @@ public final class Item13TempleProbe {
             Files.writeString(destination,(String)gsonType.getMethod("toJson",Object.class)
                 .invoke(gson,result)+"\n",StandardOpenOption.CREATE_NEW);
         }
+    }
+
+    private static List<CompletableFuture<?>> chunks(Object server, ClassLoader loader,
+            Map<?,?> input) throws Exception {
+        Class<?> key = type(loader,"net.minecraft.resources.ResourceKey");
+        Class<?> levelType = type(loader,"net.minecraft.world.level.Level");
+        Object level = server.getClass().getMethod("getLevel",key)
+            .invoke(server,levelType.getField("NETHER").get(null));
+        if (level == null) throw new IllegalStateException("Nether missing");
+        Object source = level.getClass().getMethod("getChunkSource").invoke(level);
+        Class<?> status = type(loader,"net.minecraft.world.level.chunk.status.ChunkStatus");
+        Method request = source.getClass().getMethod("getChunkFuture",int.class,int.class,status,boolean.class);
+        List<?> origin = (List<?>)input.get("origin");
+        int x = ((Number)origin.get(0)).intValue(), z = ((Number)origin.get(2)).intValue();
+        int size = switch ((String)input.get("template")) {
+            case "adorabuild_structures:blackstone_temple_small_1" -> 7;
+            case "adorabuild_structures:nether_temple_medium_1" -> 13;
+            default -> throw new IllegalArgumentException("Unexpected template");
+        };
+        List<CompletableFuture<?>> pending = new ArrayList<>();
+        System.out.println("ITEM13_TEMPLE_PHASE request-chunks " + origin);
+        for (int cx = Math.floorDiv(x-3,16); cx <= Math.floorDiv(x+size+2,16); cx++)
+            for (int cz = Math.floorDiv(z-3,16); cz <= Math.floorDiv(z+size+2,16); cz++)
+                pending.add((CompletableFuture<?>)request.invoke(source,cx,cz,status.getField("FULL").get(null),true));
+        return pending;
     }
 
     private static Map<String,Object> place(Object server, ClassLoader loader, Map<?,?> input,
@@ -84,10 +115,6 @@ public final class Item13TempleProbe {
         int min = (Integer)levelType.getMethod("getMinBuildHeight").invoke(level);
         int max = (Integer)levelType.getMethod("getMaxBuildHeight").invoke(level);
         if (y0-3 < min || y0+height+2 >= max) throw new IllegalStateException("Out of build limits");
-        System.out.println("ITEM13_TEMPLE_PHASE chunks " + root + " " + origin);
-        for (int cx = Math.floorDiv(x0-3,16); cx <= Math.floorDiv(x0+size+2,16); cx++)
-            for (int cz = Math.floorDiv(z0-3,16); cz <= Math.floorDiv(z0+size+2,16); cz++)
-                levelType.getMethod("getChunk",int.class,int.class).invoke(level,cx,cz);
         System.out.println("ITEM13_TEMPLE_PHASE clear-check " + root + " " + origin);
         Class<?> stateType = type(loader,"net.minecraft.world.level.block.state.BlockState");
         Method isAir = stateType.getMethod("isAir");

@@ -1,7 +1,7 @@
 # Four missing temple material outcomes
 
-Status: source-derived origins and bounded experiment declared. Runtime placement
-and saved results are NOT EXECUTED. Item 13 remains IN PROGRESS.
+Status: source-derived origins and bounded experiment declared. Three attempts
+are rejected; no completed placement or accepted saved result exists. Item 13 remains IN PROGRESS.
 
 ## Exact missing evidence and smallest experiment
 
@@ -199,3 +199,36 @@ inventory checks remain mandatory. The r2 capture is losslessly retained with
 `gzip.compress(raw,mtime=0)`; its original SHA-256/size are recorded below.
 
 Original r2 capture: SHA-256 305e39811cd20544ec775c0ad089e3e396e124cf6594c098b4c9569768b795a2, 982 bytes.
+
+
+## Rejected r3 and asynchronous chunk request correction
+
+Producer f851a37f9e43ddbe381a78c8f60743a7ac768154 passed source/destination
+inventory verification and server readiness. The first case timed out in the
+logged chunks phase, before air check or placement. Zero cases completed.
+Overall elapsed time was126.56 seconds; no matched flush or clean stop occurred,
+and the process group was killed with return-9. The [r3 core retention](r3-retention.json)
+preserves the projection, capture, console, attach failure and build output.
+
+Read-only inspection of the accepted source's hash-bound Nether regions
+r.0.-1.mca and r.0.0.mca confirms that all four first-case padded chunks
+(9,-1),(10,-1),(9,0),(10,0) already have full status. The source inventory check
+still gates every fresh copy. This is a synchronous loading failure, not evidence
+that the accepted source lacks generated chunks or that a material mismatched.
+
+Pinned ServerChunkCache.getChunkFuture bytecode offsets17..52 call managedBlock
+when invoked on the server thread; offsets55..81 instead queue getChunkFutureMainThread
+on the chunk executor and compose its future when called off-thread. Therefore
+r4 calls the public future method from the attach thread, waits off-thread for
+all padded chunks, and only then queues the placement/readback task on the server.
+Calling the future method from a server task would retain the demonstrated stall.
+The complete request/wait/place sequence shares one30-second per-case deadline;
+the45-second attach limit and frozen watchdog/configuration remain unchanged.
+Strict pinned Java compilation and focused Python lint/types pass.
+
+Fresh r4 command, not yet executed at this producer milestone:
+
+```sh
+uv run python -m evidence.item-13.collision.run --temple-variants evidence/raw/item13/temple-variants-r4 instances/item13-temple-variants-r4
+uv run python -m evidence.item-13.collision.retain --temple-attempt 4
+```
