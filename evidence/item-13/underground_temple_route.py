@@ -1187,3 +1187,50 @@ print(
     active_mining_ticks / 20,
     "conditional seconds at 20 TPS",
 )
+
+native_connector_paths = {
+    "upper west lava approach": [(-300, 39, z) for z in range(0, -17, -1)],
+    "north junction terminal": [(x, 39, -23) for x in range(-288, -297, -1)],
+    "southern hall lava approach": [(x, 39, 40) for x in range(-288, -282)],
+    "lower west south lava approach": [(-300, 33, z) for z in range(7, 12)],
+    "lower west north stair": [(-300, min(33, max(27, z + 31)), z) for z in range(7, -9, -1)],
+    "cells east stair": [(x, min(39, max(33, -x - 225)), 28) for x in range(-280, -251)],
+    "library north connector": [(-295, 27, z) for z in range(-22, -33, -1)],
+    "east junction north ledge": [(-252, 33, z) for z in range(28, 13, -1)],
+    "east junction east approach": [(x, 33, 28) for x in range(-252, -244)],
+    "east junction south terminal": [(-252, 33, z) for z in range(28, 39)],
+    "southeast connector east stub": [(x, 33, 35) for x in range(-252, -248)],
+    "southeast connector west stub": [(x, 33, 35) for x in range(-252, -255, -1)],
+    "library north east stub": [(x, 27, -29) for x in range(-295, -291)],
+    "library north west stub": [(x, 27, -29) for x in range(-295, -298, -1)],
+}
+for name, path in native_connector_paths.items():
+    verify_path(path)
+    verify_path(list(reversed(path)))
+    print(
+        "PASS native connector",
+        name,
+        2 * (len(path) - 1),
+        "horizontal return;",
+        2 * sum(abs(a[1] - b[1]) for a, b in pairwise(path)),
+        "vertical return",
+    )
+for position in ((-300, 39, -17), (-282, 39, 40), (-300, 33, 12), (-300, 27, -9)):
+    assert at(c, *position)["Name"] == "minecraft:lava"
+assert at(c, -297, 40, -23)["Name"] == "minecraft:calcite"
+for position, name in {
+    (-295, 27, -33): "minecraft:stone",
+    (-298, 27, -29): "minecraft:stone_bricks",
+    (-291, 27, -29): "minecraft:stone_bricks",
+    (-252, 33, 39): "minecraft:calcite",
+    (-248, 33, 35): "minecraft:calcite",
+    (-255, 33, 35): "minecraft:stone_bricks",
+    (-243, 34, 28): "minecraft:stone",
+    (-244, 32, 28): "creatingspace:nickel_ore",
+    (-252, 31, 13): "minecraft:air",
+    (-252, 32, 13): "minecraft:sculk_vein",
+}.items():
+    assert at(c, *position)["Name"] == name
+campfire = at(c, -245, 33, 29)
+assert campfire["Name"] == "minecraft:campfire"
+assert campfire["Properties"]["lit"] == "true"

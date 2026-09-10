@@ -184,6 +184,9 @@ link passes with28 removals/eight scaffolds; wet side candidates are rejected.
 All nine saved sources now have local access/removal proofs, including southern shaft costs.
 The construction union is 112 unique removals, 951 active ticks at 20 TPS; 44 scaffold
 placements are declared. These subtotals exclude movement and encounters.
+Fourteen additional native excursions pass, including two six-block stair links.
+Lava/capped stubs and the eastern lower corridor's exposed ledge remain explicit
+graph boundaries; its eastern terminal's final ore-supported step is unvalidated.
 
 Next combine routes, finish source/sculk conditions and integrate complete timing,
 hazards, finale, bypasses and replay; then the other three declared reads. No

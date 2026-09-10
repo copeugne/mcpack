@@ -1533,3 +1533,79 @@ All nine sources have Delay0, so the short single-batch grace assumption used in
 some earlier family tasks cannot be transferred to this assembly. No complete
 traversal/combat duration is accepted until those dependent conditions and one
 joined objective are explicit.
+
+## Remaining native connector inspection declaration
+
+Use the retained first-assembly blocks and the existing adult clearance check.
+No new removal is proposed. Validate the upper western corridor from
+(-300,39,0) to Z-16 and retain the next centerline lava at Z-17 as a rejected
+dry continuation. Validate the northern junction's western terminal from
+(-288,39,-23) to X-296, retaining the calcite head obstruction at X-297.
+Validate the southern hall junction's eastern approach from(-288,39,40) to
+X-283, retaining the next centerline lava at X-282. From the western lower
+junction(-300,33,7), inspect south to Z11 before lava at Z12, and north down
+the saved staircase to(-300,27,-8) before lava at Z-9.
+
+From the cells passage(-280,39,28), follow the eastern stairs to
+(-252,33,28): feet stay39 through X-264, descend one per cell to feet34 at
+X-259, then reach feet33 at X-258. Validate both directions, including ascent
+clearance beneath the hanging bars. Inspect the eastern lower junction and its
+actual terminal arms separately before counting their graph links. Finally,
+inspect the library passage's northern connector from(-295,27,-22) to Z-32
+and its east/west stubs. Saved piece labels do not establish onward connections.
+
+These local dry routes stop at the first declared obstruction. A lava rejection
+does not establish that engineering, swimming or adjacent terrain access is
+impossible. Such alternatives are outside these native-route measurements.
+
+All seven declared connectors pass in both directions without additional edits.
+The eastern lower junction and library connector also have the following local
+inspection routes. Distances are independently returned excursions; their sum
+is not a deduplicated complete task.
+
+| Local excursion | Horizontal return blocks | Vertical return blocks |
+| --- | ---: | ---: |
+| Upper western junction to lava approach Z-16 | 32 | 0 |
+| Northern junction west to X-296 | 16 | 0 |
+| Southern hall junction east to lava approach X-283 | 10 | 0 |
+| Western lower junction south to lava approach Z11 | 8 | 0 |
+| Western lower junction north down stairs to Z-8 | 30 | 12 |
+| Cells passage east to lower junction X-252 | 56 | 12 |
+| Library passage north to Z-32 | 20 | 0 |
+| Eastern lower junction north to Z14 ledge | 28 | 0 |
+| Eastern lower junction east to X-245 | 14 | 0 |
+| Eastern lower junction south to Z38 | 20 | 0 |
+| Southeastern connector east to X-249 | 6 | 0 |
+| Southeastern connector west to X-254 | 4 | 0 |
+| Library northern connector east to X-292 | 6 | 0 |
+| Library northern connector west to X-297 | 4 | 0 |
+
+The four stated lava cells and northern calcite head obstruction are confirmed.
+The library northern connector is bounded locally by stone at(-295,27,-33),
+masonry at(-298,27,-29) and masonry at(-291,27,-29). Its east/west stubs do not
+reach the adjacent library or tower through a native centerline. The southeastern
+connector is locally capped by calcite at(-252,33,39) and(-248,33,35), with
+masonry at(-255,33,35). These are quiet terminal connective spaces under the
+reward/source objective, not additional demonstrated reward rooms. Natural
+encounters remain unknown; absence of saved block entities cannot establish
+that they were empty during play.
+
+The eastern lower junction's northern corridor has a supported ledge at
+(-252,33,14), followed by dry side-facing vein at(-252,32,13) over air atY31.
+That vein is not a supporting floor. The route therefore stops at the ledge,
+retaining an opening toward surrounding terrain instead of inventing a capped
+dead end or a proven exterior escape. The nearby enchanting-room direction
+does not by itself establish a traversable connection.
+
+The eastern terminal inspection stops at(-245,33,28). The next cell has nickel
+ore support atY32, outside this checker's verified support set, followed by a
+stone head obstruction at(-243,34,28). This is an explicit final-step geometry
+limitation, not evidence that nickel ore cannot support a player. A lit dry
+campfire at(-245,33,29) also rules out treating the southern neighboring cell
+as an automatically safe detour. Neither a breach nor another support-block
+implementation was needed to establish the route's local terminal approach.
+
+These results add two native six-block stair progressions and distinguish
+actual supported branches from lava continuations, capped stubs and an exposed
+ledge. No removal subtotal changes. Room-graph integration must retain the
+stated endpoints and must not connect across any of these unvalidated boundaries.
