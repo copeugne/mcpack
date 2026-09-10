@@ -188,9 +188,11 @@ all44 modeled scaffold cells. This includes the tower/lower and branch circuits.
 Construction approaches, source-removal stations, actions and encounter/survival
 conditions remain before the complete task-time model can pass.
 
-Next combine routes, finish source/sculk conditions and integrate complete timing,
-hazards, finale, bypasses and replay; then the other three declared reads. No
-runtime process is active. The four-layer PNG is retained; SVG is ignored raw.
+P6 defines54 stipulated occupied-source enemies with exact-class suppression;
+nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
+Next integrate construction/actions, P6 and sculk conditions into complete timing,
+then finish hazards, finale, bypasses/replay and the other three reads. No runtime
+process is active. The four-layer PNG is retained; SVG is ignored raw.
 
 Courtyard andcentral-End gaps require checking other retained raw before experiments.
 

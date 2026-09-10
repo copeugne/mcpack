@@ -2006,3 +2006,121 @@ tool changes, button operations, acquisition assumptions, enemy population and
 combat/survival conditions must still be joined to this route or explicitly
 accounted for as additional phases. Actual traversal/combat times and acquired
 loot remain NOT MEASURED.
+
+## Occupied-source combat case and invalidation conditions
+
+Use the approved reusable conditional accounting method for a specifically
+defined occupied-source case, P6. This is an analyst-defined encounter input,
+not the observed entity population or a prediction of typical dungeon combat.
+At task start, stipulate six distinct adult enemies for each saved source:
+30 cave spiders and six each of skeleton, ordinary spider, witch and zombie.
+The 54 individuals have nominal source health, no extra armor/equipment modifiers,
+effects, passengers, reinforcements or prior damage. Retain the zombie's inherent
+armor instead of treating it as zero. Natural spawning is excluded from this
+timing case, while its separate authored potential remains in the assessment.
+
+The population is not one successful four-attempt spawn batch. It is a stipulated
+already-occupied encounter state. For every still-active source, require its
+exact-class nearby count to remain at least six whenever the source evaluates
+that condition, until the actor destroys it. Count individuals once in the combat
+workload even if nearby query volumes overlap. The five cave-spider groups and
+four chamber groups are distinct individuals in P6. No assumption of stationary
+AI, invisible cages, changed spawner NBT or a guaranteed containment mechanism
+is made. Whether the required population remains nearby during the actual task
+is NOT MEASURED. Losing this condition invalidates P6 rather than licensing an
+unrecorded additional wave.
+
+This suppression condition has a precise source basis. The pinned
+`BaseSpawner.serverTick` uses `EntityTypeTest.forExactClass(entity.getClass())`,
+the source block's unit AABB inflated by saved `SpawnRange`, and the
+`NO_SPECTATORS` selector. If the count is at least `maxNearbyEntities`, it calls
+`delay` and returns before adding the candidate entity. Here the saved values
+are six and four respectively, making each query box
+[X-4,Y-4,Z-4,X+5,Y+5,Z+5]. A cave spider does not suppress an ordinary-spider
+source simply by being a Spider subclass. The nearby cap also is not a global
+cap on living dungeon enemies: outside P6, enemies can leave the box and further
+waves can occur. All saved Delay0 values remain unchanged.
+
+Use six combat phases: one after each of the five cave-spider sources is removed,
+and one after all four buried chamber sources are removed. Clear the relevant
+six or 24 stipulated enemies before leaving that phase, returning to its source-
+access station. Pursuit, target switching and return from pursuit belong only
+to the approved combat duty allowance. Do not charge them again as ordinary
+route distance or per-enemy targeting inputs. Source-access movement, mining,
+tool selection and phase decisions remain separate costs to integrate.
+
+Reuse the unenchanted iron sword, no criticals/sweeps, nominal six-damage hit and
+13-tick full attack-cycle model from the [pinned combat source](../model-source/README.md).
+New direct source inspection establishes `CaveSpider.createCaveSpider`
+overriding maximum health to 12 and `Witch.createAttributes` setting 26. The existing
+source already establishes skeleton/zombie health 20, spider health 16 and zombie
+armor 2. Its zero-toughness armor formula gives the zombie 5.904 received damage
+per nominal hit. The resulting workload is:
+
+| Enemy | P6 individuals | Nominal health | Required full hits each | Total attack ticks |
+| --- | ---: | ---: | ---: | ---: |
+| Cave spider | 30 | 12 | 2 | 780 |
+| Skeleton | 6 | 20 | 4 | 312 |
+| Ordinary spider | 6 | 16 | 3 | 234 |
+| Witch | 6 | 26 | 5 | 390 |
+| Zombie | 6 | 20 | 4 | 312 |
+| Total | 54 | Variable | 156 total hits | 2028 |
+
+At 20 TPS this is 101.4 seconds of nominal attack-cycle work. Dividing by the
+approved A/B/C duty fractions 1/.75/.5 gives 101.4/135.2/202.8 seconds for the
+combat phases only. These are neither a whole-task duration nor guaranteed
+combat bounds. The finite workload is conditional on P6 remaining valid.
+
+Witch healing and hostile status effects are material limitations, not hidden
+adjustments to the five-hit estimate. `Witch.aiStep` can select a healing potion;
+`performRangedAttack` has harming, slowness and poison choices and separate
+healing/regeneration choices for raider targets. `CaveSpider.doHurtTarget` adds
+poison after a successful hit against a living target, with seven seconds on
+NORMAL and fifteen on HARD. Successful status application, witch healing,
+additional equipment/effects, extra enemies, reinforcement or altered attributes
+invalidates this nominal no-effect workload. Death, required healing or movement/
+input interruption outside the declared allowances also censors a successful
+complete-task estimate. No success probability, actual potion use, poison damage
+or realized encounter is inferred from these methods.
+
+The five source entity types plus the separate illusioner/pillager/vindicator
+natural override constitute eight authored hostile-type possibilities across
+the family inputs. P6 uses five of those types; it does not redefine the actual
+dungeon's diversity as five or erase the natural override. This distinction
+must remain visible in the final quality assessment.
+
+Reproduce the direct inspection with the already pinned SRG artifact (SHA-256
+26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71,
+reverified for this inspection):
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap \
+  -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar \
+  -c -p net.minecraft.world.entity.monster.CaveSpider \
+  net.minecraft.world.entity.monster.Spider net.minecraft.world.entity.monster.Witch \
+  net.minecraft.world.entity.monster.Zombie net.minecraft.world.entity.monster.AbstractSkeleton \
+  net.minecraft.world.level.BaseSpawner
+```
+
+Reproduce the conditional arithmetic without another measurement tool:
+
+```sh
+uv run python - <<'PY'
+import math
+rows = [('cave_spider',30,12,0),('skeleton',6,20,0),('spider',6,16,0),
+        ('witch',6,26,0),('zombie',6,20,2)]
+total = 0
+for name,count,health,armor in rows:
+    effective = min(20,max(armor-6/2,armor*.2))
+    damage = 6*(1-effective/25)
+    hits = math.ceil(health/damage)
+    ticks = count*hits*13
+    total += ticks
+    print(name,count,health,damage,hits,ticks)
+print('total ticks',total,'combat seconds',[total/20/d for d in (1,.75,.5)])
+PY
+```
+
+This resolves a bounded encounter input and nominal combat work for subsequent
+complete-task integration. The actual saved-world population, suppression
+success, natural encounters, survival and combat duration remain NOT MEASURED.
