@@ -1882,3 +1882,69 @@ four rows and label the result a complete dungeon task. The post-mining dungeon
 survey also must not automatically be charged in addition to a pre-mining survey;
 the final declared task order determines which survey and source-access movements
 are actually performed.
+
+## Lower activity circuit and explicit scaffold transitions
+
+For continuous post-construction geometry only, enable the ten already declared
+scaffold columns. Their(X,Z,base feet,top feet) values are(-277,0,33,39),
+(-300,6,33,39),(-299,28,33,39),(-288,-38,35,39),(-287,-30,31,35),
+(-288,-38,27,31),(-302,-25,27,30),(-305,-25,27,30),(-288,8,39,43)
+and(-288,20,39,43). They still require44 placements. The two separated columns
+at X-288,Z-38 do not authorize climbing through the unbuilt Y32..34 interval.
+Validate each base against retained support and each full adult column sweep
+before adding its exact feet positions to the modeled movement set. Preserve
+the previously checked placement rules and rays. No other unsupported position
+is authorized by this change; original local construction checks run first with
+the modeled set empty.
+
+Begin the lower activity circuit at J08(-288,27,-22). Visit the bedroom and
+return, then follow the western passage to J09. Traverse the library front
+circuit, inserting the two column ascents/descents and chest-access stops at
+their previously verified approach junction. Include one library aisle circuit
+at the eastern column base. Return to J09, inspect its northern connector with
+east/west stubs and its southern capped stub, then return to J08. Visit J10's
+two terminal reward alcoves and post-mining dungeon circuit, and return to J08.
+Use exact joined coordinates and retain two bedroom door operations. This is
+the post-construction movement circuit; construction and encounter state remain
+separate prerequisites, not free starting resources.
+
+Join the tower from J01(-288,39,-23): upper reward path, northern door approach,
+first shaft, middle reward path, second shaft, lower two-door path, third shaft,
+bottom dry zigzag and the three-block link to J08. On the outbound lower path,
+insert the eastern descending branch and one terminal-rim circuit, returning
+to J07 before continuing downward. Perform the lower activity circuit once.
+Return by the reverse tower transit without repeating the already completed
+eastern branch inspection. Keep every shaft entry/exit step in the coordinates;
+retain all eight tower stone-button operations and both bedroom oak-button
+operations. Initial construction falls and placement effort remain outside this
+post-construction circuit and cannot be silently absorbed into climb time.
+
+The lower activity circuit passes as one closed route:222 horizontal blocks
+and22 vertical blocks from J08 back to J08. Its vertical work is12 blocks on
+the two library columns and ten through the dungeon source holes. All four
+dungeon chest rays also pass from the lower, post-excavation stations at feet26;
+reward access does not require pretending those floors were restored.
+
+The tower circuit, including that lower activity circuit exactly once and the
+eastern branch/rim inspection exactly once, passes at430 horizontal blocks and
+58 vertical blocks from J01 back to J01. The tower transit contributes24 vertical
+blocks on return, the eastern staircase12 and the lower activity circuit22.
+The joins preserve exact shared coordinates and include column entry/exit steps.
+These results supersede any attempt to obtain this circuit by indiscriminately
+adding every earlier local return demonstration.
+
+The column movement model reuses the pinned scaffold support/collision rules
+already recorded in the [Large House assessment](mns-large_house_1-report.md):
+vertical distance-zero columns inherit sturdy floor support; the stable top
+supports a non-descending actor above it, while internal distance-zero collision
+is empty and scaffolding is climbable. Direct inspection of the same pinned
+`ScaffoldingBlock.getCollisionShape` confirms the `isAbove`/`isDescending`,
+`DISTANCE` and empty/stable-shape branches. The existing `javap -c -p` command
+with class `net.minecraft.world.level.block.ScaffoldingBlock` reproduces that
+inspection. This is an explicit conditional scaffold model, not a blanket
+exemption of ordinary air from support checks.
+
+All ten bases and swept columns pass before their modeled feet positions are
+enabled. A direct negative case attempts to climb from(-288,31,-38) into the
+unbuilt Y32 gap and is rejected. Initial raw/local route checks still execute
+with no modeled scaffolds. No world or configuration was changed.

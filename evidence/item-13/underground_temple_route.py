@@ -26,6 +26,7 @@ at = importlib.import_module("evidence.item-13.render_pilot").state_at
 overlap = importlib.import_module("evidence.item-13.collision.clearance").overlaps
 removed = set()
 opened_doors = set()
+modeled_scaffold_feet = set()
 
 
 def clear(box):
@@ -61,39 +62,46 @@ def clear(box):
 def verify_path(points, *, crouch_up=False):
     """Check adult .6 by 1.8 occupancy and conservative step/jump sweeps."""
     for x, y, z in points:
-        assert (x, y - 1, z) not in removed, ("removed support", (x, y, z))
-        s = at(c, x, y - 1, z)
-        n = s["Name"]
-        assert n in {
-            "minecraft:stone_bricks",
-            "minecraft:cracked_stone_bricks",
-            "minecraft:mossy_stone_bricks",
-            "minecraft:chiseled_stone_bricks",
-            "minecraft:deepslate_bricks",
-            "minecraft:cracked_deepslate_bricks",
-            "minecraft:stone_brick_stairs",
-            "minecraft:mossy_stone_brick_stairs",
-            "minecraft:gravel",
-            "minecraft:stone",
-            "minecraft:cobblestone",
-            "minecraft:calcite",
-        }, ((x, y, z), s)
-        if n == "minecraft:gravel":
-            assert at(c, x, y - 2, z)["Name"] in {
+        if (x, y, z) not in modeled_scaffold_feet:
+            assert (x, y - 1, z) not in removed, ("removed support", (x, y, z))
+            s = at(c, x, y - 1, z)
+            n = s["Name"]
+            assert n in {
                 "minecraft:stone_bricks",
-                "minecraft:mossy_stone_bricks",
                 "minecraft:cracked_stone_bricks",
-            }
-        if n.endswith("_stairs"):
-            assert s["Properties"]["half"] == "bottom"
-            assert s["Properties"]["shape"] == "straight"
-            # A centered .6-wide actor overlaps the upper supporting half.
-            # The conservative full-cell obstacle remains below its feet.
+                "minecraft:mossy_stone_bricks",
+                "minecraft:chiseled_stone_bricks",
+                "minecraft:deepslate_bricks",
+                "minecraft:cracked_deepslate_bricks",
+                "minecraft:stone_brick_stairs",
+                "minecraft:mossy_stone_brick_stairs",
+                "minecraft:gravel",
+                "minecraft:stone",
+                "minecraft:cobblestone",
+                "minecraft:calcite",
+            }, ((x, y, z), s)
+            if n == "minecraft:gravel":
+                assert at(c, x, y - 2, z)["Name"] in {
+                    "minecraft:stone_bricks",
+                    "minecraft:mossy_stone_bricks",
+                    "minecraft:cracked_stone_bricks",
+                }
+            if n.endswith("_stairs"):
+                assert s["Properties"]["half"] == "bottom"
+                assert s["Properties"]["shape"] == "straight"
+                # A centered .6-wide actor overlaps the upper supporting half.
+                # The conservative full-cell obstacle remains below its feet.
         clear([x + 0.2, y, z + 0.2, x + 0.8, y + 1.8, z + 0.8])
     for a, b in pairwise(points):
-        assert abs(a[0] - b[0]) + abs(a[2] - b[2]) == 1
+        horizontal_step = abs(a[0] - b[0]) + abs(a[2] - b[2])
+        if horizontal_step == 0:
+            assert a in modeled_scaffold_feet
+            assert b in modeled_scaffold_feet
+            assert abs(a[1] - b[1]) == 1
+        else:
+            assert horizontal_step == 1
         assert abs(a[1] - b[1]) <= 1
-        high = max(a[1], b[1]) + (0.3 if b[1] > a[1] else 0)
+        high = max(a[1], b[1]) + (0.3 if b[1] > a[1] and horizontal_step else 0)
         height = 1.5 if crouch_up and b[1] > a[1] else 1.8
         clear(
             [
@@ -1470,3 +1478,134 @@ for name, parts in (
         sum(abs(a[1] - b[1]) for a, b in pairwise(joined)),
         "vertical blocks",
     )
+
+scaffold_columns = (
+    (-277, 0, 33, 39),
+    (-300, 6, 33, 39),
+    (-299, 28, 33, 39),
+    (-288, -38, 35, 39),
+    (-287, -30, 31, 35),
+    (-288, -38, 27, 31),
+    (-302, -25, 27, 30),
+    (-305, -25, 27, 30),
+    (-288, 8, 39, 43),
+    (-288, 20, 39, 43),
+)
+assert sum(top - base for _, _, base, top in scaffold_columns) == 44
+for x, z, base, top in scaffold_columns:
+    verify_path([(x, base, z)])
+    clear([x + 0.2, base, z + 0.2, x + 0.8, top + 1.8, z + 0.8])
+for x, z, base, top in scaffold_columns:
+    modeled_scaffold_feet.update((x, y, z) for y in range(base, top + 1))
+assert all((-288, y, -38) not in modeled_scaffold_feet for y in range(32, 35))
+column_gap_rejected = False
+try:
+    verify_path([(-288, 31, -38), (-288, 32, -38)])
+except AssertionError:
+    column_gap_rejected = True
+assert column_gap_rejected
+
+bedroom_entry = [(-288, 27, -22), *bedroom_crossing]
+library_link = [(x, 27, -22) for x in range(-288, -296, -1)]
+lower_activity_parts = [
+    bedroom_entry,
+    bedroom_aisle,
+    list(reversed(bedroom_entry)),
+    library_link,
+    library_front[:10],
+]
+for x in (-302, -305):
+    approach = (
+        [(-304, 27, -22), (-303, 27, -22), (-302, 27, -22), (-302, 27, -23), (-302, 27, -24)]
+        if x == -302
+        else [(-304, 27, -22), (-304, 27, -23), (-305, 27, -23), (-305, 27, -24)]
+    )
+    column_visit = [(x, 27, -24)] + [(x, y, -25) for y in range(27, 31)]
+    lower_activity_parts.extend((approach, column_visit))
+    lower_activity_parts.append(list(reversed(column_visit))[:4])
+    if x == -302:
+        lower_activity_parts.append(library_aisles)
+    lower_activity_parts.extend(([(x, 27, -25), (x, 27, -24)], list(reversed(approach))))
+lower_activity_parts.append(library_front[9:])
+library_north = native_connector_paths["library north connector"]
+lower_activity_parts.append(library_north[:8])
+for name in ("library north east stub", "library north west stub"):
+    path = native_connector_paths[name]
+    lower_activity_parts.extend((path, list(reversed(path))))
+library_south = [(-295, 27, z) for z in range(-22, -18)]
+dungeon_link = [(-288, 27, z) for z in range(-22, -13)]
+lower_activity_parts.extend(
+    (
+        library_north[7:],
+        list(reversed(library_north)),
+        library_south,
+        list(reversed(library_south)),
+        list(reversed(library_link)),
+        dungeon_link,
+    )
+)
+for direction in (-1, 1):
+    terminal = [(-288 + direction * r, 27, -14) for r in range(8)]
+    lower_activity_parts.extend((terminal, list(reversed(terminal))))
+lower_activity_parts.extend((post_mining_dungeon, list(reversed(dungeon_link))))
+lower_activity_route = [(-288, 27, -22)]
+for part in lower_activity_parts:
+    assert lower_activity_route[-1] == part[0], (lower_activity_route[-1], part[0])
+    lower_activity_route.extend(part[1:])
+assert lower_activity_route[-1] == lower_activity_route[0]
+verify_path(lower_activity_route)
+for (x, z), _, (sx, sz) in dungeon_sources:
+    check_ray((x + 0.5, 27.62, z + 0.5), (sx + 0.5, 27.5, sz + 0.5), (sx, 27, sz))
+print(
+    "PASS joined lower activity circuit:",
+    sum(abs(a[0] - b[0]) + abs(a[2] - b[2]) for a, b in pairwise(lower_activity_route)),
+    "horizontal blocks;",
+    sum(abs(a[1] - b[1]) for a, b in pairwise(lower_activity_route)),
+    "vertical blocks; start/end J08",
+)
+
+tower_first_shaft = (
+    [(-288, 39, -37)] + [(-288, y, -38) for y in range(39, 34, -1)] + [(-288, 35, -37)]
+)
+tower_second_shaft = (
+    [(-287, 35, -29)] + [(-287, y, -30) for y in range(35, 30, -1)] + [(-287, 31, -29)]
+)
+tower_third_shaft = [(-288, y, -38) for y in range(31, 26, -1)] + [(-288, 27, -37)]
+tower_lower_link = [(-288, 27, z) for z in range(-25, -21)]
+tower_prefix = (
+    tower_approach,
+    tower_crossing,
+    tower_rewards,
+    hatch_approach,
+    tower_first_shaft,
+    middle_route,
+    tower_second_shaft,
+)
+tower_suffix = (tower_third_shaft, bottom_zigzag, tower_lower_link)
+tower_transit = [(-288, 39, -23)]
+for part in (*tower_prefix, lower_tower, *tower_suffix):
+    assert tower_transit[-1] == part[0], (tower_transit[-1], part[0])
+    tower_transit.extend(part[1:])
+tower_circuit = [(-288, 39, -23)]
+for part in (
+    *tower_prefix,
+    lower_tower[:7],
+    descending_branch,
+    terminal_rim,
+    list(reversed(descending_branch)),
+    lower_tower[6:],
+    *tower_suffix,
+    lower_activity_route,
+    list(reversed(tower_transit)),
+):
+    assert tower_circuit[-1] == part[0], (tower_circuit[-1], part[0])
+    tower_circuit.extend(part[1:])
+assert tower_circuit[-1] == tower_circuit[0]
+verify_path(tower_circuit)
+print(
+    "PASS joined tower/lower activity circuit:",
+    sum(abs(a[0] - b[0]) + abs(a[2] - b[2]) for a, b in pairwise(tower_circuit)),
+    "horizontal blocks;",
+    sum(abs(a[1] - b[1]) for a, b in pairwise(tower_circuit)),
+    "vertical blocks; start/end J01",
+)
