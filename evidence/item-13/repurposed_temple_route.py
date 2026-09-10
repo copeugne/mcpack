@@ -13,12 +13,13 @@ from itertools import pairwise
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("variant", choices=["basalt", "crimson", "warped"])
+parser.add_argument("variant", choices=["basalt", "crimson", "warped", "wasteland"])
 args = parser.parse_args()
 raw = (
     Path(__file__).parent / f"fixed-blocks/repurposed-temple-{args.variant}.json.gz"
 ).read_bytes()
 hashes = {
+    "wasteland": "2a5c34da94b8e21898b2b2f7975869ace309805d0425c7b48be23de8b4f7e100",
     "warped": "6b3785afcc1214c93ed4221d917f751336cb3ebe3f247c27261d136ac570e71f",
     "basalt": "a6884f33bf59e7a2a6be7e01df478ee5339b47ca7c258d5bf85400b78c1c8341",
     "crimson": "4d7415d4c2bfefd2ffc5d588d78d09481f5342c02d1765dd9dd7155c7d085724",
@@ -194,6 +195,43 @@ if args.variant == "crimson":
             (143, 65, 62),
         ]
     ]
+if args.variant == "wasteland":
+    route = [(256, 33, 338)]
+    detour = operations.index(("go", (402, 64, 317)))
+    operations[detour:detour] = [("go", (397, 64, 316)), ("go", (402, 64, 316))]
+    stop = operations.index(("go", (396, 57, 325)))
+    operations = [(kind, (655 - t[0], t[1] - 28, 656 - t[2])) for kind, t in operations[:stop]]
+    # Readable unrotated coordinates identify the distinct lower mechanism lane.
+    lower = [
+        ("go", (141, 61, 69)),
+        ("go", (141, 61, 68)),
+        ("go", (140, 61, 68)),
+        ("mine", (140, 62, 66)),
+        ("go", (140, 61, 66)),
+        ("mine", (140, 62, 64)),
+        ("go", (140, 61, 65)),
+        ("mine", (140, 62, 63)),
+        ("go", (140, 61, 61)),
+        ("go", (144, 61, 61)),
+        ("mine", (145, 61, 61)),
+        ("go", (146, 61, 61)),
+        ("go", (146, 61, 60)),
+        ("mine", (147, 62, 60)),
+        ("open", (147, 61, 60)),
+        ("go", (146, 61, 61)),
+        ("go", (140, 61, 61)),
+        ("go", (140, 61, 68)),
+        ("go", (141, 61, 68)),
+        ("go", (141, 61, 69)),
+        ("go", (143, 61, 69)),
+        ("go", (143, 61, 67)),
+        ("go", (143, 62, 66)),
+        ("go", (143, 63, 65)),
+        ("go", (143, 64, 64)),
+        ("go", (143, 65, 63)),
+        ("go", (143, 65, 62)),
+    ]
+    operations.extend((kind, (399 - t[0], t[1] - 32, 400 - t[2])) for kind, t in lower)
 if args.variant == "warped":
     route = [(143, 65, 62)]
     operations = [
@@ -344,9 +382,18 @@ for kind, target in operations:
             "minecraft:polished_blackstone_button",
             "minecraft:warped_button",
         }:
-            assert state["Properties"]["facing"] == "south"
+            facing = state["Properties"]["facing"]
+            assert facing in (
+                {"north", "east", "west"} if args.variant == "wasteland" else {"south"}
+            )
             assert state["Properties"]["face"] == "wall"
-            end = (target[0] + 0.5, target[1] + 0.5, target[2] + 0.1)
+            offset = {
+                "north": (0.5, 0.5, 0.9),
+                "south": (0.5, 0.5, 0.1),
+                "west": (0.9, 0.5, 0.5),
+                "east": (0.1, 0.5, 0.5),
+            }[facing]
+            end = tuple(target[i] + offset[i] for i in range(3))
         if args.variant in {"crimson", "warped"} and target == (146, 61, 60):
             end = (146.3, 61.5, 60.5)
         if args.variant == "warped" and kind == "open" and target == (143, 68, 62):
@@ -393,11 +440,104 @@ second_stair = [
         (402, 64, 323),
     ]
 ]
-if args.variant != "warped":
+if args.variant in {"basalt", "crimson"}:
     _, native_verify = geometry.path_checks(original, set(), set(), set())
     native_verify(second_stair, crouch_up=True)
     native_verify(list(reversed(second_stair)), crouch_up=True)
     print("separate upper eastern stair passes", second_stair)
+
+if args.variant == "wasteland":
+    steps = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(route)]
+    turns = sum(a != b for a, b in pairwise(steps))
+    vertical = sum(abs(d[1]) for d in steps)
+    work = {
+        "lever": 15,
+        "nether_bricks": 8,
+        "nether_brick_chest": 8,
+        "spawner": 19,
+        "sticky_piston": 6,
+        "tripwire": 0,
+    }
+    ticks = sum(work[state["Name"].split(":", 1)[1]] for _, state in mining)
+    assert (len(steps), vertical, len(mining), len(opened), ticks) == (116, 14, 12, 2, 118)
+    print(
+        "wasteland complete inputs", {"turns": turns, "decisions": turns + 7, "mining_ticks": ticks}
+    )
+    for label, u, j, n, a, s, k, v in [
+        ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2),
+        ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4),
+        ("C", 3, 0.25, 1.5, 1, 1, 4, 8),
+    ]:
+        movement = (len(steps) - vertical + 4) / u + vertical * max(1 / u, 1 / j)
+        total = movement + ticks / 20 + (turns + 7) * n + 14 * a + 3 * s + 3 * k + v
+        print(label, "movement", movement, "noncombat and complete", total, "required combat", 0)
+    eastern_stair = [
+        (655 - x, y - 28, 656 - z)
+        for x, y, z in [
+            (402, 61, 320),
+            (401, 61, 320),
+            (401, 62, 321),
+            (401, 63, 322),
+            (401, 64, 323),
+            (402, 64, 323),
+        ]
+    ]
+    native = geometry.path_checks(original, set(), set(), set())[1]
+    native(eastern_stair, crouch_up=True)
+    native(list(reversed(eastern_stair)), crouch_up=True)
+    print("wasteland second upper stair passes", eastern_stair)
+    sys.path.insert(0, str(Path(__file__).parent))
+    paths = importlib.import_module("analyze_pilot").paths
+    cells = set()
+    for x in range(250, 262):
+        for z in range(329, 344):
+            try:
+                verify([(x, 29, z)])
+            except AssertionError:
+                continue
+            cells.add((x, 29, z))
+    lower = paths(cells, (256, 29, 331))
+    for target in [(252, 29, 334), (254, 29, 339)]:
+        print("wasteland lower depth", target, len(lower[target]) - 1)
+    external_removed = set()
+    external = [(248, 30, 336)]
+    cast = geometry.ray_check(original, external_removed, {})
+    target = (249, 31, 336)
+    assert at(original, *target) == {
+        "Name": "minecraft:dark_oak_trapdoor",
+        "Properties": {
+            "facing": "north",
+            "half": "top",
+            "open": "false",
+            "powered": "false",
+            "waterlogged": "false",
+        },
+    }
+    cast((248.5, 31.62, 336.5), (249.5, 31.9, 336.5), target)
+    external_removed.add(target)
+    external.append((249, 30, 336))
+    for x in (250, 251, 252):
+        for y in (31, 30, 29) if x == 250 else (30, 29):
+            target = (x, y, 336)
+            assert at(original, *target)["Name"] in {
+                "minecraft:nether_bricks",
+                "minecraft:red_nether_bricks",
+                "minecraft:black_terracotta",
+            }
+            end = (
+                (250.5, 29.999, 336.5) if target == (250, 29, 336) else (x + 0.001, y + 0.5, 336.5)
+            )
+            cast((external[-1][0] + 0.5, external[-1][1] + 1.62, 336.5), end, target)
+            external_removed.add(target)
+        external.append((x, 29, 336))
+    target = (252, 30, 335)
+    assert at(original, *target)["Name"] == "minecraft:sticky_piston"
+    cast((252.5, 30.62, 336.5), (252.5, 30.5, 335.999), target)
+    external_removed.add(target)
+    geometry.path_checks(original, external_removed, set(), set())[1](external)
+    cast((252.5, 30.62, 336.5), (252.5, 29.5, 335.5), (252, 29, 335))
+    print("wasteland external bypass", external, "removals", len(external_removed))
+    sys.exit(0)
 
 if args.variant == "warped":
     for x in (142, 145):

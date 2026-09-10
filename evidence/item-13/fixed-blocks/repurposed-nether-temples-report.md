@@ -3,9 +3,10 @@
 Status: IN PROGRESS. Five selected fixed alternatives of
 `repurposed_structures:temple`. Ocean and taiga remain required separately.
 Human timing, realized encounters and acquired loot remain NOT MEASURED.
-Current local results: basalt, [crimson](#crimson-complete-local-quality-result)
-and [warped](#warped-complete-local-quality-result) are integrated; soul, wasteland
-and ocean/taiga remain incomplete.
+Current local results: basalt, [crimson](#crimson-complete-local-quality-result),
+[warped](#warped-complete-local-quality-result) and
+[wasteland](#wasteland-complete-local-quality-result) are integrated; soul and
+ocean/taiga remain incomplete.
 
 ## Bounded group declaration
 
@@ -753,6 +754,168 @@ for variant in basalt crimson warped; do
 done
 ```
 
-Three of seven Repurposed Temple alternatives now satisfy local scope. Soul and
-wasteland have retained raw but need full assessments; ocean/taiga still require
+At the warped checkpoint, three of seven alternatives satisfied local scope. Soul and
+wasteland then had retained raw but needed full assessments; ocean/taiga required
 exact sample matching. No Item13 exit gate or Item14 start is claimed.
+
+## Wasteland bounded whole-case declaration
+
+At2026-09-10 18:05:47 UTC, declare45 minutes for the retained wasteland case's
+whole quality/task assessment, then15 minutes for focused validation/delivery.
+The exact existing raw hash above passes. No world reads, runtime or new raw
+storage are needed. Required missing claims are its rotated playable topology,
+complete task and quality/bypass result, preserving the Mega Fortress overlap.
+The3 temple chest assignments are separate from4 incidental mns chest assignments
+and brewing/enchanting fixtures in the padded raw. Incidental blocks still
+constrain clearance; they are not silently removed from the sampled environment.
+
+Use the existing group actor, equipment and A/B/C profiles. Staged start/end is
+(256,33,338), with lowerfeet29 and upperfeet36. Survey upper/middle areas, suppress
+the source, collect all3 temple chests and return. Zombified piglins are neutral
+until provoked; declare an unprovoked, unobstructed scenario with no natural
+hostiles or attack task. Required modeled combat is0, not observed enemy absence.
+Any aggression, body obstruction, trigger activation, failed pickup or unsupported
+movement censors this conditional task. Retain ordinary breaching/engineering
+costs. Existing mining/drop and neutral-source evidence suffice; no generic
+combat estimate or copied crimson geometry is accepted.
+
+Warped's final delivery was verified at18:05:10 UTC, with fetched80ffc568 equal
+to upstream and a clean tree,149 seconds after its18:02:41 integration boundary.
+That completed the declared15-minute validation/delivery phase within its cap.
+
+The ordered wasteland circuit passes116H,7 up/7 down,12 removals and2 ordinary
+chest openings. Its first upper proposal failed on magma support at(256,35,339)
+below feet36. The accepted circuit detours one row north in unrotated template
+coordinates, preserving that hazard. The lower lane avoids magma support at
+(259,28,331), removes two head-height masonry cells and the west-facing powered
+lever at(259,30,336). North-facing closet levers and this west-facing lever use
+their actual wall-outline target faces; rotation never changes the saved data.
+The other powered lever and extended piston remain baseline mechanism evidence.
+
+Before arithmetic, active mining is118 ticks:3 levers*15 (no effective tool),
+5 nether-brick blocks*8,one nether-brick chest8,source19,sticky piston6,one
+sheared tripwire0. Use diamond pick throughout except the tripwire, then reselect
+pick for the final chest-cover block:3 equipment selections. Count14 interaction
+starts,3 acquisition allowances and4H conditional destroyed-chest pickup.
+Navigation is actual turns plus initial orientation and6 phase choices (upper
+survey,lower descent,closet breach,mechanism lane,cache approach,return).
+The14 coupled vertical moves replace their ordinary horizontal term. No other
+phase is silently omitted and neutral-source combat remains conditionally0.
+
+## Wasteland complete local quality result
+
+The local complete-task A/B/C totals are71.85/121.9/198.733333s. Movement including
+conditional pickup is35.2/54.5/91.333333s; active mining is5.9s. Required combat
+is0 only in the declared unprovoked, clear-route scenario. Inputs are116H,7 up/7
+down,36 direction changes,43 navigation allowances,12 removals,2 opens,3 equipment
+selections and3 acquisitions. They model a complete three-container task, not
+actual neutral-mob behavior, clear times or acquired loot. Unexpected aggression,
+new entities or mechanism changes outside the declared scenario retain censoring.
+
+Room partition and denominator:
+
+| Room | Activity envelope/usable floor | Content and empty/dead disposition |
+| --- | --- | --- |
+| H, middle hall | X253..258,Z334..339,feet33 on the surveyed perimeter | Quiet connecting space. Empty, not dead |
+| U, upper hall | X252..259,Z331..341,feet36 on the checked perimeter | Exposed magma support and open floor edges. Not empty/dead |
+| L, lower control hall | X251..260,Z330..336,feet29 on supported cells | Lever/piston mechanism, magma and source-closet approach. Not empty/dead |
+| T, northern-template trap/cache | X252..260,Z337..342,feet29 on checked cells | Tripwire and one chest; dispenser/lava potential. Not empty/dead |
+| D, source closet | X251..253,Z332..335; centerlineX252,feet29 after work | Neutral zombified-piglin source and two chests. Not empty/dead |
+
+The source's CLOCKWISE_180 orientation puts the template-north cache at higher
+world Z. All bounds are activity envelopes, not fully occupiable rectangles.
+Two physically separate native upper stair flights pass both directions and join
+across the upper perimeter: H-U twice,H-L,L-T,L-D yields5 rooms,5 edges, one
+component, one cycle, physical degree-three junctionsH/L and terminalsT/D. The
+second flight is(253,33,336) via(254,34,335),(254,35,334) to(253,36,333).
+Merging the ambiguous lower L/T boundary yields4 rooms,4 edges, one cycle and
+one junctionH. Empty/dead fractions are1/5 and0/5, or1/4 and0/4 merged.
+
+Graph depths from staged H are1 for U/L and2 for T/D. The checked H-U connector
+is6H/3V; H-L is7H/4V to(256,29,331). Existing lower-floor BFS gives L-D7H and
+L-T16H, making declared network distances14H/4V and23H/4V to their source/cache
+stations. These do not imply minimum routes across arbitrary new breaches.
+Vertical progression spans29..36,7 blocks, versus the14-layer envelope. All180
+WORLD_SURFACE columns are127, the Nether roof context, not98 blocks of solid
+cover over the lower floor. The overlapping fortress limits exterior conclusions.
+
+Meaningful hazards: magma support at(256,35,339) interrupts the upper crossing;
+(259,28,331) interrupts a direct lower-lane approach. The accepted detours leave
+both intact. Other wall magma and open upper edges are retained environmental
+exposure, not measured damage. Two saved dispensers reference wasteland_lava,
+whose sole entry is one lava bucket with one roll. Their actual facings are south
+at(253,30,337),down at(259,32,336). The third dispenser at(255,30,337) references
+wasteland's strong-harming arrow potential. All payloads are unrolled and saved
+triggered=false. Lava release/hits are not runtime observations. The lower powered
+lever pair and extended piston remain source/geometric mechanism evidence;
+removing one lever does not establish that the full puzzle or firing chain was
+observed working. One crossed attached tripwire is sheared. Narrow lower lanes
+and the one-block closet impose real clearance constraints; no live AI exploit
+or combat chokepoint effectiveness is inferred.
+
+There are3 ordinary temple loot assignments, all chests/temples/wasteland:2/3 in
+D at depth2 and1/3 in T at depth2. Its source pool includes resources, equipment,
+rotten flesh and a rare scrap entry, plus additional trim/lucky references.
+Four mns loot assignments elsewhere in the padded extraction are incidental
+fortress context and are excluded from the three-temple-container denominator.
+The main modeled task changes no incidental reward assignment. Actual/generated
+items, value and player acquisition remain NOT MEASURED. Source suppression is
+counted, but one neutral source type is not an authored mandatory hostile encounter.
+
+Authored finale: NONE. D's candidate attributes are objective clarity ABSENT,
+distinctive mandatory hostile challenge ABSENT, reward linkage PRESENT, route
+integration CONDITIONAL on masonry/chest/source work, external exposure PRESENT.
+The neutral source in this scenario does not support a fabricated fight or
+quality score. Provocation can change its behavior, outside the accepted task.
+
+The external example explicitly includes overlap geometry. The direct copied
+crimson start at(249,29,336) is solid, and feet30 there have an incidental closed
+top trapdoor overhead. Start instead at supported(248,30,336), outside the temple
+envelope but within its fortress context. Mine that trapdoor, then7 masonry
+blocks atX250..252,Z336 (Y29..31 forX250,Y29..30 forX251/252), descend one block
+and remove the unextended piston at(252,30,335) to open(252,29,335). The4H/1down
+path,9 removal rays and chest ray pass against the original saved environment.
+Trapdoor removal is a declared operation, not a minimum-break claim.
+The first low wall ray hit the actor's supporting floor; targeting the exposed
+top of(250,29,336) fixes that ray without deleting the support. This is local
+fortress-to-temple access, not an approach from open Nether terrain. It reaches
+one reward while skipping H,U,L,T and their mechanisms, not the complete task.
+The closed source closet is also bypassable by the main task's mining rather
+than operating the lever sequence. No overlap replacement or world tuning occurs.
+
+Expected replay: fixed source design with material and generated-context
+variation. The observed overlap can alter approach and available neighboring
+activity, but one selected overlap gives no population frequency or player
+preference. Same-site revisits retain the12 main-task removals, including the
+source and one chest. Other containers/fortress fixtures do not reconstruct the
+temple. Its three-level form places all temple rewards and its authored source
+in the lower branches; the upper magma/fall hazards and paired stair cycle give
+limited upper mechanical purpose. This supports shallow objective distribution
+across height, not a claim that the upper floor is mechanically empty. The final
+seven-variant family comparison remains open for soul,ocean and taiga.
+
+Reproduce this local result and its inspected categorical plan:
+
+```sh
+uv run python -m evidence.item-13.repurposed_temple_route wasteland
+uv run python -m evidence.item-13.render_pilot --input evidence/item-13/fixed-blocks/repurposed-temple-wasteland.json.gz --output /tmp/item13-wasteland-review.svg --layers 29 30 33 34 36 37
+convert /tmp/item13-wasteland-review.svg /tmp/item13-wasteland-review.png
+```
+
+Reuse the pinned mining, Quark chest, lever-outline and drop sources already bound
+in this report. The literal lava table is
+`data/repurposed_structures/loot_table/dispensers/temples/wasteland_lava.json` in
+the retained Repurposed Structures JAR. No extra source capture is needed to
+restate its single JSON entry. The categorical plan was manually inspected as
+geometry, not player gameplay.
+
+Wasteland analysis/integration, source/plan inspection and initial checks ended
+18:13:24 UTC,457 seconds after declaration, within45 minutes. Final staged review
+and delivery retain their separately declared15-minute bound. The complete
+wasteland command, lint, formatting, types, scope arithmetic and all current
+report/index links pass. Basalt, crimson and warped stdout remain byte-identical
+to80ffc568; the shared geometry helper did not change in this batch. An initial
+comparison wrapper supplied the wrong script argv; the corrected wrapper used
+the repository script path and all three comparisons passed. No raw observation
+was affected. Use the preceding validation commands with wasteland added to the
+variant loop. Four of seven local alternatives now pass; soul,ocean,taiga remain.
