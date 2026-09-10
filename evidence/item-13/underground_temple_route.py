@@ -174,35 +174,9 @@ for sign in (1, -1):
     print("REJECT declared rubble branch", sign, rejection[0][1:])
 
 
-def check_ray(eye, end, target):
-    """Check the declared ray, retaining vine outline faces rather than collision."""
-    assert math.dist(eye, end) <= 4.5
-    for step in range(2001):
-        p = tuple(eye[i] + (end[i] - eye[i]) * step / 2000 for i in range(3))
-        cell = tuple(math.floor(v) for v in p)
-        if cell == target or cell in removed:
-            continue
-        s = at(c, *cell)
-        if s["Name"] == "minecraft:air":
-            continue
-        if s["Name"] == "minecraft:vine" or (
-            s["Name"] == "minecraft:sculk_vein" and s["Properties"]["waterlogged"] == "false"
-        ):
-            x, y, z = (p[i] - cell[i] for i in range(3))
-            faces = {k for k, v in s["Properties"].items() if v == "true"}
-            hit = {
-                "west": x <= 1 / 16,
-                "east": x >= 15 / 16,
-                "north": z <= 1 / 16,
-                "south": z >= 15 / 16,
-                "up": y >= 15 / 16,
-                "down": y <= 1 / 16,
-            }
-            assert faces, (cell, p, s)
-            assert not any(hit[f] for f in faces), (cell, p, s)
-            continue
-        raise AssertionError((cell, p, s))
-    interaction_rays.setdefault(target, []).append((eye, end))
+check_ray = importlib.import_module("evidence.item-13.temple_geometry").ray_check(
+    c, removed, interaction_rays
+)
 
 
 for sign in (1, -1):

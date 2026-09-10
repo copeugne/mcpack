@@ -2843,3 +2843,91 @@ water context here, not seven blocks of solid protective roof or a measured
 swimming distance. The local executable reproduces that footprint check.
 The scoped hall assessment is now integrated; the second complete assembly and
 its full shaft geometry remain the next unmet family coverage requirements.
+
+## Second assembly shaft and initial hall declaration
+
+The second assembly's `shafts/large` child spans[194,7,340,198,24,344]. Its inner
+perimeter has17 bottom deepslate-brick slabs, one per Y8..24, rising around the
+center post: (195,342),(195,341),(196,341),(197,341),(197,342),(197,343),(196,343),
+(195,343), repeating around the perimeter. All17 slabs are saved waterlogged.
+This is source/geometry evidence of the intended spiral, not17 rooms or a
+validated17-block player ascent. The bottom slab's support is at Y+.5, not Y+1.
+The initial dry full-cell checker must reject treating it as an integer-height
+standing floor; that checker rejection does not prove the shaft unplayable.
+
+Pinned `SlabBlock` source confirms the bottom collision box is[0,0,0,16,8,16]/16
+and `getFluidState` returns a source water state when WATERLOGGED is true. Wet
+contact and fractional support need explicit resolution before traversal timing.
+Do not silently dry the raw slabs, introduce a scaffold, or label a geometric
+spiral count as observed progression. The present evidence resolves the exact
+missing geometry but leaves its native actor transition/physics case open.
+
+Reproduce the source inspection with the previously pinned SRG archive:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap \
+  -classpath instances/pristine-baseline-v0/libraries/net/minecraft/server/1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar \
+  -c -p net.minecraft.world.level.block.SlabBlock
+```
+
+Independent dry hall validation can proceed. Center the first assembly's known
+ring/spoke geometry at(208,384), low feet Y30 and threshold feet Y32. Predeclare
+all four bidirectional spokes and the24-block inner ring using the same adult
+and no-remedy assumptions. This checks the actual second saved blocks rather
+than transferring a template-level conclusion. Then test the northern centerline
+from threshold(208,32,376) to(208,32,370), the southern approach to the four-source
+chamber. Save failures unchanged and do not assume that the entire chamber or
+its rewards are reachable until their own paths and rays pass.
+
+The initial hall and northern approach pass. Before extending that result,
+predeclare the chamber survey: from(208,32,376), follow the six-block centerline
+to(208,32,370), circle its radius-three square once, and return by the approach.
+Check both directions of the ring and one supported access ray to each of its
+four saved chests, without exposing their buried spawners. Also validate four
+hall chest rays from the radius-three hall stations. Both rooms use the existing
+ray check, now shared between two current assembly consumers without changed
+rules. These are access-to-assignment claims, not acquired loot or combat success.
+
+Both declared native rooms pass. The ordinary hall has one connected low floor
+with four radial transitions spanning feet Y30..32; each five-horizontal-block
+spoke has two blocks of elevation change. Its four unrolled chests have clear
+lids and supported rays from the ring, and a gold block remains at(208,30,384).
+The chamber has one connected floor at Y32, a24-block radius-three circuit and
+a six-block approach from the northern hall threshold. Its closed survey totals
+36 horizontal blocks and zero vertical. All four chamber chest lids and rays
+pass. These are two activity spaces, not eight reward rooms. Neither is empty
+under the protocol's potential-content definition, but actual contents and
+encounters remain NOT MEASURED.
+
+The nearby chamber's four sources are still buried at Y31 beneath their chests;
+none was removed by this native survey. The hall's gold is a physical potential
+reward, not acquired material. Do not treat successful chest rays as proof that
+combat can be avoided, that the loot is useful, or that acquisition succeeded.
+Source access/removal, enemy scenario, other rooms and a joined complete task
+remain required. The ordinary assembly's four towers prevent simply copying the
+first assembly's complete timing or final-room assessment.
+
+For the shaft, pinned `FlowingFluid.getHeight` returns one when the same fluid is
+above, otherwise `getOwnHeight`, which is amount/9. `WaterFluid$Source.getAmount`
+returns8. Air is saved immediately above each spiral slab. Thus source water
+height is nominally8/9 of its block, above the slab's .5 support plane by7/18
+blocks (about.389). This source-derived contact makes dry support-height timing
+inappropriate; it does not establish a native ascent rate, drowning outcome,
+fluid stability or successful player movement. The exact fluid/transition model
+is still unresolved, rather than being folded into the first assembly's j value.
+
+Reproduce this additional source derivation with the same pinned `javap -c -p`
+command and classes `net.minecraft.world.level.material.FlowingFluid` and
+`'net.minecraft.world.level.material.WaterFluid$Source'` (quote the latter in a
+shell to preserve its dollar sign). The local executable retains all17 slab
+coordinates, their states and the explicit dry-model rejection. Geometry for
+fractional slab support and wet movement must be resolved before a dependent
+shaft task is accepted; no new world generation is needed to locate the issue.
+
+Run `uv run python -m evidence.item-13.temple_ordinary_route` to reproduce the
+initial room paths, eight rays, shaft inventory and negative case. Focused
+formatting, lint and type checks pass. The first assembly's route output is
+byte-identical after sharing its ray function and its full check passes. Only
+existing rules were moved; a lint directive for their existing4.5-block reach
+constant was retained. This milestone advances the second assembly but does not
+close its full topology, gameplay-quality model or family coverage gate.
