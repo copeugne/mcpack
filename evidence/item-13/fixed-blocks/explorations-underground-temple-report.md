@@ -3799,3 +3799,133 @@ failures and conditional source assumptions are preserved.
 Reproduce these gates, reward rays, final columns and lava rejection with
 `uv run python -m evidence.item-13.temple_ordinary_route`. Focused Ruff, formatting
 and type checks pass. No new runtime or shared geometry machinery was introduced.
+
+## Western tower pair: complete task declaration
+
+For each tower, begin and end at(196.5,32,Z+0.5), clear the declared obstructions,
+conditionally acquire its three tower chests and attached alcove chest, inspect
+the bottom eastern boundary and return alive. Use the established single adult,
+full-health/full-food actor with unenchanted iron armor/sword, diamond pickaxe,
+12 carried scaffolds, sufficient durability and free inventory. Start without
+placed scaffolds or the declared breaches. The neighboring chamber is already
+cleared; no pre-existing or naturally spawned enemies enter this local task.
+This is an explicit zero-enemy scenario, not an empirical occupancy statement.
+
+Join the validated segments once, visiting the attached alcove once on the way
+down. Include the additional link from lower endpoint(181,24,Z) to final-drop
+work station(181,24,Z+1). Require all construction/loot/button ray stations on the
+joined circuit. Model the three initial four-block descents as falls, not climbs
+through future scaffolds. Use the first assembly's pinned fall recurrence and
+vertical sensitivity speeds1/.5/.25 blocks per second for the later climbs.
+Keep the existing no-fluid-arrival, unchanged piston state, prompt door crossing,
+successful construction/transfer and survival conditions. Required recovery,
+extra mobs, lava contact, displacement or invalid access censors this case.
+
+Reuse the first assembly's explicit per-operation hotbar accounting: one selection
+for each mined target, scaffold column, button press and chest acquisition. Charge
+one interaction for each removal, placement, button and chest opening, plus one
+acquisition allowance per chest and final verification. Navigation events are
+joined-route direction changes plus initial orientation. Redundant deliberate
+selections are part of this specified scenario, not a claim that players need
+that many. Count every action from the accepted sets; do not estimate a whole
+clear by multiplying a one-floor traversal. Combat is zero only in the declared
+no-enemy case. Compute A/B/C totals after joining and validating the route.
+
+## Western tower pair: complete local task and quality result
+
+The existing script now joins the previously verified components for both saved
+towers and checks the combined removal/door/scaffold state. Both circuits begin
+and end at(196,32,Z), include the attached alcove exactly once as an excursion,
+and visit every retained construction, button and reward ray station. Each has
+148 horizontal blocks,12 ascent and12 descent. The previously named one-block
+final-drop approach is included in both directions. Each initial four-block
+fall occurs exactly once in the joined route; later returns use the constructed
+scaffolds. These are complete stated circuits, not shortest-clear claims.
+
+Per tower: seven removals (two webs and five masonry),12 scaffold placements,
+eight button operations, four chest interactions/acquisitions,22 explicit hotbar
+selections and79 navigation events (78 direction changes plus orientation).
+The active mining work is46 ticks: two sword webs at eight ticks and five masonry
+at six ticks. The pinned initial-fall recurrence gives11 ticks per four-block
+fall,33 ticks/1.65 seconds for all three. The model charges the remaining12
+vertical blocks at the declared climbing speed; it does not charge falling
+blocks twice as climbs. Thus complete conditional seconds are:
+
+`T = 148/u + 12/j + 1.65 + 2.3 + 79n + 31a + 22s + 4k + v`.
+
+| Approved sensitivity profile | Complete conditional task |
+| --- | ---: |
+| A | 104.3 seconds |
+| B | 182.45 seconds |
+| C | 296.7833 seconds |
+
+Both independently checked cases give these same counts and approximately
+104/182/297 seconds; that numerical match is not evidence that all generated
+towers or player experiences are identical. Combat is zero only in the declared
+no-enemy case. No explicit enemy source occurs within these scoped towers/alcoves;
+the family's natural hostile override remains potential, excluded from this
+particular scenario rather than declared inactive in the game. Three stipulated
+four-block falls request one nominal damage each under the earlier source formula,
+but no realized damage/survival prediction is claimed. The task censors on required
+recovery, fluid intrusion, changed piston/door behavior, failed transfer, extra
+enemies or other previously stated invalidating conditions.
+
+Use the first assembly's activity-floor partition consistently. Per tower plus
+attached alcove, the primary local count is four activity spaces:
+
+| Local room | Footprint delimitation, not all-playable voxel bounds | Main feet | Reward assignments |
+| --- | --- | ---: | ---: |
+| U, upper reward floor | X179..191,Z-2..Z+2 | 32 | 2 |
+| M, middle mechanism/reward floor | X179..191,Z-2..Z+2 | 28 | 1 |
+| B, bottom lava floor | X179..191,Z-2..Z+2 | 20 | 0 |
+| A, attached reward alcove | X183..187,Z-9..Z-4 | 24 | 1 |
+
+The Y24 two-door floor is a connector, as in the first assembly. Counting it as
+another activity room gives five; merging the reward alcove into its approach
+gives three under the stricter alcove convention. Preserve this3..5 partition
+sensitivity when comparing families. None of the four primary spaces is empty
+or dead (0/4 each): three contain locally accessible reward assignments and the
+bottom has a validated lava-avoidance requirement. This is supported content,
+not realized occupancy or player engagement; the unlit campfire is not needed
+to make the alcove nonempty.
+
+The contracted inspected graph is `E-U-M-J`, with `J-A` and `J-B-X` branches.
+E is the entry, J the Y24 junction, and X the eastern bottom boundary. It has
+seven nodes, six edges, one connected component, one degree-three decision
+junction (J), and no inter-room cycle. This is a tree over validated connections,
+not the jigsaw graph. Room depths from E are U1,M2,A4,B4; X is five edges deep.
+Two rewards allocate to depth1, one to depth2 and one to depth4. No saved spawner
+allocates to these rooms. Local route anchors are U(185,32,Z+1), M(190,28,Z-1),
+J(185,24,Z), A(185,24,Z-7), B(181,20,Z+1), X(193,20,Z).
+The checked edge work lengths are respectively E-U14H, U-M17H/4V, M-J8H/4V,
+J-A7H, J-B7H/4V and B-X21H. Thus the inspected entry-to-boundary path is67H/12V,
+79 route blocks; the attached alcove is46H/8V,54 route blocks from entry.
+These are distances on this declared network, not a global optimal route or
+surface approach. Connected feet span is12; terrain cover remains a separate
+assembly measurement.
+
+Meaningful constraints are the four timed doors, web removal/avoidance, the
+breached piston panel, three vertical access constructions and the bottom lava
+zigzag. The checked bypass of the tripwire descent and the two-block panel breach
+support earned engineering opportunities with explicit resource/action costs.
+The saved water exposures and active-circuit uncertainty prevent a claim of
+runtime invulnerability or guaranteed permanent access. No arbitrary protection
+or frozen configuration change is proposed.
+
+No explicit final objective or unique bottom reward is identified. All three
+tower rewards precede the bottom lava floor, while the attached alcove holds a
+separate `dead_end` assignment. The existing `quest_tower` table assessment,
+including its ineffective zero-trial golden-apple function, still applies as
+potential rather than acquired value. The tower has multiple validated access
+mechanisms and12 blocks of connected vertical progression, so mechanical
+shallowness of its whole height is not established by this sample. Its bottom
+risk has no additional saved reward in this scoped floor, an explicit payoff
+limitation. Expected replay contribution depends on new loot entitlement and
+changed approach choices: construction and removed blocks do not reset merely
+because another player can access loot. No player replay outcome is invented.
+
+This completes the two scoped tower-plus-alcove task models and local assessments,
+not the second full assembly or family coverage. Reproduce both joined circuits,
+action/visit checks, fall arithmetic and totals with
+`uv run python -m evidence.item-13.temple_ordinary_route`. Focused lint, formatting
+and types pass. No runtime or shared geometry machinery was added.

@@ -393,6 +393,8 @@ for position in campfires:
     assert state["Properties"]["waterlogged"] == "true"
 print("PASS all nine saved campfires waterlogged and unlit; zero lit campfires in this sample")
 
+tower_parts = {z: {"removed": set(), "doors": set(), "rays": {}} for z in (367, 384)}
+
 for center_z in (367, 384):
     straight_failure = None
     try:
@@ -470,6 +472,10 @@ for center_z in (367, 384):
     tower_verify(upper_tower_path)
     tower_verify(list(reversed(upper_tower_path)))
     assert all(2 / u < 30 / 20 for u in (5, 4, 3))
+    tower_parts[center_z]["upper"] = upper_tower_path
+    tower_parts[center_z]["removed"].update(tower_removed)
+    tower_parts[center_z]["doors"].update(tower_doors)
+    tower_parts[center_z]["rays"].update(tower_rays)
     print(
         "PASS western tower upper segment",
         center_z,
@@ -558,6 +564,10 @@ for center_z in (367, 384):
     assert wire["Properties"]["attached"] == "true"
     assert wire["Properties"]["disarmed"] == "false"
     assert wire["Properties"]["powered"] == "false"
+    tower_parts[center_z]["inner"] = room_link
+    tower_parts[center_z]["removed"].update(inner_removed)
+    tower_parts[center_z]["doors"].update(inner_doors)
+    tower_parts[center_z]["rays"].update(inner_rays)
     print(
         "PASS western tower middle connection",
         center_z,
@@ -636,6 +646,9 @@ for center_z in (367, 384):
     middle_verify(middle_path)
     middle_verify(list(reversed(middle_path)))
     assert 2 * (len(middle_path) - 1) == 22
+    tower_parts[center_z]["middle"] = middle_path
+    tower_parts[center_z]["removed"].update(middle_removed)
+    tower_parts[center_z]["rays"].update(middle_rays)
     print(
         "PASS western tower middle reward",
         center_z,
@@ -715,6 +728,11 @@ for center_z in (367, 384):
     assert 2 * (len(attached_alcove) - 1) == 14
     for x in (183, 184, 185, 188, 189, 190):
         assert at(case, x, 20, center_z)["Name"] == "minecraft:lava"
+    tower_parts[center_z]["lower"] = lower_crossing
+    tower_parts[center_z]["alcove"] = attached_alcove
+    tower_parts[center_z]["removed"].update(lower_removed)
+    tower_parts[center_z]["doors"].update(lower_doors)
+    tower_parts[center_z]["rays"].update(lower_rays)
     print(
         "PASS lower tower doors/alcove",
         center_z,
@@ -791,9 +809,118 @@ for center_z in (367, 384):
     assert center_failure is not None
     assert center_failure[1:] == ((183, 20, center_z), "minecraft:lava")
     assert 2 * (len(bottom_zigzag) - 1) == 42
+    tower_parts[center_z]["bottom"] = bottom_zigzag
+    tower_parts[center_z]["removed"].update(bottom_removed)
+    tower_parts[center_z]["rays"].update(bottom_rays)
     print(
         "PASS bottom zigzag",
         center_z,
         "42H return, center lava rejected; "
         "third shaft four scaffolds/one removal, 4H/8V return, initial fall retained",
     )
+
+for center_z, parts in tower_parts.items():
+    segments = [
+        parts["upper"],
+        parts["inner"],
+        [(181, y, center_z) for y in range(32, 27, -1)] + [(181, 28, center_z + 1)],
+        parts["middle"],
+        [(189, y, center_z - 1) for y in range(28, 23, -1)] + [(190, 24, center_z - 1)],
+        parts["lower"],
+        [(181, 24, center_z + 1)],
+        [(181, y, center_z) for y in range(24, 19, -1)] + [(181, 20, center_z + 1)],
+        parts["bottom"],
+    ]
+    outbound = []
+    for segment in segments:
+        outbound.extend(segment[1:] if outbound and outbound[-1] == segment[0] else segment)
+    circuit = outbound + list(reversed(outbound))[1:]
+    full = []
+    added_alcove = False
+    for point in circuit:
+        full.append(point)
+        if point == parts["alcove"][0] and not added_alcove:
+            full.extend(parts["alcove"][1:])
+            full.extend(list(reversed(parts["alcove"]))[1:])
+            added_alcove = True
+    assert added_alcove
+    assert full[0] == full[-1] == (196, 32, center_z)
+    columns = ((181, center_z, 28, 32), (189, center_z - 1, 24, 28), (181, center_z, 20, 24))
+    supports = {(x, y, z) for x, z, base, top in columns for y in range(base, top + 1)}
+    _, full_verify = importlib.import_module("evidence.item-13.temple_geometry").path_checks(
+        case, parts["removed"], parts["doors"], supports
+    )
+    full_verify(full)
+    visited = set(full)
+    for target, rays in parts["rays"].items():
+        assert any(
+            (int(eye[0]), round(eye[1] - 1.62, 6), int(eye[2])) in visited for eye, _ in rays
+        ), target
+    horizontal = sum(abs(b[0] - a[0]) + abs(b[2] - a[2]) for a, b in pairwise(full))
+    ascent = sum(max(0, b[1] - a[1]) for a, b in pairwise(full))
+    descent = sum(max(0, a[1] - b[1]) for a, b in pairwise(full))
+    assert (horizontal, ascent, descent) == (148, 12, 12)
+    assert len(parts["removed"]) == 7
+    assert sum(at(case, *p)["Name"] == "minecraft:cobweb" for p in parts["removed"]) == 2
+    assert len(parts["doors"]) == 8
+    rewards = {
+        p
+        for p in parts["rays"]
+        if p in entities_by_position and entities_by_position[p]["id"] == "minecraft:chest"
+    }
+    assert len(rewards) == 4
+    for x, z, base, top in columns:
+        drop = [(x, y, z) for y in range(top, base - 1, -1)]
+        assert sum(full[i : i + len(drop)] == drop for i in range(len(full) - len(drop) + 1)) == 1
+    velocity = 0.0
+    distance = 0.0
+    fall_ticks = 0
+    while distance < 4:
+        distance -= velocity
+        fall_ticks += 1
+        velocity = (velocity - 0.08) * 0.9800000190734863
+    vectors = [tuple(b[i] - a[i] for i in range(3)) for a, b in pairwise(full)]
+    decisions = sum(a != b for a, b in pairwise(vectors)) + 1
+    interactions = 7 + 12 + 8 + 4
+    selections = 7 + 3 + 8 + 4
+    parts["complete"] = full
+    print(
+        "PASS complete western tower",
+        center_z,
+        horizontal,
+        "H",
+        ascent,
+        "up",
+        descent,
+        "down;",
+        decisions,
+        "decisions",
+        interactions,
+        "interactions",
+        selections,
+        "selections; fall ticks",
+        fall_ticks,
+    )
+    for label, u, j, n, a, s, k, v in (
+        ("A", 5, 1, 0.5, 0.25, 0.25, 1, 2),
+        ("B", 4, 0.5, 1, 0.5, 0.5, 2, 4),
+        ("C", 3, 0.25, 1.5, 1, 1, 4, 8),
+    ):
+        total = (
+            horizontal / u
+            + 12 / j
+            + 3 * fall_ticks / 20
+            + 46 / 20
+            + decisions * n
+            + interactions * a
+            + selections * s
+            + 4 * k
+            + v
+        )
+        print(
+            center_z,
+            label,
+            "complete conditional tower task seconds",
+            total,
+            "combat zero by scenario",
+        )
