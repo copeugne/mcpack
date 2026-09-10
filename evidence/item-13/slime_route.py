@@ -156,9 +156,16 @@ for u, j, n, a, s, k, v, duty in (
     (3, 0.25, 1.5, 1, 1, 4, 8, 0.5),
 ):
     base = (
-        horizontal / u + vertical / j + 1.9 + (11 + upward + turns + 6) * n + 2 * a + 2 * s + k + v
+        horizontal / u
+        + vertical / j
+        + 19 / 20
+        + (11 + upward + turns + 6) * n
+        + 2 * a
+        + 2 * s
+        + k
+        + v
     )
-    disable = 4 / u + 1 / j + 1.9 + 4 * n + a + s
+    disable = 4 / u + 1 / j + 19 / 20 + 4 * n + a + s
     print(
         json.dumps(
             {

@@ -255,7 +255,7 @@ upward transition,actual horizontal heading change and each of the six parent
 target selections. Descendant switching/pursuit stays in combat duty, avoiding
 another per-child charge. Inputs: one mining initiation and one chest open.
 Selections: pick then sword. Acquisition: one container; terminal verification:
-one. Mining: source-derived1.9s for the spawner with the dry grounded diamond
+one. Mining: source-derived0.95s for the spawner with the dry grounded diamond
 pick. Count all four legs, not just the first spawner approach. Any different
 entry, excavation or additional target work needs a separately declared task.
 
@@ -296,7 +296,7 @@ parents or additional natural spawning invalidates this particular model.
 
 The saved Delay20 permits an attempt after roughly one second of active ticking;
 MinSpawnDelay200 is ten seconds at20TPS. The modeled disablement costs are
-D=4/u +1/j +1.9 +4*decision +input +selection, giving6.2/9.9/15.233333s.
+D=4/u +1/j +0.95 +4*decision +input +selection, giving5.25/8.95/14.283333s.
 The four decisions are initial orientation,source selection,first heading change
 and upward alignment. Profile C is beyond the earliest later attempt, so a
 single-wave deadline argument would be invalid. The explicit six-nearby condition,
@@ -313,7 +313,7 @@ do not supply the parents' damage pressure, even though clearing them remains
 part of this stated objective. Actual spawning, pursuit, splitting success,
 damage, loot and combat duration remain NOT MEASURED.
 
-Complete noncombat task is16/u +4/j +1.9 +26*decision +2*input +2*selection
+Complete noncombat task is16/u +4/j +0.95 +26*decision +2*input +2*selection
 +acquisition +verification. The26 decisions are11 fixed,two upward alignments,
 seven headings and six parent target selections. Movement alone is7.2/12/21.333333s.
 Combat pursuit/return to the fixed station and descendant targeting remain only
@@ -322,9 +322,9 @@ There is no unpriced healing, excavation or extra wave in the successful task.
 
 | Profile | Noncombat complete budget | With six parents and all children | Active attack work |
 | --- | ---: | ---: | ---: |
-|A|26.100000s|37.800000..45.600000s|11.7..19.5s|
-|B|47.900000s|63.500000..73.900000s|11.7..19.5s|
-|C|78.233333s|101.633333..117.233333s|11.7..19.5s|
+|A|25.150000s|36.850000..44.650000s|11.7..19.5s|
+|B|46.950000s|62.550000..72.950000s|11.7..19.5s|
+|C|77.283333s|100.683333..116.283333s|11.7..19.5s|
 
 These are MODELED RESULTS for the declared successful scenario, not calibrated
 clear times, survival probabilities or confidence intervals. The active-work
@@ -470,7 +470,7 @@ upward transitions and seven headings. Start feet-36,raised station-35. The
 nearby query is[4,-39,-397,13,-30,-388]. Both the source payload and conditional
 six-parent population contract remain identical. No new mining of the harder
 shell is required by this local task, so source-disable costs and the complete
-conditional model reproduce the first totals exactly:38..46/64..74/102..117s
+conditional model reproduce the first totals exactly:37..45/63..73/101..116s
 rounded across A/B/C. This is a measured equality of the declared route/model
 inputs, not a claim that all blocks, loot or real encounters are equal.
 
@@ -539,7 +539,44 @@ conditional tasks, enemy distinctions, hazards/chokepoint limits, loot/finale,
 bypasses, external exposure and replay/shallow-form findings are retained. Full
 Item13 population coverage and review/merge gates remain IN PROGRESS.
 
-Focused final checks: both route modes pass; the original nonnegative output is
+Earlier material-comparison checks (timing superseded below): both route modes
+passed; the original nonnegative output was
 byte-identical to pushed af8ba7f4 after adding negative-case support. Ruff format/
 check, basedpyright and git diff --check pass. No runtime, frozen configuration
 change, repeated survey generation or Item14 work was performed.
+
+
+## Narrow correction: spawner breaking cost
+
+The Underground Temple source check exposed a reused Slime Cave timing error.
+The earlier model charged1.9 seconds for a dry,grounded diamond-pick spawner break,
+although the accepted [source derivation](mns-circle_nether_brick-report.md)
+registers hardness5,diamond speed8 andthe correct-tool divisor30. Single-precision
+progress accumulation reaches completion after19 ticks,or0.95 seconds at20 TPS.
+The current script andboth material-state tables above now use19/20. Historical
+1.9-second results remain in commits af8ba7f4 ande21f53b6 as superseded calculations,
+not altered raw observations. This corrects a specific arithmetic/input mismatch;
+no world read,generation,source inventory or runtime experiment was repeated.
+
+Each disablement,noncombat andcomplete total decreases by0.95 seconds. Geometry,
+six-parent source-suppression conditions,child workloads,combat duty andall other
+allowances remain as declared. Profile C still exceeds the earliest later spawn
+attempt; the alive/in-query requirement remains essential. The changes do not
+convert these conditional models into measured gameplay or weaken censoring.
+
+The source cross-check reused Blocks offsets7062..7065 andthe existing extra-JAR
+pickaxe tag SHA-256e31b952f7df00a46e2e442e601b1139e87085314364e9137381c71e66f55700f.
+A lookup of that data path in the SRG code JAR failed because it lives in the
+extra JAR; the correct existing artifact reproduced the expected hash andspawner
+membership. This was an artifact-location mistake, not missing baseline data.
+
+Reproduce both corrected models with the existing commands:
+
+```sh
+uv run python -m evidence.item-13.slime_route
+uv run python -m evidence.item-13.slime_route --negative
+```
+
+Both corrected model commands pass, including the existing geometry/query checks.
+Affected formatting,lint andtype checks pass. The two variants reproduce identical
+corrected totals; the final tables above match those outputs.

@@ -85,7 +85,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `25f268d6`; verify subsequent assessment commits against upstream.
+checkpoint is `eeca3bce`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -153,7 +153,7 @@ are covered collectively by the two assemblies. Neither model observes players.
 The [Slime Cave report](evidence/item-13/fixed-blocks/explorations-slime-cave-report.md)
 covers both saved material states with validated routes, source suppression,
 conditional splitting workloads and explicit incidental cave evidence. Both
-complete local tasks give38..46/64..74/102..117s across approved profiles. Do not
+complete local tasks give37..45/63..73/101..116s across approved profiles. Do not
 repeat these reads or models. Actual gameplay remains NOT MEASURED.
 
 ## Current batch: Underground Temple
