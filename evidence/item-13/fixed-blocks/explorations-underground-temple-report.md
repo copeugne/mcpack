@@ -3002,3 +3002,76 @@ route has not yet been validated. Bottom access, upper access and lateral wet
 transitions are the precise remaining claims before whole-shaft timing. The
 full generated block evidence is available; this is a modeling/access gap,
 not missing-world evidence or permission to regenerate the accepted world.
+
+## Bounded native wet-step pilot, predeclared before execution
+
+The existing collision and template-placement probes cannot execute actor
+movement. Further handwritten fluid recurrences would duplicate runtime behavior
+without resolving lateral contact. Add one narrowly scoped FakePlayer motion
+probe to the existing fresh-runtime lifecycle instead. This directly addresses
+the Item13 playable-transition requirement; it does not introduce a new review
+framework, general navigation system or gameplay benchmark. The probe is
+`Item13ShaftMotionProbe.java`; runner mode is `collision.run --shaft-motion`.
+
+Actor: one unregistered NeoForge FakePlayer with standing adult .6-by-1.8 body,
+no active effects or flight capability, no sprinting, no equipment use, no
+passengers and zero initial velocity. Check effective movement speed .1, jump
+strength .41999998688697815, gravity .08, water efficiency0 and step height .6.
+FakePlayer invulnerability and inactive connection/normal player tick behavior
+make this unsuitable for damage, survival, combat or human-time claims. The
+actor is never added to a player list or saved; its ephemeral identifier is
+neither emitted nor retained. This is a controlled native physics query.
+
+Input: a fresh hash-verified copy of accepted ordinary r1 using the existing
+POSIX-locked copy/verification procedure and frozen runtime/configuration.
+Load its already verified full chunk(12,21), which contains the pilot, and compare
+all175 saved cells X194..198,Y7..13,Z340..344 to the committed ordinary extract
+before stepping. Reject any mismatch, unexpected dimensions/attributes/effects,
+flight capability or another entity in X193..200,Y7..14,Z339..346. Do not repair
+or reset changed cells to make the pilot pass.
+
+Start actor center(195.5,8.5,342.5), on its verified lower slab, with on-ground
+flag set and zero velocity. Target center(195.5,9.5,341.5), the next higher slab.
+The controller knows both positions. Each native step runs baseTick, aims yaw
+at the target with pitch zero, applies forward input1 when horizontal distance
+exceeds .05 (otherwise0), no strafe, and holds jumping while feet are below9.4.
+Then it runs aiStep. No teleport, direct velocity change, block change, source
+removal, flight or manual movement correction is allowed after initialization.
+
+Success requires a later on-ground state with feet within1e-5 of Y9.5 and
+horizontal center distance at most .15 from the target, within120 native steps.
+Record every position, velocity, on-ground and in-water flag from step0 onward.
+Reject timeout or departure below Y7.5 or more than three horizontal blocks from
+target. Preserve the attempt and do not expand to other transitions until this
+representative is interpreted end to end. A failed attempt identifies this
+controller/case's failure; it does not prove no player can traverse the shaft.
+
+All steps execute inside one server-thread query. World/fluid/entity ticks do
+not advance independently during that query. Thus step count is a native
+manually stepped observation under stationary world state, not elapsed server
+gameplay time, a human observation, or proof that fluids remain stable in play.
+This deliberate boundary isolates the missing collision/fluid movement behavior.
+A success can support only the tested local transition and equivalent states,
+not upper access, the complete shaft or the full dungeon. Native physics output
+must remain separate from the approved conditional expedition budgets.
+
+Resource declaration: one fresh materialization, one attempt,120 steps maximum;
+existing600-second lifecycle bound,30 seconds for chunk loading and30 seconds
+for the server-thread query,45 seconds per build command, clean save/stop under
+the existing lifecycle. The accepted world is503 files totaling428,092,106 bytes.
+Allow2 GiB for the copied world/runtime and100 MiB for probe/log/config output,
+with the existing5-GiB free-space floor. Current free space before preparation
+is30,350,680,064 bytes. No new generation or frozen tuning is requested.
+
+Command (execution pending at producer commit):
+
+```sh
+uv run python -m evidence.item-13.collision.run --shaft-motion evidence/raw/item13/shaft-motion-r1 instances/item13-shaft-motion-r1
+```
+
+Compilation succeeds with pinned javac, explicit classpath, `-Xlint:all -Werror`.
+The first compile without an explicit classpath failed on an inherited invalid
+classpath entry; it ran no experiment. The existing runner already supplies an
+explicit classpath, so no host environment change was required. Python runner
+formatting, lint and type checks pass. Runtime acceptance remains unproven until
+the actual trace, lifecycle and configuration checks have completed.

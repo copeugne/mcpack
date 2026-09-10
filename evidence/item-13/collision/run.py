@@ -67,7 +67,10 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     second_house: bool = False,
     temple_variants: bool = False,
     basalt_variant: bool = False,
+    shaft_motion: bool = False,
 ) -> None:
+    if shaft_motion and (basalt_variant or temple_variants or spawner_lookup or second_house):
+        raise ValueError("Shaft motion cannot be mixed with another probe")
     if basalt_variant:
         if temple_variants or spawner_lookup or second_house:
             raise ValueError("Basalt mode cannot be mixed with another probe")
@@ -87,6 +90,12 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     if basalt_variant:
         input_file = temple_source.parent / "basalt-variant/selection.json"
         input_hash = "d05f481ee6b03efc5fc869da634a210e68b20d26f8dd6b63e07c689848e81e2f"
+    if shaft_motion:
+        input_file = (
+            ROOT
+            / "evidence/item-13/fixed-blocks/explorations-underground-temple-ordinary-r1.json.gz"
+        )
+        input_hash = "faed7df352cdcfc1938fb4d49f4f84b2519ad4f1ee55044fa661ae55e6f81d5c"
     for path in (output, target):
         if path.exists() or any(part.is_symlink() for part in (path, *path.parents)):
             raise ValueError("Output and instance must be new paths without symlinks")
@@ -129,7 +138,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
     )
     try:
         report["preflight"] = json.loads(prepare_control(request).model_dump_json())
-        if temple_variants:
+        if temple_variants or shaft_motion:
             report["source_world"] = copy_temple_source(target)
         check_ports(target / "server.properties")
         java, _ = validate_java_runtime(request.runtime.java_home)
@@ -147,6 +156,9 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             if temple_variants
             else Path(__file__).with_name("manifest.mf")
         )
+        if shaft_motion:
+            sources[1] = ROOT / "evidence/item-13/Item13ShaftMotionProbe.java"
+            manifest = ROOT / "evidence/item-13/shaft-motion-manifest.mf"
         with (output / "build.log").open("x") as log:
             for command in (
                 [
@@ -184,6 +196,8 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             if temple_variants
             else ("spawners.json" if spawner_lookup else "collision.json")
         )
+        if shaft_motion:
+            projection = "shaft-motion.json"
         lifecycle = run_registry_lifecycle(
             target,
             java,
@@ -192,7 +206,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
             dimension_probe=probe,
             registries=(),
             probe_output_name=projection,
-            probe_after_console_response=temple_variants,
+            probe_after_console_response=temple_variants or shaft_motion,
         )
         report["lifecycle"] = json.loads(lifecycle.model_dump_json())
         if not lifecycle.clean_stop:
@@ -202,7 +216,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one lifecycle boundary for f
         )
         report[
             "projection_sha256"
-            if temple_variants
+            if temple_variants or shaft_motion
             else ("spawners_sha256" if spawner_lookup else "collision_sha256")
         ] = sha256_file(output / projection)
         report["rejection_reason"] = None
@@ -227,6 +241,7 @@ if __name__ == "__main__":
     mode.add_argument("--second-house", action="store_true")
     mode.add_argument("--temple-variants", action="store_true")
     mode.add_argument("--basalt-variant", action="store_true")
+    mode.add_argument("--shaft-motion", action="store_true")
     args = parser.parse_args()
     run(
         args.output.absolute(),
@@ -235,4 +250,5 @@ if __name__ == "__main__":
         second_house=args.second_house,
         temple_variants=args.temple_variants,
         basalt_variant=args.basalt_variant,
+        shaft_motion=args.shaft_motion,
     )

@@ -83,7 +83,7 @@ accounts for complete objective work rather than movement alone. No Item 13
 completion or final PR gate has been claimed.
 
 Current branch: `codex/item13-dungeon-quality`. Latest pushed milestone at this
-checkpoint is `de324b94`; verify subsequent assessment commits against upstream.
+checkpoint is `0a7cab70`; verify subsequent assessment commits against upstream.
 Temple producer: `2f653748`; Basalt producer: `19cd4a08`. Fetched main at the latest checkpoint is
 `cbe1eef0`, following merged PR41. Preserve existing work; do not restart from the
 older Item 12 branch or repeat history consolidation.
@@ -192,8 +192,8 @@ gameplay or acquisition is measured.
 P6 defines54 stipulated occupied-source enemies with exact-class suppression;
 nominal combat is101.4/135.2/202.8s, conditional on no extra waves/healing/effects.
 Second assembly: hall/chamber floor routes and eight chest rays pass. Shaft has17 wet slabs.
-Wet shaft:17 fractional supports/16 rising links pass collision checks; dry defaults reject them.
-Next resolve lateral wet motion and shaft access (top slab24.5 to outer ledge26), then full task.
+Next run the predeclared one-step FakePlayer pilot via collision.run --shaft-motion.
+New motion probe is necessary: existing static probes cannot resolve lateral wet contact.
 Courtyard/central-End gaps: check retained raw first. No server is active.
 
 Item13 still requires full coverage, final review/fix cycles, clean Codex thumbs-up, merge and
